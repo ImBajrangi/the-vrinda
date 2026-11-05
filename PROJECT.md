@@ -25,8 +25,8 @@
 ## Milestones
 | # | Name | Scope | Dependencies | Status |
 |---|------|-------|-------------|--------|
-| M1 | Complete UI/UX, Navigation & Physics Implementation | Implement SacredLogo contrast, action pills borders, mobile anti-cramming, FloatingNavbar solid opacity, scrim fix, Apple fluid spring sheet/dialog physics, active press scaling, strictly maintaining zero hover translate/scale violations, clean TypeScript compilation | Survey | IN_PROGRESS (Fixing TS6133) |
-| Gate | Verification, Adversarial Gate & Forensic Audit | Run `npm run build`, `node tests/run-e2e.mjs`, `node tests/adversarial-gate.mjs`, `node tests/capture_ui_screenshots.mjs`, 2 Reviewers, 2 Challengers, and Forensic Auditor | M1 | PENDING |
+| M1 | Complete UI/UX, Navigation & Physics Implementation | Implement SacredLogo contrast, action pills borders, mobile anti-cramming, FloatingNavbar solid opacity, scrim fix, Apple fluid spring sheet/dialog physics, active press scaling, strictly maintaining zero hover translate/scale violations, clean TypeScript compilation | Survey | DONE |
+| Gate | Verification, Adversarial Gate & Forensic Audit | Run `npm run build`, `node tests/run-e2e.mjs`, `node tests/adversarial-gate.mjs`, `node tests/capture_ui_screenshots.mjs`, 2 Reviewers, 2 Challengers, and Forensic Auditor | M1 | DONE |
 
 ## Interface Contracts
 ### Top Bar ↔ Mobile Viewport
