@@ -1,0 +1,352 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-mint-top: #E3EFE9;
+  --bg-mint-mid: #D5E6DA;
+  --bg-sage-bottom: #9DB596;
+  --bg-peach-glow: #F7E6D2;
+  --surface-card: #F4F4F4;
+  --surface-card-alt: #F8F8F8;
+  --surface-glass: rgba(255, 255, 255, 0.65);
+  --accent-lime: #B6FF2E;
+  --accent-ink: #14213D;
+  --accent-japa: #22C55E;
+  --accent-shravan: #8B5CF6;
+  --accent-svadhyaya: #A3C71F;
+
+  /* Apple Signature Physics & Spring Timing Curves */
+  --ease-ios-spring: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-apple-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-apple-subtle: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #E3EFE9 0%, #D5E6DA 45%, #9DB596 100%);
+  background-attachment: fixed;
+  color: #111111;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Apple High-Refraction Frosted Glass Panels */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.88);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0.5px rgba(255, 255, 255, 1);
+}
+
+/* Hide scrollbars for clean horizontal strips */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ==========================================================================
+   Apple-Grade Interactive Motion Engine (Strictly No Hover translateY/Scale)
+   ========================================================================== */
+
+/* Tactile Active Tap Compression (Active only, zero hover lift) */
+.pressable {
+  transition: transform 0.22s var(--ease-ios-spring), opacity 0.15s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
+  transition-timing-function: var(--ease-ios-spring) !important;
+  will-change: transform, opacity;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.pressable:active {
+  transform: scale(0.975) !important;
+  opacity: 0.88;
+}
+
+/* Fast micro-tap for buttons */
+.pressable-sm {
+  transition: transform 0.18s var(--ease-ios-spring), opacity 0.12s ease, background-color 0.2s ease, border-color 0.2s ease !important;
+  transition-timing-function: var(--ease-ios-spring) !important;
+  will-change: transform, opacity;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.pressable-sm:active {
+  transform: scale(0.94) !important;
+  opacity: 0.85;
+}
+
+/* Apple Screen & View Transition */
+.apple-view-enter {
+  animation: appleViewIn 0.38s var(--ease-apple-smooth) both;
+}
+
+@keyframes appleViewIn {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apple Fluid Sheet Physics (Slide-up 100% -> 0% with mass: 1.0, stiffness: 280, damping: 28, settle ~360ms) */
+@keyframes appleSheetIn {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.apple-sheet-enter {
+  animation: appleSheetIn 0.36s var(--ease-ios-spring) both;
+  will-change: transform, opacity;
+}
+
+/* Apple Dialog Entrance (Scale 0.95 -> 1.0 with fade) */
+@keyframes appleDialogIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.apple-dialog-enter {
+  animation: appleDialogIn 0.28s var(--ease-ios-spring) both;
+  will-change: transform, opacity;
+}
+
+/* Apple Music Equalizer Fluid Wave Keyframes */
+@keyframes appleEq1 {
+  0%, 100% { height: 4px; }
+  50% { height: 16px; }
+}
+
+@keyframes appleEq2 {
+  0%, 100% { height: 14px; }
+  50% { height: 5px; }
+}
+
+@keyframes appleEq3 {
+  0%, 100% { height: 7px; }
+  50% { height: 18px; }
+}
+
+.animate-apple-eq-1 {
+  animation: appleEq1 0.72s var(--ease-apple-smooth) infinite;
+}
+
+.animate-apple-eq-2 {
+  animation: appleEq2 0.64s var(--ease-apple-smooth) infinite 0.15s;
+}
+
+.animate-apple-eq-3 {
+  animation: appleEq3 0.82s var(--ease-apple-smooth) infinite 0.08s;
+}
+
+/* Interactive Number Pop (e.g. +1 Japa Round) */
+@keyframes appleNumberTick {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.08); color: #22C55E; }
+  100% { transform: scale(1); }
+}
+
+.animate-number-tick {
+  animation: appleNumberTick 0.32s var(--ease-ios-spring) both;
+}
+
+/* Apple Ambient Divine Pulse Glow */
+@keyframes applePulseGlow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.25;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.55;
+  }
+}
+
+.animate-apple-glow {
+  animation: applePulseGlow 2.4s ease-in-out infinite;
+}
+
+/* Apple iMessage / Reaction Pop */
+@keyframes appleReactionPop {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  65% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-reaction-pop {
+  animation: appleReactionPop 0.28s var(--ease-ios-spring) both;
+}
+
+/* Smooth SVG stroke dashoffset transition for progress arcs */
+.apple-stroke-progress {
+  transition: stroke-dashoffset 0.85s var(--ease-apple-smooth);
+}
+
+/* ==========================================================================
+   Low-Performance & Reduced-Motion Accessibility Overrides
+   ========================================================================== */
+
+/* Universal GPU compositing optimization: disable all backdrop blur filters */
+.low-spec [class*="backdrop-blur"],
+.low-spec .backdrop-blur-none,
+.low-spec .backdrop-blur-sm,
+.low-spec .backdrop-blur,
+.low-spec .backdrop-blur-md,
+.low-spec .backdrop-blur-lg,
+.low-spec .backdrop-blur-xl,
+.low-spec .backdrop-blur-2xl,
+.low-spec .backdrop-blur-3xl,
+.low-spec .glass-panel,
+.low-spec .glass-pill {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  --tw-backdrop-blur: none !important;
+}
+
+/* Supply solid high-opacity backgrounds for light cards and glass panels */
+.low-spec .glass-panel,
+.low-spec .glass-pill,
+.low-spec [class*="bg-white/"] {
+  background-color: rgba(255, 255, 255, 0.96) !important;
+}
+
+/* Supply solid high-opacity backgrounds for dark cards and dark glass elements */
+.low-spec [class*="bg-[#14213D]/"],
+.low-spec [class*="bg-black/"],
+.low-spec .glass-dark {
+  background-color: rgba(20, 33, 61, 0.98) !important;
+}
+
+/* Strip heavy box shadows to avoid GPU repaint cost on budget screens */
+.low-spec .glass-panel,
+.low-spec .glass-pill {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Kill continuous looping animations on low-spec hardware for 60fps scrolling */
+.low-spec .animate-apple-eq-1,
+.low-spec .animate-apple-eq-2,
+.low-spec .animate-apple-eq-3,
+.low-spec .animate-apple-glow,
+.low-spec .animate-number-tick,
+.low-spec .animate-reaction-pop,
+.low-spec .animate-pulse,
+.low-spec .animate-bounce,
+.low-spec .apple-view-enter,
+.low-spec .apple-sheet-enter,
+.low-spec .apple-dialog-enter {
+  animation: none !important;
+  transform: none !important;
+}
+
+/* ==========================================================================
+   Contemplative & Mental Focus Styling (Strictly Zero Hover translateY/Scale)
+   ========================================================================== */
+
+/* Distraction-Free Reading Sanctuary Canvas */
+.dhyana-reader-canvas {
+  max-width: 768px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  background-color: #FAF8F5 !important;
+  border-radius: 32px !important;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.04) !important;
+  border: 1px solid rgba(212, 163, 89, 0.25) !important;
+}
+
+/* Contemplative Devanagari Typography */
+.dhyana-verse-line {
+  font-family: 'Noto Serif Devanagari', 'Rozha One', serif;
+  line-height: 2.05 !important;
+  letter-spacing: 0.015em;
+  color: #1A1A1A;
+}
+
+@media (min-width: 640px) {
+  .dhyana-verse-line {
+    line-height: 2.2 !important;
+    font-size: 1.35rem !important;
+  }
+}
+
+/* Stanza Focus Dimming (Trataka Meditation) */
+.dhyana-stanza-active {
+  background: rgba(255, 253, 249, 0.95);
+  border-left: 3px solid #D4A359;
+  box-shadow: 0 4px 16px rgba(212, 163, 89, 0.08);
+  opacity: 1 !important;
+}
+
+.dhyana-stanza-dimmed {
+  opacity: 0.55;
+  transition: opacity 0.3s var(--ease-apple-smooth);
+}
+
+.dhyana-stanza-dimmed:hover {
+  opacity: 0.85; /* Safe opacity-only change on hover, zero transform */
+}
+
+/* Subtle Breath Rhythm Glow */
+@keyframes dhyanaBreathPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+  50% {
+    box-shadow: 0 0 24px 6px rgba(34, 197, 94, 0.18);
+  }
+}
+
+.animate-dhyana-breath {
+  animation: dhyanaBreathPulse 14s ease-in-out infinite;
+}
+
+/* Low-Spec Mode Safety Override */
+.low-spec .animate-dhyana-breath {
+  animation: none !important;
+  box-shadow: none !important;
+}

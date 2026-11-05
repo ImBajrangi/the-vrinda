@@ -1,0 +1,314 @@
+import React, { useState, useRef } from 'react';
+import { CheckCircle2, MessageCircle, Eye, Bookmark, MoreVertical, Languages } from 'lucide-react';
+import { DevotionalFeedPost } from '../../types/devotional';
+import { EmojiTray } from './EmojiTray';
+import {
+  getFeedInteractionsSync,
+  saveFeedInteraction,
+  formatDevanagariNumerals,
+} from '../../services/cacheService';
+
+interface FeedCardProps {
+  post: DevotionalFeedPost;
+}
+
+export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
+  // Two-tier cache initialization: read L1 synchronous interaction state
+  const cachedInteractions = getFeedInteractionsSync();
+  const cached = cachedInteractions[post.id];
+
+  const [likes, setLikes] = useState<number>(cached?.likes ?? post.likes);
+  const [isLiked, setIsLiked] = useState<boolean>(cached?.isLiked ?? false);
+  const [isBookmarked, setIsBookmarked] = useState<boolean>(
+    cached?.isBookmarked ?? (post.isBookmarked ?? false)
+  );
+  const [isFollowing, setIsFollowing] = useState<boolean>(cached?.isFollowing ?? false);
+  const [showEnglish, setShowEnglish] = useState<boolean>(false);
+  const [flowerBurst, setFlowerBurst] = useState<boolean>(false);
+  const [avatarError, setAvatarError] = useState<boolean>(false);
+
+  // Double-tap tracker for sacred Pushparpan (flower offering)
+  const lastTapRef = useRef<number>(0);
+
+  const toggleLike = () => {
+    const nextLiked = !isLiked;
+    const nextLikes = nextLiked ? likes + 1 : Math.max(0, likes - 1);
+    setIsLiked(nextLiked);
+    setLikes(nextLikes);
+    saveFeedInteraction(post.id, {
+      isLiked: nextLiked,
+      likes: nextLikes,
+      isBookmarked,
+      isFollowing,
+    });
+    if (nextLiked) {
+      setFlowerBurst(true);
+      setTimeout(() => setFlowerBurst(false), 900);
+    }
+  };
+
+  const toggleBookmark = () => {
+    const nextBookmarked = !isBookmarked;
+    setIsBookmarked(nextBookmarked);
+    saveFeedInteraction(post.id, {
+      isLiked,
+      likes,
+      isBookmarked: nextBookmarked,
+      isFollowing,
+    });
+  };
+
+  const toggleFollow = () => {
+    const nextFollowing = !isFollowing;
+    setIsFollowing(nextFollowing);
+    saveFeedInteraction(post.id, {
+      isLiked,
+      likes,
+      isBookmarked,
+      isFollowing: nextFollowing,
+    });
+  };
+
+  const handlePhotoDoubleTap = () => {
+    const now = Date.now();
+    const DOUBLE_TAP_WINDOW_MS = 320;
+    if (now - lastTapRef.current < DOUBLE_TAP_WINDOW_MS) {
+      // Double tap confirmed: offer Pushparpan & like
+      if (!isLiked) {
+        const nextLikes = likes + 1;
+        setIsLiked(true);
+        setLikes(nextLikes);
+        saveFeedInteraction(post.id, {
+          isLiked: true,
+          likes: nextLikes,
+          isBookmarked,
+          isFollowing,
+        });
+      }
+      setFlowerBurst(true);
+      setTimeout(() => setFlowerBurst(false), 900);
+      lastTapRef.current = 0;
+    } else {
+      lastTapRef.current = now;
+    }
+  };
+
+  return (
+    <article className="w-full bg-[#F3F3F3] rounded-[24px] p-3.5 sm:p-4 shadow-[0_8px_24px_rgba(0,0,0,0.05)] border border-white/80 mb-4 transition-colors">
+      <style>{`
+        @keyframes pushparpanFloat {
+          0% {
+            transform: scale(0.3) translateY(14px);
+            opacity: 0;
+          }
+          35% {
+            transform: scale(1.3) translateY(-10px);
+            opacity: 1;
+          }
+          70% {
+            transform: scale(1.08) translateY(-22px);
+            opacity: 0.95;
+          }
+          100% {
+            transform: scale(0.85) translateY(-38px);
+            opacity: 0;
+          }
+        }
+        .animate-pushparpan {
+          animation: pushparpanFloat 0.88s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+        }
+      `}</style>
+
+      {/* Header */}
+      <div className="flex items-center justify-between gap-2 mb-3">
+        <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
+          {!avatarError ? (
+            <img
+              src={post.authorAvatar}
+              alt={post.authorName}
+              onError={() => setAvatarError(true)}
+              className="w-10 h-10 sm:w-11 sm:h-11 rounded-full object-cover border-2 border-white shadow-xs shrink-0"
+              loading="lazy"
+            />
+          ) : (
+            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-gradient-to-br from-[#FFF3E0] to-[#FFE0B2] border-2 border-white shadow-xs shrink-0 flex items-center justify-center font-bold text-sm text-[#B84A28] font-devanagari select-none">
+              {post.authorName.slice(0, 1)}
+            </div>
+          )}
+          <div className="flex flex-col min-w-0">
+            <div className="flex items-center gap-1 min-w-0">
+              <span className="font-semibold text-sm sm:text-[15px] text-[#111111] truncate">
+                {post.authorName}
+              </span>
+              {post.isVerified && (
+                <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#22C55E] fill-[#22C55E] text-white shrink-0" />
+              )}
+            </div>
+            <span className="text-[10.5px] sm:text-[11.5px] text-[#666666] truncate">
+              {post.timestamp}
+            </span>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+          {/* Authentic Braj: "सेवक बनें" / "शरण ली" */}
+          <button
+            type="button"
+            onClick={toggleFollow}
+            className={`text-xs sm:text-[12.5px] font-sans font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded-full transition-colors pressable shrink-0 ${
+              isFollowing
+                ? 'bg-black/10 text-[#111111]'
+                : 'bg-[#14213D] text-[#B6FF2E]'
+            }`}
+          >
+            {isFollowing ? 'शरण ली' : 'सेवक बनें'}
+          </button>
+
+          {/* Glass 34x34 more button */}
+          <button
+            type="button"
+            aria-label="More options"
+            className="w-[34px] h-[34px] rounded-full flex items-center justify-center text-[#111111] border border-white/90 shadow-xs pressable shrink-0"
+            style={{
+              background: 'rgba(255, 255, 255, 0.65)',
+              backdropFilter: 'blur(16px)',
+              WebkitBackdropFilter: 'blur(16px)',
+            }}
+          >
+            <MoreVertical className="w-3.5 h-3.5" />
+          </button>
+        </div>
+      </div>
+
+      {/* Post Text & Bilingual Translation Bar */}
+      <div className="mb-2">
+        <div className="flex items-start justify-between gap-2 mb-1">
+          <p className="font-devanagari text-[13.5px] sm:text-[14px] leading-relaxed text-[#222222] font-medium flex-1">
+            {post.contentDevanagari}
+          </p>
+
+          {post.contentEnglish && (
+            <button
+              type="button"
+              onClick={() => setShowEnglish(!showEnglish)}
+              title="अनुवाद / English translation"
+              className={`flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] sm:text-[11px] font-semibold transition-colors pressable-sm shrink-0 border ${
+                showEnglish
+                  ? 'bg-[#14213D] text-[#B6FF2E] border-[#14213D]'
+                  : 'bg-white/80 text-[#555555] border-white hover:text-[#111111]'
+              }`}
+            >
+              <Languages className="w-3 h-3" />
+              <span>{showEnglish ? 'हिन्दी' : 'EN'}</span>
+            </button>
+          )}
+        </div>
+
+        {/* Sleek Bilingual English Drawer */}
+        {showEnglish && post.contentEnglish && (
+          <div className="mt-1.5 p-2.5 rounded-xl bg-white/70 border-l-2 border-[#D4A359] text-xs sm:text-[13px] leading-relaxed text-[#444444] font-sans italic shadow-2xs">
+            <p>{post.contentEnglish}</p>
+          </div>
+        )}
+      </div>
+
+      {/* Devotional Hashtags */}
+      <div className="flex flex-wrap gap-1.5 mb-3">
+        {post.hashtags.map((tag) => (
+          <span
+            key={tag}
+            className="text-[11px] sm:text-xs font-medium text-[#8B5CF6] hover:underline cursor-pointer select-none"
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+
+      {/* Deity Darshan Photo with Double-Tap Pushparpan and Emoji Tray */}
+      <div
+        onClick={handlePhotoDoubleTap}
+        className="relative rounded-[24px] overflow-hidden mb-3 aspect-[4/3] bg-black/5 shadow-[0_8px_24px_rgba(0,0,0,0.08)] cursor-pointer select-none group"
+      >
+        <img
+          src={post.imageUrl}
+          alt={post.imageAlt}
+          className="w-full h-full object-cover"
+          loading="lazy"
+        />
+
+        {/* Sacred Pushparpan Double-Tap Floating Flower Overlay */}
+        {flowerBurst && (
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
+            <div className="animate-pushparpan flex flex-col items-center">
+              <span className="text-5xl sm:text-6xl drop-shadow-md select-none">🌸</span>
+              <span className="text-[11px] font-bold text-white bg-black/60 px-2.5 py-0.5 rounded-full mt-1.5 backdrop-blur-sm shadow-md">
+                भाव पुष्पार्पण
+              </span>
+            </div>
+          </div>
+        )}
+
+        {/* Floating Glass Reaction Tray */}
+        <div className="absolute bottom-2.5 left-2.5 right-2.5 sm:bottom-3 sm:left-4 sm:right-4 flex justify-center z-10 pointer-events-auto">
+          <EmojiTray />
+        </div>
+      </div>
+
+      {/* Mobile 320px-Optimized Action Row: Guaranteed to fit within 260px container */}
+      <div className="flex items-center justify-between text-xs text-[#6B6F6B] pt-0.5 gap-1.5">
+        <div className="flex items-center gap-1 sm:gap-2 min-w-0">
+          {/* भाव प्रणाम / Bhava Pranam Pill */}
+          <button
+            type="button"
+            onClick={toggleLike}
+            className="h-8 px-2 sm:px-2.5 rounded-full bg-white/80 border border-white flex items-center gap-1 sm:gap-1.5 text-xs text-[#111111] shadow-xs pressable shrink-0"
+          >
+            <span
+              className={`text-sm leading-none transition-colors ${
+                isLiked ? 'text-[#EF4444]' : 'text-[#888888]'
+              }`}
+            >
+              ♥
+            </span>
+            <span className="font-semibold text-[11px] sm:text-[12px] whitespace-nowrap">
+              {formatDevanagariNumerals(likes)}
+              <span className="hidden xs:inline text-[10.5px] sm:text-[11px] text-[#666666] ml-1">
+                प्रणाम
+              </span>
+            </span>
+          </button>
+
+          {/* Comments Pill */}
+          <div className="h-8 px-2 sm:px-2.5 rounded-full bg-white/80 border border-white flex items-center gap-1 text-[11px] sm:text-[12px] text-[#555555] shadow-xs shrink-0">
+            <MessageCircle className="w-3.5 h-3.5 text-[#6B6F6B]" />
+            <span>{formatDevanagariNumerals(post.comments)}</span>
+          </div>
+
+          {/* Views Pill */}
+          <div className="h-8 px-2 sm:px-2.5 rounded-full bg-white/80 border border-white flex items-center gap-1 text-[11px] sm:text-[12px] text-[#555555] shadow-xs shrink-0">
+            <Eye className="w-3.5 h-3.5 text-[#6B6F6B]" />
+            <span>{post.views}</span>
+          </div>
+        </div>
+
+        {/* Bookmark Pill */}
+        <button
+          type="button"
+          onClick={toggleBookmark}
+          aria-label={isBookmarked ? 'उर से हटाएं' : 'उर धरें (सहेजें)'}
+          className={`w-8 h-8 rounded-full border flex items-center justify-center shadow-xs pressable shrink-0 ${
+            isBookmarked
+              ? 'bg-[#14213D] text-[#B6FF2E] border-[#14213D]'
+              : 'bg-white/80 text-[#555555] border-white'
+          }`}
+        >
+          <Bookmark
+            className={`w-3.5 h-3.5 ${
+              isBookmarked ? 'fill-[#B6FF2E]' : ''
+            }`}
+          />
+        </button>
+      </div>
+    </article>
+  );
+};
