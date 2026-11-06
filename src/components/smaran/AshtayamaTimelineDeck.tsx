@@ -73,7 +73,7 @@ export const AshtayamaTimelineDeck: React.FC = () => {
           src={null}
           aspectRatio="card"
           theme="amber"
-          placeholderLabel={`${selectedPeriod.nameEnglish} Leela Artwork • 16:9 Slot`}
+          placeholderLabel={`${selectedPeriod.nameEnglish} Leela Artwork`}
           placeholderCategory="dham"
           badge={`${selectedPeriod.bhava} • ${selectedPeriod.timeRange}`}
           roundedClassName="rounded-[18px]"

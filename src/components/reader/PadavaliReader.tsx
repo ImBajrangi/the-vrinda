@@ -23,7 +23,6 @@ import {
 } from 'lucide-react';
 import { SacredDatabase } from '../../services/sacredDatabase';
 import { SacredPad } from '../../types/devotional';
-import { ArtworkGraphicSlot } from '../common/ArtworkGraphicSlot';
 import { seo } from '../../services/seoService';
 import {
   getReaderStateSync,
@@ -181,22 +180,32 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     const initial = useMemo(() => {
       const raw = (pad.titleDevanagari || pad.author || 'श्री').trim();
       const cleaned = raw.replace(/^[॥\s]+/, '');
-      return cleaned.slice(0, 2);
-    }, [pad.titleDevanagari, pad.author]);
+      return cleaned.slice(0, size === 'sm' ? 1 : 2);
+    }, [pad.titleDevanagari, pad.author, size]);
 
     const sizeClasses = {
-      sm: 'w-10 h-10 rounded-[14px] text-xs',
+      sm: 'w-11 h-11 rounded-[16px] text-base',
       md: 'w-12 h-12 rounded-[16px] text-sm',
-      lg: 'w-14 h-14 sm:w-16 sm:h-16 rounded-[20px] text-base',
+      lg: 'w-14 h-14 sm:w-16 sm:h-16 rounded-[22px] text-xl',
     }[size];
 
     if (imgError || !rawImage) {
+      if (size === 'sm') {
+        return (
+          <div
+            className={`${sizeClasses} shrink-0 bg-[#18181B] text-white flex items-center justify-center font-serif font-bold select-none shadow-2xs ${className}`}
+          >
+            <span className="leading-none">{initial}</span>
+          </div>
+        );
+      }
+
       return (
         <div
           className={`${sizeClasses} shrink-0 ${
             isSelected
               ? 'bg-purple-100/80 text-purple-900 border border-purple-200/60 shadow-2xs'
-              : 'bg-neutral-100/90 text-neutral-700 border border-neutral-200/50'
+              : 'bg-purple-50/80 text-[#7C3AED] border border-purple-100/70'
           } flex items-center justify-center font-serif font-bold select-none transition-colors duration-200 ${className}`}
         >
           <span className="leading-none">{initial}</span>
@@ -475,20 +484,20 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       {/* ========================================================================= */}
       {/* 1. Serene Light Header & Spotlight Search Bar                             */}
       {/* ========================================================================= */}
-      <div className="mb-5 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white rounded-[28px] p-5 sm:p-6 border border-neutral-200/80 shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
+      <div className="mb-4 flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4 bg-white rounded-[28px] p-4 sm:p-6 border border-neutral-200/80 shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
         <div>
-          <h1 className="font-serif text-2xl sm:text-3xl text-[#18181B] font-bold flex items-center gap-2.5">
-            <BookOpen className="w-6 h-6 text-[#7C3AED]" />
-            Sacred Padavali & Stotras
+          <h1 className="font-serif text-xl sm:text-2xl md:text-3xl text-[#18181B] font-bold flex items-center gap-2 leading-tight">
+            <BookOpen className="w-5 h-5 sm:w-6 sm:h-6 text-[#7C3AED] shrink-0" />
+            <span>Sacred Padavali & Stotras</span>
           </h1>
-          <p className="text-xs sm:text-sm text-[#71717A] font-medium mt-1">
+          <p className="text-xs text-[#71717A] font-medium mt-1">
             Rasik Vani & Sacred Scriptures ({filteredPads.length} verses available)
           </p>
         </div>
 
         {/* Search Input, Reading Controls & IAST Toggle */}
-        <div className="flex flex-wrap items-center gap-2">
-          <div className="relative min-w-[200px] sm:w-60">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2 w-full md:w-auto">
+          <div className="relative w-full sm:w-56">
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#71717A]" />
             <input
               type="text"
@@ -499,56 +508,58 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             />
           </div>
 
-          {/* Reader Customizer Toggle Button */}
-          <button
-            type="button"
-            onClick={() => setIsSettingsOpen(!isSettingsOpen)}
-            className={`px-3 py-2 rounded-full text-xs font-semibold shadow-xs flex items-center gap-1.5 transition-colors border cursor-pointer ${
-              isSettingsOpen
-                ? 'bg-[#18181B] text-white border-[#18181B]'
-                : 'bg-white text-[#18181B] border-neutral-200/80 hover:bg-neutral-50'
-            }`}
-            title="Appearance & Typography Controls"
-          >
-            <SlidersHorizontal className="w-3.5 h-3.5 text-[#7C3AED]" />
-            <span>Appearance</span>
-          </button>
+          <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
+            {/* Reader Customizer Toggle Button */}
+            <button
+              type="button"
+              onClick={() => setIsSettingsOpen(!isSettingsOpen)}
+              className={`h-8 px-3 rounded-full text-xs font-semibold shadow-xs flex items-center gap-1.5 transition-colors border cursor-pointer shrink-0 ${
+                isSettingsOpen
+                  ? 'bg-[#18181B] text-white border-[#18181B]'
+                  : 'bg-white text-[#18181B] border-neutral-200/80 hover:bg-neutral-50'
+              }`}
+              title="Appearance & Typography Controls"
+            >
+              <SlidersHorizontal className="w-3.5 h-3.5 text-[#7C3AED]" />
+              <span>Appearance</span>
+            </button>
 
-          {/* Braj Sacred Lexicon Button */}
-          <button
-            type="button"
-            onClick={() => setIsGlossaryOpen(true)}
-            className="px-3 py-2 rounded-full text-xs font-semibold bg-white text-[#18181B] border border-neutral-200/80 hover:bg-neutral-50 shadow-2xs flex items-center gap-1.5 cursor-pointer"
-            title="Braj Sacred Glossary (शब्दकोश)"
-          >
-            <BookOpenCheck className="w-3.5 h-3.5 text-[#7C3AED]" />
-            <span className="hidden sm:inline">Lexicon</span>
-          </button>
+            {/* Braj Sacred Lexicon Button */}
+            <button
+              type="button"
+              onClick={() => setIsGlossaryOpen(true)}
+              className="h-8 px-3 rounded-full text-xs font-semibold bg-white text-[#18181B] border border-neutral-200/80 hover:bg-neutral-50 shadow-2xs flex items-center gap-1.5 cursor-pointer shrink-0"
+              title="Braj Sacred Glossary (शब्दकोश)"
+            >
+              <BookOpenCheck className="w-3.5 h-3.5 text-[#7C3AED]" />
+              <span>Lexicon</span>
+            </button>
 
-          {/* IAST Transliteration Toggle */}
-          <button
-            type="button"
-            onClick={handleToggleTransliteration}
-            className="px-3 py-2 rounded-full text-xs font-semibold bg-white border border-neutral-200/80 text-[#18181B] hover:bg-neutral-50 shadow-2xs cursor-pointer"
-            title="Toggle IAST Roman Transliteration"
-          >
-            {showTransliteration ? 'IAST: On' : 'IAST: Off'}
-          </button>
+            {/* IAST Transliteration Toggle */}
+            <button
+              type="button"
+              onClick={handleToggleTransliteration}
+              className="h-8 px-3 rounded-full text-xs font-semibold bg-white border border-neutral-200/80 text-[#18181B] hover:bg-neutral-50 shadow-2xs cursor-pointer shrink-0"
+              title="Toggle IAST Roman Transliteration"
+            >
+              {showTransliteration ? 'IAST: On' : 'IAST: Off'}
+            </button>
 
-          {/* Distraction-Free Reading Mode Toggle */}
-          <button
-            type="button"
-            onClick={() => setIsFocusReadingMode(!isFocusReadingMode)}
-            className={`px-3.5 py-2 rounded-full text-xs font-semibold shadow-xs flex items-center gap-1.5 transition-colors cursor-pointer ${
-              isFocusReadingMode
-                ? 'bg-[#7C3AED] text-white'
-                : 'bg-white text-[#18181B] border border-neutral-200/80 hover:bg-neutral-50'
-            }`}
-            title="Distraction-Free Reading Mode"
-          >
-            <Wind className="w-3.5 h-3.5" />
-            <span>{isFocusReadingMode ? 'Standard View' : 'Focus Mode'}</span>
-          </button>
+            {/* Distraction-Free Reading Mode Toggle */}
+            <button
+              type="button"
+              onClick={() => setIsFocusReadingMode(!isFocusReadingMode)}
+              className={`h-8 px-3.5 rounded-full text-xs font-semibold shadow-xs flex items-center gap-1.5 transition-colors cursor-pointer shrink-0 ${
+                isFocusReadingMode
+                  ? 'bg-[#7C3AED] text-white'
+                  : 'bg-white text-[#18181B] border border-neutral-200/80 hover:bg-neutral-50'
+              }`}
+              title="Distraction-Free Reading Mode"
+            >
+              <Wind className="w-3.5 h-3.5" />
+              <span>{isFocusReadingMode ? 'Standard' : 'Focus'}</span>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -738,7 +749,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                     onClick={() => setSelectedRaga(r)}
                     className={`px-3 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap transition-colors cursor-pointer select-none ${
                       selectedRaga === r
-                        ? 'bg-[#18181B] text-white shadow-xs'
+                        ? 'bg-[#F59E0B] text-white font-bold shadow-xs'
                         : 'bg-neutral-100 text-[#71717A] hover:text-[#18181B]'
                     }`}
                   >
@@ -756,7 +767,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       {/* Mobile Horizontal Carousel (< md, Hidden in Distraction-Free Mode)         */}
       {/* ========================================================================= */}
       {!isFocusReadingMode && (
-        <div className="md:hidden flex gap-2 overflow-x-auto no-scrollbar pb-2 mb-4">
+        <div className="md:hidden flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1 mb-3">
           {filteredPads.slice(0, visibleCount).map((pad, idx) => {
             const isSelected = selectedPad.id === pad.id;
             return (
@@ -764,18 +775,18 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 key={pad.id}
                 type="button"
                 onClick={() => handleSelectPad(pad)}
-                className={`shrink-0 text-left px-3.5 py-2.5 rounded-2xl border transition-all cursor-pointer select-none ${
+                className={`shrink-0 h-8 px-2.5 rounded-full border transition-colors cursor-pointer select-none flex items-center gap-1.5 text-xs ${
                   isSelected
-                    ? 'bg-[#18181B] text-white border-[#18181B] shadow-xs'
-                    : 'bg-white text-[#18181B] border-neutral-200/80 hover:bg-neutral-50'
+                    ? 'bg-[#18181B] text-white border-[#18181B] font-bold shadow-xs'
+                    : 'bg-white text-[#18181B] border-neutral-200/80 hover:bg-neutral-50 font-medium'
                 }`}
               >
-                <div className={`text-[10px] font-medium uppercase tracking-wider font-mono ${isSelected ? 'text-purple-300' : 'text-[#7C3AED]'}`}>
-                  #{idx + 1}{pad.rag ? `  ${pad.rag}` : ''}
-                </div>
-                <div className="font-serif font-bold text-xs truncate max-w-[170px] mt-0.5">
+                <span className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full ${isSelected ? 'bg-purple-900/60 text-purple-200' : 'bg-purple-50 text-[#7C3AED]'}`}>
+                  #{idx + 1}
+                </span>
+                <span className="font-serif truncate max-w-[130px]">
                   {pad.titleDevanagari}
-                </div>
+                </span>
               </button>
             );
           })}
@@ -808,37 +819,38 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 <div
                   key={pad.id}
                   onClick={() => handleSelectPad(pad)}
-                  className={`p-3 rounded-[20px] transition-all cursor-pointer flex items-center justify-between gap-3 relative border ${
+                  className={`p-3.5 rounded-[22px] transition-all cursor-pointer flex items-center justify-between gap-3 relative border ${
                     isSelected
-                      ? 'bg-white text-[#18181B] border-purple-200/90 shadow-[0_2px_14px_rgba(124,58,237,0.05)]'
-                      : 'bg-white/80 hover:bg-white text-[#18181B] border-neutral-200/70 hover:border-neutral-300'
+                      ? 'bg-white text-[#18181B] border-purple-200/90 shadow-[0_2px_14px_rgba(124,58,237,0.06)]'
+                      : 'bg-white/90 hover:bg-white text-[#18181B] border-neutral-200/70 hover:border-neutral-300 shadow-2xs'
                   }`}
                 >
-                  {/* Lightweight, delicate active indicator flush on the left border */}
+                  {/* Freestanding vertical accent pill indicator matching Image 2 */}
                   {isSelected && (
-                    <span className="absolute left-0 top-3 bottom-3 w-[2.5px] rounded-r-full bg-[#7C3AED]" />
+                    <span className="w-1.5 h-8 rounded-full bg-[#7C3AED] shrink-0" />
                   )}
 
-                  <div className="flex items-center gap-2.5 min-w-0 flex-1 pl-1">
+                  <div className="flex items-center gap-3 min-w-0 flex-1">
                     <ScriptureArtwork pad={pad} size="sm" isSelected={isSelected} />
                     <div className="min-w-0 flex-1">
-                      <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider font-mono">
-                        <span className={`px-2 py-0.5 rounded-full ${isSelected ? 'bg-purple-100/80 text-purple-900 font-bold' : 'bg-purple-50 text-[#7C3AED]'}`}>
+                      <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider font-mono">
+                        <span className="px-2.5 py-0.5 rounded-full bg-purple-100/70 text-[#7C3AED] font-bold">
                           #{idx + 1}
                         </span>
                         {pad.rag && (
-                          <span className="truncate text-purple-700 font-semibold">{pad.rag}</span>
+                          <span className="truncate text-[#7C3AED] font-semibold">{pad.rag}</span>
                         )}
                       </div>
-                      <div className="font-serif font-bold text-xs sm:text-[13px] truncate text-[#18181B] mt-0.5">
+                      <div className="font-serif font-bold text-sm sm:text-[15px] truncate text-[#18181B] mt-0.5">
                         {pad.titleDevanagari}
                       </div>
-                      <div className="text-[10.5px] text-[#71717A] truncate font-medium">
+                      <div className="text-xs text-[#71717A] truncate font-medium mt-0.5">
                         {pad.author}
                       </div>
                     </div>
                   </div>
 
+                  {/* Circular solid black play button matching Image 2 */}
                   <button
                     type="button"
                     onClick={(e) => {
@@ -846,16 +858,16 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                       onPlayPad(pad);
                     }}
                     aria-label={`Play ${pad.titleDevanagari}`}
-                    className={`w-7 h-7 rounded-full shrink-0 flex items-center justify-center transition-colors cursor-pointer ${
+                    className={`w-9 h-9 rounded-full shrink-0 flex items-center justify-center transition-colors cursor-pointer shadow-xs ${
                       isCurrentlyPlaying
-                        ? 'bg-[#7C3AED] text-white shadow-xs'
-                        : 'bg-neutral-100 hover:bg-neutral-200 text-[#18181B]'
+                        ? 'bg-[#7C3AED] text-white'
+                        : 'bg-[#18181B] hover:bg-neutral-800 text-white'
                     }`}
                   >
                     {isCurrentlyPlaying ? (
-                      <Pause className="w-3 h-3 fill-current" />
+                      <Pause className="w-3.5 h-3.5 fill-white text-white" />
                     ) : (
-                      <Play className="w-3 h-3 fill-current ml-0.5" />
+                      <Play className="w-3.5 h-3.5 fill-white text-white ml-0.5" />
                     )}
                   </button>
                 </div>
@@ -934,18 +946,8 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               </button>
             </div>
 
-            {/* Dedicated Sacred Artwork Canvas Frame: Empty slot ready for high-res devotional art */}
-            <ArtworkGraphicSlot
-              aspectRatio="video"
-              theme="purple"
-              placeholderCategory="music"
-              placeholderLabel="Sacred Pada Leela Illustration • Ready for Artwork"
-              className="mb-4 shadow-2xs"
-              roundedClassName="rounded-[22px]"
-            />
-
-            {/* Middle Section: Avatar + Title + Lineage (Full Width, Never Squeezed!) */}
-            <div className="flex items-start gap-4">
+            {/* Middle Section: Avatar + Title + Lineage (Matching Image 1) */}
+            <div className="flex items-start gap-3.5 sm:gap-4 pt-1">
               <ScriptureArtwork pad={selectedPad} size="lg" />
 
               <div className="flex flex-col min-w-0 flex-1">

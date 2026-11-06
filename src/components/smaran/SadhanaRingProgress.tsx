@@ -227,12 +227,12 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
           onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onOpenPillar('japa')}
           className="p-4 rounded-[22px] bg-white border border-neutral-200/80 hover:border-neutral-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-colors cursor-pointer select-none flex flex-col justify-between space-y-3"
         >
-          {/* Reserved Graphics Slot for Japa Meditation Art */}
+          {/* Dedicated Visual Slot for Japa Meditation Art */}
           <ArtworkGraphicSlot
             src={null}
             aspectRatio="card"
             theme="amber"
-            placeholderLabel="नाम जप ध्यान चित्र • 16:9"
+            placeholderLabel="नाम जप ध्यान चित्र"
             placeholderCategory="general"
             roundedClassName="rounded-[16px]"
           />
@@ -268,12 +268,12 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
           onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onOpenPillar('shravan')}
           className="p-4 rounded-[22px] bg-white border border-neutral-200/80 hover:border-neutral-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-colors cursor-pointer select-none flex flex-col justify-between space-y-3"
         >
-          {/* Reserved Graphics Slot for Pad Shravan & Raga Art */}
+          {/* Dedicated Visual Slot for Pad Shravan & Raga Art */}
           <ArtworkGraphicSlot
             src={null}
             aspectRatio="card"
             theme="purple"
-            placeholderLabel="वाणी श्रवण कला • 16:9"
+            placeholderLabel="वाणी श्रवण कला"
             placeholderCategory="music"
             roundedClassName="rounded-[16px]"
           />
@@ -309,12 +309,12 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
           onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onOpenPillar('svadhyaya')}
           className="p-4 rounded-[22px] bg-white border border-neutral-200/80 hover:border-neutral-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-colors cursor-pointer select-none flex flex-col justify-between space-y-3"
         >
-          {/* Reserved Graphics Slot for Grantha Scripture Manuscript Art */}
+          {/* Dedicated Visual Slot for Grantha Scripture Manuscript Art */}
           <ArtworkGraphicSlot
             src={null}
             aspectRatio="card"
             theme="orange"
-            placeholderLabel="ग्रंथ स्वाध्याय आवरण • 16:9"
+            placeholderLabel="ग्रंथ स्वाध्याय आवरण"
             placeholderCategory="book"
             roundedClassName="rounded-[16px]"
           />

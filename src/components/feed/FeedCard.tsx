@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import {
   CheckCircle2,
   Heart,
@@ -35,6 +35,40 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
 
   const [likes, setLikes] = useState<number>(cached?.likes ?? post.likes);
   const [isLiked, setIsLiked] = useState<boolean>(cached?.isLiked ?? false);
+
+  const initialViews = useMemo(() => {
+    if (cached?.views && cached.views > 0) return cached.views;
+    const clean = (post.views || '10K').toUpperCase().trim();
+    if (clean.endsWith('K')) {
+      return Math.round(parseFloat(clean.replace('K', '')) * 1000);
+    }
+    return parseInt(clean, 10) || 12000;
+  }, [cached?.views, post.views]);
+
+  const [views, setViews] = useState<number>(cached?.views ?? initialViews);
+
+  useEffect(() => {
+    const sessionKey = `viewed_post_${post.id}`;
+    if (typeof window !== 'undefined' && !sessionStorage.getItem(sessionKey)) {
+      try {
+        sessionStorage.setItem(sessionKey, '1');
+      } catch {
+        // fallback
+      }
+      const nextViews = (cached?.views ?? initialViews) + 1;
+      setViews(nextViews);
+      saveFeedInteraction(post.id, { views: nextViews });
+    }
+  }, [post.id]);
+
+  const formattedViews = useMemo(() => {
+    if (views >= 1000) {
+      const kVal = (views / 1000).toFixed(1);
+      return `${formatDevanagariNumerals(kVal)}K`;
+    }
+    return formatDevanagariNumerals(views);
+  }, [views]);
+
   const [isBookmarked, setIsBookmarked] = useState<boolean>(
     cached?.isBookmarked ?? (post.isBookmarked ?? false)
   );
@@ -474,7 +508,7 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
           <div className="h-9 px-3.5 sm:px-4 rounded-full bg-white border border-neutral-100 shadow-[0_2px_8px_rgba(0,0,0,0.04)] flex items-center gap-1.5 sm:gap-2 text-xs font-semibold text-[#18181B] shrink-0">
             <Eye className="w-4 h-4 text-[#71717A] stroke-[1.8]" />
             <span className="font-semibold text-xs sm:text-[13px] text-[#18181B]">
-              {post.views}
+              {formattedViews}
             </span>
           </div>
         </div>

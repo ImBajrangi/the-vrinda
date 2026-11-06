@@ -113,7 +113,7 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
                     src={book.imageUrl || null}
                     aspectRatio="portrait"
                     theme="amber"
-                    placeholderLabel="आवरण चित्र • 3:4"
+                    placeholderLabel="आवरण चित्र"
                     placeholderCategory="book"
                     roundedClassName="rounded-[14px]"
                   />
@@ -185,7 +185,7 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
                     src={author.imageUrl || null}
                     aspectRatio="square"
                     theme="purple"
-                    placeholderLabel="संत स्वरूप • 1:1"
+                    placeholderLabel="संत स्वरूप"
                     placeholderCategory="saint"
                     roundedClassName="rounded-[16px]"
                   />
@@ -257,7 +257,7 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
                     src={rel.imageUrl || null}
                     aspectRatio="card"
                     theme="sky"
-                    placeholderLabel="धाम लीला • 16:9"
+                    placeholderLabel="धाम लीला"
                     placeholderCategory="dham"
                     roundedClassName="rounded-[14px]"
                   />

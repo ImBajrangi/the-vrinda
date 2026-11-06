@@ -96,18 +96,18 @@ export const FloatingNavbar: React.FC<FloatingNavbarProps> = ({
 }) => {
   const tabs = [
     { id: 'smaran' as NavTab, label: 'Sadhana', icon: Home },
-    { id: 'padavali' as NavTab, label: 'Scriptures', icon: BookOpen },
+    { id: 'padavali' as NavTab, label: 'Vani', icon: BookOpen },
     { id: 'feed' as NavTab, label: 'Darshan', icon: Users },
     { id: 'milestones' as NavTab, label: 'Streaks', icon: Award },
   ];
 
   return (
     // Only displayed on mobile (< md). On tablet & desktop, top header navigation takes over.
-    <div className="md:hidden fixed bottom-3.5 min-[380px]:bottom-5 left-0 right-0 z-40 flex items-center justify-center gap-2 px-3 max-w-md w-full mx-auto pointer-events-none box-border">
+    <div className="md:hidden fixed bottom-3.5 min-[380px]:bottom-5 left-0 right-0 z-40 flex items-center justify-center gap-2 px-2.5 max-w-sm w-full mx-auto pointer-events-none box-border">
       {/* Fluid responsive floating nav pill */}
       <nav
         aria-label="Mobile Navigation"
-        className="pointer-events-auto flex-1 min-w-0 max-w-[300px] h-[58px] rounded-[30px] bg-white/95 backdrop-blur-2xl shadow-[0_12px_36px_rgba(0,0,0,0.08)] border border-neutral-200/80 flex items-center justify-between p-1.5 box-border"
+        className="pointer-events-auto flex-1 min-w-0 max-w-[290px] h-[56px] rounded-[30px] bg-white/95 backdrop-blur-2xl shadow-[0_12px_36px_rgba(0,0,0,0.08)] border border-neutral-200/80 flex items-center justify-between p-1 box-border"
       >
         {tabs.map((tab) => {
           const Icon = tab.icon;
@@ -117,7 +117,7 @@ export const FloatingNavbar: React.FC<FloatingNavbarProps> = ({
               key={tab.id}
               type="button"
               onClick={() => onSelectTab(tab.id)}
-              className={`border-0 text-[10px] font-sans flex-1 min-w-0 h-[46px] flex flex-col items-center justify-center gap-0.5 py-1 px-1 rounded-[22px] transition-all cursor-pointer ${
+              className={`border-0 text-[10px] font-sans flex-1 min-w-0 h-[46px] flex flex-col items-center justify-center gap-0.5 py-1 px-0.5 rounded-[22px] transition-all cursor-pointer ${
                 isActive
                   ? 'bg-[#18181B] text-white font-bold shadow-xs'
                   : 'text-[#71717A] hover:text-[#18181B] font-semibold'
@@ -136,7 +136,7 @@ export const FloatingNavbar: React.FC<FloatingNavbarProps> = ({
         onClick={onOpenFab}
         aria-label="Open Sacred Audio Player"
         title="Open Sacred Audio Player"
-        className="pointer-events-auto relative w-[54px] h-[54px] rounded-full shrink-0 flex items-center justify-center text-white border-2 border-white shadow-[0_10px_28px_rgba(0,0,0,0.12)] overflow-hidden transition-transform active:scale-95 cursor-pointer"
+        className="pointer-events-auto relative w-[50px] h-[50px] rounded-full shrink-0 flex items-center justify-center text-white border-2 border-white shadow-[0_10px_28px_rgba(0,0,0,0.12)] overflow-hidden transition-transform active:scale-95 cursor-pointer"
         style={{
           background: 'radial-gradient(circle at 35% 30%, #7C3AED, #18181B 85%)',
         }}
@@ -144,7 +144,7 @@ export const FloatingNavbar: React.FC<FloatingNavbarProps> = ({
         {isPlayingAudio && (
           <span className="absolute inset-0 rounded-full animate-pulse bg-purple-400/30 pointer-events-none" />
         )}
-        <SacredFluteIcon className="w-6 h-6 shrink-0" />
+        <SacredFluteIcon className="w-5 h-5 shrink-0" />
       </button>
     </div>
   );

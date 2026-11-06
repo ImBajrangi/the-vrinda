@@ -58,6 +58,7 @@ export interface FeedInteractionData {
   isBookmarked: boolean;
   isFollowing: boolean;
   likes: number;
+  views?: number;
 }
 
 export interface ReaderState {

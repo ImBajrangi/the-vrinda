@@ -147,12 +147,9 @@ export const ArtworkGraphicSlot: React.FC<ArtworkGraphicSlotProps> = ({
               {renderPlaceholderIcon()}
             </div>
 
-            <div className="space-y-0.5">
-              <span className={`text-[11px] font-bold font-mono tracking-wide block ${currentTheme.labelColor}`}>
+            <div>
+              <span className={`text-[11px] font-semibold tracking-wide block ${currentTheme.labelColor}`}>
                 {placeholderLabel}
-              </span>
-              <span className="text-[10px] text-[#A1A1AA] font-sans block">
-                Reserved Graphics Slot
               </span>
             </div>
           </div>

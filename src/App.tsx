@@ -420,7 +420,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                   src={null}
                   aspectRatio="banner"
                   theme="purple"
-                  placeholderLabel="श्री वृन्दावन धाम पावन लीला चित्र • 21:9 Panoramic Art Slot"
+                  placeholderLabel="श्री वृन्दावन धाम पावन लीला"
                   placeholderCategory="dham"
                   badge="वृन्दावन धाम दर्शन"
                   roundedClassName="rounded-[28px]"
@@ -713,7 +713,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                             src={null}
                             aspectRatio="square"
                             theme="purple"
-                            placeholderLabel="पद आवरण • 1:1"
+                            placeholderLabel="पद आवरण"
                             placeholderCategory="music"
                             roundedClassName="rounded-[18px]"
                           />
@@ -795,7 +795,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                             src={null}
                             aspectRatio="square"
                             theme="sky"
-                            placeholderLabel="ध्यान वातावरण • 1:1"
+                            placeholderLabel="ध्यान वातावरण"
                             placeholderCategory="general"
                             roundedClassName="rounded-[18px]"
                           />

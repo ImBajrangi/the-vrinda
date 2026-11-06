@@ -364,7 +364,7 @@ export async function getFeedInteractions(): Promise<Record<string, FeedInteract
 
 export async function saveFeedInteraction(
   postId: string,
-  data: { isLiked?: boolean; isBookmarked?: boolean; isFollowing?: boolean; likes?: number }
+  data: { isLiked?: boolean; isBookmarked?: boolean; isFollowing?: boolean; likes?: number; views?: number }
 ): Promise<void> {
   const current = getFeedInteractionsSync();
   const prev = current[postId] || {
@@ -372,6 +372,7 @@ export async function saveFeedInteraction(
     isBookmarked: false,
     isFollowing: false,
     likes: 0,
+    views: 0,
   };
 
   const updated: FeedInteractionData = {
@@ -379,6 +380,7 @@ export async function saveFeedInteraction(
     isBookmarked: data.isBookmarked !== undefined ? data.isBookmarked : prev.isBookmarked,
     isFollowing: data.isFollowing !== undefined ? data.isFollowing : prev.isFollowing,
     likes: data.likes !== undefined ? data.likes : prev.likes,
+    views: data.views !== undefined ? data.views : (prev.views || 0),
   };
 
   current[postId] = updated;
@@ -665,10 +667,14 @@ export function initMultiTabSync(
 const DEVANAGARI_DIGITS = ['०', '१', '२', '३', '४', '५', '६', '७', '८', '९'];
 
 /**
- * Converts numeric digits to authentic Devanagari numerals with locale separators.
- * e.g., 2580 -> "२,५८०", 16 -> "१६"
+ * Converts numeric digits or formatted numeric strings to authentic Devanagari numerals with locale separators.
+ * e.g., 2580 -> "२,५८०", "24.9" -> "२४.९", 16 -> "१६"
  */
-export function formatDevanagariNumerals(num: number): string {
+export function formatDevanagariNumerals(num: number | string): string {
+  if (num === null || num === undefined) return '०';
+  if (typeof num === 'string') {
+    return num.replace(/[0-9]/g, (digit) => DEVANAGARI_DIGITS[Number(digit)] || digit);
+  }
   if (isNaN(num)) return '०';
   return num
     .toLocaleString('en-IN')
