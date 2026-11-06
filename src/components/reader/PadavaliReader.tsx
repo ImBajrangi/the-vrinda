@@ -253,9 +253,9 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
         <div
           className={`${sizeClasses} shrink-0 ${
             isSelected
-              ? 'bg-[#18181B] text-white shadow-xs'
-              : 'bg-gradient-to-br from-purple-50 via-amber-50/40 to-neutral-50 text-purple-800'
-          } flex items-center justify-center font-serif font-bold shadow-2xs select-none transition-colors duration-200 ${className}`}
+              ? 'bg-purple-100/80 text-purple-900 border border-purple-200/60 shadow-2xs'
+              : 'bg-neutral-100/90 text-neutral-700 border border-neutral-200/50'
+          } flex items-center justify-center font-serif font-bold select-none transition-colors duration-200 ${className}`}
         >
           <span className="leading-none">{initial}</span>
         </div>
@@ -856,16 +856,16 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   onClick={() => handleSelectPad(pad)}
                   className={`p-3 rounded-[20px] transition-all cursor-pointer flex items-center justify-between gap-3 relative border ${
                     isSelected
-                      ? 'bg-white text-[#18181B] border-neutral-300 ring-1 ring-purple-500/20 shadow-[0_4px_20px_rgba(124,58,237,0.06)]'
+                      ? 'bg-white text-[#18181B] border-purple-200/90 shadow-[0_2px_14px_rgba(124,58,237,0.05)]'
                       : 'bg-white/80 hover:bg-white text-[#18181B] border-neutral-200/70 hover:border-neutral-300'
                   }`}
                 >
-                  {/* Modern Active Indicator: Straight sleek vertical pill (detached from corner radius) */}
+                  {/* Lightweight, delicate active indicator flush on the left border */}
                   {isSelected && (
-                    <span className="absolute left-1.5 top-1/2 -translate-y-1/2 w-1 h-7 rounded-full bg-[#7C3AED]" />
+                    <span className="absolute left-0 top-3 bottom-3 w-[2.5px] rounded-r-full bg-[#7C3AED]" />
                   )}
 
-                  <div className={`flex items-center gap-2.5 min-w-0 flex-1 ${isSelected ? 'pl-2' : ''}`}>
+                  <div className="flex items-center gap-2.5 min-w-0 flex-1 pl-1">
                     <ScriptureArtwork pad={pad} size="sm" isSelected={isSelected} />
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider font-mono">
@@ -894,8 +894,6 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                     className={`w-7 h-7 rounded-full shrink-0 flex items-center justify-center transition-colors cursor-pointer ${
                       isCurrentlyPlaying
                         ? 'bg-[#7C3AED] text-white shadow-xs'
-                        : isSelected
-                        ? 'bg-[#18181B] text-white shadow-xs'
                         : 'bg-neutral-100 hover:bg-neutral-200 text-[#18181B]'
                     }`}
                   >
@@ -1104,21 +1102,23 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   onClick={() => setActiveStanzaIndex(vIdx)}
                   className={`p-4 sm:p-6 rounded-[24px] transition-all duration-300 relative cursor-pointer ${
                     isStanzaActive
-                      ? 'bg-white border border-purple-200/90 ring-1 ring-purple-500/20 shadow-[0_4px_24px_rgba(124,58,237,0.06)]'
+                      ? 'bg-white border border-purple-200/90 ring-1 ring-purple-500/10 shadow-[0_4px_20px_rgba(124,58,237,0.04)]'
                       : isStanzaDimmed
                       ? 'bg-neutral-50/60 border border-neutral-200/40 opacity-60'
                       : 'bg-white border border-neutral-200/80 shadow-[0_2px_8px_rgba(0,0,0,0.02)]'
                   }`}
                 >
-                  {/* Clean Inset Active Pill Indicator */}
-                  {isStanzaActive && (
-                    <span className="absolute left-2.5 top-6 bottom-6 w-1 rounded-full bg-[#7C3AED]" />
-                  )}
-
-                  {/* Stanza Utility Header: Active Indicator + Verse Copy Action */}
-                  <div className={`flex items-center justify-between pb-2.5 mb-2.5 border-b border-neutral-100 ${isStanzaActive ? 'pl-2' : ''}`}>
+                  {/* Stanza Utility Header: Active Indicator Badge + Verse Copy Action */}
+                  <div className="flex items-center justify-between pb-2.5 mb-2.5 border-b border-neutral-100">
                     <span className="text-[10px] font-bold uppercase tracking-wider font-mono flex items-center gap-1.5">
-                      <span className={`px-2.5 py-0.5 rounded-full ${isStanzaActive ? 'bg-purple-100/80 text-purple-900 font-bold' : 'bg-purple-50 text-[#7C3AED]'}`}>
+                      <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full ${
+                        isStanzaActive
+                          ? 'bg-purple-100/80 text-purple-900 font-bold'
+                          : 'bg-purple-50 text-[#7C3AED]'
+                      }`}>
+                        {isStanzaActive && (
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#7C3AED]" />
+                        )}
                         {isStanzaActive ? 'Active Verse • Stanza ' : 'Stanza '}
                         {verse.stanzaNumber}
                       </span>
