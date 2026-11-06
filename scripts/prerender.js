@@ -12,6 +12,29 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const projectRoot = path.resolve(__dirname, '..');
 
+function injectSSRContent(template, html, seoHead) {
+  let result = template.replace('<div id="root"></div>', `<div id="root">${html}</div>`);
+
+  const startMarker = '<!-- SSR_HEAD_START -->';
+  const endMarker = '<!-- SSR_HEAD_END -->';
+  const startIndex = result.indexOf(startMarker);
+  const endIndex = result.indexOf(endMarker);
+
+  if (startIndex !== -1 && endIndex !== -1 && seoHead) {
+    result =
+      result.substring(0, startIndex) +
+      startMarker +
+      '\n    ' +
+      seoHead +
+      '\n    ' +
+      result.substring(endIndex);
+  } else if (seoHead) {
+    result = result.replace('</head>', `    ${seoHead}\n  </head>`);
+  }
+
+  return result;
+}
+
 async function prerender() {
   const distPath = path.resolve(projectRoot, 'dist');
   const templatePath = path.resolve(distPath, 'index.html');
@@ -32,19 +55,21 @@ async function prerender() {
 
   // Routes to pre-render for static HTML delivery
   const routes = [
-    { url: '/', file: 'index.html', title: 'वृन्दोपनिषद् 2.0 • Digital Sanctuary for Nitya Nikunj Ras' },
-    { url: '/?tab=smaran', file: 'smaran.html', title: 'Home Sanctuary • दैनिक स्मरण व नित्य सेवा' },
-    { url: '/?tab=padavali', file: 'padavali.html', title: 'Scriptures Repository • ४२००+ पावन पद वाणी संग्रह' },
-    { url: '/?tab=feed', file: 'feed.html', title: 'Darshan Feed • नित्य वृन्दावन धाम दर्शन' },
-    { url: '/?tab=milestones', file: 'milestones.html', title: 'Devotion Milestones • अखंड निष्ठा व साधना सोपान' },
+    { url: '/', file: 'index.html' },
+    { url: '/?tab=smaran', file: 'smaran.html' },
+    { url: '/?tab=padavali', file: 'padavali.html' },
+    { url: '/?tab=feed', file: 'feed.html' },
+    { url: '/?tab=milestones', file: 'milestones.html' },
+    // Popular canonical pada deep links for zero-js search bots
+    { url: '/?tab=padavali&pad=radheju-merau-janam-sudharau', file: 'pad-radheju-merau-janam-sudharau.html' },
   ];
 
   console.log('🌸 Pre-rendering Vrindopnisad routes for SEO & SSR...');
 
   for (const route of routes) {
     try {
-      const { html } = render(route.url);
-      const appHtml = template.replace('<div id="root"></div>', `<div id="root">${html}</div>`);
+      const { html, seo } = render(route.url);
+      const appHtml = injectSSRContent(template, html, seo?.htmlHead);
       const targetFile = path.resolve(distPath, route.file);
       fs.writeFileSync(targetFile, appHtml, 'utf-8');
       console.log(`  ✓ Pre-rendered: ${route.file} (${Math.round(html.length / 1024)} KB markup)`);

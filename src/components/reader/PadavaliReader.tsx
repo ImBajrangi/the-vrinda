@@ -45,6 +45,7 @@ interface PadavaliReaderProps {
   isPlaying?: boolean;
   selectedGranthaId?: string;
   selectedSearchQuery?: string;
+  initialPadId?: string;
 }
 
 type ReaderTheme = 'ivory' | 'mint' | 'chandan' | 'night';
@@ -120,6 +121,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   isPlaying,
   selectedGranthaId,
   selectedSearchQuery,
+  initialPadId,
 }) => {
   const allPadas = SacredDatabase.getAllPadas();
   const allGranthas = SacredDatabase.getAllGranthas();
@@ -127,7 +129,9 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
   const initialReader = getReaderStateSync();
   const initialPad =
-    allPadas.find((p) => p.id === initialReader.lastPadId) || allPadas[0];
+    (initialPadId && allPadas.find((p) => p.id === initialPadId)) ||
+    allPadas.find((p) => p.id === initialReader.lastPadId) ||
+    allPadas[0];
 
   const [selectedPad, setSelectedPad] = useState<SacredPad>(initialPad);
   const [searchQuery, setSearchQuery] = useState(selectedSearchQuery || '');

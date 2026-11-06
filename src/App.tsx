@@ -20,6 +20,7 @@ import { BeginnerGuideModal } from './components/smaran/BeginnerGuideModal';
 import { SACRED_FEED_POSTS } from './data/feed';
 import { SACRED_PADS } from './data/padas';
 import { SacredPad, SadhanaState, DhyanaImpactState, DhyanaSessionRecord } from './types/devotional';
+import { SacredDatabase } from './services/sacredDatabase';
 import { seo } from './services/seoService';
 import { CMSEditorialBadge } from './components/common/CMSEditorialBadge';
 import {
@@ -55,14 +56,28 @@ const SAMPLE_DAYS: DayItem[] = [
   { dayName: 'Sun', dateNum: 30, tithiLabel: 'पूर्णिमा' },
 ];
 
-export function App() {
+export interface AppProps {
+  initialTab?: NavTab;
+  initialPadId?: string;
+}
+
+export function App({ initialTab, initialPadId }: AppProps = {}) {
   const [activeTab, setActiveTab] = useState<NavTab>(() => {
+    if (initialTab && ['smaran', 'padavali', 'feed', 'milestones'].includes(initialTab)) {
+      return initialTab;
+    }
+    if (initialPadId) {
+      return 'padavali';
+    }
     try {
       if (typeof window !== 'undefined') {
         const params = new URLSearchParams(window.location.search);
         const t = params.get('tab') as NavTab;
         if (t && ['smaran', 'padavali', 'feed', 'milestones'].includes(t)) {
           return t;
+        }
+        if (params.get('pad')) {
+          return 'padavali';
         }
       }
     } catch {}
@@ -73,7 +88,18 @@ export function App() {
   // Two-tier cache: synchronous initial pre-warm (0ms cold render) prevents null flash / layout shift
   const [sadhana, setSadhana] = useState<SadhanaState>(() => loadCachedSadhanaSync());
   const [feedVersion, setFeedVersion] = useState<number>(0);
-  const [currentPad, setCurrentPad] = useState<SacredPad | null>(SACRED_PADS[0]);
+  const [currentPad, setCurrentPad] = useState<SacredPad | null>(() => {
+    const padIdToFind =
+      initialPadId ||
+      (typeof window !== 'undefined'
+        ? new URLSearchParams(window.location.search).get('pad') || undefined
+        : undefined);
+    if (padIdToFind) {
+      const found = SacredDatabase.getPadById(padIdToFind);
+      if (found) return found;
+    }
+    return SACRED_PADS[0];
+  });
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
   const [showPlayer, setShowPlayer] = useState(false);
   const [isLowSpecMode, setIsLowSpecMode] = useState(false);
@@ -818,6 +844,12 @@ export function App() {
               isPlaying={isPlayingAudio}
               selectedGranthaId={selectedGranthaFilter}
               selectedSearchQuery={readerSearchQuery}
+              initialPadId={
+                initialPadId ||
+                (typeof window !== 'undefined'
+                  ? new URLSearchParams(window.location.search).get('pad') || undefined
+                  : undefined)
+              }
             />
           )}
 

@@ -8,6 +8,8 @@
     "build": "tsc -b && vite build",
     "build:server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
     "build:ssg": "tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist/server && node scripts/prerender.js",
+    "serve:ssr": "node server.js",
+    "start": "node server.js",
     "preview": "vite preview"
   },
   "dependencies": {
