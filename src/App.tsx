@@ -368,7 +368,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
           - Tablet (768px - 1024px): max-w-4xl with balanced gutters
           - Desktop (1024px+): max-w-6xl xl:max-w-7xl
       */}
-      <div className="w-full max-w-full md:max-w-5xl xl:max-w-7xl min-h-screen relative px-3.5 sm:px-6 lg:px-8 pt-22 sm:pt-24 lg:pt-26 pb-36 md:pb-24 box-border">
+      <div className="w-full max-w-full md:max-w-5xl xl:max-w-7xl min-h-screen relative px-3.5 sm:px-6 lg:px-8 pt-24 sm:pt-28 lg:pt-32 pb-36 md:pb-24 box-border">
         {/* Apple Dynamic Notch / Dynamic Island Navbar (Fixed Floating Top Island) */}
         <DynamicNotchNavbar
           activeTab={activeTab}

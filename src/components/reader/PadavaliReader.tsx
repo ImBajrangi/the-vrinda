@@ -480,7 +480,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   const isCurrentPadPlaying = activePlayingPadId === selectedPad.id && Boolean(isPlaying);
 
   return (
-    <div className="w-full pb-44 md:pb-32 pt-6 sm:pt-8">
+    <div className="w-full pb-44 md:pb-32 pt-2 sm:pt-4">
       {/* ========================================================================= */}
       {/* 1. Serene Light Header & Spotlight Search Bar                             */}
       {/* ========================================================================= */}
