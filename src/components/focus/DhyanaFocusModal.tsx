@@ -7,6 +7,11 @@ import {
   computeDhyanaFlowStage,
 } from '../../services/cacheService';
 import { DhyanaSessionRecord, SacredReflectionEntry } from '../../types/devotional';
+import {
+  getCachedDevotionalSummarySync,
+  getDevotionalSummary,
+  DevotionalSummaryRequest,
+} from '../../services/devotionalSummaryService';
 
 interface DhyanaFocusModalProps {
   isOpen: boolean;
@@ -47,6 +52,11 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
   const [reflectionNote, setReflectionNote] = useState('');
   const [reflectionSaved, setReflectionSaved] = useState(false);
   const [activeAphorismIdx, setActiveAphorismIdx] = useState(0);
+
+  // Contemplative Devotional Summary State
+  const [isQuoteSummaryOpen, setIsQuoteSummaryOpen] = useState(false);
+  const [isQuoteSummaryLoading, setIsQuoteSummaryLoading] = useState(false);
+  const [quoteSummaryMap, setQuoteSummaryMap] = useState<Record<number, string>>({});
 
   // Timer Effect
   useEffect(() => {
@@ -151,7 +161,30 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
     };
   }, []);
 
-  if (!isOpen) return null;
+  // Smooth entrance & exit transition state
+  const [isRendered, setIsRendered] = useState(isOpen);
+  const [isClosing, setIsClosing] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      setIsRendered(true);
+      setIsClosing(false);
+    } else if (isRendered) {
+      setIsClosing(true);
+      const timer = setTimeout(() => {
+        setIsRendered(false);
+        setIsClosing(false);
+      }, 220);
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen, isRendered]);
+
+  const handleDismiss = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      onClose();
+    }, 200);
+  };
 
   const formatTime = (totalSec: number) => {
     const mins = Math.floor(totalSec / 60);
@@ -197,7 +230,7 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
       await recordDhyanaSession(record);
       onSessionComplete?.(record);
     }
-    onClose();
+    handleDismiss();
   };
 
   const handleSaveReflection = async () => {
@@ -232,6 +265,64 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
     },
   ];
 
+  const currentAphorism = RASIK_APHORISMS[activeAphorismIdx];
+  const aphorismCanonicalId =
+    activeAphorismIdx === 0
+      ? 'quote-hit-chaurasi-0'
+      : activeAphorismIdx === 1
+      ? 'quote-radha-sudha-nidhi-1'
+      : 'quote-kelimal-2';
+
+  const aphorismReq: DevotionalSummaryRequest = {
+    id: aphorismCanonicalId,
+    text: currentAphorism.verse,
+    source: currentAphorism.source,
+    type: 'quote',
+    fallbackText: currentAphorism.meaning,
+    sourceSlug:
+      activeAphorismIdx === 0
+        ? 'hit-chaurasi'
+        : activeAphorismIdx === 1
+        ? 'radha-sudha-nidhi'
+        : 'kelimal',
+    quoteIndex: activeAphorismIdx,
+  };
+
+  useEffect(() => {
+    // Synchronous 0ms peek check against pre-bundled and cached aphorisms
+    const peek = getCachedDevotionalSummarySync(aphorismReq);
+    if (peek) {
+      setQuoteSummaryMap((prev) => ({ ...prev, [activeAphorismIdx]: peek }));
+    }
+  }, [activeAphorismIdx]);
+
+  const handleToggleQuoteSummary = () => {
+    const nextOpen = !isQuoteSummaryOpen;
+    setIsQuoteSummaryOpen(nextOpen);
+
+    if (nextOpen && !quoteSummaryMap[activeAphorismIdx]) {
+      const peek = getCachedDevotionalSummarySync(aphorismReq);
+      if (peek) {
+        setQuoteSummaryMap((prev) => ({ ...prev, [activeAphorismIdx]: peek }));
+        return;
+      }
+      setIsQuoteSummaryLoading(true);
+      getDevotionalSummary(aphorismReq)
+        .then((res) => {
+          setQuoteSummaryMap((prev) => ({ ...prev, [activeAphorismIdx]: res.summary }));
+        })
+        .catch(() => {
+          setQuoteSummaryMap((prev) => ({
+            ...prev,
+            [activeAphorismIdx]: currentAphorism.meaning,
+          }));
+        })
+        .finally(() => {
+          setIsQuoteSummaryLoading(false);
+        });
+    }
+  };
+
   const getBreathLabel = () => {
     switch (breathPhase) {
       case 'inhale':
@@ -248,17 +339,27 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
 
   const breath = getBreathLabel();
 
+  if (!isRendered) return null;
+
   return (
     <div
       role="dialog"
       aria-modal="true"
       aria-label="गहन ध्यान व मानसिक एकाग्रता"
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-[#14213D]/40 backdrop-blur-md apple-view-enter"
+      onClick={handleDismiss}
+      className={`fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/75 transition-opacity ${
+        isClosing ? 'modal-backdrop-exit' : 'modal-backdrop-enter'
+      }`}
     >
-      <div className="w-full max-w-2xl bg-[#FAF9F6] text-[#111111] rounded-[32px] border border-white/90 shadow-[0_24px_64px_rgba(20,33,61,0.14)] flex flex-col max-h-[92vh] overflow-hidden">
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className={`w-full max-w-2xl bg-[#FAF9F6] text-[#111111] rounded-[32px] border border-white/90 shadow-[0_24px_64px_rgba(0,0,0,0.35)] flex flex-col max-h-[92vh] overflow-hidden ${
+          isClosing ? 'modal-dialog-exit' : 'modal-dialog-enter'
+        }`}
+      >
         
         {/* Modal Top Bar */}
-        <div className="flex items-center justify-between p-4 sm:p-5 border-b border-black/[0.06] bg-white/80 backdrop-blur-md">
+        <div className="flex items-center justify-between p-4 sm:p-5 border-b border-black/[0.06] bg-white">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-2xl bg-[#22C55E]/15 text-[#15803D] border border-[#22C55E]/25 flex items-center justify-center font-bold text-lg">
               🧘
@@ -598,6 +699,55 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
                 <p className="text-xs text-[#78350F] font-devanagari leading-relaxed">
                   {RASIK_APHORISMS[activeAphorismIdx].meaning}
                 </p>
+
+                {/* Devotional Essence Action Button */}
+                <div className="pt-2 border-t border-amber-900/10 flex items-center justify-between gap-2">
+                  <button
+                    type="button"
+                    onClick={handleToggleQuoteSummary}
+                    title="दिव्य सार (भाव संक्षेप देखें)"
+                    className="h-8 px-3 rounded-full bg-[#FFF9EE] border border-[#E9D8B4] text-[#B84A28] flex items-center gap-1.5 shadow-xs pressable font-medium text-xs"
+                  >
+                    <Sparkles className="w-3.5 h-3.5 text-[#D4A359]" />
+                    <span>दिव्य सार</span>
+                  </button>
+                  {isQuoteSummaryOpen && (
+                    <span className="text-[11px] text-[#92400E] font-medium">
+                      ॥ दिव्य रस मर्म ॥
+                    </span>
+                  )}
+                </div>
+
+                {/* Contemplative Quote Essence Card */}
+                {isQuoteSummaryOpen && (
+                  <div className="p-3.5 rounded-xl bg-amber-50/60 border border-[#E9D8B4] border-l-4 border-[#D4A359] space-y-1.5 apple-view-enter">
+                    <div className="flex items-center justify-between pb-1 mb-1 border-b border-black/[0.04]">
+                      <span className="text-[11px] font-bold text-[#B84A28] flex items-center gap-1">
+                        <Sparkles className="w-3 h-3 text-[#D4A359]" />
+                        <span>॥ दिव्य सार (Divine Essence) ॥</span>
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => setIsQuoteSummaryOpen(false)}
+                        className="text-[11px] text-[#6B6F6B] hover:text-[#111111] pressable font-medium"
+                      >
+                        संवरण करें
+                      </button>
+                    </div>
+                    {isQuoteSummaryLoading && !quoteSummaryMap[activeAphorismIdx] ? (
+                      <div className="flex items-center gap-2 py-2 text-xs text-[#D97706] font-medium min-h-[48px]">
+                        <Sparkles className="w-3.5 h-3.5 text-[#D4A359] animate-spin" />
+                        <span>दिव्य भाव उद्घाटित हो रहा है...</span>
+                      </div>
+                    ) : (
+                      <p className="text-xs font-devanagari text-[#451A03] leading-relaxed break-words">
+                        {quoteSummaryMap[activeAphorismIdx] ||
+                          getCachedDevotionalSummarySync(aphorismReq) ||
+                          currentAphorism.meaning}
+                      </p>
+                    )}
+                  </div>
+                )}
               </div>
 
               {/* Post-Session Sacred Reflection Journal */}
@@ -688,7 +838,7 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
         </div>
 
         {/* Modal Footer */}
-        <div className="p-3 sm:p-4 border-t border-black/[0.06] bg-white/80 backdrop-blur-md flex items-center justify-between text-xs text-[#6B6F6B]">
+        <div className="p-3 sm:p-4 border-t border-black/[0.06] bg-white flex items-center justify-between text-xs text-[#6B6F6B]">
           <span className="flex items-center gap-1.5">
             <span className="w-2 h-2 rounded-full bg-[#22C55E] animate-pulse" />
             <span>एकाग्रता साधना सक्रिय • ०% भटकाव</span>

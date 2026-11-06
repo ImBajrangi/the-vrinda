@@ -55,12 +55,6 @@ test('CHALLENGE-1.1', 'TopBar at 320px: Mathematical layout budget leaves safety
   if (!code.includes('hidden min-[360px]:inline font-doto font-bold text-[10px] text-[#15803D] bg-[#22C55E]/15 border border-[#22C55E]/30 px-1.5 py-0.5 rounded-full uppercase shrink-0')) {
     throw new Error('Version 2.0 tag must be hidden on < 360px');
   }
-  if (!code.includes('hidden min-[420px]:flex items-center gap-1.5 px-2 sm:px-3 h-8 rounded-full bg-emerald-500/15')) {
-    throw new Error('Focus Sanctuary pill must be hidden on < 420px');
-  }
-  if (!code.includes('hidden sm:flex p-1.5 h-8 w-8 rounded-full items-center justify-center')) {
-    throw new Error('Battery/low-spec button must be hidden on mobile (< sm)');
-  }
   if (!code.includes('hidden md:flex items-center gap-1 bg-[#F4F4F4]/80')) {
     throw new Error('Center segmented nav must be hidden on mobile (< md)');
   }

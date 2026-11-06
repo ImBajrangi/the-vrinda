@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Home, BookOpen, Users, Award, Flame, Search, Wind, Play, Pause, Music2, ChevronDown, ChevronUp, Sparkles } from 'lucide-react';
+import { Home, BookOpen, Users, Award, Flame, Search, Play, Pause, Music2, ChevronDown, ChevronUp } from 'lucide-react';
 import { SacredLogo } from './SacredLogo';
 import { NavTab } from './FloatingNavbar';
 import { computeAshtayamaPhase, formatDevanagariNumerals } from '../../services/cacheService';
@@ -12,8 +12,8 @@ interface DynamicNotchNavbarProps {
   currentTrackTitle?: string;
   onToggleAudio: () => void;
   onOpenPlayer: () => void;
-  isLowSpec: boolean;
-  onToggleLowSpec: () => void;
+  isLowSpec?: boolean;
+  onToggleLowSpec?: () => void;
   onOpenSearch?: () => void;
   onOpenFocus?: () => void;
 }
@@ -26,8 +26,8 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
   currentTrackTitle = 'जोई जोई प्यारो करे सोई मोहि भावै',
   onToggleAudio,
   onOpenPlayer,
-  isLowSpec,
-  onToggleLowSpec,
+  isLowSpec: _isLowSpec,
+  onToggleLowSpec: _onToggleLowSpec,
   onOpenSearch,
   onOpenFocus,
 }) => {
@@ -72,14 +72,6 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
                     2.0
                   </span>
                 </div>
-
-                {/* Live Ashtayama Indicator Badge (Hidden on very small mobile) */}
-                <div className="hidden xl:flex items-center gap-1.5 pl-2 ml-1 border-l border-black/10 dark:border-white/10 text-xs text-[#6B6F6B] dark:text-slate-300">
-                  <span className="w-2 h-2 rounded-full bg-[#22C55E] animate-pulse" />
-                  <span className="font-devanagari font-semibold text-[#111111] dark:text-white">
-                    अष्टयाम: {ashtayama.nameDevanagari} वेला
-                  </span>
-                </div>
               </div>
 
               {/* 2. Center: Segmented Navigation Menu Bar (Aligned with Site Design) */}
@@ -111,20 +103,6 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
               {/* 3. Right: Contemplation Actions & Tools Deck */}
               <div className="flex items-center gap-1 sm:gap-2 shrink-0">
                 
-                {/* Dhyana Focus Sanctuary Pill */}
-                {onOpenFocus && (
-                  <button
-                    type="button"
-                    onClick={onOpenFocus}
-                    aria-label="गहन ध्यान व एकाग्रता"
-                    title="Mental Focus (Dhyāna Sanctuary)"
-                    className="hidden min-[420px]:flex items-center gap-1.5 px-2 sm:px-3 h-8 rounded-full bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-900 dark:text-emerald-300 border border-emerald-500/40 pressable text-xs font-bold transition-colors shadow-[0_1px_2px_rgba(0,0,0,0.06)] shrink-0"
-                  >
-                    <Wind className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-400 stroke-[2.2]" />
-                    <span className="hidden sm:inline">एकाग्रता</span>
-                  </button>
-                )}
-
                 {/* Spotlight Search Pill */}
                 {onOpenSearch && (
                   <button
@@ -183,20 +161,6 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
                   <span className="font-doto">{formatDevanagariNumerals(streakDays)}d</span>
                 </button>
 
-                {/* Battery Saver / Low Spec Mode Toggle */}
-                <button
-                  type="button"
-                  onClick={onToggleLowSpec}
-                  aria-label="Toggle Low Spec Performance Mode"
-                  title={isLowSpec ? 'कम संसाधन मोड सक्रिय (60 FPS)' : 'उच्च ग्राफिक्स मोड'}
-                  className={`hidden sm:flex p-1.5 h-8 w-8 rounded-full items-center justify-center border border-black/[0.18] dark:border-white/20 shadow-[0_1px_2px_rgba(0,0,0,0.06)] pressable transition-colors ${
-                    isLowSpec
-                      ? 'bg-amber-500/15 text-amber-800 border-amber-500/30'
-                      : 'bg-white dark:bg-white/[0.06] text-[#111111] dark:text-white'
-                  }`}
-                >
-                  <Sparkles className="w-3.5 h-3.5" />
-                </button>
 
                 {/* Expand Drawer Button */}
                 <button
@@ -221,7 +185,7 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
                       वृन्दोपनिषद् 2.0 • दैनिक निकुंज सेवा
                     </h3>
                     <p className="text-[11px] text-[#6B6F6B] dark:text-slate-400">
-                      वर्तमान: {ashtayama.nameDevanagari} वेला ({ashtayama.timeRange}) • {ashtayama.bhava}
+                      वर्तमान अष्टयाम: {ashtayama.nameDevanagari} वेला ({ashtayama.timeRange}) • {ashtayama.bhava}
                     </p>
                   </div>
                 </div>
@@ -299,6 +263,23 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
                   </button>
                 </div>
               </div>
+
+              {/* Dhyana Focus Sanctuary Drawer Row */}
+              {onOpenFocus && (
+                <div className="flex items-center justify-between gap-3 bg-[#F4F4F4] dark:bg-black/30 px-3.5 py-2.5 rounded-2xl border border-black/5 text-xs">
+                  <span className="text-[#6B6F6B] font-medium">गहन ध्यान व एकाग्रता (Dhyāna Sanctuary)</span>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      onOpenFocus();
+                      setIsExpanded(false);
+                    }}
+                    className="px-3.5 py-1 rounded-full text-xs font-bold bg-[#14213D] text-[#B6FF2E] pressable shadow-xs"
+                  >
+                    प्रारंभ करें
+                  </button>
+                </div>
+              )}
             </div>
           )}
 

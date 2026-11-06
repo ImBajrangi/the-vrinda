@@ -22,23 +22,42 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
   const [activeFilter, setActiveFilter] = useState<'all' | 'padas' | 'saints' | 'granthas'>('all');
   const inputRef = useRef<HTMLInputElement>(null);
 
+  const [isRendered, setIsRendered] = useState(isOpen);
+  const [isClosing, setIsClosing] = useState(false);
+
   useEffect(() => {
     if (isOpen) {
+      setIsRendered(true);
+      setIsClosing(false);
       setTimeout(() => inputRef.current?.focus(), 50);
+    } else if (isRendered) {
+      setIsClosing(true);
+      const timer = setTimeout(() => {
+        setIsRendered(false);
+        setIsClosing(false);
+      }, 200);
+      return () => clearTimeout(timer);
     }
-  }, [isOpen]);
+  }, [isOpen, isRendered]);
+
+  const handleDismiss = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      onClose();
+    }, 200);
+  };
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
+      if (e.key === 'Escape') handleDismiss();
     };
     if (isOpen) {
       window.addEventListener('keydown', handleKeyDown);
       return () => window.removeEventListener('keydown', handleKeyDown);
     }
-  }, [isOpen, onClose]);
+  }, [isOpen]);
 
-  if (!isOpen) return null;
+  if (!isRendered) return null;
 
   // Search Results
   const matchingPadas = (activeFilter === 'all' || activeFilter === 'padas')
@@ -65,11 +84,15 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
     <div
       role="dialog"
       aria-modal="true"
-      className="fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-24 px-3 sm:px-4 bg-black/40 backdrop-blur-md transition-all apple-view-enter"
-      onClick={onClose}
+      onClick={handleDismiss}
+      className={`fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-24 px-3 sm:px-4 bg-black/75 transition-opacity ${
+        isClosing ? 'modal-backdrop-exit' : 'modal-backdrop-enter'
+      }`}
     >
       <div
-        className="w-full max-w-2xl bg-white/95 dark:bg-[#14213D]/95 backdrop-blur-2xl border border-white/90 dark:border-white/10 shadow-[0_24px_70px_rgba(0,0,0,0.18),0_1px_3px_rgba(0,0,0,0.06)] rounded-[28px] overflow-hidden flex flex-col max-h-[82vh]"
+        className={`w-full max-w-2xl bg-white dark:bg-[#14213D] border border-white/90 dark:border-white/10 shadow-[0_24px_70px_rgba(0,0,0,0.35)] rounded-[28px] overflow-hidden flex flex-col max-h-[82vh] ${
+          isClosing ? 'modal-dialog-exit' : 'modal-dialog-enter'
+        }`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Search Header Input */}

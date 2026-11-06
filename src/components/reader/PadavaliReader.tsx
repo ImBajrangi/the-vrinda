@@ -30,6 +30,11 @@ import {
   initMultiTabSync,
   formatDevanagariNumerals,
 } from '../../services/cacheService';
+import {
+  getCachedDevotionalSummarySync,
+  getDevotionalSummary,
+  DevotionalSummaryRequest,
+} from '../../services/devotionalSummaryService';
 
 interface PadavaliReaderProps {
   onPlayPad: (pad: SacredPad) => void;
@@ -133,6 +138,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     initialReader.bookmarkedPadIds || []
   );
   const [isCommentaryOpen, setIsCommentaryOpen] = useState(false);
+  const [isCommentaryClosing, setIsCommentaryClosing] = useState(false);
   const [activeStanzaIndex, setActiveStanzaIndex] = useState(0);
   const [isFocusReadingMode, setIsFocusReadingMode] = useState<boolean>(false);
   const [visibleCount, setVisibleCount] = useState(30);
@@ -143,8 +149,138 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   const [fontFamily, setFontFamily] = useState<ReaderFontFamily>('serif');
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isGlossaryOpen, setIsGlossaryOpen] = useState(false);
+  const [isGlossaryClosing, setIsGlossaryClosing] = useState(false);
   const [copiedStanzaIdx, setCopiedStanzaIdx] = useState<number | null>(null);
   const [playbackPace, setPlaybackPace] = useState<'0.8x' | '1.0x' | '1.2x'>('1.0x');
+
+  // Devotional Summary States
+  const [isSummaryOpen, setIsSummaryOpen] = useState(false);
+  const [isSummaryLoading, setIsSummaryLoading] = useState(false);
+  const [summaryText, setSummaryText] = useState<string>('');
+
+  const handleCloseCommentary = () => {
+    setIsCommentaryClosing(true);
+    setTimeout(() => {
+      setIsCommentaryOpen(false);
+      setIsCommentaryClosing(false);
+    }, 200);
+  };
+
+  const handleCloseGlossary = () => {
+    setIsGlossaryClosing(true);
+    setTimeout(() => {
+      setIsGlossaryOpen(false);
+      setIsGlossaryClosing(false);
+    }, 200);
+  };
+
+  // Defensive parsing for clean title, accurate author attribution, and grantha pill
+  const { cleanTitle, authorName, granthaRef } = useMemo(() => {
+    let clean = selectedPad.titleDevanagari || '';
+    let author = selectedPad.author || '';
+    let grantha = (selectedPad as { grantha?: string }).grantha || '';
+
+    if (clean.includes(' - ')) {
+      const parts = clean.split(' - ');
+      clean = parts[0].trim();
+      const meta = parts.slice(1).join(' - ').trim();
+      if (meta.includes(',')) {
+        const sub = meta.split(',');
+        if (!author || author.includes('परंपरा') || author.includes('ब्रज रसिक')) {
+          author = sub[0].trim();
+        }
+        if (!grantha) {
+          grantha = sub.slice(1).join(',').trim();
+        }
+      } else if (meta.startsWith('श्री') || meta.startsWith('जगद्गुरु') || /शरण|दास|देव|वल्लभ|हरिदास|हित|सूरदास|मीरा/.test(meta)) {
+        if (!author || author.includes('परंपरा') || author.includes('ब्रज रसिक')) {
+          author = meta.trim();
+        }
+      } else if (!grantha) {
+        grantha = meta.trim();
+      }
+    }
+    return { cleanTitle: clean, authorName: author, granthaRef: grantha };
+  }, [selectedPad]);
+
+  const summaryReq: DevotionalSummaryRequest = useMemo(() => {
+    const canonicalId =
+      selectedPad.id === 'shri-radha-kripa-kataksha-stotram' || selectedPad.id === 'radha-kripa-kataksha'
+        ? 'shri-radha-kripa-kataksha-stotram-1'
+        : selectedPad.id.startsWith('hit-chaurasi-01')
+        ? 'hit-chaurasi-01-1'
+        : selectedPad.id;
+
+    const verseText =
+      selectedPad.verses?.map((v) => v.linesDevanagari?.join(' ')).filter(Boolean).join('\n') ||
+      selectedPad.titleDevanagari;
+
+    return {
+      id: canonicalId,
+      text: verseText,
+      source: selectedPad.collectionId || selectedPad.rag,
+      author: selectedPad.author,
+      type: 'pad',
+      fallbackText: selectedPad.verses?.[0]?.bhavarth,
+      collectionId: selectedPad.collectionId,
+      padId: selectedPad.id,
+      stanzaNumber: 1,
+    };
+  }, [selectedPad]);
+
+  useEffect(() => {
+    // Synchronous 0ms peek check against L1 cache and localStorage buffer
+    const peek = getCachedDevotionalSummarySync(summaryReq);
+    if (peek) {
+      setSummaryText(peek);
+      setIsSummaryLoading(false);
+    } else {
+      setSummaryText('');
+      if (isSummaryOpen || isCommentaryOpen) {
+        setIsSummaryLoading(true);
+        getDevotionalSummary(summaryReq)
+          .then((res) => {
+            setSummaryText(res.summary);
+          })
+          .catch(() => {
+            setSummaryText(
+              summaryReq.fallbackText ||
+                'श्री युगल रस का यह पावन पद अंतःकरण में असीम शांति और दिव्य प्रेम का संचार करता है।'
+            );
+          })
+          .finally(() => {
+            setIsSummaryLoading(false);
+          });
+      }
+    }
+  }, [summaryReq, isSummaryOpen, isCommentaryOpen]);
+
+  const handleToggleSummary = () => {
+    const nextState = !isSummaryOpen;
+    setIsSummaryOpen(nextState);
+
+    if (nextState && !summaryText) {
+      const peek = getCachedDevotionalSummarySync(summaryReq);
+      if (peek) {
+        setSummaryText(peek);
+      } else {
+        setIsSummaryLoading(true);
+        getDevotionalSummary(summaryReq)
+          .then((res) => {
+            setSummaryText(res.summary);
+          })
+          .catch(() => {
+            setSummaryText(
+              summaryReq.fallbackText ||
+                'श्री युगल रस का यह पावन पद अंतःकरण में असीम शांति और दिव्य प्रेम का संचार करता है।'
+            );
+          })
+          .finally(() => {
+            setIsSummaryLoading(false);
+          });
+      }
+    }
+  };
 
   useEffect(() => {
     let isMounted = true;
@@ -366,7 +502,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       {/* Interactive Typography & Devotional Ambiance Customizer Floating Tray     */}
       {/* ========================================================================= */}
       {isSettingsOpen && (
-        <div className="mb-4 p-4 rounded-[24px] bg-white/95 backdrop-blur-xl border border-white shadow-card space-y-3 apple-sheet-enter text-[#111111]">
+        <div className="mb-4 p-4 rounded-[24px] bg-white border border-black/10 shadow-card space-y-3 apple-sheet-enter text-[#111111]">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-black/[0.06] pb-3">
             {/* Font Size Stepper */}
             <div className="flex items-center gap-2">
@@ -690,25 +826,46 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
           
           {/* Header of the Selected Pad */}
           <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 pb-5 border-b border-black/5 mb-6">
-            <div>
-              <div className="flex items-center gap-2">
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 flex-wrap">
                 <span className="text-[11px] font-bold text-[#C85A32] uppercase tracking-wider bg-[#C85A32]/10 px-2.5 py-0.5 rounded-full">
                   राग {selectedPad.rag} • {selectedPad.duration}
                 </span>
-                <span className="text-xs text-[#6B6F6B] flex items-center gap-1">
+                <span className="text-xs text-[#6B6F6B] flex items-center gap-1 font-medium">
                   <Music className="w-3.5 h-3.5 text-[#22C55E]" />
                   स्वर प्रवाह
                 </span>
+                {granthaRef && (
+                  <span className="text-[11px] font-semibold text-[#8C6D3B] bg-[#F7EFE1] border border-[#E8DAC2] px-2.5 py-0.5 rounded-full">
+                    {granthaRef}
+                  </span>
+                )}
               </div>
-              <h2 className="font-serif font-bold text-xl sm:text-2xl lg:text-3xl text-[#111111] mt-2 leading-snug">
-                {selectedPad.titleDevanagari}
+              <h2 className="font-serif font-bold text-xl sm:text-2xl lg:text-3xl text-[#111111] leading-snug">
+                {cleanTitle}
               </h2>
-              <div className="text-xs sm:text-sm text-[#6B6F6B] font-medium mt-1">
-                रचयिता: <strong className="text-[#111111]">{selectedPad.author}</strong>
+              <div className="text-xs sm:text-sm text-[#6B6F6B] font-medium flex items-center gap-1.5">
+                <span>रचयिता:</span>
+                <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-[#14213D]/5 text-[#14213D] font-bold">
+                  {authorName}
+                </span>
               </div>
             </div>
 
-            <div className="flex items-center gap-2 shrink-0 self-end sm:self-auto">
+            <div className="flex items-center gap-2 shrink-0 self-end sm:self-auto flex-wrap sm:flex-nowrap">
+              {/* Devotional Action Pill (Summary Toggle) */}
+              <button
+                type="button"
+                onClick={handleToggleSummary}
+                title="भाव संक्षेप देखें"
+                aria-label="भाव संक्षेप देखें"
+                className="h-9 sm:h-10 px-3 sm:px-3.5 rounded-full bg-[#FFF9EE] border border-[#E9D8B4] text-[#B84A28] flex items-center gap-1.5 shadow-xs pressable font-medium text-xs"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-[#D4A359]" />
+                <span className="hidden sm:inline">भाव संक्षेप देखें</span>
+                <span className="sm:hidden">दिव्य सार</span>
+              </button>
+
               {/* Mobile Rasik Commentary Trigger */}
               <button
                 type="button"
@@ -755,6 +912,37 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               </button>
             </div>
           </div>
+
+          {/* Collapsible Sacred Devotional Card */}
+          {isSummaryOpen && (
+            <div className="bg-[#FFFDF9] border border-[#E9D8B4] border-l-4 border-[#D4A359] rounded-2xl p-4 sm:p-5 mb-6 shadow-xs apple-view-enter">
+              <div className="flex items-center justify-between pb-2 mb-2 border-b border-black/[0.04]">
+                <div className="flex items-center gap-1.5 text-xs font-bold text-[#B84A28]">
+                  <Sparkles className="w-4 h-4 text-[#D4A359]" />
+                  <span>॥ दिव्य भाव संक्षेप ॥</span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setIsSummaryOpen(false)}
+                  className="text-xs text-[#6B6F6B] hover:text-[#111111] pressable font-medium"
+                >
+                  संवरण करें
+                </button>
+              </div>
+              {isSummaryLoading && !summaryText ? (
+                <div className="flex items-center gap-2 py-3 text-xs text-[#D97706] font-medium min-h-[64px]">
+                  <Sparkles className="w-4 h-4 text-[#D4A359] animate-spin" />
+                  <span>दिव्य भाव उद्घाटित हो रहा है...</span>
+                </div>
+              ) : (
+                <p className="text-xs sm:text-sm font-devanagari text-[#333333] leading-relaxed break-words">
+                  {summaryText ||
+                    selectedPad.verses?.[0]?.bhavarth ||
+                    'श्री युगल रस का यह पावन पद अंतःकरण में असीम शांति और दिव्य प्रेम का संचार करता है।'}
+                </p>
+              )}
+            </div>
+          )}
 
           {/* Verses Stanza Block */}
           <div className="space-y-6 sm:space-y-8">
@@ -962,11 +1150,15 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       {/* ========================================================================= */}
       {isCommentaryOpen && (
         <div
-          className="xl:hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-end justify-center p-0 sm:p-4"
-          onClick={() => setIsCommentaryOpen(false)}
+          className={`xl:hidden fixed inset-0 z-50 bg-black/75 flex items-end justify-center p-0 sm:p-4 transition-opacity ${
+            isCommentaryClosing ? 'modal-backdrop-exit' : 'modal-backdrop-enter'
+          }`}
+          onClick={handleCloseCommentary}
         >
           <div
-            className="bg-white rounded-t-[28px] sm:rounded-[28px] max-h-[85vh] w-full max-w-lg overflow-y-auto p-5 sm:p-6 shadow-2xl space-y-4 relative apple-sheet-enter"
+            className={`bg-white rounded-t-[28px] sm:rounded-[28px] max-h-[85vh] w-full max-w-lg overflow-y-auto p-5 sm:p-6 shadow-2xl space-y-4 relative ${
+              isCommentaryClosing ? 'sheet-exit' : 'sheet-enter'
+            }`}
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between pb-3 border-b border-black/5">
@@ -978,12 +1170,32 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               </div>
               <button
                 type="button"
-                onClick={() => setIsCommentaryOpen(false)}
+                onClick={handleCloseCommentary}
                 aria-label="Close commentary drawer"
                 className="w-8 h-8 rounded-full bg-black/5 flex items-center justify-center text-[#111111] pressable hover:bg-black/10"
               >
                 <X className="w-4 h-4" />
               </button>
+            </div>
+
+            {/* Featured Divine Devotional Summary Card */}
+            <div className="bg-[#FFFDF9] p-4 rounded-2xl border border-[#E9D8B4] border-l-4 border-[#D4A359] shadow-xs space-y-2">
+              <div className="flex items-center gap-1.5 text-xs font-bold text-[#B84A28]">
+                <Sparkles className="w-4 h-4 text-[#D4A359]" />
+                <span>॥ दिव्य भाव संक्षेप (Divine Essence) ॥</span>
+              </div>
+              {isSummaryLoading && !summaryText ? (
+                <div className="flex items-center gap-2 py-2 text-xs text-[#D97706] font-medium min-h-[64px]">
+                  <Sparkles className="w-4 h-4 text-[#D4A359] animate-spin" />
+                  <span>दिव्य भाव उद्घाटित हो रहा है...</span>
+                </div>
+              ) : (
+                <p className="text-xs sm:text-sm leading-relaxed text-[#333333] font-devanagari break-words">
+                  {summaryText ||
+                    selectedPad.verses?.[0]?.bhavarth ||
+                    'श्री युगल रस का यह पावन पद अंतःकरण में असीम शांति और दिव्य प्रेम का संचार करता है।'}
+                </p>
+              )}
             </div>
 
             {/* Verse-by-verse bhavarth */}
@@ -1014,7 +1226,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             {/* Dismiss Button */}
             <button
               type="button"
-              onClick={() => setIsCommentaryOpen(false)}
+              onClick={handleCloseCommentary}
               className="w-full mt-2 py-3 rounded-2xl bg-black/5 text-[#111111] text-xs font-bold uppercase tracking-wider pressable"
             >
               संवरण करें • Close
@@ -1028,11 +1240,15 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       {/* ========================================================================= */}
       {isGlossaryOpen && (
         <div
-          className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4"
-          onClick={() => setIsGlossaryOpen(false)}
+          className={`fixed inset-0 z-50 bg-black/75 flex items-end sm:items-center justify-center p-0 sm:p-4 transition-opacity ${
+            isGlossaryClosing ? 'modal-backdrop-exit' : 'modal-backdrop-enter'
+          }`}
+          onClick={handleCloseGlossary}
         >
           <div
-            className="bg-white rounded-t-[28px] sm:rounded-[28px] max-h-[85vh] w-full max-w-lg overflow-y-auto p-5 sm:p-6 shadow-2xl space-y-4 relative apple-sheet-enter text-[#111111]"
+            className={`bg-white rounded-t-[28px] sm:rounded-[28px] max-h-[85vh] w-full max-w-lg overflow-y-auto p-5 sm:p-6 shadow-2xl space-y-4 relative text-[#111111] ${
+              isGlossaryClosing ? 'sheet-exit' : 'sheet-enter'
+            }`}
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between pb-3 border-b border-black/5">
@@ -1049,7 +1265,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               </div>
               <button
                 type="button"
-                onClick={() => setIsGlossaryOpen(false)}
+                onClick={handleCloseGlossary}
                 aria-label="Close glossary modal"
                 className="w-8 h-8 rounded-full bg-black/5 flex items-center justify-center text-[#111111] pressable hover:bg-black/10"
               >
@@ -1083,7 +1299,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
             <button
               type="button"
-              onClick={() => setIsGlossaryOpen(false)}
+              onClick={handleCloseGlossary}
               className="w-full mt-2 py-3 rounded-2xl bg-[#14213D] text-[#B6FF2E] text-xs font-bold uppercase tracking-wider pressable shadow-xs"
             >
               अनुशीलन पूर्ण • Dismiss

@@ -618,7 +618,11 @@ export function initMultiTabSync(
   };
 
   if (broadcastChannelInstance) {
-    broadcastChannelInstance.addEventListener('message', onBcMessage);
+    if (typeof broadcastChannelInstance.addEventListener === 'function') {
+      broadcastChannelInstance.addEventListener('message', onBcMessage);
+    } else {
+      broadcastChannelInstance.onmessage = onBcMessage;
+    }
   }
 
   // Window Storage Event Listener (fallback)
@@ -642,7 +646,11 @@ export function initMultiTabSync(
   // Cleanup handler
   return () => {
     if (broadcastChannelInstance) {
-      broadcastChannelInstance.removeEventListener('message', onBcMessage);
+      if (typeof broadcastChannelInstance.removeEventListener === 'function') {
+        broadcastChannelInstance.removeEventListener('message', onBcMessage);
+      } else {
+        broadcastChannelInstance.onmessage = null;
+      }
     }
     if (typeof window !== 'undefined') {
       window.removeEventListener('storage', onStorage);

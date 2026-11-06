@@ -1,5 +1,16 @@
-import React, { useState, useRef } from 'react';
-import { CheckCircle2, MessageCircle, Eye, Bookmark, MoreVertical, Languages } from 'lucide-react';
+import React, { useState, useRef, useEffect } from 'react';
+import {
+  CheckCircle2,
+  MessageCircle,
+  Eye,
+  Bookmark,
+  MoreVertical,
+  Languages,
+  Share2,
+  Copy,
+  Sparkles,
+  X,
+} from 'lucide-react';
 import { DevotionalFeedPost } from '../../types/devotional';
 import { EmojiTray } from './EmojiTray';
 import {
@@ -7,6 +18,10 @@ import {
   saveFeedInteraction,
   formatDevanagariNumerals,
 } from '../../services/cacheService';
+import {
+  getDevotionalSummary,
+  getCachedDevotionalSummarySync,
+} from '../../services/devotionalSummaryService';
 
 interface FeedCardProps {
   post: DevotionalFeedPost;
@@ -27,8 +42,90 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
   const [flowerBurst, setFlowerBurst] = useState<boolean>(false);
   const [avatarError, setAvatarError] = useState<boolean>(false);
 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [toast, setToast] = useState<string | null>(null);
+  const [summary, setSummary] = useState<string | null>(() =>
+    getCachedDevotionalSummarySync({
+      id: `feed-${post.id}`,
+      text: post.contentDevanagari,
+      author: post.authorName,
+      type: 'quote',
+    })
+  );
+  const [isSummaryLoading, setIsSummaryLoading] = useState(false);
+  const [isSummaryOpen, setIsSummaryOpen] = useState(false);
+
+  useEffect(() => {
+    if (!toast) return;
+    const t = setTimeout(() => setToast(null), 2400);
+    return () => clearTimeout(t);
+  }, [toast]);
+
+  useEffect(() => {
+    if (!isMenuOpen) return;
+    const handleClick = (e: MouseEvent) => {
+      const el = e.target as HTMLElement;
+      if (!el.closest(`[data-feed-menu="${post.id}"]`)) {
+        setIsMenuOpen(false);
+      }
+    };
+    window.addEventListener('click', handleClick);
+    return () => window.removeEventListener('click', handleClick);
+  }, [isMenuOpen, post.id]);
+
   // Double-tap tracker for sacred Pushparpan (flower offering)
   const lastTapRef = useRef<number>(0);
+
+  const handleShare = async () => {
+    setIsMenuOpen(false);
+    const text = `🌸 ${post.authorName} • दिव्य दर्शन\n\n${post.contentDevanagari}\n\nवृन्दोपनिषद् २.० • जय श्री राधे!`;
+    if (typeof navigator !== 'undefined' && navigator.share) {
+      try {
+        await navigator.share({
+          title: `${post.authorName} • दिव्य दर्शन`,
+          text,
+          url: window.location.href,
+        });
+        setToast('दर्शन संदेश साझा किया गया!');
+        return;
+      } catch (e) {
+        // user cancelled
+      }
+    }
+    if (typeof navigator !== 'undefined' && navigator.clipboard) {
+      await navigator.clipboard.writeText(text);
+      setToast('पावन दर्शन कॉपी हो गया!');
+    }
+  };
+
+  const handleCopyVerse = async () => {
+    setIsMenuOpen(false);
+    if (typeof navigator !== 'undefined' && navigator.clipboard) {
+      await navigator.clipboard.writeText(post.contentDevanagari);
+      setToast('भावार्थ कॉपी हो गया!');
+    }
+  };
+
+  const handleToggleSummary = async () => {
+    setIsMenuOpen(false);
+    setIsSummaryOpen((prev) => !prev);
+    if (!summary && !isSummaryLoading) {
+      setIsSummaryLoading(true);
+      try {
+        const result = await getDevotionalSummary({
+          id: `feed-${post.id}`,
+          text: post.contentDevanagari,
+          author: post.authorName,
+          type: 'quote',
+        });
+        setSummary(result.summary);
+      } catch (err) {
+        setSummary('श्री युगल सरकार का नित्य स्मरण चित्त में असीम आनंद व शांति का संचार करता है। जय श्री राधे!');
+      } finally {
+        setIsSummaryLoading(false);
+      }
+    }
+  };
 
   const toggleLike = () => {
     const nextLiked = !isLiked;
@@ -164,21 +261,80 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
             {isFollowing ? 'शरण ली' : 'सेवक बनें'}
           </button>
 
-          {/* Glass 34x34 more button */}
-          <button
-            type="button"
-            aria-label="More options"
-            className="w-[34px] h-[34px] rounded-full flex items-center justify-center text-[#111111] border border-white/90 shadow-xs pressable shrink-0"
-            style={{
-              background: 'rgba(255, 255, 255, 0.65)',
-              backdropFilter: 'blur(16px)',
-              WebkitBackdropFilter: 'blur(16px)',
-            }}
-          >
-            <MoreVertical className="w-3.5 h-3.5" />
-          </button>
+          {/* Glass 34x34 more button with working popover */}
+          <div className="relative" data-feed-menu={post.id}>
+            <button
+              type="button"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="More options"
+              aria-expanded={isMenuOpen}
+              className="w-[34px] h-[34px] rounded-full flex items-center justify-center text-[#111111] border border-white/90 shadow-xs pressable shrink-0 hover:bg-white transition-colors"
+              style={{
+                background: 'rgba(255, 255, 255, 0.65)',
+                backdropFilter: 'blur(16px)',
+                WebkitBackdropFilter: 'blur(16px)',
+              }}
+            >
+              <MoreVertical className="w-3.5 h-3.5" />
+            </button>
+
+            {/* Contextual Popover */}
+            {isMenuOpen && (
+              <div className="absolute right-0 top-10 z-40 w-56 bg-white border border-black/10 rounded-2xl shadow-2xl p-1.5 apple-dialog-enter text-left">
+                <div className="py-0.5 space-y-0.5">
+                  <button
+                    type="button"
+                    onClick={handleShare}
+                    className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-[#222222] hover:bg-black/5 pressable transition-colors text-left"
+                  >
+                    <Share2 className="w-3.5 h-3.5 text-[#22C55E]" />
+                    <span>दर्शन साझा करें</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={handleCopyVerse}
+                    className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-[#222222] hover:bg-black/5 pressable transition-colors text-left"
+                  >
+                    <Copy className="w-3.5 h-3.5 text-[#3B82F6]" />
+                    <span>भावार्थ कॉपी करें</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      toggleBookmark();
+                      setIsMenuOpen(false);
+                      setToast(isBookmarked ? 'संग्रह से हटाया गया' : 'संग्रह में सुरक्षित किया!');
+                    }}
+                    className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-[#222222] hover:bg-black/5 pressable transition-colors text-left"
+                  >
+                    <Bookmark className={`w-3.5 h-3.5 ${isBookmarked ? 'fill-current text-[#D4A359]' : 'text-[#8B5CF6]'}`} />
+                    <span>{isBookmarked ? 'संग्रह से हटाएं' : 'संग्रह में सहेजें'}</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={handleToggleSummary}
+                    className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-[#222222] hover:bg-black/5 pressable transition-colors text-left"
+                  >
+                    <Sparkles className="w-3.5 h-3.5 text-[#D4A359]" />
+                    <span>भाव संक्षेप देखें</span>
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
+
+      {/* Inline Toast Notification */}
+      {toast && (
+        <div className="my-1.5 py-1 px-3 rounded-full bg-[#14213D] text-[#B6FF2E] text-[11px] font-bold inline-flex items-center gap-1.5 apple-dialog-enter shadow-xs">
+          <CheckCircle2 className="w-3.5 h-3.5 text-[#B6FF2E]" />
+          <span>{toast}</span>
+        </div>
+      )}
 
       {/* Post Text & Bilingual Translation Bar */}
       <div className="mb-2">
@@ -208,6 +364,36 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
         {showEnglish && post.contentEnglish && (
           <div className="mt-1.5 p-2.5 rounded-xl bg-white/70 border-l-2 border-[#D4A359] text-xs sm:text-[13px] leading-relaxed text-[#444444] font-sans italic shadow-2xs">
             <p>{post.contentEnglish}</p>
+          </div>
+        )}
+
+        {/* Devotional AI Summary Drawer */}
+        {isSummaryOpen && (
+          <div className="mt-2 bg-[#FFFDF9] border border-[#E9D8B4] border-l-4 border-[#D4A359] rounded-2xl p-3 sm:p-3.5 shadow-xs apple-view-enter text-left">
+            <div className="flex items-center justify-between mb-1.5">
+              <span className="text-[10px] font-bold text-[#C85A32] uppercase tracking-wider flex items-center gap-1.5">
+                <Sparkles className="w-3.5 h-3.5 text-[#D4A359]" />
+                दिव्य भाव संक्षेप
+              </span>
+              <button
+                type="button"
+                onClick={() => setIsSummaryOpen(false)}
+                aria-label="Close summary"
+                className="w-5 h-5 rounded-full bg-black/5 flex items-center justify-center text-[#555555] pressable"
+              >
+                <X className="w-3 h-3" />
+              </button>
+            </div>
+            {isSummaryLoading ? (
+              <div className="flex items-center gap-2 text-xs text-[#8B5CF6] font-medium py-1">
+                <span className="w-3 h-3 border-2 border-[#8B5CF6] border-t-transparent rounded-full animate-spin" />
+                <span>दिव्य भाव प्रकट हो रहा है...</span>
+              </div>
+            ) : (
+              <p className="text-xs text-[#444444] leading-relaxed font-medium">
+                {summary}
+              </p>
+            )}
           </div>
         )}
       </div>
@@ -241,7 +427,7 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
             <div className="animate-pushparpan flex flex-col items-center">
               <span className="text-5xl sm:text-6xl drop-shadow-md select-none">🌸</span>
-              <span className="text-[11px] font-bold text-white bg-black/60 px-2.5 py-0.5 rounded-full mt-1.5 backdrop-blur-sm shadow-md">
+              <span className="text-[11px] font-bold text-white bg-black/75 px-2.5 py-0.5 rounded-full mt-1.5 shadow-md">
                 भाव पुष्पार्पण
               </span>
             </div>

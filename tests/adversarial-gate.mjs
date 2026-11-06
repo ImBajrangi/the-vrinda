@@ -277,6 +277,92 @@ check('SEC4-02', 'Grep compiled dist/assets/*.css for zero hover translateY/scal
 });
 
 // -----------------------------------------------------------------------------
+// SECTION 5: DEVOTIONAL SUMMARY & STRICT INVARIANT GATE
+// -----------------------------------------------------------------------------
+check('SEC5-01', 'STRICT Absence of "Grok" and "API" in rendered UI strings across all .tsx components in src/components/', () => {
+  const componentFiles = walk(path.join(PROJECT_ROOT, 'src/components')).filter(f => f.endsWith('.tsx'));
+  const violations = [];
+
+  for (const file of componentFiles) {
+    const rawContent = fs.readFileSync(file, 'utf8');
+    // Strip comments to inspect rendered UI strings and code
+    const noComments = rawContent.replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, '');
+
+    // Check for "Grok" or "grok" (strictly forbidden in rendered UI code)
+    if (/grok/i.test(noComments)) {
+      violations.push(`${path.relative(PROJECT_ROOT, file)} (contains "Grok")`);
+    }
+
+    // Check for user-facing "API" in string literals and JSX text
+    const apiRegexes = [
+      /['"`][^'"`]*\bAPI\b[^'"`]*['"`]/,
+      />[^<]*\bAPI\b[^<]*</,
+      /api\.groq/i,
+    ];
+    for (const regex of apiRegexes) {
+      if (regex.test(noComments)) {
+        violations.push(`${path.relative(PROJECT_ROOT, file)} (contains user-facing "API")`);
+      }
+    }
+  }
+
+  if (violations.length > 0) {
+    throw new Error(`Forbidden terms detected in rendered UI:\n  ${violations.join('\n  ')}`);
+  }
+});
+
+check('SEC5-02', 'Required Presence of Sacred Devotional Labels ("भाव संक्षेप देखें" in PadavaliReader.tsx and "दिव्य सार" in DhyanaFocusModal.tsx)', () => {
+  const readerCode = read('src/components/reader/PadavaliReader.tsx');
+  const modalCode = read('src/components/focus/DhyanaFocusModal.tsx');
+
+  // Verify PadavaliReader.tsx
+  if (!readerCode.includes('भाव संक्षेप देखें')) {
+    throw new Error('PadavaliReader.tsx must contain sacred label "भाव संक्षेप देखें"');
+  }
+  if (!readerCode.includes('दिव्य सार')) {
+    throw new Error('PadavaliReader.tsx must contain mobile label "दिव्य सार"');
+  }
+  if (!readerCode.includes('॥ दिव्य भाव संक्षेप')) {
+    throw new Error('PadavaliReader.tsx must render sacred card header "॥ दिव्य भाव संक्षेप"');
+  }
+
+  // Verify DhyanaFocusModal.tsx
+  if (!modalCode.includes('दिव्य सार')) {
+    throw new Error('DhyanaFocusModal.tsx must contain sacred label "दिव्य सार"');
+  }
+  if (!modalCode.includes('भाव संक्षेप देखें')) {
+    throw new Error('DhyanaFocusModal.tsx must contain tooltip/title "भाव संक्षेप देखें"');
+  }
+  if (!modalCode.includes('॥ दिव्य सार (Divine Essence) ॥')) {
+    throw new Error('DhyanaFocusModal.tsx must render quote essence header "॥ दिव्य सार (Divine Essence) ॥"');
+  }
+});
+
+check('SEC5-03', 'Re-verify zero hover translateY/scale transforms across all components', () => {
+  const componentFiles = walk(path.join(PROJECT_ROOT, 'src/components')).filter(f => f.endsWith('.tsx'));
+  const violations = [];
+  const patterns = [
+    { regex: /hover:(-)?translate-y/, name: 'hover:translate-y' },
+    { regex: /hover:scale/, name: 'hover:scale' },
+    { regex: /group-hover:(-)?translate-y/, name: 'group-hover:translate-y' },
+    { regex: /group-hover:scale/, name: 'group-hover:scale' },
+  ];
+
+  for (const file of componentFiles) {
+    const text = fs.readFileSync(file, 'utf8');
+    for (const p of patterns) {
+      if (p.regex.test(text)) {
+        violations.push(`${path.relative(PROJECT_ROOT, file)} (${p.name})`);
+      }
+    }
+  }
+
+  if (violations.length > 0) {
+    throw new Error(`Found forbidden hover effects in components:\n  ${violations.join('\n  ')}`);
+  }
+});
+
+// -----------------------------------------------------------------------------
 // SUMMARY
 // -----------------------------------------------------------------------------
 console.log('='.repeat(70));

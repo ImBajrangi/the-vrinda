@@ -31,6 +31,10 @@ import './tier2-boundaries.mjs';
 import './tier3-pairwise.mjs';
 import './tier4-scenarios.mjs';
 import './dhyana-e2e.mjs';
+import { registerDevotionalSummaryTests } from './devotional-summary-e2e.mjs';
+
+// Register Feature 19: Groq AI Devotional Summaries & Multi-Tier Caching
+registerDevotionalSummaryTests();
 
 // Parse command-line arguments
 const args = process.argv.slice(2);
@@ -164,10 +168,11 @@ async function main() {
     { id: 'F16', name: 'Zero Hover translateY / scale Compliance' },
     { id: 'F17', name: 'Contemplative & Mental Focus UI' },
     { id: 'F18', name: 'Cognitive/Spiritual Impact & Cache' },
+    { id: 'F19', name: 'Groq AI Devotional Summaries & Multi-Tier Caching' },
   ];
 
   console.log('\n--------------------------------------------------------------------------------');
-  console.log(' 18-FEATURE COVERAGE MATRIX                                                     ');
+  console.log(' 19-FEATURE COVERAGE MATRIX                                                     ');
   console.log('--------------------------------------------------------------------------------');
   console.log(
     'Feature'.padEnd(8) +

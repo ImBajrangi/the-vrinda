@@ -1,5 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowLeft, MoreVertical, Award, Flame, CalendarCheck, BookOpen, Crown, X, Sparkles, CheckCircle2, Wind } from 'lucide-react';
+import { createPortal } from 'react-dom';
+import {
+  ArrowLeft,
+  MoreVertical,
+  Award,
+  Flame,
+  CalendarCheck,
+  BookOpen,
+  Crown,
+  X,
+  Sparkles,
+  CheckCircle2,
+  Wind,
+  Share2,
+  Download,
+  RefreshCw,
+  ShieldCheck,
+} from 'lucide-react';
 import { ScallopedBadge } from '../common/ScallopedBadge';
 import {
   loadCachedSadhanaSync,
@@ -30,6 +47,45 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
   const [sadhana, setSadhana] = useState<SadhanaState>(() => loadCachedSadhanaSync());
   const [dhyanaImpact, setDhyanaImpact] = useState<DhyanaImpactState>(() => loadDhyanaImpactSync());
   const [selectedBadge, setSelectedBadge] = useState<BadgeItem | null>(null);
+  const [isBadgeClosing, setIsBadgeClosing] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isRulesModalOpen, setIsRulesModalOpen] = useState(false);
+  const [isRulesClosing, setIsRulesClosing] = useState(false);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  const handleCloseBadge = () => {
+    setIsBadgeClosing(true);
+    setTimeout(() => {
+      setSelectedBadge(null);
+      setIsBadgeClosing(false);
+    }, 200);
+  };
+
+  const handleCloseRules = () => {
+    setIsRulesClosing(true);
+    setTimeout(() => {
+      setIsRulesModalOpen(false);
+      setIsRulesClosing(false);
+    }, 200);
+  };
+
+  useEffect(() => {
+    if (!isMenuOpen) return;
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('[data-milestones-menu]')) {
+        setIsMenuOpen(false);
+      }
+    };
+    window.addEventListener('click', handleClickOutside);
+    return () => window.removeEventListener('click', handleClickOutside);
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    if (!toastMessage) return;
+    const timer = setTimeout(() => setToastMessage(null), 2600);
+    return () => clearTimeout(timer);
+  }, [toastMessage]);
 
   useEffect(() => {
     let isMounted = true;
@@ -250,6 +306,57 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
 
   const completedAntarangaCount = antarangaBadges.filter((b) => !b.isLocked).length;
 
+  const handleShareMilestones = async () => {
+    setIsMenuOpen(false);
+    const text = `🌸 वृन्दोपनिषद् २.० • साधना सिद्धि\nअखंड निष्ठा: ${sadhana.currentStreakDays} दिवस\nसिद्ध सोपान: ${completedMilestonesCount} / ${milestones.length}\nचित्त शान्ति सिद्धि: ${sadhana.chittaShantiScore || 98}%\nश्रीजी कृपा • नित्य नव निकुंज उपासना\nजय श्री राधे!`;
+    if (typeof navigator !== 'undefined' && navigator.share) {
+      try {
+        await navigator.share({
+          title: 'वृन्दोपनिषद् साधना सिद्धि',
+          text,
+          url: window.location.href,
+        });
+        setToastMessage('श्रीजी कृपा संदेश साझा किया गया!');
+        return;
+      } catch (e) {
+        // User cancelled share
+      }
+    }
+    if (typeof navigator !== 'undefined' && navigator.clipboard) {
+      await navigator.clipboard.writeText(text);
+      setToastMessage('साधना सिद्धि विवरण कॉपी हो गया!');
+    }
+  };
+
+  const handleExportBackup = () => {
+    setIsMenuOpen(false);
+    const backupData = {
+      app: 'Vrindopnisad 2.0',
+      exportedAt: new Date().toISOString(),
+      sadhana,
+      dhyanaImpact,
+    };
+    const blob = new Blob([JSON.stringify(backupData, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `vrindopnisad-sadhana-${new Date().toISOString().slice(0, 10)}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    setToastMessage('साधना रिकॉर्ड सुरक्षित डाउनलोड हो गया!');
+  };
+
+  const handleRefreshSync = async () => {
+    setIsMenuOpen(false);
+    const cached = await loadCachedSadhana();
+    if (cached) setSadhana(cached);
+    const cachedImpact = await loadDhyanaImpact();
+    if (cachedImpact) setDhyanaImpact(cachedImpact);
+    setToastMessage('साधना डेटा सफलतापुर्वक सिंक हुआ!');
+  };
+
   return (
     <div className="w-full pb-44 md:pb-32 pt-1 max-w-5xl mx-auto">
       {/* Top Header Bar */}
@@ -272,13 +379,93 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
           </span>
         </div>
 
-        <button
-          type="button"
-          aria-label="More options"
-          className="w-10 h-10 rounded-full border border-white/90 shadow-xs flex items-center justify-center text-[#111111] pressable bg-white/70 backdrop-blur-md"
-        >
-          <MoreVertical className="w-4 h-4" />
-        </button>
+        {/* More Options Dropdown Container */}
+        <div className="relative" data-milestones-menu>
+          <button
+            type="button"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="More options"
+            aria-expanded={isMenuOpen}
+            className="w-10 h-10 rounded-full border border-white/90 shadow-xs flex items-center justify-center text-[#111111] pressable bg-white/70 backdrop-blur-md hover:bg-white transition-colors"
+          >
+            <MoreVertical className="w-4 h-4" />
+          </button>
+
+          {/* Glassmorphic Dropdown Popover */}
+          {isMenuOpen && (
+            <div className="absolute right-0 top-12 z-40 w-64 sm:w-72 bg-white border border-black/10 rounded-2xl shadow-2xl p-1.5 apple-dialog-enter text-left">
+              <div className="px-3 py-2 border-b border-black/5">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#B84A28]">
+                  साधना विकल्प एवं सेवा
+                </span>
+                <p className="text-xs font-semibold text-[#111111]">
+                  नित्य निकुंज नियम प्रबंधन
+                </p>
+              </div>
+
+              <div className="py-1 space-y-0.5">
+                <button
+                  type="button"
+                  onClick={handleShareMilestones}
+                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-[#222222] hover:bg-black/5 pressable transition-colors text-left"
+                >
+                  <div className="w-7 h-7 rounded-lg bg-[#22C55E]/10 flex items-center justify-center shrink-0">
+                    <Share2 className="w-3.5 h-3.5 text-[#22C55E]" />
+                  </div>
+                  <div className="min-w-0">
+                    <span className="block font-semibold text-[#111111]">साधना सिद्धि साझा करें</span>
+                    <span className="text-[10.5px] text-[#6B6F6B]">अखंड निष्ठा का संदेश भेजें</span>
+                  </div>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    setIsRulesModalOpen(true);
+                  }}
+                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-[#222222] hover:bg-black/5 pressable transition-colors text-left"
+                >
+                  <div className="w-7 h-7 rounded-lg bg-[#8B5CF6]/10 flex items-center justify-center shrink-0">
+                    <BookOpen className="w-3.5 h-3.5 text-[#8B5CF6]" />
+                  </div>
+                  <div className="min-w-0">
+                    <span className="block font-semibold text-[#111111]">अनुष्ठान नियम व विधि</span>
+                    <span className="text-[10.5px] text-[#6B6F6B]">जप, व्रत व अखंड सेवा नियम</span>
+                  </div>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={handleExportBackup}
+                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-[#222222] hover:bg-black/5 pressable transition-colors text-left"
+                >
+                  <div className="w-7 h-7 rounded-lg bg-[#3B82F6]/10 flex items-center justify-center shrink-0">
+                    <Download className="w-3.5 h-3.5 text-[#3B82F6]" />
+                  </div>
+                  <div className="min-w-0">
+                    <span className="block font-semibold text-[#111111]">डेटा बैकअप सहेजें</span>
+                    <span className="text-[10.5px] text-[#6B6F6B]">साधना रिकॉर्ड सुरक्षित डाउनलोड करें</span>
+                  </div>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={handleRefreshSync}
+                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-[#222222] hover:bg-black/5 pressable transition-colors text-left"
+                >
+                  <div className="w-7 h-7 rounded-lg bg-amber-500/10 flex items-center justify-center shrink-0">
+                    <RefreshCw className="w-3.5 h-3.5 text-amber-600" />
+                  </div>
+                  <div className="min-w-0">
+                    <span className="block font-semibold text-[#111111]">डेटा सिंक ताज़ा करें</span>
+                    <span className="text-[10.5px] text-[#6B6F6B]">IndexedDB व बहु-टैब रीफ्रेश</span>
+                  </div>
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Hero Header & Headline */}
@@ -447,62 +634,69 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
         </div>
       </div>
 
-      {/* Interactive Sacred Blessing Sheet Modal */}
-      {selectedBadge && (
+      {/* Interactive Sacred Blessing Sheet Modal rendered at root via Portal */}
+      {selectedBadge && typeof document !== 'undefined' && createPortal(
         <div
-          className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4"
-          onClick={() => setSelectedBadge(null)}
+          className={`fixed inset-0 z-50 bg-black/75 flex items-center justify-center p-3 sm:p-4 overflow-hidden overscroll-none transition-opacity ${
+            isBadgeClosing ? 'modal-backdrop-exit' : 'modal-backdrop-enter'
+          }`}
+          onClick={handleCloseBadge}
         >
           <div
-            className="bg-white rounded-t-[32px] sm:rounded-[32px] w-full max-w-md p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto apple-sheet-enter"
+            className={`bg-white rounded-[28px] sm:rounded-[32px] w-full max-w-md shadow-2xl relative max-h-[min(90vh,620px)] sm:max-h-[min(86vh,640px)] flex flex-col overflow-hidden ${
+              isBadgeClosing ? 'modal-dialog-exit' : 'modal-dialog-enter'
+            }`}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close button */}
-            <button
-              type="button"
-              onClick={() => setSelectedBadge(null)}
-              aria-label="Close blessing sheet"
-              className="absolute top-5 right-5 w-8 h-8 rounded-full bg-black/5 flex items-center justify-center text-[#111111] pressable hover:bg-black/10"
-            >
-              <X className="w-4 h-4" />
-            </button>
+            {/* Modal Header (Fixed / Non-collapsing) */}
+            <div className="shrink-0 p-4 sm:p-5 pb-2 text-center relative border-b border-black/[0.04]">
+              {/* Close button */}
+              <button
+                type="button"
+                onClick={handleCloseBadge}
+                aria-label="Close blessing sheet"
+                className="absolute top-3.5 right-3.5 sm:top-4 sm:right-4 w-8 h-8 rounded-full bg-black/5 flex items-center justify-center text-[#111111] pressable hover:bg-black/10 z-10"
+              >
+                <X className="w-4 h-4" />
+              </button>
 
-            {/* Badge Rosette visual */}
-            <div className="flex flex-col items-center text-center pt-2 pb-4">
-              <div className="mb-3">
-                <ScallopedBadge
-                  value={selectedBadge.value}
-                  label={selectedBadge.label}
-                  type={selectedBadge.type}
-                  isLocked={selectedBadge.isLocked}
-                />
-              </div>
+              {/* Badge Rosette visual */}
+              <div className="flex flex-col items-center">
+                <div className="mb-1.5 sm:mb-2">
+                  <ScallopedBadge
+                    value={selectedBadge.value}
+                    label={selectedBadge.label}
+                    type={selectedBadge.type}
+                    isLocked={selectedBadge.isLocked}
+                  />
+                </div>
 
-              <span className="text-[10px] font-bold text-[#8B5CF6] uppercase tracking-wider bg-[#8B5CF6]/10 px-3 py-0.5 rounded-full mb-1">
-                {selectedBadge.type === 'milestone' ? 'पावन सोपान' : 'अखण्ड साधना'}
-              </span>
-              <h3 className="font-devanagari font-bold text-xl text-[#111111] mt-1">
-                {selectedBadge.titleDevanagari}
-              </h3>
+                <span className="text-[10px] font-bold text-[#8B5CF6] uppercase tracking-wider bg-[#8B5CF6]/10 px-2.5 py-0.5 rounded-full mb-1">
+                  {selectedBadge.type === 'milestone' ? 'पावन सोपान' : 'अखण्ड साधना'}
+                </span>
+                <h3 className="font-devanagari font-bold text-base sm:text-lg text-[#111111] mt-0.5 leading-snug">
+                  {selectedBadge.titleDevanagari}
+                </h3>
 
-              <div className="mt-2">
-                {selectedBadge.isLocked ? (
-                  <span className="inline-flex items-center gap-1 text-xs font-semibold text-amber-700 bg-amber-50 border border-amber-200/60 px-3 py-1 rounded-full">
-                    साधनारत (प्रगति पर)
-                  </span>
-                ) : (
-                  <span className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200/60 px-3 py-1 rounded-full">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                    सिद्ध सोपान (श्रीजी अनुग्रह)
-                  </span>
-                )}
+                <div className="mt-1">
+                  {selectedBadge.isLocked ? (
+                    <span className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-semibold text-amber-700 bg-amber-50 border border-amber-200/60 px-2.5 py-0.5 rounded-full">
+                      साधनारत (प्रगति पर)
+                    </span>
+                  ) : (
+                    <span className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200/60 px-2.5 py-0.5 rounded-full">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                      सिद्ध सोपान (श्रीजी अनुग्रह)
+                    </span>
+                  )}
+                </div>
               </div>
             </div>
 
-            {/* Devotional blessing content */}
-            <div className="space-y-3 pt-2 border-t border-black/5 text-left">
+            {/* Devotional blessing content - Flex-1 scrollable body */}
+            <div className="flex-1 min-h-0 overflow-y-auto px-4 sm:px-6 py-3 space-y-2.5 text-left overscroll-contain">
               {/* Shriji Blessing */}
-              <div className="bg-[#FAF8F5] p-3.5 rounded-2xl border-l-[3px] border-[#D4A359]">
+              <div className="bg-[#FAF8F5] p-3 rounded-2xl border-l-[3px] border-[#D4A359]">
                 <span className="text-[10.5px] font-bold text-[#C85A32] uppercase tracking-wider flex items-center gap-1.5 mb-1">
                   <Sparkles className="w-3.5 h-3.5 text-[#D4A359]" />
                   श्रीजी का पावन आशीष
@@ -513,7 +707,7 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
               </div>
 
               {/* Spiritual Significance */}
-              <div className="bg-[#F8F9FA] p-3.5 rounded-2xl border border-black/5">
+              <div className="bg-[#F8F9FA] p-3 rounded-2xl border border-black/5">
                 <span className="text-[10.5px] font-bold text-[#14213D] uppercase tracking-wider block mb-1">
                   रसिक सम्प्रदाय भाव एवं महात्म्य
                 </span>
@@ -523,7 +717,7 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
               </div>
 
               {/* Sadhana Requirement */}
-              <div className="bg-white p-3.5 rounded-2xl border border-black/10">
+              <div className="bg-white p-3 rounded-2xl border border-black/10">
                 <span className="text-[10.5px] font-bold text-[#6B6F6B] uppercase tracking-wider block mb-1">
                   अनुष्ठान पूर्णता हेतु नियम
                 </span>
@@ -533,16 +727,133 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
               </div>
             </div>
 
-            {/* Bottom Dismiss Button */}
-            <button
-              type="button"
-              onClick={() => setSelectedBadge(null)}
-              className="w-full mt-5 py-3 rounded-2xl bg-[#14213D] text-[#B6FF2E] text-xs font-bold uppercase tracking-wider pressable shadow-xs"
-            >
-              जय श्री राधे • प्रणाम
-            </button>
+            {/* Bottom Dismiss Button - Fixed anchored footer */}
+            <div className="shrink-0 p-3.5 sm:p-5 pt-2 border-t border-black/[0.04] bg-white">
+              <button
+                type="button"
+                onClick={() => setSelectedBadge(null)}
+                className="w-full py-2.5 sm:py-3 rounded-2xl bg-[#14213D] text-[#B6FF2E] text-xs font-bold uppercase tracking-wider pressable shadow-xs"
+              >
+                जय श्री राधे • प्रणाम
+              </button>
+            </div>
           </div>
-        </div>
+        </div>,
+        document.body
+      )}
+
+      {/* Sacred Sadhana Rules & Discipline Modal */}
+      {isRulesModalOpen && typeof document !== 'undefined' && createPortal(
+        <div
+          className={`fixed inset-0 z-50 bg-black/75 flex items-center justify-center p-3 sm:p-4 overflow-hidden overscroll-none transition-opacity ${
+            isRulesClosing ? 'modal-backdrop-exit' : 'modal-backdrop-enter'
+          }`}
+          onClick={handleCloseRules}
+        >
+          <div
+            className={`bg-white rounded-[28px] sm:rounded-[32px] w-full max-w-lg shadow-2xl relative max-h-[min(90vh,620px)] sm:max-h-[min(86vh,640px)] flex flex-col overflow-hidden ${
+              isRulesClosing ? 'modal-dialog-exit' : 'modal-dialog-enter'
+            }`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div className="shrink-0 p-4 sm:p-5 pb-3 text-center relative border-b border-black/[0.04]">
+              <button
+                type="button"
+                onClick={handleCloseRules}
+                aria-label="Close rules sheet"
+                className="absolute top-3.5 right-3.5 sm:top-4 sm:right-4 w-8 h-8 rounded-full bg-black/5 flex items-center justify-center text-[#111111] pressable hover:bg-black/10 z-10"
+              >
+                <X className="w-4 h-4" />
+              </button>
+
+              <div className="w-10 h-10 rounded-2xl bg-[#B84A28]/10 text-[#B84A28] flex items-center justify-center mx-auto mb-2">
+                <ShieldCheck className="w-5 h-5" />
+              </div>
+              <span className="text-[10px] font-bold text-[#B84A28] uppercase tracking-wider bg-[#B84A28]/10 px-2.5 py-0.5 rounded-full mb-1">
+                रसिक सम्प्रदाय अनुशासन
+              </span>
+              <h3 className="font-devanagari font-bold text-lg sm:text-xl text-[#111111] mt-0.5">
+                साधना सिद्धि व अनुष्ठान नियम
+              </h3>
+              <p className="text-xs text-[#6B6F6B] mt-0.5">
+                श्री वृन्दावन धाम की नित्य निकुंज उपासना का पावन विधान
+              </p>
+            </div>
+
+            {/* Scrollable Rules List */}
+            <div className="flex-1 min-h-0 overflow-y-auto px-4 sm:px-6 py-3.5 space-y-3 text-left overscroll-contain">
+              <div className="bg-[#FAF8F5] p-3.5 rounded-2xl border-l-[3px] border-[#D4A359]">
+                <div className="flex items-center gap-2 mb-1">
+                  <Flame className="w-4 h-4 text-[#C85A32]" />
+                  <h4 className="font-devanagari font-bold text-sm text-[#111111]">
+                    १. अखंड निष्ठा सूत्र (Daily Streak)
+                  </h4>
+                </div>
+                <p className="text-xs text-[#555555] leading-relaxed">
+                  प्रतिदिन कम से कम १ माला जप अथवा ५ मिनट ध्यान साधना करने पर अखंड निष्ठा का सूत्र सक्रिय रहता है। निरंतरता ही रसिक साधना की प्राणशक्ति है।
+                </p>
+              </div>
+
+              <div className="bg-[#F8F9FA] p-3.5 rounded-2xl border border-black/5">
+                <div className="flex items-center gap-2 mb-1">
+                  <Award className="w-4 h-4 text-[#8B5CF6]" />
+                  <h4 className="font-devanagari font-bold text-sm text-[#111111]">
+                    २. जप माला गणना (1 Mala = 108 Beads)
+                  </h4>
+                </div>
+                <p className="text-xs text-[#555555] leading-relaxed">
+                  १०८ बार पावन युगल नाम का एकाग्र उच्चारण। सुमेरु का उल्लंघन न करते हुए मन को श्रीजी के चरणारविन्द में एकाग्र रखना चाहिए।
+                </p>
+              </div>
+
+              <div className="bg-[#FAF8F5] p-3.5 rounded-2xl border-l-[3px] border-emerald-500">
+                <div className="flex items-center gap-2 mb-1">
+                  <Wind className="w-4 h-4 text-emerald-600" />
+                  <h4 className="font-devanagari font-bold text-sm text-[#111111]">
+                    ३. अंतरंग मानसी सेवा व ध्यान (Dhyana Flow)
+                  </h4>
+                </div>
+                <p className="text-xs text-[#555555] leading-relaxed">
+                  शांत निकुंज कक्ष में बैठकर सांसों के साथ नाम का स्मरण। चित्त वृत्ति निरोध द्वारा मन को सांसारिक विक्षेपों से मुक्त कर नित्य विहार रस में स्थित करना।
+                </p>
+              </div>
+
+              <div className="bg-white p-3.5 rounded-2xl border border-black/10">
+                <div className="flex items-center gap-2 mb-1">
+                  <CalendarCheck className="w-4 h-4 text-[#22C55E]" />
+                  <h4 className="font-devanagari font-bold text-sm text-[#111111]">
+                    ४. पावन एकादशी व प्रदोष नियम
+                  </h4>
+                </div>
+                <p className="text-xs text-[#555555] leading-relaxed">
+                  पवित्र तिथियों पर सात्विक फलाहार या निर्जल व्रत, अतिरिक्त नाम संकीर्तन और संतों की वाणी का अध्ययन करना सिद्धि प्रदायक है।
+                </p>
+              </div>
+            </div>
+
+            {/* Footer */}
+            <div className="shrink-0 p-3.5 sm:p-5 pt-2 border-t border-black/[0.04] bg-white">
+              <button
+                type="button"
+                onClick={() => setIsRulesModalOpen(false)}
+                className="w-full py-2.5 sm:py-3 rounded-2xl bg-[#14213D] text-[#B6FF2E] text-xs font-bold uppercase tracking-wider pressable shadow-xs"
+              >
+                सत्य संकल्प • जय श्री राधे
+              </button>
+            </div>
+          </div>
+        </div>,
+        document.body
+      )}
+
+      {/* Floating Apple-grade Toast Notification */}
+      {toastMessage && typeof document !== 'undefined' && createPortal(
+        <div className="fixed bottom-24 sm:bottom-10 left-1/2 -translate-x-1/2 z-[60] bg-[#14213D] text-[#B6FF2E] px-4 py-2.5 rounded-full shadow-2xl text-xs font-bold flex items-center gap-2 apple-dialog-enter border border-white/10 max-w-[90vw] truncate">
+          <CheckCircle2 className="w-4 h-4 text-[#B6FF2E] shrink-0" />
+          <span className="truncate">{toastMessage}</span>
+        </div>,
+        document.body
       )}
     </div>
   );

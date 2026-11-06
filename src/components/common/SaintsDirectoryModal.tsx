@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, Search, BookOpen, ChevronRight } from 'lucide-react';
 import { SacredDatabase, CanonicalSaint } from '../../services/sacredDatabase';
 
@@ -17,7 +17,31 @@ export const SaintsDirectoryModal: React.FC<SaintsDirectoryModalProps> = ({
   const [selectedTradition, setSelectedTradition] = useState('all');
   const [expandedSaintId, setExpandedSaintId] = useState<string | null>(null);
 
-  if (!isOpen) return null;
+  const [isRendered, setIsRendered] = useState(isOpen);
+  const [isClosing, setIsClosing] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      setIsRendered(true);
+      setIsClosing(false);
+    } else if (isRendered) {
+      setIsClosing(true);
+      const timer = setTimeout(() => {
+        setIsRendered(false);
+        setIsClosing(false);
+      }, 200);
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen, isRendered]);
+
+  const handleDismiss = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      onClose();
+    }, 200);
+  };
+
+  if (!isRendered) return null;
 
   const allSaints = SacredDatabase.getAllSaints(selectedTradition);
   const filtered = query.trim()
@@ -42,11 +66,15 @@ export const SaintsDirectoryModal: React.FC<SaintsDirectoryModalProps> = ({
     <div
       role="dialog"
       aria-modal="true"
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/45 backdrop-blur-md transition-all apple-view-enter"
-      onClick={onClose}
+      onClick={handleDismiss}
+      className={`fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/75 transition-opacity ${
+        isClosing ? 'modal-backdrop-exit' : 'modal-backdrop-enter'
+      }`}
     >
       <div
-        className="w-full max-w-3xl bg-white/95 dark:bg-[#14213D]/95 backdrop-blur-2xl border border-white/90 dark:border-white/10 shadow-[0_24px_70px_rgba(0,0,0,0.18)] rounded-[32px] overflow-hidden flex flex-col max-h-[88vh]"
+        className={`w-full max-w-3xl bg-white dark:bg-[#14213D] border border-white/90 dark:border-white/10 shadow-[0_24px_70px_rgba(0,0,0,0.35)] rounded-[32px] overflow-hidden flex flex-col max-h-[88vh] ${
+          isClosing ? 'modal-dialog-exit' : 'modal-dialog-enter'
+        }`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
@@ -61,7 +89,7 @@ export const SaintsDirectoryModal: React.FC<SaintsDirectoryModalProps> = ({
           </div>
           <button
             type="button"
-            onClick={onClose}
+            onClick={handleDismiss}
             className="w-8 h-8 rounded-full bg-black/5 dark:bg-white/10 flex items-center justify-center text-[#555555] hover:text-black dark:text-slate-300 dark:hover:text-white pressable"
           >
             <X className="w-4 h-4" />

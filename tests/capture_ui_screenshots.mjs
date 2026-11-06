@@ -72,6 +72,15 @@ async function run() {
     await page.waitForTimeout(600);
     await page.screenshot({ path: path.join(outDir, 'desktop-06-milestones.png') });
     console.log('Captured: desktop-06-milestones.png');
+
+    // Click on a badge rosette to open the blessing modal
+    const badgeBtn = await page.$('[role="button"]:has-text("Niyam"), [role="button"]:has-text("Mala"), button:has-text("Niyam"), button:has-text("Mala")');
+    if (badgeBtn) {
+      await badgeBtn.click();
+      await page.waitForTimeout(600);
+      await page.screenshot({ path: path.join(outDir, 'desktop-07-blessing-modal.png') });
+      console.log('Captured: desktop-07-blessing-modal.png');
+    }
   }
 
   await desktopContext.close();
