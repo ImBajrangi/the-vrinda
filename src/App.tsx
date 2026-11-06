@@ -1070,6 +1070,15 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
             setIsGuideModalOpen(false);
             setActivePillarModal('japa');
           }}
+          onOpenPlayer={() => {
+            setIsGuideModalOpen(false);
+            setShowPlayer(true);
+            setIsPlayingAudio(true);
+          }}
+          onOpenReader={() => {
+            setIsGuideModalOpen(false);
+            setActiveTab('padavali');
+          }}
         />
         {/* CMS, SEO & Headless Architecture Manager */}
         <CMSEditorialBadge currentPad={currentPad} activeTab={activeTab} />
