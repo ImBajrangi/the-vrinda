@@ -125,7 +125,17 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 }) => {
   const allPadas = SacredDatabase.getAllPadas();
   const allGranthas = SacredDatabase.getAllGranthas();
-  const availableRagas = SacredDatabase.getAvailableRagas();
+
+  const [searchQuery, setSearchQuery] = useState(selectedSearchQuery || '');
+  const [selectedGrantha, setSelectedGrantha] = useState<string>(
+    selectedGranthaId || getReaderStateSync().selectedTradition || 'all'
+  );
+  const [selectedRaga, setSelectedRaga] = useState<string>('all');
+
+  // Dynamically compute available classical ragas based on selected scripture collection
+  const availableRagas = useMemo(() => {
+    return SacredDatabase.getAvailableRagas(selectedGrantha);
+  }, [selectedGrantha]);
 
   const initialReader = getReaderStateSync();
   const initialPad =
@@ -134,10 +144,6 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     allPadas[0];
 
   const [selectedPad, setSelectedPad] = useState<SacredPad>(initialPad);
-  const [searchQuery, setSearchQuery] = useState(selectedSearchQuery || '');
-  const [selectedGrantha, setSelectedGrantha] = useState<string>(
-    selectedGranthaId || initialReader.selectedTradition || 'all'
-  );
 
   useEffect(() => {
     if (selectedGranthaId) {
@@ -167,7 +173,6 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     }
   }, [selectedPad]);
 
-  const [selectedRaga, setSelectedRaga] = useState<string>('all');
   const [showTransliteration, setShowTransliteration] = useState(
     initialReader.showTransliteration ?? true
   );
@@ -457,6 +462,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
   const handleSelectGrantha = (granthaId: string) => {
     setSelectedGrantha(granthaId);
+    setSelectedRaga('all');
     setVisibleCount(30);
     saveReaderState({ selectedTradition: granthaId });
   };
@@ -756,45 +762,56 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer select-none ${
                   selectedGrantha === g.id
                     ? 'bg-[#18181B] text-white shadow-xs'
-                    : 'bg-white text-[#71717A] hover:text-[#18181B] border border-neutral-200/80'
+                    : 'bg-white text-[#71717A] hover:text-[#18181B] border border-neutral-200/80 hover:bg-neutral-50'
                 }`}
               >
-                {g.name}
+                <span>{g.name}</span>
+                <span className="ml-1 text-[10px] opacity-70 font-mono">({g.count})</span>
               </button>
             ))}
           </div>
 
-          {/* Raga Sub-Filter Strip */}
-          <div className="flex items-center gap-1 overflow-x-auto no-scrollbar text-xs">
-            <span className="text-[10px] font-mono font-bold text-[#71717A] uppercase tracking-wider shrink-0 mr-1.5">
-              RAGA:
-            </span>
-            <button
-              type="button"
-              onClick={() => setSelectedRaga('all')}
-              className={`px-2.5 py-0.5 rounded-full text-[11px] font-medium transition-colors cursor-pointer select-none ${
-                selectedRaga === 'all'
-                  ? 'bg-amber-500 text-white shadow-xs'
-                  : 'bg-neutral-100 text-[#71717A] hover:text-[#18181B]'
-              }`}
-            >
-              All
-            </button>
-            {availableRagas.slice(0, 10).map((r) => (
+          {/* Raga Sub-Filter Strip: Only display if real classical ragas exist for current scope */}
+          {availableRagas.length > 0 && (
+            <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar text-xs pt-2 border-t border-neutral-100">
+              <span className="text-[10px] font-mono font-bold text-[#71717A] uppercase tracking-wider shrink-0 mr-1">
+                RAGA:
+              </span>
               <button
-                key={r}
                 type="button"
-                onClick={() => setSelectedRaga(r)}
-                className={`px-2.5 py-0.5 rounded-full text-[11px] font-medium whitespace-nowrap transition-colors cursor-pointer select-none ${
-                  selectedRaga === r
-                    ? 'bg-amber-500 text-white shadow-xs'
+                onClick={() => setSelectedRaga('all')}
+                className={`px-3 py-1 rounded-full text-[11px] font-semibold transition-colors cursor-pointer select-none ${
+                  selectedRaga === 'all'
+                    ? 'bg-[#18181B] text-white shadow-xs'
                     : 'bg-neutral-100 text-[#71717A] hover:text-[#18181B]'
                 }`}
               >
-                {r}
+                All
               </button>
-            ))}
-          </div>
+              {availableRagas.map((r) => {
+                const count = allPadas.filter(
+                  (p) =>
+                    (selectedGrantha === 'all' || p.collectionId === selectedGrantha) &&
+                    p.rag === r
+                ).length;
+                return (
+                  <button
+                    key={r}
+                    type="button"
+                    onClick={() => setSelectedRaga(r)}
+                    className={`px-3 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap transition-colors cursor-pointer select-none ${
+                      selectedRaga === r
+                        ? 'bg-[#18181B] text-white shadow-xs'
+                        : 'bg-neutral-100 text-[#71717A] hover:text-[#18181B]'
+                    }`}
+                  >
+                    {r}
+                    <span className="ml-1 text-[9.5px] opacity-60 font-mono">({count})</span>
+                  </button>
+                );
+              })}
+            </div>
+          )}
         </div>
       )}
 

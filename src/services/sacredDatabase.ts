@@ -32,8 +32,92 @@ export interface SearchCatalogItem {
   snippet: string;
 }
 
+// Non-musical metadata / meter labels to exclude from classical raga classifications
+const NON_RAGAS = new Set([
+  'स्तोत्र पाठ',
+  'लता',
+  'रस',
+  'सखी',
+  'वाग',
+  'के',
+  'कवित्त / सवैया',
+  'कवित्त',
+  'सवैया',
+  'सामान्य',
+]);
+
+/**
+ * Normalizes all 4,204 canonical padas into uniform SacredPad instances
+ * with authenticated grantha attribution, classical raga harmonization, and full verse structure.
+ */
+function normalizeCanonicalPad(raw: any): SacredPad {
+  const author = (raw.author || raw.composer || 'श्री रसिक परंपरा').trim();
+  const title = (raw.titleDevanagari || raw.title || 'श्री पद').trim();
+
+  // 1. Resolve canonical collection / grantha ID matching real textual lineage
+  let collectionId = raw.collectionId || raw.granthaId || '';
+  if (!collectionId || collectionId === 'rasik-vani' || collectionId === 'other') {
+    if (/स्तोत्र|अष्टक|कटाक्ष/i.test(title)) collectionId = 'stotras';
+    else if (/हरिवंश|हित चौरासी|चतुरासी/i.test(author + title)) collectionId = 'hit-chaurasi';
+    else if (/राधा सुधा निधि|सुधानिधि/i.test(title + author)) collectionId = 'radha-sudha-nidhi';
+    else if (/हरिदास|केलिमाल/i.test(author + title)) collectionId = 'kelimal';
+    else if (/ध्रुवदास/i.test(author)) collectionId = 'bayalees-leela';
+    else if (/सूरदास/i.test(author)) collectionId = 'sur-sagar';
+    else if (/रसखान/i.test(author)) collectionId = 'raskhan-padavali';
+    else if (/लाल बलबीर/i.test(author)) collectionId = 'braj-binod';
+    else if (/कृपालु/i.test(author)) collectionId = 'bhakti-shatak';
+    else if (/सेवक|दामोदरदास/i.test(author)) collectionId = 'sevak-vani';
+    else if (/व्यास/i.test(author)) collectionId = 'vyas-vani';
+    else if (/ललित किशोरी|ललित मोहिनी/i.test(author)) collectionId = 'lalit-kishori-vani';
+    else if (/बिहारिन|भगवत रसिक/i.test(author)) collectionId = 'biharin-dev-vani';
+    else if (/नारायण स्वामी/i.test(author)) collectionId = 'narayan-swami-vani';
+    else if (/हरिव्यास/i.test(author)) collectionId = 'harivyas-dev-vani';
+    else if (/दोहे|दोहा/i.test(author + title)) collectionId = 'braj-dohe';
+    else if (/सवैया/i.test(author + title)) collectionId = 'braj-savaiya';
+    else collectionId = 'rasik-vani-sangrah';
+  }
+
+  // 2. Harmonize authentic Hindustani / Braj classical musical Ragas
+  let rag = (raw.rag || '').trim();
+  if (NON_RAGAS.has(rag)) rag = '';
+  if (rag === 'खंजनाक्षी') rag = 'आसावरी';
+  if (rag === 'सोरठा') rag = 'सोरठ';
+  if (rag === 'मलार') rag = 'मल्हार';
+  if (rag === 'कल्यान') rag = 'कल्याण';
+  if (rag === 'विहागरौ') rag = 'विहाग';
+  if (rag === 'खम्माज' || rag === 'खम्माच') rag = 'खमाच';
+  if (rag === 'कान्हरौ') rag = 'कन्हारो';
+  if (rag === 'वसन्त') rag = 'बसंत';
+
+  // 3. Normalize verses from stanzas if needed
+  let verses = raw.verses;
+  if (!verses || !verses.length) {
+    if (raw.stanzas && raw.stanzas.length) {
+      verses = raw.stanzas.map((st: any, idx: number) => ({
+        stanzaNumber: st.index || idx + 1,
+        linesDevanagari: st.linesDevanagari || [],
+        linesEnglish: st.linesEnglish || [],
+        bhavarth: st.bhavarth || '',
+      }));
+    } else {
+      verses = [{ stanzaNumber: 1, linesDevanagari: [title], linesEnglish: [], bhavarth: '' }];
+    }
+  }
+
+  return {
+    ...raw,
+    collectionId,
+    titleDevanagari: title,
+    titleEnglish: raw.titleEnglish || raw.titleEng || '',
+    author,
+    rag,
+    duration: raw.duration || '05:20',
+    verses,
+  };
+}
+
 // In-Memory Synchronous Pre-warmed Indexes for 0ms Rendering
-const allPadas: SacredPad[] = canonicalPadasData as SacredPad[];
+const allPadas: SacredPad[] = (canonicalPadasData as any[]).map(normalizeCanonicalPad);
 const allGranthas: CanonicalGrantha[] = canonicalGranthasData as CanonicalGrantha[];
 const allSaints: CanonicalSaint[] = canonicalSaintsData as CanonicalSaint[];
 
@@ -90,12 +174,23 @@ export const SacredDatabase = {
     return allSaints.filter((s) => s.tradition === traditionFilter);
   },
 
-  getAvailableRagas(): string[] {
-    const set = new Set<string>();
-    allPadas.forEach((p) => {
-      if (p.rag && p.rag.trim()) set.add(p.rag.trim());
+  getAvailableRagas(granthaId?: string): string[] {
+    const ragaCounts = new Map<string, number>();
+    const padasToScan = (!granthaId || granthaId === 'all')
+      ? allPadas
+      : (padasByGrantha.get(granthaId) || []);
+
+    padasToScan.forEach((p) => {
+      if (p.rag && p.rag.trim()) {
+        const r = p.rag.trim();
+        ragaCounts.set(r, (ragaCounts.get(r) || 0) + 1);
+      }
     });
-    return Array.from(set);
+
+    // Return ragas sorted by highest frequency (most padas first)
+    return Array.from(ragaCounts.entries())
+      .sort((a, b) => b[1] - a[1])
+      .map(([r]) => r);
   },
 
   /**

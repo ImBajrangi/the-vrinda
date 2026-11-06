@@ -37,13 +37,13 @@
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://vrindopnisad.org/?tab=padavali&amp;grantha=radha-sudha-nidhi</loc>
+    <loc>https://vrindopnisad.org/?tab=padavali&amp;grantha=kelimal</loc>
     <lastmod>2026-11-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://vrindopnisad.org/?tab=padavali&amp;grantha=kelimal</loc>
+    <loc>https://vrindopnisad.org/?tab=padavali&amp;grantha=vyas-vani</loc>
     <lastmod>2026-11-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
@@ -55,19 +55,25 @@
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://vrindopnisad.org/?tab=padavali&amp;grantha=sur-sagar</loc>
+    <loc>https://vrindopnisad.org/?tab=padavali&amp;grantha=bhakti-shatak</loc>
     <lastmod>2026-11-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://vrindopnisad.org/?tab=padavali&amp;grantha=raskhan-padavali</loc>
+    <loc>https://vrindopnisad.org/?tab=padavali&amp;grantha=lalit-kishori-vani</loc>
     <lastmod>2026-11-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://vrindopnisad.org/?tab=padavali&amp;grantha=stotras</loc>
+    <loc>https://vrindopnisad.org/?tab=padavali&amp;grantha=biharin-dev-vani</loc>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://vrindopnisad.org/?tab=padavali&amp;grantha=narayan-swami-vani</loc>
     <lastmod>2026-11-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
@@ -79,13 +85,37 @@
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://vrindopnisad.org/?tab=padavali&amp;grantha=bhakti-shatak</loc>
+    <loc>https://vrindopnisad.org/?tab=padavali&amp;grantha=raskhan-padavali</loc>
     <lastmod>2026-11-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://vrindopnisad.org/?tab=padavali&amp;grantha=sevak-vani</loc>
+    <loc>https://vrindopnisad.org/?tab=padavali&amp;grantha=sur-sagar</loc>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://vrindopnisad.org/?tab=padavali&amp;grantha=braj-dohe</loc>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://vrindopnisad.org/?tab=padavali&amp;grantha=braj-savaiya</loc>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://vrindopnisad.org/?tab=padavali&amp;grantha=stotras</loc>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://vrindopnisad.org/?tab=padavali&amp;grantha=rasik-vani-sangrah</loc>
     <lastmod>2026-11-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
