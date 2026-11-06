@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import { Radio, Sun, Heart, Check, Sparkles, ExternalLink } from 'lucide-react';
 import { FloatingNavbar, NavTab } from './components/common/FloatingNavbar';
 import { DynamicNotchNavbar } from './components/common/DynamicNotchNavbar';
@@ -122,7 +122,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
   const [activeSanctuaryStream, setActiveSanctuaryStream] = useState<'ashtayama' | 'audio' | 'dhyana'>('ashtayama');
   const [templeFilter, setTempleFilter] = useState<'all' | 'open' | 'rajbhog' | 'evening'>('all');
 
-  const weekDays = useMemo(() => getDynamicWeekDays(), []);
+  const [weekDays] = useState<DayItem[]>(() => getDynamicWeekDays());
   const featuredPad = SacredDatabase.getAllPadas()[0];
 
   // Global Spotlight Keyboard Shortcut (Cmd+K / Ctrl+K)

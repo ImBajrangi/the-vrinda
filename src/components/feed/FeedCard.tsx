@@ -220,7 +220,7 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
       {/* Header */}
       <div className="flex items-center justify-between gap-2 mb-3">
         <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
-          {!avatarError ? (
+          {post.authorAvatar && !avatarError ? (
             <img
               src={post.authorAvatar}
               alt={post.authorName}

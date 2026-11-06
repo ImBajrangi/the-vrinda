@@ -441,7 +441,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   const handleCopyVerse = (verse: SacredPad['verses'][0], vIdx: number) => {
     const text = [
       `॥ ${selectedPad.titleDevanagari} • पद पंक्ति ${verse.stanzaNumber} ॥`,
-      ...verse.linesDevanagari,
+      ...(verse.linesDevanagari || []),
       ...(verse.bhavarth ? [`भावार्थ: ${verse.bhavarth}`] : []),
       `— रचयिता: ${selectedPad.author} (${selectedPad.collectionId})`,
       'स्रोत: वृन्दोपनिषद् २.० (Vrindopanishad)',
@@ -1110,7 +1110,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
                   {/* Devanagari Verses Typography */}
                   <div className="space-y-2">
-                    {verse.linesDevanagari.map((line, lIdx) => (
+                    {(verse.linesDevanagari || []).map((line, lIdx) => (
                       <p
                         key={lIdx}
                         className={`dhyana-verse-line text-[19px] sm:text-[22px] font-semibold text-[#18181B] ${
@@ -1146,9 +1146,9 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   </div>
 
                   {/* Transliteration */}
-                  {showTransliteration && verse.linesTransliteration.length > 0 && (
+                  {showTransliteration && (verse.linesTransliteration?.length ?? 0) > 0 && (
                     <div className="space-y-0.5 pt-2 border-t border-neutral-100 mt-2">
-                      {verse.linesTransliteration.map((line, lIdx) => (
+                      {verse.linesTransliteration?.map((line, lIdx) => (
                         <p key={lIdx} className="text-xs sm:text-sm text-[#71717A] italic font-serif">
                           {line}
                         </p>

@@ -58,7 +58,19 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
     }
   }, [isOpen]);
 
+  // Lock body scroll while modal is active
+  useEffect(() => {
+    if (isRendered) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [isRendered]);
+
   if (!isRendered) return null;
+  if (typeof document === 'undefined') return null;
 
   // Search Results
   const matchingPadas = (activeFilter === 'all' || activeFilter === 'padas')
@@ -80,18 +92,6 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
     : [];
 
   const totalResults = matchingPadas.length + matchingSaints.length + matchingGranthas.length;
-
-  useEffect(() => {
-    if (isRendered) {
-      const originalOverflow = document.body.style.overflow;
-      document.body.style.overflow = 'hidden';
-      return () => {
-        document.body.style.overflow = originalOverflow;
-      };
-    }
-  }, [isRendered]);
-
-  if (typeof document === 'undefined') return null;
 
   return createPortal(
     <div
