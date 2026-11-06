@@ -362,17 +362,17 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
 
         {/* Sleek Bilingual English Drawer */}
         {showEnglish && post.contentEnglish && (
-          <div className="mt-1.5 p-2.5 rounded-xl bg-white/70 border-l-2 border-[#D4A359] text-xs sm:text-[13px] leading-relaxed text-[#444444] font-sans italic shadow-2xs">
+          <div className="mt-1.5 p-2.5 rounded-xl bg-[#FAF9F6] border border-neutral-200/60 text-xs sm:text-[13px] leading-relaxed text-[#52525B] font-serif italic shadow-2xs">
             <p>{post.contentEnglish}</p>
           </div>
         )}
 
         {/* Devotional AI Summary Drawer */}
         {isSummaryOpen && (
-          <div className="mt-2 bg-[#FFFDF9] border border-[#E9D8B4] border-l-4 border-[#D4A359] rounded-2xl p-3 sm:p-3.5 shadow-xs apple-view-enter text-left">
+          <div className="mt-2 bg-amber-50/50 border border-amber-200/80 rounded-2xl p-3 sm:p-3.5 shadow-xs apple-view-enter text-left">
             <div className="flex items-center justify-between mb-1.5">
-              <span className="text-[10px] font-bold text-[#C85A32] uppercase tracking-wider flex items-center gap-1.5">
-                <Sparkles className="w-3.5 h-3.5 text-[#D4A359]" />
+              <span className="text-[10px] font-bold text-amber-800 uppercase tracking-wider flex items-center gap-1.5 font-mono">
+                <Sparkles className="w-3.5 h-3.5 text-amber-600" />
                 Divine Essence Summary
               </span>
               <button

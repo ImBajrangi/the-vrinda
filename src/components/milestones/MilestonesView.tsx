@@ -707,12 +707,12 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
             {/* Devotional blessing content - Flex-1 scrollable body */}
             <div className="flex-1 min-h-0 overflow-y-auto px-4 sm:px-6 py-3 space-y-2.5 text-left overscroll-contain">
               {/* Shriji Blessing */}
-              <div className="bg-[#FAF8F5] p-3 rounded-2xl border-l-[3px] border-[#D4A359]">
-                <span className="text-[10.5px] font-bold text-[#C85A32] uppercase tracking-wider flex items-center gap-1.5 mb-1">
-                  <Sparkles className="w-3.5 h-3.5 text-[#D4A359]" />
+              <div className="bg-[#FAF9F6] p-3.5 rounded-2xl border border-neutral-200/60 shadow-2xs">
+                <span className="text-[10.5px] font-bold text-amber-800 uppercase tracking-wider flex items-center gap-1.5 mb-1 font-mono">
+                  <Sparkles className="w-3.5 h-3.5 text-amber-600" />
                   Divine Blessing (श्रीजी का पावन आशीष)
                 </span>
-                <p className="text-xs sm:text-sm text-[#333333] leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#18181B] leading-relaxed">
                   {selectedBadge.blessing}
                 </p>
               </div>
@@ -794,14 +794,14 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
 
             {/* Scrollable Rules List */}
             <div className="flex-1 min-h-0 overflow-y-auto px-4 sm:px-6 py-3.5 space-y-3 text-left overscroll-contain">
-              <div className="bg-[#FAF8F5] p-3.5 rounded-2xl border-l-[3px] border-[#D4A359]">
+              <div className="bg-[#FAF9F6] p-3.5 rounded-2xl border border-neutral-200/60 shadow-2xs">
                 <div className="flex items-center gap-2 mb-1">
-                  <Flame className="w-4 h-4 text-[#C85A32]" />
-                  <h4 className="font-semibold text-sm text-[#111111]">
+                  <Flame className="w-4 h-4 text-amber-600" />
+                  <h4 className="font-semibold text-sm text-[#18181B]">
                     1. Unbroken Streak Principle (अखंड निष्ठा)
                   </h4>
                 </div>
-                <p className="text-xs text-[#555555] leading-relaxed">
+                <p className="text-xs text-[#52525B] leading-relaxed">
                   Offering at least 1 mala of Naam Japa or 5 minutes of focused Dhyana daily maintains your unbroken streak. Consistency is the heartbeat of devotional life.
                 </p>
               </div>
@@ -818,14 +818,14 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
                 </p>
               </div>
 
-              <div className="bg-[#FAF8F5] p-3.5 rounded-2xl border-l-[3px] border-purple-500">
+              <div className="bg-[#FAF9F6] p-3.5 rounded-2xl border border-neutral-200/60 shadow-2xs">
                 <div className="flex items-center gap-2 mb-1">
                   <Wind className="w-4 h-4 text-purple-600" />
                   <h4 className="font-semibold text-sm text-[#18181B]">
                     3. Inner Manasi Seva & Meditation (Dhyāna Flow)
                   </h4>
                 </div>
-                <p className="text-xs text-[#555555] leading-relaxed">
+                <p className="text-xs text-[#52525B] leading-relaxed">
                   Sitting in quiet contemplation, aligning breath with the divine name, gently calming worldly distractions into sacred serenity.
                 </p>
               </div>

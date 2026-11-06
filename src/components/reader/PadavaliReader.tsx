@@ -208,7 +208,8 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     pad: SacredPad;
     size?: 'sm' | 'md' | 'lg';
     className?: string;
-  }> = ({ pad, size = 'sm', className = '' }) => {
+    isSelected?: boolean;
+  }> = ({ pad, size = 'sm', className = '', isSelected = false }) => {
     const rawImage = (pad as { imageUrl?: string; artworkUrl?: string }).imageUrl || (pad as { imageUrl?: string; artworkUrl?: string }).artworkUrl;
     const [imgError, setImgError] = useState(false);
 
@@ -231,7 +232,11 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     if (imgError || !rawImage) {
       return (
         <div
-          className={`${sizeClasses} shrink-0 bg-gradient-to-br from-purple-50 via-amber-50/40 to-neutral-50 flex items-center justify-center font-serif font-bold text-purple-800 shadow-2xs select-none ${className}`}
+          className={`${sizeClasses} shrink-0 ${
+            isSelected
+              ? 'bg-[#18181B] text-white shadow-xs'
+              : 'bg-gradient-to-br from-purple-50 via-amber-50/40 to-neutral-50 text-purple-800'
+          } flex items-center justify-center font-serif font-bold shadow-2xs select-none transition-colors duration-200 ${className}`}
         >
           <span className="leading-none">{initial}</span>
         </div>
@@ -830,21 +835,28 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 <div
                   key={pad.id}
                   onClick={() => handleSelectPad(pad)}
-                  className={`p-3 rounded-[20px] transition-all cursor-pointer flex items-center justify-between gap-3 border ${
+                  className={`p-3 rounded-[20px] transition-all cursor-pointer flex items-center justify-between gap-3 relative border ${
                     isSelected
-                      ? 'bg-white text-[#18181B] border-l-4 border-l-[#7C3AED] border-neutral-200/90 shadow-[0_4px_16px_rgba(124,58,237,0.08)]'
+                      ? 'bg-white text-[#18181B] border-neutral-300 ring-1 ring-purple-500/20 shadow-[0_4px_20px_rgba(124,58,237,0.06)]'
                       : 'bg-white/80 hover:bg-white text-[#18181B] border-neutral-200/70 hover:border-neutral-300'
                   }`}
                 >
-                  <div className="flex items-center gap-2.5 min-w-0 flex-1">
-                    <ScriptureArtwork pad={pad} size="sm" />
+                  {/* Modern Active Indicator: Straight sleek vertical pill (detached from corner radius) */}
+                  {isSelected && (
+                    <span className="absolute left-1.5 top-1/2 -translate-y-1/2 w-1 h-7 rounded-full bg-[#7C3AED]" />
+                  )}
+
+                  <div className={`flex items-center gap-2.5 min-w-0 flex-1 ${isSelected ? 'pl-2' : ''}`}>
+                    <ScriptureArtwork pad={pad} size="sm" isSelected={isSelected} />
                     <div className="min-w-0 flex-1">
-                      <div className="flex items-center gap-1.5 text-[10px] font-bold text-[#7C3AED] uppercase tracking-wider font-mono">
-                        <span>#{idx + 1}</span>
-                        <span>•</span>
-                        <span className="truncate">{pad.rag}</span>
+                      <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider font-mono">
+                        <span className={`px-2 py-0.5 rounded-full ${isSelected ? 'bg-purple-100/80 text-purple-900 font-bold' : 'bg-purple-50 text-[#7C3AED]'}`}>
+                          #{idx + 1}
+                        </span>
+                        <span className="text-[#71717A]">•</span>
+                        <span className="truncate text-purple-700 font-semibold">{pad.rag}</span>
                       </div>
-                      <div className="font-serif font-bold text-xs sm:text-[13px] truncate text-[#18181B]">
+                      <div className="font-serif font-bold text-xs sm:text-[13px] truncate text-[#18181B] mt-0.5">
                         {pad.titleDevanagari}
                       </div>
                       <div className="text-[10.5px] text-[#71717A] truncate font-medium">
@@ -863,6 +875,8 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                     className={`w-7 h-7 rounded-full shrink-0 flex items-center justify-center transition-colors cursor-pointer ${
                       isCurrentlyPlaying
                         ? 'bg-[#7C3AED] text-white shadow-xs'
+                        : isSelected
+                        ? 'bg-[#18181B] text-white shadow-xs'
                         : 'bg-neutral-100 hover:bg-neutral-200 text-[#18181B]'
                     }`}
                   >
@@ -1028,7 +1042,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
           {/* Collapsible Sacred Devotional Card */}
           {isSummaryOpen && (
-            <div className="bg-amber-50/50 border border-amber-200/80 border-l-4 border-l-amber-500 rounded-2xl p-4 sm:p-5 mb-6 shadow-xs apple-view-enter">
+            <div className="bg-amber-50/50 border border-amber-200/80 rounded-2xl p-4 sm:p-5 mb-6 shadow-xs apple-view-enter">
               <div className="flex items-center justify-between pb-2 mb-2 border-b border-amber-200/60">
                 <div className="flex items-center gap-1.5 text-xs font-bold text-amber-900">
                   <Sparkles className="w-4 h-4 text-amber-600" />
@@ -1071,17 +1085,24 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   onClick={() => setActiveStanzaIndex(vIdx)}
                   className={`p-4 sm:p-6 rounded-[24px] transition-all duration-300 relative cursor-pointer ${
                     isStanzaActive
-                      ? 'ring-2 ring-purple-500/30 border-l-4 border-l-[#7C3AED] bg-purple-50/20 shadow-xs'
+                      ? 'bg-white border border-purple-200/90 ring-1 ring-purple-500/20 shadow-[0_4px_24px_rgba(124,58,237,0.06)]'
                       : isStanzaDimmed
                       ? 'bg-neutral-50/60 border border-neutral-200/40 opacity-60'
                       : 'bg-white border border-neutral-200/80 shadow-[0_2px_8px_rgba(0,0,0,0.02)]'
                   }`}
                 >
+                  {/* Clean Inset Active Pill Indicator */}
+                  {isStanzaActive && (
+                    <span className="absolute left-2.5 top-6 bottom-6 w-1 rounded-full bg-[#7C3AED]" />
+                  )}
+
                   {/* Stanza Utility Header: Active Indicator + Verse Copy Action */}
-                  <div className="flex items-center justify-between pb-2.5 mb-2.5 border-b border-neutral-100">
-                    <span className="text-[10px] font-bold text-[#7C3AED] uppercase tracking-wider font-mono flex items-center gap-1">
-                      {isStanzaActive ? '🪷 Active Verse • Stanza ' : 'Stanza '}
-                      {verse.stanzaNumber}
+                  <div className={`flex items-center justify-between pb-2.5 mb-2.5 border-b border-neutral-100 ${isStanzaActive ? 'pl-2' : ''}`}>
+                    <span className="text-[10px] font-bold uppercase tracking-wider font-mono flex items-center gap-1.5">
+                      <span className={`px-2.5 py-0.5 rounded-full ${isStanzaActive ? 'bg-purple-100/80 text-purple-900 font-bold' : 'bg-purple-50 text-[#7C3AED]'}`}>
+                        {isStanzaActive ? 'Active Verse • Stanza ' : 'Stanza '}
+                        {verse.stanzaNumber}
+                      </span>
                     </span>
                     <button
                       type="button"
@@ -1154,10 +1175,10 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                     </div>
                   )}
 
-                  {/* Hindi Meaning / Bhavarth Block with gold accent border */}
+                  {/* Hindi Meaning / Bhavarth Block with gold accent badge */}
                   {verse.bhavarth && (
-                    <div className={`${isFocusReadingMode ? 'block' : 'xl:hidden'} bg-[#F4F4F5]/70 border-l-[3px] border-amber-500 p-3.5 rounded-r-2xl mt-3.5 shadow-2xs`}>
-                      <span className="text-[10px] font-bold text-amber-700 uppercase tracking-wider block mb-1 font-mono">
+                    <div className={`${isFocusReadingMode ? 'block' : 'xl:hidden'} bg-[#FAF9F6] border border-neutral-200/60 p-3.5 rounded-2xl mt-3.5 shadow-2xs`}>
+                      <span className="text-[10px] font-bold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full uppercase tracking-wider block mb-1.5 font-mono w-fit">
                         Divine Meaning & Purport (भावार्थ)
                       </span>
                       <p className="text-xs sm:text-sm text-[#18181B] leading-relaxed font-sans font-normal">
@@ -1232,8 +1253,8 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
               <div className="space-y-3.5 max-h-[50vh] overflow-y-auto no-scrollbar pr-1">
                 {selectedPad.verses.map((v) => (
-                  <div key={v.stanzaNumber} className="bg-[#F4F4F5]/70 p-3.5 rounded-2xl border-l-[3px] border-amber-500">
-                    <span className="text-[10px] font-bold text-amber-700 uppercase tracking-wider block mb-1 font-mono">
+                  <div key={v.stanzaNumber} className="bg-[#FAF9F6] p-3.5 rounded-2xl border border-neutral-200/60 shadow-2xs">
+                    <span className="text-[10px] font-bold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full uppercase tracking-wider block mb-1.5 font-mono w-fit">
                       Stanza {v.stanzaNumber} Purport
                     </span>
                     <p className="text-xs leading-relaxed text-[#18181B]">
@@ -1292,7 +1313,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             </div>
 
             {/* Featured Divine Devotional Summary Card */}
-            <div className="bg-amber-50/50 p-4 rounded-2xl border border-amber-200/80 border-l-4 border-l-amber-500 shadow-xs space-y-2">
+            <div className="bg-amber-50/50 p-4 rounded-2xl border border-amber-200/80 shadow-xs space-y-2">
               <div className="flex items-center gap-1.5 text-xs font-bold text-amber-900">
                 <Sparkles className="w-4 h-4 text-amber-600" />
                 <span>॥ Divine Essence & Spiritual Theme (दिव्य भाव संक्षेप) ॥</span>
@@ -1314,8 +1335,8 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             {/* Verse-by-verse bhavarth */}
             <div className="space-y-3">
               {selectedPad.verses.map((v) => (
-                <div key={v.stanzaNumber} className="bg-[#F4F4F5]/70 p-3.5 rounded-2xl border-l-[3px] border-amber-500">
-                  <span className="text-[10px] font-bold text-amber-700 uppercase tracking-wider block mb-1 font-mono">
+                <div key={v.stanzaNumber} className="bg-[#FAF9F6] p-3.5 rounded-2xl border border-neutral-200/60 shadow-2xs">
+                  <span className="text-[10px] font-bold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full uppercase tracking-wider block mb-1.5 font-mono w-fit">
                     Stanza {v.stanzaNumber} Purport
                   </span>
                   <p className="text-xs sm:text-sm leading-relaxed text-[#18181B]">
@@ -1391,13 +1412,13 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               {BRAJ_GLOSSARY.map((item, idx) => (
                 <div
                   key={idx}
-                  className="p-3.5 rounded-2xl bg-[#F4F4F5]/70 border-l-[3px] border-amber-500 border border-neutral-200/60"
+                  className="p-3.5 rounded-2xl bg-[#FAF9F6] border border-neutral-200/60 shadow-2xs"
                 >
                   <div className="flex items-baseline justify-between gap-2">
                     <span className="font-serif font-bold text-sm text-[#18181B]">
                       {item.term}
                     </span>
-                    <span className="text-[10px] font-mono text-amber-700 italic">
+                    <span className="text-[10px] font-mono text-amber-800 bg-amber-50 px-2 py-0.5 rounded-full font-semibold">
                       {item.transliteration}
                     </span>
                   </div>

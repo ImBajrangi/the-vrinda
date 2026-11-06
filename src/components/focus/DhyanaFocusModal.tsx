@@ -733,10 +733,10 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
 
                 {/* Contemplative Quote Essence Card */}
                 {isQuoteSummaryOpen && (
-                  <div className="p-3.5 rounded-xl bg-amber-50/60 border border-[#E9D8B4] border-l-4 border-[#D4A359] space-y-1.5 apple-view-enter">
-                    <div className="flex items-center justify-between pb-1 mb-1 border-b border-black/[0.04]">
-                      <span className="text-[11px] font-bold text-[#B84A28] flex items-center gap-1">
-                        <Sparkles className="w-3 h-3 text-[#D4A359]" />
+                  <div className="p-3.5 rounded-2xl bg-amber-50/50 border border-amber-200/80 shadow-2xs space-y-1.5 apple-view-enter">
+                    <div className="flex items-center justify-between pb-1 mb-1 border-b border-amber-200/60">
+                      <span className="text-[11px] font-bold text-amber-900 flex items-center gap-1">
+                        <Sparkles className="w-3 h-3 text-amber-600" />
                         <span>॥ Divine Essence (दिव्य सार) ॥</span>
                       </span>
                       <button
