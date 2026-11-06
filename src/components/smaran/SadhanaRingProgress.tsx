@@ -144,7 +144,6 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
               <span className="text-[#18181B] font-bold">
                 {malasDevanagari} of {malasTargetDevanagari} माला पूर्ण
               </span>
-              <span className="text-neutral-300">•</span>
               <span className="text-purple-700 font-mono font-semibold bg-purple-50 px-2.5 py-0.5 rounded-full">
                 मनका {beadInCurrentMala} / 108
               </span>

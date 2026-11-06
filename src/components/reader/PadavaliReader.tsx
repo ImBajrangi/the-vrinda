@@ -482,7 +482,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             Sacred Padavali & Stotras
           </h1>
           <p className="text-xs sm:text-sm text-[#71717A] font-medium mt-1">
-            Rasik Vani & Sacred Scriptures • {filteredPads.length} verses available
+            Rasik Vani & Sacred Scriptures ({filteredPads.length} verses available)
           </p>
         </div>
 
@@ -771,7 +771,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 }`}
               >
                 <div className={`text-[10px] font-medium uppercase tracking-wider font-mono ${isSelected ? 'text-purple-300' : 'text-[#7C3AED]'}`}>
-                  #{idx + 1} • {pad.rag}
+                  #{idx + 1}{pad.rag ? `  ${pad.rag}` : ''}
                 </div>
                 <div className="font-serif font-bold text-xs truncate max-w-[170px] mt-0.5">
                   {pad.titleDevanagari}
@@ -826,8 +826,9 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                         <span className={`px-2 py-0.5 rounded-full ${isSelected ? 'bg-purple-100/80 text-purple-900 font-bold' : 'bg-purple-50 text-[#7C3AED]'}`}>
                           #{idx + 1}
                         </span>
-                        <span className="text-[#71717A]">•</span>
-                        <span className="truncate text-purple-700 font-semibold">{pad.rag}</span>
+                        {pad.rag && (
+                          <span className="truncate text-purple-700 font-semibold">{pad.rag}</span>
+                        )}
                       </div>
                       <div className="font-serif font-bold text-xs sm:text-[13px] truncate text-[#18181B] mt-0.5">
                         {pad.titleDevanagari}
@@ -902,9 +903,16 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 <span className="text-xs font-bold text-[#7C3AED] bg-purple-50 px-3 py-1 rounded-full uppercase tracking-wider font-mono">
                   {granthaDisplayName}
                 </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold text-amber-800 bg-amber-50 font-mono">
-                  राग {selectedPad.rag} • {selectedPad.duration}
-                </span>
+                {selectedPad.rag && (
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold text-amber-800 bg-amber-50 font-mono">
+                    राग {selectedPad.rag}
+                  </span>
+                )}
+                {selectedPad.duration && (
+                  <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold text-neutral-600 bg-neutral-100 font-mono">
+                    {selectedPad.duration}
+                  </span>
+                )}
                 <span className="hidden sm:inline-flex items-center gap-1.5 text-xs font-medium text-purple-700 bg-purple-50 px-2.5 py-1 rounded-full">
                   <Music className="w-3.5 h-3.5 text-purple-600" />
                   Melodic Audio Available
@@ -1073,7 +1081,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                         {isStanzaActive && (
                           <span className="w-1.5 h-1.5 rounded-full bg-[#7C3AED]" />
                         )}
-                        {isStanzaActive ? 'Active Verse • Stanza ' : 'Stanza '}
+                        {isStanzaActive ? 'Active Verse Stanza ' : 'Stanza '}
                         {verse.stanzaNumber}
                       </span>
                     </span>

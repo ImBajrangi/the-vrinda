@@ -33,7 +33,7 @@ export const AshtayamaTimelineDeck: React.FC = () => {
         </div>
 
         <span className="text-[11px] font-bold text-amber-700 bg-amber-50 px-3 py-1 rounded-full font-mono self-start sm:self-auto">
-          • {currentActive.nameEnglish} (Active Now)
+          {currentActive.nameEnglish} (Active Now)
         </span>
       </div>
 
