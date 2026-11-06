@@ -20,6 +20,8 @@ import { BeginnerGuideModal } from './components/smaran/BeginnerGuideModal';
 import { SACRED_FEED_POSTS } from './data/feed';
 import { SACRED_PADS } from './data/padas';
 import { SacredPad, SadhanaState, DhyanaImpactState, DhyanaSessionRecord } from './types/devotional';
+import { seo } from './services/seoService';
+import { CMSEditorialBadge } from './components/common/CMSEditorialBadge';
 import {
   loadCachedSadhanaSync,
   loadCachedSadhana,
@@ -100,6 +102,40 @@ export function App() {
     window.addEventListener('keydown', handleGlobalKey);
     return () => window.removeEventListener('keydown', handleGlobalKey);
   }, []);
+
+  // Real-time Dynamic SEO & URL Permalinks Synchronization
+  useEffect(() => {
+    switch (activeTab) {
+      case 'smaran':
+        seo.updateSEO({
+          tab: 'smaran',
+          title: 'Home Sanctuary • दैनिक स्मरण व नित्य सेवा',
+          description: 'दैनिक अष्टयाम लीला, नाम जप, वाणी श्रवण और स्वाध्याय का पावन साधना स्थल।',
+        });
+        break;
+      case 'padavali':
+        seo.updateSEO({
+          tab: 'padavali',
+          title: 'Scriptures Repository • ४२००+ पावन पद वाणी संग्रह',
+          description: 'हित चौरासी, राधा सुधा निधि, केलिमाल, सूरसागर, रसखान पदावली सहित समस्त रसिक वाणियों का अगाध संग्रह।',
+        });
+        break;
+      case 'feed':
+        seo.updateSEO({
+          tab: 'feed',
+          title: 'Darshan Feed • नित्य वृन्दावन धाम दर्शन',
+          description: 'श्री वृन्दावन धाम के प्रमुख मंदिरों के प्रत्यक्ष दर्शन, उत्सव, आरती व नित्य विलास।',
+        });
+        break;
+      case 'milestones':
+        seo.updateSEO({
+          tab: 'milestones',
+          title: 'Devotion Milestones • अखंड निष्ठा व साधना सोपान',
+          description: 'अखंड साधना स्ट्रीक, अंतरंग ध्यान सिद्धि एवं श्रीजी कृपा के पावन सोपान।',
+        });
+        break;
+    }
+  }, [activeTab]);
 
   useEffect(() => {
     let isMounted = true;
@@ -995,6 +1031,8 @@ export function App() {
             setActivePillarModal('japa');
           }}
         />
+        {/* CMS, SEO & Headless Architecture Manager */}
+        <CMSEditorialBadge currentPad={currentPad} activeTab={activeTab} />
       </div>
     </div>
   );

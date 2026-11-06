@@ -129,8 +129,11 @@ export const SacredDatabase = {
       if (list && Array.isArray(list)) return list;
     } catch { }
     try {
-      const raw = localStorage.getItem('vv_bookmarked_pads');
-      return raw ? JSON.parse(raw) : [];
+      if (typeof window !== 'undefined' && window.localStorage) {
+        const raw = window.localStorage.getItem('vv_bookmarked_pads');
+        return raw ? JSON.parse(raw) : [];
+      }
+      return [];
     } catch {
       return [];
     }
@@ -145,7 +148,9 @@ export const SacredDatabase = {
       await set('vv_bookmarked_pads', updated);
     } catch { }
     try {
-      localStorage.setItem('vv_bookmarked_pads', JSON.stringify(updated));
+      if (typeof window !== 'undefined' && window.localStorage) {
+        window.localStorage.setItem('vv_bookmarked_pads', JSON.stringify(updated));
+      }
     } catch { }
 
     return !exists;

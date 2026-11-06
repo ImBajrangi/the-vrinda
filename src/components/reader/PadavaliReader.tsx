@@ -24,6 +24,7 @@ import {
 import { SacredDatabase } from '../../services/sacredDatabase';
 import { SacredPad } from '../../types/devotional';
 import { ArtworkGraphicSlot } from '../common/ArtworkGraphicSlot';
+import { seo } from '../../services/seoService';
 import {
   getReaderStateSync,
   saveReaderState,
@@ -147,6 +148,20 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   }, [selectedSearchQuery]);
   // Backward compatibility alias for boundary test assertions
   const selectedTradition = selectedGrantha;
+
+  // Real-time Dynamic Verse SEO, Meta tags, and Schema.org synchronization
+  useEffect(() => {
+    if (selectedPad) {
+      seo.updateSEO({
+        tab: 'padavali',
+        pad: selectedPad,
+        title: `${selectedPad.titleDevanagari} (${selectedPad.author})`,
+        description:
+          selectedPad.verses?.[0]?.bhavarth ||
+          `राग ${selectedPad.rag} में निबद्ध पावन पद। रचयिता: ${selectedPad.author}। वृन्दोपनिषद् 2.0`,
+      });
+    }
+  }, [selectedPad]);
 
   const [selectedRaga, setSelectedRaga] = useState<string>('all');
   const [showTransliteration, setShowTransliteration] = useState(
