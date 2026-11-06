@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { X, Flame, Music2, BookOpen, Clock, Sparkles, ArrowRight } from 'lucide-react';
 
 interface BeginnerGuideModalProps {
@@ -12,12 +13,23 @@ export const BeginnerGuideModal: React.FC<BeginnerGuideModalProps> = ({
   onClose,
   onStartChanting,
 }) => {
-  if (!isOpen) return null;
+  useEffect(() => {
+    if (isOpen) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [isOpen]);
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/45 backdrop-blur-sm animate-fade-in">
+  if (!isOpen) return null;
+  if (typeof document === 'undefined') return null;
+
+  return createPortal(
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-fade-in">
       <div
-        className="w-full max-w-xl bg-white rounded-[32px] p-6 sm:p-7 shadow-2xl border border-white/90 max-h-[90vh] overflow-y-auto no-scrollbar apple-sheet-enter text-[#111111]"
+        className="w-full max-w-xl bg-white rounded-[32px] p-6 sm:p-7 shadow-2xl border border-white/90 max-h-[90vh] overflow-y-auto no-scrollbar apple-sheet-enter text-[#18181B]"
         role="dialog"
         aria-modal="true"
       >
@@ -132,6 +144,7 @@ export const BeginnerGuideModal: React.FC<BeginnerGuideModalProps> = ({
           <ArrowRight className="w-4 h-4" />
         </button>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };

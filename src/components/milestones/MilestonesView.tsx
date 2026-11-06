@@ -53,6 +53,17 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
   const [isRulesClosing, setIsRulesClosing] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
+  // Lock body scroll when blessing sheet or rules modal is active
+  useEffect(() => {
+    if (selectedBadge || isRulesModalOpen) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [selectedBadge, isRulesModalOpen]);
+
   const handleCloseBadge = () => {
     setIsBadgeClosing(true);
     setTimeout(() => {
@@ -599,22 +610,22 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
       </div>
 
       {/* Card 3: Antaranga Sewa (Contemplative & Mental Stillness Milestones) */}
-      <div className="mt-6 bg-[#F4F4F4] rounded-[28px] p-3.5 sm:p-6 border border-white/80 shadow-card">
-        <div className="flex items-center justify-between mb-4 pb-3 border-b border-black/5">
+      <div className="mt-6 bg-[#FAF9F6] rounded-[28px] p-3.5 sm:p-6 border border-neutral-200/80 shadow-2xs">
+        <div className="flex items-center justify-between mb-4 pb-3 border-b border-neutral-100">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-emerald-500/10 flex items-center justify-center">
-              <Wind className="w-4 h-4 text-emerald-600" />
+            <div className="w-8 h-8 rounded-full bg-purple-50 flex items-center justify-center">
+              <Wind className="w-4 h-4 text-purple-600" />
             </div>
             <div>
-              <h2 className="text-sm sm:text-base font-semibold text-[#111111]">
+              <h2 className="text-sm sm:text-base font-semibold text-[#18181B]">
                 Antaranga Dhyana Mastery
               </h2>
-              <span className="text-[11px] text-[#6B6F6B]">
+              <span className="text-[11px] text-[#71717A]">
                 Mindful meditation, stillness, and inner manasi seva
               </span>
             </div>
           </div>
-          <span className="text-xs font-semibold text-emerald-800 bg-white px-2.5 py-1 rounded-full border border-black/5 shadow-xs">
+          <span className="text-xs font-semibold text-purple-700 bg-purple-50 px-3 py-1 rounded-full shadow-2xs font-mono">
             Mastered: {completedAntarangaCount} / {antarangaBadges.length}
           </span>
         </div>
@@ -637,7 +648,7 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
       {/* Interactive Sacred Blessing Sheet Modal rendered at root via Portal */}
       {selectedBadge && typeof document !== 'undefined' && createPortal(
         <div
-          className={`fixed inset-0 z-50 bg-black/75 flex items-center justify-center p-3 sm:p-4 overflow-hidden overscroll-none transition-opacity ${
+          className={`fixed inset-0 z-[100] bg-black/75 flex items-center justify-center p-3 sm:p-4 overflow-hidden overscroll-none transition-opacity ${
             isBadgeClosing ? 'modal-backdrop-exit' : 'modal-backdrop-enter'
           }`}
           onClick={handleCloseBadge}
@@ -680,12 +691,12 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
 
                 <div className="mt-1">
                   {selectedBadge.isLocked ? (
-                    <span className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-semibold text-amber-700 bg-amber-50 border border-amber-200/60 px-2.5 py-0.5 rounded-full">
+                    <span className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-semibold text-amber-700 bg-amber-50 px-3 py-1 rounded-full font-mono">
                       In Progress (साधनारत)
                     </span>
                   ) : (
-                    <span className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200/60 px-2.5 py-0.5 rounded-full">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                    <span className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-semibold text-purple-700 bg-purple-50 px-3 py-1 rounded-full font-mono">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-purple-600" />
                       Achieved • Shriji's Grace (सिद्ध सोपान)
                     </span>
                   )}
@@ -745,7 +756,7 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
       {/* Sacred Sadhana Rules & Discipline Modal */}
       {isRulesModalOpen && typeof document !== 'undefined' && createPortal(
         <div
-          className={`fixed inset-0 z-50 bg-black/75 flex items-center justify-center p-3 sm:p-4 overflow-hidden overscroll-none transition-opacity ${
+          className={`fixed inset-0 z-[100] bg-black/75 flex items-center justify-center p-3 sm:p-4 overflow-hidden overscroll-none transition-opacity ${
             isRulesClosing ? 'modal-backdrop-exit' : 'modal-backdrop-enter'
           }`}
           onClick={handleCloseRules}
@@ -807,10 +818,10 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
                 </p>
               </div>
 
-              <div className="bg-[#FAF8F5] p-3.5 rounded-2xl border-l-[3px] border-emerald-500">
+              <div className="bg-[#FAF8F5] p-3.5 rounded-2xl border-l-[3px] border-purple-500">
                 <div className="flex items-center gap-2 mb-1">
-                  <Wind className="w-4 h-4 text-emerald-600" />
-                  <h4 className="font-semibold text-sm text-[#111111]">
+                  <Wind className="w-4 h-4 text-purple-600" />
+                  <h4 className="font-semibold text-sm text-[#18181B]">
                     3. Inner Manasi Seva & Meditation (Dhyāna Flow)
                   </h4>
                 </div>

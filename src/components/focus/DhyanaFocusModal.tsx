@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { X, Play, Pause, Volume2, VolumeX, Sparkles, Brain, Wind, Heart, RotateCcw, ShieldCheck, Flame, Compass, Check, BookMarked, Feather } from 'lucide-react';
 import {
   formatDevanagariNumerals,
@@ -339,15 +340,27 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
 
   const breath = getBreathLabel();
 
-  if (!isRendered) return null;
+  // Lock body scroll while dhyana focus modal is displayed
+  useEffect(() => {
+    if (isRendered) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [isRendered]);
 
-  return (
+  if (!isRendered) return null;
+  if (typeof document === 'undefined') return null;
+
+  return createPortal(
     <div
       role="dialog"
       aria-modal="true"
       aria-label="गहन ध्यान व मानसिक एकाग्रता"
       onClick={handleDismiss}
-      className={`fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/75 transition-opacity ${
+      className={`fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 bg-black/75 transition-opacity ${
         isClosing ? 'modal-backdrop-exit' : 'modal-backdrop-enter'
       }`}
     >
@@ -853,6 +866,7 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
         </div>
 
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };

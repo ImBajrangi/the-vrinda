@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { X, Flame, Music2, BookOpen, Plus, Minus, ChevronRight, Wind, Play, Pause } from 'lucide-react';
 import type { SadhanaState, SacredPad } from '../../types/devotional';
 
@@ -31,7 +32,18 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
   isPlayingAudio = false,
   onToggleAudio,
 }) => {
+  useEffect(() => {
+    if (isOpen && pillarType) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [isOpen, pillarType]);
+
   if (!isOpen || !pillarType) return null;
+  if (typeof document === 'undefined') return null;
 
   const handleAddJapa = (malas: number) => {
     const newTotal = Math.max(0, sadhana.japaCompleted + malas);
@@ -485,8 +497,8 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
     }
   };
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm animate-fade-in">
+  return createPortal(
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-fade-in">
       <div
         className="w-full max-w-lg bg-white rounded-[28px] p-5 sm:p-6 shadow-2xl border border-neutral-200/80 max-h-[90vh] overflow-y-auto no-scrollbar apple-sheet-enter text-[#18181B]"
         role="dialog"
@@ -508,6 +520,7 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
 
         {renderContent()}
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };

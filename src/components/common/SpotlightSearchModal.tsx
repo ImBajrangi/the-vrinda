@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { Search, X, BookOpen, Music, Sparkles, ChevronRight, ArrowUpRight } from 'lucide-react';
 import { SacredDatabase, CanonicalSaint, CanonicalGrantha } from '../../services/sacredDatabase';
 import { SacredPad } from '../../types/devotional';
@@ -80,12 +81,24 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
 
   const totalResults = matchingPadas.length + matchingSaints.length + matchingGranthas.length;
 
-  return (
+  useEffect(() => {
+    if (isRendered) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [isRendered]);
+
+  if (typeof document === 'undefined') return null;
+
+  return createPortal(
     <div
       role="dialog"
       aria-modal="true"
       onClick={handleDismiss}
-      className={`fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-24 px-3 sm:px-4 bg-black/75 transition-opacity ${
+      className={`fixed inset-0 z-[100] flex items-start justify-center pt-16 sm:pt-24 px-3 sm:px-4 bg-black/75 transition-opacity ${
         isClosing ? 'modal-backdrop-exit' : 'modal-backdrop-enter'
       }`}
     >
@@ -192,7 +205,7 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
               {/* Saints Section */}
               {matchingSaints.length > 0 && (
                 <div>
-                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#15803D] block mb-2">
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7C3AED] block mb-2">
                     रसिक संत परंपरा
                   </span>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
@@ -203,16 +216,16 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
                           onSelectSaint?.(s);
                           onClose();
                         }}
-                        className="flex items-center gap-2 p-2.5 rounded-2xl bg-black/[0.02] dark:bg-white/[0.03] hover:bg-black/[0.05] dark:hover:bg-white/[0.06] border border-black/5 dark:border-white/5 cursor-pointer pressable"
+                        className="flex items-center gap-2 p-2.5 rounded-2xl bg-[#FAF9F6] hover:bg-neutral-100 border border-neutral-200/60 cursor-pointer"
                       >
-                        <div className="w-7 h-7 rounded-full bg-emerald-500/10 flex items-center justify-center text-[#15803D] shrink-0 text-xs">
+                        <div className="w-7 h-7 rounded-full bg-purple-50 flex items-center justify-center text-purple-700 shrink-0 text-xs">
                           🪷
                         </div>
                         <div className="min-w-0">
-                          <h4 className="text-xs font-bold text-[#111111] dark:text-white truncate">
+                          <h4 className="text-xs font-bold text-[#18181B] truncate">
                             {s.name}
                           </h4>
-                          <span className="text-[9px] text-slate-500 truncate block">
+                          <span className="text-[9px] text-[#71717A] truncate block">
                             {s.tradition} • {s.articleCount} पद
                           </span>
                         </div>
@@ -272,11 +285,12 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
         </div>
 
         {/* Modal Footer */}
-        <div className="px-4 sm:px-5 py-2.5 bg-black/[0.03] dark:bg-white/[0.03] border-t border-black/[0.05] dark:border-white/5 flex items-center justify-between text-[11px] text-slate-500">
+        <div className="px-4 sm:px-5 py-2.5 bg-[#FAF9F6] border-t border-neutral-100 flex items-center justify-between text-[11px] text-[#71717A]">
           <span>{totalResults} परिणाम उपलब्ध</span>
           <span className="hidden sm:inline">वृन्दोपनिषद् 2.0 • अगाध निकुंज रस</span>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };

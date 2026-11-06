@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { createPortal } from 'react-dom';
 import {
   Play,
   Pause,
@@ -22,6 +23,7 @@ import {
 } from 'lucide-react';
 import { SacredDatabase } from '../../services/sacredDatabase';
 import { SacredPad } from '../../types/devotional';
+import { ArtworkGraphicSlot } from '../common/ArtworkGraphicSlot';
 import {
   getReaderStateSync,
   saveReaderState,
@@ -190,44 +192,25 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     }, 200);
   };
 
-  // Helper for scripture / saint squircle artwork thumbnail matching reference layout
-  const getPadArtwork = (pad: SacredPad) => {
-    const coll = pad.collectionId?.toLowerCase() || '';
-    const author = pad.author?.toLowerCase() || '';
-    const title = (pad.titleDevanagari || '').toLowerCase();
+  // Lock body scroll when either mobile commentary drawer or lexicon sheet modal is active
+  useEffect(() => {
+    if (isGlossaryOpen || isCommentaryOpen) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [isGlossaryOpen, isCommentaryOpen]);
 
-    if (coll.includes('chaurasi') || author.includes('हरिवंश') || author.includes('harivansh')) {
-      return 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=300&q=80';
-    }
-    if (coll.includes('sudhanidhi') || coll.includes('sudha')) {
-      return 'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=300&q=80';
-    }
-    if (coll.includes('kelimal') || author.includes('हरिदास') || author.includes('haridas')) {
-      return 'https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=300&q=80';
-    }
-    if (coll.includes('sur') || author.includes('सूरदास') || author.includes('surdas')) {
-      return 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=300&q=80';
-    }
-    if (author.includes('मीरा') || author.includes('meera')) {
-      return 'https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=300&q=80';
-    }
-    if (author.includes('रसखान') || author.includes('raskhan')) {
-      return 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=300&q=80';
-    }
-    if (title.includes('राधा') || title.includes('कृपा कटाक्ष') || title.includes('स्तुति')) {
-      return 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=300&q=80';
-    }
-    return 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=300&q=80';
-  };
-
-  // Dedicated component to guarantee 0 broken image [?] placeholders with elegant fallback monograms
+  // Dedicated component to guarantee 0 broken image [?] placeholders with elegant devotional typography monograms
   const ScriptureArtwork: React.FC<{
     pad: SacredPad;
     size?: 'sm' | 'md' | 'lg';
     className?: string;
   }> = ({ pad, size = 'sm', className = '' }) => {
+    const rawImage = (pad as { imageUrl?: string; artworkUrl?: string }).imageUrl || (pad as { imageUrl?: string; artworkUrl?: string }).artworkUrl;
     const [imgError, setImgError] = useState(false);
-    const artworkUrl = getPadArtwork(pad);
 
     useEffect(() => {
       setImgError(false);
@@ -240,15 +223,15 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     }, [pad.titleDevanagari, pad.author]);
 
     const sizeClasses = {
-      sm: 'w-9 h-9 rounded-[14px] text-xs',
+      sm: 'w-10 h-10 rounded-[14px] text-xs',
       md: 'w-12 h-12 rounded-[16px] text-sm',
       lg: 'w-14 h-14 sm:w-16 sm:h-16 rounded-[20px] text-base',
     }[size];
 
-    if (imgError || !artworkUrl) {
+    if (imgError || !rawImage) {
       return (
         <div
-          className={`${sizeClasses} shrink-0 bg-gradient-to-br from-purple-50 via-amber-50/60 to-neutral-100 border border-neutral-200/80 flex items-center justify-center font-serif font-bold text-purple-800 shadow-2xs select-none ${className}`}
+          className={`${sizeClasses} shrink-0 bg-gradient-to-br from-purple-50 via-amber-50/40 to-neutral-50 flex items-center justify-center font-serif font-bold text-purple-800 shadow-2xs select-none ${className}`}
         >
           <span className="leading-none">{initial}</span>
         </div>
@@ -257,10 +240,10 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
     return (
       <div
-        className={`${sizeClasses} shrink-0 overflow-hidden relative shadow-2xs border border-neutral-200/80 bg-neutral-100 flex items-center justify-center ${className}`}
+        className={`${sizeClasses} shrink-0 overflow-hidden relative shadow-2xs bg-neutral-100 flex items-center justify-center ${className}`}
       >
         <img
-          src={artworkUrl}
+          src={rawImage}
           alt={pad.titleDevanagari}
           className="w-full h-full object-cover"
           loading="lazy"
@@ -958,6 +941,16 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               </button>
             </div>
 
+            {/* Dedicated Sacred Artwork Canvas Frame: Empty slot ready for high-res devotional art */}
+            <ArtworkGraphicSlot
+              aspectRatio="video"
+              theme="purple"
+              placeholderCategory="music"
+              placeholderLabel="Sacred Pada Leela Illustration • Ready for Artwork"
+              className="mb-4 shadow-2xs"
+              roundedClassName="rounded-[22px]"
+            />
+
             {/* Middle Section: Avatar + Title + Lineage (Full Width, Never Squeezed!) */}
             <div className="flex items-start gap-4">
               <ScriptureArtwork pad={selectedPad} size="lg" />
@@ -967,7 +960,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 <h2 className="font-serif font-bold text-2xl sm:text-3xl lg:text-[28px] text-[#18181B] leading-tight">
                   {cleanTitle}
                 </h2>
-                {selectedPad.titleEnglish && (
+                {selectedPad.titleEnglish && !/^test/i.test(selectedPad.titleEnglish) && (
                   <p className="text-xs sm:text-sm text-[#71717A] font-serif italic mt-1">
                     {selectedPad.titleEnglish}
                   </p>
@@ -1266,11 +1259,11 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       </div>
 
       {/* ========================================================================= */}
-      {/* Mobile Rasik Commentary Drawer (< xl)                                     */}
+      {/* Mobile Rasik Commentary Drawer (< xl) Portal                               */}
       {/* ========================================================================= */}
-      {isCommentaryOpen && (
+      {isCommentaryOpen && typeof document !== 'undefined' && createPortal(
         <div
-          className={`xl:hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-end justify-center p-0 sm:p-4 transition-opacity ${
+          className={`xl:hidden fixed inset-0 z-[100] bg-black/60 backdrop-blur-xs flex items-end justify-center p-0 sm:p-4 transition-opacity ${
             isCommentaryClosing ? 'modal-backdrop-exit' : 'modal-backdrop-enter'
           }`}
           onClick={handleCloseCommentary}
@@ -1352,15 +1345,16 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               Dismiss • Close
             </button>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
 
       {/* ========================================================================= */}
-      {/* Mobile & Desktop Braj Sacred Lexicon Sheet Modal                          */}
+      {/* Mobile & Desktop Braj Sacred Lexicon Sheet Modal Portal                    */}
       {/* ========================================================================= */}
-      {isGlossaryOpen && (
+      {isGlossaryOpen && typeof document !== 'undefined' && createPortal(
         <div
-          className={`fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-end sm:items-center justify-center p-0 sm:p-4 transition-opacity ${
+          className={`fixed inset-0 z-[100] bg-black/60 backdrop-blur-xs flex items-end sm:items-center justify-center p-0 sm:p-4 transition-opacity ${
             isGlossaryClosing ? 'modal-backdrop-exit' : 'modal-backdrop-enter'
           }`}
           onClick={handleCloseGlossary}
@@ -1425,7 +1419,8 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               Dismiss • Close
             </button>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );
