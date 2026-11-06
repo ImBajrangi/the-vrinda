@@ -138,3 +138,4 @@ export function generateAllSitemaps(outputDirs = ['public', 'dist']) {
 }
 
 generateAllSitemaps();
+
