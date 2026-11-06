@@ -553,105 +553,105 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
             <div className="space-y-5">
               
               {/* Hero Impact Science Card */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-purple-50/50 border border-purple-100 space-y-3 shadow-xs">
-                <div className="flex items-center justify-between">
+              <div className="p-3.5 sm:p-4 rounded-2xl bg-purple-50/50 border border-purple-100/90 space-y-2 shadow-2xs">
+                <div className="flex items-center justify-between gap-2">
                   <div className="flex items-center gap-2">
-                    <Brain className="w-5 h-5 text-[#7C3AED]" />
-                    <h3 className="font-bold text-sm text-[#18181B]">
-                      मानसिक एकाग्रता एवं ध्यान का वैज्ञानिक व आध्यात्मिक प्रभाव
+                    <Brain className="w-4 h-4 text-[#7C3AED] shrink-0" />
+                    <h3 className="font-serif font-bold text-xs sm:text-sm text-[#18181B]">
+                      वैज्ञानिक प्रभाव
                     </h3>
                   </div>
-                  <span className="text-xs font-mono font-bold text-purple-700 bg-purple-100/80 px-2.5 py-0.5 rounded-full">
-                    Neural & Spiritual Coherence
+                  <span className="text-[10px] font-mono font-bold text-purple-700 bg-purple-100/80 px-2 py-0.5 rounded-full shrink-0">
+                    Neural Coherence
                   </span>
                 </div>
-                <p className="text-xs text-[#52525B] leading-relaxed font-serif">
-                  "योगश्चित्तवृत्तिनिरोधः" — पतंजलि योगसूत्र। नाम स्मरण और अखंड ध्यान के समय मस्तिष्क का 'डिफ़ॉल्ट मोड नेटवर्क' (DMN) शांत होता है, जिससे चिंता, मानसिक भटकाव और चंचलता विलीन होकर अंतःकरण में निर्मल शांति का प्राकट्य होता है।
+                <p className="text-[11.5px] text-[#52525B] leading-relaxed font-serif">
+                  "योगश्चित्तवृत्तिनिरोधः" — नाम ध्यान से मानसिक भटकाव शांत होकर निर्मल शांति का प्राकट्य होता है।
                 </p>
               </div>
 
               {/* 4 Impact Visualizers */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
                 
                 {/* 1. Manas Shanti Index */}
-                <div className="p-4 rounded-2xl bg-white border border-neutral-200/80 shadow-2xs space-y-2">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-[#18181B] flex items-center gap-1.5">
-                      <ShieldCheck className="w-4 h-4 text-purple-700" />
-                      मानसिक स्थिरता सूचकांक (Manas Shanti)
+                <div className="p-3 sm:p-3.5 rounded-2xl bg-white border border-neutral-200/80 shadow-2xs space-y-1.5">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-xs font-bold text-[#18181B] flex items-center gap-1.5 truncate">
+                      <ShieldCheck className="w-3.5 h-3.5 text-purple-700 shrink-0" />
+                      मानसिक स्थिरता
                     </span>
-                    <span className="font-doto text-xs font-bold text-purple-700">
+                    <span className="font-mono text-xs font-bold text-purple-700 bg-purple-50 px-2 py-0.5 rounded-full shrink-0">
                       {stillnessScore}/100
                     </span>
                   </div>
-                  <div className="w-full bg-neutral-200/60 h-2 rounded-full overflow-hidden">
+                  <div className="w-full bg-neutral-100 h-1.5 rounded-full overflow-hidden">
                     <div
                       className="bg-[#7C3AED] h-full rounded-full transition-all duration-500"
                       style={{ width: `${stillnessScore}%` }}
                     />
                   </div>
                   <p className="text-[11px] text-[#71717A]">
-                    निरंतर जप से मन की एकाग्रता क्षमता में वृद्धि और तनाव हार्मोन (Cortisol) में प्रत्यक्ष कमी।
+                    एकाग्रता में वृद्धि एवं तनाव में प्रत्यक्ष कमी।
                   </p>
                 </div>
 
                 {/* 2. Beta Wave to Alpha-Theta Shift */}
-                <div className="p-4 rounded-2xl bg-white border border-black/[0.06] shadow-xs space-y-2">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-[#111111] flex items-center gap-1.5">
-                      <Compass className="w-4 h-4 text-[#7C3AED]" />
-                      तरंग रूपांतरण (Neural Frequency Shift)
+                <div className="p-3 sm:p-3.5 rounded-2xl bg-white border border-neutral-200/80 shadow-2xs space-y-1.5">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-xs font-bold text-[#18181B] flex items-center gap-1.5 truncate">
+                      <Compass className="w-3.5 h-3.5 text-[#7C3AED] shrink-0" />
+                      तरंग रूपांतरण
                     </span>
-                    <span className="font-doto text-xs font-bold text-[#7C3AED]">
+                    <span className="font-mono text-xs font-bold text-purple-700 bg-purple-50 px-2 py-0.5 rounded-full shrink-0">
                       -{betaWaveNoiseReduction}% Noise
                     </span>
                   </div>
-                  <div className="w-full bg-black/[0.06] h-2 rounded-full overflow-hidden">
+                  <div className="w-full bg-neutral-100 h-1.5 rounded-full overflow-hidden">
                     <div
                       className="bg-[#8B5CF6] h-full rounded-full transition-all duration-500"
                       style={{ width: `${betaWaveNoiseReduction}%` }}
                     />
                   </div>
-                  <p className="text-[11px] text-[#6B6F6B]">
-                    बीटा तरंगों (तनावपूर्ण विचार) का अल्फ़ा-थीटा तरंगों (गहन ध्यान व सृजनात्मक शांति) में रूपांतरण।
+                  <p className="text-[11px] text-[#71717A]">
+                    चंचल विचारों का गहन शांति में रूपांतरण।
                   </p>
                 </div>
 
                 {/* 3. Devotional Heart Coherence */}
-                <div className="p-4 rounded-2xl bg-white border border-black/[0.06] shadow-xs space-y-2">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-[#111111] flex items-center gap-1.5">
-                      <Heart className="w-4 h-4 text-[#E11D48]" />
-                      हृदय समरसता (Heart-Brain Coherence)
+                <div className="p-3 sm:p-3.5 rounded-2xl bg-white border border-neutral-200/80 shadow-2xs space-y-1.5">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-xs font-bold text-[#18181B] flex items-center gap-1.5 truncate">
+                      <Heart className="w-3.5 h-3.5 text-rose-600 shrink-0" />
+                      हृदय समरसता
                     </span>
-                    <span className="font-doto text-xs font-bold text-[#E11D48]">
-                      उत्कृष्ट (Optimal)
+                    <span className="font-mono text-xs font-bold text-rose-700 bg-rose-50 px-2 py-0.5 rounded-full shrink-0">
+                      उत्कृष्ट
                     </span>
                   </div>
-                  <div className="w-full bg-black/[0.06] h-2 rounded-full overflow-hidden">
-                    <div className="bg-[#F43F5E] h-full w-[85%] rounded-full" />
+                  <div className="w-full bg-neutral-100 h-1.5 rounded-full overflow-hidden">
+                    <div className="bg-rose-500 h-full w-[85%] rounded-full" />
                   </div>
-                  <p className="text-[11px] text-[#6B6F6B]">
-                    नाम संकीर्तन से हृदय गति परिवर्तनशीलता (HRV) में संतुलन, जिससे भाव भक्ति का विकास होता है।
+                  <p className="text-[11px] text-[#71717A]">
+                    हृदय गति व श्वास में पूर्ण संतुलन।
                   </p>
                 </div>
 
                 {/* 4. Daily Mindful Habit Streak */}
-                <div className="p-4 rounded-2xl bg-white border border-black/[0.06] shadow-xs space-y-2">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-[#111111] flex items-center gap-1.5">
-                      <Flame className="w-4 h-4 text-[#D97706]" />
-                      अखण्ड ध्यानावधान (Daily Focus Continuity)
+                <div className="p-3 sm:p-3.5 rounded-2xl bg-white border border-neutral-200/80 shadow-2xs space-y-1.5">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-xs font-bold text-[#18181B] flex items-center gap-1.5 truncate">
+                      <Flame className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+                      नित्य अभ्यास
                     </span>
-                    <span className="font-doto text-xs font-bold text-[#D97706]">
-                      १४ दिवस अखण्ड
+                    <span className="font-mono text-xs font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full shrink-0">
+                      १४ दिवस
                     </span>
                   </div>
-                  <div className="w-full bg-black/[0.06] h-2 rounded-full overflow-hidden">
-                    <div className="bg-[#F59E0B] h-full w-[90%] rounded-full" />
+                  <div className="w-full bg-neutral-100 h-1.5 rounded-full overflow-hidden">
+                    <div className="bg-amber-500 h-full w-[90%] rounded-full" />
                   </div>
-                  <p className="text-[11px] text-[#6B6F6B]">
-                    नित्य केवल १५ मिनट का शांत ध्यान मन के संस्कारों को शुद्ध कर नित्य निकुंज रस में लीन करता है।
+                  <p className="text-[11px] text-[#71717A]">
+                    नित्य ध्यान से संस्कारों की शुद्धि।
                   </p>
                 </div>
 
@@ -670,7 +670,7 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold text-[#92400E] flex items-center gap-1.5">
                     <Feather className="w-4 h-4 text-[#D97706]" />
-                    रसिक वाणी अनुशीलन • {currentAphorism.source}
+                    रसिक वाणी अनुशीलन ({currentAphorism.source})
                   </span>
                   <div className="flex items-center gap-1.5">
                     {rasikAphorisms.map((_, i) => (
