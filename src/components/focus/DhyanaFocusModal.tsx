@@ -359,21 +359,21 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
       >
         
         {/* Modal Top Bar */}
-        <div className="flex items-center justify-between p-4 sm:p-5 border-b border-black/[0.06] bg-white">
+        <div className="flex items-center justify-between p-4 sm:p-5 border-b border-neutral-100 bg-white">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-[#22C55E]/15 text-[#15803D] border border-[#22C55E]/25 flex items-center justify-center font-bold text-lg">
+            <div className="w-10 h-10 rounded-2xl bg-purple-50 text-purple-700 flex items-center justify-center font-bold text-lg">
               🧘
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h2 className="font-devanagari font-bold text-lg sm:text-xl text-[#111111]">
+                <h2 className="font-serif font-bold text-lg sm:text-xl text-[#18181B]">
                   गहन ध्यान व चित्त एकाग्रता
                 </h2>
-                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-[#22C55E]/15 text-[#15803D] border border-[#22C55E]/30 font-mono">
+                <span className="text-[10px] uppercase font-bold tracking-wider px-2.5 py-0.5 rounded-full bg-purple-50 text-purple-700 font-mono">
                   Dhyāna Focus
                 </span>
               </div>
-              <p className="text-xs text-[#6B6F6B]">
+              <p className="text-xs text-[#71717A]">
                 Cognitive Serenity • Sacred Pranayama • Distraction-Free Flow
               </p>
             </div>
@@ -386,10 +386,10 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
               onClick={toggleSoundscape}
               aria-label={isAudioEnabled ? 'Disable Meditative Drone' : 'Enable Meditative Drone'}
               title="108Hz Sacred Tanpura Drone"
-              className={`p-2.5 rounded-full border transition-colors ${
+              className={`p-2.5 rounded-full transition-colors cursor-pointer ${
                 isAudioEnabled
-                  ? 'bg-[#22C55E]/15 text-[#15803D] border-[#22C55E]/40'
-                  : 'bg-black/[0.04] text-[#6B6F6B] border-black/[0.06] hover:text-[#111111]'
+                  ? 'bg-purple-100 text-purple-800'
+                  : 'bg-neutral-100 text-[#71717A] hover:text-[#18181B]'
               }`}
             >
               {isAudioEnabled ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
@@ -400,7 +400,7 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
               type="button"
               onClick={handleFinishSession}
               aria-label="Close Focus Sanctuary"
-              className="p-2.5 rounded-full bg-black/[0.04] hover:bg-black/[0.08] text-[#6B6F6B] hover:text-[#111111] border border-black/[0.06] transition-colors"
+              className="p-2.5 rounded-full bg-neutral-100 hover:bg-neutral-200 text-[#71717A] hover:text-[#18181B] transition-colors cursor-pointer"
             >
               <X className="w-4 h-4" />
             </button>
@@ -408,14 +408,14 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
         </div>
 
         {/* Navigation Tabs between Live Sanctuary and Impact Analysis */}
-        <div className="flex items-center border-b border-black/[0.06] bg-[#F2F4F2]/80 px-4 pt-2 gap-2">
+        <div className="flex items-center border-b border-neutral-100 bg-[#F4F4F5]/60 px-4 pt-2 gap-2">
           <button
             type="button"
             onClick={() => setActiveTab('sanctuary')}
-            className={`px-4 py-2 text-xs font-bold border-b-2 transition-colors flex items-center gap-1.5 ${
+            className={`px-4 py-2 text-xs font-bold border-b-2 transition-colors flex items-center gap-1.5 cursor-pointer ${
               activeTab === 'sanctuary'
-                ? 'border-[#15803D] text-[#15803D]'
-                : 'border-transparent text-[#6B6F6B] hover:text-[#111111]'
+                ? 'border-[#7C3AED] text-[#7C3AED]'
+                : 'border-transparent text-[#71717A] hover:text-[#18181B]'
             }`}
           >
             <Wind className="w-3.5 h-3.5" />
@@ -424,10 +424,10 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
           <button
             type="button"
             onClick={() => setActiveTab('impact')}
-            className={`px-4 py-2 text-xs font-bold border-b-2 transition-colors flex items-center gap-1.5 ${
+            className={`px-4 py-2 text-xs font-bold border-b-2 transition-colors flex items-center gap-1.5 cursor-pointer ${
               activeTab === 'impact'
-                ? 'border-[#15803D] text-[#15803D]'
-                : 'border-transparent text-[#6B6F6B] hover:text-[#111111]'
+                ? 'border-[#7C3AED] text-[#7C3AED]'
+                : 'border-transparent text-[#71717A] hover:text-[#18181B]'
             }`}
           >
             <Brain className="w-3.5 h-3.5" />
@@ -445,19 +445,19 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
               <div className="relative w-64 h-64 sm:w-72 sm:h-72 flex items-center justify-center select-none">
                 {/* Outer Glow Halo */}
                 <div
-                  className={`absolute inset-0 rounded-full border border-[#22C55E]/25 transition-all duration-700 ${
+                  className={`absolute inset-0 rounded-full border border-purple-200/50 transition-all duration-700 ${
                     isLowSpec ? '' : 'blur-md'
                   }`}
                   style={{
                     transform: `scale(${0.85 + (breathProgress / 100) * 0.25})`,
                     opacity: 0.3 + (breathProgress / 100) * 0.5,
-                    background: 'radial-gradient(circle, rgba(34,197,94,0.18) 0%, rgba(34,197,94,0) 70%)',
+                    background: 'radial-gradient(circle, rgba(124,58,237,0.15) 0%, rgba(124,58,237,0) 70%)',
                   }}
                 />
 
                 {/* Concentric Pulse Rings */}
                 <div
-                  className="absolute w-52 h-52 sm:w-60 sm:h-60 rounded-full border border-[#22C55E]/35 transition-transform duration-700 ease-out"
+                  className="absolute w-52 h-52 sm:w-60 sm:h-60 rounded-full border border-purple-300/40 transition-transform duration-700 ease-out"
                   style={{ transform: `scale(${0.9 + (breathProgress / 100) * 0.15})` }}
                 />
 
@@ -467,15 +467,15 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
                   role="button"
                   tabIndex={0}
                   aria-label="Tap to Chant"
-                  className="relative z-10 w-36 h-36 sm:w-40 sm:h-40 rounded-full bg-white border-2 border-[#22C55E]/50 shadow-[0_12px_36px_rgba(20,33,61,0.08)] flex flex-col items-center justify-center cursor-pointer active:opacity-90 select-none p-2"
+                  className="relative z-10 w-36 h-36 sm:w-40 sm:h-40 rounded-full bg-white border border-neutral-200/90 shadow-[0_12px_36px_rgba(0,0,0,0.06)] flex flex-col items-center justify-center cursor-pointer active:opacity-90 select-none p-2"
                 >
-                  <span className="text-[11px] text-[#15803D] font-bold tracking-wider uppercase">
+                  <span className="text-[11px] text-[#7C3AED] font-bold tracking-wider uppercase">
                     {breath.action}
                   </span>
-                  <span className="font-devanagari font-bold text-3xl sm:text-4xl text-[#111111] my-0.5 text-shadow-sm">
+                  <span className="font-serif font-bold text-3xl sm:text-4xl text-[#18181B] my-0.5">
                     {breath.mantra}
                   </span>
-                  <span className="text-[10px] text-[#6B6F6B] font-mono">
+                  <span className="text-[10px] text-[#71717A] font-mono">
                     स्पर्श करें • +१ जप
                   </span>
                 </div>
@@ -483,10 +483,10 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
 
               {/* Breath Guidance Subtitle */}
               <div className="space-y-1">
-                <p className="text-xs sm:text-sm font-devanagari text-[#4A5568]">
+                <p className="text-xs sm:text-sm font-serif text-[#52525B]">
                   {breath.sub}
                 </p>
-                <p className="text-[11px] text-[#6B6F6B] font-mono">
+                <p className="text-[11px] text-[#71717A] font-mono">
                   ४-४-४ समवृत्ति प्राणायाम (Rhythmic Balanced Respiration)
                 </p>
               </div>
@@ -496,10 +496,10 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
                 <button
                   type="button"
                   onClick={() => setIsActive(!isActive)}
-                  className={`px-5 py-2.5 rounded-full text-xs font-bold flex items-center gap-2 shadow-xs transition-colors ${
+                  className={`px-5 py-2.5 rounded-full text-xs font-bold flex items-center gap-2 shadow-xs transition-colors cursor-pointer ${
                     isActive
-                      ? 'bg-amber-100 text-amber-800 border border-amber-300'
-                      : 'bg-[#14213D] hover:bg-[#1f2e4d] text-[#B6FF2E]'
+                      ? 'bg-amber-100 text-amber-800'
+                      : 'bg-[#18181B] hover:bg-[#27272A] text-white'
                   }`}
                 >
                   {isActive ? (
@@ -523,7 +523,7 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
                     setJapaInSession(0);
                   }}
                   title="Reset Timer"
-                  className="p-2.5 rounded-full bg-black/[0.04] hover:bg-black/[0.08] text-[#6B6F6B] hover:text-[#111111] border border-black/[0.06] transition-colors"
+                  className="p-2.5 rounded-full bg-neutral-100 hover:bg-neutral-200 text-[#71717A] hover:text-[#18181B] transition-colors cursor-pointer"
                 >
                   <RotateCcw className="w-3.5 h-3.5" />
                 </button>
@@ -531,23 +531,23 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
 
               {/* Real-time Session Metrics */}
               <div className="grid grid-cols-3 gap-3 w-full max-w-md pt-2">
-                <div className="p-3.5 rounded-2xl bg-white border border-black/[0.06] shadow-xs">
-                  <span className="text-[10px] text-[#6B6F6B] font-medium block">समय अवधि</span>
-                  <span className="font-doto text-xl font-bold text-[#111111] mt-0.5 block">
+                <div className="p-3.5 rounded-2xl bg-white border border-neutral-200/80 shadow-2xs">
+                  <span className="text-[10px] text-[#71717A] font-medium block">समय अवधि</span>
+                  <span className="font-doto text-xl font-bold text-[#18181B] mt-0.5 block">
                     {formatTime(sessionSeconds)}
                   </span>
                 </div>
 
-                <div className="p-3.5 rounded-2xl bg-white border border-black/[0.06] shadow-xs">
-                  <span className="text-[10px] text-[#6B6F6B] font-medium block">सत्र जप संख्या</span>
-                  <span className="font-doto text-xl font-bold text-[#15803D] mt-0.5 block">
+                <div className="p-3.5 rounded-2xl bg-white border border-neutral-200/80 shadow-2xs">
+                  <span className="text-[10px] text-[#71717A] font-medium block">सत्र जप संख्या</span>
+                  <span className="font-doto text-xl font-bold text-[#7C3AED] mt-0.5 block">
                     {formatDevanagariNumerals(japaInSession)}
                   </span>
                 </div>
 
-                <div className="p-3.5 rounded-2xl bg-white border border-black/[0.06] shadow-xs">
-                  <span className="text-[10px] text-[#6B6F6B] font-medium block">चित्त शान्ति</span>
-                  <span className="font-doto text-xl font-bold text-[#15803D] mt-0.5 block">
+                <div className="p-3.5 rounded-2xl bg-white border border-neutral-200/80 shadow-2xs">
+                  <span className="text-[10px] text-[#71717A] font-medium block">चित्त शान्ति</span>
+                  <span className="font-doto text-xl font-bold text-amber-600 mt-0.5 block">
                     {stillnessScore}%
                   </span>
                 </div>
@@ -559,19 +559,19 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
             <div className="space-y-5">
               
               {/* Hero Impact Science Card */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-[#F5FAF6] to-[#EDF6F0] border border-[#D5E6DA] space-y-3 shadow-xs">
+              <div className="p-4 sm:p-5 rounded-2xl bg-purple-50/50 border border-purple-100 space-y-3 shadow-xs">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <Brain className="w-5 h-5 text-[#15803D]" />
-                    <h3 className="font-bold text-sm text-[#111111]">
+                    <Brain className="w-5 h-5 text-[#7C3AED]" />
+                    <h3 className="font-bold text-sm text-[#18181B]">
                       मानसिक एकाग्रता एवं ध्यान का वैज्ञानिक व आध्यात्मिक प्रभाव
                     </h3>
                   </div>
-                  <span className="text-xs font-mono font-bold text-[#15803D] bg-[#22C55E]/15 px-2.5 py-0.5 rounded-full border border-[#22C55E]/30">
+                  <span className="text-xs font-mono font-bold text-purple-700 bg-purple-100/80 px-2.5 py-0.5 rounded-full">
                     Neural & Spiritual Coherence
                   </span>
                 </div>
-                <p className="text-xs text-[#4A5568] leading-relaxed font-devanagari">
+                <p className="text-xs text-[#52525B] leading-relaxed font-serif">
                   "योगश्चित्तवृत्तिनिरोधः" — पतंजलि योगसूत्र। नाम स्मरण और अखंड ध्यान के समय मस्तिष्क का 'डिफ़ॉल्ट मोड नेटवर्क' (DMN) शांत होता है, जिससे चिंता, मानसिक भटकाव और चंचलता विलीन होकर अंतःकरण में निर्मल शांति का प्राकट्य होता है।
                 </p>
               </div>
@@ -580,23 +580,23 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 
                 {/* 1. Manas Shanti Index */}
-                <div className="p-4 rounded-2xl bg-white border border-black/[0.06] shadow-xs space-y-2">
+                <div className="p-4 rounded-2xl bg-white border border-neutral-200/80 shadow-2xs space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-[#111111] flex items-center gap-1.5">
-                      <ShieldCheck className="w-4 h-4 text-[#15803D]" />
+                    <span className="text-xs font-bold text-[#18181B] flex items-center gap-1.5">
+                      <ShieldCheck className="w-4 h-4 text-purple-700" />
                       मानसिक स्थिरता सूचकांक (Manas Shanti)
                     </span>
-                    <span className="font-doto text-xs font-bold text-[#15803D]">
+                    <span className="font-doto text-xs font-bold text-purple-700">
                       {stillnessScore}/100
                     </span>
                   </div>
-                  <div className="w-full bg-black/[0.06] h-2 rounded-full overflow-hidden">
+                  <div className="w-full bg-neutral-200/60 h-2 rounded-full overflow-hidden">
                     <div
-                      className="bg-[#22C55E] h-full rounded-full transition-all duration-500"
+                      className="bg-[#7C3AED] h-full rounded-full transition-all duration-500"
                       style={{ width: `${stillnessScore}%` }}
                     />
                   </div>
-                  <p className="text-[11px] text-[#6B6F6B]">
+                  <p className="text-[11px] text-[#71717A]">
                     निरंतर जप से मन की एकाग्रता क्षमता में वृद्धि और तनाव हार्मोन (Cortisol) में प्रत्यक्ष कमी।
                   </p>
                 </div>
@@ -705,15 +705,15 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
                   <button
                     type="button"
                     onClick={handleToggleQuoteSummary}
-                    title="दिव्य सार (भाव संक्षेप देखें)"
-                    className="h-8 px-3 rounded-full bg-[#FFF9EE] border border-[#E9D8B4] text-[#B84A28] flex items-center gap-1.5 shadow-xs pressable font-medium text-xs"
+                    title="Divine Essence Summary"
+                    className="h-8 px-3 rounded-full bg-[#FFF9EE] border border-[#E9D8B4] text-[#B84A28] flex items-center gap-1.5 shadow-xs pressable font-semibold text-xs"
                   >
                     <Sparkles className="w-3.5 h-3.5 text-[#D4A359]" />
-                    <span>दिव्य सार</span>
+                    <span>Divine Essence</span>
                   </button>
                   {isQuoteSummaryOpen && (
                     <span className="text-[11px] text-[#92400E] font-medium">
-                      ॥ दिव्य रस मर्म ॥
+                      ॥ Divine Purport (दिव्य मर्म) ॥
                     </span>
                   )}
                 </div>
@@ -724,20 +724,20 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
                     <div className="flex items-center justify-between pb-1 mb-1 border-b border-black/[0.04]">
                       <span className="text-[11px] font-bold text-[#B84A28] flex items-center gap-1">
                         <Sparkles className="w-3 h-3 text-[#D4A359]" />
-                        <span>॥ दिव्य सार (Divine Essence) ॥</span>
+                        <span>॥ Divine Essence (दिव्य सार) ॥</span>
                       </span>
                       <button
                         type="button"
                         onClick={() => setIsQuoteSummaryOpen(false)}
                         className="text-[11px] text-[#6B6F6B] hover:text-[#111111] pressable font-medium"
                       >
-                        संवरण करें
+                        Dismiss ×
                       </button>
                     </div>
                     {isQuoteSummaryLoading && !quoteSummaryMap[activeAphorismIdx] ? (
                       <div className="flex items-center gap-2 py-2 text-xs text-[#D97706] font-medium min-h-[48px]">
                         <Sparkles className="w-3.5 h-3.5 text-[#D4A359] animate-spin" />
-                        <span>दिव्य भाव उद्घाटित हो रहा है...</span>
+                        <span>Revealing divine essence and spiritual theme...</span>
                       </div>
                     ) : (
                       <p className="text-xs font-devanagari text-[#451A03] leading-relaxed break-words">
@@ -751,22 +751,22 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
               </div>
 
               {/* Post-Session Sacred Reflection Journal */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-white border border-black/[0.06] shadow-xs space-y-3.5">
+              <div className="p-4 sm:p-5 rounded-2xl bg-white border border-neutral-200/80 shadow-2xs space-y-3.5">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <BookMarked className="w-4 h-4 text-[#15803D]" />
-                    <h4 className="text-xs sm:text-sm font-bold text-[#111111]">
+                    <BookMarked className="w-4 h-4 text-purple-700" />
+                    <h4 className="text-xs sm:text-sm font-bold text-[#18181B]">
                       मानसी अनुभूति एवं रस विचार (Sacred Reflection Journal)
                     </h4>
                   </div>
-                  <span className="text-[10px] text-[#6B6F6B] font-mono">
+                  <span className="text-[10px] text-[#71717A] font-mono">
                     १००% व्यक्तिगत व सुरक्षित
                   </span>
                 </div>
 
                 {/* Sentiment Selector */}
                 <div>
-                  <span className="text-[11px] text-[#6B6F6B] block mb-1.5">
+                  <span className="text-[11px] text-[#71717A] block mb-1.5">
                     ध्यानोपरांत मन की स्थिति:
                   </span>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -782,10 +782,10 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
                         key={s.id}
                         type="button"
                         onClick={() => setReflectionSentiment(s.id)}
-                        className={`py-1.5 px-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 border transition-colors ${
+                        className={`py-1.5 px-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors cursor-pointer ${
                           reflectionSentiment === s.id
-                            ? 'bg-[#22C55E]/15 text-[#15803D] border-[#22C55E]/40'
-                            : 'bg-[#F8F9FA] text-[#6B6F6B] border-black/[0.06] hover:bg-[#F0F2F0] hover:text-[#111111]'
+                            ? 'bg-purple-100 text-purple-800'
+                            : 'bg-neutral-100 text-[#71717A] hover:bg-neutral-200 hover:text-[#18181B]'
                         }`}
                       >
                         <span>{s.icon}</span>
@@ -797,7 +797,7 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
 
                 {/* Reflection Notes Textarea */}
                 <div>
-                  <label htmlFor="dhyana-reflection-notes" className="text-[11px] text-[#6B6F6B] block mb-1">
+                  <label htmlFor="dhyana-reflection-notes" className="text-[11px] text-[#71717A] block mb-1">
                     अन्तःकरण का भाव (Personal Contemplative Note):
                   </label>
                   <textarea
@@ -806,15 +806,15 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
                     value={reflectionNote}
                     onChange={(e) => setReflectionNote(e.target.value)}
                     placeholder="आज के ध्यान में युगल छवि का स्मरण, मन की शांति या कोई विशेष अनुभूति..."
-                    className="w-full p-2.5 rounded-xl bg-[#F8F9FA] border border-black/[0.08] text-xs text-[#111111] placeholder:text-[#A0AEC0] focus:outline-none focus:border-[#22C55E] focus:bg-white"
+                    className="w-full p-2.5 rounded-xl bg-[#FAFAFA] border border-neutral-200 text-xs text-[#18181B] placeholder:text-[#A1A1AA] focus:outline-none focus:border-[#7C3AED] focus:bg-white"
                   />
                 </div>
 
                 {/* Action Row */}
                 <div className="flex items-center justify-between pt-1">
-                  <div className="flex items-center gap-1.5 text-xs text-[#6B6F6B]">
+                  <div className="flex items-center gap-1.5 text-xs text-[#71717A]">
                     {reflectionSaved ? (
-                      <span className="text-[#15803D] flex items-center gap-1 font-semibold text-xs">
+                      <span className="text-purple-700 flex items-center gap-1 font-semibold text-xs">
                         <Check className="w-3.5 h-3.5" />
                         अनुभूति सुरक्षित हुई
                       </span>
@@ -826,7 +826,7 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
                   <button
                     type="button"
                     onClick={handleSaveReflection}
-                    className="px-3.5 py-1.5 rounded-full bg-[#14213D] hover:bg-[#1f2e4d] text-[#B6FF2E] text-xs font-bold shadow-xs pressable transition-colors flex items-center gap-1.5"
+                    className="px-4 py-1.5 rounded-full bg-[#18181B] hover:bg-[#27272A] text-white text-xs font-bold shadow-xs cursor-pointer transition-colors flex items-center gap-1.5"
                   >
                     <span>अनुभूति संचित करें</span>
                   </button>
@@ -838,15 +838,15 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
         </div>
 
         {/* Modal Footer */}
-        <div className="p-3 sm:p-4 border-t border-black/[0.06] bg-white flex items-center justify-between text-xs text-[#6B6F6B]">
+        <div className="p-3 sm:p-4 border-t border-neutral-100 bg-white flex items-center justify-between text-xs text-[#71717A]">
           <span className="flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-[#22C55E] animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-[#7C3AED] animate-pulse" />
             <span>एकाग्रता साधना सक्रिय • ०% भटकाव</span>
           </span>
           <button
             type="button"
             onClick={handleFinishSession}
-            className="px-4 py-1.5 rounded-full bg-[#14213D] hover:bg-[#1f2e4d] text-white font-bold transition-colors shadow-xs"
+            className="px-4 py-1.5 rounded-full bg-[#18181B] hover:bg-[#27272A] text-white font-bold transition-colors shadow-xs cursor-pointer"
           >
             पूर्ण करें (Done)
           </button>

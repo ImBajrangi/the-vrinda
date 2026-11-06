@@ -90,38 +90,38 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
       }`}
     >
       <div
-        className={`w-full max-w-2xl bg-white dark:bg-[#14213D] border border-white/90 dark:border-white/10 shadow-[0_24px_70px_rgba(0,0,0,0.35)] rounded-[28px] overflow-hidden flex flex-col max-h-[82vh] ${
+        className={`w-full max-w-2xl bg-white border border-neutral-200/80 shadow-[0_24px_70px_rgba(0,0,0,0.2)] rounded-[28px] overflow-hidden flex flex-col max-h-[82vh] ${
           isClosing ? 'modal-dialog-exit' : 'modal-dialog-enter'
         }`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Search Header Input */}
-        <div className="flex items-center gap-3 px-4 sm:px-5 py-3.5 border-b border-black/[0.06] dark:border-white/10">
-          <Search className="w-5 h-5 text-[#B84A28] shrink-0" />
+        <div className="flex items-center gap-3 px-4 sm:px-5 py-3.5 border-b border-neutral-100">
+          <Search className="w-5 h-5 text-purple-700 shrink-0" />
           <input
             ref={inputRef}
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="खोजें: पद, संत, ग्रन्थ, राग या भाव..."
-            className="flex-1 bg-transparent text-sm sm:text-base font-medium text-[#111111] dark:text-white placeholder-[#888888] outline-none"
+            className="flex-1 bg-transparent text-sm sm:text-base font-medium text-[#18181B] placeholder-[#A1A1AA] outline-none"
           />
           {query && (
             <button
               type="button"
               onClick={() => setQuery('')}
-              className="w-6 h-6 rounded-full bg-black/5 dark:bg-white/10 flex items-center justify-center text-[#666666] pressable-sm"
+              className="w-6 h-6 rounded-full bg-neutral-100 flex items-center justify-center text-[#71717A] cursor-pointer"
             >
               <X className="w-3.5 h-3.5" />
             </button>
           )}
-          <kbd className="hidden sm:inline text-[10px] font-mono font-bold text-slate-400 bg-black/5 dark:bg-white/10 px-1.5 py-0.5 rounded border border-black/5">
+          <kbd className="hidden sm:inline text-[10px] font-mono font-bold text-[#A1A1AA] bg-neutral-100 px-1.5 py-0.5 rounded">
             ESC
           </kbd>
         </div>
 
         {/* Filter Chips Bar */}
-        <div className="flex items-center gap-1.5 px-4 sm:px-5 py-2 bg-black/[0.02] dark:bg-white/[0.02] border-b border-black/[0.04] dark:border-white/5 overflow-x-auto no-scrollbar">
+        <div className="flex items-center gap-1.5 px-4 sm:px-5 py-2 bg-[#FAFAFA] border-b border-neutral-100 overflow-x-auto no-scrollbar">
           {[
             { id: 'all', label: 'सभी' },
             { id: 'padas', label: `पद (${matchingPadas.length})` },
@@ -132,10 +132,10 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
               key={f.id}
               type="button"
               onClick={() => setActiveFilter(f.id as any)}
-              className={`px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap transition-all pressable ${
+              className={`px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer ${
                 activeFilter === f.id
-                  ? 'bg-[#14213D] dark:bg-white text-white dark:text-[#14213D] shadow-xs'
-                  : 'bg-black/[0.04] dark:bg-white/[0.05] text-[#555555] dark:text-slate-300 hover:text-black'
+                  ? 'bg-[#18181B] text-white shadow-xs'
+                  : 'bg-neutral-100 text-[#71717A] hover:text-[#18181B]'
               }`}
             >
               {f.label}
@@ -239,8 +239,8 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
                         className="flex items-center justify-between p-3 rounded-2xl bg-black/[0.02] dark:bg-white/[0.03] hover:bg-black/[0.05] dark:hover:bg-white/[0.06] border border-black/5 dark:border-white/5 cursor-pointer pressable group"
                       >
                         <div className="flex items-center gap-3 min-w-0">
-                          <div className="w-8 h-8 rounded-xl bg-[#14213D] text-white flex items-center justify-center shrink-0">
-                            <Music className="w-3.5 h-3.5 text-[#B6FF2E]" />
+                          <div className="w-8 h-8 rounded-xl bg-purple-50 text-purple-700 flex items-center justify-center shrink-0">
+                            <Music className="w-3.5 h-3.5 text-[#7C3AED]" />
                           </div>
                           <div className="min-w-0">
                             <h4 className="text-xs sm:text-sm font-bold text-[#111111] dark:text-white truncate group-hover:text-[#B84A28] transition-colors">

@@ -33,10 +33,11 @@ export default {
         }
       },
       fontFamily: {
-        doto: ['"Doto"', 'monospace'],
+        jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
+        doto: ['"Plus Jakarta Sans"', 'monospace'],
         devanagari: ['"Noto Serif Devanagari"', 'serif'],
         display: ['"Rozha One"', 'serif'],
-        sans: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        sans: ['"Inter"', '"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
       },
       borderRadius: {
         '2xl': '20px',

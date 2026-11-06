@@ -41,11 +41,11 @@ export const CategoryCircle: React.FC<CategoryCircleProps> = ({
       case 'bihari':
         // Thakur Banke Bihari: Peacock Feather & Flute
         return (
-          <div className="w-full h-full bg-gradient-to-br from-[#E2F5EA] via-[#C9ECD5] to-[#A8DFC0] flex items-center justify-center p-2 rounded-full">
+          <div className="w-full h-full bg-gradient-to-br from-purple-50 via-amber-50 to-amber-100 flex items-center justify-center p-2 rounded-full">
             <svg viewBox="0 0 40 40" className="w-full h-full" fill="none">
-              <circle cx="20" cy="20" r="18" fill="#EBF9F1" stroke="#22C55E" strokeWidth="1.2" />
-              <ellipse cx="20" cy="18" rx="7" ry="10" fill="#14213D" />
-              <ellipse cx="20" cy="18" rx="4.5" ry="6.5" fill="#22C55E" />
+              <circle cx="20" cy="20" r="18" fill="#FFFBEB" stroke="#F59E0B" strokeWidth="1.2" />
+              <ellipse cx="20" cy="18" rx="7" ry="10" fill="#18181B" />
+              <ellipse cx="20" cy="18" rx="4.5" ry="6.5" fill="#7C3AED" />
               <ellipse cx="20" cy="18.5" rx="2.5" ry="3.5" fill="#3B82F6" />
               <circle cx="20" cy="19" r="1.3" fill="#F59E0B" />
               <line x1="10" y1="29" x2="30" y2="25" stroke="#92400E" strokeWidth="2" strokeLinecap="round" />
@@ -116,7 +116,7 @@ export const CategoryCircle: React.FC<CategoryCircleProps> = ({
       <div
         className={`w-11 h-11 sm:w-14 sm:h-14 xl:w-14 xl:h-14 rounded-full overflow-hidden p-0.5 transition-all duration-300 ${
           isActive
-            ? 'ring-2 ring-[#14213D] shadow-md ring-offset-2 ring-offset-white'
+            ? 'ring-2 ring-[#18181B] shadow-md ring-offset-2 ring-offset-white'
             : 'ring-1 ring-black/5 group-hover:ring-black/20'
         }`}
       >

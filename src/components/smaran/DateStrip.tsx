@@ -19,29 +19,36 @@ export const DateStrip: React.FC<DateStripProps> = ({
   onSelectDate,
 }) => {
   return (
-    <div className="w-full flex items-center justify-between gap-1.5 sm:gap-2 py-1 overflow-x-auto no-scrollbar">
+    <div className="w-full flex items-center justify-between gap-1 sm:gap-2 p-1.5 bg-[#F4F4F5]/70 rounded-[22px] border border-neutral-200/60 overflow-x-auto no-scrollbar">
       {days.map((item) => {
         const isSelected = selectedDate === item.dateNum;
+        const isHighlight = item.isToday || isSelected;
         return (
           <button
             key={item.dateNum}
             type="button"
             onClick={() => onSelectDate(item.dateNum)}
-            className={`w-[42px] h-[48px] sm:w-auto sm:flex-1 sm:h-[54px] sm:px-3 rounded-full flex flex-col items-center justify-center text-[11px] leading-[1.15] border transition-colors pressable shrink-0 ${
-              item.isToday || isSelected
-                ? 'bg-white text-[#111111] font-semibold border-white/90 shadow-[0_4px_14px_rgba(0,0,0,0.06)]'
-                : 'bg-white/55 text-[#555555] border-white/80 hover:bg-white/80'
+            className={`flex-1 min-w-[42px] sm:min-w-0 h-[64px] sm:h-[68px] px-1 sm:px-2 rounded-[16px] flex flex-col items-center justify-center leading-tight transition-colors cursor-pointer shrink-0 select-none ${
+              isHighlight
+                ? 'bg-white text-[#18181B] font-bold border border-neutral-200/80 shadow-[0_2px_8px_rgba(0,0,0,0.06)]'
+                : 'bg-transparent text-[#71717A] hover:text-[#18181B] hover:bg-white/60 border border-transparent'
             }`}
           >
-            <span className="font-semibold text-xs sm:text-sm leading-none">
+            <span className="font-sans font-bold text-sm sm:text-base leading-none text-[#18181B]">
               {item.dateNum}
             </span>
-            <span className="text-[9px] sm:text-[10px] text-[#6B6F6B] leading-none mt-1">
+            <span className="text-[10px] sm:text-[11px] text-[#71717A] leading-none mt-1 font-medium">
               {item.isToday ? 'Today' : item.dayName}
             </span>
-            {item.tithiLabel && (
-              <span className="hidden sm:inline-block text-[8px] font-bold text-[#B84A28] leading-none mt-0.5">
+            {item.tithiLabel ? (
+              <span className={`text-[9.5px] sm:text-[10px] font-medium leading-none mt-1 font-devanagari ${
+                isHighlight ? 'text-amber-700 font-bold' : 'text-neutral-400'
+              }`}>
                 {item.tithiLabel}
+              </span>
+            ) : (
+              <span className="text-[9.5px] sm:text-[10px] leading-none mt-1 opacity-0 pointer-events-none select-none">
+                -
               </span>
             )}
           </button>

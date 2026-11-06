@@ -28,9 +28,9 @@ export const DotGridChart: React.FC<DotGridChartProps> = ({
           const fillPercent = levels[colIdx] ?? 50;
           const filledCount = Math.round((fillPercent / 100) * numRows);
 
-          // Color accents matching original design (purples in the center columns)
+          // Color accents matching original design (purples in the center columns, warm amber on sides)
           const isPurple = colIdx >= 4 && colIdx <= 9;
-          const dotColor = isPurple ? '#8B5CF6' : '#22C55E';
+          const dotColor = isPurple ? '#7C3AED' : '#F59E0B';
 
           return (
             <g key={colIdx}>

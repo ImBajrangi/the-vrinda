@@ -29,26 +29,26 @@ export const FloatingAudioPlayer: React.FC<FloatingAudioPlayerProps> = ({
       aria-label="Floating Audio Player"
       className="fixed bottom-24 md:bottom-6 left-4 right-4 md:left-auto md:right-8 md:w-[390px] max-w-md mx-auto md:mx-0 z-50 apple-view-enter"
     >
-      <div className="bg-[#14213D] text-white rounded-full p-2.5 sm:p-3 shadow-[0_20px_40px_rgba(0,0,0,0.32)] border border-white/20 flex items-center justify-between gap-3 backdrop-blur-2xl transition-all duration-300">
+      <div className="bg-white/95 backdrop-blur-2xl text-[#18181B] rounded-full p-2.5 sm:p-3 shadow-[0_12px_40px_rgba(0,0,0,0.12)] border border-neutral-200/90 flex items-center justify-between gap-3 transition-all duration-300">
         {/* Animated Visualizer Icon with Apple Fluid Waves */}
         <div
           onClick={onOpenLyrics}
           title="Open Pad & Lyrics"
-          className="w-11 h-11 rounded-full bg-white/10 flex items-center justify-center shrink-0 overflow-hidden relative border border-white/10 cursor-pointer pressable"
+          className="w-11 h-11 rounded-full bg-purple-50 flex items-center justify-center shrink-0 overflow-hidden relative cursor-pointer select-none"
         >
           <div className="flex items-end gap-1 h-4">
             <span
-              className={`w-1 bg-[#B6FF2E] rounded-full ${
+              className={`w-1 bg-[#7C3AED] rounded-full ${
                 isPlaying ? 'animate-apple-eq-1' : 'h-1.5'
               }`}
             />
             <span
-              className={`w-1 bg-[#22C55E] rounded-full ${
+              className={`w-1 bg-[#F59E0B] rounded-full ${
                 isPlaying ? 'animate-apple-eq-2' : 'h-2.5'
               }`}
             />
             <span
-              className={`w-1 bg-[#B6FF2E] rounded-full ${
+              className={`w-1 bg-[#7C3AED] rounded-full ${
                 isPlaying ? 'animate-apple-eq-3' : 'h-1'
               }`}
             />
@@ -62,24 +62,23 @@ export const FloatingAudioPlayer: React.FC<FloatingAudioPlayerProps> = ({
           title="View Pad Details"
         >
           <div className="flex items-center gap-1.5">
-            <img src="/assets/icons/shriJiMukut.svg" alt="Mukut" className="w-3.5 h-3.5 object-contain inline-block" />
-            <span className="text-[10px] uppercase font-bold tracking-wider text-[#B6FF2E] truncate">
+            <span className="text-[10px] uppercase font-bold tracking-wider text-[#7C3AED] truncate font-mono">
               {currentPad.rag} • {currentPad.author}
             </span>
           </div>
-          <span className="font-devanagari font-bold text-xs sm:text-sm truncate text-white mt-0.5">
+          <span className="font-serif font-bold text-xs sm:text-sm truncate text-[#18181B] mt-0.5">
             {currentPad.titleDevanagari}
           </span>
         </div>
 
-        {/* Controls with Apple Press Feedback */}
+        {/* Controls with Smooth Press Feedback */}
         <div className="flex items-center gap-1 shrink-0">
           {onPrev && (
             <button
               type="button"
               onClick={onPrev}
               aria-label="Previous track"
-              className="p-1 text-white/70 hover:text-white pressable-sm"
+              className="p-1.5 text-neutral-400 hover:text-[#18181B] transition-colors cursor-pointer"
             >
               <SkipBack className="w-3.5 h-3.5" />
             </button>
@@ -89,12 +88,12 @@ export const FloatingAudioPlayer: React.FC<FloatingAudioPlayerProps> = ({
             type="button"
             onClick={onTogglePlay}
             aria-label={isPlaying ? "Pause" : "Play"}
-            className="w-9 h-9 rounded-full bg-[#B6FF2E] text-[#14213D] flex items-center justify-center font-bold shadow-sm pressable-sm hover:bg-[#a6ec24]"
+            className="w-9 h-9 rounded-full bg-[#7C3AED] hover:bg-[#6D28D9] text-white flex items-center justify-center font-bold shadow-xs transition-colors cursor-pointer"
           >
             {isPlaying ? (
-              <Pause className="w-4 h-4 fill-[#14213D]" />
+              <Pause className="w-4 h-4 fill-white" />
             ) : (
-              <Play className="w-4 h-4 fill-[#14213D] ml-0.5" />
+              <Play className="w-4 h-4 fill-white ml-0.5" />
             )}
           </button>
 
@@ -103,7 +102,7 @@ export const FloatingAudioPlayer: React.FC<FloatingAudioPlayerProps> = ({
               type="button"
               onClick={onNext}
               aria-label="Next track"
-              className="p-1 text-white/70 hover:text-white pressable-sm"
+              className="p-1.5 text-neutral-400 hover:text-[#18181B] transition-colors cursor-pointer"
             >
               <SkipForward className="w-3.5 h-3.5" />
             </button>
@@ -112,7 +111,7 @@ export const FloatingAudioPlayer: React.FC<FloatingAudioPlayerProps> = ({
           <button
             type="button"
             aria-label="Add to favorites"
-            className="p-1 text-white/70 hover:text-white pressable-sm"
+            className="p-1.5 text-neutral-400 hover:text-amber-600 transition-colors cursor-pointer"
           >
             <Heart className="w-3.5 h-3.5" />
           </button>
@@ -121,7 +120,7 @@ export const FloatingAudioPlayer: React.FC<FloatingAudioPlayerProps> = ({
             type="button"
             onClick={onClose}
             aria-label="Close audio player"
-            className="p-1 text-white/50 hover:text-white pressable-sm ml-0.5"
+            className="p-1.5 text-neutral-400 hover:text-[#18181B] transition-colors cursor-pointer ml-0.5"
           >
             <X className="w-3.5 h-3.5" />
           </button>

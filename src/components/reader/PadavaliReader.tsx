@@ -40,6 +40,8 @@ interface PadavaliReaderProps {
   onPlayPad: (pad: SacredPad) => void;
   activePlayingPadId?: string;
   isPlaying?: boolean;
+  selectedGranthaId?: string;
+  selectedSearchQuery?: string;
 }
 
 type ReaderTheme = 'ivory' | 'mint' | 'chandan' | 'night';
@@ -113,6 +115,8 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   onPlayPad,
   activePlayingPadId,
   isPlaying,
+  selectedGranthaId,
+  selectedSearchQuery,
 }) => {
   const allPadas = SacredDatabase.getAllPadas();
   const allGranthas = SacredDatabase.getAllGranthas();
@@ -123,10 +127,22 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     allPadas.find((p) => p.id === initialReader.lastPadId) || allPadas[0];
 
   const [selectedPad, setSelectedPad] = useState<SacredPad>(initialPad);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState(selectedSearchQuery || '');
   const [selectedGrantha, setSelectedGrantha] = useState<string>(
-    initialReader.selectedTradition || 'all'
+    selectedGranthaId || initialReader.selectedTradition || 'all'
   );
+
+  useEffect(() => {
+    if (selectedGranthaId) {
+      setSelectedGrantha(selectedGranthaId);
+    }
+  }, [selectedGranthaId]);
+
+  useEffect(() => {
+    if (selectedSearchQuery !== undefined) {
+      setSearchQuery(selectedSearchQuery);
+    }
+  }, [selectedSearchQuery]);
   // Backward compatibility alias for boundary test assertions
   const selectedTradition = selectedGrantha;
 
@@ -174,6 +190,86 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     }, 200);
   };
 
+  // Helper for scripture / saint squircle artwork thumbnail matching reference layout
+  const getPadArtwork = (pad: SacredPad) => {
+    const coll = pad.collectionId?.toLowerCase() || '';
+    const author = pad.author?.toLowerCase() || '';
+    const title = (pad.titleDevanagari || '').toLowerCase();
+
+    if (coll.includes('chaurasi') || author.includes('हरिवंश') || author.includes('harivansh')) {
+      return 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=300&q=80';
+    }
+    if (coll.includes('sudhanidhi') || coll.includes('sudha')) {
+      return 'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=300&q=80';
+    }
+    if (coll.includes('kelimal') || author.includes('हरिदास') || author.includes('haridas')) {
+      return 'https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=300&q=80';
+    }
+    if (coll.includes('sur') || author.includes('सूरदास') || author.includes('surdas')) {
+      return 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=300&q=80';
+    }
+    if (author.includes('मीरा') || author.includes('meera')) {
+      return 'https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=300&q=80';
+    }
+    if (author.includes('रसखान') || author.includes('raskhan')) {
+      return 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=300&q=80';
+    }
+    if (title.includes('राधा') || title.includes('कृपा कटाक्ष') || title.includes('स्तुति')) {
+      return 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=300&q=80';
+    }
+    return 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=300&q=80';
+  };
+
+  // Dedicated component to guarantee 0 broken image [?] placeholders with elegant fallback monograms
+  const ScriptureArtwork: React.FC<{
+    pad: SacredPad;
+    size?: 'sm' | 'md' | 'lg';
+    className?: string;
+  }> = ({ pad, size = 'sm', className = '' }) => {
+    const [imgError, setImgError] = useState(false);
+    const artworkUrl = getPadArtwork(pad);
+
+    useEffect(() => {
+      setImgError(false);
+    }, [pad.id]);
+
+    const initial = useMemo(() => {
+      const raw = (pad.titleDevanagari || pad.author || 'श्री').trim();
+      const cleaned = raw.replace(/^[॥\s]+/, '');
+      return cleaned.slice(0, 2);
+    }, [pad.titleDevanagari, pad.author]);
+
+    const sizeClasses = {
+      sm: 'w-9 h-9 rounded-[14px] text-xs',
+      md: 'w-12 h-12 rounded-[16px] text-sm',
+      lg: 'w-14 h-14 sm:w-16 sm:h-16 rounded-[20px] text-base',
+    }[size];
+
+    if (imgError || !artworkUrl) {
+      return (
+        <div
+          className={`${sizeClasses} shrink-0 bg-gradient-to-br from-purple-50 via-amber-50/60 to-neutral-100 border border-neutral-200/80 flex items-center justify-center font-serif font-bold text-purple-800 shadow-2xs select-none ${className}`}
+        >
+          <span className="leading-none">{initial}</span>
+        </div>
+      );
+    }
+
+    return (
+      <div
+        className={`${sizeClasses} shrink-0 overflow-hidden relative shadow-2xs border border-neutral-200/80 bg-neutral-100 flex items-center justify-center ${className}`}
+      >
+        <img
+          src={artworkUrl}
+          alt={pad.titleDevanagari}
+          className="w-full h-full object-cover"
+          loading="lazy"
+          onError={() => setImgError(true)}
+        />
+      </div>
+    );
+  };
+
   // Defensive parsing for clean title, accurate author attribution, and grantha pill
   const { cleanTitle, authorName, granthaRef } = useMemo(() => {
     let clean = selectedPad.titleDevanagari || '';
@@ -202,6 +298,14 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     }
     return { cleanTitle: clean, authorName: author, granthaRef: grantha };
   }, [selectedPad]);
+
+  const granthaDisplayName = useMemo(() => {
+    if (granthaRef) return granthaRef.toUpperCase();
+    const g = allGranthas.find((item) => item.id === selectedPad.collectionId);
+    if (g) return `${g.name.toUpperCase()} (${g.author})`;
+    if (selectedPad.collectionId === 'stotras') return 'STOTRAMALA (स्तोत्रमाला संग्रह)';
+    return 'SACRED RASIK VANI (पावन वाणी संग्रह)';
+  }, [allGranthas, selectedPad, granthaRef]);
 
   const summaryReq: DevotionalSummaryRequest = useMemo(() => {
     const canonicalId =
@@ -417,31 +521,31 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   const isCurrentPadPlaying = activePlayingPadId === selectedPad.id && Boolean(isPlaying);
 
   return (
-    <div className="w-full pb-44 md:pb-32 pt-2">
+    <div className="w-full pb-44 md:pb-32 pt-6 sm:pt-8">
       {/* ========================================================================= */}
       {/* 1. Serene Light Header & Spotlight Search Bar                             */}
       {/* ========================================================================= */}
-      <div className="mb-5 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white/70 backdrop-blur-md p-4 sm:p-5 rounded-[24px] border border-white/90 shadow-card">
+      <div className="mb-5 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white rounded-[28px] p-5 sm:p-6 border border-neutral-200/80 shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
         <div>
-          <h1 className="font-display text-2xl sm:text-3xl text-[#111111] font-normal flex items-center gap-2.5">
-            <BookOpen className="w-6 h-6 text-[#C85A32]" />
-            पावन पदावली व स्तोत्र
+          <h1 className="font-serif text-2xl sm:text-3xl text-[#18181B] font-bold flex items-center gap-2.5">
+            <BookOpen className="w-6 h-6 text-[#7C3AED]" />
+            Sacred Padavali & Stotras
           </h1>
-          <p className="text-xs sm:text-sm text-[#6B6F6B] font-medium mt-0.5">
-            श्री रसिक वाणी एवं नित्य निकुंज रस • कुल {filteredPads.length} पावन पद उपलब्ध
+          <p className="text-xs sm:text-sm text-[#71717A] font-medium mt-1">
+            Rasik Vani & Sacred Scriptures • {filteredPads.length} verses available
           </p>
         </div>
 
         {/* Search Input, Reading Controls & IAST Toggle */}
         <div className="flex flex-wrap items-center gap-2">
           <div className="relative min-w-[200px] sm:w-60">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#6B6F6B]" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#71717A]" />
             <input
               type="text"
-              placeholder="पद, स्तोत्र या रसिक..."
+              placeholder="Search pad, stotra, saint, raga..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 rounded-full bg-white/90 border border-black/10 text-xs text-[#111111] focus:outline-none focus:ring-1 focus:ring-black/20 placeholder:text-[#6B6F6B] shadow-xs"
+              className="w-full pl-9 pr-4 py-2 rounded-full bg-[#F4F4F5] border border-neutral-200/80 text-xs text-[#18181B] focus:outline-none focus:ring-1 focus:ring-purple-400 placeholder:text-[#71717A] shadow-xs"
             />
           </div>
 
@@ -449,33 +553,33 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
           <button
             type="button"
             onClick={() => setIsSettingsOpen(!isSettingsOpen)}
-            className={`px-3 py-2 rounded-full text-xs font-semibold pressable shadow-xs flex items-center gap-1.5 transition-colors border ${
+            className={`px-3 py-2 rounded-full text-xs font-semibold shadow-xs flex items-center gap-1.5 transition-colors border cursor-pointer ${
               isSettingsOpen
-                ? 'bg-[#14213D] text-[#B6FF2E] border-[#14213D]'
-                : 'bg-white text-[#111111] border-black/10 hover:bg-black/5'
+                ? 'bg-[#18181B] text-white border-[#18181B]'
+                : 'bg-white text-[#18181B] border-neutral-200/80 hover:bg-neutral-50'
             }`}
-            title="पठन विन्यास (Typography & Ambiance Controls)"
+            title="Appearance & Typography Controls"
           >
-            <SlidersHorizontal className="w-3.5 h-3.5 text-[#C85A32]" />
-            <span>विन्यास</span>
+            <SlidersHorizontal className="w-3.5 h-3.5 text-[#7C3AED]" />
+            <span>Appearance</span>
           </button>
 
           {/* Braj Sacred Lexicon Button */}
           <button
             type="button"
             onClick={() => setIsGlossaryOpen(true)}
-            className="px-3 py-2 rounded-full text-xs font-semibold bg-white text-[#111111] border border-black/10 hover:bg-black/5 pressable shadow-xs flex items-center gap-1.5"
-            title="रसिक शब्दकोश (Braj Sacred Glossary)"
+            className="px-3 py-2 rounded-full text-xs font-semibold bg-white text-[#18181B] border border-neutral-200/80 hover:bg-neutral-50 shadow-2xs flex items-center gap-1.5 cursor-pointer"
+            title="Braj Sacred Glossary (शब्दकोश)"
           >
-            <BookOpenCheck className="w-3.5 h-3.5 text-[#22C55E]" />
-            <span className="hidden sm:inline">शब्दकोश</span>
+            <BookOpenCheck className="w-3.5 h-3.5 text-[#7C3AED]" />
+            <span className="hidden sm:inline">Lexicon</span>
           </button>
 
           {/* IAST Transliteration Toggle */}
           <button
             type="button"
             onClick={handleToggleTransliteration}
-            className="px-3 py-2 rounded-full text-xs font-semibold bg-white border border-black/10 text-[#111111] pressable shadow-xs"
+            className="px-3 py-2 rounded-full text-xs font-semibold bg-white border border-neutral-200/80 text-[#18181B] hover:bg-neutral-50 shadow-2xs cursor-pointer"
             title="Toggle IAST Roman Transliteration"
           >
             {showTransliteration ? 'IAST: On' : 'IAST: Off'}
@@ -485,15 +589,15 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
           <button
             type="button"
             onClick={() => setIsFocusReadingMode(!isFocusReadingMode)}
-            className={`px-3.5 py-2 rounded-full text-xs font-semibold pressable shadow-xs flex items-center gap-1.5 transition-colors ${
+            className={`px-3.5 py-2 rounded-full text-xs font-semibold shadow-xs flex items-center gap-1.5 transition-colors cursor-pointer ${
               isFocusReadingMode
-                ? 'bg-[#14213D] text-[#B6FF2E]'
-                : 'bg-white text-[#111111] border border-black/10 hover:bg-black/5'
+                ? 'bg-[#7C3AED] text-white'
+                : 'bg-white text-[#18181B] border border-neutral-200/80 hover:bg-neutral-50'
             }`}
-            title="एकाग्र पठन मोड (Distraction-Free Reading Mode)"
+            title="Distraction-Free Reading Mode"
           >
             <Wind className="w-3.5 h-3.5" />
-            <span>{isFocusReadingMode ? 'सामान्य दृश्य' : 'एकाग्र पठन'}</span>
+            <span>{isFocusReadingMode ? 'Standard View' : 'Focus Mode'}</span>
           </button>
         </div>
       </div>
@@ -502,29 +606,29 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       {/* Interactive Typography & Devotional Ambiance Customizer Floating Tray     */}
       {/* ========================================================================= */}
       {isSettingsOpen && (
-        <div className="mb-4 p-4 rounded-[24px] bg-white border border-black/10 shadow-card space-y-3 apple-sheet-enter text-[#111111]">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-black/[0.06] pb-3">
+        <div className="mb-4 p-4 rounded-[24px] bg-white border border-neutral-200/80 shadow-[0_4px_24px_rgba(0,0,0,0.03)] space-y-3 apple-sheet-enter text-[#18181B]">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-neutral-100 pb-3">
             {/* Font Size Stepper */}
             <div className="flex items-center gap-2">
-              <span className="text-[11px] font-bold text-[#6B6F6B] uppercase tracking-wider flex items-center gap-1 font-mono">
-                <Type className="w-3.5 h-3.5 text-[#C85A32]" />
-                अक्षर आकार:
+              <span className="text-[11px] font-bold text-[#71717A] uppercase tracking-wider flex items-center gap-1 font-mono">
+                <Type className="w-3.5 h-3.5 text-[#7C3AED]" />
+                Font Size:
               </span>
-              <div className="flex items-center gap-1 bg-[#F4F4F4] p-1 rounded-full border border-black/5">
+              <div className="flex items-center gap-1 bg-[#F4F4F5] p-1 rounded-full border border-neutral-200/60">
                 {[
-                  { id: 'sm' as ReaderFontSize, label: 'अ (लघु)' },
-                  { id: 'md' as ReaderFontSize, label: 'अ (सहज)' },
-                  { id: 'lg' as ReaderFontSize, label: 'अ (विशाल)' },
-                  { id: 'xl' as ReaderFontSize, label: 'अ (परम)' },
+                  { id: 'sm' as ReaderFontSize, label: 'Small' },
+                  { id: 'md' as ReaderFontSize, label: 'Normal' },
+                  { id: 'lg' as ReaderFontSize, label: 'Large' },
+                  { id: 'xl' as ReaderFontSize, label: 'Extra' },
                 ].map((s) => (
                   <button
                     key={s.id}
                     type="button"
                     onClick={() => setFontSize(s.id)}
-                    className={`px-2.5 py-1 rounded-full text-xs font-semibold transition-colors pressable ${
+                    className={`px-2.5 py-1 rounded-full text-xs font-semibold transition-colors cursor-pointer ${
                       fontSize === s.id
-                        ? 'bg-white text-[#111111] shadow-xs font-bold'
-                        : 'text-[#6B6F6B] hover:text-[#111111]'
+                        ? 'bg-[#18181B] text-white shadow-xs font-bold'
+                        : 'text-[#71717A] hover:text-[#18181B]'
                     }`}
                   >
                     {s.label}
@@ -535,50 +639,50 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
             {/* Font Family Toggle */}
             <div className="flex items-center gap-2">
-              <span className="text-[11px] font-bold text-[#6B6F6B] uppercase tracking-wider font-mono">
-                शैली:
+              <span className="text-[11px] font-bold text-[#71717A] uppercase tracking-wider font-mono">
+                Font:
               </span>
-              <div className="flex items-center gap-1 bg-[#F4F4F4] p-1 rounded-full border border-black/5">
+              <div className="flex items-center gap-1 bg-[#F4F4F5] p-1 rounded-full border border-neutral-200/60">
                 <button
                   type="button"
                   onClick={() => setFontFamily('serif')}
-                  className={`px-3 py-1 rounded-full text-xs transition-colors pressable ${
+                  className={`px-3 py-1 rounded-full text-xs transition-colors cursor-pointer ${
                     fontFamily === 'serif'
-                      ? 'bg-white text-[#111111] shadow-xs font-bold'
-                      : 'text-[#6B6F6B] hover:text-[#111111]'
+                      ? 'bg-[#18181B] text-white shadow-xs font-bold'
+                      : 'text-[#71717A] hover:text-[#18181B]'
                   }`}
                 >
-                  परम्परा (Serif)
+                  Serif (Traditional)
                 </button>
                 <button
                   type="button"
                   onClick={() => setFontFamily('devanagari')}
-                  className={`px-3 py-1 rounded-full text-xs transition-colors pressable ${
+                  className={`px-3 py-1 rounded-full text-xs transition-colors cursor-pointer ${
                     fontFamily === 'devanagari'
-                      ? 'bg-white text-[#111111] shadow-xs font-bold'
-                      : 'text-[#6B6F6B] hover:text-[#111111]'
+                      ? 'bg-[#18181B] text-white shadow-xs font-bold'
+                      : 'text-[#71717A] hover:text-[#18181B]'
                   }`}
                 >
-                  सुगम (Sans)
+                  Sans (Modern)
                 </button>
               </div>
             </div>
 
             {/* Playback Pace Stepper */}
             <div className="flex items-center gap-2">
-              <span className="text-[11px] font-bold text-[#6B6F6B] uppercase tracking-wider font-mono">
-                श्रवण गति:
+              <span className="text-[11px] font-bold text-[#71717A] uppercase tracking-wider font-mono">
+                Audio Pace:
               </span>
-              <div className="flex items-center gap-1 bg-[#F4F4F4] p-1 rounded-full border border-black/5">
+              <div className="flex items-center gap-1 bg-[#F4F4F5] p-1 rounded-full border border-neutral-200/60">
                 {(['0.8x', '1.0x', '1.2x'] as const).map((pace) => (
                   <button
                     key={pace}
                     type="button"
                     onClick={() => setPlaybackPace(pace)}
-                    className={`px-2.5 py-1 rounded-full text-xs font-mono transition-colors pressable ${
+                    className={`px-2.5 py-1 rounded-full text-xs font-mono transition-colors cursor-pointer ${
                       playbackPace === pace
-                        ? 'bg-white text-[#111111] shadow-xs font-bold'
-                        : 'text-[#6B6F6B] hover:text-[#111111]'
+                        ? 'bg-[#18181B] text-white shadow-xs font-bold'
+                        : 'text-[#71717A] hover:text-[#18181B]'
                     }`}
                   >
                     {pace}
@@ -590,24 +694,24 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
           {/* Ambiance Theme Switcher */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-0.5">
-            <span className="text-[11px] font-bold text-[#6B6F6B] uppercase tracking-wider font-mono">
-              पठन वातावरण (Ambiance):
+            <span className="text-[11px] font-bold text-[#71717A] uppercase tracking-wider font-mono">
+              Ambiance Theme:
             </span>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
               {[
-                { id: 'ivory' as ReaderTheme, label: 'पावन पत्र', desc: 'Ivory Paper', bg: '#FAF9F6', border: '#E8E2D8', text: '#111111' },
-                { id: 'mint' as ReaderTheme, label: 'किशोरी निकुंज', desc: 'Sage Mint', bg: '#F2F8F4', border: '#D5E6DA', text: '#0F2916' },
+                { id: 'ivory' as ReaderTheme, label: 'पावन पत्र', desc: 'Porcelain White', bg: '#FFFFFF', border: '#E4E4E7', text: '#18181B' },
+                { id: 'mint' as ReaderTheme, label: 'किशोरी निकुंज', desc: 'Soft Lavender', bg: '#FAF5FF', border: '#E9D5FF', text: '#581C87' },
                 { id: 'chandan' as ReaderTheme, label: 'चन्दन प्रभा', desc: 'Chandan Gold', bg: '#FDF8EE', border: '#E9DFC7', text: '#3D260F' },
-                { id: 'night' as ReaderTheme, label: 'निशीथ ध्यान', desc: 'Twilight Night', bg: '#131B26', border: '#2D3748', text: '#FDE68A' },
+                { id: 'night' as ReaderTheme, label: 'निशीथ ध्यान', desc: 'Twilight Night', bg: '#18181B', border: '#27272A', text: '#F4F4F5' },
               ].map((t) => (
                 <button
                   key={t.id}
                   type="button"
                   onClick={() => setReaderTheme(t.id)}
                   style={{ backgroundColor: t.bg, borderColor: t.border, color: t.text }}
-                  className={`p-2 rounded-xl text-left border-2 transition-all pressable ${
+                  className={`p-2 rounded-xl text-left border-2 transition-all cursor-pointer ${
                     readerTheme === t.id
-                      ? 'ring-2 ring-[#C85A32] shadow-sm font-bold'
+                      ? 'ring-2 ring-[#7C3AED] shadow-sm font-bold'
                       : 'opacity-85'
                   }`}
                 >
@@ -624,28 +728,28 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       {/* 2. Canonical Grantha Filter Shelf (Hidden in Distraction-Free Mode)       */}
       {/* ========================================================================= */}
       {!isFocusReadingMode && (
-        <div className="mb-4 space-y-2">
+        <div className="mb-5 space-y-2.5">
           <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1">
             <button
               type="button"
               onClick={() => handleSelectGrantha('all')}
-              className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors pressable ${
+              className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer select-none ${
                 selectedGrantha === 'all'
-                  ? 'bg-[#14213D] text-[#B6FF2E] shadow-xs'
-                  : 'bg-white/70 text-[#6B6F6B] hover:text-[#111111] border border-white/80'
+                  ? 'bg-[#18181B] text-white shadow-xs'
+                  : 'bg-white text-[#71717A] hover:text-[#18181B] border border-neutral-200/80'
               }`}
             >
-              सभी ग्रन्थ ({allPadas.length})
+              All Scriptures ({allPadas.length})
             </button>
             {allGranthas.map((g) => (
               <button
                 key={g.id}
                 type="button"
                 onClick={() => handleSelectGrantha(g.id)}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors pressable ${
+                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer select-none ${
                   selectedGrantha === g.id
-                    ? 'bg-[#14213D] text-[#B6FF2E] shadow-xs'
-                    : 'bg-white/70 text-[#6B6F6B] hover:text-[#111111] border border-white/80'
+                    ? 'bg-[#18181B] text-white shadow-xs'
+                    : 'bg-white text-[#71717A] hover:text-[#18181B] border border-neutral-200/80'
                 }`}
               >
                 {g.name}
@@ -655,29 +759,29 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
           {/* Raga Sub-Filter Strip */}
           <div className="flex items-center gap-1 overflow-x-auto no-scrollbar text-xs">
-            <span className="text-[10px] font-mono font-bold text-[#6B6F6B] uppercase tracking-wider shrink-0 mr-1">
-              राग:
+            <span className="text-[10px] font-mono font-bold text-[#71717A] uppercase tracking-wider shrink-0 mr-1.5">
+              RAGA:
             </span>
             <button
               type="button"
               onClick={() => setSelectedRaga('all')}
-              className={`px-2.5 py-0.5 rounded-full text-[11px] font-medium transition-colors ${
+              className={`px-2.5 py-0.5 rounded-full text-[11px] font-medium transition-colors cursor-pointer select-none ${
                 selectedRaga === 'all'
-                  ? 'bg-[#C85A32] text-white shadow-xs'
-                  : 'bg-black/[0.04] text-[#6B6F6B] hover:text-[#111111]'
+                  ? 'bg-amber-500 text-white shadow-xs'
+                  : 'bg-neutral-100 text-[#71717A] hover:text-[#18181B]'
               }`}
             >
-              सभी
+              All
             </button>
             {availableRagas.slice(0, 10).map((r) => (
               <button
                 key={r}
                 type="button"
                 onClick={() => setSelectedRaga(r)}
-                className={`px-2.5 py-0.5 rounded-full text-[11px] font-medium whitespace-nowrap transition-colors ${
+                className={`px-2.5 py-0.5 rounded-full text-[11px] font-medium whitespace-nowrap transition-colors cursor-pointer select-none ${
                   selectedRaga === r
-                    ? 'bg-[#C85A32] text-white shadow-xs'
-                    : 'bg-black/[0.04] text-[#6B6F6B] hover:text-[#111111]'
+                    ? 'bg-amber-500 text-white shadow-xs'
+                    : 'bg-neutral-100 text-[#71717A] hover:text-[#18181B]'
                 }`}
               >
                 {r}
@@ -699,16 +803,16 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 key={pad.id}
                 type="button"
                 onClick={() => handleSelectPad(pad)}
-                className={`shrink-0 text-left px-3.5 py-2.5 rounded-2xl border transition-all pressable ${
+                className={`shrink-0 text-left px-3.5 py-2.5 rounded-2xl border transition-all cursor-pointer select-none ${
                   isSelected
-                    ? 'bg-[#14213D] text-white border-[#14213D] shadow-sm'
-                    : 'bg-white/60 text-[#111111] border-white/80 hover:bg-white/90'
+                    ? 'bg-[#18181B] text-white border-[#18181B] shadow-xs'
+                    : 'bg-white text-[#18181B] border-neutral-200/80 hover:bg-neutral-50'
                 }`}
               >
-                <div className="text-[10px] font-medium opacity-80 uppercase tracking-wider">
+                <div className={`text-[10px] font-medium uppercase tracking-wider font-mono ${isSelected ? 'text-purple-300' : 'text-[#7C3AED]'}`}>
                   #{idx + 1} • {pad.rag}
                 </div>
-                <div className="font-devanagari font-semibold text-xs truncate max-w-[170px]">
+                <div className="font-serif font-bold text-xs truncate max-w-[170px] mt-0.5">
                   {pad.titleDevanagari}
                 </div>
               </button>
@@ -726,13 +830,13 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
         {/* Left Column: Pada Index Catalog (Desktop only: hidden md:block)           */}
         {/* ========================================================================= */}
         {!isFocusReadingMode && (
-          <div className="hidden md:block md:col-span-4 xl:col-span-3 space-y-2.5 sticky top-20">
-            <div className="flex items-center justify-between px-1 text-xs text-[#6B6F6B]">
-              <span>{filteredPads.length} पद उपलब्ध</span>
-            <span className="font-semibold text-[#C85A32]">
-              {selectedGrantha === 'all' ? 'समस्त संग्रह' : allGranthas.find(g => g.id === selectedGrantha)?.name}
-            </span>
-          </div>
+          <div className="hidden md:block md:col-span-4 xl:col-span-3 space-y-2.5 sticky top-24">
+            <div className="flex items-center justify-between px-1 text-xs text-[#71717A]">
+              <span>{filteredPads.length} Verses Available</span>
+              <span className="font-semibold text-[#7C3AED]">
+                {selectedGrantha === 'all' ? 'All Scriptures' : allGranthas.find(g => g.id === selectedGrantha)?.name}
+              </span>
+            </div>
 
           {/* Scrollable List with Smooth Capped Rendering */}
           <div className="space-y-1.5 max-h-[70vh] sm:max-h-[76vh] overflow-y-auto no-scrollbar pr-1">
@@ -743,23 +847,26 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 <div
                   key={pad.id}
                   onClick={() => handleSelectPad(pad)}
-                  className={`p-3 sm:p-3.5 rounded-[20px] border transition-all cursor-pointer pressable flex items-center justify-between gap-3 ${
+                  className={`p-3 rounded-[20px] transition-all cursor-pointer flex items-center justify-between gap-3 border ${
                     isSelected
-                      ? 'bg-white text-[#111111] border-white shadow-[0_8px_20px_rgba(0,0,0,0.06)] ring-1 ring-black/5'
-                      : 'bg-white/55 text-[#333333] border-white/70 hover:bg-white/85'
+                      ? 'bg-white text-[#18181B] border-l-4 border-l-[#7C3AED] border-neutral-200/90 shadow-[0_4px_16px_rgba(124,58,237,0.08)]'
+                      : 'bg-white/80 hover:bg-white text-[#18181B] border-neutral-200/70 hover:border-neutral-300'
                   }`}
                 >
-                  <div className="min-w-0 flex-1">
-                    <div className="flex items-center gap-1.5 text-[10px] font-bold text-[#C85A32] uppercase tracking-wider">
-                      <span className="font-mono">#{idx + 1}</span>
-                      <span>•</span>
-                      <span>{pad.rag}</span>
-                    </div>
-                    <div className="font-devanagari font-bold text-xs sm:text-sm truncate mt-0.5 text-[#111111]">
-                      {pad.titleDevanagari}
-                    </div>
-                    <div className="text-[11px] text-[#6B6F6B] truncate mt-0.5">
-                      {pad.author}
+                  <div className="flex items-center gap-2.5 min-w-0 flex-1">
+                    <ScriptureArtwork pad={pad} size="sm" />
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-1.5 text-[10px] font-bold text-[#7C3AED] uppercase tracking-wider font-mono">
+                        <span>#{idx + 1}</span>
+                        <span>•</span>
+                        <span className="truncate">{pad.rag}</span>
+                      </div>
+                      <div className="font-serif font-bold text-xs sm:text-[13px] truncate text-[#18181B]">
+                        {pad.titleDevanagari}
+                      </div>
+                      <div className="text-[10.5px] text-[#71717A] truncate font-medium">
+                        {pad.author}
+                      </div>
                     </div>
                   </div>
 
@@ -770,16 +877,16 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                       onPlayPad(pad);
                     }}
                     aria-label={`Play ${pad.titleDevanagari}`}
-                    className={`w-8 h-8 rounded-full shrink-0 flex items-center justify-center transition-colors pressable ${
+                    className={`w-7 h-7 rounded-full shrink-0 flex items-center justify-center transition-colors cursor-pointer ${
                       isCurrentlyPlaying
-                        ? 'bg-[#22C55E] text-white shadow-xs'
-                        : 'bg-black/5 hover:bg-black/10 text-[#111111]'
+                        ? 'bg-[#7C3AED] text-white shadow-xs'
+                        : 'bg-neutral-100 hover:bg-neutral-200 text-[#18181B]'
                     }`}
                   >
                     {isCurrentlyPlaying ? (
-                      <Pause className="w-3.5 h-3.5 fill-current" />
+                      <Pause className="w-3 h-3 fill-current" />
                     ) : (
-                      <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
+                      <Play className="w-3 h-3 fill-current ml-0.5" />
                     )}
                   </button>
                 </div>
@@ -790,9 +897,9 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               <button
                 type="button"
                 onClick={() => setVisibleCount((c) => c + 30)}
-                className="w-full py-2.5 rounded-2xl bg-white/80 text-xs font-bold text-slate-700 border border-black/5 pressable"
+                className="w-full py-2.5 rounded-2xl bg-white text-xs font-bold text-[#18181B] border border-neutral-200/80 hover:bg-neutral-50 cursor-pointer shadow-2xs"
               >
-                और पद लोड करें ({filteredPads.length - visibleCount} शेष)...
+                Load More Verses ({filteredPads.length - visibleCount} remaining)...
               </button>
             )}
           </div>
@@ -806,136 +913,149 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
           isFocusReadingMode
             ? `w-full dhyana-reader-canvas p-5 sm:p-8 ${
                 readerTheme === 'night'
-                  ? 'bg-[#131B26] text-[#E2E8F0] border-[#2A374A]'
-                  : readerTheme === 'mint'
-                  ? 'bg-[#F2F8F4] text-[#0F2916] border-[#DCEBE0]'
-                  : readerTheme === 'chandan'
-                  ? 'bg-[#FDF8EE] text-[#3D260F] border-[#EFE5D0]'
-                  : 'bg-[#FAF9F6] text-[#111111] border-[#ECE7DE]'
+                  ? 'bg-[#18181B] text-[#E4E4E7] border-neutral-800'
+                  : 'bg-white text-[#18181B] border-neutral-200/80 shadow-[0_4px_24px_rgba(0,0,0,0.03)]'
               }`
-            : `md:col-span-8 xl:col-span-6 w-full rounded-[28px] sm:rounded-[32px] p-5 sm:p-8 shadow-card border ${
+            : `md:col-span-8 xl:col-span-6 w-full rounded-[32px] p-5 sm:p-8 border border-neutral-200/80 shadow-[0_4px_24px_rgba(0,0,0,0.03)] ${
                 readerTheme === 'night'
-                  ? 'bg-[#131B26] text-[#E2E8F0] border-[#2A374A]'
-                  : readerTheme === 'mint'
-                  ? 'bg-[#F2F8F4] text-[#0F2916] border-[#DCEBE0]'
-                  : readerTheme === 'chandan'
-                  ? 'bg-[#FDF8EE] text-[#3D260F] border-[#EFE5D0]'
-                  : 'bg-[#F3F3F3] text-[#111111] border-white/80'
+                  ? 'bg-[#18181B] text-[#E4E4E7] border-neutral-800'
+                  : 'bg-white text-[#18181B]'
               }`
         }`}>
           
-          {/* Header of the Selected Pad */}
-          <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 pb-5 border-b border-black/5 mb-6">
-            <div className="space-y-2">
+          {/* ========================================================================= */}
+          {/* Sacred Scripture Header Bar (Pure White Porcelain Luxury Anatomy)        */}
+          {/* ========================================================================= */}
+          <div className="bg-[#FAF9F6]/60 rounded-[28px] p-5 sm:p-6 border border-neutral-200/80 mb-6 shadow-2xs space-y-4">
+            
+            {/* Top Row: Meta Badges & Quick Action Controls */}
+            <div className="flex items-center justify-between gap-3 flex-wrap">
               <div className="flex items-center gap-2 flex-wrap">
-                <span className="text-[11px] font-bold text-[#C85A32] uppercase tracking-wider bg-[#C85A32]/10 px-2.5 py-0.5 rounded-full">
+                <span className="text-xs font-bold text-[#7C3AED] bg-purple-50 px-3 py-1 rounded-full uppercase tracking-wider font-mono">
+                  {granthaDisplayName}
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold text-amber-800 bg-amber-50 font-mono">
                   राग {selectedPad.rag} • {selectedPad.duration}
                 </span>
-                <span className="text-xs text-[#6B6F6B] flex items-center gap-1 font-medium">
-                  <Music className="w-3.5 h-3.5 text-[#22C55E]" />
-                  स्वर प्रवाह
+                <span className="hidden sm:inline-flex items-center gap-1.5 text-xs font-medium text-purple-700 bg-purple-50 px-2.5 py-1 rounded-full">
+                  <Music className="w-3.5 h-3.5 text-purple-600" />
+                  Melodic Audio Available
                 </span>
-                {granthaRef && (
-                  <span className="text-[11px] font-semibold text-[#8C6D3B] bg-[#F7EFE1] border border-[#E8DAC2] px-2.5 py-0.5 rounded-full">
-                    {granthaRef}
-                  </span>
-                )}
               </div>
-              <h2 className="font-serif font-bold text-xl sm:text-2xl lg:text-3xl text-[#111111] leading-snug">
-                {cleanTitle}
-              </h2>
-              <div className="text-xs sm:text-sm text-[#6B6F6B] font-medium flex items-center gap-1.5">
-                <span>रचयिता:</span>
-                <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-[#14213D]/5 text-[#14213D] font-bold">
-                  {authorName}
-                </span>
+
+              {/* Bookmark Button */}
+              <button
+                type="button"
+                onClick={handleToggleBookmark}
+                title={isBookmarked ? "Saved to Bookmarks" : "Save Pad to Bookmarks"}
+                className={`w-9 h-9 rounded-full flex items-center justify-center transition-colors border cursor-pointer ${
+                  isBookmarked
+                    ? 'bg-amber-50 text-amber-700 border-amber-200/80 shadow-2xs'
+                    : 'bg-white hover:bg-neutral-50 text-neutral-400 hover:text-[#18181B] border-neutral-200/80'
+                }`}
+              >
+                <Bookmark className={`w-4 h-4 ${isBookmarked ? 'fill-amber-500 text-amber-600' : ''}`} />
+              </button>
+            </div>
+
+            {/* Middle Section: Avatar + Title + Lineage (Full Width, Never Squeezed!) */}
+            <div className="flex items-start gap-4">
+              <ScriptureArtwork pad={selectedPad} size="lg" />
+
+              <div className="flex flex-col min-w-0 flex-1">
+                {/* Sacred Classical Serif Title - FULL WIDTH */}
+                <h2 className="font-serif font-bold text-2xl sm:text-3xl lg:text-[28px] text-[#18181B] leading-tight">
+                  {cleanTitle}
+                </h2>
+                {selectedPad.titleEnglish && (
+                  <p className="text-xs sm:text-sm text-[#71717A] font-serif italic mt-1">
+                    {selectedPad.titleEnglish}
+                  </p>
+                )}
+
+                {/* Composer & Lineage Pill */}
+                <div className="flex items-center gap-2 text-xs text-[#71717A] mt-2 flex-wrap font-medium">
+                  <span className="flex items-center gap-1 text-[#71717A]">
+                    <Sparkles className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+                    Composer & Lineage:
+                  </span>
+                  <span className="inline-flex items-center px-3 py-0.5 rounded-full bg-[#F4F4F5] font-semibold text-[#18181B]">
+                    {authorName}
+                  </span>
+                </div>
               </div>
             </div>
 
-            <div className="flex items-center gap-2 shrink-0 self-end sm:self-auto flex-wrap sm:flex-nowrap">
-              {/* Devotional Action Pill (Summary Toggle) */}
-              <button
-                type="button"
-                onClick={handleToggleSummary}
-                title="भाव संक्षेप देखें"
-                aria-label="भाव संक्षेप देखें"
-                className="h-9 sm:h-10 px-3 sm:px-3.5 rounded-full bg-[#FFF9EE] border border-[#E9D8B4] text-[#B84A28] flex items-center gap-1.5 shadow-xs pressable font-medium text-xs"
-              >
-                <Sparkles className="w-3.5 h-3.5 text-[#D4A359]" />
-                <span className="hidden sm:inline">भाव संक्षेप देखें</span>
-                <span className="sm:hidden">दिव्य सार</span>
-              </button>
-
-              {/* Mobile Rasik Commentary Trigger */}
-              <button
-                type="button"
-                onClick={() => setIsCommentaryOpen(true)}
-                title="रसिक भावार्थ एवं टीका"
-                aria-label="Open Rasik commentary drawer"
-                className="xl:hidden h-9 sm:h-10 px-3.5 rounded-full bg-[#14213D] text-[#B6FF2E] flex items-center gap-1.5 shadow-xs pressable font-medium text-xs"
-              >
-                <Feather className="w-3.5 h-3.5" />
-                <span>टीका</span>
-              </button>
-
-              {/* Play Audio Button */}
+            {/* Bottom Row: Action Suite (Audio Listen, Essence Summary, Commentary) */}
+            <div className="flex items-center gap-2.5 pt-3 border-t border-neutral-200/60 flex-wrap">
+              {/* Primary Audio Play Button */}
               <button
                 type="button"
                 onClick={() => onPlayPad(selectedPad)}
-                className="h-9 sm:h-10 px-4 rounded-full bg-[#22C55E] text-white flex items-center gap-2 shadow-xs pressable font-bold text-xs hover:bg-[#1faa54]"
+                className={`h-10 px-5 rounded-full flex items-center gap-2 font-bold text-xs transition-colors cursor-pointer shadow-xs ${
+                  isCurrentPadPlaying
+                    ? 'bg-[#7C3AED] text-white'
+                    : 'bg-[#18181B] hover:bg-[#27272A] text-white'
+                }`}
               >
                 {isCurrentPadPlaying ? (
                   <>
                     <Pause className="w-3.5 h-3.5 fill-current" />
-                    <span>विराम दें</span>
+                    <span>Pause Audio</span>
                   </>
                 ) : (
                   <>
                     <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
-                    <span>श्रवण करें</span>
+                    <span>Listen Audio (श्रवण करें)</span>
                   </>
                 )}
               </button>
 
-              {/* Bookmark Toggle */}
+              {/* Devotional Essence Summary Toggle */}
               <button
                 type="button"
-                onClick={handleToggleBookmark}
-                title={isBookmarked ? "पाद संचित" : "पाद संचित करें"}
-                className={`w-9 sm:w-10 h-9 sm:h-10 rounded-full flex items-center justify-center shadow-xs pressable transition-colors border border-black/5 ${
-                  isBookmarked
-                    ? 'bg-amber-50 text-[#D4A359]'
-                    : 'bg-white/80 text-[#6B6F6B] hover:text-[#111111]'
-                }`}
+                onClick={handleToggleSummary}
+                className="h-10 px-4 rounded-full bg-amber-50 hover:bg-amber-100 text-amber-800 flex items-center gap-1.5 font-semibold text-xs transition-colors cursor-pointer"
               >
-                <Bookmark className={`w-4 h-4 ${isBookmarked ? 'fill-[#D4A359]' : ''}`} />
+                <Sparkles className="w-3.5 h-3.5 text-amber-600" />
+                <span>Essence (भाव संक्षेप)</span>
+              </button>
+
+              {/* Mobile/Tablet Commentary Drawer Trigger */}
+              <button
+                type="button"
+                onClick={() => setIsCommentaryOpen(true)}
+                className="xl:hidden h-10 px-4 rounded-full bg-white hover:bg-neutral-50 text-[#18181B] border border-neutral-200/80 flex items-center gap-1.5 font-medium text-xs transition-colors cursor-pointer"
+              >
+                <Feather className="w-3.5 h-3.5 text-[#71717A]" />
+                <span>Commentary (टीका)</span>
               </button>
             </div>
           </div>
 
           {/* Collapsible Sacred Devotional Card */}
           {isSummaryOpen && (
-            <div className="bg-[#FFFDF9] border border-[#E9D8B4] border-l-4 border-[#D4A359] rounded-2xl p-4 sm:p-5 mb-6 shadow-xs apple-view-enter">
-              <div className="flex items-center justify-between pb-2 mb-2 border-b border-black/[0.04]">
-                <div className="flex items-center gap-1.5 text-xs font-bold text-[#B84A28]">
-                  <Sparkles className="w-4 h-4 text-[#D4A359]" />
-                  <span>॥ दिव्य भाव संक्षेप ॥</span>
+            <div className="bg-amber-50/50 border border-amber-200/80 border-l-4 border-l-amber-500 rounded-2xl p-4 sm:p-5 mb-6 shadow-xs apple-view-enter">
+              <div className="flex items-center justify-between pb-2 mb-2 border-b border-amber-200/60">
+                <div className="flex items-center gap-1.5 text-xs font-bold text-amber-900">
+                  <Sparkles className="w-4 h-4 text-amber-600" />
+                  <span>॥ Divine Essence & Spiritual Theme (दिव्य भाव संक्षेप) ॥</span>
                 </div>
                 <button
                   type="button"
                   onClick={() => setIsSummaryOpen(false)}
-                  className="text-xs text-[#6B6F6B] hover:text-[#111111] pressable font-medium"
+                  className="text-xs text-[#71717A] hover:text-[#18181B] font-medium cursor-pointer"
                 >
-                  संवरण करें
+                  Dismiss ×
                 </button>
               </div>
               {isSummaryLoading && !summaryText ? (
-                <div className="flex items-center gap-2 py-3 text-xs text-[#D97706] font-medium min-h-[64px]">
-                  <Sparkles className="w-4 h-4 text-[#D4A359] animate-spin" />
-                  <span>दिव्य भाव उद्घाटित हो रहा है...</span>
+                <div className="flex items-center gap-2 py-3 text-xs text-amber-700 font-medium min-h-[64px]">
+                  <Sparkles className="w-4 h-4 text-amber-600 animate-spin" />
+                  <span>Revealing divine essence and spiritual theme...</span>
                 </div>
               ) : (
-                <p className="text-xs sm:text-sm font-devanagari text-[#333333] leading-relaxed break-words">
+                <p className="text-xs sm:text-sm font-devanagari text-[#18181B] leading-relaxed break-words">
                   {summaryText ||
                     selectedPad.verses?.[0]?.bhavarth ||
                     'श्री युगल रस का यह पावन पद अंतःकरण में असीम शांति और दिव्य प्रेम का संचार करता है।'}
@@ -958,17 +1078,17 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   onClick={() => setActiveStanzaIndex(vIdx)}
                   className={`p-4 sm:p-6 rounded-[24px] transition-all duration-300 relative cursor-pointer ${
                     isStanzaActive
-                      ? 'dhyana-stanza-active ring-1.5 ring-amber-400/50 shadow-xs border-l-4 border-[#D4A359]'
+                      ? 'ring-2 ring-purple-500/30 border-l-4 border-l-[#7C3AED] bg-purple-50/20 shadow-xs'
                       : isStanzaDimmed
-                      ? 'dhyana-stanza-dimmed bg-white/40 border border-black/[0.02]'
-                      : 'bg-white/60 border border-black/[0.04]'
+                      ? 'bg-neutral-50/60 border border-neutral-200/40 opacity-60'
+                      : 'bg-white border border-neutral-200/80 shadow-[0_2px_8px_rgba(0,0,0,0.02)]'
                   }`}
                 >
                   {/* Stanza Utility Header: Active Indicator + Verse Copy Action */}
-                  <div className="flex items-center justify-between pb-2.5 mb-2.5 border-b border-black/[0.06]">
-                    <span className="text-[10px] font-bold text-[#C85A32] uppercase tracking-wider font-mono flex items-center gap-1">
-                      {isStanzaActive ? '🪷 सक्रिय पाठ • पंक्ति ' : 'पंक्ति '}
-                      {formatDevanagariNumerals(verse.stanzaNumber)}
+                  <div className="flex items-center justify-between pb-2.5 mb-2.5 border-b border-neutral-100">
+                    <span className="text-[10px] font-bold text-[#7C3AED] uppercase tracking-wider font-mono flex items-center gap-1">
+                      {isStanzaActive ? '🪷 Active Verse • Stanza ' : 'Stanza '}
+                      {verse.stanzaNumber}
                     </span>
                     <button
                       type="button"
@@ -976,18 +1096,18 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                         e.stopPropagation();
                         handleCopyVerse(verse, vIdx);
                       }}
-                      className="px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-black/5 hover:bg-black/10 text-[#6B6F6B] flex items-center gap-1 pressable"
-                      title="पद पंक्ति प्रतिलिपि (Copy verse)"
+                      className="px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-neutral-100 hover:bg-neutral-200 text-[#71717A] flex items-center gap-1 cursor-pointer transition-colors"
+                      title="Copy verse stanza to clipboard"
                     >
                       {copiedStanzaIdx === vIdx ? (
                         <>
-                          <Check className="w-3 h-3 text-[#22C55E]" />
-                          <span className="text-[#22C55E] font-bold">प्रतिलिपि पूर्ण</span>
+                          <Check className="w-3 h-3 text-[#7C3AED]" />
+                          <span className="text-[#7C3AED] font-bold">Copied ✓</span>
                         </>
                       ) : (
                         <>
                           <Copy className="w-3 h-3" />
-                          <span>प्रतिलिपि</span>
+                          <span>Copy Verse</span>
                         </>
                       )}
                     </button>
@@ -998,21 +1118,21 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                     {verse.linesDevanagari.map((line, lIdx) => (
                       <p
                         key={lIdx}
-                        className={`dhyana-verse-line text-[18px] sm:text-[21px] font-semibold text-[#111111] ${
+                        className={`dhyana-verse-line text-[19px] sm:text-[22px] font-semibold text-[#18181B] ${
                           fontFamily === 'serif' ? 'font-serif' : 'font-devanagari'
                         } ${
                           fontSize === 'sm'
-                            ? 'text-[15px] sm:text-[17px]'
+                            ? 'text-[16px] sm:text-[18px]'
                             : fontSize === 'md'
-                            ? 'text-[18px] sm:text-[21px]'
+                            ? 'text-[19px] sm:text-[22px]'
                             : fontSize === 'lg'
-                            ? 'text-[21px] sm:text-[24px]'
-                            : 'text-[24px] sm:text-[28px]'
+                            ? 'text-[22px] sm:text-[25px]'
+                            : 'text-[25px] sm:text-[29px]'
                         } ${
-                          readerTheme === 'night' ? 'text-[#FDE68A]' : 'text-[#111111]'
+                          readerTheme === 'night' ? 'text-[#F4F4F5]' : 'text-[#18181B]'
                         } ${
                           isFocusReadingMode
-                            ? 'leading-[2.0] sm:leading-[2.2] text-[20px] sm:text-[23px]'
+                            ? 'leading-[2.0] sm:leading-[2.2] text-[21px] sm:text-[24px]'
                             : 'leading-[1.85] sm:leading-[2.0]'
                         }`}
                       >
@@ -1022,9 +1142,9 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   </div>
 
                   {/* Sacred Braj Delimiter */}
-                  <div className="flex items-center justify-center gap-2 pt-3 my-1 text-[#D4A359] select-none">
+                  <div className="flex items-center justify-center gap-2 pt-3 my-1 text-amber-500 select-none">
                     <span className="text-xs">❦</span>
-                    <span className="font-serif font-bold text-xs tracking-widest text-[#B84A28]">
+                    <span className="font-serif font-bold text-xs tracking-widest text-amber-800">
                       ॥ {formatDevanagariNumerals(verse.stanzaNumber)} ॥
                     </span>
                     <span className="text-xs">❦</span>
@@ -1032,9 +1152,9 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
                   {/* Transliteration */}
                   {showTransliteration && verse.linesTransliteration.length > 0 && (
-                    <div className="space-y-0.5 pt-2 border-t border-black/5 mt-2">
+                    <div className="space-y-0.5 pt-2 border-t border-neutral-100 mt-2">
                       {verse.linesTransliteration.map((line, lIdx) => (
-                        <p key={lIdx} className="text-xs sm:text-sm text-[#6B6F6B] italic font-serif">
+                        <p key={lIdx} className="text-xs sm:text-sm text-[#71717A] italic font-serif">
                           {line}
                         </p>
                       ))}
@@ -1043,11 +1163,11 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
                   {/* Hindi Meaning / Bhavarth Block with gold accent border */}
                   {verse.bhavarth && (
-                    <div className={`${isFocusReadingMode ? 'block' : 'xl:hidden'} bg-[#FAF8F5] border-l-[3px] border-[#D4A359] p-3.5 rounded-r-2xl mt-3.5 shadow-xs`}>
-                      <span className="text-[10px] font-bold text-[#C85A32] uppercase tracking-wider block mb-1">
-                        भावार्थ • Divine Essence
+                    <div className={`${isFocusReadingMode ? 'block' : 'xl:hidden'} bg-[#F4F4F5]/70 border-l-[3px] border-amber-500 p-3.5 rounded-r-2xl mt-3.5 shadow-2xs`}>
+                      <span className="text-[10px] font-bold text-amber-700 uppercase tracking-wider block mb-1 font-mono">
+                        Divine Meaning & Purport (भावार्थ)
                       </span>
-                      <p className="text-xs sm:text-sm text-[#333333] leading-relaxed font-sans font-normal">
+                      <p className="text-xs sm:text-sm text-[#18181B] leading-relaxed font-sans font-normal">
                         {verse.bhavarth}
                       </p>
                     </div>
@@ -1058,48 +1178,48 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
           </div>
 
           {/* Bottom Prev / Next Navigation Controls */}
-          <div className="flex items-center justify-between pt-6 mt-8 border-t border-black/5">
+          <div className="flex items-center justify-between pt-6 mt-8 border-t border-neutral-100">
             <button
               type="button"
               disabled={!hasPrev}
               onClick={handlePrevPad}
-              className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold pressable transition-all ${
+              className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer ${
                 hasPrev
-                  ? 'bg-white/80 text-[#111111] hover:bg-white border border-black/5'
-                  : 'opacity-40 cursor-not-allowed text-slate-400'
+                  ? 'bg-white text-[#18181B] hover:bg-neutral-50 border border-neutral-200/80 shadow-2xs'
+                  : 'opacity-40 cursor-not-allowed text-neutral-400 border border-neutral-200/40'
               }`}
             >
               <ChevronLeft className="w-4 h-4" />
-              <span>पिछला पद</span>
+              <span>Previous Pad</span>
             </button>
 
-            <span className="text-xs text-[#6B6F6B] font-mono">
-              पद {currentIdx + 1} / {filteredPads.length}
+            <span className="text-xs text-[#71717A] font-mono font-medium">
+              Pad {currentIdx + 1} of {filteredPads.length}
             </span>
 
             <button
               type="button"
               disabled={!hasNext}
               onClick={handleNextPad}
-              className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold pressable transition-all ${
+              className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer shadow-xs ${
                 hasNext
-                  ? 'bg-[#14213D] text-[#B6FF2E] shadow-xs'
-                  : 'opacity-40 cursor-not-allowed text-slate-400'
+                  ? 'bg-[#18181B] hover:bg-[#27272A] text-white'
+                  : 'opacity-40 cursor-not-allowed text-neutral-400 bg-neutral-100'
               }`}
             >
-              <span>अगला पद</span>
+              <span>Next Pad</span>
               <ChevronRight className="w-4 h-4" />
             </button>
           </div>
 
-          <div className="flex items-center justify-between pt-4 mt-4 border-t border-black/5 text-xs text-[#6B6F6B]">
+          <div className="flex items-center justify-between pt-4 mt-4 border-t border-neutral-100 text-xs text-[#71717A]">
             <span className="flex items-center gap-1.5 font-medium">
-              <Volume2 className="w-4 h-4 text-[#22C55E]" />
-              श्रवण रस एवं दिव्य कीर्तन उपलब्ध
+              <Volume2 className="w-4 h-4 text-[#7C3AED]" />
+              Audio Kirtan & Melodic Recitation Available
             </span>
-            <button type="button" className="flex items-center gap-1.5 hover:text-[#111111] pressable font-medium">
+            <button type="button" className="flex items-center gap-1.5 hover:text-[#18181B] font-medium cursor-pointer">
               <Share2 className="w-4 h-4" />
-              साझा करें
+              Share Pad
             </button>
           </div>
         </article>
@@ -1108,22 +1228,22 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
         {/* Right Column: Dedicated Desktop Commentary Desk (Visible on xl:block)     */}
         {/* ========================================================================= */}
         {!isFocusReadingMode && (
-          <aside className="hidden xl:block xl:col-span-3 space-y-4 sticky top-20">
-            <div className="bg-white/60 backdrop-blur-md rounded-[28px] p-5 border border-white/80 shadow-card">
-              <div className="flex items-center gap-2 mb-3 pb-2 border-b border-black/5">
-                <Feather className="w-4 h-4 text-[#C85A32]" />
-                <h3 className="font-semibold text-sm text-[#111111]">
-                  रसिक भावार्थ एवं टीका
+          <aside className="hidden xl:block xl:col-span-3 space-y-4 sticky top-24">
+            <div className="bg-white rounded-[28px] p-5 border border-neutral-200/80 shadow-[0_4px_24px_rgba(0,0,0,0.03)]">
+              <div className="flex items-center gap-2 mb-3 pb-2 border-b border-neutral-100">
+                <Feather className="w-4 h-4 text-[#7C3AED]" />
+                <h3 className="font-semibold text-sm text-[#18181B]">
+                  Rasik Commentary & Purport (रसिक भावार्थ)
                 </h3>
               </div>
 
               <div className="space-y-3.5 max-h-[50vh] overflow-y-auto no-scrollbar pr-1">
                 {selectedPad.verses.map((v) => (
-                  <div key={v.stanzaNumber} className="bg-[#FAF8F5] p-3.5 rounded-2xl border-l-[3px] border-[#D4A359]">
-                    <span className="text-[10px] font-bold text-[#C85A32] uppercase tracking-wider block mb-1">
-                      पद पंक्ति {v.stanzaNumber} भावार्थ
+                  <div key={v.stanzaNumber} className="bg-[#F4F4F5]/70 p-3.5 rounded-2xl border-l-[3px] border-amber-500">
+                    <span className="text-[10px] font-bold text-amber-700 uppercase tracking-wider block mb-1 font-mono">
+                      Stanza {v.stanzaNumber} Purport
                     </span>
-                    <p className="text-xs leading-relaxed text-[#333333]">
+                    <p className="text-xs leading-relaxed text-[#18181B]">
                       {v.bhavarth}
                     </p>
                   </div>
@@ -1131,13 +1251,13 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               </div>
             </div>
 
-            <div className="bg-[#14213D] text-white rounded-[28px] p-5 shadow-card">
-              <span className="text-[10px] text-[#B6FF2E] font-bold uppercase tracking-wider block mb-1.5 flex items-center gap-1.5">
-                <Sparkles className="w-3.5 h-3.5 text-[#B6FF2E]" />
-                नित्य निकुंज विहार तत्व
+            <div className="bg-purple-50/70 text-[#18181B] rounded-[28px] p-5 border border-neutral-200/80 shadow-[0_4px_20px_rgba(124,58,237,0.04)]">
+              <span className="text-[10.5px] text-purple-700 font-bold uppercase tracking-wider block mb-1.5 flex items-center gap-1.5 font-mono">
+                <Sparkles className="w-3.5 h-3.5 text-purple-600" />
+                Eternal Nikunj Vihar Darshan
               </span>
-              <p className="text-xs leading-relaxed text-white/90">
-                श्री वृन्दावन धाम में युगल सरकार का यह रस नित्य, अखंड और निर्बाध है। यहाँ प्रेम ही साधन और प्रेम ही साध्य है।
+              <p className="text-xs leading-relaxed text-[#52525B]">
+                In Shri Vrindavan Dham, the eternal loving leela of Priya-Priyatam is unbroken and ever-fresh. Love here is both the means (sadhan) and the ultimate goal (sadhya).
               </p>
             </div>
           </aside>
@@ -1150,7 +1270,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       {/* ========================================================================= */}
       {isCommentaryOpen && (
         <div
-          className={`xl:hidden fixed inset-0 z-50 bg-black/75 flex items-end justify-center p-0 sm:p-4 transition-opacity ${
+          className={`xl:hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-end justify-center p-0 sm:p-4 transition-opacity ${
             isCommentaryClosing ? 'modal-backdrop-exit' : 'modal-backdrop-enter'
           }`}
           onClick={handleCloseCommentary}
@@ -1161,36 +1281,36 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             }`}
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between pb-3 border-b border-black/5">
+            <div className="flex items-center justify-between pb-3 border-b border-neutral-100">
               <div className="flex items-center gap-2">
-                <Feather className="w-4 h-4 text-[#C85A32]" />
-                <h3 className="font-semibold text-sm sm:text-base text-[#111111]">
-                  रसिक भावार्थ एवं टीका
+                <Feather className="w-4 h-4 text-[#7C3AED]" />
+                <h3 className="font-semibold text-sm sm:text-base text-[#18181B]">
+                  Rasik Commentary & Purport (रसिक भावार्थ)
                 </h3>
               </div>
               <button
                 type="button"
                 onClick={handleCloseCommentary}
                 aria-label="Close commentary drawer"
-                className="w-8 h-8 rounded-full bg-black/5 flex items-center justify-center text-[#111111] pressable hover:bg-black/10"
+                className="w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center text-[#18181B] hover:bg-neutral-200 cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
             </div>
 
             {/* Featured Divine Devotional Summary Card */}
-            <div className="bg-[#FFFDF9] p-4 rounded-2xl border border-[#E9D8B4] border-l-4 border-[#D4A359] shadow-xs space-y-2">
-              <div className="flex items-center gap-1.5 text-xs font-bold text-[#B84A28]">
-                <Sparkles className="w-4 h-4 text-[#D4A359]" />
-                <span>॥ दिव्य भाव संक्षेप (Divine Essence) ॥</span>
+            <div className="bg-amber-50/50 p-4 rounded-2xl border border-amber-200/80 border-l-4 border-l-amber-500 shadow-xs space-y-2">
+              <div className="flex items-center gap-1.5 text-xs font-bold text-amber-900">
+                <Sparkles className="w-4 h-4 text-amber-600" />
+                <span>॥ Divine Essence & Spiritual Theme (दिव्य भाव संक्षेप) ॥</span>
               </div>
               {isSummaryLoading && !summaryText ? (
-                <div className="flex items-center gap-2 py-2 text-xs text-[#D97706] font-medium min-h-[64px]">
-                  <Sparkles className="w-4 h-4 text-[#D4A359] animate-spin" />
-                  <span>दिव्य भाव उद्घाटित हो रहा है...</span>
+                <div className="flex items-center gap-2 py-2 text-xs text-amber-700 font-medium min-h-[64px]">
+                  <Sparkles className="w-4 h-4 text-amber-600 animate-spin" />
+                  <span>Revealing divine essence and spiritual theme...</span>
                 </div>
               ) : (
-                <p className="text-xs sm:text-sm leading-relaxed text-[#333333] font-devanagari break-words">
+                <p className="text-xs sm:text-sm leading-relaxed text-[#18181B] font-devanagari break-words">
                   {summaryText ||
                     selectedPad.verses?.[0]?.bhavarth ||
                     'श्री युगल रस का यह पावन पद अंतःकरण में असीम शांति और दिव्य प्रेम का संचार करता है।'}
@@ -1201,11 +1321,11 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             {/* Verse-by-verse bhavarth */}
             <div className="space-y-3">
               {selectedPad.verses.map((v) => (
-                <div key={v.stanzaNumber} className="bg-[#FAF8F5] p-3.5 rounded-2xl border-l-[3px] border-[#D4A359]">
-                  <span className="text-[10px] font-bold text-[#C85A32] uppercase tracking-wider block mb-1">
-                    पद पंक्ति {v.stanzaNumber} भावार्थ
+                <div key={v.stanzaNumber} className="bg-[#F4F4F5]/70 p-3.5 rounded-2xl border-l-[3px] border-amber-500">
+                  <span className="text-[10px] font-bold text-amber-700 uppercase tracking-wider block mb-1 font-mono">
+                    Stanza {v.stanzaNumber} Purport
                   </span>
-                  <p className="text-xs sm:text-sm leading-relaxed text-[#333333]">
+                  <p className="text-xs sm:text-sm leading-relaxed text-[#18181B]">
                     {v.bhavarth}
                   </p>
                 </div>
@@ -1213,13 +1333,13 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             </div>
 
             {/* Nitya Nikunj Vihar Tattva Section */}
-            <div className="bg-[#14213D] text-white rounded-[24px] p-4 sm:p-5 shadow-card">
-              <span className="text-[10px] text-[#B6FF2E] font-bold uppercase tracking-wider block mb-1.5 flex items-center gap-1.5">
-                <Sparkles className="w-3.5 h-3.5 text-[#B6FF2E]" />
-                नित्य निकुंज विहार तत्व
+            <div className="bg-purple-50/70 text-[#18181B] rounded-[24px] p-4 sm:p-5 border border-neutral-200/80 shadow-xs">
+              <span className="text-[10.5px] text-purple-700 font-bold uppercase tracking-wider block mb-1.5 flex items-center gap-1.5 font-mono">
+                <Sparkles className="w-3.5 h-3.5 text-purple-600" />
+                Eternal Nikunj Vihar Darshan
               </span>
-              <p className="text-xs sm:text-sm leading-relaxed text-white/90">
-                श्री वृन्दावन धाम में युगल सरकार का यह रस नित्य, अखंड और निर्बाध है। यहाँ प्रेम ही साधन और प्रेम ही साध्य है।
+              <p className="text-xs sm:text-sm leading-relaxed text-[#52525B]">
+                In Shri Vrindavan Dham, the eternal loving leela of Priya-Priyatam is unbroken and ever-fresh. Love here is both the means (sadhan) and the ultimate goal (sadhya).
               </p>
             </div>
 
@@ -1227,9 +1347,9 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             <button
               type="button"
               onClick={handleCloseCommentary}
-              className="w-full mt-2 py-3 rounded-2xl bg-black/5 text-[#111111] text-xs font-bold uppercase tracking-wider pressable"
+              className="w-full mt-2 py-3 rounded-2xl bg-neutral-100 hover:bg-neutral-200 text-[#18181B] text-xs font-bold uppercase tracking-wider cursor-pointer"
             >
-              संवरण करें • Close
+              Dismiss • Close
             </button>
           </div>
         </div>
@@ -1240,26 +1360,26 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       {/* ========================================================================= */}
       {isGlossaryOpen && (
         <div
-          className={`fixed inset-0 z-50 bg-black/75 flex items-end sm:items-center justify-center p-0 sm:p-4 transition-opacity ${
+          className={`fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-end sm:items-center justify-center p-0 sm:p-4 transition-opacity ${
             isGlossaryClosing ? 'modal-backdrop-exit' : 'modal-backdrop-enter'
           }`}
           onClick={handleCloseGlossary}
         >
           <div
-            className={`bg-white rounded-t-[28px] sm:rounded-[28px] max-h-[85vh] w-full max-w-lg overflow-y-auto p-5 sm:p-6 shadow-2xl space-y-4 relative text-[#111111] ${
+            className={`bg-white rounded-t-[28px] sm:rounded-[28px] max-h-[85vh] w-full max-w-lg overflow-y-auto p-5 sm:p-6 shadow-2xl space-y-4 relative text-[#18181B] ${
               isGlossaryClosing ? 'sheet-exit' : 'sheet-enter'
             }`}
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between pb-3 border-b border-black/5">
+            <div className="flex items-center justify-between pb-3 border-b border-neutral-100">
               <div className="flex items-center gap-2">
-                <BookOpenCheck className="w-5 h-5 text-[#22C55E]" />
+                <BookOpenCheck className="w-5 h-5 text-[#7C3AED]" />
                 <div>
-                  <h3 className="font-semibold text-sm sm:text-base text-[#111111]">
-                    रसिक ब्रज शब्दकोश • Sacred Lexicon
+                  <h3 className="font-semibold text-sm sm:text-base text-[#18181B]">
+                    Rasik Braj Lexicon • Sacred Vocabulary
                   </h3>
-                  <p className="text-[11px] text-[#6B6F6B]">
-                    नित्य निकुंज व रसिक वाणी के पारिभाषिक पद तत्व
+                  <p className="text-[11px] text-[#71717A]">
+                    Essential devotional vocabulary of eternal Nikunj & Braj ras
                   </p>
                 </div>
               </div>
@@ -1267,7 +1387,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 type="button"
                 onClick={handleCloseGlossary}
                 aria-label="Close glossary modal"
-                className="w-8 h-8 rounded-full bg-black/5 flex items-center justify-center text-[#111111] pressable hover:bg-black/10"
+                className="w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center text-[#18181B] hover:bg-neutral-200 cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -1277,21 +1397,21 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               {BRAJ_GLOSSARY.map((item, idx) => (
                 <div
                   key={idx}
-                  className="p-3.5 rounded-2xl bg-[#FAF8F5] border-l-[3px] border-[#D4A359] border border-black/5"
+                  className="p-3.5 rounded-2xl bg-[#F4F4F5]/70 border-l-[3px] border-amber-500 border border-neutral-200/60"
                 >
                   <div className="flex items-baseline justify-between gap-2">
-                    <span className="font-serif font-bold text-sm text-[#111111]">
+                    <span className="font-serif font-bold text-sm text-[#18181B]">
                       {item.term}
                     </span>
-                    <span className="text-[10px] font-mono text-[#C85A32] italic">
+                    <span className="text-[10px] font-mono text-amber-700 italic">
                       {item.transliteration}
                     </span>
                   </div>
-                  <p className="text-xs text-[#333333] mt-1 leading-relaxed">
+                  <p className="text-xs text-[#18181B] mt-1 leading-relaxed">
                     {item.meaningDevanagari}
                   </p>
-                  <div className="text-[10px] text-[#6B6F6B] mt-1.5 pt-1.5 border-t border-black/5 font-serif italic">
-                    प्रसंग: {item.context}
+                  <div className="text-[10px] text-[#71717A] mt-1.5 pt-1.5 border-t border-neutral-200/60 font-serif italic">
+                    Context: {item.context}
                   </div>
                 </div>
               ))}
@@ -1300,9 +1420,9 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             <button
               type="button"
               onClick={handleCloseGlossary}
-              className="w-full mt-2 py-3 rounded-2xl bg-[#14213D] text-[#B6FF2E] text-xs font-bold uppercase tracking-wider pressable shadow-xs"
+              className="w-full mt-2 py-3 rounded-2xl bg-[#18181B] hover:bg-[#27272A] text-white text-xs font-bold uppercase tracking-wider cursor-pointer shadow-xs"
             >
-              अनुशीलन पूर्ण • Dismiss
+              Dismiss • Close
             </button>
           </div>
         </div>
