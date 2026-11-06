@@ -106,10 +106,10 @@ async function startServer() {
     if (pathname !== '/' && fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
       const ext = path.extname(filePath).toLowerCase();
       const mime = MIME_TYPES[ext] || 'application/octet-stream';
-      
+
       const fileStream = fs.createReadStream(filePath);
       const isImmutable = pathname.startsWith('/assets/');
-      
+
       const headers = {
         'Content-Type': mime,
         'Cache-Control': isImmutable
@@ -207,3 +207,4 @@ async function startServer() {
 }
 
 startServer();
+
