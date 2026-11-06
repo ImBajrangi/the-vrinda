@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useMemo } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   CheckCircle2,
   Heart,
@@ -36,16 +36,14 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
   const [likes, setLikes] = useState<number>(cached?.likes ?? post.likes);
   const [isLiked, setIsLiked] = useState<boolean>(cached?.isLiked ?? false);
 
-  const initialViews = useMemo(() => {
+  const [views, setViews] = useState<number>(() => {
     if (cached?.views && cached.views > 0) return cached.views;
     const clean = (post.views || '10K').toUpperCase().trim();
     if (clean.endsWith('K')) {
       return Math.round(parseFloat(clean.replace('K', '')) * 1000);
     }
     return parseInt(clean, 10) || 12000;
-  }, [cached?.views, post.views]);
-
-  const [views, setViews] = useState<number>(cached?.views ?? initialViews);
+  });
 
   useEffect(() => {
     const sessionKey = `viewed_post_${post.id}`;
@@ -53,21 +51,20 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
       try {
         sessionStorage.setItem(sessionKey, '1');
       } catch {
-        // fallback
+        // storage disabled fallback
       }
-      const nextViews = (cached?.views ?? initialViews) + 1;
-      setViews(nextViews);
-      saveFeedInteraction(post.id, { views: nextViews });
+      setViews((prev) => {
+        const nextViews = prev + 1;
+        saveFeedInteraction(post.id, { views: nextViews });
+        return nextViews;
+      });
     }
   }, [post.id]);
 
-  const formattedViews = useMemo(() => {
-    if (views >= 1000) {
-      const kVal = (views / 1000).toFixed(1);
-      return `${formatDevanagariNumerals(kVal)}K`;
-    }
-    return formatDevanagariNumerals(views);
-  }, [views]);
+  const formattedViews =
+    views >= 1000
+      ? `${formatDevanagariNumerals((views / 1000).toFixed(1))}K`
+      : formatDevanagariNumerals(views);
 
   const [isBookmarked, setIsBookmarked] = useState<boolean>(
     cached?.isBookmarked ?? (post.isBookmarked ?? false)
