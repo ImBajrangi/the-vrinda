@@ -13,6 +13,7 @@ import {
   getDevotionalSummary,
   DevotionalSummaryRequest,
 } from '../../services/devotionalSummaryService';
+import { SacredDatabase } from '../../services/sacredDatabase';
 
 interface DhyanaFocusModalProps {
   isOpen: boolean;
@@ -248,31 +249,9 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
     setTimeout(() => setReflectionSaved(false), 2500);
   };
 
-  const RASIK_APHORISMS = [
-    {
-      source: 'श्री हित चौरासी',
-      verse: 'जोई जोई प्यारो करे सोई मोहि भावै, मेरे भावे सोई सोई प्यारे करे।',
-      meaning: 'पूर्ण समर्पण — अपने समस्त मानसिक विक्षेपों को प्रभु इच्छा में विसर्जित करना ही परम शांति है।',
-    },
-    {
-      source: 'श्री राधा सुधा निधि',
-      verse: 'यस्याः कदापि वसनाञ्चलखेलनोत्थधन्यातिधन्यपवनेन कृतार्थमानी।',
-      meaning: 'श्रीजी के पावन आंचल की शीतल वायु मात्र से समस्त संताप व चंचलता शांत हो जाती है।',
-    },
-    {
-      source: 'स्वामी हरिदास केलिमाल',
-      verse: 'माई री सहज जोरी प्रकट भई, जुग जुग जियौ गौर स्याम धन।',
-      meaning: 'सहज एकाग्रता — स्वाभाविक अनुराग से चित्त का नित्य युगल रस में स्थिर हो जाना।',
-    },
-  ];
-
-  const currentAphorism = RASIK_APHORISMS[activeAphorismIdx];
-  const aphorismCanonicalId =
-    activeAphorismIdx === 0
-      ? 'quote-hit-chaurasi-0'
-      : activeAphorismIdx === 1
-      ? 'quote-radha-sudha-nidhi-1'
-      : 'quote-kelimal-2';
+  const rasikAphorisms = SacredDatabase.getRasikAphorisms();
+  const currentAphorism = rasikAphorisms[activeAphorismIdx % rasikAphorisms.length];
+  const aphorismCanonicalId = currentAphorism.id;
 
   const aphorismReq: DevotionalSummaryRequest = {
     id: aphorismCanonicalId,
@@ -281,9 +260,9 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
     type: 'quote',
     fallbackText: currentAphorism.meaning,
     sourceSlug:
-      activeAphorismIdx === 0
+      currentAphorism.id === 'quote-hit-chaurasi-0'
         ? 'hit-chaurasi'
-        : activeAphorismIdx === 1
+        : currentAphorism.id === 'quote-radha-sudha-nidhi-1'
         ? 'radha-sudha-nidhi'
         : 'kelimal',
     quoteIndex: activeAphorismIdx,
@@ -689,10 +668,10 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold text-[#92400E] flex items-center gap-1.5">
                     <Feather className="w-4 h-4 text-[#D97706]" />
-                    रसिक वाणी अनुशीलन • {RASIK_APHORISMS[activeAphorismIdx].source}
+                    रसिक वाणी अनुशीलन • {currentAphorism.source}
                   </span>
                   <div className="flex items-center gap-1.5">
-                    {RASIK_APHORISMS.map((_, i) => (
+                    {rasikAphorisms.map((_, i) => (
                       <button
                         key={i}
                         type="button"
@@ -707,10 +686,10 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
                 </div>
 
                 <blockquote className="font-serif text-sm sm:text-base text-[#451A03] font-semibold italic border-l-2 border-[#D97706] pl-3 py-0.5">
-                  "{RASIK_APHORISMS[activeAphorismIdx].verse}"
+                  "{currentAphorism.verse}"
                 </blockquote>
                 <p className="text-xs text-[#78350F] font-devanagari leading-relaxed">
-                  {RASIK_APHORISMS[activeAphorismIdx].meaning}
+                  {currentAphorism.meaning}
                 </p>
 
                 {/* Devotional Essence Action Button */}

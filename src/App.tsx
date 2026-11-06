@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Radio, Sun, Heart, Check, Sparkles, ExternalLink } from 'lucide-react';
 import { FloatingNavbar, NavTab } from './components/common/FloatingNavbar';
 import { DynamicNotchNavbar } from './components/common/DynamicNotchNavbar';
@@ -18,7 +18,6 @@ import { SadhanaRingProgress } from './components/smaran/SadhanaRingProgress';
 import { AshtayamaTimelineDeck } from './components/smaran/AshtayamaTimelineDeck';
 import { BeginnerGuideModal } from './components/smaran/BeginnerGuideModal';
 import { SACRED_FEED_POSTS } from './data/feed';
-import { SACRED_PADS } from './data/padas';
 import { SacredPad, SadhanaState, DhyanaImpactState, DhyanaSessionRecord } from './types/devotional';
 import { SacredDatabase } from './services/sacredDatabase';
 import { seo } from './services/seoService';
@@ -38,23 +37,29 @@ import {
 
 export type FeedTabType = 'विशेष दर्शन' | 'उत्सव धारा' | 'सेवक मंडल' | 'उर धरे' | 'धाम वार्ता';
 
-const BRAJ_FEED_TABS: { id: FeedTabType; label: string; sublabel: string }[] = [
-  { id: 'विशेष दर्शन', label: 'Special Darshan', sublabel: 'विशेष दर्शन' },
-  { id: 'उत्सव धारा', label: 'Festivals', sublabel: 'उत्सव धारा' },
-  { id: 'सेवक मंडल', label: 'Followed Temples', sublabel: 'सेवक मंडल' },
-  { id: 'उर धरे', label: 'Saved Darshan', sublabel: 'उर धरे' },
-  { id: 'धाम वार्ता', label: 'Dham News', sublabel: 'धाम वार्ता' },
-];
+function getDynamicWeekDays(): DayItem[] {
+  const days: DayItem[] = [];
+  const now = new Date();
+  const dayOfWeek = now.getDay(); // 0: Sun, 1: Mon, ...
+  const mondayOffset = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
+  const monday = new Date(now);
+  monday.setDate(now.getDate() + mondayOffset);
 
-const SAMPLE_DAYS: DayItem[] = [
-  { dayName: 'Mon', dateNum: 24, tithiLabel: 'नवमी' },
-  { dayName: 'Tue', dateNum: 25, tithiLabel: 'दशमी' },
-  { dayName: 'Wed', dateNum: 26, tithiLabel: 'एकादशी' },
-  { dayName: 'Thu', dateNum: 27, isToday: true, tithiLabel: 'द्वादशी' },
-  { dayName: 'Fri', dateNum: 28 },
-  { dayName: 'Sat', dateNum: 29 },
-  { dayName: 'Sun', dateNum: 30, tithiLabel: 'पूर्णिमा' },
-];
+  const dayNames = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  const tithis = ['नवमी', 'दशमी', 'एकादशी', 'द्वादशी', 'त्रयोदशी', 'चतुर्दशी', 'पूर्णिमा'];
+
+  for (let i = 0; i < 7; i++) {
+    const d = new Date(monday);
+    d.setDate(monday.getDate() + i);
+    days.push({
+      dayName: dayNames[i],
+      dateNum: d.getDate(),
+      isToday: d.toDateString() === now.toDateString(),
+      tithiLabel: tithis[i],
+    });
+  }
+  return days;
+}
 
 export interface AppProps {
   initialTab?: NavTab;
@@ -83,7 +88,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
     } catch {}
     return 'smaran';
   });
-  const [selectedDate, setSelectedDate] = useState<number>(27);
+  const [selectedDate, setSelectedDate] = useState<number>(() => new Date().getDate());
   const [activeFeedTab, setActiveFeedTab] = useState<FeedTabType>('विशेष दर्शन');
   // Two-tier cache: synchronous initial pre-warm (0ms cold render) prevents null flash / layout shift
   const [sadhana, setSadhana] = useState<SadhanaState>(() => loadCachedSadhanaSync());
@@ -98,7 +103,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
       const found = SacredDatabase.getPadById(padIdToFind);
       if (found) return found;
     }
-    return SACRED_PADS[0];
+    return SacredDatabase.getAllPadas()[0] || null;
   });
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
   const [showPlayer, setShowPlayer] = useState(false);
@@ -116,6 +121,9 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
   const [readerSearchQuery, setReaderSearchQuery] = useState<string>('');
   const [activeSanctuaryStream, setActiveSanctuaryStream] = useState<'ashtayama' | 'audio' | 'dhyana'>('ashtayama');
   const [templeFilter, setTempleFilter] = useState<'all' | 'open' | 'rajbhog' | 'evening'>('all');
+
+  const weekDays = useMemo(() => getDynamicWeekDays(), []);
+  const featuredPad = SacredDatabase.getAllPadas()[0];
 
   // Global Spotlight Keyboard Shortcut (Cmd+K / Ctrl+K)
   useEffect(() => {
@@ -497,7 +505,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
 
                 {/* 7-Day Date & Tithi Strip */}
                 <DateStrip
-                  days={SAMPLE_DAYS}
+                  days={weekDays}
                   selectedDate={selectedDate}
                   onSelectDate={setSelectedDate}
                 />
@@ -694,8 +702,8 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                     <div
                       role="button"
                       tabIndex={0}
-                      onClick={() => handlePlayPad(SACRED_PADS[0])}
-                      onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && handlePlayPad(SACRED_PADS[0])}
+                      onClick={() => handlePlayPad(featuredPad)}
+                      onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && handlePlayPad(featuredPad)}
                       className="w-full bg-white rounded-[22px] p-3.5 sm:p-4 flex items-center justify-between gap-3 sm:gap-4 border border-neutral-200/80 hover:border-neutral-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-colors cursor-pointer select-none"
                     >
                       <div className="flex items-center gap-3.5 sm:gap-4 flex-1 min-w-0">
@@ -714,7 +722,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                         <div className="flex flex-col min-w-0 flex-1 justify-center">
                           <div className="flex items-center justify-between gap-2 mb-0.5">
                             <span className="text-[11px] sm:text-xs font-bold text-[#7C3AED] uppercase tracking-wider truncate">
-                              SHRI HIT CHAURASI (श्री हित चौरासी) • PAD 01
+                              {featuredPad?.titleEnglish || 'SHRI HIT CHAURASI'} • PAD 01
                             </span>
                             <div className="sm:hidden">
                               <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-purple-50 text-purple-700">
@@ -724,13 +732,13 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                           </div>
 
                           <h4 className="font-serif font-bold text-base sm:text-lg text-[#18181B] leading-tight truncate">
-                            जोई जोई प्यारो करे सोई मोहि भावै
+                            {featuredPad?.titleDevanagari || 'जोई जोई प्यारो करे सोई मोहि भावै'}
                           </h4>
 
                           <div className="flex items-center gap-1.5 text-xs text-[#71717A] mt-1 overflow-hidden whitespace-nowrap font-medium">
                             <Sparkles className="w-3.5 h-3.5 text-amber-500 shrink-0" />
                             <span className="truncate">
-                              By Shri Hit Harivansh Mahaprabhu • Eternal Nikunj Ras
+                              By {featuredPad?.author || 'श्री हित हरिवंश महाप्रभु'} • Eternal Nikunj Ras
                             </span>
                           </div>
                         </div>
@@ -761,7 +769,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
 
                     <button
                       type="button"
-                      onClick={() => handlePlayPad(SACRED_PADS[0])}
+                      onClick={() => handlePlayPad(featuredPad)}
                       className="w-full py-3 rounded-full bg-[#7C3AED] hover:bg-[#6D28D9] text-white text-xs font-bold shadow-xs flex items-center justify-center gap-2 transition-colors cursor-pointer"
                     >
                       <Radio className="w-4 h-4 text-purple-200" />
@@ -878,7 +886,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
 
                   {/* Horizontal Braj Filter Tabs: Smoothly scrollable on mobile without wrapping */}
                   <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar flex-nowrap text-[13.5px] text-[#71717A] px-2 py-1.5 mb-2 bg-white rounded-full border border-neutral-200/80 shadow-xs">
-                    {BRAJ_FEED_TABS.map((tab) => {
+                    {SacredDatabase.getFeedTabs().map((tab) => {
                       const isActive = activeFeedTab === tab.id;
                       return (
                         <button

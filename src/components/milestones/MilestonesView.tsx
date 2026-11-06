@@ -26,6 +26,7 @@ import {
   loadDhyanaImpact,
 } from '../../services/cacheService';
 import { SadhanaState, DhyanaImpactState } from '../../types/devotional';
+import { SacredDatabase } from '../../services/sacredDatabase';
 
 interface MilestonesViewProps {
   onBack: () => void;
@@ -127,193 +128,36 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
     };
   }, []);
 
-  const milestones: BadgeItem[] = [
-    {
-      id: '1-mala',
-      value: 1,
-      label: '1 Mala',
-      type: 'milestone',
-      isLocked: !sadhana.completedMilestones.includes('1-mala') && sadhana.japaCompleted < 1,
-      titleDevanagari: 'प्रथम नाम दीक्षा • १ माला',
-      requirement: 'प्रतिदिन कम से कम १ माला पावन युगल नाम जप पूर्ण करना',
-      blessing: 'श्रीजी के चरणारविन्द में प्रथम अनुराग की पावन ज्योति का प्राकट्य।',
-      spiritualSignificance: 'नाम जप से अंतःकरण का मार्जन होता है और निकुंज रस का प्रवेश प्रारंभ होता है।',
-    },
-    {
-      id: '5-mala',
-      value: 5,
-      label: '5 Mala',
-      type: 'milestone',
-      isLocked: !sadhana.completedMilestones.includes('5-mala') && sadhana.japaCompleted < 5,
-      titleDevanagari: 'पंच माला निष्ठा • ५ माला',
-      requirement: '५ माला नियमित भगवन्नाम संकीर्तन पूर्ण करना',
-      blessing: 'ठाकुर श्री बांके बिहारी लाल के नयनों की विशेष करुणा व संरक्षण।',
-      spiritualSignificance: 'इंद्रिय संयम और चित्त में श्री वृन्दावन धाम की मधुर स्मृति का स्थायित्व।',
-    },
-    {
-      id: '10-mala',
-      value: 10,
-      label: '10 Mala',
-      type: 'milestone',
-      isLocked: !sadhana.completedMilestones.includes('10-mala') && sadhana.japaCompleted < 10,
-      titleDevanagari: 'दश माला अनुष्ठान • १० माला',
-      requirement: '१० माला नित्य प्रेम साधना पूर्ण करना',
-      blessing: 'श्री स्वामी हरिदास जी महाराज का अहैतुक वात्सल्य एवं संगीत रस कृपा।',
-      spiritualSignificance: 'संसार ताप का शमन और सहज समाधि रस का आंतरिक अनुभव।',
-    },
-    {
-      id: '16-mala',
-      value: 16,
-      label: '16 Mala',
-      type: 'milestone',
-      isLocked: !sadhana.completedMilestones.includes('16-mala') && sadhana.japaCompleted < 16,
-      titleDevanagari: 'षोडश कला पूर्ण • १६ माला',
-      requirement: '१६ माला पूर्ण वैधी एवं रागानुगा साधना पूर्ण करना',
-      blessing: 'श्री हित हरिवंश महाप्रभु की कृपा से नित्य निकुंज विहार का रस।',
-      spiritualSignificance: 'जीव का श्रीराधा-शरण में पूर्ण समर्पण और अखंड प्रेम की प्राप्ति।',
-    },
-    {
-      id: '25-vrat',
-      value: 25,
-      label: '25 Vrat',
-      type: 'milestone',
-      isLocked: !sadhana.completedMilestones.includes('25-vrat'),
-      titleDevanagari: 'रजत एकादशी नियम • २५ व्रत',
-      requirement: '२५ पावन एकादशी एवं प्रदोष निर्जल/फलाहार व्रत पूर्ण करना',
-      blessing: 'श्री प्रिया-प्रियतम के युगल चरण कमलों में अनन्य प्रीति।',
-      spiritualSignificance: 'तप और सेवा के समन्वय से भगवद्-रस का अखंड प्रवाह।',
-    },
-    {
-      id: '50-vrat',
-      value: 50,
-      label: '50 Vrat',
-      type: 'milestone',
-      isLocked: !sadhana.completedMilestones.includes('50-vrat'),
-      titleDevanagari: 'स्वर्ण अनुष्ठान व्रत • ५० व्रत',
-      requirement: '५० एकादशी अखंड नियम पूर्णता',
-      blessing: 'नित्य निकुंज धाम की सखी भाव सेवा का अधिकार।',
-      spiritualSignificance: 'वैकुण्ठ एवं गोलोक से भी परे श्री वृन्दावन के नित्य विहार रस में स्थिति।',
-    },
-  ];
+  const badgeDefs = SacredDatabase.getSadhanaBadgeDefs();
 
-  const streaks: BadgeItem[] = [
-    {
-      id: '3-niyam',
-      value: 3,
-      label: '3-Day Niyam',
-      type: 'streak',
-      isLocked: sadhana.currentStreakDays < 3 && !sadhana.completedMilestones.includes('3-niyam'),
-      titleDevanagari: 'त्रिदिवसीय पावन संकल्प',
-      requirement: 'लगातार ३ दिन तक नित्य सेवा, जप एवं दर्शन',
-      blessing: 'मन की चंचलता पर प्रथम विजय और भक्ति का अंकुर।',
-      spiritualSignificance: 'भक्ति मार्ग का दृढ़ आरंभ और संकल्प शुद्धि।',
-    },
-    {
-      id: '7-niyam',
-      value: 7,
-      label: '7-Day Niyam',
-      type: 'streak',
-      isLocked: sadhana.currentStreakDays < 7 && !sadhana.completedMilestones.includes('7-niyam'),
-      titleDevanagari: 'सप्त दिवसीय अखण्ड सेवा',
-      requirement: 'लगातार ७ दिन तक अखंड नियम पालन',
-      blessing: 'सप्त ऋषियों और व्रज सखियों का अनुग्रह।',
-      spiritualSignificance: 'साधना में एकाग्रता और आनंद का संचरण।',
-    },
-    {
-      id: '14-niyam',
-      value: 14,
-      label: '14-Day Niyam',
-      type: 'streak',
-      isLocked: sadhana.currentStreakDays < 14 && !sadhana.completedMilestones.includes('14-niyam'),
-      titleDevanagari: 'पक्ष नियम पूर्णता',
-      requirement: 'लगातार १४ दिन तक नियम सेवा',
-      blessing: 'श्री राधा वल्लभ लाल की सुमधुर मुस्कान का दर्शन।',
-      spiritualSignificance: 'अंतःकरण में सतत नाम स्मरण का प्रभाव।',
-    },
-    {
-      id: '21-niyam',
-      value: 21,
-      label: '21-Day Niyam',
-      type: 'streak',
-      isLocked: sadhana.currentStreakDays < 21 && !sadhana.completedMilestones.includes('21-niyam'),
-      titleDevanagari: 'एकविंशति दिवस रस धारा',
-      requirement: 'लगातार २१ दिन तक नित्य आराधना',
-      blessing: 'नित्य निकुंज के अष्टप्रहर रस का सान्निध्य।',
-      spiritualSignificance: 'संसार के प्रति अनासक्ति और युगल नाम में प्रगाढ़ रुचि।',
-    },
-    {
-      id: '40-niyam',
-      value: 40,
-      label: '40-Day Niyam',
-      type: 'streak',
-      isLocked: sadhana.currentStreakDays < 40 && !sadhana.completedMilestones.includes('40-niyam'),
-      titleDevanagari: 'मण्डल साधना सिद्धि',
-      requirement: 'लगातार ४० दिन की अखंड नियम साधना',
-      blessing: 'श्री वृन्दावन धाम वास की आंतरिक अनुभूति।',
-      spiritualSignificance: 'एक मण्डल की निष्ठा से चित्त का पूर्ण शुद्धीकरण।',
-    },
-    {
-      id: '108-ras',
-      value: 108,
-      label: '108-Day Ras',
-      type: 'streak',
-      isLocked: sadhana.currentStreakDays < 108 && !sadhana.completedMilestones.includes('108-ras'),
-      titleDevanagari: 'अष्टोत्तरशत दिवस महा-अनुष्ठान',
-      requirement: '१०८ दिन अखंड नाम-संकीर्तन एवं सेवा',
-      blessing: 'श्री किशोरी जी के असीम कृपा-कटाक्ष की वर्षा।',
-      spiritualSignificance: 'परम रस की प्राप्ति और नित्य दास्य भाव का प्राकट्य।',
-    },
-  ];
+  const milestones: BadgeItem[] = badgeDefs.milestones.map((m) => ({
+    ...m,
+    isLocked: m.id.includes('mala')
+      ? !sadhana.completedMilestones.includes(m.id) && sadhana.japaCompleted < m.value
+      : !sadhana.completedMilestones.includes(m.id),
+  }));
+
+  const streaks: BadgeItem[] = badgeDefs.streaks.map((s) => ({
+    ...s,
+    isLocked: sadhana.currentStreakDays < s.value && !sadhana.completedMilestones.includes(s.id),
+  }));
 
   const completedMilestonesCount = milestones.filter((m) => !m.isLocked).length;
   const activeStreaksCount = streaks.filter((s) => !s.isLocked).length;
 
-  const antarangaBadges: BadgeItem[] = [
-    {
-      id: '15-dhyana',
-      value: 15,
-      label: '15 Min Dhyana',
-      type: 'milestone',
-      isLocked: !dhyanaImpact.unlockedAntarangaBadges.includes('15-dhyana') && (sadhana.dhyanaMinutesCompleted || 0) < 15,
-      titleDevanagari: 'प्रथम चित्त शान्ति • १५ मिनट',
-      requirement: '१५ मिनट अविरल मानसिक ध्यान एवं नाम स्मरण पूर्ण करना',
-      blessing: 'श्रीजी के चरणारविन्द में मन की एकाग्रता और दिव्य प्रकाश का अनुभव।',
-      spiritualSignificance: 'संसार के विक्षेप शांत होते हैं और अंतःकरण निर्मल दर्पण के समान हो जाता है।',
-    },
-    {
-      id: '30-dhyana',
-      value: 30,
-      label: '30 Min Flow',
-      type: 'milestone',
-      isLocked: !dhyanaImpact.unlockedAntarangaBadges.includes('30-dhyana') && (sadhana.dhyanaMinutesCompleted || 0) < 30,
-      titleDevanagari: 'अखंड ध्यान धारा • ३० मिनट',
-      requirement: '३० मिनट अखंड तैलधारामिव सतत ध्यान में स्थिति',
-      blessing: 'शांत निकुंज रस का आंतरिक दर्शन एवं युगल छवि में लीनता।',
-      spiritualSignificance: 'डिफ़ॉल्ट मोड नेटवर्क (DMN) की पूर्ण शांति; जीव को सहज समाधि रस की अनुभूति।',
-    },
-    {
-      id: '7-manasi',
-      value: 7,
-      label: '7-Day Manasi',
-      type: 'streak',
-      isLocked: !dhyanaImpact.unlockedAntarangaBadges.includes('7-manasi') && dhyanaImpact.metrics.unbrokenFocusStreakDays < 7,
-      titleDevanagari: 'सप्त दिवसीय मानसी सेवा',
-      requirement: 'लगातार ७ दिन तक नित्य अंतर्मुखी मानसी सेवा व ध्यान',
-      blessing: 'श्री स्वामी हरिदास जी एवं रसिक सखियों का विशेष वात्सल्य अनुग्रह।',
-      spiritualSignificance: 'वैखरी से मानसी जप में आरोहण और नित्य लीला में चित्त का प्रवेश।',
-    },
-    {
-      id: '108-shanti',
-      value: 108,
-      label: '108 Sessions',
-      type: 'milestone',
-      isLocked: !dhyanaImpact.unlockedAntarangaBadges.includes('108-shanti') && dhyanaImpact.recentSessions.length < 108,
-      titleDevanagari: 'परम एकाग्रता सिद्धि • १०८ सत्र',
-      requirement: '१०८ पावन ध्यान सत्र सफलतापूर्वक पूर्ण करना',
-      blessing: 'श्री हित हरिवंश महाप्रभु की कृपा से नित्य निकुंज विहार रस का पावन अधिकार।',
-      spiritualSignificance: 'मन के समस्त पुराने संस्कारों (वासनाओं) की पूर्ण शुद्धि एवं अनन्य प्रेमाभक्ति।',
-    },
-  ];
+  const antarangaBadges: BadgeItem[] = badgeDefs.antarangaBadges.map((b) => {
+    let isLocked = false;
+    if (b.id === '15-dhyana') {
+      isLocked = !dhyanaImpact.unlockedAntarangaBadges.includes('15-dhyana') && (sadhana.dhyanaMinutesCompleted || 0) < 15;
+    } else if (b.id === '30-dhyana') {
+      isLocked = !dhyanaImpact.unlockedAntarangaBadges.includes('30-dhyana') && (sadhana.dhyanaMinutesCompleted || 0) < 30;
+    } else if (b.id === '7-manasi') {
+      isLocked = !dhyanaImpact.unlockedAntarangaBadges.includes('7-manasi') && dhyanaImpact.metrics.unbrokenFocusStreakDays < 7;
+    } else if (b.id === '108-shanti') {
+      isLocked = !dhyanaImpact.unlockedAntarangaBadges.includes('108-shanti') && dhyanaImpact.recentSessions.length < 108;
+    }
+    return { ...b, isLocked };
+  });
 
   const completedAntarangaCount = antarangaBadges.filter((b) => !b.isLocked).length;
 

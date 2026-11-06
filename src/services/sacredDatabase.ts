@@ -2,6 +2,12 @@ import { get, set } from 'idb-keyval';
 import canonicalPadasData from '../data/canonicalPadas.json';
 import canonicalGranthasData from '../data/canonicalGranthas.json';
 import canonicalSaintsData from '../data/canonicalSaints.json';
+import brajGlossaryData from '../data/brajGlossary.json';
+import rasikAphorismsData from '../data/rasikAphorisms.json';
+import ashtayamaPeriodsData from '../data/ashtayamaPeriods.json';
+import sacredTopicsData from '../data/sacredTopics.json';
+import sadhanaBadgesData from '../data/sadhanaBadges.json';
+import feedTabsData from '../data/feedTabs.json';
 import { SacredPad } from '../types/devotional';
 
 export interface CanonicalGrantha {
@@ -21,6 +27,84 @@ export interface CanonicalSaint {
   biography: string;
   articleCount: number;
   tradition: string;
+}
+
+export interface BrajGlossaryTerm {
+  id: string;
+  term: string;
+  transliteration: string;
+  meaningDevanagari: string;
+  context: string;
+}
+
+export interface RasikAphorism {
+  id: string;
+  source: string;
+  verse: string;
+  meaning: string;
+}
+
+export interface AshtayamaPeriod {
+  id: string;
+  nameDevanagari: string;
+  nameEnglish: string;
+  timeRange: string;
+  raga: string;
+  bhava: string;
+  description: string;
+}
+
+export interface SacredTopic {
+  id: string;
+  title: string;
+  devanagari: string;
+  typeLabel: string;
+  location: string;
+  tradition: string;
+  essence: string;
+  tagColor: string;
+  imageUrl: string;
+}
+
+export interface SadhanaBadgeDef {
+  id: string;
+  value: number;
+  label: string;
+  type: 'milestone' | 'streak';
+  titleDevanagari: string;
+  requirement: string;
+  blessing: string;
+  spiritualSignificance: string;
+}
+
+export interface FeedTabItem {
+  id: 'विशेष दर्शन' | 'उत्सव धारा' | 'सेवक मंडल' | 'उर धरे' | 'धाम वार्ता';
+  label: string;
+  sublabel: string;
+}
+
+export interface DisplayBookItem {
+  id: string;
+  title: string;
+  devanagari: string;
+  author: string;
+  count: number;
+  countUnit: string;
+  tradition: string;
+  essence: string;
+  tagColor: string;
+  imageUrl: string;
+}
+
+export interface DisplayAuthorItem {
+  id: string;
+  name: string;
+  devanagari: string;
+  tradition: string;
+  totalCompositions: number;
+  significance: string;
+  tagColor: string;
+  imageUrl: string;
 }
 
 export interface SearchCatalogItem {
@@ -172,6 +256,111 @@ export const SacredDatabase = {
   getAllSaints(traditionFilter?: string): CanonicalSaint[] {
     if (!traditionFilter || traditionFilter === 'all') return allSaints;
     return allSaints.filter((s) => s.tradition === traditionFilter);
+  },
+
+  getTraditions(): { id: string; label: string }[] {
+    const counts = new Map<string, number>();
+    allSaints.forEach((s) => {
+      counts.set(s.tradition, (counts.get(s.tradition) || 0) + 1);
+    });
+    return [
+      { id: 'all', label: `सभी संत (${allSaints.length})` },
+      ...Array.from(counts.entries())
+        .sort((a, b) => b[1] - a[1])
+        .map(([tradition, count]) => ({
+          id: tradition,
+          label: `${tradition} (${count})`,
+        })),
+    ];
+  },
+
+  getBrajGlossary(): BrajGlossaryTerm[] {
+    return brajGlossaryData as BrajGlossaryTerm[];
+  },
+
+  getRasikAphorisms(): RasikAphorism[] {
+    return rasikAphorismsData as RasikAphorism[];
+  },
+
+  getAshtayamaPeriods(): AshtayamaPeriod[] {
+    return ashtayamaPeriodsData as AshtayamaPeriod[];
+  },
+
+  getSacredTopics(): SacredTopic[] {
+    return sacredTopicsData as SacredTopic[];
+  },
+
+  getSadhanaBadgeDefs(): {
+    milestones: SadhanaBadgeDef[];
+    streaks: SadhanaBadgeDef[];
+    antarangaBadges: SadhanaBadgeDef[];
+  } {
+    return sadhanaBadgesData as any;
+  },
+
+  getFeedTabs(): FeedTabItem[] {
+    return feedTabsData as FeedTabItem[];
+  },
+
+  getDisplayBooks(): DisplayBookItem[] {
+    const bookColors: Record<string, string> = {
+      'hit-chaurasi': 'text-[#7C3AED]',
+      'kelimal': 'text-[#D97706]',
+      'radha-sudha-nidhi': 'text-[#EA580C]',
+      'vyas-vani': 'text-[#7C3AED]',
+      'bayalees-leela': 'text-[#E11D48]',
+      'sur-sagar': 'text-[#C2410C]',
+      'raskhan-padavali': 'text-[#0284C7]',
+      'bhakti-shatak': 'text-[#7C3AED]',
+      'braj-binod': 'text-[#EA580C]',
+      'stotras': 'text-[#7C3AED]',
+    };
+
+    return allGranthas.map((g) => ({
+      id: g.id,
+      title: g.name,
+      devanagari: g.name,
+      author: g.author,
+      count: g.count,
+      countUnit: g.id === 'bayalees-leela' ? 'Leelas' : g.id === 'raskhan-padavali' ? 'Savaiyas' : 'Padas',
+      tradition: g.author.includes('हरिवंश')
+        ? 'राधावल्लभ संप्रदाय'
+        : g.author.includes('हरिदास')
+        ? 'हरिदासी संप्रदाय'
+        : g.author.includes('सूरदास')
+        ? 'अष्टछाप परंपरा'
+        : 'रसिक परंपरा',
+      essence: g.description,
+      tagColor: bookColors[g.id] || 'text-[#7C3AED]',
+      imageUrl: '',
+    }));
+  },
+
+  getDisplayAuthors(): DisplayAuthorItem[] {
+    const authorColors = [
+      'text-[#7C3AED]',
+      'text-[#D97706]',
+      'text-[#C2410C]',
+      'text-[#E11D48]',
+      'text-[#0284C7]',
+      'text-[#EA580C]',
+    ];
+    // Return top canonical rasik saints with highest compositions
+    const featuredSaints = allSaints
+      .filter((s) => s.articleCount >= 10)
+      .sort((a, b) => b.articleCount - a.articleCount)
+      .slice(0, 8);
+
+    return featuredSaints.map((s, idx) => ({
+      id: s.slug,
+      name: s.nameEng || s.name,
+      devanagari: s.name,
+      tradition: s.tradition,
+      totalCompositions: s.articleCount,
+      significance: s.biography,
+      tagColor: authorColors[idx % authorColors.length],
+      imageUrl: '',
+    }));
   },
 
   getAvailableRagas(granthaId?: string): string[] {

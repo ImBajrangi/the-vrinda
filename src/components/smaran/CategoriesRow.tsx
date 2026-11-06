@@ -1,44 +1,9 @@
 import React, { useState } from 'react';
 import { BookOpen, Feather, Landmark, ExternalLink, Sparkles, Compass } from 'lucide-react';
 import { ArtworkGraphicSlot } from '../common/ArtworkGraphicSlot';
+import { SacredDatabase } from '../../services/sacredDatabase';
 
 export type ContentBarTab = 'books' | 'authors' | 'relations';
-
-interface BookItem {
-  id: string;
-  title: string;
-  devanagari: string;
-  author: string;
-  count: number;
-  countUnit: string;
-  tradition: string;
-  essence: string;
-  tagColor: string;
-  imageUrl: string;
-}
-
-interface AuthorItem {
-  id: string;
-  name: string;
-  devanagari: string;
-  tradition: string;
-  totalCompositions: number;
-  significance: string;
-  tagColor: string;
-  imageUrl: string;
-}
-
-interface RelationItem {
-  id: string;
-  title: string;
-  devanagari: string;
-  typeLabel: string;
-  location: string;
-  tradition: string;
-  essence: string;
-  tagColor: string;
-  imageUrl: string;
-}
 
 interface CategoriesRowProps {
   onSelectBook: (granthaId: string) => void;
@@ -47,191 +12,6 @@ interface CategoriesRowProps {
   onOpenSaintsDirectory: () => void;
 }
 
-const BOOKS: BookItem[] = [
-  {
-    id: 'hit-chaurasi',
-    title: 'Shri Hit Chaurasi',
-    devanagari: 'श्री हित चौरासी',
-    author: 'श्री हित हरिवंश महाप्रभु',
-    count: 84,
-    countUnit: 'Padas',
-    tradition: 'Harivansh Sampradaya',
-    essence: 'The pinnacle of unalloyed eternal Nikunj Ras & divine love',
-    tagColor: 'text-[#7C3AED]',
-    imageUrl: '',
-  },
-  {
-    id: 'radha-sudha-nidhi',
-    title: 'Shri Radha Sudhanidhi',
-    devanagari: 'श्री राधा सुधानिधि',
-    author: 'श्री हित हरिवंश महाप्रभु',
-    count: 270,
-    countUnit: 'Shlokas',
-    tradition: 'Radha-Snehi Path',
-    essence: 'Sublime Sanskrit stotras devoted exclusively to Sriji’s lotus feet',
-    tagColor: 'text-[#EA580C]',
-    imageUrl: '',
-  },
-  {
-    id: 'kelimal',
-    title: 'Shri Kelimal',
-    devanagari: 'श्री केलिमाल',
-    author: 'स्वामी श्री हरिदास जी',
-    count: 110,
-    countUnit: 'Padas',
-    tradition: 'Haridasi Sangeet',
-    essence: 'Secret Nidhivan Raj Leela revealed in profound classical Dhrupad',
-    tagColor: 'text-[#D97706]',
-    imageUrl: '',
-  },
-  {
-    id: 'sur-sagar',
-    title: 'Sur Sagar',
-    devanagari: 'सूरसागर',
-    author: 'महाकवि सूरदास जी',
-    count: 364,
-    countUnit: 'Padas',
-    tradition: 'Ashtachhap Parampara',
-    essence: 'Boundless ocean of Vatsalya and Madhurya Krishna leelas',
-    tagColor: 'text-[#C2410C]',
-    imageUrl: '',
-  },
-  {
-    id: 'bayalees-leela',
-    title: 'Bayalees Leela',
-    devanagari: 'बयालीस लीला',
-    author: 'श्री ध्रुवदास जी',
-    count: 42,
-    countUnit: 'Leelas',
-    tradition: 'Hit Parampara',
-    essence: '42 divine leelas of Priya-Priyatam in Vrindavan Nikunj',
-    tagColor: 'text-[#E11D48]',
-    imageUrl: '',
-  },
-  {
-    id: 'raskhan-padavali',
-    title: 'Raskhan Padavali',
-    devanagari: 'रसखान पदावली',
-    author: 'रसखान जी',
-    count: 139,
-    countUnit: 'Savaiyas',
-    tradition: 'Krishna Prem',
-    essence: 'Impassioned Braj Bhasha savaiyas of tender love and surrender',
-    tagColor: 'text-[#0284C7]',
-    imageUrl: '',
-  },
-];
-
-const AUTHORS: AuthorItem[] = [
-  {
-    id: 'hit-harivansh',
-    name: 'Shri Hit Harivansh',
-    devanagari: 'श्री हित हरिवंश महाप्रभु',
-    tradition: 'राधावल्लभ संप्रदाय • मुरली अवतार',
-    totalCompositions: 354,
-    significance: 'Avatar of Shriji’s flute; pioneer of unalloyed eternal Nikunj Ras',
-    tagColor: 'text-[#7C3AED]',
-    imageUrl: '',
-  },
-  {
-    id: 'swami-haridas',
-    name: 'Swami Shri Haridas',
-    devanagari: 'स्वामी श्री हरिदास जी',
-    tradition: 'सखी भाव / हरिदासी • संगीत सम्राट',
-    totalCompositions: 110,
-    significance: 'Revealer of Thakur Banke Bihari Lal in Nidhivan; Sangeet Samrat',
-    tagColor: 'text-[#D97706]',
-    imageUrl: '',
-  },
-  {
-    id: 'surdas',
-    name: 'Mahakavi Surdas',
-    devanagari: 'महाकवि सूरदास जी',
-    tradition: 'अष्टछाप / पुष्टिमार्ग • महाकवि',
-    totalCompositions: 364,
-    significance: 'The Sun of devotional poetry, celebrated for matchless divine vision',
-    tagColor: 'text-[#C2410C]',
-    imageUrl: '',
-  },
-  {
-    id: 'dhruvdas',
-    name: 'Shri Dhruvdas Ji',
-    devanagari: 'श्री ध्रुवदास जी',
-    tradition: 'हित रस परंपरा • बयालीस लीला',
-    totalCompositions: 42,
-    significance: 'Chronicler of Nikunj Leelas; composer of Bayalees Leela & Ras Muktavali',
-    tagColor: 'text-[#E11D48]',
-    imageUrl: '',
-  },
-  {
-    id: 'raskhan',
-    name: 'Rasik Raskhan',
-    devanagari: 'रसखान जी',
-    tradition: 'अनन्य कृष्ण प्रेम • सवैया रस',
-    totalCompositions: 139,
-    significance: 'Muslim nobleman who surrendered everything to become a resident of Braj',
-    tagColor: 'text-[#0284C7]',
-    imageUrl: '',
-  },
-  {
-    id: 'meera',
-    name: 'Bhakta Meera Bai',
-    devanagari: 'भक्त मीरा बाई',
-    tradition: 'माधुर्य भक्ति • गिरिधर गोपाल',
-    totalCompositions: 28,
-    significance: 'Royal queen whose pure love for Giridhar Gopal transcends all realms',
-    tagColor: 'text-[#EA580C]',
-    imageUrl: '',
-  },
-];
-
-const RELATIONS: RelationItem[] = [
-  {
-    id: 'ashtayama',
-    title: 'Ashtayama Nitya Leela',
-    devanagari: 'अष्टयाम नित्य लीला',
-    typeLabel: 'Sacred Leela Cycle',
-    location: '8 Watches of 24 Hours',
-    tradition: 'Eternal Nikunj Cycle • 8 Prahar',
-    essence: 'Contemplative 24-hour cycle of Priya-Priyatam’s intimate seva and pastimes',
-    tagColor: 'text-[#0284C7]',
-    imageUrl: '',
-  },
-  {
-    id: 'parikrama',
-    title: 'Braj 84 Kos Parikrama',
-    devanagari: 'ब्रज चौरासी कोस परिक्रमा',
-    typeLabel: 'Sacred Parikrama',
-    location: 'Govardhan, Barsana, Nandgaon, Vrindavan',
-    tradition: 'Holy Abodes Circuit • 84 Kos',
-    essence: 'Circumambulation of the holy forest groves and bathing kundas of Braj Mandal',
-    tagColor: 'text-[#C2410C]',
-    imageUrl: '',
-  },
-  {
-    id: 'yamuna',
-    title: 'Shri Yamuna Maharani Ji',
-    devanagari: 'श्री यमुना महारानी जी',
-    typeLabel: 'Sacred River of Grace',
-    location: 'Keshi Ghat & Vishram Ghat',
-    tradition: 'Kalindi Bhav • Pushti & Ras',
-    essence: 'The divine flowing waters that purify the heart and bestow devotion to Shriji',
-    tagColor: 'text-[#0284C7]',
-    imageUrl: '',
-  },
-  {
-    id: 'ragas',
-    title: 'Braj Classical Ragas',
-    devanagari: 'ब्रज राग संगीत धारा',
-    typeLabel: 'Sacred Music',
-    location: 'Vibhas, Sarang, Bilawal, Yaman',
-    tradition: 'Dhrupad & Haveli Sangeet',
-    essence: 'Sacred classical melodies aligned with daily Ashtayama devotional hours',
-    tagColor: 'text-[#E11D48]',
-    imageUrl: '',
-  },
-];
-
 export const CategoriesRow: React.FC<CategoriesRowProps> = ({
   onSelectBook,
   onSelectAuthor,
@@ -239,6 +19,9 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
   onOpenSaintsDirectory,
 }) => {
   const [activeTab, setActiveTab] = useState<ContentBarTab>('books');
+  const books = SacredDatabase.getDisplayBooks();
+  const authors = SacredDatabase.getDisplayAuthors();
+  const relations = SacredDatabase.getSacredTopics();
 
   return (
     <section className="w-full bg-white rounded-[32px] p-6 sm:p-7 border border-neutral-200/80 shadow-[0_4px_24px_rgba(0,0,0,0.03)] mb-6 space-y-4">
@@ -251,7 +34,7 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
               पावन ग्रंथ, रसिक संत एवं धाम लीला संग्रह
             </h3>
             <span className="text-xs font-semibold text-purple-700 bg-purple-50 px-2.5 py-0.5 rounded-full font-mono">
-              {activeTab === 'books' ? 'ग्रंथ संग्रह (६)' : activeTab === 'authors' ? 'रसिक संत (६)' : 'धाम लीला (४)'}
+              {activeTab === 'books' ? `ग्रंथ संग्रह (${books.length})` : activeTab === 'authors' ? `रसिक संत (${authors.length})` : `धाम लीला (${relations.length})`}
             </span>
           </div>
           <p className="text-xs text-[#71717A] font-normal mt-1">
@@ -281,7 +64,7 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
           }`}
         >
           <BookOpen className="w-3.5 h-3.5 text-amber-600" />
-          <span>पावन ग्रंथ ({BOOKS.length})</span>
+          <span>पावन ग्रंथ ({books.length})</span>
         </button>
 
         <button
@@ -294,7 +77,7 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
           }`}
         >
           <Feather className="w-3.5 h-3.5 text-purple-600" />
-          <span>रसिक आचार्य ({AUTHORS.length})</span>
+          <span>रसिक आचार्य ({authors.length})</span>
         </button>
 
         <button
@@ -307,14 +90,14 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
           }`}
         >
           <Landmark className="w-3.5 h-3.5 text-[#0284C7]" />
-          <span>लीला एवं धाम ({RELATIONS.length})</span>
+          <span>लीला एवं धाम ({relations.length})</span>
         </button>
       </div>
 
       {/* 3. SECTION A: Canonical Books - Graphics Friendly Layout */}
       {activeTab === 'books' && (
         <div className="space-y-3 pt-1">
-          {BOOKS.map((book) => (
+          {books.map((book) => (
             <div
               key={book.id}
               role="button"
@@ -386,7 +169,7 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
       {/* 4. SECTION B: Master Authors & Rasik Saints - Graphics Friendly Layout */}
       {activeTab === 'authors' && (
         <div className="space-y-3 pt-1">
-          {AUTHORS.map((author) => (
+          {authors.map((author) => (
             <div
               key={author.id}
               role="button"
@@ -458,7 +241,7 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
       {/* 5. SECTION C: Sacred Leelas & Dham Relations - Graphics Friendly Layout */}
       {activeTab === 'relations' && (
         <div className="space-y-3 pt-1">
-          {RELATIONS.map((rel) => (
+          {relations.map((rel) => (
             <div
               key={rel.id}
               role="button"

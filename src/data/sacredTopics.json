@@ -1,0 +1,46 @@
+[
+  {
+    "id": "ashtayama",
+    "title": "Ashtayama Nitya Leela",
+    "devanagari": "अष्टयाम नित्य लीला",
+    "typeLabel": "Sacred Leela Cycle",
+    "location": "8 Watches of 24 Hours",
+    "tradition": "Eternal Nikunj Cycle • 8 Prahar",
+    "essence": "Contemplative 24-hour cycle of Priya-Priyatam’s intimate seva and pastimes",
+    "tagColor": "text-[#0284C7]",
+    "imageUrl": ""
+  },
+  {
+    "id": "parikrama",
+    "title": "Braj 84 Kos Parikrama",
+    "devanagari": "ब्रज चौरासी कोस परिक्रमा",
+    "typeLabel": "Sacred Parikrama",
+    "location": "Govardhan, Barsana, Nandgaon, Vrindavan",
+    "tradition": "Holy Abodes Circuit • 84 Kos",
+    "essence": "Circumambulation of the holy forest groves and bathing kundas of Braj Mandal",
+    "tagColor": "text-[#C2410C]",
+    "imageUrl": ""
+  },
+  {
+    "id": "yamuna",
+    "title": "Shri Yamuna Maharani Ji",
+    "devanagari": "श्री यमुना महारानी जी",
+    "typeLabel": "Sacred River of Grace",
+    "location": "Keshi Ghat & Vishram Ghat",
+    "tradition": "Kalindi Bhav • Pushti & Ras",
+    "essence": "The divine flowing waters that purify the heart and bestow devotion to Shriji",
+    "tagColor": "text-[#0284C7]",
+    "imageUrl": ""
+  },
+  {
+    "id": "ragas",
+    "title": "Braj Classical Ragas",
+    "devanagari": "ब्रज राग संगीत धारा",
+    "typeLabel": "Sacred Music",
+    "location": "Vibhas, Sarang, Bilawal, Yaman",
+    "tradition": "Dhrupad & Haveli Sangeet",
+    "essence": "Sacred classical melodies aligned with daily Ashtayama devotional hours",
+    "tagColor": "text-[#E11D48]",
+    "imageUrl": ""
+  }
+]

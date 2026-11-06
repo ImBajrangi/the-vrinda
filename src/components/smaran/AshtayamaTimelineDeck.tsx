@@ -1,98 +1,15 @@
 import React, { useState } from 'react';
 import { Music } from 'lucide-react';
 import { computeAshtayamaPhase } from '../../services/cacheService';
+import { SacredDatabase, AshtayamaPeriod } from '../../services/sacredDatabase';
 import { ArtworkGraphicSlot } from '../common/ArtworkGraphicSlot';
 
-interface AshtayamaPeriod {
-  id: string;
-  nameDevanagari: string;
-  nameEnglish: string;
-  timeRange: string;
-  raga: string;
-  bhava: string;
-  description: string;
-}
-
-const ASHTAYAMA_PERIODS: AshtayamaPeriod[] = [
-  {
-    id: 'mangala',
-    nameDevanagari: 'Mangala (Dawn)',
-    nameEnglish: 'Mangala',
-    timeRange: '03:30 - 06:00 AM',
-    raga: 'Raga Vibhas / Lalit',
-    bhava: 'Morning Awakening (Jagaran)',
-    description: 'Dawn awakening of the Divine Couple, morning mangala aarti, and melodious flute vibrations echoing across the groves.',
-  },
-  {
-    id: 'shringar',
-    nameDevanagari: 'Shringar (Adornment)',
-    nameEnglish: 'Shringar',
-    timeRange: '06:00 - 08:30 AM',
-    raga: 'Raga Bilawal / Bhairav',
-    bhava: 'Devotional Adornment (Sakhi Shringar)',
-    description: 'The sakhis lovingly adorn Shri Radha-Krishna with fine silk garments, fragrant sandalwood paste, and fresh jasmine garlands.',
-  },
-  {
-    id: 'gwal',
-    nameDevanagari: 'Gwal (Pastoral)',
-    nameEnglish: 'Gwal',
-    timeRange: '08:30 - 10:30 AM',
-    raga: 'Raga Asavari / Todi',
-    bhava: 'Friendly Leela (Sakhya Bhava)',
-    description: 'Krishna gathers cows and comrades for pasturing in the green meadows of Braj with sweet flute melodies.',
-  },
-  {
-    id: 'rajbhog',
-    nameDevanagari: 'Rajbhog (Midday Feast)',
-    nameEnglish: 'Rajbhog',
-    timeRange: '10:30 AM - 03:30 PM',
-    raga: 'Raga Sarang / Multani',
-    bhava: 'Opulent Seva & Midday Rest',
-    description: 'Sumptuous offering of 56 delicacies prepared by Shri Radha Maharani, followed by soothing afternoon rest and kirtan.',
-  },
-  {
-    id: 'utthan',
-    nameDevanagari: 'Utthapan (Awakening)',
-    nameEnglish: 'Utthapan',
-    timeRange: '03:30 - 05:00 PM',
-    raga: 'Raga Gauri / Poorvi',
-    bhava: 'Afternoon Awakening',
-    description: 'Gentle waking of the deities with cooling drinks, sweet seasonal fruits, and soft musical chanting.',
-  },
-  {
-    id: 'bhog',
-    nameDevanagari: 'Sandhya Bhog (Sunset Offering)',
-    nameEnglish: 'Sandhya Bhog',
-    timeRange: '05:00 - 06:30 PM',
-    raga: 'Raga Kalyan / Bhupali',
-    bhava: 'Evening Gathering (Gaudhuli)',
-    description: 'Cows return home under the twilight sky while evening snacks and warm milk are loving offered.',
-  },
-  {
-    id: 'sandhya',
-    nameDevanagari: 'Sandhya Aarti (Twilight Lamp)',
-    nameEnglish: 'Sandhya Aarti',
-    timeRange: '06:30 - 08:30 PM',
-    raga: 'Raga Yaman / Kedar',
-    bhava: 'Evening Worship (Deep Aarti)',
-    description: 'Solemn evening aarti with hundred-wick camphor lamps, sacred conch resonance, and ecstatic kirtan by rasik devotees.',
-  },
-  {
-    id: 'shayana',
-    nameDevanagari: 'Shayana (Night Repose)',
-    nameEnglish: 'Shayana',
-    timeRange: '08:30 PM - 03:30 AM',
-    raga: 'Raga Bihag / Kanhara',
-    bhava: 'Eternal Ras (Nitya Ras)',
-    description: 'The intimate moonlit ras-lila in the sacred groves of Seva Kunj and Nidhiban, followed by the peaceful rest of the Divine Couple.',
-  },
-];
-
 export const AshtayamaTimelineDeck: React.FC = () => {
+  const periods = SacredDatabase.getAshtayamaPeriods();
   const currentActive = computeAshtayamaPhase();
   const defaultPeriod =
-    ASHTAYAMA_PERIODS.find((p) => p.nameDevanagari.includes(currentActive.nameDevanagari) || currentActive.nameDevanagari.includes(p.nameDevanagari)) ||
-    ASHTAYAMA_PERIODS[3];
+    periods.find((p) => p.nameDevanagari.includes(currentActive.nameDevanagari) || currentActive.nameDevanagari.includes(p.nameDevanagari)) ||
+    periods[3];
 
   const [selectedPeriod, setSelectedPeriod] = useState<AshtayamaPeriod>(defaultPeriod);
 
@@ -122,7 +39,7 @@ export const AshtayamaTimelineDeck: React.FC = () => {
 
       {/* 8-Pahar Horizontal Interactive Pill Strip */}
       <div className="w-full flex items-center gap-1.5 p-1.5 bg-[#F4F4F5]/70 rounded-[22px] border border-neutral-200/60 overflow-x-auto no-scrollbar">
-        {ASHTAYAMA_PERIODS.map((period) => {
+        {periods.map((period) => {
           const isSelected = selectedPeriod.id === period.id;
           const isCurrentTime =
             period.nameEnglish.toLowerCase() === currentActive.nameEnglish.toLowerCase() ||

@@ -66,14 +66,7 @@ export const SaintsDirectoryModal: React.FC<SaintsDirectoryModalProps> = ({
       )
     : allSaints;
 
-  const traditions = [
-    { id: 'all', label: 'सभी संत (131)' },
-    { id: 'राधावल्लभ', label: 'राधावल्लभ संप्रदाय' },
-    { id: 'हरिदासी', label: 'स्वामी हरिदासी' },
-    { id: 'अष्टछाप', label: 'अष्टछाप महाकवि' },
-    { id: 'निम्बार्क', label: 'निम्बार्क परंपरा' },
-    { id: 'रसिक परम्परा', label: 'अन्य रसिक' },
-  ];
+  const traditions = SacredDatabase.getTraditions();
 
   return createPortal(
     <div
