@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import {
   CheckCircle2,
+  Heart,
   MessageCircle,
   Eye,
   Bookmark,
@@ -191,7 +192,7 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
   };
 
   return (
-    <article className="w-full bg-[#F3F3F3] rounded-[24px] p-3.5 sm:p-4 shadow-[0_8px_24px_rgba(0,0,0,0.05)] border border-white/80 mb-4 transition-colors">
+    <article className="w-full bg-[#FAF9F6] rounded-[28px] p-4 sm:p-5 shadow-[0_4px_24px_rgba(0,0,0,0.03)] border border-neutral-200/80 mb-5 transition-colors">
       <style>{`
         @keyframes pushparpanFloat {
           0% {
@@ -440,40 +441,41 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
         </div>
       </div>
 
-      {/* Mobile 320px-Optimized Action Row: Guaranteed to fit within 260px container */}
-      <div className="flex items-center justify-between text-xs text-[#6B6F6B] pt-0.5 gap-1.5">
-        <div className="flex items-center gap-1 sm:gap-2 min-w-0">
-          {/* भाव प्रणाम / Bhava Pranam Pill */}
+      {/* Interaction Metrics: Pure White Capsule Pills */}
+      <div className="flex items-center justify-between text-xs pt-1.5 gap-2">
+        <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
+          {/* Like Pill */}
           <button
             type="button"
             onClick={toggleLike}
-            className="h-8 px-2 sm:px-2.5 rounded-full bg-white/80 border border-white flex items-center gap-1 sm:gap-1.5 text-xs text-[#111111] shadow-xs pressable shrink-0"
+            className="h-9 px-3.5 sm:px-4 rounded-full bg-white border border-neutral-100 shadow-[0_2px_8px_rgba(0,0,0,0.04)] flex items-center gap-1.5 sm:gap-2 text-xs font-semibold text-[#18181B] hover:bg-neutral-50/80 transition-colors cursor-pointer shrink-0"
           >
-            <span
-              className={`text-sm leading-none transition-colors ${
-                isLiked ? 'text-[#EF4444]' : 'text-[#888888]'
+            <Heart
+              className={`w-4 h-4 transition-transform active:scale-125 ${
+                isLiked
+                  ? 'fill-[#EF4444] text-[#EF4444]'
+                  : 'fill-[#EF4444] text-[#EF4444]'
               }`}
-            >
-              ♥
-            </span>
-            <span className="font-semibold text-[11px] sm:text-[12px] whitespace-nowrap">
+            />
+            <span className="font-semibold text-xs sm:text-[13px] whitespace-nowrap text-[#18181B]">
               {formatDevanagariNumerals(likes)}
-              <span className="hidden xs:inline text-[10.5px] sm:text-[11px] text-[#666666] ml-1">
-                प्रणाम
-              </span>
             </span>
           </button>
 
           {/* Comments Pill */}
-          <div className="h-8 px-2 sm:px-2.5 rounded-full bg-white/80 border border-white flex items-center gap-1 text-[11px] sm:text-[12px] text-[#555555] shadow-xs shrink-0">
-            <MessageCircle className="w-3.5 h-3.5 text-[#6B6F6B]" />
-            <span>{formatDevanagariNumerals(post.comments)}</span>
+          <div className="h-9 px-3.5 sm:px-4 rounded-full bg-white border border-neutral-100 shadow-[0_2px_8px_rgba(0,0,0,0.04)] flex items-center gap-1.5 sm:gap-2 text-xs font-semibold text-[#18181B] shrink-0">
+            <MessageCircle className="w-4 h-4 text-[#71717A] stroke-[1.8]" />
+            <span className="font-semibold text-xs sm:text-[13px] text-[#18181B]">
+              {formatDevanagariNumerals(post.comments)}
+            </span>
           </div>
 
           {/* Views Pill */}
-          <div className="h-8 px-2 sm:px-2.5 rounded-full bg-white/80 border border-white flex items-center gap-1 text-[11px] sm:text-[12px] text-[#555555] shadow-xs shrink-0">
-            <Eye className="w-3.5 h-3.5 text-[#6B6F6B]" />
-            <span>{post.views}</span>
+          <div className="h-9 px-3.5 sm:px-4 rounded-full bg-white border border-neutral-100 shadow-[0_2px_8px_rgba(0,0,0,0.04)] flex items-center gap-1.5 sm:gap-2 text-xs font-semibold text-[#18181B] shrink-0">
+            <Eye className="w-4 h-4 text-[#71717A] stroke-[1.8]" />
+            <span className="font-semibold text-xs sm:text-[13px] text-[#18181B]">
+              {post.views}
+            </span>
           </div>
         </div>
 
@@ -482,15 +484,15 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
           type="button"
           onClick={toggleBookmark}
           aria-label={isBookmarked ? 'उर से हटाएं' : 'उर धरें (सहेजें)'}
-          className={`w-8 h-8 rounded-full flex items-center justify-center shadow-xs cursor-pointer shrink-0 transition-colors ${
+          className={`w-9 h-9 rounded-full flex items-center justify-center shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-neutral-100 cursor-pointer shrink-0 transition-colors ${
             isBookmarked
               ? 'bg-[#18181B] text-amber-400'
-              : 'bg-white/90 text-[#71717A] hover:text-[#18181B]'
+              : 'bg-white text-[#71717A] hover:text-[#18181B]'
           }`}
         >
           <Bookmark
-            className={`w-3.5 h-3.5 ${
-              isBookmarked ? 'fill-amber-400' : ''
+            className={`w-4 h-4 ${
+              isBookmarked ? 'fill-amber-400 text-amber-400' : ''
             }`}
           />
         </button>
