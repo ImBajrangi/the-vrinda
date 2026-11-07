@@ -1530,51 +1530,25 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
           
           {/* Header Bar */}
           <div className={`pb-6 mb-7 border-b ${currentTheme.borderColor} space-y-4`}>
-            {/* Top Meta Line, Shrunk Sidebar Quick Toggles & Bookmark */}
+            {/* Top Meta Line & Bookmark */}
             <div className="flex items-center justify-between text-xs gap-2 flex-wrap">
-              <div className="flex items-center gap-2 flex-wrap">
-                {isLeftSidebarCollapsed && (
-                  <button
-                    type="button"
-                    onClick={handleToggleLeftSidebar}
-                    className="h-7 px-2.5 rounded-full bg-black/5 hover:bg-black/10 text-[#334155] text-xs font-medium flex items-center gap-1.5 cursor-pointer transition-colors shrink-0"
-                    title="Expand Pada Index (पद सूची खोलें)"
-                  >
-                    <PanelLeftOpen className="w-3.5 h-3.5 text-[#CA8A04]" />
-                    <span className="text-[11px] font-serif">पद सूची</span>
-                  </button>
+              <div className={`flex items-center gap-2 ${currentTheme.metaColor} font-mono text-[11px] font-bold tracking-wider uppercase`}>
+                <span>{granthaDisplayName}</span>
+                {selectedPad.rag && (
+                  <>
+                    <span className="text-[#FACC15]">•</span>
+                    <span>राग {selectedPad.rag}</span>
+                  </>
                 )}
-
-                <div className={`flex items-center gap-2 ${currentTheme.metaColor} font-mono text-[11px] font-bold tracking-wider uppercase`}>
-                  <span>{granthaDisplayName}</span>
-                  {selectedPad.rag && (
-                    <>
-                      <span className="text-[#FACC15]">•</span>
-                      <span>राग {selectedPad.rag}</span>
-                    </>
-                  )}
-                  {selectedPad.duration && (
-                    <>
-                      <span className="text-[#CBD5E1]">•</span>
-                      <span className="opacity-75">{selectedPad.duration}</span>
-                    </>
-                  )}
-                </div>
+                {selectedPad.duration && (
+                  <>
+                    <span className="text-[#CBD5E1]">•</span>
+                    <span className="opacity-75">{selectedPad.duration}</span>
+                  </>
+                )}
               </div>
 
               <div className="flex items-center gap-2 shrink-0">
-                {isRightSidebarCollapsed && (
-                  <button
-                    type="button"
-                    onClick={handleToggleRightSidebar}
-                    className="hidden xl:flex h-7 px-2.5 rounded-full bg-black/5 hover:bg-black/10 text-[#334155] text-xs font-medium items-center gap-1.5 cursor-pointer transition-colors shrink-0"
-                    title="Expand Commentary (भावार्थ खोलें)"
-                  >
-                    <PanelRightOpen className="w-3.5 h-3.5 text-[#CA8A04]" />
-                    <span className="text-[11px] font-serif">भावार्थ</span>
-                  </button>
-                )}
-
                 {/* Bookmark Button */}
                 <button
                   type="button"
