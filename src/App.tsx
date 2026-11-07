@@ -336,11 +336,12 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
     switch (activeTab) {
       case 'smaran':
       case 'padavali':
-        return 'linear-gradient(180deg, #F8E9D6 0%, #E4EFE8 20%, #DAE8DE 100%)';
+        // Warm sacred Chandan & Ivory sanctuary canvas with subtle golden aura
+        return 'radial-gradient(circle at 50% 0%, #FFFFFF 0%, #FDFBF7 35%, #F7F2E7 100%)';
       case 'feed':
-        return 'linear-gradient(180deg, #BFD3C2 0%, #E1ECE5 24%, #EEF1EE 100%)';
+        return 'radial-gradient(circle at 50% 0%, #FFFFFF 0%, #FAF6EE 40%, #F4ECE0 100%)';
       case 'milestones':
-        return 'linear-gradient(180deg, #F1F1F1 0%, #E2E8E0 40%, #A9BBA3 78%, #7E9A78 100%)';
+        return 'radial-gradient(circle at 50% 0%, #FFFFFF 0%, #FDFBF7 40%, #F5EFE4 100%)';
     }
   };
 

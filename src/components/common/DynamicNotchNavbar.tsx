@@ -93,7 +93,7 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
       <div className="max-w-6xl mx-auto flex flex-col items-center">
         
         {/* Main Floating Glass & Paper Header Bar */}
-        <div className="pointer-events-auto rounded-full w-full max-w-[96vw] md:max-w-6xl bg-white/95 backdrop-blur-2xl border border-neutral-200/80 shadow-[0_4px_24px_rgba(0,0,0,0.06)] px-3.5 sm:px-4 py-1.5 transition-all">
+        <div className="pointer-events-auto rounded-full w-full max-w-[96vw] md:max-w-6xl bg-[#FFFDF9]/95 backdrop-blur-2xl border border-amber-200/80 shadow-[0_4px_28px_rgba(0,0,0,0.08)] px-3.5 sm:px-4 py-1.5 transition-all">
           <div className="flex items-center justify-between gap-2 h-10 sm:h-11">
             
             {/* 1. Left: Brand Identity & Sacred Logo */}
@@ -107,10 +107,10 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
             >
               <SacredLogo size={30} className="shadow-xs shrink-0" />
               <div className="flex items-center gap-1.5 leading-none">
-                <span className="font-devanagari font-bold text-sm sm:text-base text-[#18181B] tracking-tight">
+                <span className="font-devanagari font-bold text-sm sm:text-base text-amber-950 tracking-tight">
                   वृन्दोपनिषद्
                 </span>
-                <span className="font-mono font-bold text-[10px] text-amber-800 bg-amber-50 px-1.5 py-0.5 rounded-full uppercase shrink-0">
+                <span className="font-mono font-bold text-[10px] text-amber-800 bg-amber-100/80 border border-amber-200/70 px-1.5 py-0.5 rounded-full uppercase shrink-0">
                   2.0
                 </span>
               </div>
@@ -119,7 +119,7 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
             {/* 2. Center: Segmented Navigation Menu Bar (Desktop & Tablet >= md) */}
             <nav
               aria-label="Main Navigation Menu"
-              className="relative hidden md:flex items-center gap-1 bg-[#F4F4F5]/80 p-1 rounded-full border border-neutral-200/60"
+              className="relative hidden md:flex items-center gap-1 bg-[#FAF6EE] p-1 rounded-full border border-amber-200/60"
             >
               {/* Dynamic Elastic Sliding Indicator Bar */}
               {indicatorStyle.ready && (
@@ -169,11 +169,11 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
                   onClick={onOpenSearch}
                   aria-label="Search (Cmd+K)"
                   title="Search: Verses, Saints, Scriptures (Cmd+K)"
-                  className="w-8 h-8 sm:w-auto flex items-center justify-center gap-1.5 sm:px-2.5 sm:h-8 rounded-full bg-white text-[#18181B] border border-neutral-200/80 hover:bg-neutral-50 text-xs font-semibold shadow-2xs transition-colors cursor-pointer shrink-0"
+                  className="w-8 h-8 sm:w-auto flex items-center justify-center gap-1.5 sm:px-2.5 sm:h-8 rounded-full bg-[#FFFDF9] text-amber-950 border border-amber-200/80 hover:bg-amber-50 text-xs font-semibold shadow-2xs transition-colors cursor-pointer shrink-0"
                 >
-                  <Search className="w-3.5 h-3.5 text-[#18181B] stroke-[2.2]" />
+                  <Search className="w-3.5 h-3.5 text-amber-900 stroke-[2.2]" />
                   <span className="hidden sm:inline text-xs">Search</span>
-                  <kbd className="hidden lg:inline text-[9px] font-mono text-[#A1A1AA] bg-neutral-100 px-1 py-0.2 rounded">⌘K</kbd>
+                  <kbd className="hidden lg:inline text-[9px] font-mono text-amber-800/70 bg-amber-100/60 px-1 py-0.2 rounded">⌘K</kbd>
                 </button>
               )}
 
@@ -182,7 +182,7 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
                 className={`flex items-center justify-center gap-1.5 h-8 rounded-full border shadow-2xs transition-colors shrink-0 ${
                   isPlayingAudio
                     ? 'bg-[#18181B] text-white border-[#18181B] px-1.5 sm:px-2.5'
-                    : 'bg-white text-[#18181B] border-neutral-200/80 w-8 sm:w-auto sm:px-2.5'
+                    : 'bg-[#FFFDF9] text-amber-950 border-amber-200/80 w-8 sm:w-auto sm:px-2.5'
                 }`}
               >
                 <button
@@ -217,7 +217,7 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
                 onClick={() => handleSelectNav('milestones')}
                 aria-label={`Devotion Streak: ${streakDays} days`}
                 title="View Devotion Streaks & Milestones"
-                className="hidden min-[480px]:flex items-center gap-1 px-2.5 h-8 rounded-full bg-white text-xs font-bold text-[#18181B] border border-neutral-200/80 shadow-2xs hover:bg-neutral-50 transition-colors cursor-pointer shrink-0"
+                className="hidden min-[480px]:flex items-center gap-1 px-2.5 h-8 rounded-full bg-[#FFFDF9] text-xs font-bold text-amber-950 border border-amber-200/80 shadow-2xs hover:bg-amber-50 transition-colors cursor-pointer shrink-0"
               >
                 <Flame className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
                 <span className="font-mono text-xs font-bold">{streakDays}d</span>
@@ -228,7 +228,7 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
                 type="button"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 aria-label={isMobileMenuOpen ? 'Close Menu' : 'Open Menu'}
-                className="md:hidden w-8 h-8 rounded-full bg-white hover:bg-neutral-50 flex items-center justify-center text-[#18181B] border border-neutral-200/80 shadow-2xs transition-colors cursor-pointer shrink-0"
+                className="md:hidden w-8 h-8 rounded-full bg-[#FFFDF9] hover:bg-amber-50 flex items-center justify-center text-amber-950 border border-amber-200/80 shadow-2xs transition-colors cursor-pointer shrink-0"
               >
                 {isMobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
               </button>
