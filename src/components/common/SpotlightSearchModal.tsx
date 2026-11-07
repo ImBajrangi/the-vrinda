@@ -228,13 +228,14 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
           </kbd>
         </div>
 
-        {/* 2. Quiet Segmented Scope Filter with Bouncy Sliding Pill */}
-        <div className="px-4 sm:px-5 py-2 border-b border-neutral-100 bg-[#FAF9F6]">
-          <div className="relative inline-flex items-center p-0.5 bg-neutral-100 rounded-full">
+        {/* 2. Balanced High-Impact Scope Filter Bar with Elastic Sliding Pill */}
+        <div className="px-4 sm:px-5 py-2.5 border-b border-neutral-150 bg-[#FAF9F6] flex items-center justify-between gap-3">
+          {/* Left: Tactile Segmented Scope Track */}
+          <div className="relative inline-flex items-center p-1 bg-neutral-200/70 rounded-full border border-neutral-300/40">
             {filterPillStyle.ready && (
               <span
                 aria-hidden="true"
-                className="absolute top-0.5 bottom-0.5 rounded-full bg-[#18181B] shadow-xs pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+                className="absolute top-1 bottom-1 rounded-full bg-[#18181B] shadow-sm pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
                 style={{
                   transform: `translateX(${filterPillStyle.left}px)`,
                   width: `${filterPillStyle.width}px`,
@@ -256,15 +257,17 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
                     setActiveFilter(f.id);
                     setSelectedIdx(0);
                   }}
-                  className={`relative z-10 px-3 py-1 rounded-full text-xs font-medium transition-colors duration-200 cursor-pointer flex items-center gap-1 ${
-                    isActive ? 'text-white font-bold' : 'text-neutral-600 hover:text-neutral-900'
+                  className={`relative z-10 px-3 sm:px-3.5 py-1 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer flex items-center gap-1.5 select-none ${
+                    isActive ? 'text-white font-bold' : 'text-neutral-700 hover:text-[#18181B]'
                   }`}
                 >
                   <span>{f.label}</span>
                   {f.count !== undefined && (
                     <span
-                      className={`text-[10px] font-mono ${
-                        isActive ? 'text-white/70' : 'text-neutral-400'
+                      className={`text-[10px] font-mono font-bold px-1.5 py-0.2 rounded-full leading-none transition-colors ${
+                        isActive
+                          ? 'bg-white/25 text-white'
+                          : 'bg-neutral-200 text-neutral-600'
                       }`}
                     >
                       {f.count}
@@ -273,6 +276,16 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
                 </button>
               );
             })}
+          </div>
+
+          {/* Right: Contextual Result Counter & Keyboard Guide */}
+          <div className="flex items-center gap-2.5 shrink-0">
+            <span className="text-xs font-bold text-[#18181B] font-mono">
+              {totalResults} परिणाम
+            </span>
+            <span className="hidden sm:inline-flex items-center gap-1 text-[11px] font-mono text-neutral-500 bg-white border border-neutral-200/80 px-2 py-0.5 rounded-full shadow-2xs select-none">
+              <kbd className="font-bold text-[10px] text-[#18181B]">Tab ⇥</kbd> फ़िल्टर
+            </span>
           </div>
         </div>
 
@@ -428,7 +441,7 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
 
         {/* 4. Zen Minimalist Footer */}
         <div className="px-4 sm:px-5 py-2.5 bg-[#FAF9F6] border-t border-neutral-100 flex items-center justify-between text-xs text-neutral-500 select-none">
-          <span>{totalResults} परिणाम</span>
+          <span className="text-[11px] text-neutral-400">वृन्दोपनिषद् 2.0 • अगाध निकुंज रस</span>
           <div className="flex items-center gap-2 text-[11px] text-neutral-400">
             <span>↑↓ चयन</span>
             <span>•</span>
