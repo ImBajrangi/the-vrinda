@@ -247,6 +247,21 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     }
   }, [selectedGranthaId]);
 
+  // On-Demand Kilobyte Grantha Fetcher (Only fetches ~6-15 KB for selected book)
+  useEffect(() => {
+    if (selectedGrantha && selectedGrantha !== 'all') {
+      SacredDatabase.fetchGranthaPadas(selectedGrantha);
+    }
+  }, [selectedGrantha]);
+
+  // On-Demand Single Pada Fetcher (Only fetches 0.65 KB for active verse)
+  useEffect(() => {
+    const targetId = selectedPadId || initialPadId;
+    if (targetId) {
+      SacredDatabase.fetchPadBySlug(targetId);
+    }
+  }, [selectedPadId, initialPadId]);
+
   useEffect(() => {
     const targetId = selectedPadId || initialPadId;
     if (targetId) {

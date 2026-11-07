@@ -76,10 +76,34 @@ async function syncAll() {
     console.log(`   ✓ Successfully synced ${saintRows.length} saints.`);
   }
 
-  // 3. Sync Padas in Batches
+  // 3. Sync Padas in Batches with Canonical Collection Normalization
   const padasPath = path.resolve(projectRoot, 'src/data/canonicalPadas.json');
   const padas = JSON.parse(fs.readFileSync(padasPath, 'utf-8'));
-  console.log(`\n3. Uploading ${padas.length} canonical padas in chunked batches...`);
+  console.log(`\n3. Uploading ${padas.length} canonical padas with lineage normalization in chunked batches...`);
+
+  function resolveCollection(raw) {
+    const author = (raw.author || raw.composer || 'श्री रसिक परंपरा').trim();
+    const title = (raw.titleDevanagari || raw.title || 'श्री पद').trim();
+    let col = raw.collectionId || raw.granthaId || '';
+    if (!col || col === 'rasik-vani' || col === 'other') {
+      if (/स्तोत्र|अष्टक|कटाक्ष/i.test(title)) col = 'stotras';
+      else if (/हरिवंश|हित चौरासी|चतुरासी/i.test(author + title)) col = 'hit-chaurasi';
+      else if (/हरिदास|केलिमाल/i.test(author + title)) col = 'kelimal';
+      else if (/ध्रुवदास/i.test(author)) col = 'bayalees-leela';
+      else if (/सूरदास/i.test(author)) col = 'sur-sagar';
+      else if (/रसखान/i.test(author)) col = 'raskhan-padavali';
+      else if (/लाल बलबीर/i.test(author)) col = 'braj-binod';
+      else if (/कृपालु/i.test(author)) col = 'bhakti-shatak';
+      else if (/व्यास/i.test(author)) col = 'vyas-vani';
+      else if (/ललित किशोरी|ललित मोहिनी/i.test(author)) col = 'lalit-kishori-vani';
+      else if (/बिहारिन|भगवत रसिक/i.test(author)) col = 'biharin-dev-vani';
+      else if (/नारायण स्वामी/i.test(author)) col = 'narayan-swami-vani';
+      else if (/दोहे|दोहा/i.test(author + title)) col = 'braj-dohe';
+      else if (/सवैया/i.test(author + title)) col = 'braj-savaiya';
+      else col = 'rasik-vani-sangrah';
+    }
+    return col;
+  }
 
   const BATCH_SIZE = 150;
   let uploaded = 0;
@@ -88,12 +112,12 @@ async function syncAll() {
     const chunk = padas.slice(i, i + BATCH_SIZE);
     const rows = chunk.map((p) => ({
       id: p.id,
-      collection_id: p.collectionId || 'other',
+      collection_id: resolveCollection(p),
       index: p.index || 1,
       title_devanagari: p.titleDevanagari || p.title || 'श्री पद',
       title_english: p.titleEnglish || p.titleEng || '',
-      author: p.author || 'श्री रसिक परंपरा',
-      rag: p.rag || '',
+      author: (p.author || 'श्री रसिक परंपरा').trim(),
+      rag: (p.rag || '').trim(),
       slug: p.slug || p.id,
       duration: p.duration || '05:20',
       verses: p.verses || p.stanzas || [],
