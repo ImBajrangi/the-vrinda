@@ -1,49 +1,8 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { createPortal } from 'react-dom';
-import { Search, X, BookOpen, Music, Sparkles, ChevronRight, ArrowUpRight } from 'lucide-react';
+import { Search, X, BookOpen, Music } from 'lucide-react';
 import { SacredDatabase, CanonicalSaint, CanonicalGrantha } from '../../services/sacredDatabase';
 import { SacredPad } from '../../types/devotional';
-
-/**
- * Authentic Devotional Sacred Lotus Icon for Rasik Parampara
- */
-const SacredLotusIcon: React.FC<{ className?: string; size?: number }> = ({ className = '', size = 16 }) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    className={className}
-    aria-hidden="true"
-  >
-    <path
-      d="M12 3C12 3 8 9 8 14C8 17.5 10 20 12 21C14 20 16 17.5 16 14C16 9 12 3 12 3Z"
-      fill="#A855F7"
-      fillOpacity="0.25"
-      stroke="#7C3AED"
-      strokeWidth="1.5"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M12 21C8 20 4 16 4 12C4 9.5 6 7 8 7C8 10 10 15 12 21Z"
-      fill="#EC4899"
-      fillOpacity="0.2"
-      stroke="#DB2777"
-      strokeWidth="1.2"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M12 21C16 20 20 16 20 12C20 9.5 18 7 16 7C16 10 14 15 12 21Z"
-      fill="#EC4899"
-      fillOpacity="0.2"
-      stroke="#DB2777"
-      strokeWidth="1.2"
-      strokeLinejoin="round"
-    />
-    <circle cx="12" cy="14" r="1.5" fill="#F59E0B" />
-  </svg>
-);
 
 export type SearchFilterType = 'all' | 'padas' | 'saints' | 'granthas';
 
@@ -89,13 +48,13 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
       setIsRendered(true);
       setIsClosing(false);
       setSelectedIdx(0);
-      setTimeout(() => inputRef.current?.focus(), 60);
+      setTimeout(() => inputRef.current?.focus(), 50);
     } else if (isRendered) {
       setIsClosing(true);
       const timer = setTimeout(() => {
         setIsRendered(false);
         setIsClosing(false);
-      }, 200);
+      }, 180);
       return () => clearTimeout(timer);
     }
   }, [isOpen, isRendered]);
@@ -104,7 +63,7 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
     setIsClosing(true);
     setTimeout(() => {
       onClose();
-    }, 200);
+    }, 180);
   };
 
   // Lock body scroll while modal is active
@@ -155,12 +114,12 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
     ];
   }, [matchingGranthas, matchingSaints, matchingPadas]);
 
-  // Reset keyboard selected index when query or filter changes
+  // Reset keyboard index on query/filter change
   useEffect(() => {
     setSelectedIdx(0);
   }, [query, activeFilter]);
 
-  // Global Keyboard Navigation (Esc, Up/Down, Enter, Tab)
+  // Keyboard Shortcuts (Esc, ArrowDown, ArrowUp, Enter, Tab)
   useEffect(() => {
     if (!isOpen) return;
 
@@ -206,7 +165,7 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, combinedResults, selectedIdx, activeFilter]);
 
-  // Synchronize Elastic Sliding Pill on Filter Track
+  // Update Sliding Pill Position with Elastic Spring Transition
   useEffect(() => {
     if (!isRendered) return;
     const el = filterRefs.current[activeFilter];
@@ -233,52 +192,49 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
       role="dialog"
       aria-modal="true"
       onClick={handleDismiss}
-      className={`fixed inset-0 z-[100] flex items-start justify-center pt-12 sm:pt-20 px-3 sm:px-4 bg-black/65 backdrop-blur-md transition-opacity select-none ${
+      className={`fixed inset-0 z-[100] flex items-start justify-center pt-14 sm:pt-20 px-3 sm:px-4 bg-black/50 backdrop-blur-sm transition-opacity select-none ${
         isClosing ? 'modal-backdrop-exit' : 'modal-backdrop-enter'
       }`}
     >
       <div
-        className={`w-full max-w-2xl bg-white border border-neutral-200/90 shadow-[0_24px_70px_rgba(0,0,0,0.22)] rounded-[28px] overflow-hidden flex flex-col max-h-[82vh] ring-1 ring-black/5 ${
+        className={`w-full max-w-2xl bg-white border border-neutral-200/90 shadow-[0_20px_60px_rgba(0,0,0,0.15)] rounded-2xl overflow-hidden flex flex-col max-h-[80vh] ${
           isClosing ? 'modal-dialog-exit' : 'modal-dialog-enter'
         }`}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* 1. Header Search Input Bar */}
-        <div className="flex items-center gap-3 px-5 py-3.5 border-b border-neutral-100 bg-white">
-          <div className="w-8 h-8 rounded-full bg-purple-50/80 border border-purple-100 flex items-center justify-center text-purple-700 shrink-0 shadow-2xs">
-            <Search className="w-4 h-4 stroke-[2.2]" />
-          </div>
+        {/* 1. Minimalist Search Bar */}
+        <div className="flex items-center gap-3 px-4 sm:px-5 py-3.5 border-b border-neutral-100 bg-white">
+          <Search className="w-4 h-4 text-neutral-400 shrink-0" />
           <input
             ref={inputRef}
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="खोजें: पद, संत, ग्रन्थ, राग या भाव..."
-            className="flex-1 bg-transparent text-sm sm:text-base font-semibold text-[#18181B] placeholder-[#A1A1AA] outline-none tracking-tight"
+            className="flex-1 bg-transparent text-sm sm:text-base font-normal text-[#18181B] placeholder-neutral-400 outline-none"
           />
           {query && (
             <button
               type="button"
               onClick={() => setQuery('')}
-              className="w-6 h-6 rounded-full bg-neutral-100 hover:bg-neutral-200 flex items-center justify-center text-[#71717A] hover:text-[#18181B] transition-colors cursor-pointer"
-              title="खोज साफ़ करें"
+              className="w-5 h-5 rounded-full bg-neutral-100 hover:bg-neutral-200 flex items-center justify-center text-neutral-500 hover:text-neutral-800 transition-colors cursor-pointer"
+              title="साफ़ करें"
             >
-              <X className="w-3.5 h-3.5" />
+              <X className="w-3 h-3" />
             </button>
           )}
-          <kbd className="hidden sm:inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-mono font-bold text-[#71717A] bg-neutral-100 border border-neutral-200/80 shadow-2xs select-none">
+          <kbd className="hidden sm:inline-block text-[10px] font-mono text-neutral-400 bg-neutral-100 px-1.5 py-0.5 rounded">
             ESC
           </kbd>
         </div>
 
-        {/* 2. Porcelain Segmented Filter Track with Elastic Bouncy Pill */}
-        <div className="px-5 py-2.5 bg-[#FAF9F6] border-b border-neutral-150 flex items-center justify-between gap-3 select-none overflow-x-auto no-scrollbar">
-          <div className="relative inline-flex items-center p-1 bg-[#F0EFEB] rounded-full border border-neutral-200/80 shadow-2xs">
-            {/* Dynamic Elastic Sliding Indicator Bar */}
+        {/* 2. Quiet Segmented Scope Filter with Bouncy Sliding Pill */}
+        <div className="px-4 sm:px-5 py-2 border-b border-neutral-100 bg-[#FAF9F6]">
+          <div className="relative inline-flex items-center p-0.5 bg-neutral-100 rounded-full">
             {filterPillStyle.ready && (
               <span
                 aria-hidden="true"
-                className="absolute top-1 bottom-1 rounded-full bg-[#18181B] shadow-xs pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+                className="absolute top-0.5 bottom-0.5 rounded-full bg-[#18181B] shadow-xs pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
                 style={{
                   transform: `translateX(${filterPillStyle.left}px)`,
                   width: `${filterPillStyle.width}px`,
@@ -300,17 +256,15 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
                     setActiveFilter(f.id);
                     setSelectedIdx(0);
                   }}
-                  className={`relative z-10 px-3.5 py-1 rounded-full text-xs font-bold transition-colors duration-200 cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
-                    isActive ? 'text-white' : 'text-[#71717A] hover:text-[#18181B]'
+                  className={`relative z-10 px-3 py-1 rounded-full text-xs font-medium transition-colors duration-200 cursor-pointer flex items-center gap-1 ${
+                    isActive ? 'text-white font-bold' : 'text-neutral-600 hover:text-neutral-900'
                   }`}
                 >
                   <span>{f.label}</span>
                   {f.count !== undefined && (
                     <span
-                      className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full transition-colors ${
-                        isActive
-                          ? 'bg-white/20 text-white'
-                          : 'bg-neutral-200/80 text-[#71717A]'
+                      className={`text-[10px] font-mono ${
+                        isActive ? 'text-white/70' : 'text-neutral-400'
                       }`}
                     >
                       {f.count}
@@ -320,47 +274,26 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
               );
             })}
           </div>
-
-          {/* Scope Cycle Shortcut Badge */}
-          <div className="hidden sm:flex items-center gap-1 text-[11px] text-[#A1A1AA] font-mono shrink-0">
-            <kbd className="px-1.5 py-0.5 rounded bg-white border border-neutral-200/80 text-[10px] text-[#71717A] shadow-2xs font-semibold">
-              Tab ⇥
-            </kbd>
-            <span>फ़िल्टर</span>
-          </div>
         </div>
 
-        {/* 3. Scrollable Results Area */}
-        <div className="flex-1 overflow-y-auto p-4 sm:p-5 space-y-5 custom-scroll">
+        {/* 3. Zen Minimalist Results List */}
+        <div className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-4 custom-scroll">
           {totalResults === 0 ? (
-            <div className="text-center py-14 text-slate-400">
-              <Sparkles className="w-9 h-9 mx-auto mb-2 text-[#D4A359] opacity-75" />
-              <p className="text-sm font-semibold text-[#18181B]">कोई परिणाम नहीं मिला।</p>
-              <p className="text-xs text-[#71717A] mt-1">
-                कृपया कोई अन्य पद, संत का नाम या राग खोजें।
-              </p>
+            <div className="text-center py-12 text-neutral-400">
+              <p className="text-sm font-medium text-neutral-600">कोई परिणाम नहीं मिला</p>
+              <p className="text-xs text-neutral-400 mt-1">कृपया कोई अन्य शब्द या संत खोजें</p>
             </div>
           ) : (
             <>
-              {/* SECTION 1: Sacred Granthas */}
+              {/* SECTION: Granthas */}
               {matchingGranthas.length > 0 && (
-                <div>
-                  <div className="flex items-center justify-between mb-2.5 px-1">
-                    <div className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" />
-                      <span className="text-[11px] font-bold text-[#18181B] uppercase tracking-wider font-mono">
-                        पावन ग्रन्थ संग्रह
-                      </span>
-                    </div>
-                    <span className="text-[10px] font-mono text-[#A1A1AA] bg-neutral-100 px-2 py-0.5 rounded-full">
-                      {matchingGranthas.length} ग्रन्थ
-                    </span>
+                <div className="space-y-1">
+                  <div className="text-[10px] font-mono font-semibold text-neutral-400 uppercase tracking-wider px-2">
+                    ग्रन्थ ({matchingGranthas.length})
                   </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-1">
                     {matchingGranthas.map((g, idx) => {
-                      const globalIdx = idx;
-                      const isSelected = selectedIdx === globalIdx;
+                      const isSelected = selectedIdx === idx;
                       return (
                         <div
                           key={g.id}
@@ -368,36 +301,25 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
                             onSelectGrantha?.(g);
                             onClose();
                           }}
-                          onMouseEnter={() => setSelectedIdx(globalIdx)}
-                          className={`flex items-center justify-between p-3 rounded-2xl border transition-colors cursor-pointer group select-none ${
-                            isSelected
-                              ? 'bg-amber-50/70 border-amber-300 shadow-xs ring-1 ring-amber-400/40'
-                              : 'bg-[#FAF9F6] hover:bg-white border-neutral-200/70 hover:border-neutral-300 shadow-2xs'
+                          onMouseEnter={() => setSelectedIdx(idx)}
+                          className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-colors cursor-pointer select-none ${
+                            isSelected ? 'bg-neutral-100 text-[#18181B]' : 'hover:bg-neutral-50 text-[#18181B]'
                           }`}
                         >
-                          <div className="flex items-center gap-3 min-w-0">
-                            <div className="w-9 h-9 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-700 shrink-0 shadow-2xs">
-                              <BookOpen className="w-4 h-4 stroke-[2.2]" />
-                            </div>
-                            <div className="min-w-0">
-                              <h4 className="text-xs sm:text-[13px] font-bold text-[#18181B] group-hover:text-amber-800 transition-colors truncate">
+                          <BookOpen className="w-4 h-4 text-neutral-400 shrink-0" />
+                          <div className="min-w-0 flex-1">
+                            <div className="flex items-baseline justify-between gap-2">
+                              <h4 className="text-xs sm:text-sm font-semibold truncate">
                                 {g.name}
                               </h4>
-                              <span className="text-[10px] sm:text-[11px] text-[#71717A] truncate block mt-0.5">
-                                {g.author} • <span className="font-mono">{g.count} पद</span>
+                              <span className="text-[10px] text-neutral-400 font-mono shrink-0">
+                                {g.count} पद
                               </span>
                             </div>
+                            <p className="text-[11px] text-neutral-500 truncate mt-0.5">
+                              {g.author}
+                            </p>
                           </div>
-
-                          <span
-                            className={`w-7 h-7 rounded-xl border flex items-center justify-center shadow-2xs transition-all shrink-0 ${
-                              isSelected
-                                ? 'bg-[#18181B] border-[#18181B] text-white'
-                                : 'bg-white border-neutral-200/80 text-[#71717A] group-hover:bg-[#18181B] group-hover:border-[#18181B] group-hover:text-white'
-                            }`}
-                          >
-                            <ArrowUpRight className="w-3.5 h-3.5" />
-                          </span>
                         </div>
                       );
                     })}
@@ -405,22 +327,13 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
                 </div>
               )}
 
-              {/* SECTION 2: Rasik Saints */}
+              {/* SECTION: Saints */}
               {matchingSaints.length > 0 && (
-                <div>
-                  <div className="flex items-center justify-between mb-2.5 px-1">
-                    <div className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-purple-500 shrink-0" />
-                      <span className="text-[11px] font-bold text-[#18181B] uppercase tracking-wider font-mono">
-                        रसिक संत परंपरा
-                      </span>
-                    </div>
-                    <span className="text-[10px] font-mono text-[#A1A1AA] bg-neutral-100 px-2 py-0.5 rounded-full">
-                      {matchingSaints.length} संत
-                    </span>
+                <div className="space-y-1">
+                  <div className="text-[10px] font-mono font-semibold text-neutral-400 uppercase tracking-wider px-2">
+                    रसिक संत ({matchingSaints.length})
                   </div>
-
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-1">
                     {matchingSaints.map((s, idx) => {
                       const globalIdx = matchingGranthas.length + idx;
                       const isSelected = selectedIdx === globalIdx;
@@ -432,27 +345,20 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
                             onClose();
                           }}
                           onMouseEnter={() => setSelectedIdx(globalIdx)}
-                          className={`flex items-center gap-2.5 p-2.5 sm:p-3 rounded-2xl border transition-colors cursor-pointer group select-none ${
-                            isSelected
-                              ? 'bg-purple-50/70 border-purple-300 shadow-xs ring-1 ring-purple-400/40'
-                              : 'bg-[#FAF9F6] hover:bg-white border-neutral-200/70 hover:border-neutral-300 shadow-2xs'
+                          className={`flex items-center gap-2.5 px-3 py-2 rounded-xl transition-colors cursor-pointer select-none ${
+                            isSelected ? 'bg-neutral-100 text-[#18181B]' : 'hover:bg-neutral-50 text-[#18181B]'
                           }`}
                         >
-                          <div className="w-7 h-7 rounded-full bg-purple-50 border border-purple-100 flex items-center justify-center shrink-0 shadow-2xs">
-                            <SacredLotusIcon size={14} />
+                          <div className="w-6 h-6 rounded-full bg-purple-50 text-purple-700 flex items-center justify-center shrink-0 text-[11px] font-bold">
+                            {s.name.charAt(0)}
                           </div>
                           <div className="min-w-0 flex-1">
-                            <h4 className="text-xs sm:text-[13px] font-bold text-[#18181B] group-hover:text-purple-700 transition-colors truncate">
+                            <h4 className="text-xs font-semibold truncate">
                               {s.name}
                             </h4>
-                            <div className="flex items-center gap-1.5 mt-0.5 flex-wrap">
-                              <span className="text-[9px] font-semibold text-purple-700 bg-purple-50/80 px-1.5 py-0.2 rounded-md">
-                                {s.tradition}
-                              </span>
-                              <span className="text-[9px] text-[#71717A] font-mono">
-                                • {s.articleCount} पद
-                              </span>
-                            </div>
+                            <span className="text-[10px] text-neutral-400 truncate block">
+                              {s.tradition} • {s.articleCount} पद
+                            </span>
                           </div>
                         </div>
                       );
@@ -461,22 +367,13 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
                 </div>
               )}
 
-              {/* SECTION 3: Sacred Verses & Padas */}
+              {/* SECTION: Sacred Verses */}
               {matchingPadas.length > 0 && (
-                <div>
-                  <div className="flex items-center justify-between mb-2.5 px-1">
-                    <div className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
-                      <span className="text-[11px] font-bold text-[#18181B] uppercase tracking-wider font-mono">
-                        पावन पदावली व स्तोत्र
-                      </span>
-                    </div>
-                    <span className="text-[10px] font-mono text-[#A1A1AA] bg-neutral-100 px-2 py-0.5 rounded-full">
-                      {matchingPadas.length} पद
-                    </span>
+                <div className="space-y-1">
+                  <div className="text-[10px] font-mono font-semibold text-neutral-400 uppercase tracking-wider px-2">
+                    पदावली व स्तोत्र ({matchingPadas.length})
                   </div>
-
-                  <div className="space-y-2">
+                  <div className="space-y-0.5">
                     {matchingPadas.map((pad, idx) => {
                       const globalIdx = matchingGranthas.length + matchingSaints.length + idx;
                       const isSelected = selectedIdx === globalIdx;
@@ -488,48 +385,37 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
                             onClose();
                           }}
                           onMouseEnter={() => setSelectedIdx(globalIdx)}
-                          className={`flex items-center justify-between p-3 rounded-2xl border transition-colors cursor-pointer group select-none ${
-                            isSelected
-                              ? 'bg-emerald-50/70 border-emerald-300 shadow-xs ring-1 ring-emerald-400/40'
-                              : 'bg-[#FAF9F6] hover:bg-white border-neutral-200/70 hover:border-neutral-300 shadow-2xs'
+                          className={`flex items-center justify-between px-3 py-2.5 rounded-xl transition-colors cursor-pointer select-none ${
+                            isSelected ? 'bg-neutral-100 text-[#18181B]' : 'hover:bg-neutral-50 text-[#18181B]'
                           }`}
                         >
-                          <div className="flex items-center gap-3 min-w-0">
-                            <div className="w-9 h-9 rounded-xl bg-purple-50 border border-purple-100 text-[#7C3AED] flex items-center justify-center shrink-0 shadow-2xs">
-                              <Music className="w-4 h-4 stroke-[2.2]" />
-                            </div>
-                            <div className="min-w-0">
-                              <h4 className="text-xs sm:text-sm font-bold text-[#18181B] group-hover:text-purple-700 transition-colors truncate">
-                                {pad.titleDevanagari}
-                              </h4>
-                              <div className="flex items-center gap-1.5 text-[10px] sm:text-[11px] text-[#71717A] mt-0.5 truncate">
-                                <span className="truncate max-w-[180px] sm:max-w-xs font-medium">
-                                  {pad.author}
-                                </span>
+                          <div className="flex items-center gap-3 min-w-0 flex-1 pr-2">
+                            <Music className="w-4 h-4 text-neutral-400 shrink-0" />
+                            <div className="min-w-0 flex-1">
+                              <div className="flex items-center gap-2">
+                                <h4 className="text-xs sm:text-sm font-semibold truncate">
+                                  {pad.titleDevanagari}
+                                </h4>
                                 {pad.rag && (
-                                  <span className="px-1.5 py-0.2 rounded-md bg-amber-50 text-amber-700 font-semibold shrink-0">
+                                  <span className="text-[10px] text-amber-700 bg-amber-50 px-1.5 py-0.2 rounded font-medium shrink-0">
                                     {pad.rag}
                                   </span>
                                 )}
+                              </div>
+                              <p className="text-[11px] text-neutral-500 truncate mt-0.5">
+                                <span>{pad.author}</span>
                                 {pad.verses[0]?.linesDevanagari[0] && (
-                                  <span className="hidden sm:inline italic text-neutral-400 truncate font-serif">
+                                  <span className="italic text-neutral-400 ml-1">
                                     — "{pad.verses[0].linesDevanagari[0]}"
                                   </span>
                                 )}
-                              </div>
+                              </p>
                             </div>
                           </div>
 
-                          <div
-                            className={`flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-bold border shadow-2xs transition-all shrink-0 ${
-                              isSelected
-                                ? 'bg-[#18181B] border-[#18181B] text-white'
-                                : 'bg-white border-neutral-200/80 text-[#71717A] group-hover:bg-[#18181B] group-hover:border-[#18181B] group-hover:text-white'
-                            }`}
-                          >
-                            <span>पठन</span>
-                            <ChevronRight className="w-3.5 h-3.5" />
-                          </div>
+                          <span className="text-[11px] font-medium text-neutral-400 shrink-0 hidden sm:inline">
+                            पढ़ें ↵
+                          </span>
                         </div>
                       );
                     })}
@@ -540,40 +426,15 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
           )}
         </div>
 
-        {/* 4. Modal Footer with Keyboard Cheatsheet */}
-        <div className="px-5 py-2.5 bg-[#FAF9F6] border-t border-neutral-150 flex items-center justify-between text-xs select-none">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-            <span className="font-bold text-[#18181B]">{totalResults} परिणाम उपलब्ध</span>
-            <span className="text-neutral-300">•</span>
-            <span className="text-[#71717A] hidden sm:inline">वृन्दोपनिषद् 2.0 • अगाध निकुंज रस</span>
-          </div>
-
-          <div className="hidden sm:flex items-center gap-3 text-[10px] font-mono text-[#71717A]">
-            <span className="flex items-center gap-1">
-              <kbd className="px-1.5 py-0.5 rounded bg-white border border-neutral-200/80 shadow-2xs font-bold text-[9px] text-[#18181B]">
-                ↑↓
-              </kbd>{' '}
-              नेविगेट
-            </span>
-            <span className="flex items-center gap-1">
-              <kbd className="px-1.5 py-0.5 rounded bg-white border border-neutral-200/80 shadow-2xs font-bold text-[9px] text-[#18181B]">
-                ↵
-              </kbd>{' '}
-              खोलें
-            </span>
-            <span className="flex items-center gap-1">
-              <kbd className="px-1.5 py-0.5 rounded bg-white border border-neutral-200/80 shadow-2xs font-bold text-[9px] text-[#18181B]">
-                Tab
-              </kbd>{' '}
-              फ़िल्टर
-            </span>
-            <span className="flex items-center gap-1">
-              <kbd className="px-1.5 py-0.5 rounded bg-white border border-neutral-200/80 shadow-2xs font-bold text-[9px] text-[#18181B]">
-                ESC
-              </kbd>{' '}
-              बंद
-            </span>
+        {/* 4. Zen Minimalist Footer */}
+        <div className="px-4 sm:px-5 py-2.5 bg-[#FAF9F6] border-t border-neutral-100 flex items-center justify-between text-xs text-neutral-500 select-none">
+          <span>{totalResults} परिणाम</span>
+          <div className="flex items-center gap-2 text-[11px] text-neutral-400">
+            <span>↑↓ चयन</span>
+            <span>•</span>
+            <span>↵ खोलें</span>
+            <span>•</span>
+            <span>ESC बंद</span>
           </div>
         </div>
       </div>
