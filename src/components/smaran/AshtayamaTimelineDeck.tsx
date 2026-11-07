@@ -34,7 +34,7 @@ export const AshtayamaTimelineDeck: React.FC = () => {
   return (
     <div className="w-full bg-white rounded-[32px] p-6 sm:p-7 border border-neutral-200/80 shadow-[0_4px_24px_rgba(0,0,0,0.03)] space-y-4">
       {/* Header Bar matching pure porcelain aesthetic */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-neutral-100">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-1">
         <div>
           <div className="flex items-center gap-2 flex-wrap">
             <span className="w-2.5 h-2.5 rounded-full bg-[#7C3AED] shrink-0" />
@@ -56,12 +56,12 @@ export const AshtayamaTimelineDeck: React.FC = () => {
       </div>
 
       {/* 8-Pahar Horizontal Interactive Pill Strip with Elastic Sliding Card */}
-      <div className="relative w-full flex items-center gap-1.5 p-1.5 bg-[#F4F4F5]/70 rounded-[22px] border border-neutral-200/60 overflow-x-auto no-scrollbar">
+      <div className="relative w-full flex items-center gap-1 p-1 bg-[#F4F4F5] rounded-full border border-neutral-200/60 overflow-x-auto no-scrollbar">
         {/* Dynamic Elastic Sliding Watch Indicator Pill */}
         {pillStyle.ready && (
           <span
             aria-hidden="true"
-            className="absolute top-1.5 bottom-1.5 rounded-[16px] bg-white shadow-[0_2px_10px_rgba(0,0,0,0.06)] border border-neutral-200/80 pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+            className="absolute top-1 bottom-1 rounded-full bg-[#18181B] shadow-xs pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
             style={{
               transform: `translateX(${pillStyle.left}px)`,
               width: `${pillStyle.width}px`,
@@ -85,14 +85,14 @@ export const AshtayamaTimelineDeck: React.FC = () => {
               }}
               type="button"
               onClick={() => setSelectedPeriod(period)}
-              className={`relative z-10 px-3 py-2 rounded-[16px] text-xs font-semibold whitespace-nowrap transition-colors duration-200 flex items-center gap-1.5 shrink-0 cursor-pointer select-none ${
+              className={`relative z-10 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-200 flex items-center gap-1.5 shrink-0 cursor-pointer select-none ${
                 isSelected
-                  ? 'text-[#18181B] font-bold'
+                  ? 'text-white font-bold'
                   : 'text-[#71717A] hover:text-[#18181B]'
               }`}
             >
               {isCurrentTime && (
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0 animate-pulse" />
+                <span className={`w-1.5 h-1.5 rounded-full shrink-0 animate-pulse ${isSelected ? 'bg-amber-400' : 'bg-amber-500'}`} />
               )}
               <span>{period.nameDevanagari}</span>
             </button>

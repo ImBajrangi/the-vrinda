@@ -40,7 +40,7 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
   return (
     <section className="w-full bg-white rounded-[32px] p-6 sm:p-7 border border-neutral-200/80 shadow-[0_4px_24px_rgba(0,0,0,0.03)] mb-6 space-y-4">
       {/* 1. Header with Royal Purple Dot & Crisp Obsidian Typography */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-neutral-100">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-1">
         <div>
           <div className="flex items-center gap-2 flex-wrap">
             <span className="w-2.5 h-2.5 rounded-full bg-[#7C3AED] shrink-0" />
@@ -66,40 +66,49 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
         </button>
       </div>
 
-      {/* 2. Clean Segmented Category Switcher with Elastic Sliding Pill */}
-      <div className="relative w-full grid grid-cols-3 p-1.5 bg-[#F4F4F5]/70 rounded-[22px] border border-neutral-200/60">
-        {/* Dynamic Elastic Sliding Indicator Bar */}
-        <span
-          aria-hidden="true"
-          className="absolute top-1.5 bottom-1.5 rounded-[16px] bg-white shadow-[0_2px_10px_rgba(0,0,0,0.06)] border border-neutral-200/80 pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
-          style={{
-            width: 'calc((100% - 12px) / 3)',
-            left: '6px',
-            transform: `translateX(${activeIndex * 100}%)`,
-          }}
-        />
+      {/* 2. Premium Segmented Category Switcher with Elastic Obsidian Sliding Pill */}
+      <div className="w-full flex justify-center">
+        <div className="relative w-full max-w-xl grid grid-cols-3 p-1 bg-[#F4F4F5] rounded-full border border-neutral-200/60">
+          {/* Dynamic Elastic Sliding Indicator Bar */}
+          <span
+            aria-hidden="true"
+            className="absolute top-1 bottom-1 rounded-full bg-[#18181B] shadow-xs pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+            style={{
+              width: 'calc((100% - 8px) / 3)',
+              left: '4px',
+              transform: `translateX(${activeIndex * 100}%)`,
+            }}
+          />
 
-        {tabsList.map((tab) => {
-          const Icon = tab.icon;
-          const isActive = activeTab === tab.id;
-          return (
-            <button
-              key={tab.id}
-              type="button"
-              onClick={() => setActiveTab(tab.id)}
-              className={`relative z-10 py-2.5 px-2 sm:px-3 rounded-[16px] text-xs font-bold transition-colors duration-200 cursor-pointer select-none flex items-center justify-center gap-1.5 ${
-                isActive
-                  ? 'text-[#18181B]'
-                  : 'text-[#71717A] hover:text-[#18181B]'
-              }`}
-            >
-              <Icon className={`w-3.5 h-3.5 shrink-0 ${tab.iconColor}`} />
-              <span className="truncate">
-                {tab.label} ({tab.count})
-              </span>
-            </button>
-          );
-        })}
+          {tabsList.map((tab) => {
+            const Icon = tab.icon;
+            const isActive = activeTab === tab.id;
+            return (
+              <button
+                key={tab.id}
+                type="button"
+                onClick={() => setActiveTab(tab.id)}
+                className={`relative z-10 py-2 px-2 sm:px-3 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer select-none flex items-center justify-center gap-1.5 ${
+                  isActive
+                    ? 'text-white font-bold'
+                    : 'text-[#71717A] hover:text-[#18181B]'
+                }`}
+              >
+                <Icon className={`w-3.5 h-3.5 shrink-0 transition-colors ${isActive ? 'text-amber-400' : tab.iconColor}`} />
+                <span className="truncate">{tab.label}</span>
+                <span
+                  className={`text-[10px] font-mono font-bold px-1.5 py-0.2 rounded-full leading-none shrink-0 transition-colors ${
+                    isActive
+                      ? 'bg-white/20 text-white'
+                      : 'bg-neutral-200/70 text-[#71717A]'
+                  }`}
+                >
+                  {tab.count}
+                </span>
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       {/* 3. SECTION A: Canonical Books - Graphics Friendly Layout */}

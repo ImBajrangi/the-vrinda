@@ -174,14 +174,12 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
       role="dialog"
       aria-modal="true"
       onClick={handleDismiss}
-      className={`fixed inset-0 z-[100] flex items-start justify-center pt-14 sm:pt-20 px-3 sm:px-4 bg-black/50 backdrop-blur-sm transition-opacity select-none ${
-        isClosing ? 'modal-backdrop-exit' : 'modal-backdrop-enter'
-      }`}
+      className={`fixed inset-0 z-[100] flex items-start justify-center pt-14 sm:pt-20 px-3 sm:px-4 bg-black/50 backdrop-blur-sm transition-opacity select-none ${isClosing ? 'modal-backdrop-exit' : 'modal-backdrop-enter'
+        }`}
     >
       <div
-        className={`w-full max-w-2xl bg-white border border-neutral-200/90 shadow-[0_20px_60px_rgba(0,0,0,0.15)] rounded-2xl overflow-hidden flex flex-col max-h-[80vh] ${
-          isClosing ? 'modal-dialog-exit' : 'modal-dialog-enter'
-        }`}
+        className={`w-full max-w-2xl bg-white border border-neutral-200/90 shadow-[0_20px_60px_rgba(0,0,0,0.15)] rounded-2xl overflow-hidden flex flex-col max-h-[80vh] ${isClosing ? 'modal-dialog-exit' : 'modal-dialog-enter'
+          }`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* 1. Minimalist Search Bar */}
@@ -234,17 +232,15 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
                     setActiveFilter(f.id);
                     setSelectedIdx(0);
                   }}
-                  className={`relative z-10 py-1.5 px-2 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer flex items-center justify-center gap-1.5 select-none ${
-                    isActive ? 'text-white font-bold' : 'text-[#71717A] hover:text-[#18181B]'
-                  }`}
+                  className={`relative z-10 py-1.5 px-2 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer flex items-center justify-center gap-1.5 select-none ${isActive ? 'text-white font-bold' : 'text-[#71717A] hover:text-[#18181B]'
+                    }`}
                 >
                   <span className="truncate">{f.label}</span>
                   <span
-                    className={`text-[10px] font-mono font-bold px-1.5 py-0.2 rounded-full leading-none shrink-0 transition-colors ${
-                      isActive
+                    className={`text-[10px] font-mono font-bold px-1.5 py-0.2 rounded-full leading-none shrink-0 transition-colors ${isActive
                         ? 'bg-white/20 text-white'
                         : 'bg-neutral-200/70 text-[#71717A]'
-                    }`}
+                      }`}
                   >
                     {f.count}
                   </span>
@@ -280,9 +276,8 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
                             onClose();
                           }}
                           onMouseEnter={() => setSelectedIdx(idx)}
-                          className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-colors cursor-pointer select-none ${
-                            isSelected ? 'bg-neutral-100 text-[#18181B]' : 'hover:bg-neutral-50 text-[#18181B]'
-                          }`}
+                          className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-colors cursor-pointer select-none ${isSelected ? 'bg-neutral-100 text-[#18181B]' : 'hover:bg-neutral-50 text-[#18181B]'
+                            }`}
                         >
                           <BookOpen className="w-4 h-4 text-neutral-400 shrink-0" />
                           <div className="min-w-0 flex-1">
@@ -323,9 +318,8 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
                             onClose();
                           }}
                           onMouseEnter={() => setSelectedIdx(globalIdx)}
-                          className={`flex items-center gap-2.5 px-3 py-2 rounded-xl transition-colors cursor-pointer select-none ${
-                            isSelected ? 'bg-neutral-100 text-[#18181B]' : 'hover:bg-neutral-50 text-[#18181B]'
-                          }`}
+                          className={`flex items-center gap-2.5 px-3 py-2 rounded-xl transition-colors cursor-pointer select-none ${isSelected ? 'bg-neutral-100 text-[#18181B]' : 'hover:bg-neutral-50 text-[#18181B]'
+                            }`}
                         >
                           <div className="w-6 h-6 rounded-full bg-purple-50 text-purple-700 flex items-center justify-center shrink-0 text-[11px] font-bold">
                             {s.name.charAt(0)}
@@ -363,9 +357,8 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
                             onClose();
                           }}
                           onMouseEnter={() => setSelectedIdx(globalIdx)}
-                          className={`flex items-center justify-between px-3 py-2.5 rounded-xl transition-colors cursor-pointer select-none ${
-                            isSelected ? 'bg-neutral-100 text-[#18181B]' : 'hover:bg-neutral-50 text-[#18181B]'
-                          }`}
+                          className={`flex items-center justify-between px-3 py-2.5 rounded-xl transition-colors cursor-pointer select-none ${isSelected ? 'bg-neutral-100 text-[#18181B]' : 'hover:bg-neutral-50 text-[#18181B]'
+                            }`}
                         >
                           <div className="flex items-center gap-3 min-w-0 flex-1 pr-2">
                             <Music className="w-4 h-4 text-neutral-400 shrink-0" />

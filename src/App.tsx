@@ -690,7 +690,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
               {/* Section 3: Sacred Contemplation & Sanctuary Streams Deck (Pure White & Off-White) */}
               <div id="sanctuary-streams-section" className="w-full bg-white rounded-[32px] p-6 sm:p-7 border border-neutral-200/80 shadow-[0_4px_24px_rgba(0,0,0,0.03)] space-y-4 mb-6">
                 {/* Header */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-neutral-100">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-1">
                   <div>
                     <div className="flex items-center gap-2 flex-wrap">
                       <span className="w-2.5 h-2.5 rounded-full bg-[#7C3AED] shrink-0" />
@@ -715,54 +715,59 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                   </button>
                 </div>
 
-                {/* 3-Stream Segmented Switcher in Soft Off-White with Elastic Sliding Pill */}
-                <div className="relative w-full grid grid-cols-3 p-1.5 bg-[#F4F4F5]/70 rounded-[22px] border border-neutral-200/60">
-                  {/* Dynamic Elastic Sliding Indicator Bar */}
-                  <span
-                    aria-hidden="true"
-                    className="absolute top-1.5 bottom-1.5 rounded-[16px] bg-white shadow-[0_2px_10px_rgba(0,0,0,0.06)] border border-neutral-200/80 pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
-                    style={{
-                      width: 'calc((100% - 12px) / 3)',
-                      left: '6px',
-                      transform: `translateX(${activeSanctuaryStream === 'ashtayama' ? 0 : activeSanctuaryStream === 'audio' ? 100 : 200}%)`,
-                    }}
-                  />
+                {/* 3-Stream Segmented Switcher in Apple/Linear Obsidian Pill */}
+                <div className="w-full flex justify-center">
+                  <div className="relative w-full max-w-xl grid grid-cols-3 p-1 bg-[#F4F4F5] rounded-full border border-neutral-200/60">
+                    {/* Dynamic Elastic Sliding Indicator Bar */}
+                    <span
+                      aria-hidden="true"
+                      className="absolute top-1 bottom-1 rounded-full bg-[#18181B] shadow-xs pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+                      style={{
+                        width: 'calc((100% - 8px) / 3)',
+                        left: '4px',
+                        transform: `translateX(${activeSanctuaryStream === 'ashtayama' ? 0 : activeSanctuaryStream === 'audio' ? 100 : 200}%)`,
+                      }}
+                    />
 
-                  <button
-                    type="button"
-                    onClick={() => setActiveSanctuaryStream('ashtayama')}
-                    className={`relative z-10 py-2.5 px-2 sm:px-3 rounded-[16px] text-xs font-bold transition-colors duration-200 cursor-pointer select-none flex items-center justify-center gap-1.5 ${
-                      activeSanctuaryStream === 'ashtayama'
-                        ? 'text-[#18181B]'
-                        : 'text-[#71717A] hover:text-[#18181B]'
-                    }`}
-                  >
-                    <span className="truncate">Ashtayama 8-Watch</span>
-                  </button>
+                    <button
+                      type="button"
+                      onClick={() => setActiveSanctuaryStream('ashtayama')}
+                      className={`relative z-10 py-2 px-3 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer select-none flex items-center justify-center gap-1.5 ${
+                        activeSanctuaryStream === 'ashtayama'
+                          ? 'text-white font-bold'
+                          : 'text-[#71717A] hover:text-[#18181B]'
+                      }`}
+                    >
+                      <Sun className={`w-3.5 h-3.5 shrink-0 transition-colors ${activeSanctuaryStream === 'ashtayama' ? 'text-amber-400' : 'text-[#71717A]'}`} />
+                      <span className="truncate">Ashtayama 8-Watch</span>
+                    </button>
 
-                  <button
-                    type="button"
-                    onClick={() => setActiveSanctuaryStream('audio')}
-                    className={`relative z-10 py-2.5 px-2 sm:px-3 rounded-[16px] text-xs font-bold transition-colors duration-200 cursor-pointer select-none flex items-center justify-center gap-1.5 ${
-                      activeSanctuaryStream === 'audio'
-                        ? 'text-[#18181B]'
-                        : 'text-[#71717A] hover:text-[#18181B]'
-                    }`}
-                  >
-                    <span className="truncate">Featured Shravan</span>
-                  </button>
+                    <button
+                      type="button"
+                      onClick={() => setActiveSanctuaryStream('audio')}
+                      className={`relative z-10 py-2 px-3 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer select-none flex items-center justify-center gap-1.5 ${
+                        activeSanctuaryStream === 'audio'
+                          ? 'text-white font-bold'
+                          : 'text-[#71717A] hover:text-[#18181B]'
+                      }`}
+                    >
+                      <Radio className={`w-3.5 h-3.5 shrink-0 transition-colors ${activeSanctuaryStream === 'audio' ? 'text-purple-300' : 'text-[#71717A]'}`} />
+                      <span className="truncate">Featured Shravan</span>
+                    </button>
 
-                  <button
-                    type="button"
-                    onClick={() => setActiveSanctuaryStream('dhyana')}
-                    className={`relative z-10 py-2.5 px-2 sm:px-3 rounded-[16px] text-xs font-bold transition-colors duration-200 cursor-pointer select-none flex items-center justify-center gap-1.5 ${
-                      activeSanctuaryStream === 'dhyana'
-                        ? 'text-[#18181B]'
-                        : 'text-[#71717A] hover:text-[#18181B]'
-                    }`}
-                  >
-                    <span className="truncate">Dhyāna Sanctuary</span>
-                  </button>
+                    <button
+                      type="button"
+                      onClick={() => setActiveSanctuaryStream('dhyana')}
+                      className={`relative z-10 py-2 px-3 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer select-none flex items-center justify-center gap-1.5 ${
+                        activeSanctuaryStream === 'dhyana'
+                          ? 'text-white font-bold'
+                          : 'text-[#71717A] hover:text-[#18181B]'
+                      }`}
+                    >
+                      <Sparkles className={`w-3.5 h-3.5 shrink-0 transition-colors ${activeSanctuaryStream === 'dhyana' ? 'text-emerald-300' : 'text-[#71717A]'}`} />
+                      <span className="truncate">Dhyāna Sanctuary</span>
+                    </button>
+                  </div>
                 </div>
 
                 {/* Stream Content 1: Ashtayama Timeline */}
