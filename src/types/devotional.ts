@@ -6,6 +6,7 @@ export interface SacredPad {
   titleEnglish: string;
   author: string;
   rag: string;
+  slug?: string;
   verses: Array<{
     stanzaNumber: number;
     linesDevanagari: string[];

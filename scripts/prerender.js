@@ -60,8 +60,10 @@ async function prerender() {
     { url: '/?tab=padavali', file: 'padavali.html' },
     { url: '/?tab=feed', file: 'feed.html' },
     { url: '/?tab=milestones', file: 'milestones.html' },
-    // Popular canonical pada deep links for zero-js search bots
+    // Popular canonical pada deep links for zero-js search bots with headline slugs
     { url: '/?tab=padavali&pad=radheju-merau-janam-sudharau', file: 'pad-radheju-merau-janam-sudharau.html' },
+    { url: '/?tab=padavali&pad=shri-radha-kripa-kataksha-stotram', file: 'pad-shri-radha-kripa-kataksha-stotram.html' },
+    { url: '/?tab=padavali&pad=bainu-mai-baje-bansivat-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-64', file: 'pad-bainu-mai-baje-bansivat.html' },
   ];
 
   console.log('🌸 Pre-rendering Vrindopnisad routes for SEO & SSR...');

@@ -226,8 +226,8 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
   const initialReader = getReaderStateSync();
   const initialPad =
-    (initialPadId && allPadas.find((p) => p.id === initialPadId)) ||
-    allPadas.find((p) => p.id === initialReader.lastPadId) ||
+    (initialPadId && SacredDatabase.getPadById(initialPadId)) ||
+    (initialReader.lastPadId && SacredDatabase.getPadById(initialReader.lastPadId)) ||
     allPadas[0];
 
   const [selectedPad, setSelectedPad] = useState<SacredPad>(initialPad);
@@ -240,7 +240,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
   useEffect(() => {
     if (selectedPadId) {
-      const p = allPadas.find((x) => x.id === selectedPadId);
+      const p = SacredDatabase.getPadById(selectedPadId);
       if (p) {
         setSelectedPad(p);
         if (p.collectionId && p.collectionId !== selectedGrantha) {

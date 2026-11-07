@@ -71,9 +71,14 @@ export function generateSEOMetadata(config: SEOConfig = {}): SEOMetadataResult {
     : DEFAULT_SEO.title;
 
   const description = config.description || DEFAULT_SEO.description;
+  const padSlug = config.pad ? (config.pad.slug || config.pad.id) : undefined;
   const canonicalUrl =
     config.canonicalUrl ||
-    (typeof window !== 'undefined' ? window.location.href : DEFAULT_SEO.baseUrl);
+    (padSlug
+      ? `${DEFAULT_SEO.baseUrl}/?tab=padavali&pad=${encodeURIComponent(padSlug)}`
+      : typeof window !== 'undefined'
+      ? window.location.href
+      : DEFAULT_SEO.baseUrl);
   const ogImage = config.ogImage || DEFAULT_SEO.defaultImage;
   const ogType = config.ogType || (config.pad ? 'article' : 'website');
   const keywords = config.keywords || DEFAULT_SEO.keywords;
@@ -260,8 +265,9 @@ class SEOService {
       try {
         const url = new URL(window.location.href);
         url.searchParams.set('tab', config.tab);
-        if (config.pad?.id) {
-          url.searchParams.set('pad', config.pad.id);
+        if (config.pad) {
+          const padSlug = config.pad.slug || config.pad.id;
+          url.searchParams.set('pad', padSlug);
         } else {
           url.searchParams.delete('pad');
         }

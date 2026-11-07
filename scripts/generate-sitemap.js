@@ -86,11 +86,12 @@ export function generateAllSitemaps(outputDirs = ['public', 'dist']) {
   }));
   const saintsXml = buildUrlset(saintsUrls);
 
-  // 4. Padas (All 4,204 verses)
+  // 4. Padas (All 4,204 verses with headline/title slugs for SEO indexing perfection)
   const padasUrls = padas.map((p) => {
     const isCelebrated = ['hit-chaurasi', 'radha-sudha-nidhi', 'kelimal'].includes(p.collectionId);
+    const slug = p.slug || p.id;
     return {
-      loc: `${DEFAULT_BASE_URL}/?tab=padavali&pad=${encodeURIComponent(p.id)}`,
+      loc: `${DEFAULT_BASE_URL}/?tab=padavali&pad=${encodeURIComponent(slug)}`,
       lastmod: today,
       changefreq: 'monthly',
       priority: isCelebrated ? 0.9 : 0.8,

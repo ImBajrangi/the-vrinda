@@ -185,6 +185,8 @@ function normalizeCanonicalPad(raw: any): SacredPad {
     }
   }
 
+  const slug = raw.slug || raw.id || '';
+
   return {
     ...raw,
     collectionId,
@@ -192,6 +194,7 @@ function normalizeCanonicalPad(raw: any): SacredPad {
     titleEnglish: raw.titleEnglish || raw.titleEng || '',
     author,
     rag,
+    slug,
     duration: raw.duration || '05:20',
     verses,
   };
@@ -203,12 +206,17 @@ const allGranthas: CanonicalGrantha[] = canonicalGranthasData as CanonicalGranth
 const allSaints: CanonicalSaint[] = canonicalSaintsData as CanonicalSaint[];
 
 const padasById = new Map<string, SacredPad>();
+const padasBySlug = new Map<string, SacredPad>();
 const padasByGrantha = new Map<string, SacredPad[]>();
 const padasByRaga = new Map<string, SacredPad[]>();
 
 // Build fast indexes synchronously at import time
 allPadas.forEach((pad) => {
   padasById.set(pad.id, pad);
+  if (pad.slug) {
+    padasBySlug.set(pad.slug, pad);
+    padasBySlug.set(pad.slug.toLowerCase(), pad);
+  }
 
   // Group by collection/grantha
   const gList = padasByGrantha.get(pad.collectionId) || [];
@@ -232,8 +240,38 @@ export const SacredDatabase = {
     return allPadas;
   },
 
-  getPadById(id: string): SacredPad | undefined {
-    return padasById.get(id);
+  getPadById(identifier: string): SacredPad | undefined {
+    if (!identifier) return undefined;
+    // 1. Exact ID match (O(1))
+    const byId = padasById.get(identifier);
+    if (byId) return byId;
+
+    // 2. Exact Slug match (O(1))
+    const bySlug = padasBySlug.get(identifier);
+    if (bySlug) return bySlug;
+
+    // 3. Normalized / URL-decoded slug match
+    try {
+      const decoded = decodeURIComponent(identifier).trim().toLowerCase();
+      const byDecodedSlug = padasBySlug.get(decoded);
+      if (byDecodedSlug) return byDecodedSlug;
+
+      const byDecodedId = padasById.get(decoded);
+      if (byDecodedId) return byDecodedId;
+    } catch {}
+
+    // 4. Case-insensitive / slug match fallback
+    const needle = identifier.toLowerCase();
+    return allPadas.find(
+      (p) =>
+        p.id.toLowerCase() === needle ||
+        p.slug?.toLowerCase() === needle ||
+        (p.titleEnglish && p.titleEnglish.toLowerCase().replace(/[^a-z0-9]+/g, '-').includes(needle))
+    );
+  },
+
+  getPadSlug(pad: SacredPad): string {
+    return pad.slug || pad.id;
   },
 
   getPadasByGrantha(granthaId: string): SacredPad[] {

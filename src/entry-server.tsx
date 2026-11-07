@@ -58,6 +58,7 @@ export function render(url: string = '/'): RenderResult {
   };
 
   if (pad) {
+    const slug = pad.slug || pad.id;
     seoConfig = {
       tab: 'padavali',
       pad,
@@ -65,7 +66,7 @@ export function render(url: string = '/'): RenderResult {
       description:
         pad.verses?.[0]?.bhavarth ||
         `राग ${pad.rag} में निबद्ध पावन पद। रचयिता: ${pad.author}। वृन्दोपनिषद् 2.0`,
-      canonicalUrl: `https://vrindopnisad.org/?tab=padavali&pad=${pad.id}`,
+      canonicalUrl: `https://vrindopnisad.org/?tab=padavali&pad=${encodeURIComponent(slug)}`,
     };
   } else {
     switch (tab) {

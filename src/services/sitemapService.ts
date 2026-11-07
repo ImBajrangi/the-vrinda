@@ -109,8 +109,9 @@ export const SitemapService = {
     const urls = allPadas.map((p) => {
       // Celebrated granthas get higher search crawler priority
       const isCelebrated = ['hit-chaurasi', 'radha-sudha-nidhi', 'kelimal'].includes(p.collectionId);
+      const slug = p.slug || p.id;
       return {
-        loc: `${baseUrl}/?tab=padavali&pad=${encodeURIComponent(p.id)}`,
+        loc: `${baseUrl}/?tab=padavali&pad=${encodeURIComponent(slug)}`,
         lastmod: today,
         changefreq: 'monthly',
         priority: isCelebrated ? 0.9 : 0.8,
@@ -158,12 +159,13 @@ export const SitemapService = {
       });
     }
 
-    // 4,204 Padas
+    // 4,204 Padas with headline/title slugs
     const allPadas = SacredDatabase.getAllPadas();
     for (const p of allPadas) {
       const isCelebrated = ['hit-chaurasi', 'radha-sudha-nidhi', 'kelimal'].includes(p.collectionId);
+      const slug = p.slug || p.id;
       urls.push({
-        loc: `${baseUrl}/?tab=padavali&pad=${encodeURIComponent(p.id)}`,
+        loc: `${baseUrl}/?tab=padavali&pad=${encodeURIComponent(slug)}`,
         lastmod: today,
         changefreq: 'monthly',
         priority: isCelebrated ? 0.9 : 0.8,
