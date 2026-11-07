@@ -10,10 +10,14 @@ import {
   Search,
   Menu,
   X,
+  Sun,
+  Moon,
+  ChevronRight,
 } from 'lucide-react';
 import { NavTab } from './FloatingNavbar';
 import { SacredLogo } from './SacredLogo';
 import { computeAshtayamaPhase } from '../../services/cacheService';
+import { SadhanaState } from '../../types/devotional';
 
 interface DynamicNotchNavbarProps {
   activeTab: NavTab;
@@ -27,6 +31,8 @@ interface DynamicNotchNavbarProps {
   onToggleLowSpec?: () => void;
   onOpenSearch?: () => void;
   onOpenFocus?: () => void;
+  sadhana?: SadhanaState;
+  onQuickJapa?: () => void;
 }
 
 export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
@@ -39,6 +45,8 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
   onOpenPlayer,
   onOpenSearch,
   onOpenFocus,
+  sadhana,
+  onQuickJapa,
 }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const ashtayama = computeAshtayamaPhase();
@@ -55,6 +63,42 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
     { id: 'padavali', label: 'Scriptures', shortLabel: 'Read', icon: BookOpen },
     { id: 'feed', label: 'Darshan Feed', shortLabel: 'Darshan', icon: Sparkles },
     { id: 'milestones', label: 'Devotion', shortLabel: 'Sadhana', icon: Trophy },
+  ];
+
+  const mobileNavItems: {
+    id: NavTab;
+    label: string;
+    sublabel: string;
+    badge?: string;
+    icon: React.ComponentType<{ className?: string }>;
+  }[] = [
+    {
+      id: 'smaran',
+      label: 'गृह स्मरण',
+      sublabel: 'Home • नित्य सेवा',
+      icon: Compass,
+    },
+    {
+      id: 'padavali',
+      label: 'रसिक वाणी',
+      sublabel: 'Scriptures • ४२००+ पद',
+      badge: '४२०४',
+      icon: BookOpen,
+    },
+    {
+      id: 'feed',
+      label: 'नित्य दर्शन',
+      sublabel: 'Darshan Feed • उत्सव',
+      badge: 'Live',
+      icon: Sparkles,
+    },
+    {
+      id: 'milestones',
+      label: 'साधना सोपान',
+      sublabel: 'Devotion • अखंड निष्ठा',
+      badge: `🔥 ${streakDays}d`,
+      icon: Trophy,
+    },
   ];
 
   useEffect(() => {
@@ -234,11 +278,33 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
           </div>
         </div>
 
-        {/* Mobile Dropdown Menu Card (Graceful & non-intrusive when toggled) */}
+        {/* Mobile Dropdown Menu Card (Graceful, Luxury & Highly Useful when toggled) */}
         {isMobileMenuOpen && (
-          <div className="pointer-events-auto w-full max-w-[96vw] mt-2 p-3 rounded-3xl bg-white/95 backdrop-blur-2xl md:hidden apple-view-enter">
-            <div className="grid grid-cols-2 gap-2 mb-2">
-              {navItems.map((item) => {
+          <div className="pointer-events-auto w-full max-w-[96vw] mt-2 p-3 sm:p-4 rounded-3xl bg-white/98 backdrop-blur-2xl md:hidden apple-view-enter border border-neutral-200/80 shadow-xl space-y-2.5 max-h-[85vh] overflow-y-auto no-scrollbar">
+            
+            {/* 1. Quick Search Trigger Bar */}
+            {onOpenSearch && (
+              <button
+                type="button"
+                onClick={() => {
+                  onOpenSearch();
+                  setIsMobileMenuOpen(false);
+                }}
+                className="w-full py-2 px-3 rounded-xl bg-neutral-100 hover:bg-neutral-200/80 text-neutral-600 flex items-center justify-between text-xs font-medium cursor-pointer transition-colors"
+              >
+                <div className="flex items-center gap-2">
+                  <Search className="w-3.5 h-3.5 text-neutral-500" />
+                  <span>पद, संत, राग या ग्रंथ खोजें...</span>
+                </div>
+                <kbd className="text-[10px] font-mono text-neutral-500 bg-white px-1.5 py-0.5 rounded shadow-2xs border border-neutral-200/60">
+                  खोज ⌘K
+                </kbd>
+              </button>
+            )}
+
+            {/* 2. Primary 4 Sanctuary Portals (2x2 Rich Bilingual Grid) */}
+            <div className="grid grid-cols-2 gap-2">
+              {mobileNavItems.map((item) => {
                 const Icon = item.icon;
                 const isActive = activeTab === item.id;
                 return (
@@ -246,24 +312,72 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
                     key={item.id}
                     type="button"
                     onClick={() => handleSelectNav(item.id)}
-                    className={`flex items-center gap-2 p-3 rounded-2xl text-xs font-bold transition-all ${
+                    className={`relative flex flex-col justify-between p-3 rounded-2xl text-left transition-all cursor-pointer border ${
                       isActive
-                        ? 'bg-[#FEF08A] text-[#78350F]'
-                        : 'bg-neutral-50 text-[#18181B] hover:bg-neutral-100'
+                        ? 'bg-[#FEF08A]/95 border-amber-400 text-amber-950 shadow-xs ring-1 ring-amber-400/50'
+                        : 'bg-white hover:bg-neutral-50 border-neutral-200/80 text-neutral-800'
                     }`}
                   >
-                    <Icon className="w-4 h-4" />
-                    <span>{item.label}</span>
+                    <div className="flex items-center justify-between w-full mb-1">
+                      <div
+                        className={`w-7 h-7 rounded-xl flex items-center justify-center ${
+                          isActive
+                            ? 'bg-amber-400 text-amber-950'
+                            : 'bg-neutral-100 text-neutral-600'
+                        }`}
+                      >
+                        <Icon className="w-3.5 h-3.5 stroke-[2.2]" />
+                      </div>
+                      {item.badge && (
+                        <span
+                          className={`text-[10px] font-mono font-bold px-1.5 py-0.2 rounded-full ${
+                            isActive
+                              ? 'bg-amber-300/90 text-amber-950'
+                              : 'bg-neutral-100 text-neutral-600'
+                          }`}
+                        >
+                          {item.badge}
+                        </span>
+                      )}
+                    </div>
+                    <div>
+                      <div className="font-devanagari font-bold text-xs leading-tight">
+                        {item.label}
+                      </div>
+                      <div className="text-[10px] text-neutral-500 font-medium truncate mt-0.5">
+                        {item.sublabel}
+                      </div>
+                    </div>
                   </button>
                 );
               })}
             </div>
 
-            {/* Quick Ashtayama & Dhyana Row */}
-            <div className="flex items-center justify-between pt-2 border-t border-neutral-100 text-xs px-1">
-              <span className="text-[#71717A] text-[11px] font-medium truncate max-w-[200px]">
-                {ashtayama.nameEnglish} ({ashtayama.timeRange})
-              </span>
+            {/* 3. Current Sacred Ashtayama Period Banner */}
+            <div className="p-3 rounded-2xl bg-gradient-to-r from-amber-50/90 via-orange-50/50 to-amber-50/90 border border-amber-200/80 flex items-center justify-between gap-2.5 shadow-2xs">
+              <div className="flex items-center gap-2.5 min-w-0">
+                <div className="w-8 h-8 rounded-xl bg-amber-100/90 flex items-center justify-center shrink-0 border border-amber-300/60">
+                  {['शयन', 'मंगला'].includes(ashtayama.nameDevanagari) ? (
+                    <Moon className="w-4 h-4 text-amber-800" />
+                  ) : (
+                    <Sun className="w-4 h-4 text-amber-800" />
+                  )}
+                </div>
+                <div className="min-w-0">
+                  <div className="flex items-center gap-1.5 flex-wrap">
+                    <span className="font-devanagari font-bold text-xs text-amber-950">
+                      {ashtayama.nameDevanagari} वेला ({ashtayama.nameEnglish})
+                    </span>
+                    <span className="text-[10px] font-mono font-bold text-amber-800 bg-amber-100 px-1.5 py-0.2 rounded-full">
+                      {ashtayama.timeRange}
+                    </span>
+                  </div>
+                  <p className="text-[10.5px] text-amber-900/80 font-devanagari truncate mt-0.5">
+                    {ashtayama.descriptionDevanagari || ashtayama.bhava}
+                  </p>
+                </div>
+              </div>
+
               {onOpenFocus && (
                 <button
                   type="button"
@@ -271,12 +385,101 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
                     onOpenFocus();
                     setIsMobileMenuOpen(false);
                   }}
-                  className="px-3 py-1 rounded-full text-[11px] font-bold bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F]"
+                  className="px-3 py-1.5 rounded-full text-xs font-bold bg-[#FEF08A] hover:bg-[#FDE047] text-amber-950 shadow-2xs shrink-0 flex items-center gap-1 cursor-pointer transition-colors"
                 >
-                  Sanctuary →
+                  <span>ध्यान कक्ष</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
                 </button>
               )}
             </div>
+
+            {/* 4. Active Sacred Audio Player Strip (if track is loaded or playing) */}
+            {currentTrackTitle && (
+              <div className="p-2.5 rounded-2xl bg-amber-50/80 border border-amber-200/80 flex items-center justify-between gap-2.5">
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <button
+                    type="button"
+                    onClick={onToggleAudio}
+                    className="w-7 h-7 rounded-full bg-[#FACC15] hover:bg-[#FDE047] text-[#18181B] flex items-center justify-center shadow-2xs shrink-0 cursor-pointer font-bold"
+                  >
+                    {isPlayingAudio ? (
+                      <Pause className="w-3 h-3 fill-current" />
+                    ) : (
+                      <Play className="w-3 h-3 fill-current ml-0.5" />
+                    )}
+                  </button>
+                  <div className="min-w-0">
+                    <div className="text-xs font-semibold text-neutral-900 truncate">
+                      {currentTrackTitle}
+                    </div>
+                    <div className="text-[10px] text-amber-800 font-mono">
+                      {isPlayingAudio ? '● Recitation Active' : 'Paused • Sacred Audio'}
+                    </div>
+                  </div>
+                </div>
+
+                {onOpenPlayer && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      onOpenPlayer();
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-white border border-amber-200 text-amber-900 shrink-0 hover:bg-amber-50 cursor-pointer"
+                  >
+                    Player ↗
+                  </button>
+                )}
+              </div>
+            )}
+
+            {/* 5. Daily Sadhana Quick Snapshot & 1-Tap Mala Recorder */}
+            {sadhana && (
+              <div className="p-3 rounded-2xl bg-neutral-50/90 border border-neutral-200/70 space-y-2">
+                <div className="flex items-center justify-between text-xs">
+                  <div className="flex items-center gap-1.5 font-semibold text-neutral-700">
+                    <Sparkles className="w-3.5 h-3.5 text-amber-600" />
+                    <span>दैनिक साधना सोपान (Daily Progress)</span>
+                  </div>
+                  <span className="text-[11px] font-mono font-bold text-amber-800 bg-amber-100/70 px-2 py-0.2 rounded-full">
+                    🔥 {sadhana.currentStreakDays}d Streak
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-3 gap-2 text-center">
+                  <div className="p-2 rounded-xl bg-white border border-neutral-100 shadow-2xs">
+                    <div className="text-[10px] text-neutral-400 font-medium font-devanagari">नाम जप</div>
+                    <div className="text-xs font-bold text-neutral-800 font-mono mt-0.5">
+                      {sadhana.japaCompleted}/{sadhana.japaTarget} <span className="text-[9px] font-normal text-neutral-500">माला</span>
+                    </div>
+                  </div>
+
+                  <div className="p-2 rounded-xl bg-white border border-neutral-100 shadow-2xs">
+                    <div className="text-[10px] text-neutral-400 font-medium font-devanagari">वाणी श्रवण</div>
+                    <div className="text-xs font-bold text-neutral-800 font-mono mt-0.5">
+                      {sadhana.shravanMinutes}/{sadhana.shravanTarget} <span className="text-[9px] font-normal text-neutral-500">min</span>
+                    </div>
+                  </div>
+
+                  <div className="p-2 rounded-xl bg-white border border-neutral-100 shadow-2xs">
+                    <div className="text-[10px] text-neutral-400 font-medium font-devanagari">स्वाध्याय</div>
+                    <div className="text-xs font-bold text-neutral-800 font-mono mt-0.5">
+                      {sadhana.svadhyayaPadas}/{sadhana.svadhyayaTarget} <span className="text-[9px] font-normal text-neutral-500">पद</span>
+                    </div>
+                  </div>
+                </div>
+
+                {onQuickJapa && (
+                  <button
+                    type="button"
+                    onClick={onQuickJapa}
+                    className="w-full py-1.5 rounded-xl bg-amber-100/90 hover:bg-amber-200 text-amber-950 text-xs font-bold flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                  >
+                    <span>📿 १ माला जप पूर्ण (+1 Mala Japa)</span>
+                  </button>
+                )}
+              </div>
+            )}
           </div>
         )}
       </div>

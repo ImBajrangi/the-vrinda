@@ -420,6 +420,8 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
           onToggleLowSpec={() => setIsLowSpecMode(!isLowSpecMode)}
           onOpenSearch={() => setIsSpotlightOpen(true)}
           onOpenFocus={() => setIsFocusModalOpen(true)}
+          sadhana={sadhana}
+          onQuickJapa={incrementJapa}
         />
 
         {/* Main Tab Content with Apple-grade View Transitions */}
