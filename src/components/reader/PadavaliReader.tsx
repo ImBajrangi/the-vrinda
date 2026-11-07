@@ -92,6 +92,25 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     return SacredDatabase.getAvailableRagas(selectedGrantha);
   }, [selectedGrantha]);
 
+  // Raga Sub-Filter Strip Elastic Indicator
+  const ragaRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
+  const [ragaPillStyle, setRagaPillStyle] = useState<{ left: number; width: number; ready: boolean }>({
+    left: 0,
+    width: 0,
+    ready: false,
+  });
+
+  useEffect(() => {
+    const el = ragaRefs.current[selectedRaga];
+    if (el) {
+      setRagaPillStyle({
+        left: el.offsetLeft,
+        width: el.offsetWidth,
+        ready: true,
+      });
+    }
+  }, [selectedRaga, availableRagas]);
+
   const initialReader = getReaderStateSync();
   const initialPad =
     (initialPadId && allPadas.find((p) => p.id === initialPadId)) ||
@@ -588,13 +607,23 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       {isSettingsOpen && (
         <div className="mb-4 p-4 rounded-[24px] bg-white border border-neutral-200/80 shadow-[0_4px_24px_rgba(0,0,0,0.03)] space-y-3 apple-sheet-enter text-[#18181B]">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-neutral-100 pb-3">
-            {/* Font Size Stepper */}
+            {/* Font Size Stepper with Elastic Sliding Pill */}
             <div className="flex items-center gap-2">
               <span className="text-[11px] font-bold text-[#71717A] uppercase tracking-wider flex items-center gap-1 font-mono">
                 <Type className="w-3.5 h-3.5 text-[#7C3AED]" />
                 Font Size:
               </span>
-              <div className="flex items-center gap-1 bg-[#F4F4F5] p-1 rounded-full border border-neutral-200/60">
+              <div className="relative flex items-center p-1 bg-[#F4F4F5] rounded-full border border-neutral-200/60">
+                {/* Dynamic Elastic Sliding Pill */}
+                <span
+                  aria-hidden="true"
+                  className="absolute top-1 bottom-1 rounded-full bg-[#18181B] shadow-xs pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+                  style={{
+                    width: 'calc((100% - 8px) / 4)',
+                    left: '4px',
+                    transform: `translateX(${['sm', 'md', 'lg', 'xl'].indexOf(fontSize) * 100}%)`,
+                  }}
+                />
                 {[
                   { id: 'sm' as ReaderFontSize, label: 'Small' },
                   { id: 'md' as ReaderFontSize, label: 'Normal' },
@@ -605,9 +634,9 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                     key={s.id}
                     type="button"
                     onClick={() => setFontSize(s.id)}
-                    className={`px-2.5 py-1 rounded-full text-xs font-semibold transition-colors cursor-pointer ${
+                    className={`relative z-10 px-2.5 py-1 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer ${
                       fontSize === s.id
-                        ? 'bg-[#18181B] text-white shadow-xs font-bold'
+                        ? 'text-white font-bold'
                         : 'text-[#71717A] hover:text-[#18181B]'
                     }`}
                   >
@@ -617,18 +646,28 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               </div>
             </div>
 
-            {/* Font Family Toggle */}
+            {/* Font Family Toggle with Elastic Sliding Pill */}
             <div className="flex items-center gap-2">
               <span className="text-[11px] font-bold text-[#71717A] uppercase tracking-wider font-mono">
                 Font:
               </span>
-              <div className="flex items-center gap-1 bg-[#F4F4F5] p-1 rounded-full border border-neutral-200/60">
+              <div className="relative flex items-center p-1 bg-[#F4F4F5] rounded-full border border-neutral-200/60">
+                {/* Dynamic Elastic Sliding Pill */}
+                <span
+                  aria-hidden="true"
+                  className="absolute top-1 bottom-1 rounded-full bg-[#18181B] shadow-xs pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+                  style={{
+                    width: 'calc((100% - 8px) / 2)',
+                    left: '4px',
+                    transform: `translateX(${fontFamily === 'serif' ? 0 : 100}%)`,
+                  }}
+                />
                 <button
                   type="button"
                   onClick={() => setFontFamily('serif')}
-                  className={`px-3 py-1 rounded-full text-xs transition-colors cursor-pointer ${
+                  className={`relative z-10 px-3 py-1 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer ${
                     fontFamily === 'serif'
-                      ? 'bg-[#18181B] text-white shadow-xs font-bold'
+                      ? 'text-white font-bold'
                       : 'text-[#71717A] hover:text-[#18181B]'
                   }`}
                 >
@@ -637,9 +676,9 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 <button
                   type="button"
                   onClick={() => setFontFamily('devanagari')}
-                  className={`px-3 py-1 rounded-full text-xs transition-colors cursor-pointer ${
+                  className={`relative z-10 px-3 py-1 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer ${
                     fontFamily === 'devanagari'
-                      ? 'bg-[#18181B] text-white shadow-xs font-bold'
+                      ? 'text-white font-bold'
                       : 'text-[#71717A] hover:text-[#18181B]'
                   }`}
                 >
@@ -648,20 +687,30 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               </div>
             </div>
 
-            {/* Playback Pace Stepper */}
+            {/* Playback Pace Stepper with Elastic Sliding Pill */}
             <div className="flex items-center gap-2">
               <span className="text-[11px] font-bold text-[#71717A] uppercase tracking-wider font-mono">
                 Audio Pace:
               </span>
-              <div className="flex items-center gap-1 bg-[#F4F4F5] p-1 rounded-full border border-neutral-200/60">
+              <div className="relative flex items-center p-1 bg-[#F4F4F5] rounded-full border border-neutral-200/60">
+                {/* Dynamic Elastic Sliding Pill */}
+                <span
+                  aria-hidden="true"
+                  className="absolute top-1 bottom-1 rounded-full bg-[#18181B] shadow-xs pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+                  style={{
+                    width: 'calc((100% - 8px) / 3)',
+                    left: '4px',
+                    transform: `translateX(${Math.max(0, ['0.8x', '1.0x', '1.2x'].indexOf(playbackPace)) * 100}%)`,
+                  }}
+                />
                 {(['0.8x', '1.0x', '1.2x'] as const).map((pace) => (
                   <button
                     key={pace}
                     type="button"
                     onClick={() => setPlaybackPace(pace)}
-                    className={`px-2.5 py-1 rounded-full text-xs font-mono transition-colors cursor-pointer ${
+                    className={`relative z-10 px-2.5 py-1 rounded-full text-xs font-mono font-semibold transition-colors duration-200 cursor-pointer ${
                       playbackPace === pace
-                        ? 'bg-[#18181B] text-white shadow-xs font-bold'
+                        ? 'text-white font-bold'
                         : 'text-[#71717A] hover:text-[#18181B]'
                     }`}
                   >
@@ -762,17 +811,34 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
           {/* Raga Sub-Filter Strip: Only display if real classical ragas exist for current scope */}
           {availableRagas.length > 0 && (
-            <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar text-xs pt-2 border-t border-neutral-100">
+            <div className="relative flex items-center gap-1.5 overflow-x-auto no-scrollbar text-xs pt-2 border-t border-neutral-100">
               <span className="text-[10px] font-mono font-bold text-[#71717A] uppercase tracking-wider shrink-0 mr-1">
                 RAGA:
               </span>
+
+              {/* Dynamic Elastic Sliding Indicator Bar */}
+              {ragaPillStyle.ready && (
+                <span
+                  aria-hidden="true"
+                  className="absolute top-2 bottom-0 rounded-full bg-[#18181B] shadow-xs pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+                  style={{
+                    transform: `translateX(${ragaPillStyle.left}px)`,
+                    width: `${ragaPillStyle.width}px`,
+                    left: 0,
+                  }}
+                />
+              )}
+
               <button
+                ref={(el) => {
+                  ragaRefs.current['all'] = el;
+                }}
                 type="button"
                 onClick={() => setSelectedRaga('all')}
-                className={`px-3 py-1 rounded-full text-[11px] font-semibold transition-colors cursor-pointer select-none ${
+                className={`relative z-10 px-3 py-1 rounded-full text-[11px] font-semibold transition-colors duration-200 cursor-pointer select-none ${
                   selectedRaga === 'all'
-                    ? 'bg-[#18181B] text-white shadow-xs'
-                    : 'bg-neutral-100 text-[#71717A] hover:text-[#18181B]'
+                    ? 'text-white'
+                    : 'text-[#71717A] hover:text-[#18181B]'
                 }`}
               >
                 All
@@ -783,15 +849,19 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                     (selectedGrantha === 'all' || p.collectionId === selectedGrantha) &&
                     p.rag === r
                 ).length;
+                const isActive = selectedRaga === r;
                 return (
                   <button
                     key={r}
+                    ref={(el) => {
+                      ragaRefs.current[r] = el;
+                    }}
                     type="button"
                     onClick={() => setSelectedRaga(r)}
-                    className={`px-3 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap transition-colors cursor-pointer select-none ${
-                      selectedRaga === r
-                        ? 'bg-[#F59E0B] text-white font-bold shadow-xs'
-                        : 'bg-neutral-100 text-[#71717A] hover:text-[#18181B]'
+                    className={`relative z-10 px-3 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer select-none ${
+                      isActive
+                        ? 'text-white'
+                        : 'text-[#71717A] hover:text-[#18181B]'
                     }`}
                   >
                     {r}

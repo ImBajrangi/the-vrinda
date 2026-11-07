@@ -144,6 +144,25 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
     }
   }, [activeFeedTab]);
 
+  // Temple Mandirs Filter Elastic Indicator
+  const templeFilterRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
+  const [templePillStyle, setTemplePillStyle] = useState<{ left: number; width: number; ready: boolean }>({
+    left: 0,
+    width: 0,
+    ready: false,
+  });
+
+  useEffect(() => {
+    const el = templeFilterRefs.current[templeFilter];
+    if (el) {
+      setTemplePillStyle({
+        left: el.offsetLeft,
+        width: el.offsetWidth,
+        ready: true,
+      });
+    }
+  }, [templeFilter]);
+
   // Global Spotlight Keyboard Shortcut (Cmd+K / Ctrl+K)
   useEffect(() => {
     const handleGlobalKey = (e: KeyboardEvent) => {
@@ -529,49 +548,74 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                   onSelectDate={setSelectedDate}
                 />
 
-                {/* Interactive Temple Seva Filter Tabs */}
-                <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar pt-1">
+                {/* Interactive Temple Seva Filter Tabs with Elastic Sliding Pill */}
+                <div className="relative flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar pt-1">
+                  {/* Dynamic Elastic Sliding Indicator Bar */}
+                  {templePillStyle.ready && (
+                    <span
+                      aria-hidden="true"
+                      className="absolute top-1 bottom-0 rounded-full bg-[#18181B] shadow-xs pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+                      style={{
+                        transform: `translateX(${templePillStyle.left}px)`,
+                        width: `${templePillStyle.width}px`,
+                        left: 0,
+                      }}
+                    />
+                  )}
+
                   <button
+                    ref={(el) => {
+                      templeFilterRefs.current['all'] = el;
+                    }}
                     type="button"
                     onClick={() => setTempleFilter('all')}
-                    className={`px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer select-none ${
+                    className={`relative z-10 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer select-none ${
                       templeFilter === 'all'
-                        ? 'bg-[#18181B] text-white shadow-xs'
-                        : 'bg-[#F4F4F5] text-[#71717A] hover:text-[#18181B]'
+                        ? 'text-white font-bold'
+                        : 'text-[#71717A] hover:text-[#18181B] bg-[#F4F4F5]'
                     }`}
                   >
                     All Sacred Mandirs (4)
                   </button>
                   <button
+                    ref={(el) => {
+                      templeFilterRefs.current['open'] = el;
+                    }}
                     type="button"
                     onClick={() => setTempleFilter('open')}
-                    className={`px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer select-none flex items-center gap-1.5 ${
+                    className={`relative z-10 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer select-none flex items-center gap-1.5 ${
                       templeFilter === 'open'
-                        ? 'bg-amber-500 text-white shadow-xs'
-                        : 'bg-[#F4F4F5] text-[#71717A] hover:text-[#18181B]'
+                        ? 'text-white font-bold'
+                        : 'text-[#71717A] hover:text-[#18181B] bg-[#F4F4F5]'
                     }`}
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
                     Doors Open Now (1)
                   </button>
                   <button
+                    ref={(el) => {
+                      templeFilterRefs.current['rajbhog'] = el;
+                    }}
                     type="button"
                     onClick={() => setTempleFilter('rajbhog')}
-                    className={`px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer select-none ${
+                    className={`relative z-10 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer select-none ${
                       templeFilter === 'rajbhog'
-                        ? 'bg-orange-500 text-white shadow-xs'
-                        : 'bg-[#F4F4F5] text-[#71717A] hover:text-[#18181B]'
+                        ? 'text-white font-bold'
+                        : 'text-[#71717A] hover:text-[#18181B] bg-[#F4F4F5]'
                     }`}
                   >
                     Rajbhog Darshan (1)
                   </button>
                   <button
+                    ref={(el) => {
+                      templeFilterRefs.current['evening'] = el;
+                    }}
                     type="button"
                     onClick={() => setTempleFilter('evening')}
-                    className={`px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer select-none ${
+                    className={`relative z-10 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer select-none ${
                       templeFilter === 'evening'
-                        ? 'bg-[#7C3AED] text-white shadow-xs'
-                        : 'bg-[#F4F4F5] text-[#71717A] hover:text-[#18181B]'
+                        ? 'text-white font-bold'
+                        : 'text-[#71717A] hover:text-[#18181B] bg-[#F4F4F5]'
                     }`}
                   >
                     Sandhya & Shayana (2)

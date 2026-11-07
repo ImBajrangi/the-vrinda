@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Music } from 'lucide-react';
 import { computeAshtayamaPhase } from '../../services/cacheService';
 import { SacredDatabase, AshtayamaPeriod } from '../../services/sacredDatabase';
@@ -12,6 +12,24 @@ export const AshtayamaTimelineDeck: React.FC = () => {
     periods[3];
 
   const [selectedPeriod, setSelectedPeriod] = useState<AshtayamaPeriod>(defaultPeriod);
+
+  const periodRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
+  const [pillStyle, setPillStyle] = useState<{ left: number; width: number; ready: boolean }>({
+    left: 0,
+    width: 0,
+    ready: false,
+  });
+
+  useEffect(() => {
+    const el = periodRefs.current[selectedPeriod.id];
+    if (el) {
+      setPillStyle({
+        left: el.offsetLeft,
+        width: el.offsetWidth,
+        ready: true,
+      });
+    }
+  }, [selectedPeriod.id]);
 
   return (
     <div className="w-full bg-white rounded-[32px] p-6 sm:p-7 border border-neutral-200/80 shadow-[0_4px_24px_rgba(0,0,0,0.03)] space-y-4">
@@ -37,8 +55,21 @@ export const AshtayamaTimelineDeck: React.FC = () => {
         </span>
       </div>
 
-      {/* 8-Pahar Horizontal Interactive Pill Strip */}
-      <div className="w-full flex items-center gap-1.5 p-1.5 bg-[#F4F4F5]/70 rounded-[22px] border border-neutral-200/60 overflow-x-auto no-scrollbar">
+      {/* 8-Pahar Horizontal Interactive Pill Strip with Elastic Sliding Card */}
+      <div className="relative w-full flex items-center gap-1.5 p-1.5 bg-[#F4F4F5]/70 rounded-[22px] border border-neutral-200/60 overflow-x-auto no-scrollbar">
+        {/* Dynamic Elastic Sliding Watch Indicator Pill */}
+        {pillStyle.ready && (
+          <span
+            aria-hidden="true"
+            className="absolute top-1.5 bottom-1.5 rounded-[16px] bg-white shadow-[0_2px_10px_rgba(0,0,0,0.06)] border border-neutral-200/80 pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+            style={{
+              transform: `translateX(${pillStyle.left}px)`,
+              width: `${pillStyle.width}px`,
+              left: 0,
+            }}
+          />
+        )}
+
         {periods.map((period) => {
           const isSelected = selectedPeriod.id === period.id;
           const isCurrentTime =
@@ -49,16 +80,19 @@ export const AshtayamaTimelineDeck: React.FC = () => {
           return (
             <button
               key={period.id}
+              ref={(el) => {
+                periodRefs.current[period.id] = el;
+              }}
               type="button"
               onClick={() => setSelectedPeriod(period)}
-              className={`px-3 py-2 rounded-[16px] text-xs font-semibold whitespace-nowrap transition-colors flex items-center gap-1.5 shrink-0 cursor-pointer select-none ${
+              className={`relative z-10 px-3 py-2 rounded-[16px] text-xs font-semibold whitespace-nowrap transition-colors duration-200 flex items-center gap-1.5 shrink-0 cursor-pointer select-none ${
                 isSelected
-                  ? 'bg-white text-[#18181B] font-bold shadow-[0_2px_8px_rgba(0,0,0,0.06)] border border-neutral-200/80'
-                  : 'bg-transparent text-[#71717A] hover:text-[#18181B] hover:bg-white/60 border border-transparent'
+                  ? 'text-[#18181B] font-bold'
+                  : 'text-[#71717A] hover:text-[#18181B]'
               }`}
             >
               {isCurrentTime && (
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0 animate-pulse" />
               )}
               <span>{period.nameDevanagari}</span>
             </button>

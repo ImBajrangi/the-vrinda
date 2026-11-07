@@ -55,6 +55,28 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
   const [reflectionSaved, setReflectionSaved] = useState(false);
   const [activeAphorismIdx, setActiveAphorismIdx] = useState(0);
 
+  const sentimentRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
+  const [sentimentPillStyle, setSentimentPillStyle] = useState<{ left: number; top: number; width: number; height: number; ready: boolean }>({
+    left: 0,
+    top: 0,
+    width: 0,
+    height: 0,
+    ready: false,
+  });
+
+  useEffect(() => {
+    const el = sentimentRefs.current[reflectionSentiment];
+    if (el) {
+      setSentimentPillStyle({
+        left: el.offsetLeft,
+        top: el.offsetTop,
+        width: el.offsetWidth,
+        height: el.offsetHeight,
+        ready: true,
+      });
+    }
+  }, [reflectionSentiment]);
+
   // Contemplative Devotional Summary State
   const [isQuoteSummaryOpen, setIsQuoteSummaryOpen] = useState(false);
   const [isQuoteSummaryLoading, setIsQuoteSummaryLoading] = useState(false);
@@ -769,12 +791,27 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
                   </span>
                 </div>
 
-                {/* Sentiment Selector */}
+                {/* Sentiment Selector with Elastic Sliding Pill */}
                 <div>
-                  <span className="text-[11px] text-[#71717A] block mb-1.5">
+                  <span className="text-[11px] text-[#71717A] block mb-1.5 font-medium">
                     ध्यानोपरांत मन की स्थिति:
                   </span>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                  <div className="relative grid grid-cols-2 sm:grid-cols-4 gap-2 p-1 bg-[#F4F4F5] rounded-2xl border border-neutral-200/60">
+                    {/* Dynamic Elastic Sliding Sentiment Pill */}
+                    {sentimentPillStyle.ready && (
+                      <span
+                        aria-hidden="true"
+                        className="absolute rounded-xl bg-purple-100/90 shadow-2xs pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+                        style={{
+                          transform: `translate(${sentimentPillStyle.left}px, ${sentimentPillStyle.top}px)`,
+                          width: `${sentimentPillStyle.width}px`,
+                          height: `${sentimentPillStyle.height}px`,
+                          top: 0,
+                          left: 0,
+                        }}
+                      />
+                    )}
+
                     {(
                       [
                         { id: 'shanti', label: 'परम शान्ति', icon: '🕊️' },
@@ -782,21 +819,27 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
                         { id: 'yugal', label: 'युगल ध्यान', icon: '🌸' },
                         { id: 'sthirata', label: 'चित्त स्थिरता', icon: '💎' },
                       ] as const
-                    ).map((s) => (
-                      <button
-                        key={s.id}
-                        type="button"
-                        onClick={() => setReflectionSentiment(s.id)}
-                        className={`py-1.5 px-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors cursor-pointer ${
-                          reflectionSentiment === s.id
-                            ? 'bg-purple-100 text-purple-800'
-                            : 'bg-neutral-100 text-[#71717A] hover:bg-neutral-200 hover:text-[#18181B]'
-                        }`}
-                      >
-                        <span>{s.icon}</span>
-                        <span>{s.label}</span>
-                      </button>
-                    ))}
+                    ).map((s) => {
+                      const isSelected = reflectionSentiment === s.id;
+                      return (
+                        <button
+                          key={s.id}
+                          ref={(el) => {
+                            sentimentRefs.current[s.id] = el;
+                          }}
+                          type="button"
+                          onClick={() => setReflectionSentiment(s.id)}
+                          className={`relative z-10 py-2 px-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors duration-200 cursor-pointer ${
+                            isSelected
+                              ? 'text-purple-900 font-bold'
+                              : 'text-[#71717A] hover:text-[#18181B]'
+                          }`}
+                        >
+                          <span>{s.icon}</span>
+                          <span>{s.label}</span>
+                        </button>
+                      );
+                    })}
                   </div>
                 </div>
 
