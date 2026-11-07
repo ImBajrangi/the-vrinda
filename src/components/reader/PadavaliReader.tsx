@@ -49,7 +49,7 @@ interface PadavaliReaderProps {
   initialPadId?: string;
 }
 
-type ReaderTheme = 'ivory' | 'mint' | 'chandan' | 'night';
+type ReaderTheme = 'ivory' | 'mint' | 'chandan';
 type ReaderFontSize = 'sm' | 'md' | 'lg' | 'xl';
 type ReaderFontFamily = 'serif' | 'devanagari';
 type ReaderTextAlign = 'left' | 'center' | 'justify';
@@ -139,21 +139,6 @@ const themeStyles: Record<
     bhavarthText: 'text-[#451A03]',
     borderColor: 'border-amber-200/60',
     commentaryBg: 'bg-[#FAF7EE]',
-  },
-  night: {
-    canvasBg: 'bg-[#18181B]',
-    canvasText: 'text-[#F4F4F5]',
-    cardActiveBg: 'bg-[#27272A]',
-    cardHoverBg: 'hover:bg-[#27272A]/50',
-    cardDefaultBg: 'bg-transparent',
-    titleColor: 'text-white',
-    metaColor: 'text-[#FACC15]',
-    lineColor: 'text-[#F4F4F5]',
-    translitColor: 'text-[#A1A1AA]',
-    bhavarthBg: 'bg-[#27272A]/80',
-    bhavarthText: 'text-[#E4E4E7]',
-    borderColor: 'border-neutral-800',
-    commentaryBg: 'bg-[#18181B]',
   },
 };
 
@@ -299,7 +284,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   const [readerTheme, setReaderTheme] = useState<ReaderTheme>(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('vrind_reader_theme') as ReaderTheme;
-      if (['ivory', 'mint', 'chandan', 'night'].includes(saved)) return saved;
+      if (['ivory', 'mint', 'chandan'].includes(saved)) return saved;
     }
     return 'ivory';
   });
@@ -1031,12 +1016,11 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             <span className="text-[11px] font-bold text-neutral-500 uppercase tracking-wider font-mono">
               Ambiance Theme:
             </span>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
               {[
                 { id: 'ivory' as ReaderTheme, label: 'पावन पत्र', desc: 'Porcelain White', bg: '#FFFFFF', text: '#18181B' },
                 { id: 'mint' as ReaderTheme, label: 'तमाल निकुंज', desc: 'Tamal Green', bg: '#F0FDF4', text: '#166534' },
                 { id: 'chandan' as ReaderTheme, label: 'चन्दन प्रभा', desc: 'Chandan Gold', bg: '#FAF9F5', text: '#3D260F' },
-                { id: 'night' as ReaderTheme, label: 'निशीथ ध्यान', desc: 'Twilight Night', bg: '#18181B', text: '#F4F4F5' },
               ].map((t) => (
                 <button
                   key={t.id}

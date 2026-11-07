@@ -21,7 +21,6 @@ import { SACRED_FEED_POSTS } from './data/feed';
 import { SacredPad, SadhanaState, DhyanaImpactState, DhyanaSessionRecord } from './types/devotional';
 import { SacredDatabase } from './services/sacredDatabase';
 import { seo } from './services/seoService';
-import { CMSEditorialBadge } from './components/common/CMSEditorialBadge';
 import {
   loadCachedSadhanaSync,
   loadCachedSadhana,
@@ -1177,8 +1176,6 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
             setActiveTab('padavali');
           }}
         />
-        {/* CMS, SEO & Headless Architecture Manager */}
-        <CMSEditorialBadge currentPad={currentPad} activeTab={activeTab} />
       </div>
     </div>
   );
