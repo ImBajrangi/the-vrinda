@@ -143,19 +143,16 @@ function normalizeCanonicalPad(raw: any): SacredPad {
   if (!collectionId || collectionId === 'rasik-vani' || collectionId === 'other') {
     if (/स्तोत्र|अष्टक|कटाक्ष/i.test(title)) collectionId = 'stotras';
     else if (/हरिवंश|हित चौरासी|चतुरासी/i.test(author + title)) collectionId = 'hit-chaurasi';
-    else if (/राधा सुधा निधि|सुधानिधि/i.test(title + author)) collectionId = 'radha-sudha-nidhi';
     else if (/हरिदास|केलिमाल/i.test(author + title)) collectionId = 'kelimal';
     else if (/ध्रुवदास/i.test(author)) collectionId = 'bayalees-leela';
     else if (/सूरदास/i.test(author)) collectionId = 'sur-sagar';
     else if (/रसखान/i.test(author)) collectionId = 'raskhan-padavali';
     else if (/लाल बलबीर/i.test(author)) collectionId = 'braj-binod';
     else if (/कृपालु/i.test(author)) collectionId = 'bhakti-shatak';
-    else if (/सेवक|दामोदरदास/i.test(author)) collectionId = 'sevak-vani';
     else if (/व्यास/i.test(author)) collectionId = 'vyas-vani';
     else if (/ललित किशोरी|ललित मोहिनी/i.test(author)) collectionId = 'lalit-kishori-vani';
     else if (/बिहारिन|भगवत रसिक/i.test(author)) collectionId = 'biharin-dev-vani';
     else if (/नारायण स्वामी/i.test(author)) collectionId = 'narayan-swami-vani';
-    else if (/हरिव्यास/i.test(author)) collectionId = 'harivyas-dev-vani';
     else if (/दोहे|दोहा/i.test(author + title)) collectionId = 'braj-dohe';
     else if (/सवैया/i.test(author + title)) collectionId = 'braj-savaiya';
     else collectionId = 'rasik-vani-sangrah';
