@@ -53,10 +53,10 @@ CREATE TABLE IF NOT EXISTS public.user_bookmarks (
 
 -- 5. Create Performance Indexes for Sub-Millisecond Filtering & Range Queries
 CREATE INDEX IF NOT EXISTS idx_padas_collection ON public.padas (collection_id);
-CREATE INDEX IF NOT EXISTS idx_padas_slug ON public.padas (slug);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_padas_slug ON public.padas (slug);
 CREATE INDEX IF NOT EXISTS idx_padas_author ON public.padas (author);
 CREATE INDEX IF NOT EXISTS idx_padas_rag ON public.padas (rag);
-CREATE INDEX IF NOT EXISTS idx_padas_index ON public.padas (collection_id, index);
+CREATE INDEX IF NOT EXISTS idx_padas_collection_index ON public.padas (collection_id, "index");
 
 -- 6. Enable Row Level Security (RLS)
 ALTER TABLE public.padas ENABLE ROW LEVEL SECURITY;

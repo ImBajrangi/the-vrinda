@@ -364,43 +364,35 @@ export const SacredDatabase = {
 
     initPromise = (async () => {
       try {
-        // Step 1: Check Client IndexedDB (0ms local retrieval, 0 bytes server bandwidth)
-        const cached = await get<any[]>('vrind_canonical_padas_v2');
-        if (cached && Array.isArray(cached) && cached.length > 50) {
-          SacredDatabase.loadPadas(cached);
+        // Step 1: Check Client IndexedDB (0ms local retrieval, 0 bytes network bandwidth)
+        const cachedPadas = await get<any[]>('vrind_canonical_padas_v2');
+
+        if (cachedPadas && Array.isArray(cachedPadas) && cachedPadas.length > 50) {
+          SacredDatabase.loadPadas(cachedPadas);
           return;
         }
 
-        // Step 2: Ultra-low kilobyte initial boot (~12 KB payload instead of 1,000 KB)
+        // Step 2: Fetch CDN Manifest (~2.8 KB) from Vercel Edge
+        let manifest: any = null;
         try {
-          // Fetch initial featured padas (first 25 rows = ~12 KB)
-          const { data: supaPadas, error: supaErr } = await supabase
-            .from('padas')
-            .select('*')
-            .order('index', { ascending: true })
-            .limit(25);
-
-          if (!supaErr && supaPadas && supaPadas.length > 0) {
-            const padasFromDb = supaPadas.map((r: any) => ({
-              id: r.id,
-              collectionId: r.collection_id || r.collectionId || 'other',
-              index: r.index,
-              titleDevanagari: r.title_devanagari || r.titleDevanagari,
-              titleEnglish: r.title_english || r.titleEnglish,
-              author: r.author,
-              rag: r.rag,
-              slug: r.slug,
-              duration: r.duration,
-              verses: r.verses,
-            }));
-
-            SacredDatabase.appendPadas(padasFromDb);
+          const mRes = await fetch('/data/manifest.json');
+          if (mRes.ok) {
+            manifest = await mRes.json();
+            await set('vrind_manifest_v2', manifest);
           }
-        } catch (supaErr) {
-          console.warn('Supabase initial seed deferred:', supaErr);
-        }
+        } catch {}
 
-        // Background Warm-up: If on unmetered connection, fetch full offline catalog in background
+        // Step 3: Fetch Default Scripture Collection (Hit Chaurasi ~12 KB gzipped) from Vercel CDN Edge
+        try {
+          const chunkRes = await fetch('/data/granthas/hit-chaurasi.json');
+          if (chunkRes.ok) {
+            const hitChaurasiPadas = await chunkRes.json();
+            SacredDatabase.appendPadas(hitChaurasiPadas);
+            await set('vrind_grantha_hit-chaurasi', hitChaurasiPadas);
+          }
+        } catch {}
+
+        // Step 4: Lazy Background Sync for Full Offline Catalog (if network allows)
         if (typeof navigator !== 'undefined' && (navigator as any).connection?.saveData !== true) {
           setTimeout(async () => {
             try {
@@ -411,7 +403,7 @@ export const SacredDatabase = {
                 await set('vrind_canonical_padas_v2', fullCatalog);
               }
             } catch {}
-          }, 3500);
+          }, 4000);
         }
       } catch (err) {
         console.warn('SacredDatabase initialization deferred:', err);
@@ -422,27 +414,46 @@ export const SacredDatabase = {
   },
 
   /**
-   * On-Demand Scripture Collection Loader (Only 6 to 15 KB per book)
-   * Drastically reduces bandwidth for 100k visitors while keeping UI instant
+   * 4-Tier On-Demand Scripture Collection Loader
+   * Level 1: Memory (0ms)
+   * Level 2: IndexedDB persistent cache (0ms, 0 network)
+   * Level 3: Vercel CDN static chunk /data/granthas/:id.json (Edge cached, 0 Supabase egress)
+   * Level 4: Supabase REST API (fallback with selected columns only)
    */
   async fetchGranthaPadas(granthaId: string): Promise<SacredPad[]> {
     if (!granthaId || granthaId === 'all') return allPadas;
     const existing = padasByGrantha.get(granthaId);
     if (existing && existing.length > 5) return existing;
 
+    const cacheKey = `vrind_grantha_${granthaId}`;
+
     try {
-      // 1. Check local IndexedDB collection chunk (0 KB network)
-      const cacheKey = `vrind_grantha_${granthaId}`;
+      // Level 2: Check local IndexedDB collection chunk (0 KB network)
       const cached = await get<SacredPad[]>(cacheKey);
       if (cached && Array.isArray(cached) && cached.length > 0) {
         this.appendPadas(cached);
         return padasByGrantha.get(granthaId) || cached;
       }
 
-      // 2. Fetch specific collection from Supabase (< 15 KB)
+      // Level 3: Fetch static versioned JSON chunk from Vercel CDN Edge (6 - 25 KB gzipped, 0 Supabase egress)
+      try {
+        const cdnRes = await fetch(`/data/granthas/${granthaId}.json`);
+        if (cdnRes.ok) {
+          const chunkData = await cdnRes.json();
+          this.appendPadas(chunkData);
+          try {
+            await set(cacheKey, chunkData);
+          } catch {}
+          return padasByGrantha.get(granthaId) || chunkData;
+        }
+      } catch (cdnErr) {
+        console.warn(`CDN fetch for grantha ${granthaId} missed, checking Supabase fallback:`, cdnErr);
+      }
+
+      // Level 4: Supabase REST API fallback (specific columns only, never select('*'))
       const { data, error } = await supabase
         .from('padas')
-        .select('*')
+        .select('id, collection_id, index, title_devanagari, title_english, author, rag, slug, duration, verses')
         .eq('collection_id', granthaId)
         .order('index', { ascending: true });
 
@@ -473,6 +484,7 @@ export const SacredDatabase = {
 
   /**
    * Single Pada On-Demand Fetcher (0.65 KB / 650 bytes per read)
+   * Level 1: Memory -> Level 2: IndexedDB -> Level 3: Supabase targeted 1-row select
    */
   async fetchPadBySlug(slug: string): Promise<SacredPad | undefined> {
     if (!slug) return undefined;
@@ -482,7 +494,7 @@ export const SacredDatabase = {
     try {
       const { data, error } = await supabase
         .from('padas')
-        .select('*')
+        .select('id, collection_id, index, title_devanagari, title_english, author, rag, slug, duration, verses')
         .eq('slug', slug)
         .single();
 
@@ -507,6 +519,7 @@ export const SacredDatabase = {
     }
     return existing;
   },
+
   // Synchronous Read Methods (0ms Cold Render)
   getAllPadas(): SacredPad[] {
     return allPadas;

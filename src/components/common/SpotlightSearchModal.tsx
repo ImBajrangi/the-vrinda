@@ -27,9 +27,32 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
   onSelectGrantha,
 }) => {
   const [query, setQuery] = useState('');
+  const [debouncedQuery, setDebouncedQuery] = useState('');
   const [activeFilter, setActiveFilter] = useState<SearchFilterType>('all');
   const [selectedIdx, setSelectedIdx] = useState<number>(0);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // 300ms Debounce to prevent unnecessary filtering operations
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedQuery(query);
+    }, 300);
+    return () => clearTimeout(handler);
+  }, [query]);
+
+  // Lazy-load complete search catalog on first modal open
+  useEffect(() => {
+    if (isOpen) {
+      fetch('/data/catalog.json')
+        .then((r) => (r.ok ? r.json() : null))
+        .then((items) => {
+          if (items && Array.isArray(items)) {
+            SacredDatabase.appendPadas(items);
+          }
+        })
+        .catch(() => {});
+    }
+  }, [isOpen]);
 
   const [isRendered, setIsRendered] = useState(isOpen);
   const [isClosing, setIsClosing] = useState(false);
@@ -89,31 +112,34 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
     });
   }, []);
 
-  // Compute Search Results
+  // Compute Debounced Search Results
   const matchingPadas = useMemo(() => {
     if (activeFilter !== 'all' && activeFilter !== 'padas') return [];
-    return SacredDatabase.search(query, 12);
-  }, [query, activeFilter, dbVersion]);
+    if (debouncedQuery.trim().length === 1) return [];
+    return SacredDatabase.search(debouncedQuery, 12);
+  }, [debouncedQuery, activeFilter, dbVersion]);
 
   const matchingSaints = useMemo(() => {
     if (activeFilter !== 'all' && activeFilter !== 'saints') return [];
     const allSaints = SacredDatabase.getAllSaints();
-    if (!query.trim()) return allSaints.slice(0, 6);
-    const q = query.toLowerCase();
+    if (!debouncedQuery.trim()) return allSaints.slice(0, 6);
+    if (debouncedQuery.trim().length === 1) return [];
+    const q = debouncedQuery.toLowerCase();
     return allSaints
       .filter((s) => s.name.toLowerCase().includes(q) || s.nameEng.toLowerCase().includes(q))
       .slice(0, 6);
-  }, [query, activeFilter]);
+  }, [debouncedQuery, activeFilter]);
 
   const matchingGranthas = useMemo(() => {
     if (activeFilter !== 'all' && activeFilter !== 'granthas') return [];
     const allGranthas = SacredDatabase.getAllGranthas();
-    if (!query.trim()) return allGranthas.slice(0, 4);
-    const q = query.toLowerCase();
+    if (!debouncedQuery.trim()) return allGranthas.slice(0, 4);
+    if (debouncedQuery.trim().length === 1) return [];
+    const q = debouncedQuery.toLowerCase();
     return allGranthas
       .filter((g) => g.name.toLowerCase().includes(q) || g.author.toLowerCase().includes(q))
       .slice(0, 4);
-  }, [query, activeFilter]);
+  }, [debouncedQuery, activeFilter]);
 
   const totalResults = matchingGranthas.length + matchingSaints.length + matchingPadas.length;
 

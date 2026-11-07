@@ -1,0 +1,98 @@
+{
+  "version": "2026.11.07.1",
+  "generatedAt": "2026-11-07T15:08:19.893Z",
+  "totalPadas": 4204,
+  "totalGranthas": 15,
+  "granthas": {
+    "hit-chaurasi": {
+      "count": 53,
+      "hash": "0e1d6f8670f8",
+      "rawBytes": 38500,
+      "gzBytes": 12247
+    },
+    "kelimal": {
+      "count": 87,
+      "hash": "20c2c2d21ab1",
+      "rawBytes": 65608,
+      "gzBytes": 22697
+    },
+    "vyas-vani": {
+      "count": 247,
+      "hash": "204e91e4a8bb",
+      "rawBytes": 159583,
+      "gzBytes": 46752
+    },
+    "bayalees-leela": {
+      "count": 255,
+      "hash": "505cb2452eb0",
+      "rawBytes": 177010,
+      "gzBytes": 54858
+    },
+    "bhakti-shatak": {
+      "count": 287,
+      "hash": "6e5cdf284d70",
+      "rawBytes": 191559,
+      "gzBytes": 49679
+    },
+    "lalit-kishori-vani": {
+      "count": 189,
+      "hash": "dd9716d07b99",
+      "rawBytes": 128320,
+      "gzBytes": 36439
+    },
+    "biharin-dev-vani": {
+      "count": 192,
+      "hash": "7ceaf736d9e8",
+      "rawBytes": 133406,
+      "gzBytes": 40788
+    },
+    "narayan-swami-vani": {
+      "count": 125,
+      "hash": "f850e468f9af",
+      "rawBytes": 76410,
+      "gzBytes": 22996
+    },
+    "braj-binod": {
+      "count": 106,
+      "hash": "c1feeb8df674",
+      "rawBytes": 89262,
+      "gzBytes": 30631
+    },
+    "raskhan-padavali": {
+      "count": 104,
+      "hash": "90807fd5c669",
+      "rawBytes": 71492,
+      "gzBytes": 25013
+    },
+    "sur-sagar": {
+      "count": 67,
+      "hash": "58c5838915f4",
+      "rawBytes": 46917,
+      "gzBytes": 16274
+    },
+    "braj-dohe": {
+      "count": 226,
+      "hash": "c0b509da2406",
+      "rawBytes": 123275,
+      "gzBytes": 37520
+    },
+    "braj-savaiya": {
+      "count": 72,
+      "hash": "a9db26e89b75",
+      "rawBytes": 56324,
+      "gzBytes": 21223
+    },
+    "stotras": {
+      "count": 5,
+      "hash": "938d70d5d19e",
+      "rawBytes": 4033,
+      "gzBytes": 2100
+    },
+    "rasik-vani-sangrah": {
+      "count": 2189,
+      "hash": "5e9fcc1cc1ff",
+      "rawBytes": 1618725,
+      "gzBytes": 583868
+    }
+  }
+}
