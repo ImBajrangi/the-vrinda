@@ -253,6 +253,7 @@ if (typeof window !== 'undefined') {
 
 let isFullyLoaded = false;
 let initPromise: Promise<void> | null = null;
+let activeManifest: any = null;
 const dbListeners = new Set<() => void>();
 
 function getDeviceId(): string {
@@ -372,23 +373,29 @@ export const SacredDatabase = {
           return;
         }
 
-        // Step 2: Fetch CDN Manifest (~2.8 KB) from Vercel Edge
-        let manifest: any = null;
+        // Step 2: Fetch CDN Manifest (~2.8 KB) from Vercel Edge for content-hashed URLs
         try {
+          const cachedManifest = await get<any>('vrind_manifest_v2');
+          if (cachedManifest) activeManifest = cachedManifest;
+
           const mRes = await fetch('/data/manifest.json');
           if (mRes.ok) {
-            manifest = await mRes.json();
-            await set('vrind_manifest_v2', manifest);
+            activeManifest = await mRes.json();
+            await set('vrind_manifest_v2', activeManifest);
           }
         } catch {}
 
-        // Step 3: Fetch Default Scripture Collection (Hit Chaurasi ~12 KB gzipped) from Vercel CDN Edge
+        // Step 3: Fetch Default Scripture Collection via Immutable Content-Hashed URL
         try {
-          const chunkRes = await fetch('/data/granthas/hit-chaurasi.json');
+          const hitMeta = activeManifest?.granthas?.['hit-chaurasi'];
+          const targetFile = hitMeta?.file || 'hit-chaurasi.json';
+          const cacheKey = hitMeta?.hash ? `vrind_grantha_hit-chaurasi_${hitMeta.hash}` : 'vrind_grantha_hit-chaurasi';
+
+          const chunkRes = await fetch(`/data/granthas/${targetFile}`);
           if (chunkRes.ok) {
             const hitChaurasiPadas = await chunkRes.json();
             SacredDatabase.appendPadas(hitChaurasiPadas);
-            await set('vrind_grantha_hit-chaurasi', hitChaurasiPadas);
+            await set(cacheKey, hitChaurasiPadas);
           }
         } catch {}
 
@@ -413,11 +420,15 @@ export const SacredDatabase = {
     return initPromise;
   },
 
+  getManifest(): any {
+    return activeManifest;
+  },
+
   /**
-   * 4-Tier On-Demand Scripture Collection Loader
+   * 4-Tier On-Demand Scripture Collection Loader with Content-Hashed URLs
    * Level 1: Memory (0ms)
-   * Level 2: IndexedDB persistent cache (0ms, 0 network)
-   * Level 3: Vercel CDN static chunk /data/granthas/:id.json (Edge cached, 0 Supabase egress)
+   * Level 2: IndexedDB persistent cache with content-hash key (0ms, 0 network)
+   * Level 3: Vercel CDN static immutable chunk /data/granthas/:id.:hash.json (Edge cached, 0 Supabase egress)
    * Level 4: Supabase REST API (fallback with selected columns only)
    */
   async fetchGranthaPadas(granthaId: string): Promise<SacredPad[]> {
@@ -425,7 +436,9 @@ export const SacredDatabase = {
     const existing = padasByGrantha.get(granthaId);
     if (existing && existing.length > 5) return existing;
 
-    const cacheKey = `vrind_grantha_${granthaId}`;
+    const granthaMeta = activeManifest?.granthas?.[granthaId];
+    const targetFile = granthaMeta?.file || `${granthaId}.json`;
+    const cacheKey = granthaMeta?.hash ? `vrind_grantha_${granthaId}_${granthaMeta.hash}` : `vrind_grantha_${granthaId}`;
 
     try {
       // Level 2: Check local IndexedDB collection chunk (0 KB network)
@@ -435,9 +448,9 @@ export const SacredDatabase = {
         return padasByGrantha.get(granthaId) || cached;
       }
 
-      // Level 3: Fetch static versioned JSON chunk from Vercel CDN Edge (6 - 25 KB gzipped, 0 Supabase egress)
+      // Level 3: Fetch static immutable versioned JSON chunk from Vercel CDN Edge (6 - 25 KB gzipped, 0 Supabase egress)
       try {
-        const cdnRes = await fetch(`/data/granthas/${granthaId}.json`);
+        const cdnRes = await fetch(`/data/granthas/${targetFile}`);
         if (cdnRes.ok) {
           const chunkData = await cdnRes.json();
           this.appendPadas(chunkData);
@@ -447,7 +460,7 @@ export const SacredDatabase = {
           return padasByGrantha.get(granthaId) || chunkData;
         }
       } catch (cdnErr) {
-        console.warn(`CDN fetch for grantha ${granthaId} missed, checking Supabase fallback:`, cdnErr);
+        console.warn(`CDN fetch for grantha ${granthaId} (${targetFile}) missed, checking Supabase fallback:`, cdnErr);
       }
 
       // Level 4: Supabase REST API fallback (specific columns only, never select('*'))

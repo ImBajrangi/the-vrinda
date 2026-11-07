@@ -100,12 +100,13 @@ export function generateStaticGranthas(outputDirs = ['public', 'dist']) {
     });
   }
 
-  // Generate manifest with content hashes
+  // Generate manifest with content hashes and immutable versioned filenames
   const manifest = {
-    version: '2026.11.07.1',
+    version: '2026.11.07.2',
     generatedAt: new Date().toISOString(),
     totalPadas: padas.length,
     totalGranthas: granthas.length,
+    catalog: {},
     granthas: {},
   };
 
@@ -116,19 +117,39 @@ export function generateStaticGranthas(outputDirs = ['public', 'dist']) {
     const jsonStr = JSON.stringify(items);
     const hash = computeHash(jsonStr);
     const gz = zlib.gzipSync(Buffer.from(jsonStr), { level: 9 });
+    const hashedFileName = `${colId}.${hash}.json`;
 
-    granthaChunks.set(colId, { json: jsonStr, gz, count: items.length, hash, sizeBytes: jsonStr.length, gzBytes: gz.length });
+    granthaChunks.set(colId, {
+      json: jsonStr,
+      gz,
+      count: items.length,
+      hash,
+      hashedFileName,
+      sizeBytes: jsonStr.length,
+      gzBytes: gz.length,
+    });
 
     manifest.granthas[colId] = {
       count: items.length,
       hash,
+      file: hashedFileName,
       rawBytes: jsonStr.length,
       gzBytes: gz.length,
     };
   }
 
   const catalogStr = JSON.stringify(catalog);
+  const catalogHash = computeHash(catalogStr);
   const catalogGz = zlib.gzipSync(Buffer.from(catalogStr), { level: 9 });
+  const catalogHashedFile = `catalog.${catalogHash}.json`;
+
+  manifest.catalog = {
+    file: catalogHashedFile,
+    hash: catalogHash,
+    rawBytes: catalogStr.length,
+    gzBytes: catalogGz.length,
+  };
+
   const manifestStr = JSON.stringify(manifest, null, 2);
 
   // Write to output directories (public and optionally dist)
@@ -143,15 +164,24 @@ export function generateStaticGranthas(outputDirs = ['public', 'dist']) {
       fs.mkdirSync(granthasDir, { recursive: true });
     }
 
-    // Write manifest & lightweight catalog
+    // Write manifest
     fs.writeFileSync(path.resolve(dataDir, 'manifest.json'), manifestStr, 'utf-8');
+
+    // Write both hashed immutable and canonical catalog files
     fs.writeFileSync(path.resolve(dataDir, 'catalog.json'), catalogStr, 'utf-8');
     fs.writeFileSync(path.resolve(dataDir, 'catalog.json.gz'), catalogGz);
+    fs.writeFileSync(path.resolve(dataDir, catalogHashedFile), catalogStr, 'utf-8');
+    fs.writeFileSync(path.resolve(dataDir, `${catalogHashedFile}.gz`), catalogGz);
 
-    // Write individual grantha chunks
+    // Write both content-hashed immutable chunks and standard fallback files
     for (const [colId, chunk] of granthaChunks.entries()) {
+      // 1. Standard canonical name for clean routing
       fs.writeFileSync(path.resolve(granthasDir, `${colId}.json`), chunk.json, 'utf-8');
       fs.writeFileSync(path.resolve(granthasDir, `${colId}.json.gz`), chunk.gz);
+
+      // 2. Content-hashed immutable filename for permanent year-long CDN edge caching
+      fs.writeFileSync(path.resolve(granthasDir, chunk.hashedFileName), chunk.json, 'utf-8');
+      fs.writeFileSync(path.resolve(granthasDir, `${chunk.hashedFileName}.gz`), chunk.gz);
     }
   }
 
@@ -165,3 +195,4 @@ export function generateStaticGranthas(outputDirs = ['public', 'dist']) {
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   generateStaticGranthas();
 }
+

@@ -1,96 +1,117 @@
 {
-  "version": "2026.11.07.1",
-  "generatedAt": "2026-11-07T15:09:28.799Z",
+  "version": "2026.11.07.2",
+  "generatedAt": "2026-11-07T15:23:56.768Z",
   "totalPadas": 4204,
   "totalGranthas": 15,
+  "catalog": {
+    "file": "catalog.6ca15fd6069e.json",
+    "hash": "6ca15fd6069e",
+    "rawBytes": 1060129,
+    "gzBytes": 299967
+  },
   "granthas": {
     "hit-chaurasi": {
       "count": 53,
       "hash": "0e1d6f8670f8",
+      "file": "hit-chaurasi.0e1d6f8670f8.json",
       "rawBytes": 38500,
       "gzBytes": 12247
     },
     "kelimal": {
       "count": 87,
       "hash": "20c2c2d21ab1",
+      "file": "kelimal.20c2c2d21ab1.json",
       "rawBytes": 65608,
       "gzBytes": 22697
     },
     "vyas-vani": {
       "count": 247,
       "hash": "204e91e4a8bb",
+      "file": "vyas-vani.204e91e4a8bb.json",
       "rawBytes": 159583,
       "gzBytes": 46752
     },
     "bayalees-leela": {
       "count": 255,
       "hash": "505cb2452eb0",
+      "file": "bayalees-leela.505cb2452eb0.json",
       "rawBytes": 177010,
       "gzBytes": 54858
     },
     "bhakti-shatak": {
       "count": 287,
       "hash": "6e5cdf284d70",
+      "file": "bhakti-shatak.6e5cdf284d70.json",
       "rawBytes": 191559,
       "gzBytes": 49679
     },
     "lalit-kishori-vani": {
       "count": 189,
       "hash": "dd9716d07b99",
+      "file": "lalit-kishori-vani.dd9716d07b99.json",
       "rawBytes": 128320,
       "gzBytes": 36439
     },
     "biharin-dev-vani": {
       "count": 192,
       "hash": "7ceaf736d9e8",
+      "file": "biharin-dev-vani.7ceaf736d9e8.json",
       "rawBytes": 133406,
       "gzBytes": 40788
     },
     "narayan-swami-vani": {
       "count": 125,
       "hash": "f850e468f9af",
+      "file": "narayan-swami-vani.f850e468f9af.json",
       "rawBytes": 76410,
       "gzBytes": 22996
     },
     "braj-binod": {
       "count": 106,
       "hash": "c1feeb8df674",
+      "file": "braj-binod.c1feeb8df674.json",
       "rawBytes": 89262,
       "gzBytes": 30631
     },
     "raskhan-padavali": {
       "count": 104,
       "hash": "90807fd5c669",
+      "file": "raskhan-padavali.90807fd5c669.json",
       "rawBytes": 71492,
       "gzBytes": 25013
     },
     "sur-sagar": {
       "count": 67,
       "hash": "58c5838915f4",
+      "file": "sur-sagar.58c5838915f4.json",
       "rawBytes": 46917,
       "gzBytes": 16274
     },
     "braj-dohe": {
       "count": 226,
       "hash": "c0b509da2406",
+      "file": "braj-dohe.c0b509da2406.json",
       "rawBytes": 123275,
       "gzBytes": 37520
     },
     "braj-savaiya": {
       "count": 72,
       "hash": "a9db26e89b75",
+      "file": "braj-savaiya.a9db26e89b75.json",
       "rawBytes": 56324,
       "gzBytes": 21223
     },
     "stotras": {
       "count": 5,
       "hash": "938d70d5d19e",
+      "file": "stotras.938d70d5d19e.json",
       "rawBytes": 4033,
       "gzBytes": 2100
     },
     "rasik-vani-sangrah": {
       "count": 2189,
       "hash": "5e9fcc1cc1ff",
+      "file": "rasik-vani-sangrah.5e9fcc1cc1ff.json",
       "rawBytes": 1618725,
       "gzBytes": 583868
     }
