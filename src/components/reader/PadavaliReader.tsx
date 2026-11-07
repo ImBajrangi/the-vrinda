@@ -21,6 +21,10 @@ import {
   AlignLeft,
   AlignCenter,
   AlignJustify,
+  PanelLeftClose,
+  PanelLeftOpen,
+  PanelRightClose,
+  PanelRightOpen,
 } from 'lucide-react';
 import { SacredDatabase } from '../../services/sacredDatabase';
 import { SacredPad } from '../../types/devotional';
@@ -350,6 +354,41 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     if (typeof window !== 'undefined') {
       localStorage.setItem('vrind_reader_textAlign', a);
     }
+  };
+
+  // Shrinkable Sidebars States with LocalStorage Persistence
+  const [isLeftSidebarCollapsed, setIsLeftSidebarCollapsed] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('vrind_reader_left_collapsed') === 'true';
+    }
+    return false;
+  });
+
+  const [isRightSidebarCollapsed, setIsRightSidebarCollapsed] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('vrind_reader_right_collapsed') === 'true';
+    }
+    return false;
+  });
+
+  const handleToggleLeftSidebar = () => {
+    setIsLeftSidebarCollapsed((prev) => {
+      const next = !prev;
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('vrind_reader_left_collapsed', String(next));
+      }
+      return next;
+    });
+  };
+
+  const handleToggleRightSidebar = () => {
+    setIsRightSidebarCollapsed((prev) => {
+      const next = !prev;
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('vrind_reader_right_collapsed', String(next));
+      }
+      return next;
+    });
   };
 
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
@@ -1225,221 +1264,314 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       {/* ========================================================================= */}
       {/* 3. Main Responsive Devotional Desk / Distraction-Free Sanctuary            */}
       {/* ========================================================================= */}
-      <div className={isFocusReadingMode ? 'w-full max-w-3xl mx-auto' : 'grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6 items-start'}>
+      <div className={`w-full flex flex-col md:flex-row items-start gap-4 sm:gap-6 transition-all duration-300 ${isFocusReadingMode ? 'max-w-3xl mx-auto' : ''}`}>
         
         {/* ========================================================================= */}
         {/* Left Column: Pada Index Catalog (Desktop only: hidden md:block)           */}
         {/* ========================================================================= */}
         {!isFocusReadingMode && (
-          <div className="hidden md:block md:col-span-4 xl:col-span-3 sticky top-24">
-            <div className="bg-white rounded-3xl overflow-hidden flex flex-col max-h-[82vh]">
-              {/* Header with Active Scripture Name & Search Input */}
-              <div className="p-4 border-b border-neutral-100 space-y-2.5 bg-white">
-                <div className="flex items-center justify-between text-xs">
-                  <div className="flex items-center gap-1.5 min-w-0">
-                    <BookOpen className="w-3.5 h-3.5 text-[#FACC15] shrink-0" />
-                    <span className="font-serif font-bold text-[#0F172A] truncate">
-                      {selectedGrantha === 'all'
-                        ? 'समस्त पावन ग्रंथ'
-                        : allGranthas.find((g) => g.id === selectedGrantha)?.name}
-                    </span>
+          <div className="hidden md:block sticky top-24 shrink-0 transition-all duration-300">
+            {isLeftSidebarCollapsed ? (
+              /* Shrunk / Compact Icon Rail */
+              <div className="w-13 sm:w-14 bg-white rounded-3xl p-2 flex flex-col items-center max-h-[82vh] border border-neutral-100 shadow-xs">
+                {/* Expand Toggle */}
+                <button
+                  type="button"
+                  onClick={handleToggleLeftSidebar}
+                  className="w-9 h-9 rounded-xl hover:bg-neutral-100 flex items-center justify-center text-[#475569] hover:text-[#0F172A] transition-colors cursor-pointer"
+                  title="Expand Sidebar (पद सूची खोलें)"
+                  aria-label="Expand Pada Index Sidebar"
+                >
+                  <PanelLeftOpen className="w-4 h-4 text-[#CA8A04]" />
+                </button>
+
+                <div className="w-6 h-px bg-neutral-100 my-2" />
+
+                {/* Shrunk Quick Search Icon - reopens with search */}
+                <button
+                  type="button"
+                  onClick={() => setIsLeftSidebarCollapsed(false)}
+                  className="w-9 h-9 rounded-xl hover:bg-neutral-100 flex items-center justify-center text-[#94A3B8] hover:text-[#0F172A] transition-colors cursor-pointer"
+                  title="Search Padas (खोजें)"
+                >
+                  <Search className="w-4 h-4" />
+                </button>
+
+                <div className="w-6 h-px bg-neutral-100 my-2" />
+
+                {/* Vertical Scrollable Numbered Badges Rail */}
+                <div className="flex-1 w-full space-y-1.5 overflow-y-auto no-scrollbar py-1">
+                  {displayedSidebarPads.slice(0, visibleCount).map((pad, idx) => {
+                    const isSelected = selectedPad.id === pad.id;
+                    return (
+                      <button
+                        key={pad.id}
+                        type="button"
+                        onClick={() => handleSelectPad(pad)}
+                        title={`${idx + 1}. ${pad.titleDevanagari} (${pad.author})`}
+                        className={`w-9 h-9 mx-auto rounded-xl flex items-center justify-center text-xs font-mono transition-colors cursor-pointer ${
+                          isSelected
+                            ? 'bg-[#FEF08A] text-[#78350F] font-bold'
+                            : 'hover:bg-neutral-100 text-[#64748B]'
+                        }`}
+                      >
+                        #{idx + 1}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            ) : (
+              /* Full Expanded Left Sidebar */
+              <div className="w-72 lg:w-80 bg-white rounded-3xl overflow-hidden flex flex-col max-h-[82vh] border border-neutral-100 shadow-xs">
+                {/* Header with Active Scripture Name, Counter & Shrink Button */}
+                <div className="p-4 border-b border-neutral-100 space-y-2.5 bg-white">
+                  <div className="flex items-center justify-between text-xs">
+                    <div className="flex items-center gap-1.5 min-w-0">
+                      <BookOpen className="w-3.5 h-3.5 text-[#FACC15] shrink-0" />
+                      <span className="font-serif font-bold text-[#0F172A] truncate">
+                        {selectedGrantha === 'all'
+                          ? 'समस्त पावन ग्रंथ'
+                          : allGranthas.find((g) => g.id === selectedGrantha)?.name}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-1.5 shrink-0">
+                      <span className="text-[11px] font-mono font-semibold px-2 py-0.5 rounded-full bg-[#FAF7F0] text-[#CA8A04]">
+                        {displayedSidebarPads.length} पद
+                      </span>
+                      <button
+                        type="button"
+                        onClick={handleToggleLeftSidebar}
+                        className="w-6 h-6 rounded-lg hover:bg-neutral-100 flex items-center justify-center text-[#64748B] hover:text-[#0F172A] transition-colors cursor-pointer"
+                        title="Shrink Sidebar (साइडबार समेटें)"
+                        aria-label="Shrink Pada Index Sidebar"
+                      >
+                        <PanelLeftClose className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
                   </div>
-                  <span className="text-[11px] font-mono font-semibold px-2 py-0.5 rounded-full bg-[#FAF7F0] text-[#CA8A04] shrink-0">
-                    {displayedSidebarPads.length} पद
-                  </span>
+
+                  {/* Instant In-Sidebar Quick Filter */}
+                  <div className="relative">
+                    <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[#94A3B8]" />
+                    <input
+                      type="text"
+                      value={sidebarQuery}
+                      onChange={(e) => setSidebarQuery(e.target.value)}
+                      placeholder="पद, टेक या संत खोजें..."
+                      className="w-full pl-8 pr-7 py-2 rounded-xl bg-[#F8FAFC] text-xs text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:bg-white focus:ring-1 focus:ring-[#FACC15]/50 transition-all"
+                    />
+                    {sidebarQuery && (
+                      <button
+                        type="button"
+                        onClick={() => setSidebarQuery('')}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 p-0.5 text-[#94A3B8] hover:text-[#0F172A] cursor-pointer"
+                      >
+                        <X className="w-3 h-3" />
+                      </button>
+                    )}
+                  </div>
                 </div>
 
-                {/* Instant In-Sidebar Quick Filter */}
-                <div className="relative">
-                  <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[#94A3B8]" />
-                  <input
-                    type="text"
-                    value={sidebarQuery}
-                    onChange={(e) => setSidebarQuery(e.target.value)}
-                    placeholder="पद, टेक या संत खोजें..."
-                    className="w-full pl-8 pr-7 py-2 rounded-xl bg-[#F8FAFC] text-xs text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:bg-white focus:ring-1 focus:ring-[#FACC15]/50 transition-all"
-                  />
-                  {sidebarQuery && (
+                {/* Unified Scannable List with Dynamic Elastic Sliding Bouncy Indicator */}
+                <div className="relative flex-1 overflow-y-auto p-2 flex flex-col gap-1 custom-scroll">
+                  {sidebarPillStyle.ready && (
+                    <span
+                      aria-hidden="true"
+                      className="absolute left-2 right-2 rounded-2xl bg-[#FEF08A] pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform z-0"
+                      style={{
+                        transform: `translateY(${sidebarPillStyle.top}px)`,
+                        height: `${sidebarPillStyle.height}px`,
+                        top: 0,
+                      }}
+                    />
+                  )}
+
+                  {displayedSidebarPads.length === 0 ? (
+                    <div className="p-6 text-center text-xs text-[#94A3B8] font-serif space-y-2.5">
+                      <p>
+                        {sidebarQuery || searchQuery
+                          ? `कोई पद नहीं मिला ("${sidebarQuery || searchQuery}")`
+                          : 'इस चयन में कोई पद उपलब्ध नहीं है'}
+                      </p>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setSearchQuery('');
+                          setSidebarQuery('');
+                          setSelectedRaga('all');
+                          setSelectedGrantha('all');
+                        }}
+                        className="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#FEF08A] text-[#78350F] hover:bg-[#FDE047] cursor-pointer transition-colors"
+                      >
+                        सभी पद देखें (फ़िल्टर हटाएं)
+                      </button>
+                    </div>
+                  ) : (
+                    displayedSidebarPads.slice(0, visibleCount).map((pad, idx) => {
+                      const isSelected = selectedPad.id === pad.id;
+                      const isCurrentlyPlaying = activePlayingPadId === pad.id && isPlaying;
+                      return (
+                        <div
+                          key={pad.id}
+                          ref={(el) => {
+                            sidebarItemRefs.current[pad.id] = el;
+                          }}
+                          onClick={() => handleSelectPad(pad)}
+                          className={`group relative z-10 px-3 py-2.5 rounded-2xl flex items-start gap-2.5 cursor-pointer select-none transition-colors duration-200 ${
+                            isSelected
+                              ? 'text-[#0F172A]'
+                              : 'hover:bg-[#F8FAFC] text-[#0F172A]'
+                          }`}
+                        >
+                          {/* Compact Slim Index Number / Equalizer */}
+                          <div className="w-7 shrink-0 pt-0.5 text-right font-mono text-xs select-none">
+                            {isCurrentlyPlaying ? (
+                              <div className="flex items-end justify-end gap-0.5 h-3">
+                                <span className="w-0.5 rounded-full animate-apple-eq-1 bg-[#CA8A04]" />
+                                <span className="w-0.5 rounded-full animate-apple-eq-2 bg-[#CA8A04]" />
+                                <span className="w-0.5 rounded-full animate-apple-eq-3 bg-[#CA8A04]" />
+                              </div>
+                            ) : (
+                              <span className={`px-1.5 py-0.5 rounded-md text-[10.5px] font-mono transition-colors ${
+                                isSelected ? 'bg-white/90 text-[#854D0E] font-bold' : 'text-[#94A3B8]'
+                              }`}>
+                                #{idx + 1}
+                              </span>
+                            )}
+                          </div>
+
+                          {/* Verse Title & Meta */}
+                          <div className="min-w-0 flex-1">
+                            <div className="font-serif font-bold text-sm leading-snug break-words text-[#0F172A]">
+                              {pad.titleDevanagari}
+                            </div>
+                            <div className="flex items-center gap-1.5 text-xs mt-0.5 flex-wrap text-[#64748B] font-normal">
+                              <span className="truncate font-normal">{pad.author}</span>
+                              {pad.rag && (
+                                <>
+                                  <span className={isSelected ? 'text-[#CA8A04]' : 'text-[#CBD5E1]'}>•</span>
+                                  <span className={`font-mono text-[11px] font-normal ${isSelected ? 'text-[#CA8A04]' : 'text-[#94A3B8]'}`}>
+                                    {pad.rag}
+                                  </span>
+                                </>
+                              )}
+                            </div>
+                          </div>
+
+                          {/* Minimal Play Button */}
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              onPlayPad(pad);
+                            }}
+                            aria-label={`Play ${pad.titleDevanagari}`}
+                            className={`w-7 h-7 rounded-full shrink-0 flex items-center justify-center transition-all cursor-pointer ${
+                              isCurrentlyPlaying || isSelected
+                                ? 'bg-[#FACC15] hover:bg-[#FDE047] text-[#18181B] font-bold'
+                                : 'bg-[#F1F5F9] text-[#64748B] hover:text-[#0F172A] hover:bg-[#E2E8F0]'
+                            }`}
+                          >
+                            {isCurrentlyPlaying ? (
+                              <Pause className="w-3 h-3 fill-current" />
+                            ) : (
+                              <Play className="w-3 h-3 ml-0.5 fill-current" />
+                            )}
+                          </button>
+                        </div>
+                      );
+                    })
+                  )}
+
+                  {visibleCount < displayedSidebarPads.length && (
                     <button
                       type="button"
-                      onClick={() => setSidebarQuery('')}
-                      className="absolute right-2 top-1/2 -translate-y-1/2 p-0.5 text-[#94A3B8] hover:text-[#0F172A] cursor-pointer"
+                      onClick={() => setVisibleCount((c) => c + 30)}
+                      className="w-full py-2.5 text-xs font-semibold text-neutral-600 hover:text-[#18181B] cursor-pointer border-t border-neutral-100 mt-1 font-serif"
                     >
-                      <X className="w-3 h-3" />
+                      और पद लोड करें ({displayedSidebarPads.length - visibleCount} शेष)...
                     </button>
                   )}
                 </div>
               </div>
-
-              {/* Unified Scannable List with Dynamic Elastic Sliding Bouncy Indicator */}
-              <div className="relative flex-1 overflow-y-auto p-2 flex flex-col gap-1 custom-scroll">
-                {/* Dynamic Elastic Sliding Bouncy Indicator Bar (Warm Sunlit Golden Silk) */}
-                {sidebarPillStyle.ready && (
-                  <span
-                    aria-hidden="true"
-                    className="absolute left-2 right-2 rounded-2xl bg-[#FEF08A] pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform z-0"
-                    style={{
-                      transform: `translateY(${sidebarPillStyle.top}px)`,
-                      height: `${sidebarPillStyle.height}px`,
-                      top: 0,
-                    }}
-                  />
-                )}
-
-                {displayedSidebarPads.length === 0 ? (
-                  <div className="p-6 text-center text-xs text-[#94A3B8] font-serif space-y-2.5">
-                    <p>
-                      {sidebarQuery || searchQuery
-                        ? `कोई पद नहीं मिला ("${sidebarQuery || searchQuery}")`
-                        : 'इस चयन में कोई पद उपलब्ध नहीं है'}
-                    </p>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setSearchQuery('');
-                        setSidebarQuery('');
-                        setSelectedRaga('all');
-                        setSelectedGrantha('all');
-                      }}
-                      className="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#FEF08A] text-[#78350F] hover:bg-[#FDE047] cursor-pointer transition-colors"
-                    >
-                      सभी पद देखें (फ़िल्टर हटाएं)
-                    </button>
-                  </div>
-                ) : (
-                  displayedSidebarPads.slice(0, visibleCount).map((pad, idx) => {
-                    const isSelected = selectedPad.id === pad.id;
-                    const isCurrentlyPlaying = activePlayingPadId === pad.id && isPlaying;
-                    return (
-                      <div
-                        key={pad.id}
-                        ref={(el) => {
-                          sidebarItemRefs.current[pad.id] = el;
-                        }}
-                        onClick={() => handleSelectPad(pad)}
-                        className={`group relative z-10 px-3 py-2.5 rounded-2xl flex items-start gap-2.5 cursor-pointer select-none transition-colors duration-200 ${
-                          isSelected
-                            ? 'text-[#0F172A]'
-                            : 'hover:bg-[#F8FAFC] text-[#0F172A]'
-                        }`}
-                      >
-                        {/* Compact Slim Index Number / Equalizer */}
-                        <div className="w-7 shrink-0 pt-0.5 text-right font-mono text-xs select-none">
-                          {isCurrentlyPlaying ? (
-                            <div className="flex items-end justify-end gap-0.5 h-3">
-                              <span className="w-0.5 rounded-full animate-apple-eq-1 bg-[#CA8A04]" />
-                              <span className="w-0.5 rounded-full animate-apple-eq-2 bg-[#CA8A04]" />
-                              <span className="w-0.5 rounded-full animate-apple-eq-3 bg-[#CA8A04]" />
-                            </div>
-                          ) : (
-                            <span className={`px-1.5 py-0.5 rounded-md text-[10.5px] font-mono transition-colors ${
-                              isSelected ? 'bg-white/90 text-[#854D0E] font-bold' : 'text-[#94A3B8]'
-                            }`}>
-                              #{idx + 1}
-                            </span>
-                          )}
-                        </div>
-
-                        {/* Verse Title & Meta */}
-                        <div className="min-w-0 flex-1">
-                          <div className="font-serif font-bold text-sm leading-snug break-words text-[#0F172A]">
-                            {pad.titleDevanagari}
-                          </div>
-                          <div className="flex items-center gap-1.5 text-xs mt-0.5 flex-wrap text-[#64748B] font-normal">
-                            <span className="truncate font-normal">{pad.author}</span>
-                            {pad.rag && (
-                              <>
-                                <span className={isSelected ? 'text-[#CA8A04]' : 'text-[#CBD5E1]'}>•</span>
-                                <span className={`font-mono text-[11px] font-normal ${isSelected ? 'text-[#CA8A04]' : 'text-[#94A3B8]'}`}>
-                                  {pad.rag}
-                                </span>
-                              </>
-                            )}
-                          </div>
-                        </div>
-
-                        {/* Minimal Play Button */}
-                        <button
-                          type="button"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            onPlayPad(pad);
-                          }}
-                          aria-label={`Play ${pad.titleDevanagari}`}
-                          className={`w-7 h-7 rounded-full shrink-0 flex items-center justify-center transition-all cursor-pointer ${
-                            isCurrentlyPlaying || isSelected
-                              ? 'bg-[#FACC15] hover:bg-[#FDE047] text-[#18181B] font-bold'
-                              : 'bg-[#F1F5F9] text-[#64748B] hover:text-[#0F172A] hover:bg-[#E2E8F0]'
-                          }`}
-                        >
-                          {isCurrentlyPlaying ? (
-                            <Pause className="w-3 h-3 fill-current" />
-                          ) : (
-                            <Play className="w-3 h-3 ml-0.5 fill-current" />
-                          )}
-                        </button>
-                      </div>
-                    );
-                  })
-                )}
-
-                {visibleCount < displayedSidebarPads.length && (
-                  <button
-                    type="button"
-                    onClick={() => setVisibleCount((c) => c + 30)}
-                    className="w-full py-2.5 text-xs font-semibold text-neutral-600 hover:text-[#18181B] cursor-pointer border-t border-neutral-100 mt-1 font-serif"
-                  >
-                    और पद लोड करें ({displayedSidebarPads.length - visibleCount} शेष)...
-                  </button>
-                )}
-              </div>
-            </div>
+            )}
           </div>
         )}
 
         {/* ========================================================================= */}
         {/* Center Column: Serene Editorial Reading Canvas                             */}
         {/* ========================================================================= */}
-        <article className={`transition-colors duration-300 ${
+        <article className={`flex-1 min-w-0 transition-all duration-300 ${
           isFocusReadingMode
             ? `w-full dhyana-reader-canvas p-6 sm:p-10 ${currentTheme.canvasBg} ${currentTheme.canvasText}`
-            : `md:col-span-8 xl:col-span-6 w-full rounded-3xl p-6 sm:p-9 ${currentTheme.canvasBg} ${currentTheme.canvasText}`
+            : `w-full rounded-3xl p-6 sm:p-9 ${currentTheme.canvasBg} ${currentTheme.canvasText} ${
+                isLeftSidebarCollapsed && isRightSidebarCollapsed ? 'max-w-4xl mx-auto' : ''
+              }`
         }`}>
           
           {/* Header Bar */}
           <div className={`pb-6 mb-7 border-b ${currentTheme.borderColor} space-y-4`}>
-            {/* Top Meta Line & Bookmark */}
-            <div className="flex items-center justify-between text-xs">
-              <div className={`flex items-center gap-2 ${currentTheme.metaColor} font-mono text-[11px] font-bold tracking-wider uppercase`}>
-                <span>{granthaDisplayName}</span>
-                {selectedPad.rag && (
-                  <>
-                    <span className="text-[#FACC15]">•</span>
-                    <span>राग {selectedPad.rag}</span>
-                  </>
+            {/* Top Meta Line, Shrunk Sidebar Quick Toggles & Bookmark */}
+            <div className="flex items-center justify-between text-xs gap-2 flex-wrap">
+              <div className="flex items-center gap-2 flex-wrap">
+                {isLeftSidebarCollapsed && (
+                  <button
+                    type="button"
+                    onClick={handleToggleLeftSidebar}
+                    className="h-7 px-2.5 rounded-full bg-[#F1F5F9] hover:bg-[#E2E8F0] text-[#334155] text-xs font-medium flex items-center gap-1.5 cursor-pointer transition-colors shrink-0"
+                    title="Expand Pada Index (पद सूची खोलें)"
+                  >
+                    <PanelLeftOpen className="w-3.5 h-3.5 text-[#CA8A04]" />
+                    <span className="text-[11px] font-serif">पद सूची</span>
+                  </button>
                 )}
-                {selectedPad.duration && (
-                  <>
-                    <span className="text-[#CBD5E1]">•</span>
-                    <span className="opacity-75">{selectedPad.duration}</span>
-                  </>
-                )}
+
+                <div className={`flex items-center gap-2 ${currentTheme.metaColor} font-mono text-[11px] font-bold tracking-wider uppercase`}>
+                  <span>{granthaDisplayName}</span>
+                  {selectedPad.rag && (
+                    <>
+                      <span className="text-[#FACC15]">•</span>
+                      <span>राग {selectedPad.rag}</span>
+                    </>
+                  )}
+                  {selectedPad.duration && (
+                    <>
+                      <span className="text-[#CBD5E1]">•</span>
+                      <span className="opacity-75">{selectedPad.duration}</span>
+                    </>
+                  )}
+                </div>
               </div>
 
-              {/* Bookmark Button */}
-              <button
-                type="button"
-                onClick={handleToggleBookmark}
-                title={isBookmarked ? "Saved to Bookmarks" : "Save Pad to Bookmarks"}
-                className={`h-7 px-3 rounded-full flex items-center gap-1.5 text-xs font-medium transition-colors cursor-pointer select-none ${
-                  isBookmarked
-                    ? 'bg-[#FEF08A] text-[#78350F] font-bold'
-                    : 'bg-[#F1F5F9] hover:bg-[#E2E8F0] text-[#475569]'
-                }`}
-              >
-                <Bookmark className={`w-3.5 h-3.5 ${isBookmarked ? 'fill-[#CA8A04] text-[#CA8A04]' : ''}`} />
-                <span className="text-[11px]">{isBookmarked ? 'संग्रहित' : 'बुकमार्क'}</span>
-              </button>
+              <div className="flex items-center gap-2 shrink-0">
+                {isRightSidebarCollapsed && (
+                  <button
+                    type="button"
+                    onClick={handleToggleRightSidebar}
+                    className="hidden xl:flex h-7 px-2.5 rounded-full bg-[#F1F5F9] hover:bg-[#E2E8F0] text-[#334155] text-xs font-medium items-center gap-1.5 cursor-pointer transition-colors shrink-0"
+                    title="Expand Commentary (भावार्थ खोलें)"
+                  >
+                    <PanelRightOpen className="w-3.5 h-3.5 text-[#CA8A04]" />
+                    <span className="text-[11px] font-serif">भावार्थ</span>
+                  </button>
+                )}
+
+                {/* Bookmark Button */}
+                <button
+                  type="button"
+                  onClick={handleToggleBookmark}
+                  title={isBookmarked ? "Saved to Bookmarks" : "Save Pad to Bookmarks"}
+                  className={`h-7 px-3 rounded-full flex items-center gap-1.5 text-xs font-medium transition-colors cursor-pointer select-none ${
+                    isBookmarked
+                      ? 'bg-[#FEF08A] text-[#78350F] font-bold'
+                      : 'bg-[#F1F5F9] hover:bg-[#E2E8F0] text-[#475569]'
+                  }`}
+                >
+                  <Bookmark className={`w-3.5 h-3.5 ${isBookmarked ? 'fill-[#CA8A04] text-[#CA8A04]' : ''}`} />
+                  <span className="text-[11px]">{isBookmarked ? 'संग्रहित' : 'बुकमार्क'}</span>
+                </button>
+              </div>
             </div>
 
             {/* Noble Headline & Author */}
@@ -1731,68 +1863,108 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
         {/* Right Column: Dedicated Desktop Commentary Desk (Visible on xl:block)     */}
         {/* ========================================================================= */}
         {!isFocusReadingMode && (
-          <aside className="hidden xl:block xl:col-span-3 space-y-4 sticky top-24">
-            <div className={`${currentTheme.commentaryBg} rounded-3xl p-5 border ${currentTheme.borderColor} transition-colors duration-300`}>
-              <div className={`flex items-center gap-2 pb-3 mb-3 border-b ${currentTheme.borderColor}`}>
-                <div className="w-7 h-7 rounded-lg bg-[#FAF7F0] flex items-center justify-center text-[#CA8A04]">
-                  <Feather className="w-3.5 h-3.5" />
-                </div>
-                <div>
-                  <h3 className={`${fontClass} font-bold text-sm ${currentTheme.titleColor}`}>
-                    रसिक भावार्थ एवं गूढ़ार्थ
-                  </h3>
-                  <span className={`text-[10px] ${currentTheme.metaColor} font-mono font-semibold`}>
-                    Rasik Commentary & Purport
-                  </span>
-                </div>
-              </div>
+          <aside className="hidden xl:block sticky top-24 shrink-0 transition-all duration-300">
+            {isRightSidebarCollapsed ? (
+              /* Shrunk / Compact Commentary Rail */
+              <div className={`w-13 sm:w-14 ${currentTheme.commentaryBg} rounded-3xl p-2 flex flex-col items-center max-h-[82vh] border ${currentTheme.borderColor} shadow-xs`}>
+                <button
+                  type="button"
+                  onClick={handleToggleRightSidebar}
+                  className="w-9 h-9 rounded-xl hover:bg-black/5 flex items-center justify-center text-[#475569] hover:text-[#0F172A] transition-colors cursor-pointer"
+                  title="Expand Commentary (भावार्थ खोलें)"
+                  aria-label="Expand Commentary Sidebar"
+                >
+                  <PanelRightOpen className="w-4 h-4 text-[#CA8A04]" />
+                </button>
 
-              <div className="space-y-2.5 max-h-[52vh] overflow-y-auto custom-scroll pr-1">
-                {selectedPad.verses.map((v) => {
-                  const isActive = activeStanzaIndex === v.stanzaNumber - 1;
-                  return (
-                    <div
-                      key={v.stanzaNumber}
-                      onClick={() => {
-                        setActiveStanzaIndex(v.stanzaNumber - 1);
-                        const stanzaEl = document.getElementById(`stanza-${v.stanzaNumber - 1}`);
-                        if (stanzaEl) stanzaEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                      }}
-                      className={`p-3.5 rounded-xl transition-colors cursor-pointer ${
-                        isActive
-                          ? currentTheme.cardActiveBg
-                          : `${currentTheme.cardHoverBg} opacity-85 hover:opacity-100`
-                      }`}
-                    >
-                      <div className="flex items-center justify-between mb-1">
-                        <span className={`text-[10px] font-mono font-bold ${currentTheme.metaColor} uppercase tracking-wider`}>
-                          चरण {formatDevanagariNumerals(v.stanzaNumber)}
-                        </span>
-                        <span className={`text-[10px] ${currentTheme.translitColor} font-mono`}>भावार्थ</span>
+                <div className={`w-6 h-px ${currentTheme.borderColor} my-2`} />
+
+                <button
+                  type="button"
+                  onClick={handleToggleRightSidebar}
+                  className="w-9 h-9 rounded-xl hover:bg-black/5 flex items-center justify-center text-[#CA8A04] transition-colors cursor-pointer"
+                  title="Rasik Commentary & Purport (भावार्थ देखें)"
+                >
+                  <Feather className="w-4 h-4" />
+                </button>
+              </div>
+            ) : (
+              /* Full Expanded Right Sidebar */
+              <div className="w-72 lg:w-80 space-y-4">
+                <div className={`${currentTheme.commentaryBg} rounded-3xl p-5 border ${currentTheme.borderColor} transition-colors duration-300 shadow-xs`}>
+                  <div className={`flex items-center justify-between pb-3 mb-3 border-b ${currentTheme.borderColor}`}>
+                    <div className="flex items-center gap-2">
+                      <div className="w-7 h-7 rounded-lg bg-[#FAF7F0] flex items-center justify-center text-[#CA8A04]">
+                        <Feather className="w-3.5 h-3.5" />
                       </div>
-                      <p className={`text-xs leading-relaxed ${fontClass} font-normal ${currentTheme.canvasText}`}>
-                        {v.bhavarth}
-                      </p>
+                      <div>
+                        <h3 className={`${fontClass} font-bold text-sm ${currentTheme.titleColor}`}>
+                          रसिक भावार्थ एवं गूढ़ार्थ
+                        </h3>
+                        <span className={`text-[10px] ${currentTheme.metaColor} font-mono font-semibold`}>
+                          Rasik Commentary & Purport
+                        </span>
+                      </div>
                     </div>
-                  );
-                })}
-              </div>
-            </div>
+                    <button
+                      type="button"
+                      onClick={handleToggleRightSidebar}
+                      className="w-6 h-6 rounded-lg hover:bg-black/5 flex items-center justify-center text-[#64748B] hover:text-[#0F172A] transition-colors cursor-pointer"
+                      title="Shrink Commentary (भावार्थ समेटें)"
+                      aria-label="Shrink Commentary Sidebar"
+                    >
+                      <PanelRightClose className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
 
-            {/* Luminous Sacred Footnote */}
-            <div className={`${currentTheme.commentaryBg} border ${currentTheme.borderColor} rounded-2xl p-4 text-xs ${currentTheme.canvasText} leading-relaxed transition-colors`}>
-              <div className={`flex items-center gap-1.5 mb-1 ${currentTheme.titleColor} font-serif font-bold`}>
-                <Sparkles className="w-3.5 h-3.5 text-[#CA8A04]" />
-                <span>नित्य निकुंज विहार दर्शन</span>
+                  <div className="space-y-2.5 max-h-[52vh] overflow-y-auto custom-scroll pr-1">
+                    {selectedPad.verses.map((v) => {
+                      const isActive = activeStanzaIndex === v.stanzaNumber - 1;
+                      return (
+                        <div
+                          key={v.stanzaNumber}
+                          onClick={() => {
+                            setActiveStanzaIndex(v.stanzaNumber - 1);
+                            const stanzaEl = document.getElementById(`stanza-${v.stanzaNumber - 1}`);
+                            if (stanzaEl) stanzaEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                          }}
+                          className={`p-3.5 rounded-xl transition-colors cursor-pointer ${
+                            isActive
+                              ? currentTheme.cardActiveBg
+                              : `${currentTheme.cardHoverBg} opacity-85 hover:opacity-100`
+                          }`}
+                        >
+                          <div className="flex items-center justify-between mb-1">
+                            <span className={`text-[10px] font-mono font-bold ${currentTheme.metaColor} uppercase tracking-wider`}>
+                              चरण {formatDevanagariNumerals(v.stanzaNumber)}
+                            </span>
+                            <span className={`text-[10px] ${currentTheme.translitColor} font-mono`}>भावार्थ</span>
+                          </div>
+                          <p className={`text-xs leading-relaxed ${fontClass} font-normal ${currentTheme.canvasText}`}>
+                            {v.bhavarth}
+                          </p>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Luminous Sacred Footnote */}
+                <div className={`${currentTheme.commentaryBg} border ${currentTheme.borderColor} rounded-2xl p-4 text-xs ${currentTheme.canvasText} leading-relaxed transition-colors shadow-xs`}>
+                  <div className={`flex items-center gap-1.5 mb-1 ${currentTheme.titleColor} font-serif font-bold`}>
+                    <Sparkles className="w-3.5 h-3.5 text-[#CA8A04]" />
+                    <span>नित्य निकुंज विहार दर्शन</span>
+                  </div>
+                  <p className={`text-[11.5px] ${currentTheme.translitColor} font-devanagari`}>
+                    श्री वृन्दावन धाम में प्रिया-प्रियतम की नित्य विहार लीला अखंड एवं नित्य-नूतन है। यहाँ प्रेम ही साधन है और प्रेम ही साध्य है।
+                  </p>
+                  <div className={`pt-2 mt-2 border-t ${currentTheme.borderColor} flex items-center justify-between text-[10px] ${currentTheme.metaColor} font-mono font-semibold`}>
+                    <span>॥ अगाध निकुंज रस ॥</span>
+                    <span>राधा कृपा कटाक्ष</span>
+                  </div>
+                </div>
               </div>
-              <p className={`text-[11.5px] ${currentTheme.translitColor} font-devanagari`}>
-                श्री वृन्दावन धाम में प्रिया-प्रियतम की नित्य विहार लीला अखंड एवं नित्य-नूतन है। यहाँ प्रेम ही साधन है और प्रेम ही साध्य है।
-              </p>
-              <div className={`pt-2 mt-2 border-t ${currentTheme.borderColor} flex items-center justify-between text-[10px] ${currentTheme.metaColor} font-mono font-semibold`}>
-                <span>॥ अगाध निकुंज रस ॥</span>
-                <span>राधा कृपा कटाक्ष</span>
-              </div>
-            </div>
+            )}
           </aside>
         )}
 
