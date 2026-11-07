@@ -278,11 +278,11 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
           </div>
         </div>
 
-        {/* Mobile Dropdown Menu Card (Graceful, Luxury & Highly Useful when toggled) */}
+        {/* Mobile Dropdown Menu Card (Pure, Ascetic Simplicity & High Utility) */}
         {isMobileMenuOpen && (
-          <div className="pointer-events-auto w-full max-w-[96vw] mt-2 p-3 sm:p-4 rounded-3xl bg-white/98 backdrop-blur-2xl md:hidden apple-view-enter border border-neutral-200/80 shadow-xl space-y-2.5 max-h-[85vh] overflow-y-auto no-scrollbar">
+          <div className="pointer-events-auto w-full max-w-[96vw] mt-2 p-3 sm:p-4 rounded-3xl bg-white/98 backdrop-blur-2xl md:hidden apple-view-enter border border-neutral-200/60 shadow-xl space-y-2.5 max-h-[85vh] overflow-y-auto no-scrollbar text-[#18181B]">
             
-            {/* 1. Quick Search Trigger Bar */}
+            {/* 1. Minimalist Search Bar */}
             {onOpenSearch && (
               <button
                 type="button"
@@ -290,19 +290,19 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
                   onOpenSearch();
                   setIsMobileMenuOpen(false);
                 }}
-                className="w-full py-2 px-3 rounded-xl bg-neutral-100 hover:bg-neutral-200/80 text-neutral-600 flex items-center justify-between text-xs font-medium cursor-pointer transition-colors"
+                className="w-full h-10 px-3.5 rounded-2xl bg-neutral-100/80 hover:bg-neutral-200/70 text-neutral-600 flex items-center justify-between text-xs font-medium cursor-pointer transition-colors"
               >
                 <div className="flex items-center gap-2">
-                  <Search className="w-3.5 h-3.5 text-neutral-500" />
-                  <span>पद, संत, राग या ग्रंथ खोजें...</span>
+                  <Search className="w-4 h-4 text-neutral-400" />
+                  <span className="text-neutral-500">पद, संत, राग या ग्रंथ खोजें...</span>
                 </div>
-                <kbd className="text-[10px] font-mono text-neutral-500 bg-white px-1.5 py-0.5 rounded shadow-2xs border border-neutral-200/60">
-                  खोज ⌘K
+                <kbd className="text-[10px] font-mono text-neutral-400 bg-white/90 px-1.5 py-0.5 rounded-md shadow-2xs border border-neutral-200/50">
+                  ⌘K
                 </kbd>
               </button>
             )}
 
-            {/* 2. Primary 4 Sanctuary Portals (2x2 Rich Bilingual Grid) */}
+            {/* 2. Primary 4 Sanctuary Portals (Pure, Balanced 2x2 Grid) */}
             <div className="grid grid-cols-2 gap-2">
               {mobileNavItems.map((item) => {
                 const Icon = item.icon;
@@ -312,18 +312,18 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
                     key={item.id}
                     type="button"
                     onClick={() => handleSelectNav(item.id)}
-                    className={`relative flex flex-col justify-between p-3 rounded-2xl text-left transition-all cursor-pointer border ${
+                    className={`relative flex flex-col justify-between p-3 rounded-2xl text-left transition-colors cursor-pointer border ${
                       isActive
-                        ? 'bg-[#FEF08A]/95 border-amber-400 text-amber-950 shadow-xs ring-1 ring-amber-400/50'
-                        : 'bg-white hover:bg-neutral-50 border-neutral-200/80 text-neutral-800'
+                        ? 'bg-amber-100/80 border-amber-300 text-amber-950 font-bold shadow-2xs'
+                        : 'bg-neutral-50/70 hover:bg-neutral-100/80 border-neutral-100 text-neutral-800'
                     }`}
                   >
                     <div className="flex items-center justify-between w-full mb-1">
                       <div
                         className={`w-7 h-7 rounded-xl flex items-center justify-center ${
                           isActive
-                            ? 'bg-amber-400 text-amber-950'
-                            : 'bg-neutral-100 text-neutral-600'
+                            ? 'bg-amber-300/80 text-amber-950'
+                            : 'bg-white text-neutral-600 border border-neutral-200/60'
                         }`}
                       >
                         <Icon className="w-3.5 h-3.5 stroke-[2.2]" />
@@ -332,8 +332,8 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
                         <span
                           className={`text-[10px] font-mono font-bold px-1.5 py-0.2 rounded-full ${
                             isActive
-                              ? 'bg-amber-300/90 text-amber-950'
-                              : 'bg-neutral-100 text-neutral-600'
+                              ? 'bg-amber-200/80 text-amber-950'
+                              : 'bg-white text-neutral-500 border border-neutral-200/60'
                           }`}
                         >
                           {item.badge}
@@ -353,129 +353,134 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
               })}
             </div>
 
-            {/* 3. Current Sacred Ashtayama Period Banner */}
-            <div className="p-3 rounded-2xl bg-gradient-to-r from-amber-50/90 via-orange-50/50 to-amber-50/90 border border-amber-200/80 flex items-center justify-between gap-2.5 shadow-2xs">
-              <div className="flex items-center gap-2.5 min-w-0">
-                <div className="w-8 h-8 rounded-xl bg-amber-100/90 flex items-center justify-center shrink-0 border border-amber-300/60">
-                  {['शयन', 'मंगला'].includes(ashtayama.nameDevanagari) ? (
-                    <Moon className="w-4 h-4 text-amber-800" />
-                  ) : (
-                    <Sun className="w-4 h-4 text-amber-800" />
-                  )}
-                </div>
-                <div className="min-w-0">
-                  <div className="flex items-center gap-1.5 flex-wrap">
-                    <span className="font-devanagari font-bold text-xs text-amber-950">
-                      {ashtayama.nameDevanagari} वेला ({ashtayama.nameEnglish})
-                    </span>
-                    <span className="text-[10px] font-mono font-bold text-amber-800 bg-amber-100 px-1.5 py-0.2 rounded-full">
-                      {ashtayama.timeRange}
-                    </span>
-                  </div>
-                  <p className="text-[10.5px] text-amber-900/80 font-devanagari truncate mt-0.5">
-                    {ashtayama.descriptionDevanagari || ashtayama.bhava}
-                  </p>
-                </div>
-              </div>
-
-              {onOpenFocus && (
-                <button
-                  type="button"
-                  onClick={() => {
-                    onOpenFocus();
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className="px-3 py-1.5 rounded-full text-xs font-bold bg-[#FEF08A] hover:bg-[#FDE047] text-amber-950 shadow-2xs shrink-0 flex items-center gap-1 cursor-pointer transition-colors"
-                >
-                  <span>ध्यान कक्ष</span>
-                  <ChevronRight className="w-3.5 h-3.5" />
-                </button>
-              )}
-            </div>
-
-            {/* 4. Active Sacred Audio Player Strip (if track is loaded or playing) */}
-            {currentTrackTitle && (
-              <div className="p-2.5 rounded-2xl bg-amber-50/80 border border-amber-200/80 flex items-center justify-between gap-2.5">
+            {/* 3. Live Presence Strip: Ashtayama Period + Audio Player (Quiet, Unified Card) */}
+            <div className="rounded-2xl bg-amber-50/50 border border-amber-200/60 p-3 space-y-2.5">
+              {/* Row A: Ashtayama Period */}
+              <div className="flex items-center justify-between gap-2">
                 <div className="flex items-center gap-2.5 min-w-0">
-                  <button
-                    type="button"
-                    onClick={onToggleAudio}
-                    className="w-7 h-7 rounded-full bg-[#FACC15] hover:bg-[#FDE047] text-[#18181B] flex items-center justify-center shadow-2xs shrink-0 cursor-pointer font-bold"
-                  >
-                    {isPlayingAudio ? (
-                      <Pause className="w-3 h-3 fill-current" />
+                  <div className="w-7 h-7 rounded-full bg-amber-100 flex items-center justify-center shrink-0 text-amber-800 border border-amber-200/60">
+                    {['शयन', 'मंगला'].includes(ashtayama.nameDevanagari) ? (
+                      <Moon className="w-3.5 h-3.5" />
                     ) : (
-                      <Play className="w-3 h-3 fill-current ml-0.5" />
+                      <Sun className="w-3.5 h-3.5" />
                     )}
-                  </button>
+                  </div>
                   <div className="min-w-0">
-                    <div className="text-xs font-semibold text-neutral-900 truncate">
-                      {currentTrackTitle}
+                    <div className="flex items-center gap-1.5">
+                      <span className="font-devanagari font-bold text-xs text-amber-950 truncate">
+                        {ashtayama.nameDevanagari} वेला ({ashtayama.nameEnglish})
+                      </span>
+                      <span className="text-[10px] font-mono text-amber-800/80 bg-amber-100/70 px-1.5 py-0.2 rounded-full shrink-0">
+                        {ashtayama.timeRange}
+                      </span>
                     </div>
-                    <div className="text-[10px] text-amber-800 font-mono">
-                      {isPlayingAudio ? '● Recitation Active' : 'Paused • Sacred Audio'}
-                    </div>
+                    <p className="text-[10.5px] text-amber-900/70 font-devanagari truncate">
+                      {ashtayama.descriptionDevanagari || ashtayama.bhava}
+                    </p>
                   </div>
                 </div>
 
-                {onOpenPlayer && (
+                {onOpenFocus && (
                   <button
                     type="button"
                     onClick={() => {
-                      onOpenPlayer();
+                      onOpenFocus();
                       setIsMobileMenuOpen(false);
                     }}
-                    className="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-white border border-amber-200 text-amber-900 shrink-0 hover:bg-amber-50 cursor-pointer"
+                    className="h-7 px-2.5 rounded-full text-[11px] font-semibold bg-amber-200/90 hover:bg-amber-300 text-amber-950 shrink-0 flex items-center gap-0.5 cursor-pointer transition-colors"
                   >
-                    Player ↗
+                    <span>ध्यान कक्ष</span>
+                    <ChevronRight className="w-3 h-3" />
                   </button>
                 )}
               </div>
-            )}
 
-            {/* 5. Daily Sadhana Quick Snapshot & 1-Tap Mala Recorder */}
+              {/* Row B: Audio Track (if active or loaded) */}
+              {currentTrackTitle && (
+                <div className="pt-2 border-t border-amber-200/40 flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2 min-w-0">
+                    <button
+                      type="button"
+                      onClick={onToggleAudio}
+                      className="w-6 h-6 rounded-full bg-amber-400 hover:bg-amber-500 text-neutral-900 flex items-center justify-center shrink-0 cursor-pointer shadow-2xs"
+                    >
+                      {isPlayingAudio ? (
+                        <Pause className="w-2.5 h-2.5 fill-current" />
+                      ) : (
+                        <Play className="w-2.5 h-2.5 fill-current ml-0.5" />
+                      )}
+                    </button>
+                    <div className="min-w-0">
+                      <div className="text-xs font-semibold text-neutral-900 truncate">
+                        {currentTrackTitle}
+                      </div>
+                      <div className="text-[10px] text-amber-800/80 font-mono">
+                        {isPlayingAudio ? '● Recitation Active' : 'Paused • Sacred Audio'}
+                      </div>
+                    </div>
+                  </div>
+
+                  {onOpenPlayer && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        onOpenPlayer();
+                        setIsMobileMenuOpen(false);
+                      }}
+                      className="h-6 px-2 rounded-full text-[10px] font-medium bg-white text-amber-900 border border-amber-200/80 shrink-0 hover:bg-amber-50 cursor-pointer"
+                    >
+                      Player ↗
+                    </button>
+                  )}
+                </div>
+              )}
+            </div>
+
+            {/* 4. Daily Sadhana Snapshot (Pure, Uncluttered, One-Tap) */}
             {sadhana && (
-              <div className="p-3 rounded-2xl bg-neutral-50/90 border border-neutral-200/70 space-y-2">
-                <div className="flex items-center justify-between text-xs">
+              <div className="rounded-2xl bg-neutral-50/70 border border-neutral-200/60 p-3 space-y-2.5">
+                <div className="flex items-center justify-between text-xs px-0.5">
                   <div className="flex items-center gap-1.5 font-semibold text-neutral-700">
                     <Sparkles className="w-3.5 h-3.5 text-amber-600" />
-                    <span>दैनिक साधना सोपान (Daily Progress)</span>
+                    <span>दैनिक साधना • Daily Progress</span>
                   </div>
-                  <span className="text-[11px] font-mono font-bold text-amber-800 bg-amber-100/70 px-2 py-0.2 rounded-full">
+                  <span className="text-[11px] font-mono font-bold text-amber-800 bg-amber-100/80 px-2 py-0.2 rounded-full">
                     🔥 {sadhana.currentStreakDays}d Streak
                   </span>
                 </div>
 
-                <div className="grid grid-cols-3 gap-2 text-center">
-                  <div className="p-2 rounded-xl bg-white border border-neutral-100 shadow-2xs">
+                {/* 3 Metric Tiles (Pure, borderless with subtle tone) */}
+                <div className="grid grid-cols-3 gap-2">
+                  <div className="p-2 rounded-xl bg-white border border-neutral-100 shadow-2xs text-center">
                     <div className="text-[10px] text-neutral-400 font-medium font-devanagari">नाम जप</div>
                     <div className="text-xs font-bold text-neutral-800 font-mono mt-0.5">
-                      {sadhana.japaCompleted}/{sadhana.japaTarget} <span className="text-[9px] font-normal text-neutral-500">माला</span>
+                      {sadhana.japaCompleted}/{sadhana.japaTarget} <span className="text-[9px] font-normal text-neutral-400">माला</span>
                     </div>
                   </div>
 
-                  <div className="p-2 rounded-xl bg-white border border-neutral-100 shadow-2xs">
+                  <div className="p-2 rounded-xl bg-white border border-neutral-100 shadow-2xs text-center">
                     <div className="text-[10px] text-neutral-400 font-medium font-devanagari">वाणी श्रवण</div>
                     <div className="text-xs font-bold text-neutral-800 font-mono mt-0.5">
-                      {sadhana.shravanMinutes}/{sadhana.shravanTarget} <span className="text-[9px] font-normal text-neutral-500">min</span>
+                      {sadhana.shravanMinutes}/{sadhana.shravanTarget} <span className="text-[9px] font-normal text-neutral-400">min</span>
                     </div>
                   </div>
 
-                  <div className="p-2 rounded-xl bg-white border border-neutral-100 shadow-2xs">
+                  <div className="p-2 rounded-xl bg-white border border-neutral-100 shadow-2xs text-center">
                     <div className="text-[10px] text-neutral-400 font-medium font-devanagari">स्वाध्याय</div>
                     <div className="text-xs font-bold text-neutral-800 font-mono mt-0.5">
-                      {sadhana.svadhyayaPadas}/{sadhana.svadhyayaTarget} <span className="text-[9px] font-normal text-neutral-500">पद</span>
+                      {sadhana.svadhyayaPadas}/{sadhana.svadhyayaTarget} <span className="text-[9px] font-normal text-neutral-400">पद</span>
                     </div>
                   </div>
                 </div>
 
+                {/* 1-Tap Quick Mala Bead */}
                 {onQuickJapa && (
                   <button
                     type="button"
                     onClick={onQuickJapa}
-                    className="w-full py-1.5 rounded-xl bg-amber-100/90 hover:bg-amber-200 text-amber-950 text-xs font-bold flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                    className="w-full h-8 rounded-xl bg-amber-100/80 hover:bg-amber-200/90 text-amber-950 text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
                   >
-                    <span>📿 १ माला जप पूर्ण (+1 Mala Japa)</span>
+                    <span>📿 +१ माला जप पूर्ण (+1 Mala Japa)</span>
                   </button>
                 )}
               </div>
