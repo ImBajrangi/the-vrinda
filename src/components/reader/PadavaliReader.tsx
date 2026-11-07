@@ -401,15 +401,15 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     if (isSettingsOpen) {
       setIsSettingsRendered(true);
       setIsSettingsClosing(false);
-    } else if (isSettingsRendered) {
+    } else if (isSettingsRendered && !isSettingsClosing) {
       setIsSettingsClosing(true);
       const timer = setTimeout(() => {
         setIsSettingsRendered(false);
         setIsSettingsClosing(false);
-      }, 190);
+      }, 240);
       return () => clearTimeout(timer);
     }
-  }, [isSettingsOpen, isSettingsRendered]);
+  }, [isSettingsOpen, isSettingsRendered, isSettingsClosing]);
 
   const settingsTrayRef = useRef<HTMLDivElement>(null);
   const settingsToggleTopRef = useRef<HTMLButtonElement>(null);
@@ -456,19 +456,21 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   const [summaryText, setSummaryText] = useState<string>('');
 
   const handleCloseCommentary = () => {
+    if (isCommentaryClosing) return;
     setIsCommentaryClosing(true);
     setTimeout(() => {
       setIsCommentaryOpen(false);
       setIsCommentaryClosing(false);
-    }, 200);
+    }, 240);
   };
 
   const handleCloseGlossary = () => {
+    if (isGlossaryClosing) return;
     setIsGlossaryClosing(true);
     setTimeout(() => {
       setIsGlossaryOpen(false);
       setIsGlossaryClosing(false);
-    }, 200);
+    }, 240);
   };
 
   // Lock body scroll and handle Escape key when either mobile commentary drawer or lexicon sheet modal is active
@@ -960,8 +962,8 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       {isSettingsRendered && (
         <div
           ref={settingsTrayRef}
-          className={`mb-5 p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-white border border-neutral-200/80 shadow-sm space-y-4 text-[#18181B] ${
-            isSettingsClosing ? 'apple-sheet-exit' : 'apple-sheet-enter'
+          className={`mb-5 p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-white border border-neutral-200/80 shadow-sm space-y-4 text-[#18181B] transform-gpu will-change-transform ${
+            isSettingsClosing ? 'apple-view-exit' : 'apple-view-enter'
           }`}
         >
           {/* Top Section: Sacred Ambiance Canvas Selection (Full Width 3-Column Grid) */}

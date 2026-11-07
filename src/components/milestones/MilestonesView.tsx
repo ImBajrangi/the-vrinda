@@ -57,15 +57,15 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
     if (isMenuOpen) {
       setIsMenuRendered(true);
       setIsMenuClosing(false);
-    } else if (isMenuRendered) {
+    } else if (isMenuRendered && !isMenuClosing) {
       setIsMenuClosing(true);
       const timer = setTimeout(() => {
         setIsMenuRendered(false);
         setIsMenuClosing(false);
-      }, 160);
+      }, 240);
       return () => clearTimeout(timer);
     }
-  }, [isMenuOpen, isMenuRendered]);
+  }, [isMenuOpen, isMenuRendered, isMenuClosing]);
   const [isRulesModalOpen, setIsRulesModalOpen] = useState(false);
   const [isRulesClosing, setIsRulesClosing] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
@@ -92,19 +92,21 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
   }, [selectedBadge, isRulesModalOpen]);
 
   const handleCloseBadge = () => {
+    if (isBadgeClosing) return;
     setIsBadgeClosing(true);
     setTimeout(() => {
       setSelectedBadge(null);
       setIsBadgeClosing(false);
-    }, 200);
+    }, 240);
   };
 
   const handleCloseRules = () => {
+    if (isRulesClosing) return;
     setIsRulesClosing(true);
     setTimeout(() => {
       setIsRulesModalOpen(false);
       setIsRulesClosing(false);
-    }, 200);
+    }, 240);
   };
 
   useEffect(() => {
@@ -283,8 +285,8 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
 
           {/* Glassmorphic Dropdown Popover */}
           {isMenuRendered && (
-            <div className={`absolute right-0 top-12 z-40 w-64 sm:w-72 bg-white border border-black/10 rounded-2xl shadow-2xl p-1.5 text-left ${
-              isMenuClosing ? 'apple-view-exit' : 'apple-dialog-enter'
+            <div className={`absolute right-0 top-12 z-40 w-64 sm:w-72 bg-white border border-black/10 rounded-2xl shadow-2xl p-1.5 text-left transform-gpu will-change-transform ${
+              isMenuClosing ? 'apple-dialog-exit' : 'apple-dialog-enter'
             }`}>
               <div className="px-3 py-2 border-b border-black/5">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-[#B84A28]">

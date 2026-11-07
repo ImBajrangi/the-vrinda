@@ -39,21 +39,24 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
     if (isOpen && pillarType) {
       setIsRendered(true);
       setIsClosing(false);
-    } else if (isRendered) {
+    } else if (isRendered && !isClosing) {
       setIsClosing(true);
       const timer = setTimeout(() => {
         setIsRendered(false);
         setIsClosing(false);
-      }, 200);
+      }, 240);
       return () => clearTimeout(timer);
     }
-  }, [isOpen, pillarType, isRendered]);
+  }, [isOpen, pillarType, isRendered, isClosing]);
 
   const handleDismiss = () => {
+    if (isClosing) return;
     setIsClosing(true);
     setTimeout(() => {
       onClose();
-    }, 200);
+      setIsRendered(false);
+      setIsClosing(false);
+    }, 240);
   };
 
   useEffect(() => {

@@ -25,15 +25,15 @@ export const SaintsDirectoryModal: React.FC<SaintsDirectoryModalProps> = ({
     if (isOpen) {
       setIsRendered(true);
       setIsClosing(false);
-    } else if (isRendered) {
+    } else if (isRendered && !isClosing) {
       setIsClosing(true);
       const timer = setTimeout(() => {
         setIsRendered(false);
         setIsClosing(false);
-      }, 200);
+      }, 240);
       return () => clearTimeout(timer);
     }
-  }, [isOpen, isRendered]);
+  }, [isOpen, isRendered, isClosing]);
 
   // Lock body scroll and close on Escape while modal is active
   useEffect(() => {
@@ -75,10 +75,13 @@ export const SaintsDirectoryModal: React.FC<SaintsDirectoryModalProps> = ({
   }, [selectedTradition, isRendered]);
 
   const handleDismiss = () => {
+    if (isClosing) return;
     setIsClosing(true);
     setTimeout(() => {
       onClose();
-    }, 200);
+      setIsRendered(false);
+      setIsClosing(false);
+    }, 240);
   };
 
   if (!isRendered) return null;

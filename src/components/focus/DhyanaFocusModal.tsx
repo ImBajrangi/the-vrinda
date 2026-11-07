@@ -193,21 +193,24 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
     if (isOpen) {
       setIsRendered(true);
       setIsClosing(false);
-    } else if (isRendered) {
+    } else if (isRendered && !isClosing) {
       setIsClosing(true);
       const timer = setTimeout(() => {
         setIsRendered(false);
         setIsClosing(false);
-      }, 220);
+      }, 240);
       return () => clearTimeout(timer);
     }
-  }, [isOpen, isRendered]);
+  }, [isOpen, isRendered, isClosing]);
 
   const handleDismiss = () => {
+    if (isClosing) return;
     setIsClosing(true);
     setTimeout(() => {
       onClose();
-    }, 200);
+      setIsRendered(false);
+      setIsClosing(false);
+    }, 240);
   };
 
   const formatTime = (totalSec: number) => {

@@ -56,15 +56,15 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
     if (isMobileMenuOpen) {
       setIsMenuRendered(true);
       setIsMenuClosing(false);
-    } else if (isMenuRendered) {
+    } else if (isMenuRendered && !isMenuClosing) {
       setIsMenuClosing(true);
       const timer = setTimeout(() => {
         setIsMenuRendered(false);
         setIsMenuClosing(false);
-      }, 190);
+      }, 240);
       return () => clearTimeout(timer);
     }
-  }, [isMobileMenuOpen, isMenuRendered]);
+  }, [isMobileMenuOpen, isMenuRendered, isMenuClosing]);
 
   const ashtayama = computeAshtayamaPhase();
 

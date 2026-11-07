@@ -21,13 +21,25 @@ export const FloatingAudioPlayer: React.FC<FloatingAudioPlayerProps> = ({
   onPrev,
   onOpenLyrics,
 }) => {
+  const [isClosing, setIsClosing] = React.useState(false);
+
+  const handleClose = () => {
+    if (isClosing) return;
+    setIsClosing(true);
+    setTimeout(() => {
+      onClose();
+    }, 240);
+  };
+
   if (!currentPad) return null;
 
   return (
     // Apple-grade Docked Pill: Mobile centered at bottom-24; Desktop/Tablet docked at bottom-6 right-8
     <aside
       aria-label="Floating Audio Player"
-      className="fixed bottom-24 md:bottom-6 left-4 right-4 md:left-auto md:right-8 md:w-[390px] max-w-md mx-auto md:mx-0 z-50 apple-view-enter"
+      className={`fixed bottom-24 md:bottom-6 left-4 right-4 md:left-auto md:right-8 md:w-[390px] max-w-md mx-auto md:mx-0 z-50 transform-gpu will-change-transform ${
+        isClosing ? 'apple-view-exit' : 'apple-view-enter'
+      }`}
     >
       <div className="bg-white/95 backdrop-blur-md border border-neutral-900/[0.08] shadow-[0_8px_28px_-6px_rgba(24,24,27,0.12),0_2px_8px_-2px_rgba(24,24,27,0.04)] text-[#18181B] rounded-full p-2.5 sm:p-3 flex items-center justify-between gap-3 transition-all duration-300 transform-gpu will-change-transform">
         {/* Animated Visualizer Icon with Apple Fluid Waves */}
@@ -118,7 +130,7 @@ export const FloatingAudioPlayer: React.FC<FloatingAudioPlayerProps> = ({
 
           <button
             type="button"
-            onClick={onClose}
+            onClick={handleClose}
             aria-label="Close audio player"
             className="p-1.5 text-neutral-400 hover:text-[#18181B] transition-colors cursor-pointer ml-0.5"
           >

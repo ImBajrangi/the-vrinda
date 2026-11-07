@@ -82,15 +82,15 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
     if (isMenuOpen) {
       setIsMenuRendered(true);
       setIsMenuClosing(false);
-    } else if (isMenuRendered) {
+    } else if (isMenuRendered && !isMenuClosing) {
       setIsMenuClosing(true);
       const timer = setTimeout(() => {
         setIsMenuRendered(false);
         setIsMenuClosing(false);
-      }, 160);
+      }, 240);
       return () => clearTimeout(timer);
     }
-  }, [isMenuOpen, isMenuRendered]);
+  }, [isMenuOpen, isMenuRendered, isMenuClosing]);
   const [toast, setToast] = useState<string | null>(null);
   const [summary, setSummary] = useState<string | null>(() =>
     getCachedDevotionalSummarySync({
@@ -337,8 +337,8 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
 
             {/* Contextual Popover */}
             {isMenuRendered && (
-              <div className={`absolute right-0 top-10 z-40 w-56 bg-white rounded-2xl p-1.5 text-left border border-black/10 shadow-xl ${
-                isMenuClosing ? 'apple-view-exit' : 'apple-dialog-enter'
+              <div className={`absolute right-0 top-10 z-40 w-56 bg-white rounded-2xl p-1.5 text-left border border-black/10 shadow-xl transform-gpu will-change-transform ${
+                isMenuClosing ? 'apple-dialog-exit' : 'apple-dialog-enter'
               }`}>
                 <div className="py-0.5 space-y-0.5">
                   <button

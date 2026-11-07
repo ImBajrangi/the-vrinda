@@ -103,14 +103,15 @@ body {
 }
 
 .apple-view-exit {
-  animation: appleViewOut 0.18s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: appleViewOut 0.22s cubic-bezier(0.32, 0, 0.2, 1) both !important;
+  pointer-events: none !important;
   will-change: transform, opacity;
 }
 
 @keyframes appleViewIn {
   0% {
     opacity: 0;
-    transform: translateY(6px);
+    transform: translateY(-6px) scale(0.985);
   }
   100% {
     opacity: 1;
@@ -121,11 +122,11 @@ body {
 @keyframes appleViewOut {
   0% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
   100% {
     opacity: 0;
-    transform: translateY(6px);
+    transform: translateY(-6px) scale(0.985);
   }
 }
 
@@ -144,11 +145,11 @@ body {
 @keyframes appleSheetOut {
   0% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
   100% {
     opacity: 0;
-    transform: translateY(16px) scale(0.98);
+    transform: translateY(12px) scale(0.985);
   }
 }
 
@@ -158,11 +159,12 @@ body {
 }
 
 .apple-sheet-exit {
-  animation: appleSheetOut 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: appleSheetOut 0.24s cubic-bezier(0.32, 0, 0.2, 1) both !important;
+  pointer-events: none !important;
   will-change: transform, opacity;
 }
 
-/* Apple Dialog Entrance (Scale 0.95 -> 1.0 with fade) */
+/* Apple Dialog Entrance (Scale 0.95 -> 1.0 with fade) & Exit */
 @keyframes appleDialogIn {
   0% {
     opacity: 0;
@@ -174,20 +176,37 @@ body {
   }
 }
 
+@keyframes appleDialogOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.975);
+  }
+}
+
 .apple-dialog-enter {
   animation: appleDialogIn 0.28s var(--ease-ios-spring) both;
   will-change: transform, opacity;
 }
 
+.apple-dialog-exit {
+  animation: appleDialogOut 0.22s cubic-bezier(0.32, 0, 0.2, 1) both !important;
+  pointer-events: none !important;
+  will-change: transform, opacity;
+}
+
 /* Modal Backdrop Smooth Fade In & Out */
 @keyframes modalBackdropIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 @keyframes modalBackdropOut {
-  from { opacity: 1; }
-  to { opacity: 0; }
+  0% { opacity: 1; }
+  100% { opacity: 0; }
 }
 
 .modal-backdrop-enter {
@@ -195,14 +214,16 @@ body {
 }
 
 .modal-backdrop-exit {
-  animation: modalBackdropOut 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: modalBackdropOut 0.24s cubic-bezier(0.32, 0, 0.2, 1) both !important;
+  pointer-events: none !important;
+  will-change: opacity;
 }
 
 /* Modal Dialog Scale/Slide Pop In & Pop Down Out */
 @keyframes modalDialogPopIn {
   0% {
     opacity: 0;
-    transform: scale(0.94) translateY(12px);
+    transform: scale(0.95) translateY(10px);
   }
   100% {
     opacity: 1;
@@ -217,7 +238,7 @@ body {
   }
   100% {
     opacity: 0;
-    transform: scale(0.95) translateY(16px);
+    transform: scale(0.975) translateY(8px);
   }
 }
 
@@ -227,7 +248,8 @@ body {
 }
 
 .modal-dialog-exit {
-  animation: modalDialogPopDown 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: modalDialogPopDown 0.24s cubic-bezier(0.32, 0, 0.2, 1) both !important;
+  pointer-events: none !important;
   will-change: transform, opacity;
 }
 
@@ -239,7 +261,7 @@ body {
   }
   100% {
     opacity: 0;
-    transform: translateY(100%);
+    transform: translateY(24px);
   }
 }
 
@@ -249,7 +271,8 @@ body {
 }
 
 .sheet-exit {
-  animation: sheetSlideDown 0.22s cubic-bezier(0.4, 0, 1, 1) both;
+  animation: sheetSlideDown 0.24s cubic-bezier(0.32, 0, 0.2, 1) both !important;
+  pointer-events: none !important;
   will-change: transform, opacity;
 }
 
@@ -391,8 +414,11 @@ body {
 .low-spec .animate-pulse,
 .low-spec .animate-bounce,
 .low-spec .apple-view-enter,
+.low-spec .apple-view-exit,
 .low-spec .apple-sheet-enter,
+.low-spec .apple-sheet-exit,
 .low-spec .apple-dialog-enter,
+.low-spec .apple-dialog-exit,
 .low-spec .modal-backdrop-enter,
 .low-spec .modal-backdrop-exit,
 .low-spec .modal-dialog-enter,

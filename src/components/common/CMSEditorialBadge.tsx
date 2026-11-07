@@ -18,15 +18,15 @@ export const CMSEditorialBadge: React.FC<CMSEditorialBadgeProps> = ({ currentPad
     if (isOpen) {
       setIsRendered(true);
       setIsClosing(false);
-    } else if (isRendered) {
+    } else if (isRendered && !isClosing) {
       setIsClosing(true);
       const timer = setTimeout(() => {
         setIsRendered(false);
         setIsClosing(false);
-      }, 200);
+      }, 240);
       return () => clearTimeout(timer);
     }
-  }, [isOpen, isRendered]);
+  }, [isOpen, isRendered, isClosing]);
 
   const [connectionInfo, setConnectionInfo] = useState<{ ok: boolean; message: string; latencyMs?: number }>({
     ok: true,
