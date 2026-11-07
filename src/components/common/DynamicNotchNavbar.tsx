@@ -181,7 +181,7 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
       <div className="max-w-6xl mx-auto flex flex-col items-center">
         
         {/* Main Floating Glass & Paper Header Bar */}
-        <div className="pointer-events-auto rounded-full w-full max-w-[96vw] md:max-w-6xl bg-[#FFFDF9]/95 backdrop-blur-2xl px-3.5 sm:px-4 py-1.5 transition-all">
+        <div className="pointer-events-auto rounded-full w-full max-w-[96vw] md:max-w-6xl bg-[#FFFDF9]/96 backdrop-blur-md border border-neutral-900/[0.06] shadow-[0_4px_16px_-2px_rgba(24,24,27,0.05)] px-3.5 sm:px-4 py-1.5 transition-all transform-gpu will-change-transform">
           <div className="flex items-center justify-between gap-2 h-10 sm:h-11">
             
             {/* 1. Left: Brand Identity & Sacred Logo */}
@@ -328,7 +328,7 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
           <div
             ref={mobileMenuRef}
             onClick={(e) => e.stopPropagation()}
-            className="pointer-events-auto w-full max-w-[96vw] mt-2 p-3 sm:p-4 rounded-3xl bg-white/98 backdrop-blur-2xl md:hidden apple-view-enter border border-neutral-200/60 shadow-xl space-y-2.5 max-h-[85vh] overflow-y-auto no-scrollbar text-[#18181B]"
+            className="pointer-events-auto w-full max-w-[96vw] mt-2 p-3 sm:p-4 rounded-3xl bg-white/98 backdrop-blur-md md:hidden apple-view-enter border border-neutral-200/80 shadow-[0_12px_36px_-8px_rgba(24,24,27,0.14)] space-y-2.5 max-h-[85vh] overflow-y-auto no-scrollbar text-[#18181B] transform-gpu will-change-transform"
           >
             
             {/* 1. Minimalist Search Bar */}

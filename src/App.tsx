@@ -348,11 +348,12 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
     switch (activeTab) {
       case 'smaran':
       case 'padavali':
-        return 'from-[#DAE8DE] via-[#DAE8DE]/80 to-transparent';
+        // Soft, feather-light Chandan ivory fade matching the page background
+        return 'from-[#F7F2E7]/70 via-[#F7F2E7]/25 to-transparent';
       case 'feed':
-        return 'from-[#EEF1EE] via-[#EEF1EE]/80 to-transparent';
+        return 'from-[#FAF6EE]/70 via-[#FAF6EE]/25 to-transparent';
       case 'milestones':
-        return 'from-[#7E9A78] via-[#7E9A78]/85 to-transparent';
+        return 'from-[#F5EFE4]/70 via-[#F5EFE4]/25 to-transparent';
     }
   };
 
@@ -1096,9 +1097,10 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
           />
         )}
 
-        {/* Mobile Floating Bottom Protective Scrim: Dynamically matches active tab background */}
+        {/* Mobile Floating Bottom Ambient Scrim: Whisper-light parchment fade (Zero GPU blur overhead) */}
         <div
-          className={`md:hidden fixed bottom-0 left-0 right-0 ${showPlayer ? 'h-28' : 'h-20'} bg-gradient-to-t ${getScrimGradient()} pointer-events-none z-30 transition-colors duration-500`}
+          className={`md:hidden fixed bottom-0 left-0 right-0 ${showPlayer ? 'h-20' : 'h-14'} bg-gradient-to-t ${getScrimGradient()} pointer-events-none z-30 transition-colors duration-500`}
+          aria-hidden="true"
         />
 
         {/* Floating Navbar (Mobile Only < md) */}
