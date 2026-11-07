@@ -955,13 +955,18 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   type="button"
                   onClick={() => handleSetReaderTheme(t.id)}
                   style={{ backgroundColor: t.bg, color: t.text }}
-                  className={`relative p-2.5 rounded-xl text-left transition-all cursor-pointer ${
+                  className={`relative p-2.5 rounded-xl text-left transition-opacity cursor-pointer ${
                     readerTheme === t.id
-                      ? 'ring-2 ring-[#FACC15] font-bold'
-                      : 'opacity-80 hover:opacity-100'
+                      ? 'opacity-100 font-bold'
+                      : 'opacity-50 hover:opacity-80'
                   }`}
                 >
-                  <div className="text-xs font-bold font-devanagari">{t.label}</div>
+                  <div className="flex items-center justify-between">
+                    <div className="text-xs font-bold font-devanagari">{t.label}</div>
+                    {readerTheme === t.id && (
+                      <Check className="w-3.5 h-3.5 shrink-0 opacity-90" />
+                    )}
+                  </div>
                   <div className="text-[10px] opacity-70 font-mono mt-0.5">{t.desc}</div>
                 </button>
               ))}
