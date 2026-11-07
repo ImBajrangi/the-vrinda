@@ -63,9 +63,7 @@ export function render(url: string = '/'): RenderResult {
       tab: 'padavali',
       pad,
       title: `${pad.titleDevanagari} (${pad.author})`,
-      description:
-        pad.verses?.[0]?.bhavarth ||
-        `राग ${pad.rag} में निबद्ध पावन पद। रचयिता: ${pad.author}। वृन्दोपनिषद् 2.0`,
+      description: `राग ${pad.rag} में निबद्ध पावन पद। रचयिता: ${pad.author}। वृन्दोपनिषद् 2.0`,
       canonicalUrl: `https://vrindopnisad.org/?tab=padavali&pad=${encodeURIComponent(slug)}`,
     };
   } else {

@@ -267,9 +267,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
         tab: 'padavali',
         pad: selectedPad,
         title: `${selectedPad.titleDevanagari} (${selectedPad.author})`,
-        description:
-          selectedPad.verses?.[0]?.bhavarth ||
-          `राग ${selectedPad.rag} में निबद्ध पावन पद। रचयिता: ${selectedPad.author}। वृन्दोपनिषद् 2.0`,
+        description: `राग ${selectedPad.rag} में निबद्ध पावन पद। रचयिता: ${selectedPad.author}। वृन्दोपनिषद् 2.0`,
       });
     }
   }, [selectedPad]);
@@ -584,7 +582,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       source: selectedPad.collectionId || selectedPad.rag,
       author: selectedPad.author,
       type: 'pad',
-      fallbackText: selectedPad.verses?.[0]?.bhavarth,
+      fallbackText: 'श्री युगल रस का यह पावन पद अंतःकरण में असीम शांति और दिव्य प्रेम का संचार करता है।',
       collectionId: selectedPad.collectionId,
       padId: selectedPad.id,
       stanzaNumber: 1,
@@ -835,7 +833,6 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     const text = [
       `॥ ${selectedPad.titleDevanagari} • पद पंक्ति ${verse.stanzaNumber} ॥`,
       ...(verse.linesDevanagari || []),
-      ...(verse.bhavarth ? [`भावार्थ: ${verse.bhavarth}`] : []),
       `— रचयिता: ${selectedPad.author} (${selectedPad.collectionId})`,
       'स्रोत: वृन्दोपनिषद् २.० (Vrindopanishad)',
     ].join('\n');
@@ -1838,7 +1835,6 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               ) : (
                 <p className={`text-xs sm:text-sm font-devanagari ${currentTheme.bhavarthText} leading-relaxed break-words font-normal`}>
                   {summaryText ||
-                    selectedPad.verses?.[0]?.bhavarth ||
                     'श्री युगल रस का यह पावन पद अंतःकरण में असीम शांति और दिव्य प्रेम का संचार करता है।'}
                 </p>
               )}
@@ -1952,27 +1948,6 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                     </div>
                   )}
 
-                  {/* Hindi Meaning / Bhavarth Block */}
-                  {verse.bhavarth && (
-                    <div className={`${currentTheme.bhavarthBg} p-4 sm:p-5 rounded-xl mt-3.5 transition-colors ${
-                      textAlign === 'center' ? 'text-center' : textAlign === 'justify' ? 'text-justify' : 'text-left'
-                    }`}>
-                      <span className={`text-[10px] font-mono font-bold ${currentTheme.metaColor} uppercase tracking-wider block mb-1.5`}>
-                        भावार्थ (Sacred Meaning)
-                      </span>
-                      <p className={`${fontClass} leading-[1.8] sm:leading-[1.9] font-normal ${currentTheme.bhavarthText} ${
-                        fontSize === 'sm'
-                          ? 'text-xs sm:text-[13px]'
-                          : fontSize === 'md'
-                          ? 'text-xs sm:text-[14px]'
-                          : fontSize === 'lg'
-                          ? 'text-sm sm:text-[15.5px]'
-                          : 'text-base sm:text-[17px]'
-                      }`}>
-                        {verse.bhavarth}
-                      </p>
-                    </div>
-                  )}
                 </div>
               );
             })}
@@ -2099,49 +2074,55 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                     </button>
                   </div>
 
-                  <div className="space-y-2.5 max-h-[52vh] overflow-y-auto custom-scroll pr-1">
-                    {selectedPad.verses.filter((v) => !!v.bhavarth).length > 0 ? (
-                      selectedPad.verses
-                        .filter((v) => !!v.bhavarth)
-                        .map((v) => {
-                          const isActive = activeStanzaIndex === v.stanzaNumber - 1;
-                          return (
-                            <div
-                              key={v.stanzaNumber}
-                              onClick={() => {
-                                setActiveStanzaIndex(v.stanzaNumber - 1);
-                                const stanzaEl = document.getElementById(`stanza-${v.stanzaNumber - 1}`);
-                                if (stanzaEl) stanzaEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                              }}
-                              className={`p-3.5 rounded-xl transition-colors cursor-pointer ${
-                                isActive
-                                  ? currentTheme.cardActiveBg
-                                  : `${currentTheme.cardHoverBg} opacity-85 hover:opacity-100`
-                              }`}
-                            >
-                              <div className="flex items-center justify-between mb-1">
-                                <span className={`text-[10px] font-mono font-bold ${currentTheme.metaColor} uppercase tracking-wider`}>
-                                  चरण {formatDevanagariNumerals(v.stanzaNumber)}
-                                </span>
-                                <span className={`text-[10px] ${currentTheme.translitColor} font-mono`}>भावार्थ</span>
-                              </div>
-                              <p className={`text-xs leading-relaxed ${fontClass} font-normal ${currentTheme.canvasText}`}>
-                                {v.bhavarth}
-                              </p>
-                            </div>
-                          );
-                        })
-                    ) : (
-                      <div className="p-4 rounded-xl border border-dashed border-neutral-200/80 text-center space-y-1.5 bg-white/40">
-                        <Sparkles className="w-4 h-4 mx-auto text-amber-600/80" />
-                        <p className={`text-xs font-devanagari font-medium ${currentTheme.titleColor}`}>
-                          विशुद्ध वाणी पाठ
-                        </p>
-                        <p className={`text-[11px] leading-relaxed ${currentTheme.translitColor} font-normal`}>
-                          रसिक वाणियों का मूल श्रवण व पाठ ही साक्षात युगल सेवा व परम रस का अनुभव कराता है।
-                        </p>
+                  {/* AI Devotional Summary Card */}
+                  <div className={`${currentTheme.bhavarthBg} border ${currentTheme.borderColor} rounded-2xl p-4 text-xs ${currentTheme.canvasText} leading-relaxed transition-colors shadow-xs space-y-2`}>
+                    <div className={`flex items-center gap-1.5 ${currentTheme.titleColor} font-serif font-bold text-xs`}>
+                      <Sparkles className="w-3.5 h-3.5 text-[#CA8A04]" />
+                      <span>दिव्य भाव संक्षेप एवं रस-गूढ़ार्थ</span>
+                    </div>
+                    {isSummaryLoading && !summaryText ? (
+                      <div className={`flex items-center gap-2 py-2 text-xs ${currentTheme.translitColor} font-medium`}>
+                        <Sparkles className="w-3.5 h-3.5 text-[#CA8A04] animate-spin" />
+                        <span>प्रस्तुत किया जा रहा है...</span>
                       </div>
+                    ) : (
+                      <p className={`text-xs leading-relaxed ${currentTheme.bhavarthText} font-devanagari font-normal`}>
+                        {summaryText || 'श्री युगल रस का यह पावन पद अंतःकरण में असीम शांति और दिव्य प्रेम का संचार करता है।'}
+                      </p>
                     )}
+                  </div>
+
+                  {/* Stanza Navigation List */}
+                  <div className="space-y-1.5 max-h-[42vh] overflow-y-auto custom-scroll pr-1">
+                    <span className={`text-[10px] font-mono font-bold ${currentTheme.metaColor} uppercase tracking-wider block mb-1`}>
+                      चरण सूची • Stanza Navigation
+                    </span>
+                    {selectedPad.verses.map((v) => {
+                      const isActive = activeStanzaIndex === v.stanzaNumber - 1;
+                      return (
+                        <button
+                          key={v.stanzaNumber}
+                          type="button"
+                          onClick={() => {
+                            setActiveStanzaIndex(v.stanzaNumber - 1);
+                            const stanzaEl = document.getElementById(`stanza-${v.stanzaNumber - 1}`);
+                            if (stanzaEl) stanzaEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                          }}
+                          className={`w-full text-left p-2.5 rounded-xl transition-colors cursor-pointer flex items-center justify-between ${
+                            isActive
+                              ? currentTheme.cardActiveBg
+                              : `${currentTheme.cardHoverBg} opacity-85 hover:opacity-100`
+                          }`}
+                        >
+                          <span className={`text-xs font-mono font-semibold ${currentTheme.metaColor}`}>
+                            चरण {formatDevanagariNumerals(v.stanzaNumber)}
+                          </span>
+                          <span className={`text-[11px] truncate max-w-[150px] font-devanagari ${currentTheme.titleColor}`}>
+                            {v.linesDevanagari?.[0] || ''}
+                          </span>
+                        </button>
+                      );
+                    })}
                   </div>
                 </div>
 
@@ -2213,29 +2194,10 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               ) : (
                 <p className={`text-xs sm:text-sm leading-relaxed ${currentTheme.bhavarthText} font-devanagari break-words font-normal`}>
                   {summaryText ||
-                    selectedPad.verses?.[0]?.bhavarth ||
                     'श्री युगल रस का यह पावन पद अंतःकरण में असीम शांति और दिव्य प्रेम का संचार करता है।'}
                 </p>
               )}
             </div>
-
-            {/* Verse-by-verse bhavarth */}
-            {selectedPad.verses.some((v) => !!v.bhavarth) && (
-              <div className="space-y-3">
-                {selectedPad.verses
-                  .filter((v) => !!v.bhavarth)
-                  .map((v) => (
-                    <div key={v.stanzaNumber} className={`${currentTheme.cardActiveBg} border ${currentTheme.borderColor} p-3.5 rounded-2xl`}>
-                      <span className={`text-[10px] font-bold ${currentTheme.metaColor} opacity-90 px-2.5 py-0.5 rounded-full uppercase tracking-wider block mb-1.5 font-mono w-fit`}>
-                        चरण {formatDevanagariNumerals(v.stanzaNumber)} भावार्थ
-                      </span>
-                      <p className={`text-xs sm:text-sm leading-relaxed ${currentTheme.canvasText}`}>
-                        {v.bhavarth}
-                      </p>
-                    </div>
-                  ))}
-              </div>
-            )}
 
             {/* Nitya Nikunj Vihar Tattva Section */}
             <div className={`${currentTheme.cardActiveBg} border ${currentTheme.borderColor} ${currentTheme.canvasText} rounded-2xl p-4 sm:p-5`}>

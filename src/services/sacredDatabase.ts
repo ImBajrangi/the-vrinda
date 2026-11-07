@@ -178,10 +178,9 @@ function normalizeCanonicalPad(raw: any): SacredPad {
         stanzaNumber: st.index || idx + 1,
         linesDevanagari: st.linesDevanagari || [],
         linesEnglish: st.linesEnglish || [],
-        bhavarth: st.bhavarth || '',
       }));
     } else {
-      verses = [{ stanzaNumber: 1, linesDevanagari: [title], linesEnglish: [], bhavarth: '' }];
+      verses = [{ stanzaNumber: 1, linesDevanagari: [title], linesEnglish: [] }];
     }
   }
 
