@@ -42,6 +42,7 @@ interface PadavaliReaderProps {
   isPlaying?: boolean;
   selectedGranthaId?: string;
   selectedSearchQuery?: string;
+  selectedPadId?: string;
   initialPadId?: string;
 }
 
@@ -135,6 +136,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   isPlaying,
   selectedGranthaId,
   selectedSearchQuery,
+  selectedPadId,
   initialPadId,
 }) => {
   const allPadas = SacredDatabase.getAllPadas();
@@ -219,6 +221,18 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       setSelectedGrantha(selectedGranthaId);
     }
   }, [selectedGranthaId]);
+
+  useEffect(() => {
+    if (selectedPadId) {
+      const p = allPadas.find((x) => x.id === selectedPadId);
+      if (p) {
+        setSelectedPad(p);
+        if (p.collectionId && p.collectionId !== selectedGrantha) {
+          setSelectedGrantha(p.collectionId);
+        }
+      }
+    }
+  }, [selectedPadId, allPadas]);
 
   useEffect(() => {
     if (selectedSearchQuery !== undefined) {
@@ -531,8 +545,30 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   const handleSelectGrantha = (granthaId: string) => {
     setSelectedGrantha(granthaId);
     setSelectedRaga('all');
+    setSearchQuery('');
+    setSidebarQuery('');
     setVisibleCount(30);
     saveReaderState({ selectedTradition: granthaId });
+    const matching = allPadas.filter(
+      (p) => granthaId === 'all' || p.collectionId === granthaId
+    );
+    if (matching.length > 0) {
+      setSelectedPad(matching[0]);
+    }
+  };
+
+  const handleSelectRaga = (raga: string) => {
+    setSelectedRaga(raga);
+    setSidebarQuery('');
+    setVisibleCount(30);
+    const matching = allPadas.filter((p) => {
+      const matchG = selectedGrantha === 'all' || p.collectionId === selectedGrantha;
+      const matchR = raga === 'all' || p.rag === raga;
+      return matchG && matchR;
+    });
+    if (matching.length > 0) {
+      setSelectedPad(matching[0]);
+    }
   };
 
   // Memoized instantaneous search & filter engine
@@ -544,7 +580,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
         p.titleDevanagari.toLowerCase().includes(q) ||
         p.author.toLowerCase().includes(q) ||
         p.titleEnglish.toLowerCase().includes(q) ||
-        (p.verses[0]?.linesDevanagari?.some((l) => l.toLowerCase().includes(q)) ?? false);
+        p.verses.some((v) => v.linesDevanagari?.some((l) => l.toLowerCase().includes(q)));
 
       const matchesTradition =
         selectedTradition === 'all' || p.collectionId === selectedTradition;
@@ -555,6 +591,13 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       return matchesSearch && matchesTradition && matchesRaga;
     });
   }, [allPadas, searchQuery, selectedTradition, selectedRaga]);
+
+  // Ensure selectedPad automatically syncs to active filtered subset
+  useEffect(() => {
+    if (filteredPads.length > 0 && !filteredPads.some((p) => p.id === selectedPad.id)) {
+      setSelectedPad(filteredPads[0]);
+    }
+  }, [filteredPads, selectedPad.id]);
 
   // Sidebar instant quick-filter for seamless discovery
   const displayedSidebarPads = useMemo(() => {
@@ -1012,7 +1055,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   ragaRefs.current['all'] = el;
                 }}
                 type="button"
-                onClick={() => setSelectedRaga('all')}
+                onClick={() => handleSelectRaga('all')}
                 className={`relative z-10 px-3 py-1 rounded-full text-[11px] font-semibold transition-colors duration-200 cursor-pointer select-none ${
                   selectedRaga === 'all'
                     ? 'text-[#18181B] font-bold'
@@ -1035,7 +1078,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                       ragaRefs.current[r] = el;
                     }}
                     type="button"
-                    onClick={() => setSelectedRaga(r)}
+                    onClick={() => handleSelectRaga(r)}
                     className={`relative z-10 px-3 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer select-none ${
                       isActive
                         ? 'text-[#18181B] font-bold'
@@ -1167,8 +1210,24 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 )}
 
                 {displayedSidebarPads.length === 0 ? (
-                  <div className="p-6 text-center text-xs text-[#94A3B8] font-serif">
-                    कोई पद नहीं मिला ("{sidebarQuery}")
+                  <div className="p-6 text-center text-xs text-[#94A3B8] font-serif space-y-2.5">
+                    <p>
+                      {sidebarQuery || searchQuery
+                        ? `कोई पद नहीं मिला ("${sidebarQuery || searchQuery}")`
+                        : 'इस चयन में कोई पद उपलब्ध नहीं है'}
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setSearchQuery('');
+                        setSidebarQuery('');
+                        setSelectedRaga('all');
+                        setSelectedGrantha('all');
+                      }}
+                      className="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#FEF08A] text-[#78350F] hover:bg-[#FDE047] cursor-pointer transition-colors"
+                    >
+                      सभी पद देखें (फ़िल्टर हटाएं)
+                    </button>
                   </div>
                 ) : (
                   displayedSidebarPads.slice(0, visibleCount).map((pad, idx) => {
