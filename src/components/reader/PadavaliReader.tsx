@@ -25,6 +25,8 @@ import {
   PanelLeftOpen,
   PanelRightClose,
   PanelRightOpen,
+  Gauge,
+  Palette,
 } from 'lucide-react';
 import { SacredDatabase } from '../../services/sacredDatabase';
 import { SacredPad } from '../../types/devotional';
@@ -893,13 +895,14 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       {/* Interactive Typography & Devotional Ambiance Customizer Floating Tray     */}
       {/* ========================================================================= */}
       {isSettingsOpen && (
-        <div className="mb-4 p-4 rounded-2xl bg-white space-y-3 apple-sheet-enter text-[#18181B]">
-          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-neutral-100 pb-3">
+        <div className="mb-4 p-4 sm:p-5 rounded-2xl bg-white border border-neutral-200/80 shadow-xs space-y-4 apple-sheet-enter text-[#18181B]">
+          {/* Row 1: Reading Typography (Font Size, Typeface, Alignment) */}
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-3.5 pb-3.5 border-b border-neutral-100">
             {/* Font Size Stepper with Elastic Sliding Pill */}
-            <div className="flex items-center gap-2">
-              <span className="text-[11px] font-bold text-neutral-500 uppercase tracking-wider flex items-center gap-1 font-mono">
-                <Type className="w-3.5 h-3.5 text-neutral-600" />
-                Font Size:
+            <div className="flex items-center gap-2.5">
+              <span className="text-[11px] font-bold text-neutral-500 uppercase tracking-wider flex items-center gap-1.5 font-mono">
+                <Type className="w-3.5 h-3.5 text-neutral-500" />
+                <span>Font Size</span>
               </span>
               <div className="relative flex items-center p-1 bg-neutral-100 rounded-full">
                 {/* Dynamic Elastic Sliding Pill */}
@@ -935,9 +938,10 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             </div>
 
             {/* Font Family Toggle with Elastic Sliding Pill */}
-            <div className="flex items-center gap-2">
-              <span className="text-[11px] font-bold text-neutral-500 uppercase tracking-wider font-mono">
-                Font:
+            <div className="flex items-center gap-2.5">
+              <span className="text-[11px] font-bold text-neutral-500 uppercase tracking-wider flex items-center gap-1.5 font-mono">
+                <BookOpen className="w-3.5 h-3.5 text-neutral-500" />
+                <span>Font</span>
               </span>
               <div className="relative flex items-center p-1 bg-neutral-100 rounded-full">
                 {/* Dynamic Elastic Sliding Pill */}
@@ -976,9 +980,10 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             </div>
 
             {/* Alignment Stepper with Elastic Sliding Pill */}
-            <div className="flex items-center gap-2">
-              <span className="text-[11px] font-bold text-neutral-500 uppercase tracking-wider font-mono">
-                Alignment:
+            <div className="flex items-center gap-2.5">
+              <span className="text-[11px] font-bold text-neutral-500 uppercase tracking-wider flex items-center gap-1.5 font-mono">
+                <AlignLeft className="w-3.5 h-3.5 text-neutral-500" />
+                <span>Alignment</span>
               </span>
               <div className="relative flex items-center p-1 bg-neutral-100 rounded-full">
                 {/* Dynamic Elastic Sliding Pill */}
@@ -1015,11 +1020,15 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 })}
               </div>
             </div>
+          </div>
 
+          {/* Row 2: Recitation & Ambiance Experience (Audio Pace + Ambiance Theme) */}
+          <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3.5">
             {/* Playback Pace Stepper with Elastic Sliding Pill */}
-            <div className="flex items-center gap-2">
-              <span className="text-[11px] font-bold text-neutral-500 uppercase tracking-wider font-mono">
-                Audio Pace:
+            <div className="flex items-center gap-2.5">
+              <span className="text-[11px] font-bold text-neutral-500 uppercase tracking-wider flex items-center gap-1.5 font-mono">
+                <Gauge className="w-3.5 h-3.5 text-neutral-500" />
+                <span>Audio Pace</span>
               </span>
               <div className="relative flex items-center p-1 bg-neutral-100 rounded-full">
                 {/* Dynamic Elastic Sliding Pill */}
@@ -1037,7 +1046,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                     key={pace}
                     type="button"
                     onClick={() => handleSetPlaybackPace(pace)}
-                    className={`relative z-10 px-2.5 py-1 rounded-full text-xs font-mono font-semibold transition-colors duration-200 cursor-pointer ${
+                    className={`relative z-10 px-3 py-1 rounded-full text-xs font-mono font-semibold transition-colors duration-200 cursor-pointer ${
                       playbackPace === pace
                         ? 'text-[#18181B] font-bold'
                         : 'text-neutral-500 hover:text-neutral-900'
@@ -1048,39 +1057,73 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 ))}
               </div>
             </div>
-          </div>
 
-          {/* Ambiance Theme Switcher */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-0.5">
-            <span className="text-[11px] font-bold text-neutral-500 uppercase tracking-wider font-mono">
-              Ambiance Theme:
-            </span>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-              {[
-                { id: 'ivory' as ReaderTheme, label: 'पावन पत्र', desc: 'Porcelain White', bg: '#FFFFFF', text: '#18181B' },
-                { id: 'mint' as ReaderTheme, label: 'तमाल निकुंज', desc: 'Tamal Green', bg: '#F0FDF4', text: '#166534' },
-                { id: 'chandan' as ReaderTheme, label: 'चन्दन प्रभा', desc: 'Chandan Gold', bg: '#FAF9F5', text: '#3D260F' },
-              ].map((t) => (
-                <button
-                  key={t.id}
-                  type="button"
-                  onClick={() => handleSetReaderTheme(t.id)}
-                  style={{ backgroundColor: t.bg, color: t.text }}
-                  className={`relative p-2.5 rounded-xl text-left transition-opacity cursor-pointer ${
-                    readerTheme === t.id
-                      ? 'opacity-100 font-bold'
-                      : 'opacity-50 hover:opacity-80'
-                  }`}
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="text-xs font-bold font-devanagari">{t.label}</div>
-                    {readerTheme === t.id && (
-                      <Check className="w-3.5 h-3.5 shrink-0 opacity-90" />
-                    )}
-                  </div>
-                  <div className="text-[10px] opacity-70 font-mono mt-0.5">{t.desc}</div>
-                </button>
-              ))}
+            {/* Ambiance Theme Switcher with Tactile Swatch Cards */}
+            <div className="flex flex-wrap items-center gap-2.5">
+              <span className="text-[11px] font-bold text-neutral-500 uppercase tracking-wider flex items-center gap-1.5 font-mono">
+                <Palette className="w-3.5 h-3.5 text-neutral-500" />
+                <span>Ambiance Theme</span>
+              </span>
+              <div className="grid grid-cols-3 sm:flex items-center gap-2 w-full sm:w-auto">
+                {[
+                  {
+                    id: 'ivory' as ReaderTheme,
+                    label: 'पावन पत्र',
+                    desc: 'Porcelain White',
+                    swatchBg: '#FFFFFF',
+                    swatchBorder: '#D4D4D8',
+                  },
+                  {
+                    id: 'mint' as ReaderTheme,
+                    label: 'तमाल निकुंज',
+                    desc: 'Tamal Green',
+                    swatchBg: '#DCFCE7',
+                    swatchBorder: '#86EFAC',
+                  },
+                  {
+                    id: 'chandan' as ReaderTheme,
+                    label: 'चन्दन प्रभा',
+                    desc: 'Chandan Gold',
+                    swatchBg: '#FEF08A',
+                    swatchBorder: '#FCD34D',
+                  },
+                ].map((t) => {
+                  const isThemeActive = readerTheme === t.id;
+                  return (
+                    <button
+                      key={t.id}
+                      type="button"
+                      onClick={() => handleSetReaderTheme(t.id)}
+                      className={`relative flex items-center justify-center sm:justify-start gap-2.5 px-3 py-1.5 sm:py-2 rounded-xl text-left transition-colors cursor-pointer border ${
+                        isThemeActive
+                          ? 'bg-amber-50/70 border-amber-400 ring-1 ring-amber-400/40 shadow-2xs'
+                          : 'bg-white hover:bg-neutral-50/90 border-neutral-200/80 text-neutral-700'
+                      }`}
+                    >
+                      <span
+                        aria-hidden="true"
+                        className="w-3.5 h-3.5 rounded-full shrink-0 border shadow-2xs"
+                        style={{ backgroundColor: t.swatchBg, borderColor: t.swatchBorder }}
+                      />
+                      <div className="min-w-0 pr-0.5">
+                        <div
+                          className={`text-xs font-semibold font-devanagari leading-tight truncate ${
+                            isThemeActive ? 'text-[#18181B] font-bold' : 'text-neutral-700'
+                          }`}
+                        >
+                          {t.label}
+                        </div>
+                        <div className="text-[10px] text-neutral-400 font-mono leading-none mt-0.5 truncate hidden sm:block">
+                          {t.desc}
+                        </div>
+                      </div>
+                      {isThemeActive && (
+                        <Check className="w-3.5 h-3.5 text-amber-600 shrink-0 ml-1 hidden sm:block" />
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
