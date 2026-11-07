@@ -35,3 +35,4 @@ jobs:
           name: supabase-database-backup
           path: backups/*.json.gz
           retention-days: 30
+
