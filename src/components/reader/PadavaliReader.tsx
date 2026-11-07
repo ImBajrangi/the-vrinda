@@ -110,6 +110,22 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     }
   }, [selectedRaga, availableRagas]);
 
+  // Desktop Sidebar Pada List Elastic Sliding Indicator
+  const sidebarItemRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+  const [sidebarPillStyle, setSidebarPillStyle] = useState<{ top: number; height: number; ready: boolean }>({
+    top: 0,
+    height: 0,
+    ready: false,
+  });
+
+  // Mobile Horizontal Carousel Elastic Sliding Indicator
+  const mobilePadRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
+  const [mobilePillStyle, setMobilePillStyle] = useState<{ left: number; width: number; ready: boolean }>({
+    left: 0,
+    width: 0,
+    ready: false,
+  });
+
   const initialReader = getReaderStateSync();
   const initialPad =
     (initialPadId && allPadas.find((p) => p.id === initialPadId)) ||
@@ -420,6 +436,46 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
         (p.verses[0]?.linesDevanagari?.some((l) => l.toLowerCase().includes(q)) ?? false)
     );
   }, [filteredPads, sidebarQuery]);
+
+  // Synchronize dynamic vertical elastic sliding pill in desktop sidebar
+  useEffect(() => {
+    const updateSidebarPill = () => {
+      const el = sidebarItemRefs.current[selectedPad.id];
+      if (el) {
+        setSidebarPillStyle({
+          top: el.offsetTop,
+          height: el.offsetHeight,
+          ready: true,
+        });
+      } else {
+        setSidebarPillStyle((prev) => ({ ...prev, ready: false }));
+      }
+    };
+
+    updateSidebarPill();
+    const timer = setTimeout(updateSidebarPill, 40);
+    return () => clearTimeout(timer);
+  }, [selectedPad.id, displayedSidebarPads, visibleCount]);
+
+  // Synchronize dynamic horizontal elastic sliding pill in mobile carousel
+  useEffect(() => {
+    const updateMobilePill = () => {
+      const el = mobilePadRefs.current[selectedPad.id];
+      if (el) {
+        setMobilePillStyle({
+          left: el.offsetLeft,
+          width: el.offsetWidth,
+          ready: true,
+        });
+      } else {
+        setMobilePillStyle((prev) => ({ ...prev, ready: false }));
+      }
+    };
+
+    updateMobilePill();
+    const timer = setTimeout(updateMobilePill, 40);
+    return () => clearTimeout(timer);
+  }, [selectedPad.id, filteredPads, visibleCount]);
 
   // Current Pada Index in Filtered List for Prev/Next
   const currentIdx = filteredPads.findIndex((p) => p.id === selectedPad.id);
@@ -837,21 +893,39 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       {/* Mobile Horizontal Carousel (< md, Hidden in Distraction-Free Mode)         */}
       {/* ========================================================================= */}
       {!isFocusReadingMode && (
-        <div className="md:hidden flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1 mb-3">
+        <div className="md:hidden relative flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1 mb-3">
+          {/* Dynamic Elastic Sliding Bouncy Indicator Bar */}
+          {mobilePillStyle.ready && (
+            <span
+              aria-hidden="true"
+              className="absolute top-0 bottom-1 rounded-full bg-[#18181B] pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform shadow-xs z-0"
+              style={{
+                transform: `translateX(${mobilePillStyle.left}px)`,
+                width: `${mobilePillStyle.width}px`,
+                left: 0,
+              }}
+            />
+          )}
+
           {filteredPads.slice(0, visibleCount).map((pad, idx) => {
             const isSelected = selectedPad.id === pad.id;
             return (
               <button
                 key={pad.id}
+                ref={(el) => {
+                  mobilePadRefs.current[pad.id] = el;
+                }}
                 type="button"
                 onClick={() => handleSelectPad(pad)}
-                className={`shrink-0 h-8 px-2.5 rounded-full transition-colors cursor-pointer select-none flex items-center gap-1.5 text-xs ${
+                className={`relative z-10 shrink-0 h-8 px-3 rounded-full transition-colors duration-200 cursor-pointer select-none flex items-center gap-1.5 text-xs ${
                   isSelected
-                    ? 'bg-[#18181B] text-white font-bold shadow-xs'
+                    ? 'text-white font-bold'
                     : 'bg-white text-neutral-800 shadow-2xs hover:bg-neutral-50 font-medium'
                 }`}
               >
-                <span className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full ${isSelected ? 'bg-neutral-800 text-neutral-300' : 'bg-neutral-100 text-neutral-500'}`}>
+                <span className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full transition-colors ${
+                  isSelected ? 'bg-white/20 text-white font-semibold' : 'bg-neutral-100 text-neutral-500'
+                }`}>
                   #{idx + 1}
                 </span>
                 <span className="font-serif truncate max-w-[130px]">
@@ -909,8 +983,21 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 </div>
               </div>
 
-              {/* Unified Scannable List */}
-              <div className="flex-1 overflow-y-auto p-2 space-y-1 custom-scroll">
+              {/* Unified Scannable List with Dynamic Elastic Sliding Bouncy Indicator */}
+              <div className="relative flex-1 overflow-y-auto p-2 flex flex-col gap-1 custom-scroll">
+                {/* Dynamic Elastic Sliding Bouncy Indicator Bar */}
+                {sidebarPillStyle.ready && (
+                  <span
+                    aria-hidden="true"
+                    className="absolute left-2 right-2 rounded-2xl bg-[#18181B] pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform shadow-xs z-0"
+                    style={{
+                      transform: `translateY(${sidebarPillStyle.top}px)`,
+                      height: `${sidebarPillStyle.height}px`,
+                      top: 0,
+                    }}
+                  />
+                )}
+
                 {displayedSidebarPads.length === 0 ? (
                   <div className="p-6 text-center text-xs text-neutral-400 font-serif">
                     कोई पद नहीं मिला ("{sidebarQuery}")
@@ -922,24 +1009,27 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                     return (
                       <div
                         key={pad.id}
+                        ref={(el) => {
+                          sidebarItemRefs.current[pad.id] = el;
+                        }}
                         onClick={() => handleSelectPad(pad)}
-                        className={`group px-3 py-2.5 rounded-2xl flex items-start gap-2.5 cursor-pointer transition-colors ${
+                        className={`group relative z-10 px-3 py-2.5 rounded-2xl flex items-start gap-2.5 cursor-pointer select-none transition-colors duration-200 ${
                           isSelected
-                            ? 'bg-neutral-100 text-[#18181B]'
-                            : 'hover:bg-neutral-50/80 text-neutral-800'
+                            ? 'text-white font-bold'
+                            : 'hover:bg-neutral-100/60 text-neutral-800'
                         }`}
                       >
                         {/* Compact Slim Index Number / Equalizer */}
                         <div className="w-7 shrink-0 pt-0.5 text-right font-mono text-xs select-none">
                           {isCurrentlyPlaying ? (
                             <div className="flex items-end justify-end gap-0.5 h-3">
-                              <span className="w-0.5 bg-[#18181B] rounded-full animate-apple-eq-1" />
-                              <span className="w-0.5 bg-[#18181B] rounded-full animate-apple-eq-2" />
-                              <span className="w-0.5 bg-[#18181B] rounded-full animate-apple-eq-3" />
+                              <span className={`w-0.5 rounded-full animate-apple-eq-1 ${isSelected ? 'bg-white' : 'bg-[#18181B]'}`} />
+                              <span className={`w-0.5 rounded-full animate-apple-eq-2 ${isSelected ? 'bg-white' : 'bg-[#18181B]'}`} />
+                              <span className={`w-0.5 rounded-full animate-apple-eq-3 ${isSelected ? 'bg-white' : 'bg-[#18181B]'}`} />
                             </div>
                           ) : (
-                            <span className={`px-1.5 py-0.5 rounded-md text-[10.5px] font-mono ${
-                              isSelected ? 'bg-white text-neutral-900 font-bold shadow-2xs' : 'text-neutral-400'
+                            <span className={`px-1.5 py-0.5 rounded-md text-[10.5px] font-mono transition-colors ${
+                              isSelected ? 'bg-white/15 text-white font-bold shadow-2xs' : 'text-neutral-400'
                             }`}>
                               #{idx + 1}
                             </span>
@@ -948,17 +1038,19 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
                         {/* Verse Title & Meta */}
                         <div className="min-w-0 flex-1">
-                          <div className={`font-serif font-bold text-sm leading-snug break-words ${
-                            isSelected ? 'text-[#18181B]' : 'text-neutral-800'
+                          <div className={`font-serif font-bold text-sm leading-snug break-words transition-colors ${
+                            isSelected ? 'text-white' : 'text-neutral-900 group-hover:text-black'
                           }`}>
                             {pad.titleDevanagari}
                           </div>
-                          <div className="flex items-center gap-1.5 text-xs text-neutral-500 mt-0.5 flex-wrap">
+                          <div className={`flex items-center gap-1.5 text-xs mt-0.5 flex-wrap transition-colors ${
+                            isSelected ? 'text-neutral-300' : 'text-neutral-500'
+                          }`}>
                             <span className="truncate">{pad.author}</span>
                             {pad.rag && (
                               <>
-                                <span className="text-neutral-300">•</span>
-                                <span className="text-neutral-500 font-mono text-[11px]">
+                                <span className={isSelected ? 'text-neutral-400' : 'text-neutral-300'}>•</span>
+                                <span className={`font-mono text-[11px] ${isSelected ? 'text-neutral-300' : 'text-neutral-500'}`}>
                                   {pad.rag}
                                 </span>
                               </>
@@ -976,14 +1068,14 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                           aria-label={`Play ${pad.titleDevanagari}`}
                           className={`w-7 h-7 rounded-full shrink-0 flex items-center justify-center transition-colors cursor-pointer ${
                             isCurrentlyPlaying || isSelected
-                              ? 'bg-[#18181B] text-white shadow-xs'
+                              ? 'bg-white text-[#18181B] shadow-xs hover:bg-neutral-100'
                               : 'text-neutral-400 hover:text-neutral-800 hover:bg-neutral-200/60 opacity-60 group-hover:opacity-100'
                           }`}
                         >
                           {isCurrentlyPlaying ? (
-                            <Pause className="w-3 h-3 fill-white" />
+                            <Pause className="w-3 h-3 fill-current" />
                           ) : (
-                            <Play className={`w-3 h-3 ml-0.5 ${isSelected ? 'fill-white text-white' : 'fill-current'}`} />
+                            <Play className="w-3 h-3 ml-0.5 fill-current" />
                           )}
                         </button>
                       </div>
