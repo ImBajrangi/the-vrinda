@@ -53,7 +53,7 @@ const MIME_TYPES = {
   '.ttf': 'font/ttf',
 };
 
-function injectSSRContent(template, html, seoHead) {
+function injectSSRContent(template, html, seoHead, initialState) {
   let result = template;
 
   // 1. Replace <div id="root"></div> with server-rendered markup
@@ -77,7 +77,55 @@ function injectSSRContent(template, html, seoHead) {
     result = result.replace('</head>', `    ${seoHead}\n  </head>`);
   }
 
+  // 3. Inject initial state script if initialPad exists for 0-latency hydration
+  if (initialState) {
+    const safeJson = JSON.stringify(initialState).replace(/</g, '\\u003c');
+    const stateScript = `<script id="__VRIND_INITIAL_STATE__">window.__INITIAL_STATE__=${safeJson};</script>`;
+    result = result.replace('</body>', `  ${stateScript}\n  </body>`);
+  }
+
   return result;
+}
+
+function serveStaticFile(req, res, filePath, mime, isImmutable) {
+  const stat = fs.statSync(filePath);
+  const etag = `"${stat.size.toString(16)}-${stat.mtimeMs.toString(16)}"`;
+  const ifNoneMatch = req.headers['if-none-match'];
+
+  const headers = {
+    'Content-Type': mime,
+    'ETag': etag,
+    'Cache-Control': isImmutable
+      ? 'public, max-age=31536000, immutable'
+      : 'public, max-age=3600',
+  };
+
+  if (ifNoneMatch && ifNoneMatch === etag) {
+    res.writeHead(304, headers);
+    res.end();
+    return;
+  }
+
+  const acceptEncoding = req.headers['accept-encoding'] || '';
+  const gzPath = filePath + '.gz';
+
+  // If pre-compressed .gz file exists and client supports gzip, stream it directly (0 CPU cost)
+  if (acceptEncoding.includes('gzip') && fs.existsSync(gzPath)) {
+    headers['Content-Encoding'] = 'gzip';
+    res.writeHead(200, headers);
+    fs.createReadStream(gzPath).pipe(res);
+    return;
+  }
+
+  const fileStream = fs.createReadStream(filePath);
+  if (acceptEncoding.includes('gzip') && (mime.startsWith('text/') || mime.includes('javascript') || mime.includes('json') || mime.includes('svg'))) {
+    headers['Content-Encoding'] = 'gzip';
+    res.writeHead(200, headers);
+    fileStream.pipe(zlib.createGzip()).pipe(res);
+  } else {
+    res.writeHead(200, headers);
+    fileStream.pipe(res);
+  }
 }
 
 async function startServer() {
@@ -99,6 +147,15 @@ async function startServer() {
     const parsedUrl = new URL(reqUrl, `http://${req.headers.host || 'localhost'}`);
     const pathname = parsedUrl.pathname;
 
+    // 0. API Endpoint for Canonical Database Padas
+    if (pathname === '/api/padas') {
+      const padasFile = path.join(DIST_DIR, 'data', 'canonicalPadas.json');
+      if (fs.existsSync(padasFile)) {
+        serveStaticFile(req, res, padasFile, 'application/json; charset=utf-8', true);
+        return;
+      }
+    }
+
     // 1. Check for Static Files in dist/
     const safePath = path.normalize(pathname).replace(/^(\.\.[\/\\])+/, '');
     const filePath = path.join(DIST_DIR, safePath);
@@ -106,26 +163,8 @@ async function startServer() {
     if (pathname !== '/' && fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
       const ext = path.extname(filePath).toLowerCase();
       const mime = MIME_TYPES[ext] || 'application/octet-stream';
-
-      const fileStream = fs.createReadStream(filePath);
-      const isImmutable = pathname.startsWith('/assets/');
-
-      const headers = {
-        'Content-Type': mime,
-        'Cache-Control': isImmutable
-          ? 'public, max-age=31536000, immutable'
-          : 'public, max-age=3600',
-      };
-
-      const acceptEncoding = req.headers['accept-encoding'] || '';
-      if (acceptEncoding.includes('gzip') && (mime.startsWith('text/') || mime.includes('javascript') || mime.includes('json') || mime.includes('svg'))) {
-        headers['Content-Encoding'] = 'gzip';
-        res.writeHead(200, headers);
-        fileStream.pipe(zlib.createGzip()).pipe(res);
-      } else {
-        res.writeHead(200, headers);
-        fileStream.pipe(res);
-      }
+      const isImmutable = pathname.startsWith('/assets/') || pathname.startsWith('/data/');
+      serveStaticFile(req, res, filePath, mime, isImmutable);
       return;
     }
 
@@ -154,7 +193,7 @@ async function startServer() {
     // Dynamic Render Execution
     try {
       const { html, seo, initialState } = render(reqUrl);
-      const renderedHtml = injectSSRContent(baseTemplate, html, seo?.htmlHead);
+      const renderedHtml = injectSSRContent(baseTemplate, html, seo?.htmlHead, initialState);
 
       // Save to LRU / in-memory cache
       if (ssrCache.size > 500) {

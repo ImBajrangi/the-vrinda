@@ -6,6 +6,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import zlib from 'node:zlib';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -129,6 +130,20 @@ export function generateAllSitemaps(outputDirs = ['public', 'dist']) {
     fs.writeFileSync(path.resolve(dir, 'sitemap-all.xml'), allXml, 'utf-8');
   }
 
+  // Ensure canonical database endpoints and pre-compressed .gz archives are synced
+  const rawBytes = fs.readFileSync(padasPath);
+  const compressedGz = zlib.gzipSync(rawBytes, { level: 9 });
+
+  for (const dirName of outputDirs) {
+    const dataDir = path.resolve(projectRoot, dirName, 'data');
+    if (!fs.existsSync(dataDir)) {
+      fs.mkdirSync(dataDir, { recursive: true });
+    }
+    fs.writeFileSync(path.resolve(dataDir, 'canonicalPadas.json'), rawBytes);
+    fs.writeFileSync(path.resolve(dataDir, 'canonicalPadas.json.gz'), compressedGz);
+  }
+
+  console.log(`  ✓ Synced canonical database JSON & pre-compressed .gz archive (${Math.round(compressedGz.length / 1024)} KB)`);
   console.log(`  ✓ Written sitemap.xml (Sitemap Index)`);
   console.log(`  ✓ Written sitemap-main.xml (${mainUrls.length} core routes)`);
   console.log(`  ✓ Written sitemap-granthas.xml (${granthasUrls.length} collections)`);

@@ -70,10 +70,22 @@ function dynamicSsrPlugin(): Plugin {
 }
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ isSsrBuild }) => ({
   plugins: [react(), dynamicSsrPlugin()],
+  build: {
+    rollupOptions: isSsrBuild
+      ? {}
+      : {
+          output: {
+            manualChunks: {
+              'vendor-react': ['react', 'react-dom'],
+              'vendor-icons': ['lucide-react'],
+            },
+          },
+        },
+  },
   server: {
     port: 5173,
     host: true,
   },
-});
+}));

@@ -157,8 +157,15 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   selectedPadId,
   initialPadId,
 }) => {
-  const allPadas = SacredDatabase.getAllPadas();
+  const [allPadas, setAllPadas] = useState<SacredPad[]>(() => SacredDatabase.getAllPadas());
   const allGranthas = SacredDatabase.getAllGranthas();
+
+  // Subscribe to dynamic sacred database hydration (IndexedDB / CDN)
+  useEffect(() => {
+    return SacredDatabase.subscribe(() => {
+      setAllPadas([...SacredDatabase.getAllPadas()]);
+    });
+  }, []);
 
   const [searchQuery, setSearchQuery] = useState(selectedSearchQuery || '');
   const [selectedGrantha, setSelectedGrantha] = useState<string>(
@@ -241,8 +248,9 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   }, [selectedGranthaId]);
 
   useEffect(() => {
-    if (selectedPadId) {
-      const p = SacredDatabase.getPadById(selectedPadId);
+    const targetId = selectedPadId || initialPadId;
+    if (targetId) {
+      const p = SacredDatabase.getPadById(targetId);
       if (p) {
         setSelectedPad(p);
         if (p.collectionId && p.collectionId !== selectedGrantha) {
@@ -250,7 +258,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
         }
       }
     }
-  }, [selectedPadId, allPadas]);
+  }, [selectedPadId, initialPadId, allPadas]);
 
   useEffect(() => {
     if (selectedSearchQuery !== undefined) {

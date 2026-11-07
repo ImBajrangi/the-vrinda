@@ -4,6 +4,13 @@ import { App } from './App';
 import { NavTab } from './components/common/FloatingNavbar';
 import { SacredDatabase } from './services/sacredDatabase';
 import { generateSEOMetadata, SEOMetadataResult, SEOConfig } from './services/seoService';
+import canonicalPadasData from './data/canonicalPadas.json';
+import { SacredPad } from './types/devotional';
+
+// Ensure SSR server pre-warms with full 4,204 canonical padas for instant bot rendering and SEO extraction
+if (!SacredDatabase.isLoaded()) {
+  SacredDatabase.loadPadas(canonicalPadasData);
+}
 
 export interface RenderResult {
   html: string;
@@ -11,6 +18,7 @@ export interface RenderResult {
   initialState: {
     tab: NavTab;
     padId?: string;
+    initialPad?: SacredPad;
   };
 }
 
@@ -101,6 +109,7 @@ export function render(url: string = '/'): RenderResult {
     initialState: {
       tab,
       padId,
+      initialPad: pad,
     },
   };
 }

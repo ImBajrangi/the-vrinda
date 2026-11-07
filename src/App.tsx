@@ -122,6 +122,28 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
   const [templeFilter, setTempleFilter] = useState<'all' | 'open' | 'rajbhog' | 'evening'>('all');
 
   const [weekDays] = useState<DayItem[]>(() => getDynamicWeekDays());
+  const [dbVersion, setDbVersion] = useState(0);
+
+  // Initiate background client hydration (IndexedDB -> CDN database)
+  useEffect(() => {
+    SacredDatabase.initialize();
+    return SacredDatabase.subscribe(() => {
+      setDbVersion((v) => v + 1);
+    });
+  }, []);
+
+  useEffect(() => {
+    const padIdToFind =
+      initialPadId ||
+      (typeof window !== 'undefined'
+        ? new URLSearchParams(window.location.search).get('pad') || undefined
+        : undefined);
+    if (padIdToFind) {
+      const found = SacredDatabase.getPadById(padIdToFind);
+      if (found) setCurrentPad(found);
+    }
+  }, [initialPadId, dbVersion]);
+
   const featuredPad = SacredDatabase.getAllPadas()[0];
 
   // Feed Category Tabs Elastic Indicator

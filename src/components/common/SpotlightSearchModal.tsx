@@ -81,11 +81,19 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
     }
   }, [isRendered]);
 
+  const [dbVersion, setDbVersion] = useState(0);
+
+  useEffect(() => {
+    return SacredDatabase.subscribe(() => {
+      setDbVersion((v) => v + 1);
+    });
+  }, []);
+
   // Compute Search Results
   const matchingPadas = useMemo(() => {
     if (activeFilter !== 'all' && activeFilter !== 'padas') return [];
     return SacredDatabase.search(query, 12);
-  }, [query, activeFilter]);
+  }, [query, activeFilter, dbVersion]);
 
   const matchingSaints = useMemo(() => {
     if (activeFilter !== 'all' && activeFilter !== 'saints') return [];

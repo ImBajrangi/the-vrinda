@@ -1,5 +1,5 @@
 import { get, set } from 'idb-keyval';
-import canonicalPadasData from '../data/canonicalPadas.json';
+import { SACRED_PADS } from '../data/padas';
 import canonicalGranthasData from '../data/canonicalGranthas.json';
 import canonicalSaintsData from '../data/canonicalSaints.json';
 import brajGlossaryData from '../data/brajGlossary.json';
@@ -199,8 +199,10 @@ function normalizeCanonicalPad(raw: any): SacredPad {
   };
 }
 
-// In-Memory Synchronous Pre-warmed Indexes for 0ms Rendering
-const allPadas: SacredPad[] = (canonicalPadasData as any[]).map(normalizeCanonicalPad);
+// Initial lightweight seed padas for 0ms instantaneous First Contentful Paint
+const seedPadas: SacredPad[] = (SACRED_PADS || []).map(normalizeCanonicalPad);
+
+let allPadas: SacredPad[] = [...seedPadas];
 const allGranthas: CanonicalGrantha[] = canonicalGranthasData as CanonicalGrantha[];
 const allSaints: CanonicalSaint[] = canonicalSaintsData as CanonicalSaint[];
 
@@ -209,31 +211,124 @@ const padasBySlug = new Map<string, SacredPad>();
 const padasByGrantha = new Map<string, SacredPad[]>();
 const padasByRaga = new Map<string, SacredPad[]>();
 
-// Build fast indexes synchronously at import time
-allPadas.forEach((pad) => {
-  padasById.set(pad.id, pad);
-  if (pad.slug) {
-    padasBySlug.set(pad.slug, pad);
-    padasBySlug.set(pad.slug.toLowerCase(), pad);
-  }
+function indexPadas(pads: SacredPad[]) {
+  pads.forEach((pad) => {
+    padasById.set(pad.id, pad);
+    if (pad.slug) {
+      padasBySlug.set(pad.slug, pad);
+      padasBySlug.set(pad.slug.toLowerCase(), pad);
+    }
 
-  // Group by collection/grantha
-  const gList = padasByGrantha.get(pad.collectionId) || [];
-  gList.push(pad);
-  padasByGrantha.set(pad.collectionId, gList);
+    // Group by collection/grantha
+    const gList = padasByGrantha.get(pad.collectionId) || [];
+    gList.push(pad);
+    padasByGrantha.set(pad.collectionId, gList);
 
-  // Group by raga
-  if (pad.rag) {
-    const rList = padasByRaga.get(pad.rag) || [];
-    rList.push(pad);
-    padasByRaga.set(pad.rag, rList);
-  }
-});
+    // Group by raga
+    if (pad.rag) {
+      const rList = padasByRaga.get(pad.rag) || [];
+      rList.push(pad);
+      padasByRaga.set(pad.rag, rList);
+    }
+  });
+}
+
+// Build initial seed index synchronously for immediate frame-0 render
+indexPadas(seedPadas);
+
+// Check if server pre-injected an initial requested pad for zero-flash SSR hydration
+if (typeof window !== 'undefined') {
+  try {
+    const initialState = (window as any).__INITIAL_STATE__;
+    if (initialState?.initialPad) {
+      const norm = normalizeCanonicalPad(initialState.initialPad);
+      if (!padasById.has(norm.id)) {
+        allPadas.unshift(norm);
+        indexPadas([norm]);
+      }
+    }
+  } catch {}
+}
+
+let isFullyLoaded = false;
+let initPromise: Promise<void> | null = null;
+const dbListeners = new Set<() => void>();
 
 /**
  * High-Performance Sacred Database API
+ * Uses a zero-cost, two-tier cache architecture:
+ * 1. Synchronous lightweight seed for 0ms First Contentful Paint
+ * 2. Persistent Client IndexedDB cache for permanent 0ms offline retrieval (zero server bandwidth)
+ * 3. Fallback database endpoint with aggressive HTTP immutable caching
  */
 export const SacredDatabase = {
+  isLoaded(): boolean {
+    return isFullyLoaded;
+  },
+
+  subscribe(listener: () => void): () => void {
+    dbListeners.add(listener);
+    return () => {
+      dbListeners.delete(listener);
+    };
+  },
+
+  loadPadas(rawPadas: any[]): void {
+    if (!rawPadas || !rawPadas.length) return;
+    const normalized = rawPadas.map(normalizeCanonicalPad);
+    allPadas = normalized;
+    padasById.clear();
+    padasBySlug.clear();
+    padasByGrantha.clear();
+    padasByRaga.clear();
+
+    indexPadas(normalized);
+    isFullyLoaded = true;
+
+    dbListeners.forEach((fn) => {
+      try {
+        fn();
+      } catch (err) {
+        console.error('SacredDatabase listener notification error:', err);
+      }
+    });
+  },
+
+  async initialize(): Promise<void> {
+    if (typeof window === 'undefined') return;
+    if (isFullyLoaded) return;
+    if (initPromise) return initPromise;
+
+    initPromise = (async () => {
+      try {
+        // Step 1: Check Client IndexedDB (0ms local retrieval, 0 bytes server bandwidth)
+        const cached = await get<any[]>('vrind_canonical_padas_v2');
+        if (cached && Array.isArray(cached) && cached.length > 50) {
+          SacredDatabase.loadPadas(cached);
+          return;
+        }
+
+        // Step 2: First-time database fetch from CDN/API endpoint
+        const response = await fetch('/data/canonicalPadas.json');
+        if (!response.ok) {
+          throw new Error(`Failed to fetch database: HTTP ${response.status}`);
+        }
+        const data = await response.json();
+        SacredDatabase.loadPadas(data);
+
+        // Step 3: Persist into IndexedDB for 100% offline capability & zero future server cost
+        try {
+          await set('vrind_canonical_padas_v2', data);
+        } catch (storageErr) {
+          console.warn('SacredDatabase IndexedDB persist deferred:', storageErr);
+        }
+      } catch (err) {
+        console.warn('SacredDatabase initialization deferred:', err);
+      }
+    })();
+
+    return initPromise;
+  },
   // Synchronous Read Methods (0ms Cold Render)
   getAllPadas(): SacredPad[] {
     return allPadas;
