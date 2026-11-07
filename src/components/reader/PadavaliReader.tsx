@@ -918,12 +918,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                       : 'opacity-80 hover:opacity-100'
                   }`}
                 >
-                  <div className="flex items-center justify-between">
-                    <div className="text-xs font-bold font-devanagari">{t.label}</div>
-                    {readerTheme === t.id && (
-                      <span className="w-2 h-2 rounded-full bg-[#EAB308] shrink-0" />
-                    )}
-                  </div>
+                  <div className="text-xs font-bold font-devanagari">{t.label}</div>
                   <div className="text-[10px] opacity-70 font-mono mt-0.5">{t.desc}</div>
                 </button>
               ))}
@@ -1448,8 +1443,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 >
                   {/* Stanza Utility Header: Stanza Number + Verse Copy Action */}
                   <div className={`flex items-center justify-between pb-2.5 mb-3 border-b ${currentTheme.borderColor}`}>
-                    <span className={`text-xs font-mono font-bold ${currentTheme.metaColor} uppercase tracking-wider flex items-center gap-1.5`}>
-                      <span className="text-[#FACC15] text-[10px]">✦</span>
+                    <span className={`text-xs font-mono font-bold ${currentTheme.metaColor} uppercase tracking-wider`}>
                       चरण {formatDevanagariNumerals(verse.stanzaNumber)}
                     </span>
 
@@ -1506,12 +1500,10 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   </div>
 
                   {/* Simple Dignified Delimiter */}
-                  <div className="flex items-center justify-center gap-2 my-4 select-none">
-                    <span className="text-[#FACC15] text-xs">✦</span>
+                  <div className="flex items-center justify-center my-4 select-none">
                     <span className={`${fontClass} font-bold text-xs tracking-widest ${currentTheme.metaColor}`}>
                       ॥ {formatDevanagariNumerals(verse.stanzaNumber)} ॥
                     </span>
-                    <span className="text-[#FACC15] text-xs">✦</span>
                   </div>
 
                   {/* Transliteration */}
@@ -1536,8 +1528,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   {/* Hindi Meaning / Bhavarth Block */}
                   {verse.bhavarth && (
                     <div className={`${currentTheme.bhavarthBg} p-4 rounded-xl mt-3 transition-colors`}>
-                      <span className={`text-[10px] font-mono font-bold ${currentTheme.metaColor} uppercase tracking-wider flex items-center gap-1 mb-1`}>
-                        <Sparkles className="w-3 h-3 text-[#FACC15]" />
+                      <span className={`text-[10px] font-mono font-bold ${currentTheme.metaColor} uppercase tracking-wider block mb-1`}>
                         भावार्थ (Sacred Meaning)
                       </span>
                       <p className={`${fontClass} leading-relaxed font-normal ${currentTheme.bhavarthText} ${
@@ -1632,8 +1623,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                       }`}
                     >
                       <div className="flex items-center justify-between mb-1">
-                        <span className={`text-[10px] font-mono font-bold ${currentTheme.metaColor} uppercase tracking-wider flex items-center gap-1`}>
-                          {isActive && <span className="text-[#FACC15]">✦</span>}
+                        <span className={`text-[10px] font-mono font-bold ${currentTheme.metaColor} uppercase tracking-wider`}>
                           चरण {formatDevanagariNumerals(v.stanzaNumber)}
                         </span>
                         <span className={`text-[10px] ${currentTheme.translitColor} font-mono`}>भावार्थ</span>
@@ -1650,14 +1640,14 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             {/* Luminous Champagne-Diamond Sacred Footnote */}
             <div className="bg-[#FAF8F5] rounded-2xl p-4 text-xs text-[#334155] leading-relaxed">
               <div className="flex items-center gap-1.5 mb-1 text-[#0F172A] font-serif font-bold">
-                <Sparkles className="w-3.5 h-3.5 text-[#FACC15]" />
+                <Sparkles className="w-3.5 h-3.5 text-[#CA8A04]" />
                 <span>नित्य निकुंज विहार दर्शन</span>
               </div>
               <p className="text-[11.5px] text-[#475569] font-devanagari">
                 श्री वृन्दावन धाम में प्रिया-प्रियतम की नित्य विहार लीला अखंड एवं नित्य-नूतन है। यहाँ प्रेम ही साधन है और प्रेम ही साध्य है।
               </p>
               <div className="pt-2 mt-2 border-t border-[#E5E0D8]/60 flex items-center justify-between text-[10px] text-[#CA8A04] font-mono font-semibold">
-                <span>✦ ॥ अगाध निकुंज रस ॥ ✦</span>
+                <span>॥ अगाध निकुंज रस ॥</span>
                 <span>राधा कृपा कटाक्ष</span>
               </div>
             </div>
