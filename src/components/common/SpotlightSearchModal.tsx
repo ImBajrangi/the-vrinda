@@ -185,7 +185,7 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
         onClick={(e) => e.stopPropagation()}
       >
         {/* 1. Minimalist Search Bar */}
-        <div className="flex items-center gap-3 px-4 sm:px-5 py-3.5 border-b border-neutral-100 bg-white">
+        <div className="flex items-center gap-3 px-4 sm:px-5 pt-4 pb-1.5 bg-white">
           <Search className="w-4 h-4 text-neutral-400 shrink-0" />
           <input
             ref={inputRef}
@@ -211,12 +211,12 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
         </div>
 
         {/* 2. Full-Width Segmented Scope Bar with Elastic Bouncy Sliding Pill */}
-        <div className="px-4 sm:px-5 py-2.5 border-b border-neutral-150 bg-[#FAF9F6]">
-          <div className="relative w-full grid grid-cols-4 p-1 bg-neutral-200/70 rounded-full border border-neutral-300/40">
+        <div className="px-4 sm:px-5 pt-1.5 pb-3 bg-white">
+          <div className="relative w-full grid grid-cols-4 p-1 bg-[#F4F4F5] rounded-full border border-neutral-200/60">
             {/* Dynamic Elastic Sliding Pill spanning exactly 25% */}
             <span
               aria-hidden="true"
-              className="absolute top-1 bottom-1 rounded-full bg-[#18181B] shadow-sm pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+              className="absolute top-1 bottom-1 rounded-full bg-[#18181B] shadow-xs pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
               style={{
                 width: 'calc((100% - 8px) / 4)',
                 left: '4px',
@@ -235,15 +235,15 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
                     setSelectedIdx(0);
                   }}
                   className={`relative z-10 py-1.5 px-2 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer flex items-center justify-center gap-1.5 select-none ${
-                    isActive ? 'text-white font-bold' : 'text-neutral-700 hover:text-[#18181B]'
+                    isActive ? 'text-white font-bold' : 'text-[#71717A] hover:text-[#18181B]'
                   }`}
                 >
                   <span className="truncate">{f.label}</span>
                   <span
                     className={`text-[10px] font-mono font-bold px-1.5 py-0.2 rounded-full leading-none shrink-0 transition-colors ${
                       isActive
-                        ? 'bg-white/25 text-white'
-                        : 'bg-neutral-300/80 text-neutral-700'
+                        ? 'bg-white/20 text-white'
+                        : 'bg-neutral-200/70 text-[#71717A]'
                     }`}
                   >
                     {f.count}
@@ -405,7 +405,7 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
         </div>
 
         {/* 4. Zen Minimalist Footer */}
-        <div className="px-4 sm:px-5 py-2.5 bg-[#FAF9F6] border-t border-neutral-100 flex items-center justify-between text-xs text-neutral-500 select-none">
+        <div className="px-4 sm:px-5 py-2.5 bg-white border-t border-neutral-100 flex items-center justify-between text-xs text-[#71717A] select-none">
           <span className="font-semibold text-[#18181B] font-mono">
             {totalResults} परिणाम उपलब्ध
           </span>

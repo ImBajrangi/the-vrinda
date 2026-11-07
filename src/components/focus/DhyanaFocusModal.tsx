@@ -367,13 +367,13 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className={`w-full max-w-2xl bg-[#FAF9F6] text-[#111111] rounded-[32px] border border-neutral-200/80 shadow-[0_24px_64px_rgba(0,0,0,0.4)] flex flex-col max-h-[92vh] overflow-hidden ${
+        className={`w-full max-w-2xl bg-white text-[#111111] rounded-[32px] border border-neutral-200/80 shadow-[0_24px_64px_rgba(0,0,0,0.4)] flex flex-col max-h-[92vh] overflow-hidden ${
           isClosing ? 'modal-dialog-exit' : 'modal-dialog-enter'
         }`}
       >
         
         {/* Modal Top Bar */}
-        <div className="flex items-center justify-between p-4 sm:p-5 border-b border-neutral-100 bg-white">
+        <div className="flex items-center justify-between px-4 sm:px-5 pt-4 sm:pt-5 pb-1.5 bg-white">
           <div className="flex items-center gap-3 min-w-0">
             <div className="w-10 h-10 rounded-2xl bg-purple-50 text-purple-700 flex items-center justify-center font-bold text-lg shrink-0">
               🧘
@@ -422,7 +422,7 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
         </div>
 
         {/* Segmented Pill Navigation Tabs (Clean, Single-Line, Zero Wrapping) */}
-        <div className="px-4 py-2.5 bg-[#FAF9F6] border-b border-neutral-100 flex items-center justify-center">
+        <div className="px-4 pt-1 pb-3 bg-white flex items-center justify-center">
           <div className="relative w-full max-w-md grid grid-cols-2 p-1 bg-[#F4F4F5] rounded-full border border-neutral-200/80 shadow-2xs">
             {/* Dynamic Elastic Sliding Indicator Bar */}
             <span
