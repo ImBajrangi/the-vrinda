@@ -18,6 +18,9 @@ import {
   Copy,
   Check,
   Type,
+  AlignLeft,
+  AlignCenter,
+  AlignJustify,
 } from 'lucide-react';
 import { SacredDatabase } from '../../services/sacredDatabase';
 import { SacredPad } from '../../types/devotional';
@@ -49,6 +52,30 @@ interface PadavaliReaderProps {
 type ReaderTheme = 'ivory' | 'mint' | 'chandan' | 'night';
 type ReaderFontSize = 'sm' | 'md' | 'lg' | 'xl';
 type ReaderFontFamily = 'serif' | 'devanagari';
+type ReaderTextAlign = 'left' | 'center' | 'justify';
+
+/**
+ * Defensive verse line sanitizer & stanza segmenter
+ * Ensures unformatted commentary blobs or monolithic prose strings
+ * gracefully decompose into authentic poetic verses for optimal reading cadence.
+ */
+const splitVerseLines = (lines: string[]): string[] => {
+  const result: string[] = [];
+  for (const rawLine of lines) {
+    if (!rawLine) continue;
+    const cleaned = rawLine
+      .replace(/^महाप्रभु\s+श्री\s+हित\s+चौरासी\s*\(\d+\)\s*/g, '')
+      .trim();
+    if (!cleaned) continue;
+    if (cleaned.length > 100 && /\[\d+\]/.test(cleaned)) {
+      const parts = cleaned.split(/(?<=\[\d+\])\s*/g).filter(Boolean);
+      result.push(...parts);
+    } else {
+      result.push(cleaned);
+    }
+  }
+  return result;
+};
 
 const themeStyles: Record<
   ReaderTheme,
@@ -297,6 +324,13 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     }
     return '1.0x';
   });
+  const [textAlign, setTextAlign] = useState<ReaderTextAlign>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('vrind_reader_textAlign') as ReaderTextAlign;
+      if (['left', 'center', 'justify'].includes(saved)) return saved;
+    }
+    return 'center';
+  });
 
   const handleSetReaderTheme = (t: ReaderTheme) => {
     setReaderTheme(t);
@@ -323,6 +357,13 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     setPlaybackPace(p);
     if (typeof window !== 'undefined') {
       localStorage.setItem('vrind_reader_playbackPace', p);
+    }
+  };
+
+  const handleSetTextAlign = (a: ReaderTextAlign) => {
+    setTextAlign(a);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('vrind_reader_textAlign', a);
     }
   };
 
@@ -729,6 +770,12 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
   const currentTheme = themeStyles[readerTheme] || themeStyles.ivory;
   const fontClass = fontFamily === 'serif' ? 'font-serif' : 'font-devanagari font-sans';
+  const textAlignClass =
+    textAlign === 'center'
+      ? 'text-center'
+      : textAlign === 'justify'
+      ? 'text-justify'
+      : 'text-left';
 
   return (
     <div className="w-full pb-44 md:pb-32 pt-2 sm:pt-4">
@@ -823,7 +870,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       {/* ========================================================================= */}
       {isSettingsOpen && (
         <div className="mb-4 p-4 rounded-2xl bg-white space-y-3 apple-sheet-enter text-[#18181B]">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-neutral-100 pb-3">
+          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-neutral-100 pb-3">
             {/* Font Size Stepper with Elastic Sliding Pill */}
             <div className="flex items-center gap-2">
               <span className="text-[11px] font-bold text-neutral-500 uppercase tracking-wider flex items-center gap-1 font-mono">
@@ -901,6 +948,47 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 >
                   Sans (Modern)
                 </button>
+              </div>
+            </div>
+
+            {/* Alignment Stepper with Elastic Sliding Pill */}
+            <div className="flex items-center gap-2">
+              <span className="text-[11px] font-bold text-neutral-500 uppercase tracking-wider font-mono">
+                Alignment:
+              </span>
+              <div className="relative flex items-center p-1 bg-neutral-100 rounded-full">
+                {/* Dynamic Elastic Sliding Pill */}
+                <span
+                  aria-hidden="true"
+                  className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+                  style={{
+                    width: 'calc((100% - 8px) / 3)',
+                    left: '4px',
+                    transform: `translateX(${['left', 'center', 'justify'].indexOf(textAlign) * 100}%)`,
+                  }}
+                />
+                {[
+                  { id: 'left' as ReaderTextAlign, label: 'Left', icon: AlignLeft },
+                  { id: 'center' as ReaderTextAlign, label: 'Center', icon: AlignCenter },
+                  { id: 'justify' as ReaderTextAlign, label: 'Justified', icon: AlignJustify },
+                ].map((a) => {
+                  const Icon = a.icon;
+                  return (
+                    <button
+                      key={a.id}
+                      type="button"
+                      onClick={() => handleSetTextAlign(a.id)}
+                      className={`relative z-10 px-2.5 py-1 rounded-full text-xs font-semibold flex items-center gap-1 transition-colors duration-200 cursor-pointer ${
+                        textAlign === a.id
+                          ? 'text-[#18181B] font-bold'
+                          : 'text-neutral-500 hover:text-neutral-900'
+                      }`}
+                    >
+                      <Icon className="w-3 h-3" />
+                      <span>{a.label}</span>
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
@@ -1371,7 +1459,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             </div>
 
             {/* Noble Headline & Author */}
-            <div>
+            <div className={textAlign === 'center' ? 'text-center' : 'text-left'}>
               <h2 className={`${fontClass} font-bold leading-tight tracking-tight ${currentTheme.titleColor} ${
                 fontSize === 'sm'
                   ? 'text-xl sm:text-2xl'
@@ -1383,7 +1471,9 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               }`}>
                 {cleanTitle}
               </h2>
-              <div className={`flex items-center gap-2 text-sm ${currentTheme.metaColor} ${fontClass} font-normal mt-2 flex-wrap`}>
+              <div className={`flex items-center gap-2 text-sm ${currentTheme.metaColor} ${fontClass} font-normal mt-2 flex-wrap ${
+                textAlign === 'center' ? 'justify-center' : 'justify-start'
+              }`}>
                 <span className={`${currentTheme.titleColor} font-semibold`}>{authorName}</span>
                 {granthaRef && (
                   <>
@@ -1535,8 +1625,8 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   </div>
 
                   {/* Devanagari Verses Typography */}
-                  <div className="space-y-2.5 py-1">
-                    {(verse.linesDevanagari || []).map((line, lIdx) => {
+                  <div className={`space-y-3 sm:space-y-3.5 py-1.5 ${textAlignClass}`}>
+                    {splitVerseLines(verse.linesDevanagari || []).map((line, lIdx) => {
                       if (line.trim().startsWith('(') && line.trim().endsWith(')')) {
                         return (
                           <div key={lIdx} className={`text-xs ${fontClass} ${currentTheme.metaColor} font-bold mb-1`}>
@@ -1547,14 +1637,16 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                       return (
                         <p
                           key={lIdx}
-                          className={`${fontClass} font-bold tracking-tight ${currentTheme.lineColor} ${
+                          className={`${fontClass} ${
+                            lIdx === 0 ? 'font-semibold' : 'font-normal sm:font-medium'
+                          } tracking-normal ${currentTheme.lineColor} ${textAlignClass} ${
                             fontSize === 'sm'
-                              ? 'text-[18px] sm:text-[20px] leading-[2.0]'
+                              ? 'text-[18px] sm:text-[20px] leading-[2.1] sm:leading-[2.2]'
                               : fontSize === 'md'
-                              ? 'text-[21px] sm:text-[24px] leading-[2.1] sm:leading-[2.2]'
+                              ? 'text-[21px] sm:text-[23px] leading-[2.2] sm:leading-[2.3]'
                               : fontSize === 'lg'
-                              ? 'text-[24px] sm:text-[27px] leading-[2.2] sm:leading-[2.3]'
-                              : 'text-[27px] sm:text-[31px] leading-[2.3] sm:leading-[2.4]'
+                              ? 'text-[24px] sm:text-[26px] leading-[2.3] sm:leading-[2.4]'
+                              : 'text-[27px] sm:text-[30px] leading-[2.4] sm:leading-[2.5]'
                           }`}
                         >
                           {line}
@@ -1572,16 +1664,16 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
                   {/* Transliteration */}
                   {showTransliteration && (verse.linesTransliteration?.length ?? 0) > 0 && (
-                    <div className={`space-y-0.5 pt-2 border-t ${currentTheme.borderColor} mt-2`}>
+                    <div className={`space-y-1 pt-2 border-t ${currentTheme.borderColor} mt-2.5 ${textAlignClass}`}>
                       {verse.linesTransliteration?.map((line, lIdx) => (
-                        <p key={lIdx} className={`${fontClass} italic ${currentTheme.translitColor} ${
+                        <p key={lIdx} className={`${fontClass} italic ${currentTheme.translitColor} ${textAlignClass} ${
                           fontSize === 'sm'
-                            ? 'text-[11px] sm:text-xs'
+                            ? 'text-[11px] sm:text-xs leading-relaxed'
                             : fontSize === 'md'
-                            ? 'text-xs sm:text-sm'
+                            ? 'text-xs sm:text-sm leading-relaxed'
                             : fontSize === 'lg'
-                            ? 'text-sm sm:text-base'
-                            : 'text-base sm:text-lg'
+                            ? 'text-sm sm:text-base leading-relaxed'
+                            : 'text-base sm:text-lg leading-relaxed'
                         }`}>
                           {line}
                         </p>
@@ -1591,17 +1683,19 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
                   {/* Hindi Meaning / Bhavarth Block */}
                   {verse.bhavarth && (
-                    <div className={`${currentTheme.bhavarthBg} p-4 rounded-xl mt-3 transition-colors`}>
-                      <span className={`text-[10px] font-mono font-bold ${currentTheme.metaColor} uppercase tracking-wider block mb-1`}>
+                    <div className={`${currentTheme.bhavarthBg} p-4 sm:p-5 rounded-xl mt-3.5 transition-colors ${
+                      textAlign === 'center' ? 'text-center' : textAlign === 'justify' ? 'text-justify' : 'text-left'
+                    }`}>
+                      <span className={`text-[10px] font-mono font-bold ${currentTheme.metaColor} uppercase tracking-wider block mb-1.5`}>
                         भावार्थ (Sacred Meaning)
                       </span>
-                      <p className={`${fontClass} leading-relaxed font-normal ${currentTheme.bhavarthText} ${
+                      <p className={`${fontClass} leading-[1.8] sm:leading-[1.9] font-normal ${currentTheme.bhavarthText} ${
                         fontSize === 'sm'
-                          ? 'text-xs sm:text-[12.5px]'
+                          ? 'text-xs sm:text-[13px]'
                           : fontSize === 'md'
-                          ? 'text-xs sm:text-[13.5px]'
+                          ? 'text-xs sm:text-[14px]'
                           : fontSize === 'lg'
-                          ? 'text-sm sm:text-[15px]'
+                          ? 'text-sm sm:text-[15.5px]'
                           : 'text-base sm:text-[17px]'
                       }`}>
                         {verse.bhavarth}
