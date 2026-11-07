@@ -9,11 +9,13 @@
     "build:server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
     "build:sitemap": "node scripts/generate-sitemap.js",
     "build:ssg": "node scripts/generate-sitemap.js && tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist/server && node scripts/prerender.js",
+    "db:sync": "node scripts/sync-to-supabase.js",
     "serve:ssr": "node server.js",
     "start": "node server.js",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.119.0",
     "clsx": "^2.1.1",
     "idb-keyval": "^6.2.1",
     "lucide-react": "^1.16.0",
@@ -33,4 +35,3 @@
     "vite": "^6.1.0"
   }
 }
-

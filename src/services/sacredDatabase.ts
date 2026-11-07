@@ -1,4 +1,5 @@
 import { get, set } from 'idb-keyval';
+import { supabase } from './supabaseClient';
 import { SACRED_PADS } from '../data/padas';
 import canonicalGranthasData from '../data/canonicalGranthas.json';
 import canonicalSaintsData from '../data/canonicalSaints.json';
@@ -254,6 +255,20 @@ let isFullyLoaded = false;
 let initPromise: Promise<void> | null = null;
 const dbListeners = new Set<() => void>();
 
+function getDeviceId(): string {
+  if (typeof window === 'undefined') return 'server';
+  try {
+    let id = localStorage.getItem('vv_device_sync_id');
+    if (!id) {
+      id = 'dev_' + Math.random().toString(36).substring(2, 15) + Date.now().toString(36);
+      localStorage.setItem('vv_device_sync_id', id);
+    }
+    return id;
+  } catch {
+    return 'default_device';
+  }
+}
+
 /**
  * High-Performance Sacred Database API
  * Uses a zero-cost, two-tier cache architecture:
@@ -308,7 +323,39 @@ export const SacredDatabase = {
           return;
         }
 
-        // Step 2: First-time database fetch from CDN/API endpoint
+        // Step 2: Fetch live from Supabase Database
+        try {
+          const { data: supaPadas, error: supaErr } = await supabase
+            .from('padas')
+            .select('*')
+            .order('index', { ascending: true })
+            .limit(5000);
+
+          if (!supaErr && supaPadas && supaPadas.length > 50) {
+            const padasFromDb = supaPadas.map((r: any) => ({
+              id: r.id,
+              collectionId: r.collection_id || r.collectionId || 'other',
+              index: r.index,
+              titleDevanagari: r.title_devanagari || r.titleDevanagari,
+              titleEnglish: r.title_english || r.titleEnglish,
+              author: r.author,
+              rag: r.rag,
+              slug: r.slug,
+              duration: r.duration,
+              verses: r.verses,
+            }));
+
+            SacredDatabase.loadPadas(padasFromDb);
+            try {
+              await set('vrind_canonical_padas_v2', padasFromDb);
+            } catch {}
+            return;
+          }
+        } catch (supaErr) {
+          console.warn('Supabase live fetch deferred, falling back to local database endpoint:', supaErr);
+        }
+
+        // Step 3: Fallback to high-performance local database endpoint
         const response = await fetch('/data/canonicalPadas.json');
         if (!response.ok) {
           throw new Error(`Failed to fetch database: HTTP ${response.status}`);
@@ -316,7 +363,7 @@ export const SacredDatabase = {
         const data = await response.json();
         SacredDatabase.loadPadas(data);
 
-        // Step 3: Persist into IndexedDB for 100% offline capability & zero future server cost
+        // Step 4: Persist into IndexedDB for 100% offline capability & zero future server cost
         try {
           await set('vrind_canonical_padas_v2', data);
         } catch (storageErr) {
@@ -535,7 +582,7 @@ export const SacredDatabase = {
     return results;
   },
 
-  // Asynchronous Persistent Operations via IndexedDB
+  // Asynchronous Persistent Operations via IndexedDB & Supabase Cloud Sync
   async getBookmarkedPadIds(): Promise<string[]> {
     try {
       const list = await get<string[]>('vv_bookmarked_pads');
@@ -565,6 +612,16 @@ export const SacredDatabase = {
         window.localStorage.setItem('vv_bookmarked_pads', JSON.stringify(updated));
       }
     } catch { }
+
+    // Asynchronously sync bookmark state to Supabase database in background
+    try {
+      const deviceId = getDeviceId();
+      if (exists) {
+        supabase.from('user_bookmarks').delete().match({ device_id: deviceId, pad_id: padId }).then();
+      } else {
+        supabase.from('user_bookmarks').insert({ device_id: deviceId, pad_id: padId }).then();
+      }
+    } catch {}
 
     return !exists;
   },
