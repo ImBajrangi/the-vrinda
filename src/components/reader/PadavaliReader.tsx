@@ -228,21 +228,11 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     }[size];
 
     if (imgError || !rawImage) {
-      if (size === 'sm') {
-        return (
-          <div
-            className={`${sizeClasses} shrink-0 bg-[#18181B] text-white flex items-center justify-center font-serif font-bold select-none shadow-2xs ${className}`}
-          >
-            <span className="leading-none">{initial}</span>
-          </div>
-        );
-      }
-
       return (
         <div
           className={`${sizeClasses} shrink-0 ${
             isSelected
-              ? 'bg-purple-100/80 text-purple-900 border border-purple-200/60 shadow-2xs'
+              ? 'bg-purple-100/90 text-purple-900 border border-purple-200/80 shadow-2xs'
               : 'bg-purple-50/80 text-[#7C3AED] border border-purple-100/70'
           } flex items-center justify-center font-serif font-bold select-none transition-colors duration-200 ${className}`}
         >
@@ -930,38 +920,62 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 <div
                   key={pad.id}
                   onClick={() => handleSelectPad(pad)}
-                  className={`p-3.5 rounded-[22px] transition-all cursor-pointer flex items-center justify-between gap-3 relative border ${
+                  className={`group relative px-3 py-2.5 rounded-2xl transition-all cursor-pointer flex items-center justify-between gap-3 border ${
                     isSelected
-                      ? 'bg-white text-[#18181B] border-purple-200/90 shadow-[0_2px_14px_rgba(124,58,237,0.06)]'
-                      : 'bg-white/90 hover:bg-white text-[#18181B] border-neutral-200/70 hover:border-neutral-300 shadow-2xs'
+                      ? 'bg-purple-50/40 text-[#18181B] border-purple-200/90 shadow-[0_2px_12px_rgba(124,58,237,0.06)]'
+                      : 'bg-white hover:bg-neutral-50/80 text-[#18181B] border-neutral-200/70 hover:border-neutral-300 shadow-2xs'
                   }`}
                 >
-                  {/* Freestanding vertical accent pill indicator matching Image 2 */}
+                  {/* Absolute left accent bar - Never causes content jumping */}
                   {isSelected && (
-                    <span className="w-1.5 h-8 rounded-full bg-[#7C3AED] shrink-0" />
+                    <span
+                      aria-hidden="true"
+                      className="absolute left-0 top-2.5 bottom-2.5 w-1 rounded-r-full bg-[#7C3AED]"
+                    />
                   )}
 
                   <div className="flex items-center gap-3 min-w-0 flex-1">
-                    <ScriptureArtwork pad={pad} size="sm" isSelected={isSelected} />
+                    {/* Apple Music-grade Track Index / Dancing Audio EQ Slot */}
+                    <div
+                      className={`w-9 h-9 rounded-xl shrink-0 flex items-center justify-center font-mono font-bold text-xs transition-colors select-none ${
+                        isCurrentlyPlaying
+                          ? 'bg-[#7C3AED] text-white shadow-xs'
+                          : isSelected
+                            ? 'bg-purple-100 text-[#7C3AED] border border-purple-200/80'
+                            : 'bg-[#F4F4F5] text-neutral-500 border border-neutral-200/60'
+                      }`}
+                    >
+                      {isCurrentlyPlaying ? (
+                        <div className="flex items-end justify-center gap-0.5 h-3">
+                          <span className="w-0.5 bg-white rounded-full animate-apple-eq-1" />
+                          <span className="w-0.5 bg-white rounded-full animate-apple-eq-2" />
+                          <span className="w-0.5 bg-white rounded-full animate-apple-eq-3" />
+                        </div>
+                      ) : (
+                        <span>{String(idx + 1).padStart(2, '0')}</span>
+                      )}
+                    </div>
+
+                    {/* Verse Title & Meta */}
                     <div className="min-w-0 flex-1">
-                      <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider font-mono">
-                        <span className="px-2.5 py-0.5 rounded-full bg-purple-100/70 text-[#7C3AED] font-bold">
-                          #{idx + 1}
-                        </span>
-                        {pad.rag && (
-                          <span className="truncate text-[#7C3AED] font-semibold">{pad.rag}</span>
-                        )}
-                      </div>
-                      <div className="font-serif font-bold text-sm sm:text-[15px] truncate text-[#18181B] mt-0.5">
+                      <div className={`font-serif font-bold text-sm truncate leading-snug transition-colors ${
+                        isSelected ? 'text-[#7C3AED]' : 'text-[#18181B]'
+                      }`}>
                         {pad.titleDevanagari}
                       </div>
-                      <div className="text-xs text-[#71717A] truncate font-medium mt-0.5">
-                        {pad.author}
+                      <div className="flex items-center gap-1.5 text-[11px] text-[#71717A] truncate font-medium mt-0.5">
+                        <span className="truncate">{pad.author}</span>
+                        {pad.rag && (
+                          <>
+                            <span className="text-neutral-300">•</span>
+                            <span className="text-[#7C3AED] font-mono shrink-0 font-semibold">{pad.rag}</span>
+                          </>
+                        )}
                       </div>
                     </div>
                   </div>
 
-                  {/* Circular solid black play button matching Image 2 */}
+                  {/* Refined Context-Aware Play/Pause Action Button */}
                   <button
                     type="button"
                     onClick={(e) => {
@@ -969,16 +983,18 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                       onPlayPad(pad);
                     }}
                     aria-label={`Play ${pad.titleDevanagari}`}
-                    className={`w-9 h-9 rounded-full shrink-0 flex items-center justify-center transition-colors cursor-pointer shadow-xs ${
+                    className={`w-8 h-8 rounded-full shrink-0 flex items-center justify-center transition-all cursor-pointer ${
                       isCurrentlyPlaying
-                        ? 'bg-[#7C3AED] text-white'
-                        : 'bg-[#18181B] hover:bg-neutral-800 text-white'
+                        ? 'bg-[#7C3AED] text-white shadow-xs'
+                        : isSelected
+                          ? 'bg-[#18181B] text-white shadow-xs'
+                          : 'bg-[#F4F4F5] hover:bg-neutral-200 text-[#71717A] hover:text-[#18181B] border border-neutral-200/60'
                     }`}
                   >
                     {isCurrentlyPlaying ? (
                       <Pause className="w-3.5 h-3.5 fill-white text-white" />
                     ) : (
-                      <Play className="w-3.5 h-3.5 fill-white text-white ml-0.5" />
+                      <Play className={`w-3.5 h-3.5 ml-0.5 ${isSelected ? 'fill-white text-white' : 'fill-current'}`} />
                     )}
                   </button>
                 </div>
