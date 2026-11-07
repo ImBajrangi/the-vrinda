@@ -1319,7 +1319,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                         onClick={() => handleSelectPad(pad)}
                         className={`group relative z-10 px-3 py-2.5 rounded-2xl flex items-start gap-2.5 cursor-pointer select-none transition-colors duration-200 ${
                           isSelected
-                            ? 'text-[#0F172A] font-bold'
+                            ? 'text-[#0F172A]'
                             : 'hover:bg-[#F8FAFC] text-[#0F172A]'
                         }`}
                       >
@@ -1345,12 +1345,12 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                           <div className="font-serif font-bold text-sm leading-snug break-words text-[#0F172A]">
                             {pad.titleDevanagari}
                           </div>
-                          <div className="flex items-center gap-1.5 text-xs mt-0.5 flex-wrap text-[#64748B]">
-                            <span className="truncate">{pad.author}</span>
+                          <div className="flex items-center gap-1.5 text-xs mt-0.5 flex-wrap text-[#64748B] font-normal">
+                            <span className="truncate font-normal">{pad.author}</span>
                             {pad.rag && (
                               <>
                                 <span className={isSelected ? 'text-[#CA8A04]' : 'text-[#CBD5E1]'}>•</span>
-                                <span className={`font-mono text-[11px] font-bold ${isSelected ? 'text-[#CA8A04]' : 'text-[#94A3B8]'}`}>
+                                <span className={`font-mono text-[11px] font-normal ${isSelected ? 'text-[#CA8A04]' : 'text-[#94A3B8]'}`}>
                                   {pad.rag}
                                 </span>
                               </>
