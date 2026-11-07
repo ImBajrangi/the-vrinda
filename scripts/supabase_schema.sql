@@ -93,3 +93,4 @@ CREATE POLICY "Service role full access for saints" ON public.saints
 DROP POLICY IF EXISTS "Public bookmark management" ON public.user_bookmarks;
 CREATE POLICY "Public bookmark management" ON public.user_bookmarks
     FOR ALL TO public USING (true) WITH CHECK (true);
+
