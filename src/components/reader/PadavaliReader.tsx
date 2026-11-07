@@ -558,12 +558,12 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               onClick={() => setIsSettingsOpen(!isSettingsOpen)}
               className={`h-8 px-3 rounded-full text-xs font-medium flex items-center gap-1.5 transition-colors cursor-pointer shrink-0 ${
                 isSettingsOpen
-                  ? 'bg-[#18181B] text-[#FACC15]'
+                  ? 'bg-[#FEF08A] text-[#78350F] font-bold'
                   : 'bg-[#F1F5F9] hover:bg-[#E2E8F0] text-[#334155]'
               }`}
               title="Appearance & Typography Controls"
             >
-              <SlidersHorizontal className={`w-3.5 h-3.5 ${isSettingsOpen ? 'text-[#FACC15]' : 'text-[#64748B]'}`} />
+              <SlidersHorizontal className={`w-3.5 h-3.5 ${isSettingsOpen ? 'text-[#78350F]' : 'text-[#64748B]'}`} />
               <span>Appearance</span>
             </button>
 
@@ -574,7 +574,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               className="h-8 px-3 rounded-full text-xs font-medium bg-[#F1F5F9] hover:bg-[#E2E8F0] text-[#334155] flex items-center gap-1.5 cursor-pointer shrink-0 transition-colors"
               title="Braj Sacred Glossary (शब्दकोश)"
             >
-              <BookOpenCheck className="w-3.5 h-3.5 text-[#FACC15]" />
+              <BookOpenCheck className="w-3.5 h-3.5 text-[#CA8A04]" />
               <span>Lexicon</span>
             </button>
 
@@ -584,7 +584,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               onClick={handleToggleTransliteration}
               className={`h-8 px-3 rounded-full text-xs font-medium transition-colors cursor-pointer shrink-0 ${
                 showTransliteration
-                  ? 'bg-[#18181B] text-[#FACC15]'
+                  ? 'bg-[#FEF08A] text-[#78350F] font-bold'
                   : 'bg-[#F1F5F9] hover:bg-[#E2E8F0] text-[#334155]'
               }`}
               title="Toggle IAST Roman Transliteration"
@@ -598,7 +598,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               onClick={() => setIsFocusReadingMode(!isFocusReadingMode)}
               className={`h-8 px-3.5 rounded-full text-xs font-medium flex items-center gap-1.5 transition-colors cursor-pointer shrink-0 ${
                 isFocusReadingMode
-                  ? 'bg-[#18181B] text-[#FACC15]'
+                  ? 'bg-[#FEF08A] text-[#78350F] font-bold'
                   : 'bg-[#F1F5F9] hover:bg-[#E2E8F0] text-[#334155]'
               }`}
               title="Distraction-Free Reading Mode"
@@ -626,7 +626,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 {/* Dynamic Elastic Sliding Pill */}
                 <span
                   aria-hidden="true"
-                  className="absolute top-1 bottom-1 rounded-full bg-[#18181B] pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+                  className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
                   style={{
                     width: 'calc((100% - 8px) / 4)',
                     left: '4px',
@@ -645,7 +645,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                     onClick={() => setFontSize(s.id)}
                     className={`relative z-10 px-2.5 py-1 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer ${
                       fontSize === s.id
-                        ? 'text-white font-bold'
+                        ? 'text-[#18181B] font-bold'
                         : 'text-neutral-500 hover:text-neutral-900'
                     }`}
                   >
@@ -664,7 +664,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 {/* Dynamic Elastic Sliding Pill */}
                 <span
                   aria-hidden="true"
-                  className="absolute top-1 bottom-1 rounded-full bg-[#18181B] pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+                  className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
                   style={{
                     width: 'calc((100% - 8px) / 2)',
                     left: '4px',
@@ -676,7 +676,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   onClick={() => setFontFamily('serif')}
                   className={`relative z-10 px-3 py-1 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer ${
                     fontFamily === 'serif'
-                      ? 'text-white font-bold'
+                      ? 'text-[#18181B] font-bold'
                       : 'text-neutral-500 hover:text-neutral-900'
                   }`}
                 >
@@ -687,7 +687,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   onClick={() => setFontFamily('devanagari')}
                   className={`relative z-10 px-3 py-1 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer ${
                     fontFamily === 'devanagari'
-                      ? 'text-white font-bold'
+                      ? 'text-[#18181B] font-bold'
                       : 'text-neutral-500 hover:text-neutral-900'
                   }`}
                 >
@@ -705,7 +705,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 {/* Dynamic Elastic Sliding Pill */}
                 <span
                   aria-hidden="true"
-                  className="absolute top-1 bottom-1 rounded-full bg-[#18181B] pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+                  className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
                   style={{
                     width: 'calc((100% - 8px) / 3)',
                     left: '4px',
@@ -719,7 +719,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                     onClick={() => setPlaybackPace(pace)}
                     className={`relative z-10 px-2.5 py-1 rounded-full text-xs font-mono font-semibold transition-colors duration-200 cursor-pointer ${
                       playbackPace === pace
-                        ? 'text-white font-bold'
+                        ? 'text-[#18181B] font-bold'
                         : 'text-neutral-500 hover:text-neutral-900'
                     }`}
                   >
@@ -773,7 +773,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             {granthaPillStyle.ready && (
               <span
                 aria-hidden="true"
-                className="absolute top-1 bottom-1 rounded-full bg-[#18181B] pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+                className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
                 style={{
                   transform: `translateX(${granthaPillStyle.left}px)`,
                   width: `${granthaPillStyle.width}px`,
@@ -790,11 +790,11 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               onClick={() => handleSelectGrantha('all')}
               className={`relative z-10 px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer select-none ${
                 selectedGrantha === 'all'
-                  ? 'text-white font-bold'
+                  ? 'text-[#18181B] font-bold'
                   : 'text-[#64748B] hover:text-[#0F172A] hover:bg-[#F8FAFC]'
               }`}
             >
-              समस्त ग्रंथ <span className={`text-[10px] font-mono ml-0.5 ${selectedGrantha === 'all' ? 'text-[#FACC15] font-bold' : 'text-[#94A3B8]'}`}>({allPadas.length})</span>
+              समस्त ग्रंथ <span className={`text-[10px] font-mono ml-0.5 ${selectedGrantha === 'all' ? 'text-[#B45309] font-bold' : 'text-[#94A3B8]'}`}>({allPadas.length})</span>
             </button>
             {allGranthas.map((g) => {
               const isActive = selectedGrantha === g.id;
@@ -808,12 +808,12 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   onClick={() => handleSelectGrantha(g.id)}
                   className={`relative z-10 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer select-none ${
                     isActive
-                      ? 'text-white font-bold'
+                      ? 'text-[#18181B] font-bold'
                       : 'text-[#64748B] hover:text-[#0F172A] hover:bg-[#F8FAFC]'
                   }`}
                 >
                   <span>{g.name}</span>
-                  <span className={`ml-1 text-[10px] font-mono font-bold ${isActive ? 'text-[#FACC15]' : 'text-[#94A3B8]'}`}>
+                  <span className={`ml-1 text-[10px] font-mono font-bold ${isActive ? 'text-[#B45309]' : 'text-[#94A3B8]'}`}>
                     ({g.count})
                   </span>
                 </button>
@@ -825,7 +825,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
           {availableRagas.length > 0 && (
             <div className="relative flex items-center gap-1 overflow-x-auto no-scrollbar text-xs px-2 py-0.5">
               <span className="text-[10px] font-mono font-bold text-[#CA8A04] uppercase tracking-wider shrink-0 mr-1 flex items-center gap-1">
-                <Music className="w-3 h-3 text-[#FACC15]" />
+                <Music className="w-3 h-3 text-[#CA8A04]" />
                 राग:
               </span>
 
@@ -833,7 +833,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               {ragaPillStyle.ready && (
                 <span
                   aria-hidden="true"
-                  className="absolute top-0.5 bottom-0.5 rounded-full bg-[#18181B] pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+                  className="absolute top-0.5 bottom-0.5 rounded-full bg-[#FEF08A] pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
                   style={{
                     transform: `translateX(${ragaPillStyle.left}px)`,
                     width: `${ragaPillStyle.width}px`,
@@ -850,7 +850,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 onClick={() => setSelectedRaga('all')}
                 className={`relative z-10 px-3 py-1 rounded-full text-[11px] font-semibold transition-colors duration-200 cursor-pointer select-none ${
                   selectedRaga === 'all'
-                    ? 'text-[#FACC15] font-bold'
+                    ? 'text-[#18181B] font-bold'
                     : 'text-[#64748B] hover:text-[#0F172A]'
                 }`}
               >
@@ -873,12 +873,12 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                     onClick={() => setSelectedRaga(r)}
                     className={`relative z-10 px-3 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer select-none ${
                       isActive
-                        ? 'text-[#FACC15] font-bold'
+                        ? 'text-[#18181B] font-bold'
                         : 'text-[#64748B] hover:text-[#0F172A]'
                     }`}
                   >
                     {r}
-                    <span className={`ml-1 text-[9.5px] font-mono font-bold ${isActive ? 'text-[#FDE047]' : 'text-[#94A3B8]'}`}>
+                    <span className={`ml-1 text-[9.5px] font-mono font-bold ${isActive ? 'text-[#B45309]' : 'text-[#94A3B8]'}`}>
                       ({count})
                     </span>
                   </button>
@@ -898,7 +898,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
           {mobilePillStyle.ready && (
             <span
               aria-hidden="true"
-              className="absolute top-0 bottom-1 rounded-full bg-[#18181B] pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform z-0"
+              className="absolute top-0 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform z-0"
               style={{
                 transform: `translateX(${mobilePillStyle.left}px)`,
                 width: `${mobilePillStyle.width}px`,
@@ -919,12 +919,12 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 onClick={() => handleSelectPad(pad)}
                 className={`relative z-10 shrink-0 h-8 px-3 rounded-full transition-colors duration-200 cursor-pointer select-none flex items-center gap-1.5 text-xs ${
                   isSelected
-                    ? 'text-white font-bold'
+                    ? 'text-[#18181B] font-bold'
                     : 'bg-white text-[#1E293B] hover:bg-[#F8FAFC] font-medium'
                 }`}
               >
                 <span className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full transition-colors ${
-                  isSelected ? 'bg-white/10 text-[#FACC15] font-bold' : 'bg-[#F1F5F9] text-[#64748B]'
+                  isSelected ? 'bg-white/90 text-[#854D0E] font-bold' : 'bg-[#F1F5F9] text-[#64748B]'
                 }`}>
                   #{idx + 1}
                 </span>
@@ -988,11 +988,11 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
               {/* Unified Scannable List with Dynamic Elastic Sliding Bouncy Indicator */}
               <div className="relative flex-1 overflow-y-auto p-2 flex flex-col gap-1 custom-scroll">
-                {/* Dynamic Elastic Sliding Bouncy Indicator Bar (Pure Obsidian) */}
+                {/* Dynamic Elastic Sliding Bouncy Indicator Bar (Warm Sunlit Golden Silk) */}
                 {sidebarPillStyle.ready && (
                   <span
                     aria-hidden="true"
-                    className="absolute left-2 right-2 rounded-2xl bg-[#18181B] pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform z-0"
+                    className="absolute left-2 right-2 rounded-2xl bg-[#FEF08A] pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform z-0"
                     style={{
                       transform: `translateY(${sidebarPillStyle.top}px)`,
                       height: `${sidebarPillStyle.height}px`,
@@ -1018,7 +1018,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                         onClick={() => handleSelectPad(pad)}
                         className={`group relative z-10 px-3 py-2.5 rounded-2xl flex items-start gap-2.5 cursor-pointer select-none transition-colors duration-200 ${
                           isSelected
-                            ? 'text-white font-bold'
+                            ? 'text-[#0F172A] font-bold'
                             : 'hover:bg-[#F8FAFC] text-[#0F172A]'
                         }`}
                       >
@@ -1026,13 +1026,13 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                         <div className="w-7 shrink-0 pt-0.5 text-right font-mono text-xs select-none">
                           {isCurrentlyPlaying ? (
                             <div className="flex items-end justify-end gap-0.5 h-3">
-                              <span className={`w-0.5 rounded-full animate-apple-eq-1 ${isSelected ? 'bg-[#FACC15]' : 'bg-[#18181B]'}`} />
-                              <span className={`w-0.5 rounded-full animate-apple-eq-2 ${isSelected ? 'bg-[#FACC15]' : 'bg-[#18181B]'}`} />
-                              <span className={`w-0.5 rounded-full animate-apple-eq-3 ${isSelected ? 'bg-[#FACC15]' : 'bg-[#18181B]'}`} />
+                              <span className="w-0.5 rounded-full animate-apple-eq-1 bg-[#CA8A04]" />
+                              <span className="w-0.5 rounded-full animate-apple-eq-2 bg-[#CA8A04]" />
+                              <span className="w-0.5 rounded-full animate-apple-eq-3 bg-[#CA8A04]" />
                             </div>
                           ) : (
                             <span className={`px-1.5 py-0.5 rounded-md text-[10.5px] font-mono transition-colors ${
-                              isSelected ? 'bg-white/10 text-[#FACC15] font-bold' : 'text-[#94A3B8]'
+                              isSelected ? 'bg-white/90 text-[#854D0E] font-bold' : 'text-[#94A3B8]'
                             }`}>
                               #{idx + 1}
                             </span>
@@ -1041,19 +1041,15 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
                         {/* Verse Title & Meta */}
                         <div className="min-w-0 flex-1">
-                          <div className={`font-serif font-bold text-sm leading-snug break-words transition-colors ${
-                            isSelected ? 'text-[#FFFDF8]' : 'text-[#0F172A] group-hover:text-black'
-                          }`}>
+                          <div className="font-serif font-bold text-sm leading-snug break-words text-[#0F172A]">
                             {pad.titleDevanagari}
                           </div>
-                          <div className={`flex items-center gap-1.5 text-xs mt-0.5 flex-wrap transition-colors ${
-                            isSelected ? 'text-[#D1D5DB]' : 'text-[#64748B]'
-                          }`}>
+                          <div className="flex items-center gap-1.5 text-xs mt-0.5 flex-wrap text-[#64748B]">
                             <span className="truncate">{pad.author}</span>
                             {pad.rag && (
                               <>
-                                <span className={isSelected ? 'text-[#FACC15]' : 'text-[#CBD5E1]'}>•</span>
-                                <span className={`font-mono text-[11px] font-bold ${isSelected ? 'text-[#FACC15]' : 'text-[#94A3B8]'}`}>
+                                <span className={isSelected ? 'text-[#CA8A04]' : 'text-[#CBD5E1]'}>•</span>
+                                <span className={`font-mono text-[11px] font-bold ${isSelected ? 'text-[#CA8A04]' : 'text-[#94A3B8]'}`}>
                                   {pad.rag}
                                 </span>
                               </>
@@ -1144,11 +1140,11 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 title={isBookmarked ? "Saved to Bookmarks" : "Save Pad to Bookmarks"}
                 className={`h-7 px-3 rounded-full flex items-center gap-1.5 text-xs font-medium transition-colors cursor-pointer select-none ${
                   isBookmarked
-                    ? 'bg-[#18181B] text-[#FACC15]'
+                    ? 'bg-[#FEF08A] text-[#78350F] font-bold'
                     : 'bg-[#F1F5F9] hover:bg-[#E2E8F0] text-[#475569]'
                 }`}
               >
-                <Bookmark className={`w-3.5 h-3.5 ${isBookmarked ? 'fill-[#FACC15] text-[#FACC15]' : ''}`} />
+                <Bookmark className={`w-3.5 h-3.5 ${isBookmarked ? 'fill-[#CA8A04] text-[#CA8A04]' : ''}`} />
                 <span className="text-[11px]">{isBookmarked ? 'संग्रहित' : 'बुकमार्क'}</span>
               </button>
             </div>
@@ -1162,15 +1158,15 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 <span className="text-[#0F172A] font-semibold">{authorName}</span>
                 {granthaRef && (
                   <>
-                    <span className="text-[#FACC15]">•</span>
+                    <span className="text-[#CA8A04]">•</span>
                     <span>{granthaRef}</span>
                   </>
                 )}
               </div>
             </div>
 
-            {/* Sleek Minimal Audio Player Pill (Charcoal Obsidian with Warm Yellowish Gold Luster) */}
-            <div className="p-3.5 sm:px-4 sm:py-3.5 rounded-2xl bg-[#18181B] text-white flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            {/* Sleek Minimal Audio Player Pill (Warm Golden-Cream Sanctuary Bar) */}
+            <div className="p-3.5 sm:px-4 sm:py-3.5 rounded-2xl bg-[#FEF9C3] text-[#0F172A] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div className="flex items-center gap-3 min-w-0">
                 <button
                   type="button"
@@ -1186,19 +1182,19 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 </button>
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2">
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-[#FACC15] font-bold">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-[#B45309] font-bold">
                       {isCurrentPadPlaying ? 'Now Playing' : 'Audio Shravan'}
                     </span>
                     {isCurrentPadPlaying && (
                       <div className="flex items-end gap-0.5 h-2.5">
-                        <span className="w-0.5 bg-[#FACC15] rounded-full animate-apple-eq-1" />
-                        <span className="w-0.5 bg-[#FACC15] rounded-full animate-apple-eq-2" />
-                        <span className="w-0.5 bg-[#FACC15] rounded-full animate-apple-eq-3" />
+                        <span className="w-0.5 bg-[#CA8A04] rounded-full animate-apple-eq-1" />
+                        <span className="w-0.5 bg-[#CA8A04] rounded-full animate-apple-eq-2" />
+                        <span className="w-0.5 bg-[#CA8A04] rounded-full animate-apple-eq-3" />
                       </div>
                     )}
                   </div>
-                  <p className="text-xs font-serif font-medium text-white/95 truncate mt-0.5">
-                    {cleanTitle} • {selectedPad.rag || 'विभास'} ({selectedPad.duration || '05:20'})
+                  <p className="text-xs font-serif font-bold text-[#0F172A] truncate mt-0.5">
+                    {cleanTitle} <span className="font-normal text-[#64748B]">• {selectedPad.rag || 'विभास'} ({selectedPad.duration || '05:20'})</span>
                   </p>
                 </div>
               </div>
@@ -1207,19 +1203,19 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 <button
                   type="button"
                   onClick={handleToggleSummary}
-                  className="px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/15 text-[#FAF7F0] text-xs font-medium flex items-center gap-1.5 transition-colors cursor-pointer"
+                  className="px-3 py-1.5 rounded-full bg-white hover:bg-white/80 text-[#78350F] text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
                 >
-                  <Sparkles className="w-3.5 h-3.5 text-[#FACC15]" />
+                  <Sparkles className="w-3.5 h-3.5 text-[#CA8A04]" />
                   <span>{isSummaryOpen ? 'भाव संक्षेप छुपाएं' : 'भाव संक्षेप'}</span>
                 </button>
 
                 <button
                   type="button"
                   onClick={() => setIsSettingsOpen(!isSettingsOpen)}
-                  className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/15 text-[#CBD5E1] flex items-center justify-center transition-colors cursor-pointer"
+                  className="w-8 h-8 rounded-full bg-white hover:bg-white/80 text-[#64748B] hover:text-[#0F172A] flex items-center justify-center transition-colors cursor-pointer"
                   title="Typography & Ambiance Settings"
                 >
-                  <SlidersHorizontal className="w-3.5 h-3.5 text-[#CBD5E1]" />
+                  <SlidersHorizontal className="w-3.5 h-3.5 text-[#64748B]" />
                 </button>
               </div>
             </div>
@@ -1400,12 +1396,12 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               onClick={handleNextPad}
               className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer ${
                 hasNext
-                  ? 'bg-[#18181B] hover:bg-[#27272A] text-white'
+                  ? 'bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] font-bold'
                   : 'opacity-40 cursor-not-allowed text-[#94A3B8] bg-neutral-100'
               }`}
             >
               <span>अगला पद</span>
-              <ChevronRight className="w-4 h-4 text-[#FACC15]" />
+              <ChevronRight className="w-4 h-4 text-[#CA8A04]" />
             </button>
           </div>
         </article>
@@ -1634,7 +1630,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             <button
               type="button"
               onClick={handleCloseGlossary}
-              className="w-full mt-2 py-3 rounded-2xl bg-[#18181B] hover:bg-[#27272A] text-white text-xs font-bold uppercase tracking-wider cursor-pointer"
+              className="w-full mt-2 py-3 rounded-2xl bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] text-xs font-bold uppercase tracking-wider cursor-pointer"
             >
               Dismiss • Close
             </button>
