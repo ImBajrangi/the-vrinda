@@ -457,7 +457,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                 <ArtworkGraphicSlot
                   src={null}
                   aspectRatio="banner"
-                  theme="purple"
+                  theme="amber"
                   placeholderLabel="श्री वृन्दावन धाम पावन लीला"
                   placeholderCategory="dham"
                   badge="वृन्दावन धाम दर्शन"
@@ -492,7 +492,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                     onClick={() => setIsAffirmedSankalpa(!isAffirmedSankalpa)}
                     className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-colors flex items-center gap-1 shadow-2xs cursor-pointer ${
                       isAffirmedSankalpa
-                        ? 'bg-[#7C3AED] text-white'
+                        ? 'bg-amber-600 text-white'
                         : 'bg-[#18181B] text-white hover:bg-[#27272A]'
                     }`}
                   >
@@ -519,7 +519,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-neutral-100">
                   <div>
                     <div className="flex items-center gap-2 flex-wrap">
-                      <span className="w-2.5 h-2.5 rounded-full bg-[#7C3AED] shrink-0" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-amber-600 shrink-0" />
                       <h3 className="font-serif font-bold text-xl sm:text-[22px] text-[#18181B] leading-tight">
                         Daily Temple Seva & Darshan Schedule
                       </h3>
@@ -535,7 +535,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                   <button
                     type="button"
                     onClick={() => setActiveTab('feed')}
-                    className="text-xs sm:text-sm font-semibold text-[#7C3AED] hover:underline self-start sm:self-auto cursor-pointer"
+                    className="text-xs sm:text-sm font-semibold text-amber-700 hover:underline self-start sm:self-auto cursor-pointer"
                   >
                     Darshan Gallery →
                   </button>
@@ -693,11 +693,11 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-1">
                   <div>
                     <div className="flex items-center gap-2 flex-wrap">
-                      <span className="w-2.5 h-2.5 rounded-full bg-[#7C3AED] shrink-0" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-amber-600 shrink-0" />
                       <h3 className="font-serif font-bold text-lg sm:text-xl text-[#18181B] leading-tight">
                         Sacred Contemplation & Sanctuary Streams
                       </h3>
-                      <span className="text-xs font-semibold text-purple-700 bg-purple-50 px-2.5 py-0.5 rounded-full font-mono">
+                      <span className="text-xs font-semibold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full font-mono">
                         Margashirsha Bhav
                       </span>
                     </div>
@@ -709,7 +709,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                   <button
                     type="button"
                     onClick={() => setActiveTab('padavali')}
-                    className="text-xs sm:text-sm font-semibold text-[#7C3AED] hover:underline self-start sm:self-auto cursor-pointer"
+                    className="text-xs sm:text-sm font-semibold text-amber-700 hover:underline self-start sm:self-auto cursor-pointer"
                   >
                     Scripture Reader →
                   </button>
@@ -751,7 +751,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                           : 'text-[#71717A] hover:text-[#18181B]'
                       }`}
                     >
-                      <Radio className={`w-3.5 h-3.5 shrink-0 transition-colors ${activeSanctuaryStream === 'audio' ? 'text-purple-300' : 'text-[#71717A]'}`} />
+                      <Radio className={`w-3.5 h-3.5 shrink-0 transition-colors ${activeSanctuaryStream === 'audio' ? 'text-amber-400' : 'text-[#71717A]'}`} />
                       <span className="truncate">Featured Shravan</span>
                     </button>
 
@@ -791,7 +791,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                           <ArtworkGraphicSlot
                             src={null}
                             aspectRatio="square"
-                            theme="purple"
+                            theme="amber"
                             placeholderLabel="पद आवरण"
                             placeholderCategory="music"
                             roundedClassName="rounded-[18px]"
@@ -800,11 +800,11 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
 
                         <div className="flex flex-col min-w-0 flex-1 justify-center">
                           <div className="flex items-center justify-between gap-2 mb-0.5">
-                            <span className="text-[11px] sm:text-xs font-bold text-[#7C3AED] uppercase tracking-wider truncate">
+                            <span className="text-[11px] sm:text-xs font-bold text-amber-700 uppercase tracking-wider truncate">
                               {featuredPad?.titleEnglish || 'SHRI HIT CHAURASI'} • PAD 01
                             </span>
                             <div className="sm:hidden">
-                              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-purple-50 text-purple-700">
+                              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-amber-50 text-amber-800">
                                 {isPlayingAudio ? 'PLAYING' : 'AUDIO'}
                               </span>
                             </div>
@@ -827,7 +827,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                         <div className="hidden sm:flex items-center gap-2">
                           <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold ${
                             isPlayingAudio
-                              ? 'bg-purple-50 text-purple-700'
+                              ? 'bg-amber-50 text-amber-800'
                               : 'bg-neutral-100 text-neutral-600'
                           }`}>
                             {isPlayingAudio ? 'NOW STREAMING' : 'READY TO PLAY'}
@@ -837,9 +837,9 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
 
                         <div className="flex items-center gap-2 mt-auto font-mono text-xs sm:text-sm font-semibold text-[#18181B]">
                           <div className="flex items-center gap-1">
-                            <span className={`w-1 h-3 rounded-full bg-[#7C3AED] ${isPlayingAudio ? 'animate-pulse' : 'opacity-40'}`} />
-                            <span className={`w-1 h-4 rounded-full bg-[#7C3AED] ${isPlayingAudio ? 'animate-bounce' : 'opacity-40'}`} />
-                            <span className={`w-1 h-2 rounded-full bg-[#7C3AED] ${isPlayingAudio ? 'animate-pulse' : 'opacity-40'}`} />
+                            <span className={`w-1 h-3 rounded-full bg-amber-600 ${isPlayingAudio ? 'animate-pulse' : 'opacity-40'}`} />
+                            <span className={`w-1 h-4 rounded-full bg-amber-600 ${isPlayingAudio ? 'animate-bounce' : 'opacity-40'}`} />
+                            <span className={`w-1 h-2 rounded-full bg-amber-600 ${isPlayingAudio ? 'animate-pulse' : 'opacity-40'}`} />
                           </div>
                           <span>{isPlayingAudio ? '03:45 / 08:30' : '08:30 Mins'}</span>
                         </div>
@@ -849,9 +849,9 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                     <button
                       type="button"
                       onClick={() => handlePlayPad(featuredPad)}
-                      className="w-full py-3 rounded-full bg-[#7C3AED] hover:bg-[#6D28D9] text-white text-xs font-bold shadow-xs flex items-center justify-center gap-2 transition-colors cursor-pointer"
+                      className="w-full py-3 rounded-full bg-[#18181B] hover:bg-neutral-800 text-white text-xs font-bold shadow-xs flex items-center justify-center gap-2 transition-colors cursor-pointer"
                     >
-                      <Radio className="w-4 h-4 text-purple-200" />
+                      <Radio className="w-4 h-4 text-amber-400" />
                       <span>{isPlayingAudio ? 'Pause Sacred Audio' : 'Listen Now (श्रवण करें)'}</span>
                     </button>
                   </div>
@@ -913,7 +913,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                       onClick={() => setIsFocusModalOpen(true)}
                       className="w-full py-3 rounded-full bg-[#18181B] hover:bg-[#27272A] text-white text-xs font-bold transition-colors flex items-center justify-center gap-2 shadow-xs cursor-pointer"
                     >
-                      <Sparkles className="w-4 h-4 text-purple-300" />
+                      <Sparkles className="w-4 h-4 text-amber-400" />
                       <span>Enter Sanctuary (ध्यान कक्ष)</span>
                       <span>→</span>
                     </button>
@@ -1008,8 +1008,8 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                       ))
                     ) : (
                       <div className="bg-white rounded-[24px] p-8 text-center border border-neutral-200/80 shadow-[0_4px_24px_rgba(0,0,0,0.03)]">
-                        <div className="w-12 h-12 rounded-full bg-purple-50 flex items-center justify-center mx-auto mb-3">
-                          <Heart className="w-6 h-6 text-[#7C3AED]" />
+                        <div className="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center mx-auto mb-3">
+                          <Heart className="w-6 h-6 text-amber-600" />
                         </div>
                         <h4 className="font-serif font-bold text-base text-[#18181B] mb-1">
                           {activeFeedTab === 'सेवक मंडल'
@@ -1057,13 +1057,13 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                       </div>
                       <div className="flex justify-between py-1">
                         <span className="text-[#71717A]">Upcoming Festival:</span>
-                        <span className="font-semibold text-purple-700">Sharad Purnima</span>
+                        <span className="font-semibold text-amber-800">Sharad Purnima</span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="bg-purple-50/70 text-[#18181B] rounded-[24px] p-5 shadow-xs border border-neutral-200/70">
-                    <span className="text-[10.5px] text-purple-700 font-bold uppercase tracking-wider block mb-1 font-mono">
+                  <div className="bg-[#FFFBEB]/80 text-[#18181B] rounded-[24px] p-5 shadow-xs border border-amber-200/60">
+                    <span className="text-[10.5px] text-amber-800 font-bold uppercase tracking-wider block mb-1 font-mono">
                       Daily Darshan Niyam
                     </span>
                     <p className="text-xs leading-relaxed text-[#52525B]">

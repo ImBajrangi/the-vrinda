@@ -304,16 +304,16 @@ export const SacredDatabase = {
 
   getDisplayBooks(): DisplayBookItem[] {
     const bookColors: Record<string, string> = {
-      'hit-chaurasi': 'text-[#7C3AED]',
-      'kelimal': 'text-[#D97706]',
+      'hit-chaurasi': 'text-[#D97706]',
+      'kelimal': 'text-[#B45309]',
       'radha-sudha-nidhi': 'text-[#EA580C]',
-      'vyas-vani': 'text-[#7C3AED]',
+      'vyas-vani': 'text-[#D97706]',
       'bayalees-leela': 'text-[#E11D48]',
       'sur-sagar': 'text-[#C2410C]',
       'raskhan-padavali': 'text-[#0284C7]',
-      'bhakti-shatak': 'text-[#7C3AED]',
+      'bhakti-shatak': 'text-[#92400E]',
       'braj-binod': 'text-[#EA580C]',
-      'stotras': 'text-[#7C3AED]',
+      'stotras': 'text-[#D97706]',
     };
 
     return allGranthas.map((g) => ({
@@ -331,15 +331,15 @@ export const SacredDatabase = {
         ? 'अष्टछाप परंपरा'
         : 'रसिक परंपरा',
       essence: g.description,
-      tagColor: bookColors[g.id] || 'text-[#7C3AED]',
+      tagColor: bookColors[g.id] || 'text-[#D97706]',
       imageUrl: '',
     }));
   },
 
   getDisplayAuthors(): DisplayAuthorItem[] {
     const authorColors = [
-      'text-[#7C3AED]',
       'text-[#D97706]',
+      'text-[#B45309]',
       'text-[#C2410C]',
       'text-[#E11D48]',
       'text-[#0284C7]',

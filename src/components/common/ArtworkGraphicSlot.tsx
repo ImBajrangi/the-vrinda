@@ -56,10 +56,10 @@ export const ArtworkGraphicSlot: React.FC<ArtworkGraphicSlotProps> = ({
       labelColor: 'text-[#71717A]',
     },
     purple: {
-      bg: 'bg-gradient-to-br from-purple-50/60 via-purple-50/30 to-[#FAFAFA]',
-      iconBg: 'bg-purple-100/70',
-      iconColor: 'text-[#7C3AED]',
-      labelColor: 'text-purple-700',
+      bg: 'bg-gradient-to-br from-amber-50/60 via-amber-50/30 to-[#FAFAFA]',
+      iconBg: 'bg-amber-100/70',
+      iconColor: 'text-amber-700',
+      labelColor: 'text-amber-800',
     },
     amber: {
       bg: 'bg-gradient-to-br from-amber-50/60 via-amber-50/30 to-[#FAFAFA]',
@@ -170,7 +170,7 @@ export const ArtworkGraphicSlot: React.FC<ArtworkGraphicSlotProps> = ({
           }`}
         >
           <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10.5px] font-bold bg-white/95 backdrop-blur-md text-[#18181B] shadow-2xs font-mono">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#7C3AED]" />
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-600" />
             {badge}
           </span>
         </div>

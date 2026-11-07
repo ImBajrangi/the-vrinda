@@ -44,7 +44,7 @@ export const NityaSevaCard: React.FC<NityaSevaCardProps> = ({
         }
         if (statusLabel.toLowerCase().includes('aarti') || statusLabel.toLowerCase().includes('sandhya')) {
           return (
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold text-purple-800 bg-purple-50">
+            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold text-amber-800 bg-amber-50">
               {statusLabel}
             </span>
           );
@@ -88,9 +88,9 @@ export const NityaSevaCard: React.FC<NityaSevaCardProps> = ({
 
         {/* Text stack */}
         <div className="flex flex-col min-w-0 flex-1 justify-center">
-          {/* Top row: Temple name in vivid royal purple */}
+          {/* Top row: Temple name in warm sacred amber */}
           <div className="flex items-center justify-between gap-2 mb-0.5">
-            <span className="text-[11px] sm:text-xs font-bold text-[#7C3AED] uppercase tracking-wider truncate">
+            <span className="text-[11px] sm:text-xs font-bold text-amber-700 uppercase tracking-wider truncate">
               {templeName}
             </span>
             <div className="sm:hidden">

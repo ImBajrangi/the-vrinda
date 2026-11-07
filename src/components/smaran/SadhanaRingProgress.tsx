@@ -54,11 +54,11 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-neutral-100">
         <div className="space-y-1">
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="w-2 h-2 rounded-full bg-[#7C3AED]" />
+            <span className="w-2 h-2 rounded-full bg-amber-600" />
             <span className="text-[11px] font-mono font-bold uppercase tracking-[0.16em] text-neutral-400">
               श्री धाम वृन्दावन • नित्य साधना
             </span>
-            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold text-purple-700 bg-purple-50 font-mono">
+            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold text-amber-800 bg-amber-50 font-mono">
               {currentStreakDays}-दिवसीय अखंड स्मरण
             </span>
           </div>
@@ -88,7 +88,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
             className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#18181B] hover:bg-[#27272A] text-white text-xs font-bold shadow-xs transition-colors cursor-pointer"
             title="Open Dhyāna Sanctuary (ध्यान कक्ष)"
           >
-            <Wind className="w-3.5 h-3.5 text-purple-300" />
+            <Wind className="w-3.5 h-3.5 text-amber-300" />
             <span>ध्यान कक्ष</span>
           </button>
         </div>
@@ -109,7 +109,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
             {/* Subtle inner gold rim */}
             <div className="absolute inset-1 rounded-full border border-amber-200/50 pointer-events-none" />
             
-            <span className={`font-serif font-bold text-2xl sm:text-3xl text-[#7C3AED] leading-none transition-transform duration-150 ${counterTick ? 'scale-110' : ''}`}>
+            <span className={`font-serif font-bold text-2xl sm:text-3xl text-amber-800 leading-none transition-transform duration-150 ${counterTick ? 'scale-110' : ''}`}>
               राधे
             </span>
             <span className="text-[10px] uppercase font-bold tracking-wider text-amber-800 font-mono mt-1">
@@ -144,7 +144,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
               <span className="text-[#18181B] font-bold">
                 {malasDevanagari} of {malasTargetDevanagari} माला पूर्ण
               </span>
-              <span className="text-purple-700 font-mono font-semibold bg-purple-50 px-2.5 py-0.5 rounded-full">
+              <span className="text-amber-800 font-mono font-semibold bg-amber-50 px-2.5 py-0.5 rounded-full">
                 मनका {beadInCurrentMala} / 108
               </span>
             </div>
@@ -185,7 +185,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
                     isChanted
                       ? 'bg-amber-400 border border-amber-500'
                       : isActive
-                      ? 'bg-[#7C3AED] ring-2 ring-purple-300 scale-125'
+                      ? 'bg-amber-600 ring-2 ring-amber-300 scale-125'
                       : 'bg-neutral-200/80 border border-neutral-300/50'
                   }`}
                 />
@@ -200,7 +200,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
               onClick={handleTapBead}
               className="flex-1 py-2 px-3 rounded-full bg-white hover:bg-neutral-50 text-[#18181B] border border-neutral-200/80 shadow-2xs flex items-center justify-center gap-1.5 text-xs font-bold transition-colors cursor-pointer"
             >
-              <Disc3 className="w-3.5 h-3.5 text-[#7C3AED]" />
+              <Disc3 className="w-3.5 h-3.5 text-amber-700" />
               <span>+१ मनका</span>
             </button>
 
@@ -210,7 +210,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
               className="py-2 px-4 rounded-full bg-[#18181B] hover:bg-[#27272A] text-white text-xs font-bold transition-colors shadow-xs cursor-pointer flex items-center gap-1.5"
             >
               <span>+१ पूरी माला</span>
-              <span className="text-[10px] text-purple-300 font-mono">(108)</span>
+              <span className="text-[10px] text-amber-300 font-mono">(108)</span>
             </button>
           </div>
         </div>
@@ -239,8 +239,8 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
 
           <div>
             <div className="mb-1">
-              <span className="text-[11px] font-bold text-[#7C3AED] uppercase tracking-wider flex items-center gap-1.5 font-mono">
-                <Flame className="w-3.5 h-3.5 text-[#7C3AED] fill-[#7C3AED]" />
+              <span className="text-[11px] font-bold text-amber-800 uppercase tracking-wider flex items-center gap-1.5 font-mono">
+                <Flame className="w-3.5 h-3.5 text-amber-600 fill-amber-600" />
                 १. युगल नाम जप
               </span>
             </div>
@@ -254,7 +254,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
 
           <div className="pt-2 border-t border-neutral-100 flex items-center justify-between text-xs">
             <span className="text-[11px] text-[#71717A] font-mono">१०८ मनके / माला</span>
-            <span className="font-semibold text-xs text-[#7C3AED] hover:underline">
+            <span className="font-semibold text-xs text-amber-700 hover:underline">
               विवरण देखें →
             </span>
           </div>
@@ -272,7 +272,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
           <ArtworkGraphicSlot
             src={null}
             aspectRatio="card"
-            theme="purple"
+            theme="amber"
             placeholderLabel="वाणी श्रवण कला"
             placeholderCategory="music"
             roundedClassName="rounded-[16px]"
@@ -280,8 +280,8 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
 
           <div>
             <div className="mb-1">
-              <span className="text-[11px] font-bold text-indigo-600 uppercase tracking-wider flex items-center gap-1.5 font-mono">
-                <Music2 className="w-3.5 h-3.5 text-indigo-600" />
+              <span className="text-[11px] font-bold text-amber-800 uppercase tracking-wider flex items-center gap-1.5 font-mono">
+                <Music2 className="w-3.5 h-3.5 text-amber-700" />
                 २. रसिक वाणी श्रवण
               </span>
             </div>

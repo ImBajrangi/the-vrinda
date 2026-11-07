@@ -42,7 +42,7 @@ export const CMSEditorialBadge: React.FC<CMSEditorialBadgeProps> = ({ currentPad
           title="CMS, SEO & Data Architecture Hub"
           className="h-7 px-2.5 rounded-full bg-white/90 hover:bg-white text-[#71717A] hover:text-[#18181B] text-[10.5px] font-mono font-medium border border-neutral-200/80 shadow-2xs flex items-center gap-1.5 backdrop-blur-md transition-all cursor-pointer"
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-[#7C3AED]" />
+          <span className="w-1.5 h-1.5 rounded-full bg-amber-600" />
           <span>CMS • SEO</span>
         </button>
       </div>
@@ -60,7 +60,7 @@ export const CMSEditorialBadge: React.FC<CMSEditorialBadgeProps> = ({ currentPad
             {/* Header */}
             <div className="flex items-center justify-between pb-3 border-b border-neutral-100">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-purple-50 flex items-center justify-center text-[#7C3AED]">
+                <div className="w-8 h-8 rounded-full bg-amber-50 flex items-center justify-center text-amber-700">
                   <Database className="w-4 h-4" />
                 </div>
                 <div>
@@ -88,7 +88,7 @@ export const CMSEditorialBadge: React.FC<CMSEditorialBadgeProps> = ({ currentPad
                   Active CMS Layer
                 </span>
                 <div className="flex items-center gap-1.5 font-semibold text-[#18181B]">
-                  <Server className="w-3.5 h-3.5 text-[#7C3AED]" />
+                  <Server className="w-3.5 h-3.5 text-amber-700" />
                   <span>{cms.getActiveProvider().name}</span>
                 </div>
                 <p className="text-[10.5px] text-[#71717A] mt-1">
@@ -112,8 +112,8 @@ export const CMSEditorialBadge: React.FC<CMSEditorialBadgeProps> = ({ currentPad
 
             {/* Current Active Pada CMS Payload */}
             {currentPad && (
-              <div className="p-3.5 rounded-2xl bg-purple-50/50 border border-purple-100 text-xs space-y-1.5">
-                <span className="text-[10px] font-bold text-purple-800 uppercase font-mono block">
+              <div className="p-3.5 rounded-2xl bg-amber-50/50 border border-amber-200/60 text-xs space-y-1.5">
+                <span className="text-[10px] font-bold text-amber-800 uppercase font-mono block">
                   Active Content Node Payload
                 </span>
                 <div className="font-serif font-bold text-sm text-[#18181B]">

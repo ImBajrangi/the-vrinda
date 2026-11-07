@@ -233,8 +233,8 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
         <div
           className={`${sizeClasses} shrink-0 ${
             isSelected
-              ? 'bg-purple-100/90 text-purple-900 border border-purple-200/80 shadow-2xs'
-              : 'bg-purple-50/80 text-[#7C3AED] border border-purple-100/70'
+              ? 'bg-amber-100/90 text-amber-900 border border-amber-200/80 shadow-2xs'
+              : 'bg-amber-50/80 text-amber-800 border border-amber-100/70'
           } flex items-center justify-center font-serif font-bold select-none transition-colors duration-200 ${className}`}
         >
           <span className="leading-none">{initial}</span>
@@ -530,7 +530,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       <div className="mb-4 flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4 bg-white rounded-[28px] p-4 sm:p-6 border border-neutral-200/80 shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
         <div>
           <h1 className="font-serif text-xl sm:text-2xl md:text-3xl text-[#18181B] font-bold flex items-center gap-2 leading-tight">
-            <BookOpen className="w-5 h-5 sm:w-6 sm:h-6 text-[#7C3AED] shrink-0" />
+            <BookOpen className="w-5 h-5 sm:w-6 sm:h-6 text-amber-600 shrink-0" />
             <span>Sacred Padavali & Stotras</span>
           </h1>
           <p className="text-xs text-[#71717A] font-medium mt-1">
@@ -547,7 +547,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               placeholder="Search pad, stotra, saint, raga..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 rounded-full bg-[#F4F4F5] border border-neutral-200/80 text-xs text-[#18181B] focus:outline-none focus:ring-1 focus:ring-purple-400 placeholder:text-[#71717A] shadow-xs"
+              className="w-full pl-9 pr-4 py-2 rounded-full bg-[#F4F4F5] border border-neutral-200/80 text-xs text-[#18181B] focus:outline-none focus:ring-1 focus:ring-amber-500 placeholder:text-[#71717A] shadow-xs"
             />
           </div>
 
@@ -563,7 +563,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               }`}
               title="Appearance & Typography Controls"
             >
-              <SlidersHorizontal className="w-3.5 h-3.5 text-[#7C3AED]" />
+              <SlidersHorizontal className="w-3.5 h-3.5 text-amber-600" />
               <span>Appearance</span>
             </button>
 
@@ -574,7 +574,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               className="h-8 px-3 rounded-full text-xs font-semibold bg-white text-[#18181B] border border-neutral-200/80 hover:bg-neutral-50 shadow-2xs flex items-center gap-1.5 cursor-pointer shrink-0"
               title="Braj Sacred Glossary (शब्दकोश)"
             >
-              <BookOpenCheck className="w-3.5 h-3.5 text-[#7C3AED]" />
+              <BookOpenCheck className="w-3.5 h-3.5 text-amber-600" />
               <span>Lexicon</span>
             </button>
 
@@ -594,7 +594,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               onClick={() => setIsFocusReadingMode(!isFocusReadingMode)}
               className={`h-8 px-3.5 rounded-full text-xs font-semibold shadow-xs flex items-center gap-1.5 transition-colors cursor-pointer shrink-0 ${
                 isFocusReadingMode
-                  ? 'bg-[#7C3AED] text-white'
+                  ? 'bg-[#18181B] text-white'
                   : 'bg-white text-[#18181B] border border-neutral-200/80 hover:bg-neutral-50'
               }`}
               title="Distraction-Free Reading Mode"
@@ -615,7 +615,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             {/* Font Size Stepper with Elastic Sliding Pill */}
             <div className="flex items-center gap-2">
               <span className="text-[11px] font-bold text-[#71717A] uppercase tracking-wider flex items-center gap-1 font-mono">
-                <Type className="w-3.5 h-3.5 text-[#7C3AED]" />
+                <Type className="w-3.5 h-3.5 text-amber-600" />
                 Font Size:
               </span>
               <div className="relative flex items-center p-1 bg-[#F4F4F5] rounded-full border border-neutral-200/60">
@@ -734,7 +734,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
               {[
                 { id: 'ivory' as ReaderTheme, label: 'पावन पत्र', desc: 'Porcelain White', bg: '#FFFFFF', border: '#E4E4E7', text: '#18181B' },
-                { id: 'mint' as ReaderTheme, label: 'किशोरी निकुंज', desc: 'Soft Lavender', bg: '#FAF5FF', border: '#E9D5FF', text: '#581C87' },
+                { id: 'mint' as ReaderTheme, label: 'तमाल निकुंज', desc: 'Tamal Green', bg: '#F0FDF4', border: '#DCFCE7', text: '#166534' },
                 { id: 'chandan' as ReaderTheme, label: 'चन्दन प्रभा', desc: 'Chandan Gold', bg: '#FDF8EE', border: '#E9DFC7', text: '#3D260F' },
                 { id: 'night' as ReaderTheme, label: 'निशीथ ध्यान', desc: 'Twilight Night', bg: '#18181B', border: '#27272A', text: '#F4F4F5' },
               ].map((t) => (
@@ -745,7 +745,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   style={{ backgroundColor: t.bg, borderColor: t.border, color: t.text }}
                   className={`p-2 rounded-xl text-left border-2 transition-all cursor-pointer ${
                     readerTheme === t.id
-                      ? 'ring-2 ring-[#7C3AED] shadow-sm font-bold'
+                      ? 'ring-2 ring-amber-500 shadow-sm font-bold'
                       : 'opacity-85'
                   }`}
                 >
@@ -897,7 +897,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                     : 'bg-white text-[#18181B] border-neutral-200/80 hover:bg-neutral-50 font-medium'
                 }`}
               >
-                <span className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full ${isSelected ? 'bg-purple-900/60 text-purple-200' : 'bg-purple-50 text-[#7C3AED]'}`}>
+                <span className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full ${isSelected ? 'bg-amber-900/60 text-amber-200' : 'bg-amber-50 text-amber-800'}`}>
                   #{idx + 1}
                 </span>
                 <span className="font-serif truncate max-w-[130px]">
@@ -1073,7 +1073,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             {/* Top Row: Meta Badges & Quick Action Controls */}
             <div className="flex items-center justify-between gap-3 flex-wrap">
               <div className="flex items-center gap-2 flex-wrap">
-                <span className="text-xs font-bold text-[#7C3AED] bg-purple-50 px-3 py-1 rounded-full uppercase tracking-wider font-mono">
+                <span className="text-xs font-bold text-amber-800 bg-amber-50 px-3 py-1 rounded-full uppercase tracking-wider font-mono">
                   {granthaDisplayName}
                 </span>
                 {selectedPad.rag && (
@@ -1086,8 +1086,8 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                     {selectedPad.duration}
                   </span>
                 )}
-                <span className="hidden sm:inline-flex items-center gap-1.5 text-xs font-medium text-purple-700 bg-purple-50 px-2.5 py-1 rounded-full">
-                  <Music className="w-3.5 h-3.5 text-purple-600" />
+                <span className="hidden sm:inline-flex items-center gap-1.5 text-xs font-medium text-amber-800 bg-amber-50 px-2.5 py-1 rounded-full">
+                  <Music className="w-3.5 h-3.5 text-amber-600" />
                   Melodic Audio Available
                 </span>
               </div>
@@ -1143,7 +1143,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 onClick={() => onPlayPad(selectedPad)}
                 className={`h-10 px-5 rounded-full flex items-center gap-2 font-bold text-xs transition-colors cursor-pointer shadow-xs ${
                   isCurrentPadPlaying
-                    ? 'bg-[#7C3AED] text-white'
+                    ? 'bg-amber-600 hover:bg-amber-700 text-white shadow-xs'
                     : 'bg-[#18181B] hover:bg-[#27272A] text-white'
                 }`}
               >
@@ -1227,7 +1227,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   onClick={() => setActiveStanzaIndex(vIdx)}
                   className={`p-4 sm:p-6 rounded-[24px] transition-all duration-300 relative cursor-pointer ${
                     isStanzaActive
-                      ? 'bg-white border border-purple-200/90 ring-1 ring-purple-500/10 shadow-[0_4px_20px_rgba(124,58,237,0.04)]'
+                      ? 'bg-white border border-amber-200/90 ring-1 ring-amber-500/10 shadow-[0_4px_20px_rgba(217,119,6,0.04)]'
                       : isStanzaDimmed
                       ? 'bg-neutral-50/60 border border-neutral-200/40 opacity-60'
                       : 'bg-white border border-neutral-200/80 shadow-[0_2px_8px_rgba(0,0,0,0.02)]'
@@ -1238,11 +1238,11 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                     <span className="text-[10px] font-bold uppercase tracking-wider font-mono flex items-center gap-1.5">
                       <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full ${
                         isStanzaActive
-                          ? 'bg-purple-100/80 text-purple-900 font-bold'
-                          : 'bg-purple-50 text-[#7C3AED]'
+                          ? 'bg-amber-100/80 text-amber-900 font-bold'
+                          : 'bg-amber-50 text-amber-800'
                       }`}>
                         {isStanzaActive && (
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#7C3AED]" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-amber-600" />
                         )}
                         {isStanzaActive ? 'Active Verse Stanza ' : 'Stanza '}
                         {verse.stanzaNumber}
@@ -1259,8 +1259,8 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                     >
                       {copiedStanzaIdx === vIdx ? (
                         <>
-                          <Check className="w-3 h-3 text-[#7C3AED]" />
-                          <span className="text-[#7C3AED] font-bold">Copied ✓</span>
+                          <Check className="w-3 h-3 text-emerald-600" />
+                          <span className="text-emerald-700 font-bold">Copied ✓</span>
                         </>
                       ) : (
                         <>
@@ -1372,7 +1372,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
           <div className="flex items-center justify-between pt-4 mt-4 border-t border-neutral-100 text-xs text-[#71717A]">
             <span className="flex items-center gap-1.5 font-medium">
-              <Volume2 className="w-4 h-4 text-[#7C3AED]" />
+              <Volume2 className="w-4 h-4 text-amber-600" />
               Audio Kirtan & Melodic Recitation Available
             </span>
             <button type="button" className="flex items-center gap-1.5 hover:text-[#18181B] font-medium cursor-pointer">
@@ -1389,7 +1389,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
           <aside className="hidden xl:block xl:col-span-3 space-y-4 sticky top-24">
             <div className="bg-white rounded-[28px] p-5 border border-neutral-200/80 shadow-[0_4px_24px_rgba(0,0,0,0.03)]">
               <div className="flex items-center gap-2 mb-3 pb-2 border-b border-neutral-100">
-                <Feather className="w-4 h-4 text-[#7C3AED]" />
+                <Feather className="w-4 h-4 text-amber-600" />
                 <h3 className="font-semibold text-sm text-[#18181B]">
                   Rasik Commentary & Purport (रसिक भावार्थ)
                 </h3>
@@ -1409,9 +1409,9 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               </div>
             </div>
 
-            <div className="bg-purple-50/70 text-[#18181B] rounded-[28px] p-5 border border-neutral-200/80 shadow-[0_4px_20px_rgba(124,58,237,0.04)]">
-              <span className="text-[10.5px] text-purple-700 font-bold uppercase tracking-wider block mb-1.5 flex items-center gap-1.5 font-mono">
-                <Sparkles className="w-3.5 h-3.5 text-purple-600" />
+            <div className="bg-[#FFFBEB]/80 text-[#18181B] rounded-[28px] p-5 border border-amber-200/60 shadow-[0_4px_20px_rgba(217,119,6,0.03)]">
+              <span className="text-[10.5px] text-amber-800 font-bold uppercase tracking-wider block mb-1.5 flex items-center gap-1.5 font-mono">
+                <Sparkles className="w-3.5 h-3.5 text-amber-600" />
                 Eternal Nikunj Vihar Darshan
               </span>
               <p className="text-xs leading-relaxed text-[#52525B]">
@@ -1441,7 +1441,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
           >
             <div className="flex items-center justify-between pb-3 border-b border-neutral-100">
               <div className="flex items-center gap-2">
-                <Feather className="w-4 h-4 text-[#7C3AED]" />
+                <Feather className="w-4 h-4 text-amber-600" />
                 <h3 className="font-semibold text-sm sm:text-base text-[#18181B]">
                   Rasik Commentary & Purport (रसिक भावार्थ)
                 </h3>
@@ -1491,9 +1491,9 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             </div>
 
             {/* Nitya Nikunj Vihar Tattva Section */}
-            <div className="bg-purple-50/70 text-[#18181B] rounded-[24px] p-4 sm:p-5 border border-neutral-200/80 shadow-xs">
-              <span className="text-[10.5px] text-purple-700 font-bold uppercase tracking-wider block mb-1.5 flex items-center gap-1.5 font-mono">
-                <Sparkles className="w-3.5 h-3.5 text-purple-600" />
+            <div className="bg-[#FFFBEB]/80 text-[#18181B] rounded-[24px] p-4 sm:p-5 border border-amber-200/60 shadow-xs">
+              <span className="text-[10.5px] text-amber-800 font-bold uppercase tracking-wider block mb-1.5 flex items-center gap-1.5 font-mono">
+                <Sparkles className="w-3.5 h-3.5 text-amber-600" />
                 Eternal Nikunj Vihar Darshan
               </span>
               <p className="text-xs sm:text-sm leading-relaxed text-[#52525B]">
@@ -1532,7 +1532,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
           >
             <div className="flex items-center justify-between pb-3 border-b border-neutral-100">
               <div className="flex items-center gap-2">
-                <BookOpenCheck className="w-5 h-5 text-[#7C3AED]" />
+                <BookOpenCheck className="w-5 h-5 text-amber-600" />
                 <div>
                   <h3 className="font-semibold text-sm sm:text-base text-[#18181B]">
                     Rasik Braj Lexicon • Sacred Vocabulary

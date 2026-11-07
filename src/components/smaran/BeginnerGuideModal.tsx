@@ -57,11 +57,11 @@ export const BeginnerGuideModal: React.FC<BeginnerGuideModalProps> = ({
         {/* Header Bar */}
         <div className="flex items-center justify-between pb-4 border-b border-neutral-100 mb-5">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-purple-50 border border-purple-100 flex items-center justify-center text-[#7C3AED] shrink-0">
+            <div className="w-10 h-10 rounded-2xl bg-amber-50 border border-amber-200/60 flex items-center justify-center text-amber-700 shrink-0">
               <Compass className="w-5 h-5" />
             </div>
             <div>
-              <span className="text-[10px] font-bold uppercase tracking-widest text-[#7C3AED] block font-mono">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-amber-800 block font-mono">
                 DAILY SADHANA PROTOCOL • नव साधक विधि
               </span>
               <h3 className="font-serif font-bold text-xl sm:text-2xl text-[#18181B] leading-tight">
@@ -99,7 +99,7 @@ export const BeginnerGuideModal: React.FC<BeginnerGuideModalProps> = ({
           <span className="text-[11px] font-bold text-[#71717A] uppercase tracking-wider font-mono">
             THE THREE SACRED PILLARS • नित्य साधन त्रिवेणी
           </span>
-          <span className="text-[11px] text-[#7C3AED] font-semibold font-mono">
+          <span className="text-[11px] text-amber-800 font-semibold font-mono">
             3 Daily Practices
           </span>
         </div>
@@ -151,12 +151,12 @@ export const BeginnerGuideModal: React.FC<BeginnerGuideModalProps> = ({
             className="group w-full p-4 sm:p-5 rounded-[22px] bg-white border border-neutral-200/80 hover:border-neutral-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-colors cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 select-none text-left"
           >
             <div className="flex items-start sm:items-center gap-3.5 flex-1 min-w-0">
-              <div className="w-12 h-12 rounded-[18px] bg-purple-50 border border-purple-200/60 flex items-center justify-center shrink-0 text-[#7C3AED] mt-0.5 sm:mt-0">
+              <div className="w-12 h-12 rounded-[18px] bg-amber-50 border border-amber-200/60 flex items-center justify-center shrink-0 text-amber-700 mt-0.5 sm:mt-0">
                 <Music2 className="w-5 h-5" />
               </div>
               <div className="min-w-0 flex-1">
                 <div className="flex items-center gap-2 mb-1 flex-wrap">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-purple-800 bg-purple-50 px-2.5 py-0.5 rounded-full font-mono border border-purple-200/60">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full font-mono border border-amber-200/60">
                     PILLAR 02
                   </span>
                   <span className="text-xs font-semibold text-[#71717A] font-mono">
@@ -172,7 +172,7 @@ export const BeginnerGuideModal: React.FC<BeginnerGuideModalProps> = ({
               </div>
             </div>
             <div className="shrink-0 sm:pl-2 self-start sm:self-center">
-              <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-purple-50 text-purple-900 text-xs font-bold font-mono border border-purple-200/80 group-hover:bg-purple-100 transition-colors">
+              <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-amber-50 text-amber-900 text-xs font-bold font-mono border border-amber-200/80 group-hover:bg-amber-100 transition-colors">
                 Listen Audio →
               </span>
             </div>
@@ -236,7 +236,7 @@ export const BeginnerGuideModal: React.FC<BeginnerGuideModalProps> = ({
           className="w-full py-4 px-6 rounded-full bg-[#18181B] hover:bg-[#27272A] text-white text-xs sm:text-sm font-bold flex items-center justify-center gap-2 shadow-[0_4px_16px_rgba(24,24,27,0.18)] transition-colors cursor-pointer select-none"
         >
           <span>साधना प्रारंभ करें • Begin Daily Sadhana</span>
-          <ArrowRight className="w-4 h-4 text-purple-300" />
+          <ArrowRight className="w-4 h-4 text-amber-300" />
         </button>
       </div>
     </div>,

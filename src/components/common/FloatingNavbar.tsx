@@ -64,7 +64,7 @@ export const SacredFluteIcon: React.FC<{ className?: string; size?: number }> = 
     {/* Peacock Feather (मोरपंख चंद्रिका) at Flute Crown */}
     <path
       d="M17 6C16.8 2.8 19.2 1.5 21.2 2.5C22.5 3.8 21.8 6.5 17.5 6.8Z"
-      fill="#7C3AED"
+      fill="#047857"
       fillOpacity="0.9"
       stroke="#F59E0B"
       strokeWidth="0.8"
@@ -151,11 +151,11 @@ export const FloatingNavbar: React.FC<FloatingNavbarProps> = ({
         title="Open Sacred Audio Player"
         className="pointer-events-auto relative w-[50px] h-[50px] rounded-full shrink-0 flex items-center justify-center text-white border-2 border-white shadow-[0_10px_28px_rgba(0,0,0,0.12)] overflow-hidden transition-transform active:scale-95 cursor-pointer"
         style={{
-          background: 'radial-gradient(circle at 35% 30%, #7C3AED, #18181B 85%)',
+          background: 'radial-gradient(circle at 35% 30%, #D97706, #18181B 85%)',
         }}
       >
         {isPlayingAudio && (
-          <span className="absolute inset-0 rounded-full animate-pulse bg-purple-400/30 pointer-events-none" />
+          <span className="absolute inset-0 rounded-full animate-pulse bg-amber-400/30 pointer-events-none" />
         )}
         <SacredFluteIcon className="w-5 h-5 shrink-0" />
       </button>

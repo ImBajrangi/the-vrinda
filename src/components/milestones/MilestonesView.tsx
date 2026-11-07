@@ -264,8 +264,8 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
                   onClick={handleShareMilestones}
                   className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-[#222222] hover:bg-black/5 pressable transition-colors text-left"
                 >
-                  <div className="w-7 h-7 rounded-lg bg-purple-50 flex items-center justify-center shrink-0">
-                    <Share2 className="w-3.5 h-3.5 text-purple-600" />
+                  <div className="w-7 h-7 rounded-lg bg-amber-50 flex items-center justify-center shrink-0">
+                    <Share2 className="w-3.5 h-3.5 text-amber-700" />
                   </div>
                   <div className="min-w-0">
                     <span className="block font-semibold text-[#111111]">Share Milestones</span>
@@ -281,8 +281,8 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
                   }}
                   className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-[#222222] hover:bg-black/5 pressable transition-colors text-left"
                 >
-                  <div className="w-7 h-7 rounded-lg bg-[#8B5CF6]/10 flex items-center justify-center shrink-0">
-                    <BookOpen className="w-3.5 h-3.5 text-[#8B5CF6]" />
+                  <div className="w-7 h-7 rounded-lg bg-amber-50 flex items-center justify-center shrink-0">
+                    <BookOpen className="w-3.5 h-3.5 text-amber-700" />
                   </div>
                   <div className="min-w-0">
                     <span className="block font-semibold text-[#111111]">Observance Guidelines & Rules</span>
@@ -358,7 +358,7 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
 
           <div className="bg-white/80 p-3 rounded-2xl border border-black/5 shadow-xs flex flex-col">
             <span className="text-[10px] text-[#6B6F6B] font-semibold flex items-center gap-1 uppercase">
-              <BookOpen className="w-3 h-3 text-[#8B5CF6]" />
+              <BookOpen className="w-3 h-3 text-amber-700" />
               Memorized Padas
             </span>
             <span className="font-doto font-bold text-lg text-[#111111] mt-0.5">
@@ -396,7 +396,7 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
                 </span>
               </div>
             </div>
-            <span className="text-xs font-semibold text-purple-700 bg-purple-50 px-2.5 py-1 rounded-full">
+            <span className="text-xs font-semibold text-amber-800 bg-amber-50 px-2.5 py-1 rounded-full">
               Achieved: {completedMilestonesCount} / {milestones.length}
             </span>
           </div>
@@ -457,8 +457,8 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
       <div className="mt-6 bg-[#FAF9F6] rounded-[28px] p-3.5 sm:p-6 border border-neutral-200/80 shadow-2xs">
         <div className="flex items-center justify-between mb-4 pb-3 border-b border-neutral-100">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-purple-50 flex items-center justify-center">
-              <Wind className="w-4 h-4 text-purple-600" />
+            <div className="w-8 h-8 rounded-full bg-amber-50 flex items-center justify-center">
+              <Wind className="w-4 h-4 text-amber-700" />
             </div>
             <div>
               <h2 className="text-sm sm:text-base font-semibold text-[#18181B]">
@@ -469,7 +469,7 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
               </span>
             </div>
           </div>
-          <span className="text-xs font-semibold text-purple-700 bg-purple-50 px-3 py-1 rounded-full shadow-2xs font-mono">
+          <span className="text-xs font-semibold text-amber-800 bg-amber-50 px-3 py-1 rounded-full shadow-2xs font-mono">
             Mastered: {completedAntarangaCount} / {antarangaBadges.length}
           </span>
         </div>
@@ -526,7 +526,7 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
                   />
                 </div>
 
-                <span className="text-[10px] font-bold text-[#8B5CF6] uppercase tracking-wider bg-[#8B5CF6]/10 px-2.5 py-0.5 rounded-full mb-1">
+                <span className="text-[10px] font-bold text-amber-800 uppercase tracking-wider bg-amber-50 px-2.5 py-0.5 rounded-full mb-1">
                   {selectedBadge.type === 'milestone' ? 'Sacred Milestone' : 'Unbroken Sadhana'}
                 </span>
                 <h3 className="font-devanagari font-bold text-base sm:text-lg text-[#111111] mt-0.5 leading-snug">
@@ -539,8 +539,8 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
                       In Progress (साधनारत)
                     </span>
                   ) : (
-                    <span className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-semibold text-purple-700 bg-purple-50 px-3 py-1 rounded-full font-mono">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-purple-600" />
+                    <span className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-semibold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full font-mono">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
                       Achieved • Shriji's Grace (सिद्ध सोपान)
                     </span>
                   )}
@@ -652,7 +652,7 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
 
               <div className="bg-[#F8F9FA] p-3.5 rounded-2xl border border-black/5">
                 <div className="flex items-center gap-2 mb-1">
-                  <Award className="w-4 h-4 text-[#8B5CF6]" />
+                  <Award className="w-4 h-4 text-amber-700" />
                   <h4 className="font-semibold text-sm text-[#111111]">
                     2. Japa Counting (1 Mala = 108 Beads)
                   </h4>
@@ -664,7 +664,7 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
 
               <div className="bg-[#FAF9F6] p-3.5 rounded-2xl border border-neutral-200/60 shadow-2xs">
                 <div className="flex items-center gap-2 mb-1">
-                  <Wind className="w-4 h-4 text-purple-600" />
+                  <Wind className="w-4 h-4 text-amber-700" />
                   <h4 className="font-semibold text-sm text-[#18181B]">
                     3. Inner Manasi Seva & Meditation (Dhyāna Flow)
                   </h4>
@@ -676,7 +676,7 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
 
               <div className="bg-white p-3.5 rounded-2xl border border-black/10">
                 <div className="flex items-center gap-2 mb-1">
-                  <CalendarCheck className="w-4 h-4 text-purple-600" />
+                  <CalendarCheck className="w-4 h-4 text-amber-700" />
                   <h4 className="font-semibold text-sm text-[#111111]">
                     4. Sacred Ekadashi & Pradosh Observance
                   </h4>

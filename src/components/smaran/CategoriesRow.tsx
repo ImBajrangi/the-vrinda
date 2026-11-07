@@ -31,7 +31,7 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
     iconColor: string;
   }[] = [
     { id: 'books', label: 'पावन ग्रंथ', count: books.length, icon: BookOpen, iconColor: 'text-amber-600' },
-    { id: 'authors', label: 'रसिक आचार्य', count: authors.length, icon: Feather, iconColor: 'text-purple-600' },
+    { id: 'authors', label: 'रसिक आचार्य', count: authors.length, icon: Feather, iconColor: 'text-amber-700' },
     { id: 'relations', label: 'लीला एवं धाम', count: relations.length, icon: Landmark, iconColor: 'text-[#0284C7]' },
   ];
 
@@ -39,15 +39,15 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
 
   return (
     <section className="w-full bg-white rounded-[32px] p-6 sm:p-7 border border-neutral-200/80 shadow-[0_4px_24px_rgba(0,0,0,0.03)] mb-6 space-y-4">
-      {/* 1. Header with Royal Purple Dot & Crisp Obsidian Typography */}
+      {/* 1. Header with Sacred Amber Dot & Crisp Obsidian Typography */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-1">
         <div>
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#7C3AED] shrink-0" />
+            <span className="w-2.5 h-2.5 rounded-full bg-amber-600 shrink-0" />
             <h3 className="font-serif font-bold text-lg sm:text-xl text-[#18181B] leading-tight">
               पावन ग्रंथ, रसिक संत एवं धाम लीला संग्रह
             </h3>
-            <span className="text-xs font-semibold text-purple-700 bg-purple-50 px-2.5 py-0.5 rounded-full font-mono">
+            <span className="text-xs font-semibold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full font-mono">
               {activeTab === 'books' ? `ग्रंथ संग्रह (${books.length})` : activeTab === 'authors' ? `रसिक संत (${authors.length})` : `धाम लीला (${relations.length})`}
             </span>
           </div>
@@ -59,7 +59,7 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
         <button
           type="button"
           onClick={onOpenSaintsDirectory}
-          className="text-xs sm:text-sm font-semibold text-purple-700 hover:underline self-start sm:self-auto cursor-pointer flex items-center gap-1"
+          className="text-xs sm:text-sm font-semibold text-amber-700 hover:underline self-start sm:self-auto cursor-pointer flex items-center gap-1"
         >
           <span>१३१ रसिक संत नामावली</span>
           <span>→</span>
@@ -201,7 +201,7 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
                   <ArtworkGraphicSlot
                     src={author.imageUrl || null}
                     aspectRatio="square"
-                    theme="purple"
+                    theme="amber"
                     placeholderLabel="संत स्वरूप"
                     placeholderCategory="saint"
                     roundedClassName="rounded-[16px]"
@@ -214,7 +214,7 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
                       {author.tradition} • {author.totalCompositions} Vanis
                     </span>
                     <div className="sm:hidden">
-                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold text-purple-700 bg-purple-50">
+                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold text-amber-800 bg-amber-50">
                         Rasik Saint
                       </span>
                     </div>
@@ -225,7 +225,7 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
                   </h4>
 
                   <div className="flex items-center gap-1.5 text-xs text-[#71717A] mt-1 overflow-hidden whitespace-nowrap font-medium">
-                    <Feather className="w-3.5 h-3.5 text-purple-600 shrink-0" />
+                    <Feather className="w-3.5 h-3.5 text-amber-600 shrink-0" />
                     <span className="truncate">
                       {author.significance}
                     </span>
@@ -235,7 +235,7 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
 
               <div className="flex flex-col items-end justify-between shrink-0 self-stretch py-0.5 pl-2">
                 <div className="hidden sm:flex items-center gap-2">
-                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold text-purple-700 bg-purple-50">
+                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold text-amber-800 bg-amber-50">
                     Rasik Acharya
                   </span>
                   <ExternalLink className="w-3.5 h-3.5 text-neutral-400 hover:text-neutral-600" />

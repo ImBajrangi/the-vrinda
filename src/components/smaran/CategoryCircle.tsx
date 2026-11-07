@@ -41,12 +41,12 @@ export const CategoryCircle: React.FC<CategoryCircleProps> = ({
       case 'bihari':
         // Thakur Banke Bihari: Peacock Feather & Flute
         return (
-          <div className="w-full h-full bg-gradient-to-br from-purple-50 via-amber-50 to-amber-100 flex items-center justify-center p-2 rounded-full">
+          <div className="w-full h-full bg-gradient-to-br from-amber-50 via-amber-100 to-amber-200 flex items-center justify-center p-2 rounded-full">
             <svg viewBox="0 0 40 40" className="w-full h-full" fill="none">
               <circle cx="20" cy="20" r="18" fill="#FFFBEB" stroke="#F59E0B" strokeWidth="1.2" />
               <ellipse cx="20" cy="18" rx="7" ry="10" fill="#18181B" />
-              <ellipse cx="20" cy="18" rx="4.5" ry="6.5" fill="#7C3AED" />
-              <ellipse cx="20" cy="18.5" rx="2.5" ry="3.5" fill="#3B82F6" />
+              <ellipse cx="20" cy="18" rx="4.5" ry="6.5" fill="#047857" />
+              <ellipse cx="20" cy="18.5" rx="2.5" ry="3.5" fill="#0284C7" />
               <circle cx="20" cy="19" r="1.3" fill="#F59E0B" />
               <line x1="10" y1="29" x2="30" y2="25" stroke="#92400E" strokeWidth="2" strokeLinecap="round" />
               <circle cx="16" cy="27.8" r="0.7" fill="#FEF3C7" />
@@ -58,18 +58,18 @@ export const CategoryCircle: React.FC<CategoryCircleProps> = ({
       case 'chaurasi':
         // Hit Chaurasi: Sacred Rasik Pustak
         return (
-          <div className="w-full h-full bg-gradient-to-br from-[#F5E8FF] via-[#E9D5FF] to-[#D8B4FE] flex items-center justify-center p-2 rounded-full">
+          <div className="w-full h-full bg-gradient-to-br from-[#FEF3C7] via-[#FDE68A] to-[#F59E0B]/30 flex items-center justify-center p-2 rounded-full">
             <svg viewBox="0 0 40 40" className="w-full h-full" fill="none">
-              <circle cx="20" cy="20" r="18" fill="#FAF5FF" stroke="#8B5CF6" strokeWidth="1.2" />
+              <circle cx="20" cy="20" r="18" fill="#FFFBEB" stroke="#D97706" strokeWidth="1.2" />
               <path
                 d="M11 16C15 15 18 16 20 18C22 16 25 15 29 16V27C25 26 22 27 20 29C18 27 15 26 11 27V16Z"
-                fill="#8B5CF6"
-                stroke="#6D28D9"
+                fill="#D97706"
+                stroke="#B45309"
                 strokeWidth="1.2"
                 strokeLinejoin="round"
               />
-              <path d="M20 18V29" stroke="#6D28D9" strokeWidth="1.2" />
-              <path d="M14 20H17M14 23H17M23 20H26M23 23H26" stroke="#EDE9FE" strokeWidth="1.2" strokeLinecap="round" />
+              <path d="M20 18V29" stroke="#B45309" strokeWidth="1.2" />
+              <path d="M14 20H17M14 23H17M23 20H26M23 23H26" stroke="#FEF3C7" strokeWidth="1.2" strokeLinecap="round" />
             </svg>
           </div>
         );

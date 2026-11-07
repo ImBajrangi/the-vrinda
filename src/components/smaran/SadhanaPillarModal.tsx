@@ -210,7 +210,7 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
                 }}
                 className="w-full py-3 rounded-full bg-[#18181B] hover:bg-[#27272A] text-white text-xs sm:text-sm font-bold flex items-center justify-center gap-2 shadow-xs transition-colors cursor-pointer"
               >
-                <Wind className="w-4 h-4 text-purple-300" />
+                <Wind className="w-4 h-4 text-amber-300" />
                 <span>Enter Dhyāna Sanctuary (Full-screen Chanting)</span>
                 <ChevronRight className="w-4 h-4 ml-1" />
               </button>
@@ -225,15 +225,15 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
           <div className="space-y-5">
             {/* Header Identity */}
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-2xl bg-purple-50 flex items-center justify-center shrink-0">
-                <Music2 className="w-6 h-6 text-[#7C3AED]" />
+              <div className="w-12 h-12 rounded-2xl bg-amber-50 flex items-center justify-center shrink-0">
+                <Music2 className="w-6 h-6 text-amber-700" />
               </div>
               <div className="min-w-0">
                 <div className="flex items-center gap-2">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-purple-800 bg-purple-50 px-2.5 py-0.5 rounded-full font-mono">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full font-mono">
                     Pillar 2 • Sacred Listening
                   </span>
-                  <span className="text-xs font-mono font-bold text-purple-800">{percent}% Complete</span>
+                  <span className="text-xs font-mono font-bold text-amber-800">{percent}% Complete</span>
                 </div>
                 <h3 className="font-serif font-bold text-lg text-[#18181B] mt-0.5">
                   Pad Shravan Audio (पद श्रवण)
@@ -252,7 +252,7 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
                     / {sadhana.shravanTarget} minutes
                   </span>
                 </div>
-                <span className="text-[11px] font-bold text-purple-800 bg-purple-50 px-2.5 py-0.5 rounded-full font-mono">
+                <span className="text-[11px] font-bold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full font-mono">
                   Raga Stream
                 </span>
               </div>
@@ -260,7 +260,7 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
               {/* Progress Bar */}
               <div className="w-full bg-neutral-200/60 h-2 rounded-full overflow-hidden">
                 <div
-                  className="bg-[#7C3AED] h-full rounded-full transition-all duration-500 ease-out"
+                  className="bg-amber-600 h-full rounded-full transition-all duration-500 ease-out"
                   style={{ width: `${percent}%` }}
                 />
               </div>
@@ -284,7 +284,7 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
                 <button
                   type="button"
                   onClick={onToggleAudio}
-                  className="w-10 h-10 rounded-full bg-[#7C3AED] hover:bg-[#6D28D9] text-white flex items-center justify-center font-bold transition-colors shadow-xs cursor-pointer"
+                  className="w-10 h-10 rounded-full bg-amber-600 hover:bg-amber-700 text-white flex items-center justify-center font-bold transition-colors shadow-xs cursor-pointer"
                   aria-label={isPlayingAudio ? 'Pause' : 'Play'}
                 >
                   {isPlayingAudio ? (
@@ -307,7 +307,7 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
                   onClick={() => handleAddShravan(15)}
                   className="py-2.5 px-3 rounded-xl bg-[#F4F4F5] text-[#18181B] text-xs font-bold hover:bg-neutral-200 transition-colors flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
                 >
-                  <Plus className="w-3.5 h-3.5 text-[#7C3AED]" />
+                  <Plus className="w-3.5 h-3.5 text-amber-700" />
                   <span>+15 Mins</span>
                 </button>
                 <button
@@ -315,7 +315,7 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
                   onClick={() => handleAddShravan(30)}
                   className="py-2.5 px-3 rounded-xl bg-[#F4F4F5] text-[#18181B] text-xs font-bold hover:bg-neutral-200 transition-colors flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
                 >
-                  <Plus className="w-3.5 h-3.5 text-[#7C3AED]" />
+                  <Plus className="w-3.5 h-3.5 text-amber-700" />
                   <span>+30 Mins</span>
                 </button>
                 <button
@@ -363,7 +363,7 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
                 }}
                 className="w-full py-3 rounded-full bg-[#18181B] hover:bg-[#27272A] text-white text-xs sm:text-sm font-bold flex items-center justify-center gap-2 shadow-xs transition-colors cursor-pointer"
               >
-                <Music2 className="w-4 h-4 text-purple-300" />
+                <Music2 className="w-4 h-4 text-amber-300" />
                 <span>Open Ras Shravan Audio Deck</span>
                 <ChevronRight className="w-4 h-4 ml-1" />
               </button>

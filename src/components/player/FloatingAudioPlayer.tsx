@@ -34,11 +34,11 @@ export const FloatingAudioPlayer: React.FC<FloatingAudioPlayerProps> = ({
         <div
           onClick={onOpenLyrics}
           title="Open Pad & Lyrics"
-          className="w-11 h-11 rounded-full bg-purple-50 flex items-center justify-center shrink-0 overflow-hidden relative cursor-pointer select-none"
+          className="w-11 h-11 rounded-full bg-amber-50 flex items-center justify-center shrink-0 overflow-hidden relative cursor-pointer select-none border border-amber-200/60"
         >
           <div className="flex items-end gap-1 h-4">
             <span
-              className={`w-1 bg-[#7C3AED] rounded-full ${
+              className={`w-1 bg-amber-600 rounded-full ${
                 isPlaying ? 'animate-apple-eq-1' : 'h-1.5'
               }`}
             />
@@ -48,7 +48,7 @@ export const FloatingAudioPlayer: React.FC<FloatingAudioPlayerProps> = ({
               }`}
             />
             <span
-              className={`w-1 bg-[#7C3AED] rounded-full ${
+              className={`w-1 bg-amber-600 rounded-full ${
                 isPlaying ? 'animate-apple-eq-3' : 'h-1'
               }`}
             />
@@ -62,7 +62,7 @@ export const FloatingAudioPlayer: React.FC<FloatingAudioPlayerProps> = ({
           title="View Pad Details"
         >
           <div className="flex items-center gap-1.5">
-            <span className="text-[10px] uppercase font-bold tracking-wider text-[#7C3AED] truncate font-mono">
+            <span className="text-[10px] uppercase font-bold tracking-wider text-amber-700 truncate font-mono">
               {currentPad.rag} • {currentPad.author}
             </span>
           </div>
@@ -88,7 +88,7 @@ export const FloatingAudioPlayer: React.FC<FloatingAudioPlayerProps> = ({
             type="button"
             onClick={onTogglePlay}
             aria-label={isPlaying ? "Pause" : "Play"}
-            className="w-9 h-9 rounded-full bg-[#7C3AED] hover:bg-[#6D28D9] text-white flex items-center justify-center font-bold shadow-xs transition-colors cursor-pointer"
+            className="w-9 h-9 rounded-full bg-[#18181B] hover:bg-neutral-800 text-white flex items-center justify-center font-bold shadow-xs transition-colors cursor-pointer"
           >
             {isPlaying ? (
               <Pause className="w-4 h-4 fill-white" />

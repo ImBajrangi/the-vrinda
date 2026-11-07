@@ -4,7 +4,7 @@ interface MacroRowProps {
   label: string;
   value: string;
   sublabel?: string;
-  accentColor: string; // e.g. '#22C55E' | '#8B5CF6' | '#A3C71F'
+  accentColor: string; // e.g. '#22C55E' | '#D97706' | '#A3C71F'
   onClick?: () => void;
   actionBadge?: string;
 }

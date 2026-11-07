@@ -35,7 +35,7 @@ export const GlassIconButton: React.FC<GlassIconButtonProps> = ({
         <i
           className="absolute -top-[2px] -right-[2px] w-[15px] h-[15px] rounded-full flex items-center justify-center not-italic font-sans font-semibold text-[9px] shadow-xs"
           style={{
-            background: '#7C3AED',
+            background: '#D97706',
             color: '#FFFFFF',
           }}
         >

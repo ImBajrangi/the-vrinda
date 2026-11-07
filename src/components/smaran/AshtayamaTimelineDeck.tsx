@@ -37,11 +37,11 @@ export const AshtayamaTimelineDeck: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-1">
         <div>
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#7C3AED] shrink-0" />
+            <span className="w-2.5 h-2.5 rounded-full bg-amber-600 shrink-0" />
             <h3 className="font-serif font-bold text-lg sm:text-xl text-[#18181B] leading-tight">
               Ashtayama 8-Watch Timeline
             </h3>
-            <span className="text-xs font-semibold text-purple-700 bg-purple-50 px-2.5 py-0.5 rounded-full font-mono">
+            <span className="text-xs font-semibold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full font-mono">
               नित्य अष्टयाम लीला
             </span>
           </div>
@@ -116,7 +116,7 @@ export const AshtayamaTimelineDeck: React.FC = () => {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1">
           <div className="space-y-1 min-w-0 flex-1">
             <div className="flex items-center gap-2">
-              <span className="text-[11px] font-bold text-[#7C3AED] uppercase tracking-wider font-mono">
+              <span className="text-[11px] font-bold text-amber-800 uppercase tracking-wider font-mono">
                 {selectedPeriod.bhava} • {selectedPeriod.timeRange}
               </span>
               <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold text-amber-800 bg-amber-50">
@@ -137,8 +137,8 @@ export const AshtayamaTimelineDeck: React.FC = () => {
             <span className="text-[10px] text-[#71717A] uppercase font-mono font-medium">
               Classical Raga
             </span>
-            <div className="flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#7C3AED] font-mono">
-              <Music className="w-3.5 h-3.5 text-[#7C3AED]" />
+            <div className="flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-amber-800 font-mono">
+              <Music className="w-3.5 h-3.5 text-amber-700" />
               <span>{selectedPeriod.raga}</span>
             </div>
           </div>

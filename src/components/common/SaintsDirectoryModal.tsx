@@ -105,7 +105,7 @@ export const SaintsDirectoryModal: React.FC<SaintsDirectoryModalProps> = ({
         {/* Modal Header */}
         <div className="flex items-center justify-between px-5 sm:px-6 py-4 border-b border-neutral-100">
           <div>
-            <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#7C3AED] block">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-amber-800 block">
               RASIK PARAMPARA DIRECTORY
             </span>
             <h3 className="font-serif font-bold text-lg sm:text-xl text-[#18181B]">
@@ -192,7 +192,7 @@ export const SaintsDirectoryModal: React.FC<SaintsDirectoryModalProps> = ({
                 >
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-[10px] font-bold text-purple-700 bg-purple-50 px-2.5 py-0.5 rounded-full font-mono">
+                      <span className="text-[10px] font-bold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full font-mono">
                         {s.tradition}
                       </span>
                       <span className="text-[10px] text-[#71717A] font-mono">
@@ -221,7 +221,7 @@ export const SaintsDirectoryModal: React.FC<SaintsDirectoryModalProps> = ({
                       <button
                         type="button"
                         onClick={() => setExpandedSaintId(isExpanded ? null : s.id)}
-                        className="text-[11px] font-semibold text-purple-700 mt-1 hover:underline block cursor-pointer"
+                        className="text-[11px] font-semibold text-amber-800 mt-1 hover:underline block cursor-pointer"
                       >
                         {isExpanded ? 'कम दिखाएं' : 'चरित्र पढ़ें...'}
                       </button>
@@ -251,7 +251,7 @@ export const SaintsDirectoryModal: React.FC<SaintsDirectoryModalProps> = ({
         {/* Modal Footer */}
         <div className="px-5 sm:px-6 py-3 bg-[#FAF9F6] border-t border-neutral-100 flex items-center justify-between text-xs text-[#71717A]">
           <span>कुल {filtered.length} संत उपलब्ध</span>
-          <span className="font-semibold text-[#7C3AED]">श्री हरिवंश • श्री हरिदास</span>
+          <span className="font-semibold text-amber-800">श्री हरिवंश • श्री हरिदास</span>
         </div>
       </div>
     </div>,

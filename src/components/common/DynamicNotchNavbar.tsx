@@ -110,7 +110,7 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
                 <span className="font-devanagari font-bold text-sm sm:text-base text-[#18181B] tracking-tight">
                   वृन्दोपनिषद्
                 </span>
-                <span className="font-mono font-bold text-[10px] text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded-full uppercase shrink-0">
+                <span className="font-mono font-bold text-[10px] text-amber-800 bg-amber-50 px-1.5 py-0.5 rounded-full uppercase shrink-0">
                   2.0
                 </span>
               </div>
@@ -191,7 +191,7 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
                   aria-label={isPlayingAudio ? 'Pause Sacred Audio' : 'Play Sacred Audio'}
                   title={isPlayingAudio ? 'Pause Sacred Audio' : 'Play Sacred Audio'}
                   className={`w-5 h-5 rounded-full flex items-center justify-center transition-colors cursor-pointer ${
-                    isPlayingAudio ? 'bg-[#7C3AED] text-white' : 'bg-[#18181B] text-white'
+                    isPlayingAudio ? 'bg-amber-600 text-white' : 'bg-[#18181B] text-white'
                   }`}
                 >
                   {isPlayingAudio ? (
@@ -273,7 +273,7 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
                     onOpenFocus();
                     setIsMobileMenuOpen(false);
                   }}
-                  className="px-3 py-1 rounded-full text-[11px] font-bold bg-[#7C3AED] text-white"
+                  className="px-3 py-1 rounded-full text-[11px] font-bold bg-[#18181B] text-white"
                 >
                   Sanctuary →
                 </button>

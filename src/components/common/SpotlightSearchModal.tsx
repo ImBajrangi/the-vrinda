@@ -321,7 +321,7 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
                           className={`flex items-center gap-2.5 px-3 py-2 rounded-xl transition-colors cursor-pointer select-none ${isSelected ? 'bg-neutral-100 text-[#18181B]' : 'hover:bg-neutral-50 text-[#18181B]'
                             }`}
                         >
-                          <div className="w-6 h-6 rounded-full bg-purple-50 text-purple-700 flex items-center justify-center shrink-0 text-[11px] font-bold">
+                          <div className="w-6 h-6 rounded-full bg-amber-50 text-amber-800 flex items-center justify-center shrink-0 text-[11px] font-bold">
                             {s.name.charAt(0)}
                           </div>
                           <div className="min-w-0 flex-1">

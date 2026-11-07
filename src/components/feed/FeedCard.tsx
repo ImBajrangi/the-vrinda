@@ -270,7 +270,7 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
                 {post.authorName}
               </span>
               {post.isVerified && (
-                <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#7C3AED] fill-purple-100 shrink-0" />
+                <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-600 fill-amber-100 shrink-0" />
               )}
             </div>
             <span className="text-[10.5px] sm:text-[11.5px] text-[#71717A] truncate">
@@ -319,7 +319,7 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
                     onClick={handleShare}
                     className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-[#222222] hover:bg-black/5 pressable transition-colors text-left"
                   >
-                    <Share2 className="w-3.5 h-3.5 text-purple-600" />
+                    <Share2 className="w-3.5 h-3.5 text-amber-600" />
                     <span>Share Darshan</span>
                   </button>
 
@@ -341,7 +341,7 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
                     }}
                     className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-[#222222] hover:bg-black/5 pressable transition-colors text-left"
                   >
-                    <Bookmark className={`w-3.5 h-3.5 ${isBookmarked ? 'fill-current text-[#D4A359]' : 'text-[#8B5CF6]'}`} />
+                    <Bookmark className={`w-3.5 h-3.5 ${isBookmarked ? 'fill-current text-[#D97706]' : 'text-[#71717A]'}`} />
                     <span>{isBookmarked ? 'Remove Bookmark' : 'Save to Bookmarks'}</span>
                   </button>
 
@@ -417,8 +417,8 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
               </button>
             </div>
             {isSummaryLoading ? (
-              <div className="flex items-center gap-2 text-xs text-[#8B5CF6] font-medium py-1">
-                <span className="w-3 h-3 border-2 border-[#8B5CF6] border-t-transparent rounded-full animate-spin" />
+              <div className="flex items-center gap-2 text-xs text-amber-700 font-medium py-1">
+                <span className="w-3 h-3 border-2 border-amber-600 border-t-transparent rounded-full animate-spin" />
                 <span>Revealing divine essence and spiritual theme...</span>
               </div>
             ) : (
@@ -435,7 +435,7 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
         {post.hashtags.map((tag) => (
           <span
             key={tag}
-            className="text-[11px] sm:text-xs font-medium text-[#8B5CF6] hover:underline cursor-pointer select-none"
+            className="text-[11px] sm:text-xs font-medium text-amber-800 bg-amber-50/80 px-2 py-0.5 rounded-full hover:bg-amber-100 transition-colors cursor-pointer select-none"
           >
             {tag}
           </span>

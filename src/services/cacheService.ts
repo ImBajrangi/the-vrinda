@@ -993,7 +993,7 @@ export function formatFlowStageDevanagari(stage: FlowStage): {
       return {
         title: 'अखंड ध्यान धारा',
         subtitle: 'तैलधारामिव सतत स्मरण, विक्षेपों का पूर्ण शमन',
-        color: '#7C3AED',
+        color: '#D97706',
       };
     case 'shanta':
       return {
