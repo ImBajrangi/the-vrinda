@@ -1270,34 +1270,46 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
         {/* Left Column: Pada Index Catalog (Desktop only: hidden md:block)           */}
         {/* ========================================================================= */}
         {!isFocusReadingMode && (
-          <div className="hidden md:block sticky top-24 shrink-0 transition-all duration-300">
-            {isLeftSidebarCollapsed ? (
-              /* Shrunk / Compact Icon Rail */
-              <div className="w-13 sm:w-14 bg-white rounded-3xl p-2 flex flex-col items-center max-h-[82vh] border border-neutral-100 shadow-xs">
+          <aside
+            className={`hidden md:block sticky top-24 shrink-0 overflow-hidden rounded-3xl border shadow-xs transition-[width,min-width,max-width] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[width] ${currentTheme.commentaryBg} ${currentTheme.borderColor} ${
+              isLeftSidebarCollapsed
+                ? 'w-14 min-w-[56px] max-w-[56px]'
+                : 'w-72 lg:w-80 min-w-[288px] lg:min-w-[320px] max-w-[320px]'
+            }`}
+          >
+            <div className="relative w-full h-full min-h-[500px] max-h-[82vh] flex flex-col">
+              {/* Shrunk / Compact Icon Rail Layer */}
+              <div
+                className={`absolute inset-0 flex flex-col items-center p-2.5 transition-all duration-300 ease-out z-10 ${
+                  isLeftSidebarCollapsed
+                    ? 'opacity-100 pointer-events-auto delay-150'
+                    : 'opacity-0 pointer-events-none'
+                }`}
+              >
                 {/* Expand Toggle */}
                 <button
                   type="button"
                   onClick={handleToggleLeftSidebar}
-                  className="w-9 h-9 rounded-xl hover:bg-neutral-100 flex items-center justify-center text-[#475569] hover:text-[#0F172A] transition-colors cursor-pointer"
+                  className="w-9 h-9 rounded-xl hover:bg-black/5 flex items-center justify-center text-[#CA8A04] transition-colors cursor-pointer"
                   title="Expand Sidebar (पद सूची खोलें)"
                   aria-label="Expand Pada Index Sidebar"
                 >
                   <PanelLeftOpen className="w-4 h-4 text-[#CA8A04]" />
                 </button>
 
-                <div className="w-6 h-px bg-neutral-100 my-2" />
+                <div className={`w-6 h-px ${currentTheme.borderColor} my-2`} />
 
                 {/* Shrunk Quick Search Icon - reopens with search */}
                 <button
                   type="button"
                   onClick={() => setIsLeftSidebarCollapsed(false)}
-                  className="w-9 h-9 rounded-xl hover:bg-neutral-100 flex items-center justify-center text-[#94A3B8] hover:text-[#0F172A] transition-colors cursor-pointer"
+                  className="w-9 h-9 rounded-xl hover:bg-black/5 flex items-center justify-center text-[#64748B] hover:text-[#0F172A] transition-colors cursor-pointer"
                   title="Search Padas (खोजें)"
                 >
                   <Search className="w-4 h-4" />
                 </button>
 
-                <div className="w-6 h-px bg-neutral-100 my-2" />
+                <div className={`w-6 h-px ${currentTheme.borderColor} my-2`} />
 
                 {/* Vertical Scrollable Numbered Badges Rail */}
                 <div className="flex-1 w-full space-y-1.5 overflow-y-auto no-scrollbar py-1">
@@ -1311,8 +1323,8 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                         title={`${idx + 1}. ${pad.titleDevanagari} (${pad.author})`}
                         className={`w-9 h-9 mx-auto rounded-xl flex items-center justify-center text-xs font-mono transition-colors cursor-pointer ${
                           isSelected
-                            ? 'bg-[#FEF08A] text-[#78350F] font-bold'
-                            : 'hover:bg-neutral-100 text-[#64748B]'
+                            ? 'bg-[#FEF08A] text-[#78350F] font-bold shadow-xs'
+                            : 'text-[#64748B] hover:bg-black/5'
                         }`}
                       >
                         #{idx + 1}
@@ -1321,15 +1333,21 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   })}
                 </div>
               </div>
-            ) : (
-              /* Full Expanded Left Sidebar */
-              <div className="w-72 lg:w-80 bg-white rounded-3xl overflow-hidden flex flex-col max-h-[82vh] border border-neutral-100 shadow-xs">
+
+              {/* Full Expanded Left Sidebar Layer */}
+              <div
+                className={`w-72 lg:w-80 flex flex-col h-full max-h-[82vh] transition-all duration-300 ease-out ${
+                  isLeftSidebarCollapsed
+                    ? 'opacity-0 pointer-events-none'
+                    : 'opacity-100 pointer-events-auto delay-100'
+                }`}
+              >
                 {/* Header with Active Scripture Name, Counter & Shrink Button */}
-                <div className="p-4 border-b border-neutral-100 space-y-2.5 bg-white">
+                <div className={`p-4 border-b ${currentTheme.borderColor} space-y-2.5`}>
                   <div className="flex items-center justify-between text-xs">
                     <div className="flex items-center gap-1.5 min-w-0">
                       <BookOpen className="w-3.5 h-3.5 text-[#FACC15] shrink-0" />
-                      <span className="font-serif font-bold text-[#0F172A] truncate">
+                      <span className={`font-serif font-bold ${currentTheme.titleColor} truncate`}>
                         {selectedGrantha === 'all'
                           ? 'समस्त पावन ग्रंथ'
                           : allGranthas.find((g) => g.id === selectedGrantha)?.name}
@@ -1342,7 +1360,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                       <button
                         type="button"
                         onClick={handleToggleLeftSidebar}
-                        className="w-6 h-6 rounded-lg hover:bg-neutral-100 flex items-center justify-center text-[#64748B] hover:text-[#0F172A] transition-colors cursor-pointer"
+                        className="w-6 h-6 rounded-lg hover:bg-black/5 flex items-center justify-center text-[#64748B] hover:text-[#0F172A] transition-colors cursor-pointer"
                         title="Shrink Sidebar (साइडबार समेटें)"
                         aria-label="Shrink Pada Index Sidebar"
                       >
@@ -1359,7 +1377,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                       value={sidebarQuery}
                       onChange={(e) => setSidebarQuery(e.target.value)}
                       placeholder="पद, टेक या संत खोजें..."
-                      className="w-full pl-8 pr-7 py-2 rounded-xl bg-[#F8FAFC] text-xs text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:bg-white focus:ring-1 focus:ring-[#FACC15]/50 transition-all"
+                      className="w-full pl-8 pr-7 py-2 rounded-xl bg-black/5 text-xs text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:bg-white focus:ring-1 focus:ring-[#FACC15]/50 transition-all"
                     />
                     {sidebarQuery && (
                       <button
@@ -1421,7 +1439,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                           className={`group relative z-10 px-3 py-2.5 rounded-2xl flex items-start gap-2.5 cursor-pointer select-none transition-colors duration-200 ${
                             isSelected
                               ? 'text-[#0F172A]'
-                              : 'hover:bg-[#F8FAFC] text-[#0F172A]'
+                              : 'hover:bg-black/5 text-[#0F172A]'
                           }`}
                         >
                           {/* Compact Slim Index Number / Equalizer */}
@@ -1495,14 +1513,14 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   )}
                 </div>
               </div>
-            )}
-          </div>
+            </div>
+          </aside>
         )}
 
         {/* ========================================================================= */}
         {/* Center Column: Serene Editorial Reading Canvas                             */}
         {/* ========================================================================= */}
-        <article className={`flex-1 min-w-0 transition-all duration-300 ${
+        <article className={`flex-1 min-w-0 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
           isFocusReadingMode
             ? `w-full dhyana-reader-canvas p-6 sm:p-10 ${currentTheme.canvasBg} ${currentTheme.canvasText}`
             : `w-full rounded-3xl p-6 sm:p-9 ${currentTheme.canvasBg} ${currentTheme.canvasText} ${
@@ -1519,7 +1537,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   <button
                     type="button"
                     onClick={handleToggleLeftSidebar}
-                    className="h-7 px-2.5 rounded-full bg-[#F1F5F9] hover:bg-[#E2E8F0] text-[#334155] text-xs font-medium flex items-center gap-1.5 cursor-pointer transition-colors shrink-0"
+                    className="h-7 px-2.5 rounded-full bg-black/5 hover:bg-black/10 text-[#334155] text-xs font-medium flex items-center gap-1.5 cursor-pointer transition-colors shrink-0"
                     title="Expand Pada Index (पद सूची खोलें)"
                   >
                     <PanelLeftOpen className="w-3.5 h-3.5 text-[#CA8A04]" />
@@ -1549,7 +1567,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   <button
                     type="button"
                     onClick={handleToggleRightSidebar}
-                    className="hidden xl:flex h-7 px-2.5 rounded-full bg-[#F1F5F9] hover:bg-[#E2E8F0] text-[#334155] text-xs font-medium items-center gap-1.5 cursor-pointer transition-colors shrink-0"
+                    className="hidden xl:flex h-7 px-2.5 rounded-full bg-black/5 hover:bg-black/10 text-[#334155] text-xs font-medium items-center gap-1.5 cursor-pointer transition-colors shrink-0"
                     title="Expand Commentary (भावार्थ खोलें)"
                   >
                     <PanelRightOpen className="w-3.5 h-3.5 text-[#CA8A04]" />
@@ -1863,14 +1881,26 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
         {/* Right Column: Dedicated Desktop Commentary Desk (Visible on xl:block)     */}
         {/* ========================================================================= */}
         {!isFocusReadingMode && (
-          <aside className="hidden xl:block sticky top-24 shrink-0 transition-all duration-300">
-            {isRightSidebarCollapsed ? (
-              /* Shrunk / Compact Commentary Rail */
-              <div className={`w-13 sm:w-14 ${currentTheme.commentaryBg} rounded-3xl p-2 flex flex-col items-center max-h-[82vh] border ${currentTheme.borderColor} shadow-xs`}>
+          <aside
+            className={`hidden xl:block sticky top-24 shrink-0 overflow-hidden rounded-3xl border shadow-xs transition-[width,min-width,max-width] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[width] ${currentTheme.commentaryBg} ${currentTheme.borderColor} ${
+              isRightSidebarCollapsed
+                ? 'w-14 min-w-[56px] max-w-[56px]'
+                : 'w-72 lg:w-80 min-w-[288px] lg:min-w-[320px] max-w-[320px]'
+            }`}
+          >
+            <div className="relative w-full h-full min-h-[500px] flex flex-col">
+              {/* Shrunk / Compact Commentary Rail Layer */}
+              <div
+                className={`absolute inset-0 flex flex-col items-center p-2.5 transition-all duration-300 ease-out z-10 ${
+                  isRightSidebarCollapsed
+                    ? 'opacity-100 pointer-events-auto delay-150'
+                    : 'opacity-0 pointer-events-none'
+                }`}
+              >
                 <button
                   type="button"
                   onClick={handleToggleRightSidebar}
-                  className="w-9 h-9 rounded-xl hover:bg-black/5 flex items-center justify-center text-[#475569] hover:text-[#0F172A] transition-colors cursor-pointer"
+                  className="w-9 h-9 rounded-xl hover:bg-black/5 flex items-center justify-center text-[#CA8A04] transition-colors cursor-pointer"
                   title="Expand Commentary (भावार्थ खोलें)"
                   aria-label="Expand Commentary Sidebar"
                 >
@@ -1887,11 +1917,26 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 >
                   <Feather className="w-4 h-4" />
                 </button>
+
+                <div className={`w-6 h-px ${currentTheme.borderColor} my-2`} />
+
+                {/* Vertical Sacred Accent Tag */}
+                <span
+                  className={`text-[10.5px] font-mono font-bold tracking-widest ${currentTheme.metaColor} select-none [writing-mode:vertical-lr] rotate-180 py-3 opacity-90`}
+                >
+                  भावार्थ
+                </span>
               </div>
-            ) : (
-              /* Full Expanded Right Sidebar */
-              <div className="w-72 lg:w-80 space-y-4">
-                <div className={`${currentTheme.commentaryBg} rounded-3xl p-5 border ${currentTheme.borderColor} transition-colors duration-300 shadow-xs`}>
+
+              {/* Full Expanded Right Sidebar Layer */}
+              <div
+                className={`w-72 lg:w-80 flex flex-col transition-all duration-300 ease-out p-5 space-y-4 ${
+                  isRightSidebarCollapsed
+                    ? 'opacity-0 pointer-events-none'
+                    : 'opacity-100 pointer-events-auto delay-100'
+                }`}
+              >
+                <div className="space-y-4">
                   <div className={`flex items-center justify-between pb-3 mb-3 border-b ${currentTheme.borderColor}`}>
                     <div className="flex items-center gap-2">
                       <div className="w-7 h-7 rounded-lg bg-[#FAF7F0] flex items-center justify-center text-[#CA8A04]">
@@ -1964,7 +2009,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   </div>
                 </div>
               </div>
-            )}
+            </div>
           </aside>
         )}
 
