@@ -508,7 +508,7 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
 
   return createPortal(
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-fade-in"
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/45 animate-fade-in"
       onClick={onClose}
       role="dialog"
       aria-modal="true"

@@ -169,10 +169,10 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
 
   return (
     <>
-      {/* Soft, luminous backdrop when mobile menu is open - tap outside closes menu */}
+      {/* Subtle dark backdrop when mobile menu is open - tap outside closes menu */}
       {isMobileMenuOpen && (
         <div
-          className="fixed inset-0 z-40 bg-stone-900/12 backdrop-blur-2xs md:hidden pointer-events-auto"
+          className="fixed inset-0 z-40 bg-black/35 md:hidden pointer-events-auto"
           onClick={() => setIsMobileMenuOpen(false)}
           aria-hidden="true"
         />

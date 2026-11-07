@@ -853,7 +853,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       {/* ========================================================================= */}
       {/* 1. Serene Light Header & Spotlight Search Bar                             */}
       {/* ========================================================================= */}
-      <div className="mb-4 flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4 bg-white/95 backdrop-blur-md rounded-2xl p-4 sm:p-5">
+      <div className="mb-4 flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4 bg-white border border-neutral-200/80 shadow-2xs rounded-2xl p-4 sm:p-5">
         <div>
           <h1 className="font-serif text-xl sm:text-2xl text-[#0F172A] font-bold flex items-center gap-2 leading-tight">
             <BookOpen className="w-5 h-5 text-[#FACC15] shrink-0" />
@@ -1199,7 +1199,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       {!isFocusReadingMode && (
         <div className="mb-5 space-y-2.5">
           {/* Main Grantha Segmented Pill Track */}
-          <div className="relative flex items-center gap-1 overflow-x-auto no-scrollbar p-1 bg-white/90 backdrop-blur-md rounded-full">
+          <div className="relative flex items-center gap-1 overflow-x-auto no-scrollbar p-1 bg-white/95 border border-neutral-200/80 shadow-2xs rounded-full">
             {/* Dynamic Elastic Sliding Indicator Bar */}
             {granthaPillStyle.ready && (
               <span
@@ -2102,7 +2102,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       {/* ========================================================================= */}
       {isCommentaryOpen && typeof document !== 'undefined' && createPortal(
         <div
-          className={`xl:hidden fixed inset-0 z-[100] bg-black/60 backdrop-blur-xs flex items-end justify-center p-0 sm:p-4 transition-opacity ${
+          className={`xl:hidden fixed inset-0 z-[100] bg-black/45 flex items-end justify-center p-0 sm:p-4 transition-opacity ${
             isCommentaryClosing ? 'modal-backdrop-exit' : 'modal-backdrop-enter'
           }`}
           onClick={handleCloseCommentary}
@@ -2193,7 +2193,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       {/* ========================================================================= */}
       {isGlossaryOpen && typeof document !== 'undefined' && createPortal(
         <div
-          className={`fixed inset-0 z-[100] bg-black/60 backdrop-blur-xs flex items-end sm:items-center justify-center p-0 sm:p-4 transition-opacity ${
+          className={`fixed inset-0 z-[100] bg-black/45 flex items-end sm:items-center justify-center p-0 sm:p-4 transition-opacity ${
             isGlossaryClosing ? 'modal-backdrop-exit' : 'modal-backdrop-enter'
           }`}
           onClick={handleCloseGlossary}

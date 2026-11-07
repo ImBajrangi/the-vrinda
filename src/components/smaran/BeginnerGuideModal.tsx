@@ -54,7 +54,7 @@ export const BeginnerGuideModal: React.FC<BeginnerGuideModalProps> = ({
 
   return createPortal(
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 bg-black/75 backdrop-blur-sm animate-fade-in"
+      className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 bg-black/45 animate-fade-in"
       onClick={onClose}
     >
       <div

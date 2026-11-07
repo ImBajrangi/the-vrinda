@@ -239,7 +239,7 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
           type="button"
           onClick={onBack}
           aria-label="Back to dashboard"
-          className="w-10 h-10 rounded-full border border-white/90 shadow-xs flex items-center justify-center text-[#111111] pressable bg-white/70 backdrop-blur-md md:hidden"
+          className="w-10 h-10 rounded-full border border-neutral-200/80 shadow-xs flex items-center justify-center text-[#111111] pressable bg-white md:hidden"
         >
           <ArrowLeft className="w-4 h-4" />
         </button>
@@ -260,7 +260,7 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="More options"
             aria-expanded={isMenuOpen}
-            className="w-10 h-10 rounded-full border border-white/90 shadow-xs flex items-center justify-center text-[#111111] pressable bg-white/70 backdrop-blur-md hover:bg-white transition-colors"
+            className="w-10 h-10 rounded-full border border-neutral-200/80 shadow-xs flex items-center justify-center text-[#111111] pressable bg-white hover:bg-neutral-50 transition-colors"
           >
             <MoreVertical className="w-4 h-4" />
           </button>
@@ -511,7 +511,7 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
       {/* Interactive Sacred Blessing Sheet Modal rendered at root via Portal */}
       {selectedBadge && typeof document !== 'undefined' && createPortal(
         <div
-          className={`fixed inset-0 z-[100] bg-black/75 flex items-center justify-center p-3 sm:p-4 overflow-hidden overscroll-none transition-opacity ${
+          className={`fixed inset-0 z-[100] bg-black/45 flex items-center justify-center p-3 sm:p-4 overflow-hidden overscroll-none transition-opacity ${
             isBadgeClosing ? 'modal-backdrop-exit' : 'modal-backdrop-enter'
           }`}
           onClick={handleCloseBadge}
@@ -619,7 +619,7 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
       {/* Sacred Sadhana Rules & Discipline Modal */}
       {isRulesModalOpen && typeof document !== 'undefined' && createPortal(
         <div
-          className={`fixed inset-0 z-[100] bg-black/75 flex items-center justify-center p-3 sm:p-4 overflow-hidden overscroll-none transition-opacity ${
+          className={`fixed inset-0 z-[100] bg-black/45 flex items-center justify-center p-3 sm:p-4 overflow-hidden overscroll-none transition-opacity ${
             isRulesClosing ? 'modal-backdrop-exit' : 'modal-backdrop-enter'
           }`}
           onClick={handleCloseRules}

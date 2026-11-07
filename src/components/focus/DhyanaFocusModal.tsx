@@ -370,7 +370,7 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
       aria-modal="true"
       aria-label="गहन ध्यान व मानसिक एकाग्रता"
       onClick={handleDismiss}
-      className={`fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md transition-opacity ${
+      className={`fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 bg-black/50 transition-opacity ${
         isClosing ? 'modal-backdrop-exit' : 'modal-backdrop-enter'
       }`}
     >

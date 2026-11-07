@@ -174,7 +174,7 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
       role="dialog"
       aria-modal="true"
       onClick={handleDismiss}
-      className={`fixed inset-0 z-[100] flex items-start justify-center pt-14 sm:pt-20 px-3 sm:px-4 bg-black/50 backdrop-blur-sm transition-opacity select-none ${isClosing ? 'modal-backdrop-exit' : 'modal-backdrop-enter'
+      className={`fixed inset-0 z-[100] flex items-start justify-center pt-14 sm:pt-20 px-3 sm:px-4 bg-black/45 transition-opacity select-none ${isClosing ? 'modal-backdrop-exit' : 'modal-backdrop-enter'
         }`}
     >
       <div

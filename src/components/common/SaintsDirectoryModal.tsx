@@ -101,7 +101,7 @@ export const SaintsDirectoryModal: React.FC<SaintsDirectoryModalProps> = ({
       role="dialog"
       aria-modal="true"
       onClick={handleDismiss}
-      className={`fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 bg-black/75 transition-opacity ${
+      className={`fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 bg-black/45 transition-opacity ${
         isClosing ? 'modal-backdrop-exit' : 'modal-backdrop-enter'
       }`}
     >

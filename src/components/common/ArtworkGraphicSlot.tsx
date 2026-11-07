@@ -169,7 +169,7 @@ export const ArtworkGraphicSlot: React.FC<ArtworkGraphicSlotProps> = ({
               : 'bottom-0 right-0'
           }`}
         >
-          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10.5px] font-bold bg-white/95 backdrop-blur-md text-[#18181B] shadow-2xs font-mono">
+          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10.5px] font-bold bg-white/95 text-[#18181B] border border-black/5 shadow-2xs font-mono">
             <span className="w-1.5 h-1.5 rounded-full bg-amber-600" />
             {badge}
           </span>

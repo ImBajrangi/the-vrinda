@@ -51,7 +51,7 @@ export const CMSEditorialBadge: React.FC<CMSEditorialBadgeProps> = ({ currentPad
           type="button"
           onClick={() => setIsOpen(true)}
           title="CMS, SEO & Data Architecture Hub"
-          className="h-7 px-2.5 rounded-full bg-white/90 hover:bg-white text-[#71717A] hover:text-[#18181B] text-[10.5px] font-mono font-medium border border-neutral-200/80 shadow-2xs flex items-center gap-1.5 backdrop-blur-md transition-all cursor-pointer"
+          className="h-7 px-2.5 rounded-full bg-white/95 hover:bg-white text-[#71717A] hover:text-[#18181B] text-[10.5px] font-mono font-medium border border-neutral-200/80 shadow-2xs flex items-center gap-1.5 transition-all cursor-pointer"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-amber-600" />
           <span>CMS • SEO</span>
@@ -61,7 +61,7 @@ export const CMSEditorialBadge: React.FC<CMSEditorialBadgeProps> = ({ currentPad
       {/* Slide-out Editorial Modal */}
       {isOpen && typeof document !== 'undefined' && createPortal(
         <div
-          className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 transition-opacity animate-fade-in"
+          className="fixed inset-0 z-[100] bg-black/45 flex items-center justify-center p-4 transition-opacity animate-fade-in"
           onClick={() => setIsOpen(false)}
         >
           <div
