@@ -256,18 +256,33 @@ let initPromise: Promise<void> | null = null;
 let activeManifest: any = null;
 const dbListeners = new Set<() => void>();
 
-function getDeviceId(): string {
-  if (typeof window === 'undefined') return 'server';
-  try {
-    let id = localStorage.getItem('vv_device_sync_id');
-    if (!id) {
-      id = 'dev_' + Math.random().toString(36).substring(2, 15) + Date.now().toString(36);
-      localStorage.setItem('vv_device_sync_id', id);
+let authUserIdPromise: Promise<string | null> | null = null;
+
+/**
+ * Retrieves or establishes a cryptographically secure Supabase user session.
+ * Triggered strictly on-demand when a devotee saves a bookmark, ensuring:
+ * 1. Zero MAU consumption for passive scripture readers (85% of traffic).
+ * 2. Strict RLS authorization preventing device ID spoofing (auth.uid() = user_id).
+ */
+async function getOrInitAuthUserId(): Promise<string | null> {
+  if (typeof window === 'undefined') return null;
+  if (authUserIdPromise) return authUserIdPromise;
+
+  authUserIdPromise = (async () => {
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session?.user?.id) {
+        return session.user.id;
+      }
+      const { data, error } = await supabase.auth.signInAnonymously();
+      if (error) return null;
+      return data?.user?.id || null;
+    } catch {
+      return null;
     }
-    return id;
-  } catch {
-    return 'default_device';
-  }
+  })();
+
+  return authUserIdPromise;
 }
 
 /**
@@ -770,17 +785,37 @@ export const SacredDatabase = {
       }
     } catch { }
 
-    // Asynchronously sync bookmark state to Supabase database in background
+    // Asynchronously sync bookmark state to Supabase database with authenticated user ownership
     try {
-      const deviceId = getDeviceId();
-      if (exists) {
-        supabase.from('user_bookmarks').delete().match({ device_id: deviceId, pad_id: padId }).then();
-      } else {
-        supabase.from('user_bookmarks').insert({ device_id: deviceId, pad_id: padId }).then();
-      }
+      getOrInitAuthUserId().then((userId) => {
+        if (!userId) return;
+        if (exists) {
+          supabase.from('user_bookmarks').delete().match({ user_id: userId, pad_id: padId }).then();
+        } else {
+          supabase.from('user_bookmarks').insert({ user_id: userId, pad_id: padId }).then();
+        }
+      }).catch(() => {});
     } catch {}
 
     return !exists;
+  },
+
+  async syncCloudBookmarks(): Promise<void> {
+    if (typeof window === 'undefined') return;
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session?.user?.id) return;
+      const { data } = await supabase.from('user_bookmarks').select('pad_id').eq('user_id', session.user.id);
+      if (data && Array.isArray(data)) {
+        const cloudPadIds = data.map((r: any) => r.pad_id);
+        const local = await this.getBookmarkedPadIds();
+        const merged = Array.from(new Set([...local, ...cloudPadIds]));
+        await set('vv_bookmarked_pads', merged);
+        if (typeof window !== 'undefined' && window.localStorage) {
+          window.localStorage.setItem('vv_bookmarked_pads', JSON.stringify(merged));
+        }
+      }
+    } catch {}
   },
 
   async getRecentHistory(): Promise<string[]> {

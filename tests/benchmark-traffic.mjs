@@ -1,21 +1,17 @@
 /**
  * Vrindopnisad 2.0 - Empirical High-Concurrency & Egress Benchmark
- * Simulates high-concurrency devotee traffic fetching:
- * 1. manifest.json (micro-revalidation)
- * 2. Sri Hit Chaurasi chunk (hit-chaurasi.<hash>.json)
- * 3. Sri Kelimal chunk (kelimal.<hash>.json)
- * 4. Sri Vyas Vani chunk (vyas-vani.<hash>.json)
- * 5. Spotlight Search catalog (catalog.<hash>.json)
  * 
- * Accurately models Vercel Edge CDN in-memory cache delivery:
- * - Pre-compressed gzip buffers served from edge memory
- * - Sub-millisecond response latency
- * - 0% error rate
- * - 304 Not Modified validation for returning users
+ * Test Scope & Methodology:
+ * - Environment: Local high-concurrency Node.js harness testing compiled production build artifacts.
+ * - Simulates Vercel Edge CDN in-memory cache delivery of pre-compressed gzip static JSON chunks.
+ * - Measures pipeline throughput, local serving latencies, HTTP error rates, and 304 conditional validation.
+ * - Note: Local benchmarks measure edge-serving engine capacity; actual real-world user latencies over WAN
+ *   depend on geographic distance, CDN edge distribution, and client network conditions.
  */
 
 import http from 'node:http';
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import zlib from 'node:zlib';
 import { performance } from 'node:perf_hooks';
@@ -33,7 +29,7 @@ if (!fs.existsSync(manifestPath)) {
 }
 const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
 
-// Pre-load all static files and their gzip equivalents into Edge Memory Cache
+// Pre-load static files and their pre-compressed gzip equivalents into Edge Memory Cache Map
 const edgeMemoryCache = new Map();
 
 function preloadFile(relPath) {
@@ -47,7 +43,7 @@ function preloadFile(relPath) {
   edgeMemoryCache.set(relPath, { raw, gz, etag, size: raw.length, gzSize: gz.length });
 }
 
-// Pre-cache test endpoints
+// Pre-cache benchmark endpoints
 preloadFile('manifest.json');
 preloadFile(`granthas/${manifest.granthas['hit-chaurasi'].file}`);
 preloadFile(`granthas/${manifest.granthas['kelimal'].file}`);
@@ -64,7 +60,7 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // 304 Revalidation
+  // HTTP 304 Conditional Validation (If-None-Match)
   if (req.headers['if-none-match'] === cached.etag) {
     res.writeHead(304, {
       'ETag': cached.etag,
@@ -104,7 +100,10 @@ const server = http.createServer((req, res) => {
 const PORT = 8899;
 
 server.listen(PORT, async () => {
+  const timestamp = new Date().toISOString();
   console.log(`🚀 Edge Memory Benchmark Server running at http://localhost:${PORT}`);
+  console.log(`⏱ Test Execution Timestamp: ${timestamp}`);
+  console.log(`💻 Platform: ${os.platform()} ${os.arch()} | CPUs: ${os.cpus().length} | Node.js: ${process.version}`);
   console.log('='.repeat(70));
 
   try {
@@ -153,13 +152,14 @@ async function runEgressBenchmark() {
     );
   }
 
-  console.log('\n⚡ 2. CONCURRENT LOAD & LATENCY STRESS-TEST (Vercel Edge Model)');
+  console.log('\n⚡ 2. CONCURRENT LOAD & LATENCY BENCHMARK');
   console.log('-'.repeat(70));
 
   const scenarios = [
-    { concurrency: 25, totalRequests: 1000, label: 'Baseline Load (25 concurrent users)' },
-    { concurrency: 50, totalRequests: 2500, label: 'Peak Reading Session (50 concurrent users)' },
-    { concurrency: 100, totalRequests: 5000, label: 'Festival Traffic Surge (100 concurrent users)' },
+    { concurrency: 25, totalRequests: 1000, label: 'Baseline Load (25 concurrent workers)' },
+    { concurrency: 50, totalRequests: 2500, label: 'Peak Reading Session (50 concurrent workers)' },
+    { concurrency: 100, totalRequests: 5000, label: 'Festival Surge Profile 1 (100 concurrent workers)' },
+    { concurrency: 250, totalRequests: 5000, label: 'Festival Surge Profile 2 (250 concurrent workers)' },
   ];
 
   for (const scen of scenarios) {
@@ -168,7 +168,7 @@ async function runEgressBenchmark() {
     printMetrics(results);
   }
 
-  console.log('\n🔄 3. CONDITIONAL 304 NOT MODIFIED (RETURNING DEVOTEES) TEST');
+  console.log('\n🔄 3. CONDITIONAL 304 NOT MODIFIED (REVALIDATION BEHAVIOR) TEST');
   console.log('-'.repeat(70));
   await testConditional304(hitChaurasiFile);
 }
@@ -275,9 +275,9 @@ function testConditional304(samplePath) {
           res304.on('data', (c) => (transferredBytes += c.length));
           res304.on('end', () => {
             console.log(`  Conditional ETag Request Status: ${res304.statusCode} (Expected: 304 Not Modified)`);
-            console.log(`  Transferred Body Bytes: ${transferredBytes} bytes (ZERO payload egress!)`);
+            console.log(`  Transferred Body Bytes: ${transferredBytes} bytes (Zero payload egress)`);
             console.log(`  Cache-Control Header: ${res304.headers['cache-control']}`);
-            console.log('  ✓ Returning devotees revalidate with 0 body transfer.');
+            console.log('  Note: HTTP 304 response headers (~250 bytes) and 1 CDN request are counted per revalidation.');
             resolve();
           });
         }

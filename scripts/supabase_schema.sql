@@ -42,13 +42,14 @@ CREATE TABLE IF NOT EXISTS public.saints (
     created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- 4. Create User Bookmarks Table (Device / Cloud Sync)
+-- 4. Create User Bookmarks Table (Secure Authenticated & Anonymous Auth Sync)
 CREATE TABLE IF NOT EXISTS public.user_bookmarks (
     id BIGSERIAL PRIMARY KEY,
-    device_id TEXT NOT NULL,
+    user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
+    device_id TEXT,
     pad_id TEXT NOT NULL REFERENCES public.padas(id) ON DELETE CASCADE,
     created_at TIMESTAMPTZ DEFAULT NOW(),
-    UNIQUE(device_id, pad_id)
+    UNIQUE(user_id, pad_id)
 );
 
 -- 5. Create Performance Indexes for Sub-Millisecond Filtering & Range Queries
@@ -57,6 +58,7 @@ CREATE UNIQUE INDEX IF NOT EXISTS idx_padas_slug ON public.padas (slug);
 CREATE INDEX IF NOT EXISTS idx_padas_author ON public.padas (author);
 CREATE INDEX IF NOT EXISTS idx_padas_rag ON public.padas (rag);
 CREATE INDEX IF NOT EXISTS idx_padas_collection_index ON public.padas (collection_id, "index");
+CREATE INDEX IF NOT EXISTS idx_user_bookmarks_user ON public.user_bookmarks (user_id);
 
 -- 6. Enable Row Level Security (RLS)
 ALTER TABLE public.padas ENABLE ROW LEVEL SECURITY;
@@ -90,7 +92,25 @@ DROP POLICY IF EXISTS "Service role full access for saints" ON public.saints;
 CREATE POLICY "Service role full access for saints" ON public.saints
     FOR ALL TO service_role USING (true) WITH CHECK (true);
 
+-- 9. Secure User Bookmark Access (Strictly isolated by auth.uid())
+-- Eliminates device-ID spoofing: only the cryptographically verified owner can view/manage bookmarks
 DROP POLICY IF EXISTS "Public bookmark management" ON public.user_bookmarks;
-CREATE POLICY "Public bookmark management" ON public.user_bookmarks
-    FOR ALL TO public USING (true) WITH CHECK (true);
+DROP POLICY IF EXISTS "Users can view own bookmarks" ON public.user_bookmarks;
+CREATE POLICY "Users can view own bookmarks" ON public.user_bookmarks
+    FOR SELECT TO authenticated
+    USING (auth.uid() = user_id);
+
+DROP POLICY IF EXISTS "Users can insert own bookmarks" ON public.user_bookmarks;
+CREATE POLICY "Users can insert own bookmarks" ON public.user_bookmarks
+    FOR INSERT TO authenticated
+    WITH CHECK (auth.uid() = user_id);
+
+DROP POLICY IF EXISTS "Users can delete own bookmarks" ON public.user_bookmarks;
+CREATE POLICY "Users can delete own bookmarks" ON public.user_bookmarks
+    FOR DELETE TO authenticated
+    USING (auth.uid() = user_id);
+
+DROP POLICY IF EXISTS "Service role full access for bookmarks" ON public.user_bookmarks;
+CREATE POLICY "Service role full access for bookmarks" ON public.user_bookmarks
+    FOR ALL TO service_role USING (true) WITH CHECK (true);
 

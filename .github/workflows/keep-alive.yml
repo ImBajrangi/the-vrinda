@@ -1,0 +1,33 @@
+name: Supabase Daily Keep-Alive Ping
+
+on:
+  schedule:
+    # Run daily at 04:00 UTC (9:30 AM IST) to guarantee active database traffic
+    - cron: '0 4 * * *'
+  workflow_dispatch:
+
+jobs:
+  ping:
+    name: Ping Supabase Database
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Lightweight REST Ping
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: |
+          if [ -z "$SUPABASE_URL" ] || [ -z "$SUPABASE_ANON_KEY" ]; then
+            echo "Skipping ping: SUPABASE_URL or SUPABASE_ANON_KEY not configured in GitHub Secrets"
+            exit 0
+          fi
+          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+            -H "apikey: $SUPABASE_ANON_KEY" \
+            -H "Authorization: Bearer $SUPABASE_ANON_KEY" \
+            "$SUPABASE_URL/rest/v1/padas?select=id&limit=1")
+          echo "Supabase Keep-Alive Response: HTTP $HTTP_STATUS"
+          if [ "$HTTP_STATUS" -ge 200 ] && [ "$HTTP_STATUS" -lt 300 ]; then
+            echo "✓ Supabase database is active and responsive."
+          else
+            echo "⚠ Unexpected HTTP status: $HTTP_STATUS"
+            exit 1
+          fi
