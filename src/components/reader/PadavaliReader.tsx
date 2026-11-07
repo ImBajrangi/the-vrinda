@@ -49,6 +49,86 @@ type ReaderTheme = 'ivory' | 'mint' | 'chandan' | 'night';
 type ReaderFontSize = 'sm' | 'md' | 'lg' | 'xl';
 type ReaderFontFamily = 'serif' | 'devanagari';
 
+const themeStyles: Record<
+  ReaderTheme,
+  {
+    canvasBg: string;
+    canvasText: string;
+    cardActiveBg: string;
+    cardHoverBg: string;
+    cardDefaultBg: string;
+    titleColor: string;
+    metaColor: string;
+    lineColor: string;
+    translitColor: string;
+    bhavarthBg: string;
+    bhavarthText: string;
+    borderColor: string;
+    commentaryBg: string;
+  }
+> = {
+  ivory: {
+    canvasBg: 'bg-white',
+    canvasText: 'text-[#18181B]',
+    cardActiveBg: 'bg-[#FEF9C3]/75',
+    cardHoverBg: 'hover:bg-[#FAF9F5]',
+    cardDefaultBg: 'bg-transparent',
+    titleColor: 'text-[#0F172A]',
+    metaColor: 'text-[#B45309]',
+    lineColor: 'text-[#0F172A]',
+    translitColor: 'text-[#64748B]',
+    bhavarthBg: 'bg-[#F8FAFC]',
+    bhavarthText: 'text-[#334155]',
+    borderColor: 'border-neutral-100',
+    commentaryBg: 'bg-white',
+  },
+  mint: {
+    canvasBg: 'bg-[#F0FDF4]',
+    canvasText: 'text-[#14532D]',
+    cardActiveBg: 'bg-[#DCFCE7]',
+    cardHoverBg: 'hover:bg-[#DCFCE7]/50',
+    cardDefaultBg: 'bg-transparent',
+    titleColor: 'text-[#064E3B]',
+    metaColor: 'text-[#15803D]',
+    lineColor: 'text-[#064E3B]',
+    translitColor: 'text-[#166534]',
+    bhavarthBg: 'bg-[#DCFCE7]/70',
+    bhavarthText: 'text-[#14532D]',
+    borderColor: 'border-emerald-200/60',
+    commentaryBg: 'bg-[#F0FDF4]',
+  },
+  chandan: {
+    canvasBg: 'bg-[#FAF7EE]',
+    canvasText: 'text-[#3D260F]',
+    cardActiveBg: 'bg-[#FEF08A]/75',
+    cardHoverBg: 'hover:bg-[#FEFCE8]/75',
+    cardDefaultBg: 'bg-transparent',
+    titleColor: 'text-[#291807]',
+    metaColor: 'text-[#B45309]',
+    lineColor: 'text-[#3D260F]',
+    translitColor: 'text-[#78350F]',
+    bhavarthBg: 'bg-[#FEF9C3]/75',
+    bhavarthText: 'text-[#451A03]',
+    borderColor: 'border-amber-200/60',
+    commentaryBg: 'bg-[#FAF7EE]',
+  },
+  night: {
+    canvasBg: 'bg-[#18181B]',
+    canvasText: 'text-[#F4F4F5]',
+    cardActiveBg: 'bg-[#27272A]',
+    cardHoverBg: 'hover:bg-[#27272A]/50',
+    cardDefaultBg: 'bg-transparent',
+    titleColor: 'text-white',
+    metaColor: 'text-[#FACC15]',
+    lineColor: 'text-[#F4F4F5]',
+    translitColor: 'text-[#A1A1AA]',
+    bhavarthBg: 'bg-[#27272A]/80',
+    bhavarthText: 'text-[#E4E4E7]',
+    borderColor: 'border-neutral-800',
+    commentaryBg: 'bg-[#18181B]',
+  },
+};
+
 export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   onPlayPad,
   activePlayingPadId,
@@ -174,15 +254,68 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   const [isFocusReadingMode, setIsFocusReadingMode] = useState<boolean>(false);
   const [visibleCount, setVisibleCount] = useState(30);
 
-  // Reader Customizer States
-  const [readerTheme, setReaderTheme] = useState<ReaderTheme>('ivory');
-  const [fontSize, setFontSize] = useState<ReaderFontSize>('md');
-  const [fontFamily, setFontFamily] = useState<ReaderFontFamily>('serif');
+  // Reader Customizer States with Persistent LocalStorage
+  const [readerTheme, setReaderTheme] = useState<ReaderTheme>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('vrind_reader_theme') as ReaderTheme;
+      if (['ivory', 'mint', 'chandan', 'night'].includes(saved)) return saved;
+    }
+    return 'ivory';
+  });
+  const [fontSize, setFontSize] = useState<ReaderFontSize>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('vrind_reader_fontSize') as ReaderFontSize;
+      if (['sm', 'md', 'lg', 'xl'].includes(saved)) return saved;
+    }
+    return 'md';
+  });
+  const [fontFamily, setFontFamily] = useState<ReaderFontFamily>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('vrind_reader_fontFamily') as ReaderFontFamily;
+      if (['serif', 'devanagari'].includes(saved)) return saved;
+    }
+    return 'serif';
+  });
+  const [playbackPace, setPlaybackPace] = useState<'0.8x' | '1.0x' | '1.2x'>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('vrind_reader_playbackPace') as '0.8x' | '1.0x' | '1.2x';
+      if (['0.8x', '1.0x', '1.2x'].includes(saved)) return saved;
+    }
+    return '1.0x';
+  });
+
+  const handleSetReaderTheme = (t: ReaderTheme) => {
+    setReaderTheme(t);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('vrind_reader_theme', t);
+    }
+  };
+
+  const handleSetFontSize = (s: ReaderFontSize) => {
+    setFontSize(s);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('vrind_reader_fontSize', s);
+    }
+  };
+
+  const handleSetFontFamily = (f: ReaderFontFamily) => {
+    setFontFamily(f);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('vrind_reader_fontFamily', f);
+    }
+  };
+
+  const handleSetPlaybackPace = (p: '0.8x' | '1.0x' | '1.2x') => {
+    setPlaybackPace(p);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('vrind_reader_playbackPace', p);
+    }
+  };
+
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isGlossaryOpen, setIsGlossaryOpen] = useState(false);
   const [isGlossaryClosing, setIsGlossaryClosing] = useState(false);
   const [copiedStanzaIdx, setCopiedStanzaIdx] = useState<number | null>(null);
-  const [playbackPace, setPlaybackPace] = useState<'0.8x' | '1.0x' | '1.2x'>('1.0x');
 
   // Devotional Summary States
   const [isSummaryOpen, setIsSummaryOpen] = useState(false);
@@ -522,6 +655,38 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
   const isCurrentPadPlaying = activePlayingPadId === selectedPad.id && Boolean(isPlaying);
 
+  // Auto-advance stanzas synchronized with audio playback pace
+  useEffect(() => {
+    if (!isCurrentPadPlaying || !selectedPad.verses || selectedPad.verses.length === 0) return;
+    const paceMultiplier = playbackPace === '0.8x' ? 1.25 : playbackPace === '1.2x' ? 0.83 : 1.0;
+    const intervalMs = Math.round(9000 * paceMultiplier);
+    const timer = setInterval(() => {
+      setActiveStanzaIndex((prev) => {
+        const next = (prev + 1) % selectedPad.verses.length;
+        const stanzaEl = document.getElementById(`stanza-${next}`);
+        if (stanzaEl) stanzaEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        return next;
+      });
+    }, intervalMs);
+    return () => clearInterval(timer);
+  }, [isCurrentPadPlaying, playbackPace, selectedPad.id, selectedPad.verses]);
+
+  // Synchronize audio playback elements with active playback pace
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      const audioElements = document.querySelectorAll('audio');
+      const rate = playbackPace === '0.8x' ? 0.8 : playbackPace === '1.2x' ? 1.2 : 1.0;
+      audioElements.forEach((el) => {
+        try {
+          el.playbackRate = rate;
+        } catch {}
+      });
+    }
+  }, [playbackPace]);
+
+  const currentTheme = themeStyles[readerTheme] || themeStyles.ivory;
+  const fontClass = fontFamily === 'serif' ? 'font-serif' : 'font-devanagari font-sans';
+
   return (
     <div className="w-full pb-44 md:pb-32 pt-2 sm:pt-4">
       {/* ========================================================================= */}
@@ -642,7 +807,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   <button
                     key={s.id}
                     type="button"
-                    onClick={() => setFontSize(s.id)}
+                    onClick={() => handleSetFontSize(s.id)}
                     className={`relative z-10 px-2.5 py-1 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer ${
                       fontSize === s.id
                         ? 'text-[#18181B] font-bold'
@@ -673,7 +838,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 />
                 <button
                   type="button"
-                  onClick={() => setFontFamily('serif')}
+                  onClick={() => handleSetFontFamily('serif')}
                   className={`relative z-10 px-3 py-1 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer ${
                     fontFamily === 'serif'
                       ? 'text-[#18181B] font-bold'
@@ -684,7 +849,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 </button>
                 <button
                   type="button"
-                  onClick={() => setFontFamily('devanagari')}
+                  onClick={() => handleSetFontFamily('devanagari')}
                   className={`relative z-10 px-3 py-1 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer ${
                     fontFamily === 'devanagari'
                       ? 'text-[#18181B] font-bold'
@@ -716,7 +881,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   <button
                     key={pace}
                     type="button"
-                    onClick={() => setPlaybackPace(pace)}
+                    onClick={() => handleSetPlaybackPace(pace)}
                     className={`relative z-10 px-2.5 py-1 rounded-full text-xs font-mono font-semibold transition-colors duration-200 cursor-pointer ${
                       playbackPace === pace
                         ? 'text-[#18181B] font-bold'
@@ -745,16 +910,21 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 <button
                   key={t.id}
                   type="button"
-                  onClick={() => setReaderTheme(t.id)}
+                  onClick={() => handleSetReaderTheme(t.id)}
                   style={{ backgroundColor: t.bg, color: t.text }}
-                  className={`p-2.5 rounded-xl text-left transition-colors cursor-pointer ${
+                  className={`relative p-2.5 rounded-xl text-left transition-all cursor-pointer ${
                     readerTheme === t.id
-                      ? 'ring-2 ring-neutral-900 font-bold'
-                      : 'opacity-85'
+                      ? 'ring-2 ring-[#FACC15] font-bold'
+                      : 'opacity-80 hover:opacity-100'
                   }`}
                 >
-                  <div className="text-xs font-bold font-devanagari">{t.label}</div>
-                  <div className="text-[10px] opacity-70 font-mono">{t.desc}</div>
+                  <div className="flex items-center justify-between">
+                    <div className="text-xs font-bold font-devanagari">{t.label}</div>
+                    {readerTheme === t.id && (
+                      <span className="w-2 h-2 rounded-full bg-[#EAB308] shrink-0" />
+                    )}
+                  </div>
+                  <div className="text-[10px] opacity-70 font-mono mt-0.5">{t.desc}</div>
                 </button>
               ))}
             </div>
@@ -1099,25 +1269,17 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
         {/* ========================================================================= */}
         {/* Center Column: Serene Editorial Reading Canvas                             */}
         {/* ========================================================================= */}
-        <article className={`${
+        <article className={`transition-colors duration-300 ${
           isFocusReadingMode
-            ? `w-full dhyana-reader-canvas p-6 sm:p-10 ${
-                readerTheme === 'night'
-                  ? 'bg-[#18181B] text-[#E4E4E7]'
-                  : 'bg-white text-[#18181B]'
-              }`
-            : `md:col-span-8 xl:col-span-6 w-full rounded-3xl p-6 sm:p-9 ${
-                readerTheme === 'night'
-                  ? 'bg-[#18181B] text-[#E4E4E7]'
-                  : 'bg-white text-[#18181B]'
-              }`
+            ? `w-full dhyana-reader-canvas p-6 sm:p-10 ${currentTheme.canvasBg} ${currentTheme.canvasText}`
+            : `md:col-span-8 xl:col-span-6 w-full rounded-3xl p-6 sm:p-9 ${currentTheme.canvasBg} ${currentTheme.canvasText}`
         }`}>
           
           {/* Header Bar */}
-          <div className="pb-6 mb-7 border-b border-neutral-100 space-y-4">
+          <div className={`pb-6 mb-7 border-b ${currentTheme.borderColor} space-y-4`}>
             {/* Top Meta Line & Bookmark */}
             <div className="flex items-center justify-between text-xs">
-              <div className="flex items-center gap-2 text-[#CA8A04] font-mono text-[11px] font-bold tracking-wider uppercase">
+              <div className={`flex items-center gap-2 ${currentTheme.metaColor} font-mono text-[11px] font-bold tracking-wider uppercase`}>
                 <span>{granthaDisplayName}</span>
                 {selectedPad.rag && (
                   <>
@@ -1128,7 +1290,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 {selectedPad.duration && (
                   <>
                     <span className="text-[#CBD5E1]">•</span>
-                    <span className="text-[#64748B]">{selectedPad.duration}</span>
+                    <span className="opacity-75">{selectedPad.duration}</span>
                   </>
                 )}
               </div>
@@ -1151,11 +1313,19 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
             {/* Noble Headline & Author */}
             <div>
-              <h2 className="font-serif font-bold text-2xl sm:text-3xl lg:text-[32px] text-[#0F172A] leading-tight tracking-tight">
+              <h2 className={`${fontClass} font-bold leading-tight tracking-tight ${currentTheme.titleColor} ${
+                fontSize === 'sm'
+                  ? 'text-xl sm:text-2xl'
+                  : fontSize === 'md'
+                  ? 'text-2xl sm:text-3xl lg:text-[32px]'
+                  : fontSize === 'lg'
+                  ? 'text-3xl sm:text-4xl lg:text-[36px]'
+                  : 'text-4xl sm:text-5xl lg:text-[40px]'
+              }`}>
                 {cleanTitle}
               </h2>
-              <div className="flex items-center gap-2 text-sm text-[#64748B] font-serif font-normal mt-2 flex-wrap">
-                <span className="text-[#0F172A] font-semibold">{authorName}</span>
+              <div className={`flex items-center gap-2 text-sm ${currentTheme.metaColor} ${fontClass} font-normal mt-2 flex-wrap`}>
+                <span className={`${currentTheme.titleColor} font-semibold`}>{authorName}</span>
                 {granthaRef && (
                   <>
                     <span className="text-[#CA8A04]">•</span>
@@ -1185,6 +1355,9 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                     <span className="text-[10px] font-mono uppercase tracking-wider text-[#B45309] font-bold">
                       {isCurrentPadPlaying ? 'Now Playing' : 'Audio Shravan'}
                     </span>
+                    <span className="px-1.5 py-0.5 rounded text-[9.5px] font-mono font-bold bg-[#FACC15] text-[#78350F]">
+                      {playbackPace}
+                    </span>
                     {isCurrentPadPlaying && (
                       <div className="flex items-end gap-0.5 h-2.5">
                         <span className="w-0.5 bg-[#CA8A04] rounded-full animate-apple-eq-1" />
@@ -1194,7 +1367,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                     )}
                   </div>
                   <p className="text-xs font-serif font-bold text-[#0F172A] truncate mt-0.5">
-                    {cleanTitle} <span className="font-normal text-[#64748B]">• {selectedPad.rag || 'विभास'} ({selectedPad.duration || '05:20'})</span>
+                    {cleanTitle} <span className="font-normal text-[#64748B]">• {selectedPad.rag || 'विभास'} ({selectedPad.duration || '05:20'} • {playbackPace})</span>
                   </p>
                 </div>
               </div>
@@ -1263,18 +1436,19 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               return (
                 <div
                   key={verse.stanzaNumber}
+                  id={`stanza-${vIdx}`}
                   onClick={() => setActiveStanzaIndex(vIdx)}
-                  className={`p-5 sm:p-6 rounded-2xl transition-colors cursor-pointer ${
+                  className={`p-5 sm:p-6 rounded-2xl transition-colors duration-200 cursor-pointer ${
                     isStanzaActive
-                      ? 'bg-[#FAF8F5]'
+                      ? currentTheme.cardActiveBg
                       : isStanzaDimmed
-                      ? 'bg-neutral-50/40 opacity-50'
-                      : 'hover:bg-[#F8FAFC]/80'
+                      ? 'opacity-40'
+                      : currentTheme.cardHoverBg
                   }`}
                 >
                   {/* Stanza Utility Header: Stanza Number + Verse Copy Action */}
-                  <div className="flex items-center justify-between pb-2.5 mb-3 border-b border-neutral-100">
-                    <span className="text-xs font-mono font-bold text-[#CA8A04] uppercase tracking-wider flex items-center gap-1.5">
+                  <div className={`flex items-center justify-between pb-2.5 mb-3 border-b ${currentTheme.borderColor}`}>
+                    <span className={`text-xs font-mono font-bold ${currentTheme.metaColor} uppercase tracking-wider flex items-center gap-1.5`}>
                       <span className="text-[#FACC15] text-[10px]">✦</span>
                       चरण {formatDevanagariNumerals(verse.stanzaNumber)}
                     </span>
@@ -1285,7 +1459,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                         e.stopPropagation();
                         handleCopyVerse(verse, vIdx);
                       }}
-                      className="px-2.5 py-1 rounded-full text-[11px] font-medium text-[#64748B] hover:text-[#0F172A] hover:bg-[#F1F5F9] flex items-center gap-1 cursor-pointer transition-colors"
+                      className={`px-2.5 py-1 rounded-full text-[11px] font-medium ${currentTheme.translitColor} hover:${currentTheme.lineColor} hover:bg-black/5 flex items-center gap-1 cursor-pointer transition-colors`}
                       title="Copy verse stanza to clipboard"
                     >
                       {copiedStanzaIdx === vIdx ? (
@@ -1295,7 +1469,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                         </>
                       ) : (
                         <>
-                          <Copy className="w-3.5 h-3.5 text-[#94A3B8]" />
+                          <Copy className="w-3.5 h-3.5 opacity-60" />
                           <span>प्रतिलिपि</span>
                         </>
                       )}
@@ -1307,7 +1481,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                     {(verse.linesDevanagari || []).map((line, lIdx) => {
                       if (line.trim().startsWith('(') && line.trim().endsWith(')')) {
                         return (
-                          <div key={lIdx} className="text-xs font-serif text-[#CA8A04] font-bold mb-1">
+                          <div key={lIdx} className={`text-xs ${fontClass} ${currentTheme.metaColor} font-bold mb-1`}>
                             ॥ {line.replace(/[()]/g, '').trim()} छंद ॥
                           </div>
                         );
@@ -1315,7 +1489,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                       return (
                         <p
                           key={lIdx}
-                          className={`dhyana-verse-line font-serif font-bold text-[#0F172A] tracking-tight ${
+                          className={`dhyana-verse-line ${fontClass} font-bold tracking-tight ${currentTheme.lineColor} ${
                             fontSize === 'sm'
                               ? 'text-[18px] sm:text-[20px] leading-[2.0]'
                               : fontSize === 'md'
@@ -1323,8 +1497,6 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                               : fontSize === 'lg'
                               ? 'text-[24px] sm:text-[27px] leading-[2.2] sm:leading-[2.3]'
                               : 'text-[27px] sm:text-[31px] leading-[2.3] sm:leading-[2.4]'
-                          } ${
-                            readerTheme === 'night' ? 'text-[#F4F4F5]' : 'text-[#0F172A]'
                           }`}
                         >
                           {line}
@@ -1336,7 +1508,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   {/* Simple Dignified Delimiter */}
                   <div className="flex items-center justify-center gap-2 my-4 select-none">
                     <span className="text-[#FACC15] text-xs">✦</span>
-                    <span className="font-serif font-bold text-xs tracking-widest text-[#CA8A04]">
+                    <span className={`${fontClass} font-bold text-xs tracking-widest ${currentTheme.metaColor}`}>
                       ॥ {formatDevanagariNumerals(verse.stanzaNumber)} ॥
                     </span>
                     <span className="text-[#FACC15] text-xs">✦</span>
@@ -1344,9 +1516,17 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
                   {/* Transliteration */}
                   {showTransliteration && (verse.linesTransliteration?.length ?? 0) > 0 && (
-                    <div className="space-y-0.5 pt-2 border-t border-neutral-100 mt-2">
+                    <div className={`space-y-0.5 pt-2 border-t ${currentTheme.borderColor} mt-2`}>
                       {verse.linesTransliteration?.map((line, lIdx) => (
-                        <p key={lIdx} className="text-xs sm:text-sm text-[#64748B] italic font-serif">
+                        <p key={lIdx} className={`${fontClass} italic ${currentTheme.translitColor} ${
+                          fontSize === 'sm'
+                            ? 'text-[11px] sm:text-xs'
+                            : fontSize === 'md'
+                            ? 'text-xs sm:text-sm'
+                            : fontSize === 'lg'
+                            ? 'text-sm sm:text-base'
+                            : 'text-base sm:text-lg'
+                        }`}>
                           {line}
                         </p>
                       ))}
@@ -1355,12 +1535,20 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
                   {/* Hindi Meaning / Bhavarth Block */}
                   {verse.bhavarth && (
-                    <div className="bg-[#F8FAFC] p-4 rounded-xl mt-3">
-                      <span className="text-[10px] font-mono font-bold text-[#CA8A04] uppercase tracking-wider flex items-center gap-1 mb-1">
+                    <div className={`${currentTheme.bhavarthBg} p-4 rounded-xl mt-3 transition-colors`}>
+                      <span className={`text-[10px] font-mono font-bold ${currentTheme.metaColor} uppercase tracking-wider flex items-center gap-1 mb-1`}>
                         <Sparkles className="w-3 h-3 text-[#FACC15]" />
                         भावार्थ (Sacred Meaning)
                       </span>
-                      <p className="text-xs sm:text-[13.5px] text-[#334155] leading-relaxed font-normal">
+                      <p className={`${fontClass} leading-relaxed font-normal ${currentTheme.bhavarthText} ${
+                        fontSize === 'sm'
+                          ? 'text-xs sm:text-[12.5px]'
+                          : fontSize === 'md'
+                          ? 'text-xs sm:text-[13.5px]'
+                          : fontSize === 'lg'
+                          ? 'text-sm sm:text-[15px]'
+                          : 'text-base sm:text-[17px]'
+                      }`}>
                         {verse.bhavarth}
                       </p>
                     </div>
@@ -1371,7 +1559,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
           </div>
 
           {/* Bottom Prev / Next Navigation Controls */}
-          <div className="flex items-center justify-between pt-6 mt-8 border-t border-neutral-100">
+          <div className={`flex items-center justify-between pt-6 mt-8 border-t ${currentTheme.borderColor}`}>
             <button
               type="button"
               disabled={!hasPrev}
@@ -1386,7 +1574,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               <span>पिछला पद</span>
             </button>
 
-            <span className="text-xs text-[#94A3B8] font-mono font-medium">
+            <span className={`text-xs ${currentTheme.translitColor} font-mono font-medium`}>
               पद {currentIdx + 1} / {filteredPads.length}
             </span>
 
@@ -1411,16 +1599,16 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
         {/* ========================================================================= */}
         {!isFocusReadingMode && (
           <aside className="hidden xl:block xl:col-span-3 space-y-4 sticky top-24">
-            <div className="bg-white rounded-3xl p-5">
-              <div className="flex items-center gap-2 pb-3 mb-3 border-b border-neutral-100">
+            <div className={`${currentTheme.commentaryBg} rounded-3xl p-5 border ${currentTheme.borderColor} transition-colors duration-300`}>
+              <div className={`flex items-center gap-2 pb-3 mb-3 border-b ${currentTheme.borderColor}`}>
                 <div className="w-7 h-7 rounded-lg bg-[#FAF7F0] flex items-center justify-center text-[#CA8A04]">
                   <Feather className="w-3.5 h-3.5" />
                 </div>
                 <div>
-                  <h3 className="font-serif font-bold text-sm text-[#0F172A]">
+                  <h3 className={`${fontClass} font-bold text-sm ${currentTheme.titleColor}`}>
                     रसिक भावार्थ एवं गूढ़ार्थ
                   </h3>
-                  <span className="text-[10px] text-[#CA8A04] font-mono font-semibold">
+                  <span className={`text-[10px] ${currentTheme.metaColor} font-mono font-semibold`}>
                     Rasik Commentary & Purport
                   </span>
                 </div>
@@ -1432,21 +1620,25 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   return (
                     <div
                       key={v.stanzaNumber}
-                      onClick={() => setActiveStanzaIndex(v.stanzaNumber - 1)}
+                      onClick={() => {
+                        setActiveStanzaIndex(v.stanzaNumber - 1);
+                        const stanzaEl = document.getElementById(`stanza-${v.stanzaNumber - 1}`);
+                        if (stanzaEl) stanzaEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                      }}
                       className={`p-3.5 rounded-xl transition-colors cursor-pointer ${
                         isActive
-                          ? 'bg-[#FAF7F0] text-[#0F172A]'
-                          : 'bg-[#F8FAFC] hover:bg-[#F1F5F9] text-[#334155]'
+                          ? currentTheme.cardActiveBg
+                          : `${currentTheme.cardHoverBg} opacity-85 hover:opacity-100`
                       }`}
                     >
                       <div className="flex items-center justify-between mb-1">
-                        <span className="text-[10px] font-mono font-bold text-[#CA8A04] uppercase tracking-wider flex items-center gap-1">
+                        <span className={`text-[10px] font-mono font-bold ${currentTheme.metaColor} uppercase tracking-wider flex items-center gap-1`}>
                           {isActive && <span className="text-[#FACC15]">✦</span>}
                           चरण {formatDevanagariNumerals(v.stanzaNumber)}
                         </span>
-                        <span className="text-[10px] text-[#94A3B8] font-mono">भावार्थ</span>
+                        <span className={`text-[10px] ${currentTheme.translitColor} font-mono`}>भावार्थ</span>
                       </div>
-                      <p className="text-xs leading-relaxed font-sans font-normal text-[#334155]">
+                      <p className={`text-xs leading-relaxed ${fontClass} font-normal ${currentTheme.canvasText}`}>
                         {v.bhavarth}
                       </p>
                     </div>
@@ -1485,7 +1677,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
           onClick={handleCloseCommentary}
         >
           <div
-            className={`bg-white rounded-t-[28px] sm:rounded-[28px] max-h-[85vh] w-full max-w-lg overflow-y-auto p-5 sm:p-6 space-y-4 relative ${
+            className={`${currentTheme.commentaryBg} ${currentTheme.canvasText} rounded-t-[28px] sm:rounded-[28px] max-h-[85vh] w-full max-w-lg overflow-y-auto p-5 sm:p-6 space-y-4 relative ${
               isCommentaryClosing ? 'sheet-exit' : 'sheet-enter'
             }`}
             onClick={(e) => e.stopPropagation()}
