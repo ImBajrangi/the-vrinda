@@ -169,10 +169,10 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
 
   return (
     <>
-      {/* Dimmed backdrop when mobile menu is open - tap outside closes menu */}
+      {/* Soft, luminous backdrop when mobile menu is open - tap outside closes menu */}
       {isMobileMenuOpen && (
         <div
-          className="fixed inset-0 z-40 bg-black/25 backdrop-blur-2xs md:hidden pointer-events-auto"
+          className="fixed inset-0 z-40 bg-stone-900/12 backdrop-blur-2xs md:hidden pointer-events-auto"
           onClick={() => setIsMobileMenuOpen(false)}
           aria-hidden="true"
         />
@@ -328,10 +328,10 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
           <div
             ref={mobileMenuRef}
             onClick={(e) => e.stopPropagation()}
-            className="pointer-events-auto w-full max-w-[96vw] mt-2 p-3 sm:p-4 rounded-3xl bg-white/98 backdrop-blur-md md:hidden apple-view-enter border border-neutral-200/80 shadow-[0_12px_36px_-8px_rgba(24,24,27,0.14)] space-y-2.5 max-h-[85vh] overflow-y-auto no-scrollbar text-[#18181B] transform-gpu will-change-transform"
+            className="pointer-events-auto w-full max-w-[96vw] mt-2 p-3 sm:p-4 rounded-3xl bg-white md:hidden apple-view-enter border border-neutral-200/90 shadow-[0_12px_36px_-8px_rgba(24,24,27,0.12),inset_0_1px_0_rgba(255,255,255,1)] space-y-2.5 max-h-[85vh] overflow-y-auto no-scrollbar text-[#18181B] transform-gpu will-change-transform"
           >
             
-            {/* 1. Minimalist Search Bar */}
+            {/* 1. Minimalist Search Bar (Clean White) */}
             {onOpenSearch && (
               <button
                 type="button"
@@ -339,19 +339,19 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
                   onOpenSearch();
                   setIsMobileMenuOpen(false);
                 }}
-                className="w-full h-10 px-3.5 rounded-2xl bg-neutral-100/80 hover:bg-neutral-200/70 text-neutral-600 flex items-center justify-between text-xs font-medium cursor-pointer transition-colors"
+                className="w-full h-10 px-3.5 rounded-2xl bg-white hover:bg-neutral-50/90 border border-neutral-200/80 shadow-2xs text-neutral-700 flex items-center justify-between text-xs font-medium cursor-pointer transition-colors"
               >
                 <div className="flex items-center gap-2">
                   <Search className="w-4 h-4 text-neutral-400" />
                   <span className="text-neutral-500">पद, संत, राग या ग्रंथ खोजें...</span>
                 </div>
-                <kbd className="text-[10px] font-mono text-neutral-400 bg-white/90 px-1.5 py-0.5 rounded-md shadow-2xs border border-neutral-200/50">
+                <kbd className="text-[10px] font-mono text-neutral-500 bg-neutral-100/90 px-1.5 py-0.5 rounded-md shadow-2xs border border-neutral-200/60">
                   ⌘K
                 </kbd>
               </button>
             )}
 
-            {/* 2. Primary 4 Sanctuary Portals (Pure, Balanced 2x2 Grid) */}
+            {/* 2. Primary 4 Sanctuary Portals (Pure, Luminous White Cards) */}
             <div className="grid grid-cols-2 gap-2">
               {mobileNavItems.map((item) => {
                 const Icon = item.icon;
@@ -363,8 +363,8 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
                     onClick={() => handleSelectNav(item.id)}
                     className={`relative flex flex-col justify-between p-3 rounded-2xl text-left transition-colors cursor-pointer border ${
                       isActive
-                        ? 'bg-amber-100/80 border-amber-300 text-amber-950 font-bold shadow-2xs'
-                        : 'bg-neutral-50/70 hover:bg-neutral-100/80 border-neutral-100 text-neutral-800'
+                        ? 'bg-amber-100/90 border-amber-300 text-amber-950 font-bold shadow-2xs ring-1 ring-amber-300/40'
+                        : 'bg-white hover:bg-neutral-50/80 border-neutral-200/80 text-neutral-800 shadow-2xs'
                     }`}
                   >
                     <div className="flex items-center justify-between w-full mb-1">
@@ -372,7 +372,7 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
                         className={`w-7 h-7 rounded-xl flex items-center justify-center ${
                           isActive
                             ? 'bg-amber-300/80 text-amber-950'
-                            : 'bg-white text-neutral-600 border border-neutral-200/60'
+                            : 'bg-[#FAF9F5] text-neutral-600 border border-neutral-200/60'
                         }`}
                       >
                         <Icon className="w-3.5 h-3.5 stroke-[2.2]" />
@@ -382,7 +382,7 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
                           className={`text-[10px] font-mono font-bold px-1.5 py-0.2 rounded-full ${
                             isActive
                               ? 'bg-amber-200/80 text-amber-950'
-                              : 'bg-white text-neutral-500 border border-neutral-200/60'
+                              : 'bg-neutral-100 text-neutral-600 border border-neutral-200/60'
                           }`}
                         >
                           {item.badge}
@@ -402,8 +402,8 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
               })}
             </div>
 
-            {/* 3. Live Presence Strip: Ashtayama Period + Audio Player (Quiet, Unified Card) */}
-            <div className="rounded-2xl bg-amber-50/50 border border-amber-200/60 p-3 space-y-2.5">
+            {/* 3. Live Presence Strip: Ashtayama Period + Audio Player (Radiant White Card with Gold Trim) */}
+            <div className="rounded-2xl bg-white border border-amber-200/80 shadow-2xs p-3 space-y-2.5">
               {/* Row A: Ashtayama Period */}
               <div className="flex items-center justify-between gap-2">
                 <div className="flex items-center gap-2.5 min-w-0">
@@ -485,36 +485,36 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
               )}
             </div>
 
-            {/* 4. Daily Sadhana Snapshot (Pure, Uncluttered, One-Tap) */}
+            {/* 4. Daily Sadhana Snapshot (Pure White Card with Sacred Accents) */}
             {sadhana && (
-              <div className="rounded-2xl bg-neutral-50/70 border border-neutral-200/60 p-3 space-y-2.5">
+              <div className="rounded-2xl bg-white border border-neutral-200/80 shadow-2xs p-3 space-y-2.5">
                 <div className="flex items-center justify-between text-xs px-0.5">
                   <div className="flex items-center gap-1.5 font-semibold text-neutral-700">
                     <Sparkles className="w-3.5 h-3.5 text-amber-600" />
                     <span>दैनिक साधना • Daily Progress</span>
                   </div>
-                  <span className="text-[11px] font-mono font-bold text-amber-800 bg-amber-100/80 px-2 py-0.2 rounded-full">
+                  <span className="text-[11px] font-mono font-bold text-amber-800 bg-amber-100/80 px-2 py-0.2 rounded-full border border-amber-200/60">
                     🔥 {sadhana.currentStreakDays}d Streak
                   </span>
                 </div>
 
-                {/* 3 Metric Tiles (Pure, borderless with subtle tone) */}
+                {/* 3 Metric Tiles (Pure, clean porcelain tiles) */}
                 <div className="grid grid-cols-3 gap-2">
-                  <div className="p-2 rounded-xl bg-white border border-neutral-100 shadow-2xs text-center">
+                  <div className="p-2 rounded-xl bg-[#FAF9F5] border border-neutral-200/60 shadow-2xs text-center">
                     <div className="text-[10px] text-neutral-400 font-medium font-devanagari">नाम जप</div>
                     <div className="text-xs font-bold text-neutral-800 font-mono mt-0.5">
                       {sadhana.japaCompleted}/{sadhana.japaTarget} <span className="text-[9px] font-normal text-neutral-400">माला</span>
                     </div>
                   </div>
 
-                  <div className="p-2 rounded-xl bg-white border border-neutral-100 shadow-2xs text-center">
+                  <div className="p-2 rounded-xl bg-[#FAF9F5] border border-neutral-200/60 shadow-2xs text-center">
                     <div className="text-[10px] text-neutral-400 font-medium font-devanagari">वाणी श्रवण</div>
                     <div className="text-xs font-bold text-neutral-800 font-mono mt-0.5">
                       {sadhana.shravanMinutes}/{sadhana.shravanTarget} <span className="text-[9px] font-normal text-neutral-400">min</span>
                     </div>
                   </div>
 
-                  <div className="p-2 rounded-xl bg-white border border-neutral-100 shadow-2xs text-center">
+                  <div className="p-2 rounded-xl bg-[#FAF9F5] border border-neutral-200/60 shadow-2xs text-center">
                     <div className="text-[10px] text-neutral-400 font-medium font-devanagari">स्वाध्याय</div>
                     <div className="text-xs font-bold text-neutral-800 font-mono mt-0.5">
                       {sadhana.svadhyayaPadas}/{sadhana.svadhyayaTarget} <span className="text-[9px] font-normal text-neutral-400">पद</span>
@@ -527,7 +527,7 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
                   <button
                     type="button"
                     onClick={onQuickJapa}
-                    className="w-full h-8 rounded-xl bg-amber-100/80 hover:bg-amber-200/90 text-amber-950 text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                    className="w-full h-8 rounded-xl bg-amber-100/90 hover:bg-amber-200 text-amber-950 text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors cursor-pointer border border-amber-200/70 shadow-2xs"
                   >
                     <span>📿 +१ माला जप पूर्ण (+1 Mala Japa)</span>
                   </button>
