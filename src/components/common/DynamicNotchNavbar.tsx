@@ -181,7 +181,7 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
       <div className="max-w-6xl mx-auto flex flex-col items-center">
         
         {/* Main Floating Glass & Paper Header Bar */}
-        <div className="pointer-events-auto rounded-full w-full max-w-[96vw] md:max-w-6xl bg-[#FFFDF9]/96 backdrop-blur-md border border-neutral-900/[0.06] shadow-[0_4px_16px_-2px_rgba(24,24,27,0.05)] px-3.5 sm:px-4 py-1.5 transition-all transform-gpu will-change-transform">
+        <div className="pointer-events-auto rounded-full w-full max-w-[96vw] md:max-w-6xl bg-white/95 backdrop-blur-md border border-neutral-900/[0.07] shadow-[0_4px_16px_-2px_rgba(24,24,27,0.05)] px-3.5 sm:px-4 py-1.5 transition-all transform-gpu will-change-transform">
           <div className="flex items-center justify-between gap-2 h-10 sm:h-11">
             
             {/* 1. Left: Brand Identity & Sacred Logo */}

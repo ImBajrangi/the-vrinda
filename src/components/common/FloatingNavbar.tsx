@@ -106,10 +106,10 @@ export const FloatingNavbar: React.FC<FloatingNavbarProps> = ({
   return (
     // Only displayed on mobile (< md). On tablet & desktop, top header navigation takes over.
     <div className="md:hidden fixed bottom-3.5 min-[380px]:bottom-5 left-0 right-0 z-40 flex items-center justify-center gap-2 px-2.5 max-w-sm w-full mx-auto pointer-events-none box-border">
-      {/* Fluid responsive floating nav pill: Minimalist, power-efficient frosted glass */}
+      {/* Fluid responsive floating nav pill: Minimalist, power-efficient frosted glass with clean whiteness */}
       <nav
         aria-label="Mobile Navigation"
-        className="relative pointer-events-auto flex-1 min-w-0 max-w-[290px] h-[54px] rounded-[28px] bg-[#FFFDF9]/96 backdrop-blur-md border border-neutral-900/[0.07] shadow-[0_8px_24px_-4px_rgba(24,24,27,0.08),0_2px_6px_-1px_rgba(24,24,27,0.03)] flex items-center justify-between p-1 box-border transform-gpu will-change-transform"
+        className="relative pointer-events-auto flex-1 min-w-0 max-w-[290px] h-[54px] rounded-[28px] bg-white/95 backdrop-blur-md border border-neutral-900/[0.08] shadow-[0_8px_24px_-4px_rgba(24,24,27,0.10),0_2px_6px_-1px_rgba(24,24,27,0.04)] flex items-center justify-between p-1 box-border transform-gpu will-change-transform"
       >
         {/* Dynamic Elastic Sliding Indicator Bar */}
         <span
@@ -133,7 +133,7 @@ export const FloatingNavbar: React.FC<FloatingNavbarProps> = ({
               className={`relative z-10 border-0 text-[10px] font-sans flex-1 min-w-0 h-[44px] flex flex-col items-center justify-center gap-0.5 py-1 px-0.5 rounded-[22px] transition-colors duration-200 cursor-pointer ${
                 isActive
                   ? 'text-[#18181B] font-bold'
-                  : 'text-[#71717A] hover:text-[#18181B] font-semibold'
+                  : 'text-[#52525B] hover:text-[#18181B] font-semibold'
               }`}
             >
               <Icon className={`w-4 h-4 stroke-[2.2] shrink-0 transition-colors duration-200 ${isActive ? 'text-[#B45309]' : 'text-[#71717A]'}`} />

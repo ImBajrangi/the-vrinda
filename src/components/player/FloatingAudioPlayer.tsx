@@ -29,7 +29,7 @@ export const FloatingAudioPlayer: React.FC<FloatingAudioPlayerProps> = ({
       aria-label="Floating Audio Player"
       className="fixed bottom-24 md:bottom-6 left-4 right-4 md:left-auto md:right-8 md:w-[390px] max-w-md mx-auto md:mx-0 z-50 apple-view-enter"
     >
-      <div className="bg-[#FFFDF9]/96 backdrop-blur-md border border-neutral-900/[0.07] shadow-[0_8px_28px_-6px_rgba(24,24,27,0.12),0_2px_8px_-2px_rgba(24,24,27,0.04)] text-[#18181B] rounded-full p-2.5 sm:p-3 flex items-center justify-between gap-3 transition-all duration-300 transform-gpu will-change-transform">
+      <div className="bg-white/95 backdrop-blur-md border border-neutral-900/[0.08] shadow-[0_8px_28px_-6px_rgba(24,24,27,0.12),0_2px_8px_-2px_rgba(24,24,27,0.04)] text-[#18181B] rounded-full p-2.5 sm:p-3 flex items-center justify-between gap-3 transition-all duration-300 transform-gpu will-change-transform">
         {/* Animated Visualizer Icon with Apple Fluid Waves */}
         <div
           onClick={onOpenLyrics}
