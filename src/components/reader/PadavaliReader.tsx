@@ -895,17 +895,116 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       {/* Interactive Typography & Devotional Ambiance Customizer Floating Tray     */}
       {/* ========================================================================= */}
       {isSettingsOpen && (
-        <div className="mb-4 p-4 sm:p-5 rounded-2xl bg-white border border-neutral-200/80 shadow-xs space-y-4 apple-sheet-enter text-[#18181B]">
-          {/* Row 1: Reading Typography (Font Size, Typeface, Alignment) */}
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-3.5 pb-3.5 border-b border-neutral-100">
-            {/* Font Size Stepper with Elastic Sliding Pill */}
-            <div className="flex items-center gap-2.5">
-              <span className="text-[11px] font-bold text-neutral-500 uppercase tracking-wider flex items-center gap-1.5 font-mono">
-                <Type className="w-3.5 h-3.5 text-neutral-500" />
-                <span>Font Size</span>
+        <div className="mb-5 p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-white border border-neutral-200/80 shadow-sm space-y-4 apple-sheet-enter text-[#18181B]">
+          {/* Top Section: Sacred Ambiance Canvas Selection (Full Width 3-Column Grid) */}
+          <div className="space-y-2">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-neutral-500 font-mono">
+                <Palette className="w-3.5 h-3.5 text-amber-600" />
+                <span>पवित्र परिवेश • Sacred Ambiance Theme</span>
+              </div>
+              <span className="text-[11px] text-neutral-400 font-mono hidden sm:inline">
+                {readerTheme === 'ivory' ? 'Porcelain White Canvas' : readerTheme === 'mint' ? 'Tamal Green Grove Canvas' : 'Chandan Gold Sandalwood Canvas'}
               </span>
-              <div className="relative flex items-center p-1 bg-neutral-100 rounded-full">
-                {/* Dynamic Elastic Sliding Pill */}
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 w-full">
+              {[
+                {
+                  id: 'ivory' as ReaderTheme,
+                  label: 'पावन पत्र',
+                  desc: 'Porcelain White',
+                  cardBg: 'bg-white',
+                  borderColor: 'border-neutral-200',
+                  activeRing: 'ring-2 ring-neutral-900/10 border-neutral-900 shadow-xs',
+                  titleColor: 'text-[#0F172A]',
+                  subColor: 'text-neutral-500',
+                  swatchBg: '#FFFFFF',
+                  swatchBorder: '#D4D4D8',
+                },
+                {
+                  id: 'mint' as ReaderTheme,
+                  label: 'तमाल निकुंज',
+                  desc: 'Tamal Green',
+                  cardBg: 'bg-[#F0FDF4]',
+                  borderColor: 'border-emerald-200',
+                  activeRing: 'ring-2 ring-emerald-500/20 border-emerald-600 shadow-xs',
+                  titleColor: 'text-[#14532D]',
+                  subColor: 'text-emerald-700/80',
+                  swatchBg: '#DCFCE7',
+                  swatchBorder: '#86EFAC',
+                },
+                {
+                  id: 'chandan' as ReaderTheme,
+                  label: 'चन्दन प्रभा',
+                  desc: 'Chandan Gold',
+                  cardBg: 'bg-[#FAF7EE]',
+                  borderColor: 'border-amber-200',
+                  activeRing: 'ring-2 ring-amber-500/20 border-amber-600 shadow-xs',
+                  titleColor: 'text-[#3D260F]',
+                  subColor: 'text-amber-800/80',
+                  swatchBg: '#FEF08A',
+                  swatchBorder: '#FCD34D',
+                },
+              ].map((t) => {
+                const isThemeActive = readerTheme === t.id;
+                return (
+                  <button
+                    key={t.id}
+                    type="button"
+                    onClick={() => handleSetReaderTheme(t.id)}
+                    className={`group relative flex items-center justify-between p-3 rounded-2xl text-left transition-all duration-200 cursor-pointer border ${t.cardBg} ${
+                      isThemeActive
+                        ? `${t.activeRing} font-bold`
+                        : `${t.borderColor} opacity-85 hover:opacity-100`
+                    }`}
+                  >
+                    <div className="flex items-center gap-3 min-w-0">
+                      <div
+                        className={`w-6 h-6 rounded-full shrink-0 border ${t.swatchBorder} shadow-2xs flex items-center justify-center`}
+                        style={{ backgroundColor: t.swatchBg }}
+                      >
+                        {isThemeActive && (
+                          <span className="w-2 h-2 rounded-full bg-current opacity-70" />
+                        )}
+                      </div>
+                      <div className="min-w-0">
+                        <div className={`text-sm font-semibold font-devanagari leading-snug truncate ${t.titleColor}`}>
+                          {t.label}
+                        </div>
+                        <div className={`text-[11px] font-mono leading-tight truncate ${t.subColor}`}>
+                          {t.desc}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="shrink-0 ml-2">
+                      {isThemeActive ? (
+                        <div className="w-5 h-5 rounded-full bg-amber-400 text-neutral-900 flex items-center justify-center shadow-2xs">
+                          <Check className="w-3.5 h-3.5 stroke-[2.5]" />
+                        </div>
+                      ) : (
+                        <div className="w-5 h-5 rounded-full border border-neutral-300/60 opacity-30 group-hover:opacity-60" />
+                      )}
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Delicate Hairline Divider */}
+          <div className="border-t border-neutral-100" />
+
+          {/* Bottom Section: 4 Equal Symmetrical Reading & Audio Controls (4-Column Grid) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 w-full">
+            {/* Control 1: Font Size Stepper */}
+            <div className="space-y-1.5">
+              <div className="flex items-center gap-1.5 text-[11px] font-bold text-neutral-500 uppercase tracking-wider font-mono">
+                <Type className="w-3.5 h-3.5 text-neutral-400" />
+                <span>Font Size</span>
+              </div>
+              <div className="relative flex items-center p-1 bg-neutral-100/90 rounded-full w-full">
                 <span
                   aria-hidden="true"
                   className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
@@ -925,10 +1024,8 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                     key={s.id}
                     type="button"
                     onClick={() => handleSetFontSize(s.id)}
-                    className={`relative z-10 px-2.5 py-1 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer ${
-                      fontSize === s.id
-                        ? 'text-[#18181B] font-bold'
-                        : 'text-neutral-500 hover:text-neutral-900'
+                    className={`relative z-10 flex-1 py-1 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer text-center ${
+                      fontSize === s.id ? 'text-[#18181B] font-bold' : 'text-neutral-500 hover:text-neutral-900'
                     }`}
                   >
                     {s.label}
@@ -937,14 +1034,13 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               </div>
             </div>
 
-            {/* Font Family Toggle with Elastic Sliding Pill */}
-            <div className="flex items-center gap-2.5">
-              <span className="text-[11px] font-bold text-neutral-500 uppercase tracking-wider flex items-center gap-1.5 font-mono">
-                <BookOpen className="w-3.5 h-3.5 text-neutral-500" />
-                <span>Font</span>
-              </span>
-              <div className="relative flex items-center p-1 bg-neutral-100 rounded-full">
-                {/* Dynamic Elastic Sliding Pill */}
+            {/* Control 2: Typeface Serif vs Sans */}
+            <div className="space-y-1.5">
+              <div className="flex items-center gap-1.5 text-[11px] font-bold text-neutral-500 uppercase tracking-wider font-mono">
+                <BookOpen className="w-3.5 h-3.5 text-neutral-400" />
+                <span>Typeface</span>
+              </div>
+              <div className="relative flex items-center p-1 bg-neutral-100/90 rounded-full w-full">
                 <span
                   aria-hidden="true"
                   className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
@@ -957,36 +1053,31 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 <button
                   type="button"
                   onClick={() => handleSetFontFamily('serif')}
-                  className={`relative z-10 px-3 py-1 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer ${
-                    fontFamily === 'serif'
-                      ? 'text-[#18181B] font-bold'
-                      : 'text-neutral-500 hover:text-neutral-900'
+                  className={`relative z-10 flex-1 py-1 px-1 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer text-center ${
+                    fontFamily === 'serif' ? 'text-[#18181B] font-bold' : 'text-neutral-500 hover:text-neutral-900'
                   }`}
                 >
-                  Serif (Traditional)
+                  Serif (पारंपरिक)
                 </button>
                 <button
                   type="button"
                   onClick={() => handleSetFontFamily('devanagari')}
-                  className={`relative z-10 px-3 py-1 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer ${
-                    fontFamily === 'devanagari'
-                      ? 'text-[#18181B] font-bold'
-                      : 'text-neutral-500 hover:text-neutral-900'
+                  className={`relative z-10 flex-1 py-1 px-1 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer text-center ${
+                    fontFamily === 'devanagari' ? 'text-[#18181B] font-bold' : 'text-neutral-500 hover:text-neutral-900'
                   }`}
                 >
-                  Sans (Modern)
+                  Sans (आधुनिक)
                 </button>
               </div>
             </div>
 
-            {/* Alignment Stepper with Elastic Sliding Pill */}
-            <div className="flex items-center gap-2.5">
-              <span className="text-[11px] font-bold text-neutral-500 uppercase tracking-wider flex items-center gap-1.5 font-mono">
-                <AlignLeft className="w-3.5 h-3.5 text-neutral-500" />
+            {/* Control 3: Alignment (Left, Center, Justified) */}
+            <div className="space-y-1.5">
+              <div className="flex items-center gap-1.5 text-[11px] font-bold text-neutral-500 uppercase tracking-wider font-mono">
+                <AlignLeft className="w-3.5 h-3.5 text-neutral-400" />
                 <span>Alignment</span>
-              </span>
-              <div className="relative flex items-center p-1 bg-neutral-100 rounded-full">
-                {/* Dynamic Elastic Sliding Pill */}
+              </div>
+              <div className="relative flex items-center p-1 bg-neutral-100/90 rounded-full w-full">
                 <span
                   aria-hidden="true"
                   className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
@@ -1007,31 +1098,25 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                       key={a.id}
                       type="button"
                       onClick={() => handleSetTextAlign(a.id)}
-                      className={`relative z-10 px-2.5 py-1 rounded-full text-xs font-semibold flex items-center gap-1 transition-colors duration-200 cursor-pointer ${
-                        textAlign === a.id
-                          ? 'text-[#18181B] font-bold'
-                          : 'text-neutral-500 hover:text-neutral-900'
+                      className={`relative z-10 flex-1 py-1 px-1.5 rounded-full text-xs font-semibold flex items-center justify-center gap-1 transition-colors duration-200 cursor-pointer ${
+                        textAlign === a.id ? 'text-[#18181B] font-bold' : 'text-neutral-500 hover:text-neutral-900'
                       }`}
                     >
-                      <Icon className="w-3 h-3" />
-                      <span>{a.label}</span>
+                      <Icon className="w-3.5 h-3.5 shrink-0" />
+                      <span className="hidden xl:inline">{a.label}</span>
                     </button>
                   );
                 })}
               </div>
             </div>
-          </div>
 
-          {/* Row 2: Recitation & Ambiance Experience (Audio Pace + Ambiance Theme) */}
-          <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3.5">
-            {/* Playback Pace Stepper with Elastic Sliding Pill */}
-            <div className="flex items-center gap-2.5">
-              <span className="text-[11px] font-bold text-neutral-500 uppercase tracking-wider flex items-center gap-1.5 font-mono">
-                <Gauge className="w-3.5 h-3.5 text-neutral-500" />
+            {/* Control 4: Recitation Audio Pace */}
+            <div className="space-y-1.5">
+              <div className="flex items-center gap-1.5 text-[11px] font-bold text-neutral-500 uppercase tracking-wider font-mono">
+                <Gauge className="w-3.5 h-3.5 text-neutral-400" />
                 <span>Audio Pace</span>
-              </span>
-              <div className="relative flex items-center p-1 bg-neutral-100 rounded-full">
-                {/* Dynamic Elastic Sliding Pill */}
+              </div>
+              <div className="relative flex items-center p-1 bg-neutral-100/90 rounded-full w-full">
                 <span
                   aria-hidden="true"
                   className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
@@ -1046,83 +1131,13 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                     key={pace}
                     type="button"
                     onClick={() => handleSetPlaybackPace(pace)}
-                    className={`relative z-10 px-3 py-1 rounded-full text-xs font-mono font-semibold transition-colors duration-200 cursor-pointer ${
-                      playbackPace === pace
-                        ? 'text-[#18181B] font-bold'
-                        : 'text-neutral-500 hover:text-neutral-900'
+                    className={`relative z-10 flex-1 py-1 rounded-full text-xs font-mono font-semibold transition-colors duration-200 cursor-pointer text-center ${
+                      playbackPace === pace ? 'text-[#18181B] font-bold' : 'text-neutral-500 hover:text-neutral-900'
                     }`}
                   >
                     {pace}
                   </button>
                 ))}
-              </div>
-            </div>
-
-            {/* Ambiance Theme Switcher with Tactile Swatch Cards */}
-            <div className="flex flex-wrap items-center gap-2.5">
-              <span className="text-[11px] font-bold text-neutral-500 uppercase tracking-wider flex items-center gap-1.5 font-mono">
-                <Palette className="w-3.5 h-3.5 text-neutral-500" />
-                <span>Ambiance Theme</span>
-              </span>
-              <div className="grid grid-cols-3 sm:flex items-center gap-2 w-full sm:w-auto">
-                {[
-                  {
-                    id: 'ivory' as ReaderTheme,
-                    label: 'पावन पत्र',
-                    desc: 'Porcelain White',
-                    swatchBg: '#FFFFFF',
-                    swatchBorder: '#D4D4D8',
-                  },
-                  {
-                    id: 'mint' as ReaderTheme,
-                    label: 'तमाल निकुंज',
-                    desc: 'Tamal Green',
-                    swatchBg: '#DCFCE7',
-                    swatchBorder: '#86EFAC',
-                  },
-                  {
-                    id: 'chandan' as ReaderTheme,
-                    label: 'चन्दन प्रभा',
-                    desc: 'Chandan Gold',
-                    swatchBg: '#FEF08A',
-                    swatchBorder: '#FCD34D',
-                  },
-                ].map((t) => {
-                  const isThemeActive = readerTheme === t.id;
-                  return (
-                    <button
-                      key={t.id}
-                      type="button"
-                      onClick={() => handleSetReaderTheme(t.id)}
-                      className={`relative flex items-center justify-center sm:justify-start gap-2.5 px-3 py-1.5 sm:py-2 rounded-xl text-left transition-colors cursor-pointer border ${
-                        isThemeActive
-                          ? 'bg-amber-50/70 border-amber-400 ring-1 ring-amber-400/40 shadow-2xs'
-                          : 'bg-white hover:bg-neutral-50/90 border-neutral-200/80 text-neutral-700'
-                      }`}
-                    >
-                      <span
-                        aria-hidden="true"
-                        className="w-3.5 h-3.5 rounded-full shrink-0 border shadow-2xs"
-                        style={{ backgroundColor: t.swatchBg, borderColor: t.swatchBorder }}
-                      />
-                      <div className="min-w-0 pr-0.5">
-                        <div
-                          className={`text-xs font-semibold font-devanagari leading-tight truncate ${
-                            isThemeActive ? 'text-[#18181B] font-bold' : 'text-neutral-700'
-                          }`}
-                        >
-                          {t.label}
-                        </div>
-                        <div className="text-[10px] text-neutral-400 font-mono leading-none mt-0.5 truncate hidden sm:block">
-                          {t.desc}
-                        </div>
-                      </div>
-                      {isThemeActive && (
-                        <Check className="w-3.5 h-3.5 text-amber-600 shrink-0 ml-1 hidden sm:block" />
-                      )}
-                    </button>
-                  );
-                })}
               </div>
             </div>
           </div>
