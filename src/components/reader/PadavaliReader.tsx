@@ -394,6 +394,23 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   };
 
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [isSettingsRendered, setIsSettingsRendered] = useState(false);
+  const [isSettingsClosing, setIsSettingsClosing] = useState(false);
+
+  useEffect(() => {
+    if (isSettingsOpen) {
+      setIsSettingsRendered(true);
+      setIsSettingsClosing(false);
+    } else if (isSettingsRendered) {
+      setIsSettingsClosing(true);
+      const timer = setTimeout(() => {
+        setIsSettingsRendered(false);
+        setIsSettingsClosing(false);
+      }, 190);
+      return () => clearTimeout(timer);
+    }
+  }, [isSettingsOpen, isSettingsRendered]);
+
   const settingsTrayRef = useRef<HTMLDivElement>(null);
   const settingsToggleTopRef = useRef<HTMLButtonElement>(null);
   const settingsToggleBottomRef = useRef<HTMLButtonElement>(null);
@@ -940,10 +957,12 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       {/* ========================================================================= */}
       {/* Interactive Typography & Devotional Ambiance Customizer Floating Tray     */}
       {/* ========================================================================= */}
-      {isSettingsOpen && (
+      {isSettingsRendered && (
         <div
           ref={settingsTrayRef}
-          className="mb-5 p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-white border border-neutral-200/80 shadow-sm space-y-4 apple-sheet-enter text-[#18181B]"
+          className={`mb-5 p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-white border border-neutral-200/80 shadow-sm space-y-4 text-[#18181B] ${
+            isSettingsClosing ? 'apple-sheet-exit' : 'apple-sheet-enter'
+          }`}
         >
           {/* Top Section: Sacred Ambiance Canvas Selection (Full Width 3-Column Grid) */}
           <div className="space-y-2">

@@ -11,6 +11,23 @@ interface CMSEditorialBadgeProps {
 
 export const CMSEditorialBadge: React.FC<CMSEditorialBadgeProps> = ({ currentPad }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isRendered, setIsRendered] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      setIsRendered(true);
+      setIsClosing(false);
+    } else if (isRendered) {
+      setIsClosing(true);
+      const timer = setTimeout(() => {
+        setIsRendered(false);
+        setIsClosing(false);
+      }, 200);
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen, isRendered]);
+
   const [connectionInfo, setConnectionInfo] = useState<{ ok: boolean; message: string; latencyMs?: number }>({
     ok: true,
     message: 'Local Canonical Repository Ready',
@@ -24,7 +41,7 @@ export const CMSEditorialBadge: React.FC<CMSEditorialBadgeProps> = ({ currentPad
   }, []);
 
   useEffect(() => {
-    if (!isOpen) return;
+    if (!isRendered) return;
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setIsOpen(false);
@@ -32,7 +49,7 @@ export const CMSEditorialBadge: React.FC<CMSEditorialBadgeProps> = ({ currentPad
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen]);
+  }, [isRendered]);
 
   const handleExport = async () => {
     setIsExporting(true);
@@ -59,13 +76,17 @@ export const CMSEditorialBadge: React.FC<CMSEditorialBadgeProps> = ({ currentPad
       </div>
 
       {/* Slide-out Editorial Modal */}
-      {isOpen && typeof document !== 'undefined' && createPortal(
+      {isRendered && typeof document !== 'undefined' && createPortal(
         <div
-          className="fixed inset-0 z-[100] bg-black/45 flex items-center justify-center p-4 transition-opacity animate-fade-in"
+          className={`fixed inset-0 z-[100] bg-black/45 flex items-center justify-center p-4 transition-opacity ${
+            isClosing ? 'modal-backdrop-exit' : 'modal-backdrop-enter'
+          }`}
           onClick={() => setIsOpen(false)}
         >
           <div
-            className="w-full max-w-lg bg-white rounded-[28px] p-6 space-y-5 text-[#18181B] apple-sheet-enter relative"
+            className={`w-full max-w-lg bg-white rounded-[28px] p-6 space-y-5 text-[#18181B] relative ${
+              isClosing ? 'apple-sheet-exit' : 'apple-sheet-enter'
+            }`}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}

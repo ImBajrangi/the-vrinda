@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { X, Flame, Music2, BookOpen, Plus, Minus, ChevronRight, Wind, Play, Pause } from 'lucide-react';
 import type { SadhanaState, SacredPad } from '../../types/devotional';
@@ -32,14 +32,38 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
   isPlayingAudio = false,
   onToggleAudio,
 }) => {
+  const [isRendered, setIsRendered] = useState(isOpen);
+  const [isClosing, setIsClosing] = useState(false);
+
   useEffect(() => {
     if (isOpen && pillarType) {
+      setIsRendered(true);
+      setIsClosing(false);
+    } else if (isRendered) {
+      setIsClosing(true);
+      const timer = setTimeout(() => {
+        setIsRendered(false);
+        setIsClosing(false);
+      }, 200);
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen, pillarType, isRendered]);
+
+  const handleDismiss = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      onClose();
+    }, 200);
+  };
+
+  useEffect(() => {
+    if (isRendered && pillarType) {
       const originalOverflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
 
       const handleKeyDown = (e: KeyboardEvent) => {
         if (e.key === 'Escape') {
-          onClose();
+          handleDismiss();
         }
       };
       window.addEventListener('keydown', handleKeyDown);
@@ -49,9 +73,9 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
         window.removeEventListener('keydown', handleKeyDown);
       };
     }
-  }, [isOpen, pillarType, onClose]);
+  }, [isRendered, pillarType]);
 
-  if (!isOpen || !pillarType) return null;
+  if (!isRendered || !pillarType) return null;
   if (typeof document === 'undefined') return null;
 
   const handleAddJapa = (malas: number) => {
@@ -508,13 +532,17 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
 
   return createPortal(
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/45 animate-fade-in"
-      onClick={onClose}
+      className={`fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/45 transition-opacity ${
+        isClosing ? 'modal-backdrop-exit' : 'modal-backdrop-enter'
+      }`}
+      onClick={handleDismiss}
       role="dialog"
       aria-modal="true"
     >
       <div
-        className="w-full max-w-lg bg-white rounded-[28px] p-5 sm:p-6 max-h-[90vh] overflow-y-auto no-scrollbar apple-sheet-enter text-[#18181B]"
+        className={`w-full max-w-lg bg-white rounded-[28px] p-5 sm:p-6 max-h-[90vh] overflow-y-auto no-scrollbar text-[#18181B] ${
+          isClosing ? 'apple-sheet-exit' : 'apple-sheet-enter'
+        }`}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between pb-3 border-b border-neutral-100 mb-4">
@@ -523,7 +551,7 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
           </span>
           <button
             type="button"
-            onClick={onClose}
+            onClick={handleDismiss}
             className="w-8 h-8 rounded-full bg-neutral-100 hover:bg-neutral-200 flex items-center justify-center text-[#71717A] transition-colors cursor-pointer"
             aria-label="Close"
           >

@@ -102,6 +102,11 @@ body {
   animation: appleViewIn 0.38s var(--ease-apple-smooth) both;
 }
 
+.apple-view-exit {
+  animation: appleViewOut 0.18s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform, opacity;
+}
+
 @keyframes appleViewIn {
   0% {
     opacity: 0;
@@ -110,6 +115,17 @@ body {
   100% {
     opacity: 1;
     transform: none;
+  }
+}
+
+@keyframes appleViewOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(6px);
   }
 }
 
@@ -125,8 +141,24 @@ body {
   }
 }
 
+@keyframes appleSheetOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+}
+
 .apple-sheet-enter {
   animation: appleSheetIn 0.36s var(--ease-ios-spring) both;
+  will-change: transform, opacity;
+}
+
+.apple-sheet-exit {
+  animation: appleSheetOut 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
   will-change: transform, opacity;
 }
 

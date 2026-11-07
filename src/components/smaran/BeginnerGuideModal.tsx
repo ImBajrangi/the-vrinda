@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { X, Flame, Music2, BookOpen, Clock, Sparkles, ArrowRight, Compass } from 'lucide-react';
 
@@ -17,14 +17,38 @@ export const BeginnerGuideModal: React.FC<BeginnerGuideModalProps> = ({
   onOpenPlayer,
   onOpenReader,
 }) => {
+  const [isRendered, setIsRendered] = useState(isOpen);
+  const [isClosing, setIsClosing] = useState(false);
+
   useEffect(() => {
     if (isOpen) {
+      setIsRendered(true);
+      setIsClosing(false);
+    } else if (isRendered) {
+      setIsClosing(true);
+      const timer = setTimeout(() => {
+        setIsRendered(false);
+        setIsClosing(false);
+      }, 200);
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen, isRendered]);
+
+  const handleDismiss = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      onClose();
+    }, 200);
+  };
+
+  useEffect(() => {
+    if (isRendered) {
       const originalOverflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
 
       const handleKeyDown = (e: KeyboardEvent) => {
         if (e.key === 'Escape') {
-          onClose();
+          handleDismiss();
         }
       };
       window.addEventListener('keydown', handleKeyDown);
@@ -34,31 +58,37 @@ export const BeginnerGuideModal: React.FC<BeginnerGuideModalProps> = ({
         window.removeEventListener('keydown', handleKeyDown);
       };
     }
-  }, [isOpen, onClose]);
+  }, [isRendered]);
 
-  if (!isOpen) return null;
+  if (!isRendered) return null;
   if (typeof document === 'undefined') return null;
 
   const handleSelectPillar = (type: 'japa' | 'shravan' | 'svadhyaya') => {
-    onClose();
-    if (type === 'japa') {
-      onStartChanting();
-    } else if (type === 'shravan') {
-      if (onOpenPlayer) onOpenPlayer();
-      else onStartChanting();
-    } else if (type === 'svadhyaya') {
-      if (onOpenReader) onOpenReader();
-      else onStartChanting();
-    }
+    handleDismiss();
+    setTimeout(() => {
+      if (type === 'japa') {
+        onStartChanting();
+      } else if (type === 'shravan') {
+        if (onOpenPlayer) onOpenPlayer();
+        else onStartChanting();
+      } else if (type === 'svadhyaya') {
+        if (onOpenReader) onOpenReader();
+        else onStartChanting();
+      }
+    }, 200);
   };
 
   return createPortal(
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 bg-black/45 animate-fade-in"
-      onClick={onClose}
+      className={`fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 bg-black/45 transition-opacity ${
+        isClosing ? 'modal-backdrop-exit' : 'modal-backdrop-enter'
+      }`}
+      onClick={handleDismiss}
     >
       <div
-        className="w-full max-w-2xl bg-white rounded-[32px] p-6 sm:p-8 max-h-[90vh] overflow-y-auto no-scrollbar apple-sheet-enter text-[#18181B]"
+        className={`w-full max-w-2xl bg-white rounded-[32px] p-6 sm:p-8 max-h-[90vh] overflow-y-auto no-scrollbar text-[#18181B] ${
+          isClosing ? 'apple-sheet-exit' : 'apple-sheet-enter'
+        }`}
         role="dialog"
         aria-modal="true"
         onClick={(e) => e.stopPropagation()}
@@ -80,7 +110,7 @@ export const BeginnerGuideModal: React.FC<BeginnerGuideModalProps> = ({
           </div>
           <button
             type="button"
-            onClick={onClose}
+            onClick={handleDismiss}
             className="w-9 h-9 rounded-full bg-neutral-100 hover:bg-neutral-200 flex items-center justify-center text-[#18181B] transition-colors cursor-pointer"
             aria-label="Close"
           >

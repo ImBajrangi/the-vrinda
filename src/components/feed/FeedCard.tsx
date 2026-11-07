@@ -75,6 +75,22 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
   const [avatarError, setAvatarError] = useState<boolean>(false);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuRendered, setIsMenuRendered] = useState(false);
+  const [isMenuClosing, setIsMenuClosing] = useState(false);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      setIsMenuRendered(true);
+      setIsMenuClosing(false);
+    } else if (isMenuRendered) {
+      setIsMenuClosing(true);
+      const timer = setTimeout(() => {
+        setIsMenuRendered(false);
+        setIsMenuClosing(false);
+      }, 160);
+      return () => clearTimeout(timer);
+    }
+  }, [isMenuOpen, isMenuRendered]);
   const [toast, setToast] = useState<string | null>(null);
   const [summary, setSummary] = useState<string | null>(() =>
     getCachedDevotionalSummarySync({
@@ -320,8 +336,10 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
             </button>
 
             {/* Contextual Popover */}
-            {isMenuOpen && (
-              <div className="absolute right-0 top-10 z-40 w-56 bg-white rounded-2xl p-1.5 apple-dialog-enter text-left">
+            {isMenuRendered && (
+              <div className={`absolute right-0 top-10 z-40 w-56 bg-white rounded-2xl p-1.5 text-left border border-black/10 shadow-xl ${
+                isMenuClosing ? 'apple-view-exit' : 'apple-dialog-enter'
+              }`}>
                 <div className="py-0.5 space-y-0.5">
                   <button
                     type="button"

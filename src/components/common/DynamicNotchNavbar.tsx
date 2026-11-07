@@ -49,6 +49,23 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
   onQuickJapa,
 }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMenuRendered, setIsMenuRendered] = useState(false);
+  const [isMenuClosing, setIsMenuClosing] = useState(false);
+
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      setIsMenuRendered(true);
+      setIsMenuClosing(false);
+    } else if (isMenuRendered) {
+      setIsMenuClosing(true);
+      const timer = setTimeout(() => {
+        setIsMenuRendered(false);
+        setIsMenuClosing(false);
+      }, 190);
+      return () => clearTimeout(timer);
+    }
+  }, [isMobileMenuOpen, isMenuRendered]);
+
   const ashtayama = computeAshtayamaPhase();
 
   const [indicatorStyle, setIndicatorStyle] = useState<{ left: number; width: number; ready: boolean }>({
@@ -169,10 +186,12 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
 
   return (
     <>
-      {/* Subtle dark backdrop when mobile menu is open - tap outside closes menu */}
-      {isMobileMenuOpen && (
+      {/* Subtle dark backdrop when mobile menu is open - tap outside closes menu with fadeout */}
+      {isMenuRendered && (
         <div
-          className="fixed inset-0 z-40 bg-black/35 md:hidden pointer-events-auto"
+          className={`fixed inset-0 z-40 bg-black/35 md:hidden pointer-events-auto transition-opacity ${
+            isMenuClosing ? 'modal-backdrop-exit' : 'modal-backdrop-enter'
+          }`}
           onClick={() => setIsMobileMenuOpen(false)}
           aria-hidden="true"
         />
@@ -323,12 +342,14 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
           </div>
         </div>
 
-        {/* Mobile Dropdown Menu Card (Pure, Ascetic Simplicity & High Utility) */}
-        {isMobileMenuOpen && (
+        {/* Mobile Dropdown Menu Card (Pure, Ascetic Simplicity & High Utility with Smooth Exit) */}
+        {isMenuRendered && (
           <div
             ref={mobileMenuRef}
             onClick={(e) => e.stopPropagation()}
-            className="pointer-events-auto w-full max-w-[96vw] mt-2 p-3 sm:p-4 rounded-3xl bg-white md:hidden apple-view-enter border border-neutral-200/90 shadow-[0_12px_36px_-8px_rgba(24,24,27,0.12),inset_0_1px_0_rgba(255,255,255,1)] space-y-2.5 max-h-[85vh] overflow-y-auto no-scrollbar text-[#18181B] transform-gpu will-change-transform"
+            className={`pointer-events-auto w-full max-w-[96vw] mt-2 p-3 sm:p-4 rounded-3xl bg-white md:hidden border border-neutral-200/90 shadow-[0_12px_36px_-8px_rgba(24,24,27,0.12),inset_0_1px_0_rgba(255,255,255,1)] space-y-2.5 max-h-[85vh] overflow-y-auto no-scrollbar text-[#18181B] transform-gpu will-change-transform ${
+              isMenuClosing ? 'apple-view-exit' : 'apple-view-enter'
+            }`}
           >
             
             {/* 1. Minimalist Search Bar (Clean White) */}

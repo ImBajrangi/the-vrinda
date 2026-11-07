@@ -50,6 +50,22 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
   const [selectedBadge, setSelectedBadge] = useState<BadgeItem | null>(null);
   const [isBadgeClosing, setIsBadgeClosing] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuRendered, setIsMenuRendered] = useState(false);
+  const [isMenuClosing, setIsMenuClosing] = useState(false);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      setIsMenuRendered(true);
+      setIsMenuClosing(false);
+    } else if (isMenuRendered) {
+      setIsMenuClosing(true);
+      const timer = setTimeout(() => {
+        setIsMenuRendered(false);
+        setIsMenuClosing(false);
+      }, 160);
+      return () => clearTimeout(timer);
+    }
+  }, [isMenuOpen, isMenuRendered]);
   const [isRulesModalOpen, setIsRulesModalOpen] = useState(false);
   const [isRulesClosing, setIsRulesClosing] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
@@ -266,8 +282,10 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
           </button>
 
           {/* Glassmorphic Dropdown Popover */}
-          {isMenuOpen && (
-            <div className="absolute right-0 top-12 z-40 w-64 sm:w-72 bg-white border border-black/10 rounded-2xl shadow-2xl p-1.5 apple-dialog-enter text-left">
+          {isMenuRendered && (
+            <div className={`absolute right-0 top-12 z-40 w-64 sm:w-72 bg-white border border-black/10 rounded-2xl shadow-2xl p-1.5 text-left ${
+              isMenuClosing ? 'apple-view-exit' : 'apple-dialog-enter'
+            }`}>
               <div className="px-3 py-2 border-b border-black/5">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-[#B84A28]">
                   Sadhana Options & Backup
