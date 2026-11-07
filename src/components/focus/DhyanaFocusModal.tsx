@@ -401,13 +401,24 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
 
         {/* Segmented Pill Navigation Tabs (Clean, Single-Line, Zero Wrapping) */}
         <div className="px-4 py-2.5 bg-[#FAF9F6] border-b border-neutral-100 flex items-center justify-center">
-          <div className="w-full max-w-md grid grid-cols-2 p-1 bg-white rounded-full border border-neutral-200/80 shadow-2xs">
+          <div className="relative w-full max-w-md grid grid-cols-2 p-1 bg-[#F4F4F5] rounded-full border border-neutral-200/80 shadow-2xs">
+            {/* Dynamic Elastic Sliding Indicator Bar */}
+            <span
+              aria-hidden="true"
+              className="absolute top-1 bottom-1 rounded-full bg-[#18181B] shadow-xs pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+              style={{
+                width: 'calc((100% - 8px) / 2)',
+                left: '4px',
+                transform: `translateX(${activeTab === 'sanctuary' ? '0%' : '100%'})`,
+              }}
+            />
+
             <button
               type="button"
               onClick={() => setActiveTab('sanctuary')}
-              className={`py-1.5 px-3 rounded-full text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
+              className={`relative z-10 py-1.5 px-3 rounded-full text-xs font-bold transition-colors duration-200 flex items-center justify-center gap-1.5 cursor-pointer ${
                 activeTab === 'sanctuary'
-                  ? 'bg-[#18181B] text-white shadow-xs'
+                  ? 'text-white'
                   : 'text-[#71717A] hover:text-[#18181B]'
               }`}
             >
@@ -417,9 +428,9 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
             <button
               type="button"
               onClick={() => setActiveTab('impact')}
-              className={`py-1.5 px-3 rounded-full text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
+              className={`relative z-10 py-1.5 px-3 rounded-full text-xs font-bold transition-colors duration-200 flex items-center justify-center gap-1.5 cursor-pointer ${
                 activeTab === 'impact'
-                  ? 'bg-[#18181B] text-white shadow-xs'
+                  ? 'text-white'
                   : 'text-[#71717A] hover:text-[#18181B]'
               }`}
             >

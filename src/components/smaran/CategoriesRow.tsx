@@ -23,6 +23,20 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
   const authors = SacredDatabase.getDisplayAuthors();
   const relations = SacredDatabase.getSacredTopics();
 
+  const tabsList: {
+    id: ContentBarTab;
+    label: string;
+    count: number;
+    icon: React.ComponentType<{ className?: string }>;
+    iconColor: string;
+  }[] = [
+    { id: 'books', label: 'पावन ग्रंथ', count: books.length, icon: BookOpen, iconColor: 'text-amber-600' },
+    { id: 'authors', label: 'रसिक आचार्य', count: authors.length, icon: Feather, iconColor: 'text-purple-600' },
+    { id: 'relations', label: 'लीला एवं धाम', count: relations.length, icon: Landmark, iconColor: 'text-[#0284C7]' },
+  ];
+
+  const activeIndex = Math.max(0, tabsList.findIndex((t) => t.id === activeTab));
+
   return (
     <section className="w-full bg-white rounded-[32px] p-6 sm:p-7 border border-neutral-200/80 shadow-[0_4px_24px_rgba(0,0,0,0.03)] mb-6 space-y-4">
       {/* 1. Header with Royal Purple Dot & Crisp Obsidian Typography */}
@@ -52,46 +66,40 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
         </button>
       </div>
 
-      {/* 2. Clean Segmented Category Switcher */}
-      <div className="w-full flex items-center gap-1.5 sm:gap-2 p-1.5 bg-[#F4F4F5]/70 rounded-[22px] border border-neutral-200/60">
-        <button
-          type="button"
-          onClick={() => setActiveTab('books')}
-          className={`flex-1 py-2.5 px-3 rounded-[16px] text-xs font-bold transition-colors cursor-pointer select-none flex items-center justify-center gap-1.5 ${
-            activeTab === 'books'
-              ? 'bg-white text-[#18181B] shadow-[0_2px_8px_rgba(0,0,0,0.06)] border border-neutral-200/80'
-              : 'text-[#71717A] hover:text-[#18181B] hover:bg-white/60'
-          }`}
-        >
-          <BookOpen className="w-3.5 h-3.5 text-amber-600" />
-          <span>पावन ग्रंथ ({books.length})</span>
-        </button>
+      {/* 2. Clean Segmented Category Switcher with Elastic Sliding Pill */}
+      <div className="relative w-full grid grid-cols-3 p-1.5 bg-[#F4F4F5]/70 rounded-[22px] border border-neutral-200/60">
+        {/* Dynamic Elastic Sliding Indicator Bar */}
+        <span
+          aria-hidden="true"
+          className="absolute top-1.5 bottom-1.5 rounded-[16px] bg-white shadow-[0_2px_10px_rgba(0,0,0,0.06)] border border-neutral-200/80 pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+          style={{
+            width: 'calc((100% - 12px) / 3)',
+            left: '6px',
+            transform: `translateX(${activeIndex * 100}%)`,
+          }}
+        />
 
-        <button
-          type="button"
-          onClick={() => setActiveTab('authors')}
-          className={`flex-1 py-2.5 px-3 rounded-[16px] text-xs font-bold transition-colors cursor-pointer select-none flex items-center justify-center gap-1.5 ${
-            activeTab === 'authors'
-              ? 'bg-white text-[#18181B] shadow-[0_2px_8px_rgba(0,0,0,0.06)] border border-neutral-200/80'
-              : 'text-[#71717A] hover:text-[#18181B] hover:bg-white/60'
-          }`}
-        >
-          <Feather className="w-3.5 h-3.5 text-purple-600" />
-          <span>रसिक आचार्य ({authors.length})</span>
-        </button>
-
-        <button
-          type="button"
-          onClick={() => setActiveTab('relations')}
-          className={`flex-1 py-2.5 px-3 rounded-[16px] text-xs font-bold transition-colors cursor-pointer select-none flex items-center justify-center gap-1.5 ${
-            activeTab === 'relations'
-              ? 'bg-white text-[#18181B] shadow-[0_2px_8px_rgba(0,0,0,0.06)] border border-neutral-200/80'
-              : 'text-[#71717A] hover:text-[#18181B] hover:bg-white/60'
-          }`}
-        >
-          <Landmark className="w-3.5 h-3.5 text-[#0284C7]" />
-          <span>लीला एवं धाम ({relations.length})</span>
-        </button>
+        {tabsList.map((tab) => {
+          const Icon = tab.icon;
+          const isActive = activeTab === tab.id;
+          return (
+            <button
+              key={tab.id}
+              type="button"
+              onClick={() => setActiveTab(tab.id)}
+              className={`relative z-10 py-2.5 px-2 sm:px-3 rounded-[16px] text-xs font-bold transition-colors duration-200 cursor-pointer select-none flex items-center justify-center gap-1.5 ${
+                isActive
+                  ? 'text-[#18181B]'
+                  : 'text-[#71717A] hover:text-[#18181B]'
+              }`}
+            >
+              <Icon className={`w-3.5 h-3.5 shrink-0 ${tab.iconColor}`} />
+              <span className="truncate">
+                {tab.label} ({tab.count})
+              </span>
+            </button>
+          );
+        })}
       </div>
 
       {/* 3. SECTION A: Canonical Books - Graphics Friendly Layout */}

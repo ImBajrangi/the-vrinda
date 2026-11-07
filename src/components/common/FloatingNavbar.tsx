@@ -101,14 +101,27 @@ export const FloatingNavbar: React.FC<FloatingNavbarProps> = ({
     { id: 'milestones' as NavTab, label: 'Streaks', icon: Award },
   ];
 
+  const activeIndex = Math.max(0, tabs.findIndex((tab) => tab.id === activeTab));
+
   return (
     // Only displayed on mobile (< md). On tablet & desktop, top header navigation takes over.
     <div className="md:hidden fixed bottom-3.5 min-[380px]:bottom-5 left-0 right-0 z-40 flex items-center justify-center gap-2 px-2.5 max-w-sm w-full mx-auto pointer-events-none box-border">
       {/* Fluid responsive floating nav pill */}
       <nav
         aria-label="Mobile Navigation"
-        className="pointer-events-auto flex-1 min-w-0 max-w-[290px] h-[56px] rounded-[30px] bg-white/95 backdrop-blur-2xl shadow-[0_12px_36px_rgba(0,0,0,0.08)] border border-neutral-200/80 flex items-center justify-between p-1 box-border"
+        className="relative pointer-events-auto flex-1 min-w-0 max-w-[290px] h-[56px] rounded-[30px] bg-white/95 backdrop-blur-2xl shadow-[0_12px_36px_rgba(0,0,0,0.08)] border border-neutral-200/80 flex items-center justify-between p-1 box-border"
       >
+        {/* Dynamic Elastic Sliding Indicator Bar */}
+        <span
+          aria-hidden="true"
+          className="absolute top-1 bottom-1 rounded-[22px] bg-[#18181B] shadow-sm pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+          style={{
+            width: 'calc((100% - 8px) / 4)',
+            left: '4px',
+            transform: `translateX(${activeIndex * 100}%)`,
+          }}
+        />
+
         {tabs.map((tab) => {
           const Icon = tab.icon;
           const isActive = activeTab === tab.id;
@@ -117,13 +130,13 @@ export const FloatingNavbar: React.FC<FloatingNavbarProps> = ({
               key={tab.id}
               type="button"
               onClick={() => onSelectTab(tab.id)}
-              className={`border-0 text-[10px] font-sans flex-1 min-w-0 h-[46px] flex flex-col items-center justify-center gap-0.5 py-1 px-0.5 rounded-[22px] transition-all cursor-pointer ${
+              className={`relative z-10 border-0 text-[10px] font-sans flex-1 min-w-0 h-[46px] flex flex-col items-center justify-center gap-0.5 py-1 px-0.5 rounded-[22px] transition-colors duration-200 cursor-pointer ${
                 isActive
-                  ? 'bg-[#18181B] text-white font-bold shadow-xs'
+                  ? 'text-white font-bold'
                   : 'text-[#71717A] hover:text-[#18181B] font-semibold'
               }`}
             >
-              <Icon className={`w-4 h-4 stroke-[2.2] shrink-0 ${isActive ? 'text-amber-400' : 'text-[#71717A]'}`} />
+              <Icon className={`w-4 h-4 stroke-[2.2] shrink-0 transition-colors duration-200 ${isActive ? 'text-amber-400' : 'text-[#71717A]'}`} />
               <span className="leading-none truncate w-full text-center">{tab.label}</span>
             </button>
           );

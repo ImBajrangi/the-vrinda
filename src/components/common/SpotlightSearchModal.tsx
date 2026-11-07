@@ -69,9 +69,6 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
     }
   }, [isRendered]);
 
-  if (!isRendered) return null;
-  if (typeof document === 'undefined') return null;
-
   // Search Results
   const matchingPadas = (activeFilter === 'all' || activeFilter === 'padas')
     ? SacredDatabase.search(query, 12)
@@ -92,6 +89,29 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
     : [];
 
   const totalResults = matchingPadas.length + matchingSaints.length + matchingGranthas.length;
+
+  // Filter Indicator Pill State with Elastic Spring Physics
+  const filterRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
+  const [filterPillStyle, setFilterPillStyle] = useState<{ left: number; width: number; ready: boolean }>({
+    left: 0,
+    width: 0,
+    ready: false,
+  });
+
+  useEffect(() => {
+    if (!isRendered) return;
+    const el = filterRefs.current[activeFilter];
+    if (el) {
+      setFilterPillStyle({
+        left: el.offsetLeft,
+        width: el.offsetWidth,
+        ready: true,
+      });
+    }
+  }, [activeFilter, isRendered, matchingPadas.length, matchingSaints.length, matchingGranthas.length]);
+
+  if (!isRendered) return null;
+  if (typeof document === 'undefined') return null;
 
   return createPortal(
     <div
@@ -133,27 +153,46 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
           </kbd>
         </div>
 
-        {/* Filter Chips Bar */}
-        <div className="flex items-center gap-1.5 px-4 sm:px-5 py-2 bg-[#FAFAFA] border-b border-neutral-100 overflow-x-auto no-scrollbar">
+        {/* Filter Chips Bar with Elastic Sliding Pill */}
+        <div className="relative flex items-center gap-1.5 px-4 sm:px-5 py-2 bg-[#FAFAFA] border-b border-neutral-100 overflow-x-auto no-scrollbar">
+          {/* Dynamic Elastic Sliding Indicator Bar */}
+          {filterPillStyle.ready && (
+            <span
+              aria-hidden="true"
+              className="absolute top-2 bottom-2 rounded-full bg-[#18181B] shadow-xs pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+              style={{
+                transform: `translateX(${filterPillStyle.left}px)`,
+                width: `${filterPillStyle.width}px`,
+                left: 0,
+              }}
+            />
+          )}
+
           {[
             { id: 'all', label: 'सभी' },
             { id: 'padas', label: `पद (${matchingPadas.length})` },
             { id: 'saints', label: `संत (${matchingSaints.length})` },
             { id: 'granthas', label: `ग्रन्थ (${matchingGranthas.length})` },
-          ].map((f) => (
-            <button
-              key={f.id}
-              type="button"
-              onClick={() => setActiveFilter(f.id as any)}
-              className={`px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer ${
-                activeFilter === f.id
-                  ? 'bg-[#18181B] text-white shadow-xs'
-                  : 'bg-neutral-100 text-[#71717A] hover:text-[#18181B]'
-              }`}
-            >
-              {f.label}
-            </button>
-          ))}
+          ].map((f) => {
+            const isActive = activeFilter === f.id;
+            return (
+              <button
+                key={f.id}
+                ref={(el) => {
+                  filterRefs.current[f.id] = el;
+                }}
+                type="button"
+                onClick={() => setActiveFilter(f.id as any)}
+                className={`relative z-10 px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer ${
+                  isActive
+                    ? 'text-white'
+                    : 'text-[#71717A] hover:text-[#18181B]'
+                }`}
+              >
+                {f.label}
+              </button>
+            );
+          })}
         </div>
 
         {/* Scrollable Results Area */}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import {
   Play,
@@ -67,6 +67,25 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     selectedGranthaId || getReaderStateSync().selectedTradition || 'all'
   );
   const [selectedRaga, setSelectedRaga] = useState<string>('all');
+
+  // Scripture Category Pills Sliding Indicator
+  const granthaRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
+  const [granthaPillStyle, setGranthaPillStyle] = useState<{ left: number; width: number; ready: boolean }>({
+    left: 0,
+    width: 0,
+    ready: false,
+  });
+
+  useEffect(() => {
+    const el = granthaRefs.current[selectedGrantha];
+    if (el) {
+      setGranthaPillStyle({
+        left: el.offsetLeft,
+        width: el.offsetWidth,
+        ready: true,
+      });
+    }
+  }, [selectedGrantha]);
 
   // Dynamically compute available classical ragas based on selected scripture collection
   const availableRagas = useMemo(() => {
@@ -690,33 +709,55 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       {/* ========================================================================= */}
       {!isFocusReadingMode && (
         <div className="mb-5 space-y-2.5">
-          <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1">
+          <div className="relative flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1">
+            {/* Dynamic Elastic Sliding Indicator Bar */}
+            {granthaPillStyle.ready && (
+              <span
+                aria-hidden="true"
+                className="absolute top-0 bottom-1 rounded-full bg-[#18181B] shadow-xs pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+                style={{
+                  transform: `translateX(${granthaPillStyle.left}px)`,
+                  width: `${granthaPillStyle.width}px`,
+                  left: 0,
+                }}
+              />
+            )}
+
             <button
+              ref={(el) => {
+                granthaRefs.current['all'] = el;
+              }}
               type="button"
               onClick={() => handleSelectGrantha('all')}
-              className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer select-none ${
+              className={`relative z-10 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer select-none ${
                 selectedGrantha === 'all'
-                  ? 'bg-[#18181B] text-white shadow-xs'
-                  : 'bg-white text-[#71717A] hover:text-[#18181B] border border-neutral-200/80'
+                  ? 'text-white'
+                  : 'text-[#71717A] hover:text-[#18181B] bg-white/70'
               }`}
             >
               All Scriptures ({allPadas.length})
             </button>
-            {allGranthas.map((g) => (
-              <button
-                key={g.id}
-                type="button"
-                onClick={() => handleSelectGrantha(g.id)}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer select-none ${
-                  selectedGrantha === g.id
-                    ? 'bg-[#18181B] text-white shadow-xs'
-                    : 'bg-white text-[#71717A] hover:text-[#18181B] border border-neutral-200/80 hover:bg-neutral-50'
-                }`}
-              >
-                <span>{g.name}</span>
-                <span className="ml-1 text-[10px] opacity-70 font-mono">({g.count})</span>
-              </button>
-            ))}
+            {allGranthas.map((g) => {
+              const isActive = selectedGrantha === g.id;
+              return (
+                <button
+                  key={g.id}
+                  ref={(el) => {
+                    granthaRefs.current[g.id] = el;
+                  }}
+                  type="button"
+                  onClick={() => handleSelectGrantha(g.id)}
+                  className={`relative z-10 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer select-none ${
+                    isActive
+                      ? 'text-white'
+                      : 'text-[#71717A] hover:text-[#18181B] bg-white/70'
+                  }`}
+                >
+                  <span>{g.name}</span>
+                  <span className="ml-1 text-[10px] opacity-70 font-mono">({g.count})</span>
+                </button>
+              );
+            })}
           </div>
 
           {/* Raga Sub-Filter Strip: Only display if real classical ragas exist for current scope */}

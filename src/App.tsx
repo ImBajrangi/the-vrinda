@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Radio, Sun, Heart, Check, Sparkles, ExternalLink } from 'lucide-react';
 import { FloatingNavbar, NavTab } from './components/common/FloatingNavbar';
 import { DynamicNotchNavbar } from './components/common/DynamicNotchNavbar';
@@ -124,6 +124,25 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
 
   const [weekDays] = useState<DayItem[]>(() => getDynamicWeekDays());
   const featuredPad = SacredDatabase.getAllPadas()[0];
+
+  // Feed Category Tabs Elastic Indicator
+  const feedTabRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
+  const [feedPillStyle, setFeedPillStyle] = useState<{ left: number; width: number; ready: boolean }>({
+    left: 0,
+    width: 0,
+    ready: false,
+  });
+
+  useEffect(() => {
+    const el = feedTabRefs.current[activeFeedTab];
+    if (el) {
+      setFeedPillStyle({
+        left: el.offsetLeft,
+        width: el.offsetWidth,
+        ready: true,
+      });
+    }
+  }, [activeFeedTab]);
 
   // Global Spotlight Keyboard Shortcut (Cmd+K / Ctrl+K)
   useEffect(() => {
@@ -652,42 +671,53 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                   </button>
                 </div>
 
-                {/* 3-Stream Segmented Switcher in Soft Off-White */}
-                <div className="w-full flex items-center gap-1.5 sm:gap-2 p-1.5 bg-[#F4F4F5]/70 rounded-[22px] border border-neutral-200/60">
+                {/* 3-Stream Segmented Switcher in Soft Off-White with Elastic Sliding Pill */}
+                <div className="relative w-full grid grid-cols-3 p-1.5 bg-[#F4F4F5]/70 rounded-[22px] border border-neutral-200/60">
+                  {/* Dynamic Elastic Sliding Indicator Bar */}
+                  <span
+                    aria-hidden="true"
+                    className="absolute top-1.5 bottom-1.5 rounded-[16px] bg-white shadow-[0_2px_10px_rgba(0,0,0,0.06)] border border-neutral-200/80 pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+                    style={{
+                      width: 'calc((100% - 12px) / 3)',
+                      left: '6px',
+                      transform: `translateX(${activeSanctuaryStream === 'ashtayama' ? 0 : activeSanctuaryStream === 'audio' ? 100 : 200}%)`,
+                    }}
+                  />
+
                   <button
                     type="button"
                     onClick={() => setActiveSanctuaryStream('ashtayama')}
-                    className={`flex-1 py-2.5 px-3 rounded-[16px] text-xs font-bold transition-colors cursor-pointer select-none flex items-center justify-center gap-1.5 ${
+                    className={`relative z-10 py-2.5 px-2 sm:px-3 rounded-[16px] text-xs font-bold transition-colors duration-200 cursor-pointer select-none flex items-center justify-center gap-1.5 ${
                       activeSanctuaryStream === 'ashtayama'
-                        ? 'bg-white text-[#18181B] shadow-[0_2px_8px_rgba(0,0,0,0.06)] border border-neutral-200/80'
-                        : 'text-[#71717A] hover:text-[#18181B] hover:bg-white/60'
+                        ? 'text-[#18181B]'
+                        : 'text-[#71717A] hover:text-[#18181B]'
                     }`}
                   >
-                    <span>Ashtayama 8-Watch Timeline</span>
+                    <span className="truncate">Ashtayama 8-Watch</span>
                   </button>
 
                   <button
                     type="button"
                     onClick={() => setActiveSanctuaryStream('audio')}
-                    className={`flex-1 py-2.5 px-3 rounded-[16px] text-xs font-bold transition-colors cursor-pointer select-none flex items-center justify-center gap-1.5 ${
+                    className={`relative z-10 py-2.5 px-2 sm:px-3 rounded-[16px] text-xs font-bold transition-colors duration-200 cursor-pointer select-none flex items-center justify-center gap-1.5 ${
                       activeSanctuaryStream === 'audio'
-                        ? 'bg-white text-[#18181B] shadow-[0_2px_8px_rgba(0,0,0,0.06)] border border-neutral-200/80'
-                        : 'text-[#71717A] hover:text-[#18181B] hover:bg-white/60'
+                        ? 'text-[#18181B]'
+                        : 'text-[#71717A] hover:text-[#18181B]'
                     }`}
                   >
-                    <span>Featured Pad Shravan</span>
+                    <span className="truncate">Featured Shravan</span>
                   </button>
 
                   <button
                     type="button"
                     onClick={() => setActiveSanctuaryStream('dhyana')}
-                    className={`flex-1 py-2.5 px-3 rounded-[16px] text-xs font-bold transition-colors cursor-pointer select-none flex items-center justify-center gap-1.5 ${
+                    className={`relative z-10 py-2.5 px-2 sm:px-3 rounded-[16px] text-xs font-bold transition-colors duration-200 cursor-pointer select-none flex items-center justify-center gap-1.5 ${
                       activeSanctuaryStream === 'dhyana'
-                        ? 'bg-white text-[#18181B] shadow-[0_2px_8px_rgba(0,0,0,0.06)] border border-neutral-200/80'
-                        : 'text-[#71717A] hover:text-[#18181B] hover:bg-white/60'
+                        ? 'text-[#18181B]'
+                        : 'text-[#71717A] hover:text-[#18181B]'
                     }`}
                   >
-                    <span>Dhyāna & Focus Sanctuary</span>
+                    <span className="truncate">Dhyāna Sanctuary</span>
                   </button>
                 </div>
 
@@ -884,19 +914,35 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                     </div>
                   </div>
 
-                  {/* Horizontal Braj Filter Tabs: Smoothly scrollable on mobile without wrapping */}
-                  <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar flex-nowrap text-[13.5px] text-[#71717A] px-2 py-1.5 mb-2 bg-white rounded-full border border-neutral-200/80 shadow-xs">
+                  {/* Horizontal Braj Filter Tabs: Smoothly scrollable with Elastic Sliding Pill */}
+                  <div className="relative flex items-center gap-1.5 overflow-x-auto no-scrollbar flex-nowrap text-[13.5px] text-[#71717A] px-2 py-1.5 mb-2 bg-white rounded-full border border-neutral-200/80 shadow-xs">
+                    {/* Dynamic Elastic Sliding Indicator Bar */}
+                    {feedPillStyle.ready && (
+                      <span
+                        aria-hidden="true"
+                        className="absolute top-1.5 bottom-1.5 rounded-full bg-[#18181B] shadow-xs pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+                        style={{
+                          transform: `translateX(${feedPillStyle.left}px)`,
+                          width: `${feedPillStyle.width}px`,
+                          left: 0,
+                        }}
+                      />
+                    )}
+
                     {SacredDatabase.getFeedTabs().map((tab) => {
                       const isActive = activeFeedTab === tab.id;
                       return (
                         <button
                           key={tab.id}
+                          ref={(el) => {
+                            feedTabRefs.current[tab.id] = el;
+                          }}
                           type="button"
                           onClick={() => setActiveFeedTab(tab.id)}
-                          className={`px-3 sm:px-3.5 py-1.5 rounded-full whitespace-nowrap transition-colors cursor-pointer shrink-0 text-xs sm:text-[13px] ${
+                          className={`relative z-10 px-3 sm:px-3.5 py-1.5 rounded-full whitespace-nowrap transition-colors duration-200 cursor-pointer shrink-0 text-xs sm:text-[13px] ${
                             isActive
-                              ? 'text-[#18181B] font-bold bg-[#F4F4F5] shadow-xs'
-                              : 'hover:text-[#18181B]'
+                              ? 'text-white font-bold'
+                              : 'text-[#71717A] hover:text-[#18181B]'
                           }`}
                         >
                           {tab.label}

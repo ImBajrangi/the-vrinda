@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   Compass,
   BookOpen,
@@ -43,12 +43,45 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const ashtayama = computeAshtayamaPhase();
 
+  const [indicatorStyle, setIndicatorStyle] = useState<{ left: number; width: number; ready: boolean }>({
+    left: 0,
+    width: 0,
+    ready: false,
+  });
+  const tabRefs = useRef<{ [key in NavTab]?: HTMLButtonElement | null }>({});
+
   const navItems: { id: NavTab; label: string; shortLabel: string; icon: React.ComponentType<{ className?: string }> }[] = [
     { id: 'smaran', label: 'Home Sanctuary', shortLabel: 'Home', icon: Compass },
     { id: 'padavali', label: 'Scriptures', shortLabel: 'Read', icon: BookOpen },
     { id: 'feed', label: 'Darshan Feed', shortLabel: 'Darshan', icon: Sparkles },
     { id: 'milestones', label: 'Devotion', shortLabel: 'Sadhana', icon: Trophy },
   ];
+
+  useEffect(() => {
+    const el = tabRefs.current[activeTab];
+    if (el) {
+      setIndicatorStyle({
+        left: el.offsetLeft,
+        width: el.offsetWidth,
+        ready: true,
+      });
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const el = tabRefs.current[activeTab];
+      if (el) {
+        setIndicatorStyle({
+          left: el.offsetLeft,
+          width: el.offsetWidth,
+          ready: true,
+        });
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [activeTab]);
 
   const handleSelectNav = (tabId: NavTab) => {
     onSelectTab(tabId);
@@ -86,23 +119,39 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
             {/* 2. Center: Segmented Navigation Menu Bar (Desktop & Tablet >= md) */}
             <nav
               aria-label="Main Navigation Menu"
-              className="hidden md:flex items-center gap-1 bg-[#F4F4F5]/70 p-1 rounded-full border border-neutral-200/60"
+              className="relative hidden md:flex items-center gap-1 bg-[#F4F4F5]/80 p-1 rounded-full border border-neutral-200/60"
             >
+              {/* Dynamic Elastic Sliding Indicator Bar */}
+              {indicatorStyle.ready && (
+                <span
+                  aria-hidden="true"
+                  className="absolute top-1 bottom-1 rounded-full bg-[#18181B] shadow-xs pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+                  style={{
+                    transform: `translateX(${indicatorStyle.left}px)`,
+                    width: `${indicatorStyle.width}px`,
+                    left: 0,
+                  }}
+                />
+              )}
+
               {navItems.map((item) => {
                 const Icon = item.icon;
                 const isActive = activeTab === item.id;
                 return (
                   <button
                     key={item.id}
+                    ref={(el) => {
+                      tabRefs.current[item.id] = el;
+                    }}
                     type="button"
                     onClick={() => handleSelectNav(item.id)}
-                    className={`flex items-center gap-1.5 px-3 lg:px-4 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
+                    className={`relative z-10 flex items-center gap-1.5 px-3 lg:px-4 py-1.5 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer ${
                       isActive
-                        ? 'bg-[#18181B] text-white shadow-xs font-bold'
-                        : 'text-[#71717A] hover:text-[#18181B] hover:bg-white/60'
+                        ? 'text-white font-bold'
+                        : 'text-[#71717A] hover:text-[#18181B]'
                     }`}
                   >
-                    <Icon className="w-3.5 h-3.5 shrink-0 stroke-[2.2]" />
+                    <Icon className={`w-3.5 h-3.5 shrink-0 stroke-[2.2] transition-colors duration-200 ${isActive ? 'text-amber-400' : 'text-[#71717A]'}`} />
                     <span className="inline lg:hidden">{item.shortLabel}</span>
                     <span className="hidden lg:inline">{item.label}</span>
                   </button>

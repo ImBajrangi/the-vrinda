@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { X, Search, BookOpen, ChevronRight } from 'lucide-react';
 import { SacredDatabase, CanonicalSaint } from '../../services/sacredDatabase';
@@ -45,6 +45,25 @@ export const SaintsDirectoryModal: React.FC<SaintsDirectoryModalProps> = ({
       };
     }
   }, [isRendered]);
+
+  const traditionRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
+  const [traditionPillStyle, setTraditionPillStyle] = useState<{ left: number; width: number; ready: boolean }>({
+    left: 0,
+    width: 0,
+    ready: false,
+  });
+
+  useEffect(() => {
+    if (!isRendered) return;
+    const el = traditionRefs.current[selectedTradition];
+    if (el) {
+      setTraditionPillStyle({
+        left: el.offsetLeft,
+        width: el.offsetWidth,
+        ready: true,
+      });
+    }
+  }, [selectedTradition, isRendered]);
 
   const handleDismiss = () => {
     setIsClosing(true);
@@ -124,22 +143,40 @@ export const SaintsDirectoryModal: React.FC<SaintsDirectoryModalProps> = ({
             )}
           </div>
 
-          {/* Traditions Chips */}
-          <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar">
-            {traditions.map((t) => (
-              <button
-                key={t.id}
-                type="button"
-                onClick={() => setSelectedTradition(t.id)}
-                className={`px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer ${
-                  selectedTradition === t.id
-                    ? 'bg-[#18181B] text-white shadow-xs'
-                    : 'bg-white text-[#71717A] hover:text-[#18181B] hover:bg-neutral-100'
-                }`}
-              >
-                {t.label}
-              </button>
-            ))}
+          {/* Traditions Chips with Elastic Sliding Pill */}
+          <div className="relative flex items-center gap-1.5 overflow-x-auto no-scrollbar">
+            {traditionPillStyle.ready && (
+              <span
+                aria-hidden="true"
+                className="absolute top-0 bottom-0 rounded-full bg-[#18181B] shadow-xs pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+                style={{
+                  transform: `translateX(${traditionPillStyle.left}px)`,
+                  width: `${traditionPillStyle.width}px`,
+                  left: 0,
+                }}
+              />
+            )}
+
+            {traditions.map((t) => {
+              const isActive = selectedTradition === t.id;
+              return (
+                <button
+                  key={t.id}
+                  ref={(el) => {
+                    traditionRefs.current[t.id] = el;
+                  }}
+                  type="button"
+                  onClick={() => setSelectedTradition(t.id)}
+                  className={`relative z-10 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer ${
+                    isActive
+                      ? 'text-white'
+                      : 'text-[#71717A] hover:text-[#18181B]'
+                  }`}
+                >
+                  {t.label}
+                </button>
+              );
+            })}
           </div>
         </div>
 
