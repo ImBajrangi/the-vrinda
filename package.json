@@ -9,6 +9,8 @@
     "build:server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
     "build:sitemap": "node scripts/generate-sitemap.js",
     "build:ssg": "node scripts/generate-sitemap.js && node scripts/generate-static-granthas.js && tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist/server && node scripts/prerender.js",
+    "test": "node scripts/test-seo-ssr.js && node tests/benchmark-traffic.mjs",
+    "backup": "node scripts/backup-db.js",
     "db:sync": "node scripts/sync-to-supabase.js",
     "serve:ssr": "node server.js",
     "start": "node server.js",

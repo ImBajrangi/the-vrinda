@@ -40,10 +40,14 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
     return () => clearTimeout(handler);
   }, [query]);
 
-  // Lazy-load complete search catalog on first modal open
+  // Lazy-load complete search catalog on first modal open using immutable content-hashed URL
   useEffect(() => {
     if (isOpen) {
-      fetch('/data/catalog.json')
+      SacredDatabase.getManifestAsync()
+        .then((manifest) => {
+          const catalogFile = manifest?.catalog?.file || 'catalog.json';
+          return fetch(`/data/${catalogFile}`);
+        })
         .then((r) => (r.ok ? r.json() : null))
         .then((items) => {
           if (items && Array.isArray(items)) {

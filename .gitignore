@@ -30,4 +30,6 @@ coverage
 *.lcov
 *.tsbuildinfo
 tests/.build_tmp
+backups/
+*.enc
 

@@ -1,4 +1,4 @@
-import { get, set } from 'idb-keyval';
+import { get, set, del } from 'idb-keyval';
 import { supabase } from './supabaseClient';
 import { SACRED_PADS } from '../data/padas';
 import canonicalGranthasData from '../data/canonicalGranthas.json';
@@ -380,53 +380,64 @@ export const SacredDatabase = {
 
     initPromise = (async () => {
       try {
-        // Step 1: Check Client IndexedDB (0ms local retrieval, 0 bytes network bandwidth)
-        const cachedPadas = await get<any[]>('vrind_canonical_padas_v2');
+        // Step 1: Instant Local Hydration (0ms local retrieval, 0 bytes network bandwidth)
+        const cachedManifest = await get<any>('vrind_manifest_v2');
+        if (cachedManifest) activeManifest = cachedManifest;
 
+        const cachedPadas = await get<any[]>('vrind_canonical_padas_v2');
         if (cachedPadas && Array.isArray(cachedPadas) && cachedPadas.length > 50) {
           SacredDatabase.loadPadas(cachedPadas);
-          return;
         }
 
-        // Step 2: Fetch CDN Manifest (~2.8 KB) from Vercel Edge for content-hashed URLs
-        try {
-          const cachedManifest = await get<any>('vrind_manifest_v2');
-          if (cachedManifest) activeManifest = cachedManifest;
+        // Check if hit-chaurasi was cached in IndexedDB
+        const hitMeta = activeManifest?.granthas?.['hit-chaurasi'];
+        const hitKey = hitMeta?.hash ? `vrind_grantha_hit-chaurasi_${hitMeta.hash}` : 'vrind_grantha_hit-chaurasi';
+        const cachedHit = await get<any[]>(hitKey);
+        if (cachedHit && Array.isArray(cachedHit) && cachedHit.length > 0) {
+          SacredDatabase.appendPadas(cachedHit);
+        }
 
+        // Step 2: Background Manifest Revalidation & Cache Invalidation Check (~0.8 KB gz)
+        try {
           const mRes = await fetch('/data/manifest.json');
           if (mRes.ok) {
-            activeManifest = await mRes.json();
-            await set('vrind_manifest_v2', activeManifest);
-          }
-        } catch {}
+            const freshManifest = await mRes.json();
 
-        // Step 3: Fetch Default Scripture Collection via Immutable Content-Hashed URL
-        try {
-          const hitMeta = activeManifest?.granthas?.['hit-chaurasi'];
-          const targetFile = hitMeta?.file || 'hit-chaurasi.json';
-          const cacheKey = hitMeta?.hash ? `vrind_grantha_hit-chaurasi_${hitMeta.hash}` : 'vrind_grantha_hit-chaurasi';
-
-          const chunkRes = await fetch(`/data/granthas/${targetFile}`);
-          if (chunkRes.ok) {
-            const hitChaurasiPadas = await chunkRes.json();
-            SacredDatabase.appendPadas(hitChaurasiPadas);
-            await set(cacheKey, hitChaurasiPadas);
-          }
-        } catch {}
-
-        // Step 4: Lazy Background Sync for Full Offline Catalog (if network allows)
-        if (typeof navigator !== 'undefined' && (navigator as any).connection?.saveData !== true) {
-          setTimeout(async () => {
-            try {
-              const res = await fetch('/data/canonicalPadas.json');
-              if (res.ok) {
-                const fullCatalog = await res.json();
-                SacredDatabase.loadPadas(fullCatalog);
-                await set('vrind_canonical_padas_v2', fullCatalog);
+            // Invalidate stale grantha chunks if content hash changed
+            if (activeManifest?.granthas && freshManifest?.granthas) {
+              for (const [colId, meta] of Object.entries(freshManifest.granthas) as [string, any][]) {
+                const prevMeta = activeManifest.granthas[colId];
+                if (prevMeta && prevMeta.hash && prevMeta.hash !== meta.hash) {
+                  const staleKey = `vrind_grantha_${colId}_${prevMeta.hash}`;
+                  await del(staleKey).catch(() => {});
+                }
               }
-            } catch {}
-          }, 4000);
+            }
+
+            activeManifest = freshManifest;
+            await set('vrind_manifest_v2', freshManifest);
+          }
+        } catch {}
+
+        // Step 3: Ensure default scripture collection (Sri Hit Chaurasi) is loaded
+        const hitPadas = padasByGrantha.get('hit-chaurasi');
+        if (!hitPadas || hitPadas.length === 0) {
+          const currentHitMeta = activeManifest?.granthas?.['hit-chaurasi'];
+          const targetFile = currentHitMeta?.file || 'hit-chaurasi.json';
+          const cacheKey = currentHitMeta?.hash ? `vrind_grantha_hit-chaurasi_${currentHitMeta.hash}` : 'vrind_grantha_hit-chaurasi';
+
+          try {
+            const chunkRes = await fetch(`/data/granthas/${targetFile}`);
+            if (chunkRes.ok) {
+              const freshHitPadas = await chunkRes.json();
+              SacredDatabase.appendPadas(freshHitPadas);
+              await set(cacheKey, freshHitPadas);
+            }
+          } catch {}
         }
+
+        // Step 4: Restore Cloud Bookmarks in Background (non-blocking)
+        this.syncCloudBookmarks().catch(() => {});
       } catch (err) {
         console.warn('SacredDatabase initialization deferred:', err);
       }
@@ -437,6 +448,44 @@ export const SacredDatabase = {
 
   getManifest(): any {
     return activeManifest;
+  },
+
+  async getManifestAsync(): Promise<any> {
+    if (activeManifest) return activeManifest;
+    try {
+      const cached = await get<any>('vrind_manifest_v2');
+      if (cached) {
+        activeManifest = cached;
+        return cached;
+      }
+      const res = await fetch('/data/manifest.json');
+      if (res.ok) {
+        activeManifest = await res.json();
+        await set('vrind_manifest_v2', activeManifest);
+        return activeManifest;
+      }
+    } catch {}
+    return activeManifest;
+  },
+
+  /**
+   * Explicit User-Initiated Offline Library Download.
+   * NEVER runs automatically in the background, preserving zero-cost bandwidth quotas.
+   */
+  async downloadFullLibraryForOffline(onProgress?: (percent: number) => void): Promise<boolean> {
+    try {
+      const res = await fetch('/data/canonicalPadas.json');
+      if (res.ok) {
+        const fullCatalog = await res.json();
+        this.loadPadas(fullCatalog);
+        await set('vrind_canonical_padas_v2', fullCatalog);
+        onProgress?.(100);
+        return true;
+      }
+    } catch (err) {
+      console.warn('Failed to download offline library:', err);
+    }
+    return false;
   },
 
   /**
@@ -813,6 +862,11 @@ export const SacredDatabase = {
         await set('vv_bookmarked_pads', merged);
         if (typeof window !== 'undefined' && window.localStorage) {
           window.localStorage.setItem('vv_bookmarked_pads', JSON.stringify(merged));
+        }
+        if (merged.length !== local.length) {
+          dbListeners.forEach((fn) => {
+            try { fn(); } catch {}
+          });
         }
       }
     } catch {}

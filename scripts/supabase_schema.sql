@@ -64,6 +64,17 @@ EXCEPTION
     WHEN OTHERS THEN NULL;
 END $$;
 
+-- Clean up any existing duplicate bookmarks if present before creating unique index
+DELETE FROM public.user_bookmarks a USING public.user_bookmarks b
+WHERE a.id < b.id 
+  AND a.user_id = b.user_id 
+  AND a.pad_id = b.pad_id;
+
+-- Add Unique Index on (user_id, pad_id) for idempotent uniqueness enforcement
+CREATE UNIQUE INDEX IF NOT EXISTS idx_user_bookmarks_user_pad 
+    ON public.user_bookmarks (user_id, pad_id) 
+    WHERE user_id IS NOT NULL;
+
 -- 5. Create Performance Indexes for Sub-Millisecond Filtering & Range Queries
 CREATE INDEX IF NOT EXISTS idx_padas_collection ON public.padas (collection_id);
 CREATE UNIQUE INDEX IF NOT EXISTS idx_padas_slug ON public.padas (slug);

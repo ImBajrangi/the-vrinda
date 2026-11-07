@@ -124,9 +124,10 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
   const [weekDays] = useState<DayItem[]>(() => getDynamicWeekDays());
   const [dbVersion, setDbVersion] = useState(0);
 
-  // Initiate background client hydration (IndexedDB -> CDN database)
+  // Initiate background client hydration (IndexedDB -> CDN database & cloud bookmarks)
   useEffect(() => {
     SacredDatabase.initialize();
+    SacredDatabase.syncCloudBookmarks();
     return SacredDatabase.subscribe(() => {
       setDbVersion((v) => v + 1);
     });
