@@ -54,13 +54,23 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
   const [isRulesClosing, setIsRulesClosing] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
-  // Lock body scroll when blessing sheet or rules modal is active
+  // Lock body scroll and close on Escape when blessing sheet or rules modal is active
   useEffect(() => {
     if (selectedBadge || isRulesModalOpen) {
       const originalOverflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
+
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+          if (selectedBadge) handleCloseBadge();
+          if (isRulesModalOpen) handleCloseRules();
+        }
+      };
+      window.addEventListener('keydown', handleKeyDown);
+
       return () => {
         document.body.style.overflow = originalOverflow;
+        window.removeEventListener('keydown', handleKeyDown);
       };
     }
   }, [selectedBadge, isRulesModalOpen]);
@@ -89,8 +99,17 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
         setIsMenuOpen(false);
       }
     };
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsMenuOpen(false);
+      }
+    };
     window.addEventListener('click', handleClickOutside);
-    return () => window.removeEventListener('click', handleClickOutside);
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('click', handleClickOutside);
+      window.removeEventListener('keydown', handleKeyDown);
+    };
   }, [isMenuOpen]);
 
   useEffect(() => {

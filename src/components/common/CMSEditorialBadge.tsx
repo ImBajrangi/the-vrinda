@@ -23,6 +23,17 @@ export const CMSEditorialBadge: React.FC<CMSEditorialBadgeProps> = ({ currentPad
     });
   }, []);
 
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
+
   const handleExport = async () => {
     setIsExporting(true);
     try {

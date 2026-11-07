@@ -57,6 +57,41 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
     ready: false,
   });
   const tabRefs = useRef<{ [key in NavTab]?: HTMLButtonElement | null }>({});
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const mobileToggleRef = useRef<HTMLButtonElement>(null);
+
+  // Platform-wide consistent dismissal: close mobile menu on outside tap or Escape
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+
+    const handleOutsideClick = (e: MouseEvent | TouchEvent) => {
+      const target = e.target as Node;
+      if (
+        mobileMenuRef.current &&
+        !mobileMenuRef.current.contains(target) &&
+        mobileToggleRef.current &&
+        !mobileToggleRef.current.contains(target)
+      ) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('pointerdown', handleOutsideClick);
+    document.addEventListener('touchstart', handleOutsideClick);
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('pointerdown', handleOutsideClick);
+      document.removeEventListener('touchstart', handleOutsideClick);
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isMobileMenuOpen]);
 
   const navItems: { id: NavTab; label: string; shortLabel: string; icon: React.ComponentType<{ className?: string }> }[] = [
     { id: 'smaran', label: 'Home Sanctuary', shortLabel: 'Home', icon: Compass },
@@ -133,7 +168,16 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
   };
 
   return (
-    <header className="fixed top-2.5 sm:top-4 left-0 right-0 z-50 w-full px-3 sm:px-6 pointer-events-none select-none transition-all duration-300">
+    <>
+      {/* Dimmed backdrop when mobile menu is open - tap outside closes menu */}
+      {isMobileMenuOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-black/25 backdrop-blur-2xs md:hidden pointer-events-auto"
+          onClick={() => setIsMobileMenuOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+      <header className="fixed top-2.5 sm:top-4 left-0 right-0 z-50 w-full px-3 sm:px-6 pointer-events-none select-none transition-all duration-300">
       <div className="max-w-6xl mx-auto flex flex-col items-center">
         
         {/* Main Floating Glass & Paper Header Bar */}
@@ -267,6 +311,7 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
 
               {/* Mobile Menu Hamburger Button (< md only): Styled in matching porcelain white with generous padding */}
               <button
+                ref={mobileToggleRef}
                 type="button"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 aria-label={isMobileMenuOpen ? 'Close Menu' : 'Open Menu'}
@@ -280,7 +325,11 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
 
         {/* Mobile Dropdown Menu Card (Pure, Ascetic Simplicity & High Utility) */}
         {isMobileMenuOpen && (
-          <div className="pointer-events-auto w-full max-w-[96vw] mt-2 p-3 sm:p-4 rounded-3xl bg-white/98 backdrop-blur-2xl md:hidden apple-view-enter border border-neutral-200/60 shadow-xl space-y-2.5 max-h-[85vh] overflow-y-auto no-scrollbar text-[#18181B]">
+          <div
+            ref={mobileMenuRef}
+            onClick={(e) => e.stopPropagation()}
+            className="pointer-events-auto w-full max-w-[96vw] mt-2 p-3 sm:p-4 rounded-3xl bg-white/98 backdrop-blur-2xl md:hidden apple-view-enter border border-neutral-200/60 shadow-xl space-y-2.5 max-h-[85vh] overflow-y-auto no-scrollbar text-[#18181B]"
+          >
             
             {/* 1. Minimalist Search Bar */}
             {onOpenSearch && (
@@ -489,5 +538,6 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
         )}
       </div>
     </header>
+    </>
   );
 };

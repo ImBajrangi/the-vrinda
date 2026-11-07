@@ -341,13 +341,22 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
 
   const breath = getBreathLabel();
 
-  // Lock body scroll while dhyana focus modal is displayed
+  // Lock body scroll and close on Escape while dhyana focus modal is displayed
   useEffect(() => {
     if (isRendered) {
       const originalOverflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
+
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+          handleDismiss();
+        }
+      };
+      window.addEventListener('keydown', handleKeyDown);
+
       return () => {
         document.body.style.overflow = originalOverflow;
+        window.removeEventListener('keydown', handleKeyDown);
       };
     }
   }, [isRendered]);

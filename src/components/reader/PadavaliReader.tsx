@@ -394,6 +394,41 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   };
 
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const settingsTrayRef = useRef<HTMLDivElement>(null);
+  const settingsToggleTopRef = useRef<HTMLButtonElement>(null);
+  const settingsToggleBottomRef = useRef<HTMLButtonElement>(null);
+
+  // Platform-wide consistent dismissal: close settings tray on outside tap or Escape
+  useEffect(() => {
+    if (!isSettingsOpen) return;
+
+    const handleOutsideClick = (e: MouseEvent | TouchEvent) => {
+      const target = e.target as Node;
+      if (
+        settingsTrayRef.current &&
+        !settingsTrayRef.current.contains(target) &&
+        (!settingsToggleTopRef.current || !settingsToggleTopRef.current.contains(target)) &&
+        (!settingsToggleBottomRef.current || !settingsToggleBottomRef.current.contains(target))
+      ) {
+        setIsSettingsOpen(false);
+      }
+    };
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsSettingsOpen(false);
+      }
+    };
+
+    document.addEventListener('pointerdown', handleOutsideClick);
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('pointerdown', handleOutsideClick);
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isSettingsOpen]);
+
   const [isGlossaryOpen, setIsGlossaryOpen] = useState(false);
   const [isGlossaryClosing, setIsGlossaryClosing] = useState(false);
   const [copiedStanzaIdx, setCopiedStanzaIdx] = useState<number | null>(null);
@@ -419,13 +454,23 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     }, 200);
   };
 
-  // Lock body scroll when either mobile commentary drawer or lexicon sheet modal is active
+  // Lock body scroll and handle Escape key when either mobile commentary drawer or lexicon sheet modal is active
   useEffect(() => {
     if (isGlossaryOpen || isCommentaryOpen) {
       const originalOverflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
+
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+          if (isCommentaryOpen) handleCloseCommentary();
+          if (isGlossaryOpen) handleCloseGlossary();
+        }
+      };
+      window.addEventListener('keydown', handleKeyDown);
+
       return () => {
         document.body.style.overflow = originalOverflow;
+        window.removeEventListener('keydown', handleKeyDown);
       };
     }
   }, [isGlossaryOpen, isCommentaryOpen]);
@@ -835,6 +880,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
           <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
             {/* Reader Customizer Toggle Button */}
             <button
+              ref={settingsToggleTopRef}
               type="button"
               onClick={() => setIsSettingsOpen(!isSettingsOpen)}
               className={`h-8 px-3 rounded-full text-xs font-medium flex items-center gap-1.5 transition-colors cursor-pointer shrink-0 ${
@@ -895,7 +941,10 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       {/* Interactive Typography & Devotional Ambiance Customizer Floating Tray     */}
       {/* ========================================================================= */}
       {isSettingsOpen && (
-        <div className="mb-5 p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-white border border-neutral-200/80 shadow-sm space-y-4 apple-sheet-enter text-[#18181B]">
+        <div
+          ref={settingsTrayRef}
+          className="mb-5 p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-white border border-neutral-200/80 shadow-sm space-y-4 apple-sheet-enter text-[#18181B]"
+        >
           {/* Top Section: Sacred Ambiance Canvas Selection (Full Width 3-Column Grid) */}
           <div className="space-y-2">
             <div className="flex items-center justify-between">
@@ -1698,6 +1747,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 </button>
 
                 <button
+                  ref={settingsToggleBottomRef}
                   type="button"
                   onClick={() => setIsSettingsOpen(!isSettingsOpen)}
                   className="w-8 h-8 rounded-full bg-white hover:bg-white/80 text-[#64748B] hover:text-[#0F172A] flex items-center justify-center transition-colors cursor-pointer"

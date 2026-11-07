@@ -101,8 +101,17 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
         setIsMenuOpen(false);
       }
     };
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsMenuOpen(false);
+      }
+    };
     window.addEventListener('click', handleClick);
-    return () => window.removeEventListener('click', handleClick);
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('click', handleClick);
+      window.removeEventListener('keydown', handleKeyDown);
+    };
   }, [isMenuOpen, post.id]);
 
   // Double-tap tracker for sacred Pushparpan (flower offering)

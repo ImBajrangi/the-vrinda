@@ -36,11 +36,20 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
     if (isOpen && pillarType) {
       const originalOverflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
+
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+          onClose();
+        }
+      };
+      window.addEventListener('keydown', handleKeyDown);
+
       return () => {
         document.body.style.overflow = originalOverflow;
+        window.removeEventListener('keydown', handleKeyDown);
       };
     }
-  }, [isOpen, pillarType]);
+  }, [isOpen, pillarType, onClose]);
 
   if (!isOpen || !pillarType) return null;
   if (typeof document === 'undefined') return null;
@@ -498,11 +507,15 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
   };
 
   return createPortal(
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-fade-in">
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-fade-in"
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+    >
       <div
         className="w-full max-w-lg bg-white rounded-[28px] p-5 sm:p-6 max-h-[90vh] overflow-y-auto no-scrollbar apple-sheet-enter text-[#18181B]"
-        role="dialog"
-        aria-modal="true"
+        onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between pb-3 border-b border-neutral-100 mb-4">
           <span className="text-[11px] font-bold uppercase tracking-wider text-[#71717A] font-mono">

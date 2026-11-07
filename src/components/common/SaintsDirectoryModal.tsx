@@ -35,13 +35,22 @@ export const SaintsDirectoryModal: React.FC<SaintsDirectoryModalProps> = ({
     }
   }, [isOpen, isRendered]);
 
-  // Lock body scroll while modal is active
+  // Lock body scroll and close on Escape while modal is active
   useEffect(() => {
     if (isRendered) {
       const originalOverflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
+
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+          handleDismiss();
+        }
+      };
+      window.addEventListener('keydown', handleKeyDown);
+
       return () => {
         document.body.style.overflow = originalOverflow;
+        window.removeEventListener('keydown', handleKeyDown);
       };
     }
   }, [isRendered]);
