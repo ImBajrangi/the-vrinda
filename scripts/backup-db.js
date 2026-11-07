@@ -23,7 +23,13 @@ const projectRoot = path.resolve(__dirname, '..');
 
 const SUPABASE_URL = process.env.SUPABASE_URL || 'https://zxwecivyeurnyznfvdhw.supabase.co';
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY;
-const ENCRYPTION_SECRET = process.env.BACKUP_ENCRYPTION_KEY || 'vrindopnisad_sacred_vault_key_2026';
+const ENCRYPTION_SECRET = process.env.BACKUP_ENCRYPTION_KEY;
+
+if (!ENCRYPTION_SECRET || ENCRYPTION_SECRET.length < 32) {
+  throw new Error(
+    'BACKUP_ENCRYPTION_KEY must be configured with at least 32 characters.'
+  );
+}
 
 function deriveKey(secret) {
   return crypto.createHash('sha256').update(String(secret)).digest();
