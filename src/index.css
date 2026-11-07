@@ -388,17 +388,8 @@ body {
 
 /* Contemplative Devanagari Typography */
 .dhyana-verse-line {
-  font-family: 'Noto Serif Devanagari', 'Rozha One', serif;
-  line-height: 2.05 !important;
   letter-spacing: 0.015em;
-  color: #1A1A1A;
-}
-
-@media (min-width: 640px) {
-  .dhyana-verse-line {
-    line-height: 2.2 !important;
-    font-size: 1.35rem !important;
-  }
+  color: inherit;
 }
 
 /* Stanza Focus Dimming (Trataka Meditation) */

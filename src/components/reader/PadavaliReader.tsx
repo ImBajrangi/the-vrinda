@@ -1450,27 +1450,27 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
           {/* Collapsible Summary Card */}
           {isSummaryOpen && (
-            <div className="bg-neutral-50 rounded-2xl p-4 sm:p-5 mb-7 apple-view-enter">
-              <div className="flex items-center justify-between pb-2 mb-2 border-b border-neutral-200/60">
-                <div className="flex items-center gap-1.5 text-xs font-bold text-neutral-800 font-serif">
-                  <Sparkles className="w-3.5 h-3.5 text-neutral-600" />
+            <div className={`${currentTheme.bhavarthBg} border ${currentTheme.borderColor} rounded-2xl p-4 sm:p-5 mb-7 apple-view-enter`}>
+              <div className={`flex items-center justify-between pb-2 mb-2 border-b ${currentTheme.borderColor}`}>
+                <div className={`flex items-center gap-1.5 text-xs font-bold ${currentTheme.titleColor} font-serif`}>
+                  <Sparkles className="w-3.5 h-3.5 text-[#CA8A04]" />
                   <span>भाव संक्षेप एवं रस-गूढ़ार्थ</span>
                 </div>
                 <button
                   type="button"
                   onClick={() => setIsSummaryOpen(false)}
-                  className="text-xs text-neutral-400 hover:text-neutral-700 font-medium cursor-pointer"
+                  className={`text-xs ${currentTheme.translitColor} hover:${currentTheme.lineColor} font-medium cursor-pointer`}
                 >
                   बंद करें ×
                 </button>
               </div>
               {isSummaryLoading && !summaryText ? (
-                <div className="flex items-center gap-2 py-3 text-xs text-neutral-500 font-medium min-h-[48px]">
-                  <Sparkles className="w-4 h-4 text-neutral-400 animate-spin" />
+                <div className={`flex items-center gap-2 py-3 text-xs ${currentTheme.translitColor} font-medium min-h-[48px]`}>
+                  <Sparkles className="w-4 h-4 text-[#CA8A04] animate-spin" />
                   <span>प्रस्तुत किया जा रहा है...</span>
                 </div>
               ) : (
-                <p className="text-xs sm:text-sm font-devanagari text-neutral-800 leading-relaxed break-words font-normal">
+                <p className={`text-xs sm:text-sm font-devanagari ${currentTheme.bhavarthText} leading-relaxed break-words font-normal`}>
                   {summaryText ||
                     selectedPad.verses?.[0]?.bhavarth ||
                     'श्री युगल रस का यह पावन पद अंतःकरण में असीम शांति और दिव्य प्रेम का संचार करता है।'}
@@ -1542,7 +1542,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                       return (
                         <p
                           key={lIdx}
-                          className={`dhyana-verse-line ${fontClass} font-bold tracking-tight ${currentTheme.lineColor} ${
+                          className={`${fontClass} font-bold tracking-tight ${currentTheme.lineColor} ${
                             fontSize === 'sm'
                               ? 'text-[18px] sm:text-[20px] leading-[2.0]'
                               : fontSize === 'md'
@@ -1696,16 +1696,16 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               </div>
             </div>
 
-            {/* Luminous Champagne-Diamond Sacred Footnote */}
-            <div className="bg-[#FAF8F5] rounded-2xl p-4 text-xs text-[#334155] leading-relaxed">
-              <div className="flex items-center gap-1.5 mb-1 text-[#0F172A] font-serif font-bold">
+            {/* Luminous Sacred Footnote */}
+            <div className={`${currentTheme.commentaryBg} border ${currentTheme.borderColor} rounded-2xl p-4 text-xs ${currentTheme.canvasText} leading-relaxed transition-colors`}>
+              <div className={`flex items-center gap-1.5 mb-1 ${currentTheme.titleColor} font-serif font-bold`}>
                 <Sparkles className="w-3.5 h-3.5 text-[#CA8A04]" />
                 <span>नित्य निकुंज विहार दर्शन</span>
               </div>
-              <p className="text-[11.5px] text-[#475569] font-devanagari">
+              <p className={`text-[11.5px] ${currentTheme.translitColor} font-devanagari`}>
                 श्री वृन्दावन धाम में प्रिया-प्रियतम की नित्य विहार लीला अखंड एवं नित्य-नूतन है। यहाँ प्रेम ही साधन है और प्रेम ही साध्य है।
               </p>
-              <div className="pt-2 mt-2 border-t border-[#E5E0D8]/60 flex items-center justify-between text-[10px] text-[#CA8A04] font-mono font-semibold">
+              <div className={`pt-2 mt-2 border-t ${currentTheme.borderColor} flex items-center justify-between text-[10px] ${currentTheme.metaColor} font-mono font-semibold`}>
                 <span>॥ अगाध निकुंज रस ॥</span>
                 <span>राधा कृपा कटाक्ष</span>
               </div>
@@ -1731,10 +1731,10 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             }`}
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between pb-3 border-b border-neutral-100">
+            <div className={`flex items-center justify-between pb-3 border-b ${currentTheme.borderColor}`}>
               <div className="flex items-center gap-2">
-                <Feather className="w-4 h-4 text-neutral-700" />
-                <h3 className="font-semibold text-sm sm:text-base text-[#18181B]">
+                <Feather className={`w-4 h-4 ${currentTheme.translitColor}`} />
+                <h3 className={`font-semibold text-sm sm:text-base ${currentTheme.titleColor}`}>
                   Rasik Commentary & Purport (रसिक भावार्थ)
                 </h3>
               </div>
@@ -1742,25 +1742,25 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 type="button"
                 onClick={handleCloseCommentary}
                 aria-label="Close commentary drawer"
-                className="w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center text-[#18181B] hover:bg-neutral-200 cursor-pointer"
+                className={`w-8 h-8 rounded-full ${currentTheme.cardActiveBg} flex items-center justify-center ${currentTheme.titleColor} hover:opacity-80 cursor-pointer`}
               >
                 <X className="w-4 h-4" />
               </button>
             </div>
 
             {/* Featured Divine Devotional Summary Card */}
-            <div className="bg-neutral-50 p-4 rounded-2xl space-y-2">
-              <div className="flex items-center gap-1.5 text-xs font-bold text-neutral-800">
-                <Sparkles className="w-4 h-4 text-neutral-500" />
+            <div className={`${currentTheme.bhavarthBg} border ${currentTheme.borderColor} p-4 rounded-2xl space-y-2`}>
+              <div className={`flex items-center gap-1.5 text-xs font-bold ${currentTheme.titleColor}`}>
+                <Sparkles className={`w-4 h-4 ${currentTheme.metaColor}`} />
                 <span>दिव्य भाव संक्षेप एवं रस-गूढ़ार्थ</span>
               </div>
               {isSummaryLoading && !summaryText ? (
-                <div className="flex items-center gap-2 py-2 text-xs text-neutral-500 font-medium min-h-[48px]">
-                  <Sparkles className="w-4 h-4 text-neutral-400 animate-spin" />
+                <div className={`flex items-center gap-2 py-2 text-xs ${currentTheme.translitColor} font-medium min-h-[48px]`}>
+                  <Sparkles className="w-4 h-4 text-[#CA8A04] animate-spin" />
                   <span>प्रस्तुत किया जा रहा है...</span>
                 </div>
               ) : (
-                <p className="text-xs sm:text-sm leading-relaxed text-neutral-800 font-devanagari break-words font-normal">
+                <p className={`text-xs sm:text-sm leading-relaxed ${currentTheme.bhavarthText} font-devanagari break-words font-normal`}>
                   {summaryText ||
                     selectedPad.verses?.[0]?.bhavarth ||
                     'श्री युगल रस का यह पावन पद अंतःकरण में असीम शांति और दिव्य प्रेम का संचार करता है।'}
@@ -1771,11 +1771,11 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             {/* Verse-by-verse bhavarth */}
             <div className="space-y-3">
               {selectedPad.verses.map((v) => (
-                <div key={v.stanzaNumber} className="bg-neutral-50 p-3.5 rounded-2xl">
-                  <span className="text-[10px] font-bold text-neutral-500 bg-neutral-100 px-2.5 py-0.5 rounded-full uppercase tracking-wider block mb-1.5 font-mono w-fit">
+                <div key={v.stanzaNumber} className={`${currentTheme.cardActiveBg} border ${currentTheme.borderColor} p-3.5 rounded-2xl`}>
+                  <span className={`text-[10px] font-bold ${currentTheme.metaColor} opacity-90 px-2.5 py-0.5 rounded-full uppercase tracking-wider block mb-1.5 font-mono w-fit`}>
                     चरण {formatDevanagariNumerals(v.stanzaNumber)} भावार्थ
                   </span>
-                  <p className="text-xs sm:text-sm leading-relaxed text-neutral-700">
+                  <p className={`text-xs sm:text-sm leading-relaxed ${currentTheme.canvasText}`}>
                     {v.bhavarth}
                   </p>
                 </div>
@@ -1783,12 +1783,12 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             </div>
 
             {/* Nitya Nikunj Vihar Tattva Section */}
-            <div className="bg-neutral-50 text-[#18181B] rounded-2xl p-4 sm:p-5">
-              <span className="text-[10.5px] text-neutral-700 font-bold uppercase tracking-wider block mb-1.5 flex items-center gap-1.5 font-mono">
-                <Sparkles className="w-3.5 h-3.5 text-neutral-500" />
+            <div className={`${currentTheme.cardActiveBg} border ${currentTheme.borderColor} ${currentTheme.canvasText} rounded-2xl p-4 sm:p-5`}>
+              <span className={`text-[10.5px] ${currentTheme.metaColor} font-bold uppercase tracking-wider block mb-1.5 flex items-center gap-1.5 font-mono`}>
+                <Sparkles className="w-3.5 h-3.5 text-[#CA8A04]" />
                 नित्य निकुंज विहार दर्शन
               </span>
-              <p className="text-xs sm:text-sm leading-relaxed text-neutral-600 font-normal">
+              <p className={`text-xs sm:text-sm leading-relaxed ${currentTheme.translitColor} font-normal`}>
                 श्री वृन्दावन धाम में प्रिया-प्रियतम की नित्य विहार लीला अखंड एवं नित्य-नूतन है। यहाँ प्रेम ही साधन है और प्रेम ही साध्य है।
               </p>
             </div>
