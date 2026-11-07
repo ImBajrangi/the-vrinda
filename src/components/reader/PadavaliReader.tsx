@@ -67,6 +67,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     selectedGranthaId || getReaderStateSync().selectedTradition || 'all'
   );
   const [selectedRaga, setSelectedRaga] = useState<string>('all');
+  const [sidebarQuery, setSidebarQuery] = useState('');
 
   // Scripture Category Pills Sliding Indicator
   const granthaRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
@@ -461,6 +462,20 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       return matchesSearch && matchesTradition && matchesRaga;
     });
   }, [allPadas, searchQuery, selectedTradition, selectedRaga]);
+
+  // Sidebar instant quick-filter for seamless discovery
+  const displayedSidebarPads = useMemo(() => {
+    if (!sidebarQuery.trim()) return filteredPads;
+    const q = sidebarQuery.trim().toLowerCase();
+    return filteredPads.filter(
+      (p) =>
+        p.titleDevanagari.toLowerCase().includes(q) ||
+        (p.titleEnglish && p.titleEnglish.toLowerCase().includes(q)) ||
+        p.author.toLowerCase().includes(q) ||
+        (p.rag && p.rag.toLowerCase().includes(q)) ||
+        (p.verses[0]?.linesDevanagari?.some((l) => l.toLowerCase().includes(q)) ?? false)
+    );
+  }, [filteredPads, sidebarQuery]);
 
   // Current Pada Index in Filtered List for Prev/Next
   const currentIdx = filteredPads.findIndex((p) => p.id === selectedPad.id);
@@ -903,116 +918,135 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
         {/* Left Column: Pada Index Catalog (Desktop only: hidden md:block)           */}
         {/* ========================================================================= */}
         {!isFocusReadingMode && (
-          <div className="hidden md:block md:col-span-4 xl:col-span-3 space-y-2.5 sticky top-24">
-            <div className="flex items-center justify-between px-1 text-xs text-[#71717A]">
-              <span>{filteredPads.length} Verses Available</span>
-              <span className="font-semibold text-[#7C3AED]">
-                {selectedGrantha === 'all' ? 'All Scriptures' : allGranthas.find(g => g.id === selectedGrantha)?.name}
-              </span>
-            </div>
+          <div className="hidden md:block md:col-span-4 xl:col-span-3 sticky top-24">
+            <div className="bg-white rounded-2xl border border-neutral-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.03)] overflow-hidden flex flex-col max-h-[78vh]">
+              {/* 1. Header with Active Scripture Name & Live Filter */}
+              <div className="p-3 bg-[#FAF9F6] border-b border-neutral-100 space-y-2">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="font-bold text-[#18181B] truncate">
+                    {selectedGrantha === 'all'
+                      ? 'समस्त पावन ग्रंथ (All)'
+                      : allGranthas.find((g) => g.id === selectedGrantha)?.name}
+                  </span>
+                  <span className="text-[11px] font-mono font-semibold px-2 py-0.5 rounded-full bg-purple-100 text-[#7C3AED] shrink-0">
+                    {displayedSidebarPads.length} पद
+                  </span>
+                </div>
 
-          {/* Scrollable List with Smooth Capped Rendering */}
-          <div className="space-y-1.5 max-h-[70vh] sm:max-h-[76vh] overflow-y-auto no-scrollbar pr-1">
-            {filteredPads.slice(0, visibleCount).map((pad, idx) => {
-              const isSelected = selectedPad.id === pad.id;
-              const isCurrentlyPlaying = activePlayingPadId === pad.id && isPlaying;
-              return (
-                <div
-                  key={pad.id}
-                  onClick={() => handleSelectPad(pad)}
-                  className={`group relative px-3 py-2.5 rounded-2xl transition-all cursor-pointer flex items-center justify-between gap-3 border ${
-                    isSelected
-                      ? 'bg-purple-50/40 text-[#18181B] border-purple-200/90 shadow-[0_2px_12px_rgba(124,58,237,0.06)]'
-                      : 'bg-white hover:bg-neutral-50/80 text-[#18181B] border-neutral-200/70 hover:border-neutral-300 shadow-2xs'
-                  }`}
-                >
-                  {/* Absolute left accent bar - Never causes content jumping */}
-                  {isSelected && (
-                    <span
-                      aria-hidden="true"
-                      className="absolute left-0 top-2.5 bottom-2.5 w-1 rounded-r-full bg-[#7C3AED]"
-                    />
-                  )}
-
-                  <div className="flex items-center gap-3 min-w-0 flex-1">
-                    {/* Apple Music-grade Track Index / Dancing Audio EQ Slot */}
-                    <div
-                      className={`w-9 h-9 rounded-xl shrink-0 flex items-center justify-center font-mono font-bold text-xs transition-colors select-none ${
-                        isCurrentlyPlaying
-                          ? 'bg-[#7C3AED] text-white shadow-xs'
-                          : isSelected
-                            ? 'bg-purple-100 text-[#7C3AED] border border-purple-200/80'
-                            : 'bg-[#F4F4F5] text-neutral-500 border border-neutral-200/60'
-                      }`}
+                {/* Instant In-Sidebar Quick Filter */}
+                <div className="relative">
+                  <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-neutral-400" />
+                  <input
+                    type="text"
+                    value={sidebarQuery}
+                    onChange={(e) => setSidebarQuery(e.target.value)}
+                    placeholder="पद, टेक या संत खोजें..."
+                    className="w-full pl-8 pr-7 py-1.5 rounded-lg bg-white border border-neutral-200/80 text-xs text-[#18181B] placeholder:text-neutral-400 focus:outline-none focus:border-purple-400 shadow-2xs"
+                  />
+                  {sidebarQuery && (
+                    <button
+                      type="button"
+                      onClick={() => setSidebarQuery('')}
+                      className="absolute right-2 top-1/2 -translate-y-1/2 p-0.5 text-neutral-400 hover:text-neutral-700 cursor-pointer"
                     >
-                      {isCurrentlyPlaying ? (
-                        <div className="flex items-end justify-center gap-0.5 h-3">
-                          <span className="w-0.5 bg-white rounded-full animate-apple-eq-1" />
-                          <span className="w-0.5 bg-white rounded-full animate-apple-eq-2" />
-                          <span className="w-0.5 bg-white rounded-full animate-apple-eq-3" />
-                        </div>
-                      ) : (
-                        <span>{String(idx + 1).padStart(2, '0')}</span>
-                      )}
-                    </div>
+                      <X className="w-3 h-3" />
+                    </button>
+                  )}
+                </div>
+              </div>
 
-                    {/* Verse Title & Meta */}
-                    <div className="min-w-0 flex-1">
-                      <div className={`font-serif font-bold text-sm truncate leading-snug transition-colors ${
-                        isSelected ? 'text-[#7C3AED]' : 'text-[#18181B]'
-                      }`}>
-                        {pad.titleDevanagari}
-                      </div>
-                      <div className="flex items-center gap-1.5 text-[11px] text-[#71717A] truncate font-medium mt-0.5">
-                        <span className="truncate">{pad.author}</span>
-                        {pad.rag && (
-                          <>
-                            <span className="text-neutral-300">•</span>
-                            <span className="text-[#7C3AED] font-mono shrink-0 font-semibold">{pad.rag}</span>
-                          </>
-                        )}
-                      </div>
-                    </div>
+              {/* 2. Unified Scannable List (divide-y, zero bulky card gaps) */}
+              <div className="flex-1 overflow-y-auto divide-y divide-neutral-100/80 custom-scroll">
+                {displayedSidebarPads.length === 0 ? (
+                  <div className="p-6 text-center text-xs text-neutral-400">
+                    कोई पद नहीं मिला ("{sidebarQuery}")
                   </div>
+                ) : (
+                  displayedSidebarPads.slice(0, visibleCount).map((pad, idx) => {
+                    const isSelected = selectedPad.id === pad.id;
+                    const isCurrentlyPlaying = activePlayingPadId === pad.id && isPlaying;
+                    return (
+                      <div
+                        key={pad.id}
+                        onClick={() => handleSelectPad(pad)}
+                        className={`group px-3 py-2 flex items-start gap-2.5 cursor-pointer transition-colors ${
+                          isSelected
+                            ? 'bg-purple-50/70 border-l-[3px] border-l-[#7C3AED]'
+                            : 'hover:bg-neutral-50/70 border-l-[3px] border-l-transparent'
+                        }`}
+                      >
+                        {/* Compact Slim Index Number / Equalizer */}
+                        <div className="w-6 shrink-0 pt-0.5 text-right font-mono text-xs text-neutral-400 select-none">
+                          {isCurrentlyPlaying ? (
+                            <div className="flex items-end justify-end gap-0.5 h-3">
+                              <span className="w-0.5 bg-[#7C3AED] rounded-full animate-apple-eq-1" />
+                              <span className="w-0.5 bg-[#7C3AED] rounded-full animate-apple-eq-2" />
+                              <span className="w-0.5 bg-[#7C3AED] rounded-full animate-apple-eq-3" />
+                            </div>
+                          ) : (
+                            <span className={isSelected ? 'text-[#7C3AED] font-bold' : ''}>
+                              {idx + 1}
+                            </span>
+                          )}
+                        </div>
 
-                  {/* Refined Context-Aware Play/Pause Action Button */}
+                        {/* Verse Title & Meta - Max Width, Never Truncated Early */}
+                        <div className="min-w-0 flex-1">
+                          <div className={`font-serif font-bold text-sm leading-snug break-words ${
+                            isSelected ? 'text-[#7C3AED]' : 'text-[#18181B]'
+                          }`}>
+                            {pad.titleDevanagari}
+                          </div>
+                          <div className="flex items-center gap-1.5 text-[11px] text-[#71717A] mt-0.5 flex-wrap">
+                            <span className="truncate">{pad.author}</span>
+                            {pad.rag && (
+                              <span className="text-[#7C3AED] font-mono font-semibold">
+                                • {pad.rag}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Quiet Play Button */}
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            onPlayPad(pad);
+                          }}
+                          aria-label={`Play ${pad.titleDevanagari}`}
+                          className={`w-7 h-7 rounded-full shrink-0 flex items-center justify-center transition-all cursor-pointer ${
+                            isCurrentlyPlaying
+                              ? 'bg-[#7C3AED] text-white shadow-xs'
+                              : isSelected
+                                ? 'bg-purple-100 text-[#7C3AED] hover:bg-purple-200'
+                                : 'text-neutral-400 hover:text-[#18181B] hover:bg-neutral-100 opacity-60 group-hover:opacity-100'
+                          }`}
+                        >
+                          {isCurrentlyPlaying ? (
+                            <Pause className="w-3 h-3 fill-white" />
+                          ) : (
+                            <Play className="w-3 h-3 fill-current ml-0.5" />
+                          )}
+                        </button>
+                      </div>
+                    );
+                  })
+                )}
+
+                {visibleCount < displayedSidebarPads.length && (
                   <button
                     type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onPlayPad(pad);
-                    }}
-                    aria-label={`Play ${pad.titleDevanagari}`}
-                    className={`w-8 h-8 rounded-full shrink-0 flex items-center justify-center transition-all cursor-pointer ${
-                      isCurrentlyPlaying
-                        ? 'bg-[#7C3AED] text-white shadow-xs'
-                        : isSelected
-                          ? 'bg-[#18181B] text-white shadow-xs'
-                          : 'bg-[#F4F4F5] hover:bg-neutral-200 text-[#71717A] hover:text-[#18181B] border border-neutral-200/60'
-                    }`}
+                    onClick={() => setVisibleCount((c) => c + 30)}
+                    className="w-full py-2.5 bg-[#FAF9F6] text-xs font-semibold text-[#7C3AED] hover:underline cursor-pointer border-t border-neutral-100"
                   >
-                    {isCurrentlyPlaying ? (
-                      <Pause className="w-3.5 h-3.5 fill-white text-white" />
-                    ) : (
-                      <Play className={`w-3.5 h-3.5 ml-0.5 ${isSelected ? 'fill-white text-white' : 'fill-current'}`} />
-                    )}
+                    और पद लोड करें ({displayedSidebarPads.length - visibleCount} शेष)...
                   </button>
-                </div>
-              );
-            })}
-
-            {visibleCount < filteredPads.length && (
-              <button
-                type="button"
-                onClick={() => setVisibleCount((c) => c + 30)}
-                className="w-full py-2.5 rounded-2xl bg-white text-xs font-bold text-[#18181B] border border-neutral-200/80 hover:bg-neutral-50 cursor-pointer shadow-2xs"
-              >
-                Load More Verses ({filteredPads.length - visibleCount} remaining)...
-              </button>
-            )}
+                )}
+              </div>
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
         {/* ========================================================================= */}
         {/* Center Column: Serene Editorial Reading Canvas                             */}
