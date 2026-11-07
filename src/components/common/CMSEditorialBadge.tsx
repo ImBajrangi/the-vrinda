@@ -54,7 +54,7 @@ export const CMSEditorialBadge: React.FC<CMSEditorialBadgeProps> = ({ currentPad
           onClick={() => setIsOpen(false)}
         >
           <div
-            className="w-full max-w-lg bg-white rounded-[28px] border border-neutral-200/80 p-6 shadow-2xl space-y-5 text-[#18181B] apple-sheet-enter relative"
+            className="w-full max-w-lg bg-white rounded-[28px] p-6 space-y-5 text-[#18181B] apple-sheet-enter relative"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
@@ -142,7 +142,7 @@ export const CMSEditorialBadge: React.FC<CMSEditorialBadgeProps> = ({ currentPad
                 type="button"
                 onClick={handleExport}
                 disabled={isExporting}
-                className="w-full py-2.5 px-4 rounded-full bg-[#18181B] hover:bg-[#27272A] text-white text-xs font-bold flex items-center justify-center gap-2 shadow-xs cursor-pointer transition-colors"
+                className="w-full py-2.5 px-4 rounded-full bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] text-xs font-bold flex items-center justify-center gap-2 cursor-pointer transition-colors"
               >
                 <Download className="w-3.5 h-3.5" />
                 <span>{isExporting ? 'Exporting 4,204 Verses...' : 'Export Full CMS Manifest (JSON)'}</span>

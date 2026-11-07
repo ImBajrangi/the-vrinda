@@ -367,7 +367,7 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className={`w-full max-w-2xl bg-white text-[#111111] rounded-[32px] border border-neutral-200/80 shadow-[0_24px_64px_rgba(0,0,0,0.4)] flex flex-col max-h-[92vh] overflow-hidden ${
+        className={`w-full max-w-2xl bg-white text-[#111111] rounded-[32px] flex flex-col max-h-[92vh] overflow-hidden ${
           isClosing ? 'modal-dialog-exit' : 'modal-dialog-enter'
         }`}
       >
@@ -402,11 +402,11 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
               title="108Hz Sacred Tanpura Drone"
               className={`p-2.5 rounded-full transition-colors cursor-pointer ${
                 isAudioEnabled
-                  ? 'bg-amber-100 text-amber-900'
-                  : 'bg-neutral-100 text-[#71717A] hover:text-[#18181B]'
+                  ? 'bg-[#FEF08A] text-[#78350F]'
+                  : 'bg-[#FAF6EE] text-[#71717A] hover:text-[#18181B]'
               }`}
             >
-              {isAudioEnabled ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
+              {isAudioEnabled ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4 text-neutral-400" />}
             </button>
 
             {/* Close Button */}
@@ -414,7 +414,7 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
               type="button"
               onClick={handleFinishSession}
               aria-label="Close Focus Sanctuary"
-              className="p-2.5 rounded-full bg-neutral-100 hover:bg-neutral-200 text-[#71717A] hover:text-[#18181B] transition-colors cursor-pointer"
+              className="p-2.5 rounded-full bg-[#FAF6EE] hover:bg-[#FEFCE8] text-[#71717A] hover:text-[#18181B] transition-colors cursor-pointer"
             >
               <X className="w-4 h-4" />
             </button>
@@ -423,11 +423,11 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
 
         {/* Segmented Pill Navigation Tabs (Clean, Single-Line, Zero Wrapping) */}
         <div className="px-4 pt-1 pb-3 bg-white flex items-center justify-center">
-          <div className="relative w-full max-w-md grid grid-cols-2 p-1 bg-[#F4F4F5] rounded-full border border-neutral-200/80 shadow-2xs">
+          <div className="relative w-full max-w-md grid grid-cols-2 p-1 bg-[#FAF6EE] rounded-full">
             {/* Dynamic Elastic Sliding Indicator Bar */}
             <span
               aria-hidden="true"
-              className="absolute top-1 bottom-1 rounded-full bg-[#18181B] shadow-xs pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+              className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
               style={{
                 width: 'calc((100% - 8px) / 2)',
                 left: '4px',
@@ -440,7 +440,7 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
               onClick={() => setActiveTab('sanctuary')}
               className={`relative z-10 py-1.5 px-3 rounded-full text-xs font-bold transition-colors duration-200 flex items-center justify-center gap-1.5 cursor-pointer ${
                 activeTab === 'sanctuary'
-                  ? 'text-white'
+                  ? 'text-[#18181B]'
                   : 'text-[#71717A] hover:text-[#18181B]'
               }`}
             >
@@ -452,7 +452,7 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
               onClick={() => setActiveTab('impact')}
               className={`relative z-10 py-1.5 px-3 rounded-full text-xs font-bold transition-colors duration-200 flex items-center justify-center gap-1.5 cursor-pointer ${
                 activeTab === 'impact'
-                  ? 'text-white'
+                  ? 'text-[#18181B]'
                   : 'text-[#71717A] hover:text-[#18181B]'
               }`}
             >
@@ -523,10 +523,10 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
                 <button
                   type="button"
                   onClick={() => setIsActive(!isActive)}
-                  className={`px-5 py-2.5 rounded-full text-xs font-bold flex items-center gap-2 shadow-xs transition-colors cursor-pointer ${
+                  className={`px-5 py-2.5 rounded-full text-xs font-bold flex items-center gap-2 transition-colors cursor-pointer ${
                     isActive
                       ? 'bg-amber-100 text-amber-800'
-                      : 'bg-[#18181B] hover:bg-[#27272A] text-white'
+                      : 'bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F]'
                   }`}
                 >
                   {isActive ? (
@@ -801,7 +801,7 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
                     {sentimentPillStyle.ready && (
                       <span
                         aria-hidden="true"
-                        className="absolute rounded-xl bg-[#18181B] shadow-xs pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+                        className="absolute rounded-xl bg-[#FEF08A] pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
                         style={{
                           transform: `translate(${sentimentPillStyle.left}px, ${sentimentPillStyle.top}px)`,
                           width: `${sentimentPillStyle.width}px`,
@@ -831,7 +831,7 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
                           onClick={() => setReflectionSentiment(s.id)}
                           className={`relative z-10 py-2 px-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors duration-200 cursor-pointer ${
                             isSelected
-                              ? 'text-white font-bold'
+                              ? 'text-[#18181B] font-bold'
                               : 'text-[#71717A] hover:text-[#18181B]'
                           }`}
                         >
@@ -874,7 +874,7 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
                   <button
                     type="button"
                     onClick={handleSaveReflection}
-                    className="px-4 py-1.5 rounded-full bg-[#18181B] hover:bg-[#27272A] text-white text-xs font-bold shadow-xs cursor-pointer transition-colors flex items-center gap-1.5"
+                    className="px-4 py-1.5 rounded-full bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] text-xs font-bold cursor-pointer transition-colors flex items-center gap-1.5"
                   >
                     <span>अनुभूति संचित करें</span>
                   </button>
@@ -894,7 +894,7 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
           <button
             type="button"
             onClick={handleFinishSession}
-            className="px-4 py-1.5 rounded-full bg-[#18181B] hover:bg-[#27272A] text-white font-bold transition-colors shadow-xs cursor-pointer"
+            className="px-4 py-1.5 rounded-full bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] font-bold transition-colors cursor-pointer"
           >
             पूर्ण करें (Done)
           </button>

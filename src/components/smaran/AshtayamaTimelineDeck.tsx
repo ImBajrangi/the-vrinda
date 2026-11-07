@@ -32,7 +32,7 @@ export const AshtayamaTimelineDeck: React.FC = () => {
   }, [selectedPeriod.id]);
 
   return (
-    <div className="w-full bg-white rounded-[32px] p-6 sm:p-7 border border-neutral-200/80 shadow-[0_4px_24px_rgba(0,0,0,0.03)] space-y-4">
+    <div className="w-full bg-white rounded-[32px] p-6 sm:p-7 space-y-4">
       {/* Header Bar matching pure porcelain aesthetic */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-1">
         <div>
@@ -56,12 +56,12 @@ export const AshtayamaTimelineDeck: React.FC = () => {
       </div>
 
       {/* 8-Pahar Horizontal Interactive Pill Strip with Elastic Sliding Card */}
-      <div className="relative w-full flex items-center gap-1 p-1 bg-[#F4F4F5] rounded-full border border-neutral-200/60 overflow-x-auto no-scrollbar">
+      <div className="relative w-full flex items-center gap-1 p-1 bg-[#FAF6EE] rounded-full overflow-x-auto no-scrollbar">
         {/* Dynamic Elastic Sliding Watch Indicator Pill */}
         {pillStyle.ready && (
           <span
             aria-hidden="true"
-            className="absolute top-1 bottom-1 rounded-full bg-[#18181B] shadow-xs pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+            className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
             style={{
               transform: `translateX(${pillStyle.left}px)`,
               width: `${pillStyle.width}px`,
@@ -87,12 +87,12 @@ export const AshtayamaTimelineDeck: React.FC = () => {
               onClick={() => setSelectedPeriod(period)}
               className={`relative z-10 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-200 flex items-center gap-1.5 shrink-0 cursor-pointer select-none ${
                 isSelected
-                  ? 'text-white font-bold'
+                  ? 'text-[#18181B] font-bold'
                   : 'text-[#71717A] hover:text-[#18181B]'
               }`}
             >
               {isCurrentTime && (
-                <span className={`w-1.5 h-1.5 rounded-full shrink-0 animate-pulse ${isSelected ? 'bg-amber-400' : 'bg-amber-500'}`} />
+                <span className={`w-1.5 h-1.5 rounded-full shrink-0 animate-pulse ${isSelected ? 'bg-amber-600' : 'bg-amber-500'}`} />
               )}
               <span>{period.nameDevanagari}</span>
             </button>
@@ -101,7 +101,7 @@ export const AshtayamaTimelineDeck: React.FC = () => {
       </div>
 
       {/* Selected Watch Formatted as a Graphics-Friendly Editorial Card */}
-      <div className="w-full bg-white rounded-[24px] p-4 sm:p-5 border border-neutral-200/80 shadow-[0_2px_12px_rgba(0,0,0,0.02)] space-y-4">
+      <div className="w-full bg-[#FAF9F5] rounded-[24px] p-4 sm:p-5 space-y-4">
         {/* Dedicated Ashtayama Leela Graphic Slot - Empty by default, ready for painting */}
         <ArtworkGraphicSlot
           src={null}

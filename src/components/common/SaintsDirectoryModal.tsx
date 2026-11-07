@@ -97,7 +97,7 @@ export const SaintsDirectoryModal: React.FC<SaintsDirectoryModalProps> = ({
       }`}
     >
       <div
-        className={`w-full max-w-3xl bg-white border border-neutral-200/80 shadow-[0_24px_70px_rgba(0,0,0,0.25)] rounded-[32px] overflow-hidden flex flex-col max-h-[88vh] ${
+        className={`w-full max-w-3xl bg-white rounded-[32px] overflow-hidden flex flex-col max-h-[88vh] ${
           isClosing ? 'modal-dialog-exit' : 'modal-dialog-enter'
         }`}
         onClick={(e) => e.stopPropagation()}
@@ -144,11 +144,11 @@ export const SaintsDirectoryModal: React.FC<SaintsDirectoryModalProps> = ({
           </div>
 
           {/* Traditions Chips with Elastic Sliding Pill */}
-          <div className="relative flex items-center gap-1.5 overflow-x-auto no-scrollbar">
+          <div className="relative flex items-center gap-1.5 overflow-x-auto no-scrollbar p-1 bg-[#FAF6EE] rounded-full">
             {traditionPillStyle.ready && (
               <span
                 aria-hidden="true"
-                className="absolute top-0 bottom-0 rounded-full bg-[#18181B] shadow-xs pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+                className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
                 style={{
                   transform: `translateX(${traditionPillStyle.left}px)`,
                   width: `${traditionPillStyle.width}px`,
@@ -169,7 +169,7 @@ export const SaintsDirectoryModal: React.FC<SaintsDirectoryModalProps> = ({
                   onClick={() => setSelectedTradition(t.id)}
                   className={`relative z-10 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer ${
                     isActive
-                      ? 'text-white'
+                      ? 'text-[#18181B] font-bold'
                       : 'text-[#71717A] hover:text-[#18181B]'
                   }`}
                 >
@@ -188,7 +188,7 @@ export const SaintsDirectoryModal: React.FC<SaintsDirectoryModalProps> = ({
               return (
                 <div
                   key={s.id}
-                  className="p-4 rounded-[22px] bg-[#FAF9F6] border border-neutral-200/60 flex flex-col justify-between transition-colors hover:bg-white"
+                  className="p-4 rounded-[22px] bg-[#FAF9F6] flex flex-col justify-between transition-colors hover:bg-[#FEFCE8]"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-2">
@@ -235,7 +235,7 @@ export const SaintsDirectoryModal: React.FC<SaintsDirectoryModalProps> = ({
                         onSelectSaint(s);
                         onClose();
                       }}
-                      className="px-3.5 py-1.5 rounded-full bg-[#18181B] hover:bg-[#27272A] text-white text-[11px] font-bold flex items-center gap-1.5 shadow-xs cursor-pointer transition-colors"
+                      className="px-3.5 py-1.5 rounded-full bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] text-[11px] font-bold flex items-center gap-1.5 cursor-pointer transition-colors"
                     >
                       <BookOpen className="w-3.5 h-3.5" />
                       <span>वाणी पद पढ़ें</span>

@@ -178,7 +178,7 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
         }`}
     >
       <div
-        className={`w-full max-w-2xl bg-white border border-neutral-200/90 shadow-[0_20px_60px_rgba(0,0,0,0.15)] rounded-2xl overflow-hidden flex flex-col max-h-[80vh] ${isClosing ? 'modal-dialog-exit' : 'modal-dialog-enter'
+        className={`w-full max-w-2xl bg-white rounded-3xl overflow-hidden flex flex-col max-h-[80vh] ${isClosing ? 'modal-dialog-exit' : 'modal-dialog-enter'
           }`}
         onClick={(e) => e.stopPropagation()}
       >
@@ -210,11 +210,11 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
 
         {/* 2. Full-Width Segmented Scope Bar with Elastic Bouncy Sliding Pill */}
         <div className="px-4 sm:px-5 pt-1.5 pb-3 bg-white">
-          <div className="relative w-full grid grid-cols-4 p-1 bg-[#F4F4F5] rounded-full border border-neutral-200/60">
+          <div className="relative w-full grid grid-cols-4 p-1 bg-[#FAF6EE] rounded-full">
             {/* Dynamic Elastic Sliding Pill spanning exactly 25% */}
             <span
               aria-hidden="true"
-              className="absolute top-1 bottom-1 rounded-full bg-[#18181B] shadow-xs pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+              className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
               style={{
                 width: 'calc((100% - 8px) / 4)',
                 left: '4px',
@@ -232,13 +232,13 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
                     setActiveFilter(f.id);
                     setSelectedIdx(0);
                   }}
-                  className={`relative z-10 py-1.5 px-2 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer flex items-center justify-center gap-1.5 select-none ${isActive ? 'text-white font-bold' : 'text-[#71717A] hover:text-[#18181B]'
+                  className={`relative z-10 py-1.5 px-2 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer flex items-center justify-center gap-1.5 select-none ${isActive ? 'text-[#18181B] font-bold' : 'text-[#71717A] hover:text-[#18181B]'
                     }`}
                 >
                   <span className="truncate">{f.label}</span>
                   <span
                     className={`text-[10px] font-mono font-bold px-1.5 py-0.2 rounded-full leading-none shrink-0 transition-colors ${isActive
-                        ? 'bg-white/20 text-white'
+                        ? 'bg-[#FACC15] text-[#78350F]'
                         : 'bg-neutral-200/70 text-[#71717A]'
                       }`}
                   >

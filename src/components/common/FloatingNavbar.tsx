@@ -109,12 +109,12 @@ export const FloatingNavbar: React.FC<FloatingNavbarProps> = ({
       {/* Fluid responsive floating nav pill */}
       <nav
         aria-label="Mobile Navigation"
-        className="relative pointer-events-auto flex-1 min-w-0 max-w-[290px] h-[56px] rounded-[30px] bg-white/95 backdrop-blur-2xl shadow-[0_12px_36px_rgba(0,0,0,0.08)] border border-neutral-200/80 flex items-center justify-between p-1 box-border"
+        className="relative pointer-events-auto flex-1 min-w-0 max-w-[290px] h-[56px] rounded-[30px] bg-white/95 backdrop-blur-2xl flex items-center justify-between p-1 box-border"
       >
         {/* Dynamic Elastic Sliding Indicator Bar */}
         <span
           aria-hidden="true"
-          className="absolute top-1 bottom-1 rounded-[22px] bg-[#18181B] shadow-sm pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+          className="absolute top-1 bottom-1 rounded-[22px] bg-[#FEF08A] pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
           style={{
             width: 'calc((100% - 8px) / 4)',
             left: '4px',
@@ -132,11 +132,11 @@ export const FloatingNavbar: React.FC<FloatingNavbarProps> = ({
               onClick={() => onSelectTab(tab.id)}
               className={`relative z-10 border-0 text-[10px] font-sans flex-1 min-w-0 h-[46px] flex flex-col items-center justify-center gap-0.5 py-1 px-0.5 rounded-[22px] transition-colors duration-200 cursor-pointer ${
                 isActive
-                  ? 'text-white font-bold'
+                  ? 'text-[#18181B] font-bold'
                   : 'text-[#71717A] hover:text-[#18181B] font-semibold'
               }`}
             >
-              <Icon className={`w-4 h-4 stroke-[2.2] shrink-0 transition-colors duration-200 ${isActive ? 'text-amber-400' : 'text-[#71717A]'}`} />
+              <Icon className={`w-4 h-4 stroke-[2.2] shrink-0 transition-colors duration-200 ${isActive ? 'text-[#B45309]' : 'text-[#71717A]'}`} />
               <span className="leading-none truncate w-full text-center">{tab.label}</span>
             </button>
           );
@@ -149,10 +149,7 @@ export const FloatingNavbar: React.FC<FloatingNavbarProps> = ({
         onClick={onOpenFab}
         aria-label="Open Sacred Audio Player"
         title="Open Sacred Audio Player"
-        className="pointer-events-auto relative w-[50px] h-[50px] rounded-full shrink-0 flex items-center justify-center text-white border-2 border-white shadow-[0_10px_28px_rgba(0,0,0,0.12)] overflow-hidden transition-transform active:scale-95 cursor-pointer"
-        style={{
-          background: 'radial-gradient(circle at 35% 30%, #D97706, #18181B 85%)',
-        }}
+        className="pointer-events-auto relative w-[50px] h-[50px] rounded-full shrink-0 flex items-center justify-center text-[#18181B] bg-[#FACC15] hover:bg-[#FDE047] overflow-hidden transition-transform active:scale-95 cursor-pointer"
       >
         {isPlayingAudio && (
           <span className="absolute inset-0 rounded-full animate-pulse bg-amber-400/30 pointer-events-none" />

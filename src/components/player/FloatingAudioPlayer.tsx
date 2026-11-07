@@ -29,12 +29,12 @@ export const FloatingAudioPlayer: React.FC<FloatingAudioPlayerProps> = ({
       aria-label="Floating Audio Player"
       className="fixed bottom-24 md:bottom-6 left-4 right-4 md:left-auto md:right-8 md:w-[390px] max-w-md mx-auto md:mx-0 z-50 apple-view-enter"
     >
-      <div className="bg-white/95 backdrop-blur-2xl text-[#18181B] rounded-full p-2.5 sm:p-3 shadow-[0_12px_40px_rgba(0,0,0,0.12)] border border-neutral-200/90 flex items-center justify-between gap-3 transition-all duration-300">
+      <div className="bg-white/95 backdrop-blur-2xl text-[#18181B] rounded-full p-2.5 sm:p-3 flex items-center justify-between gap-3 transition-all duration-300">
         {/* Animated Visualizer Icon with Apple Fluid Waves */}
         <div
           onClick={onOpenLyrics}
           title="Open Pad & Lyrics"
-          className="w-11 h-11 rounded-full bg-amber-50 flex items-center justify-center shrink-0 overflow-hidden relative cursor-pointer select-none border border-amber-200/60"
+          className="w-11 h-11 rounded-full bg-[#FEF08A] flex items-center justify-center shrink-0 overflow-hidden relative cursor-pointer select-none"
         >
           <div className="flex items-end gap-1 h-4">
             <span
@@ -88,12 +88,12 @@ export const FloatingAudioPlayer: React.FC<FloatingAudioPlayerProps> = ({
             type="button"
             onClick={onTogglePlay}
             aria-label={isPlaying ? "Pause" : "Play"}
-            className="w-9 h-9 rounded-full bg-[#18181B] hover:bg-neutral-800 text-white flex items-center justify-center font-bold shadow-xs transition-colors cursor-pointer"
+            className="w-9 h-9 rounded-full bg-[#FACC15] hover:bg-[#FDE047] text-[#18181B] flex items-center justify-center font-bold transition-colors cursor-pointer"
           >
             {isPlaying ? (
-              <Pause className="w-4 h-4 fill-white" />
+              <Pause className="w-4 h-4 fill-current text-[#18181B]" />
             ) : (
-              <Play className="w-4 h-4 fill-white ml-0.5" />
+              <Play className="w-4 h-4 fill-current text-[#18181B] ml-0.5" />
             )}
           </button>
 

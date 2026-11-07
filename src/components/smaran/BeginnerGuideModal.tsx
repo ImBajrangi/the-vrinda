@@ -49,7 +49,7 @@ export const BeginnerGuideModal: React.FC<BeginnerGuideModalProps> = ({
       onClick={onClose}
     >
       <div
-        className="w-full max-w-2xl bg-white rounded-[32px] p-6 sm:p-8 shadow-[0_24px_70px_rgba(0,0,0,0.22)] border border-neutral-200/80 max-h-[90vh] overflow-y-auto no-scrollbar apple-sheet-enter text-[#18181B]"
+        className="w-full max-w-2xl bg-white rounded-[32px] p-6 sm:p-8 max-h-[90vh] overflow-y-auto no-scrollbar apple-sheet-enter text-[#18181B]"
         role="dialog"
         aria-modal="true"
         onClick={(e) => e.stopPropagation()}
@@ -112,7 +112,7 @@ export const BeginnerGuideModal: React.FC<BeginnerGuideModalProps> = ({
             tabIndex={0}
             onClick={() => handleSelectPillar('japa')}
             onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && handleSelectPillar('japa')}
-            className="group w-full p-4 sm:p-5 rounded-[22px] bg-white border border-neutral-200/80 hover:border-neutral-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-colors cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 select-none text-left"
+            className="group w-full p-4 sm:p-5 rounded-[22px] bg-[#FAF9F5] hover:bg-[#FEFCE8] transition-colors cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 select-none text-left"
           >
             <div className="flex items-start sm:items-center gap-3.5 flex-1 min-w-0">
               <div className="w-12 h-12 rounded-[18px] bg-amber-50 border border-amber-200/60 flex items-center justify-center shrink-0 text-amber-600 mt-0.5 sm:mt-0">
@@ -148,7 +148,7 @@ export const BeginnerGuideModal: React.FC<BeginnerGuideModalProps> = ({
             tabIndex={0}
             onClick={() => handleSelectPillar('shravan')}
             onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && handleSelectPillar('shravan')}
-            className="group w-full p-4 sm:p-5 rounded-[22px] bg-white border border-neutral-200/80 hover:border-neutral-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-colors cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 select-none text-left"
+            className="group w-full p-4 sm:p-5 rounded-[22px] bg-[#FAF9F5] hover:bg-[#FEFCE8] transition-colors cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 select-none text-left"
           >
             <div className="flex items-start sm:items-center gap-3.5 flex-1 min-w-0">
               <div className="w-12 h-12 rounded-[18px] bg-amber-50 border border-amber-200/60 flex items-center justify-center shrink-0 text-amber-700 mt-0.5 sm:mt-0">
@@ -184,7 +184,7 @@ export const BeginnerGuideModal: React.FC<BeginnerGuideModalProps> = ({
             tabIndex={0}
             onClick={() => handleSelectPillar('svadhyaya')}
             onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && handleSelectPillar('svadhyaya')}
-            className="group w-full p-4 sm:p-5 rounded-[22px] bg-white border border-neutral-200/80 hover:border-neutral-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-colors cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 select-none text-left"
+            className="group w-full p-4 sm:p-5 rounded-[22px] bg-[#FAF9F5] hover:bg-[#FEFCE8] transition-colors cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 select-none text-left"
           >
             <div className="flex items-start sm:items-center gap-3.5 flex-1 min-w-0">
               <div className="w-12 h-12 rounded-[18px] bg-rose-50 border border-rose-200/60 flex items-center justify-center shrink-0 text-rose-600 mt-0.5 sm:mt-0">
@@ -233,10 +233,10 @@ export const BeginnerGuideModal: React.FC<BeginnerGuideModalProps> = ({
             onClose();
             onStartChanting();
           }}
-          className="w-full py-4 px-6 rounded-full bg-[#18181B] hover:bg-[#27272A] text-white text-xs sm:text-sm font-bold flex items-center justify-center gap-2 shadow-[0_4px_16px_rgba(24,24,27,0.18)] transition-colors cursor-pointer select-none"
+          className="w-full py-4 px-6 rounded-full bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-colors cursor-pointer select-none"
         >
           <span>साधना प्रारंभ करें • Begin Daily Sadhana</span>
-          <ArrowRight className="w-4 h-4 text-amber-300" />
+          <ArrowRight className="w-4 h-4 text-amber-700" />
         </button>
       </div>
     </div>,

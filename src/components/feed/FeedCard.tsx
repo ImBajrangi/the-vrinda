@@ -223,7 +223,7 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
   };
 
   return (
-    <article className="w-full bg-[#FAF9F6] rounded-[28px] p-4 sm:p-5 shadow-[0_4px_24px_rgba(0,0,0,0.03)] border border-neutral-200/80 mb-5 transition-colors">
+    <article className="w-full bg-white rounded-[28px] p-4 sm:p-5 mb-5 transition-colors">
       <style>{`
         @keyframes pushparpanFloat {
           0% {
@@ -256,11 +256,11 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
               src={post.authorAvatar}
               alt={post.authorName}
               onError={() => setAvatarError(true)}
-              className="w-10 h-10 sm:w-11 sm:h-11 rounded-full object-cover border-2 border-white shadow-xs shrink-0"
+              className="w-10 h-10 sm:w-11 sm:h-11 rounded-full object-cover shrink-0"
               loading="lazy"
             />
           ) : (
-            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-gradient-to-br from-[#FFF3E0] to-[#FFE0B2] border-2 border-white shadow-xs shrink-0 flex items-center justify-center font-bold text-sm text-[#B84A28] font-devanagari select-none">
+            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-gradient-to-br from-[#FFF3E0] to-[#FFE0B2] shrink-0 flex items-center justify-center font-bold text-sm text-[#B84A28] font-devanagari select-none">
               {post.authorName.slice(0, 1)}
             </div>
           )}
@@ -286,8 +286,8 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
             onClick={toggleFollow}
             className={`text-xs sm:text-[12.5px] font-sans font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded-full transition-colors cursor-pointer shrink-0 ${
               isFollowing
-                ? 'bg-neutral-200 text-[#18181B]'
-                : 'bg-[#18181B] text-white hover:bg-[#27272A]'
+                ? 'bg-[#FEF08A] text-[#78350F] font-bold'
+                : 'bg-[#FACC15] hover:bg-[#FDE047] text-[#18181B] font-bold'
             }`}
           >
             {isFollowing ? 'Following ✓' : 'Follow'}
@@ -300,7 +300,7 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="More options"
               aria-expanded={isMenuOpen}
-              className="w-[34px] h-[34px] rounded-full flex items-center justify-center text-[#111111] border border-white/90 shadow-xs pressable shrink-0 hover:bg-white transition-colors"
+              className="w-[34px] h-[34px] rounded-full flex items-center justify-center text-[#111111] pressable shrink-0 hover:bg-[#FAF6EE] transition-colors"
               style={{
                 background: 'rgba(255, 255, 255, 0.65)',
                 backdropFilter: 'blur(16px)',
@@ -312,7 +312,7 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
 
             {/* Contextual Popover */}
             {isMenuOpen && (
-              <div className="absolute right-0 top-10 z-40 w-56 bg-white border border-black/10 rounded-2xl shadow-2xl p-1.5 apple-dialog-enter text-left">
+              <div className="absolute right-0 top-10 z-40 w-56 bg-white rounded-2xl p-1.5 apple-dialog-enter text-left">
                 <div className="py-0.5 space-y-0.5">
                   <button
                     type="button"
@@ -362,8 +362,8 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
 
       {/* Inline Toast Notification */}
       {toast && (
-        <div className="my-1.5 py-1 px-3 rounded-full bg-[#18181B] text-white text-[11px] font-bold inline-flex items-center gap-1.5 apple-dialog-enter shadow-xs">
-          <CheckCircle2 className="w-3.5 h-3.5 text-amber-400" />
+        <div className="my-1.5 py-1 px-3 rounded-full bg-[#FEF08A] text-[#78350F] text-[11px] font-bold inline-flex items-center gap-1.5 apple-dialog-enter">
+          <CheckCircle2 className="w-3.5 h-3.5 text-amber-600" />
           <span>{toast}</span>
         </div>
       )}
@@ -382,8 +382,8 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
               title="Translation / English meaning"
               className={`flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-semibold transition-colors cursor-pointer shrink-0 ${
                 showEnglish
-                  ? 'bg-[#18181B] text-white'
-                  : 'bg-white/90 text-[#71717A] hover:text-[#18181B]'
+                  ? 'bg-[#FEF08A] text-[#78350F] font-bold'
+                  : 'bg-[#FAF6EE] text-[#71717A] hover:text-[#18181B]'
               }`}
             >
               <Languages className="w-3 h-3" />
@@ -394,14 +394,14 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
 
         {/* Sleek Bilingual English Drawer */}
         {showEnglish && post.contentEnglish && (
-          <div className="mt-1.5 p-2.5 rounded-xl bg-[#FAF9F6] border border-neutral-200/60 text-xs sm:text-[13px] leading-relaxed text-[#52525B] font-serif italic shadow-2xs">
+          <div className="mt-1.5 p-2.5 rounded-xl bg-[#FAF9F5] text-xs sm:text-[13px] leading-relaxed text-[#52525B] font-serif italic">
             <p>{post.contentEnglish}</p>
           </div>
         )}
 
         {/* Devotional AI Summary Drawer */}
         {isSummaryOpen && (
-          <div className="mt-2 bg-amber-50/50 border border-amber-200/80 rounded-2xl p-3 sm:p-3.5 shadow-xs apple-view-enter text-left">
+          <div className="mt-2 bg-[#FEFCE8] rounded-2xl p-3 sm:p-3.5 apple-view-enter text-left">
             <div className="flex items-center justify-between mb-1.5">
               <span className="text-[10px] font-bold text-amber-800 uppercase tracking-wider flex items-center gap-1.5 font-mono">
                 <Sparkles className="w-3.5 h-3.5 text-amber-600" />
@@ -445,7 +445,7 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
       {/* Deity Darshan Photo with Double-Tap Pushparpan and Emoji Tray */}
       <div
         onClick={handlePhotoDoubleTap}
-        className="relative rounded-[24px] overflow-hidden mb-3 aspect-[4/3] bg-black/5 shadow-[0_8px_24px_rgba(0,0,0,0.08)] cursor-pointer select-none group"
+        className="relative rounded-[24px] overflow-hidden mb-3 aspect-[4/3] bg-black/5 cursor-pointer select-none group"
       >
         <img
           src={post.imageUrl}
@@ -458,8 +458,8 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
         {flowerBurst && (
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
             <div className="animate-pushparpan flex flex-col items-center">
-              <span className="text-5xl sm:text-6xl drop-shadow-md select-none">🌸</span>
-              <span className="text-[11px] font-bold text-white bg-black/75 px-2.5 py-0.5 rounded-full mt-1.5 shadow-md">
+              <span className="text-5xl sm:text-6xl select-none">🌸</span>
+              <span className="text-[11px] font-bold text-[#18181B] bg-[#FEF08A] px-2.5 py-0.5 rounded-full mt-1.5">
                 Pushparpan • पुष्पार्पण
               </span>
             </div>
@@ -472,14 +472,14 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
         </div>
       </div>
 
-      {/* Interaction Metrics: Pure White Capsule Pills */}
+      {/* Interaction Metrics: Sunlit Capsule Pills */}
       <div className="flex items-center justify-between text-xs pt-1.5 gap-2">
         <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
           {/* Like Pill */}
           <button
             type="button"
             onClick={toggleLike}
-            className="h-9 px-3.5 sm:px-4 rounded-full bg-white border border-neutral-100 shadow-[0_2px_8px_rgba(0,0,0,0.04)] flex items-center gap-1.5 sm:gap-2 text-xs font-semibold text-[#18181B] hover:bg-neutral-50/80 transition-colors cursor-pointer shrink-0"
+            className="h-9 px-3.5 sm:px-4 rounded-full bg-[#FAF6EE] hover:bg-[#FEFCE8] flex items-center gap-1.5 sm:gap-2 text-xs font-semibold text-[#18181B] transition-colors cursor-pointer shrink-0"
           >
             <Heart
               className={`w-4 h-4 transition-transform active:scale-125 ${
@@ -494,7 +494,7 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
           </button>
 
           {/* Comments Pill */}
-          <div className="h-9 px-3.5 sm:px-4 rounded-full bg-white border border-neutral-100 shadow-[0_2px_8px_rgba(0,0,0,0.04)] flex items-center gap-1.5 sm:gap-2 text-xs font-semibold text-[#18181B] shrink-0">
+          <div className="h-9 px-3.5 sm:px-4 rounded-full bg-[#FAF6EE] flex items-center gap-1.5 sm:gap-2 text-xs font-semibold text-[#18181B] shrink-0">
             <MessageCircle className="w-4 h-4 text-[#71717A] stroke-[1.8]" />
             <span className="font-semibold text-xs sm:text-[13px] text-[#18181B]">
               {formatDevanagariNumerals(post.comments)}
@@ -502,7 +502,7 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
           </div>
 
           {/* Views Pill */}
-          <div className="h-9 px-3.5 sm:px-4 rounded-full bg-white border border-neutral-100 shadow-[0_2px_8px_rgba(0,0,0,0.04)] flex items-center gap-1.5 sm:gap-2 text-xs font-semibold text-[#18181B] shrink-0">
+          <div className="h-9 px-3.5 sm:px-4 rounded-full bg-[#FAF6EE] flex items-center gap-1.5 sm:gap-2 text-xs font-semibold text-[#18181B] shrink-0">
             <Eye className="w-4 h-4 text-[#71717A] stroke-[1.8]" />
             <span className="font-semibold text-xs sm:text-[13px] text-[#18181B]">
               {formattedViews}
@@ -515,15 +515,15 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
           type="button"
           onClick={toggleBookmark}
           aria-label={isBookmarked ? 'उर से हटाएं' : 'उर धरें (सहेजें)'}
-          className={`w-9 h-9 rounded-full flex items-center justify-center shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-neutral-100 cursor-pointer shrink-0 transition-colors ${
+          className={`w-9 h-9 rounded-full flex items-center justify-center cursor-pointer shrink-0 transition-colors ${
             isBookmarked
-              ? 'bg-[#18181B] text-amber-400'
-              : 'bg-white text-[#71717A] hover:text-[#18181B]'
+              ? 'bg-[#FEF08A] text-[#78350F]'
+              : 'bg-[#FAF6EE] text-[#71717A] hover:text-[#18181B]'
           }`}
         >
           <Bookmark
             className={`w-4 h-4 ${
-              isBookmarked ? 'fill-amber-400 text-amber-400' : ''
+              isBookmarked ? 'fill-current text-[#78350F]' : ''
             }`}
           />
         </button>

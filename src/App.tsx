@@ -491,10 +491,10 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                   <button
                     type="button"
                     onClick={() => setIsAffirmedSankalpa(!isAffirmedSankalpa)}
-                    className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-colors flex items-center gap-1 shadow-2xs cursor-pointer ${
+                    className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-colors flex items-center gap-1 cursor-pointer ${
                       isAffirmedSankalpa
                         ? 'bg-amber-600 text-white'
-                        : 'bg-[#18181B] text-white hover:bg-[#27272A]'
+                        : 'bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F]'
                     }`}
                   >
                     {isAffirmedSankalpa ? (
@@ -507,7 +507,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                     )}
                   </button>
 
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-[#F4F4F5] text-[#18181B] font-mono">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-[#FAF6EE] text-[#18181B] font-mono">
                     <Sun className="w-3.5 h-3.5 text-amber-500" />
                     <span>Vrindavan 26°C • Pleasant</span>
                   </span>
@@ -515,7 +515,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
               </div>
 
               {/* Section 1: Daily Temple Seva & Darshan Schedule (Crisp Pure White Porcelain) */}
-              <div className="w-full bg-white rounded-[32px] p-6 sm:p-7 border border-neutral-200/80 shadow-[0_4px_24px_rgba(0,0,0,0.03)] space-y-4 mb-6">
+              <div className="w-full bg-white rounded-[32px] p-6 sm:p-7 space-y-4 mb-6">
                 {/* Header with Today's Tithi */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-neutral-100">
                   <div>
@@ -555,7 +555,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                   {templePillStyle.ready && (
                     <span
                       aria-hidden="true"
-                      className="absolute top-1 bottom-0 rounded-full bg-[#18181B] shadow-xs pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+                      className="absolute top-1 bottom-0 rounded-full bg-[#FEF08A] pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
                       style={{
                         transform: `translateX(${templePillStyle.left}px)`,
                         width: `${templePillStyle.width}px`,
@@ -572,8 +572,8 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                     onClick={() => setTempleFilter('all')}
                     className={`relative z-10 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer select-none ${
                       templeFilter === 'all'
-                        ? 'text-white font-bold'
-                        : 'text-[#71717A] hover:text-[#18181B] bg-[#F4F4F5]'
+                        ? 'text-[#18181B] font-bold'
+                        : 'text-[#71717A] hover:text-[#18181B] bg-[#FAF6EE]'
                     }`}
                   >
                     All Sacred Mandirs (4)
@@ -586,11 +586,11 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                     onClick={() => setTempleFilter('open')}
                     className={`relative z-10 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer select-none flex items-center gap-1.5 ${
                       templeFilter === 'open'
-                        ? 'text-white font-bold'
-                        : 'text-[#71717A] hover:text-[#18181B] bg-[#F4F4F5]'
+                        ? 'text-[#18181B] font-bold'
+                        : 'text-[#71717A] hover:text-[#18181B] bg-[#FAF6EE]'
                     }`}
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
                     Doors Open Now (1)
                   </button>
                   <button
@@ -601,8 +601,8 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                     onClick={() => setTempleFilter('rajbhog')}
                     className={`relative z-10 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer select-none ${
                       templeFilter === 'rajbhog'
-                        ? 'text-white font-bold'
-                        : 'text-[#71717A] hover:text-[#18181B] bg-[#F4F4F5]'
+                        ? 'text-[#18181B] font-bold'
+                        : 'text-[#71717A] hover:text-[#18181B] bg-[#FAF6EE]'
                     }`}
                   >
                     Rajbhog Darshan (1)
@@ -615,8 +615,8 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                     onClick={() => setTempleFilter('evening')}
                     className={`relative z-10 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer select-none ${
                       templeFilter === 'evening'
-                        ? 'text-white font-bold'
-                        : 'text-[#71717A] hover:text-[#18181B] bg-[#F4F4F5]'
+                        ? 'text-[#18181B] font-bold'
+                        : 'text-[#71717A] hover:text-[#18181B] bg-[#FAF6EE]'
                     }`}
                   >
                     Sandhya & Shayana (2)
@@ -689,7 +689,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
               />
 
               {/* Section 3: Sacred Contemplation & Sanctuary Streams Deck (Pure White & Off-White) */}
-              <div id="sanctuary-streams-section" className="w-full bg-white rounded-[32px] p-6 sm:p-7 border border-neutral-200/80 shadow-[0_4px_24px_rgba(0,0,0,0.03)] space-y-4 mb-6">
+              <div id="sanctuary-streams-section" className="w-full bg-white rounded-[32px] p-6 sm:p-7 space-y-4 mb-6">
                 {/* Header */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-1">
                   <div>
@@ -716,13 +716,13 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                   </button>
                 </div>
 
-                {/* 3-Stream Segmented Switcher in Apple/Linear Obsidian Pill */}
+                {/* 3-Stream Segmented Switcher with Elastic Sunlit-Gold Sliding Pill */}
                 <div className="w-full flex justify-center">
-                  <div className="relative w-full max-w-xl grid grid-cols-3 p-1 bg-[#F4F4F5] rounded-full border border-neutral-200/60">
+                  <div className="relative w-full max-w-xl grid grid-cols-3 p-1 bg-[#FAF6EE] rounded-full">
                     {/* Dynamic Elastic Sliding Indicator Bar */}
                     <span
                       aria-hidden="true"
-                      className="absolute top-1 bottom-1 rounded-full bg-[#18181B] shadow-xs pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+                      className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
                       style={{
                         width: 'calc((100% - 8px) / 3)',
                         left: '4px',
@@ -735,11 +735,11 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                       onClick={() => setActiveSanctuaryStream('ashtayama')}
                       className={`relative z-10 py-2 px-3 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer select-none flex items-center justify-center gap-1.5 ${
                         activeSanctuaryStream === 'ashtayama'
-                          ? 'text-white font-bold'
+                          ? 'text-[#18181B] font-bold'
                           : 'text-[#71717A] hover:text-[#18181B]'
                       }`}
                     >
-                      <Sun className={`w-3.5 h-3.5 shrink-0 transition-colors ${activeSanctuaryStream === 'ashtayama' ? 'text-amber-400' : 'text-[#71717A]'}`} />
+                      <Sun className={`w-3.5 h-3.5 shrink-0 transition-colors ${activeSanctuaryStream === 'ashtayama' ? 'text-[#B45309]' : 'text-[#71717A]'}`} />
                       <span className="truncate">Ashtayama 8-Watch</span>
                     </button>
 
@@ -748,11 +748,11 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                       onClick={() => setActiveSanctuaryStream('audio')}
                       className={`relative z-10 py-2 px-3 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer select-none flex items-center justify-center gap-1.5 ${
                         activeSanctuaryStream === 'audio'
-                          ? 'text-white font-bold'
+                          ? 'text-[#18181B] font-bold'
                           : 'text-[#71717A] hover:text-[#18181B]'
                       }`}
                     >
-                      <Radio className={`w-3.5 h-3.5 shrink-0 transition-colors ${activeSanctuaryStream === 'audio' ? 'text-amber-400' : 'text-[#71717A]'}`} />
+                      <Radio className={`w-3.5 h-3.5 shrink-0 transition-colors ${activeSanctuaryStream === 'audio' ? 'text-[#B45309]' : 'text-[#71717A]'}`} />
                       <span className="truncate">Featured Shravan</span>
                     </button>
 
@@ -761,11 +761,11 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                       onClick={() => setActiveSanctuaryStream('dhyana')}
                       className={`relative z-10 py-2 px-3 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer select-none flex items-center justify-center gap-1.5 ${
                         activeSanctuaryStream === 'dhyana'
-                          ? 'text-white font-bold'
+                          ? 'text-[#18181B] font-bold'
                           : 'text-[#71717A] hover:text-[#18181B]'
                       }`}
                     >
-                      <Sparkles className={`w-3.5 h-3.5 shrink-0 transition-colors ${activeSanctuaryStream === 'dhyana' ? 'text-emerald-300' : 'text-[#71717A]'}`} />
+                      <Sparkles className={`w-3.5 h-3.5 shrink-0 transition-colors ${activeSanctuaryStream === 'dhyana' ? 'text-[#B45309]' : 'text-[#71717A]'}`} />
                       <span className="truncate">Dhyāna Sanctuary</span>
                     </button>
                   </div>
@@ -784,7 +784,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                       tabIndex={0}
                       onClick={() => handlePlayPad(featuredPad)}
                       onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && handlePlayPad(featuredPad)}
-                      className="w-full bg-white rounded-[22px] p-3.5 sm:p-4 flex items-center justify-between gap-3 sm:gap-4 border border-neutral-200/80 hover:border-neutral-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-colors cursor-pointer select-none"
+                      className="w-full bg-[#FAF9F5] hover:bg-[#FEFCE8] rounded-[22px] p-3.5 sm:p-4 flex items-center justify-between gap-3 sm:gap-4 transition-colors cursor-pointer select-none"
                     >
                       <div className="flex items-center gap-3.5 sm:gap-4 flex-1 min-w-0">
                         {/* Featured Pad Artwork Slot: Empty & ready for cover art */}
@@ -850,9 +850,9 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                     <button
                       type="button"
                       onClick={() => handlePlayPad(featuredPad)}
-                      className="w-full py-3 rounded-full bg-[#18181B] hover:bg-neutral-800 text-white text-xs font-bold shadow-xs flex items-center justify-center gap-2 transition-colors cursor-pointer"
+                      className="w-full py-3 rounded-full bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] text-xs font-bold flex items-center justify-center gap-2 transition-colors cursor-pointer"
                     >
-                      <Radio className="w-4 h-4 text-amber-400" />
+                      <Radio className="w-4 h-4 text-amber-700" />
                       <span>{isPlayingAudio ? 'Pause Sacred Audio' : 'Listen Now (श्रवण करें)'}</span>
                     </button>
                   </div>
@@ -866,7 +866,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                       tabIndex={0}
                       onClick={() => setIsFocusModalOpen(true)}
                       onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && setIsFocusModalOpen(true)}
-                      className="w-full bg-white rounded-[22px] p-3.5 sm:p-4 flex items-center justify-between gap-3 sm:gap-4 border border-neutral-200/80 hover:border-neutral-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-colors cursor-pointer select-none"
+                      className="w-full bg-[#FAF9F5] hover:bg-[#FEFCE8] rounded-[22px] p-3.5 sm:p-4 flex items-center justify-between gap-3 sm:gap-4 transition-colors cursor-pointer select-none"
                     >
                       <div className="flex items-center gap-3.5 sm:gap-4 flex-1 min-w-0">
                         {/* Dhyana Atmosphere Graphic Slot: Empty & ready for artwork */}
@@ -912,9 +912,9 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                     <button
                       type="button"
                       onClick={() => setIsFocusModalOpen(true)}
-                      className="w-full py-3 rounded-full bg-[#18181B] hover:bg-[#27272A] text-white text-xs font-bold transition-colors flex items-center justify-center gap-2 shadow-xs cursor-pointer"
+                      className="w-full py-3 rounded-full bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] text-xs font-bold transition-colors flex items-center justify-center gap-2 cursor-pointer"
                     >
-                      <Sparkles className="w-4 h-4 text-amber-400" />
+                      <Sparkles className="w-4 h-4 text-amber-700" />
                       <span>Enter Sanctuary (ध्यान कक्ष)</span>
                       <span>→</span>
                     </button>
@@ -948,7 +948,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                 {/* Main Feed Column (8 cols) */}
                 <div className="md:col-span-8 space-y-4">
                   {/* Header Banner */}
-                  <div className="relative rounded-[24px] overflow-hidden mb-3 aspect-[21/9] bg-[#18181B] shadow-card">
+                  <div className="relative rounded-[24px] overflow-hidden mb-3 aspect-[21/9] bg-amber-950">
                     <img
                       src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80"
                       alt="Divine Vrindavan"
@@ -965,12 +965,12 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                   </div>
 
                   {/* Horizontal Braj Filter Tabs: Smoothly scrollable with Elastic Sliding Pill */}
-                  <div className="relative flex items-center gap-1.5 overflow-x-auto no-scrollbar flex-nowrap text-[13.5px] text-[#71717A] px-2 py-1.5 mb-2 bg-white rounded-full border border-neutral-200/80 shadow-xs">
+                  <div className="relative flex items-center gap-1.5 overflow-x-auto no-scrollbar flex-nowrap text-[13.5px] text-[#71717A] px-2 py-1.5 mb-2 bg-[#FAF6EE] rounded-full">
                     {/* Dynamic Elastic Sliding Indicator Bar */}
                     {feedPillStyle.ready && (
                       <span
                         aria-hidden="true"
-                        className="absolute top-1.5 bottom-1.5 rounded-full bg-[#18181B] shadow-xs pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+                        className="absolute top-1.5 bottom-1.5 rounded-full bg-[#FEF08A] pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
                         style={{
                           transform: `translateX(${feedPillStyle.left}px)`,
                           width: `${feedPillStyle.width}px`,
@@ -991,7 +991,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                           onClick={() => setActiveFeedTab(tab.id)}
                           className={`relative z-10 px-3 sm:px-3.5 py-1.5 rounded-full whitespace-nowrap transition-colors duration-200 cursor-pointer shrink-0 text-xs sm:text-[13px] ${
                             isActive
-                              ? 'text-white font-bold'
+                              ? 'text-[#18181B] font-bold'
                               : 'text-[#71717A] hover:text-[#18181B]'
                           }`}
                         >
@@ -1008,7 +1008,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                         <FeedCard key={post.id} post={post} />
                       ))
                     ) : (
-                      <div className="bg-white rounded-[24px] p-8 text-center border border-neutral-200/80 shadow-[0_4px_24px_rgba(0,0,0,0.03)]">
+                      <div className="bg-white rounded-[24px] p-8 text-center">
                         <div className="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center mx-auto mb-3">
                           <Heart className="w-6 h-6 text-amber-600" />
                         </div>
@@ -1029,7 +1029,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                         <button
                           type="button"
                           onClick={() => setActiveFeedTab('विशेष दर्शन')}
-                          className="px-5 py-2.5 rounded-full bg-[#18181B] hover:bg-[#27272A] text-white text-xs font-bold transition-colors cursor-pointer shadow-xs"
+                          className="px-5 py-2.5 rounded-full bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] text-xs font-bold transition-colors cursor-pointer"
                         >
                           Explore Special Darshan →
                         </button>

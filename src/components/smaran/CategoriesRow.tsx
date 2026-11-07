@@ -38,7 +38,7 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
   const activeIndex = Math.max(0, tabsList.findIndex((t) => t.id === activeTab));
 
   return (
-    <section className="w-full bg-white rounded-[32px] p-6 sm:p-7 border border-neutral-200/80 shadow-[0_4px_24px_rgba(0,0,0,0.03)] mb-6 space-y-4">
+    <section className="w-full bg-white rounded-[32px] p-6 sm:p-7 mb-6 space-y-4">
       {/* 1. Header with Sacred Amber Dot & Crisp Obsidian Typography */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-1">
         <div>
@@ -66,13 +66,13 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
         </button>
       </div>
 
-      {/* 2. Premium Segmented Category Switcher with Elastic Obsidian Sliding Pill */}
+      {/* 2. Premium Segmented Category Switcher with Elastic Sunlit-Gold Sliding Pill */}
       <div className="w-full flex justify-center">
-        <div className="relative w-full max-w-xl grid grid-cols-3 p-1 bg-[#F4F4F5] rounded-full border border-neutral-200/60">
+        <div className="relative w-full max-w-xl grid grid-cols-3 p-1 bg-[#FAF6EE] rounded-full">
           {/* Dynamic Elastic Sliding Indicator Bar */}
           <span
             aria-hidden="true"
-            className="absolute top-1 bottom-1 rounded-full bg-[#18181B] shadow-xs pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+            className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
             style={{
               width: 'calc((100% - 8px) / 3)',
               left: '4px',
@@ -90,16 +90,16 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
                 onClick={() => setActiveTab(tab.id)}
                 className={`relative z-10 py-2 px-2 sm:px-3 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer select-none flex items-center justify-center gap-1.5 ${
                   isActive
-                    ? 'text-white font-bold'
+                    ? 'text-[#18181B] font-bold'
                     : 'text-[#71717A] hover:text-[#18181B]'
                 }`}
               >
-                <Icon className={`w-3.5 h-3.5 shrink-0 transition-colors ${isActive ? 'text-amber-400' : tab.iconColor}`} />
+                <Icon className={`w-3.5 h-3.5 shrink-0 transition-colors ${isActive ? 'text-[#B45309]' : tab.iconColor}`} />
                 <span className="truncate">{tab.label}</span>
                 <span
                   className={`text-[10px] font-mono font-bold px-1.5 py-0.2 rounded-full leading-none shrink-0 transition-colors ${
                     isActive
-                      ? 'bg-white/20 text-white'
+                      ? 'bg-[#FACC15] text-[#78350F]'
                       : 'bg-neutral-200/70 text-[#71717A]'
                   }`}
                 >
@@ -121,7 +121,7 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
               tabIndex={0}
               onClick={() => onSelectBook(book.id)}
               onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onSelectBook(book.id)}
-              className="w-full bg-white rounded-[22px] p-3.5 sm:p-4 flex items-center justify-between gap-3 sm:gap-4 border border-neutral-200/80 hover:border-neutral-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-colors cursor-pointer select-none"
+              className="w-full bg-[#FAF9F5] hover:bg-[#FEFCE8] rounded-[22px] p-3.5 sm:p-4 flex items-center justify-between gap-3 sm:gap-4 transition-colors cursor-pointer select-none"
             >
               <div className="flex items-center gap-3.5 sm:gap-4 flex-1 min-w-0">
                 {/* Book Cover Graphics Slot: Empty & ready for artwork */}
@@ -193,7 +193,7 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
               tabIndex={0}
               onClick={() => onSelectAuthor(author.name)}
               onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onSelectAuthor(author.name)}
-              className="w-full bg-white rounded-[22px] p-3.5 sm:p-4 flex items-center justify-between gap-3 sm:gap-4 border border-neutral-200/80 hover:border-neutral-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-colors cursor-pointer select-none"
+              className="w-full bg-[#FAF9F5] hover:bg-[#FEFCE8] rounded-[22px] p-3.5 sm:p-4 flex items-center justify-between gap-3 sm:gap-4 transition-colors cursor-pointer select-none"
             >
               <div className="flex items-center gap-3.5 sm:gap-4 flex-1 min-w-0">
                 {/* Saint Portrait Graphics Slot: Empty & ready for artwork */}
@@ -265,7 +265,7 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
               tabIndex={0}
               onClick={() => onSelectRelation(rel.id)}
               onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onSelectRelation(rel.id)}
-              className="w-full bg-white rounded-[22px] p-3.5 sm:p-4 flex items-center justify-between gap-3 sm:gap-4 border border-neutral-200/80 hover:border-neutral-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-colors cursor-pointer select-none"
+              className="w-full bg-[#FAF9F5] hover:bg-[#FEFCE8] rounded-[22px] p-3.5 sm:p-4 flex items-center justify-between gap-3 sm:gap-4 transition-colors cursor-pointer select-none"
             >
               <div className="flex items-center gap-3.5 sm:gap-4 flex-1 min-w-0">
                 {/* Dham Leela Landscape Graphics Slot: Empty & ready for artwork */}

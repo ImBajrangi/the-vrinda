@@ -49,7 +49,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
   const activeMarkerIndex = Math.floor((beadInCurrentMala / 108) * totalMalaMarkers);
 
   return (
-    <div className="w-full bg-white rounded-[32px] p-6 sm:p-8 border border-neutral-200/80 shadow-[0_4px_24px_rgba(0,0,0,0.03)] space-y-6">
+    <div className="w-full bg-white rounded-[32px] p-6 sm:p-8 space-y-6">
       {/* 1. Serene Sanctuary Header in Classical Editorial Typography */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-neutral-100">
         <div className="space-y-1">
@@ -75,7 +75,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
           <button
             type="button"
             onClick={onOpenGuide}
-            className="flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-[#F4F4F5] hover:bg-neutral-200/70 text-xs font-semibold text-[#18181B] transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-[#FAF6EE] hover:bg-[#FEFCE8] text-xs font-semibold text-[#18181B] transition-colors cursor-pointer"
             title="Sadhana Guide: Essential daily devotional practices"
           >
             <HelpCircle className="w-3.5 h-3.5 text-neutral-500" />
@@ -85,17 +85,17 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
           <button
             type="button"
             onClick={onOpenFocus}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#18181B] hover:bg-[#27272A] text-white text-xs font-bold shadow-xs transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] text-xs font-bold transition-colors cursor-pointer"
             title="Open Dhyāna Sanctuary (ध्यान कक्ष)"
           >
-            <Wind className="w-3.5 h-3.5 text-amber-300" />
+            <Wind className="w-3.5 h-3.5 text-amber-700" />
             <span>ध्यान कक्ष</span>
           </button>
         </div>
       </div>
 
       {/* 2. Artisanal Tulsi Japamala Centerpiece (Replaces Generic Concentric Rings) */}
-      <div className="p-5 sm:p-6 rounded-[28px] bg-neutral-50/60 border border-neutral-200/70 flex flex-col lg:flex-row items-center justify-between gap-6">
+      <div className="p-5 sm:p-6 rounded-[28px] bg-[#FAF9F5] flex flex-col lg:flex-row items-center justify-between gap-6">
         
         {/* Left: Tactile Japamala Chanting Medallion */}
         <div className="flex items-center gap-5 sm:gap-6 w-full lg:w-auto">
@@ -198,7 +198,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
             <button
               type="button"
               onClick={handleTapBead}
-              className="flex-1 py-2 px-3 rounded-full bg-white hover:bg-neutral-50 text-[#18181B] border border-neutral-200/80 shadow-2xs flex items-center justify-center gap-1.5 text-xs font-bold transition-colors cursor-pointer"
+              className="flex-1 py-2 px-3 rounded-full bg-white hover:bg-[#FEFCE8] text-[#18181B] flex items-center justify-center gap-1.5 text-xs font-bold transition-colors cursor-pointer"
             >
               <Disc3 className="w-3.5 h-3.5 text-amber-700" />
               <span>+१ मनका</span>
@@ -207,10 +207,10 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
             <button
               type="button"
               onClick={incrementJapa}
-              className="py-2 px-4 rounded-full bg-[#18181B] hover:bg-[#27272A] text-white text-xs font-bold transition-colors shadow-xs cursor-pointer flex items-center gap-1.5"
+              className="py-2 px-4 rounded-full bg-[#FACC15] hover:bg-[#FDE047] text-[#18181B] text-xs font-bold transition-colors cursor-pointer flex items-center gap-1.5"
             >
               <span>+१ पूरी माला</span>
-              <span className="text-[10px] text-amber-300 font-mono">(108)</span>
+              <span className="text-[10px] text-amber-900 font-mono font-bold">(108)</span>
             </button>
           </div>
         </div>
@@ -225,7 +225,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
           tabIndex={0}
           onClick={() => onOpenPillar('japa')}
           onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onOpenPillar('japa')}
-          className="p-4 rounded-[22px] bg-white border border-neutral-200/80 hover:border-neutral-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-colors cursor-pointer select-none flex flex-col justify-between space-y-3"
+          className="p-4 rounded-[22px] bg-[#FAF9F5] hover:bg-[#FEFCE8] transition-colors cursor-pointer select-none flex flex-col justify-between space-y-3"
         >
           {/* Dedicated Visual Slot for Japa Meditation Art */}
           <ArtworkGraphicSlot
@@ -266,7 +266,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
           tabIndex={0}
           onClick={() => onOpenPillar('shravan')}
           onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onOpenPillar('shravan')}
-          className="p-4 rounded-[22px] bg-white border border-neutral-200/80 hover:border-neutral-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-colors cursor-pointer select-none flex flex-col justify-between space-y-3"
+          className="p-4 rounded-[22px] bg-[#FAF9F5] hover:bg-[#FEFCE8] transition-colors cursor-pointer select-none flex flex-col justify-between space-y-3"
         >
           {/* Dedicated Visual Slot for Pad Shravan & Raga Art */}
           <ArtworkGraphicSlot
@@ -307,7 +307,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
           tabIndex={0}
           onClick={() => onOpenPillar('svadhyaya')}
           onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onOpenPillar('svadhyaya')}
-          className="p-4 rounded-[22px] bg-white border border-neutral-200/80 hover:border-neutral-300 shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-colors cursor-pointer select-none flex flex-col justify-between space-y-3"
+          className="p-4 rounded-[22px] bg-[#FAF9F5] hover:bg-[#FEFCE8] transition-colors cursor-pointer select-none flex flex-col justify-between space-y-3"
         >
           {/* Dedicated Visual Slot for Grantha Scripture Manuscript Art */}
           <ArtworkGraphicSlot

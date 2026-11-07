@@ -190,8 +190,8 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
                     onClick={() => handleSetJapaTarget(target)}
                     className={`px-3 py-1.5 rounded-full text-xs font-semibold font-mono transition-colors cursor-pointer ${
                       sadhana.japaTarget === target
-                        ? 'bg-[#18181B] text-white font-bold shadow-xs'
-                        : 'bg-[#F4F4F5] text-[#71717A] hover:text-[#18181B]'
+                        ? 'bg-[#FEF08A] text-[#78350F] font-bold'
+                        : 'bg-[#FAF6EE] text-[#71717A] hover:text-[#18181B]'
                     }`}
                   >
                     {target} malas
@@ -208,9 +208,9 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
                   onClose();
                   onOpenFocusModal();
                 }}
-                className="w-full py-3 rounded-full bg-[#18181B] hover:bg-[#27272A] text-white text-xs sm:text-sm font-bold flex items-center justify-center gap-2 shadow-xs transition-colors cursor-pointer"
+                className="w-full py-3 rounded-full bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-colors cursor-pointer"
               >
-                <Wind className="w-4 h-4 text-amber-300" />
+                <Wind className="w-4 h-4 text-amber-700" />
                 <span>Enter Dhyāna Sanctuary (Full-screen Chanting)</span>
                 <ChevronRight className="w-4 h-4 ml-1" />
               </button>
@@ -267,15 +267,15 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
             </div>
 
             {/* Active Track & Audio Controller */}
-            <div className="p-3.5 rounded-2xl bg-[#18181B] text-white flex items-center justify-between gap-3 shadow-sm">
+            <div className="p-3.5 rounded-2xl bg-[#FEF9C3] text-[#0F172A] flex items-center justify-between gap-3">
               <div className="min-w-0">
-                <span className="text-[10px] text-amber-400 font-bold uppercase tracking-wider block font-mono">
+                <span className="text-[10px] text-amber-800 font-bold uppercase tracking-wider block font-mono">
                   Featured Pad Today
                 </span>
-                <p className="font-devanagari font-bold text-xs sm:text-sm truncate text-white">
+                <p className="font-devanagari font-bold text-xs sm:text-sm truncate text-[#0F172A]">
                   {currentPad?.titleDevanagari || 'जोई जोई प्यारो करे सोई मोहि भावै'}
                 </p>
-                <span className="text-[10px] text-neutral-400">
+                <span className="text-[10px] text-neutral-600">
                   Raga {currentPad?.rag || 'Vibhas'} • {currentPad?.duration || '08:30'}
                 </span>
               </div>
@@ -284,13 +284,13 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
                 <button
                   type="button"
                   onClick={onToggleAudio}
-                  className="w-10 h-10 rounded-full bg-amber-600 hover:bg-amber-700 text-white flex items-center justify-center font-bold transition-colors shadow-xs cursor-pointer"
+                  className="w-10 h-10 rounded-full bg-[#FACC15] hover:bg-[#FDE047] text-[#18181B] flex items-center justify-center font-bold transition-colors cursor-pointer"
                   aria-label={isPlayingAudio ? 'Pause' : 'Play'}
                 >
                   {isPlayingAudio ? (
-                    <Pause className="w-4 h-4 fill-current" />
+                    <Pause className="w-4 h-4 fill-current text-[#18181B]" />
                   ) : (
-                    <Play className="w-4 h-4 fill-current ml-0.5" />
+                    <Play className="w-4 h-4 fill-current text-[#18181B] ml-0.5" />
                   )}
                 </button>
               </div>
@@ -305,7 +305,7 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
                 <button
                   type="button"
                   onClick={() => handleAddShravan(15)}
-                  className="py-2.5 px-3 rounded-xl bg-[#F4F4F5] text-[#18181B] text-xs font-bold hover:bg-neutral-200 transition-colors flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
+                  className="py-2.5 px-3 rounded-xl bg-[#FAF6EE] text-[#18181B] text-xs font-bold hover:bg-[#FEFCE8] transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
                 >
                   <Plus className="w-3.5 h-3.5 text-amber-700" />
                   <span>+15 Mins</span>
@@ -313,7 +313,7 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
                 <button
                   type="button"
                   onClick={() => handleAddShravan(30)}
-                  className="py-2.5 px-3 rounded-xl bg-[#F4F4F5] text-[#18181B] text-xs font-bold hover:bg-neutral-200 transition-colors flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
+                  className="py-2.5 px-3 rounded-xl bg-[#FAF6EE] text-[#18181B] text-xs font-bold hover:bg-[#FEFCE8] transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
                 >
                   <Plus className="w-3.5 h-3.5 text-amber-700" />
                   <span>+30 Mins</span>
@@ -322,7 +322,7 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
                   type="button"
                   onClick={() => handleAddShravan(-15)}
                   disabled={sadhana.shravanMinutes <= 0}
-                  className="py-2.5 px-3 rounded-xl bg-[#F4F4F5] text-[#71717A] text-xs font-bold hover:bg-neutral-200 disabled:opacity-40 transition-colors flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
+                  className="py-2.5 px-3 rounded-xl bg-[#FAF6EE] text-[#71717A] text-xs font-bold hover:bg-[#FEFCE8] disabled:opacity-40 transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
                 >
                   <Minus className="w-3.5 h-3.5 text-rose-500" />
                   <span>-15 Mins</span>
@@ -343,8 +343,8 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
                     onClick={() => handleSetShravanTarget(target)}
                     className={`px-3 py-1.5 rounded-full text-xs font-semibold font-mono transition-colors cursor-pointer ${
                       sadhana.shravanTarget === target
-                        ? 'bg-[#18181B] text-white font-bold shadow-xs'
-                        : 'bg-[#F4F4F5] text-[#71717A] hover:text-[#18181B]'
+                        ? 'bg-[#FEF08A] text-[#78350F] font-bold'
+                        : 'bg-[#FAF6EE] text-[#71717A] hover:text-[#18181B]'
                     }`}
                   >
                     {target} mins
@@ -361,9 +361,9 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
                   onClose();
                   onOpenPlayer();
                 }}
-                className="w-full py-3 rounded-full bg-[#18181B] hover:bg-[#27272A] text-white text-xs sm:text-sm font-bold flex items-center justify-center gap-2 shadow-xs transition-colors cursor-pointer"
+                className="w-full py-3 rounded-full bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-colors cursor-pointer"
               >
-                <Music2 className="w-4 h-4 text-amber-300" />
+                <Music2 className="w-4 h-4 text-amber-700" />
                 <span>Open Ras Shravan Audio Deck</span>
                 <ChevronRight className="w-4 h-4 ml-1" />
               </button>
@@ -428,7 +428,7 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
                 <button
                   type="button"
                   onClick={() => handleAddSvadhyaya(1)}
-                  className="py-2.5 px-3 rounded-xl bg-[#F4F4F5] text-[#18181B] text-xs font-bold hover:bg-neutral-200 transition-colors flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
+                  className="py-2.5 px-3 rounded-xl bg-[#FAF6EE] text-[#18181B] text-xs font-bold hover:bg-[#FEFCE8] transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
                 >
                   <Plus className="w-3.5 h-3.5 text-orange-600" />
                   <span>+1 Pada Read</span>
@@ -436,7 +436,7 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
                 <button
                   type="button"
                   onClick={() => handleAddSvadhyaya(2)}
-                  className="py-2.5 px-3 rounded-xl bg-[#F4F4F5] text-[#18181B] text-xs font-bold hover:bg-neutral-200 transition-colors flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
+                  className="py-2.5 px-3 rounded-xl bg-[#FAF6EE] text-[#18181B] text-xs font-bold hover:bg-[#FEFCE8] transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
                 >
                   <Plus className="w-3.5 h-3.5 text-orange-600" />
                   <span>+2 Padas Read</span>
@@ -445,7 +445,7 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
                   type="button"
                   onClick={() => handleAddSvadhyaya(-1)}
                   disabled={sadhana.svadhyayaPadas <= 0}
-                  className="py-2.5 px-3 rounded-xl bg-[#F4F4F5] text-[#71717A] text-xs font-bold hover:bg-neutral-200 disabled:opacity-40 transition-colors flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
+                  className="py-2.5 px-3 rounded-xl bg-[#FAF6EE] text-[#71717A] text-xs font-bold hover:bg-[#FEFCE8] disabled:opacity-40 transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
                 >
                   <Minus className="w-3.5 h-3.5 text-rose-500" />
                   <span>-1 Pada</span>
@@ -466,8 +466,8 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
                     onClick={() => handleSetSvadhyayaTarget(target)}
                     className={`px-3 py-1.5 rounded-full text-xs font-semibold font-mono transition-colors cursor-pointer ${
                       sadhana.svadhyayaTarget === target
-                        ? 'bg-[#18181B] text-white font-bold shadow-xs'
-                        : 'bg-[#F4F4F5] text-[#71717A] hover:text-[#18181B]'
+                        ? 'bg-[#FEF08A] text-[#78350F] font-bold'
+                        : 'bg-[#FAF6EE] text-[#71717A] hover:text-[#18181B]'
                     }`}
                   >
                     {target} padas
@@ -484,9 +484,9 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
                   onClose();
                   onOpenPadavaliReader();
                 }}
-                className="w-full py-3 rounded-full bg-[#18181B] hover:bg-[#27272A] text-white text-xs sm:text-sm font-bold flex items-center justify-center gap-2 shadow-xs transition-colors cursor-pointer"
+                className="w-full py-3 rounded-full bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-colors cursor-pointer"
               >
-                <BookOpen className="w-4 h-4 text-amber-300" />
+                <BookOpen className="w-4 h-4 text-amber-700" />
                 <span>Open Scripture Reader (Resume Reading)</span>
                 <ChevronRight className="w-4 h-4 ml-1" />
               </button>
@@ -500,7 +500,7 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
   return createPortal(
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-fade-in">
       <div
-        className="w-full max-w-lg bg-white rounded-[28px] p-5 sm:p-6 shadow-2xl border border-neutral-200/80 max-h-[90vh] overflow-y-auto no-scrollbar apple-sheet-enter text-[#18181B]"
+        className="w-full max-w-lg bg-white rounded-[28px] p-5 sm:p-6 max-h-[90vh] overflow-y-auto no-scrollbar apple-sheet-enter text-[#18181B]"
         role="dialog"
         aria-modal="true"
       >
