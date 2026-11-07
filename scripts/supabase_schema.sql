@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS public.saints (
     created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- 4. Create User Bookmarks Table (Secure Authenticated & Anonymous Auth Sync)
+-- 4. Create or Migrate User Bookmarks Table (Secure Authenticated & Anonymous Auth Sync)
 CREATE TABLE IF NOT EXISTS public.user_bookmarks (
     id BIGSERIAL PRIMARY KEY,
     user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
@@ -51,6 +51,18 @@ CREATE TABLE IF NOT EXISTS public.user_bookmarks (
     created_at TIMESTAMPTZ DEFAULT NOW(),
     UNIQUE(user_id, pad_id)
 );
+
+-- Idempotent Migration: Add user_id column if table was previously created with legacy schema
+ALTER TABLE public.user_bookmarks 
+    ADD COLUMN IF NOT EXISTS user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE;
+
+-- Relax NOT NULL constraint on legacy device_id column if previously applied
+DO $$ 
+BEGIN 
+    ALTER TABLE public.user_bookmarks ALTER COLUMN device_id DROP NOT NULL;
+EXCEPTION 
+    WHEN OTHERS THEN NULL;
+END $$;
 
 -- 5. Create Performance Indexes for Sub-Millisecond Filtering & Range Queries
 CREATE INDEX IF NOT EXISTS idx_padas_collection ON public.padas (collection_id);
