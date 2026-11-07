@@ -52,19 +52,39 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
   const [isMenuRendered, setIsMenuRendered] = useState(false);
   const [isMenuClosing, setIsMenuClosing] = useState(false);
 
+  const menuTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   useEffect(() => {
     if (isMobileMenuOpen) {
+      if (menuTimerRef.current) {
+        clearTimeout(menuTimerRef.current);
+        menuTimerRef.current = null;
+      }
       setIsMenuRendered(true);
       setIsMenuClosing(false);
-    } else if (isMenuRendered && !isMenuClosing) {
+    } else if (isMenuRendered) {
       setIsMenuClosing(true);
-      const timer = setTimeout(() => {
+      if (menuTimerRef.current) {
+        clearTimeout(menuTimerRef.current);
+      }
+      menuTimerRef.current = setTimeout(() => {
         setIsMenuRendered(false);
         setIsMenuClosing(false);
+        menuTimerRef.current = null;
       }, 240);
-      return () => clearTimeout(timer);
     }
-  }, [isMobileMenuOpen, isMenuRendered, isMenuClosing]);
+  }, [isMobileMenuOpen]);
+
+  useEffect(() => {
+    return () => {
+      if (menuTimerRef.current) clearTimeout(menuTimerRef.current);
+    };
+  }, []);
+
+  const handleToggleMenu = () => {
+    if (isMenuClosing) return;
+    setIsMobileMenuOpen((prev) => !prev);
+  };
 
   const ashtayama = computeAshtayamaPhase();
 
@@ -77,11 +97,12 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const mobileToggleRef = useRef<HTMLButtonElement>(null);
 
-  // Platform-wide consistent dismissal: close mobile menu on outside tap or Escape
+  // Platform-wide consistent dismissal: close mobile menu on outside tap or Escape (pointerdown only to prevent dual firing)
   useEffect(() => {
     if (!isMobileMenuOpen) return;
 
     const handleOutsideClick = (e: MouseEvent | TouchEvent) => {
+      if (isMenuClosing) return;
       const target = e.target as Node;
       if (
         mobileMenuRef.current &&
@@ -100,15 +121,13 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
     };
 
     document.addEventListener('pointerdown', handleOutsideClick);
-    document.addEventListener('touchstart', handleOutsideClick);
     window.addEventListener('keydown', handleKeyDown);
 
     return () => {
       document.removeEventListener('pointerdown', handleOutsideClick);
-      document.removeEventListener('touchstart', handleOutsideClick);
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isMobileMenuOpen]);
+  }, [isMobileMenuOpen, isMenuClosing]);
 
   const navItems: { id: NavTab; label: string; shortLabel: string; icon: React.ComponentType<{ className?: string }> }[] = [
     { id: 'smaran', label: 'Home Sanctuary', shortLabel: 'Home', icon: Compass },
@@ -192,7 +211,10 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
           className={`fixed inset-0 z-40 bg-black/35 md:hidden pointer-events-auto transition-opacity ${
             isMenuClosing ? 'modal-backdrop-exit' : 'modal-backdrop-enter'
           }`}
-          onClick={() => setIsMobileMenuOpen(false)}
+          onClick={() => {
+            if (isMenuClosing) return;
+            setIsMobileMenuOpen(false);
+          }}
           aria-hidden="true"
         />
       )}
@@ -332,7 +354,7 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
               <button
                 ref={mobileToggleRef}
                 type="button"
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                onClick={handleToggleMenu}
                 aria-label={isMobileMenuOpen ? 'Close Menu' : 'Open Menu'}
                 className="md:hidden w-8 h-8 rounded-full bg-[#FFFDF9] hover:bg-amber-50 flex items-center justify-center text-amber-950 transition-colors cursor-pointer shrink-0"
               >

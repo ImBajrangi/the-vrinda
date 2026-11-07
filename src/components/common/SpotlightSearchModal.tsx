@@ -33,32 +33,41 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
 
   const [isRendered, setIsRendered] = useState(isOpen);
   const [isClosing, setIsClosing] = useState(false);
+  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Modal Lifecycle & Focus
   useEffect(() => {
     if (isOpen) {
+      if (closeTimerRef.current) {
+        clearTimeout(closeTimerRef.current);
+        closeTimerRef.current = null;
+      }
       setIsRendered(true);
       setIsClosing(false);
       setSelectedIdx(0);
       setTimeout(() => inputRef.current?.focus(), 50);
-    } else if (isRendered && !isClosing) {
+    } else if (isRendered) {
       setIsClosing(true);
-      const timer = setTimeout(() => {
+      if (closeTimerRef.current) {
+        clearTimeout(closeTimerRef.current);
+      }
+      closeTimerRef.current = setTimeout(() => {
         setIsRendered(false);
         setIsClosing(false);
+        closeTimerRef.current = null;
       }, 240);
-      return () => clearTimeout(timer);
     }
-  }, [isOpen, isRendered, isClosing]);
+  }, [isOpen]);
+
+  useEffect(() => {
+    return () => {
+      if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
+    };
+  }, []);
 
   const handleDismiss = () => {
     if (isClosing) return;
-    setIsClosing(true);
-    setTimeout(() => {
-      onClose();
-      setIsRendered(false);
-      setIsClosing(false);
-    }, 240);
+    onClose();
   };
 
   // Lock body scroll while modal is active

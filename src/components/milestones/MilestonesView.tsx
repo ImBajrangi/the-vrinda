@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import {
   ArrowLeft,
@@ -49,26 +49,46 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
   const [dhyanaImpact, setDhyanaImpact] = useState<DhyanaImpactState>(() => loadDhyanaImpactSync());
   const [selectedBadge, setSelectedBadge] = useState<BadgeItem | null>(null);
   const [isBadgeClosing, setIsBadgeClosing] = useState(false);
+  const badgeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMenuRendered, setIsMenuRendered] = useState(false);
   const [isMenuClosing, setIsMenuClosing] = useState(false);
+  const menuTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     if (isMenuOpen) {
+      if (menuTimerRef.current) {
+        clearTimeout(menuTimerRef.current);
+        menuTimerRef.current = null;
+      }
       setIsMenuRendered(true);
       setIsMenuClosing(false);
-    } else if (isMenuRendered && !isMenuClosing) {
+    } else if (isMenuRendered) {
       setIsMenuClosing(true);
-      const timer = setTimeout(() => {
+      if (menuTimerRef.current) {
+        clearTimeout(menuTimerRef.current);
+      }
+      menuTimerRef.current = setTimeout(() => {
         setIsMenuRendered(false);
         setIsMenuClosing(false);
+        menuTimerRef.current = null;
       }, 240);
-      return () => clearTimeout(timer);
     }
-  }, [isMenuOpen, isMenuRendered, isMenuClosing]);
+  }, [isMenuOpen]);
+
   const [isRulesModalOpen, setIsRulesModalOpen] = useState(false);
   const [isRulesClosing, setIsRulesClosing] = useState(false);
+  const rulesTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (badgeTimerRef.current) clearTimeout(badgeTimerRef.current);
+      if (menuTimerRef.current) clearTimeout(menuTimerRef.current);
+      if (rulesTimerRef.current) clearTimeout(rulesTimerRef.current);
+    };
+  }, []);
 
   // Lock body scroll and close on Escape when blessing sheet or rules modal is active
   useEffect(() => {
@@ -89,23 +109,27 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
         window.removeEventListener('keydown', handleKeyDown);
       };
     }
-  }, [selectedBadge, isRulesModalOpen]);
+  }, [selectedBadge, isRulesModalOpen, isBadgeClosing, isRulesClosing]);
 
   const handleCloseBadge = () => {
     if (isBadgeClosing) return;
     setIsBadgeClosing(true);
-    setTimeout(() => {
+    if (badgeTimerRef.current) clearTimeout(badgeTimerRef.current);
+    badgeTimerRef.current = setTimeout(() => {
       setSelectedBadge(null);
       setIsBadgeClosing(false);
+      badgeTimerRef.current = null;
     }, 240);
   };
 
   const handleCloseRules = () => {
     if (isRulesClosing) return;
     setIsRulesClosing(true);
-    setTimeout(() => {
+    if (rulesTimerRef.current) clearTimeout(rulesTimerRef.current);
+    rulesTimerRef.current = setTimeout(() => {
       setIsRulesModalOpen(false);
       setIsRulesClosing(false);
+      rulesTimerRef.current = null;
     }, 240);
   };
 

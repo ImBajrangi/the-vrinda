@@ -396,20 +396,39 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isSettingsRendered, setIsSettingsRendered] = useState(false);
   const [isSettingsClosing, setIsSettingsClosing] = useState(false);
+  const settingsTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     if (isSettingsOpen) {
+      if (settingsTimerRef.current) {
+        clearTimeout(settingsTimerRef.current);
+        settingsTimerRef.current = null;
+      }
       setIsSettingsRendered(true);
       setIsSettingsClosing(false);
-    } else if (isSettingsRendered && !isSettingsClosing) {
+    } else if (isSettingsRendered) {
       setIsSettingsClosing(true);
-      const timer = setTimeout(() => {
+      if (settingsTimerRef.current) {
+        clearTimeout(settingsTimerRef.current);
+      }
+      settingsTimerRef.current = setTimeout(() => {
         setIsSettingsRendered(false);
         setIsSettingsClosing(false);
+        settingsTimerRef.current = null;
       }, 240);
-      return () => clearTimeout(timer);
     }
-  }, [isSettingsOpen, isSettingsRendered, isSettingsClosing]);
+  }, [isSettingsOpen]);
+
+  useEffect(() => {
+    return () => {
+      if (settingsTimerRef.current) clearTimeout(settingsTimerRef.current);
+    };
+  }, []);
+
+  const handleToggleSettings = () => {
+    if (isSettingsClosing) return;
+    setIsSettingsOpen((prev) => !prev);
+  };
 
   const settingsTrayRef = useRef<HTMLDivElement>(null);
   const settingsToggleTopRef = useRef<HTMLButtonElement>(null);
@@ -420,6 +439,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     if (!isSettingsOpen) return;
 
     const handleOutsideClick = (e: MouseEvent | TouchEvent) => {
+      if (isSettingsClosing) return;
       const target = e.target as Node;
       if (
         settingsTrayRef.current &&
@@ -444,10 +464,11 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       document.removeEventListener('pointerdown', handleOutsideClick);
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isSettingsOpen]);
+  }, [isSettingsOpen, isSettingsClosing]);
 
   const [isGlossaryOpen, setIsGlossaryOpen] = useState(false);
   const [isGlossaryClosing, setIsGlossaryClosing] = useState(false);
+  const glossaryTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [copiedStanzaIdx, setCopiedStanzaIdx] = useState<number | null>(null);
 
   // Devotional Summary States
@@ -455,23 +476,36 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   const [isSummaryLoading, setIsSummaryLoading] = useState(false);
   const [summaryText, setSummaryText] = useState<string>('');
 
+  const commentaryTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   const handleCloseCommentary = () => {
     if (isCommentaryClosing) return;
     setIsCommentaryClosing(true);
-    setTimeout(() => {
+    if (commentaryTimerRef.current) clearTimeout(commentaryTimerRef.current);
+    commentaryTimerRef.current = setTimeout(() => {
       setIsCommentaryOpen(false);
       setIsCommentaryClosing(false);
+      commentaryTimerRef.current = null;
     }, 240);
   };
 
   const handleCloseGlossary = () => {
     if (isGlossaryClosing) return;
     setIsGlossaryClosing(true);
-    setTimeout(() => {
+    if (glossaryTimerRef.current) clearTimeout(glossaryTimerRef.current);
+    glossaryTimerRef.current = setTimeout(() => {
       setIsGlossaryOpen(false);
       setIsGlossaryClosing(false);
+      glossaryTimerRef.current = null;
     }, 240);
   };
+
+  useEffect(() => {
+    return () => {
+      if (commentaryTimerRef.current) clearTimeout(commentaryTimerRef.current);
+      if (glossaryTimerRef.current) clearTimeout(glossaryTimerRef.current);
+    };
+  }, []);
 
   // Lock body scroll and handle Escape key when either mobile commentary drawer or lexicon sheet modal is active
   useEffect(() => {
@@ -901,7 +935,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             <button
               ref={settingsToggleTopRef}
               type="button"
-              onClick={() => setIsSettingsOpen(!isSettingsOpen)}
+              onClick={handleToggleSettings}
               className={`h-8 px-3 rounded-full text-xs font-medium flex items-center gap-1.5 transition-colors cursor-pointer shrink-0 ${
                 isSettingsOpen
                   ? 'bg-[#FEF08A] text-[#78350F] font-bold'
@@ -1770,7 +1804,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 <button
                   ref={settingsToggleBottomRef}
                   type="button"
-                  onClick={() => setIsSettingsOpen(!isSettingsOpen)}
+                  onClick={handleToggleSettings}
                   className="w-8 h-8 rounded-full bg-white hover:bg-white/80 text-[#64748B] hover:text-[#0F172A] flex items-center justify-center transition-colors cursor-pointer"
                   title="Typography & Ambiance Settings"
                 >

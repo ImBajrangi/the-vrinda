@@ -188,29 +188,38 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
   // Smooth entrance & exit transition state
   const [isRendered, setIsRendered] = useState(isOpen);
   const [isClosing, setIsClosing] = useState(false);
+  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     if (isOpen) {
+      if (closeTimerRef.current) {
+        clearTimeout(closeTimerRef.current);
+        closeTimerRef.current = null;
+      }
       setIsRendered(true);
       setIsClosing(false);
-    } else if (isRendered && !isClosing) {
+    } else if (isRendered) {
       setIsClosing(true);
-      const timer = setTimeout(() => {
+      if (closeTimerRef.current) {
+        clearTimeout(closeTimerRef.current);
+      }
+      closeTimerRef.current = setTimeout(() => {
         setIsRendered(false);
         setIsClosing(false);
+        closeTimerRef.current = null;
       }, 240);
-      return () => clearTimeout(timer);
     }
-  }, [isOpen, isRendered, isClosing]);
+  }, [isOpen]);
+
+  useEffect(() => {
+    return () => {
+      if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
+    };
+  }, []);
 
   const handleDismiss = () => {
     if (isClosing) return;
-    setIsClosing(true);
-    setTimeout(() => {
-      onClose();
-      setIsRendered(false);
-      setIsClosing(false);
-    }, 240);
+    onClose();
   };
 
   const formatTime = (totalSec: number) => {

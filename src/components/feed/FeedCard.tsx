@@ -77,20 +77,34 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMenuRendered, setIsMenuRendered] = useState(false);
   const [isMenuClosing, setIsMenuClosing] = useState(false);
+  const menuTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     if (isMenuOpen) {
+      if (menuTimerRef.current) {
+        clearTimeout(menuTimerRef.current);
+        menuTimerRef.current = null;
+      }
       setIsMenuRendered(true);
       setIsMenuClosing(false);
-    } else if (isMenuRendered && !isMenuClosing) {
+    } else if (isMenuRendered) {
       setIsMenuClosing(true);
-      const timer = setTimeout(() => {
+      if (menuTimerRef.current) {
+        clearTimeout(menuTimerRef.current);
+      }
+      menuTimerRef.current = setTimeout(() => {
         setIsMenuRendered(false);
         setIsMenuClosing(false);
+        menuTimerRef.current = null;
       }, 240);
-      return () => clearTimeout(timer);
     }
-  }, [isMenuOpen, isMenuRendered, isMenuClosing]);
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    return () => {
+      if (menuTimerRef.current) clearTimeout(menuTimerRef.current);
+    };
+  }, []);
   const [toast, setToast] = useState<string | null>(null);
   const [summary, setSummary] = useState<string | null>(() =>
     getCachedDevotionalSummarySync({

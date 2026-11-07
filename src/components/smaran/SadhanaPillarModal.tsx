@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { X, Flame, Music2, BookOpen, Plus, Minus, ChevronRight, Wind, Play, Pause } from 'lucide-react';
 import type { SadhanaState, SacredPad } from '../../types/devotional';
@@ -34,33 +34,51 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
 }) => {
   const [isRendered, setIsRendered] = useState(isOpen);
   const [isClosing, setIsClosing] = useState(false);
+  const [cachedPillar, setCachedPillar] = useState<PillarType | null>(pillarType);
+  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    if (pillarType) {
+      setCachedPillar(pillarType);
+    }
+  }, [pillarType]);
+
+  const activePillar = pillarType || cachedPillar;
 
   useEffect(() => {
     if (isOpen && pillarType) {
+      if (closeTimerRef.current) {
+        clearTimeout(closeTimerRef.current);
+        closeTimerRef.current = null;
+      }
       setIsRendered(true);
       setIsClosing(false);
-    } else if (isRendered && !isClosing) {
+    } else if (isRendered) {
       setIsClosing(true);
-      const timer = setTimeout(() => {
+      if (closeTimerRef.current) {
+        clearTimeout(closeTimerRef.current);
+      }
+      closeTimerRef.current = setTimeout(() => {
         setIsRendered(false);
         setIsClosing(false);
+        closeTimerRef.current = null;
       }, 240);
-      return () => clearTimeout(timer);
     }
-  }, [isOpen, pillarType, isRendered, isClosing]);
+  }, [isOpen, pillarType]);
+
+  useEffect(() => {
+    return () => {
+      if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
+    };
+  }, []);
 
   const handleDismiss = () => {
     if (isClosing) return;
-    setIsClosing(true);
-    setTimeout(() => {
-      onClose();
-      setIsRendered(false);
-      setIsClosing(false);
-    }, 240);
+    onClose();
   };
 
   useEffect(() => {
-    if (isRendered && pillarType) {
+    if (isRendered && activePillar) {
       const originalOverflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
 
@@ -76,9 +94,9 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
         window.removeEventListener('keydown', handleKeyDown);
       };
     }
-  }, [isRendered, pillarType]);
+  }, [isRendered, activePillar]);
 
-  if (!isRendered || !pillarType) return null;
+  if (!isRendered || !activePillar) return null;
   if (typeof document === 'undefined') return null;
 
   const handleAddJapa = (malas: number) => {
@@ -127,7 +145,7 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
   };
 
   const renderContent = () => {
-    switch (pillarType) {
+    switch (activePillar) {
       case 'japa': {
         const percent = Math.min(100, Math.round((sadhana.japaCompleted / Math.max(1, sadhana.japaTarget)) * 100));
         const totalMantras = sadhana.japaCompleted * 108;

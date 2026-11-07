@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { Database, Download, Globe, X, Server } from 'lucide-react';
 import { cms } from '../../services/cms';
@@ -13,20 +13,34 @@ export const CMSEditorialBadge: React.FC<CMSEditorialBadgeProps> = ({ currentPad
   const [isOpen, setIsOpen] = useState(false);
   const [isRendered, setIsRendered] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     if (isOpen) {
+      if (closeTimerRef.current) {
+        clearTimeout(closeTimerRef.current);
+        closeTimerRef.current = null;
+      }
       setIsRendered(true);
       setIsClosing(false);
-    } else if (isRendered && !isClosing) {
+    } else if (isRendered) {
       setIsClosing(true);
-      const timer = setTimeout(() => {
+      if (closeTimerRef.current) {
+        clearTimeout(closeTimerRef.current);
+      }
+      closeTimerRef.current = setTimeout(() => {
         setIsRendered(false);
         setIsClosing(false);
+        closeTimerRef.current = null;
       }, 240);
-      return () => clearTimeout(timer);
     }
-  }, [isOpen, isRendered, isClosing]);
+  }, [isOpen]);
+
+  useEffect(() => {
+    return () => {
+      if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
+    };
+  }, []);
 
   const [connectionInfo, setConnectionInfo] = useState<{ ok: boolean; message: string; latencyMs?: number }>({
     ok: true,
@@ -40,16 +54,21 @@ export const CMSEditorialBadge: React.FC<CMSEditorialBadgeProps> = ({ currentPad
     });
   }, []);
 
+  const handleClose = () => {
+    if (isClosing) return;
+    setIsOpen(false);
+  };
+
   useEffect(() => {
     if (!isRendered) return;
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        setIsOpen(false);
+        handleClose();
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isRendered]);
+  }, [isRendered, isClosing]);
 
   const handleExport = async () => {
     setIsExporting(true);
@@ -81,7 +100,7 @@ export const CMSEditorialBadge: React.FC<CMSEditorialBadgeProps> = ({ currentPad
           className={`fixed inset-0 z-[100] bg-black/45 flex items-center justify-center p-4 transition-opacity ${
             isClosing ? 'modal-backdrop-exit' : 'modal-backdrop-enter'
           }`}
-          onClick={() => setIsOpen(false)}
+          onClick={handleClose}
         >
           <div
             className={`w-full max-w-lg bg-white rounded-[28px] p-6 space-y-5 text-[#18181B] relative ${
@@ -106,7 +125,7 @@ export const CMSEditorialBadge: React.FC<CMSEditorialBadgeProps> = ({ currentPad
               </div>
               <button
                 type="button"
-                onClick={() => setIsOpen(false)}
+                onClick={handleClose}
                 className="w-8 h-8 rounded-full bg-neutral-100 hover:bg-neutral-200 flex items-center justify-center text-[#71717A] cursor-pointer transition-colors"
               >
                 <X className="w-4 h-4" />
