@@ -101,10 +101,10 @@ function createSitemapSuite(baseUrl, prefix = '') {
   const indexXml = [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-    `  <sitemap><loc>${baseUrl}/${filePrefix}-main.xml</loc><lastmod>${today}</lastmod></sitemap>`,
-    `  <sitemap><loc>${baseUrl}/${filePrefix}-granthas.xml</loc><lastmod>${today}</lastmod></sitemap>`,
-    `  <sitemap><loc>${baseUrl}/${filePrefix}-saints.xml</loc><lastmod>${today}</lastmod></sitemap>`,
-    `  <sitemap><loc>${baseUrl}/${filePrefix}-padas.xml</loc><lastmod>${today}</lastmod></sitemap>`,
+    `  <sitemap><loc>${baseUrl}/${filePrefix}-main.xml?v=2</loc><lastmod>${today}</lastmod></sitemap>`,
+    `  <sitemap><loc>${baseUrl}/${filePrefix}-granthas.xml?v=2</loc><lastmod>${today}</lastmod></sitemap>`,
+    `  <sitemap><loc>${baseUrl}/${filePrefix}-saints.xml?v=2</loc><lastmod>${today}</lastmod></sitemap>`,
+    `  <sitemap><loc>${baseUrl}/${filePrefix}-padas.xml?v=2</loc><lastmod>${today}</lastmod></sitemap>`,
     '</sitemapindex>',
   ].join('\n');
 

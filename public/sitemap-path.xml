@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <sitemap><loc>https://path.vrindopnishad.in/sitemap-path-main.xml</loc><lastmod>2026-11-08</lastmod></sitemap>
-  <sitemap><loc>https://path.vrindopnishad.in/sitemap-path-granthas.xml</loc><lastmod>2026-11-08</lastmod></sitemap>
-  <sitemap><loc>https://path.vrindopnishad.in/sitemap-path-saints.xml</loc><lastmod>2026-11-08</lastmod></sitemap>
-  <sitemap><loc>https://path.vrindopnishad.in/sitemap-path-padas.xml</loc><lastmod>2026-11-08</lastmod></sitemap>
+  <sitemap><loc>https://path.vrindopnishad.in/sitemap-path-main.xml?v=2</loc><lastmod>2026-11-08</lastmod></sitemap>
+  <sitemap><loc>https://path.vrindopnishad.in/sitemap-path-granthas.xml?v=2</loc><lastmod>2026-11-08</lastmod></sitemap>
+  <sitemap><loc>https://path.vrindopnishad.in/sitemap-path-saints.xml?v=2</loc><lastmod>2026-11-08</lastmod></sitemap>
+  <sitemap><loc>https://path.vrindopnishad.in/sitemap-path-padas.xml?v=2</loc><lastmod>2026-11-08</lastmod></sitemap>
 </sitemapindex>
