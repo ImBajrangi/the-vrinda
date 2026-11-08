@@ -104,7 +104,7 @@ export function generateSEOMetadata(config: SEOConfig = {}): SEOMetadataResult {
       '@type': 'ReligiousOrganization',
       name: DEFAULT_SEO.siteName,
       url: DEFAULT_SEO.baseUrl,
-      logo: `${DEFAULT_SEO.baseUrl}/lotus.svg`,
+      logo: `${DEFAULT_SEO.baseUrl}/official-logo.svg`,
       description: 'Vrindavan Sacred Rasik Heritage & Canonical Pada Sanctuary',
     },
   ];

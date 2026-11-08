@@ -1,18 +1,39 @@
 {
-  "name": "Vrindopnisad 2.0",
-  "short_name": "Vrindopnisad",
-  "description": "The Real Vrindavan: Sacred Devotional Hub for Shriji, Thakurji & Braj Ras",
+  "name": "वृन्दोपनिषद् 2.0 • Sacred Vrindavan Ras Sanctuary",
+  "short_name": "वृन्दोपनिषद्",
+  "description": "Digital sanctuary for Nitya Nikunj Ras, 4,200+ canonical Braj Ras verses, Hit Chaurasi, Radha Sudha Nidhi, Kelimal, and contemplative sadhana.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#E3EFE9",
-  "theme_color": "#E3EFE9",
+  "background_color": "#090A0F",
+  "theme_color": "#D4A359",
+  "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/lotus.svg",
-      "sizes": "192x192 512x512",
-      "type": "image/svg+xml",
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
       "purpose": "any maskable"
     }
   ]
 }
-
