@@ -83,7 +83,12 @@ body {
   opacity: 0.88;
 }
 
-/* Fast micro-tap for buttons */
+/* Clean, minimal input focus reset (eliminates browser default black/blue outline) */
+input:focus,
+input:focus-visible,
+button:focus-visible {
+  outline: none;
+}
 .pressable-sm {
   transition: transform 0.18s var(--ease-ios-spring), opacity 0.12s ease, background-color 0.2s ease, border-color 0.2s ease !important;
   transition-timing-function: var(--ease-ios-spring) !important;

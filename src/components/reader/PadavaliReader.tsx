@@ -947,15 +947,26 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
         {/* Search Input, Reading Controls & IAST Toggle */}
         <div className="flex flex-col sm:flex-row sm:items-center gap-2 w-full md:w-auto">
-          <div className="relative w-full sm:w-56">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[#94A3B8]" />
+          <div className="relative flex items-center w-full sm:w-60 px-3 py-1.5 rounded-full bg-[#FAF8F5] border border-amber-900/10 focus-within:border-amber-400/80 focus-within:bg-white focus-within:shadow-[0_2px_8px_rgba(217,119,6,0.08)] transition-all duration-200">
+            <Search className="w-3.5 h-3.5 text-amber-800/50 shrink-0 pointer-events-none transition-colors" />
             <input
               type="text"
               placeholder="Search pad, stotra, saint, raga..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 rounded-full bg-[#F8FAFC] text-xs text-[#0F172A] focus:outline-none focus:bg-white focus:ring-1 focus:ring-[#FACC15]/50 placeholder:text-[#94A3B8] transition-all"
+              className="w-full pl-2 pr-6 bg-transparent text-xs text-[#18181B] placeholder:text-neutral-400 outline-none border-none focus:outline-none focus:ring-0 focus:border-none ring-0 select-text"
             />
+            {searchQuery && (
+              <button
+                type="button"
+                onClick={() => setSearchQuery('')}
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 p-0.5 text-neutral-400 hover:text-neutral-800 rounded-full hover:bg-neutral-100 transition-colors cursor-pointer"
+                title="Clear search"
+                aria-label="Clear search"
+              >
+                <X className="w-3 h-3" />
+              </button>
+            )}
           </div>
 
           <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
@@ -1567,20 +1578,22 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   </div>
 
                   {/* Instant In-Sidebar Quick Filter */}
-                  <div className="relative">
-                    <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[#94A3B8]" />
+                  <div className="relative flex items-center w-full px-3 py-1.5 rounded-full bg-[#FAF8F5] border border-amber-900/10 focus-within:border-amber-400/80 focus-within:bg-white focus-within:shadow-[0_2px_8px_rgba(217,119,6,0.08)] transition-all duration-200">
+                    <Search className="w-3.5 h-3.5 text-amber-800/50 shrink-0 pointer-events-none transition-colors" />
                     <input
                       type="text"
                       value={sidebarQuery}
                       onChange={(e) => setSidebarQuery(e.target.value)}
                       placeholder="पद, टेक या संत खोजें..."
-                      className="w-full pl-8 pr-7 py-2 rounded-xl bg-black/5 text-xs text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:bg-white focus:ring-1 focus:ring-[#FACC15]/50 transition-all"
+                      className="w-full pl-2 pr-6 bg-transparent text-xs text-[#18181B] font-laila placeholder:text-neutral-400 placeholder:font-laila outline-none border-none focus:outline-none focus:ring-0 focus:border-none ring-0 select-text"
                     />
                     {sidebarQuery && (
                       <button
                         type="button"
                         onClick={() => setSidebarQuery('')}
-                        className="absolute right-2 top-1/2 -translate-y-1/2 p-0.5 text-[#94A3B8] hover:text-[#0F172A] cursor-pointer"
+                        className="absolute right-2.5 top-1/2 -translate-y-1/2 p-0.5 text-neutral-400 hover:text-neutral-800 rounded-full hover:bg-neutral-100 transition-colors cursor-pointer"
+                        title="साफ़ करें"
+                        aria-label="Clear search"
                       >
                         <X className="w-3 h-3" />
                       </button>
