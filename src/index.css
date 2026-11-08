@@ -164,6 +164,101 @@ body {
   will-change: transform, opacity;
 }
 
+/* World-Class Native Inline Sliding Drawer Physics */
+.native-inline-drawer {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  margin-bottom: 0rem;
+  transition: grid-template-rows 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+              margin-bottom 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+              opacity 0.25s ease;
+  will-change: grid-template-rows, margin-bottom, opacity;
+}
+
+.native-inline-drawer.is-open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  margin-bottom: 1.25rem;
+}
+
+.native-inline-drawer.is-closed {
+  grid-template-rows: 0fr;
+  opacity: 0;
+  margin-bottom: 0rem !important;
+  pointer-events: none;
+}
+
+.native-inline-drawer-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.native-inline-drawer-card {
+  transform: translateY(-8px);
+  opacity: 0;
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+              opacity 0.25s ease;
+  will-change: transform, opacity;
+}
+
+.native-inline-drawer.is-open .native-inline-drawer-card {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.low-spec .native-inline-drawer,
+.low-spec .native-inline-drawer-card {
+  transition-duration: 0.001ms !important;
+  transform: none !important;
+}
+
+/* Fluid Accordion Sliding Physics & Relative Flow Transitions */
+.accordion-slide-container {
+  display: grid;
+  transition: grid-template-rows 0.36s cubic-bezier(0.16, 1, 0.3, 1),
+              margin-bottom 0.36s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.28s ease;
+  will-change: grid-template-rows, margin-bottom, opacity;
+}
+
+.accordion-slide-container.is-open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.accordion-slide-container.is-closed {
+  grid-template-rows: 0fr;
+  opacity: 0;
+  margin-bottom: 0 !important;
+  pointer-events: none;
+}
+
+.accordion-slide-content {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.accordion-slide-card {
+  transform: translateY(-8px);
+  opacity: 0;
+  transition: transform 0.36s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.28s ease;
+  will-change: transform, opacity;
+}
+
+.accordion-slide-container.is-open .accordion-slide-card {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.low-spec .accordion-slide-container,
+.low-spec .accordion-slide-card {
+  transition-duration: 0.001ms !important;
+  transform: none !important;
+}
+
 /* Apple Dialog Entrance (Scale 0.95 -> 1.0 with fade) & Exit */
 @keyframes appleDialogIn {
   0% {

@@ -415,52 +415,19 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   };
 
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
-  const [isSettingsRendered, setIsSettingsRendered] = useState(false);
-  const [isSettingsClosing, setIsSettingsClosing] = useState(false);
-  const settingsTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  useEffect(() => {
-    if (isSettingsOpen) {
-      if (settingsTimerRef.current) {
-        clearTimeout(settingsTimerRef.current);
-        settingsTimerRef.current = null;
-      }
-      setIsSettingsRendered(true);
-      setIsSettingsClosing(false);
-    } else if (isSettingsRendered) {
-      setIsSettingsClosing(true);
-      if (settingsTimerRef.current) {
-        clearTimeout(settingsTimerRef.current);
-      }
-      settingsTimerRef.current = setTimeout(() => {
-        setIsSettingsRendered(false);
-        setIsSettingsClosing(false);
-        settingsTimerRef.current = null;
-      }, 240);
-    }
-  }, [isSettingsOpen]);
-
-  useEffect(() => {
-    return () => {
-      if (settingsTimerRef.current) clearTimeout(settingsTimerRef.current);
-    };
-  }, []);
-
-  const handleToggleSettings = () => {
-    if (isSettingsClosing) return;
-    setIsSettingsOpen((prev) => !prev);
-  };
-
   const settingsTrayRef = useRef<HTMLDivElement>(null);
   const settingsToggleTopRef = useRef<HTMLButtonElement>(null);
   const settingsToggleBottomRef = useRef<HTMLButtonElement>(null);
+
+  const handleToggleSettings = () => {
+    setIsSettingsOpen((prev) => !prev);
+  };
 
   // Platform-wide consistent dismissal: close settings tray on outside tap or Escape
   useEffect(() => {
     if (!isSettingsOpen) return;
 
     const handleOutsideClick = (e: MouseEvent | TouchEvent) => {
-      if (isSettingsClosing) return;
       const target = e.target as Node;
       if (
         settingsTrayRef.current &&
@@ -485,7 +452,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       document.removeEventListener('pointerdown', handleOutsideClick);
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isSettingsOpen, isSettingsClosing]);
+  }, [isSettingsOpen]);
 
   const [isGlossaryOpen, setIsGlossaryOpen] = useState(false);
   const [isGlossaryClosing, setIsGlossaryClosing] = useState(false);
@@ -1011,15 +978,18 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       </div>
 
       {/* ========================================================================= */}
-      {/* Interactive Typography & Devotional Ambiance Customizer Floating Tray     */}
+      {/* Interactive Typography & Devotional Ambiance Customizer Inline Drawer     */}
       {/* ========================================================================= */}
-      {isSettingsRendered && (
-        <div
-          ref={settingsTrayRef}
-          className={`mb-5 p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-white border border-neutral-200/80 shadow-sm space-y-4 text-[#18181B] transform-gpu will-change-transform ${
-            isSettingsClosing ? 'apple-view-exit' : 'apple-view-enter'
-          }`}
-        >
+      <div
+        className={`native-inline-drawer ${isSettingsOpen ? 'is-open' : 'is-closed'}`}
+        aria-hidden={!isSettingsOpen}
+        inert={!isSettingsOpen ? true : undefined}
+      >
+        <div className="native-inline-drawer-inner">
+          <div
+            ref={settingsTrayRef}
+            className="native-inline-drawer-card p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-white border border-neutral-200/80 shadow-2xs space-y-4 text-[#18181B]"
+          >
           {/* Top Section: Sacred Ambiance Canvas Selection (Full Width 3-Column Grid) */}
           <div className="space-y-2">
             <div className="flex items-center justify-between">
@@ -1266,7 +1236,8 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             </div>
           </div>
         </div>
-      )}
+      </div>
+    </div>
 
       {/* ========================================================================= */}
       {/* 2. Canonical Grantha Filter Shelf (Hidden in Distraction-Free Mode)       */}
@@ -1834,35 +1805,43 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             </div>
           </div>
 
-          {/* Collapsible Summary Card */}
-          {isSummaryOpen && (
-            <div className={`${currentTheme.bhavarthBg} border ${currentTheme.borderColor} rounded-2xl p-4 sm:p-5 mb-7 apple-view-enter`}>
-              <div className={`flex items-center justify-between pb-2 mb-2 border-b ${currentTheme.borderColor}`}>
-                <div className={`flex items-center gap-1.5 text-xs font-bold ${currentTheme.titleColor} font-serif`}>
-                  <Sparkles className="w-3.5 h-3.5 text-[#CA8A04]" />
-                  <span>भाव संक्षेप एवं रस-गूढ़ार्थ</span>
+          {/* Collapsible Summary Card with Smooth Relative Sliding Accordion */}
+          <div
+            className={`accordion-slide-container ${
+              isSummaryOpen ? 'is-open mb-7' : 'is-closed'
+            }`}
+            aria-hidden={!isSummaryOpen}
+            inert={!isSummaryOpen ? true : undefined}
+          >
+            <div className="accordion-slide-content">
+              <div className={`accordion-slide-card ${currentTheme.bhavarthBg} border ${currentTheme.borderColor} rounded-2xl p-4 sm:p-5`}>
+                <div className={`flex items-center justify-between pb-2 mb-2 border-b ${currentTheme.borderColor}`}>
+                  <div className={`flex items-center gap-1.5 text-xs font-bold ${currentTheme.titleColor} font-serif`}>
+                    <Sparkles className="w-3.5 h-3.5 text-[#CA8A04]" />
+                    <span>भाव संक्षेप एवं रस-गूढ़ार्थ</span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setIsSummaryOpen(false)}
+                    className={`text-xs ${currentTheme.translitColor} hover:${currentTheme.lineColor} font-medium cursor-pointer`}
+                  >
+                    बंद करें ×
+                  </button>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => setIsSummaryOpen(false)}
-                  className={`text-xs ${currentTheme.translitColor} hover:${currentTheme.lineColor} font-medium cursor-pointer`}
-                >
-                  बंद करें ×
-                </button>
+                {isSummaryLoading && !summaryText ? (
+                  <div className={`flex items-center gap-2 py-3 text-xs ${currentTheme.translitColor} font-medium min-h-[48px]`}>
+                    <Sparkles className="w-4 h-4 text-[#CA8A04] animate-spin" />
+                    <span>प्रस्तुत किया जा रहा है...</span>
+                  </div>
+                ) : (
+                  <p className={`text-xs sm:text-sm font-devanagari ${currentTheme.bhavarthText} leading-relaxed break-words font-normal`}>
+                    {summaryText ||
+                      'श्री युगल रस का यह पावन पद अंतःकरण में असीम शांति और दिव्य प्रेम का संचार करता है।'}
+                  </p>
+                )}
               </div>
-              {isSummaryLoading && !summaryText ? (
-                <div className={`flex items-center gap-2 py-3 text-xs ${currentTheme.translitColor} font-medium min-h-[48px]`}>
-                  <Sparkles className="w-4 h-4 text-[#CA8A04] animate-spin" />
-                  <span>प्रस्तुत किया जा रहा है...</span>
-                </div>
-              ) : (
-                <p className={`text-xs sm:text-sm font-devanagari ${currentTheme.bhavarthText} leading-relaxed break-words font-normal`}>
-                  {summaryText ||
-                    'श्री युगल रस का यह पावन पद अंतःकरण में असीम शांति और दिव्य प्रेम का संचार करता है।'}
-                </p>
-              )}
             </div>
-          )}
+          </div>
 
           {/* Verses Stanza Block */}
           <div className="space-y-6 sm:space-y-8">

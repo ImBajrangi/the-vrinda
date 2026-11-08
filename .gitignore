@@ -33,3 +33,4 @@ tests/.build_tmp
 backups/
 *.enc
 
+screenshots/*
