@@ -81,7 +81,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
         if (t && ['smaran', 'padavali', 'feed', 'milestones'].includes(t)) {
           return t;
         }
-        if (params.get('pad')) {
+        if (params.get('pad') || params.get('author') || params.get('grantha')) {
           return 'padavali';
         }
       }
@@ -117,8 +117,31 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
   const [activePillarModal, setActivePillarModal] = useState<PillarType | null>(null);
   const [isGuideModalOpen, setIsGuideModalOpen] = useState(false);
   const [isAffirmedSankalpa, setIsAffirmedSankalpa] = useState(false);
-  const [selectedGranthaFilter, setSelectedGranthaFilter] = useState<string>('all');
-  const [readerSearchQuery, setReaderSearchQuery] = useState<string>('');
+  const [selectedGranthaFilter, setSelectedGranthaFilter] = useState<string>(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const g = params.get('grantha');
+        if (g) return g;
+      } catch {}
+    }
+    return 'all';
+  });
+  const [readerSearchQuery, setReaderSearchQuery] = useState<string>(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const authorParam = params.get('author');
+        if (authorParam) {
+          const saint = SacredDatabase.getSaintBySlugOrName(authorParam);
+          return saint ? saint.name : authorParam;
+        }
+        const q = params.get('q');
+        if (q) return q;
+      } catch {}
+    }
+    return '';
+  });
   const [activeSanctuaryStream, setActiveSanctuaryStream] = useState<'ashtayama' | 'audio' | 'dhyana'>('ashtayama');
   const [templeFilter, setTempleFilter] = useState<'all' | 'open' | 'rajbhog' | 'evening'>('all');
 
@@ -303,12 +326,34 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
     setSelectedGranthaFilter(granthaId);
     setReaderSearchQuery('');
     setActiveTab('padavali');
+    if (typeof window !== 'undefined') {
+      try {
+        const url = new URL(window.location.href);
+        url.searchParams.set('tab', 'padavali');
+        url.searchParams.set('grantha', granthaId);
+        url.searchParams.delete('author');
+        url.searchParams.delete('pad');
+        window.history.pushState({}, '', url.toString());
+      } catch {}
+    }
   };
 
   const handleSelectAuthor = (authorName: string) => {
     setSelectedGranthaFilter('all');
     setReaderSearchQuery(authorName);
     setActiveTab('padavali');
+    if (typeof window !== 'undefined') {
+      try {
+        const saint = SacredDatabase.getSaintBySlugOrName(authorName);
+        const slug = saint ? saint.slug : encodeURIComponent(authorName);
+        const url = new URL(window.location.href);
+        url.searchParams.set('tab', 'padavali');
+        url.searchParams.set('author', slug);
+        url.searchParams.delete('grantha');
+        url.searchParams.delete('pad');
+        window.history.pushState({}, '', url.toString());
+      } catch {}
+    }
   };
 
   const handleSelectRelation = (relationId: string) => {

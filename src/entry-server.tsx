@@ -25,18 +25,27 @@ export interface RenderResult {
 export function render(url: string = '/'): RenderResult {
   let tab: NavTab = 'smaran';
   let padId: string | undefined;
+  let authorQuery: string | undefined;
+  let granthaQuery: string | undefined;
 
   try {
     const parsed = new URL(url, 'https://bhav.vrindopnishad.in');
     const qTab = parsed.searchParams.get('tab') as NavTab;
     const qPad = parsed.searchParams.get('pad');
+    const qAuthor = parsed.searchParams.get('author');
+    const qGrantha = parsed.searchParams.get('grantha');
+
+    if (qAuthor) authorQuery = qAuthor;
+    if (qGrantha) granthaQuery = qGrantha;
 
     if (qTab && ['smaran', 'padavali', 'feed', 'milestones'].includes(qTab)) {
       tab = qTab;
     }
+    if (qPad || qAuthor || qGrantha) {
+      tab = 'padavali';
+    }
     if (qPad) {
       padId = qPad;
-      tab = 'padavali';
     }
 
     // Pathname support: /pad/:id, /padavali, /feed, /smaran, /milestones
@@ -73,6 +82,28 @@ export function render(url: string = '/'): RenderResult {
       title: `${pad.titleDevanagari} (${pad.author})`,
       description: `राग ${pad.rag} में निबद्ध पावन पद। रचयिता: ${pad.author}। वृन्दोपनिषद् 2.0`,
       canonicalUrl: `https://bhav.vrindopnishad.in/?tab=padavali&pad=${encodeURIComponent(slug)}`,
+    };
+  } else if (authorQuery) {
+    const saint = SacredDatabase.getSaintBySlugOrName(authorQuery);
+    const saintName = saint ? saint.name : authorQuery;
+    const tradition = saint ? ` (${saint.tradition})` : '';
+    const bio = saint?.biography ? `${saint.biography} ` : '';
+    seoConfig = {
+      tab: 'padavali',
+      title: `${saintName}${tradition} • रसिक संत पदावली | वृन्दोपनिषद् 2.0`,
+      description: `${bio}${saintName} की समस्त पावन पदों व वाणियों का प्रामाणिक संग्रह। वृन्दोपनिषद् 2.0`,
+      canonicalUrl: `https://bhav.vrindopnishad.in/?tab=padavali&author=${saint?.slug || encodeURIComponent(authorQuery)}`,
+    };
+  } else if (granthaQuery) {
+    const grantha = SacredDatabase.getGranthaById(granthaQuery);
+    const gName = grantha ? grantha.name : granthaQuery;
+    const gAuthor = grantha ? ` (${grantha.author})` : '';
+    const gDesc = grantha?.description ? `${grantha.description} ` : '';
+    seoConfig = {
+      tab: 'padavali',
+      title: `${gName}${gAuthor} • संपूर्ण वाणी संग्रह | वृन्दोपनिषद् 2.0`,
+      description: `${gDesc}${gName} के समस्त पदों का नित्य स्वाध्याय व अनुशीलन। वृन्दोपनिषद् 2.0`,
+      canonicalUrl: `https://bhav.vrindopnishad.in/?tab=padavali&grantha=${grantha?.id || encodeURIComponent(granthaQuery)}`,
     };
   } else {
     switch (tab) {

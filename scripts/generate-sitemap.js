@@ -76,7 +76,7 @@ function createSitemapSuite(baseUrl, prefix = '') {
 
   // 3. Saints
   const saintsUrls = saints.map((s) => ({
-    loc: `${baseUrl}/?tab=padavali&author=${encodeURIComponent(s.name)}`,
+    loc: `${baseUrl}/?tab=padavali&author=${s.slug || s.id || encodeURIComponent(s.name)}`,
     lastmod: today,
     changefreq: 'monthly',
     priority: 0.85,

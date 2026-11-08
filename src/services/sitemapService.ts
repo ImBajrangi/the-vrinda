@@ -90,7 +90,7 @@ export const SitemapService = {
     const saints = SacredDatabase.getAllSaints();
 
     const urls = saints.map((s) => ({
-      loc: `${baseUrl}/?tab=padavali&author=${encodeURIComponent(s.name)}`,
+      loc: `${baseUrl}/?tab=padavali&author=${s.slug || s.id || encodeURIComponent(s.name)}`,
       lastmod: today,
       changefreq: 'monthly',
       priority: 0.85,
@@ -152,7 +152,7 @@ export const SitemapService = {
     const saints = SacredDatabase.getAllSaints();
     for (const s of saints) {
       urls.push({
-        loc: `${baseUrl}/?tab=padavali&author=${encodeURIComponent(s.name)}`,
+        loc: `${baseUrl}/?tab=padavali&author=${s.slug || s.id || encodeURIComponent(s.name)}`,
         lastmod: today,
         changefreq: 'monthly',
         priority: 0.85,
@@ -181,10 +181,10 @@ export const SitemapService = {
   generateSitemapIndex(baseUrl: string = DEFAULT_BASE_URL): string {
     const today = getTodayIsoDate();
     const sitemaps = [
-      { loc: `${baseUrl}/sitemap-main.xml`, lastmod: today },
-      { loc: `${baseUrl}/sitemap-granthas.xml`, lastmod: today },
-      { loc: `${baseUrl}/sitemap-saints.xml`, lastmod: today },
-      { loc: `${baseUrl}/sitemap-padas.xml`, lastmod: today },
+      { loc: `${baseUrl}/sitemap-main.xml?v=2`, lastmod: today },
+      { loc: `${baseUrl}/sitemap-granthas.xml?v=2`, lastmod: today },
+      { loc: `${baseUrl}/sitemap-saints.xml?v=2`, lastmod: today },
+      { loc: `${baseUrl}/sitemap-padas.xml?v=2`, lastmod: today },
     ];
 
     const lines = [

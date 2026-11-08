@@ -647,9 +647,29 @@ export const SacredDatabase = {
     return allGranthas;
   },
 
+  getGranthaById(id: string): CanonicalGrantha | undefined {
+    if (!id) return undefined;
+    const clean = id.trim().toLowerCase();
+    return allGranthas.find(
+      (g) => g.id.toLowerCase() === clean || g.name.toLowerCase() === clean
+    );
+  },
+
   getAllSaints(traditionFilter?: string): CanonicalSaint[] {
     if (!traditionFilter || traditionFilter === 'all') return allSaints;
     return allSaints.filter((s) => s.tradition === traditionFilter);
+  },
+
+  getSaintBySlugOrName(identifier: string): CanonicalSaint | undefined {
+    if (!identifier) return undefined;
+    const clean = identifier.trim().toLowerCase();
+    return allSaints.find(
+      (s) =>
+        s.slug.toLowerCase() === clean ||
+        s.name.toLowerCase() === clean ||
+        s.id.toLowerCase() === clean ||
+        (s.nameEng && s.nameEng.toLowerCase() === clean)
+    );
   },
 
   getTraditions(): { id: string; label: string }[] {
