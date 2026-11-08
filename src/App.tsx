@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Radio, Sun, Heart, Check, Sparkles, ExternalLink } from 'lucide-react';
 import { FloatingNavbar, NavTab } from './components/common/FloatingNavbar';
 import { DynamicNotchNavbar } from './components/common/DynamicNotchNavbar';
+import { TopAnnouncementMarquee } from './components/common/TopAnnouncementMarquee';
 import { DateStrip, DayItem } from './components/smaran/DateStrip';
 import { CategoriesRow } from './components/smaran/CategoriesRow';
 import { NityaSevaCard } from './components/smaran/NityaSevaCard';
@@ -123,6 +124,42 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
 
   const [weekDays] = useState<DayItem[]>(() => getDynamicWeekDays());
   const [dbVersion, setDbVersion] = useState(0);
+
+  // Dynamic Scroll hide / show detection for Announcement Marquee
+  const [isMarqueeVisible, setIsMarqueeVisible] = useState(true);
+
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // Always show at the top of the page
+      if (currentScrollY <= 20) {
+        setIsMarqueeVisible(true);
+      } else if (currentScrollY > lastScrollY && currentScrollY > 70) {
+        // Scrolling down -> smoothly hide marquee
+        setIsMarqueeVisible(false);
+      } else if (currentScrollY < lastScrollY && lastScrollY - currentScrollY > 4) {
+        // Scrolling up -> smoothly show marquee
+        setIsMarqueeVisible(true);
+      }
+
+      lastScrollY = currentScrollY > 0 ? currentScrollY : 0;
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(handleScroll);
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   // Initiate background client hydration (IndexedDB -> CDN database & cloud bookmarks)
   useEffect(() => {
@@ -430,7 +467,15 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
           - Tablet (768px - 1024px): max-w-4xl with balanced gutters
           - Desktop (1024px+): max-w-6xl xl:max-w-7xl
       */}
-      <div className="w-full max-w-full md:max-w-5xl xl:max-w-7xl min-h-screen relative px-3.5 sm:px-6 lg:px-8 pt-24 sm:pt-28 lg:pt-32 pb-36 md:pb-24 box-border">
+      <div className={`w-full max-w-full md:max-w-5xl xl:max-w-7xl min-h-screen relative px-3.5 sm:px-6 lg:px-8 ${isMarqueeVisible ? 'pt-28 sm:pt-32 lg:pt-36' : 'pt-24 sm:pt-28 lg:pt-32'} pb-36 md:pb-24 box-border transition-[padding] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]`}>
+        {/* Dynamic Top Announcement Marquee Ticker */}
+        <TopAnnouncementMarquee
+          isVisible={isMarqueeVisible}
+          onSelectTab={setActiveTab}
+          onOpenSaintsDirectory={() => setIsSaintsModalOpen(true)}
+          streakDays={sadhana?.currentStreakDays ?? 14}
+        />
+
         {/* Apple Dynamic Notch / Dynamic Island Navbar (Fixed Floating Top Island) */}
         <DynamicNotchNavbar
           activeTab={activeTab}
@@ -446,6 +491,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
           onOpenFocus={() => setIsFocusModalOpen(true)}
           sadhana={sadhana}
           onQuickJapa={incrementJapa}
+          isMarqueeVisible={isMarqueeVisible}
         />
 
         {/* Main Tab Content with Apple-grade View Transitions */}

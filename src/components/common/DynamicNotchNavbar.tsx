@@ -33,6 +33,7 @@ interface DynamicNotchNavbarProps {
   onOpenFocus?: () => void;
   sadhana?: SadhanaState;
   onQuickJapa?: () => void;
+  isMarqueeVisible?: boolean;
 }
 
 export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
@@ -47,6 +48,7 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
   onOpenFocus,
   sadhana,
   onQuickJapa,
+  isMarqueeVisible = true,
 }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMenuRendered, setIsMenuRendered] = useState(false);
@@ -218,7 +220,11 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
           aria-hidden="true"
         />
       )}
-      <header className="fixed top-2.5 sm:top-4 left-0 right-0 z-50 w-full px-3 sm:px-6 pointer-events-none select-none transition-all duration-300">
+      <header
+        className={`fixed ${
+          isMarqueeVisible ? 'top-10 sm:top-12' : 'top-2.5 sm:top-4'
+        } left-0 right-0 z-50 w-full px-3 sm:px-6 pointer-events-none select-none transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]`}
+      >
       <div className="max-w-6xl mx-auto flex flex-col items-center">
         
         {/* Main Floating Glass & Paper Header Bar */}

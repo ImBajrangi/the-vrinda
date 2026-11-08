@@ -98,7 +98,7 @@ body {
 }
 
 /* ==========================================================================
-   Company-Inspired Expanding Underline Animation (Butter-Smooth Native Easing)
+   Company-Inspired Expanding Underline Animation (Forward-Passing, Point-to-Point)
    ========================================================================== */
 .company-link {
   position: relative;
@@ -107,6 +107,11 @@ body {
   gap: 0.25rem;
   text-decoration: none !important;
   cursor: pointer;
+}
+
+/* Treat child elements as one unified hitbox so internal cursor movement never fires jittery mouseout */
+.company-link > * {
+  pointer-events: none;
 }
 
 .company-link::after {
@@ -119,14 +124,45 @@ body {
   background-color: currentColor;
   pointer-events: none;
   transform: scaleX(0);
-  transform-origin: left center;
-  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: right center;
+  transition: transform 0.32s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .company-link:hover::after,
 .company-link:active::after,
 .group:hover .group-company-link::after {
   transform: scaleX(1);
+  transform-origin: left center;
+}
+
+/* ==========================================================================
+   Top Announcement Marquee Ticker (Infinite Seamless Loop)
+   ========================================================================== */
+@keyframes marqueeScrollInfinite {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.top-marquee-mask {
+  mask-image: linear-gradient(to right, transparent 0%, black 36px, black calc(100% - 36px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 36px, black calc(100% - 36px), transparent 100%);
+}
+
+.top-marquee-track {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  width: max-content;
+  animation: marqueeScrollInfinite 52s linear infinite;
+  will-change: transform;
+}
+
+.top-marquee-track:hover {
+  animation-play-state: paused;
 }
 
 /* Apple Screen & View Transition */
