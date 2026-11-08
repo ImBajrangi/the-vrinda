@@ -46,32 +46,32 @@ export const NityaSevaCard: React.FC<NityaSevaCardProps> = ({
   let devanagariTemple = 'श्री वृन्दावन धाम मंदिर';
   let devanagariSeva = sevaTitle;
   let praharLabel = 'नित्य अष्टयाम';
-  let defaultImage = '/assets/temples/banke-bihari-v2.jpg';
+  let defaultImage = '/assets/temples/banke-bihari-v2.webp';
   let defaultNum = '01';
 
   if (isBihari) {
     devanagariTemple = 'श्री बाँके बिहारी मंदिर';
     devanagariSeva = 'मंगला दर्शन आरती';
     praharLabel = 'प्रातः अष्टयाम';
-    defaultImage = '/assets/temples/banke-bihari-v2.jpg';
+    defaultImage = '/assets/temples/banke-bihari-v2.webp';
     defaultNum = '01';
   } else if (isVallabh) {
     devanagariTemple = 'श्री राधा वल्लभ लाल';
     devanagariSeva = 'राजभोग दर्शन एवं महाप्रसाद';
     praharLabel = 'मध्याह्न अष्टयाम';
-    defaultImage = '/assets/temples/radha-vallabh.jpg';
+    defaultImage = '/assets/temples/radha-vallabh.webp';
     defaultNum = '02';
   } else if (isRaman) {
     devanagariTemple = 'श्री राधा रमण जू';
     devanagariSeva = 'संध्या आरती व दिव्य शृंगार';
     praharLabel = 'सायं संध्या';
-    defaultImage = '/assets/temples/radha-raman.jpg';
+    defaultImage = '/assets/temples/radha-raman.webp';
     defaultNum = '03';
   } else if (isBarsana) {
     devanagariTemple = 'बरसाना श्री लाड़िली लाल जी';
     devanagariSeva = 'शयन दर्शन व चंवर सेवा';
     praharLabel = 'शयन अष्टयाम';
-    defaultImage = '/assets/temples/barsana-radharani.jpg';
+    defaultImage = '/assets/temples/barsana-radharani.webp';
     defaultNum = '04';
   }
 

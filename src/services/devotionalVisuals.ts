@@ -17,41 +17,41 @@ export const getSaintPortrait = (saint: {
   const tradition = (saint.tradition || '').toLowerCase();
 
   // 1. Direct canonical saint matches
-  if (slug.includes('raskhan') || name.includes('रसखान')) return '/assets/saints/raskhan.jpg';
-  if (slug.includes('nagaridas') || name.includes('नागरीदास')) return '/assets/saints/nagaridas.jpg';
+  if (slug.includes('raskhan') || name.includes('रसखान')) return '/assets/saints/raskhan.webp';
+  if (slug.includes('nagaridas') || name.includes('नागरीदास')) return '/assets/saints/nagaridas.webp';
   if (slug.includes('soordas') || slug.includes('surdas') || name.includes('सूरदास'))
-    return '/assets/saints/surdas.jpg';
-  if (slug.includes('meera') || name.includes('मीरा')) return '/assets/saints/meera.jpg';
-  if (slug.includes('vyas') || name.includes('व्यास')) return '/assets/saints/vyas.jpg';
-  if (slug.includes('haridas') || name.includes('हरिदास')) return '/assets/saints/swami-haridas.jpg';
-  if (slug.includes('chaitanya') || name.includes('चैतन्य')) return '/assets/saints/chaitanya.jpg';
-  if (slug.includes('vallabh') || name.includes('वल्लभ')) return '/assets/saints/vallabha.jpg';
-  if (slug.includes('nimbark') || name.includes('निम्बार्क')) return '/assets/saints/nimbarka.jpg';
+    return '/assets/saints/surdas.webp';
+  if (slug.includes('meera') || name.includes('मीरा')) return '/assets/saints/meera.webp';
+  if (slug.includes('vyas') || name.includes('व्यास')) return '/assets/saints/vyas.webp';
+  if (slug.includes('haridas') || name.includes('हरिदास')) return '/assets/saints/swami-haridas.webp';
+  if (slug.includes('chaitanya') || name.includes('चैतन्य')) return '/assets/saints/chaitanya.webp';
+  if (slug.includes('vallabh') || name.includes('वल्लभ')) return '/assets/saints/vallabha.webp';
+  if (slug.includes('nimbark') || name.includes('निम्बार्क')) return '/assets/saints/nimbarka.webp';
 
   // 2. Specific Braj & Sampradayic Saints
-  if (slug.includes('kishori-ali') || name.includes('किशोरी अलि')) return '/assets/temples/radha-vallabh.jpg';
-  if (slug.includes('vitthal-vipul') || name.includes('विट्ठल विपुल')) return '/assets/saints/swami-haridas.jpg';
-  if (slug.includes('giridhar-lal') || name.includes('गिरिधर लाल')) return '/assets/temples/radha-raman.jpg';
-  if (slug.includes('bhori-sakhi') || name.includes('भोरी सखी')) return '/assets/temples/barsana-radharani.jpg';
-  if (slug.includes('hit-harivansh') || name.includes('हरिवंश')) return '/assets/temples/radha-vallabh.jpg';
-  if (slug.includes('biharin-dev') || name.includes('बिहारिन देव')) return '/assets/temples/banke-bihari-v2.jpg';
-  if (slug.includes('narayan-swami') || name.includes('नारायण स्वामी')) return '/assets/temples/aarti-lamp.jpg';
-  if (slug.includes('lalit-kishori') || name.includes('ललित किशोरी')) return '/assets/temples/banke-bihari-v2.jpg';
+  if (slug.includes('kishori-ali') || name.includes('किशोरी अलि')) return '/assets/temples/radha-vallabh.webp';
+  if (slug.includes('vitthal-vipul') || name.includes('विट्ठल विपुल')) return '/assets/saints/swami-haridas.webp';
+  if (slug.includes('giridhar-lal') || name.includes('गिरिधर लाल')) return '/assets/temples/radha-raman.webp';
+  if (slug.includes('bhori-sakhi') || name.includes('भोरी सखी')) return '/assets/temples/barsana-radharani.webp';
+  if (slug.includes('hit-harivansh') || name.includes('हरिवंश')) return '/assets/temples/radha-vallabh.webp';
+  if (slug.includes('biharin-dev') || name.includes('बिहारिन देव')) return '/assets/temples/banke-bihari-v2.webp';
+  if (slug.includes('narayan-swami') || name.includes('नारायण स्वामी')) return '/assets/temples/aarti-lamp.webp';
+  if (slug.includes('lalit-kishori') || name.includes('ललित किशोरी')) return '/assets/temples/banke-bihari-v2.webp';
 
   // 3. Tradition-based defaults
-  if (tradition.includes('राधावल्लभ')) return '/assets/temples/radha-vallabh.jpg';
-  if (tradition.includes('हरिदासी')) return '/assets/saints/swami-haridas.jpg';
-  if (tradition.includes('अष्टछाप')) return '/assets/saints/surdas.jpg';
-  if (tradition.includes('निम्बार्क')) return '/assets/saints/nimbarka.jpg';
+  if (tradition.includes('राधावल्लभ')) return '/assets/temples/radha-vallabh.webp';
+  if (tradition.includes('हरिदासी')) return '/assets/saints/swami-haridas.webp';
+  if (tradition.includes('अष्टछाप')) return '/assets/saints/surdas.webp';
+  if (tradition.includes('निम्बार्क')) return '/assets/saints/nimbarka.webp';
 
   // 4. Rasik Parampara deterministic fallbacks
   const rasikFallbacks = [
-    '/assets/saints/nagaridas.jpg',
-    '/assets/temples/radha-raman.jpg',
-    '/assets/saints/raskhan.jpg',
-    '/assets/temples/keshi-ghat.jpg',
-    '/assets/temples/barsana-radharani.jpg',
-    '/assets/temples/diya-pujan.jpg',
+    '/assets/saints/nagaridas.webp',
+    '/assets/temples/radha-raman.webp',
+    '/assets/saints/raskhan.webp',
+    '/assets/temples/keshi-ghat.webp',
+    '/assets/temples/barsana-radharani.webp',
+    '/assets/temples/diya-pujan.webp',
   ];
   let h = 0;
   for (let i = 0; i < slug.length; i++) h = (h * 31 + slug.charCodeAt(i)) >>> 0;

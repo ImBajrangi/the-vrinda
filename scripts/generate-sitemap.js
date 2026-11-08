@@ -33,12 +33,12 @@ function buildUrlset(urls) {
   ];
 
   for (const item of urls) {
-    lines.push('  <url>');
-    lines.push(`    <loc>${escapeXml(item.loc)}</loc>`);
-    if (item.lastmod) lines.push(`    <lastmod>${item.lastmod}</lastmod>`);
-    if (item.changefreq) lines.push(`    <changefreq>${item.changefreq}</changefreq>`);
-    if (item.priority !== undefined) lines.push(`    <priority>${item.priority.toFixed(2)}</priority>`);
-    lines.push('  </url>');
+    let u = `<url><loc>${escapeXml(item.loc)}</loc>`;
+    if (item.lastmod) u += `<lastmod>${item.lastmod}</lastmod>`;
+    if (item.changefreq) u += `<changefreq>${item.changefreq}</changefreq>`;
+    if (item.priority !== undefined) u += `<priority>${item.priority.toFixed(2)}</priority>`;
+    u += '</url>';
+    lines.push(u);
   }
 
   lines.push('</urlset>');
@@ -108,17 +108,12 @@ function createSitemapSuite(baseUrl, prefix = '') {
     '</sitemapindex>',
   ].join('\n');
 
-  // 6. Unified Full Sitemap
-  const allUrls = [...mainUrls, ...granthasUrls, ...saintsUrls, ...padasUrls];
-  const allXml = buildUrlset(allUrls);
-
   return {
     [`${filePrefix}.xml`]: indexXml,
     [`${filePrefix}-main.xml`]: mainXml,
     [`${filePrefix}-granthas.xml`]: granthasXml,
     [`${filePrefix}-saints.xml`]: saintsXml,
     [`${filePrefix}-padas.xml`]: padasXml,
-    [`${filePrefix}-all.xml`]: allXml,
   };
 }
 
@@ -144,16 +139,16 @@ export function generateAllSitemaps(outputDirs = ['public', 'dist']) {
     }
   }
 
-  // Ensure canonical database endpoints are synced
+  // Ensure canonical database endpoints are synced with single-line minified JSON
   const padasPath = path.resolve(projectRoot, 'src/data/canonicalPadas.json');
-  const rawBytes = fs.readFileSync(padasPath);
+  const minifiedJson = JSON.stringify(JSON.parse(fs.readFileSync(padasPath, 'utf-8')));
 
   for (const dirName of outputDirs) {
     const dataDir = path.resolve(projectRoot, dirName, 'data');
     if (!fs.existsSync(dataDir)) {
       fs.mkdirSync(dataDir, { recursive: true });
     }
-    fs.writeFileSync(path.resolve(dataDir, 'canonicalPadas.json'), rawBytes);
+    fs.writeFileSync(path.resolve(dataDir, 'canonicalPadas.json'), minifiedJson, 'utf-8');
   }
 
   console.log('  ✓ Generated sitemap suites for both bhav & path subdomains');
