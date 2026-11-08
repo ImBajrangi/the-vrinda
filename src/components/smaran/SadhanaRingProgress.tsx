@@ -2,6 +2,7 @@ import React from 'react';
 import { Flame, Music2, BookOpen, Wind, HelpCircle, Disc3 } from 'lucide-react';
 import { SadhanaState, SacredPad } from '../../types/devotional';
 import { ArtworkGraphicSlot } from '../common/ArtworkGraphicSlot';
+import { formatDevanagariNumerals } from '../../services/cacheService';
 
 interface SadhanaRingProgressProps {
   sadhana: SadhanaState;
@@ -26,7 +27,7 @@ interface SadhanaRingProgressProps {
 
 export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
   sadhana,
-  mantraCountFormatted,
+  mantraCountFormatted: _mantraCountFormatted,
   mantraCountDevanagari,
   malasDevanagari,
   malasTargetDevanagari,
@@ -93,124 +94,132 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
       </div>
 
       {/* 2. Artisanal Tulsi Japamala Centerpiece (Replaces Generic Concentric Rings) */}
-      <div className="p-5 sm:p-6 rounded-[28px] bg-[#FAF9F5] flex flex-col lg:flex-row items-center justify-between gap-6">
-        
-        {/* Left: Tactile Japamala Chanting Medallion */}
-        <div className="flex items-center gap-5 sm:gap-6 w-full lg:w-auto">
-          {/* Circular Touch Bead Medallion */}
-          <button
-            type="button"
-            onClick={handleTapBead}
-            aria-label="Count 1 bead on Tulsi Mala"
-            className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-white border-2 border-amber-300/80 shadow-[0_4px_20px_rgba(217,119,6,0.1)] flex flex-col items-center justify-center shrink-0 cursor-pointer select-none transition-all active:scale-95 group relative overflow-hidden"
-          >
-            {/* Subtle inner gold rim */}
-            <div className="absolute inset-1 rounded-full border border-amber-200/50 pointer-events-none" />
+      <div className="p-5 sm:p-6 rounded-[28px] bg-[#FAF8F3] border border-amber-200/70 shadow-[inset_0_1px_3px_rgba(255,255,255,0.8),0_4px_24px_rgba(0,0,0,0.02)]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          
+          {/* Left Column (Cols 1-7): Tactile Japamala Chanting Medallion + Core Metrics */}
+          <div className="lg:col-span-7 flex items-center gap-4 sm:gap-6">
             
-            <span className={`font-serif font-bold text-2xl sm:text-3xl text-amber-800 leading-none transition-transform duration-150 ${counterTick ? 'scale-110' : ''}`}>
-              राधे
-            </span>
-            <span className="text-[10px] uppercase font-bold tracking-wider text-amber-800 font-mono mt-1">
-              मनका जप
-            </span>
-            <span className="text-[9px] text-[#A1A1AA] font-mono">
-              +1 Bead
-            </span>
-          </button>
-
-          {/* Majestic Chanting Numbers & Status */}
-          <div className="flex flex-col min-w-0 flex-1">
-            <div className="flex items-center gap-2 mb-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-amber-800">
-                तुलसी माला जप • 108 Beads Japa
-              </span>
-            </div>
-
-            {/* Prominent Devanagari Numeral Display */}
-            <div className="flex items-baseline gap-2.5 flex-wrap">
-              <span className={`font-serif font-bold text-3xl sm:text-4xl lg:text-[42px] text-[#18181B] leading-none tracking-tight ${counterTick ? 'animate-number-tick' : ''}`}>
-                {mantraCountDevanagari}
-              </span>
-              <span className="text-xs sm:text-sm font-medium text-[#71717A]">
-                मंत्र उच्चारित ({mantraCountFormatted})
-              </span>
-            </div>
-
-            {/* Mala count & bead status */}
-            <div className="flex items-center gap-2 text-xs text-[#52525B] mt-1.5 font-medium flex-wrap">
-              <span className="text-[#18181B] font-bold">
-                {malasDevanagari} of {malasTargetDevanagari} माला पूर्ण
-              </span>
-              <span className="text-amber-800 font-mono font-semibold bg-amber-50 px-2.5 py-0.5 rounded-full">
-                मनका {beadInCurrentMala} / 108
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* Right: The 108-Bead Physical Mala Track & Action */}
-        <div className="w-full lg:w-96 flex flex-col justify-between space-y-3 pt-2 lg:pt-0 lg:border-l lg:border-neutral-200/70 lg:pl-6">
-          <div className="flex items-center justify-between text-xs">
-            <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#71717A]">
-              १०८ मनकों की पावन माला
-            </span>
-            <span className="text-xs font-bold text-amber-700 font-mono">
-              {Math.round((beadInCurrentMala / 108) * 100)}% Mala Track
-            </span>
-          </div>
-
-          {/* Authentic Physical Tulsi Beads Strand (27 beads representing the 108 cycle) */}
-          <div className="flex items-center justify-between gap-1 p-2 bg-white rounded-2xl border border-neutral-200/60 shadow-2xs">
-            {/* Meru Bead Indicator (सुमेरु) */}
-            <div
-              title="सुमेरु मनका (Meru Bead)"
-              className="w-3.5 h-3.5 rounded-full bg-amber-500 border border-amber-600 shrink-0 shadow-2xs flex items-center justify-center text-[7px] text-white font-bold"
-            >
-              ✦
-            </div>
-
-            {/* The 27 beaded pearl markers */}
-            {Array.from({ length: totalMalaMarkers }).map((_, idx) => {
-              const isChanted = idx < activeMarkerIndex;
-              const isActive = idx === activeMarkerIndex;
-
-              return (
-                <div
-                  key={idx}
-                  title={`Bead segment ${(idx + 1) * 4} / 108`}
-                  className={`w-2 h-2 rounded-full transition-all duration-200 ${
-                    isChanted
-                      ? 'bg-amber-400 border border-amber-500'
-                      : isActive
-                      ? 'bg-amber-600 ring-2 ring-amber-300 scale-125'
-                      : 'bg-neutral-200/80 border border-neutral-300/50'
-                  }`}
-                />
-              );
-            })}
-          </div>
-
-          {/* Quick Increment Controls */}
-          <div className="flex items-center gap-2 pt-1">
+            {/* Circular Touch Bead Medallion */}
             <button
               type="button"
               onClick={handleTapBead}
-              className="flex-1 py-2 px-3 rounded-full bg-white hover:bg-[#FEFCE8] text-[#18181B] flex items-center justify-center gap-1.5 text-xs font-bold transition-colors cursor-pointer"
+              aria-label="Count 1 bead on Tulsi Mala"
+              className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-white border border-amber-300/80 shadow-[0_8px_24px_rgba(217,119,6,0.12),inset_0_2px_4px_rgba(255,255,255,1)] flex flex-col items-center justify-center shrink-0 cursor-pointer select-none active:scale-95 transition-transform group"
             >
-              <Disc3 className="w-3.5 h-3.5 text-amber-700" />
-              <span>+१ मनका</span>
+              {/* Concentric Inner Gold Ring */}
+              <div className="absolute inset-[4px] rounded-full border border-amber-200/70 pointer-events-none" />
+
+              <span className={`font-rozha text-2xl sm:text-3xl text-amber-900 leading-none transition-transform duration-150 ${counterTick ? 'scale-110' : ''}`}>
+                राधे
+              </span>
+              <span className="font-laila text-[11px] font-semibold text-amber-800 mt-1 leading-none">
+                मनका जप
+              </span>
+              <span className="font-laila text-[10px] text-amber-600/80 mt-0.5 leading-none">
+                +१ मनका
+              </span>
             </button>
 
-            <button
-              type="button"
-              onClick={incrementJapa}
-              className="py-2 px-4 rounded-full bg-[#FACC15] hover:bg-[#FDE047] text-[#18181B] text-xs font-bold transition-colors cursor-pointer flex items-center gap-1.5"
-            >
-              <span>+१ पूरी माला</span>
-              <span className="text-[10px] text-amber-900 font-mono font-bold">(108)</span>
-            </button>
+            {/* Chanting Progress Metrics */}
+            <div className="flex flex-col min-w-0 flex-1 justify-center space-y-1">
+              
+              <div className="text-xs font-laila font-semibold text-amber-800 tracking-wide">
+                पवित्र तुलसी माला साधना
+              </div>
+
+              {/* Prominent Devanagari Numeral Display */}
+              <div className="flex items-baseline gap-2.5 flex-wrap">
+                <span className={`font-rozha text-3xl sm:text-4xl lg:text-[42px] text-[#18181B] leading-none tracking-tight ${counterTick ? 'animate-number-tick' : ''}`}>
+                  {mantraCountDevanagari}
+                </span>
+                <span className="text-xs sm:text-sm font-laila font-semibold text-neutral-500">
+                  मंत्र जप
+                </span>
+              </div>
+
+              {/* Secondary Status: Clean & Direct */}
+              <div className="flex items-center gap-x-2 gap-y-0.5 pt-1 font-laila text-xs text-neutral-800 flex-wrap">
+                <span className="font-bold text-neutral-900 whitespace-nowrap">
+                  {malasDevanagari} / {malasTargetDevanagari} माला पूर्ण
+                </span>
+                <span className="text-neutral-300 font-normal hidden sm:inline">—</span>
+                <span className="font-semibold text-amber-800 whitespace-nowrap">
+                  मनका {formatDevanagariNumerals(beadInCurrentMala)} / १०८
+                </span>
+              </div>
+
+            </div>
+
           </div>
+
+          {/* Right Column (Cols 8-12): Tulsi Beads Strand & Direct Controls */}
+          <div className="lg:col-span-5 flex flex-col justify-between space-y-3 pt-4 lg:pt-0 border-t border-amber-200/40 lg:border-t-0 lg:border-l lg:border-amber-200/60 lg:pl-6">
+            
+            {/* Strand Header: Clean Devanagari */}
+            <div className="flex items-center justify-between text-xs font-laila">
+              <span className="font-semibold text-neutral-700">
+                १०८ मनकों की पावन माला
+              </span>
+              <span className="font-bold text-amber-800">
+                {formatDevanagariNumerals(Math.round((beadInCurrentMala / 108) * 100))}% माला पूर्ण
+              </span>
+            </div>
+
+            {/* Tulsi Beads Strand (27 beads representing the 108 cycle) */}
+            <div className="flex items-center justify-between gap-0.5 sm:gap-1 p-2 sm:p-2.5 bg-white rounded-full border border-amber-200/60 shadow-2xs overflow-hidden">
+              {/* Meru Bead Indicator (सुमेरु) */}
+              <div
+                title="सुमेरु मनका (Meru Bead)"
+                className="w-3.5 h-3.5 rounded-full meru-bead border border-amber-500 shrink-0 aspect-square flex items-center justify-center text-[8px] text-white font-bold"
+              >
+                ✦
+              </div>
+
+              {/* The 27 beaded pearl markers */}
+              {Array.from({ length: totalMalaMarkers }).map((_, idx) => {
+                const isChanted = idx < activeMarkerIndex;
+                const isActive = idx === activeMarkerIndex;
+
+                return (
+                  <div
+                    key={idx}
+                    title={`Bead segment ${(idx + 1) * 4} / 108`}
+                    className={`rounded-full shrink-0 aspect-square transition-all duration-200 ${
+                      isActive
+                        ? 'w-2.5 h-2.5 tulsi-bead-active ring-2 ring-amber-300'
+                        : isChanted
+                        ? 'w-2 h-2 tulsi-bead-chanted'
+                        : 'w-1.5 h-1.5 sm:w-2 sm:h-2 tulsi-bead-pending'
+                    }`}
+                  />
+                );
+              })}
+            </div>
+
+            {/* Quick Increment Controls */}
+            <div className="flex items-center gap-2 pt-1 font-laila">
+              <button
+                type="button"
+                onClick={handleTapBead}
+                className="flex-1 py-2 px-3 rounded-full bg-white hover:bg-[#FEFCE8] text-[#18181B] border border-amber-200/70 flex items-center justify-center gap-1.5 text-xs font-bold transition-colors cursor-pointer active:scale-95"
+              >
+                <Disc3 className="w-3.5 h-3.5 text-amber-700" />
+                <span>+१ मनका</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={incrementJapa}
+                className="py-2 px-4 rounded-full bg-amber-100 hover:bg-amber-200/80 text-amber-950 border border-amber-300/80 text-xs font-bold transition-colors cursor-pointer flex items-center gap-1.5 active:scale-95"
+              >
+                <span>+१ पूरी माला</span>
+                <span className="text-[10px] text-amber-800 font-mono font-bold">(१०८)</span>
+              </button>
+            </div>
+
+          </div>
+
         </div>
       </div>
 
@@ -223,7 +232,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
           tabIndex={0}
           onClick={() => onOpenPillar('japa')}
           onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onOpenPillar('japa')}
-          className="group p-4 rounded-[22px] bg-[#FAF9F5] hover:bg-[#FEFCE8] transition-colors cursor-pointer select-none flex flex-col justify-between space-y-3"
+          className="group p-4 rounded-[24px] bg-[#FAF9F5] hover:bg-[#FEFCE8] transition-colors cursor-pointer select-none flex flex-col justify-between space-y-3"
         >
           {/* Dedicated Visual Slot for Japa Meditation Art */}
           <ArtworkGraphicSlot
@@ -232,26 +241,26 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
             theme="amber"
             placeholderLabel="नाम जप ध्यान चित्र"
             placeholderCategory="general"
-            roundedClassName="rounded-[16px]"
+            roundedClassName="rounded-[8px]"
           />
 
           <div>
             <div className="mb-1">
-              <span className="text-[11px] font-bold text-amber-800 uppercase tracking-wider flex items-center gap-1.5 font-mono">
+              <span className="text-xs font-semibold text-amber-800 flex items-center gap-1.5 font-laila">
                 <Flame className="w-3.5 h-3.5 text-amber-600 fill-amber-600" />
                 १. युगल नाम जप
               </span>
             </div>
             <div className="font-serif font-bold text-base text-[#18181B] leading-tight">
-              {sadhana.japaCompleted} / {sadhana.japaTarget} माला
+              {formatDevanagariNumerals(sadhana.japaCompleted)} / {formatDevanagariNumerals(sadhana.japaTarget)} माला
             </div>
-            <p className="text-[11.5px] text-[#71717A] mt-0.5">
+            <p className="text-[11.5px] text-[#71717A] mt-0.5 font-laila">
               श्री राधा-माधव युगल नाम का पावन अखंड जप।
             </p>
           </div>
 
-          <div className="pt-2 border-t border-neutral-100 flex items-center justify-between text-xs">
-            <span className="text-[11px] text-[#71717A] font-mono">१०८ मनके / माला</span>
+          <div className="pt-2 border-t border-neutral-100 flex items-center justify-between text-xs font-laila">
+            <span className="text-xs text-neutral-500">१०८ मनके / माला</span>
             <div className="company-link group-company-link font-semibold text-xs text-amber-700 group-hover:text-amber-900 transition-colors">
               <span>विवरण देखें</span>
               <span className="text-sm leading-none">→</span>
@@ -265,7 +274,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
           tabIndex={0}
           onClick={() => onOpenPillar('shravan')}
           onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onOpenPillar('shravan')}
-          className="group p-4 rounded-[22px] bg-[#FAF9F5] hover:bg-[#FEFCE8] transition-colors cursor-pointer select-none flex flex-col justify-between space-y-3"
+          className="group p-4 rounded-[24px] bg-[#FAF9F5] hover:bg-[#FEFCE8] transition-colors cursor-pointer select-none flex flex-col justify-between space-y-3"
         >
           {/* Dedicated Visual Slot for Pad Shravan & Raga Art */}
           <ArtworkGraphicSlot
@@ -274,26 +283,26 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
             theme="amber"
             placeholderLabel="वाणी श्रवण कला"
             placeholderCategory="music"
-            roundedClassName="rounded-[16px]"
+            roundedClassName="rounded-[8px]"
           />
 
           <div>
             <div className="mb-1">
-              <span className="text-[11px] font-bold text-amber-800 uppercase tracking-wider flex items-center gap-1.5 font-mono">
+              <span className="text-xs font-semibold text-amber-800 flex items-center gap-1.5 font-laila">
                 <Music2 className="w-3.5 h-3.5 text-amber-700" />
                 २. रसिक वाणी श्रवण
               </span>
             </div>
             <div className="font-serif font-bold text-base text-[#18181B] leading-tight">
-              {sadhana.shravanMinutes} / {sadhana.shravanTarget} मिनट
+              {formatDevanagariNumerals(sadhana.shravanMinutes)} / {formatDevanagariNumerals(sadhana.shravanTarget)} मिनट
             </div>
-            <p className="text-[11.5px] text-[#71717A] mt-0.5">
+            <p className="text-[11.5px] text-[#71717A] mt-0.5 font-laila">
               राग विभास, सारंग एवं बिलावल के दिव्य निकुंज पद।
             </p>
           </div>
 
-          <div className="pt-2 border-t border-neutral-100 flex items-center justify-between text-xs">
-            <span className="text-[11px] text-[#71717A] font-mono">शास्त्रीय कीर्तन</span>
+          <div className="pt-2 border-t border-neutral-100 flex items-center justify-between text-xs font-laila">
+            <span className="text-xs text-neutral-500">शास्त्रीय कीर्तन</span>
             <div className="company-link group-company-link font-semibold text-xs text-indigo-600 group-hover:text-indigo-800 transition-colors">
               <span>श्रवण करें</span>
               <span className="text-sm leading-none">→</span>
@@ -307,7 +316,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
           tabIndex={0}
           onClick={() => onOpenPillar('svadhyaya')}
           onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onOpenPillar('svadhyaya')}
-          className="group p-4 rounded-[22px] bg-[#FAF9F5] hover:bg-[#FEFCE8] transition-colors cursor-pointer select-none flex flex-col justify-between space-y-3"
+          className="group p-4 rounded-[24px] bg-[#FAF9F5] hover:bg-[#FEFCE8] transition-colors cursor-pointer select-none flex flex-col justify-between space-y-3"
         >
           {/* Dedicated Visual Slot for Grantha Scripture Manuscript Art */}
           <ArtworkGraphicSlot
@@ -316,26 +325,26 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
             theme="orange"
             placeholderLabel="ग्रंथ स्वाध्याय आवरण"
             placeholderCategory="book"
-            roundedClassName="rounded-[16px]"
+            roundedClassName="rounded-[8px]"
           />
 
           <div>
             <div className="mb-1">
-              <span className="text-[11px] font-bold text-amber-700 uppercase tracking-wider flex items-center gap-1.5 font-mono">
+              <span className="text-xs font-semibold text-amber-700 flex items-center gap-1.5 font-laila">
                 <BookOpen className="w-3.5 h-3.5 text-amber-600" />
                 ३. ग्रंथ स्वाध्याय
               </span>
             </div>
             <div className="font-serif font-bold text-base text-[#18181B] leading-tight">
-              {sadhana.svadhyayaPadas} / {sadhana.svadhyayaTarget} पद
+              {formatDevanagariNumerals(sadhana.svadhyayaPadas)} / {formatDevanagariNumerals(sadhana.svadhyayaTarget)} पद
             </div>
-            <p className="text-[11.5px] text-[#71717A] mt-0.5">
+            <p className="text-[11.5px] text-[#71717A] mt-0.5 font-laila">
               श्री हित चौरासी, केलिमाल एवं राधा सुधानिधि चिंतन।
             </p>
           </div>
 
-          <div className="pt-2 border-t border-neutral-100 flex items-center justify-between text-xs">
-            <span className="text-[11px] text-[#71717A] font-mono">रस उपासना</span>
+          <div className="pt-2 border-t border-neutral-100 flex items-center justify-between text-xs font-laila">
+            <span className="text-xs text-neutral-500">रस उपासना</span>
             <div className="company-link group-company-link font-semibold text-xs text-amber-700 group-hover:text-amber-900 transition-colors">
               <span>स्वाध्याय करें</span>
               <span className="text-sm leading-none">→</span>

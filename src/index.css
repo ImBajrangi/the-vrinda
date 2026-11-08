@@ -834,3 +834,26 @@ button:focus-visible {
   animation: none !important;
   box-shadow: none !important;
 }
+
+/* ==========================================================================
+   Sacred Tulsi Japamala Beads (Artisanal 3D Depth)
+   ========================================================================== */
+.tulsi-bead-chanted {
+  background: radial-gradient(circle at 35% 35%, #FDE047 0%, #D97706 65%, #92400E 100%);
+  box-shadow: 0 1px 2px rgba(180, 83, 9, 0.35);
+}
+
+.tulsi-bead-active {
+  background: radial-gradient(circle at 35% 35%, #FFFBEB 0%, #F59E0B 50%, #B45309 100%);
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.75);
+}
+
+.tulsi-bead-pending {
+  background: radial-gradient(circle at 35% 35%, #FAF7F0 0%, #E2D7C5 75%, #D4C5AE 100%);
+  border: 1px solid rgba(212, 197, 174, 0.4);
+}
+
+.meru-bead {
+  background: radial-gradient(circle at 35% 35%, #FEF08A 0%, #D97706 70%, #78350F 100%);
+  box-shadow: 0 0 6px rgba(217, 119, 6, 0.4);
+}
