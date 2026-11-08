@@ -164,52 +164,17 @@ body {
   will-change: transform, opacity;
 }
 
-/* World-Class Native Inline Sliding Drawer Physics */
-.native-inline-drawer {
-  display: grid;
-  grid-template-rows: 0fr;
-  opacity: 0;
-  margin-bottom: 0rem;
-  transition: grid-template-rows 0.35s cubic-bezier(0.25, 1, 0.5, 1),
-              margin-bottom 0.35s cubic-bezier(0.25, 1, 0.5, 1),
-              opacity 0.25s ease;
-  will-change: grid-template-rows, margin-bottom, opacity;
+/* Expert Native Smooth Collapsible Surface (100% Flicker-Free GPU Compositing) */
+.native-drawer-surface {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-font-smoothing: antialiased;
+  contain: paint;
 }
 
-.native-inline-drawer.is-open {
-  grid-template-rows: 1fr;
-  opacity: 1;
-  margin-bottom: 1.25rem;
-}
-
-.native-inline-drawer.is-closed {
-  grid-template-rows: 0fr;
-  opacity: 0;
-  margin-bottom: 0rem !important;
-  pointer-events: none;
-}
-
-.native-inline-drawer-inner {
-  min-height: 0;
-  overflow: hidden;
-}
-
-.native-inline-drawer-card {
-  transform: translateY(-8px);
-  opacity: 0;
-  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1),
-              opacity 0.25s ease;
-  will-change: transform, opacity;
-}
-
-.native-inline-drawer.is-open .native-inline-drawer-card {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.low-spec .native-inline-drawer,
-.low-spec .native-inline-drawer-card {
-  transition-duration: 0.001ms !important;
+.low-spec .native-drawer-surface {
   transform: none !important;
 }
 

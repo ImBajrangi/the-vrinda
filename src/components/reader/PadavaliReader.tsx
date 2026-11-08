@@ -418,6 +418,27 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   const settingsTrayRef = useRef<HTMLDivElement>(null);
   const settingsToggleTopRef = useRef<HTMLButtonElement>(null);
   const settingsToggleBottomRef = useRef<HTMLButtonElement>(null);
+  const [drawerHeight, setDrawerHeight] = useState<number>(0);
+
+  // Expert Measured Height Animation (100% Flicker-Free, 0px Subpixel Jitter)
+  useEffect(() => {
+    const el = settingsTrayRef.current;
+    if (!el) return;
+
+    if (isSettingsOpen) {
+      setDrawerHeight(el.scrollHeight);
+
+      const ro = new ResizeObserver(() => {
+        if (settingsTrayRef.current) {
+          setDrawerHeight(settingsTrayRef.current.scrollHeight);
+        }
+      });
+      ro.observe(el);
+      return () => ro.disconnect();
+    } else {
+      setDrawerHeight(0);
+    }
+  }, [isSettingsOpen]);
 
   const handleToggleSettings = () => {
     setIsSettingsOpen((prev) => !prev);
@@ -979,17 +1000,20 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
       {/* ========================================================================= */}
       {/* Interactive Typography & Devotional Ambiance Customizer Inline Drawer     */}
+      {/* Expert Measured Height Architecture (100% Flicker-Free & Subpixel Smooth) */}
       {/* ========================================================================= */}
       <div
-        className={`native-inline-drawer ${isSettingsOpen ? 'is-open' : 'is-closed'}`}
+        className="w-full overflow-hidden transition-[height,opacity] duration-[340ms] ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[height,opacity]"
+        style={{
+          height: isSettingsOpen ? `${drawerHeight}px` : '0px',
+          opacity: isSettingsOpen ? 1 : 0,
+          pointerEvents: isSettingsOpen ? 'auto' : 'none',
+        }}
         aria-hidden={!isSettingsOpen}
         inert={!isSettingsOpen ? true : undefined}
       >
-        <div className="native-inline-drawer-inner">
-          <div
-            ref={settingsTrayRef}
-            className="native-inline-drawer-card p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-white border border-neutral-200/80 shadow-2xs space-y-4 text-[#18181B]"
-          >
+        <div ref={settingsTrayRef} className="pb-5">
+          <div className="native-drawer-surface p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-white border border-neutral-200/80 shadow-2xs space-y-4 text-[#18181B]">
           {/* Top Section: Sacred Ambiance Canvas Selection (Full Width 3-Column Grid) */}
           <div className="space-y-2">
             <div className="flex items-center justify-between">
