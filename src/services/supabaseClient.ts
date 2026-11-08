@@ -26,7 +26,6 @@ export interface SupabasePadaRow {
   author: string;
   rag?: string;
   slug: string;
-  duration?: string;
   verses: any;
   created_at?: string;
 }

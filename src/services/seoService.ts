@@ -128,7 +128,6 @@ export function generateSEOMetadata(config: SEOConfig = {}): SEOMetadataResult {
       inLanguage: 'hi',
       text: stanzaSample,
       musicalKey: pad.rag,
-      timeRequired: pad.duration ? `PT${pad.duration.replace(':', 'M')}S` : undefined,
       publisher: {
         '@type': 'Organization',
         name: DEFAULT_SEO.siteName,

@@ -119,7 +119,6 @@ async function syncAll() {
       author: (p.author || 'श्री रसिक परंपरा').trim(),
       rag: (p.rag || '').trim(),
       slug: p.slug || p.id,
-      duration: p.duration || '05:20',
       verses: p.verses || p.stanzas || [],
     }));
 

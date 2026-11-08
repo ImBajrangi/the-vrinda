@@ -180,13 +180,10 @@ button:focus-visible {
   white-space: nowrap;
   width: max-content;
   animation: marqueeScrollInfinite 52s linear infinite;
+  animation-play-state: running !important;
   will-change: transform;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .top-marquee-track:hover {
-    animation-play-state: paused;
-  }
+  pointer-events: none !important;
+  user-select: none !important;
 }
 
 /* Sant-Vaani Authentic 3D Sacred Pothi Book Cover Styles */

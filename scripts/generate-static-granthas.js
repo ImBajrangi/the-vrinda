@@ -79,7 +79,6 @@ export function generateStaticGranthas(outputDirs = ['public', 'dist']) {
       author,
       rag,
       slug,
-      duration: raw.duration || '05:20',
       verses: raw.verses || raw.stanzas || [{ stanzaNumber: 1, linesDevanagari: [title], linesEnglish: [] }],
     };
 

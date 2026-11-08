@@ -15,7 +15,7 @@ interface SadhanaPillarModalProps {
   onOpenFocusModal: () => void;
   onOpenPlayer: () => void;
   onOpenPadavaliReader: () => void;
-  currentPad?: SacredPad | { titleDevanagari?: string; rag?: string; duration?: string } | null;
+  currentPad?: SacredPad | { titleDevanagari?: string; rag?: string } | null;
   isPlayingAudio?: boolean;
   onToggleAudio?: () => void;
 }
@@ -331,7 +331,7 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
                   {currentPad?.titleDevanagari || 'जोई जोई प्यारो करे सोई मोहि भावै'}
                 </p>
                 <span className="text-[10px] text-neutral-600">
-                  Raga {currentPad?.rag || 'Vibhas'} • {currentPad?.duration || '08:30'}
+                  Raga {currentPad?.rag || 'Vibhas'}
                 </span>
               </div>
 

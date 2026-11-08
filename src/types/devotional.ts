@@ -13,7 +13,6 @@ export interface SacredPad {
     linesTransliteration?: string[];
   }>;
   audioUrl?: string;
-  duration?: string;
 }
 
 export interface DevotionalFeedPost {

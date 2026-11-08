@@ -195,7 +195,6 @@ function normalizeCanonicalPad(raw: any): SacredPad {
     author,
     rag,
     slug,
-    duration: raw.duration || '05:20',
     verses,
   };
 }
@@ -530,7 +529,7 @@ export const SacredDatabase = {
       // Level 4: Supabase REST API fallback (specific columns only, never select('*'))
       const { data, error } = await supabase
         .from('padas')
-        .select('id, collection_id, index, title_devanagari, title_english, author, rag, slug, duration, verses')
+        .select('id, collection_id, index, title_devanagari, title_english, author, rag, slug, verses')
         .eq('collection_id', granthaId)
         .order('index', { ascending: true });
 
@@ -544,7 +543,6 @@ export const SacredDatabase = {
           author: r.author,
           rag: r.rag,
           slug: r.slug,
-          duration: r.duration,
           verses: r.verses,
         }));
         this.appendPadas(mapped);
@@ -571,7 +569,7 @@ export const SacredDatabase = {
     try {
       const { data, error } = await supabase
         .from('padas')
-        .select('id, collection_id, index, title_devanagari, title_english, author, rag, slug, duration, verses')
+        .select('id, collection_id, index, title_devanagari, title_english, author, rag, slug, verses')
         .eq('slug', slug)
         .single();
 
@@ -585,7 +583,6 @@ export const SacredDatabase = {
           author: data.author,
           rag: data.rag,
           slug: data.slug,
-          duration: data.duration,
           verses: data.verses,
         };
         this.appendPadas([mapped]);

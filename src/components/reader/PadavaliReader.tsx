@@ -1750,12 +1750,6 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                     <span>राग {selectedPad.rag}</span>
                   </>
                 )}
-                {selectedPad.duration && (
-                  <>
-                    <span className="text-[#CBD5E1]">•</span>
-                    <span className="opacity-75">{selectedPad.duration}</span>
-                  </>
-                )}
               </div>
 
               <div className="flex items-center gap-2 shrink-0">
@@ -1834,7 +1828,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                     )}
                   </div>
                   <p className="text-xs font-serif font-bold text-[#0F172A] truncate mt-0.5">
-                    {cleanTitle} <span className="font-normal text-[#64748B]">• {selectedPad.rag || 'विभास'} ({selectedPad.duration || '05:20'} • {playbackPace})</span>
+                    {cleanTitle} <span className="font-normal text-[#64748B]">• {selectedPad.rag || 'विभास'} ({playbackPace})</span>
                   </p>
                 </div>
               </div>

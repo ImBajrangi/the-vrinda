@@ -9,7 +9,6 @@ export const SACRED_PADS: SacredPad[] = [
     titleEnglish: 'Joi Joi Pyaro Kare Soi Mohi Bhaave',
     author: 'श्री हित हरिवंश महाप्रभु',
     rag: 'विभास',
-    duration: '06:14',
     verses: [
       {
         stanzaNumber: 1,
@@ -54,7 +53,6 @@ export const SACRED_PADS: SacredPad[] = [
     titleEnglish: 'Shri Radha Kripa Kataksha Stotra',
     author: 'उर्ध्वाम्नाय तंत्र (महादेव प्रोक्त)',
     rag: 'स्तोत्र पाठ',
-    duration: '08:45',
     verses: [
       {
         stanzaNumber: 1,
@@ -96,7 +94,6 @@ export const SACRED_PADS: SacredPad[] = [
     titleEnglish: 'Maai Ree Sahaj Jori Pragat Bhai',
     author: 'स्वामी श्री हरिदास जी',
     rag: 'विभास',
-    duration: '05:32',
     verses: [
       {
         stanzaNumber: 1,
