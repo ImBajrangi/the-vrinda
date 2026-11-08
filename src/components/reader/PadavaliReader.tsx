@@ -39,6 +39,7 @@ import {
   initMultiTabSync,
   formatDevanagariNumerals,
 } from '../../services/cacheService';
+import { IOSSpinner, navigationProgress } from '../common/IOSActivityIndicator';
 import {
   getCachedDevotionalSummarySync,
   getDevotionalSummary,
@@ -168,6 +169,8 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   }, []);
 
   const [searchQuery, setSearchQuery] = useState(selectedSearchQuery || '');
+  const [loadingGranthaId, setLoadingGranthaId] = useState<string | null>(null);
+  const [loadingPadId, setLoadingPadId] = useState<string | null>(null);
   const [selectedGrantha, setSelectedGrantha] = useState<string>(
     selectedGranthaId || getReaderStateSync().selectedTradition || 'all'
   );
@@ -742,10 +745,32 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     });
   };
 
-  const handleSelectPad = (pad: SacredPad) => {
+  const handleSelectPad = async (pad: SacredPad) => {
+    if (selectedPad.id === pad.id && selectedPad.verses && selectedPad.verses.length > 0) return;
+    navigationProgress.start();
+    setLoadingPadId(pad.id);
     setSelectedPad(pad);
     setActiveStanzaIndex(0);
     saveReaderState({ lastPadId: pad.id });
+
+    if (!pad.verses || pad.verses.length === 0) {
+      try {
+        const slug = pad.slug || pad.id;
+        if (slug) {
+          const full = await SacredDatabase.fetchPadBySlug(slug);
+          if (full) {
+            setSelectedPad(full);
+          }
+        }
+      } catch (err) {
+        console.warn('Error fetching full verses for pad:', err);
+      }
+    }
+
+    setLoadingPadId(null);
+    requestAnimationFrame(() => {
+      navigationProgress.done();
+    });
   };
 
   const handleToggleTransliteration = () => {
@@ -754,22 +779,44 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     saveReaderState({ showTransliteration: next });
   };
 
-  const handleSelectGrantha = (granthaId: string) => {
+  const handleSelectGrantha = async (granthaId: string) => {
+    if (granthaId === selectedGrantha && (!loadingGranthaId)) return;
+    navigationProgress.start();
+    setLoadingGranthaId(granthaId);
     setSelectedGrantha(granthaId);
     setSelectedRaga('all');
     setSearchQuery('');
     setSidebarQuery('');
     setVisibleCount(30);
     saveReaderState({ selectedTradition: granthaId });
-    const matching = allPadas.filter(
-      (p) => granthaId === 'all' || p.collectionId === granthaId
-    );
-    if (matching.length > 0) {
-      setSelectedPad(matching[0]);
+
+    try {
+      if (granthaId !== 'all') {
+        const cached = SacredDatabase.getPadasByGrantha(granthaId);
+        if (cached && cached.length > 0) {
+          setSelectedPad(cached[0]);
+        } else {
+          const loaded = await SacredDatabase.fetchGranthaPadas(granthaId);
+          if (loaded && loaded.length > 0) {
+            setSelectedPad(loaded[0]);
+          }
+        }
+      } else {
+        const first = allPadas[0];
+        if (first) setSelectedPad(first);
+      }
+    } catch (err) {
+      console.warn('Error loading grantha chunk:', err);
+    } finally {
+      setLoadingGranthaId(null);
+      requestAnimationFrame(() => {
+        navigationProgress.done();
+      });
     }
   };
 
   const handleSelectRaga = (raga: string) => {
+    navigationProgress.start();
     setSelectedRaga(raga);
     setSidebarQuery('');
     setVisibleCount(30);
@@ -781,6 +828,9 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     if (matching.length > 0) {
       setSelectedPad(matching[0]);
     }
+    requestAnimationFrame(() => {
+      navigationProgress.done();
+    });
   };
 
   // Memoized instantaneous search & filter engine
@@ -1335,7 +1385,11 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 <button
                   key={cat.id}
                   type="button"
-                  onClick={() => setGranthaCategory(cat.id as any)}
+                  onClick={() => {
+                    navigationProgress.start();
+                    setGranthaCategory(cat.id as any);
+                    requestAnimationFrame(() => navigationProgress.done());
+                  }}
                   className={`px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer select-none ${
                     isActive
                       ? 'bg-amber-100 text-amber-900 font-bold border border-amber-300/70 shadow-2xs'
@@ -1376,16 +1430,18 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               }}
               type="button"
               onClick={() => handleSelectGrantha('all')}
-              className={`relative z-10 px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer select-none ${
+              className={`relative z-10 px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer select-none inline-flex items-center gap-1.5 ${
                 selectedGrantha === 'all'
                   ? 'text-[#18181B] font-bold'
                   : 'text-[#64748B] hover:text-[#0F172A] hover:bg-[#F8FAFC]'
               }`}
             >
-              समस्त ग्रंथ <span className={`text-[10px] font-mono ml-0.5 ${selectedGrantha === 'all' ? 'text-[#B45309] font-bold' : 'text-[#94A3B8]'}`}>({allPadas.length})</span>
+              {loadingGranthaId === 'all' && <IOSSpinner size="xs" theme="amber" />}
+              <span>समस्त ग्रंथ</span> <span className={`text-[10px] font-mono ml-0.5 ${selectedGrantha === 'all' ? 'text-[#B45309] font-bold' : 'text-[#94A3B8]'}`}>({allPadas.length})</span>
             </button>
             {displayedGranthas.map((g) => {
               const isActive = selectedGrantha === g.id;
+              const isLoadingThis = loadingGranthaId === g.id;
               return (
                 <button
                   key={g.id}
@@ -1394,12 +1450,13 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   }}
                   type="button"
                   onClick={() => handleSelectGrantha(g.id)}
-                  className={`relative z-10 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer select-none ${
+                  className={`relative z-10 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer select-none inline-flex items-center gap-1.5 ${
                     isActive
                       ? 'text-[#18181B] font-bold'
                       : 'text-[#64748B] hover:text-[#0F172A] hover:bg-[#F8FAFC]'
                   }`}
                 >
+                  {isLoadingThis && <IOSSpinner size="xs" theme="amber" />}
                   <span>{g.name}</span>
                   <span className={`ml-1 text-[10px] font-mono font-bold ${isActive ? 'text-[#B45309]' : 'text-[#94A3B8]'}`}>
                     ({g.count})
@@ -1511,11 +1568,15 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                     : 'bg-white text-[#1E293B] hover:bg-[#F8FAFC] font-medium'
                 }`}
               >
-                <span className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full transition-colors ${
-                  isSelected ? 'bg-white/90 text-[#854D0E] font-bold' : 'bg-[#F1F5F9] text-[#64748B]'
-                }`}>
-                  #{idx + 1}
-                </span>
+                {loadingPadId === pad.id ? (
+                  <IOSSpinner size="xs" theme="amber" />
+                ) : (
+                  <span className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full transition-colors ${
+                    isSelected ? 'bg-white/90 text-[#854D0E] font-bold' : 'bg-[#F1F5F9] text-[#64748B]'
+                  }`}>
+                    #{idx + 1}
+                  </span>
+                )}
                 <span className="font-serif truncate max-w-[130px]">
                   {pad.titleDevanagari}
                 </span>
@@ -1709,8 +1770,10 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                           }`}
                         >
                           {/* Compact Slim Index Number / Equalizer */}
-                          <div className="w-7 shrink-0 pt-0.5 text-right font-mono text-xs select-none">
-                            {isCurrentlyPlaying ? (
+                          <div className="w-7 shrink-0 pt-0.5 text-right font-mono text-xs select-none flex items-center justify-end">
+                            {loadingPadId === pad.id ? (
+                              <IOSSpinner size="xs" theme="amber" />
+                            ) : isCurrentlyPlaying ? (
                               <div className="flex items-end justify-end gap-0.5 h-3">
                                 <span className="w-0.5 rounded-full animate-apple-eq-1 bg-[#CA8A04]" />
                                 <span className="w-0.5 rounded-full animate-apple-eq-2 bg-[#CA8A04]" />
@@ -1940,7 +2003,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 </div>
                 {isSummaryLoading && !summaryText ? (
                   <div className={`flex items-center gap-2 py-3 text-xs ${currentTheme.translitColor} font-medium min-h-[48px]`}>
-                    <Sparkles className="w-4 h-4 text-[#CA8A04] animate-spin" />
+                    <IOSSpinner size="xs" theme="amber" />
                     <span>प्रस्तुत किया जा रहा है...</span>
                   </div>
                 ) : (
@@ -1955,7 +2018,18 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
           {/* Verses Stanza Block */}
           <div className="space-y-6 sm:space-y-8">
-            {selectedPad.verses.map((verse, vIdx) => {
+            {loadingGranthaId || (loadingPadId && (!selectedPad?.verses || selectedPad.verses.length === 0)) || !selectedPad?.verses || selectedPad.verses.length === 0 ? (
+              <div className="py-24 px-6 flex flex-col items-center justify-center text-center space-y-3 select-none">
+                <IOSSpinner size="lg" theme="amber" />
+                <p className="font-serif font-bold text-base sm:text-lg text-[#18181B]">
+                  पावन ग्रंथ पाठ संकलित हो रहा है...
+                </p>
+                <p className="font-mono text-xs text-[#71717A]">
+                  श्री वृन्दावन कृपा • निरंतरता संधान
+                </p>
+              </div>
+            ) : (
+              selectedPad.verses.map((verse, vIdx) => {
               const isStanzaActive = isFocusReadingMode
                 ? activeStanzaIndex === vIdx
                 : (isCurrentPadPlaying && activeStanzaIndex === vIdx);
@@ -2062,7 +2136,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
                 </div>
               );
-            })}
+            }))}
           </div>
 
           {/* Bottom Prev / Next Navigation Controls */}

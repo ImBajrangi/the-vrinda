@@ -4,6 +4,7 @@ import { Search, X, Music } from 'lucide-react';
 import { SacredDatabase, CanonicalSaint, CanonicalGrantha } from '../../services/sacredDatabase';
 import { SacredPad } from '../../types/devotional';
 import { getSaintPortrait, getBookCoverConfig } from '../../services/devotionalVisuals';
+import { IOSSpinner, navigationProgress } from './IOSActivityIndicator';
 
 export type SearchFilterType = 'all' | 'padas' | 'saints' | 'granthas';
 
@@ -210,6 +211,7 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
           e.preventDefault();
           const target = combinedResults[selectedIdx] || combinedResults[0];
           if (target) {
+            navigationProgress.start();
             if (target.type === 'grantha') {
               onSelectGrantha?.(target.data);
             } else if (target.type === 'saint') {
@@ -218,6 +220,7 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
               onSelectPad(target.data);
             }
             onClose();
+            requestAnimationFrame(() => navigationProgress.done());
           }
         }
       } else if (e.key === 'Tab') {
@@ -273,6 +276,9 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
             placeholder="खोजें: पद, संत, ग्रन्थ, राग या भाव..."
             className="flex-1 bg-transparent text-sm sm:text-base font-normal text-[#18181B] placeholder-neutral-400 outline-none"
           />
+          {query !== debouncedQuery && (
+            <IOSSpinner size="xs" theme="amber" className="shrink-0" />
+          )}
           {query && (
             <button
               type="button"
@@ -371,8 +377,10 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
                         <div
                           key={s.id}
                           onClick={() => {
+                            navigationProgress.start();
                             onSelectSaint?.(s);
                             onClose();
+                            requestAnimationFrame(() => navigationProgress.done());
                           }}
                           onMouseEnter={() => setSelectedIdx(globalIdx)}
                           className={`group flex items-center gap-3.5 p-3 rounded-[20px] transition-colors duration-150 cursor-pointer select-none ${
@@ -452,8 +460,10 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
                         <div
                           key={g.id}
                           onClick={() => {
+                            navigationProgress.start();
                             onSelectGrantha?.(g);
                             onClose();
+                            requestAnimationFrame(() => navigationProgress.done());
                           }}
                           onMouseEnter={() => setSelectedIdx(globalIdx)}
                           className={`group flex items-center justify-between gap-3.5 p-3 sm:p-3.5 rounded-[22px] transition-colors duration-150 cursor-pointer select-none ${
@@ -572,8 +582,10 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
                         <div
                           key={pad.id}
                           onClick={() => {
+                            navigationProgress.start();
                             onSelectPad(pad);
                             onClose();
+                            requestAnimationFrame(() => navigationProgress.done());
                           }}
                           onMouseEnter={() => setSelectedIdx(globalIdx)}
                           className={`group flex items-center justify-between gap-3 p-3 rounded-[18px] transition-colors duration-150 cursor-pointer select-none ${

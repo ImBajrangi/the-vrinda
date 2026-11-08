@@ -626,6 +626,26 @@ button:focus-visible {
   animation: appleEq3 0.82s var(--ease-apple-smooth) infinite 0.08s;
 }
 
+/* Authentic Apple iOS 12-Spoke Radial Spinner */
+@keyframes iosSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-ios-spin {
+  animation: iosSpin 0.9s steps(12, end) infinite;
+  transform-origin: center;
+  will-change: transform;
+}
+
+.low-spec .animate-ios-spin {
+  animation: iosSpin 1s linear infinite;
+}
+
 /* Interactive Number Pop (e.g. +1 Japa Round) */
 @keyframes appleNumberTick {
   0% {

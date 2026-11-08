@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { ArtworkGraphicSlot } from '../common/ArtworkGraphicSlot';
 import { SacredDatabase } from '../../services/sacredDatabase';
+import { IOSSpinner, navigationProgress } from '../common/IOSActivityIndicator';
 
 export type ContentBarTab = 'mahagranth' | 'books' | 'authors' | 'relations';
 
@@ -28,6 +29,29 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
   onOpenSaintsDirectory,
 }) => {
   const [activeTab, setActiveTab] = useState<ContentBarTab>('mahagranth');
+  const [loadingItemId, setLoadingItemId] = useState<string | null>(null);
+
+  const handleBookClick = (granthaId: string) => {
+    setLoadingItemId(granthaId);
+    navigationProgress.start();
+    onSelectBook(granthaId);
+    setTimeout(() => setLoadingItemId(null), 800);
+  };
+
+  const handleAuthorClick = (authorName: string) => {
+    setLoadingItemId(authorName);
+    navigationProgress.start();
+    onSelectAuthor(authorName);
+    setTimeout(() => setLoadingItemId(null), 800);
+  };
+
+  const handleRelationClick = (relationId: string) => {
+    setLoadingItemId(relationId);
+    navigationProgress.start();
+    onSelectRelation(relationId);
+    setTimeout(() => setLoadingItemId(null), 800);
+  };
+
   const mahagranths = SacredDatabase.getDisplayMahagranths();
   const rasikBooks = SacredDatabase.getDisplayRasikBooks();
   const authors = SacredDatabase.getDisplayAuthors();
@@ -308,8 +332,8 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
                 key={book.id}
                 role="button"
                 tabIndex={0}
-                onClick={() => onSelectBook(book.id)}
-                onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onSelectBook(book.id)}
+                onClick={() => handleBookClick(book.id)}
+                onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && handleBookClick(book.id)}
                 className="group w-full p-4 sm:p-5 flex items-center justify-between gap-4 sm:gap-6 hover:bg-[#FAF8F5]/80 transition-colors duration-150 cursor-pointer select-none"
               >
                 <div className="flex items-center gap-4 sm:gap-5 flex-1 min-w-0">
@@ -408,9 +432,13 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
                 </div>
 
                 {/* Right Action Affordance (Company Underline Animation) */}
-                <div className="company-link group-company-link text-xs sm:text-sm font-laila font-semibold text-neutral-600 group-hover:text-amber-900 transition-colors shrink-0 pl-2">
+                <div className="company-link group-company-link text-xs sm:text-sm font-laila font-semibold text-neutral-600 group-hover:text-amber-900 transition-colors shrink-0 pl-2 flex items-center gap-1.5">
                   <span>{book.category === 'mahagranth' ? 'मूल श्लोक पाठ' : 'वाणी पाठ'}</span>
-                  <span className="text-amber-700 text-base leading-none">→</span>
+                  {loadingItemId === book.id ? (
+                    <IOSSpinner size="xs" theme="amber" />
+                  ) : (
+                    <span className="text-amber-700 text-base leading-none">→</span>
+                  )}
                 </div>
               </div>
             );
@@ -426,8 +454,8 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
               key={author.id}
               role="button"
               tabIndex={0}
-              onClick={() => onSelectAuthor(author.name)}
-              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onSelectAuthor(author.name)}
+              onClick={() => handleAuthorClick(author.name)}
+              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && handleAuthorClick(author.name)}
               className="group w-full p-4 sm:p-5 flex items-center justify-between gap-4 sm:gap-6 hover:bg-[#FAF8F5]/80 transition-colors duration-150 cursor-pointer select-none"
             >
               <div className="flex items-center gap-4 sm:gap-5 flex-1 min-w-0">
@@ -468,9 +496,13 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
               </div>
 
               {/* Right Action Affordance (Company Underline Animation) */}
-              <div className="company-link group-company-link text-xs sm:text-sm font-laila font-semibold text-neutral-600 group-hover:text-amber-900 transition-colors shrink-0 pl-2">
+              <div className="company-link group-company-link text-xs sm:text-sm font-laila font-semibold text-neutral-600 group-hover:text-amber-900 transition-colors shrink-0 pl-2 flex items-center gap-1.5">
                 <span>रसिक वाणी</span>
-                <span className="text-amber-700 text-base leading-none">→</span>
+                {loadingItemId === author.name ? (
+                  <IOSSpinner size="xs" theme="amber" />
+                ) : (
+                  <span className="text-amber-700 text-base leading-none">→</span>
+                )}
               </div>
             </div>
           ))}
@@ -500,8 +532,8 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
                 key={rel.id}
                 role="button"
                 tabIndex={0}
-                onClick={() => onSelectRelation(rel.id)}
-                onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onSelectRelation(rel.id)}
+                onClick={() => handleRelationClick(rel.id)}
+                onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && handleRelationClick(rel.id)}
                 className="group w-full p-4 sm:p-5 flex items-center justify-between gap-4 sm:gap-6 hover:bg-[#FAF8F5]/80 transition-colors duration-150 cursor-pointer select-none"
               >
                 <div className="flex items-center gap-4 sm:gap-5 flex-1 min-w-0">
@@ -537,9 +569,13 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
                 </div>
 
                 {/* Right Action Affordance (Company Underline Animation) */}
-                <div className="company-link group-company-link text-xs sm:text-sm font-laila font-semibold text-neutral-600 group-hover:text-amber-900 transition-colors shrink-0 pl-2">
+                <div className="company-link group-company-link text-xs sm:text-sm font-laila font-semibold text-neutral-600 group-hover:text-amber-900 transition-colors shrink-0 pl-2 flex items-center gap-1.5">
                   <span>{actionText}</span>
-                  <span className="text-amber-700 text-base leading-none">→</span>
+                  {loadingItemId === rel.id ? (
+                    <IOSSpinner size="xs" theme="amber" />
+                  ) : (
+                    <span className="text-amber-700 text-base leading-none">→</span>
+                  )}
                 </div>
               </div>
             );

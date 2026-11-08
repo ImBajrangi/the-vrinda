@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { X, Search, BookOpen, ChevronRight } from 'lucide-react';
 import { SacredDatabase, CanonicalSaint } from '../../services/sacredDatabase';
+import { navigationProgress } from './IOSActivityIndicator';
 
 interface SaintsDirectoryModalProps {
   isOpen: boolean;
@@ -253,8 +254,10 @@ export const SaintsDirectoryModal: React.FC<SaintsDirectoryModalProps> = ({
                     <button
                       type="button"
                       onClick={() => {
+                        navigationProgress.start();
                         onSelectSaint(s);
                         onClose();
+                        requestAnimationFrame(() => navigationProgress.done());
                       }}
                       className="px-3.5 py-1.5 rounded-full bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] text-[11px] font-bold flex items-center gap-1.5 cursor-pointer transition-colors"
                     >

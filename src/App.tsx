@@ -18,6 +18,7 @@ import { SadhanaPillarModal, PillarType } from './components/smaran/SadhanaPilla
 import { SadhanaRingProgress } from './components/smaran/SadhanaRingProgress';
 import { AshtayamaTimelineDeck } from './components/smaran/AshtayamaTimelineDeck';
 import { BeginnerGuideModal } from './components/smaran/BeginnerGuideModal';
+import { IOSTopProgressBar, navigationProgress } from './components/common/IOSActivityIndicator';
 import { SACRED_FEED_POSTS } from './data/feed';
 import { SacredPad, SadhanaState, DhyanaImpactState, DhyanaSessionRecord } from './types/devotional';
 import { SacredDatabase } from './services/sacredDatabase';
@@ -304,25 +305,47 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
     };
   }, []);
 
+  const handleTabSwitch = (tab: NavTab) => {
+    if (tab === activeTab) return;
+    navigationProgress.start();
+    setActiveTab(tab);
+    requestAnimationFrame(() => {
+      navigationProgress.done();
+    });
+  };
+
   const handlePlayPad = (pad: SacredPad) => {
+    navigationProgress.start();
     setCurrentPad(pad);
     setIsPlayingAudio(true);
     setShowPlayer(true);
+    requestAnimationFrame(() => {
+      navigationProgress.done();
+    });
   };
 
   const handleSelectSearchedPad = (pad: SacredPad) => {
+    navigationProgress.start();
     setCurrentPad(pad);
     setActiveTab('padavali');
     setIsSpotlightOpen(false);
+    requestAnimationFrame(() => {
+      navigationProgress.done();
+    });
   };
 
   const handleSelectSearchedSaint = () => {
+    navigationProgress.start();
     setActiveTab('padavali');
     setIsSaintsModalOpen(false);
     setIsSpotlightOpen(false);
+    requestAnimationFrame(() => {
+      navigationProgress.done();
+    });
   };
 
   const handleSelectBook = (granthaId: string) => {
+    navigationProgress.start();
     setSelectedGranthaFilter(granthaId);
     setReaderSearchQuery('');
     setActiveTab('padavali');
@@ -336,9 +359,13 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
         window.history.pushState({}, '', url.toString());
       } catch {}
     }
+    requestAnimationFrame(() => {
+      navigationProgress.done();
+    });
   };
 
   const handleSelectAuthor = (authorName: string) => {
+    navigationProgress.start();
     setSelectedGranthaFilter('all');
     setReaderSearchQuery(authorName);
     setActiveTab('padavali');
@@ -354,9 +381,13 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
         window.history.pushState({}, '', url.toString());
       } catch {}
     }
+    requestAnimationFrame(() => {
+      navigationProgress.done();
+    });
   };
 
   const handleSelectRelation = (relationId: string) => {
+    navigationProgress.start();
     if (relationId === 'ashtayama' || relationId === 'ragas') {
       const el = document.getElementById('ashtayama-section');
       if (el) {
@@ -365,6 +396,9 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
     } else {
       setActiveTab('feed');
     }
+    requestAnimationFrame(() => {
+      navigationProgress.done();
+    });
   };
 
   const handleTogglePlay = () => {
@@ -499,6 +533,9 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
       className={`min-h-screen w-full transition-colors duration-500 flex flex-col items-center ${isLowSpecMode ? 'low-spec' : ''}`}
       style={{ background: getScreenBackground() }}
     >
+      {/* Authentic Apple Safari / iOS Top Loading Bar (0ms tactile feedback) */}
+      <IOSTopProgressBar />
+
       {/* Outer Adaptive Wrapper:
           - Mobile & Small Windows (< 768px): Fluid w-full with comfortable 16px-20px padding (ZERO awkward side gaps)
           - Tablet (768px - 1024px): max-w-4xl with balanced gutters
@@ -508,7 +545,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
         {/* Dynamic Top Announcement Marquee Ticker */}
         <TopAnnouncementMarquee
           isScrolled={isScrolled}
-          onSelectTab={setActiveTab}
+          onSelectTab={handleTabSwitch}
           onOpenSaintsDirectory={() => setIsSaintsModalOpen(true)}
           streakDays={sadhana?.currentStreakDays ?? 1}
         />
@@ -516,7 +553,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
         {/* Apple Dynamic Notch / Dynamic Island Navbar (Fixed Floating Top Island) */}
         <DynamicNotchNavbar
           activeTab={activeTab}
-          onSelectTab={setActiveTab}
+          onSelectTab={handleTabSwitch}
           streakDays={sadhana?.currentStreakDays ?? 1}
           isPlayingAudio={isPlayingAudio}
           currentTrackTitle={currentPad?.titleDevanagari}
@@ -554,7 +591,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                   currentPad={currentPad}
                   onOpenPillar={(type) => setActivePillarModal(type)}
                   onToggleAudio={handleTogglePlay}
-                  onOpenReader={() => setActiveTab('padavali')}
+                  onOpenReader={() => handleTabSwitch('padavali')}
                   onOpenGuide={() => setIsGuideModalOpen(true)}
                   onOpenFocus={() => setIsFocusModalOpen(true)}
                   currentStreakDays={sadhana.currentStreakDays ?? 1}
@@ -642,7 +679,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
 
                   <button
                     type="button"
-                    onClick={() => setActiveTab('feed')}
+                    onClick={() => handleTabSwitch('feed')}
                     className="company-link text-xs sm:text-sm font-semibold text-amber-700 hover:text-amber-900 self-start sm:self-auto cursor-pointer"
                   >
                     <span>Darshan Gallery</span>
@@ -745,7 +782,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                         isHero={true}
                         indexNumber="01"
                         seamless={true}
-                        onOpen={() => setActiveTab('feed')}
+                        onOpen={() => handleTabSwitch('feed')}
                       />
 
                       {/* 3 COMPANION SHOWCASE CARDS (0 Gap, Seamless Mosaic) */}
@@ -759,7 +796,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                           imageUrl="/assets/temples/radha-vallabh.webp"
                           indexNumber="02"
                           seamless={true}
-                          onOpen={() => setActiveTab('padavali')}
+                          onOpen={() => handleTabSwitch('padavali')}
                         />
                         <NityaSevaCard
                           templeName="Shri Radha Raman Ji (श्री राधा रमण)"
@@ -770,7 +807,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                           imageUrl="/assets/temples/radha-raman.webp"
                           indexNumber="03"
                           seamless={true}
-                          onOpen={() => setActiveTab('feed')}
+                          onOpen={() => handleTabSwitch('feed')}
                         />
                         <NityaSevaCard
                           templeName="Barsana Ladili Lal Ji (बरसाना श्रीजी)"
@@ -781,7 +818,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                           imageUrl="/assets/temples/barsana-radharani.webp"
                           indexNumber="04"
                           seamless={true}
-                          onOpen={() => setActiveTab('feed')}
+                          onOpen={() => handleTabSwitch('feed')}
                         />
                       </div>
                     </div>
@@ -799,7 +836,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                         isHero={true}
                         indexNumber="01"
                         seamless={true}
-                        onOpen={() => setActiveTab('feed')}
+                        onOpen={() => handleTabSwitch('feed')}
                       />
                     </div>
                   )}
@@ -815,7 +852,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                         imageUrl="/assets/temples/radha-vallabh.webp"
                         indexNumber="02"
                         seamless={true}
-                        onOpen={() => setActiveTab('padavali')}
+                        onOpen={() => handleTabSwitch('padavali')}
                       />
                     </div>
                   )}
@@ -831,7 +868,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                         imageUrl="/assets/temples/radha-raman.webp"
                         indexNumber="03"
                         seamless={true}
-                        onOpen={() => setActiveTab('feed')}
+                        onOpen={() => handleTabSwitch('feed')}
                       />
                       <NityaSevaCard
                         templeName="Barsana Ladili Lal Ji (बरसाना श्रीजी)"
@@ -842,7 +879,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                         imageUrl="/assets/temples/barsana-radharani.webp"
                         indexNumber="04"
                         seamless={true}
-                        onOpen={() => setActiveTab('feed')}
+                        onOpen={() => handleTabSwitch('feed')}
                       />
                     </div>
                   )}
@@ -878,7 +915,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
 
                   <button
                     type="button"
-                    onClick={() => setActiveTab('padavali')}
+                    onClick={() => handleTabSwitch('padavali')}
                     className="company-link text-xs sm:text-sm font-semibold text-amber-700 hover:text-amber-900 self-start sm:self-auto cursor-pointer"
                   >
                     <span>Scripture Reader</span>
@@ -1249,7 +1286,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
 
           {/* Tab 4: Milestones & Streaks */}
           {activeTab === 'milestones' && (
-            <MilestonesView onBack={() => setActiveTab('smaran')} />
+            <MilestonesView onBack={() => handleTabSwitch('smaran')} />
           )}
           </div>
         </main>
@@ -1261,7 +1298,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
             isPlaying={isPlayingAudio}
             onTogglePlay={handleTogglePlay}
             onClose={() => setShowPlayer(false)}
-            onOpenLyrics={() => setActiveTab('padavali')}
+            onOpenLyrics={() => handleTabSwitch('padavali')}
           />
         )}
 
@@ -1274,7 +1311,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
         {/* Floating Navbar (Mobile Only < md) */}
         <FloatingNavbar
           activeTab={activeTab}
-          onSelectTab={setActiveTab}
+          onSelectTab={handleTabSwitch}
           onOpenFab={handleFabClick}
           isPlayingAudio={isPlayingAudio}
         />
@@ -1287,7 +1324,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
           sadhana={sadhana}
           onUpdateSadhana={handleUpdateSadhana}
           onOpenFocusModal={() => setIsFocusModalOpen(true)}
-          onOpenPadavaliReader={() => setActiveTab('padavali')}
+          onOpenPadavaliReader={() => handleTabSwitch('padavali')}
           onToggleAudio={handleTogglePlay}
           isPlayingAudio={isPlayingAudio}
           currentPad={currentPad}
@@ -1345,7 +1382,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
           }}
           onOpenReader={() => {
             setIsGuideModalOpen(false);
-            setActiveTab('padavali');
+            handleTabSwitch('padavali');
           }}
         />
       </div>
