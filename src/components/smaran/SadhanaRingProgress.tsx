@@ -225,7 +225,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
           tabIndex={0}
           onClick={() => onOpenPillar('japa')}
           onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onOpenPillar('japa')}
-          className="p-4 rounded-[22px] bg-[#FAF9F5] hover:bg-[#FEFCE8] transition-colors cursor-pointer select-none flex flex-col justify-between space-y-3"
+          className="group p-4 rounded-[22px] bg-[#FAF9F5] hover:bg-[#FEFCE8] transition-colors cursor-pointer select-none flex flex-col justify-between space-y-3"
         >
           {/* Dedicated Visual Slot for Japa Meditation Art */}
           <ArtworkGraphicSlot
@@ -254,9 +254,10 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
 
           <div className="pt-2 border-t border-neutral-100 flex items-center justify-between text-xs">
             <span className="text-[11px] text-[#71717A] font-mono">१०८ मनके / माला</span>
-            <span className="font-semibold text-xs text-amber-700 hover:underline">
-              विवरण देखें →
-            </span>
+            <div className="company-link group-company-link font-semibold text-xs text-amber-700 group-hover:text-amber-900 transition-colors">
+              <span>विवरण देखें</span>
+              <span className="text-sm leading-none">→</span>
+            </div>
           </div>
         </div>
 
@@ -266,7 +267,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
           tabIndex={0}
           onClick={() => onOpenPillar('shravan')}
           onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onOpenPillar('shravan')}
-          className="p-4 rounded-[22px] bg-[#FAF9F5] hover:bg-[#FEFCE8] transition-colors cursor-pointer select-none flex flex-col justify-between space-y-3"
+          className="group p-4 rounded-[22px] bg-[#FAF9F5] hover:bg-[#FEFCE8] transition-colors cursor-pointer select-none flex flex-col justify-between space-y-3"
         >
           {/* Dedicated Visual Slot for Pad Shravan & Raga Art */}
           <ArtworkGraphicSlot
@@ -295,9 +296,10 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
 
           <div className="pt-2 border-t border-neutral-100 flex items-center justify-between text-xs">
             <span className="text-[11px] text-[#71717A] font-mono">शास्त्रीय कीर्तन</span>
-            <span className="font-semibold text-xs text-indigo-600 hover:underline">
-              श्रवण करें →
-            </span>
+            <div className="company-link group-company-link font-semibold text-xs text-indigo-600 group-hover:text-indigo-800 transition-colors">
+              <span>श्रवण करें</span>
+              <span className="text-sm leading-none">→</span>
+            </div>
           </div>
         </div>
 
@@ -307,7 +309,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
           tabIndex={0}
           onClick={() => onOpenPillar('svadhyaya')}
           onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onOpenPillar('svadhyaya')}
-          className="p-4 rounded-[22px] bg-[#FAF9F5] hover:bg-[#FEFCE8] transition-colors cursor-pointer select-none flex flex-col justify-between space-y-3"
+          className="group p-4 rounded-[22px] bg-[#FAF9F5] hover:bg-[#FEFCE8] transition-colors cursor-pointer select-none flex flex-col justify-between space-y-3"
         >
           {/* Dedicated Visual Slot for Grantha Scripture Manuscript Art */}
           <ArtworkGraphicSlot
@@ -336,9 +338,10 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
 
           <div className="pt-2 border-t border-neutral-100 flex items-center justify-between text-xs">
             <span className="text-[11px] text-[#71717A] font-mono">रस उपासना</span>
-            <span className="font-semibold text-xs text-amber-700 hover:underline">
-              स्वाध्याय करें →
-            </span>
+            <div className="company-link group-company-link font-semibold text-xs text-amber-700 group-hover:text-amber-900 transition-colors">
+              <span>स्वाध्याय करें</span>
+              <span className="text-sm leading-none">→</span>
+            </div>
           </div>
         </div>
 

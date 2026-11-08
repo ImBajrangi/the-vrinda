@@ -117,10 +117,10 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
         <button
           type="button"
           onClick={onOpenSaintsDirectory}
-          className="text-xs sm:text-sm font-semibold text-amber-700 hover:text-amber-800 hover:underline self-start sm:self-auto cursor-pointer flex items-center gap-1 font-mono"
+          className="company-link text-xs sm:text-sm font-semibold text-amber-700 hover:text-amber-900 self-start sm:self-auto cursor-pointer font-laila"
         >
           <span>१३१ रसिक संत नामावली</span>
-          <span>→</span>
+          <span className="text-base leading-none">→</span>
         </button>
       </div>
 
@@ -232,8 +232,8 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
                   </div>
                 </div>
 
-                {/* Right Action Affordance (Clean, no outline) */}
-                <div className="flex items-center gap-1.5 text-xs sm:text-sm font-laila font-semibold text-neutral-600 group-hover:text-amber-900 transition-colors shrink-0 pl-2">
+                {/* Right Action Affordance (Company Underline Animation) */}
+                <div className="company-link group-company-link text-xs sm:text-sm font-laila font-semibold text-neutral-600 group-hover:text-amber-900 transition-colors shrink-0 pl-2">
                   <span>वाणी पाठ</span>
                   <span className="text-amber-700 text-base leading-none">→</span>
                 </div>
@@ -292,8 +292,8 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
                 </div>
               </div>
 
-              {/* Right Action Affordance (Clean, no outline) */}
-              <div className="flex items-center gap-1.5 text-xs sm:text-sm font-laila font-semibold text-neutral-600 group-hover:text-amber-900 transition-colors shrink-0 pl-2">
+              {/* Right Action Affordance (Company Underline Animation) */}
+              <div className="company-link group-company-link text-xs sm:text-sm font-laila font-semibold text-neutral-600 group-hover:text-amber-900 transition-colors shrink-0 pl-2">
                 <span>रसिक वाणी</span>
                 <span className="text-amber-700 text-base leading-none">→</span>
               </div>
@@ -361,8 +361,8 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
                   </div>
                 </div>
 
-                {/* Right Action Affordance (Clean, no outline) */}
-                <div className="flex items-center gap-1.5 text-xs sm:text-sm font-laila font-semibold text-neutral-600 group-hover:text-amber-900 transition-colors shrink-0 pl-2">
+                {/* Right Action Affordance (Company Underline Animation) */}
+                <div className="company-link group-company-link text-xs sm:text-sm font-laila font-semibold text-neutral-600 group-hover:text-amber-900 transition-colors shrink-0 pl-2">
                   <span>{actionText}</span>
                   <span className="text-amber-700 text-base leading-none">→</span>
                 </div>

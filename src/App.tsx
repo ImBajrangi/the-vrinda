@@ -560,9 +560,10 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                   <button
                     type="button"
                     onClick={() => setActiveTab('feed')}
-                    className="text-xs sm:text-sm font-semibold text-amber-700 hover:underline self-start sm:self-auto cursor-pointer"
+                    className="company-link text-xs sm:text-sm font-semibold text-amber-700 hover:text-amber-900 self-start sm:self-auto cursor-pointer"
                   >
-                    Darshan Gallery →
+                    <span>Darshan Gallery</span>
+                    <span className="text-base leading-none">→</span>
                   </button>
                 </div>
 
@@ -795,9 +796,10 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                   <button
                     type="button"
                     onClick={() => setActiveTab('padavali')}
-                    className="text-xs sm:text-sm font-semibold text-amber-700 hover:underline self-start sm:self-auto cursor-pointer"
+                    className="company-link text-xs sm:text-sm font-semibold text-amber-700 hover:text-amber-900 self-start sm:self-auto cursor-pointer"
                   >
-                    Scripture Reader →
+                    <span>Scripture Reader</span>
+                    <span className="text-base leading-none">→</span>
                   </button>
                 </div>
 

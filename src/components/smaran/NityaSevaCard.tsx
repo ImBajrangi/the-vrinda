@@ -186,9 +186,9 @@ export const NityaSevaCard: React.FC<NityaSevaCardProps> = ({
             {time}
           </span>
 
-          <div className="text-amber-300 hover:text-white transition-colors text-xs sm:text-sm font-laila font-bold flex items-center gap-1 shrink-0">
+          <div className="company-link group-company-link text-amber-300 group-hover:text-white transition-colors text-xs sm:text-sm font-laila font-bold shrink-0">
             <span>दर्शन</span>
-            <span>→</span>
+            <span className="text-base leading-none">→</span>
           </div>
         </div>
       </div>

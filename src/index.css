@@ -97,6 +97,38 @@ body {
   opacity: 0.85;
 }
 
+/* ==========================================================================
+   Company-Inspired Expanding Underline Animation (Butter-Smooth Native Easing)
+   ========================================================================== */
+.company-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+.company-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background-color: currentColor;
+  pointer-events: none;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.company-link:hover::after,
+.company-link:active::after,
+.group:hover .group-company-link::after {
+  transform: scaleX(1);
+}
+
 /* Apple Screen & View Transition */
 .apple-view-enter {
   animation: appleViewIn 0.32s cubic-bezier(0.25, 1, 0.5, 1) both;
