@@ -48,7 +48,7 @@ export const DEFAULT_SEO = {
     'Sacred Pada',
     'Braj Bhasha',
   ],
-  baseUrl: 'https://vrindopnisad.org',
+  baseUrl: 'https://bhav.vrindopnishad.in',
   defaultImage: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=1200&q=80',
 };
 

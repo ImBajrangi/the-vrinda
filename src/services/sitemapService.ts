@@ -6,7 +6,7 @@
 
 import { SacredDatabase } from './sacredDatabase';
 
-const DEFAULT_BASE_URL = 'https://vrindopnisad.org';
+const DEFAULT_BASE_URL = 'https://bhav.vrindopnishad.in';
 
 function escapeXml(str: string): string {
   return str

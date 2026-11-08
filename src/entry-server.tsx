@@ -27,7 +27,7 @@ export function render(url: string = '/'): RenderResult {
   let padId: string | undefined;
 
   try {
-    const parsed = new URL(url, 'https://vrindopnisad.org');
+    const parsed = new URL(url, 'https://bhav.vrindopnishad.in');
     const qTab = parsed.searchParams.get('tab') as NavTab;
     const qPad = parsed.searchParams.get('pad');
 
@@ -62,7 +62,7 @@ export function render(url: string = '/'): RenderResult {
 
   let seoConfig: SEOConfig = {
     tab,
-    canonicalUrl: `https://vrindopnisad.org${url}`,
+    canonicalUrl: `https://bhav.vrindopnishad.in${url}`,
   };
 
   if (pad) {
@@ -72,7 +72,7 @@ export function render(url: string = '/'): RenderResult {
       pad,
       title: `${pad.titleDevanagari} (${pad.author})`,
       description: `राग ${pad.rag} में निबद्ध पावन पद। रचयिता: ${pad.author}। वृन्दोपनिषद् 2.0`,
-      canonicalUrl: `https://vrindopnisad.org/?tab=padavali&pad=${encodeURIComponent(slug)}`,
+      canonicalUrl: `https://bhav.vrindopnishad.in/?tab=padavali&pad=${encodeURIComponent(slug)}`,
     };
   } else {
     switch (tab) {

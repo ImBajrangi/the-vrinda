@@ -12,7 +12,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const projectRoot = path.resolve(__dirname, '..');
 
-const DEFAULT_BASE_URL = 'https://vrindopnisad.org';
+const DEFAULT_BASE_URL = process.env.VITE_SITE_URL || 'https://bhav.vrindopnishad.in';
 
 function escapeXml(str) {
   return String(str)
