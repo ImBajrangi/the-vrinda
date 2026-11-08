@@ -12,7 +12,7 @@ import {
 import { ArtworkGraphicSlot } from '../common/ArtworkGraphicSlot';
 import { SacredDatabase } from '../../services/sacredDatabase';
 
-export type ContentBarTab = 'books' | 'authors' | 'relations';
+export type ContentBarTab = 'mahagranth' | 'books' | 'authors' | 'relations';
 
 interface CategoriesRowProps {
   onSelectBook: (granthaId: string) => void;
@@ -27,8 +27,9 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
   onSelectRelation,
   onOpenSaintsDirectory,
 }) => {
-  const [activeTab, setActiveTab] = useState<ContentBarTab>('books');
-  const books = SacredDatabase.getDisplayBooks();
+  const [activeTab, setActiveTab] = useState<ContentBarTab>('mahagranth');
+  const mahagranths = SacredDatabase.getDisplayMahagranths();
+  const rasikBooks = SacredDatabase.getDisplayRasikBooks();
   const authors = SacredDatabase.getDisplayAuthors();
   const relations = SacredDatabase.getSacredTopics();
 
@@ -40,7 +41,8 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
     icon: React.ComponentType<{ className?: string }>;
     iconColor: string;
   }[] = [
-      { id: 'books', label: 'पावन ग्रंथ', mobileLabel: 'ग्रंथ', count: books.length, icon: BookOpen, iconColor: 'text-amber-600' },
+      { id: 'mahagranth', label: 'सनातन महाग्रंथ', mobileLabel: 'महाग्रंथ', count: mahagranths.length, icon: BookOpen, iconColor: 'text-amber-700' },
+      { id: 'books', label: 'रसिक वाणी', mobileLabel: 'वाणी', count: rasikBooks.length, icon: BookOpen, iconColor: 'text-amber-600' },
       { id: 'authors', label: 'रसिक आचार्य', mobileLabel: 'संत', count: authors.length, icon: Feather, iconColor: 'text-amber-700' },
       { id: 'relations', label: 'लीला एवं धाम', mobileLabel: 'लीला', count: relations.length, icon: Landmark, iconColor: 'text-[#0284C7]' },
     ];
@@ -60,6 +62,27 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
 
   const getBookCoverConfig = (id: string, name: string): BookCoverConfig => {
     const specificConfigs: Record<string, BookCoverConfig> = {
+      // 0. सनातन महाग्रंथ -> Style 1: Regal Ancient Gold Frame
+      'valmiki-ramayana': {
+        bg: 'linear-gradient(135deg, #421C0E 0%, #250E06 55%, #120602 100%)',
+        style: 'gold-frame',
+      },
+      'shrimad-bhagavatam': {
+        bg: 'linear-gradient(135deg, #162447 0%, #0D162E 55%, #060B17 100%)',
+        style: 'gold-frame',
+      },
+      'ramcharitmanas': {
+        bg: 'linear-gradient(135deg, #4A1218 0%, #28080C 55%, #130305 100%)',
+        style: 'gold-frame',
+      },
+      'bhagavad-gita': {
+        bg: 'linear-gradient(135deg, #3C2704 0%, #221501 55%, #100A00 100%)',
+        style: 'gold-frame',
+      },
+      'durga-saptashati': {
+        bg: 'linear-gradient(135deg, #470D21 0%, #290612 55%, #130208 100%)',
+        style: 'gold-frame',
+      },
       // 1. Foundational Sampradayic Scriptures -> Style 1: Delicate Gold Frame
       'hit-chaurasi': {
         bg: 'linear-gradient(135deg, #4A0E17 0%, #25060C 55%, #120205 100%)',
@@ -187,18 +210,20 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
         <div>
           <div className="flex items-center gap-2 flex-wrap">
             <h3 className="font-serif font-bold text-lg sm:text-xl text-[#18181B] leading-tight">
-              पावन ग्रंथ, रसिक संत एवं धाम लीला संग्रह
+              पावन महाग्रंथ, रसिक वाणी एवं संत संग्रह
             </h3>
             <span className="text-xs font-semibold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full font-mono">
-              {activeTab === 'books'
-                ? `ग्रंथ संग्रह (${books.length})`
-                : activeTab === 'authors'
-                  ? `रसिक संत (${authors.length})`
-                  : `धाम लीला (${relations.length})`}
+              {activeTab === 'mahagranth'
+                ? `सनातन महाग्रंथ (${mahagranths.length})`
+                : activeTab === 'books'
+                  ? `रसिक वाणी संग्रह (${rasikBooks.length})`
+                  : activeTab === 'authors'
+                    ? `रसिक संत (${authors.length})`
+                    : `धाम लीला (${relations.length})`}
             </span>
           </div>
           <p className="text-xs text-[#71717A] font-normal mt-1 font-laila">
-            श्री वृन्दावन धाम के परम पावन ग्रंथ, रसिक आचार्य एवं नित्य निकुंज लीला स्थली।
+            सनातन महाग्रंथ (रामायण, भागवत, गीता), श्री वृन्दावन के रसिक आचार्यों की वाणी एवं नित्य निकुंज धाम लीला।
           </p>
         </div>
 
@@ -214,13 +239,13 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
 
       {/* 2. Segmented Category Switcher with Sunlit-Gold Sliding Pill */}
       <div className="w-full flex justify-center">
-        <div className="relative w-full max-w-xl grid grid-cols-3 p-1 bg-[#FAF6EE] rounded-full border border-amber-200/50">
+        <div className="relative w-full max-w-2xl grid grid-cols-4 p-1 bg-[#FAF6EE] rounded-full border border-amber-200/50">
           {/* Dynamic Sliding Indicator Bar */}
           <span
             aria-hidden="true"
             className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-transform duration-[340ms] ease-[cubic-bezier(0.32,0.72,0,1)] will-change-transform shadow-xs"
             style={{
-              width: 'calc((100% - 8px) / 3)',
+              width: 'calc((100% - 8px) / 4)',
               left: '4px',
               transform: `translate3d(${activeIndex * 100}%, 0, 0)`,
             }}
@@ -234,7 +259,7 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
                 key={tab.id}
                 type="button"
                 onClick={() => setActiveTab(tab.id)}
-                className={`relative z-10 py-2 px-2 sm:px-3 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer select-none flex items-center justify-center gap-1.5 ${isActive ? 'text-[#18181B] font-bold' : 'text-[#71717A] hover:text-[#18181B]'
+                className={`relative z-10 py-2 px-1.5 sm:px-3 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer select-none flex items-center justify-center gap-1 sm:gap-1.5 ${isActive ? 'text-[#18181B] font-bold' : 'text-[#71717A] hover:text-[#18181B]'
                   }`}
               >
                 <Icon
@@ -257,16 +282,26 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
         </div>
       </div>
 
-      {/* 3. SECTION A: Canonical Books (Merged Rows, Soft Outer Area) */}
-      {activeTab === 'books' && (
-        <div className="rounded-[24px] sm:rounded-[28px] overflow-hidden border border-neutral-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.02)] bg-white divide-y divide-neutral-100">
-          {books.map((book) => {
+      {/* 3. SECTION A: Canonical Mahagranths & Books (Merged Rows, Soft Outer Area) */}
+      {(activeTab === 'mahagranth' || activeTab === 'books') && (
+        <div className="rounded-[24px] overflow-hidden border border-neutral-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.02)] bg-white divide-y divide-neutral-100">
+          {(activeTab === 'mahagranth' ? mahagranths : rasikBooks).map((book) => {
             const coverConfig = getBookCoverConfig(book.id, book.devanagari);
             const bookTitle = book.devanagari
               .replace(/जी की वाणी/g, '')
               .replace(/वाणी/g, '')
               .replace(/ग्रन्थ/g, '')
               .trim();
+            const unitLabel =
+              book.countUnit === 'Shlokas'
+                ? 'श्लोक'
+                : book.countUnit === 'Chaupais'
+                  ? 'चौपाई'
+                  : book.countUnit === 'Dohe'
+                    ? 'दोहे'
+                    : book.countUnit === 'Savaiyas'
+                      ? 'सवैये'
+                      : 'पद';
 
             return (
               <div
@@ -303,7 +338,7 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
                           </div>
 
                           <span className="text-[8px] font-mono font-bold text-amber-300/90 tracking-wider whitespace-nowrap leading-none shrink-0">
-                            {book.count} पद
+                            {book.count.toLocaleString('en-IN')} {unitLabel}
                           </span>
                         </div>
                       )}
@@ -324,7 +359,7 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
                           </div>
 
                           <div className="px-1.5 py-0.5 rounded-[3px] bg-black/40 border border-amber-300/30 text-[7.5px] font-mono font-bold text-amber-200 tracking-wider whitespace-nowrap leading-none shrink-0 inline-flex items-center justify-center">
-                            {book.count} पद
+                            {book.count.toLocaleString('en-IN')} {unitLabel}
                           </div>
                         </div>
                       )}
@@ -345,7 +380,7 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
                           </div>
 
                           <div className="px-2 py-0.5 rounded-full bg-black/35 border border-amber-400/30 text-[7.5px] font-mono font-bold text-amber-200 tracking-wider whitespace-nowrap leading-none shrink-0 inline-flex items-center justify-center">
-                            {book.count} पद
+                            {book.count.toLocaleString('en-IN')} {unitLabel}
                           </div>
                         </div>
                       )}
@@ -355,7 +390,7 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
                   {/* Information Stack (Rozha & Laila Hindi Typography) */}
                   <div className="flex flex-col min-w-0 flex-1 justify-center">
                     <div className="text-xs font-laila font-semibold text-amber-800 tracking-wider mb-0.5 truncate">
-                      {book.tradition} &nbsp; {book.author}
+                      {book.tradition} &nbsp;•&nbsp; {book.author}
                     </div>
 
                     <h4 className="font-rozha text-xl sm:text-2xl text-[#18181B] group-hover:text-amber-950 transition-colors leading-tight truncate">
@@ -367,14 +402,14 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
                     </p>
 
                     <div className="text-[11px] font-mono text-neutral-400 mt-1">
-                      {book.count} {book.countUnit === 'Padas' ? 'पद संग्रह' : book.countUnit} • मूल ग्रंथ
+                      {book.count.toLocaleString('en-IN')} {unitLabel} • मूल ग्रंथ पाठ
                     </div>
                   </div>
                 </div>
 
                 {/* Right Action Affordance (Company Underline Animation) */}
                 <div className="company-link group-company-link text-xs sm:text-sm font-laila font-semibold text-neutral-600 group-hover:text-amber-900 transition-colors shrink-0 pl-2">
-                  <span>वाणी पाठ</span>
+                  <span>{book.category === 'mahagranth' ? 'मूल श्लोक पाठ' : 'वाणी पाठ'}</span>
                   <span className="text-amber-700 text-base leading-none">→</span>
                 </div>
               </div>

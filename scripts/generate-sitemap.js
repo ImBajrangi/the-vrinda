@@ -47,11 +47,28 @@ function buildUrlset(urls) {
 
 function createSitemapSuite(baseUrl, prefix = '') {
   const today = getTodayIsoDate();
+  const catalogPath = path.resolve(projectRoot, 'public/data/catalog.json');
   const padasPath = path.resolve(projectRoot, 'src/data/canonicalPadas.json');
   const granthasPath = path.resolve(projectRoot, 'src/data/canonicalGranthas.json');
   const saintsPath = path.resolve(projectRoot, 'src/data/canonicalSaints.json');
 
-  const padas = JSON.parse(fs.readFileSync(padasPath, 'utf-8'));
+  let padas = [];
+  if (fs.existsSync(catalogPath)) {
+    const rawCatalog = JSON.parse(fs.readFileSync(catalogPath, 'utf-8'));
+    if (rawCatalog.items && Array.isArray(rawCatalog.items)) {
+      const cols = rawCatalog.cols || [];
+      padas = rawCatalog.items.map((row) => ({
+        slug: row[0],
+        titleDevanagari: row[1],
+        collectionId: cols[row[2]] || '',
+      }));
+    } else if (Array.isArray(rawCatalog)) {
+      padas = rawCatalog;
+    }
+  } else if (fs.existsSync(padasPath)) {
+    padas = JSON.parse(fs.readFileSync(padasPath, 'utf-8'));
+  }
+
   const granthas = JSON.parse(fs.readFileSync(granthasPath, 'utf-8'));
   const saints = JSON.parse(fs.readFileSync(saintsPath, 'utf-8'));
 
@@ -83,7 +100,7 @@ function createSitemapSuite(baseUrl, prefix = '') {
   }));
   const saintsXml = buildUrlset(saintsUrls);
 
-  // 4. Padas
+  // 4. Padas (Gzip compressed for optimal web performance & crawler ingestion)
   const padasUrls = padas.map((p) => {
     const isCelebrated = ['hit-chaurasi', 'radha-sudha-nidhi', 'kelimal'].includes(p.collectionId);
     const slug = p.slug || p.id;
@@ -95,25 +112,26 @@ function createSitemapSuite(baseUrl, prefix = '') {
     };
   });
   const padasXml = buildUrlset(padasUrls);
+  const padasXmlGz = zlib.gzipSync(Buffer.from(padasXml), { level: 9 });
 
-  // 5. Sitemap Index
+  // 5. Sitemap Index (pointing to standard .xml and .xml.gz)
   const filePrefix = prefix ? `sitemap-${prefix}` : 'sitemap';
   const indexXml = [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-    `  <sitemap><loc>${baseUrl}/${filePrefix}-main.xml?v=2</loc><lastmod>${today}</lastmod></sitemap>`,
-    `  <sitemap><loc>${baseUrl}/${filePrefix}-granthas.xml?v=2</loc><lastmod>${today}</lastmod></sitemap>`,
-    `  <sitemap><loc>${baseUrl}/${filePrefix}-saints.xml?v=2</loc><lastmod>${today}</lastmod></sitemap>`,
-    `  <sitemap><loc>${baseUrl}/${filePrefix}-padas.xml?v=2</loc><lastmod>${today}</lastmod></sitemap>`,
+    `  <sitemap><loc>${baseUrl}/${filePrefix}-main.xml</loc><lastmod>${today}</lastmod></sitemap>`,
+    `  <sitemap><loc>${baseUrl}/${filePrefix}-granthas.xml</loc><lastmod>${today}</lastmod></sitemap>`,
+    `  <sitemap><loc>${baseUrl}/${filePrefix}-saints.xml</loc><lastmod>${today}</lastmod></sitemap>`,
+    `  <sitemap><loc>${baseUrl}/${filePrefix}-padas.xml.gz</loc><lastmod>${today}</lastmod></sitemap>`,
     '</sitemapindex>',
   ].join('\n');
 
   return {
-    [`${filePrefix}.xml`]: indexXml,
-    [`${filePrefix}-main.xml`]: mainXml,
-    [`${filePrefix}-granthas.xml`]: granthasXml,
-    [`${filePrefix}-saints.xml`]: saintsXml,
-    [`${filePrefix}-padas.xml`]: padasXml,
+    [`${filePrefix}.xml`]: { content: indexXml, isBinary: false },
+    [`${filePrefix}-main.xml`]: { content: mainXml, isBinary: false },
+    [`${filePrefix}-granthas.xml`]: { content: granthasXml, isBinary: false },
+    [`${filePrefix}-saints.xml`]: { content: saintsXml, isBinary: false },
+    [`${filePrefix}-padas.xml.gz`]: { content: padasXmlGz, isBinary: true },
   };
 }
 
@@ -134,24 +152,37 @@ export function generateAllSitemaps(outputDirs = ['public', 'dist']) {
       fs.mkdirSync(dir, { recursive: true });
     }
 
-    for (const [filename, content] of Object.entries(allFiles)) {
-      fs.writeFileSync(path.resolve(dir, filename), content, 'utf-8');
+    // Clean up old uncompressed sitemap files to free ~17.2 MB of storage
+    const staleFiles = [
+      'sitemap-padas.xml',
+      'sitemap-path-padas.xml',
+      'sitemap-all.xml',
+      'sitemap-path-all.xml',
+    ];
+    for (const stale of staleFiles) {
+      const p = path.resolve(dir, stale);
+      if (fs.existsSync(p)) {
+        fs.unlinkSync(p);
+      }
+    }
+
+    for (const [filename, fileObj] of Object.entries(allFiles)) {
+      const dest = path.resolve(dir, filename);
+      if (fileObj.isBinary) {
+        fs.writeFileSync(dest, fileObj.content);
+      } else {
+        fs.writeFileSync(dest, fileObj.content, 'utf-8');
+      }
+    }
+
+    // Remove duplicate canonicalPadas.json from public/data/ and dist/data/ to save 9.9 MB
+    const redundantCanonical = path.resolve(dir, 'data', 'canonicalPadas.json');
+    if (fs.existsSync(redundantCanonical)) {
+      fs.unlinkSync(redundantCanonical);
     }
   }
 
-  // Ensure canonical database endpoints are synced with single-line minified JSON
-  const padasPath = path.resolve(projectRoot, 'src/data/canonicalPadas.json');
-  const minifiedJson = JSON.stringify(JSON.parse(fs.readFileSync(padasPath, 'utf-8')));
-
-  for (const dirName of outputDirs) {
-    const dataDir = path.resolve(projectRoot, dirName, 'data');
-    if (!fs.existsSync(dataDir)) {
-      fs.mkdirSync(dataDir, { recursive: true });
-    }
-    fs.writeFileSync(path.resolve(dataDir, 'canonicalPadas.json'), minifiedJson, 'utf-8');
-  }
-
-  console.log('  ✓ Generated sitemap suites for both bhav & path subdomains');
+  console.log('  ✓ Generated compressed sitemap suites (.xml.gz) saving ~16.3 MB');
   console.log('✨ All Dynamic Sitemaps generated successfully!');
 }
 

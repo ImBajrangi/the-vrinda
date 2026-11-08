@@ -102,10 +102,13 @@ export function render(url: string = '/'): RenderResult {
     const gName = grantha ? grantha.name : granthaQuery;
     const gAuthor = grantha ? ` (${grantha.author})` : '';
     const gDesc = grantha?.description ? `${grantha.description} ` : '';
+    const isMahagranth = grantha?.category === 'mahagranth';
     seoConfig = {
       tab: 'padavali',
-      title: `${gName}${gAuthor} • संपूर्ण वाणी संग्रह | वृन्दोपनिषद् 2.0`,
-      description: `${gDesc}${gName} के समस्त पदों का नित्य स्वाध्याय व अनुशीलन। वृन्दोपनिषद् 2.0`,
+      title: isMahagranth
+        ? `${gName}${gAuthor} • संपूर्ण पावन श्लोक व पाठ | वृन्दोपनिषद् 2.0`
+        : `${gName}${gAuthor} • संपूर्ण वाणी संग्रह | वृन्दोपनिषद् 2.0`,
+      description: `${gDesc}${gName} के समस्त पावन श्लोकों व पदों का नित्य स्वाध्याय व अनुशीलन। वृन्दोपनिषद् 2.0`,
       canonicalUrl: `https://bhav.vrindopnishad.in/?tab=padavali&grantha=${grantha?.id || encodeURIComponent(granthaQuery)}`,
     };
   } else {
@@ -115,8 +118,8 @@ export function render(url: string = '/'): RenderResult {
         seoConfig.description = 'दैनिक अष्टयाम लीला, नाम जप, वाणी श्रवण और स्वाध्याय का पावन साधना स्थल।';
         break;
       case 'padavali':
-        seoConfig.title = 'Scriptures Repository • ४२००+ पावन पद वाणी संग्रह';
-        seoConfig.description = 'हित चौरासी, राधा सुधा निधि, केलिमाल, सूरसागर, रसखान पदावली सहित समस्त रसिक वाणियों का अगाध संग्रह।';
+        seoConfig.title = 'Scriptures Repository • ४४,०००+ पावन महाग्रंथ व रसिक वाणी संग्रह';
+        seoConfig.description = 'वाल्मीकि रामायण, श्रीमद् भागवत, रामचरितमानस, भगवद्गीता, हित चौरासी, केलिमाल, सूरसागर सहित सनातन महाग्रंथ व समस्त रसिक वाणी का अगाध संग्रह।';
         break;
       case 'feed':
         seoConfig.title = 'Darshan Feed • नित्य वृन्दावन धाम दर्शन';

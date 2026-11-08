@@ -3,6 +3,7 @@
  * Validates dynamic on-demand rendering, verse extraction, and JSON-LD structured data.
  */
 
+import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -11,7 +12,9 @@ const __dirname = path.dirname(__filename);
 const projectRoot = path.resolve(__dirname, '..');
 
 async function testDynamicSSR() {
-  const serverEntryPath = path.resolve(projectRoot, 'dist', 'server', 'entry-server.js');
+  const serverEntryPath = fs.existsSync(path.resolve(projectRoot, 'dist-server', 'entry-server.js'))
+    ? path.resolve(projectRoot, 'dist-server', 'entry-server.js')
+    : path.resolve(projectRoot, 'dist', 'server', 'entry-server.js');
   console.log('🧪 Testing Dynamic SSR for SEO...');
 
   const { render } = await import(`file://${serverEntryPath}`);

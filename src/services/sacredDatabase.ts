@@ -18,6 +18,7 @@ export interface CanonicalGrantha {
   count: number;
   slug: string;
   description: string;
+  category?: 'mahagranth' | 'rasik-vani' | 'kavya' | 'dham-leela';
 }
 
 export interface CanonicalSaint {
@@ -95,6 +96,7 @@ export interface DisplayBookItem {
   essence: string;
   tagColor: string;
   imageUrl: string;
+  category?: 'mahagranth' | 'rasik-vani' | 'kavya' | 'dham-leela';
 }
 
 export interface DisplayAuthorItem {
@@ -469,16 +471,35 @@ export const SacredDatabase = {
 
   /**
    * Explicit User-Initiated Offline Library Download.
-   * NEVER runs automatically in the background, preserving zero-cost bandwidth quotas.
+   * Downloads all canonical scripture chunks progressively into IndexedDB with zero server overhead.
    */
   async downloadFullLibraryForOffline(onProgress?: (percent: number) => void): Promise<boolean> {
     try {
-      const res = await fetch('/data/canonicalPadas.json');
-      if (res.ok) {
-        const fullCatalog = await res.json();
-        this.loadPadas(fullCatalog);
-        await set('vrind_canonical_padas_v2', fullCatalog);
-        onProgress?.(100);
+      const manifest = await this.getManifestAsync();
+      const granthaEntries = Object.entries(manifest?.granthas || {}) as [string, any][];
+      if (!granthaEntries.length) return false;
+
+      let completed = 0;
+      const allChunks: SacredPad[] = [];
+
+      for (const [colId, meta] of granthaEntries) {
+        const file = meta.file || `${colId}.json`;
+        try {
+          const res = await fetch(`/data/granthas/${file}`);
+          if (res.ok) {
+            const chunk = await res.json();
+            allChunks.push(...chunk);
+            const cacheKey = meta.hash ? `vrind_grantha_${colId}_${meta.hash}` : `vrind_grantha_${colId}`;
+            await set(cacheKey, chunk).catch(() => {});
+          }
+        } catch {}
+        completed++;
+        onProgress?.(Math.round((completed / granthaEntries.length) * 100));
+      }
+
+      if (allChunks.length > 0) {
+        this.loadPadas(allChunks);
+        await set('vrind_canonical_padas_v2', allChunks).catch(() => {});
         return true;
       }
     } catch (err) {
@@ -564,7 +585,18 @@ export const SacredDatabase = {
   async fetchPadBySlug(slug: string): Promise<SacredPad | undefined> {
     if (!slug) return undefined;
     const existing = this.getPadById(slug);
-    if (existing && existing.verses && existing.verses.length > 1) return existing;
+    if (existing && existing.verses && existing.verses.length > 0 && existing.verses[0]?.linesDevanagari?.length > 1) {
+      return existing;
+    }
+
+    // 1. Fetch grantha chunk from CDN static storage if collectionId is known (0 Supabase egress)
+    if (existing?.collectionId) {
+      try {
+        await this.fetchGranthaPadas(existing.collectionId);
+        const updated = this.getPadById(slug);
+        if (updated && updated.verses && updated.verses.length > 0) return updated;
+      } catch {}
+    }
 
     try {
       const { data, error } = await supabase
@@ -718,6 +750,11 @@ export const SacredDatabase = {
 
   getDisplayBooks(): DisplayBookItem[] {
     const bookColors: Record<string, string> = {
+      'valmiki-ramayana': 'text-[#B45309]',
+      'shrimad-bhagavatam': 'text-[#1D4ED8]',
+      'ramcharitmanas': 'text-[#B91C1C]',
+      'bhagavad-gita': 'text-[#D97706]',
+      'durga-saptashati': 'text-[#BE123C]',
       'hit-chaurasi': 'text-[#D97706]',
       'kelimal': 'text-[#B45309]',
       'radha-sudha-nidhi': 'text-[#EA580C]',
@@ -730,24 +767,67 @@ export const SacredDatabase = {
       'stotras': 'text-[#D97706]',
     };
 
-    return allGranthas.map((g) => ({
-      id: g.id,
-      title: g.name,
-      devanagari: g.name,
-      author: g.author,
-      count: g.count,
-      countUnit: g.id === 'bayalees-leela' ? 'Leelas' : g.id === 'raskhan-padavali' ? 'Savaiyas' : 'Padas',
-      tradition: g.author.includes('हरिवंश')
-        ? 'राधावल्लभ संप्रदाय'
-        : g.author.includes('हरिदास')
-        ? 'हरिदासी संप्रदाय'
-        : g.author.includes('सूरदास')
-        ? 'अष्टछाप परंपरा'
-        : 'रसिक परंपरा',
-      essence: g.description,
-      tagColor: bookColors[g.id] || 'text-[#D97706]',
-      imageUrl: '',
-    }));
+    return allGranthas.map((g) => {
+      let countUnit = 'Padas';
+      if (['valmiki-ramayana', 'shrimad-bhagavatam', 'bhagavad-gita', 'durga-saptashati'].includes(g.id)) {
+        countUnit = 'Shlokas';
+      } else if (g.id === 'ramcharitmanas') {
+        countUnit = 'Chaupais';
+      } else if (g.id === 'braj-dohe') {
+        countUnit = 'Dohe';
+      } else if (g.id === 'braj-savaiya' || g.id === 'raskhan-padavali') {
+        countUnit = 'Savaiyas';
+      } else if (g.id === 'braj-kavitta') {
+        countUnit = 'Kavitta';
+      } else if (g.id === 'braj-rasiya') {
+        countUnit = 'Rasiya';
+      } else if (g.id === 'bayalees-leela') {
+        countUnit = 'Leelas';
+      } else if (g.id === 'braj-dham-mahatmya') {
+        countUnit = 'Teerth';
+      } else if (g.id === 'rasik-charitra-katha') {
+        countUnit = 'Charit';
+      }
+
+      let tradition = 'रसिक परंपरा';
+      if (g.id === 'valmiki-ramayana') tradition = 'सनातन वैदिक धारा';
+      else if (g.id === 'shrimad-bhagavatam') tradition = 'परमहंस संहिता';
+      else if (g.id === 'ramcharitmanas') tradition = 'रामानंदी / अवधी रस';
+      else if (g.id === 'bhagavad-gita') tradition = 'योगेश्वर श्रीकृष्ण';
+      else if (g.id === 'durga-saptashati') tradition = 'शाक्त पराशक्ति';
+      else if (g.author.includes('हरिवंश')) tradition = 'राधावल्लभ संप्रदाय';
+      else if (g.author.includes('हरिदास')) tradition = 'हरिदासी संप्रदाय';
+      else if (g.author.includes('सूरदास') || g.id === 'paramanand-sagar') tradition = 'अष्टछाप परंपरा';
+      else if (g.id === 'raskhan-padavali') tradition = 'पुष्टि संप्रदाय';
+      else if (g.id === 'meera-padavali') tradition = 'अनन्य कृष्ण भक्ति';
+
+      return {
+        id: g.id,
+        title: g.name,
+        devanagari: g.name,
+        author: g.author,
+        count: g.count,
+        countUnit,
+        tradition,
+        essence: g.description,
+        tagColor: bookColors[g.id] || 'text-[#D97706]',
+        imageUrl: '',
+        category: g.category,
+      };
+    });
+  },
+
+  getDisplayMahagranths(): DisplayBookItem[] {
+    return this.getDisplayBooks().filter((b) => b.category === 'mahagranth');
+  },
+
+  getDisplayRasikBooks(): DisplayBookItem[] {
+    return this.getDisplayBooks().filter((b) => b.category !== 'mahagranth');
+  },
+
+  getGranthasByCategory(category?: string): CanonicalGrantha[] {
+    if (!category || category === 'all') return allGranthas;
+    return allGranthas.filter((g) => g.category === category);
   },
 
   getDisplayAuthors(): DisplayAuthorItem[] {

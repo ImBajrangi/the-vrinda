@@ -50,9 +50,23 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
           return fetch(`/data/${catalogFile}`);
         })
         .then((r) => (r.ok ? r.json() : null))
-        .then((items) => {
-          if (items && Array.isArray(items)) {
-            SacredDatabase.appendPadas(items);
+        .then((data) => {
+          if (!data) return;
+          if (data.items && Array.isArray(data.items)) {
+            const cols = data.cols || [];
+            const authors = data.authors || [];
+            const mapped = data.items.map((row: any[], idx: number) => ({
+              id: row[0],
+              slug: row[0],
+              titleDevanagari: row[1],
+              collectionId: cols[row[2]] || '',
+              author: authors[row[3]] || '',
+              rag: row[4] || '',
+              index: idx + 1,
+            }));
+            SacredDatabase.appendPadas(mapped);
+          } else if (Array.isArray(data)) {
+            SacredDatabase.appendPadas(data);
           }
         })
         .catch(() => {});

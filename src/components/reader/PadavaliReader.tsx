@@ -171,6 +171,20 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   const [selectedGrantha, setSelectedGrantha] = useState<string>(
     selectedGranthaId || getReaderStateSync().selectedTradition || 'all'
   );
+  type GranthaCategory = 'all' | 'mahagranth' | 'rasik-vani' | 'kavya' | 'dham-leela';
+  const [granthaCategory, setGranthaCategory] = useState<GranthaCategory>(() => {
+    if (selectedGranthaId) {
+      const g = SacredDatabase.getGranthaById(selectedGranthaId);
+      if (g?.category) return g.category as GranthaCategory;
+    }
+    return 'all';
+  });
+
+  const displayedGranthas = useMemo(() => {
+    if (granthaCategory === 'all') return allGranthas;
+    return allGranthas.filter((g) => g.category === granthaCategory);
+  }, [allGranthas, granthaCategory]);
+
   const [selectedRaga, setSelectedRaga] = useState<string>('all');
   const [sidebarQuery, setSidebarQuery] = useState('');
 
@@ -244,6 +258,10 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   useEffect(() => {
     if (selectedGranthaId) {
       setSelectedGrantha(selectedGranthaId);
+      const g = SacredDatabase.getGranthaById(selectedGranthaId);
+      if (g?.category) {
+        setGranthaCategory(g.category as GranthaCategory);
+      }
     }
   }, [selectedGranthaId]);
 
@@ -1299,6 +1317,44 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       {/* ========================================================================= */}
       {!isFocusReadingMode && (
         <div className="mb-5 space-y-2.5">
+          {/* Scripture Category Filter Strip (महाग्रंथ, रसिक वाणी, काव्य व छंद, धाम व लीला) */}
+          <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-0.5 text-xs">
+            {[
+              { id: 'all', label: 'समस्त संग्रह' },
+              { id: 'mahagranth', label: 'सनातन महाग्रंथ' },
+              { id: 'rasik-vani', label: 'रसिक वाणी' },
+              { id: 'kavya', label: 'काव्य व छंद' },
+              { id: 'dham-leela', label: 'धाम व लीला' },
+            ].map((cat) => {
+              const isActive = granthaCategory === cat.id;
+              const count =
+                cat.id === 'all'
+                  ? allGranthas.length
+                  : allGranthas.filter((g) => g.category === cat.id).length;
+              return (
+                <button
+                  key={cat.id}
+                  type="button"
+                  onClick={() => setGranthaCategory(cat.id as any)}
+                  className={`px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer select-none ${
+                    isActive
+                      ? 'bg-amber-100 text-amber-900 font-bold border border-amber-300/70 shadow-2xs'
+                      : 'bg-white/80 text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 border border-neutral-200/60'
+                  }`}
+                >
+                  <span>{cat.label}</span>
+                  <span
+                    className={`ml-1 text-[10px] font-mono ${
+                      isActive ? 'text-amber-800 font-bold' : 'text-neutral-400'
+                    }`}
+                  >
+                    ({count})
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
           {/* Main Grantha Segmented Pill Track */}
           <div className="relative flex items-center gap-1 overflow-x-auto no-scrollbar p-1 bg-white/95 border border-neutral-200/80 shadow-2xs rounded-full">
             {/* Dynamic Elastic Sliding Indicator Bar */}
@@ -1328,7 +1384,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             >
               समस्त ग्रंथ <span className={`text-[10px] font-mono ml-0.5 ${selectedGrantha === 'all' ? 'text-[#B45309] font-bold' : 'text-[#94A3B8]'}`}>({allPadas.length})</span>
             </button>
-            {allGranthas.map((g) => {
+            {displayedGranthas.map((g) => {
               const isActive = selectedGrantha === g.id;
               return (
                 <button
