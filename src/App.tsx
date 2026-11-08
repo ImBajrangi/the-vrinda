@@ -539,13 +539,12 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                 </div>
               </div>
 
-              {/* Section 1: Daily Temple Seva & Darshan Schedule (Crisp Pure White Porcelain) */}
-              <div className="w-full bg-white rounded-[32px] p-6 sm:p-7 space-y-4 mb-6">
+              {/* Section 1: Daily Temple Seva & Darshan Schedule (Concentric Geometry: 40/44px -> 24px Cards) */}
+              <div id="daily-temple-seva-section" className="w-full bg-white rounded-[40px] sm:rounded-[44px] p-4 sm:p-5 space-y-4 mb-6 border border-neutral-200/60 shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
                 {/* Header with Today's Tithi */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-neutral-100">
                   <div>
                     <div className="flex items-center gap-2 flex-wrap">
-                      <span className="w-2.5 h-2.5 rounded-full bg-amber-600 shrink-0" />
                       <h3 className="font-serif font-bold text-xl sm:text-[22px] text-[#18181B] leading-tight">
                         Daily Temple Seva & Darshan Schedule
                       </h3>
@@ -580,9 +579,9 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                   {templePillStyle.ready && (
                     <span
                       aria-hidden="true"
-                      className="absolute top-1 bottom-0 rounded-full bg-[#FEF08A] pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+                      className="absolute top-1 bottom-0 rounded-full bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[340ms] ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[transform,width]"
                       style={{
-                        transform: `translateX(${templePillStyle.left}px)`,
+                        transform: `translate3d(${templePillStyle.left}px, 0, 0)`,
                         width: `${templePillStyle.width}px`,
                         left: 0,
                       }}
@@ -615,7 +614,6 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                         : 'text-[#71717A] hover:text-[#18181B] bg-[#FAF6EE]'
                     }`}
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
                     Doors Open Now (1)
                   </button>
                   <button
@@ -648,59 +646,121 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                   </button>
                 </div>
 
-                {/* Seva Timeline Cards (Filtered dynamically) */}
-                <div className="space-y-3 pt-1">
-                  {(templeFilter === 'all' || templeFilter === 'open') && (
-                    <NityaSevaCard
-                      templeName="Shri Banke Bihari Temple (श्री बाँके बिहारी)"
-                      sevaTitle="Mangala Darshan Aarti"
-                      time="07:15 AM - 12:00 PM"
-                      sevaDetails={['Deep Darshan', 'Chandan & Tulsi Offering', 'Raga Vibhas']}
-                      statusLabel="DOORS OPEN NOW"
-                      statusType="active"
-                      countdownLabel="Open for 2h 45m"
-                      imageUrl=""
-                      onOpen={() => setActiveTab('feed')}
-                    />
+                {/* Seva Timeline Cards (Company Architecture: 0 Gap Unified Mosaic, Soft Outer Corners, No Dots/Outlines) */}
+                <div className="pt-1">
+                  {templeFilter === 'all' && (
+                    <div className="rounded-[24px] sm:rounded-[28px] overflow-hidden shadow-md bg-neutral-950">
+                      {/* 01 FEATURED SHOWCASE HERO: Shri Banke Bihari Lal */}
+                      <NityaSevaCard
+                        templeName="Shri Banke Bihari Temple (श्री बाँके बिहारी)"
+                        sevaTitle="Mangala Darshan Aarti"
+                        time="07:15 AM - 12:00 PM"
+                        statusType="active"
+                        countdownLabel="Open for 2h 45m"
+                        imageUrl="/assets/temples/banke-bihari-v2.jpg"
+                        isHero={true}
+                        indexNumber="01"
+                        seamless={true}
+                        onOpen={() => setActiveTab('feed')}
+                      />
+
+                      {/* 3 COMPANION SHOWCASE CARDS (0 Gap, Seamless Mosaic) */}
+                      <div className="grid grid-cols-1 md:grid-cols-3">
+                        <NityaSevaCard
+                          templeName="Shri Radha Vallabh Lal (श्री राधा वल्लभ)"
+                          sevaTitle="Rajbhog Darshan & Feast"
+                          time="12:30 PM - 03:00 PM"
+                          statusType="upcoming"
+                          countdownLabel="Midday Seva"
+                          imageUrl="/assets/temples/radha-vallabh.jpg"
+                          indexNumber="02"
+                          seamless={true}
+                          onOpen={() => setActiveTab('padavali')}
+                        />
+                        <NityaSevaCard
+                          templeName="Shri Radha Raman Ji (श्री राधा रमण)"
+                          sevaTitle="Sandhya Aarti & Shringar Darshan"
+                          time="06:45 PM - 08:30 PM"
+                          statusType="upcoming"
+                          countdownLabel="Twilight Darshan"
+                          imageUrl="/assets/temples/radha-raman.jpg"
+                          indexNumber="03"
+                          seamless={true}
+                          onOpen={() => setActiveTab('feed')}
+                        />
+                        <NityaSevaCard
+                          templeName="Barsana Ladili Lal Ji (बरसाना श्रीजी)"
+                          sevaTitle="Shayana Darshan & Chamara Seva"
+                          time="09:15 PM"
+                          statusType="upcoming"
+                          countdownLabel="Night Rest"
+                          imageUrl="/assets/temples/barsana-radharani.jpg"
+                          indexNumber="04"
+                          seamless={true}
+                          onOpen={() => setActiveTab('feed')}
+                        />
+                      </div>
+                    </div>
                   )}
-                  {(templeFilter === 'all' || templeFilter === 'rajbhog') && (
-                    <NityaSevaCard
-                      templeName="Shri Radha Vallabh Lal (श्री राधा वल्लभ)"
-                      sevaTitle="Rajbhog Darshan & Feast"
-                      time="12:30 PM - 03:00 PM"
-                      sevaDetails={['Hit Chaurasi Pad Recitation', 'Sweet Bhog Offering']}
-                      statusLabel="Rajbhog Hour"
-                      statusType="upcoming"
-                      countdownLabel="Midday Seva"
-                      imageUrl=""
-                      onOpen={() => setActiveTab('padavali')}
-                    />
+
+                  {templeFilter === 'open' && (
+                    <div className="rounded-[24px] sm:rounded-[28px] overflow-hidden shadow-md bg-neutral-950">
+                      <NityaSevaCard
+                        templeName="Shri Banke Bihari Temple (श्री बाँके बिहारी)"
+                        sevaTitle="Mangala Darshan Aarti"
+                        time="07:15 AM - 12:00 PM"
+                        statusType="active"
+                        countdownLabel="Open for 2h 45m"
+                        imageUrl="/assets/temples/banke-bihari-v2.jpg"
+                        isHero={true}
+                        indexNumber="01"
+                        seamless={true}
+                        onOpen={() => setActiveTab('feed')}
+                      />
+                    </div>
                   )}
-                  {(templeFilter === 'all' || templeFilter === 'evening') && (
-                    <>
+
+                  {templeFilter === 'rajbhog' && (
+                    <div className="max-w-xl mx-auto rounded-[24px] sm:rounded-[28px] overflow-hidden shadow-md bg-neutral-950">
+                      <NityaSevaCard
+                        templeName="Shri Radha Vallabh Lal (श्री राधा वल्लभ)"
+                        sevaTitle="Rajbhog Darshan & Feast"
+                        time="12:30 PM - 03:00 PM"
+                        statusType="upcoming"
+                        countdownLabel="Midday Seva"
+                        imageUrl="/assets/temples/radha-vallabh.jpg"
+                        indexNumber="02"
+                        seamless={true}
+                        onOpen={() => setActiveTab('padavali')}
+                      />
+                    </div>
+                  )}
+
+                  {templeFilter === 'evening' && (
+                    <div className="rounded-[24px] sm:rounded-[28px] overflow-hidden shadow-md bg-neutral-950 grid grid-cols-1 md:grid-cols-2">
                       <NityaSevaCard
                         templeName="Shri Radha Raman Ji (श्री राधा रमण)"
                         sevaTitle="Sandhya Aarti & Shringar Darshan"
                         time="06:45 PM - 08:30 PM"
-                        sevaDetails={['Evening Maha Aarti', 'Silver Throne Darshan']}
-                        statusLabel="Evening Aarti"
                         statusType="upcoming"
                         countdownLabel="Twilight Darshan"
-                        imageUrl=""
+                        imageUrl="/assets/temples/radha-raman.jpg"
+                        indexNumber="03"
+                        seamless={true}
                         onOpen={() => setActiveTab('feed')}
                       />
                       <NityaSevaCard
                         templeName="Barsana Ladili Lal Ji (बरसाना श्रीजी)"
                         sevaTitle="Shayana Darshan & Chamara Seva"
                         time="09:15 PM"
-                        sevaDetails={['Fragrant Floral Shringar', 'Priya-Priyatam Repose']}
-                        statusLabel="Night Repose"
                         statusType="upcoming"
                         countdownLabel="Night Rest"
-                        imageUrl=""
+                        imageUrl="/assets/temples/barsana-radharani.jpg"
+                        indexNumber="04"
+                        seamless={true}
                         onOpen={() => setActiveTab('feed')}
                       />
-                    </>
+                    </div>
                   )}
                 </div>
               </div>
@@ -996,9 +1056,9 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                     {feedPillStyle.ready && (
                       <span
                         aria-hidden="true"
-                        className="absolute top-1.5 bottom-1.5 rounded-full bg-[#FEF08A] pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+                        className="absolute top-1.5 bottom-1.5 rounded-full bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[340ms] ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[transform,width]"
                         style={{
-                          transform: `translateX(${feedPillStyle.left}px)`,
+                          transform: `translate3d(${feedPillStyle.left}px, 0, 0)`,
                           width: `${feedPillStyle.width}px`,
                           left: 0,
                         }}

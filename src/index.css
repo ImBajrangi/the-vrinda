@@ -99,11 +99,11 @@ body {
 
 /* Apple Screen & View Transition */
 .apple-view-enter {
-  animation: appleViewIn 0.38s var(--ease-apple-smooth) both;
+  animation: appleViewIn 0.32s cubic-bezier(0.25, 1, 0.5, 1) both;
 }
 
 .apple-view-exit {
-  animation: appleViewOut 0.22s cubic-bezier(0.32, 0, 0.2, 1) both !important;
+  animation: appleViewOut 0.2s cubic-bezier(0.32, 0, 0.2, 1) both !important;
   pointer-events: none !important;
   will-change: transform, opacity;
 }
@@ -111,22 +111,22 @@ body {
 @keyframes appleViewIn {
   0% {
     opacity: 0;
-    transform: translateY(-6px) scale(0.985);
+    transform: translateY(4px) translateZ(0);
   }
   100% {
     opacity: 1;
-    transform: none;
+    transform: translateY(0) translateZ(0);
   }
 }
 
 @keyframes appleViewOut {
   0% {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0) translateZ(0);
   }
   100% {
     opacity: 0;
-    transform: translateY(-6px) scale(0.985);
+    transform: translateY(-4px) translateZ(0);
   }
 }
 
@@ -134,27 +134,27 @@ body {
 @keyframes appleSheetIn {
   0% {
     opacity: 0;
-    transform: translateY(100%);
+    transform: translateY(100%) translateZ(0);
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) translateZ(0);
   }
 }
 
 @keyframes appleSheetOut {
   0% {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0) translateZ(0);
   }
   100% {
     opacity: 0;
-    transform: translateY(12px) scale(0.985);
+    transform: translateY(100%) translateZ(0);
   }
 }
 
 .apple-sheet-enter {
-  animation: appleSheetIn 0.36s var(--ease-ios-spring) both;
+  animation: appleSheetIn 0.34s var(--ease-ios-spring) both;
   will-change: transform, opacity;
 }
 
@@ -224,26 +224,26 @@ body {
   transform: none !important;
 }
 
-/* Apple Dialog Entrance (Scale 0.95 -> 1.0 with fade) & Exit */
+/* Apple Dialog Entrance (Scale 0.97 -> 1.0 with fade) & Exit */
 @keyframes appleDialogIn {
   0% {
     opacity: 0;
-    transform: scale(0.95);
+    transform: scale(0.97) translateY(6px) translateZ(0);
   }
   100% {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1) translateY(0) translateZ(0);
   }
 }
 
 @keyframes appleDialogOut {
   0% {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1) translateY(0) translateZ(0);
   }
   100% {
     opacity: 0;
-    transform: scale(0.975);
+    transform: scale(0.97) translateY(6px) translateZ(0);
   }
 }
 
@@ -283,22 +283,22 @@ body {
 @keyframes modalDialogPopIn {
   0% {
     opacity: 0;
-    transform: scale(0.95) translateY(10px);
+    transform: scale(0.97) translateY(8px) translateZ(0);
   }
   100% {
     opacity: 1;
-    transform: scale(1) translateY(0);
+    transform: scale(1) translateY(0) translateZ(0);
   }
 }
 
 @keyframes modalDialogPopDown {
   0% {
     opacity: 1;
-    transform: scale(1) translateY(0);
+    transform: scale(1) translateY(0) translateZ(0);
   }
   100% {
     opacity: 0;
-    transform: scale(0.975) translateY(8px);
+    transform: scale(0.97) translateY(8px) translateZ(0);
   }
 }
 
@@ -311,6 +311,24 @@ body {
   animation: modalDialogPopDown 0.24s cubic-bezier(0.32, 0, 0.2, 1) both !important;
   pointer-events: none !important;
   will-change: transform, opacity;
+}
+
+/* Universal GPU Layer Stability & Font Anti-Flicker Containment */
+.apple-view-enter,
+.apple-view-exit,
+.apple-sheet-enter,
+.apple-sheet-exit,
+.apple-dialog-enter,
+.apple-dialog-exit,
+.modal-dialog-enter,
+.modal-dialog-exit,
+.sheet-enter,
+.sheet-exit {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translateZ(0);
 }
 
 /* Bottom Sheet Slide Up & Slide Down Exit */

@@ -36,6 +36,8 @@ export default {
         jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
         doto: ['"Plus Jakarta Sans"', 'monospace'],
         devanagari: ['"Noto Serif Devanagari"', 'serif'],
+        laila: ['"Laila"', 'serif'],
+        rozha: ['"Rozha One"', 'serif'],
         display: ['"Rozha One"', 'serif'],
         sans: ['"Inter"', '"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
       },

@@ -169,9 +169,9 @@ export const SaintsDirectoryModal: React.FC<SaintsDirectoryModalProps> = ({
             {traditionPillStyle.ready && (
               <span
                 aria-hidden="true"
-                className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+                className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[340ms] ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[transform,width]"
                 style={{
-                  transform: `translateX(${traditionPillStyle.left}px)`,
+                  transform: `translate3d(${traditionPillStyle.left}px, 0, 0)`,
                   width: `${traditionPillStyle.width}px`,
                   left: 0,
                 }}

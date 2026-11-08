@@ -15,6 +15,7 @@ interface ArtworkGraphicSlotProps {
   badge?: string;
   badgePosition?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
   overlayContent?: React.ReactNode;
+  customFallback?: React.ReactNode;
   className?: string;
   onClick?: () => void;
   roundedClassName?: string;
@@ -30,6 +31,7 @@ export const ArtworkGraphicSlot: React.FC<ArtworkGraphicSlotProps> = ({
   badge,
   badgePosition = 'top-left',
   overlayContent,
+  customFallback,
   className = '',
   onClick,
   roundedClassName = 'rounded-[20px]',
@@ -131,27 +133,31 @@ export const ArtworkGraphicSlot: React.FC<ArtworkGraphicSlotProps> = ({
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent pointer-events-none" />
           )}
         </>
+      ) : customFallback ? (
+        <div className="w-full h-full flex items-center justify-center">
+          {customFallback}
+        </div>
       ) : (
-        /* Empty Artwork / Graphics Slot Frame: Designed specifically for later graphics insertion */
+        /* Empty Artwork / Graphics Slot Frame: Gracefully sized to prevent clipping on all viewports */
         <div
-          className={`w-full h-full ${currentTheme.bg} flex flex-col items-center justify-center p-4 text-center relative border border-dashed border-neutral-300/80`}
+          className={`w-full h-full ${currentTheme.bg} flex flex-col items-center justify-center p-2 sm:p-3 text-center relative border border-neutral-200/70 overflow-hidden`}
         >
           {/* Subtle artistic watermark in the background */}
           <div className="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none">
-            <Heart className="w-32 h-32 text-current" />
+            <Heart className="w-24 h-24 text-current" />
           </div>
 
           {/* Central Art Emblem */}
-          <div className="relative z-10 flex flex-col items-center gap-2">
-            <div className={`w-10 h-10 rounded-2xl ${currentTheme.iconBg} flex items-center justify-center shadow-2xs`}>
+          <div className="relative z-10 flex flex-col items-center justify-center gap-1 sm:gap-1.5 max-w-full">
+            <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl ${currentTheme.iconBg} flex items-center justify-center shadow-2xs shrink-0`}>
               {renderPlaceholderIcon()}
             </div>
 
-            <div>
-              <span className={`text-[11px] font-semibold tracking-wide block ${currentTheme.labelColor}`}>
+            {placeholderLabel && (
+              <span className={`text-[10px] sm:text-[10.5px] font-semibold tracking-tight block truncate max-w-[90%] ${currentTheme.labelColor}`}>
                 {placeholderLabel}
               </span>
-            </div>
+            )}
           </div>
         </div>
       )}

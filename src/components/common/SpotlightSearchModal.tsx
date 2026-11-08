@@ -264,11 +264,11 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
             {/* Dynamic Elastic Sliding Pill spanning exactly 25% */}
             <span
               aria-hidden="true"
-              className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+              className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-transform duration-[340ms] ease-[cubic-bezier(0.32,0.72,0,1)] will-change-transform"
               style={{
                 width: 'calc((100% - 8px) / 4)',
                 left: '4px',
-                transform: `translateX(${activeFilterIdx * 100}%)`,
+                transform: `translate3d(${activeFilterIdx * 100}%, 0, 0)`,
               }}
             />
 
@@ -445,22 +445,6 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
               )}
             </>
           )}
-        </div>
-
-        {/* 4. Zen Minimalist Footer */}
-        <div className="px-4 sm:px-5 py-2.5 bg-white border-t border-neutral-100 flex items-center justify-between text-xs text-[#71717A] select-none">
-          <span className="font-semibold text-[#18181B] font-mono">
-            {totalResults} परिणाम उपलब्ध
-          </span>
-          <div className="flex items-center gap-2 text-[11px] text-neutral-400">
-            <span>↑↓ चयन</span>
-            <span>•</span>
-            <span>↵ खोलें</span>
-            <span>•</span>
-            <span>Tab फ़िल्टर</span>
-            <span>•</span>
-            <span>ESC बंद</span>
-          </div>
         </div>
       </div>
     </div>,

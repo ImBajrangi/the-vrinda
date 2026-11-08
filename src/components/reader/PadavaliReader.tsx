@@ -484,6 +484,26 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   const [isSummaryOpen, setIsSummaryOpen] = useState(false);
   const [isSummaryLoading, setIsSummaryLoading] = useState(false);
   const [summaryText, setSummaryText] = useState<string>('');
+  const summaryTrayRef = useRef<HTMLDivElement>(null);
+  const [summaryHeight, setSummaryHeight] = useState<number>(0);
+
+  useEffect(() => {
+    const el = summaryTrayRef.current;
+    if (!el) return;
+
+    if (isSummaryOpen) {
+      setSummaryHeight(el.scrollHeight);
+      const ro = new ResizeObserver(() => {
+        if (summaryTrayRef.current) {
+          setSummaryHeight(summaryTrayRef.current.scrollHeight);
+        }
+      });
+      ro.observe(el);
+      return () => ro.disconnect();
+    } else {
+      setSummaryHeight(0);
+    }
+  }, [isSummaryOpen, summaryText, isSummaryLoading]);
 
   const commentaryTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -1274,9 +1294,9 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             {granthaPillStyle.ready && (
               <span
                 aria-hidden="true"
-                className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+                className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[340ms] ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[transform,width]"
                 style={{
-                  transform: `translateX(${granthaPillStyle.left}px)`,
+                  transform: `translate3d(${granthaPillStyle.left}px, 0, 0)`,
                   width: `${granthaPillStyle.width}px`,
                   left: 0,
                 }}
@@ -1334,9 +1354,9 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               {ragaPillStyle.ready && (
                 <span
                   aria-hidden="true"
-                  className="absolute top-0.5 bottom-0.5 rounded-full bg-[#FEF08A] pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+                  className="absolute top-0.5 bottom-0.5 rounded-full bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[340ms] ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[transform,width]"
                   style={{
-                    transform: `translateX(${ragaPillStyle.left}px)`,
+                    transform: `translate3d(${ragaPillStyle.left}px, 0, 0)`,
                     width: `${ragaPillStyle.width}px`,
                     left: 0,
                   }}
@@ -1399,9 +1419,9 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
           {mobilePillStyle.ready && (
             <span
               aria-hidden="true"
-              className="absolute top-0 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform z-0"
+              className="absolute top-0 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[340ms] ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[transform,width] z-0"
               style={{
-                transform: `translateX(${mobilePillStyle.left}px)`,
+                transform: `translate3d(${mobilePillStyle.left}px, 0, 0)`,
                 width: `${mobilePillStyle.width}px`,
                 left: 0,
               }}
@@ -1573,9 +1593,9 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   {sidebarPillStyle.ready && (
                     <span
                       aria-hidden="true"
-                      className="absolute left-2 right-2 rounded-2xl bg-[#FEF08A] pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform z-0"
+                      className="absolute left-2 right-2 rounded-2xl bg-[#FEF08A] pointer-events-none transition-[transform,height] duration-[340ms] ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[transform,height] z-0"
                       style={{
-                        transform: `translateY(${sidebarPillStyle.top}px)`,
+                        transform: `translate3d(0, ${sidebarPillStyle.top}px, 0)`,
                         height: `${sidebarPillStyle.height}px`,
                         top: 0,
                       }}
@@ -1829,16 +1849,19 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             </div>
           </div>
 
-          {/* Collapsible Summary Card with Smooth Relative Sliding Accordion */}
+          {/* Collapsible Summary Card with Expert Measured Height Architecture */}
           <div
-            className={`accordion-slide-container ${
-              isSummaryOpen ? 'is-open mb-7' : 'is-closed'
-            }`}
+            className="w-full overflow-hidden transition-[height,opacity] duration-[340ms] ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[height,opacity]"
+            style={{
+              height: isSummaryOpen ? `${summaryHeight}px` : '0px',
+              opacity: isSummaryOpen ? 1 : 0,
+              pointerEvents: isSummaryOpen ? 'auto' : 'none',
+            }}
             aria-hidden={!isSummaryOpen}
             inert={!isSummaryOpen ? true : undefined}
           >
-            <div className="accordion-slide-content">
-              <div className={`accordion-slide-card ${currentTheme.bhavarthBg} border ${currentTheme.borderColor} rounded-2xl p-4 sm:p-5`}>
+            <div ref={summaryTrayRef} className="pb-7">
+              <div className={`native-drawer-surface ${currentTheme.bhavarthBg} border ${currentTheme.borderColor} rounded-2xl p-4 sm:p-5`}>
                 <div className={`flex items-center justify-between pb-2 mb-2 border-b ${currentTheme.borderColor}`}>
                   <div className={`flex items-center gap-1.5 text-xs font-bold ${currentTheme.titleColor} font-serif`}>
                     <Sparkles className="w-3.5 h-3.5 text-[#CA8A04]" />
