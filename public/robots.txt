@@ -5,5 +5,5 @@ Disallow: /api/
 Disallow: /admin/
 
 # Sitemap location
-Sitemap: https://vrindopnisad.org/sitemap.xml
+Sitemap: https://bhav.vrindopnishad.in/sitemap.xml
 
