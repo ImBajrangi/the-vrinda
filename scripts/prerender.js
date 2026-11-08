@@ -38,7 +38,7 @@ function injectSSRContent(template, html, seoHead) {
 async function prerender() {
   const distPath = path.resolve(projectRoot, 'dist');
   const templatePath = path.resolve(distPath, 'index.html');
-  const serverEntryPath = path.resolve(distPath, 'server', 'entry-server.js');
+  const serverEntryPath = path.resolve(projectRoot, 'dist-server', 'entry-server.js');
 
   if (!fs.existsSync(templatePath)) {
     console.error('Error: dist/index.html not found. Please run client build first.');
@@ -46,7 +46,7 @@ async function prerender() {
   }
 
   if (!fs.existsSync(serverEntryPath)) {
-    console.error('Error: dist/server/entry-server.js not found. Please run SSR build first.');
+    console.error('Error: dist-server/entry-server.js not found. Please run SSR build first.');
     process.exit(1);
   }
 

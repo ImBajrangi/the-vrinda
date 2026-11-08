@@ -166,21 +166,17 @@ export function generateStaticGranthas(outputDirs = ['public', 'dist']) {
     // Write manifest
     fs.writeFileSync(path.resolve(dataDir, 'manifest.json'), manifestStr, 'utf-8');
 
-    // Write both hashed immutable and canonical catalog files
+    // Write both hashed immutable and canonical catalog files (Cloudflare Edge handles Gzip/Brotli)
     fs.writeFileSync(path.resolve(dataDir, 'catalog.json'), catalogStr, 'utf-8');
-    fs.writeFileSync(path.resolve(dataDir, 'catalog.json.gz'), catalogGz);
     fs.writeFileSync(path.resolve(dataDir, catalogHashedFile), catalogStr, 'utf-8');
-    fs.writeFileSync(path.resolve(dataDir, `${catalogHashedFile}.gz`), catalogGz);
 
     // Write both content-hashed immutable chunks and standard fallback files
     for (const [colId, chunk] of granthaChunks.entries()) {
       // 1. Standard canonical name for clean routing
       fs.writeFileSync(path.resolve(granthasDir, `${colId}.json`), chunk.json, 'utf-8');
-      fs.writeFileSync(path.resolve(granthasDir, `${colId}.json.gz`), chunk.gz);
 
       // 2. Content-hashed immutable filename for permanent year-long CDN edge caching
       fs.writeFileSync(path.resolve(granthasDir, chunk.hashedFileName), chunk.json, 'utf-8');
-      fs.writeFileSync(path.resolve(granthasDir, `${chunk.hashedFileName}.gz`), chunk.gz);
     }
   }
 

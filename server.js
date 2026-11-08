@@ -21,7 +21,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const DIST_DIR = path.resolve(__dirname, 'dist');
 const CLIENT_INDEX = path.resolve(DIST_DIR, 'index.html');
-const SERVER_ENTRY = path.resolve(DIST_DIR, 'server', 'entry-server.js');
+const SERVER_ENTRY = path.resolve(__dirname, 'dist-server', 'entry-server.js');
 
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || '0.0.0.0';
@@ -135,7 +135,7 @@ async function startServer() {
   }
 
   if (!fs.existsSync(SERVER_ENTRY)) {
-    console.error('❌ dist/server/entry-server.js not found! Please run `npm run build:server` first.');
+    console.error('❌ dist-server/entry-server.js not found! Please run `npm run build:server` first.');
     process.exit(1);
   }
 

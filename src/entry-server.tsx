@@ -8,8 +8,10 @@ import canonicalPadasData from './data/canonicalPadas.json';
 import { SacredPad } from './types/devotional';
 
 // Ensure SSR server pre-warms with full 4,204 canonical padas for instant bot rendering and SEO extraction
-if (!SacredDatabase.isLoaded()) {
-  SacredDatabase.loadPadas(canonicalPadasData);
+function ensureDatabasePrewarmed(): void {
+  if (!SacredDatabase.isLoaded()) {
+    SacredDatabase.loadPadas(canonicalPadasData as any[]);
+  }
 }
 
 export interface RenderResult {
@@ -23,6 +25,7 @@ export interface RenderResult {
 }
 
 export function render(url: string = '/'): RenderResult {
+  ensureDatabasePrewarmed();
   let tab: NavTab = 'smaran';
   let padId: string | undefined;
   let authorQuery: string | undefined;

@@ -73,6 +73,7 @@ function dynamicSsrPlugin(): Plugin {
 export default defineConfig(({ isSsrBuild }) => ({
   plugins: [react(), dynamicSsrPlugin()],
   build: {
+    copyPublicDir: !isSsrBuild,
     rollupOptions: isSsrBuild
       ? {}
       : {

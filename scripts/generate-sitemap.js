@@ -144,10 +144,9 @@ export function generateAllSitemaps(outputDirs = ['public', 'dist']) {
     }
   }
 
-  // Ensure canonical database endpoints and pre-compressed .gz archives are synced
+  // Ensure canonical database endpoints are synced
   const padasPath = path.resolve(projectRoot, 'src/data/canonicalPadas.json');
   const rawBytes = fs.readFileSync(padasPath);
-  const compressedGz = zlib.gzipSync(rawBytes, { level: 9 });
 
   for (const dirName of outputDirs) {
     const dataDir = path.resolve(projectRoot, dirName, 'data');
@@ -155,7 +154,6 @@ export function generateAllSitemaps(outputDirs = ['public', 'dist']) {
       fs.mkdirSync(dataDir, { recursive: true });
     }
     fs.writeFileSync(path.resolve(dataDir, 'canonicalPadas.json'), rawBytes);
-    fs.writeFileSync(path.resolve(dataDir, 'canonicalPadas.json.gz'), compressedGz);
   }
 
   console.log('  ✓ Generated sitemap suites for both bhav & path subdomains');
