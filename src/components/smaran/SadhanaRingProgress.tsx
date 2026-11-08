@@ -43,7 +43,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
   onOpenReader: _onOpenReader,
   onOpenGuide,
   onOpenFocus,
-  currentStreakDays = 7,
+  currentStreakDays = 1,
 }) => {
   // 27 visual segments representing the 108-bead Tulsi mala (each bead marker = 4 mantras)
   const totalMalaMarkers = 27;
@@ -131,7 +131,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
               {/* 27 Radial Beads distributed around the circle */}
               {beadPositions.map((pos, idx) => {
                 const isChanted = idx < activeMarkerIndex;
-                const isActive = idx === activeMarkerIndex;
+                const isActive = idx === activeMarkerIndex && beadInCurrentMala > 0;
 
                 return (
                   <div

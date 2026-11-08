@@ -20,7 +20,7 @@ export const TopAnnouncementMarquee: React.FC<TopAnnouncementMarqueeProps> = ({
   isScrolled,
   onSelectTab,
   onOpenSaintsDirectory,
-  streakDays = 14,
+  streakDays = 1,
 }) => {
   // Real-time Ashtayama calculation that refreshes every minute
   const [ashtayama, setAshtayama] = useState(() => computeAshtayamaPhase());

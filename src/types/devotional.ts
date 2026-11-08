@@ -37,6 +37,7 @@ export interface DevotionalFeedPost {
 export interface SadhanaState {
   japaCompleted: number;
   japaTarget: number;
+  beadInCurrentMala?: number;
   shravanMinutes: number;
   shravanTarget: number;
   svadhyayaPadas: number;

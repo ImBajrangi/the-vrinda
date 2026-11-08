@@ -16,7 +16,7 @@ import {
 } from 'lucide-react';
 import { NavTab } from './FloatingNavbar';
 import { SacredLogo } from './SacredLogo';
-import { computeAshtayamaPhase } from '../../services/cacheService';
+import { computeAshtayamaPhase, formatDevanagariNumerals } from '../../services/cacheService';
 import { SadhanaState } from '../../types/devotional';
 
 interface DynamicNotchNavbarProps {
@@ -39,7 +39,7 @@ interface DynamicNotchNavbarProps {
 export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
   activeTab,
   onSelectTab,
-  streakDays = 14,
+  streakDays = 1,
   isPlayingAudio = false,
   currentTrackTitle = 'Hit Chaurasi Pad 01',
   onToggleAudio,
@@ -542,31 +542,31 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
                     <Sparkles className="w-3.5 h-3.5 text-amber-600" />
                     <span>दैनिक साधना • Daily Progress</span>
                   </div>
-                  <span className="text-[11px] font-mono font-bold text-amber-800 bg-amber-100/80 px-2 py-0.2 rounded-full border border-amber-200/60">
-                    🔥 {sadhana.currentStreakDays}d Streak
+                  <span className="text-[11px] font-laila font-bold text-amber-800 bg-amber-100/80 px-2 py-0.5 rounded-full border border-amber-200/60">
+                    🔥 {formatDevanagariNumerals(sadhana.currentStreakDays)} दिवसीय नियम
                   </span>
                 </div>
 
                 {/* 3 Metric Tiles (Pure, clean porcelain tiles) */}
                 <div className="grid grid-cols-3 gap-2">
                   <div className="p-2 rounded-xl bg-[#FAF9F5] border border-neutral-200/60 shadow-2xs text-center">
-                    <div className="text-[10px] text-neutral-400 font-medium font-devanagari">नाम जप</div>
-                    <div className="text-xs font-bold text-neutral-800 font-mono mt-0.5">
-                      {sadhana.japaCompleted}/{sadhana.japaTarget} <span className="text-[9px] font-normal text-neutral-400">माला</span>
+                    <div className="text-[10px] text-neutral-500 font-medium font-laila">नाम जप</div>
+                    <div className="text-xs font-bold text-neutral-800 font-laila mt-0.5">
+                      {formatDevanagariNumerals(sadhana.japaCompleted)} / {formatDevanagariNumerals(sadhana.japaTarget)} <span className="text-[9px] font-normal text-neutral-400">माला</span>
                     </div>
                   </div>
 
                   <div className="p-2 rounded-xl bg-[#FAF9F5] border border-neutral-200/60 shadow-2xs text-center">
-                    <div className="text-[10px] text-neutral-400 font-medium font-devanagari">वाणी श्रवण</div>
-                    <div className="text-xs font-bold text-neutral-800 font-mono mt-0.5">
-                      {sadhana.shravanMinutes}/{sadhana.shravanTarget} <span className="text-[9px] font-normal text-neutral-400">min</span>
+                    <div className="text-[10px] text-neutral-500 font-medium font-laila">वाणी श्रवण</div>
+                    <div className="text-xs font-bold text-neutral-800 font-laila mt-0.5">
+                      {formatDevanagariNumerals(sadhana.shravanMinutes)} / {formatDevanagariNumerals(sadhana.shravanTarget)} <span className="text-[9px] font-normal text-neutral-400">मिनट</span>
                     </div>
                   </div>
 
                   <div className="p-2 rounded-xl bg-[#FAF9F5] border border-neutral-200/60 shadow-2xs text-center">
-                    <div className="text-[10px] text-neutral-400 font-medium font-devanagari">स्वाध्याय</div>
-                    <div className="text-xs font-bold text-neutral-800 font-mono mt-0.5">
-                      {sadhana.svadhyayaPadas}/{sadhana.svadhyayaTarget} <span className="text-[9px] font-normal text-neutral-400">पद</span>
+                    <div className="text-[10px] text-neutral-500 font-medium font-laila">स्वाध्याय</div>
+                    <div className="text-xs font-bold text-neutral-800 font-laila mt-0.5">
+                      {formatDevanagariNumerals(sadhana.svadhyayaPadas)} / {formatDevanagariNumerals(sadhana.svadhyayaTarget)} <span className="text-[9px] font-normal text-neutral-400">पद</span>
                     </div>
                   </div>
                 </div>

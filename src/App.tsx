@@ -109,7 +109,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
   const [showPlayer, setShowPlayer] = useState(false);
   const [isLowSpecMode, setIsLowSpecMode] = useState(false);
   const [counterTick, setCounterTick] = useState(false);
-  const [beadInCurrentMala, setBeadInCurrentMala] = useState<number>(0);
+  const [beadInCurrentMala, setBeadInCurrentMala] = useState<number>(() => sadhana.beadInCurrentMala ?? 0);
   const [dhyanaImpact, setDhyanaImpact] = useState<DhyanaImpactState>(() => loadDhyanaImpactSync());
   const [isSpotlightOpen, setIsSpotlightOpen] = useState(false);
   const [isSaintsModalOpen, setIsSaintsModalOpen] = useState(false);
@@ -337,6 +337,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
     const updated: SadhanaState = {
       ...sadhana,
       japaCompleted: sadhana.japaCompleted + 1,
+      beadInCurrentMala: 0,
     };
     setSadhana(updated);
     persistSadhana(updated);
@@ -361,14 +362,25 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
     setCounterTick(true);
     setTimeout(() => setCounterTick(false), 320);
 
-    setBeadInCurrentMala((prev) => {
-      const next = prev + 1;
-      if (next >= 108) {
-        incrementJapa();
-        return 0;
-      }
-      return next;
-    });
+    const nextBead = beadInCurrentMala + 1;
+    if (nextBead >= 108) {
+      const updated: SadhanaState = {
+        ...sadhana,
+        japaCompleted: sadhana.japaCompleted + 1,
+        beadInCurrentMala: 0,
+      };
+      setSadhana(updated);
+      persistSadhana(updated);
+      setBeadInCurrentMala(0);
+    } else {
+      const updated: SadhanaState = {
+        ...sadhana,
+        beadInCurrentMala: nextBead,
+      };
+      setSadhana(updated);
+      persistSadhana(updated);
+      setBeadInCurrentMala(nextBead);
+    }
   };
 
   const getScreenBackground = () => {
@@ -398,7 +410,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
   };
 
   // Dynamic Sadhana & Hero Pillar metrics (computes live numbers with zero hardcoding)
-  const mantraCount = computeMantraCount(sadhana) + beadInCurrentMala;
+  const mantraCount = computeMantraCount(sadhana);
   const mantraCountFormatted = mantraCount.toLocaleString('en-IN');
   const mantraCountDevanagari = formatDevanagariNumerals(mantraCount);
   const malasDevanagari = formatDevanagariNumerals(sadhana.japaCompleted);
@@ -453,14 +465,14 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
           isScrolled={isScrolled}
           onSelectTab={setActiveTab}
           onOpenSaintsDirectory={() => setIsSaintsModalOpen(true)}
-          streakDays={sadhana?.currentStreakDays ?? 14}
+          streakDays={sadhana?.currentStreakDays ?? 1}
         />
 
         {/* Apple Dynamic Notch / Dynamic Island Navbar (Fixed Floating Top Island) */}
         <DynamicNotchNavbar
           activeTab={activeTab}
           onSelectTab={setActiveTab}
-          streakDays={sadhana?.currentStreakDays ?? 14}
+          streakDays={sadhana?.currentStreakDays ?? 1}
           isPlayingAudio={isPlayingAudio}
           currentTrackTitle={currentPad?.titleDevanagari}
           onToggleAudio={handleTogglePlay}
@@ -500,7 +512,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                   onOpenReader={() => setActiveTab('padavali')}
                   onOpenGuide={() => setIsGuideModalOpen(true)}
                   onOpenFocus={() => setIsFocusModalOpen(true)}
-                  currentStreakDays={sadhana.currentStreakDays || 7}
+                  currentStreakDays={sadhana.currentStreakDays ?? 1}
                 />
               </div>
 

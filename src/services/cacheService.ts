@@ -14,25 +14,26 @@ import {
 } from '../types/devotional';
 
 // Storage Keys
-export const SADHANA_STORAGE_KEY = 'vrindopnisad_sadhana_v2';
+export const SADHANA_STORAGE_KEY = 'vrindopnisad_sadhana_v3';
 export const CACHED_PADS_KEY = 'vrindopnisad_cached_pads_v2';
 export const FEED_INTERACTIONS_KEY = 'vrindopnisad_feed_v2';
 export const READER_STATE_KEY = 'vrindopnisad_padavali_v2';
 export const PREFERENCES_KEY = 'vrindopnisad_preferences_v2';
-export const DHYANA_IMPACT_STORAGE_KEY = 'vrindopnisad_dhyana_v2';
+export const DHYANA_IMPACT_STORAGE_KEY = 'vrindopnisad_dhyana_v3';
 export const SYNC_CHANNEL_NAME = 'vrindopnisad_sync';
 export const SYNC_STORAGE_BUS_KEY = 'vrindopnisad_sync_bus';
 
 // Default Application States
 export const defaultSadhanaState: SadhanaState = {
-  japaCompleted: 16,
+  japaCompleted: 0,
   japaTarget: 16,
-  shravanMinutes: 45,
+  beadInCurrentMala: 0,
+  shravanMinutes: 0,
   shravanTarget: 60,
-  svadhyayaPadas: 8,
+  svadhyayaPadas: 0,
   svadhyayaTarget: 10,
-  currentStreakDays: 14,
-  completedMilestones: ['1-mala', '5-mala', '10-mala', '3-niyam', '7-niyam', '14-niyam'],
+  currentStreakDays: 1,
+  completedMilestones: [],
   bookmarkedPads: ['hit-chaurasi-01', 'radha-kripa-kataksha'],
 };
 
@@ -51,26 +52,17 @@ export const defaultUserPreferences: UserPreferences = {
 
 export const defaultDhyanaImpactState: DhyanaImpactState = {
   metrics: {
-    totalDhyanaMinutes: 45,
-    todayDhyanaMinutes: 15,
+    totalDhyanaMinutes: 0,
+    todayDhyanaMinutes: 0,
     currentFlowStage: 'shanta',
-    averageStillnessScore: 82,
-    manasiSewaLevel: 2,
-    unbrokenFocusStreakDays: 7,
-    lastSessionTimestamp: Date.now() - 3600000,
+    averageStillnessScore: 0,
+    manasiSewaLevel: 1,
+    unbrokenFocusStreakDays: 1,
+    lastSessionTimestamp: Date.now(),
   },
   recentSessions: [],
-  reflections: [
-    {
-      id: 'ref-1',
-      dateISO: new Date().toISOString(),
-      sentiment: 'shanti',
-      note: 'चित्त में असीम शांति व युगल छवि का अनुभव।',
-      dhyanaMinutes: 15,
-      mantraCount: 108,
-    },
-  ],
-  unlockedAntarangaBadges: ['15-dhyana', '7-manasi'],
+  reflections: [],
+  unlockedAntarangaBadges: [],
 };
 
 // State Reconciliation Helpers (ensures backward compatibility & type safety)
@@ -82,6 +74,7 @@ function reconcileSadhana(parsed: unknown): SadhanaState {
   return {
     japaCompleted: typeof obj.japaCompleted === 'number' ? obj.japaCompleted : defaultSadhanaState.japaCompleted,
     japaTarget: typeof obj.japaTarget === 'number' ? obj.japaTarget : defaultSadhanaState.japaTarget,
+    beadInCurrentMala: typeof obj.beadInCurrentMala === 'number' ? obj.beadInCurrentMala : (defaultSadhanaState.beadInCurrentMala ?? 0),
     shravanMinutes: typeof obj.shravanMinutes === 'number' ? obj.shravanMinutes : defaultSadhanaState.shravanMinutes,
     shravanTarget: typeof obj.shravanTarget === 'number' ? obj.shravanTarget : defaultSadhanaState.shravanTarget,
     svadhyayaPadas: typeof obj.svadhyayaPadas === 'number' ? obj.svadhyayaPadas : defaultSadhanaState.svadhyayaPadas,
@@ -687,7 +680,8 @@ export function formatDevanagariNumerals(num: number | string): string {
  */
 export function computeMantraCount(sadhana: SadhanaState): number {
   const malas = sadhana?.japaCompleted ?? 0;
-  return Math.max(0, malas * 108);
+  const beads = sadhana?.beadInCurrentMala ?? 0;
+  return Math.max(0, malas * 108 + beads);
 }
 
 /**

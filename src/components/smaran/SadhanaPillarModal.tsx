@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { X, Flame, Music2, BookOpen, Plus, Minus, ChevronRight, Wind, Play, Pause } from 'lucide-react';
 import type { SadhanaState, SacredPad } from '../../types/devotional';
+import { computeMantraCount, formatDevanagariNumerals } from '../../services/cacheService';
 
 export type PillarType = 'japa' | 'shravan' | 'svadhyaya';
 
@@ -148,7 +149,7 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
     switch (activePillar) {
       case 'japa': {
         const percent = Math.min(100, Math.round((sadhana.japaCompleted / Math.max(1, sadhana.japaTarget)) * 100));
-        const totalMantras = sadhana.japaCompleted * 108;
+        const totalMantras = computeMantraCount(sadhana);
         return (
           <div className="space-y-5">
             {/* Header Identity */}
@@ -158,13 +159,13 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
               </div>
               <div className="min-w-0">
                 <div className="flex items-center gap-2">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full font-mono">
-                    Pillar 1 • Holy Chanting
+                  <span className="text-[11px] font-bold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full font-laila">
+                    प्रथम सोपान • युगल नाम जप
                   </span>
-                  <span className="text-xs font-mono font-bold text-amber-800">{percent}% Complete</span>
+                  <span className="text-xs font-laila font-bold text-amber-800">{formatDevanagariNumerals(percent)}% पूर्ण</span>
                 </div>
                 <h3 className="font-serif font-bold text-lg text-[#18181B] mt-0.5">
-                  Naam Japa Meditation (नाम जप)
+                  नाम जप साधना (युगल स्मरण)
                 </h3>
               </div>
             </div>
@@ -173,18 +174,18 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
             <div className="bg-[#FAFAFA] rounded-2xl p-4">
               <div className="flex items-baseline justify-between mb-2">
                 <div>
-                  <span className="font-doto font-light text-3xl sm:text-4xl text-[#18181B]">
-                    {sadhana.japaCompleted}
+                  <span className="font-rozha text-3xl sm:text-4xl text-[#18181B]">
+                    {formatDevanagariNumerals(sadhana.japaCompleted)}
                   </span>
-                  <span className="text-sm font-semibold text-[#71717A] ml-1.5 font-sans">
-                    / {sadhana.japaTarget} malas
+                  <span className="text-sm font-semibold text-[#71717A] ml-1.5 font-laila">
+                    / {formatDevanagariNumerals(sadhana.japaTarget)} माला
                   </span>
                 </div>
                 <div className="text-right">
-                  <div className="font-mono text-sm font-bold text-amber-700">
-                    {totalMantras.toLocaleString('en-IN')} mantras
+                  <div className="font-laila text-sm font-bold text-amber-700">
+                    {formatDevanagariNumerals(totalMantras)} मंत्र जप
                   </div>
-                  <div className="text-[11px] text-[#71717A]">Constant Sacred Remembrance</div>
+                  <div className="text-[11px] text-[#71717A] font-laila">अखंड युगल नाम स्मरण</div>
                 </div>
               </div>
 
@@ -284,13 +285,13 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
               </div>
               <div className="min-w-0">
                 <div className="flex items-center gap-2">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full font-mono">
-                    Pillar 2 • Sacred Listening
+                  <span className="text-[11px] font-bold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full font-laila">
+                    द्वितीय सोपान • रसिक वाणी श्रवण
                   </span>
-                  <span className="text-xs font-mono font-bold text-amber-800">{percent}% Complete</span>
+                  <span className="text-xs font-laila font-bold text-amber-800">{formatDevanagariNumerals(percent)}% पूर्ण</span>
                 </div>
                 <h3 className="font-serif font-bold text-lg text-[#18181B] mt-0.5">
-                  Pad Shravan Audio (पद श्रवण)
+                  वाणी श्रवण साधना (निकुंज पद)
                 </h3>
               </div>
             </div>
@@ -299,15 +300,15 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
             <div className="bg-[#FAFAFA] rounded-2xl p-4">
               <div className="flex items-baseline justify-between mb-2">
                 <div>
-                  <span className="font-doto font-light text-3xl sm:text-4xl text-[#18181B]">
-                    {sadhana.shravanMinutes}
+                  <span className="font-rozha text-3xl sm:text-4xl text-[#18181B]">
+                    {formatDevanagariNumerals(sadhana.shravanMinutes)}
                   </span>
-                  <span className="text-sm font-semibold text-[#71717A] ml-1.5 font-sans">
-                    / {sadhana.shravanTarget} minutes
+                  <span className="text-sm font-semibold text-[#71717A] ml-1.5 font-laila">
+                    / {formatDevanagariNumerals(sadhana.shravanTarget)} मिनट
                   </span>
                 </div>
-                <span className="text-[11px] font-bold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full font-mono">
-                  Raga Stream
+                <span className="text-[11px] font-bold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full font-laila">
+                  राग विभास
                 </span>
               </div>
 
@@ -437,13 +438,13 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
               </div>
               <div className="min-w-0">
                 <div className="flex items-center gap-2">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-orange-800 bg-orange-50 px-2.5 py-0.5 rounded-full font-mono">
-                    Pillar 3 • Scripture Study
+                  <span className="text-[11px] font-bold text-orange-800 bg-orange-50 px-2.5 py-0.5 rounded-full font-laila">
+                    तृतीय सोपान • ग्रंथ स्वाध्याय
                   </span>
-                  <span className="text-xs font-mono font-bold text-orange-800">{percent}% Complete</span>
+                  <span className="text-xs font-laila font-bold text-orange-800">{formatDevanagariNumerals(percent)}% पूर्ण</span>
                 </div>
                 <h3 className="font-serif font-bold text-lg text-[#18181B] mt-0.5">
-                  Grantha Svadhyaya (ग्रंथ स्वाध्याय)
+                  ग्रंथ स्वाध्याय (वाणी चिंतन)
                 </h3>
               </div>
             </div>
@@ -452,15 +453,15 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
             <div className="bg-[#FAFAFA] rounded-2xl p-4">
               <div className="flex items-baseline justify-between mb-2">
                 <div>
-                  <span className="font-doto font-light text-3xl sm:text-4xl text-[#18181B]">
-                    {sadhana.svadhyayaPadas}
+                  <span className="font-rozha text-3xl sm:text-4xl text-[#18181B]">
+                    {formatDevanagariNumerals(sadhana.svadhyayaPadas)}
                   </span>
-                  <span className="text-sm font-semibold text-[#71717A] ml-1.5 font-sans">
-                    / {sadhana.svadhyayaTarget} padas
+                  <span className="text-sm font-semibold text-[#71717A] ml-1.5 font-laila">
+                    / {formatDevanagariNumerals(sadhana.svadhyayaTarget)} पद
                   </span>
                 </div>
-                <span className="text-[11px] font-bold text-orange-800 bg-orange-50 px-2.5 py-0.5 rounded-full font-mono">
-                  Sacred Vani
+                <span className="text-[11px] font-bold text-orange-800 bg-orange-50 px-2.5 py-0.5 rounded-full font-laila">
+                  रस उपासना
                 </span>
               </div>
 
