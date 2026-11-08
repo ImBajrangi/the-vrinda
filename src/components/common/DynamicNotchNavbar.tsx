@@ -223,7 +223,7 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
       <header
         className={`fixed ${
           isMarqueeVisible ? 'top-10 sm:top-12' : 'top-2.5 sm:top-4'
-        } left-0 right-0 z-50 w-full px-3 sm:px-6 pointer-events-none select-none transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]`}
+        } left-0 right-0 z-50 w-full px-3 sm:px-6 pointer-events-none select-none header-banner-transition`}
       >
       <div className="max-w-6xl mx-auto flex flex-col items-center">
         

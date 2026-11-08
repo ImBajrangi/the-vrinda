@@ -125,40 +125,20 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
   const [weekDays] = useState<DayItem[]>(() => getDynamicWeekDays());
   const [dbVersion, setDbVersion] = useState(0);
 
-  // Dynamic Scroll hide / show detection for Announcement Marquee
-  const [isMarqueeVisible, setIsMarqueeVisible] = useState(true);
+  // Chitravrinda Gallery-style Announcement Scroll Slide-Up Behavior (Hysteresis: > 80px to slide up, < 30px to slide down)
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    let lastScrollY = window.scrollY;
-    let ticking = false;
-
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-
-      // Always show at the top of the page
-      if (currentScrollY <= 20) {
-        setIsMarqueeVisible(true);
-      } else if (currentScrollY > lastScrollY && currentScrollY > 70) {
-        // Scrolling down -> smoothly hide marquee
-        setIsMarqueeVisible(false);
-      } else if (currentScrollY < lastScrollY && lastScrollY - currentScrollY > 4) {
-        // Scrolling up -> smoothly show marquee
-        setIsMarqueeVisible(true);
-      }
-
-      lastScrollY = currentScrollY > 0 ? currentScrollY : 0;
-      ticking = false;
-    };
-
-    const onScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(handleScroll);
-        ticking = true;
+      if (currentScrollY > 80) {
+        setIsScrolled(true);
+      } else if (currentScrollY < 30) {
+        setIsScrolled(false);
       }
     };
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // Initiate background client hydration (IndexedDB -> CDN database & cloud bookmarks)
@@ -467,10 +447,10 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
           - Tablet (768px - 1024px): max-w-4xl with balanced gutters
           - Desktop (1024px+): max-w-6xl xl:max-w-7xl
       */}
-      <div className={`w-full max-w-full md:max-w-5xl xl:max-w-7xl min-h-screen relative px-3.5 sm:px-6 lg:px-8 ${isMarqueeVisible ? 'pt-28 sm:pt-32 lg:pt-36' : 'pt-24 sm:pt-28 lg:pt-32'} pb-36 md:pb-24 box-border transition-[padding] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]`}>
+      <div className={`w-full max-w-full md:max-w-5xl xl:max-w-7xl min-h-screen relative px-3.5 sm:px-6 lg:px-8 ${!isScrolled ? 'pt-28 sm:pt-32 lg:pt-36' : 'pt-24 sm:pt-28 lg:pt-32'} pb-36 md:pb-24 box-border main-wrapper-padding-transition`}>
         {/* Dynamic Top Announcement Marquee Ticker */}
         <TopAnnouncementMarquee
-          isVisible={isMarqueeVisible}
+          isScrolled={isScrolled}
           onSelectTab={setActiveTab}
           onOpenSaintsDirectory={() => setIsSaintsModalOpen(true)}
           streakDays={sadhana?.currentStreakDays ?? 14}
@@ -491,7 +471,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
           onOpenFocus={() => setIsFocusModalOpen(true)}
           sadhana={sadhana}
           onQuickJapa={incrementJapa}
-          isMarqueeVisible={isMarqueeVisible}
+          isMarqueeVisible={!isScrolled}
         />
 
         {/* Main Tab Content with Apple-grade View Transitions */}

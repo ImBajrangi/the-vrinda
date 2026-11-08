@@ -170,6 +170,17 @@ button:focus-visible {
   animation-play-state: paused;
 }
 
+/* Chitravrinda Gallery-Style Top Announcement Banner Transitions */
+.announcement-banner-transition {
+  transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease, border-bottom-width 0.35s ease !important;
+}
+.header-banner-transition {
+  transition: top 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.main-wrapper-padding-transition {
+  transition: padding-top 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
 /* Apple Screen & View Transition */
 .apple-view-enter {
   animation: appleViewIn 0.32s cubic-bezier(0.25, 1, 0.5, 1) both;

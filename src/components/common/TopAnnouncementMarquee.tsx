@@ -11,7 +11,7 @@ import { computeAshtayamaPhase } from '../../services/cacheService';
 import { NavTab } from './FloatingNavbar';
 
 interface TopAnnouncementMarqueeProps {
-  isVisible: boolean;
+  isScrolled: boolean;
   onSelectTab: (tab: NavTab) => void;
   onOpenSaintsDirectory: () => void;
   streakDays?: number;
@@ -29,7 +29,7 @@ interface MarqueeItemData {
 }
 
 export const TopAnnouncementMarquee: React.FC<TopAnnouncementMarqueeProps> = ({
-  isVisible,
+  isScrolled,
   onSelectTab,
   onOpenSaintsDirectory,
   streakDays = 14,
@@ -161,12 +161,13 @@ export const TopAnnouncementMarquee: React.FC<TopAnnouncementMarqueeProps> = ({
   return (
     <aside
       aria-label="Vrindavan Live Announcements Ticker"
-      className={`fixed top-0 left-0 right-0 z-[60] h-8 sm:h-9 bg-[#0C0A09]/95 backdrop-blur-md border-b border-amber-500/20 text-stone-200 select-none overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${isVisible
-        ? 'translate-y-0 opacity-100 pointer-events-auto'
-        : '-translate-y-full opacity-0 pointer-events-none'
-        }`}
+      className={`fixed top-0 left-0 right-0 z-[60] w-full bg-[#0C0A09]/95 backdrop-blur-md text-stone-200 select-none overflow-hidden border-b border-amber-500/20 announcement-banner-transition ${
+        isScrolled
+          ? 'h-0 opacity-0 border-b-0 pointer-events-none'
+          : 'h-8 sm:h-9 opacity-100 pointer-events-auto'
+      }`}
     >
-      <div className="w-full h-full flex items-center top-marquee-mask">
+      <div className="w-full h-8 sm:h-9 flex items-center top-marquee-mask">
         {/* Infinite Track with 2 identical sets for seamless -50% loop */}
         <div className="top-marquee-track">
           {renderItemSet('set-a')}
