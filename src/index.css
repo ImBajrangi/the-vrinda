@@ -105,6 +105,34 @@ button:focus-visible {
 }
 
 /* ==========================================================================
+   Fluid Relative Sliding Transitions for Dynamic Meta Strips (Apple Physics)
+   ========================================================================== */
+.fluid-drawer-wrapper {
+  display: grid;
+  transition: grid-template-rows 320ms cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 260ms cubic-bezier(0.16, 1, 0.3, 1),
+              margin 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  will-change: grid-template-rows, opacity;
+}
+
+.fluid-drawer-open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.fluid-drawer-closed {
+  grid-template-rows: 0fr;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.fluid-drawer-content {
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* ==========================================================================
    Company-Inspired Expanding Underline Animation (Forward-Passing, Point-to-Point)
    ========================================================================== */
 .company-link {

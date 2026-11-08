@@ -54,12 +54,39 @@ interface PadavaliReaderProps {
   selectedSearchQuery?: string;
   selectedPadId?: string;
   initialPadId?: string;
+  onSelectGranthaId?: (granthaId: string) => void;
+  onSelectPad?: (pad: SacredPad) => void;
 }
 
 type ReaderTheme = 'ivory' | 'mint' | 'chandan';
 type ReaderFontSize = 'sm' | 'md' | 'lg' | 'xl';
 type ReaderFontFamily = 'serif' | 'devanagari';
 type ReaderTextAlign = 'left' | 'center' | 'justify';
+
+const ENTITY_REGEX_MAP: [RegExp, string][] = [
+  [/&(?:zwnj|zwj|#x200c|#x200C|#8204|#x200d|#x200D|#8205);?/gi, ''],
+  [/&(?:ndash|#8211);/gi, '–'],
+  [/&(?:lsquo|#8216);/gi, '‘'],
+  [/&(?:rsquo|#8217);/gi, '’'],
+  [/&(?:ldquo|#8220);/gi, '“'],
+  [/&(?:rdquo|#8221);/gi, '”'],
+  [/&(?:bull|#8226);/gi, '•'],
+  [/&(?:nbsp|#160);/gi, ' '],
+  [/&(?:quot|#34);/gi, '"'],
+  [/&(?:apos|#39);/gi, "'"],
+];
+
+export const sanitizeSacredText = (text: string): string => {
+  if (!text) return '';
+  let res = text;
+  res = res.replace(/&amp;/gi, '&');
+  res = res.replace(/&(?:zwnj|zwj|#x200c|#x200C|#8204|#x200d|#x200D|#8205);?/gi, '');
+  for (const [regex, replacement] of ENTITY_REGEX_MAP) {
+    res = res.replace(regex, replacement);
+  }
+  res = res.replace(/&#(\d+);/g, (_, dec) => String.fromCharCode(Number(dec)));
+  return res;
+};
 
 /**
  * Defensive verse line sanitizer & stanza segmenter
@@ -70,13 +97,14 @@ const splitVerseLines = (lines: string[]): string[] => {
   const result: string[] = [];
   for (const rawLine of lines) {
     if (!rawLine) continue;
-    const cleaned = rawLine
+    const sanitized = sanitizeSacredText(rawLine);
+    const cleaned = sanitized
       .replace(/^महाप्रभु\s+श्री\s+हित\s+चौरासी\s*\(\d+\)\s*/g, '')
       .trim();
     if (!cleaned) continue;
     if (cleaned.length > 100 && /\[\d+\]/.test(cleaned)) {
       const parts = cleaned.split(/(?<=\[\d+\])\s*/g).filter(Boolean);
-      result.push(...parts);
+      result.push(...parts.map(sanitizeSacredText));
     } else {
       result.push(cleaned);
     }
@@ -157,6 +185,8 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   selectedSearchQuery,
   selectedPadId,
   initialPadId,
+  onSelectGranthaId,
+  onSelectPad: onExternalSelectPad,
 }) => {
   const [allPadas, setAllPadas] = useState<SacredPad[]>(() => SacredDatabase.getAllPadas());
   const allGranthas = SacredDatabase.getAllGranthas();
@@ -200,13 +230,33 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   });
 
   useEffect(() => {
+    const updateGranthaPill = () => {
+      const el = granthaRefs.current[selectedGrantha];
+      if (el) {
+        setGranthaPillStyle({
+          left: el.offsetLeft,
+          width: el.offsetWidth,
+          ready: true,
+        });
+      }
+    };
+
+    updateGranthaPill();
+    const frame = requestAnimationFrame(updateGranthaPill);
+    const timer = setTimeout(updateGranthaPill, 50);
+
+    window.addEventListener('resize', updateGranthaPill);
+    return () => {
+      cancelAnimationFrame(frame);
+      clearTimeout(timer);
+      window.removeEventListener('resize', updateGranthaPill);
+    };
+  }, [selectedGrantha, displayedGranthas, granthaCategory]);
+
+  useEffect(() => {
     const el = granthaRefs.current[selectedGrantha];
     if (el) {
-      setGranthaPillStyle({
-        left: el.offsetLeft,
-        width: el.offsetWidth,
-        ready: true,
-      });
+      el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
     }
   }, [selectedGrantha]);
 
@@ -214,6 +264,24 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   const availableRagas = useMemo(() => {
     return SacredDatabase.getAvailableRagas(selectedGrantha);
   }, [selectedGrantha]);
+
+  // Retain rendered ragas during collapsing animation so items smoothly slide without disappearing abruptly
+  const [renderedRagas, setRenderedRagas] = useState<string[]>(availableRagas);
+
+  useEffect(() => {
+    if (availableRagas.length > 0) {
+      setRenderedRagas(availableRagas);
+    }
+  }, [availableRagas]);
+
+  const hasRagas = availableRagas.length > 0;
+
+  // Reset selected raga if current raga is no longer in the active collection
+  useEffect(() => {
+    if (selectedRaga !== 'all' && !availableRagas.includes(selectedRaga)) {
+      setSelectedRaga('all');
+    }
+  }, [availableRagas, selectedRaga]);
 
   // Raga Sub-Filter Strip Elastic Indicator
   const ragaRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
@@ -224,15 +292,23 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   });
 
   useEffect(() => {
-    const el = ragaRefs.current[selectedRaga];
-    if (el) {
-      setRagaPillStyle({
-        left: el.offsetLeft,
-        width: el.offsetWidth,
-        ready: true,
-      });
+    const updateRagaPill = () => {
+      const el = ragaRefs.current[selectedRaga];
+      if (el) {
+        setRagaPillStyle({
+          left: el.offsetLeft,
+          width: el.offsetWidth,
+          ready: true,
+        });
+      }
+    };
+
+    if (hasRagas) {
+      updateRagaPill();
+      const frame = requestAnimationFrame(updateRagaPill);
+      return () => cancelAnimationFrame(frame);
     }
-  }, [selectedRaga, availableRagas]);
+  }, [selectedRaga, availableRagas, hasRagas]);
 
   // Desktop Sidebar Pada List Elastic Sliding Indicator
   const sidebarItemRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
@@ -258,8 +334,13 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
   const [selectedPad, setSelectedPad] = useState<SacredPad>(initialPad);
 
+  const lastExplicitGranthaIdRef = useRef<string | undefined>(selectedGranthaId);
+  const initialAppliedRef = useRef(false);
+  const lastExplicitPadIdRef = useRef<string | undefined>(selectedPadId || initialPadId);
+
   useEffect(() => {
-    if (selectedGranthaId) {
+    if (selectedGranthaId && selectedGranthaId !== lastExplicitGranthaIdRef.current) {
+      lastExplicitGranthaIdRef.current = selectedGranthaId;
       setSelectedGrantha(selectedGranthaId);
       const g = SacredDatabase.getGranthaById(selectedGranthaId);
       if (g?.category) {
@@ -285,13 +366,22 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
   useEffect(() => {
     const targetId = selectedPadId || initialPadId;
-    if (targetId) {
+    if (!targetId) return;
+
+    // Only apply if initial load has not resolved target pad yet, OR if parent explicitly changed selectedPadId
+    if (!initialAppliedRef.current || (selectedPadId && selectedPadId !== lastExplicitPadIdRef.current)) {
       const p = SacredDatabase.getPadById(targetId);
       if (p) {
         setSelectedPad(p);
         if (p.collectionId && p.collectionId !== selectedGrantha) {
           setSelectedGrantha(p.collectionId);
+          const g = SacredDatabase.getGranthaById(p.collectionId);
+          if (g?.category) {
+            setGranthaCategory(g.category as GranthaCategory);
+          }
         }
+        initialAppliedRef.current = true;
+        lastExplicitPadIdRef.current = selectedPadId;
       }
     }
   }, [selectedPadId, initialPadId, allPadas]);
@@ -581,9 +671,9 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
   // Defensive parsing for clean title, accurate author attribution, and grantha pill
   const { cleanTitle, authorName, granthaRef } = useMemo(() => {
-    let clean = selectedPad.titleDevanagari || '';
-    let author = selectedPad.author || '';
-    let grantha = (selectedPad as { grantha?: string }).grantha || '';
+    let clean = sanitizeSacredText(selectedPad.titleDevanagari || '');
+    let author = sanitizeSacredText(selectedPad.author || '');
+    let grantha = sanitizeSacredText((selectedPad as { grantha?: string }).grantha || '');
 
     if (clean.includes(' - ')) {
       const parts = clean.split(' - ');
@@ -750,6 +840,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     navigationProgress.start();
     setLoadingPadId(pad.id);
     setSelectedPad(pad);
+    if (onExternalSelectPad) onExternalSelectPad(pad);
     setActiveStanzaIndex(0);
     saveReaderState({ lastPadId: pad.id });
 
@@ -784,6 +875,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     navigationProgress.start();
     setLoadingGranthaId(granthaId);
     setSelectedGrantha(granthaId);
+    if (onSelectGranthaId) onSelectGranthaId(granthaId);
     setSelectedRaga('all');
     setSearchQuery('');
     setSidebarQuery('');
@@ -1466,71 +1558,82 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             })}
           </div>
 
-          {/* Raga Sub-Filter Strip: Minimal Classical Ragas */}
-          {availableRagas.length > 0 && (
-            <div className="relative flex items-center gap-1 overflow-x-auto no-scrollbar text-xs px-2 py-0.5">
-              <span className="text-[10px] font-mono font-bold text-[#CA8A04] uppercase tracking-wider shrink-0 mr-1 flex items-center gap-1">
-                <Music className="w-3 h-3 text-[#CA8A04]" />
-                राग:
-              </span>
+          {/* Raga Sub-Filter Strip: Fluid Relative Sliding Transition */}
+          <div
+            className={`grid transition-[grid-template-rows,opacity,margin] duration-320 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden ${
+              hasRagas
+                ? 'grid-rows-[1fr] opacity-100 mt-1'
+                : 'grid-rows-[0fr] opacity-0 mt-0 pointer-events-none'
+            }`}
+            aria-hidden={!hasRagas}
+          >
+            <div className="min-h-0 overflow-hidden">
+              <div className="relative flex items-center gap-1 overflow-x-auto no-scrollbar text-xs px-2 py-0.5">
+                <span className="text-[10px] font-mono font-bold text-[#CA8A04] uppercase tracking-wider shrink-0 mr-1 flex items-center gap-1">
+                  <Music className="w-3 h-3 text-[#CA8A04]" />
+                  राग:
+                </span>
 
-              {/* Dynamic Elastic Sliding Indicator Bar */}
-              {ragaPillStyle.ready && (
-                <span
-                  aria-hidden="true"
-                  className="absolute top-0.5 bottom-0.5 rounded-full bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[340ms] ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[transform,width]"
-                  style={{
-                    transform: `translate3d(${ragaPillStyle.left}px, 0, 0)`,
-                    width: `${ragaPillStyle.width}px`,
-                    left: 0,
-                  }}
-                />
-              )}
-
-              <button
-                ref={(el) => {
-                  ragaRefs.current['all'] = el;
-                }}
-                type="button"
-                onClick={() => handleSelectRaga('all')}
-                className={`relative z-10 px-3 py-1 rounded-full text-[11px] font-semibold transition-colors duration-200 cursor-pointer select-none ${
-                  selectedRaga === 'all'
-                    ? 'text-[#18181B] font-bold'
-                    : 'text-[#64748B] hover:text-[#0F172A]'
-                }`}
-              >
-                सभी राग
-              </button>
-              {availableRagas.map((r) => {
-                const count = allPadas.filter(
-                  (p) =>
-                    (selectedGrantha === 'all' || p.collectionId === selectedGrantha) &&
-                    p.rag === r
-                ).length;
-                const isActive = selectedRaga === r;
-                return (
-                  <button
-                    key={r}
-                    ref={(el) => {
-                      ragaRefs.current[r] = el;
+                {/* Dynamic Elastic Sliding Indicator Bar */}
+                {ragaPillStyle.ready && (
+                  <span
+                    aria-hidden="true"
+                    className="absolute top-0.5 bottom-0.5 rounded-full bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[340ms] ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[transform,width]"
+                    style={{
+                      transform: `translate3d(${ragaPillStyle.left}px, 0, 0)`,
+                      width: `${ragaPillStyle.width}px`,
+                      left: 0,
                     }}
-                    type="button"
-                    onClick={() => handleSelectRaga(r)}
-                    className={`relative z-10 px-3 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer select-none ${
-                      isActive
-                        ? 'text-[#18181B] font-bold'
-                        : 'text-[#64748B] hover:text-[#0F172A]'
-                    }`}
-                  >
-                    {r}
-                    <span className={`ml-1 text-[9.5px] font-mono font-bold ${isActive ? 'text-[#B45309]' : 'text-[#94A3B8]'}`}>
-                      ({count})
-                    </span>
-                  </button>
-                );
-              })}
+                  />
+                )}
+
+                <button
+                  ref={(el) => {
+                    ragaRefs.current['all'] = el;
+                  }}
+                  type="button"
+                  tabIndex={hasRagas ? 0 : -1}
+                  onClick={() => handleSelectRaga('all')}
+                  className={`relative z-10 px-3 py-1 rounded-full text-[11px] font-semibold transition-colors duration-200 cursor-pointer select-none ${
+                    selectedRaga === 'all'
+                      ? 'text-[#18181B] font-bold'
+                      : 'text-[#64748B] hover:text-[#0F172A]'
+                  }`}
+                >
+                  सभी राग
+                </button>
+                {renderedRagas.map((r) => {
+                  const count = allPadas.filter(
+                    (p) =>
+                      (selectedGrantha === 'all' || p.collectionId === selectedGrantha) &&
+                      p.rag === r
+                  ).length;
+                  const isActive = selectedRaga === r;
+                  return (
+                    <button
+                      key={r}
+                      ref={(el) => {
+                        ragaRefs.current[r] = el;
+                      }}
+                      type="button"
+                      tabIndex={hasRagas ? 0 : -1}
+                      onClick={() => handleSelectRaga(r)}
+                      className={`relative z-10 px-3 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer select-none ${
+                        isActive
+                          ? 'text-[#18181B] font-bold'
+                          : 'text-[#64748B] hover:text-[#0F172A]'
+                      }`}
+                    >
+                      {r}
+                      <span className={`ml-1 text-[9.5px] font-mono font-bold ${isActive ? 'text-[#B45309]' : 'text-[#94A3B8]'}`}>
+                        ({count})
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
             </div>
-          )}
+          </div>
         </div>
       )}
 

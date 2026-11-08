@@ -50,6 +50,39 @@ def gurmukhi_to_devanagari(text):
     
     return ''.join(trans.get(c, c) for c in text)
 
+ENTITY_MAP = {
+    "&zwnj;": "",
+    "&zwj;": "",
+    "&#x200c;": "",
+    "&#x200C;": "",
+    "&#8204;": "",
+    "&#x200d;": "",
+    "&#x200D;": "",
+    "&#8205;": "",
+    "&ndash;": "–",
+    "&#8211;": "–",
+    "&lsquo;": "‘",
+    "&#8216;": "‘",
+    "&rsquo;": "’",
+    "&#8217;": "’",
+    "&ldquo;": "“",
+    "&#8220;": "“",
+    "&rdquo;": "”",
+    "&#8221;": "”",
+    "&bull;": "•",
+    "&#8226;": "•",
+    "&nbsp;": " ",
+    "&#160;": " ",
+}
+
+def clean_html_entities(text):
+    if not isinstance(text, str):
+        return text
+    for k, v in ENTITY_MAP.items():
+        if k in text:
+            text = text.replace(k, v)
+    return text
+
 def classify_and_clean_row(row):
     raw_author = (row.get('author') or '').strip()
     title = (row.get('title') or '').strip()
@@ -181,8 +214,13 @@ def main():
             if col_id == 'ramcharitmanas' and any(0x0A00 <= ord(c) <= 0x0A7F for c in text):
                 text = gurmukhi_to_devanagari(text)
 
+            # Thoroughly clean any raw HTML entities like &zwnj;, &zwj;, etc.
+            text = clean_html_entities(text)
+            title = clean_html_entities(title)
+            author = clean_html_entities(author)
+
             # Split pure sacred lines (ZERO modern Hindi explanation / ZERO English translation)
-            lines = [l.strip() for l in text.split('\n') if l.strip()]
+            lines = [clean_html_entities(l.strip()) for l in text.split('\n') if l.strip()]
             if not lines:
                 lines = [title]
 

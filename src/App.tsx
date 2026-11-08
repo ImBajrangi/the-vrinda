@@ -1138,6 +1138,8 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
               activePlayingPadId={currentPad?.id}
               isPlaying={isPlayingAudio}
               selectedGranthaId={selectedGranthaFilter}
+              onSelectGranthaId={(gId) => setSelectedGranthaFilter(gId)}
+              onSelectPad={(p) => setCurrentPad(p)}
               selectedSearchQuery={readerSearchQuery}
               selectedPadId={currentPad?.id}
               initialPadId={

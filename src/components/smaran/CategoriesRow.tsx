@@ -263,7 +263,11 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
 
       {/* 2. Segmented Category Switcher with Sunlit-Gold Sliding Pill */}
       <div className="w-full flex justify-center">
-        <div className="relative w-full max-w-2xl grid grid-cols-4 p-1 bg-[#FAF6EE] rounded-full border border-amber-200/50">
+        <div
+          role="tablist"
+          aria-label="स्मरण ग्रंथ व वाणी श्रेणियाँ"
+          className="relative w-full max-w-2xl grid grid-cols-4 p-1 bg-[#FAF6EE] rounded-full border border-amber-200/50"
+        >
           {/* Dynamic Sliding Indicator Bar */}
           <span
             aria-hidden="true"
@@ -281,22 +285,28 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
             return (
               <button
                 key={tab.id}
+                role="tab"
+                aria-selected={isActive}
+                aria-label={`${tab.label}, ${tab.count} संग्रह`}
                 type="button"
                 onClick={() => setActiveTab(tab.id)}
-                className={`relative z-10 py-2 px-1.5 sm:px-3 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer select-none flex items-center justify-center gap-1 sm:gap-1.5 ${isActive ? 'text-[#18181B] font-bold' : 'text-[#71717A] hover:text-[#18181B]'
-                  }`}
+                className={`relative z-10 py-2 px-1.5 sm:px-3 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer select-none flex items-center justify-center gap-1 sm:gap-1.5 focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:outline-none ${
+                  isActive ? 'text-[#18181B] font-bold' : 'text-neutral-700 hover:text-neutral-950'
+                }`}
               >
                 <Icon
-                  className={`w-3.5 h-3.5 shrink-0 transition-colors ${isActive ? 'text-[#B45309]' : tab.iconColor
-                    }`}
+                  className={`w-3.5 h-3.5 shrink-0 transition-colors ${
+                    isActive ? 'text-[#B45309]' : tab.iconColor
+                  }`}
                 />
                 <span className="truncate">
                   <span className="sm:hidden">{tab.mobileLabel}</span>
                   <span className="hidden sm:inline">{tab.label}</span>
                 </span>
                 <span
-                  className={`text-[10px] font-mono font-bold px-1.5 py-0.2 rounded-full leading-none shrink-0 transition-colors ${isActive ? 'bg-[#FACC15] text-[#78350F]' : 'bg-neutral-200/70 text-[#71717A]'
-                    }`}
+                  className={`text-[10px] font-mono font-bold px-1.5 py-0.2 rounded-full leading-none shrink-0 transition-colors ${
+                    isActive ? 'bg-[#FACC15] text-[#78350F]' : 'bg-neutral-200/90 text-neutral-700'
+                  }`}
                 >
                   {tab.count}
                 </span>

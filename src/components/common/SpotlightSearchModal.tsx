@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import { Search, X, Music } from 'lucide-react';
-import { SacredDatabase, CanonicalSaint, CanonicalGrantha } from '../../services/sacredDatabase';
+import { SacredDatabase, CanonicalSaint, CanonicalGrantha, cleanSacredString } from '../../services/sacredDatabase';
 import { SacredPad } from '../../types/devotional';
 import { getSaintPortrait, getBookCoverConfig } from '../../services/devotionalVisuals';
 import { IOSSpinner, navigationProgress } from './IOSActivityIndicator';
@@ -41,6 +41,13 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
     }, 300);
     return () => clearTimeout(handler);
   }, [query]);
+
+  // Query Supabase remote backup server database in background for complete coverage
+  useEffect(() => {
+    if (debouncedQuery.trim().length >= 2) {
+      SacredDatabase.searchRemote(debouncedQuery).catch(() => {});
+    }
+  }, [debouncedQuery]);
 
   // Lazy-load complete search catalog on first modal open using immutable content-hashed URL
   useEffect(() => {
@@ -602,19 +609,19 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
                             <div className="min-w-0 flex-1">
                               <div className="flex items-baseline justify-between gap-2">
                                 <h4 className="font-serif font-bold text-sm text-[#18181B] truncate leading-tight group-hover:text-amber-950">
-                                  {pad.titleDevanagari}
+                                  {cleanSacredString(pad.titleDevanagari)}
                                 </h4>
                                 {pad.rag && (
                                   <span className="text-[11px] font-serif font-medium text-amber-800 shrink-0">
-                                    राग {pad.rag}
+                                    राग {cleanSacredString(pad.rag)}
                                   </span>
                                 )}
                               </div>
                               <p className="text-[11.5px] text-neutral-500 truncate mt-0.5 leading-snug">
-                                <span className="font-medium text-neutral-700">{pad.author}</span>
+                                <span className="font-medium text-neutral-700">{cleanSacredString(pad.author)}</span>
                                 {pad.verses[0]?.linesDevanagari[0] && (
                                   <span className="italic text-neutral-400 ml-1.5">
-                                    — "{pad.verses[0].linesDevanagari[0]}"
+                                    — "{cleanSacredString(pad.verses[0].linesDevanagari[0])}"
                                   </span>
                                 )}
                               </p>

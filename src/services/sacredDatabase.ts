@@ -134,12 +134,33 @@ const NON_RAGAS = new Set([
 ]);
 
 /**
+ * Comprehensive HTML entity sanitizer to permanently eliminate raw artifacts like &zwnj;, &zwj;, etc.
+ */
+export function cleanSacredString(str: string): string {
+  if (!str) return '';
+  return str
+    .replace(/&amp;/gi, '&')
+    .replace(/&(?:zwnj|zwj|#x200c|#x200C|#8204|#x200d|#x200D|#8205);?/gi, '')
+    .replace(/&(?:ndash|#8211);/gi, '–')
+    .replace(/&(?:lsquo|#8216);/gi, '‘')
+    .replace(/&(?:rsquo|#8217);/gi, '’')
+    .replace(/&(?:ldquo|#8220);/gi, '“')
+    .replace(/&(?:rdquo|#8221);/gi, '”')
+    .replace(/&(?:bull|#8226);/gi, '•')
+    .replace(/&(?:nbsp|#160);/gi, ' ')
+    .replace(/&(?:quot|#34);/gi, '"')
+    .replace(/&(?:apos|#39);/gi, "'")
+    .replace(/&#(\d+);/g, (_, dec) => String.fromCharCode(Number(dec)));
+}
+
+/**
  * Normalizes all 4,204 canonical padas into uniform SacredPad instances
  * with authenticated grantha attribution, classical raga harmonization, and full verse structure.
  */
 function normalizeCanonicalPad(raw: any): SacredPad {
-  const author = (raw.author || raw.composer || 'श्री रसिक परंपरा').trim();
-  const title = (raw.titleDevanagari || raw.title || 'श्री पद').trim();
+  const author = cleanSacredString(raw.author || raw.composer || 'श्री रसिक परंपरा').trim();
+  const title = cleanSacredString(raw.titleDevanagari || raw.title || 'श्री पद').trim();
+  const titleEnglish = cleanSacredString(raw.titleEnglish || raw.titleEng || '');
 
   // 1. Resolve canonical collection / grantha ID matching real textual lineage
   let collectionId = raw.collectionId || raw.granthaId || '';
@@ -173,18 +194,25 @@ function normalizeCanonicalPad(raw: any): SacredPad {
   if (rag === 'कान्हरौ') rag = 'कन्हारो';
   if (rag === 'वसन्त') rag = 'बसंत';
 
-  // 3. Normalize verses from stanzas if needed
+  // 3. Normalize verses from stanzas if needed and sanitize all lines
   let verses = raw.verses;
   if (!verses || !verses.length) {
     if (raw.stanzas && raw.stanzas.length) {
       verses = raw.stanzas.map((st: any, idx: number) => ({
         stanzaNumber: st.index || idx + 1,
-        linesDevanagari: st.linesDevanagari || [],
-        linesEnglish: st.linesEnglish || [],
+        linesDevanagari: (st.linesDevanagari || []).map(cleanSacredString),
+        linesEnglish: (st.linesEnglish || []).map(cleanSacredString),
       }));
     } else {
       verses = [{ stanzaNumber: 1, linesDevanagari: [title], linesEnglish: [] }];
     }
+  } else {
+    verses = verses.map((v: any, idx: number) => ({
+      ...v,
+      stanzaNumber: v.stanzaNumber || idx + 1,
+      linesDevanagari: (v.linesDevanagari || []).map(cleanSacredString),
+      linesEnglish: (v.linesEnglish || []).map(cleanSacredString),
+    }));
   }
 
   const slug = raw.slug || raw.id || '';
@@ -193,7 +221,7 @@ function normalizeCanonicalPad(raw: any): SacredPad {
     ...raw,
     collectionId,
     titleDevanagari: title,
-    titleEnglish: raw.titleEnglish || raw.titleEng || '',
+    titleEnglish,
     author,
     rag,
     slug,
@@ -555,7 +583,7 @@ export const SacredDatabase = {
         .order('index', { ascending: true });
 
       if (!error && data && data.length > 0) {
-        const mapped = data.map((r: any) => ({
+        const mapped = data.map((r: any) => normalizeCanonicalPad({
           id: r.id,
           collectionId: r.collection_id || granthaId,
           index: r.index,
@@ -606,7 +634,7 @@ export const SacredDatabase = {
         .single();
 
       if (!error && data) {
-        const mapped: SacredPad = {
+        const mapped: SacredPad = normalizeCanonicalPad({
           id: data.id,
           collectionId: data.collection_id,
           index: data.index,
@@ -616,7 +644,7 @@ export const SacredDatabase = {
           rag: data.rag,
           slug: data.slug,
           verses: data.verses,
-        };
+        });
         this.appendPadas([mapped]);
         return mapped;
       }
@@ -898,6 +926,43 @@ export const SacredDatabase = {
     }
 
     return results;
+  },
+
+  /**
+   * Hybrid Remote Search Fallback via Supabase Backup Server Database
+   * Seamlessly queries remote PostgreSQL database whenever a devotee searches,
+   * dynamically hydrating missing results into the client cache.
+   */
+  async searchRemote(query: string, limit = 25): Promise<SacredPad[]> {
+    const q = query.trim();
+    if (!q || q.length < 2) return [];
+
+    try {
+      const { data, error } = await supabase
+        .from('padas')
+        .select('id, collection_id, index, title_devanagari, title_english, author, rag, slug, verses')
+        .or(`title_devanagari.ilike.%${q}%,author.ilike.%${q}%,slug.ilike.%${q}%`)
+        .limit(limit);
+
+      if (!error && data && data.length > 0) {
+        const mapped: SacredPad[] = data.map((r: any) => normalizeCanonicalPad({
+          id: r.id,
+          collectionId: r.collection_id || 'rasik-vani-sangrah',
+          index: r.index,
+          titleDevanagari: r.title_devanagari,
+          titleEnglish: r.title_english || '',
+          author: r.author,
+          rag: r.rag || '',
+          slug: r.slug,
+          verses: r.verses,
+        }));
+        this.appendPadas(mapped);
+        return mapped;
+      }
+    } catch (err) {
+      console.warn('Supabase backup server search deferred:', err);
+    }
+    return [];
   },
 
   // Asynchronous Persistent Operations via IndexedDB & Supabase Cloud Sync
