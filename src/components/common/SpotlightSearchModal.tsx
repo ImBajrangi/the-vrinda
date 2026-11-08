@@ -117,47 +117,56 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
     });
   }, []);
 
-  // Compute Debounced Search Results
-  const matchingPadas = useMemo(() => {
-    if (activeFilter !== 'all' && activeFilter !== 'padas') return [];
-    if (debouncedQuery.trim().length === 1) return [];
-    return SacredDatabase.search(debouncedQuery, activeFilter === 'padas' ? 24 : 12);
-  }, [debouncedQuery, activeFilter, dbVersion]);
+  // Stable Query-Level Search Results (Facet counts depend ONLY on query & DB, NEVER on activeFilter)
+  const searchedPadas = useMemo(() => {
+    return SacredDatabase.search(debouncedQuery, debouncedQuery.trim() ? 50 : 24);
+  }, [debouncedQuery, dbVersion]);
 
-  const matchingSaints = useMemo(() => {
-    if (activeFilter !== 'all' && activeFilter !== 'saints') return [];
+  const searchedSaints = useMemo(() => {
     const allSaints = SacredDatabase.getAllSaints();
-    const limit = activeFilter === 'saints' ? 24 : 6;
-    if (!debouncedQuery.trim()) return allSaints.slice(0, limit);
-    if (debouncedQuery.trim().length === 1) return [];
-    const q = debouncedQuery.toLowerCase();
-    return allSaints
-      .filter((s) => s.name.toLowerCase().includes(q) || s.nameEng.toLowerCase().includes(q))
-      .slice(0, limit);
-  }, [debouncedQuery, activeFilter]);
+    const q = debouncedQuery.trim().toLowerCase();
+    if (!q) return allSaints.slice(0, 24);
+    return allSaints.filter(
+      (s) => s.name.toLowerCase().includes(q) || (s.nameEng && s.nameEng.toLowerCase().includes(q))
+    );
+  }, [debouncedQuery]);
 
-  const matchingGranthas = useMemo(() => {
-    if (activeFilter !== 'all' && activeFilter !== 'granthas') return [];
+  const searchedGranthas = useMemo(() => {
     const allGranthas = SacredDatabase.getAllGranthas();
-    const limit = activeFilter === 'granthas' ? 16 : 4;
-    if (!debouncedQuery.trim()) return allGranthas.slice(0, limit);
-    if (debouncedQuery.trim().length === 1) return [];
-    const q = debouncedQuery.toLowerCase();
-    return allGranthas
-      .filter((g) => g.name.toLowerCase().includes(q) || g.author.toLowerCase().includes(q))
-      .slice(0, limit);
-  }, [debouncedQuery, activeFilter]);
+    const q = debouncedQuery.trim().toLowerCase();
+    if (!q) return allGranthas;
+    return allGranthas.filter(
+      (g) => g.name.toLowerCase().includes(q) || (g.author && g.author.toLowerCase().includes(q))
+    );
+  }, [debouncedQuery]);
 
-  const totalResults = matchingGranthas.length + matchingSaints.length + matchingPadas.length;
+  const totalResults = searchedGranthas.length + searchedSaints.length + searchedPadas.length;
 
-  // Flattened items list for index-based keyboard navigation
+  // Displayed items strictly filtered by the selected tab
+  const displayedGranthas = useMemo(() => {
+    if (activeFilter !== 'all' && activeFilter !== 'granthas') return [];
+    return activeFilter === 'all' ? searchedGranthas.slice(0, 4) : searchedGranthas;
+  }, [activeFilter, searchedGranthas]);
+
+  const displayedSaints = useMemo(() => {
+    if (activeFilter !== 'all' && activeFilter !== 'saints') return [];
+    return activeFilter === 'all' ? searchedSaints.slice(0, 6) : searchedSaints;
+  }, [activeFilter, searchedSaints]);
+
+  const displayedPadas = useMemo(() => {
+    if (activeFilter !== 'all' && activeFilter !== 'padas') return [];
+    return activeFilter === 'all' ? searchedPadas.slice(0, 12) : searchedPadas;
+  }, [activeFilter, searchedPadas]);
+
+  // Flattened items list for index-based keyboard navigation matching visual order:
+  // Visual order: Saints -> Granthas -> Padas
   const combinedResults = useMemo<CombinedItem[]>(() => {
     return [
-      ...matchingGranthas.map((g) => ({ type: 'grantha' as const, data: g })),
-      ...matchingSaints.map((s) => ({ type: 'saint' as const, data: s })),
-      ...matchingPadas.map((p) => ({ type: 'pad' as const, data: p })),
+      ...displayedSaints.map((s) => ({ type: 'saint' as const, data: s })),
+      ...displayedGranthas.map((g) => ({ type: 'grantha' as const, data: g })),
+      ...displayedPadas.map((p) => ({ type: 'pad' as const, data: p })),
     ];
-  }, [matchingGranthas, matchingSaints, matchingPadas]);
+  }, [displayedSaints, displayedGranthas, displayedPadas]);
 
   // Reset keyboard index on query/filter change
   useEffect(() => {
@@ -217,10 +226,12 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
 
   const filterTabs: { id: SearchFilterType; label: string; mobileLabel: string; count: number }[] = [
     { id: 'all', label: 'सभी', mobileLabel: 'सभी', count: totalResults },
-    { id: 'padas', label: 'पदावली', mobileLabel: 'पद', count: matchingPadas.length },
-    { id: 'saints', label: 'रसिक संत', mobileLabel: 'संत', count: matchingSaints.length },
-    { id: 'granthas', label: 'पावन ग्रन्थ', mobileLabel: 'ग्रन्थ', count: matchingGranthas.length },
+    { id: 'padas', label: 'पदावली', mobileLabel: 'पद', count: searchedPadas.length },
+    { id: 'saints', label: 'रसिक संत', mobileLabel: 'संत', count: searchedSaints.length },
+    { id: 'granthas', label: 'पावन ग्रन्थ', mobileLabel: 'ग्रन्थ', count: searchedGranthas.length },
   ];
+
+  const hasVisibleResults = displayedSaints.length > 0 || displayedGranthas.length > 0 || displayedPadas.length > 0;
 
   return createPortal(
     <div
@@ -304,7 +315,7 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
 
         {/* 3. Picture-Focused Scrollable Results Grid (Outline-Free & Tag-Free) */}
         <div className="flex-1 overflow-y-auto p-3.5 sm:p-5 space-y-6 custom-scroll bg-white">
-          {totalResults === 0 ? (
+          {!hasVisibleResults ? (
             <div className="text-center py-14 text-neutral-400">
               <p className="text-base font-serif font-semibold text-neutral-700">कोई परिणाम नहीं मिला</p>
               <p className="text-xs text-neutral-400 mt-1">कृपया कोई अन्य शब्द, संत या ग्रन्थ का नाम खोजें</p>
@@ -312,20 +323,33 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
           ) : (
             <>
               {/* SECTION: Saints (रसिक संत) - Elevated Circular Medallion Portraits */}
-              {matchingSaints.length > 0 && (
+              {displayedSaints.length > 0 && (
                 <div className="space-y-2.5">
                   <div className="flex items-center justify-between px-1">
                     <span className="text-xs font-mono font-bold tracking-wider text-amber-900 uppercase">
-                      रसिक संत ({matchingSaints.length})
+                      रसिक संत ({activeFilter === 'all' ? displayedSaints.length : searchedSaints.length})
                     </span>
-                    <span className="text-[11px] text-neutral-400 font-serif hidden sm:inline">
-                      श्री वृन्दावन रसिक परंपरा
-                    </span>
+                    {activeFilter === 'all' && searchedSaints.length > displayedSaints.length ? (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setActiveFilter('saints');
+                          setSelectedIdx(0);
+                        }}
+                        className="text-[11px] text-amber-800 hover:text-amber-950 font-medium cursor-pointer transition-colors"
+                      >
+                        सभी {searchedSaints.length} संत देखें →
+                      </button>
+                    ) : (
+                      <span className="text-[11px] text-neutral-400 font-serif hidden sm:inline">
+                        श्री वृन्दावन रसिक परंपरा
+                      </span>
+                    )}
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
-                    {matchingSaints.map((s, idx) => {
-                      const globalIdx = matchingGranthas.length + idx;
+                    {displayedSaints.map((s, idx) => {
+                      const globalIdx = idx;
                       const isSelected = selectedIdx === globalIdx;
                       const portrait = getSaintPortrait(s);
 
@@ -375,20 +399,34 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
               )}
 
               {/* SECTION: Granthas (पावन ग्रन्थ) - Proportional 3D Pothi Book Covers */}
-              {matchingGranthas.length > 0 && (
+              {displayedGranthas.length > 0 && (
                 <div className="space-y-2.5">
                   <div className="flex items-center justify-between px-1">
                     <span className="text-xs font-mono font-bold tracking-wider text-amber-900 uppercase">
-                      पावन ग्रन्थ ({matchingGranthas.length})
+                      पावन ग्रन्थ ({activeFilter === 'all' ? displayedGranthas.length : searchedGranthas.length})
                     </span>
-                    <span className="text-[11px] text-neutral-400 font-serif hidden sm:inline">
-                      मूल वाणी संग्रह
-                    </span>
+                    {activeFilter === 'all' && searchedGranthas.length > displayedGranthas.length ? (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setActiveFilter('granthas');
+                          setSelectedIdx(0);
+                        }}
+                        className="text-[11px] text-amber-800 hover:text-amber-950 font-medium cursor-pointer transition-colors"
+                      >
+                        सभी {searchedGranthas.length} ग्रन्थ देखें →
+                      </button>
+                    ) : (
+                      <span className="text-[11px] text-neutral-400 font-serif hidden sm:inline">
+                        मूल वाणी संग्रह
+                      </span>
+                    )}
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {matchingGranthas.map((g, idx) => {
-                      const isSelected = selectedIdx === idx;
+                    {displayedGranthas.map((g, idx) => {
+                      const globalIdx = displayedSaints.length + idx;
+                      const isSelected = selectedIdx === globalIdx;
                       const cover = getBookCoverConfig(g.id, g.name);
                       const shortTitle = g.name
                         .replace(/जी की वाणी/g, '')
@@ -403,7 +441,7 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
                             onSelectGrantha?.(g);
                             onClose();
                           }}
-                          onMouseEnter={() => setSelectedIdx(idx)}
+                          onMouseEnter={() => setSelectedIdx(globalIdx)}
                           className={`group flex items-center justify-between gap-3.5 p-3 sm:p-3.5 rounded-[22px] transition-colors duration-150 cursor-pointer select-none ${
                             isSelected
                               ? 'bg-[#EFEAE0] text-[#18181B]'
@@ -487,20 +525,33 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
               )}
 
               {/* SECTION: Sacred Verses (पदावली व स्तोत्र) - Outline-Free */}
-              {matchingPadas.length > 0 && (
+              {displayedPadas.length > 0 && (
                 <div className="space-y-2.5">
                   <div className="flex items-center justify-between px-1">
                     <span className="text-xs font-mono font-bold tracking-wider text-amber-900 uppercase">
-                      पदावली व स्तोत्र ({matchingPadas.length})
+                      पदावली व स्तोत्र ({activeFilter === 'all' ? displayedPadas.length : searchedPadas.length})
                     </span>
-                    <span className="text-[11px] text-neutral-400 font-serif hidden sm:inline">
-                      राग एवं भाव संगीत
-                    </span>
+                    {activeFilter === 'all' && searchedPadas.length > displayedPadas.length ? (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setActiveFilter('padas');
+                          setSelectedIdx(0);
+                        }}
+                        className="text-[11px] text-amber-800 hover:text-amber-950 font-medium cursor-pointer transition-colors"
+                      >
+                        सभी {searchedPadas.length} पद देखें →
+                      </button>
+                    ) : (
+                      <span className="text-[11px] text-neutral-400 font-serif hidden sm:inline">
+                        राग एवं भाव संगीत
+                      </span>
+                    )}
                   </div>
 
                   <div className="space-y-2">
-                    {matchingPadas.map((pad, idx) => {
-                      const globalIdx = matchingGranthas.length + matchingSaints.length + idx;
+                    {displayedPadas.map((pad, idx) => {
+                      const globalIdx = displayedSaints.length + displayedGranthas.length + idx;
                       const isSelected = selectedIdx === globalIdx;
 
                       return (
