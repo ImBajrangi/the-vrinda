@@ -119,25 +119,36 @@ button:focus-visible {
   pointer-events: none;
 }
 
-.company-link::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 100%;
-  height: 1.5px;
-  background-color: currentColor;
-  pointer-events: none;
-  transform: scaleX(0);
-  transform-origin: right center;
-  transition: transform 0.32s cubic-bezier(0.25, 1, 0.5, 1);
+/* Only enable expanding underline animation on pointer devices capable of true hover (Desktop / Mouse) */
+@media (hover: hover) and (pointer: fine) {
+  .company-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 1.5px;
+    background-color: currentColor;
+    pointer-events: none;
+    transform: scaleX(0);
+    transform-origin: right center;
+    transition: transform 0.32s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .company-link:hover::after,
+  .group:hover .group-company-link::after {
+    transform: scaleX(1);
+    transform-origin: left center;
+  }
 }
 
-.company-link:hover::after,
-.company-link:active::after,
-.group:hover .group-company-link::after {
-  transform: scaleX(1);
-  transform-origin: left center;
+/* Explicit Mobile / Touch Reset: Completely remove hover underlines & sticky tap states on mobile devices */
+@media (hover: none), (pointer: coarse), (max-width: 767px) {
+  .company-link::after,
+  .group-company-link::after {
+    display: none !important;
+    content: none !important;
+  }
 }
 
 /* ==========================================================================
@@ -166,8 +177,10 @@ button:focus-visible {
   will-change: transform;
 }
 
-.top-marquee-track:hover {
-  animation-play-state: paused;
+@media (hover: hover) and (pointer: fine) {
+  .top-marquee-track:hover {
+    animation-play-state: paused;
+  }
 }
 
 /* Chitravrinda Gallery-Style Top Announcement Banner Transitions */
@@ -625,8 +638,10 @@ button:focus-visible {
   transition: opacity 0.3s var(--ease-apple-smooth);
 }
 
-.dhyana-stanza-dimmed:hover {
-  opacity: 0.85; /* Safe opacity-only change on hover, zero transform */
+@media (hover: hover) and (pointer: fine) {
+  .dhyana-stanza-dimmed:hover {
+    opacity: 0.85; /* Safe opacity-only change on hover, zero transform */
+  }
 }
 
 /* Subtle Breath Rhythm Glow */

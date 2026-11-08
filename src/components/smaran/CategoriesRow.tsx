@@ -188,23 +188,33 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
               >
                 <div className="flex items-center gap-4 sm:gap-5 flex-1 min-w-0">
                   {/* Book Pothi / Scripture Cover Emblems */}
-                  <div className="w-12 h-16 sm:w-14 sm:h-18 shrink-0">
+                  <div className="w-14 sm:w-16 shrink-0">
                     <ArtworkGraphicSlot
                       src={book.imageUrl || null}
                       aspectRatio="portrait"
                       theme="amber"
                       placeholderCategory="book"
-                      roundedClassName="rounded-[12px]"
+                      roundedClassName="rounded-[14px]"
                       customFallback={
-                        <div className="w-full h-full rounded-[12px] bg-[#FAF8F5] border border-amber-200/60 p-2 flex flex-col justify-between items-center relative overflow-hidden shadow-2xs group-hover:border-amber-400 transition-colors">
-                          <span className="w-2 h-3.5 bg-amber-500 rounded-b-sm absolute top-0 right-2" />
-                          <div className="w-full flex items-center justify-center mt-0.5">
-                            <BookOpen className="w-3.5 h-3.5 text-amber-700/70" />
+                        <div className="w-full h-full rounded-[14px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EA] to-[#F3E8D5] border border-amber-300/70 border-l-[3.5px] border-l-amber-600/85 p-2 flex flex-col justify-between items-center relative overflow-hidden shadow-[0_2px_8px_-2px_rgba(180,83,9,0.08)] group-hover:border-amber-400 group-hover:border-l-amber-700 transition-colors">
+                          {/* Authentic Silk Bookmark Ribbon with V-Notch / Fishtail Cut */}
+                          <span
+                            aria-hidden="true"
+                            className="w-2.5 h-4.5 bg-gradient-to-b from-amber-500 via-amber-600 to-amber-700 absolute top-0 right-2.5 shadow-[0_1px_3px_rgba(0,0,0,0.18)] [clip-path:polygon(0_0,100%_0,100%_100%,50%_78%,0_100%)] z-10"
+                          />
+
+                          {/* Top Row: Delicate Scripture Glyph */}
+                          <div className="w-full flex items-center justify-start pl-0.5 pt-0.5">
+                            <BookOpen className="w-3.5 h-3.5 text-amber-800/60" />
                           </div>
-                          <span className="font-rozha text-base sm:text-lg text-amber-950 font-bold leading-none text-center">
+
+                          {/* Center Hero: Majestic Rozha Devanagari Initials */}
+                          <span className="font-rozha text-lg sm:text-xl text-amber-950 font-bold leading-none text-center tracking-tight drop-shadow-[0_1px_1px_rgba(255,255,255,0.7)]">
                             {initials}
                           </span>
-                          <span className="text-[10px] font-mono font-bold text-amber-900 bg-amber-100/80 px-1.5 py-0.2 rounded">
+
+                          {/* Bottom Row: Concentric-radius Pad Count Pill (R_inner = 14px - 8px = 6px) */}
+                          <span className="text-[10px] font-mono font-bold text-amber-900 bg-amber-100/90 px-1.5 py-0.5 rounded-[6px] border border-amber-200/60 leading-none">
                             {book.count}
                           </span>
                         </div>
