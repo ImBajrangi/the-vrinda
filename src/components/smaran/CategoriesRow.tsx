@@ -47,13 +47,106 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
 
   const activeIndex = Math.max(0, tabsList.findIndex((t) => t.id === activeTab));
 
-  // Sant-Vaani Dynamic Leather-Bound Hardcover Gradient Generator
-  const getBookGradient = (name: string): string => {
+  // Sacred Pothi Cover Architecture (3 Professional Variations from test-outer-line-options)
+  // 1. 'gold-frame': Canonical Scriptures (Sant-Vaani Pure Scripture with balanced delicate gold filigree)
+  // 2. 'cartouche': Extensive Collections & Anthologies (Gold Frame + Inset Cartouche Badge)
+  // 3. 'pure-leather': Intimate Rasik Vanis, Dohas & Lyric Poetry (Borderless Pure Leather + Pill)
+  type BookCoverStyle = 'gold-frame' | 'cartouche' | 'pure-leather';
+
+  interface BookCoverConfig {
+    bg: string;
+    style: BookCoverStyle;
+  }
+
+  const getBookCoverConfig = (id: string, name: string): BookCoverConfig => {
+    const specificConfigs: Record<string, BookCoverConfig> = {
+      // 1. Foundational Sampradayic Scriptures -> Style 1: Delicate Gold Frame
+      'hit-chaurasi': {
+        bg: 'linear-gradient(135deg, #4A0E17 0%, #25060C 55%, #120205 100%)',
+        style: 'gold-frame',
+      },
+      'kelimal': {
+        bg: 'linear-gradient(135deg, #093326 0%, #041B14 55%, #020D0A 100%)',
+        style: 'gold-frame',
+      },
+      'bhakti-shatak': {
+        bg: 'linear-gradient(135deg, #3A1535 0%, #200A1D 55%, #10040E 100%)',
+        style: 'gold-frame',
+      },
+      'sur-sagar': {
+        bg: 'linear-gradient(135deg, #261646 0%, #150A29 55%, #080313 100%)',
+        style: 'gold-frame',
+      },
+      'stotras': {
+        bg: 'linear-gradient(135deg, #2D2E0E 0%, #181905 55%, #090A02 100%)',
+        style: 'gold-frame',
+      },
+
+      // 2. Extensive Compilations & Anthologies -> Style 2: Gold Frame + Tag Cartouche
+      'vyas-vani': {
+        bg: 'linear-gradient(135deg, #3E2108 0%, #241203 55%, #120801 100%)',
+        style: 'cartouche',
+      },
+      'bayalees-leela': {
+        bg: 'linear-gradient(135deg, #102542 0%, #091527 55%, #040913 100%)',
+        style: 'cartouche',
+      },
+      'braj-binod': {
+        bg: 'linear-gradient(135deg, #421D10 0%, #260E07 55%, #120603 100%)',
+        style: 'cartouche',
+      },
+      'rasik-vani-sangrah': {
+        bg: 'linear-gradient(135deg, #44141E 0%, #260910 55%, #120307 100%)',
+        style: 'cartouche',
+      },
+
+      // 3. Intimate Rasik Vanis, Dohas & Lyric Poetry -> Style 3: Borderless Pure Leather
+      'lalit-kishori': {
+        bg: 'linear-gradient(135deg, #4A121A 0%, #29080E 55%, #130306 100%)',
+        style: 'pure-leather',
+      },
+      'biharin-dev': {
+        bg: 'linear-gradient(135deg, #152B3C 0%, #0A1722 55%, #04090E 100%)',
+        style: 'pure-leather',
+      },
+      'narayan-swami': {
+        bg: 'linear-gradient(135deg, #381B34 0%, #210E1F 55%, #10060F 100%)',
+        style: 'pure-leather',
+      },
+      'raskhan-padavali': {
+        bg: 'linear-gradient(135deg, #133320 0%, #0A1C11 55%, #040C07 100%)',
+        style: 'pure-leather',
+      },
+      'braj-dohe': {
+        bg: 'linear-gradient(135deg, #421D10 0%, #260E07 55%, #120603 100%)',
+        style: 'pure-leather',
+      },
+      'braj-savaiya': {
+        bg: 'linear-gradient(135deg, #182C3F 0%, #0C1824 55%, #050B12 100%)',
+        style: 'pure-leather',
+      },
+    };
+
+    // Normalize IDs (e.g. biharin-dev-vani -> biharin-dev, braj-ke-dohe -> braj-dohe)
+    const norm = (id || '')
+      .replace(/-vani$/, '')
+      .replace(/-ke-/, '-')
+      .replace(/^akhand-/, '');
+
+    if (specificConfigs[id]) return specificConfigs[id];
+    if (specificConfigs[norm]) return specificConfigs[norm];
+
+    // Deterministic fallback cycling through the 3 styles
+    const seed = id || name;
     let h = 0;
-    for (let i = 0; i < name.length; i++) h = name.charCodeAt(i) + ((h << 5) - h);
+    for (let i = 0; i < seed.length; i++) h = seed.charCodeAt(i) + ((h << 5) - h);
     const h1 = Math.abs(h % 360);
-    const h2 = (h1 + 50) % 360;
-    return `linear-gradient(135deg, hsl(${h1}, 75%, 28%) 0%, hsl(${h2}, 70%, 13%) 100%)`;
+    const h2 = (h1 + 45) % 360;
+    const styles: BookCoverStyle[] = ['gold-frame', 'cartouche', 'pure-leather'];
+    return {
+      bg: `linear-gradient(135deg, hsl(${h1}, 75%, 17%) 0%, hsl(${h2}, 70%, 8%) 100%)`,
+      style: styles[Math.abs(h % 3)],
+    };
   };
 
   // Clean, Quiet Luxury Sacred Emblems (No Multi-Colored Gradients)
@@ -168,8 +261,15 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
       {activeTab === 'books' && (
         <div className="rounded-[24px] sm:rounded-[28px] overflow-hidden border border-neutral-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.02)] bg-white divide-y divide-neutral-100">
           {books.map((book) => {
+            const coverConfig = getBookCoverConfig(book.id, book.devanagari);
+            const bookTitle = book.devanagari
+              .replace(/जी की वाणी/g, '')
+              .replace(/वाणी/g, '')
+              .replace(/ग्रन्थ/g, '')
+              .trim();
+
             return (
-            <div
+              <div
                 key={book.id}
                 role="button"
                 tabIndex={0}
@@ -178,23 +278,77 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
                 className="group w-full p-4 sm:p-5 flex items-center justify-between gap-4 sm:gap-6 hover:bg-[#FAF8F5]/80 transition-colors duration-150 cursor-pointer select-none"
               >
                 <div className="flex items-center gap-4 sm:gap-5 flex-1 min-w-0">
-                  {/* Sant-Vaani Authentic 3D Book Cover */}
-                  <div
-                    className="book-cover-premium shrink-0 text-white select-none w-[64px] h-[90px] sm:w-[70px] sm:h-[98px]"
-                    style={{ background: getBookGradient(book.devanagari || book.id) }}
-                  >
-                    <div className="book-cover-inner-gold">
-                      <div className="text-[9px] text-amber-200/60 font-semibold tracking-widest leading-none">
-                        ॐ
-                      </div>
+                  {/* Authentic 3D Sacred Pothi Book Cover */}
+                  <div className="shrink-0 select-none">
+                    <div
+                      className="sacred-book-pothi w-[68px] h-[98px] sm:w-[72px] sm:h-[104px] text-white"
+                      style={{ background: coverConfig.bg }}
+                    >
+                      {/* Spine Groove Crease */}
+                      <div className="spine-groove" />
 
-                      <span className="font-rozha text-xs sm:text-[13px] font-bold line-clamp-3 text-center leading-tight tracking-wide px-0.5 text-white/95">
-                        {book.devanagari.replace(/जी की वाणी/g, '').replace(/वाणी/g, '').replace(/ग्रन्थ/g, '').trim()}
-                      </span>
+                      {/* Style 1: Delicate Gold Frame (Sant-Vaani Pure Scripture) */}
+                      {coverConfig.style === 'gold-frame' && (
+                        <div className="book-gold-filigree">
+                          <div className="text-[8px] text-amber-200/60 font-bold leading-none tracking-widest flex items-center gap-1 shrink-0">
+                            <span className="w-1.5 h-px bg-amber-200/30" />
+                            <span>ॐ</span>
+                            <span className="w-1.5 h-px bg-amber-200/30" />
+                          </div>
 
-                      <span className="text-[8px] font-mono font-bold text-amber-300/80 uppercase tracking-wider leading-none">
-                        {book.count} पद
-                      </span>
+                          <div className="flex-1 flex items-center justify-center w-full my-0.5 min-h-0">
+                            <span className="font-rozha text-[10.5px] sm:text-[11.5px] font-bold line-clamp-3 text-center leading-[1.15] tracking-wide px-0.5 gold-foil-title">
+                              {bookTitle}
+                            </span>
+                          </div>
+
+                          <span className="text-[8px] font-mono font-bold text-amber-300/90 tracking-wider whitespace-nowrap leading-none shrink-0">
+                            {book.count} पद
+                          </span>
+                        </div>
+                      )}
+
+                      {/* Style 2: Gold Frame + Soft Inset Cartouche (Distinguished Compendium) */}
+                      {coverConfig.style === 'cartouche' && (
+                        <div className="book-gold-filigree">
+                          <div className="text-[8px] text-amber-200/70 font-bold leading-none tracking-widest flex items-center gap-1 shrink-0">
+                            <span className="w-1.5 h-px bg-amber-200/30" />
+                            <span>ॐ</span>
+                            <span className="w-1.5 h-px bg-amber-200/30" />
+                          </div>
+
+                          <div className="flex-1 flex items-center justify-center w-full my-0.5 min-h-0">
+                            <span className="font-rozha text-[10.5px] sm:text-[11.5px] font-bold line-clamp-3 text-center leading-[1.15] tracking-wide px-0.5 gold-foil-title">
+                              {bookTitle}
+                            </span>
+                          </div>
+
+                          <div className="px-1.5 py-0.5 rounded-[3px] bg-black/40 border border-amber-300/30 text-[7.5px] font-mono font-bold text-amber-200 tracking-wider whitespace-nowrap leading-none shrink-0 inline-flex items-center justify-center">
+                            {book.count} पद
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Style 3: Borderless Pure Leather (Intimate Rasik Vani & Lyric Poetry) */}
+                      {coverConfig.style === 'pure-leather' && (
+                        <div className="book-pure-leather-inner">
+                          <div className="text-[8px] text-amber-300/70 font-bold leading-none tracking-widest flex items-center gap-1 shrink-0">
+                            <span className="w-1.5 h-px bg-amber-300/30" />
+                            <span>ॐ</span>
+                            <span className="w-1.5 h-px bg-amber-300/30" />
+                          </div>
+
+                          <div className="flex-1 flex items-center justify-center w-full my-0.5 min-h-0">
+                            <span className="font-rozha text-[11px] sm:text-[12px] font-bold line-clamp-3 text-center leading-[1.15] tracking-wide px-0.5 gold-foil-title">
+                              {bookTitle}
+                            </span>
+                          </div>
+
+                          <div className="px-2 py-0.5 rounded-full bg-black/35 border border-amber-400/30 text-[7.5px] font-mono font-bold text-amber-200 tracking-wider whitespace-nowrap leading-none shrink-0 inline-flex items-center justify-center">
+                            {book.count} पद
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
 
