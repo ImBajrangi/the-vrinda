@@ -40,25 +40,20 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
     icon: React.ComponentType<{ className?: string }>;
     iconColor: string;
   }[] = [
-    { id: 'books', label: 'पावन ग्रंथ', mobileLabel: 'ग्रंथ', count: books.length, icon: BookOpen, iconColor: 'text-amber-600' },
-    { id: 'authors', label: 'रसिक आचार्य', mobileLabel: 'संत', count: authors.length, icon: Feather, iconColor: 'text-amber-700' },
-    { id: 'relations', label: 'लीला एवं धाम', mobileLabel: 'लीला', count: relations.length, icon: Landmark, iconColor: 'text-[#0284C7]' },
-  ];
+      { id: 'books', label: 'पावन ग्रंथ', mobileLabel: 'ग्रंथ', count: books.length, icon: BookOpen, iconColor: 'text-amber-600' },
+      { id: 'authors', label: 'रसिक आचार्य', mobileLabel: 'संत', count: authors.length, icon: Feather, iconColor: 'text-amber-700' },
+      { id: 'relations', label: 'लीला एवं धाम', mobileLabel: 'लीला', count: relations.length, icon: Landmark, iconColor: 'text-[#0284C7]' },
+    ];
 
   const activeIndex = Math.max(0, tabsList.findIndex((t) => t.id === activeTab));
 
-  // Helper for Book Calligraphy Initials
-  const getBookInitials = (id: string, devanagari: string): string => {
-    if (id.includes('chaurasi')) return 'हित';
-    if (id.includes('kelimal')) return 'केलि';
-    if (id.includes('sudha')) return 'सुधा';
-    if (id.includes('vyas')) return 'व्यास';
-    if (id.includes('bayalees')) return 'लीला';
-    if (id.includes('sur')) return 'सूर';
-    if (id.includes('raskhan')) return 'रस';
-    if (id.includes('bhakti')) return 'भक्ति';
-    if (id.includes('binod')) return 'बिनोद';
-    return devanagari.replace(/^श्री\s*/, '').slice(0, 2) || 'वाणी';
+  // Sant-Vaani Dynamic Leather-Bound Hardcover Gradient Generator
+  const getBookGradient = (name: string): string => {
+    let h = 0;
+    for (let i = 0; i < name.length; i++) h = name.charCodeAt(i) + ((h << 5) - h);
+    const h1 = Math.abs(h % 360);
+    const h2 = (h1 + 50) % 360;
+    return `linear-gradient(135deg, hsl(${h1}, 75%, 28%) 0%, hsl(${h2}, 70%, 13%) 100%)`;
   };
 
   // Clean, Quiet Luxury Sacred Emblems (No Multi-Colored Gradients)
@@ -105,8 +100,8 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
               {activeTab === 'books'
                 ? `ग्रंथ संग्रह (${books.length})`
                 : activeTab === 'authors'
-                ? `रसिक संत (${authors.length})`
-                : `धाम लीला (${relations.length})`}
+                  ? `रसिक संत (${authors.length})`
+                  : `धाम लीला (${relations.length})`}
             </span>
           </div>
           <p className="text-xs text-[#71717A] font-normal mt-1 font-laila">
@@ -146,23 +141,20 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
                 key={tab.id}
                 type="button"
                 onClick={() => setActiveTab(tab.id)}
-                className={`relative z-10 py-2 px-2 sm:px-3 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer select-none flex items-center justify-center gap-1.5 ${
-                  isActive ? 'text-[#18181B] font-bold' : 'text-[#71717A] hover:text-[#18181B]'
-                }`}
+                className={`relative z-10 py-2 px-2 sm:px-3 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer select-none flex items-center justify-center gap-1.5 ${isActive ? 'text-[#18181B] font-bold' : 'text-[#71717A] hover:text-[#18181B]'
+                  }`}
               >
                 <Icon
-                  className={`w-3.5 h-3.5 shrink-0 transition-colors ${
-                    isActive ? 'text-[#B45309]' : tab.iconColor
-                  }`}
+                  className={`w-3.5 h-3.5 shrink-0 transition-colors ${isActive ? 'text-[#B45309]' : tab.iconColor
+                    }`}
                 />
                 <span className="truncate">
                   <span className="sm:hidden">{tab.mobileLabel}</span>
                   <span className="hidden sm:inline">{tab.label}</span>
                 </span>
                 <span
-                  className={`text-[10px] font-mono font-bold px-1.5 py-0.2 rounded-full leading-none shrink-0 transition-colors ${
-                    isActive ? 'bg-[#FACC15] text-[#78350F]' : 'bg-neutral-200/70 text-[#71717A]'
-                  }`}
+                  className={`text-[10px] font-mono font-bold px-1.5 py-0.2 rounded-full leading-none shrink-0 transition-colors ${isActive ? 'bg-[#FACC15] text-[#78350F]' : 'bg-neutral-200/70 text-[#71717A]'
+                    }`}
                 >
                   {tab.count}
                 </span>
@@ -176,9 +168,8 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
       {activeTab === 'books' && (
         <div className="rounded-[24px] sm:rounded-[28px] overflow-hidden border border-neutral-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.02)] bg-white divide-y divide-neutral-100">
           {books.map((book) => {
-            const initials = getBookInitials(book.id, book.devanagari);
             return (
-              <div
+            <div
                 key={book.id}
                 role="button"
                 tabIndex={0}
@@ -187,39 +178,24 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
                 className="group w-full p-4 sm:p-5 flex items-center justify-between gap-4 sm:gap-6 hover:bg-[#FAF8F5]/80 transition-colors duration-150 cursor-pointer select-none"
               >
                 <div className="flex items-center gap-4 sm:gap-5 flex-1 min-w-0">
-                  {/* Book Pothi / Scripture Cover Emblems */}
-                  <div className="w-14 sm:w-16 shrink-0">
-                    <ArtworkGraphicSlot
-                      src={book.imageUrl || null}
-                      aspectRatio="portrait"
-                      theme="amber"
-                      placeholderCategory="book"
-                      roundedClassName="rounded-[14px]"
-                      customFallback={
-                        <div className="w-full h-full rounded-[14px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EA] to-[#F3E8D5] border border-amber-300/70 border-l-[3.5px] border-l-amber-600/85 p-2 flex flex-col justify-between items-center relative overflow-hidden shadow-[0_2px_8px_-2px_rgba(180,83,9,0.08)] group-hover:border-amber-400 group-hover:border-l-amber-700 transition-colors">
-                          {/* Authentic Silk Bookmark Ribbon with V-Notch / Fishtail Cut */}
-                          <span
-                            aria-hidden="true"
-                            className="w-2.5 h-4.5 bg-gradient-to-b from-amber-500 via-amber-600 to-amber-700 absolute top-0 right-2.5 shadow-[0_1px_3px_rgba(0,0,0,0.18)] [clip-path:polygon(0_0,100%_0,100%_100%,50%_78%,0_100%)] z-10"
-                          />
+                  {/* Sant-Vaani Authentic 3D Book Cover */}
+                  <div
+                    className="book-cover-premium shrink-0 text-white select-none w-[64px] h-[90px] sm:w-[70px] sm:h-[98px]"
+                    style={{ background: getBookGradient(book.devanagari || book.id) }}
+                  >
+                    <div className="book-cover-inner-gold">
+                      <div className="text-[9px] text-amber-200/60 font-semibold tracking-widest leading-none">
+                        ॐ
+                      </div>
 
-                          {/* Top Row: Delicate Scripture Glyph */}
-                          <div className="w-full flex items-center justify-start pl-0.5 pt-0.5">
-                            <BookOpen className="w-3.5 h-3.5 text-amber-800/60" />
-                          </div>
+                      <span className="font-rozha text-xs sm:text-[13px] font-bold line-clamp-3 text-center leading-tight tracking-wide px-0.5 text-white/95">
+                        {book.devanagari.replace(/जी की वाणी/g, '').replace(/वाणी/g, '').replace(/ग्रन्थ/g, '').trim()}
+                      </span>
 
-                          {/* Center Hero: Majestic Rozha Devanagari Initials */}
-                          <span className="font-rozha text-lg sm:text-xl text-amber-950 font-bold leading-none text-center tracking-tight drop-shadow-[0_1px_1px_rgba(255,255,255,0.7)]">
-                            {initials}
-                          </span>
-
-                          {/* Bottom Row: Concentric-radius Pad Count Pill (R_inner = 14px - 8px = 6px) */}
-                          <span className="text-[10px] font-mono font-bold text-amber-900 bg-amber-100/90 px-1.5 py-0.5 rounded-[6px] border border-amber-200/60 leading-none">
-                            {book.count}
-                          </span>
-                        </div>
-                      }
-                    />
+                      <span className="text-[8px] font-mono font-bold text-amber-300/80 uppercase tracking-wider leading-none">
+                        {book.count} पद
+                      </span>
+                    </div>
                   </div>
 
                   {/* Information Stack (Rozha & Laila Hindi Typography) */}
