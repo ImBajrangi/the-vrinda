@@ -158,8 +158,8 @@ export function cleanSacredString(str: string): string {
     .replace(/&(?:quot|#34);/gi, '"')
     .replace(/&(?:apos|#39);/gi, "'")
     .replace(/&#(\d+);/g, (_, dec) => String.fromCharCode(Number(dec)));
-  // Secondary safety pass for residual zero-width artifacts
-  return res.replace(/&(?:zwnj|zwj|#x200c|#x200C|#8204|#x200d|#x200D|#8205);?/gi, '');
+  // Secondary safety pass for residual zero-width artifacts and unwanted scraper wilted emojis
+  return res.replace(/&(?:zwnj|zwj|#x200c|#x200C|#8204|#x200d|#x200D|#8205);?/gi, '').replace(/🥀/g, '');
 }
 
 export const sanitizeSacredText = cleanSacredString;
@@ -212,6 +212,7 @@ function normalizeCanonicalPad(raw: any): SacredPad {
 
   // 3. Normalize verses from stanzas if needed and sanitize all lines
   let verses = raw.verses;
+  let isStub = Boolean(raw.isStub);
   if (!verses || !verses.length) {
     if (raw.stanzas && raw.stanzas.length) {
       verses = raw.stanzas.map((st: any, idx: number) => ({
@@ -220,15 +221,51 @@ function normalizeCanonicalPad(raw: any): SacredPad {
         linesEnglish: (st.linesEnglish || []).map(cleanSacredString),
       }));
     } else {
-      verses = [{ stanzaNumber: 1, linesDevanagari: [title], linesEnglish: [] }];
+      verses = [];
+      isStub = true;
     }
   } else {
-    verses = verses.map((v: any, idx: number) => ({
-      ...v,
-      stanzaNumber: v.stanzaNumber || idx + 1,
-      linesDevanagari: (v.linesDevanagari || []).map(cleanSacredString),
-      linesEnglish: (v.linesEnglish || []).map(cleanSacredString),
-    }));
+    const prefixRegex = /^(\*|\•|\-|\–|\—|\s)*(दो[०0\.]\s*[-—–]?|चौ[०0\.]\s*[-—–]?|सो[०0\.]\s*[-—–]?|छं[०0\.]\s*[-—–]?)\s*/;
+    const meterRegex = /^(\*|\•|\-|\–|\—|\s)*(दोहा|चौपाई|सोरठा|छन्द|छंद|श्लोक|सवैया|कवित्त)\s*(\|[^\:]+)?\s*[:：\s]*$/i;
+
+    verses = verses.map((v: any, idx: number) => {
+      const cleanDev: string[] = [];
+      const cleanTranslit: string[] = [...(v.linesTransliteration || [])];
+      const cleanEng: string[] = [...(v.linesEnglish || [])];
+
+      (v.linesDevanagari || []).forEach((rawLine: string) => {
+        let line = cleanSacredString(rawLine);
+        if (!line) return;
+        if (/^(\*|\-|\–|\—|\s)+$/.test(line)) return;
+        if (/^भावार्थ\s*[:：\-—]*\s*$/.test(line)) return;
+
+        const meterMatch = line.match(meterRegex);
+        if (meterMatch) {
+          cleanDev.push(`॥ ${meterMatch[2]} ॥`);
+          return;
+        }
+
+        if (/[\u0900-\u097F]/.test(line)) {
+          line = line.replace(prefixRegex, '').replace(/^[\*\•\-\–\—\s]+/, '').trim();
+          if (line) cleanDev.push(line);
+        } else {
+          const isEnglishWords = /\b(the|and|of|to|is|in|that|with|for|was|as|he|she|they|their|his|her|my|our|you|your|be|by|on|at|from|this|these|those|May|O|lord|king|palace|lotus|feet|water|ocean|mind|eyes)\b/i.test(line);
+          if (isEnglishWords || line.startsWith('“') || line.startsWith('"') || (/^[A-Z][a-z\s,;:]+/.test(line) && line.includes(' '))) {
+            cleanEng.push(line);
+          } else {
+            cleanTranslit.push(line);
+          }
+        }
+      });
+
+      return {
+        ...v,
+        stanzaNumber: v.stanzaNumber || idx + 1,
+        linesDevanagari: cleanDev.length > 0 ? cleanDev : (v.linesDevanagari || []).map(cleanSacredString),
+        linesTransliteration: cleanTranslit.length > 0 ? cleanTranslit : undefined,
+        linesEnglish: cleanEng.length > 0 ? cleanEng : undefined,
+      };
+    });
   }
 
   const slug = raw.slug || raw.id || '';
@@ -248,6 +285,7 @@ function normalizeCanonicalPad(raw: any): SacredPad {
     chapterName,
     verseNumber,
     verses,
+    isStub,
   };
 }
 
@@ -257,6 +295,17 @@ const seedPadas: SacredPad[] = (SACRED_PADS || []).map(normalizeCanonicalPad);
 let allPadas: SacredPad[] = [...seedPadas];
 const allGranthas: CanonicalGrantha[] = canonicalGranthasData as CanonicalGrantha[];
 const allSaints: CanonicalSaint[] = canonicalSaintsData as CanonicalSaint[];
+
+export interface CatalogIndexItem {
+  id: string;
+  titleDevanagari: string;
+  collectionId: string;
+  author: string;
+  rag?: string;
+  index: number;
+}
+
+let searchCatalogItems: CatalogIndexItem[] = [];
 
 let cachedHierarchy: ScriptureHierarchyData | null = null;
 let hierarchyPromise: Promise<ScriptureHierarchyData | null> | null = null;
@@ -404,8 +453,16 @@ export const SacredDatabase = {
         allPadas.push(pad);
         padasById.set(pad.id, pad);
       } else {
-        // Upgrade existing seed pad with full canonical fields (chapterId, verseNumber, verses)
-        Object.assign(existing, pad);
+        const existingHasFullVerses = Boolean(existing.verses && existing.verses.length > 0 && !existing.isStub);
+        const incomingHasFullVerses = Boolean(pad.verses && pad.verses.length > 0 && !pad.isStub);
+
+        if (existingHasFullVerses && !incomingHasFullVerses) {
+          // Do not overwrite real verses with a stub
+          const { verses, ...meta } = pad;
+          Object.assign(existing, meta);
+        } else {
+          Object.assign(existing, pad);
+        }
       }
 
       if (pad.slug) {
@@ -435,7 +492,15 @@ export const SacredDatabase = {
         for (const p of incomingPads) {
           const idx = idMap.get(p.id);
           if (idx !== undefined) {
-            Object.assign(existingList[idx], p);
+            const existingItem = existingList[idx];
+            const existingHasFullVerses = Boolean(existingItem.verses && existingItem.verses.length > 0 && !existingItem.isStub);
+            const incomingHasFullVerses = Boolean(p.verses && p.verses.length > 0 && !p.isStub);
+            if (existingHasFullVerses && !incomingHasFullVerses) {
+              const { verses, ...meta } = p;
+              Object.assign(existingItem, meta);
+            } else {
+              Object.assign(existingItem, p);
+            }
           } else {
             existingList.push(p);
             idMap.set(p.id, existingList.length - 1);
@@ -524,24 +589,49 @@ export const SacredDatabase = {
           }
         } catch {}
 
-        // Step 3: Ensure default scripture collection (Sri Hit Chaurasi) is loaded
-        const hitPadas = padasByGrantha.get('hit-chaurasi');
-        if (!hitPadas || hitPadas.length < 300 || !hitPadas[0]?.chapterId) {
-          const currentHitMeta = activeManifest?.granthas?.['hit-chaurasi'];
-          const targetFile = currentHitMeta?.file || 'hit-chaurasi.json';
-          const cacheKey = currentHitMeta?.hash ? `vrind_grantha_hit-chaurasi_${currentHitMeta.hash}` : 'vrind_grantha_hit-chaurasi';
+        // Step 3: Intent-Driven Initial Preload (Eliminates unsolicited preloading)
+        let requestedGrantha: string | null = null;
+        let requestedPad: string | null = null;
+        let requestedAuthor: string | null = null;
 
+        if (typeof window !== 'undefined') {
           try {
-            const chunkRes = await fetch(`/data/granthas/${targetFile}`);
-            if (chunkRes.ok) {
-              const freshHitPadas = await chunkRes.json();
-              SacredDatabase.appendPadas(freshHitPadas);
-              loadedGranthas.add('hit-chaurasi');
-              await set(cacheKey, freshHitPadas);
-            }
+            const urlParams = new URLSearchParams(window.location.search);
+            requestedGrantha = urlParams.get('grantha');
+            requestedPad = urlParams.get('pad');
+            requestedAuthor = urlParams.get('author');
           } catch {}
+        }
+
+        if (requestedPad) {
+          // Deep link: fetch target pad fast-path
+          await this.fetchPadBySlug(requestedPad).catch(() => {});
+        } else if (requestedGrantha && requestedGrantha !== 'all') {
+          // Scripture scoped link: hydrate only target scripture
+          await this.fetchGranthaPadas(requestedGrantha).catch(() => {});
+        } else if (requestedAuthor) {
+          // Saint scoped link: hydrate only target author
+          await this.ensureAuthorPadasLoaded(requestedAuthor).catch(() => {});
         } else {
-          loadedGranthas.add('hit-chaurasi');
+          // Sanctuary home default: only hydrate seed collection if no specific target requested
+          const hitPadas = padasByGrantha.get('hit-chaurasi');
+          if (!hitPadas || hitPadas.length < 300 || !hitPadas[0]?.chapterId) {
+            const currentHitMeta = activeManifest?.granthas?.['hit-chaurasi'];
+            const targetFile = currentHitMeta?.file || 'hit-chaurasi.json';
+            const cacheKey = currentHitMeta?.hash ? `vrind_grantha_hit-chaurasi_${currentHitMeta.hash}` : 'vrind_grantha_hit-chaurasi';
+
+            try {
+              const chunkRes = await fetch(`/data/granthas/${targetFile}`);
+              if (chunkRes.ok) {
+                const freshHitPadas = await chunkRes.json();
+                SacredDatabase.appendPadas(freshHitPadas);
+                loadedGranthas.add('hit-chaurasi');
+                await set(cacheKey, freshHitPadas);
+              }
+            } catch {}
+          } else {
+            loadedGranthas.add('hit-chaurasi');
+          }
         }
 
         // Step 4: Restore Cloud Bookmarks in Background (non-blocking)
@@ -624,20 +714,26 @@ export const SacredDatabase = {
    */
   async fetchGranthaPadas(granthaId: string): Promise<SacredPad[]> {
     if (!granthaId || granthaId === 'all') return allPadas;
-    if (loadedGranthas.has(granthaId)) {
-      return padasByGrantha.get(granthaId) || [];
+    const existing = padasByGrantha.get(granthaId);
+    const granthaMeta = activeManifest?.granthas?.[granthaId];
+    const metaCount = granthaMeta?.count || this.getGranthaById(granthaId)?.count || 0;
+
+    const isFullyHydrated =
+      loadedGranthas.has(granthaId) &&
+      existing &&
+      existing.length > 0 &&
+      metaCount > 0 &&
+      existing.length >= metaCount &&
+      !existing[0]?.isStub &&
+      (existing[0]?.verses?.length || 0) > 0 &&
+      (existing[0]?.verses[0]?.linesDevanagari?.length || 0) > 0;
+
+    if (isFullyHydrated) {
+      return existing;
     }
 
     if (inFlightGranthaPromises.has(granthaId)) {
       return inFlightGranthaPromises.get(granthaId)!;
-    }
-
-    const existing = padasByGrantha.get(granthaId);
-    const granthaMeta = activeManifest?.granthas?.[granthaId];
-    const metaCount = granthaMeta?.count || this.getGranthaById(granthaId)?.count || 0;
-    if (existing && existing.length > 0 && metaCount > 0 && existing.length >= metaCount && existing[0]?.chapterId) {
-      loadedGranthas.add(granthaId);
-      return existing;
     }
 
     const fetchPromise = (async () => {
@@ -715,7 +811,15 @@ export const SacredDatabase = {
   async fetchPadBySlug(slug: string): Promise<SacredPad | undefined> {
     if (!slug) return undefined;
     const existing = this.getPadById(slug);
-    if (existing && existing.verses && existing.verses.length > 0 && existing.verses[0]?.linesDevanagari?.length > 1) {
+    const hasFullVerses =
+      existing &&
+      !existing.isStub &&
+      existing.verses &&
+      existing.verses.length > 0 &&
+      (existing.verses[0]?.linesDevanagari?.length || 0) > 0 &&
+      existing.verses[0]?.linesDevanagari?.[0] !== existing.titleDevanagari;
+
+    if (hasFullVerses) {
       return existing;
     }
 
@@ -724,7 +828,9 @@ export const SacredDatabase = {
       try {
         await this.fetchGranthaPadas(existing.collectionId);
         const updated = this.getPadById(slug);
-        if (updated && updated.verses && updated.verses.length > 0) return updated;
+        if (updated && !updated.isStub && updated.verses && updated.verses.length > 0 && (updated.verses[0]?.linesDevanagari?.length || 0) > 0) {
+          return updated;
+        }
       } catch {}
     }
 
@@ -783,12 +889,35 @@ export const SacredDatabase = {
 
     // 4. Case-insensitive / slug match fallback
     const needle = identifier.toLowerCase();
-    return allPadas.find(
+    const foundInAll = allPadas.find(
       (p) =>
         p.id.toLowerCase() === needle ||
         p.slug?.toLowerCase() === needle ||
         (p.titleEnglish && p.titleEnglish.toLowerCase().replace(/[^a-z0-9]+/g, '-').includes(needle))
     );
+    if (foundInAll) return foundInAll;
+
+    // 5. Search catalog items index fallback
+    const catItem = searchCatalogItems.find(
+      (it) => it.id === identifier || it.id.toLowerCase() === needle
+    );
+    if (catItem) {
+      const stub = normalizeCanonicalPad({
+        id: catItem.id,
+        slug: catItem.id,
+        titleDevanagari: catItem.titleDevanagari,
+        collectionId: catItem.collectionId,
+        author: catItem.author,
+        rag: catItem.rag,
+        index: catItem.index,
+        isStub: true,
+      });
+      padasById.set(stub.id, stub);
+      if (stub.slug) padasBySlug.set(stub.slug, stub);
+      return stub;
+    }
+
+    return undefined;
   },
 
   getPadSlug(pad: SacredPad): string {
@@ -1041,27 +1170,40 @@ export const SacredDatabase = {
    * Returns canonical chapters for a given grantha (e.g. 18 Gita Adhyayas, 7 Manas Kandas)
    */
   getGranthaChapters(granthaId: string): ChapterInfo[] {
+    let chapters: ChapterInfo[] = [];
     if (cachedHierarchy?.granthas?.[granthaId]?.chapters) {
-      return cachedHierarchy.granthas[granthaId].chapters;
+      chapters = cachedHierarchy.granthas[granthaId].chapters;
+    } else {
+      // Dynamic fallback from indexed padas
+      const padas = padasByGrantha.get(granthaId) || [];
+      const chapterMap = new Map<string, { id: string; name: string; count: number; firstPadId?: string; firstPadSlug?: string }>();
+      padas.forEach((p) => {
+        const cId = p.chapterId || 'general';
+        const cName = p.chapterName || 'सामान्य पद';
+        if (!chapterMap.has(cId)) {
+          chapterMap.set(cId, { id: cId, name: cName, count: 0, firstPadId: p.id, firstPadSlug: p.slug });
+        }
+        chapterMap.get(cId)!.count++;
+      });
+      chapters = Array.from(chapterMap.values()).map((c) => ({
+        id: c.id,
+        name: c.name,
+        verseCount: c.count,
+        firstPadId: c.firstPadId,
+        firstPadSlug: c.firstPadSlug,
+      }));
     }
-    // Dynamic fallback from indexed padas
-    const padas = padasByGrantha.get(granthaId) || [];
-    const chapterMap = new Map<string, { id: string; name: string; count: number; firstPadId?: string; firstPadSlug?: string }>();
-    padas.forEach((p) => {
-      const cId = p.chapterId || 'general';
-      const cName = p.chapterName || 'सामान्य पद';
-      if (!chapterMap.has(cId)) {
-        chapterMap.set(cId, { id: cId, name: cName, count: 0, firstPadId: p.id, firstPadSlug: p.slug });
+
+    // Defensive check: If all or almost all chapters have only 1 verse and there is a "सामान्य पद" with the rest,
+    // these are scraper metadata fragments, not genuine scripture chapters.
+    if (chapters.length > 1) {
+      const singlePadChapters = chapters.filter(c => c.verseCount <= 1);
+      const generalChapter = chapters.find(c => c.name.includes('सामान्य पद') || c.id === 'general');
+      if (generalChapter && singlePadChapters.length >= chapters.length - 2) {
+        return [];
       }
-      chapterMap.get(cId)!.count++;
-    });
-    return Array.from(chapterMap.values()).map((c) => ({
-      id: c.id,
-      name: c.name,
-      verseCount: c.count,
-      firstPadId: c.firstPadId,
-      firstPadSlug: c.firstPadSlug,
-    }));
+    }
+    return chapters;
   },
 
   /**
@@ -1091,17 +1233,81 @@ export const SacredDatabase = {
   },
 
   /**
-   * Returns all padas composed by a specific author
+   * Returns all padas composed by a specific author with robust normalization
    */
   getPadasByAuthor(authorName: string): SacredPad[] {
     if (!authorName) return [];
-    const clean = authorName.trim().toLowerCase();
-    if (authorCache.has(clean)) {
-      return authorCache.get(clean)!;
+    const rawClean = authorName.trim().toLowerCase();
+    if (authorCache.has(rawClean)) {
+      return authorCache.get(rawClean)!;
     }
-    const result = allPadas.filter((p) => p.author.toLowerCase().includes(clean));
-    authorCache.set(clean, result);
+
+    const coreName = rawClean
+      .replace(/\(.*?\)/g, '')
+      .replace(/^श्री\s+/, '')
+      .replace(/\s+जी$/, '')
+      .trim();
+
+    const result = allPadas.filter((p) => {
+      const pAuthor = (p.author || '').toLowerCase();
+      if (pAuthor.includes(rawClean)) return true;
+      if (coreName && pAuthor.includes(coreName)) return true;
+      return false;
+    });
+
+    authorCache.set(rawClean, result);
     return result;
+  },
+
+  /**
+   * Proactively ensures the grantha chunk containing this author's padas is hydrated
+   */
+  async ensureAuthorPadasLoaded(authorName: string): Promise<SacredPad[]> {
+    if (!authorName) return [];
+    const rawClean = authorName.trim().toLowerCase();
+    const coreName = rawClean
+      .replace(/\(.*?\)/g, '')
+      .replace(/^श्री\s+/, '')
+      .replace(/\s+जी$/, '')
+      .trim();
+
+    // Check if we already have sufficient padas in memory
+    const existing = this.getPadasByAuthor(authorName);
+    if (existing && existing.length >= 10) {
+      return existing;
+    }
+
+    const chunksToLoad = new Set<string>();
+    if (coreName.includes('रसखान')) chunksToLoad.add('raskhan-padavali');
+    else if (coreName.includes('नागरीदास')) chunksToLoad.add('nagaridas-vani');
+    else if (coreName.includes('सूरदास')) chunksToLoad.add('sur-sagar');
+    else if (coreName.includes('मीरा')) chunksToLoad.add('meera-padavali');
+    else if (coreName.includes('व्यास')) chunksToLoad.add('vyas-vani');
+    else if (coreName.includes('हरिवंश') || coreName.includes('हित')) chunksToLoad.add('hit-chaurasi');
+    else if (coreName.includes('हरिदास')) chunksToLoad.add('kelimal');
+    else if (coreName.includes('बिहारिन')) chunksToLoad.add('biharin-dev-vani');
+    else if (coreName.includes('नारायण स्वामी')) chunksToLoad.add('narayan-swami-vani');
+    else if (coreName.includes('ललित किशोरी')) chunksToLoad.add('lalit-kishori-vani');
+    else if (coreName.includes('ध्रुवदास')) chunksToLoad.add('bayalees-leela');
+    else if (coreName.includes('परमानन्द')) chunksToLoad.add('paramanand-sagar');
+    else if (coreName.includes('चन्द्रसखी')) chunksToLoad.add('chandrasakhi-padavali');
+    else if (coreName.includes('वाल्मीकि')) chunksToLoad.add('valmiki-ramayana');
+    else if (coreName.includes('वेदव्यास')) chunksToLoad.add('shrimad-bhagavatam');
+    else if (coreName.includes('तुलसीदास')) chunksToLoad.add('ramcharitmanas');
+    else {
+      // General rasik saints (Kishori Ali, Vitthal Vipul, Giridhar Lal, Bhori Sakhi, etc.)
+      chunksToLoad.add('rasik-vani-sangrah');
+    }
+
+    for (const chunkId of chunksToLoad) {
+      try {
+        await this.fetchGranthaPadas(chunkId);
+      } catch (err) {
+        console.warn('Failed to pre-hydrate chunk for author:', chunkId, err);
+      }
+    }
+
+    return this.getPadasByAuthor(authorName);
   },
 
   /**
@@ -1134,7 +1340,76 @@ export const SacredDatabase = {
   },
 
   /**
-   * Fast, Multi-Token Client-Side Search (< 5ms over 1,000+ padas)
+   * Intent-Based Recommendation Engine:
+   * Returns up to `limit` contextually related padas (consecutive next verse, same saint, same raga)
+   * with zero network roundtrips using in-memory indices.
+   */
+  getRelatedPadas(targetPad: SacredPad, limit = 3): { pad: SacredPad; reason: string; badge: string }[] {
+    if (!targetPad) return [];
+    const related: { pad: SacredPad; reason: string; badge: string }[] = [];
+    const seenIds = new Set<string>([targetPad.id]);
+
+    // 1. Next sequential verse in the same chapter or grantha
+    const granthaPadas = padasByGrantha.get(targetPad.collectionId) || [];
+    const currentIdx = granthaPadas.findIndex(p => p.id === targetPad.id || p.slug === targetPad.slug);
+    if (currentIdx >= 0 && currentIdx + 1 < granthaPadas.length) {
+      const nextPad = granthaPadas[currentIdx + 1];
+      if (nextPad && !seenIds.has(nextPad.id)) {
+        seenIds.add(nextPad.id);
+        related.push({
+          pad: nextPad,
+          reason: targetPad.chapterName ? `${targetPad.chapterName} की अगली कड़ी` : 'अगला पावन पद',
+          badge: 'अगला पद',
+        });
+      }
+    }
+
+    // 2. Another verse by the same Rasik Saint (if author known and not generic)
+    if (targetPad.author && !targetPad.author.includes('परंपरा') && targetPad.author !== 'विविध रसिक संत') {
+      const authorPadas = this.getPadasByAuthor(targetPad.author);
+      const saintCandidate = authorPadas.find(p => !seenIds.has(p.id) && (p.verses?.[0]?.linesDevanagari?.length || 0) > 0);
+      if (saintCandidate) {
+        seenIds.add(saintCandidate.id);
+        related.push({
+          pad: saintCandidate,
+          reason: `${targetPad.author} की अन्य दिव्य रचना`,
+          badge: 'संत वाणी',
+        });
+      }
+    }
+
+    // 3. A verse sharing the same Hindustani Classical Raga (if not 'विविध' or generic)
+    if (targetPad.rag && targetPad.rag !== 'विविध' && targetPad.rag !== 'सामान्य') {
+      const ragaPadas = this.getPadasByRaga(targetPad.rag);
+      const ragaCandidate = ragaPadas.find(p => !seenIds.has(p.id) && (p.verses?.[0]?.linesDevanagari?.length || 0) > 0);
+      if (ragaCandidate) {
+        seenIds.add(ragaCandidate.id);
+        related.push({
+          pad: ragaCandidate,
+          reason: `राग ${targetPad.rag} में निबद्ध पद`,
+          badge: `राग ${targetPad.rag}`,
+        });
+      }
+    }
+
+    // 4. If still under limit, previous verse
+    if (related.length < limit && currentIdx > 0) {
+      const prevPad = granthaPadas[currentIdx - 1];
+      if (prevPad && !seenIds.has(prevPad.id)) {
+        seenIds.add(prevPad.id);
+        related.push({
+          pad: prevPad,
+          reason: 'पूर्ववर्ती पद',
+          badge: 'पूर्व पद',
+        });
+      }
+    }
+
+    return related.slice(0, limit);
+  },
+
+  /**
+   * Fast, Multi-Token Client-Side Search (< 5ms over all loaded padas and 43,000+ catalog items)
    */
   search(query: string, limit = 25): SacredPad[] {
     const q = query.trim().toLowerCase();
@@ -1142,19 +1417,75 @@ export const SacredDatabase = {
 
     const tokens = q.split(/\s+/).filter(Boolean);
     const results: SacredPad[] = [];
+    const seenIds = new Set<string>();
 
+    // 1. Search fully loaded authentic padas in memory
     for (const pad of allPadas) {
-      const targetText = `${pad.titleDevanagari} ${pad.titleEnglish} ${pad.author} ${pad.rag} ${pad.verses[0]?.linesDevanagari?.join(' ') || ''
-        }`.toLowerCase();
+      const targetText = `${pad.titleDevanagari} ${pad.titleEnglish} ${pad.author} ${pad.rag} ${
+        pad.verses[0]?.linesDevanagari?.join(' ') || ''
+      }`.toLowerCase();
 
       const matches = tokens.every((tok) => targetText.includes(tok));
       if (matches) {
         results.push(pad);
-        if (results.length >= limit) break;
+        seenIds.add(pad.id);
+        if (results.length >= limit) return results;
+      }
+    }
+
+    // 2. Search catalog index if limit not yet reached
+    if (searchCatalogItems.length > 0) {
+      for (const item of searchCatalogItems) {
+        if (seenIds.has(item.id)) continue;
+        const targetText = `${item.titleDevanagari} ${item.author} ${item.rag || ''}`.toLowerCase();
+        const matches = tokens.every((tok) => targetText.includes(tok));
+        if (matches) {
+          const stubPad = normalizeCanonicalPad({
+            id: item.id,
+            slug: item.id,
+            titleDevanagari: item.titleDevanagari,
+            collectionId: item.collectionId,
+            author: item.author,
+            rag: item.rag,
+            index: item.index,
+            isStub: true,
+          });
+          results.push(stubPad);
+          seenIds.add(item.id);
+          if (results.length >= limit) break;
+        }
       }
     }
 
     return results;
+  },
+
+  /**
+   * Load search catalog items for lightweight instant Spotlight search across 43,000+ scriptures
+   */
+  loadSearchCatalog(data: any): void {
+    if (!data) return;
+    if (data.items && Array.isArray(data.items)) {
+      const cols = data.cols || [];
+      const authors = data.authors || [];
+      searchCatalogItems = data.items.map((row: any[], idx: number) => ({
+        id: row[0],
+        titleDevanagari: row[1],
+        collectionId: cols[row[2]] || '',
+        author: authors[row[3]] || '',
+        rag: row[4] || '',
+        index: idx + 1,
+      }));
+    } else if (Array.isArray(data)) {
+      searchCatalogItems = data.map((item: any, idx: number) => ({
+        id: item.id,
+        titleDevanagari: item.titleDevanagari,
+        collectionId: item.collectionId || '',
+        author: item.author || '',
+        rag: item.rag || '',
+        index: item.index || idx + 1,
+      }));
+    }
   },
 
   /**

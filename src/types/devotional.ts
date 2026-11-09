@@ -16,6 +16,7 @@ export interface SacredPad {
     linesTransliteration?: string[];
   }>;
   audioUrl?: string;
+  isStub?: boolean;
 }
 
 export interface ChapterInfo {

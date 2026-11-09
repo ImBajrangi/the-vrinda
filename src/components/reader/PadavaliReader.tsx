@@ -56,9 +56,11 @@ interface PadavaliReaderProps {
   isPlaying?: boolean;
   selectedGranthaId?: string;
   selectedSearchQuery?: string;
+  selectedAuthor?: string | null;
   selectedPadId?: string;
   initialPadId?: string;
   onSelectGranthaId?: (granthaId: string) => void;
+  onSelectAuthor?: (author: string | null) => void;
   onSelectPad?: (pad: SacredPad) => void;
 }
 
@@ -91,7 +93,7 @@ export const sanitizeSacredText = (text: string): string => {
     res = res.replace(regex, replacement);
   }
   res = res.replace(/&#(\d+);/g, (_, dec) => String.fromCharCode(Number(dec)));
-  return res.replace(/&(?:zwnj|zwj|#x200c|#x200C|#8204|#x200d|#x200D|#8205);?/gi, '');
+  return res.replace(/&(?:zwnj|zwj|#x200c|#x200C|#8204|#x200d|#x200D|#8205);?/gi, '').replace(/🥀/g, '');
 };
 
 /**
@@ -172,9 +174,11 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   isPlaying,
   selectedGranthaId,
   selectedSearchQuery,
+  selectedAuthor: selectedAuthorProp,
   selectedPadId,
   initialPadId,
   onSelectGranthaId,
+  onSelectAuthor: onSelectAuthorProp,
   onSelectPad: onExternalSelectPad,
 }) => {
   const [allPadas, setAllPadas] = useState<SacredPad[]>(() => SacredDatabase.getAllPadas());
@@ -195,6 +199,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   );
   type GranthaCategory = 'all' | 'mahagranth' | 'rasik-vani' | 'kavya' | 'dham-leela' | 'authors';
   const [granthaCategory, setGranthaCategory] = useState<GranthaCategory>(() => {
+    if (selectedAuthorProp) return 'authors';
     if (selectedGranthaId) {
       const g = SacredDatabase.getGranthaById(selectedGranthaId);
       if (g?.category) return g.category as GranthaCategory;
@@ -202,10 +207,21 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     return 'all';
   });
 
-  const [selectedAuthor, setSelectedAuthor] = useState<string | null>(null);
+  const [selectedAuthor, setSelectedAuthor] = useState<string | null>(
+    selectedAuthorProp !== undefined ? selectedAuthorProp : null
+  );
   const [selectedChapter, setSelectedChapter] = useState<string>('all');
   const [isChapterDropdownOpen, setIsChapterDropdownOpen] = useState<boolean>(false);
   const [activeScrollerVerseId, setActiveScrollerVerseId] = useState<string>('');
+  const [isScopedSession, setIsScopedSession] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        const p = new URLSearchParams(window.location.search);
+        if (p.get('pad') || p.get('grantha') || p.get('author')) return true;
+      } catch {}
+    }
+    return Boolean(initialPadId || (selectedGranthaId && selectedGranthaId !== 'all') || selectedAuthorProp);
+  });
 
   type ReadingMode = 'continuous' | 'single';
   const [readingMode, setReadingMode] = useState<ReadingMode>(() => {
@@ -468,12 +484,51 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     if (selectedGranthaId && selectedGranthaId !== lastExplicitGranthaIdRef.current) {
       lastExplicitGranthaIdRef.current = selectedGranthaId;
       setSelectedGrantha(selectedGranthaId);
+      setSelectedChapter('all');
+      setSelectedRaga('all');
+      setSelectedAuthor(null);
+      if (onSelectAuthorProp) onSelectAuthorProp(null);
       const g = SacredDatabase.getGranthaById(selectedGranthaId);
       if (g?.category) {
         setGranthaCategory(g.category as GranthaCategory);
+      } else if (selectedGranthaId === 'all') {
+        setGranthaCategory('all');
+      }
+
+      if (selectedGranthaId !== 'all') {
+        setLoadingGranthaId(selectedGranthaId);
+        SacredDatabase.fetchGranthaPadas(selectedGranthaId).then((loaded) => {
+          setAllPadas([...SacredDatabase.getAllPadas()]);
+          setLoadingGranthaId(null);
+          if (loaded && loaded.length > 0) {
+            setSelectedPad(loaded[0]);
+            setActiveScrollerVerseId(loaded[0].id);
+            if (onExternalSelectPad) onExternalSelectPad(loaded[0]);
+          }
+        });
       }
     }
-  }, [selectedGranthaId]);
+  }, [selectedGranthaId, onSelectAuthorProp, onExternalSelectPad]);
+
+  useEffect(() => {
+    if (selectedAuthorProp !== undefined) {
+      setSelectedAuthor(selectedAuthorProp);
+      if (selectedAuthorProp) {
+        setSelectedGrantha('all');
+        setGranthaCategory('authors');
+        setSelectedChapter('all');
+        setSelectedRaga('all');
+        SacredDatabase.ensureAuthorPadasLoaded(selectedAuthorProp).then((loaded) => {
+          setAllPadas([...SacredDatabase.getAllPadas()]);
+          if (loaded && loaded.length > 0) {
+            setSelectedPad(loaded[0]);
+            setActiveScrollerVerseId(loaded[0].id);
+            if (onExternalSelectPad) onExternalSelectPad(loaded[0]);
+          }
+        });
+      }
+    }
+  }, [selectedAuthorProp, onExternalSelectPad]);
 
   // On-Demand Single Pada Fetcher (Only fetches 0.65 KB for active verse)
   useEffect(() => {
@@ -494,6 +549,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
         setSelectedPad(p);
         if (p.collectionId && p.collectionId !== selectedGrantha) {
           setSelectedGrantha(p.collectionId);
+          setSelectedChapter(p.chapterId || 'all');
           const g = SacredDatabase.getGranthaById(p.collectionId);
           if (g?.category) {
             setGranthaCategory(g.category as GranthaCategory);
@@ -1103,9 +1159,15 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   const handleSelectAuthor = (authorName: string | null) => {
     navigationProgress.start();
     setSelectedAuthor(authorName);
+    if (onSelectAuthorProp) onSelectAuthorProp(authorName);
     setSelectedChapter('all');
     setSelectedRaga('all');
     setVisibleCount(30);
+    if (authorName) {
+      SacredDatabase.ensureAuthorPadasLoaded(authorName).then(() => {
+        setAllPadas([...SacredDatabase.getAllPadas()]);
+      });
+    }
     requestAnimationFrame(() => navigationProgress.done());
   };
 
@@ -1162,6 +1224,20 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     }
     return null;
   }, [availableChapters, currentChapter]);
+
+  const relatedPadas = useMemo(() => {
+    return SacredDatabase.getRelatedPadas(selectedPad, 3);
+  }, [selectedPad, allPadas]);
+
+  // Auto-heal selectedChapter if it doesn't exist in current grantha
+  useEffect(() => {
+    if (selectedChapter !== 'all' && availableChapters.length > 0) {
+      const exists = availableChapters.some((c) => c.id === selectedChapter || c.name === selectedChapter);
+      if (!exists) {
+        setSelectedChapter('all');
+      }
+    }
+  }, [availableChapters, selectedChapter]);
 
   const handleSelectRaga = (raga: string) => {
     navigationProgress.start();
@@ -1735,9 +1811,34 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       </div>
 
       {/* ========================================================================= */}
-      {/* 2. Canonical Grantha & Author Shelf (Hidden in Distraction-Free Mode)    */}
+      {/* 2. Context-Aware Scoped Bar or Full Grantha Shelf                        */}
       {/* ========================================================================= */}
-      {!isFocusReadingMode && (
+      {!isFocusReadingMode && isScopedSession && (
+        <div className="mb-5 p-3 sm:p-3.5 rounded-2xl bg-[#FAF8F5] border border-amber-900/10 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="flex items-center gap-2.5 min-w-0">
+            <span className="w-2.5 h-2.5 rounded-full bg-amber-600 animate-pulse shrink-0" />
+            <div className="min-w-0">
+              <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-800">
+                सम्बद्ध पाठ धारा • Focused Sanctuary Context
+              </div>
+              <div className="text-sm font-serif font-bold text-neutral-900 truncate mt-0.5">
+                {granthaDisplayName} {selectedAuthor ? `• ${selectedAuthor}` : ''}
+              </div>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={() => setIsScopedSession(false)}
+            className="px-3.5 py-1.5 rounded-[10px] text-xs font-bold bg-[#FEF08A] hover:bg-amber-300 text-[#78350F] transition-colors cursor-pointer select-none shrink-0 shadow-2xs flex items-center gap-1.5 self-start sm:self-auto"
+            title="समस्त २९ पवित्र ग्रंथ एवं रसिक वाणी खोलें"
+          >
+            <span>समस्त २९ ग्रंथ देखें</span>
+            <ChevronRight className="w-3.5 h-3.5" />
+          </button>
+        </div>
+      )}
+
+      {!isFocusReadingMode && !isScopedSession && (
         <div className="mb-5 space-y-2.5">
           {/* Scripture Category Filter Strip (महाग्रंथ, रसिक वाणी, काव्य व छंद, धाम व लीला, संत व रचयिता) */}
           <div className="relative flex items-center gap-1.5 overflow-x-auto no-scrollbar p-1 bg-white/95 border border-neutral-200/80 shadow-2xs rounded-full text-xs">
@@ -2295,7 +2396,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
         {/* ========================================================================= */}
         <article
           id="reading-canvas-top"
-          className={`flex-1 min-w-0 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${isFocusReadingMode
+          className={`scroll-mt-24 sm:scroll-mt-28 flex-1 min-w-0 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${isFocusReadingMode
               ? `w-full dhyana-reader-canvas p-6 sm:p-10 ${currentTheme.canvasBg} ${currentTheme.canvasText}`
               : `w-full rounded-3xl p-6 sm:p-9 ${currentTheme.canvasBg} ${currentTheme.canvasText} ${isLeftSidebarCollapsed && isRightSidebarCollapsed ? 'max-w-4xl mx-auto' : ''
               }`
@@ -2331,7 +2432,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                           handleSelectChapter('all');
                           setIsChapterDropdownOpen(false);
                         }}
-                        className={`w-full text-left px-3 py-2 rounded-xl text-xs font-semibold flex items-center justify-between transition-colors cursor-pointer ${selectedChapter === 'all'
+                        className={`w-full text-left px-3 py-2 rounded-[10px] text-xs font-semibold flex items-center justify-between transition-colors cursor-pointer ${selectedChapter === 'all'
                             ? 'bg-[#FEF08A] text-[#18181B] font-bold'
                             : 'hover:bg-neutral-100 text-neutral-700'
                           }`}
@@ -2349,7 +2450,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                             handleSelectChapter(ch.id);
                             setIsChapterDropdownOpen(false);
                           }}
-                          className={`w-full text-left px-3 py-2 rounded-xl text-xs font-semibold flex items-center justify-between transition-colors cursor-pointer ${selectedChapter === ch.id
+                          className={`w-full text-left px-3 py-2 rounded-[10px] text-xs font-semibold flex items-center justify-between transition-colors cursor-pointer ${selectedChapter === ch.id
                               ? 'bg-[#FEF08A] text-[#18181B] font-bold'
                               : 'hover:bg-neutral-100 text-neutral-700'
                             }`}
@@ -2518,7 +2619,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                       <div
                         key={pad.id}
                         id={`verse-stream-${pad.id}`}
-                        className={`p-5 sm:p-7 rounded-2xl border transition-colors duration-200 ${currentTheme.cardHoverBg} ${selectedPad.id === pad.id
+                        className={`scroll-mt-24 sm:scroll-mt-28 p-5 sm:p-7 rounded-2xl border transition-colors duration-200 ${currentTheme.cardHoverBg} ${selectedPad.id === pad.id
                             ? 'ring-1 ring-amber-300/50 border-amber-300/40'
                             : currentTheme.borderColor
                           }`}
@@ -2582,13 +2683,42 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                         </div>
 
                         {/* Inherently Distributed Devotional Verses & Inherent Meaning */}
-                        <DevotionalVersePresenter
-                          lines={pad.verses?.[0]?.linesDevanagari || [pad.titleDevanagari]}
-                          fontClass={fontClass}
-                          fontSize={fontSize}
-                          textAlignClass={textAlignClass}
-                          currentTheme={currentTheme}
-                        />
+                        {pad.verses && pad.verses.length > 0 && pad.verses[0]?.linesDevanagari?.length > 0 ? (
+                          pad.verses.map((v, vIdx) => (
+                            <div key={vIdx} className={vIdx > 0 ? 'mt-4 pt-3 border-t border-amber-900/10' : ''}>
+                              <DevotionalVersePresenter
+                                lines={v.linesDevanagari}
+                                fontClass={fontClass}
+                                fontSize={fontSize}
+                                textAlignClass={textAlignClass}
+                                currentTheme={currentTheme}
+                              />
+                              {pad.verses.length > 1 && (
+                                <div className="flex items-center justify-center my-3 select-none">
+                                  <span className={`${fontClass} font-bold text-xs tracking-widest ${currentTheme.metaColor}`}>
+                                    ॥ {formatDevanagariNumerals(v.stanzaNumber || vIdx + 1)} ॥
+                                  </span>
+                                </div>
+                              )}
+                            </div>
+                          ))
+                        ) : (
+                          <div
+                            ref={() => {
+                              if (pad.collectionId && (!loadingGranthaId || loadingGranthaId === pad.collectionId)) {
+                                SacredDatabase.fetchGranthaPadas(pad.collectionId);
+                              } else if (pad.slug) {
+                                SacredDatabase.fetchPadBySlug(pad.slug);
+                              }
+                            }}
+                            className="py-6 flex flex-col items-center justify-center text-center space-y-2 select-none"
+                          >
+                            <IOSSpinner size="sm" theme="amber" />
+                            <p className="font-serif text-xs text-neutral-500">
+                              श्लोक संकलित हो रहा है...
+                            </p>
+                          </div>
+                        )}
 
                         {/* Inline Purport Drawer */}
                         <InlinePurportCard pad={pad} isOpen={isPurportOpen} />
@@ -2911,6 +3041,57 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   <span>अगला पद</span>
                   <ChevronRight className="w-4 h-4 text-[#CA8A04]" />
                 </button>
+              </div>
+            </div>
+          )}
+
+          {/* ========================================================================= */}
+          {/* Related Sacred Verses Shelf (सम्बन्धित पावन पद)                           */}
+          {/* ========================================================================= */}
+          {relatedPadas && relatedPadas.length > 0 && (
+            <div className="mt-10 pt-6 border-t border-amber-900/10 select-none">
+              <div className="flex items-center justify-between mb-3.5 px-1">
+                <div className="flex items-center gap-2">
+                  <Sparkles className="w-3.5 h-3.5 text-amber-700" />
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-amber-900">
+                    सम्बन्धित पावन पद • Related Sacred Verses
+                  </span>
+                </div>
+                <span className="text-[10px] text-neutral-400 font-sans hidden sm:inline">
+                  {selectedPad?.author || 'श्री वृन्दावन रसिक परंपरा'}
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                {relatedPadas.map(({ pad: rPad, reason, badge }, rIdx) => {
+                  const firstLine = rPad.verses?.[0]?.linesDevanagari?.[0] || rPad.titleDevanagari;
+                  return (
+                    <div
+                      key={rPad.id || rIdx}
+                      onClick={() => handleSelectPad(rPad)}
+                      title={reason}
+                      className="p-3.5 rounded-2xl bg-[#FAF8F5] hover:bg-[#F3EFE6] border border-amber-900/10 cursor-pointer select-none transition-colors duration-150 flex flex-col justify-between"
+                    >
+                      <div>
+                        <div className="flex items-center justify-between gap-1 mb-2">
+                          <span className="px-2 py-0.5 rounded-[10px] text-[10px] font-mono font-bold bg-[#FEF08A] text-[#78350F]">
+                            {badge}
+                          </span>
+                          <span className="text-[10px] text-amber-800 font-mono">
+                            पद {rPad.index || rIdx + 1}
+                          </span>
+                        </div>
+                        <h5 className="font-serif font-bold text-xs sm:text-sm text-neutral-900 line-clamp-2 leading-snug">
+                          {firstLine}
+                        </h5>
+                      </div>
+                      <div className="mt-3 pt-2 border-t border-amber-900/5 flex items-center justify-between text-[11px] text-neutral-500">
+                        <span className="truncate">{rPad.author || 'रसिक संत'}</span>
+                        <ChevronRight className="w-3.5 h-3.5 text-amber-700 shrink-0 ml-1" />
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           )}

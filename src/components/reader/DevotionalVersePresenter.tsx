@@ -43,10 +43,10 @@ export const DevotionalVersePresenter: React.FC<DevotionalVersePresenterProps> =
     fontSize === 'sm'
       ? 'text-[17px] sm:text-[19px] leading-[2.1]'
       : fontSize === 'md'
-      ? 'text-[20px] sm:text-[22px] leading-[2.2]'
-      : fontSize === 'lg'
-      ? 'text-[23px] sm:text-[25px] leading-[2.3]'
-      : 'text-[26px] sm:text-[28px] leading-[2.4]';
+        ? 'text-[20px] sm:text-[22px] leading-[2.2]'
+        : fontSize === 'lg'
+          ? 'text-[23px] sm:text-[25px] leading-[2.3]'
+          : 'text-[26px] sm:text-[28px] leading-[2.4]';
 
   const textAlignClass = alignment === 'center' ? 'text-center' : 'text-left';
 
@@ -57,7 +57,7 @@ export const DevotionalVersePresenter: React.FC<DevotionalVersePresenterProps> =
         {/* Left: Reading guidance hint */}
         <span className="text-[11px] font-mono text-neutral-400 hidden sm:inline-flex items-center gap-1">
           <ScrollText className="w-3 h-3 text-amber-600" />
-          <span>चरण पर टैप कर एकाग्रता पाठ (Focus Mode) प्रारम्भ करें</span>
+          <span>Focus Mode प्रारम्भ करें</span>
         </span>
 
         {/* Right: Alignment & Commentary Toggles */}
@@ -67,11 +67,10 @@ export const DevotionalVersePresenter: React.FC<DevotionalVersePresenterProps> =
             <button
               type="button"
               onClick={() => setAlignment('center')}
-              className={`h-6 px-2.5 rounded-full text-[10px] font-mono font-semibold flex items-center gap-1 transition-colors cursor-pointer select-none ${
-                alignment === 'center'
+              className={`h-6 px-2.5 rounded-full text-[10px] font-mono font-semibold flex items-center gap-1 transition-colors cursor-pointer select-none ${alignment === 'center'
                   ? 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
                   : 'text-neutral-500 hover:text-neutral-900'
-              }`}
+                }`}
               title="संकीर्तन / मध्यस्थ लय (Centered)"
             >
               <AlignCenter className="w-2.5 h-2.5" />
@@ -80,11 +79,10 @@ export const DevotionalVersePresenter: React.FC<DevotionalVersePresenterProps> =
             <button
               type="button"
               onClick={() => setAlignment('left')}
-              className={`h-6 px-2.5 rounded-full text-[10px] font-mono font-semibold flex items-center gap-1 transition-colors cursor-pointer select-none ${
-                alignment === 'left'
+              className={`h-6 px-2.5 rounded-full text-[10px] font-mono font-semibold flex items-center gap-1 transition-colors cursor-pointer select-none ${alignment === 'left'
                   ? 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
                   : 'text-neutral-500 hover:text-neutral-900'
-              }`}
+                }`}
               title="शास्त्रीय / वामस्थ पाठ (Left-aligned)"
             >
               <AlignLeft className="w-2.5 h-2.5" />
@@ -122,17 +120,21 @@ export const DevotionalVersePresenter: React.FC<DevotionalVersePresenterProps> =
           // 1. Festive / Darshan Poem Title (e.g. "झूलन उत्सव संध्या दर्शन")
           if (unit.type === 'poem_title') {
             return (
-              <div key={idx} className="text-center pt-3 pb-1 select-none space-y-1">
-                <div className="inline-flex items-center justify-center gap-2">
-                  <span className="h-px w-6 sm:w-10 bg-gradient-to-r from-transparent to-amber-500/60" />
-                  <span className="text-[10px] sm:text-[11px] font-mono font-bold tracking-widest text-amber-800 uppercase">
-                    लीला उत्सव प्रसंग
-                  </span>
-                  <span className="h-px w-6 sm:w-10 bg-gradient-to-l from-transparent to-amber-500/60" />
-                </div>
-                <h3 className={`text-lg sm:text-xl lg:text-2xl font-serif font-bold text-amber-950 tracking-normal leading-snug ${fontClass}`}>
+              <div key={idx} className="text-center pt-2 pb-1 select-none">
+                <h3 className={`inline-block px-3.5 py-1 rounded-full text-sm sm:text-base font-serif font-bold text-amber-950 bg-amber-100/60 border border-amber-300/40 ${fontClass}`}>
                   ॥ {unit.text} ॥
                 </h3>
+              </div>
+            );
+          }
+
+          // 1B. Sacred Meter Badge (e.g. "॥ दोहा ॥", "॥ चौपाई ॥", "॥ सोरठा ॥")
+          if (unit.type === 'meter_badge') {
+            return (
+              <div key={idx} className="flex items-center justify-center pt-2 pb-1 select-none">
+                <span className="px-3.5 py-0.5 rounded-full text-xs font-serif font-bold bg-[#FEF08A] text-[#78350F] shadow-2xs border border-amber-300/60">
+                  ॥ {unit.name} ॥
+                </span>
               </div>
             );
           }
@@ -172,21 +174,19 @@ export const DevotionalVersePresenter: React.FC<DevotionalVersePresenterProps> =
               <div
                 key={idx}
                 onClick={() => setFocusedStanzaIndex(isFocused ? null : idx)}
-                className={`group/stanza relative py-3 px-3.5 sm:px-4 rounded-xl transition-colors duration-200 cursor-pointer ${
-                  isFocused
+                className={`group/stanza relative py-3 px-3.5 sm:px-4 rounded-xl transition-colors duration-200 cursor-pointer ${isFocused
                     ? 'bg-amber-50/70 shadow-2xs'
                     : 'hover:bg-amber-50/30'
-                }`}
+                  }`}
                 title="टैप करके इस चरण पर एकाग्रता पाठ करें"
               >
                 {/* Floating Stanza Numeral Badge */}
                 {unit.stanzaNumber && (
                   <span
-                    className={`inline-block mb-1 px-2 py-0.5 rounded-full text-[10px] font-mono font-bold transition-colors select-none ${
-                      isFocused
+                    className={`inline-block mb-1 px-2 py-0.5 rounded-full text-[10px] font-mono font-bold transition-colors select-none ${isFocused
                         ? 'bg-[#FEF08A] text-[#78350F]'
                         : 'bg-neutral-100 text-neutral-400 group-hover/stanza:text-amber-800 group-hover/stanza:bg-amber-100/60'
-                    }`}
+                      }`}
                   >
                     ॥ {formatDevanagariNumerals(unit.stanzaNumber)} ॥
                   </span>
@@ -197,9 +197,8 @@ export const DevotionalVersePresenter: React.FC<DevotionalVersePresenterProps> =
                   {unit.lines.map((line, lIdx) => (
                     <p
                       key={lIdx}
-                      className={`${fontClass} ${
-                        lIdx === 0 ? 'font-semibold' : 'font-normal sm:font-medium'
-                      } tracking-normal ${currentTheme.lineColor} ${verseSizeClass}`}
+                      className={`${fontClass} ${lIdx === 0 ? 'font-semibold' : 'font-normal sm:font-medium'
+                        } tracking-normal ${currentTheme.lineColor} ${verseSizeClass}`}
                     >
                       {line}
                     </p>
@@ -286,6 +285,21 @@ export const DevotionalVersePresenter: React.FC<DevotionalVersePresenterProps> =
           );
         })}
       </div>
+
+      {/* Extracted Sacred Translation / Meaning (Commentary) */}
+      {parsed.translations && parsed.translations.length > 0 && (
+        <div className="mt-5 pt-3 border-t border-amber-900/10 text-left space-y-1.5 select-text">
+          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-800 flex items-center gap-1 select-none">
+            <ScrollText className="w-3 h-3 text-amber-700" />
+            <span>भावार्थ • English Commentary</span>
+          </span>
+          {parsed.translations.map((tr, tIdx) => (
+            <p key={tIdx} className="text-xs sm:text-sm font-serif text-neutral-700 leading-relaxed font-normal">
+              {tr}
+            </p>
+          ))}
+        </div>
+      )}
 
       {/* Attribution Footnote Citation */}
       {parsed.attribution && (

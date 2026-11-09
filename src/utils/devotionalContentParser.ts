@@ -33,17 +33,25 @@ export interface ProseUnit {
   text: string;
 }
 
+export interface MeterBadgeUnit {
+  type: 'meter_badge';
+  name: string;
+}
+
 export type DevotionalUnit =
   | VerseMeaningUnit
   | StanzaUnit
   | SectionHeaderUnit
   | FloralGarlandUnit
   | PoemTitleUnit
-  | ProseUnit;
+  | ProseUnit
+  | MeterBadgeUnit;
 
 export interface ParsedSacredPadaContent {
   detectedRaga?: string;
   attribution?: string;
+  translations?: string[];
+  transliterations?: string[];
   units: DevotionalUnit[];
   hasVersePairs: boolean;
   hasStanzas: boolean;
@@ -54,7 +62,11 @@ export interface ParsedSacredPadaContent {
  * Double Danda (॥ or \u0965), ASCII double pipe (||), or stanza number bracket/dandas (e.g. ॥ १ ॥, [1])
  */
 function isStanzaTerminal(line: string): boolean {
-  return /([॥\u0965]|\|\||\[\d+\])\s*$/.test(line) || /॥\s*[\d०-९]+\s*॥\s*$/.test(line);
+  return (
+    /([॥\u0965]|\|\||\[\d+\])\s*$/.test(line) ||
+    /॥\s*[\d०-९]+\s*॥\s*$/.test(line) ||
+    /।।\s*[\d०-९]+\s*।।\s*$/.test(line)
+  );
 }
 
 /**
@@ -68,7 +80,53 @@ export function parseDevotionalContent(rawLines: string[]): ParsedSacredPadaCont
     return { units: [], hasVersePairs: false, hasStanzas: false };
   }
 
-  let lines = rawLines.map((l) => sanitizeSacredText(l || '').trim()).filter(Boolean);
+  const cleanedLines: string[] = [];
+  const extractedTranslations: string[] = [];
+  const extractedTransliterations: string[] = [];
+
+  const prefixRegex = /^(\*|\•|\-|\–|\—|\s)*(दो[०0\.]\s*[-—–]?|चौ[०0\.]\s*[-—–]?|सो[०0\.]\s*[-—–]?|छं[०0\.]\s*[-—–]?)\s*/;
+  const meterHeaderRegex = /^(\*|\•|\-|\–|\—|\s)*(दोहा|चौपाई|सोरठा|छन्द|छंद|श्लोक|सवैया|कवित्त)\s*(\|[^\:]+)?\s*[:：\s]*$/i;
+  const pureMeterBadgeRegex = /^॥\s*(दोहा|चौपाई|सोरठा|छन्द|छंद|श्लोक|सवैया|कवित्त)\s*॥$/;
+
+  for (const raw of rawLines) {
+    let line = sanitizeSacredText(raw || '').trim();
+    if (!line) continue;
+
+    // Discard empty bullet/dashes/scraper dividers like *, –*–*–, ***
+    if (/^(\*|\-|\–|\—|\s)+$/.test(line)) continue;
+
+    // Discard empty scraper tags like "भावार्थ:-", "भावार्थ :"
+    if (/^भावार्थ\s*[:：\-—]*\s*$/.test(line)) continue;
+
+    // Match meter header like "दोहा | Dohā :", "दोहा | DOHAS : :", "चौपाई | CHAUPAIS :", "दोहा :"
+    const meterMatch = line.match(meterHeaderRegex);
+    if (meterMatch) {
+      cleanedLines.push(`॥ ${meterMatch[2]} ॥`);
+      continue;
+    }
+
+    if (pureMeterBadgeRegex.test(line)) {
+      cleanedLines.push(line);
+      continue;
+    }
+
+    // Devanagari lines
+    if (/[\u0900-\u097F]/.test(line)) {
+      line = line.replace(prefixRegex, '').replace(/^[\*\•\-\–\—\s]+/, '').trim();
+      if (line) cleanedLines.push(line);
+      continue;
+    }
+
+    // Non-Devanagari lines (Transliteration or English)
+    const isEnglishWords = /\b(the|and|of|to|is|in|that|with|for|was|as|he|she|they|their|his|her|my|our|you|your|be|by|on|at|from|this|these|those|May|O|lord|king|palace|lotus|feet|water|ocean|mind|eyes)\b/i.test(line);
+    if (isEnglishWords || line.startsWith('“') || line.startsWith('"') || (/^[A-Z][a-z\s,;:]+/.test(line) && line.includes(' '))) {
+      extractedTranslations.push(line);
+    } else {
+      extractedTransliterations.push(line);
+    }
+  }
+
+  let lines = cleanedLines;
   let detectedRaga: string | undefined = undefined;
   let attribution: string | undefined = undefined;
 
@@ -196,7 +254,12 @@ export function parseDevotionalContent(rawLines: string[]): ParsedSacredPadaCont
       }
     }
 
-    return { detectedRaga, attribution, units, hasVersePairs: true, hasStanzas: false };
+    // Remove any trailing dangling meter badges that have no subsequent content
+  while (units.length > 0 && units[units.length - 1].type === 'meter_badge') {
+    units.pop();
+  }
+
+  return { detectedRaga, attribution, units, hasVersePairs: true, hasStanzas: false };
   }
 
   // 5B. Handle Classical Poetry with Stanza Rhythm (छंद / दोहा / चरण विभाजन)
@@ -206,25 +269,47 @@ export function parseDevotionalContent(rawLines: string[]): ParsedSacredPadaCont
   let hasStanzas = false;
 
   for (let i = 0; i < expandedLines.length; i++) {
-    const line = expandedLines[i];
+    const rawItem = expandedLines[i];
+    const line = rawItem.replace(/^[\*\•\-\–\—\s]+/, '').trim();
+    if (!line) continue;
 
     if (/^[-—–]\s*(.+)$/.test(line)) {
       if (!attribution) attribution = line.replace(/^[-—–]\s*/, '').trim();
       continue;
     }
 
+    // 0. Meter badge line: e.g. "॥ दोहा ॥", "॥ चौपाई ॥", "॥ सोरठा ॥"
+    const mb = line.match(/^॥\s*(दोहा|चौपाई|सोरठा|छन्द|छंद|श्लोक|सवैया|कवित्त)\s*॥$/);
+    if (mb) {
+      if (currentStanzaLines.length > 0) {
+        units.push({
+          type: 'stanza',
+          lines: currentStanzaLines,
+          stanzaNumber: stanzaCounter++,
+        });
+        currentStanzaLines = [];
+        hasStanzas = true;
+      }
+      units.push({
+        type: 'meter_badge',
+        name: mb[1].trim(),
+      });
+      continue;
+    }
+
     // 1. Heading line (e.g. "झूलन उत्सव संध्या दर्शन ||" or "आरती श्री युगल किशोर की")
     const cleanCandidate = line.replace(/^[\{\[\(\s]+/, '').replace(/[\}\]\)\s]+$/, '').trim();
-    if (
-      i === 0 &&
+    const isExplicitHeading =
+      cleanCandidate.length <= 40 &&
+      expandedLines.length > 1 &&
       (cleanCandidate.includes('दर्शन') ||
         cleanCandidate.includes('उत्सव') ||
-        cleanCandidate.includes('लीला') ||
-        cleanCandidate.includes('आरती') ||
         cleanCandidate.includes('मंगलाचरण') ||
-        cleanCandidate.endsWith('||') ||
-        cleanCandidate.endsWith('॥'))
-    ) {
+        cleanCandidate.includes('आरती') ||
+        cleanCandidate.includes('बधाई') ||
+        /^राग\s+/.test(cleanCandidate));
+
+    if (i === 0 && isExplicitHeading) {
       const normalizedTitle = cleanCandidate
         .replace(/\|\|/g, '')
         .replace(/॥/g, '')
@@ -285,5 +370,18 @@ export function parseDevotionalContent(rawLines: string[]): ParsedSacredPadaCont
     hasStanzas = true;
   }
 
-  return { detectedRaga, attribution, units, hasVersePairs: false, hasStanzas };
+  // Remove any trailing dangling meter badges that have no subsequent content
+  while (units.length > 0 && units[units.length - 1].type === 'meter_badge') {
+    units.pop();
+  }
+
+  return {
+    detectedRaga,
+    attribution,
+    translations: extractedTranslations.length > 0 ? extractedTranslations : undefined,
+    transliterations: extractedTransliterations.length > 0 ? extractedTransliterations : undefined,
+    units,
+    hasVersePairs: false,
+    hasStanzas,
+  };
 }

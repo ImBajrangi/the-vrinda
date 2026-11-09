@@ -2754,79 +2754,8 @@
     "rasik-charitra-katha": {
       "id": "rasik-charitra-katha",
       "verseCount": 114,
-      "chaptersCount": 10,
-      "chapters": [
-        {
-          "id": "ch-उत्कंठा माधुरी",
-          "name": "उत्कंठा माधुरी",
-          "verseCount": 1,
-          "firstPadId": "kaan-katha-man-dhyan-shri-madhuri-das-utkantha-madhuri-26",
-          "firstPadSlug": "kaan-katha-man-dhyan-shri-madhuri-das-utkantha-madhuri-26"
-        },
-        {
-          "id": "ch-विवेक लक्षण बेली",
-          "name": "विवेक लक्षण बेली",
-          "verseCount": 1,
-          "firstPadId": "shri-radhaballabh-gun-charit-shri-vrindavan-das-chacha-ji-vivek-lakshan-beli-26",
-          "firstPadSlug": "shri-radhaballabh-gun-charit-shri-vrindavan-das-chacha-ji-vivek-lakshan-beli-26"
-        },
-        {
-          "id": "ch-श्री बिहारिन देव जी की वाणी",
-          "name": "श्री बिहारिन देव जी की वाणी",
-          "verseCount": 1,
-          "firstPadId": "krishan-charitr-tridha-tribhuvan-mein-shri-biharin-dev-ji-shri-biharin-dev-ji-ki-vani",
-          "firstPadSlug": "krishan-charitr-tridha-tribhuvan-mein-shri-biharin-dev-ji-shri-biharin-dev-ji-ki-vani"
-        },
-        {
-          "id": "ch-अंत्य: लीला (16.61/62)",
-          "name": "अंत्य: लीला (16.61/62)",
-          "verseCount": 1,
-          "firstPadId": "bhakt-pad-dhuri-chaitanya-charitamrit",
-          "firstPadSlug": "bhakt-pad-dhuri-chaitanya-charitamrit"
-        },
-        {
-          "id": "ch-वृन्दावन महिमामृत (9.14)",
-          "name": "वृन्दावन महिमामृत (9.14)",
-          "verseCount": 1,
-          "firstPadId": "atisaahasamaacharitam-virudhy-shri-prabodhanand-saraswati-vrindavan-mahimamrit-914",
-          "firstPadSlug": "atisaahasamaacharitam-virudhy-shri-prabodhanand-saraswati-vrindavan-mahimamrit-914"
-        },
-        {
-          "id": "ch-श्री राधा सुधा निधि",
-          "name": "श्री राधा सुधा निधि",
-          "verseCount": 1,
-          "firstPadId": "uchisthamrit-bhuktvaiv-charitam-shravanamstvaiv-smran-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-240",
-          "firstPadSlug": "uchisthamrit-bhuktvaiv-charitam-shravanamstvaiv-smran-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-240"
-        },
-        {
-          "id": "ch-अनुराग रस",
-          "name": "अनुराग रस",
-          "verseCount": 1,
-          "firstPadId": "gyan-katha-seekhi-ghani-prashan-karat-ati-goodh-shri-narayan-swami-anurag-ras-43",
-          "firstPadSlug": "gyan-katha-seekhi-ghani-prashan-karat-ati-goodh-shri-narayan-swami-anurag-ras-43"
-        },
-        {
-          "id": "ch-चैतन्य चरितमृत",
-          "name": "चैतन्य चरितमृत",
-          "verseCount": 1,
-          "firstPadId": "vrndavanam-parityajya-sa-kvacin-naiva-gacchati-chaitanya-charitamrit",
-          "firstPadSlug": "vrndavanam-parityajya-sa-kvacin-naiva-gacchati-chaitanya-charitamrit"
-        },
-        {
-          "id": "ch-द्वारिका चरित",
-          "name": "द्वारिका चरित",
-          "verseCount": 1,
-          "firstPadId": "radha-madhav-bhaint-bhai-shri-surdas",
-          "firstPadSlug": "radha-madhav-bhaint-bhai-shri-surdas"
-        },
-        {
-          "id": "ch-सामान्य पद",
-          "name": "सामान्य पद",
-          "verseCount": 105,
-          "firstPadId": "मर-चरतर-भग-33",
-          "firstPadSlug": "मर-चरतर-भग-33"
-        }
-      ]
+      "chaptersCount": 0,
+      "chapters": []
     },
     "rasik-vani-sangrah": {
       "id": "rasik-vani-sangrah",

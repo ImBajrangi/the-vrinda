@@ -21,7 +21,7 @@ import { BeginnerGuideModal } from './components/smaran/BeginnerGuideModal';
 import { IOSTopProgressBar, navigationProgress } from './components/common/IOSActivityIndicator';
 import { SACRED_FEED_POSTS } from './data/feed';
 import { SacredPad, SadhanaState, DhyanaImpactState, DhyanaSessionRecord } from './types/devotional';
-import { SacredDatabase } from './services/sacredDatabase';
+import { SacredDatabase, CanonicalSaint, CanonicalGrantha } from './services/sacredDatabase';
 import { seo } from './services/seoService';
 import {
   loadCachedSadhanaSync,
@@ -127,6 +127,19 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
       } catch {}
     }
     return 'all';
+  });
+  const [selectedAuthor, setSelectedAuthor] = useState<string | null>(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const authorParam = params.get('author');
+        if (authorParam) {
+          const saint = SacredDatabase.getSaintBySlugOrName(authorParam);
+          return saint ? saint.name : authorParam;
+        }
+      } catch {}
+    }
+    return null;
   });
   const [readerSearchQuery, setReaderSearchQuery] = useState<string>(() => {
     if (typeof window !== 'undefined') {
@@ -327,6 +340,9 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
   const handleSelectSearchedPad = (pad: SacredPad) => {
     navigationProgress.start();
     setCurrentPad(pad);
+    if (pad.collectionId) {
+      setSelectedGranthaFilter(pad.collectionId);
+    }
     setActiveTab('padavali');
     setIsSpotlightOpen(false);
     requestAnimationFrame(() => {
@@ -334,19 +350,10 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
     });
   };
 
-  const handleSelectSearchedSaint = () => {
-    navigationProgress.start();
-    setActiveTab('padavali');
-    setIsSaintsModalOpen(false);
-    setIsSpotlightOpen(false);
-    requestAnimationFrame(() => {
-      navigationProgress.done();
-    });
-  };
-
-  const handleSelectBook = (granthaId: string) => {
+  const handleSelectBook = async (granthaId: string) => {
     navigationProgress.start();
     setSelectedGranthaFilter(granthaId);
+    setSelectedAuthor(null);
     setReaderSearchQuery('');
     setActiveTab('padavali');
     if (typeof window !== 'undefined') {
@@ -359,16 +366,24 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
         window.history.pushState({}, '', url.toString());
       } catch {}
     }
+    try {
+      const loaded = await SacredDatabase.fetchGranthaPadas(granthaId);
+      if (loaded && loaded.length > 0) {
+        setCurrentPad(loaded[0]);
+      }
+    } catch {}
     requestAnimationFrame(() => {
       navigationProgress.done();
     });
   };
 
-  const handleSelectAuthor = (authorName: string) => {
+  const handleSelectAuthor = async (authorName: string) => {
     navigationProgress.start();
     setSelectedGranthaFilter('all');
+    setSelectedAuthor(authorName);
     setReaderSearchQuery(authorName);
     setActiveTab('padavali');
+
     if (typeof window !== 'undefined') {
       try {
         const saint = SacredDatabase.getSaintBySlugOrName(authorName);
@@ -381,9 +396,28 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
         window.history.pushState({}, '', url.toString());
       } catch {}
     }
+
+    try {
+      const loaded = await SacredDatabase.ensureAuthorPadasLoaded(authorName);
+      if (loaded && loaded.length > 0) {
+        setCurrentPad(loaded[0]);
+      }
+    } catch {}
+
     requestAnimationFrame(() => {
       navigationProgress.done();
     });
+  };
+
+  const handleSelectSearchedSaint = async (saint: CanonicalSaint) => {
+    handleSelectAuthor(saint.name);
+    setIsSaintsModalOpen(false);
+    setIsSpotlightOpen(false);
+  };
+
+  const handleSelectSearchedGrantha = (grantha: CanonicalGrantha) => {
+    handleSelectBook(grantha.id);
+    setIsSpotlightOpen(false);
   };
 
   const handleSelectRelation = (relationId: string) => {
@@ -1141,6 +1175,8 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
               onSelectGranthaId={(gId) => setSelectedGranthaFilter(gId)}
               onSelectPad={(p) => setCurrentPad(p)}
               selectedSearchQuery={readerSearchQuery}
+              selectedAuthor={selectedAuthor}
+              onSelectAuthor={(author) => setSelectedAuthor(author)}
               selectedPadId={currentPad?.id}
               initialPadId={
                 initialPadId ||
@@ -1339,6 +1375,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
           onClose={() => setIsSpotlightOpen(false)}
           onSelectPad={handleSelectSearchedPad}
           onSelectSaint={handleSelectSearchedSaint}
+          onSelectGrantha={handleSelectSearchedGrantha}
         />
 
         {/* Rasik Saints Directory Modal (131 Saints) */}

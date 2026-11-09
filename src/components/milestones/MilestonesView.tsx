@@ -333,7 +333,7 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
       <div className="mb-6 flex flex-col md:flex-row md:items-end justify-between gap-4 bg-white p-5 sm:p-6 rounded-[28px] border border-black/5 shadow-xs">
         <div>
           <h1 className="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-[#111111] leading-tight">
-            Unbroken Devotion • अखंड निष्ठा
+            Unbroken Devotion • <span className="inline-block whitespace-nowrap">अखंड निष्ठा</span>
           </h1>
           <p className="text-xs sm:text-sm text-[#555555] mt-2 font-medium">
             Grace at every step • Eternal Nikunj Remembrance
