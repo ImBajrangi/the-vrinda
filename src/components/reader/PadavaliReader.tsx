@@ -1816,25 +1816,30 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       {/* 2. Context-Aware Scoped Bar or Full Grantha Shelf                        */}
       {/* ========================================================================= */}
       {!isFocusReadingMode && isScopedSession && (
-        <div className="mb-5 p-3 sm:p-3.5 rounded-2xl bg-[#FAF8F5] border border-amber-900/10 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div className="mb-5 px-4 py-2.5 rounded-2xl bg-gradient-to-r from-amber-50/70 via-white to-amber-50/70 border border-amber-900/10 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="flex items-center gap-2.5 min-w-0">
-            <span className="w-2.5 h-2.5 rounded-full bg-amber-600 animate-pulse shrink-0" />
-            <div className="min-w-0">
-              <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-800">
-                सम्बद्ध पाठ धारा • Focused Sanctuary Context
-              </div>
-              <div className="text-sm font-serif font-bold text-neutral-900 truncate mt-0.5">
+            <div className="w-7 h-7 rounded-lg bg-amber-100/80 flex items-center justify-center text-amber-800 shrink-0">
+              <BookOpen className="w-3.5 h-3.5" />
+            </div>
+            <div className="min-w-0 flex items-center gap-2 flex-wrap">
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-800 bg-amber-100/70 px-2 py-0.5 rounded-md">
+                सम्बद्ध पाठ धारा
+              </span>
+              <span className="text-sm font-serif font-bold text-neutral-900 truncate">
                 {granthaDisplayName} {selectedAuthor ? `• ${selectedAuthor}` : ''}
-              </div>
+              </span>
+              <span className="text-xs text-neutral-500 font-mono hidden sm:inline">
+                ({formatDevanagariNumerals(filteredPads.length)} पद संकलित)
+              </span>
             </div>
           </div>
           <button
             type="button"
             onClick={() => setIsScopedSession(false)}
-            className="px-3.5 py-1.5 rounded-[10px] text-xs font-bold bg-[#FEF08A] hover:bg-amber-300 text-[#78350F] transition-colors cursor-pointer select-none shrink-0 shadow-2xs flex items-center gap-1.5 self-start sm:self-auto"
-            title="समस्त २९ पवित्र ग्रंथ एवं रसिक वाणी खोलें"
+            className="px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#FEF08A] hover:bg-amber-300 text-[#78350F] transition-colors cursor-pointer select-none shrink-0 shadow-2xs flex items-center gap-1.5 self-start sm:self-auto"
+            title={`समस्त ${formatDevanagariNumerals(allGranthas.length)} पावन संग्रह खोलें`}
           >
-            <span>समस्त २९ ग्रंथ देखें</span>
+            <span>समस्त {formatDevanagariNumerals(allGranthas.length)} संग्रह देखें</span>
             <ChevronRight className="w-3.5 h-3.5" />
           </button>
         </div>
@@ -2426,19 +2431,19 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             }`}
         >
           {/* Chapter Hierarchy & Continuous Reading Mode Bar */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 rounded-2xl bg-[#FAF8F5] border border-amber-900/10 mb-6">
-            {/* Left: Chapter / Adhyaya Selector */}
-            <div className="flex items-center gap-2 min-w-0">
-              <ScrollText className="w-4 h-4 text-amber-700 shrink-0" />
-              <span className="text-xs font-mono font-bold text-neutral-500 uppercase tracking-wider">
-                {availableChapters.length > 1 ? 'अध्याय / खण्ड:' : 'पावन संग्रह:'}
-              </span>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 px-4 py-2.5 rounded-2xl bg-[#FAF8F5] border border-amber-900/10 mb-6">
+            {/* Left: Chapter / Adhyaya Selector & Scripture Identity */}
+            <div className="flex items-center gap-2.5 min-w-0">
+              <div className="w-7 h-7 rounded-lg bg-amber-100/80 flex items-center justify-center text-amber-800 shrink-0">
+                <ScrollText className="w-3.5 h-3.5" />
+              </div>
+
               {availableChapters.length > 1 ? (
                 <div className="relative">
                   <button
                     type="button"
                     onClick={() => setIsChapterDropdownOpen(!isChapterDropdownOpen)}
-                    className="px-3 py-1 rounded-full text-xs font-bold bg-amber-100/80 hover:bg-amber-200/80 text-amber-950 border border-amber-300/70 flex items-center gap-1.5 cursor-pointer transition-colors shadow-2xs"
+                    className="px-3 py-1 rounded-full text-xs font-bold bg-white hover:bg-neutral-50 text-amber-950 border border-amber-300/70 flex items-center gap-1.5 cursor-pointer transition-colors shadow-2xs"
                   >
                     <span>{currentChapter ? currentChapter.name : 'समस्त अध्याय'}</span>
                     <span className="text-[10px] text-amber-800 font-mono font-bold">
@@ -2488,19 +2493,27 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   )}
                 </div>
               ) : (
-                <span className="text-xs font-serif font-bold text-neutral-800 truncate">
-                  {selectedAuthor ? `संत: ${selectedAuthor}` : (displayedGranthas.find((g) => g.id === selectedGrantha)?.name || 'समस्त ग्रंथ')}
-                </span>
+                <div className="flex items-center gap-2 min-w-0 flex-wrap">
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-800 bg-amber-100/60 px-2 py-0.5 rounded-md">
+                    पावन संग्रह
+                  </span>
+                  <span className="text-xs sm:text-sm font-serif font-bold text-neutral-900 truncate">
+                    {selectedAuthor ? `संत: ${selectedAuthor}` : (displayedGranthas.find((g) => g.id === selectedGrantha)?.name || 'समस्त ग्रंथ')}
+                  </span>
+                  <span className="text-xs text-neutral-400 font-mono hidden md:inline">
+                    • कुल {formatDevanagariNumerals(displayedSidebarPads.length)} पद संकलित
+                  </span>
+                </div>
               )}
             </div>
 
             {/* Right: Reading Mode Toggle (अखंड पाठ vs एकल पद) */}
-            <div className="flex items-center gap-1 p-1 bg-white border border-neutral-200/80 rounded-full text-xs shrink-0 self-start sm:self-auto">
+            <div className="flex items-center gap-1 p-0.5 bg-neutral-100/90 border border-neutral-200/80 rounded-full text-xs shrink-0 self-start sm:self-auto">
               <button
                 type="button"
                 onClick={() => handleSetReadingMode('continuous')}
                 className={`px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer select-none ${readingMode === 'continuous'
-                    ? 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
+                    ? 'bg-white text-neutral-900 font-bold shadow-2xs'
                     : 'text-neutral-500 hover:text-neutral-900'
                   }`}
               >
@@ -2511,7 +2524,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 type="button"
                 onClick={() => handleSetReadingMode('single')}
                 className={`px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer select-none ${readingMode === 'single'
-                    ? 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
+                    ? 'bg-white text-neutral-900 font-bold shadow-2xs'
                     : 'text-neutral-500 hover:text-neutral-900'
                   }`}
               >

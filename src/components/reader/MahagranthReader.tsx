@@ -42,6 +42,7 @@ const EPICS = [
     verseTerm: 'श्लोक',
     color: '#047857',
     coverBg: 'linear-gradient(135deg, #064E3B 0%, #047857 50%, #0F766E 100%)',
+    spineGlyph: 'ॐ',
     totalVerses: 14079,
     description: 'आदिकवि महर्षि वाल्मीकि प्रणीत प्रभु श्री राम के पावन चरित्र का अमर महाकाव्य'
   },
@@ -57,6 +58,7 @@ const EPICS = [
     verseTerm: 'श्लोक',
     color: '#1E3A8A',
     coverBg: 'linear-gradient(135deg, #172554 0%, #1E40AF 50%, #1D4ED8 100%)',
+    spineGlyph: 'श्री',
     totalVerses: 12301,
     description: 'परमहंस संहिता, श्रीकृष्ण लीलामृत एवं अमलरस की सर्वोच्च भागवती ज्ञानधारा'
   },
@@ -72,6 +74,7 @@ const EPICS = [
     verseTerm: 'दोहा / चौपाई',
     color: '#B45309',
     coverBg: 'linear-gradient(135deg, #78350F 0%, #B45309 50%, #D97706 100%)',
+    spineGlyph: 'राम',
     totalVerses: 960,
     description: 'कलयुग तारक प्रभु श्री राम के पावन चरित्र का अवधी महाकाव्य'
   },
@@ -87,6 +90,7 @@ const EPICS = [
     verseTerm: 'श्लोक',
     color: '#4C1D95',
     coverBg: 'linear-gradient(135deg, #2E1065 0%, #5B21B6 50%, #6D28D9 100%)',
+    spineGlyph: 'गीत',
     totalVerses: 658,
     description: 'कुरुक्षेत्र के समरांगण में योगेश्वर श्रीकृष्ण द्वारा अर्जुन को दिया गया आत्मज्ञान'
   },
@@ -102,6 +106,7 @@ const EPICS = [
     verseTerm: 'श्लोक',
     color: '#991B1B',
     coverBg: 'linear-gradient(135deg, #7F1D1D 0%, #B91C1C 50%, #DC2626 100%)',
+    spineGlyph: 'माँ',
     totalVerses: 555,
     description: 'मार्कण्डेय पुराणान्तर्गत आदिशक्ति माँ भगवती के प्राकट्य व महात्म्य की पवित्र सप्तशती'
   }
@@ -326,8 +331,8 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
           </button>
         </div>
 
-        {/* 5 Monumental Epics Segmented Pothi Shelf */}
-        <div className="flex items-center gap-2.5 overflow-x-auto no-scrollbar pt-1">
+        {/* 5 Monumental Epics Segmented Pothi Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-3 pt-1">
           {EPICS.map((epic) => {
             const isSelected = selectedGranthaId === epic.id;
             return (
@@ -335,32 +340,33 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                 key={epic.id}
                 type="button"
                 onClick={() => handleSelectGrantha(epic.id)}
-                className={`shrink-0 flex items-center gap-2.5 px-3 py-2 rounded-[12px] cursor-pointer select-none transition-colors duration-150 border text-left ${
+                className={`flex items-center gap-2.5 p-2.5 sm:p-3 rounded-[16px] cursor-pointer select-none transition-colors duration-150 border text-left ${
                   isSelected
-                    ? 'bg-amber-50/90 border-amber-400/90 shadow-2xs ring-1 ring-amber-300/80'
-                    : 'bg-[#FAF8F5] hover:bg-[#F3EFE6] border-neutral-200/70 text-neutral-800'
+                    ? 'bg-amber-50/90 border-amber-400 ring-2 ring-amber-400/30 shadow-xs'
+                    : 'bg-[#FAF8F5] hover:bg-[#F3EFE6] border-neutral-200/80 text-neutral-800'
                 }`}
               >
-                {/* Miniature Sacred Pothi Spine */}
+                {/* Authentic Miniature Pothi Spine */}
                 <div
-                  className="w-7 h-10 rounded-[3px_5px_5px_3px] text-white flex flex-col justify-between p-1 shadow-2xs shrink-0"
+                  className="relative w-8 h-12 rounded-[3px_5px_5px_3px] text-white flex flex-col justify-between items-center p-1 shadow-sm shrink-0 border border-amber-300/30 overflow-hidden"
                   style={{ background: epic.coverBg }}
                 >
-                  <div className="w-1 h-1 rounded-full bg-amber-300/80" />
-                  <span className="text-[6.5px] font-serif font-bold text-center leading-tight line-clamp-1">
-                    {epic.shortName || epic.name}
+                  <div className="absolute left-1 top-0 bottom-0 w-0.5 bg-amber-400/40" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-amber-300 shadow-xs z-10" />
+                  <span className="text-[10px] font-serif font-bold text-amber-200 z-10 select-none">
+                    {epic.spineGlyph}
                   </span>
-                  <div className="w-full h-0.5 bg-amber-200/40 rounded-full" />
+                  <div className="w-4 h-0.5 bg-amber-300/60 rounded-full z-10" />
                 </div>
 
-                <div className="min-w-0 pr-1">
-                  <span className="text-[9.5px] font-mono font-bold uppercase tracking-wider text-amber-800 block">
+                <div className="min-w-0 flex-1">
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-800 block truncate">
                     {epic.tag}
                   </span>
-                  <div className="font-serif font-bold text-xs text-neutral-900 truncate">
+                  <div className="font-serif font-bold text-xs sm:text-sm text-neutral-900 truncate">
                     {epic.shortName || epic.name}
                   </div>
-                  <div className="text-[10px] text-neutral-500 font-mono">
+                  <div className="text-[10.5px] text-neutral-500 font-mono mt-0.5">
                     {epic.totalVerses} {epic.verseTerm}
                   </div>
                 </div>
