@@ -2489,7 +2489,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                         }}
                         className={`min-w-7 h-7 px-2 rounded-full text-xs font-mono font-bold flex items-center justify-center transition-colors cursor-pointer shrink-0 ${
                           isActive
-                            ? 'bg-[#FEF08A] text-[#78350F] ring-1 ring-amber-400 font-bold'
+                            ? 'bg-[#FEF08A] text-[#78350F] font-bold shadow-2xs'
                             : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200'
                         }`}
                         title={pad.verseNumber ? `पद ${pad.verseNumber}: ${pad.titleDevanagari}` : pad.titleDevanagari}
@@ -2553,8 +2553,10 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                       <div
                         key={pad.id}
                         id={`verse-stream-${pad.id}`}
-                        className={`p-5 sm:p-7 rounded-2xl border transition-colors duration-200 ${currentTheme.borderColor} ${currentTheme.cardHoverBg} ${
-                          selectedPad.id === pad.id ? 'ring-2 ring-amber-300/80' : ''
+                        className={`p-5 sm:p-7 rounded-2xl border transition-colors duration-200 ${currentTheme.cardHoverBg} ${
+                          selectedPad.id === pad.id
+                            ? 'ring-1 ring-amber-300/50 border-amber-300/40'
+                            : currentTheme.borderColor
                         }`}
                       >
                         {/* Verse Header Line */}

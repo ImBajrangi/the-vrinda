@@ -153,7 +153,7 @@ export const DevotionalVersePresenter: React.FC<DevotionalVersePresenterProps> =
                 onClick={() => setFocusedStanzaIndex(isFocused ? null : idx)}
                 className={`group/stanza relative py-3 px-3.5 sm:px-4 rounded-xl transition-colors duration-200 cursor-pointer ${
                   isFocused
-                    ? 'bg-amber-50/70 border border-amber-300/80 shadow-2xs'
+                    ? 'bg-amber-50/70 shadow-2xs'
                     : 'hover:bg-amber-50/30'
                 }`}
                 title="टैप करके इस चरण पर एकाग्रता पाठ करें"
