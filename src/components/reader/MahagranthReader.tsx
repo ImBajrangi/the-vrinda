@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import {
   BookOpen,
   ChevronRight,
@@ -149,6 +149,14 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
   const [bookmarkedIds, setBookmarkedIds] = useState<string[]>([]);
   const [fontSize, setFontSize] = useState<'sm' | 'md' | 'lg' | 'xl'>('md');
 
+  // Section (Kanda) Filter Pills Elastic Sliding Indicator
+  const sectionRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
+  const [sectionPillStyle, setSectionPillStyle] = useState<{ left: number; width: number; ready: boolean }>({
+    left: 0,
+    width: 0,
+    ready: false,
+  });
+
   // Load persistent bookmarks on mount
   useEffect(() => {
     getCachedBookmarks().then(setBookmarkedIds).catch(() => {});
@@ -245,6 +253,30 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
     return Array.from(secSet);
   }, [epicIndex]);
 
+  useEffect(() => {
+    const updateSectionPill = () => {
+      const el = sectionRefs.current[tocFilterSection];
+      if (el) {
+        setSectionPillStyle({
+          left: el.offsetLeft,
+          width: el.offsetWidth,
+          ready: true,
+        });
+      } else {
+        setSectionPillStyle((prev) => ({ ...prev, ready: false }));
+      }
+    };
+    updateSectionPill();
+    const frame = requestAnimationFrame(updateSectionPill);
+    const timer = setTimeout(updateSectionPill, 40);
+    window.addEventListener('resize', updateSectionPill);
+    return () => {
+      cancelAnimationFrame(frame);
+      clearTimeout(timer);
+      window.removeEventListener('resize', updateSectionPill);
+    };
+  }, [tocFilterSection, sectionsList]);
+
   const filteredChapters = useMemo(() => {
     if (!epicIndex) return [];
     let list = epicIndex.chapters;
@@ -257,6 +289,38 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
     }
     return list;
   }, [epicIndex, tocFilterSection, chapterSearchQuery]);
+
+  // Chapter List Elastic Sliding Indicator
+  const chapterItemRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
+  const [chapterPillStyle, setChapterPillStyle] = useState<{ top: number; height: number; ready: boolean }>({
+    top: 0,
+    height: 0,
+    ready: false,
+  });
+
+  useEffect(() => {
+    const updateChapterPill = () => {
+      const el = chapterItemRefs.current[selectedChapterId];
+      if (el) {
+        setChapterPillStyle({
+          top: el.offsetTop,
+          height: el.offsetHeight,
+          ready: true,
+        });
+      } else {
+        setChapterPillStyle((prev) => ({ ...prev, ready: false }));
+      }
+    };
+    updateChapterPill();
+    const frame = requestAnimationFrame(updateChapterPill);
+    const timer = setTimeout(updateChapterPill, 40);
+    window.addEventListener('resize', updateChapterPill);
+    return () => {
+      cancelAnimationFrame(frame);
+      clearTimeout(timer);
+      window.removeEventListener('resize', updateChapterPill);
+    };
+  }, [selectedChapterId, filteredChapters]);
 
   const activePad = useMemo(() => {
     return chapterPadas.find((p) => p.id === activeVerseId) || chapterPadas[0] || null;
@@ -507,16 +571,33 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                   )}
                 </div>
 
-                {/* Section Filter Pills (Kandas / Skandhas) */}
+                {/* Section Filter Pills (Kandas / Skandhas) with Elastic Sliding Indicator */}
                 {sectionsList.length > 1 && (
-                  <div className="flex items-center gap-1 overflow-x-auto no-scrollbar pt-1">
+                  <div className="relative flex items-center gap-1 overflow-x-auto no-scrollbar p-0.5 pt-1">
+                    {/* Dynamic Elastic Sliding Indicator Bar */}
+                    {sectionPillStyle.ready && (
+                      <span
+                        aria-hidden="true"
+                        className="absolute top-0.5 bottom-0 rounded-[6px] bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[340ms] ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[transform,width] z-0 shadow-2xs"
+                        style={{
+                          transform: `translate3d(${sectionPillStyle.left}px, 0, 0)`,
+                          width: `${sectionPillStyle.width}px`,
+                          left: 0,
+                        }}
+                      />
+                    )}
                     <button
+                      ref={(el) => {
+                        sectionRefs.current['all'] = el;
+                      }}
                       type="button"
                       onClick={() => setTocFilterSection('all')}
-                      className={`px-2 py-0.5 rounded-[6px] text-[10px] font-semibold whitespace-nowrap cursor-pointer transition-colors ${
+                      className={`relative z-10 px-2.5 py-0.5 rounded-[6px] text-[10px] font-semibold whitespace-nowrap cursor-pointer transition-colors duration-150 select-none ${
                         tocFilterSection === 'all'
-                          ? 'bg-[#FEF08A] text-[#78350F] font-bold'
-                          : 'bg-white hover:bg-neutral-100 text-neutral-600 border border-neutral-200/60'
+                          ? sectionPillStyle.ready
+                            ? 'text-[#78350F] font-bold'
+                            : 'bg-[#FEF08A] text-[#78350F] font-bold'
+                          : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100/50'
                       }`}
                     >
                       समस्त
@@ -524,12 +605,17 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                     {sectionsList.map((sec) => (
                       <button
                         key={sec}
+                        ref={(el) => {
+                          sectionRefs.current[sec] = el;
+                        }}
                         type="button"
                         onClick={() => setTocFilterSection(sec)}
-                        className={`px-2 py-0.5 rounded-[6px] text-[10px] font-semibold whitespace-nowrap cursor-pointer transition-colors ${
+                        className={`relative z-10 px-2.5 py-0.5 rounded-[6px] text-[10px] font-semibold whitespace-nowrap cursor-pointer transition-colors duration-150 select-none ${
                           tocFilterSection === sec
-                            ? 'bg-[#FEF08A] text-[#78350F] font-bold'
-                            : 'bg-white hover:bg-neutral-100 text-neutral-600 border border-neutral-200/60'
+                            ? sectionPillStyle.ready
+                              ? 'text-[#78350F] font-bold'
+                              : 'bg-[#FEF08A] text-[#78350F] font-bold'
+                            : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100/50'
                         }`}
                       >
                         {sec}
@@ -539,8 +625,20 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                 )}
               </div>
 
-              {/* Scrollable Chapters List */}
-              <div className="flex-1 overflow-y-auto p-2 space-y-1">
+              {/* Scrollable Chapters List with Elastic Sliding Active Bar */}
+              <div className="relative flex-1 overflow-y-auto p-2 space-y-1">
+                {/* Dynamic Elastic Sliding Indicator for Active Chapter */}
+                {chapterPillStyle.ready && (
+                  <span
+                    aria-hidden="true"
+                    className="absolute left-2 right-2 rounded-[8px] bg-[#FEF08A] pointer-events-none transition-[transform,height] duration-[340ms] ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[transform,height] z-0 shadow-2xs"
+                    style={{
+                      transform: `translate3d(0, ${chapterPillStyle.top}px, 0)`,
+                      height: `${chapterPillStyle.height}px`,
+                      top: 0,
+                    }}
+                  />
+                )}
                 {loadingIndex ? (
                   <div className="py-12 flex flex-col items-center justify-center text-center space-y-2">
                     <IOSSpinner size="sm" theme="amber" />
@@ -552,12 +650,17 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                     return (
                       <button
                         key={ch.id}
+                        ref={(el) => {
+                          chapterItemRefs.current[ch.id] = el;
+                        }}
                         type="button"
                         onClick={() => handleSelectChapter(ch.id)}
-                        className={`w-full text-left p-2.5 rounded-[8px] text-xs font-semibold flex items-center justify-between transition-colors cursor-pointer select-none ${
+                        className={`relative z-10 w-full text-left p-2.5 rounded-[8px] text-xs font-semibold flex items-center justify-between transition-colors duration-150 cursor-pointer select-none ${
                           isSelected
-                            ? 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
-                            : 'hover:bg-white text-neutral-700'
+                            ? chapterPillStyle.ready
+                              ? 'text-[#18181B] font-bold'
+                              : 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
+                            : 'hover:bg-white/80 text-neutral-700'
                         }`}
                       >
                         <div className="min-w-0 pr-2">

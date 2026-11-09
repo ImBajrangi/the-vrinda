@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   Sparkles,
   MapPin,
@@ -41,6 +41,38 @@ export const DevotionalVersePresenter: React.FC<DevotionalVersePresenterProps> =
   const [showMeanings, setShowMeanings] = useState<boolean>(true);
   const [focusedStanzaIndex, setFocusedStanzaIndex] = useState<number | null>(null);
 
+  // Alignment Toggle Elastic Sliding Indicator
+  const alignRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
+  const [alignPillStyle, setAlignPillStyle] = useState<{ left: number; width: number; ready: boolean }>({
+    left: 0,
+    width: 0,
+    ready: false,
+  });
+
+  useEffect(() => {
+    const updateAlignPill = () => {
+      const el = alignRefs.current[alignment];
+      if (el) {
+        setAlignPillStyle({
+          left: el.offsetLeft,
+          width: el.offsetWidth,
+          ready: true,
+        });
+      } else {
+        setAlignPillStyle((prev) => ({ ...prev, ready: false }));
+      }
+    };
+    updateAlignPill();
+    const frame = requestAnimationFrame(updateAlignPill);
+    const timer = setTimeout(updateAlignPill, 40);
+    window.addEventListener('resize', updateAlignPill);
+    return () => {
+      cancelAnimationFrame(frame);
+      clearTimeout(timer);
+      window.removeEventListener('resize', updateAlignPill);
+    };
+  }, [alignment]);
+
   const verseSizeClass =
     fontSize === 'sm'
       ? 'text-[17px] sm:text-[19px] leading-[2.1]'
@@ -65,13 +97,28 @@ export const DevotionalVersePresenter: React.FC<DevotionalVersePresenterProps> =
 
           {/* Right: Alignment & Commentary Toggles */}
           <div className="flex items-center gap-1.5 ml-auto">
-            {/* Poetic Stanza Layout Toggle (Center vs Left) */}
-            <div className="flex items-center bg-neutral-100 p-0.5 rounded-full border border-neutral-200/80">
+            {/* Poetic Stanza Layout Toggle (Center vs Left) with Elastic Sliding Indicator */}
+            <div className="relative flex items-center bg-white/95 border border-neutral-200/80 shadow-2xs p-0.5 rounded-full">
+              {/* Dynamic Elastic Sliding Indicator Bar */}
+              {alignPillStyle.ready && (
+                <span
+                  aria-hidden="true"
+                  className="absolute top-0.5 bottom-0.5 rounded-full bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[340ms] ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[transform,width] z-0 shadow-2xs"
+                  style={{
+                    transform: `translate3d(${alignPillStyle.left}px, 0, 0)`,
+                    width: `${alignPillStyle.width}px`,
+                    left: 0,
+                  }}
+                />
+              )}
               <button
+                ref={(el) => {
+                  alignRefs.current['center'] = el;
+                }}
                 type="button"
                 onClick={() => setAlignment('center')}
-                className={`h-6 px-2.5 rounded-full text-[10px] font-mono font-semibold flex items-center gap-1 transition-colors cursor-pointer select-none ${alignment === 'center'
-                    ? 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
+                className={`relative z-10 h-6 px-2.5 rounded-full text-[10px] font-semibold flex items-center gap-1 transition-colors duration-150 cursor-pointer select-none ${alignment === 'center'
+                    ? 'text-[#18181B] font-bold'
                     : 'text-neutral-500 hover:text-neutral-900'
                   }`}
                 title="संकीर्तन / मध्यस्थ लय (Centered)"
@@ -80,10 +127,13 @@ export const DevotionalVersePresenter: React.FC<DevotionalVersePresenterProps> =
                 <span>मध्यस्थ</span>
               </button>
               <button
+                ref={(el) => {
+                  alignRefs.current['left'] = el;
+                }}
                 type="button"
                 onClick={() => setAlignment('left')}
-                className={`h-6 px-2.5 rounded-full text-[10px] font-mono font-semibold flex items-center gap-1 transition-colors cursor-pointer select-none ${alignment === 'left'
-                    ? 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
+                className={`relative z-10 h-6 px-2.5 rounded-full text-[10px] font-semibold flex items-center gap-1 transition-colors duration-150 cursor-pointer select-none ${alignment === 'left'
+                    ? 'text-[#18181B] font-bold'
                     : 'text-neutral-500 hover:text-neutral-900'
                   }`}
                 title="शास्त्रीय / वामस्थ पाठ (Left-aligned)"
