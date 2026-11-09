@@ -475,13 +475,6 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     }
   }, [selectedGranthaId]);
 
-  // On-Demand Kilobyte Grantha Fetcher (Only fetches ~6-15 KB for selected book)
-  useEffect(() => {
-    if (selectedGrantha && selectedGrantha !== 'all') {
-      SacredDatabase.fetchGranthaPadas(selectedGrantha);
-    }
-  }, [selectedGrantha]);
-
   // On-Demand Single Pada Fetcher (Only fetches 0.65 KB for active verse)
   useEffect(() => {
     const targetId = selectedPadId || initialPadId;
@@ -1000,7 +993,10 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   };
 
   const handleSelectGrantha = async (granthaId: string) => {
-    if (granthaId === selectedGrantha && (!loadingGranthaId)) return;
+    if (granthaId === selectedGrantha && !loadingGranthaId) {
+      const existing = SacredDatabase.getPadasByGrantha(granthaId);
+      if (existing && existing.length > 0) return;
+    }
     navigationProgress.start();
     setLoadingGranthaId(granthaId);
     setSelectedGrantha(granthaId);
@@ -1045,13 +1041,40 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
   // Ensure grantha padas are loaded whenever selectedGrantha changes
   useEffect(() => {
+    let isCancelled = false;
     if (selectedGrantha !== 'all') {
-      SacredDatabase.fetchGranthaPadas(selectedGrantha).then((padas) => {
-        if (padas && padas.length > 0) {
-          setAllPadas([...SacredDatabase.getAllPadas()]);
-        }
-      });
+      const existing = SacredDatabase.getPadasByGrantha(selectedGrantha);
+      if (!existing || existing.length === 0) {
+        setLoadingGranthaId(selectedGrantha);
+      }
+      SacredDatabase.fetchGranthaPadas(selectedGrantha)
+        .then((padas) => {
+          if (!isCancelled) {
+            setLoadingGranthaId(null);
+            if (padas && padas.length > 0) {
+              setAllPadas([...SacredDatabase.getAllPadas()]);
+              setSelectedPad((curr) => {
+                if (!curr || curr.collectionId !== selectedGrantha) {
+                  return padas[0];
+                }
+                return curr;
+              });
+              setActiveScrollerVerseId((curr) => {
+                if (!curr) return padas[0]?.id || '';
+                return curr;
+              });
+            }
+          }
+        })
+        .catch(() => {
+          if (!isCancelled) setLoadingGranthaId(null);
+        });
+    } else {
+      setLoadingGranthaId(null);
     }
+    return () => {
+      isCancelled = true;
+    };
   }, [selectedGrantha]);
 
   const handleSelectCategory = (catId: GranthaCategory) => {

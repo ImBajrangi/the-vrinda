@@ -1,5 +1,26 @@
 [
   {
+    "id": "radheju-merau-janam-sudharau",
+    "collectionId": "rasik-vani-sangrah",
+    "index": 3707,
+    "titleDevanagari": "राधेजू मेरौ जनम सुधारौ",
+    "author": "विविध रसिक संत",
+    "slug": "radheju-merau-janam-sudharau",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "राधेजू मेरौ जनम सुधारौ।",
+          "अब मोंहि वृन्दावन में डारौ॥",
+          "- श्री गोविन्दशरण देवाचार्य"
+        ]
+      }
+    ],
+    "chapterId": "ch-सामान्य पद",
+    "chapterName": "सामान्य पद",
+    "verseNumber": 3214
+  },
+  {
     "id": "vrindavan-ras-ati-saras-hai-kaise-karun-bakhan-dhruv-das",
     "collectionId": "bayalees-leela",
     "index": 1,

@@ -177,6 +177,11 @@ function normalizeCanonicalPad(raw: any): SacredPad {
   let collectionId = raw.collectionId || raw.granthaId || '';
   if (!collectionId || collectionId === 'rasik-vani' || collectionId === 'other') {
     if (/स्तोत्र|अष्टक|कटाक्ष/i.test(title)) collectionId = 'stotras';
+    else if (/वाल्मीकि|रामायण/i.test(author + title)) collectionId = 'valmiki-ramayana';
+    else if (/भागवत/i.test(author + title)) collectionId = 'shrimad-bhagavatam';
+    else if (/रामचरितमानस|मानस/i.test(author + title)) collectionId = 'ramcharitmanas';
+    else if (/भगवद्गीता|गीता/i.test(author + title)) collectionId = 'bhagavad-gita';
+    else if (/सप्तशती|दुर्गा/i.test(author + title)) collectionId = 'durga-saptashati';
     else if (/हरिवंश|हित चौरासी|चतुरासी/i.test(author + title)) collectionId = 'hit-chaurasi';
     else if (/हरिदास|केलिमाल/i.test(author + title)) collectionId = 'kelimal';
     else if (/ध्रुवदास/i.test(author)) collectionId = 'bayalees-leela';
@@ -262,6 +267,7 @@ const padasByGrantha = new Map<string, SacredPad[]>();
 const padasByRaga = new Map<string, SacredPad[]>();
 
 const loadedGranthas = new Set<string>();
+const inFlightGranthaPromises = new Map<string, Promise<SacredPad[]>>();
 const categoryCache = new Map<string, SacredPad[]>();
 const chapterCache = new Map<string, SacredPad[]>();
 const authorCache = new Map<string, SacredPad[]>();
@@ -388,18 +394,18 @@ export const SacredDatabase = {
   appendPadas(rawPadas: any[]): void {
     if (!rawPadas || !rawPadas.length) return;
     const normalized = rawPadas.map(normalizeCanonicalPad);
-    let addedCount = 0;
+
+    const incomingByGrantha = new Map<string, SacredPad[]>();
+    const incomingByRaga = new Map<string, SacredPad[]>();
 
     normalized.forEach((pad) => {
       const existing = padasById.get(pad.id);
       if (!existing) {
         allPadas.push(pad);
         padasById.set(pad.id, pad);
-        addedCount++;
       } else {
         // Upgrade existing seed pad with full canonical fields (chapterId, verseNumber, verses)
         Object.assign(existing, pad);
-        addedCount++;
       }
 
       if (pad.slug) {
@@ -407,26 +413,58 @@ export const SacredDatabase = {
         padasBySlug.set(pad.slug.toLowerCase(), pad);
       }
 
-      const gList = padasByGrantha.get(pad.collectionId) || [];
-      const gIdx = gList.findIndex((p) => p.id === pad.id);
-      if (gIdx === -1) {
-        gList.push(pad);
-      } else {
-        Object.assign(gList[gIdx], pad);
-      }
-      padasByGrantha.set(pad.collectionId, gList);
+      const gList = incomingByGrantha.get(pad.collectionId);
+      if (gList) gList.push(pad);
+      else incomingByGrantha.set(pad.collectionId, [pad]);
 
       if (pad.rag) {
-        const rList = padasByRaga.get(pad.rag) || [];
-        const rIdx = rList.findIndex((p) => p.id === pad.id);
-        if (rIdx === -1) {
-          rList.push(pad);
-        } else {
-          Object.assign(rList[rIdx], pad);
-        }
-        padasByRaga.set(pad.rag, rList);
+        const rList = incomingByRaga.get(pad.rag);
+        if (rList) rList.push(pad);
+        else incomingByRaga.set(pad.rag, [pad]);
       }
     });
+
+    // High-speed O(N) batch merge into padasByGrantha
+    for (const [colId, incomingPads] of incomingByGrantha.entries()) {
+      const existingList = padasByGrantha.get(colId);
+      if (!existingList || existingList.length === 0) {
+        padasByGrantha.set(colId, incomingPads);
+      } else {
+        const idMap = new Map<string, number>();
+        existingList.forEach((p, i) => idMap.set(p.id, i));
+        for (const p of incomingPads) {
+          const idx = idMap.get(p.id);
+          if (idx !== undefined) {
+            Object.assign(existingList[idx], p);
+          } else {
+            existingList.push(p);
+            idMap.set(p.id, existingList.length - 1);
+          }
+        }
+        padasByGrantha.set(colId, existingList);
+      }
+    }
+
+    // High-speed O(N) batch merge into padasByRaga
+    for (const [ragaName, incomingPads] of incomingByRaga.entries()) {
+      const existingList = padasByRaga.get(ragaName);
+      if (!existingList || existingList.length === 0) {
+        padasByRaga.set(ragaName, incomingPads);
+      } else {
+        const idMap = new Map<string, number>();
+        existingList.forEach((p, i) => idMap.set(p.id, i));
+        for (const p of incomingPads) {
+          const idx = idMap.get(p.id);
+          if (idx !== undefined) {
+            Object.assign(existingList[idx], p);
+          } else {
+            existingList.push(p);
+            idMap.set(p.id, existingList.length - 1);
+          }
+        }
+        padasByRaga.set(ragaName, existingList);
+      }
+    }
 
     clearDerivedCaches();
 
@@ -587,6 +625,10 @@ export const SacredDatabase = {
       return padasByGrantha.get(granthaId) || [];
     }
 
+    if (inFlightGranthaPromises.has(granthaId)) {
+      return inFlightGranthaPromises.get(granthaId)!;
+    }
+
     const existing = padasByGrantha.get(granthaId);
     const granthaMeta = activeManifest?.granthas?.[granthaId];
     const metaCount = granthaMeta?.count || this.getGranthaById(granthaId)?.count || 0;
@@ -595,65 +637,69 @@ export const SacredDatabase = {
       return existing;
     }
 
-    const targetFile = granthaMeta?.file || `${granthaId}.json`;
-    const cacheKey = granthaMeta?.hash ? `vrind_grantha_${granthaId}_${granthaMeta.hash}` : `vrind_grantha_${granthaId}`;
+    const fetchPromise = (async () => {
+      const targetFile = granthaMeta?.file || `${granthaId}.json`;
+      const cacheKey = granthaMeta?.hash ? `vrind_grantha_${granthaId}_${granthaMeta.hash}` : `vrind_grantha_${granthaId}`;
 
-    try {
-      // Level 2: Check local IndexedDB collection chunk (0 KB network)
-      const cached = await get<SacredPad[]>(cacheKey);
-      if (cached && Array.isArray(cached) && cached.length > 0) {
-        this.appendPadas(cached);
-        loadedGranthas.add(granthaId);
-        return padasByGrantha.get(granthaId) || cached;
-      }
-
-      // Level 3: Fetch static immutable versioned JSON chunk from Vercel CDN Edge (6 - 25 KB gzipped, 0 Supabase egress)
       try {
-        const cdnRes = await fetch(`/data/granthas/${targetFile}`);
-        if (cdnRes.ok) {
-          const chunkData = await cdnRes.json();
-          this.appendPadas(chunkData);
+        // Level 2: Check local IndexedDB collection chunk (0 KB network)
+        const cached = await get<SacredPad[]>(cacheKey);
+        if (cached && Array.isArray(cached) && cached.length > 0) {
+          this.appendPadas(cached);
           loadedGranthas.add(granthaId);
-          try {
-            await set(cacheKey, chunkData);
-          } catch {}
-          return padasByGrantha.get(granthaId) || chunkData;
+          return padasByGrantha.get(granthaId) || cached;
         }
-      } catch (cdnErr) {
-        console.warn(`CDN fetch for grantha ${granthaId} (${targetFile}) missed, checking Supabase fallback:`, cdnErr);
-      }
 
-      // Level 4: Supabase REST API fallback (specific columns only, never select('*'))
-      const { data, error } = await supabase
-        .from('padas')
-        .select('id, collection_id, index, title_devanagari, title_english, author, rag, slug, verses')
-        .eq('collection_id', granthaId)
-        .order('index', { ascending: true });
-
-      if (!error && data && data.length > 0) {
-        const mapped = data.map((r: any) => normalizeCanonicalPad({
-          id: r.id,
-          collectionId: r.collection_id || granthaId,
-          index: r.index,
-          titleDevanagari: r.title_devanagari,
-          titleEnglish: r.title_english,
-          author: r.author,
-          rag: r.rag,
-          slug: r.slug,
-          verses: r.verses,
-        }));
-        this.appendPadas(mapped);
-        loadedGranthas.add(granthaId);
+        // Level 3: Fetch static immutable versioned JSON chunk from Vercel CDN Edge
         try {
-          await set(cacheKey, mapped);
-        } catch {}
-        return mapped;
-      }
-    } catch (err) {
-      console.warn(`Error loading grantha ${granthaId}:`, err);
-    }
+          const cdnRes = await fetch(`/data/granthas/${targetFile}`);
+          if (cdnRes.ok) {
+            const chunkData = await cdnRes.json();
+            this.appendPadas(chunkData);
+            loadedGranthas.add(granthaId);
+            // Non-blocking IndexedDB cache persistence
+            set(cacheKey, chunkData).catch(() => {});
+            return padasByGrantha.get(granthaId) || chunkData;
+          }
+        } catch (cdnErr) {
+          console.warn(`CDN fetch for grantha ${granthaId} (${targetFile}) missed, checking Supabase fallback:`, cdnErr);
+        }
 
-    return padasByGrantha.get(granthaId) || existing || [];
+        // Level 4: Supabase REST API fallback (specific columns only, never select('*'))
+        const { data, error } = await supabase
+          .from('padas')
+          .select('id, collection_id, index, title_devanagari, title_english, author, rag, slug, verses')
+          .eq('collection_id', granthaId)
+          .order('index', { ascending: true });
+
+        if (!error && data && data.length > 0) {
+          const mapped = data.map((r: any) => normalizeCanonicalPad({
+            id: r.id,
+            collectionId: r.collection_id || granthaId,
+            index: r.index,
+            titleDevanagari: r.title_devanagari,
+            titleEnglish: r.title_english,
+            author: r.author,
+            rag: r.rag,
+            slug: r.slug,
+            verses: r.verses,
+          }));
+          this.appendPadas(mapped);
+          loadedGranthas.add(granthaId);
+          set(cacheKey, mapped).catch(() => {});
+          return mapped;
+        }
+      } catch (err) {
+        console.warn(`Error loading grantha ${granthaId}:`, err);
+      } finally {
+        inFlightGranthaPromises.delete(granthaId);
+      }
+
+      return padasByGrantha.get(granthaId) || existing || [];
+    })();
+
+    inFlightGranthaPromises.set(granthaId, fetchPromise);
+    return fetchPromise;
   },
 
   /**
