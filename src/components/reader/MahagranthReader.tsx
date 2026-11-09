@@ -157,6 +157,48 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
     ready: false,
   });
 
+  // 5 Epics Shelf Elastic Sliding Indicator
+  const epicCardRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
+  const [epicPillStyle, setEpicPillStyle] = useState<{
+    left: number;
+    top: number;
+    width: number;
+    height: number;
+    ready: boolean;
+  }>({
+    left: 0,
+    top: 0,
+    width: 0,
+    height: 0,
+    ready: false,
+  });
+
+  useEffect(() => {
+    const updateEpicPill = () => {
+      const el = epicCardRefs.current[selectedGranthaId];
+      if (el) {
+        setEpicPillStyle({
+          left: el.offsetLeft,
+          top: el.offsetTop,
+          width: el.offsetWidth,
+          height: el.offsetHeight,
+          ready: true,
+        });
+      } else {
+        setEpicPillStyle((prev) => ({ ...prev, ready: false }));
+      }
+    };
+    updateEpicPill();
+    const frame = requestAnimationFrame(updateEpicPill);
+    const timer = setTimeout(updateEpicPill, 40);
+    window.addEventListener('resize', updateEpicPill);
+    return () => {
+      cancelAnimationFrame(frame);
+      clearTimeout(timer);
+      window.removeEventListener('resize', updateEpicPill);
+    };
+  }, [selectedGranthaId]);
+
   // Load persistent bookmarks on mount
   useEffect(() => {
     getCachedBookmarks().then(setBookmarkedIds).catch(() => {});
@@ -446,7 +488,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-3 border-b border-neutral-100">
           <div>
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="px-2.5 py-0.5 rounded-[6px] text-[10px] font-mono font-bold tracking-wider uppercase bg-[#FEF08A] text-[#78350F]">
+              <span className="px-2.5 py-0.5 rounded-[6px] text-[10.5px] font-serif font-bold tracking-wider uppercase bg-[#FEF08A] text-[#78350F]">
                 सनातन महाग्रंथ पारायण
               </span>
               <span className="text-xs font-serif text-neutral-400">
@@ -474,47 +516,72 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
         </div>
 
         {/* 5 Monumental Epics Segmented Pothi Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-3 pt-1">
-          {EPICS.map((epic) => {
-            const isSelected = selectedGranthaId === epic.id;
-            return (
-              <button
-                key={epic.id}
-                type="button"
-                onClick={() => handleSelectGrantha(epic.id)}
-                className={`flex items-center gap-2.5 p-2.5 sm:p-3 rounded-[16px] cursor-pointer select-none transition-colors duration-150 border text-left ${
-                  isSelected
-                    ? 'bg-amber-50/90 border-amber-400 ring-2 ring-amber-400/30 shadow-xs'
-                    : 'bg-[#FAF8F5] hover:bg-[#F3EFE6] border-neutral-200/80 text-neutral-800'
-                }`}
-              >
-                {/* Authentic Miniature Pothi Spine */}
-                <div
-                  className="relative w-8 h-12 rounded-[3px_5px_5px_3px] text-white flex flex-col justify-between items-center p-1 shadow-sm shrink-0 border border-amber-300/30 overflow-hidden"
-                  style={{ background: epic.coverBg }}
+        <div className="relative p-1.5 rounded-[22px] bg-[#FAF8F5]/70 border border-amber-900/10">
+          <div className="relative grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-2.5">
+            {/* Dynamic 2D Elastic Sliding Indicator for Active Epic */}
+            {epicPillStyle.ready && (
+              <span
+                aria-hidden="true"
+                className="absolute rounded-[16px] bg-[#FFFDF9] border border-amber-300/80 pointer-events-none transition-[transform,width,height] duration-[340ms] ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[transform,width,height] z-0 shadow-[0_2px_10px_-2px_rgba(217,119,6,0.12),0_1px_3px_0_rgba(0,0,0,0.04)]"
+                style={{
+                  transform: `translate3d(${epicPillStyle.left}px, ${epicPillStyle.top}px, 0)`,
+                  width: `${epicPillStyle.width}px`,
+                  height: `${epicPillStyle.height}px`,
+                  top: 0,
+                  left: 0,
+                }}
+              />
+            )}
+            {EPICS.map((epic) => {
+              const isSelected = selectedGranthaId === epic.id;
+              return (
+                <button
+                  key={epic.id}
+                  ref={(el) => {
+                    epicCardRefs.current[epic.id] = el;
+                  }}
+                  type="button"
+                  onClick={() => handleSelectGrantha(epic.id)}
+                  className={`relative z-10 flex items-center gap-2.5 p-2.5 sm:p-3 rounded-[16px] cursor-pointer select-none transition-colors duration-150 border text-left ${
+                    isSelected
+                      ? epicPillStyle.ready
+                        ? 'bg-transparent border-transparent text-neutral-900'
+                        : 'bg-[#FFFDF9] border-amber-300/80 text-neutral-900 shadow-xs'
+                      : 'bg-white/70 hover:bg-white border-amber-900/10 hover:border-amber-900/20 text-neutral-800'
+                  }`}
                 >
-                  <div className="absolute left-1 top-0 bottom-0 w-0.5 bg-amber-400/40" />
-                  <div className="w-1.5 h-1.5 rounded-full bg-amber-300 shadow-xs z-10" />
-                  <span className="text-[10px] font-serif font-bold text-amber-200 z-10 select-none">
-                    {epic.spineGlyph}
-                  </span>
-                  <div className="w-4 h-0.5 bg-amber-300/60 rounded-full z-10" />
-                </div>
+                  {/* Authentic Miniature Pothi Spine */}
+                  <div
+                    className="relative w-8 h-12 rounded-[5px_7px_7px_5px] text-white flex flex-col justify-between items-center p-1 shadow-2xs shrink-0 border border-amber-300/30 overflow-hidden"
+                    style={{ background: epic.coverBg }}
+                  >
+                    <div className="absolute left-1 top-0 bottom-0 w-0.5 bg-amber-400/40" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-amber-300 shadow-2xs z-10" />
+                    <span className="text-[10.5px] font-serif font-bold text-amber-100 z-10 select-none">
+                      {epic.spineGlyph}
+                    </span>
+                    <div className="w-4 h-0.5 bg-amber-300/60 rounded-full z-10" />
+                  </div>
 
-                <div className="min-w-0 flex-1">
-                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-800 block truncate">
-                    {epic.tag}
-                  </span>
-                  <div className="font-serif font-bold text-xs sm:text-sm text-neutral-900 truncate">
-                    {epic.shortName || epic.name}
+                  <div className="min-w-0 flex-1">
+                    <span
+                      className={`text-[10px] font-serif font-bold uppercase tracking-wider block truncate ${
+                        isSelected ? 'text-amber-800' : 'text-amber-900/60'
+                      }`}
+                    >
+                      {epic.tag}
+                    </span>
+                    <div className="font-serif font-bold text-xs sm:text-sm text-neutral-900 truncate mt-0.5">
+                      {epic.shortName || epic.name}
+                    </div>
+                    <div className="text-[11px] text-neutral-500 font-serif mt-0.5">
+                      {formatDevanagariNumerals(epic.totalVerses)} {epic.verseTerm}
+                    </div>
                   </div>
-                  <div className="text-[10.5px] text-neutral-500 font-mono mt-0.5">
-                    {epic.totalVerses} {epic.verseTerm}
-                  </div>
-                </div>
-              </button>
-            );
-          })}
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
 
@@ -785,7 +852,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
           {/* Chapter Header Bar */}
           <div className="pb-5 mb-6 border-b border-neutral-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
-              <div className="flex items-center gap-2 text-xs font-mono font-bold text-amber-800 uppercase tracking-wider">
+              <div className="flex items-center gap-2 text-xs font-serif font-bold text-amber-800 tracking-wider">
                 <BookOpen className="w-3.5 h-3.5" />
                 <span>{currentEpicConfig.name}</span>
                 <span>•</span>
@@ -794,8 +861,8 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
               <h1 className="font-serif font-bold text-xl sm:text-2xl text-neutral-900 mt-1">
                 {currentChapter ? currentChapter.name : 'पावन पाठ'}
               </h1>
-              <p className="text-xs text-neutral-400 font-mono mt-0.5">
-                कुल {chapterPadas.length} {currentEpicConfig.verseTerm} संकलित • ऑन-डिमांड त्वरित पाठ
+              <p className="text-xs text-neutral-500 font-serif mt-0.5">
+                कुल {formatDevanagariNumerals(chapterPadas.length)} {currentEpicConfig.verseTerm} संकलित • ऑन-डिमांड त्वरित पाठ
               </p>
             </div>
 
