@@ -33,6 +33,7 @@ import {
 import { SacredDatabase } from '../../services/sacredDatabase';
 import { SacredPad, AuthorHierarchyInfo } from '../../types/devotional';
 import { InlinePurportCard } from './InlinePurportCard';
+import { DevotionalVersePresenter } from './DevotionalVersePresenter';
 import { seo } from '../../services/seoService';
 import {
   getReaderStateSync,
@@ -98,24 +99,7 @@ export const sanitizeSacredText = (text: string): string => {
  * Ensures unformatted commentary blobs or monolithic prose strings
  * gracefully decompose into authentic poetic verses for optimal reading cadence.
  */
-const splitVerseLines = (lines: string[]): string[] => {
-  const result: string[] = [];
-  for (const rawLine of lines) {
-    if (!rawLine) continue;
-    const sanitized = sanitizeSacredText(rawLine);
-    const cleaned = sanitized
-      .replace(/^महाप्रभु\s+श्री\s+हित\s+चौरासी\s*\(\d+\)\s*/g, '')
-      .trim();
-    if (!cleaned) continue;
-    if (cleaned.length > 100 && /\[\d+\]/.test(cleaned)) {
-      const parts = cleaned.split(/(?<=\[\d+\])\s*/g).filter(Boolean);
-      result.push(...parts.map(sanitizeSacredText));
-    } else {
-      result.push(cleaned);
-    }
-  }
-  return result;
-};
+
 
 const themeStyles: Record<
   ReaderTheme,
@@ -2452,30 +2436,14 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                           </div>
                         </div>
 
-                        {/* Verse Lines */}
-                        <div className={`space-y-2.5 py-1 ${textAlignClass}`}>
-                          {(pad.verses?.[0]?.linesDevanagari || [pad.titleDevanagari]).map((line, lIdx) => {
-                            const sanitizedLine = sanitizeSacredText(line);
-                            return (
-                              <p
-                                key={lIdx}
-                                className={`${fontClass} ${
-                                  lIdx === 0 ? 'font-semibold' : 'font-normal'
-                                } tracking-normal ${currentTheme.lineColor} ${
-                                  fontSize === 'sm'
-                                    ? 'text-[17px] sm:text-[19px] leading-[2.1]'
-                                    : fontSize === 'md'
-                                    ? 'text-[20px] sm:text-[22px] leading-[2.2]'
-                                    : fontSize === 'lg'
-                                    ? 'text-[23px] sm:text-[25px] leading-[2.3]'
-                                    : 'text-[26px] sm:text-[28px] leading-[2.4]'
-                                }`}
-                              >
-                                {sanitizedLine}
-                              </p>
-                            );
-                          })}
-                        </div>
+                        {/* Inherently Distributed Devotional Verses & Inherent Meaning */}
+                        <DevotionalVersePresenter
+                          lines={pad.verses?.[0]?.linesDevanagari || [pad.titleDevanagari]}
+                          fontClass={fontClass}
+                          fontSize={fontSize}
+                          textAlignClass={textAlignClass}
+                          currentTheme={currentTheme}
+                        />
 
                         {/* Inline Purport Drawer */}
                         <InlinePurportCard pad={pad} isOpen={isPurportOpen} />
@@ -2732,36 +2700,14 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                     </button>
                   </div>
 
-                  {/* Devanagari Verses Typography */}
-                  <div className={`space-y-3 sm:space-y-3.5 py-1.5 ${textAlignClass}`}>
-                    {splitVerseLines(verse.linesDevanagari || []).map((line, lIdx) => {
-                      if (line.trim().startsWith('(') && line.trim().endsWith(')')) {
-                        return (
-                          <div key={lIdx} className={`text-xs ${fontClass} ${currentTheme.metaColor} font-bold mb-1`}>
-                            ॥ {line.replace(/[()]/g, '').trim()} छंद ॥
-                          </div>
-                        );
-                      }
-                      return (
-                        <p
-                          key={lIdx}
-                          className={`${fontClass} ${
-                            lIdx === 0 ? 'font-semibold' : 'font-normal sm:font-medium'
-                          } tracking-normal ${currentTheme.lineColor} ${textAlignClass} ${
-                            fontSize === 'sm'
-                              ? 'text-[18px] sm:text-[20px] leading-[2.1] sm:leading-[2.2]'
-                              : fontSize === 'md'
-                              ? 'text-[21px] sm:text-[23px] leading-[2.2] sm:leading-[2.3]'
-                              : fontSize === 'lg'
-                              ? 'text-[24px] sm:text-[26px] leading-[2.3] sm:leading-[2.4]'
-                              : 'text-[27px] sm:text-[30px] leading-[2.4] sm:leading-[2.5]'
-                          }`}
-                        >
-                          {sanitizeSacredText(line)}
-                        </p>
-                      );
-                    })}
-                  </div>
+                  {/* Inherently Distributed Devanagari Verses Typography */}
+                  <DevotionalVersePresenter
+                    lines={verse.linesDevanagari || []}
+                    fontClass={fontClass}
+                    fontSize={fontSize}
+                    textAlignClass={textAlignClass}
+                    currentTheme={currentTheme}
+                  />
 
                   {/* Simple Dignified Delimiter */}
                   <div className="flex items-center justify-center my-4 select-none">
