@@ -50,82 +50,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
-    "verseNumber": 1
-  },
-  {
-    "id": "jo-kahau-shreeharivansh-ras-biralo-samajhan-haar-ek-doe-jo-paiye-khojiye-sab-sansaar-dhruvdas-quote",
-    "collectionId": "hit-chaurasi",
-    "index": 2,
-    "titleDevanagari": "जो कह्यौ श्री हरिवंश रस बिरलौ समुझनहार - श्री ध्रुवदास, बयालीस लीला, रहस्य लता (1)",
-    "author": "श्री ध्रुवदास",
-    "slug": "jo-kahau-shreeharivansh-ras-biralo-samajhan-haar-ek-doe-jo-paiye-khojiye-sab-sansaar-dhruvdas-quote",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "जो कह्यौ श्री हरिवंश रस, बिरलौ समुझनहार।",
-          "एक दोइ जो पाइयै, खोजत सब संसार॥",
-          "- श्री ध्रुवदास, बयालीस लीला, रहस्य लता (1)"
-        ]
-      }
-    ],
-    "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
-    "verseNumber": 1
-  },
-  {
-    "id": "pratham-naam-harivansh-hit-shri-dhruvdas-vrindavan-shat-leela-1",
-    "collectionId": "hit-chaurasi",
-    "index": 3,
-    "titleDevanagari": "प्रथम नाम हरिवंश हित - श्री ध्रुवदास, बयालीस लीला, वृन्दावन शत लीला (1)",
-    "author": "श्री ध्रुवदास",
-    "slug": "pratham-naam-harivansh-hit-shri-dhruvdas-vrindavan-shat-leela-1",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "प्रथम नाम हरिवंश हित, रट रसना दिन रैन।",
-          "प्रीति रीति तब पाइयै, अरु वृंदावन ऐन॥",
-          "- श्री ध्रुवदास, बयालीस लीला, वृन्दावन शत लीला (1)"
-        ]
-      }
-    ],
-    "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
-    "verseNumber": 1
-  },
-  {
-    "id": "shri-hita-harivansh-gusai-binu-shri-kishori-ali-ji-maanjh-1",
-    "collectionId": "hit-chaurasi",
-    "index": 4,
-    "titleDevanagari": "श्री हित हरिवंश गुसाईं बिनु - श्री किशोरी अलि जी, माँझ (01)",
-    "author": "श्री किशोरी अलि जी",
-    "slug": "shri-hita-harivansh-gusai-binu-shri-kishori-ali-ji-maanjh-1",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "श्री हित हरिवंश गुसाईं बिनु को राधाराधन जानै।",
-          "श्री स्वामी हरिदास बिना को जुगल रूप उर आनै॥ [1]",
-          "श्री वृन्दावन रसिकन कौ व्यासहिं तजि कौन बखानै।",
-          "तिन ही कौ जग जनम सफल जिनकौं ये अपनों मानैं॥ [2]",
-          "नंद सुवन की बालकेलि को रस वल्लभ ही पायौ।",
-          "महाप्रभू श्री कृष्ण नाम की महिमा रस बरसायौ॥ [3]",
-          "रूप-सनातन जू नैं ब्रज-रस निजु रसना दुलरायौ।",
-          "सोई भलीविधि नाभाजू नैं भक्तिमाल दरसायौ॥ [4]",
-          "- श्री किशोरी अलि जी, माँझ (01)"
-        ]
-      }
-    ],
-    "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 1
   },
   {
     "id": "pyare-boli-bhaamini-aaju-niki-jaamini-shri-hit-harivansh-mahaprabhu-shri-hit-chaurasi-2",
     "collectionId": "hit-chaurasi",
-    "index": 5,
+    "index": 2,
     "titleDevanagari": "प्यारे बोली भामिनी, आजु नीकी जामिनी - श्री हित हरिवंश महाप्रभु, श्री हित चौरासी (2)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "pyare-boli-bhaamini-aaju-niki-jaamini-shri-hit-harivansh-mahaprabhu-shri-hit-chaurasi-2",
@@ -145,55 +76,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
-    "verseNumber": 2
-  },
-  {
-    "id": "charan-saran-harivansh-ki-jab-lagi-aayo-naahin-shri-dhruvdas-ji-vrindavan-shat-leela-2",
-    "collectionId": "hit-chaurasi",
-    "index": 6,
-    "titleDevanagari": "चरन सरन हरिवंश की - श्री ध्रुवदास जी, बयालीस लीला, वृन्दावन शत लीला (2)",
-    "author": "श्री ध्रुवदास जी",
-    "slug": "charan-saran-harivansh-ki-jab-lagi-aayo-naahin-shri-dhruvdas-ji-vrindavan-shat-leela-2",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "चरन सरन हरिवंश की, जब लगि आयौ नाहिं।",
-          "नव निकुंज निजु माधुरी, क्यों परसै मन माहिं॥",
-          "- श्री ध्रुवदास जी, बयालीस लीला, वृन्दावन शत लीला (2)"
-        ]
-      }
-    ],
-    "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
-    "verseNumber": 2
-  },
-  {
-    "id": "vyas-aas-harivansh-ki-tinhin-kau-badhbhag-shri-hariram-vyas-vyas-vani-siddhant-ki-saakhi-2",
-    "collectionId": "hit-chaurasi",
-    "index": 7,
-    "titleDevanagari": "व्यास आस हरिवंश की - श्री हरिराम व्यास, व्यास वाणी, सिद्धांत की साखी (2)",
-    "author": "श्री हरिराम व्यास",
-    "slug": "vyas-aas-harivansh-ki-tinhin-kau-badhbhag-shri-hariram-vyas-vyas-vani-siddhant-ki-saakhi-2",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "व्यास आस हरिवंश की, तिनहीं कौ बड़भाग।",
-          "वृंदावन की कुंज में, सदा रहत अनुराग॥",
-          "- श्री हरिराम व्यास, व्यास वाणी, सिद्धांत की साखी (2)"
-        ]
-      }
-    ],
-    "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 2
   },
   {
     "id": "praat-samai-dou-ras-lampat-shri-harivansh-mahaprabhu-shri-hit-chaurasi-3",
     "collectionId": "hit-chaurasi",
-    "index": 8,
+    "index": 3,
     "titleDevanagari": "प्रात समै दोऊ रस लंपट - श्री हरिवंश महाप्रभू, श्री हित चौरासी (3)",
     "author": "श्री हरिवंश महाप्रभू",
     "slug": "praat-samai-dou-ras-lampat-shri-harivansh-mahaprabhu-shri-hit-chaurasi-3",
@@ -215,13 +104,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 3
   },
   {
     "id": "aaju-tau-juvati-terau-vadan-shri-harivansh-mahaprabhu-shri-hit-chaurasi-4",
     "collectionId": "hit-chaurasi",
-    "index": 9,
+    "index": 4,
     "titleDevanagari": "आजु तौ जुवति तेरौ वदन - श्री  हरिवंश महाप्रभु , श्री हित चौरासी (4)",
     "author": "श्री  हरिवंश महाप्रभु",
     "slug": "aaju-tau-juvati-terau-vadan-shri-harivansh-mahaprabhu-shri-hit-chaurasi-4",
@@ -247,13 +136,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 4
   },
   {
     "id": "kaun-chatur-juvati-priya-shri-harivansh-mahaprabhu-shri-hit-chaurasi-6",
     "collectionId": "hit-chaurasi",
-    "index": 10,
+    "index": 5,
     "titleDevanagari": "कौन चतुर जुवती प्रिया - श्री हरिवंश महाप्रभू, श्री हित चौरासी (6)",
     "author": "श्री हरिवंश महाप्रभू",
     "slug": "kaun-chatur-juvati-priya-shri-harivansh-mahaprabhu-shri-hit-chaurasi-6",
@@ -271,34 +160,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 6
-  },
-  {
-    "id": "harivansh-charan-ur-dharani-dhari-shri-dhruvdas-vrindavan-shat-leela-8",
-    "collectionId": "hit-chaurasi",
-    "index": 11,
-    "titleDevanagari": "हरिवंश चरण उर धरनि धरि - श्री ध्रुवदास, बयालीस लीला, वृन्दावन शत लीला (8)",
-    "author": "श्री ध्रुवदास",
-    "slug": "harivansh-charan-ur-dharani-dhari-shri-dhruvdas-vrindavan-shat-leela-8",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "हरिवंश चरण उर धरनि धरि, मन वच कै विस्वास।",
-          "कुँवरि कृपा ह्वै है तबहि, अरु वृन्दावन वास॥",
-          "- श्री ध्रुवदास, बयालीस लीला, वृन्दावन शत लीला (8)"
-        ]
-      }
-    ],
-    "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
-    "verseNumber": 8
   },
   {
     "id": "ati-hi-arun-tere-nayan-nalin-ri-shri-harivansh-mahaprabhu-shri-hit-chaurasi-8",
     "collectionId": "hit-chaurasi",
-    "index": 12,
+    "index": 6,
     "titleDevanagari": "अति ही अरुन तेरे नयन नलिन री - श्री हरिवंश महाप्रभू, श्री हित चौरासी (8)",
     "author": "श्री हरिवंश महाप्रभू",
     "slug": "ati-hi-arun-tere-nayan-nalin-ri-shri-harivansh-mahaprabhu-shri-hit-chaurasi-8",
@@ -319,13 +187,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 8
   },
   {
     "id": "bani-shri-radha-mohan-ki-jori-shri-hita-harivansh-mahaprabhu-from-hit-chaturasi-09",
     "collectionId": "hit-chaurasi",
-    "index": 13,
+    "index": 7,
     "titleDevanagari": "बनी श्रीराधा मोहन की जोरी  - श्री हित हरिवंश , हित चतुरासी (09)",
     "author": "श्री हित हरिवंश",
     "slug": "bani-shri-radha-mohan-ki-jori-shri-hita-harivansh-mahaprabhu-from-hit-chaturasi-09",
@@ -345,13 +213,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 9
   },
   {
     "id": "bani-shriradha-mohan-ki-jori-shri-hit-harivansh-mahaprabhu-shri-hit-chaurasi-9",
     "collectionId": "hit-chaurasi",
-    "index": 14,
+    "index": 8,
     "titleDevanagari": "बनी श्रीराधा मोहन की जोरी - श्री हित हरिवंश महाप्रभू, श्री हित चौरासी (9)",
     "author": "श्री हित हरिवंश महाप्रभू",
     "slug": "bani-shriradha-mohan-ki-jori-shri-hit-harivansh-mahaprabhu-shri-hit-chaurasi-9",
@@ -371,34 +239,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
-    "verseNumber": 9
-  },
-  {
-    "id": "hita-harivansh-kripa-bina-shri-hariram-vyas-vyas-vani-saakhi-09",
-    "collectionId": "hit-chaurasi",
-    "index": 15,
-    "titleDevanagari": "हित हरिवंश कृपा बिना - श्री हरिराम व्यास, व्यास वाणी, सिद्धांत की साखी (09)",
-    "author": "श्री हरिराम व्यास",
-    "slug": "hita-harivansh-kripa-bina-shri-hariram-vyas-vyas-vani-saakhi-09",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "हित हरिवंश कृपा बिना, निमिष नहीं कहुँ ठौर।",
-          "व्यास दास की स्वामिनी, प्रगटि सब सिरमौर॥",
-          "- श्री हरिराम व्यास, व्यास वाणी, सिद्धांत की साखी (09)"
-        ]
-      }
-    ],
-    "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 9
   },
   {
     "id": "aaju-naagari-kisor-bhaanvti-vichitra-jor-shri-hit-harivansh-mahaprabhu-shri-hit-chaurasi-10",
     "collectionId": "hit-chaurasi",
-    "index": 16,
+    "index": 9,
     "titleDevanagari": "आजु नागरी किसोर, भाँवती विचित्र जोर - श्री हित हरिवंश महाप्रभु, श्री हित चौरासी (10)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "aaju-naagari-kisor-bhaanvti-vichitra-jor-shri-hit-harivansh-mahaprabhu-shri-hit-chaurasi-10",
@@ -420,13 +267,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 10
   },
   {
     "id": "haun-apne-motin-lar-povati-shri-harivansh-mahaprabhu-shri-hit-chaurasi-13",
     "collectionId": "hit-chaurasi",
-    "index": 17,
+    "index": 10,
     "titleDevanagari": "नंद के लाल हरयौं मन मोर - श्री हरिवंश महाप्रभु , श्री हित चौरासी (13)",
     "author": "श्री हरिवंश महाप्रभु",
     "slug": "haun-apne-motin-lar-povati-shri-harivansh-mahaprabhu-shri-hit-chaurasi-13",
@@ -445,13 +292,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 13
   },
   {
     "id": "adhar-arun-tere-kaise-kai-duraoon-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-14",
     "collectionId": "hit-chaurasi",
-    "index": 18,
+    "index": 11,
     "titleDevanagari": "अधर अरुन तेरे कैसे कै दुराऊँ - श्री हित हरिवंश महाप्रभु, श्री हित चौरासी (14)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "adhar-arun-tere-kaise-kai-duraoon-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-14",
@@ -475,34 +322,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 14
-  },
-  {
-    "id": "shri-lalita-harivansh-vapu-shri-vanshi-ali-hriday-sarvasv-16",
-    "collectionId": "hit-chaurasi",
-    "index": 19,
-    "titleDevanagari": "श्री ललिता हरिवंश वपु - श्री वंशी अलि, हृदय सर्वस्व (16)",
-    "author": "श्री वंशी अलि",
-    "slug": "shri-lalita-harivansh-vapu-shri-vanshi-ali-hriday-sarvasv-16",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "श्री ललिता हरिवंश वपु, प्रगटी रसनिधि आय।",
-          "चरन माधुरी कुंवर की, दीनी सबन जनाय॥",
-          "- श्री वंशी अलि, हृदय सर्वस्व (16)"
-        ]
-      }
-    ],
-    "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
-    "verseNumber": 16
   },
   {
     "id": "aaju-dekhi-vraj-sundari-mohan-bani-keli-shri-hit-harivansh-mahaprabhu-shri-hit-chaurasi-17",
     "collectionId": "hit-chaurasi",
-    "index": 20,
+    "index": 12,
     "titleDevanagari": "आजु देखि व्रज सुन्दरी मोहन बनी केलि - श्री हित हरिवंश महाप्रभु, श्री हित चौरासी (17)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "aaju-dekhi-vraj-sundari-mohan-bani-keli-shri-hit-harivansh-mahaprabhu-shri-hit-chaurasi-17",
@@ -523,55 +349,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 17
-  },
-  {
-    "id": "sun-mero-vachan-chabeeli-radha-tein-payo-ras-sindhu-agadha-jo-ras-neti-neti-shruti-bakhyo-tako-tain-adhar-sudharas-chakhyo-shri-hita-harivansh-mahaprabhu",
-    "collectionId": "hit-chaurasi",
-    "index": 21,
-    "titleDevanagari": "सुन मेरो वचन छबीली राधा, तें पायो रस सिंधु अगाधा  - श्री हित हरिवंश महाप्रभु - श्री हित चतुरासी (18)",
-    "author": "श्री हित चतुरासी",
-    "slug": "sun-mero-vachan-chabeeli-radha-tein-payo-ras-sindhu-agadha-jo-ras-neti-neti-shruti-bakhyo-tako-tain-adhar-sudharas-chakhyo-shri-hita-harivansh-mahaprabhu",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "सुनि मेरौ वचन छबीली राधा, तैं पायौ रस सिन्धु अगाधा।",
-          "जो रस नेति-नेति श्रुति भाख्यौ, ताकौ तैं अधर सुधारस चाख्यौ ॥",
-          "- श्री हित हरिवंश महाप्रभु - श्री हित चतुरासी (18)"
-        ]
-      }
-    ],
-    "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
-    "verseNumber": 18
-  },
-  {
-    "id": "shri-harivansh-swaroop-hain-shriharidas-udaar-shri-vanshi-ali-hriday-sarvasv-18",
-    "collectionId": "hit-chaurasi",
-    "index": 22,
-    "titleDevanagari": "श्री हरिवंश स्वरूप हैं श्रीहरिदास उदार - श्री वंशी अलि, हृदय सर्वस्व (18)",
-    "author": "श्री वंशी अलि",
-    "slug": "shri-harivansh-swaroop-hain-shriharidas-udaar-shri-vanshi-ali-hriday-sarvasv-18",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "श्री हरिवंश स्वरूप हैं, श्रीहरिदास उदार।",
-          "जे जे बातें महल की, बरनत नित्य विहार॥",
-          "- श्री वंशी अलि, हृदय सर्वस्व (18)"
-        ]
-      }
-    ],
-    "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
-    "verseNumber": 18
   },
   {
     "id": "खलत-रस-रसक-बरजमडन",
     "collectionId": "hit-chaurasi",
-    "index": 23,
+    "index": 13,
     "titleDevanagari": "खेलत रास रसिक ब्रजमंडन",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "खलत-रस-रसक-बरजमडन",
@@ -590,13 +374,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 19
   },
   {
     "id": "mohanlal-ke-rasmaati-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-20",
     "collectionId": "hit-chaurasi",
-    "index": 24,
+    "index": 14,
     "titleDevanagari": "मोहनलाल के रसमाती - श्री हित हरिवंश महाप्रभु, श्री हित चौरासी (20)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "mohanlal-ke-rasmaati-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-20",
@@ -618,13 +402,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 20
   },
   {
     "id": "tere-nainn-karat-dou-chaari-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-21",
     "collectionId": "hit-chaurasi",
-    "index": 25,
+    "index": 15,
     "titleDevanagari": "तेरे नैंन करत दोऊ चारी - श्री हित हरिवंश महाप्रभु, श्री हित चौरासी (21)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "tere-nainn-karat-dou-chaari-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-21",
@@ -644,13 +428,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 21
   },
   {
     "id": "तर-नन-करत-दउ-चर",
     "collectionId": "hit-chaurasi",
-    "index": 26,
+    "index": 16,
     "titleDevanagari": "तेरे नैंन करत दोउ चारी",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "तर-नन-करत-दउ-चर",
@@ -668,13 +452,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 21
   },
   {
     "id": "nainani-par-varaun-kotik-khanjan-shri-harivansh-mahaprabhu-shri-hit-chaurasi-22",
     "collectionId": "hit-chaurasi",
-    "index": 27,
+    "index": 17,
     "titleDevanagari": "नैंननिं पर वारौं कोटिक खंजन - श्री हरिवंश महाप्रभु , श्री हित चौरासी (22)",
     "author": "श्री हरिवंश महाप्रभु",
     "slug": "nainani-par-varaun-kotik-khanjan-shri-harivansh-mahaprabhu-shri-hit-chaurasi-22",
@@ -692,13 +476,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 22
   },
   {
     "id": "ननन-पर-वर-कटक-खजन",
     "collectionId": "hit-chaurasi",
-    "index": 28,
+    "index": 18,
     "titleDevanagari": "नैंननिं पर वारौं कोटिक खंजन",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "ननन-पर-वर-कटक-खजन",
@@ -714,13 +498,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 22
   },
   {
     "id": "radha-pyari-tere-nain-salol-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-23",
     "collectionId": "hit-chaurasi",
-    "index": 29,
+    "index": 19,
     "titleDevanagari": "राधा प्यारी तेरे नैंन सलोल - श्री हित हरिवंश महाप्रभु , श्री हित चौरासी (23)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "radha-pyari-tere-nain-salol-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-23",
@@ -740,13 +524,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 23
   },
   {
     "id": "रध-पयर-तर-नन-सलल",
     "collectionId": "hit-chaurasi",
-    "index": 30,
+    "index": 20,
     "titleDevanagari": "राधा प्यारी तेरे नैंन सलोल",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "रध-पयर-तर-नन-सलल",
@@ -764,13 +548,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 23
   },
   {
     "id": "aaju-gopal-raas-ras-khelat-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-24",
     "collectionId": "hit-chaurasi",
-    "index": 31,
+    "index": 21,
     "titleDevanagari": "आजु गोपाल रास रस खेलत - श्री हरिवंश महाप्रभु , हित चौरासी (24)",
     "author": "श्री हरिवंश महाप्रभु",
     "slug": "aaju-gopal-raas-ras-khelat-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-24",
@@ -796,13 +580,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 24
   },
   {
     "id": "aaj-niki-bani-shri-radhika-nagri-shri-hita-harivansh-mahaprabhu-from-hita-chaurasi-25",
     "collectionId": "hit-chaurasi",
-    "index": 32,
+    "index": 22,
     "titleDevanagari": "आज नीकी बनी श्रीराधिका नागरी - श्री हित हरिवंश महाप्रभु, हित चौरासी (25)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "aaj-niki-bani-shri-radhika-nagri-shri-hita-harivansh-mahaprabhu-from-hita-chaurasi-25",
@@ -823,13 +607,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 25
   },
   {
     "id": "आज-नक-बन-शर-रधक-नगर",
     "collectionId": "hit-chaurasi",
-    "index": 33,
+    "index": 23,
     "titleDevanagari": "आजु निकी बनी श्री राधिका नागरी",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "आज-नक-बन-शर-रधक-नगर",
@@ -845,13 +629,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 25
   },
   {
     "id": "महन-मदन-गपल-क-बसर",
     "collectionId": "hit-chaurasi",
-    "index": 34,
+    "index": 24,
     "titleDevanagari": "मोहनी मदन गोपाल की बाँसुरी",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "महन-मदन-गपल-क-बसर",
@@ -869,13 +653,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 26
   },
   {
     "id": "ह-बल-जऊ-नगर-सयम",
     "collectionId": "hit-chaurasi",
-    "index": 35,
+    "index": 25,
     "titleDevanagari": "हौं बलि जाऊँ नागरी स्याम",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "ह-बल-जऊ-नगर-सयम",
@@ -891,13 +675,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 27
   },
   {
     "id": "मधरत-वनदवन-आननद-न-थर",
     "collectionId": "hit-chaurasi",
-    "index": 36,
+    "index": 26,
     "titleDevanagari": "मधुरितु वृन्दावन आनन्द न थोर",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "मधरत-वनदवन-आननद-न-थर",
@@ -918,13 +702,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 27
   },
   {
     "id": "radhe-dekhi-van-ki-baat-shri-hit-harivansh-mahaprabhu-hit-chaurasi-28",
     "collectionId": "hit-chaurasi",
-    "index": 37,
+    "index": 27,
     "titleDevanagari": "राधे देखि वन की बात - श्री हित हरिवंश महाप्रभु, हित चौरासी (28)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "radhe-dekhi-van-ki-baat-shri-hit-harivansh-mahaprabhu-hit-chaurasi-28",
@@ -944,13 +728,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 28
   },
   {
     "id": "रध-दख-वन-क-बत",
     "collectionId": "hit-chaurasi",
-    "index": 38,
+    "index": 28,
     "titleDevanagari": "राधे देखि वन की बात",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "रध-दख-वन-क-बत",
@@ -968,13 +752,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 28
   },
   {
     "id": "बरज-नव-तरन-कदब-मकट-मन-सयम-आज-बन",
     "collectionId": "hit-chaurasi",
-    "index": 39,
+    "index": 29,
     "titleDevanagari": "ब्रज नव तरुनी कदंब मुकुट मनि स्यामा आजु बनी",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "बरज-नव-तरन-कदब-मकट-मन-सयम-आज-बन",
@@ -1004,13 +788,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 29
   },
   {
     "id": "आज-अत-रजत-दमपत-भर",
     "collectionId": "hit-chaurasi",
-    "index": 40,
+    "index": 30,
     "titleDevanagari": "आजु अति राजत दम्पति भोर",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "आज-अत-रजत-दमपत-भर",
@@ -1030,13 +814,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 31
   },
   {
     "id": "आज-बन-करडत-सयम-सयम",
     "collectionId": "hit-chaurasi",
-    "index": 41,
+    "index": 31,
     "titleDevanagari": "आजु बन क्रीडत स्यामा स्याम",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "आज-बन-करडत-सयम-सयम",
@@ -1056,13 +840,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 32
   },
   {
     "id": "aaju-ban-rajat-jugal-kishor-shri-harivansh-mahaprabhu-shri-hit-chaurasi-33",
     "collectionId": "hit-chaurasi",
-    "index": 42,
+    "index": 32,
     "titleDevanagari": "आजु बन राजत जुगल किसोर - श्री हित हरिवंश महाप्रभु , श्री हित चौरासी (33)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "aaju-ban-rajat-jugal-kishor-shri-harivansh-mahaprabhu-shri-hit-chaurasi-33",
@@ -1082,13 +866,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 33
   },
   {
     "id": "आज-बन-रजत-जगल-कसर",
     "collectionId": "hit-chaurasi",
-    "index": 43,
+    "index": 33,
     "titleDevanagari": "आजु बन राजत जुगल किसोर",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "आज-बन-रजत-जगल-कसर",
@@ -1106,13 +890,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 33
   },
   {
     "id": "नम-नम-पवन-करन-हत-अननय-हरवश",
     "collectionId": "hit-chaurasi",
-    "index": 44,
+    "index": 34,
     "titleDevanagari": "नमो-नमो पावन करन हित अनन्य हरिवंश।",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "नम-नम-पवन-करन-हत-अननय-हरवश",
@@ -1184,13 +968,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 34
   },
   {
     "id": "आज-बन-नक-रस-बनय",
     "collectionId": "hit-chaurasi",
-    "index": 45,
+    "index": 35,
     "titleDevanagari": "आजु बन नीकौ रास बनायौ",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "आज-बन-नक-रस-बनय",
@@ -1214,13 +998,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 36
   },
   {
     "id": "वग-चलह-उठ-गहर-करत-कत",
     "collectionId": "hit-chaurasi",
-    "index": 46,
+    "index": 36,
     "titleDevanagari": "वेगि चलहि उठि गहरु करति कत",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "वग-चलह-उठ-गहर-करत-कत",
@@ -1238,13 +1022,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 38
   },
   {
     "id": "खलय-लल-चहत-रवन",
     "collectionId": "hit-chaurasi",
-    "index": 47,
+    "index": 37,
     "titleDevanagari": "खेल्यो लाल चाहत रवन",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "खलय-लल-चहत-रवन",
@@ -1262,13 +1046,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 39
   },
   {
     "id": "आज-त-जवत-तर-वदन-आनद-भरय",
     "collectionId": "hit-chaurasi",
-    "index": 48,
+    "index": 38,
     "titleDevanagari": "आजु तौ जुवति तेरो वदन आनंद भरयौ",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "आज-त-जवत-तर-वदन-आनद-भरय",
@@ -1292,34 +1076,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
-    "verseNumber": 41
-  },
-  {
-    "id": "harivansh-haridasi-jahan-vyas-aas-kari-vaas-shri-hita-roop-lal-shri-vrindavan-samaran-41",
-    "collectionId": "hit-chaurasi",
-    "index": 49,
-    "titleDevanagari": "हरिवंशी हरिदासी जहां व्यास - श्री हित रूप लाल, श्री वृंदावन स्मरण (41)",
-    "author": "श्री हित रूप लाल",
-    "slug": "harivansh-haridasi-jahan-vyas-aas-kari-vaas-shri-hita-roop-lal-shri-vrindavan-samaran-41",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "हरिवंशी हरिदासी जहां, व्यास आस करि वास।",
-          "रसिक त्रिवेणी विपिन में, नित्य विहार उपास॥",
-          "- श्री हित रूप लाल, श्री वृंदावन स्मरण (41)"
-        ]
-      }
-    ],
-    "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 41
   },
   {
     "id": "preeti-ki-reeti-rangeelo-hi-jaane-shri-hita-harivansh-mahaprabhu-hit-chaturasi-41",
     "collectionId": "hit-chaurasi",
-    "index": 50,
+    "index": 39,
     "titleDevanagari": "प्रीति की रीति रँगीलोइ जानै - श्री हित हरिवंश महाप्रभु, हित चौरासी (41)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "preeti-ki-reeti-rangeelo-hi-jaane-shri-hita-harivansh-mahaprabhu-hit-chaturasi-41",
@@ -1339,13 +1102,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 41
   },
   {
     "id": "preeti-ki-reeti-rangeelo-hi-jaane-yadpi-sakal-lok-chunamani-deen-apan-po-manat-shri-hita-harivansh-mahaprabhu-hit-chaturasi-41",
     "collectionId": "hit-chaurasi",
-    "index": 51,
+    "index": 40,
     "titleDevanagari": "प्रीति की रीति रंगीलो ही जाने - मुरली अवतार श्री हित हरिवंश महाप्रभु, श्री हित चतुरसी (41)",
     "author": "मुरली अवतार श्री हित हरिवंश महाप्रभु",
     "slug": "preeti-ki-reeti-rangeelo-hi-jaane-yadpi-sakal-lok-chunamani-deen-apan-po-manat-shri-hita-harivansh-mahaprabhu-hit-chaturasi-41",
@@ -1360,13 +1123,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 41
   },
   {
     "id": "परत-क-रत-रगलइ-जन",
     "collectionId": "hit-chaurasi",
-    "index": 52,
+    "index": 41,
     "titleDevanagari": "प्रीति की रीति रंगिलोइ जानै",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "परत-क-रत-रगलइ-जन",
@@ -1384,34 +1147,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 41
-  },
-  {
-    "id": "bado-raas-mandal-ihan-sewit-hit-harivansh-shri-hita-roop-lal-shri-vrindavan-samaran-42",
-    "collectionId": "hit-chaurasi",
-    "index": 53,
-    "titleDevanagari": "बडौ रास मंडल इहां सेवित हित हरिवंश - श्री हित रूप लाल, श्री वृंदावन स्मरण (42)",
-    "author": "श्री हित रूप लाल",
-    "slug": "bado-raas-mandal-ihan-sewit-hit-harivansh-shri-hita-roop-lal-shri-vrindavan-samaran-42",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "बडौ रास मंडल इहां, सेवित हित हरिवंश।",
-          "गुहौ जनेऊ तोर के, व्यास दास अवतंश॥",
-          "- श्री हित रूप लाल, श्री वृंदावन स्मरण (42)"
-        ]
-      }
-    ],
-    "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
-    "verseNumber": 42
   },
   {
     "id": "priti-na-kahu-ki-kani-bicharai-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-42",
     "collectionId": "hit-chaurasi",
-    "index": 54,
+    "index": 42,
     "titleDevanagari": "प्रीति न काहु की कानि बिचारै  - श्री हित हरिवंश महाप्रभु, श्री हित चौरासी (42)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "priti-na-kahu-ki-kani-bicharai-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-42",
@@ -1431,13 +1173,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 42
   },
   {
     "id": "परत-न-कह-क-कन-बचर",
     "collectionId": "hit-chaurasi",
-    "index": 55,
+    "index": 43,
     "titleDevanagari": "प्रीति न काहु की कानि बिचारै",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "परत-न-कह-क-कन-बचर",
@@ -1455,13 +1197,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 42
   },
   {
     "id": "ati-nagari-vrishbhanu-kishori-shri-hita-harivansh-mahaprabhu-shri-hita-chaurasi-43",
     "collectionId": "hit-chaurasi",
-    "index": 56,
+    "index": 44,
     "titleDevanagari": "अति नागरी वृषभानु किसोरी - श्री हित हरिवंश महाप्रभु, हित चौरासी (43)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "ati-nagari-vrishbhanu-kishori-shri-hita-harivansh-mahaprabhu-shri-hita-chaurasi-43",
@@ -1476,13 +1218,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 43
   },
   {
     "id": "अत-नगर-वषभन-कसर",
     "collectionId": "hit-chaurasi",
-    "index": 57,
+    "index": 45,
     "titleDevanagari": "अति नागरि वृषभानु किसोरी",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "अत-नगर-वषभन-कसर",
@@ -1500,13 +1242,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 43
   },
   {
     "id": "चल-सदर-बल-वदवन",
     "collectionId": "hit-chaurasi",
-    "index": 58,
+    "index": 46,
     "titleDevanagari": "चलि सुंदरि बोली वृंदावन",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "चल-सदर-बल-वदवन",
@@ -1524,13 +1266,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 44
   },
   {
     "id": "chali-sundari-boli-vrindavan-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-44",
     "collectionId": "hit-chaurasi",
-    "index": 59,
+    "index": 47,
     "titleDevanagari": "चलि सुंदरि बोली वृंदावन - श्री हित हरिवंश महाप्रभु, श्री हित चौरासी (44)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "chali-sundari-boli-vrindavan-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-44",
@@ -1550,13 +1292,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 44
   },
   {
     "id": "आज-दख-वरज-सनदर-महन-बन-कल",
     "collectionId": "hit-chaurasi",
-    "index": 60,
+    "index": 48,
     "titleDevanagari": "आजु देखि व्रज सुन्दरी मोहन बनी केलि",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "आज-दख-वरज-सनदर-महन-बन-कल",
@@ -1572,13 +1314,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 45
   },
   {
     "id": "aavati-shri-vrishbhanu-dulari-shri-hita-harivansh-mahaprabhu-hit-chaurasi-45",
     "collectionId": "hit-chaurasi",
-    "index": 61,
+    "index": 49,
     "titleDevanagari": "आवति श्रीवृषभानु दुलारी - श्री हित हरिवंश महाप्रभु, श्री हित चतुरासी (45)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "aavati-shri-vrishbhanu-dulari-shri-hita-harivansh-mahaprabhu-hit-chaurasi-45",
@@ -1602,13 +1344,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 45
   },
   {
     "id": "आवत-शरवषभन-दलर",
     "collectionId": "hit-chaurasi",
-    "index": 62,
+    "index": 50,
     "titleDevanagari": "आवति श्रीवृषभानु दुलारी",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "आवत-शरवषभन-दलर",
@@ -1630,13 +1372,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 45
   },
   {
     "id": "वन-क-लल-ललह-भव",
     "collectionId": "hit-chaurasi",
-    "index": 63,
+    "index": 51,
     "titleDevanagari": "वन की लीला लालहिं भावै",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "वन-क-लल-ललह-भव",
@@ -1654,13 +1396,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 47
   },
   {
     "id": "van-ki-lila-lalahin-bhavai-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-47",
     "collectionId": "hit-chaurasi",
-    "index": 64,
+    "index": 52,
     "titleDevanagari": "वन की लीला लालहिं भावै - श्री हित हरिवंश महाप्रभु , श्री हित चौरासी (47)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "van-ki-lila-lalahin-bhavai-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-47",
@@ -1680,13 +1422,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 47
   },
   {
     "id": "bani-vrishbhanu-nandini-aaju-shri-hita-harivansh-mahaprabhu-hita-chaurasi-48",
     "collectionId": "hit-chaurasi",
-    "index": 65,
+    "index": 53,
     "titleDevanagari": "बनी वृषभानु नंदिनी आजु - श्री हित हरिवंश महाप्रभु, हित चौरासी (48)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "bani-vrishbhanu-nandini-aaju-shri-hita-harivansh-mahaprabhu-hita-chaurasi-48",
@@ -1706,13 +1448,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 48
   },
   {
     "id": "बन-वषभन-नदन-आज",
     "collectionId": "hit-chaurasi",
-    "index": 66,
+    "index": 54,
     "titleDevanagari": "बनी वृषभानु नंदिनी आजु",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "बन-वषभन-नदन-आज",
@@ -1730,13 +1472,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 48
   },
   {
     "id": "दख-सख-रध-पय-कल",
     "collectionId": "hit-chaurasi",
-    "index": 67,
+    "index": 55,
     "titleDevanagari": "देखि सखी राधा पिय केलि",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "दख-सख-रध-पय-कल",
@@ -1754,13 +1496,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 49
   },
   {
     "id": "दन-द-र-नवल-कसर",
     "collectionId": "hit-chaurasi",
-    "index": 68,
+    "index": 56,
     "titleDevanagari": "दान दै री नवल किसोरी",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "दन-द-र-नवल-कसर",
@@ -1778,13 +1520,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 51
   },
   {
     "id": "दख-मई-सदरत-क-सव",
     "collectionId": "hit-chaurasi",
-    "index": 69,
+    "index": 57,
     "titleDevanagari": "देखौ माई सुंदरता की सीवाँ",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "दख-मई-सदरत-क-सव",
@@ -1804,13 +1546,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 52
   },
   {
     "id": "jai-shri-hit-harivansh-prataap-roop-gun-vay-bal-syaam-ujagar-jaaki-bhroo-vilaas-bas-pasuriv-din-vithakat-ras-saagar-shri-hita-harivansh-mahaprabhu-hit-chaturasi-52",
     "collectionId": "hit-chaurasi",
-    "index": 70,
+    "index": 58,
     "titleDevanagari": "(जै श्री) हित हरिवंश प्रताप रूप गुन वय बल स्याम उजागर - मुरली अवतार श्री हित हरिवंश महाप्रभु, हित चौरासी (52)",
     "author": "मुरली अवतार श्री हित हरिवंश महाप्रभु",
     "slug": "jai-shri-hit-harivansh-prataap-roop-gun-vay-bal-syaam-ujagar-jaaki-bhroo-vilaas-bas-pasuriv-din-vithakat-ras-saagar-shri-hita-harivansh-mahaprabhu-hit-chaturasi-52",
@@ -1824,13 +1566,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 52
   },
   {
     "id": "dekhau-mai-sundarta-ki-seema",
     "collectionId": "hit-chaurasi",
-    "index": 71,
+    "index": 59,
     "titleDevanagari": "देखौ माई सुंदरता की सीवाँ  - हित हरिवंश महाप्रभु, हित चौरासी (52)",
     "author": "हित हरिवंश महाप्रभु",
     "slug": "dekhau-mai-sundarta-ki-seema",
@@ -1852,13 +1594,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 52
   },
   {
     "id": "दख-मई-अबल-क-बल-रस",
     "collectionId": "hit-chaurasi",
-    "index": 72,
+    "index": 60,
     "titleDevanagari": "देखौ माई अबला के बल रासि",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "दख-मई-अबल-क-बल-रस",
@@ -1876,13 +1618,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 53
   },
   {
     "id": "dekho-mai-abla-ke-bal-rasi-shri-hita-harivansh-mahaprabhu-shri-hita-chaurasi-53",
     "collectionId": "hit-chaurasi",
-    "index": 73,
+    "index": 61,
     "titleDevanagari": "देखौ माई अबला के बल रासि - श्री हित हरिवंश महाप्रभु, श्री हित चतुरासी (53)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "dekho-mai-abla-ke-bal-rasi-shri-hita-harivansh-mahaprabhu-shri-hita-chaurasi-53",
@@ -1907,13 +1649,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 53
   },
   {
     "id": "jay-shri-hit-harivansh-aasees-det-mukh-chirjeevo-bhutal-yeh-jori-shri-hita-harivansh-mahaprahu",
     "collectionId": "hit-chaurasi",
-    "index": 74,
+    "index": 62,
     "titleDevanagari": "जय श्री हित हरिवंश असीस देत मुख - श्री हित हरिवंश महाप्रभु (54)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "jay-shri-hit-harivansh-aasees-det-mukh-chirjeevo-bhutal-yeh-jori-shri-hita-harivansh-mahaprahu",
@@ -1927,13 +1669,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 54
   },
   {
     "id": "nayo-neh-nava-rang-nayo-ras-shri-hita-harivansh-mahaprabhu-shri-hita-chaturasi",
     "collectionId": "hit-chaurasi",
-    "index": 75,
+    "index": 63,
     "titleDevanagari": "नयौ नेह नव रंग नयौ रस - श्री हित हरिवंश महाप्रभु, श्री हित चतुरासी (५४)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "nayo-neh-nava-rang-nayo-ras-shri-hita-harivansh-mahaprabhu-shri-hita-chaturasi",
@@ -1953,13 +1695,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 54
   },
   {
     "id": "haun-bali-jaoon-naagri-shyam-shri-hit-harivansh-mahaprabhu-hit-chaurasi-56",
     "collectionId": "hit-chaurasi",
-    "index": 76,
+    "index": 64,
     "titleDevanagari": "हौं बलि जाँउ नगरी श्याम - श्री हित हरिवंश महाप्रभु, हित चौरासी (56)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "haun-bali-jaoon-naagri-shyam-shri-hit-harivansh-mahaprabhu-hit-chaurasi-56",
@@ -1977,13 +1719,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 56
   },
   {
     "id": "pratham-jathamati-pranaun-vrindavan-ati-ramya-shri-radhika-kripa-binu-sabke-manani-agamya-shri-hita-harivansh-mahaprabhu-hita-chaturasi-57",
     "collectionId": "hit-chaurasi",
-    "index": 77,
+    "index": 65,
     "titleDevanagari": "प्रथम जथामति प्रनऊँ श्री वृन्दावन अति रम्य - श्री हित हरिवंश महाप्रभु, श्री हित चतुरासी (57)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "pratham-jathamati-pranaun-vrindavan-ati-ramya-shri-radhika-kripa-binu-sabke-manani-agamya-shri-hita-harivansh-mahaprabhu-hita-chaturasi-57",
@@ -1998,13 +1740,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 57
   },
   {
     "id": "ati-udaar-vivi-sundar-surat-soor-sukumaar-jai-shri-hita-harivansh-karo-din-dou-achal-vihaar-shri-hita-harivansh-mahaprabhu-murali-avtaar",
     "collectionId": "hit-chaurasi",
-    "index": 78,
+    "index": 66,
     "titleDevanagari": "अति उदार विवि सुंदर - श्री हित हरिवंश महाप्रभु, श्री हित चौरासी (57)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "ati-udaar-vivi-sundar-surat-soor-sukumaar-jai-shri-hita-harivansh-karo-din-dou-achal-vihaar-shri-hita-harivansh-mahaprabhu-murali-avtaar",
@@ -2019,13 +1761,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 57
   },
   {
     "id": "yah-ju-ek-man-bahut-thaur-kari-shri-harivansh-mahaprabhu-shri-hit-chaurasi-59",
     "collectionId": "hit-chaurasi",
-    "index": 79,
+    "index": 67,
     "titleDevanagari": "यह जु एक मन बहुत ठौर करि - श्री हरिवंश महाप्रभु, श्री हित चौरासी (59)",
     "author": "श्री हरिवंश महाप्रभु",
     "slug": "yah-ju-ek-man-bahut-thaur-kari-shri-harivansh-mahaprabhu-shri-hit-chaurasi-59",
@@ -2045,13 +1787,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 59
   },
   {
     "id": "hita-harivansh-prapanch-banch-sab-kaal-vyaal-ko-khaayo-yeh-jiya-jaani-shyam-shyama-pada-kamal-sangi-sira-naayo-shri-hita-harivansh-mahaprabhu",
     "collectionId": "hit-chaurasi",
-    "index": 80,
+    "index": 68,
     "titleDevanagari": "हित हरिवंश प्रपंच बंच सब काल व्याल कौ खायौ - श्री हरिवंश महाप्रभु, श्री हित चौरासी (59)",
     "author": "श्री हरिवंश महाप्रभु",
     "slug": "hita-harivansh-prapanch-banch-sab-kaal-vyaal-ko-khaayo-yeh-jiya-jaani-shyam-shyama-pada-kamal-sangi-sira-naayo-shri-hita-harivansh-mahaprabhu",
@@ -2066,13 +1808,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 59
   },
   {
     "id": "kaha-kaho-ina-nainan-ki-baat-shri-hita-harivansh-mahaprabhu-hita-chaurasi-61",
     "collectionId": "hit-chaurasi",
-    "index": 81,
+    "index": 69,
     "titleDevanagari": "कहा कहौं इन नैंननि की बात - श्री हित हरिवंश महाप्रभु, श्री हित चतुरासी (60)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "kaha-kaho-ina-nainan-ki-baat-shri-hita-harivansh-mahaprabhu-hita-chaurasi-61",
@@ -2092,13 +1834,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 60
   },
   {
     "id": "शर-हरवश-नम-सब-सदध-सब-रसक-बलस-नव-नदध",
     "collectionId": "hit-chaurasi",
-    "index": 82,
+    "index": 70,
     "titleDevanagari": "श्री हरिवंश नाम सब सिद्धि, सबै रसिक बिलसे नव निद्धि।",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "शर-हरवश-नम-सब-सदध-सब-रसक-बलस-नव-नदध",
@@ -2114,13 +1856,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 63
   },
   {
     "id": "bainu-maai-baajai-bansivat-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-64",
     "collectionId": "hit-chaurasi",
-    "index": 83,
+    "index": 71,
     "titleDevanagari": "बैंनु माई बाजै बंसीवट - श्री हित हरिवंश महाप्रभु, श्री हित चौरासी (64)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "bainu-maai-baajai-bansivat-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-64",
@@ -2140,13 +1882,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 64
   },
   {
     "id": "divya-kamal-shri-yamuna-kool-van-bhandir-nikat-ras-mool",
     "collectionId": "hit-chaurasi",
-    "index": 84,
+    "index": 72,
     "titleDevanagari": "दिव्य कमल श्री यमुना कूल, वन भांडीर निकट रस मूल |",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "divya-kamal-shri-yamuna-kool-van-bhandir-nikat-ras-mool",
@@ -2166,13 +1908,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 66
   },
   {
     "id": "khanjan-meen-mrigaj-mad-mentat-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-73",
     "collectionId": "hit-chaurasi",
-    "index": 85,
+    "index": 73,
     "titleDevanagari": "खंजन मीन मृगज मद मेंटत - श्री हित हरिवंश महाप्रभु, श्री हित चौरासी (73)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "khanjan-meen-mrigaj-mad-mentat-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-73",
@@ -2198,13 +1940,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 73
   },
   {
     "id": "kaahe-kaun-maan-badhaavatu-hai-shri-hit-harivansh-mahaprabhu-shri-hit-chaurasi-74",
     "collectionId": "hit-chaurasi",
-    "index": 86,
+    "index": 74,
     "titleDevanagari": "काहे कौं मान बढ़ावतु है - श्री हित हरिवंश महाप्रभु, श्री हित चौरासी (74)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "kaahe-kaun-maan-badhaavatu-hai-shri-hit-harivansh-mahaprabhu-shri-hit-chaurasi-74",
@@ -2222,13 +1964,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 74
   },
   {
     "id": "ह-ज-कहत-इक-बत-सख-सन-कह-क-डरत",
     "collectionId": "hit-chaurasi",
-    "index": 87,
+    "index": 75,
     "titleDevanagari": "हौं जु कहति इक बात सखी, सुनि काहे कौं डारत?",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "ह-ज-कहत-इक-बत-सख-सन-कह-क-डरत",
@@ -2246,13 +1988,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 75
   },
   {
     "id": "sudhang-nachat-naval-kisori-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-78",
     "collectionId": "hit-chaurasi",
-    "index": 88,
+    "index": 76,
     "titleDevanagari": "सुधंग नाचत नवल किसोरी - श्री हित हरिवंश महाप्रभु , श्री हित चौरासी (78)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "sudhang-nachat-naval-kisori-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-78",
@@ -2270,34 +2012,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 78
-  },
-  {
-    "id": "aasu-kau-haridas-rasik-harivansh-shri-hariram-vyas-vyas-vani-purvardh-80",
-    "collectionId": "hit-chaurasi",
-    "index": 89,
-    "titleDevanagari": "आसू कौ हरिदास रसिक हरिवंश  - श्री हरिराम व्यास, व्यास वाणी, पूर्वार्ध (80)",
-    "author": "श्री हरिराम व्यास",
-    "slug": "aasu-kau-haridas-rasik-harivansh-shri-hariram-vyas-vyas-vani-purvardh-80",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "आसू कौ हरिदास रसिक हरिवंश न मोहिं बिसारौ।",
-          "यहि पथ चलत स्याम-स्यामा के व्यासहिं बोरौ भावे तारौ॥",
-          "- श्री हरिराम व्यास, व्यास वाणी, पूर्वार्ध (80)"
-        ]
-      }
-    ],
-    "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
-    "verseNumber": 80
   },
   {
     "id": "दऊ-जन-भजत-अटक-बतन",
     "collectionId": "hit-chaurasi",
-    "index": 90,
+    "index": 77,
     "titleDevanagari": "दोऊ  जन  भींजत  अटके  बातनि",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "दऊ-जन-भजत-अटक-बतन",
@@ -2313,13 +2034,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 82
   },
   {
     "id": "nagarta-ki-raasi-kishori-pada-from-hita-chaturasi-by-murali-avtaar-shri-hita-harivansh-mahaprabhu",
     "collectionId": "hit-chaurasi",
-    "index": 91,
+    "index": 78,
     "titleDevanagari": "नागरता की रासि किसोरी -  श्री हित हरिवंश महाप्रभु, श्री हित चतुरासी (82)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "nagarta-ki-raasi-kishori-pada-from-hita-chaturasi-by-murali-avtaar-shri-hita-harivansh-mahaprabhu",
@@ -2341,13 +2062,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 82
   },
   {
     "id": "कन-चतर-जवत-परय-जह-मलन-लल-चर-ह-रन",
     "collectionId": "hit-chaurasi",
-    "index": 92,
+    "index": 79,
     "titleDevanagari": "कौन चतुर जुवती प्रिया, जाहि मिलन लाल चोर है रैंन",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "कन-चतर-जवत-परय-जह-मलन-लल-चर-ह-रन",
@@ -2363,13 +2084,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 86
   },
   {
     "id": "लटकत-फरत-जवत-रस-फल",
     "collectionId": "hit-chaurasi",
-    "index": 93,
+    "index": 80,
     "titleDevanagari": "लटकति फिरति जुवति रस फूली",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "लटकत-फरत-जवत-रस-फल",
@@ -2387,13 +2108,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 89
   },
   {
     "id": "जई-जई-पयर-कर-सई-मह-भव",
     "collectionId": "hit-chaurasi",
-    "index": 94,
+    "index": 81,
     "titleDevanagari": "जोई जोई प्यारो करे सोई मोहि भावे",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "जई-जई-पयर-कर-सई-मह-भव",
@@ -2409,13 +2130,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 91
   },
   {
     "id": "परथम-नम-हरवश-हत-रट-रसन-दन-रन-दह",
     "collectionId": "hit-chaurasi",
-    "index": 95,
+    "index": 82,
     "titleDevanagari": "प्रथम नाम हरिवंश हित, रट रसना दिन रैंन। (दोहे)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "परथम-नम-हरवश-हत-रट-रसन-दन-रन-दह",
@@ -2433,13 +2154,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 94
   },
   {
     "id": "अलबल-दऊ-झल-हडर",
     "collectionId": "hit-chaurasi",
-    "index": 96,
+    "index": 83,
     "titleDevanagari": "अलबेले दोऊ झूले हिंडोरे ।",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "अलबल-दऊ-झल-हडर",
@@ -2458,38 +2179,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 95
-  },
-  {
-    "id": "suni-mero-vachan-chabeeli-radha-shri-hita-harivansh-mahaprabhu-shri-hita-chaturasi-18",
-    "collectionId": "hit-chaurasi",
-    "index": 97,
-    "titleDevanagari": "सुनि मेरो वचन छबीली राधा, तैं पायो रस सिंधु अगाधा -  श्री हित हरिवंश महाप्रभु - श्री हित चतुरासी (98)",
-    "author": "श्री हित चतुरासी",
-    "slug": "suni-mero-vachan-chabeeli-radha-shri-hita-harivansh-mahaprabhu-shri-hita-chaturasi-18",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "(राग आसावरी)",
-          "सुनि मेरो वचन छबीली राधा, तैं पायो रस सिंधु अगाधा॥",
-          "तूँ वृषभानु गोप की बेटी, मोहनलाल रसिक हँसि भेंटी।",
-          "जाहि बिरंचि उमापति नाये, तापै तैं बन फूल बिनाये॥",
-          "जो रस नेति-नेति श्रुति भाख्यो, ताकौ तैं अधर सुधारस चाख्यौ।",
-          "तेरौ रूप कहत नहीं आवै, जै श्रीहित हरिवंश कछुक जस गावै।",
-          "- मुरली अवतार श्री हित हरिवंश महाप्रभु - श्री हित चतुरासी (18)"
-        ]
-      }
-    ],
-    "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
-    "verseNumber": 98
   },
   {
     "id": "ज-ज-शर-हरवश-वयस-कल-मडन-हत-हरवश-ज-क-मगल",
     "collectionId": "hit-chaurasi",
-    "index": 98,
+    "index": 84,
     "titleDevanagari": "जै जै श्री हरिवंश व्यास कुल मंडना । (हित हरिवंश जू कौ मंगल)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "ज-ज-शर-हरवश-वयस-कल-मडन-हत-हरवश-ज-क-मगल",
@@ -2533,13 +2229,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 107
   },
   {
     "id": "huto-ras-rasikani-ko-aadhar",
     "collectionId": "hit-chaurasi",
-    "index": 99,
+    "index": 85,
     "titleDevanagari": "हुतौ रस-रसिकनि कौ आधार |",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "huto-ras-rasikani-ko-aadhar",
@@ -2560,13 +2256,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 109
   },
   {
     "id": "सधग-नचत-नवल-कसर",
     "collectionId": "hit-chaurasi",
-    "index": 100,
+    "index": 86,
     "titleDevanagari": "सुधंग नाचत नवल किसोरी।",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "सधग-नचत-नवल-कसर",
@@ -2582,13 +2278,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 126
   },
   {
     "id": "shri-yamunashtak-by-shri-hita-harivansh-mahaprabhu",
     "collectionId": "hit-chaurasi",
-    "index": 101,
+    "index": 87,
     "titleDevanagari": "श्री यमुनाष्टक - श्री हित हरिवंश महाप्रभु",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "shri-yamunashtak-by-shri-hita-harivansh-mahaprabhu",
@@ -2603,13 +2299,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 130
   },
   {
     "id": "वललव-स-कनक-वललर-तमल-सयम-सग",
     "collectionId": "hit-chaurasi",
-    "index": 102,
+    "index": 88,
     "titleDevanagari": "वल्लवी सु कनक वल्लरी तमाल स्याम संग,",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "वललव-स-कनक-वललर-तमल-सयम-सग",
@@ -2629,13 +2325,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 131
   },
   {
     "id": "sada-jagmat-sevak-pyaro-shri-harivansh-navel",
     "collectionId": "hit-chaurasi",
-    "index": 103,
+    "index": 89,
     "titleDevanagari": "सदा  जगमत  सेवक  प्यारौ  श्रीहरिवंश  नवेल  ।",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "sada-jagmat-sevak-pyaro-shri-harivansh-navel",
@@ -2654,37 +2350,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 134
-  },
-  {
-    "id": "shri-harivansh-sarana-je-aye-sri-neh-nagridas-ji-ki-vani-siddhant-136",
-    "collectionId": "hit-chaurasi",
-    "index": 104,
-    "titleDevanagari": "श्री हरिवंश सरन जे आये - श्री नेह नागरी दास जी की वाणी, सिद्धांत (136)",
-    "author": "श्री नेह नागरी दास जी की वाणी",
-    "slug": "shri-harivansh-sarana-je-aye-sri-neh-nagridas-ji-ki-vani-siddhant-136",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "(राग गौरी)",
-          "श्री हरिवंश सरन जे आये।",
-          "श्री वृषभानुकुमरि नंदनंदन, निजकर अपनी चिट्ठी चढ़ाये॥ [1]",
-          "दिये मुकराय कछू नहि गोयौ, किये मनोरथ मन के भाये।",
-          "श्रीव्यास सुवन चरनन रज परसत, ‘नागरीदास’ से रंक जिवाये॥ [2]",
-          "- श्री नेह नागरी दास, श्री नेह नागरी दास जी की वाणी, सिद्धांत (136)"
-        ]
-      }
-    ],
-    "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
-    "verseNumber": 136
   },
   {
     "id": "अधर-अरन-तर-कस-क-दरऊ",
     "collectionId": "hit-chaurasi",
-    "index": 105,
+    "index": 90,
     "titleDevanagari": "अधर अरुन तेरे कैसे कैं दुराऊँ",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "अधर-अरन-तर-कस-क-दरऊ",
@@ -2702,13 +2374,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 137
   },
   {
     "id": "सरत-अत-छब-बरन-न-जई",
     "collectionId": "hit-chaurasi",
-    "index": 106,
+    "index": 91,
     "titleDevanagari": "सुरत अंत छबि बरनि न जाई",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "सरत-अत-छब-बरन-न-जई",
@@ -2724,13 +2396,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 143
   },
   {
     "id": "पयर-बल-भमन-आज-नक-जमन",
     "collectionId": "hit-chaurasi",
-    "index": 107,
+    "index": 92,
     "titleDevanagari": "प्यारे बोली भामिनी, आजु नीकी जामिनी",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "पयर-बल-भमन-आज-नक-जमन",
@@ -2745,13 +2417,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 147
   },
   {
     "id": "महनलल-क-रस-मत",
     "collectionId": "hit-chaurasi",
-    "index": 108,
+    "index": 93,
     "titleDevanagari": "मोहनलाल के रस माती",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "महनलल-क-रस-मत",
@@ -2771,13 +2443,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 150
   },
   {
     "id": "झल-दऊ-भर-सनह",
     "collectionId": "hit-chaurasi",
-    "index": 109,
+    "index": 94,
     "titleDevanagari": "झूलैं  दोऊ  भरे  सनेह",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "झल-दऊ-भर-सनह",
@@ -2794,13 +2466,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 151
   },
   {
     "id": "आजब-दखयत-ह-ह-पयर-रग-भर",
     "collectionId": "hit-chaurasi",
-    "index": 110,
+    "index": 95,
     "titleDevanagari": "आजुब देखियत है हो प्यारी रंग भरी।",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "आजब-दखयत-ह-ह-पयर-रग-भर",
@@ -2819,13 +2491,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 152
   },
   {
     "id": "आज-आनद-ननद-क-दवर",
     "collectionId": "hit-chaurasi",
-    "index": 111,
+    "index": 96,
     "titleDevanagari": "आज आनंद नन्द के द्वार",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "आज-आनद-ननद-क-दवर",
@@ -2848,13 +2520,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 153
   },
   {
     "id": "झलत-दऊ-नवल-कशर",
     "collectionId": "hit-chaurasi",
-    "index": 112,
+    "index": 97,
     "titleDevanagari": "झुलत दोऊ नवल किशोर",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "झलत-दऊ-नवल-कशर",
@@ -2876,13 +2548,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 158
   },
   {
     "id": "chandra-mite-dinkar-mite-mite-trigun-vistaar-pai-drid-vrat-shri-harivansh-kou-mite-na-nitya-vihar-murali-avtar-shri-hita-harivansh-mahaprabhu",
     "collectionId": "hit-chaurasi",
-    "index": 113,
+    "index": 98,
     "titleDevanagari": "चन्द्र मिटै दिनकर मिटै - मुरली अवतार श्री हित हरिवंश महाप्रभु",
     "author": "मुरली अवतार श्री हित हरिवंश महाप्रभु",
     "slug": "chandra-mite-dinkar-mite-mite-trigun-vistaar-pai-drid-vrat-shri-harivansh-kou-mite-na-nitya-vihar-murali-avtar-shri-hita-harivansh-mahaprabhu",
@@ -2897,35 +2569,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 159
-  },
-  {
-    "id": "aacharaj-harivansh-ko-shrivrindavan-dham-shri-hita-parmanand-das",
-    "collectionId": "hit-chaurasi",
-    "index": 114,
-    "titleDevanagari": "आचारज हरिवंश कौ श्रीवृन्दावन धाम - श्री हित परमानंद दास जी",
-    "author": "श्री हित परमानंद दास जी",
-    "slug": "aacharaj-harivansh-ko-shrivrindavan-dham-shri-hita-parmanand-das",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "आचारज हरिवंश कौ, श्रीवृन्दावन धाम।",
-          "‘हित परमानंद’ सब जपत, राधा राधा नाम॥",
-          "- श्री हित परमानंद दास",
-          "अचरज हरिवंश कौ, श्री वृन्दावन धाम। हित परमानंद, राधा, सब जपें राधा नाम.. - श्री हित परमानंद दास"
-        ]
-      }
-    ],
-    "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
-    "verseNumber": 163
   },
   {
     "id": "jai-jai-shri-harivansh-vyas-kul-mandana",
     "collectionId": "hit-chaurasi",
-    "index": 115,
+    "index": 99,
     "titleDevanagari": "जै जै श्री हरिवंश व्यास कुल मंडना ।",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "jai-jai-shri-harivansh-vyas-kul-mandana",
@@ -2970,13 +2620,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 164
   },
   {
     "id": "jagrat-svapnasushuptishu-sphuratu-me-radhapadabjachata-shri-hita-harivansh-mahaprabhu-164",
     "collectionId": "hit-chaurasi",
-    "index": 116,
+    "index": 100,
     "titleDevanagari": "जाग्रत्स्वप्न सुषुप्तिषु स्फुरतु में राधापदाब्जच्छटा - श्री हित हरिवंश महाप्रभु,  (164)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "jagrat-svapnasushuptishu-sphuratu-me-radhapadabjachata-shri-hita-harivansh-mahaprabhu-164",
@@ -2993,13 +2643,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 164
   },
   {
     "id": "महन-मदन-तरभग-महन-मन-मन-रग",
     "collectionId": "hit-chaurasi",
-    "index": 117,
+    "index": 101,
     "titleDevanagari": "मोहन मदन त्रिभंगी। मोहन मुनि मन रंगी।।",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "महन-मदन-तरभग-महन-मन-मन-रग",
@@ -3031,13 +2681,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 165
   },
   {
     "id": "आज-मर-कह-चल-मगनन",
     "collectionId": "hit-chaurasi",
-    "index": 118,
+    "index": 102,
     "titleDevanagari": "आज मेरे कहैं चलौ मृगनैंनी",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "आज-मर-कह-चल-मगनन",
@@ -3055,13 +2705,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 169
   },
   {
     "id": "quote-about-dust-of-braj-jagadguru-shankaracharya",
     "collectionId": "hit-chaurasi",
-    "index": 119,
+    "index": 103,
     "titleDevanagari": "अलं विषय वार्तया नरक कोटि वीभत्सया  - राधा सुधा निधी -83, हित हरिवंश महाप्रभु",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "quote-about-dust-of-braj-jagadguru-shankaracharya",
@@ -3076,13 +2726,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 174
   },
   {
     "id": "नद-क-लल-हरय-मन-मर",
     "collectionId": "hit-chaurasi",
-    "index": 120,
+    "index": 104,
     "titleDevanagari": "नंद के लाल हरयौं मन मोर",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "नद-क-लल-हरय-मन-मर",
@@ -3100,13 +2750,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 175
   },
   {
     "id": "जनक-शरहरवश-सहयक",
     "collectionId": "hit-chaurasi",
-    "index": 121,
+    "index": 105,
     "titleDevanagari": "जिनके श्रीहरिवंश सहायक",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "जनक-शरहरवश-सहयक",
@@ -3122,39 +2772,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 176
-  },
-  {
-    "id": "jinke-shri-harivansh-sahayak-sri-neh-nagridas-ji-ki-vani",
-    "collectionId": "hit-chaurasi",
-    "index": 122,
-    "titleDevanagari": "जिनके श्रीहरिवंश सहायक - श्री नेह नागरी दास जी की वाणी",
-    "author": "श्री नेह नागरी दास जी की वाणी",
-    "slug": "jinke-shri-harivansh-sahayak-sri-neh-nagridas-ji-ki-vani",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "जिनके श्रीहरिवंश सहायक।",
-          "तेई सजन भजन अधिकारी",
-          "वृन्दावन घन बसिवे लायक॥ [1]",
-          "अलक लड़े आनन्द भरे डोलें",
-          "सिर पर व्याससुवन सुखदायक।",
-          "कुंवरि कुंवर जाहि सुलभ नागरिदास",
-          "रसिक शिरोमनि के गुनगायक॥ [2]",
-          "- श्री नेह नागरी दास, श्री नेह नागरी दास जी की वाणी"
-        ]
-      }
-    ],
-    "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
-    "verseNumber": 183
   },
   {
     "id": "नय-नह-नव-रग-नय-रस",
     "collectionId": "hit-chaurasi",
-    "index": 123,
+    "index": 106,
     "titleDevanagari": "नयौ नेह नव रंग नयौ रस",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "नय-नह-नव-रग-नय-रस",
@@ -3172,13 +2796,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 184
   },
   {
     "id": "आज-सख-बन-म-ज-बन-परभ-नचत-ह-बरज-मडन",
     "collectionId": "hit-chaurasi",
-    "index": 124,
+    "index": 107,
     "titleDevanagari": "आजु सखी बन में जु बने प्रंभु नाचत हैं ब्रज मंडन",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "आज-सख-बन-म-ज-बन-परभ-नचत-ह-बरज-मडन",
@@ -3196,13 +2820,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 186
   },
   {
     "id": "hit-harivansh-daraun-kaake-dar",
     "collectionId": "hit-chaurasi",
-    "index": 125,
+    "index": 108,
     "titleDevanagari": "हित हरिवंश डरौं काके डर",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "hit-harivansh-daraun-kaake-dar",
@@ -3216,13 +2840,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 189
   },
   {
     "id": "kim-re-dhurta-pravara-nikatam-yasi-nah-praansakhya-shri-hita-harivansh-mahaprabhu-190",
     "collectionId": "hit-chaurasi",
-    "index": 126,
+    "index": 109,
     "titleDevanagari": "किं रे धूर्त्त-प्रवर निकटं यासि न: प्राण-सख्या - मुरली अवतार श्री हित हरिवंश महाप्रभु (190)",
     "author": "मुरली अवतार श्री हित हरिवंश महाप्रभु",
     "slug": "kim-re-dhurta-pravara-nikatam-yasi-nah-praansakhya-shri-hita-harivansh-mahaprabhu-190",
@@ -3239,13 +2863,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 190
   },
   {
     "id": "pragat-prem-ko-rup-dhari",
     "collectionId": "hit-chaurasi",
-    "index": 127,
+    "index": 110,
     "titleDevanagari": "प्रगट प्रेम कौ रूप धरि, श्री हरिवंश उदार।",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "pragat-prem-ko-rup-dhari",
@@ -3259,13 +2883,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 192
   },
   {
     "id": "आज-गपल-रस-रस-खलत",
     "collectionId": "hit-chaurasi",
-    "index": 128,
+    "index": 111,
     "titleDevanagari": "आजु गोपाल रास रस खेलत",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "आज-गपल-रस-रस-खलत",
@@ -3289,13 +2913,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 194
   },
   {
     "id": "कह-कह-इन-ननन-क-बत",
     "collectionId": "hit-chaurasi",
-    "index": 129,
+    "index": 112,
     "titleDevanagari": "कहा कहौं इन नैंननि की बात",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "कह-कह-इन-ननन-क-बत",
@@ -3313,13 +2937,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 196
   },
   {
     "id": "मह-बड-भगन-ह-करत-रन-गद-खलव-शर-रध",
     "collectionId": "hit-chaurasi",
-    "index": 130,
+    "index": 113,
     "titleDevanagari": "महा बड़ भागिन हो कीरति रानी गोद खिलावै श्री राधा।",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "मह-बड-भगन-ह-करत-रन-गद-खलव-शर-रध",
@@ -3335,13 +2959,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 198
   },
   {
     "id": "सयम-सग-रधक-रस-मडल-बन",
     "collectionId": "hit-chaurasi",
-    "index": 131,
+    "index": 114,
     "titleDevanagari": "स्याम सँग राधिका रास मंडल बनी।",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "सयम-सग-रधक-रस-मडल-बन",
@@ -3364,13 +2988,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 200
   },
   {
     "id": "hita-harivansh-anat-sachu-nahin-binu-ya-raj-hi-liye",
     "collectionId": "hit-chaurasi",
-    "index": 132,
+    "index": 115,
     "titleDevanagari": "हित हरिवंश अनत सचु नाहीं बिनु या रजहिं लिये",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "hita-harivansh-anat-sachu-nahin-binu-ya-raj-hi-liye",
@@ -3384,13 +3008,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 209
   },
   {
     "id": "raho-kou-kahu-manahi-diye",
     "collectionId": "hit-chaurasi",
-    "index": 133,
+    "index": 116,
     "titleDevanagari": "रहौ कोउ काहू मनहि दियें।",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "raho-kou-kahu-manahi-diye",
@@ -3409,13 +3033,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 210
   },
   {
     "id": "रस-म-रसक-महन-बन-भमन",
     "collectionId": "hit-chaurasi",
-    "index": 134,
+    "index": 117,
     "titleDevanagari": "रास में रसिक मोहन बने भामिनी",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "रस-म-रसक-महन-बन-भमन",
@@ -3442,13 +3066,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 212
   },
   {
     "id": "चलह-रधक-सजन-तर-हत-सख-नधन",
     "collectionId": "hit-chaurasi",
-    "index": 135,
+    "index": 118,
     "titleDevanagari": "चलहि राधिके सुजान, तेरे हित सुख निधान",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "चलह-रधक-सजन-तर-हत-सख-नधन",
@@ -3472,13 +3096,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 214
   },
   {
     "id": "harivansh-charan-binu-bal-gaho-kako",
     "collectionId": "hit-chaurasi",
-    "index": 136,
+    "index": 119,
     "titleDevanagari": "हरिवंश चरण बिनु बल गहौं काकौ।",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "harivansh-charan-binu-bal-gaho-kako",
@@ -3495,13 +3119,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 217
   },
   {
     "id": "mohan-lal-ke-rang-ranchi",
     "collectionId": "hit-chaurasi",
-    "index": 137,
+    "index": 120,
     "titleDevanagari": "मोहन लालके रँग राची।",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "mohan-lal-ke-rang-ranchi",
@@ -3520,13 +3144,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 219
   },
   {
     "id": "परत-सम-दऊ-रस-लपट-सरत-जदध-जय-जत-अत-फल",
     "collectionId": "hit-chaurasi",
-    "index": 138,
+    "index": 121,
     "titleDevanagari": "प्रात समै दोऊ रस लंपट, सुरत जुद्ध जय जुत अति फूल",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "परत-सम-दऊ-रस-लपट-सरत-जदध-जय-जत-अत-फल",
@@ -3542,13 +3166,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 226
   },
   {
     "id": "य-दऊ-झलत-ह-बह-जर",
     "collectionId": "hit-chaurasi",
-    "index": 139,
+    "index": 122,
     "titleDevanagari": "ये दोऊ झूलत हैं बाँहा जोरैं ।",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "य-दऊ-झलत-ह-बह-जर",
@@ -3565,13 +3189,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 228
   },
   {
     "id": "आज-सभरत-नहन-गर",
     "collectionId": "hit-chaurasi",
-    "index": 140,
+    "index": 123,
     "titleDevanagari": "आजु सँभारत नाँहिन गोरी",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "आज-सभरत-नहन-गर",
@@ -3591,13 +3215,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 229
   },
   {
     "id": "आज-बधवन-वषभन-नपत-दरबर-1",
     "collectionId": "hit-chaurasi",
-    "index": 141,
+    "index": 124,
     "titleDevanagari": "आजु बधावनौं वृषभान नृपति दरबार ।",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "आज-बधवन-वषभन-नपत-दरबर-1",
@@ -3616,13 +3240,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 230
   },
   {
     "id": "baad-gram-mathura",
     "collectionId": "hit-chaurasi",
-    "index": 142,
+    "index": 125,
     "titleDevanagari": "बाद ग्राम, मथुरा - श्री हित हरिवंश महाप्रभु का प्राकट्य स्थल",
     "author": "श्री हित हरिवंश महाप्रभु का प्राकट्य स्थल",
     "slug": "baad-gram-mathura",
@@ -3640,13 +3264,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 236
   },
   {
     "id": "अपन-बत-मस-कह-र-भमन",
     "collectionId": "hit-chaurasi",
-    "index": 143,
+    "index": 126,
     "titleDevanagari": "अपनी बात मोसौं कहि री भामिनी",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "अपन-बत-मस-कह-र-भमन",
@@ -3670,13 +3294,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 238
   },
   {
     "id": "महन-लल-क-रस-मत",
     "collectionId": "hit-chaurasi",
-    "index": 144,
+    "index": 127,
     "titleDevanagari": "मोहन लाल के रस माती",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "महन-लल-क-रस-मत",
@@ -3696,13 +3320,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 239
   },
   {
     "id": "बन-मई-बज-बसवट",
     "collectionId": "hit-chaurasi",
-    "index": 145,
+    "index": 128,
     "titleDevanagari": "बैंनु माई बाजै बंसीवट",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "बन-मई-बज-बसवट",
@@ -3720,13 +3344,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 240
   },
   {
     "id": "आज-झल-र-रग-हडर-पयर-पय-क-सग",
     "collectionId": "hit-chaurasi",
-    "index": 146,
+    "index": 129,
     "titleDevanagari": "आज झूली री रंग हिंडोरे प्यारी पिय के संग।",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "आज-झल-र-रग-हडर-पयर-पय-क-सग",
@@ -3743,13 +3367,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 244
   },
   {
     "id": "बन-शररध-महन-क-जर",
     "collectionId": "hit-chaurasi",
-    "index": 147,
+    "index": 130,
     "titleDevanagari": "बनी श्रीराधा मोहन की जोरी",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "बन-शररध-महन-क-जर",
@@ -3767,55 +3391,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 245
-  },
-  {
-    "id": "haha-he-harivansh-prabhu-shri-magan-ali",
-    "collectionId": "hit-chaurasi",
-    "index": 148,
-    "titleDevanagari": "हा-हा हे हरिवंश प्रभु शरण गही है आय - श्री मगल अलि",
-    "author": "श्री मगल अलि",
-    "slug": "haha-he-harivansh-prabhu-shri-magan-ali",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "हा-हा हे हरिवंश प्रभु, शरण गही है आय।",
-          "जानि दीन दीजे टहल, वृन्दा विपिन बसाय॥",
-          "- श्री मगल अलि"
-        ]
-      }
-    ],
-    "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
-    "verseNumber": 246
-  },
-  {
-    "id": "vyas-suvan-harivansh-ju-guru-shri-radha-keen-shri-hita-parmanand-das",
-    "collectionId": "hit-chaurasi",
-    "index": 149,
-    "titleDevanagari": "व्याससुवन हरिवंश जू गुरु श्री राधा कीन - श्री हित परमानंद दास जी",
-    "author": "श्री हित परमानंद दास जी",
-    "slug": "vyas-suvan-harivansh-ju-guru-shri-radha-keen-shri-hita-parmanand-das",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "व्याससुवन हरिवंश जू, गुरु श्री राधा कीन।",
-          "राधा राधा मंत्र जपि, राधा दरसन दीन॥",
-          "- श्री हित परमानंद दास"
-        ]
-      }
-    ],
-    "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
-    "verseNumber": 249
   },
   {
     "id": "नगरत-क-रश-कसर",
     "collectionId": "hit-chaurasi",
-    "index": 150,
+    "index": 131,
     "titleDevanagari": "नागरता की राशि किसोरी।",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "नगरत-क-रश-कसर",
@@ -3835,13 +3417,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 252
   },
   {
     "id": "रहस-रहस-महन-पय-क-सग",
     "collectionId": "hit-chaurasi",
-    "index": 151,
+    "index": 132,
     "titleDevanagari": "रहसि रहसि मोहन पिय के संग",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "रहस-रहस-महन-पय-क-सग",
@@ -3865,13 +3447,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 253
   },
   {
     "id": "jay-jay-shri-harivansh-vyas-kul-mandana",
     "collectionId": "hit-chaurasi",
-    "index": 152,
+    "index": 133,
     "titleDevanagari": "जय जय श्री हरिवंश व्यास कुल मंडना ।",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "jay-jay-shri-harivansh-vyas-kul-mandana",
@@ -3916,37 +3498,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 254
-  },
-  {
-    "id": "shriharivansh-su-reeti-sunaoon-shri-damodardas-sevak-ji-shri-sevak-vani-47",
-    "collectionId": "hit-chaurasi",
-    "index": 153,
-    "titleDevanagari": "श्रीहरिवंश सु रीति सुनाऊँ - श्री दामोदरदास (सेवक जी), श्री सेवक वाणी (4.7)",
-    "author": "श्री दामोदरदास (सेवक जी)",
-    "slug": "shriharivansh-su-reeti-sunaoon-shri-damodardas-sevak-ji-shri-sevak-vani-47",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "श्रीहरिवंश सु रीति सुनाऊँ, श्यामा-श्याम एक सँग गाऊँ। [1]",
-          "छिन इक कबहुँ न अन्तर होई, प्रान सु एक देह हैं दोई॥ [2]",
-          "राधा संग बिना नहीं श्याम, श्याम बिना नहिं राधा नाम। [3]",
-          "छिन-छिन प्रति आराधत रहहीं, राधा नाम श्याम तब कहहीं॥ [4]",
-          "ललितादिकनि संग सचु पावैं, श्रीहरिवंश सुरत-रति गावैं॥ [5]",
-          "- श्री दामोदरदास (सेवक जी), श्री सेवक वाणी (4.7)"
-        ]
-      }
-    ],
-    "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
-    "verseNumber": 257
   },
   {
     "id": "सदर-पलन-सभग-सख-दइक",
     "collectionId": "hit-chaurasi",
-    "index": 154,
+    "index": 134,
     "titleDevanagari": "सुंदर पुलिन सुभग सुख दाइक",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "सदर-पलन-सभग-सख-दइक",
@@ -3970,13 +3528,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 259
   },
   {
     "id": "रचर-रजत-वध-कनन-कसर",
     "collectionId": "hit-chaurasi",
-    "index": 155,
+    "index": 135,
     "titleDevanagari": "रुचिर राजत वधू कानन किसोरी",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "रचर-रजत-वध-कनन-कसर",
@@ -4003,13 +3561,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 260
   },
   {
     "id": "manjul-kunj-manohar-aagan-rang-vichitra-parag-na-thori",
     "collectionId": "hit-chaurasi",
-    "index": 156,
+    "index": 136,
     "titleDevanagari": "मंजुल कुञ्ज मनोहर आँगन रंग बिचित्र पराग न थोरी |",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "manjul-kunj-manohar-aagan-rang-vichitra-parag-na-thori",
@@ -4026,13 +3584,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 263
   },
   {
     "id": "सन-मर-वचन-छबल-रध",
     "collectionId": "hit-chaurasi",
-    "index": 157,
+    "index": 137,
     "titleDevanagari": "सुनि मेरो वचन छबीली राधा",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "सन-मर-वचन-छबल-रध",
@@ -4049,13 +3607,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 267
   },
   {
     "id": "कह-क-मन-बढवत-ह-बलक-मग-लचन",
     "collectionId": "hit-chaurasi",
-    "index": 158,
+    "index": 138,
     "titleDevanagari": "काहे कौं मान बढ़ावतु है बालक मृग लोचनि।",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "कह-क-मन-बढवत-ह-बलक-मग-लचन",
@@ -4071,13 +3629,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 268
   },
   {
     "id": "आज-दउ-दमन-मल-बहस",
     "collectionId": "hit-chaurasi",
-    "index": 159,
+    "index": 139,
     "titleDevanagari": "आजु दोउ दामिनि मिलि बहसीं",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "आज-दउ-दमन-मल-बहस",
@@ -4095,13 +3653,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 270
   },
   {
     "id": "tain-bhajan-krit-jatit-vimal",
     "collectionId": "hit-chaurasi",
-    "index": 160,
+    "index": 140,
     "titleDevanagari": "तैं भाजन कृत जटित विमल",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "tain-bhajan-krit-jatit-vimal",
@@ -4120,13 +3678,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 272
   },
   {
     "id": "आज-नगर-कसर-भवत-वचतर-जर",
     "collectionId": "hit-chaurasi",
-    "index": 161,
+    "index": 141,
     "titleDevanagari": "आजु नागरी किसोर, भाँवती विचित्र जोर",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "आज-नगर-कसर-भवत-वचतर-जर",
@@ -4146,13 +3704,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 275
   },
   {
     "id": "जई-जई-पयर-कर-सई-मह-भव-1",
     "collectionId": "hit-chaurasi",
-    "index": 162,
+    "index": 142,
     "titleDevanagari": "जोई-जोई प्यारौ करै सोई मोहि भावै",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "जई-जई-पयर-कर-सई-मह-भव-1",
@@ -4168,13 +3726,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 276
   },
   {
     "id": "चल-वषभन-गप-क-दवर",
     "collectionId": "hit-chaurasi",
-    "index": 163,
+    "index": 143,
     "titleDevanagari": "चलौ वृषभान गोप के द्वार",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "चल-वषभन-गप-क-दवर",
@@ -4196,13 +3754,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 287
   },
   {
     "id": "महन-महन-रग-परम-सरग",
     "collectionId": "hit-chaurasi",
-    "index": 164,
+    "index": 144,
     "titleDevanagari": "मोहिनी मोहन रंगे प्रेम सुरंग",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "महन-महन-रग-परम-सरग",
@@ -4224,13 +3782,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 288
   },
   {
     "id": "आनद-आज-नद-क-दवर",
     "collectionId": "hit-chaurasi",
-    "index": 165,
+    "index": 145,
     "titleDevanagari": "आनंद  आज  नंद  के  द्वार",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "आनद-आज-नद-क-दवर",
@@ -4248,13 +3806,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 289
   },
   {
     "id": "छडद-मनन-मन-मन-धरब",
     "collectionId": "hit-chaurasi",
-    "index": 166,
+    "index": 146,
     "titleDevanagari": "छाँड़िदैं मानिनी मान मन धरिबौ।",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "छडद-मनन-मन-मन-धरब",
@@ -4277,13 +3835,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 290
   },
   {
     "id": "खलत-रस-दलहन-दलह",
     "collectionId": "hit-chaurasi",
-    "index": 167,
+    "index": 147,
     "titleDevanagari": "खेलत रास दुलहिनी दूलहु",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "खलत-रस-दलहन-दलह",
@@ -4303,13 +3861,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 293
   },
   {
     "id": "अत-ह-अरन-तर-नयन-नलन-र",
     "collectionId": "hit-chaurasi",
-    "index": 168,
+    "index": 148,
     "titleDevanagari": "अति ही अरुन तेरे नयन नलिन री",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "अत-ह-अरन-तर-नयन-नलन-र",
@@ -4325,13 +3883,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 295
   },
   {
     "id": "जय-जय-शर-हरवश-वयस-कल-मडन-हरवशचनदर-ज-क-मगल",
     "collectionId": "hit-chaurasi",
-    "index": 169,
+    "index": 149,
     "titleDevanagari": "जय जय श्री हरिवंश व्यास कुल मंडना । (हरिवंशचन्द्र जू को मंगल)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "जय-जय-शर-हरवश-वयस-कल-मडन-हरवशचनदर-ज-क-मगल",
@@ -4375,13 +3933,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 296
   },
   {
     "id": "तर-हत-लन-आई-बन-त-सयम-पठई",
     "collectionId": "hit-chaurasi",
-    "index": 170,
+    "index": 150,
     "titleDevanagari": "तेरे हित लैंन आई, बन ते स्याम पठाई",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "तर-हत-लन-आई-बन-त-सयम-पठई",
@@ -4405,13 +3963,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 298
   },
   {
     "id": "chokipari-gorihori-mein-shyam-achanak-baanh-gahi",
     "collectionId": "hit-chaurasi",
-    "index": 171,
+    "index": 151,
     "titleDevanagari": "चोकिपरी गोरीहोरी में, स्याम अचानक बांह गही ।",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "chokipari-gorihori-mein-shyam-achanak-baanh-gahi",
@@ -4428,34 +3986,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 300
-  },
-  {
-    "id": "gosvami-harivavsha-ju-bachan-kahyau-pad-manhi-shri-kishori-ali",
-    "collectionId": "hit-chaurasi",
-    "index": 172,
-    "titleDevanagari": "गोस्वामि हरिवंश जू बचन कह्यौ पद माँहि - श्री किशोरी अलि",
-    "author": "श्री किशोरी अलि",
-    "slug": "gosvami-harivavsha-ju-bachan-kahyau-pad-manhi-shri-kishori-ali",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "गोस्वामि हरिवंश जू, बचन कह्यौ पद माँहि।",
-          "या रज के सेये बिना, अनत कहूँ सुख नाहि॥",
-          "- श्री किशोरी अलि"
-        ]
-      }
-    ],
-    "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
-    "verseNumber": 301
   },
   {
     "id": "वषभन-नदन-मधर-कल-गव",
     "collectionId": "hit-chaurasi",
-    "index": 173,
+    "index": 152,
     "titleDevanagari": "वृषभानु नंदिनी मधुर कल गावै।",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "वषभन-नदन-मधर-कल-गव",
@@ -4477,13 +4014,13 @@
       }
     ],
     "chapterId": "hit-chaurasi",
-    "chapterName": "श्री हित चौरासी",
+    "chapterName": "श्री हित चौरासी (८४ पद)",
     "verseNumber": 302
   },
   {
     "id": "dvaadash-chandr-kritasthal-mangal-hit-harivansh-mahaprabhu-hita-sphut-vani-1",
     "collectionId": "hit-chaurasi",
-    "index": 174,
+    "index": 153,
     "titleDevanagari": "द्वादश चन्द्र, कृतस्थल मंगल - श्री हित हरिवंश महाप्रभु, श्री हित स्फुट वाणी (1)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "dvaadash-chandr-kritasthal-mangal-hit-harivansh-mahaprabhu-hita-sphut-vani-1",
@@ -4500,13 +4037,13 @@
       }
     ],
     "chapterId": "sphut-vani",
-    "chapterName": "श्री हित स्फुट वाणी",
+    "chapterName": "श्री हित स्फुट वाणी (२९ पद)",
     "verseNumber": 1
   },
   {
     "id": "bhanu-dasam-janmm-nisapati-shri-hit-harivansh-mahaprabhu-shri-hit-sphut-vani-2",
     "collectionId": "hit-chaurasi",
-    "index": 175,
+    "index": 154,
     "titleDevanagari": "भानु दसम्म, जनम्म निसापति - श्री हित हरिवंश महाप्रभु, श्री हित स्फुट वाणी (2)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "bhanu-dasam-janmm-nisapati-shri-hit-harivansh-mahaprabhu-shri-hit-sphut-vani-2",
@@ -4523,13 +4060,13 @@
       }
     ],
     "chapterId": "sphut-vani",
-    "chapterName": "श्री हित स्फुट वाणी",
+    "chapterName": "श्री हित स्फुट वाणी (२९ पद)",
     "verseNumber": 2
   },
   {
     "id": "tu-baalak-nahin-shri-hit-harivansh-mahaprabhu-shri-hit-sphut-vani-4",
     "collectionId": "hit-chaurasi",
-    "index": 176,
+    "index": 155,
     "titleDevanagari": "तू बालक नहिं - श्री हित हरिवंश महाप्रभु, श्री हित स्फुट वाणी (4)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "tu-baalak-nahin-shri-hit-harivansh-mahaprabhu-shri-hit-sphut-vani-4",
@@ -4546,13 +4083,13 @@
       }
     ],
     "chapterId": "sphut-vani",
-    "chapterName": "श्री हित स्फुट वाणी",
+    "chapterName": "श्री हित स्फुट वाणी (२९ पद)",
     "verseNumber": 4
   },
   {
     "id": "chakayi-praan-ju-ghat-rahain-shri-hit-harivansh-mahaprabhu-shri-hit-sphut-vani-05",
     "collectionId": "hit-chaurasi",
-    "index": 177,
+    "index": 156,
     "titleDevanagari": "चकई! प्रान जु घट रहैं - श्री हित हरिवंश महाप्रभु, श्री हित स्फुट वाणी (05)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "chakayi-praan-ju-ghat-rahain-shri-hit-harivansh-mahaprabhu-shri-hit-sphut-vani-05",
@@ -4571,13 +4108,13 @@
       }
     ],
     "chapterId": "sphut-vani",
-    "chapterName": "श्री हित स्फुट वाणी",
+    "chapterName": "श्री हित स्फुट वाणी (२९ पद)",
     "verseNumber": 5
   },
   {
     "id": "saras-sar-bichhurant-kau-jo-shri-hit-harivansh-mahaprabhu-shri-hit-saphut-vani-6",
     "collectionId": "hit-chaurasi",
-    "index": 178,
+    "index": 157,
     "titleDevanagari": "सारस सर बिछुरंत कौ जो पल - श्री हित हरिवंश महाप्रभु, श्री हित स्फुट वाणी (6)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "saras-sar-bichhurant-kau-jo-shri-hit-harivansh-mahaprabhu-shri-hit-saphut-vani-6",
@@ -4596,13 +4133,13 @@
       }
     ],
     "chapterId": "sphut-vani",
-    "chapterName": "श्री हित स्फुट वाणी",
+    "chapterName": "श्री हित स्फुट वाणी (२९ पद)",
     "verseNumber": 6
   },
   {
     "id": "tain-bhajan-krit-jatit-vimal-shri-hita-harivansh-mahaprabhu-hita-safuta-vani-7",
     "collectionId": "hit-chaurasi",
-    "index": 179,
+    "index": 158,
     "titleDevanagari": "तैं भाजन कृत जटित विमल - श्री हित हरिवंश महाप्रभु, श्री स्फुट वाणी (7)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "tain-bhajan-krit-jatit-vimal-shri-hita-harivansh-mahaprabhu-hita-safuta-vani-7",
@@ -4622,13 +4159,13 @@
       }
     ],
     "chapterId": "sphut-vani",
-    "chapterName": "श्री हित स्फुट वाणी",
+    "chapterName": "श्री हित स्फुट वाणी (२९ पद)",
     "verseNumber": 7
   },
   {
     "id": "hit-harivansh-vichari-kahe-yah-manuj-deh-guru-charan-gahi-sakahi-tau-sab-parpanch-taji-shri-krishn-krishn-govind-kahi-shri-hit-harivansh-mahaprabhu",
     "collectionId": "hit-chaurasi",
-    "index": 180,
+    "index": 159,
     "titleDevanagari": "हित हरिवंश विचारि कैं - श्री हित हरिवंश महाप्रभु, श्री स्फुट वाणी (7)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "hit-harivansh-vichari-kahe-yah-manuj-deh-guru-charan-gahi-sakahi-tau-sab-parpanch-taji-shri-krishn-krishn-govind-kahi-shri-hit-harivansh-mahaprabhu",
@@ -4643,13 +4180,13 @@
       }
     ],
     "chapterId": "sphut-vani",
-    "chapterName": "श्री हित स्फुट वाणी",
+    "chapterName": "श्री हित स्फुट वाणी (२९ पद)",
     "verseNumber": 7
   },
   {
     "id": "taatain-bhaiya-meri-saun-krishngun-sanchu-shri-hit-harivansh-mahaprabhu-sphut-vani-8",
     "collectionId": "hit-chaurasi",
-    "index": 181,
+    "index": 160,
     "titleDevanagari": "तातैं भैया मेरी सौं कृष्ण-गुण संचु - श्री हित हरिवंश महाप्रभु, स्फुट वाणी (8)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "taatain-bhaiya-meri-saun-krishngun-sanchu-shri-hit-harivansh-mahaprabhu-sphut-vani-8",
@@ -4667,13 +4204,13 @@
       }
     ],
     "chapterId": "sphut-vani",
-    "chapterName": "श्री हित स्फुट वाणी",
+    "chapterName": "श्री हित स्फुट वाणी (२९ पद)",
     "verseNumber": 8
   },
   {
     "id": "manush-kau-tan-pai-bhajau-brajanath-koan",
     "collectionId": "hit-chaurasi",
-    "index": 182,
+    "index": 161,
     "titleDevanagari": "मानुष कौ तन पाइ भजौ ब्रजनाथ कौं - श्री हित हरिवंश महाप्रभु, श्री हित स्फुट वाणी (09)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "manush-kau-tan-pai-bhajau-brajanath-koan",
@@ -4690,13 +4227,13 @@
       }
     ],
     "chapterId": "sphut-vani",
-    "chapterName": "श्री हित स्फुट वाणी",
+    "chapterName": "श्री हित स्फुट वाणी (२९ पद)",
     "verseNumber": 9
   },
   {
     "id": "shri-hit-harivansh-mahaprabhu-shri-hit-sphut-vani-10",
     "collectionId": "hit-chaurasi",
-    "index": 183,
+    "index": 162,
     "titleDevanagari": "तू रति रंगभरी देखियत है श्री राधे -  श्री हित हरिवंश महाप्रभु, श्री हित स्फुट वाणी (10)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "shri-hit-harivansh-mahaprabhu-shri-hit-sphut-vani-10",
@@ -4722,13 +4259,13 @@
       }
     ],
     "chapterId": "sphut-vani",
-    "chapterName": "श्री हित स्फुट वाणी",
+    "chapterName": "श्री हित स्फुट वाणी (२९ पद)",
     "verseNumber": 10
   },
   {
     "id": "anand-aaju-nand-ke-dvar-shri-hit-harivansh-mahaprabhu-shri-hit-sphut-vani-11",
     "collectionId": "hit-chaurasi",
-    "index": 184,
+    "index": 163,
     "titleDevanagari": "आनँद आजु नंद के द्वार - श्री हित हरिवंश महाप्रभु, श्री हित स्फुट वाणी (11)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "anand-aaju-nand-ke-dvar-shri-hit-harivansh-mahaprabhu-shri-hit-sphut-vani-11",
@@ -4747,13 +4284,13 @@
       }
     ],
     "chapterId": "sphut-vani",
-    "chapterName": "श्री हित स्फुट वाणी",
+    "chapterName": "श्री हित स्फुट वाणी (२९ पद)",
     "verseNumber": 11
   },
   {
     "id": "mohan-laal-ke-rang-raanchi",
     "collectionId": "hit-chaurasi",
-    "index": 185,
+    "index": 164,
     "titleDevanagari": "मोहन लाल के रंग राँची - श्री हित हरिवंश महाप्रभु, श्रीहित स्फुट वाणी (12)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "mohan-laal-ke-rang-raanchi",
@@ -4773,13 +4310,13 @@
       }
     ],
     "chapterId": "sphut-vani",
-    "chapterName": "श्री हित स्फुट वाणी",
+    "chapterName": "श्री हित स्फुट वाणी (२९ पद)",
     "verseNumber": 12
   },
   {
     "id": "main-ju-mohan-sunyau-benu-shri-hit-harivansh-mahaprabhu-shri-hit-sphut-vani-13",
     "collectionId": "hit-chaurasi",
-    "index": 186,
+    "index": 165,
     "titleDevanagari": "मैं जु मोहन सुन्यौ - श्री हित हरिवंश महाप्रभु, श्री हित स्फुट वाणी (13)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "main-ju-mohan-sunyau-benu-shri-hit-harivansh-mahaprabhu-shri-hit-sphut-vani-13",
@@ -4799,13 +4336,13 @@
       }
     ],
     "chapterId": "sphut-vani",
-    "chapterName": "श्री हित स्फुट वाणी",
+    "chapterName": "श्री हित स्फुट वाणी (२९ पद)",
     "verseNumber": 13
   },
   {
     "id": "aaj-tu-gval-gopal-son-kheli-ri-shri-harivansh-mahaprabhu-shri-hit-sphut-vani-14",
     "collectionId": "hit-chaurasi",
-    "index": 187,
+    "index": 166,
     "titleDevanagari": "आज तू ग्वाल गोपाल सों खेलि री - श्री हरिवंश महाप्रभु, श्री हित स्फुट वाणी (14)",
     "author": "श्री हरिवंश महाप्रभु",
     "slug": "aaj-tu-gval-gopal-son-kheli-ri-shri-harivansh-mahaprabhu-shri-hit-sphut-vani-14",
@@ -4829,13 +4366,13 @@
       }
     ],
     "chapterId": "sphut-vani",
-    "chapterName": "श्री हित स्फुट वाणी",
+    "chapterName": "श्री हित स्फुट वाणी (२९ पद)",
     "verseNumber": 14
   },
   {
     "id": "vrishbhanu-nandini-raajati-hain-shri-hit-harivansh-mahaprabhu-shri-hit-sphut-vani-15",
     "collectionId": "hit-chaurasi",
-    "index": 188,
+    "index": 167,
     "titleDevanagari": "वृषभानु नंदिनी राजति हैं - श्री हित हरिवंश महाप्रभु, श्री हित स्फुट वाणी (15)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "vrishbhanu-nandini-raajati-hain-shri-hit-harivansh-mahaprabhu-shri-hit-sphut-vani-15",
@@ -4854,13 +4391,13 @@
       }
     ],
     "chapterId": "sphut-vani",
-    "chapterName": "श्री हित स्फुट वाणी",
+    "chapterName": "श्री हित स्फुट वाणी (२९ पद)",
     "verseNumber": 15
   },
   {
     "id": "chalau-vrishbhanu-gop-ke-dvar-shri-hit-harivansh-mahaprabhu-shri-hit-sphut-vani-16",
     "collectionId": "hit-chaurasi",
-    "index": 189,
+    "index": 168,
     "titleDevanagari": "चलौ वृषभानु गोप के द्वार - श्री हित हरिवंश महाप्रभु, श्री हित स्फुट वाणी (16)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "chalau-vrishbhanu-gop-ke-dvar-shri-hit-harivansh-mahaprabhu-shri-hit-sphut-vani-16",
@@ -4883,13 +4420,13 @@
       }
     ],
     "chapterId": "sphut-vani",
-    "chapterName": "श्री हित स्फुट वाणी",
+    "chapterName": "श्री हित स्फुट वाणी (२९ पद)",
     "verseNumber": 16
   },
   {
     "id": "teraui-dhyan-radhika-pyari-govardhandhar-lalahin-shri-hit-harivansh-mahaprabhu-shri-hit-sphut-vani-17",
     "collectionId": "hit-chaurasi",
-    "index": 190,
+    "index": 169,
     "titleDevanagari": "तेरौई ध्यान राधिका प्यारी गोवर्द्धनधर लालहिं - श्री हित हरिवंश महाप्रभु, श्री हित स्फुट वाणी (17)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "teraui-dhyan-radhika-pyari-govardhandhar-lalahin-shri-hit-harivansh-mahaprabhu-shri-hit-sphut-vani-17",
@@ -4909,13 +4446,13 @@
       }
     ],
     "chapterId": "sphut-vani",
-    "chapterName": "श्री हित स्फुट वाणी",
+    "chapterName": "श्री हित स्फुट वाणी (२९ पद)",
     "verseNumber": 17
   },
   {
     "id": "aarati-madan-gopal-ki-keejiyai-shri-hit-harivansh-mahaprabhu-shri-hit-sphut-vani-18",
     "collectionId": "hit-chaurasi",
-    "index": 191,
+    "index": 170,
     "titleDevanagari": "आरती मदन गोपाल की कीजियै - श्री हित हरिवंश महाप्रभु, श्री हित स्फुट वाणी (18)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "aarati-madan-gopal-ki-keejiyai-shri-hit-harivansh-mahaprabhu-shri-hit-sphut-vani-18",
@@ -4943,13 +4480,13 @@
       }
     ],
     "chapterId": "sphut-vani",
-    "chapterName": "श्री हित स्फुट वाणी",
+    "chapterName": "श्री हित स्फुट वाणी (२९ पद)",
     "verseNumber": 18
   },
   {
     "id": "aarti-kijey-shyam-sundar-ki-shri-hit-harivansh-mahaprabhu-shri-hit-safut-vani-19",
     "collectionId": "hit-chaurasi",
-    "index": 192,
+    "index": 171,
     "titleDevanagari": "आरति कीजै श्याम - सुन्दर की - श्री हित हरिवंश महाप्रभु, श्री हित स्फुट वाणी (19)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "aarti-kijey-shyam-sundar-ki-shri-hit-harivansh-mahaprabhu-shri-hit-safut-vani-19",
@@ -4968,13 +4505,13 @@
       }
     ],
     "chapterId": "sphut-vani",
-    "chapterName": "श्री हित स्फुट वाणी",
+    "chapterName": "श्री हित स्फुट वाणी (२९ पद)",
     "verseNumber": 19
   },
   {
     "id": "raho-kou-kahu-manhi-diye-mere-prannath-shri-shyama-sapath-karon-trin-chiye-shri-hita-harivansh-mahaprabhu-hita-safut-vani-20",
     "collectionId": "hit-chaurasi",
-    "index": 193,
+    "index": 172,
     "titleDevanagari": "रहौ कोऊ काहू मनहि दिये - श्री हित हरिवंश महाप्रभु, श्री हित स्फुट वाणी (20)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "raho-kou-kahu-manhi-diye-mere-prannath-shri-shyama-sapath-karon-trin-chiye-shri-hita-harivansh-mahaprabhu-hita-safut-vani-20",
@@ -4993,13 +4530,13 @@
       }
     ],
     "chapterId": "sphut-vani",
-    "chapterName": "श्री हित स्फुट वाणी",
+    "chapterName": "श्री हित स्फुट वाणी (२९ पद)",
     "verseNumber": 20
   },
   {
     "id": "hit-harivansh-anat-sachu-nahi-binu-ya-raj-hi-lije-hita-harivansh-mahaprabhu",
     "collectionId": "hit-chaurasi",
-    "index": 194,
+    "index": 173,
     "titleDevanagari": "\"हित हरिवंश अनत सचु नाँहि बिनु या रज ही लीजे ||\" -हित हरिवंश महाप्रभु, स्फुट वाणी (20)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "hit-harivansh-anat-sachu-nahi-binu-ya-raj-hi-lije-hita-harivansh-mahaprabhu",
@@ -5027,13 +4564,13 @@
       }
     ],
     "chapterId": "sphut-vani",
-    "chapterName": "श्री हित स्फुट वाणी",
+    "chapterName": "श्री हित स्फुट वाणी (२९ पद)",
     "verseNumber": 20
   },
   {
     "id": "mere-prannath-shri-shyama-sapath-karo-trin-chiye",
     "collectionId": "hit-chaurasi",
-    "index": 195,
+    "index": 174,
     "titleDevanagari": "मेरे प्राणनाथ श्रीश्यामा, सपथ करौं तिन छियें - श्री हित हरिवंश महाप्रभु, स्फुट वाणी (20)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "mere-prannath-shri-shyama-sapath-karo-trin-chiye",
@@ -5047,13 +4584,13 @@
       }
     ],
     "chapterId": "sphut-vani",
-    "chapterName": "श्री हित स्फुट वाणी",
+    "chapterName": "श्री हित स्फुट वाणी (२९ पद)",
     "verseNumber": 20
   },
   {
     "id": "hari-rasna-radharadha-rat-shri-hit-harivansh-mahaprabhu-shri-hit-sfut-vani-21",
     "collectionId": "hit-chaurasi",
-    "index": 196,
+    "index": 175,
     "titleDevanagari": "हरि रसना राधा-राधा रट - श्री हित हरिवंश महाप्रभु, श्री हित स्फुट वाणी (21)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "hari-rasna-radharadha-rat-shri-hit-harivansh-mahaprabhu-shri-hit-sfut-vani-21",
@@ -5072,13 +4609,13 @@
       }
     ],
     "chapterId": "sphut-vani",
-    "chapterName": "श्री हित स्फुट वाणी",
+    "chapterName": "श्री हित स्फुट वाणी (२९ पद)",
     "verseNumber": 21
   },
   {
     "id": "lal-ki-rup-madhuri-nainani-nirakhi-neku-sakhi-shri-hit-harivansh-mahaprabhu-shri-hit-sphut-vani-22",
     "collectionId": "hit-chaurasi",
-    "index": 197,
+    "index": 176,
     "titleDevanagari": "लाल की रूप माधुरी नैननि निरखि नेकु सखी - श्री हित हरिवंश महाप्रभु, श्री हित स्फुट वाणी (22)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "lal-ki-rup-madhuri-nainani-nirakhi-neku-sakhi-shri-hit-harivansh-mahaprabhu-shri-hit-sphut-vani-22",
@@ -5107,13 +4644,13 @@
       }
     ],
     "chapterId": "sphut-vani",
-    "chapterName": "श्री हित स्फुट वाणी",
+    "chapterName": "श्री हित स्फुट वाणी (२९ पद)",
     "verseNumber": 22
   },
   {
     "id": "dou-jan-bhijat-atke-baatan-shri-hita-harivansh-mahaprabhu-sfut-wani-23",
     "collectionId": "hit-chaurasi",
-    "index": 198,
+    "index": 177,
     "titleDevanagari": "दोऊ जन भीजत अटके बातन - श्री हित हरिवंश महाप्रभु, स्फुट वाणी (23)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "dou-jan-bhijat-atke-baatan-shri-hita-harivansh-mahaprabhu-sfut-wani-23",
@@ -5131,13 +4668,13 @@
       }
     ],
     "chapterId": "sphut-vani",
-    "chapterName": "श्री हित स्फुट वाणी",
+    "chapterName": "श्री हित स्फुट वाणी (२९ पद)",
     "verseNumber": 23
   },
   {
     "id": "rasna-kato-jo-aan-rato-pad-by-shri-hit-harivansh-mahaprabhu",
     "collectionId": "hit-chaurasi",
-    "index": 199,
+    "index": 178,
     "titleDevanagari": "रसना कटौ जो अन रटौ निरखि अन फुटौ नैन - श्री हित हरिवंश महाप्रभु, स्फुट वाणी (24)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "rasna-kato-jo-aan-rato-pad-by-shri-hit-harivansh-mahaprabhu",
@@ -5152,13 +4689,13 @@
       }
     ],
     "chapterId": "sphut-vani",
-    "chapterName": "श्री हित स्फुट वाणी",
+    "chapterName": "श्री हित स्फुट वाणी (२९ पद)",
     "verseNumber": 24
   },
   {
     "id": "sabasaun-hit-nihakaam-mann-vrindavan-vishraam-shri-hit-harivansh-mahaprabhu",
     "collectionId": "hit-chaurasi",
-    "index": 200,
+    "index": 179,
     "titleDevanagari": "सबसों हित निष्काम मति - श्री हित हरिवंश महाप्रभु, स्फुट वाणी (24.1)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "sabasaun-hit-nihakaam-mann-vrindavan-vishraam-shri-hit-harivansh-mahaprabhu",
@@ -5173,13 +4710,13 @@
       }
     ],
     "chapterId": "sphut-vani",
-    "chapterName": "श्री हित स्फुट वाणी",
+    "chapterName": "श्री हित स्फुट वाणी (२९ पद)",
     "verseNumber": 204
   },
   {
     "id": "tanhin-rakh-satsang-mein-manhin-prem-ras-bhev-shri-hita-harivansh-mahaprabhu",
     "collectionId": "hit-chaurasi",
-    "index": 201,
+    "index": 180,
     "titleDevanagari": "तनहिं राखि सत्संग में - श्री हित हरिवंश महाप्रभु, श्री हित स्फुट वाणी (24.2)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "tanhin-rakh-satsang-mein-manhin-prem-ras-bhev-shri-hita-harivansh-mahaprabhu",
@@ -5194,13 +4731,13 @@
       }
     ],
     "chapterId": "sphut-vani",
-    "chapterName": "श्री हित स्फुट वाणी",
+    "chapterName": "श्री हित स्फुट वाणी (२९ पद)",
     "verseNumber": 261
   },
   {
     "id": "rasna-kato-jo-an-rato",
     "collectionId": "hit-chaurasi",
-    "index": 202,
+    "index": 181,
     "titleDevanagari": "रसना कटौ जो अन रटौ - श्री हित हरिवंश महाप्रभु, स्फुट वाणी (24.4)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "rasna-kato-jo-an-rato",
@@ -5215,13 +4752,13 @@
       }
     ],
     "chapterId": "sphut-vani",
-    "chapterName": "श्री हित स्फुट वाणी",
+    "chapterName": "श्री हित स्फुट वाणी (२९ पद)",
     "verseNumber": 269
   },
   {
     "id": "hit-harivansh-mahaprabhu-radha-sudha-nidhi",
     "collectionId": "hit-chaurasi",
-    "index": 203,
+    "index": 182,
     "titleDevanagari": "ब्रह्मेश्वरादिसुदुरूहपदारविन्द - हित हरिवंश महाप्रभु, राधा सुधा निधि (2)",
     "author": "हित हरिवंश महाप्रभु",
     "slug": "hit-harivansh-mahaprabhu-radha-sudha-nidhi",
@@ -5236,13 +4773,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 2
   },
   {
     "id": "aadhay-moordhani-yadaapurudaaragopyah-shri-hit-harivansh-mahaprabhu-shri-radha-sudha-nidhi-4",
     "collectionId": "hit-chaurasi",
-    "index": 204,
+    "index": 183,
     "titleDevanagari": "आधाय मूर्द्धनि यदापुरुदारगोप्यः - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (4)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "aadhay-moordhani-yadaapurudaaragopyah-shri-hit-harivansh-mahaprabhu-shri-radha-sudha-nidhi-4",
@@ -5257,13 +4794,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 4
   },
   {
     "id": "divyapramodarasasaaranijaangasang-shri-hit-harivansh-mahaprabhu-shri-radha-sudha-nidhi-5",
     "collectionId": "hit-chaurasi",
-    "index": 205,
+    "index": 184,
     "titleDevanagari": "दिव्यप्रमोदरससारनिजांगसंग - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (5)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "divyapramodarasasaaranijaangasang-shri-hit-harivansh-mahaprabhu-shri-radha-sudha-nidhi-5",
@@ -5278,13 +4815,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 5
   },
   {
     "id": "tannah-pratikshan-chamatkrit-charuleela-shri-hit-harivansh-mahaprabhu-shri-radha-sudha-nidhi-6",
     "collectionId": "hit-chaurasi",
-    "index": 206,
+    "index": 185,
     "titleDevanagari": "तन्नः प्रतिक्षण चमत्कृत चारूलीला - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (6)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "tannah-pratikshan-chamatkrit-charuleela-shri-hit-harivansh-mahaprabhu-shri-radha-sudha-nidhi-6",
@@ -5299,13 +4836,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 6
   },
   {
     "id": "yatkinkarishu-bahushah-khalu-kaakuvani-shri-hit-harivansh-mahaprabhu-shri-radha-sudha-nidhi-7",
     "collectionId": "hit-chaurasi",
-    "index": 207,
+    "index": 186,
     "titleDevanagari": "यत्किंकरीषु बहुशः खलु काकुवाणी - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (7)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "yatkinkarishu-bahushah-khalu-kaakuvani-shri-hit-harivansh-mahaprabhu-shri-radha-sudha-nidhi-7",
@@ -5320,13 +4857,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 7
   },
   {
     "id": "yat-paada-padma-nakhachandramanich-chhataaya-shri-hit-harivansh-mahaprabhu-shri-radha-sudha-nidhi-10",
     "collectionId": "hit-chaurasi",
-    "index": 208,
+    "index": 187,
     "titleDevanagari": "यत्पादपद्मनखचन्द्रमणिच्छटाया - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (10)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "yat-paada-padma-nakhachandramanich-chhataaya-shri-hit-harivansh-mahaprabhu-shri-radha-sudha-nidhi-10",
@@ -5341,13 +4878,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 10
   },
   {
     "id": "ujjrimbhamaana-rasavaarinidhes-shri-hit-harivansh-mahaprabhu-shri-radha-sudha-nidhi-11",
     "collectionId": "hit-chaurasi",
-    "index": 209,
+    "index": 188,
     "titleDevanagari": "उज्जृम्भमाणरस - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (11)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "ujjrimbhamaana-rasavaarinidhes-shri-hit-harivansh-mahaprabhu-shri-radha-sudha-nidhi-11",
@@ -5362,13 +4899,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 11
   },
   {
     "id": "vrindavaneshwari-tavev-padarvindam-premamritaika-makaranda-rasaugha-purnam-hrdy-arpitam-madhu-pateh-smara-taoan-ugram-nirvapayet-pram-sitalam-asrayami-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-12",
     "collectionId": "hit-chaurasi",
-    "index": 210,
+    "index": 189,
     "titleDevanagari": "वृन्दावनेश्वरी तवैव पदारविन्दं - मुरली अवतार श्री हित हरिवंश महाप्रभु - श्री राधा सुधा निधि (12)",
     "author": "श्री राधा सुधा निधि",
     "slug": "vrindavaneshwari-tavev-padarvindam-premamritaika-makaranda-rasaugha-purnam-hrdy-arpitam-madhu-pateh-smara-taoan-ugram-nirvapayet-pram-sitalam-asrayami-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-12",
@@ -5383,13 +4920,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 12
   },
   {
     "id": "krishnamritam-chal-vigaadhumiteeritaaham-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-14",
     "collectionId": "hit-chaurasi",
-    "index": 211,
+    "index": 190,
     "titleDevanagari": "कृष्णामृतं चल विगाढुमितीरिताहं - श्री हरिवंश महाप्रभु, श्री राधा सुधा निधि (14)",
     "author": "श्री हरिवंश महाप्रभु",
     "slug": "krishnamritam-chal-vigaadhumiteeritaaham-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-14",
@@ -5404,13 +4941,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 14
   },
   {
     "id": "paadaangulinihitadrishtimapatrapishnum-shri-hit-harivansh-mahaprabhu-shri-radha-sudha-nidhi-15",
     "collectionId": "hit-chaurasi",
-    "index": 212,
+    "index": 191,
     "titleDevanagari": "पादांगुलीनिहितदृष्टिमपत्रपिष्णुं - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (15)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "paadaangulinihitadrishtimapatrapishnum-shri-hit-harivansh-mahaprabhu-shri-radha-sudha-nidhi-15",
@@ -5425,13 +4962,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 15
   },
   {
     "id": "ujjagaram-rasiknagarsangrangaih-shri-hit-harivansh-mahaprabhu-shri-radha-sudha-nidhi-16",
     "collectionId": "hit-chaurasi",
-    "index": 213,
+    "index": 192,
     "titleDevanagari": "उज्जागरं रसिकनागरसंगरंगैः - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (16)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "ujjagaram-rasiknagarsangrangaih-shri-hit-harivansh-mahaprabhu-shri-radha-sudha-nidhi-16",
@@ -5446,13 +4983,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 16
   },
   {
     "id": "vaidagdhya-sindhu-anuragarasaikasindhu-vatsalyasindhu-atisandrakripaikasindhu-lavanyasindhu-amrtacchavirupasindhu-shriradhika-sphurati-me-hrdi-kelisindhuh-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-17",
     "collectionId": "hit-chaurasi",
-    "index": 214,
+    "index": 193,
     "titleDevanagari": "वैदग्ध्य सिन्धु अनुराग-रसैक सिंधु - हित हरिवंश महाप्रभु - श्री राधा सुधा निधि (17)",
     "author": "श्री राधा सुधा निधि",
     "slug": "vaidagdhya-sindhu-anuragarasaikasindhu-vatsalyasindhu-atisandrakripaikasindhu-lavanyasindhu-amrtacchavirupasindhu-shriradhika-sphurati-me-hrdi-kelisindhuh-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-17",
@@ -5467,13 +5004,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 17
   },
   {
     "id": "drishtvaiv-champakalatev-shri-hit-harivansh-mahaprabhu-shri-radha-sudha-nidhi-18",
     "collectionId": "hit-chaurasi",
-    "index": 215,
+    "index": 194,
     "titleDevanagari": "दृष्ट्वैव चम्पकलतेव चमत्कृताङ्गी - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (18)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "drishtvaiv-champakalatev-shri-hit-harivansh-mahaprabhu-shri-radha-sudha-nidhi-18",
@@ -5488,13 +5025,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 18
   },
   {
     "id": "shriradhike-suratrangi-nitamb-bhaage-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-19",
     "collectionId": "hit-chaurasi",
-    "index": 216,
+    "index": 195,
     "titleDevanagari": "श्रीराधिके सुरतरङ्गि नितम्ब भागे - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (19)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "shriradhike-suratrangi-nitamb-bhaage-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-19",
@@ -5509,13 +5046,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 19
   },
   {
     "id": "shriradhike-surataranngini-divyakeli-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-20",
     "collectionId": "hit-chaurasi",
-    "index": 217,
+    "index": 196,
     "titleDevanagari": "श्रीराधिके सुरतरंङ्गिणि दिव्यकेलि - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (20)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "shriradhike-surataranngini-divyakeli-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-20",
@@ -5530,13 +5067,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 20
   },
   {
     "id": "sat-prema-sindhu-makaranda-rasaugha-dhara-shri-radha-sudha-nidhi-21",
     "collectionId": "hit-chaurasi",
-    "index": 218,
+    "index": 197,
     "titleDevanagari": "सत्प्रेम सिन्धु मकरन्द रसौघ धारा - श्री हित हरिवंश महाप्रभु - श्री राधा सुधा निधि (21)",
     "author": "श्री राधा सुधा निधि",
     "slug": "sat-prema-sindhu-makaranda-rasaugha-dhara-shri-radha-sudha-nidhi-21",
@@ -5551,13 +5088,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 21
   },
   {
     "id": "gatva-kalindatanayavijanavataram-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-23",
     "collectionId": "hit-chaurasi",
-    "index": 219,
+    "index": 198,
     "titleDevanagari": "गत्वा कलिन्दतनयाविजनावतार - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (23)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "gatva-kalindatanayavijanavataram-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-23",
@@ -5572,13 +5109,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 23
   },
   {
     "id": "lavanyasaras-sarsukhaikasare-karunyasar-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-25",
     "collectionId": "hit-chaurasi",
-    "index": 220,
+    "index": 199,
     "titleDevanagari": "लावण्यसाररस सारसुखैकसारे कारुण्यसार - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (25)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "lavanyasaras-sarsukhaikasare-karunyasar-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-25",
@@ -5593,13 +5130,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 25
   },
   {
     "id": "chintaamanih-pranamataam-vrajnaagarinaam-shri-hit-harivansh-mahaprabhu-shri-radha-sudha-nidhi-26",
     "collectionId": "hit-chaurasi",
-    "index": 221,
+    "index": 200,
     "titleDevanagari": "चिन्तामणिः प्रणमतां व्रजनागरीणां - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (26)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "chintaamanih-pranamataam-vrajnaagarinaam-shri-hit-harivansh-mahaprabhu-shri-radha-sudha-nidhi-26",
@@ -5614,13 +5151,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 26
   },
   {
     "id": "shriradhikam-nijavitena-sahaalpanteem-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-28",
     "collectionId": "hit-chaurasi",
-    "index": 222,
+    "index": 201,
     "titleDevanagari": "श्रीराधिकां निजविटेन सहालपन्तीम् - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (28)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "shriradhikam-nijavitena-sahaalpanteem-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-28",
@@ -5635,13 +5172,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 28
   },
   {
     "id": "o-my-heart-has-been-stolen-by-the-indescribable-sweet-couple-who-dwells-eternally-in-vrindavan-who-is-expert-in-showering-immense-bliss-with-many-amorous-ways-of-wonderful-playful-sports-keli-enriched-with-joking-and-laughing",
     "collectionId": "hit-chaurasi",
-    "index": 223,
+    "index": 202,
     "titleDevanagari": "अन्योन्यहास परिहास विलास केली वृन्दावने - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (49)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "o-my-heart-has-been-stolen-by-the-indescribable-sweet-couple-who-dwells-eternally-in-vrindavan-who-is-expert-in-showering-immense-bliss-with-many-amorous-ways-of-wonderful-playful-sports-keli-enriched-with-joking-and-laughing",
@@ -5656,13 +5193,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 49
   },
   {
     "id": "nija-praneshshvaryar-dayani-yeymiti-mam-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-55",
     "collectionId": "hit-chaurasi",
-    "index": 224,
+    "index": 203,
     "titleDevanagari": "निज प्राणेश्वरर्य्या यद्पि दयनीयेयमिति मां - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (55)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "nija-praneshshvaryar-dayani-yeymiti-mam-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-55",
@@ -5679,13 +5216,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 55
   },
   {
     "id": "kalindi-kool-kalp-drum-tal-nilay-prolasata-kelikanda-vrindatavyam-sadaiv",
     "collectionId": "hit-chaurasi",
-    "index": 225,
+    "index": 204,
     "titleDevanagari": "कालिन्दी-कूल-कल्प-द्रुम-तल निलय प्रोल्लसत्केलिकन्दा - श्री हित हरिवंश महाप्रभु,  राधा सुधा निधि",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "kalindi-kool-kalp-drum-tal-nilay-prolasata-kelikanda-vrindatavyam-sadaiv",
@@ -5700,13 +5237,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 58
   },
   {
     "id": "lavanyamrit-vartya-jagadidam-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-61",
     "collectionId": "hit-chaurasi",
-    "index": 226,
+    "index": 205,
     "titleDevanagari": "लावण्यामृतवार्त्तया जगदिदं संप्लावयंती - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (61)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "lavanyamrit-vartya-jagadidam-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-61",
@@ -5721,13 +5258,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 61
   },
   {
     "id": "yasyah-sphurjatpadanakhamani-jyoti-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-72",
     "collectionId": "hit-chaurasi",
-    "index": 227,
+    "index": 206,
     "titleDevanagari": "यत्पादाम्बुरुहेक रेणु-कणिकां  - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (72)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "yasyah-sphurjatpadanakhamani-jyoti-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-72",
@@ -5742,13 +5279,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 72
   },
   {
     "id": "yada-vrindavan-matra-gocharmaho-yann-shrutkam-shiro-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-76",
     "collectionId": "hit-chaurasi",
-    "index": 228,
+    "index": 207,
     "titleDevanagari": "यद् वृन्दावन मात्र गोचरमहो यन्न श्रुतीकं शिरो- श्री हित हरिवंश महाप्रभु - श्री राधा सुधा निधि (76)",
     "author": "श्री राधा सुधा निधि",
     "slug": "yada-vrindavan-matra-gocharmaho-yann-shrutkam-shiro-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-76",
@@ -5765,13 +5302,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 76
   },
   {
     "id": "premnam-sanmadhurojjavalasya-hridayam-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-78",
     "collectionId": "hit-chaurasi",
-    "index": 229,
+    "index": 208,
     "titleDevanagari": "प्रेम्णः सन्मधुरोज्ज्वलस्य हृदयं श्रृंगारलीलाकला - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (78)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "premnam-sanmadhurojjavalasya-hridayam-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-78",
@@ -5786,13 +5323,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 78
   },
   {
     "id": "radhadashympashya-ya-prayatate-shri-harivansh-mahaprabhu-shri-radha-sudha-nidhi-79",
     "collectionId": "hit-chaurasi",
-    "index": 230,
+    "index": 209,
     "titleDevanagari": "राधादास्यमपास्य यः प्रयतते - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (79)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "radhadashympashya-ya-prayatate-shri-harivansh-mahaprabhu-shri-radha-sudha-nidhi-79",
@@ -5807,13 +5344,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 79
   },
   {
     "id": "likanti-bhujmulato-na-khalu-shankhchakradikam-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-81",
     "collectionId": "hit-chaurasi",
-    "index": 231,
+    "index": 210,
     "titleDevanagari": "लिखन्ति भुजमूलतो न खलु शंख-चक्रादिकं - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (81)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "likanti-bhujmulato-na-khalu-shankhchakradikam-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-81",
@@ -5828,13 +5365,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 81
   },
   {
     "id": "karmani-shruti-bodhitani-nitaram-kurvantu-kurvantu-ma-gudhasi-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-82",
     "collectionId": "hit-chaurasi",
-    "index": 232,
+    "index": 211,
     "titleDevanagari": "कर्मणि श्रुति बोधितानि नितरां कुर्वन्तु कुर्वन्तु मा,  गूढाष्चर्य रसाः स्रगादि विषयान्गृह्णन्तु मुञ्चन्तु वा - श्री हित हरिवंश महाप्रभु - श्री राधा सुधा निधि (82)",
     "author": "श्री राधा सुधा निधि",
     "slug": "karmani-shruti-bodhitani-nitaram-kurvantu-kurvantu-ma-gudhasi-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-82",
@@ -5851,13 +5388,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 82
   },
   {
     "id": "yallakshmi-shuk-naradadi-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-85",
     "collectionId": "hit-chaurasi",
-    "index": 233,
+    "index": 212,
     "titleDevanagari": "यल्लक्ष्मी शुक नारदादि - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (85)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "yallakshmi-shuk-naradadi-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-85",
@@ -5872,13 +5409,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 85
   },
   {
     "id": "yadi-snehadradhe-dishasi-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-87",
     "collectionId": "hit-chaurasi",
-    "index": 234,
+    "index": 213,
     "titleDevanagari": "यदि स्नेहाद्राधे दिशसि - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (87)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "yadi-snehadradhe-dishasi-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-87",
@@ -5895,13 +5432,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 87
   },
   {
     "id": "yo-brahm-rudra-shuk-narad-bhishma-mukhya-quote-shri-radha-sudha-nidhi-3",
     "collectionId": "hit-chaurasi",
-    "index": 235,
+    "index": 214,
     "titleDevanagari": "यो ब्रह्म रुद्र शुक नारद भीष्म मुख्यै - श्री हित हरिवंश महाप्रभु - श्री राधा सुधा निधि",
     "author": "श्री राधा सुधा निधि",
     "slug": "yo-brahm-rudra-shuk-narad-bhishma-mukhya-quote-shri-radha-sudha-nidhi-3",
@@ -5916,13 +5453,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 93
   },
   {
     "id": "yasyaste-bat-kinkrishu-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-93",
     "collectionId": "hit-chaurasi",
-    "index": 236,
+    "index": 215,
     "titleDevanagari": "यस्यास्ते बत किंकरीषु - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (93)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "yasyaste-bat-kinkrishu-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-93",
@@ -5939,13 +5476,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 93
   },
   {
     "id": "yajjapah-sakridev-gokulpaterakarshakastatskhanadyatra-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-94",
     "collectionId": "hit-chaurasi",
-    "index": 237,
+    "index": 216,
     "titleDevanagari": "यज्जापः सकृदेव गोकुलपतेराकर्षकस्तत्क्षणाद्यत्र - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (94)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "yajjapah-sakridev-gokulpaterakarshakastatskhanadyatra-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-94",
@@ -5960,13 +5497,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 94
   },
   {
     "id": "duradapasya-svajanan-sukhamarthakotim-sarvesu-sadhanavaresu-ciram-nirasha-varsantameva-sahaj-adbhuta-saukhya-dharam-zriradhikacaranarenumaham-smarami-his-holiness-shri-hita-harivansh-mahaprabhu-shri-radha-ras-sudha-nidhi-32",
     "collectionId": "hit-chaurasi",
-    "index": 238,
+    "index": 217,
     "titleDevanagari": "दूराद्पास्य स्वजनान् सुखमर्थकोटि - श्री हित हरिवंश महाप्रभु, राधा सुधा निधि",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "duradapasya-svajanan-sukhamarthakotim-sarvesu-sadhanavaresu-ciram-nirasha-varsantameva-sahaj-adbhuta-saukhya-dharam-zriradhikacaranarenumaham-smarami-his-holiness-shri-hita-harivansh-mahaprabhu-shri-radha-ras-sudha-nidhi-32",
@@ -5981,13 +5518,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 103
   },
   {
     "id": "yeshan-preksha-vitarati-gadanuragan-megshyamo-shri-radha-sudha-nidhi-164",
     "collectionId": "hit-chaurasi",
-    "index": 239,
+    "index": 218,
     "titleDevanagari": "येषां प्रेक्षा वितरति नवोदार गाढ़ानुरागान् - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (103)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "yeshan-preksha-vitarati-gadanuragan-megshyamo-shri-radha-sudha-nidhi-164",
@@ -6004,13 +5541,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 103
   },
   {
     "id": "karam-te-patrali-kimapi-kuchyo-katurmuchitam-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-105",
     "collectionId": "hit-chaurasi",
-    "index": 240,
+    "index": 219,
     "titleDevanagari": "करं ते पत्रार्लि किमपि कुचयो: कर्त्तुमुचितं - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (105)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "karam-te-patrali-kimapi-kuchyo-katurmuchitam-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-105",
@@ -6027,13 +5564,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 105
   },
   {
     "id": "kivam-vaikunth-lakshmyaapyahah-quote-radha-sudha-nidhi",
     "collectionId": "hit-chaurasi",
-    "index": 241,
+    "index": 220,
     "titleDevanagari": "किवं वैकुण्ठ लक्ष्म्याप्यहह परमया यत्र में नास्ति राधा - श्री हित हरिवंश महाप्रभु, राधा सुधा निधि- 216",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "kivam-vaikunth-lakshmyaapyahah-quote-radha-sudha-nidhi",
@@ -6047,13 +5584,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 113
   },
   {
     "id": "radhapadsarojbhaktimachlamudvikshy-nishkaitavan-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-117",
     "collectionId": "hit-chaurasi",
-    "index": 242,
+    "index": 221,
     "titleDevanagari": "राधापादसरोजभक्तिमचलामुद्वीक्ष्य निष्कैतवां - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (117)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "radhapadsarojbhaktimachlamudvikshy-nishkaitavan-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-117",
@@ -6068,13 +5605,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 117
   },
   {
     "id": "lavanyam-paramadbhutam-rati-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-118",
     "collectionId": "hit-chaurasi",
-    "index": 243,
+    "index": 222,
     "titleDevanagari": "लावण्यं परमाद्भुतं रतिकला - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (118)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "lavanyam-paramadbhutam-rati-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-118",
@@ -6089,13 +5626,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 118
   },
   {
     "id": "vrindani-saarva-mahatampahay-durad",
     "collectionId": "hit-chaurasi",
-    "index": 244,
+    "index": 223,
     "titleDevanagari": "वृन्दानि सर्वमहतामपहाय दूराद् -  श्री हित हरिवंश महाप्रभु , राधा सुधा निधि",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "vrindani-saarva-mahatampahay-durad",
@@ -6110,13 +5647,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 120
   },
   {
     "id": "upasya-charanambuje-braj-bhartam-kishorigane-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi",
     "collectionId": "hit-chaurasi",
-    "index": 245,
+    "index": 224,
     "titleDevanagari": "उपास्य चरणाम्बुजे व्रज-भ्रतां किशोरीगणे - मुरली अवतार श्री हित हरिवंश महाप्रभु - श्री राधा सुधा निधि (122)",
     "author": "श्री राधा सुधा निधि",
     "slug": "upasya-charanambuje-braj-bhartam-kishorigane-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi",
@@ -6131,13 +5668,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 122
   },
   {
     "id": "satprem-rashi-sarso-viksat-sarojam-swanand-sidhi-ras-sindhu-vivendranendum-tachshri-mukham-kutil-kuntal-brigam-juchtam-shri-radhika-tav-kada-nu-vilokyachiche-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-24",
     "collectionId": "hit-chaurasi",
-    "index": 246,
+    "index": 225,
     "titleDevanagari": "सत्प्रेम राशि सरसो विकसत्सरोजं - श्री हित हरिवंश महाप्रभु - श्री राधा सुधा निधि",
     "author": "श्री राधा सुधा निधि",
     "slug": "satprem-rashi-sarso-viksat-sarojam-swanand-sidhi-ras-sindhu-vivendranendum-tachshri-mukham-kutil-kuntal-brigam-juchtam-shri-radhika-tav-kada-nu-vilokyachiche-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-24",
@@ -6152,13 +5689,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 128
   },
   {
     "id": "radhakaravacitapallavavallarike-radhapadankavilasanmadhurasthalike-radhayasomukharamattakhagavahke-radhaviharavipine-ramatam-mano-me-shri-hita-harivansh-mahaprabhu-radha-sudha-nidhi-14",
     "collectionId": "hit-chaurasi",
-    "index": 247,
+    "index": 226,
     "titleDevanagari": "राधा करावचित पल्लव वल्लरी के, राधा पदाङ्कविलसन्म मधुरस्थलीके   - श्री हित हरिवंश महाप्रभु - राधा सुधा निधि - 14",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "radhakaravacitapallavavallarike-radhapadankavilasanmadhurasthalike-radhayasomukharamattakhagavahke-radhaviharavipine-ramatam-mano-me-shri-hita-harivansh-mahaprabhu-radha-sudha-nidhi-14",
@@ -6173,13 +5710,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 129
   },
   {
     "id": "premollasaika-seema-param-ras-chamatkar-vaichitrya-seema-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-130",
     "collectionId": "hit-chaurasi",
-    "index": 248,
+    "index": 227,
     "titleDevanagari": "प्रेमोल्लासैकसीमा परम रसचमत्कार वैचित्र्य सीमा - श्री हित हरिवंश महाप्रभु - श्री राधा सुधा निधि (130)",
     "author": "श्री राधा सुधा निधि",
     "slug": "premollasaika-seema-param-ras-chamatkar-vaichitrya-seema-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-130",
@@ -6196,13 +5733,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 130
   },
   {
     "id": "venu-kranni-patita-skhalitam-shikhandam-brashtam-peetvasnam-vrajraaj-suno-yasya-kataksha-sharpaat-vimurchitasya-tam-radhika-paricharami-kada-rasen-murali-avtar-shri-hita-harivansh-mahaprabhu-radha-sudha-nidhi-38",
     "collectionId": "hit-chaurasi",
-    "index": 249,
+    "index": 228,
     "titleDevanagari": "वेणु: करानञि पतित: स्खलितं शिखंडं - मुरली अवतार श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि",
     "author": "मुरली अवतार श्री हित हरिवंश महाप्रभु",
     "slug": "venu-kranni-patita-skhalitam-shikhandam-brashtam-peetvasnam-vrajraaj-suno-yasya-kataksha-sharpaat-vimurchitasya-tam-radhika-paricharami-kada-rasen-murali-avtar-shri-hita-harivansh-mahaprabhu-radha-sudha-nidhi-38",
@@ -6217,13 +5754,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 132
   },
   {
     "id": "pratyangochhal-dujjavalamrit-ras-shri-harivansh-mahaprabhu-shri-radha-sudha-nidhi-135",
     "collectionId": "hit-chaurasi",
-    "index": 250,
+    "index": 229,
     "titleDevanagari": "प्रत्यङ्गोच्छलदुज्ज्वलामृत - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (135)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "pratyangochhal-dujjavalamrit-ras-shri-harivansh-mahaprabhu-shri-radha-sudha-nidhi-135",
@@ -6238,13 +5775,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 135
   },
   {
     "id": "yasyah-sphurjatpadanakhamani-jyoti-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-136",
     "collectionId": "hit-chaurasi",
-    "index": 251,
+    "index": 230,
     "titleDevanagari": "यस्याः स्फूर्जत्पदनखमणि ज्योति - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (136)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "yasyah-sphurjatpadanakhamani-jyoti-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-136",
@@ -6259,13 +5796,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 136
   },
   {
     "id": "kada-vrindaranaye-madhur-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-137",
     "collectionId": "hit-chaurasi",
-    "index": 252,
+    "index": 231,
     "titleDevanagari": "कदा वृन्दारण्ये मधुर मधुरानन्द रसदे - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (137)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "kada-vrindaranaye-madhur-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-137",
@@ -6282,13 +5819,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 137
   },
   {
     "id": "radhakeli-nikunj-veethishu-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-138",
     "collectionId": "hit-chaurasi",
-    "index": 253,
+    "index": 232,
     "titleDevanagari": "राधाकेलि-निकुञ्ज-वीथीषु - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (138)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "radhakeli-nikunj-veethishu-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-138",
@@ -6305,13 +5842,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 138
   },
   {
     "id": "radhanaamsudharasam-rasyitum-jihvastu-me-vihvala-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-141",
     "collectionId": "hit-chaurasi",
-    "index": 254,
+    "index": 233,
     "titleDevanagari": "राधा नाम सुधारसं रसयितुं जिद्वास्तु मे विह्वला - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (141)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "radhanaamsudharasam-rasyitum-jihvastu-me-vihvala-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-141",
@@ -6326,13 +5863,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 141
   },
   {
     "id": "sakal-bhajan-ke-mahin-hai-hita-dhruv-yah-ras-saar-shri-dhruvdas-bayalees-leela",
     "collectionId": "hit-chaurasi",
-    "index": 255,
+    "index": 234,
     "titleDevanagari": "मन्दीकृत्य मुकुन्द सुन्दर पदद्वन्द्वारविन्दामल, - मुरली अवतार श्री हित हरिवंश महाप्रभु - श्री राधा सुधा निधि (142)",
     "author": "श्री राधा सुधा निधि",
     "slug": "sakal-bhajan-ke-mahin-hai-hita-dhruv-yah-ras-saar-shri-dhruvdas-bayalees-leela",
@@ -6349,13 +5886,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 142
   },
   {
     "id": "radhanamev-karya-hya-anudin-militam-sadhanadhisha-shri-radha-sudha-nidhi-143",
     "collectionId": "hit-chaurasi",
-    "index": 256,
+    "index": 235,
     "titleDevanagari": "राधानामैव कार्यं ह्यनुदिन मिलितं साधनाधीश कोटि  - श्री हित हरिवंश महाप्रभु, राधा सुधा निधि (143)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "radhanamev-karya-hya-anudin-militam-sadhanadhisha-shri-radha-sudha-nidhi-143",
@@ -6370,13 +5907,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 143
   },
   {
     "id": "na-janite-lokan-na-cha-nigamjatam-kul-parampra-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-146",
     "collectionId": "hit-chaurasi",
-    "index": 257,
+    "index": 236,
     "titleDevanagari": "न जानीते लोकं न च निगमजातं कुल-परं- परां - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (146)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "na-janite-lokan-na-cha-nigamjatam-kul-parampra-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-146",
@@ -6393,13 +5930,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 146
   },
   {
     "id": "brahanandaikvada-katichan-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-147",
     "collectionId": "hit-chaurasi",
-    "index": 258,
+    "index": 237,
     "titleDevanagari": "ब्रह्मानन्दैकवादा: कतिचन् - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (147)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "brahanandaikvada-katichan-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-147",
@@ -6416,13 +5953,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 147
   },
   {
     "id": "na-devairbrahmdyairna-khalu-haribhaktairna-suhd-r-hita-harivaa-mahprabhu-r-rdh-sudh-nidhi-148",
     "collectionId": "hit-chaurasi",
-    "index": 259,
+    "index": 238,
     "titleDevanagari": "न देवैर्ब्रह्माद्यैर्न खलु हरिभक्तैर्न सुहृदा - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (१४८)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "na-devairbrahmdyairna-khalu-haribhaktairna-suhd-r-hita-harivaa-mahprabhu-r-rdh-sudh-nidhi-148",
@@ -6439,13 +5976,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 148
   },
   {
     "id": "ksharanteev-pratyaksharmanupam-shri-hita-harivansh-shri-radha-sudha-nidhi-153",
     "collectionId": "hit-chaurasi",
-    "index": 260,
+    "index": 239,
     "titleDevanagari": "क्षरन्तीव प्रत्यक्षरमनुपम - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (153)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "ksharanteev-pratyaksharmanupam-shri-hita-harivansh-shri-radha-sudha-nidhi-153",
@@ -6462,13 +5999,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 153
   },
   {
     "id": "anulikhiyantanapi-sapradha-na-madhupati-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-154",
     "collectionId": "hit-chaurasi",
-    "index": 261,
+    "index": 240,
     "titleDevanagari": "अनुल्लिख्यानन्तानपि सदपराधान्मधुपति - महाप्रेमाविष्टस्तव परमदेयं विमृशति - श्री हित हरिवंश महाप्रभु - श्री राधा सुधा निधि (154)",
     "author": "श्री राधा सुधा निधि",
     "slug": "anulikhiyantanapi-sapradha-na-madhupati-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-154",
@@ -6483,13 +6020,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 154
   },
   {
     "id": "lulit-nav-lavangodaar-karpurpooram-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-155",
     "collectionId": "hit-chaurasi",
-    "index": 262,
+    "index": 241,
     "titleDevanagari": "लुलित नव लवङ्गोदार कर्पूरपूरं - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (155)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "lulit-nav-lavangodaar-karpurpooram-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-155",
@@ -6506,13 +6043,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 155
   },
   {
     "id": "tasya-apaar-ras-saar-vilaas-murteh-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi",
     "collectionId": "hit-chaurasi",
-    "index": 263,
+    "index": 242,
     "titleDevanagari": "तस्या अपार रस सार विलास - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "tasya-apaar-ras-saar-vilaas-murteh-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi",
@@ -6527,13 +6064,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 156
   },
   {
     "id": "sudhakar-mudhakaram-pratipad-sfuran-madhuri-radha-sudha-nidhi-161",
     "collectionId": "hit-chaurasi",
-    "index": 264,
+    "index": 243,
     "titleDevanagari": "सुधाकरमुधाकरं प्रतिपदस्फुरन्माधुरी - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (161)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "sudhakar-mudhakaram-pratipad-sfuran-madhuri-radha-sudha-nidhi-161",
@@ -6548,13 +6085,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 161
   },
   {
     "id": "aaline-kalinidi-tat-nablata-shri-hit-harivansh-mahaprabhu-shri-radha-sudha-nidhi-165",
     "collectionId": "hit-chaurasi",
-    "index": 265,
+    "index": 244,
     "titleDevanagari": "अलिन्दे कालिन्दनी- तट नवलता-मन्दिरवरे - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (165)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "aaline-kalinidi-tat-nablata-shri-hit-harivansh-mahaprabhu-shri-radha-sudha-nidhi-165",
@@ -6571,13 +6108,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 165
   },
   {
     "id": "kare-kamalam-adbhutam-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-171",
     "collectionId": "hit-chaurasi",
-    "index": 266,
+    "index": 245,
     "titleDevanagari": "करे कमलमद्भुतं - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (171)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "kare-kamalam-adbhutam-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-171",
@@ -6594,13 +6131,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 171
   },
   {
     "id": "chalatkutil-kuntalam-tilak-shri-harivansh-mahaprabhu-shri-radha-sudha-nidhi-185",
     "collectionId": "hit-chaurasi",
-    "index": 267,
+    "index": 246,
     "titleDevanagari": "चलत्कुटिल कुन्तलं तिलक - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (185)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "chalatkutil-kuntalam-tilak-shri-harivansh-mahaprabhu-shri-radha-sudha-nidhi-185",
@@ -6615,13 +6152,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 185
   },
   {
     "id": "yayanmeeltatkeli-vilsit-katakshek-kalya-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-187",
     "collectionId": "hit-chaurasi",
-    "index": 268,
+    "index": 247,
     "titleDevanagari": "ययोन्मीलत्केली विलसित कटाक्षैक कलया - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (187)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "yayanmeeltatkeli-vilsit-katakshek-kalya-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-187",
@@ -6636,13 +6173,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 187
   },
   {
     "id": "shrigopendrkumarmohan-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-188",
     "collectionId": "hit-chaurasi",
-    "index": 269,
+    "index": 248,
     "titleDevanagari": "श्रीगोपेन्द्र-कुमार-मोहन - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (188)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "shrigopendrkumarmohan-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-188",
@@ -6657,13 +6194,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 188
   },
   {
     "id": "kada-va-radhaya-padkamal-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-191",
     "collectionId": "hit-chaurasi",
-    "index": 270,
+    "index": 249,
     "titleDevanagari": "कदा वा राधायाः पदकमल - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (191)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "kada-va-radhaya-padkamal-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-191",
@@ -6680,13 +6217,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 191
   },
   {
     "id": "parasparam-premrase-nimaganamshesh-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-196",
     "collectionId": "hit-chaurasi",
-    "index": 271,
+    "index": 250,
     "titleDevanagari": "परस्परं प्रेमरसे - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (196)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "parasparam-premrase-nimaganamshesh-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-196",
@@ -6701,13 +6238,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 196
   },
   {
     "id": "aashastya-dasyam-vrishbhannujaya-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-197",
     "collectionId": "hit-chaurasi",
-    "index": 272,
+    "index": 251,
     "titleDevanagari": "आशास्य-दास्यं-वृषभानुजाया - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (197)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "aashastya-dasyam-vrishbhannujaya-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-197",
@@ -6722,13 +6259,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 197
   },
   {
     "id": "kalindi-tat-kunje-punjibhutam-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-198",
     "collectionId": "hit-chaurasi",
-    "index": 273,
+    "index": 252,
     "titleDevanagari": "कालिन्दी-तट-कुञ्जे - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (198)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "kalindi-tat-kunje-punjibhutam-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-198",
@@ -6743,13 +6280,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 198
   },
   {
     "id": "preetiriv-murtimayi-rassindhau-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-199",
     "collectionId": "hit-chaurasi",
-    "index": 274,
+    "index": 253,
     "titleDevanagari": "प्रीतिरिव मूर्तिमती रससिन्धो - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (199)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "preetiriv-murtimayi-rassindhau-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-199",
@@ -6764,13 +6301,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 199
   },
   {
     "id": "rasghan-mohan-murti-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-200",
     "collectionId": "hit-chaurasi",
-    "index": 275,
+    "index": 254,
     "titleDevanagari": "रसघन मोहन मूर्ति, विचित्रकेलि-महोत्सवोल्लसितम् - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (200)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "rasghan-mohan-murti-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-200",
@@ -6785,13 +6322,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 200
   },
   {
     "id": "kada-gayam-gayam-madhur-madhuritya-madhubhid-shri-harivansh-mahaprabhu-shri-radha-sudha-nidhi-201",
     "collectionId": "hit-chaurasi",
-    "index": 276,
+    "index": 255,
     "titleDevanagari": "कदा गायं गायं मधुर - मधुरीत्या - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (201)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "kada-gayam-gayam-madhur-madhuritya-madhubhid-shri-harivansh-mahaprabhu-shri-radha-sudha-nidhi-201",
@@ -6806,13 +6343,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 201
   },
   {
     "id": "sandhra-prem-rasaugh-shri-hit-harivansh-mahaprabhu-shri-radha-sudha-nidhi-206",
     "collectionId": "hit-chaurasi",
-    "index": 277,
+    "index": 256,
     "titleDevanagari": "सान्द्र प्रेम-रसौघ-वर्षिणि - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (206)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "sandhra-prem-rasaugh-shri-hit-harivansh-mahaprabhu-shri-radha-sudha-nidhi-206",
@@ -6829,13 +6366,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 206
   },
   {
     "id": "radheti-me-jivanam-hit-harivansh-mahaprabhu-radha-sudha-nidhi-96",
     "collectionId": "hit-chaurasi",
-    "index": 278,
+    "index": 257,
     "titleDevanagari": "राधेति मई जीवनम - हित हरिवंश महाप्रभु",
     "author": "हित हरिवंश महाप्रभु",
     "slug": "radheti-me-jivanam-hit-harivansh-mahaprabhu-radha-sudha-nidhi-96",
@@ -6849,13 +6386,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 208
   },
   {
     "id": "aho-temi-kunjaastadanupam-raasasthalamidam-shri-hit-harivansh-mahaprabhu-shri-radha-sudha-nidhi-209",
     "collectionId": "hit-chaurasi",
-    "index": 279,
+    "index": 258,
     "titleDevanagari": "अहो तेमी कुञ्जास्तदनुपम रासस्थलमिदं - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (209)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "aho-temi-kunjaastadanupam-raasasthalamidam-shri-hit-harivansh-mahaprabhu-shri-radha-sudha-nidhi-209",
@@ -6870,13 +6407,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 209
   },
   {
     "id": "brahmeshwaradi-suduruh-padarvind-shrimat-parag-param-shri-hit-harivansh-mahaprabhu-shri-radha-sudha-nidhi-2",
     "collectionId": "hit-chaurasi",
-    "index": 280,
+    "index": 259,
     "titleDevanagari": "ब्रह्मेश्वरादि सुदुरूह पदारविन्द, श्रीमत्पराग परमाद्भुत वैभवाया  - श्री हित हरिवंश महाप्रभु - श्री राधा सुधा निधि",
     "author": "श्री राधा सुधा निधि",
     "slug": "brahmeshwaradi-suduruh-padarvind-shrimat-parag-param-shri-hit-harivansh-mahaprabhu-shri-radha-sudha-nidhi-2",
@@ -6891,13 +6428,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 213
   },
   {
     "id": "raho-dasyam-tasya-kimapi-vrishbhanorvrajvari-yasya-putrya-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi115",
     "collectionId": "hit-chaurasi",
-    "index": 281,
+    "index": 260,
     "titleDevanagari": "रहो दास्यं तस्याः किमपि वृषभानोरव्रर्ज्रवरी - मुरली अवतार श्री हित हरिवंश महाप्रभु - श्री राधा सुधा निधि",
     "author": "श्री राधा सुधा निधि",
     "slug": "raho-dasyam-tasya-kimapi-vrishbhanorvrajvari-yasya-putrya-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi115",
@@ -6912,13 +6449,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 215
   },
   {
     "id": "kivan-naste-sushatrai-kimath-tadudi-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-216",
     "collectionId": "hit-chaurasi",
-    "index": 282,
+    "index": 261,
     "titleDevanagari": "किंवा नस्तैः सुशास्त्रैः किमथ - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (216)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "kivan-naste-sushatrai-kimath-tadudi-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-216",
@@ -6935,13 +6472,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 216
   },
   {
     "id": "kada-madhur-sarika-svras-padymadhyapaya-shri-hit-harivansh-mahaprabhu-radha-sudha-nidhi-221",
     "collectionId": "hit-chaurasi",
-    "index": 283,
+    "index": 262,
     "titleDevanagari": "कदा मधुर सारिका: स्वरस पद्यमध्यापय - श्री हित हरिवंश महाप्रभु, राधा सुधा निधि (221)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "kada-madhur-sarika-svras-padymadhyapaya-shri-hit-harivansh-mahaprabhu-radha-sudha-nidhi-221",
@@ -6956,13 +6493,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 221
   },
   {
     "id": "bhoh-shridaamansubal-vrishabhastok-krishnaarjunaadyaah-shri-hit-harivansh-mahaprabhu-shri-radha-sudha-nidhi-227",
     "collectionId": "hit-chaurasi",
-    "index": 284,
+    "index": 263,
     "titleDevanagari": "भोः श्रीदामन्सुबल वृषभस्तोक कृष्णार्जुनाद्याः - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (227)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "bhoh-shridaamansubal-vrishabhastok-krishnaarjunaadyaah-shri-hit-harivansh-mahaprabhu-shri-radha-sudha-nidhi-227",
@@ -6977,13 +6514,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 227
   },
   {
     "id": "aprekshe-krit-nishchayaapi-shri-hit-harivansh-mahaprabhu-shri-radha-sudha-nidhi-230",
     "collectionId": "hit-chaurasi",
-    "index": 285,
+    "index": 264,
     "titleDevanagari": "अप्रेक्षे कृत निश्चयापि - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (230)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "aprekshe-krit-nishchayaapi-shri-hit-harivansh-mahaprabhu-shri-radha-sudha-nidhi-230",
@@ -6998,13 +6535,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 230
   },
   {
     "id": "doore-shrishtyadivarta-na-kalayati-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-235",
     "collectionId": "hit-chaurasi",
-    "index": 286,
+    "index": 265,
     "titleDevanagari": "दूरे सृष्ट्यादिवार्त्ता न कलयति - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (235)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "doore-shrishtyadivarta-na-kalayati-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-235",
@@ -7019,13 +6556,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 235
   },
   {
     "id": "yan-naradajesh-shukairgamyam-shri-hit-harivansh-mahaprabhu-shri-radha-sudha-nidhi-236",
     "collectionId": "hit-chaurasi",
-    "index": 287,
+    "index": 266,
     "titleDevanagari": "यन्नारदाजेश शुकैरगम्यं वृन्दावने - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (238)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "yan-naradajesh-shukairgamyam-shri-hit-harivansh-mahaprabhu-shri-radha-sudha-nidhi-236",
@@ -7040,13 +6577,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 238
   },
   {
     "id": "lakshmya-yasch-na-gocharibhavati-yannapuh-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-239",
     "collectionId": "hit-chaurasi",
-    "index": 288,
+    "index": 267,
     "titleDevanagari": "लक्ष्म्या यश्च न गोचरीभवति यन्नापुः - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (239)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "lakshmya-yasch-na-gocharibhavati-yannapuh-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-239",
@@ -7061,13 +6598,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 239
   },
   {
     "id": "kenapi-nagarvaren-pade-nipaty-samprathitek-pari-rambha-rasotsavaya-sa-bhru-vibhangam-ati-ranga-nideh-kada-te-shri-radhike-nahi-nahiti-girah-srnomi-murali-avtar-shri-hita-harivansh-mahaprabhu-radha-sudha-nidhi-09",
     "collectionId": "hit-chaurasi",
-    "index": 289,
+    "index": 268,
     "titleDevanagari": "केनापि नागरवरेण पदे निपत्य - मुरली अवतार श्री हित हरिवंश महाप्रभु - श्री राधा सुधा निधि",
     "author": "श्री राधा सुधा निधि",
     "slug": "kenapi-nagarvaren-pade-nipaty-samprathitek-pari-rambha-rasotsavaya-sa-bhru-vibhangam-ati-ranga-nideh-kada-te-shri-radhike-nahi-nahiti-girah-srnomi-murali-avtar-shri-hita-harivansh-mahaprabhu-radha-sudha-nidhi-09",
@@ -7082,13 +6619,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 241
   },
   {
     "id": "unmilan-mukut-chata-parilasad-dik-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-120",
     "collectionId": "hit-chaurasi",
-    "index": 290,
+    "index": 269,
     "titleDevanagari": "उन्मीलनमुकुटच्छटा परिल सच्छिकच्रकवालं स्फुरत- मुरली अवतार श्री हित हरिवंश महाप्रभु - श्री राधा सुधा निधि",
     "author": "श्री राधा सुधा निधि",
     "slug": "unmilan-mukut-chata-parilasad-dik-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-120",
@@ -7103,13 +6640,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 248
   },
   {
     "id": "sada-gayamgayam-madhurtar-radhapriy-yashah-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-253",
     "collectionId": "hit-chaurasi",
-    "index": 291,
+    "index": 270,
     "titleDevanagari": "सदा गायं-गायं मधुरतर राधा-प्रिय यशः - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (253)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "sada-gayamgayam-madhurtar-radhapriy-yashah-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-253",
@@ -7124,13 +6661,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 253
   },
   {
     "id": "kvasau-radha-nigamapadaviduraga-kutra-casau-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-260",
     "collectionId": "hit-chaurasi",
-    "index": 292,
+    "index": 271,
     "titleDevanagari": "क्वासौ राधा निगम पदवीदुरगा कुत्र चासौ कृष्णस्तस्याः कुचकमलयोरन्तरै कान्तवासः । - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (260)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "kvasau-radha-nigamapadaviduraga-kutra-casau-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-260",
@@ -7145,13 +6682,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 260
   },
   {
     "id": "vrindaranye-nav-ras-kala-komal-prem-murti-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-261",
     "collectionId": "hit-chaurasi",
-    "index": 293,
+    "index": 272,
     "titleDevanagari": "वृन्दारण्ये नव रस-कला-कोमल प्रेम-मूर्ति - मुरली अवतार श्री हित हरिवंश महाप्रभु - श्री राधा सुधा निधि (261)",
     "author": "श्री राधा सुधा निधि",
     "slug": "vrindaranye-nav-ras-kala-komal-prem-murti-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-261",
@@ -7168,13 +6705,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 261
   },
   {
     "id": "ha-kalindi-tavyi-mam-nidhi-praysa-shri-harivansh-mahaprabhu-radha-sudha-nidhi-262",
     "collectionId": "hit-chaurasi",
-    "index": 294,
+    "index": 273,
     "titleDevanagari": "हा कालिन्दि त्वयि मम - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (262)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "ha-kalindi-tavyi-mam-nidhi-praysa-shri-harivansh-mahaprabhu-radha-sudha-nidhi-262",
@@ -7191,13 +6728,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 262
   },
   {
     "id": "yadradhapadkinkarikrithrida-samyagbhavetgocharam-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi",
     "collectionId": "hit-chaurasi",
-    "index": 295,
+    "index": 274,
     "titleDevanagari": "यद्राधापदकिंकरीकृतहृदा - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (265)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "yadradhapadkinkarikrithrida-samyagbhavetgocharam-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi",
@@ -7212,13 +6749,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 265
   },
   {
     "id": "dure-sanigdh-parampra-vijaytam-dure-suhunmandali-murali-avtar-shri-hita-harivansh-mahaprahu-shri-radha-sudha-nidhi",
     "collectionId": "hit-chaurasi",
-    "index": 296,
+    "index": 275,
     "titleDevanagari": "दूरे स्निग्ध परम्परा विजयतां दूरे सुहन्मण्डली - मुरली अवतार श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि",
     "author": "मुरली अवतार श्री हित हरिवंश महाप्रभु",
     "slug": "dure-sanigdh-parampra-vijaytam-dure-suhunmandali-murali-avtar-shri-hita-harivansh-mahaprahu-shri-radha-sudha-nidhi",
@@ -7233,13 +6770,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 266
   },
   {
     "id": "radhakeli-kalasu-sakhini-kada-vrindavane-shri-harivansh-mahaprabhu-shri-radha-sudha-nidhi-266",
     "collectionId": "hit-chaurasi",
-    "index": 297,
+    "index": 276,
     "titleDevanagari": "राधाकेलि कलासु साक्षिणि कदा वृन्दावने - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (266)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "radhakeli-kalasu-sakhini-kada-vrindavane-shri-harivansh-mahaprabhu-shri-radha-sudha-nidhi-266",
@@ -7254,13 +6791,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 266
   },
   {
     "id": "kvaaham-moodhmatih-kva-naam-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-268",
     "collectionId": "hit-chaurasi",
-    "index": 298,
+    "index": 277,
     "titleDevanagari": "क्वाहं मूढ़मतिः क्व नाम - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (268)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "kvaaham-moodhmatih-kva-naam-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-268",
@@ -7275,13 +6812,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 268
   },
   {
     "id": "shri-radhe-shrutibhirbudhairbhagavataapyaa-shri-hit-harivansh-mahaprabhu-shri-radha-sudha-nidhi-269",
     "collectionId": "hit-chaurasi",
-    "index": 299,
+    "index": 278,
     "titleDevanagari": "श्री राधे श्रुतिभिर्बुधैर्भगवताप्यामृग्यसद्वैभवे - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (269)",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "shri-radhe-shrutibhirbudhairbhagavataapyaa-shri-hit-harivansh-mahaprabhu-shri-radha-sudha-nidhi-269",
@@ -7296,13 +6833,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 269
   },
   {
     "id": "saghoghindra-sudeshya-saandra-rasanandak-sanmurtiya-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-264",
     "collectionId": "hit-chaurasi",
-    "index": 300,
+    "index": 279,
     "titleDevanagari": "सद्योगीन्द्र सुद्दश्य सान्द्र रसदानन्दक सन्मूर्तय - मुरली अवतार श्री हित हरिवंश महाप्रभु , श्री राधा सुधा निधि",
     "author": "मुरली अवतार श्री हित हरिवंश महाप्रभु",
     "slug": "saghoghindra-sudeshya-saandra-rasanandak-sanmurtiya-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-264",
@@ -7317,13 +6854,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 273
   },
   {
     "id": "lavanya-saar-ras-saar-sukhaiv-saare-karunya-saar-madhur-chavi-virup-saare-harivansh-mahaprabhu",
     "collectionId": "hit-chaurasi",
-    "index": 301,
+    "index": 280,
     "titleDevanagari": "लावण्य सार रस, सार सुखैव सारे - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि",
     "author": "श्री हित हरिवंश महाप्रभु",
     "slug": "lavanya-saar-ras-saar-sukhaiv-saare-karunya-saar-madhur-chavi-virup-saare-harivansh-mahaprabhu",
@@ -7338,13 +6875,13 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 279
   },
   {
     "id": "yasyah-kadapi-vasanancalakhelanottha-dhanyta-dhanya-pavanena-krtarthamam-yogindradurgamagatir-madhusudano-pi-tasya-namo-stu-vrsabhanubhuvo-dise-pi-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-1",
     "collectionId": "hit-chaurasi",
-    "index": 302,
+    "index": 281,
     "titleDevanagari": "यस्याः कदापि वसनाञ्चलखेलनोत्थ - श्री हित हरिवंश महाप्रभु - श्री राधा सुधा निधि",
     "author": "श्री राधा सुधा निधि",
     "slug": "yasyah-kadapi-vasanancalakhelanottha-dhanyta-dhanya-pavanena-krtarthamam-yogindradurgamagatir-madhusudano-pi-tasya-namo-stu-vrsabhanubhuvo-dise-pi-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-1",
@@ -7359,7 +6896,470 @@
       }
     ],
     "chapterId": "radha-sudha-nidhi",
-    "chapterName": "श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि (१०० श्लोक)",
     "verseNumber": 283
+  },
+  {
+    "id": "jo-kahau-shreeharivansh-ras-biralo-samajhan-haar-ek-doe-jo-paiye-khojiye-sab-sansaar-dhruvdas-quote",
+    "collectionId": "hit-chaurasi",
+    "index": 282,
+    "titleDevanagari": "जो कह्यौ श्री हरिवंश रस बिरलौ समुझनहार - श्री ध्रुवदास, बयालीस लीला, रहस्य लता (1)",
+    "author": "श्री ध्रुवदास",
+    "slug": "jo-kahau-shreeharivansh-ras-biralo-samajhan-haar-ek-doe-jo-paiye-khojiye-sab-sansaar-dhruvdas-quote",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "जो कह्यौ श्री हरिवंश रस, बिरलौ समुझनहार।",
+          "एक दोइ जो पाइयै, खोजत सब संसार॥",
+          "- श्री ध्रुवदास, बयालीस लीला, रहस्य लता (1)"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध व टीका",
+    "verseNumber": 1
+  },
+  {
+    "id": "pratham-naam-harivansh-hit-shri-dhruvdas-vrindavan-shat-leela-1",
+    "collectionId": "hit-chaurasi",
+    "index": 283,
+    "titleDevanagari": "प्रथम नाम हरिवंश हित - श्री ध्रुवदास, बयालीस लीला, वृन्दावन शत लीला (1)",
+    "author": "श्री ध्रुवदास",
+    "slug": "pratham-naam-harivansh-hit-shri-dhruvdas-vrindavan-shat-leela-1",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "प्रथम नाम हरिवंश हित, रट रसना दिन रैन।",
+          "प्रीति रीति तब पाइयै, अरु वृंदावन ऐन॥",
+          "- श्री ध्रुवदास, बयालीस लीला, वृन्दावन शत लीला (1)"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध व टीका",
+    "verseNumber": 1
+  },
+  {
+    "id": "shri-hita-harivansh-gusai-binu-shri-kishori-ali-ji-maanjh-1",
+    "collectionId": "hit-chaurasi",
+    "index": 284,
+    "titleDevanagari": "श्री हित हरिवंश गुसाईं बिनु - श्री किशोरी अलि जी, माँझ (01)",
+    "author": "श्री किशोरी अलि जी",
+    "slug": "shri-hita-harivansh-gusai-binu-shri-kishori-ali-ji-maanjh-1",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "श्री हित हरिवंश गुसाईं बिनु को राधाराधन जानै।",
+          "श्री स्वामी हरिदास बिना को जुगल रूप उर आनै॥ [1]",
+          "श्री वृन्दावन रसिकन कौ व्यासहिं तजि कौन बखानै।",
+          "तिन ही कौ जग जनम सफल जिनकौं ये अपनों मानैं॥ [2]",
+          "नंद सुवन की बालकेलि को रस वल्लभ ही पायौ।",
+          "महाप्रभू श्री कृष्ण नाम की महिमा रस बरसायौ॥ [3]",
+          "रूप-सनातन जू नैं ब्रज-रस निजु रसना दुलरायौ।",
+          "सोई भलीविधि नाभाजू नैं भक्तिमाल दरसायौ॥ [4]",
+          "- श्री किशोरी अलि जी, माँझ (01)"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध व टीका",
+    "verseNumber": 1
+  },
+  {
+    "id": "charan-saran-harivansh-ki-jab-lagi-aayo-naahin-shri-dhruvdas-ji-vrindavan-shat-leela-2",
+    "collectionId": "hit-chaurasi",
+    "index": 285,
+    "titleDevanagari": "चरन सरन हरिवंश की - श्री ध्रुवदास जी, बयालीस लीला, वृन्दावन शत लीला (2)",
+    "author": "श्री ध्रुवदास जी",
+    "slug": "charan-saran-harivansh-ki-jab-lagi-aayo-naahin-shri-dhruvdas-ji-vrindavan-shat-leela-2",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "चरन सरन हरिवंश की, जब लगि आयौ नाहिं।",
+          "नव निकुंज निजु माधुरी, क्यों परसै मन माहिं॥",
+          "- श्री ध्रुवदास जी, बयालीस लीला, वृन्दावन शत लीला (2)"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध व टीका",
+    "verseNumber": 2
+  },
+  {
+    "id": "vyas-aas-harivansh-ki-tinhin-kau-badhbhag-shri-hariram-vyas-vyas-vani-siddhant-ki-saakhi-2",
+    "collectionId": "hit-chaurasi",
+    "index": 286,
+    "titleDevanagari": "व्यास आस हरिवंश की - श्री हरिराम व्यास, व्यास वाणी, सिद्धांत की साखी (2)",
+    "author": "श्री हरिराम व्यास",
+    "slug": "vyas-aas-harivansh-ki-tinhin-kau-badhbhag-shri-hariram-vyas-vyas-vani-siddhant-ki-saakhi-2",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "व्यास आस हरिवंश की, तिनहीं कौ बड़भाग।",
+          "वृंदावन की कुंज में, सदा रहत अनुराग॥",
+          "- श्री हरिराम व्यास, व्यास वाणी, सिद्धांत की साखी (2)"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध व टीका",
+    "verseNumber": 2
+  },
+  {
+    "id": "harivansh-charan-ur-dharani-dhari-shri-dhruvdas-vrindavan-shat-leela-8",
+    "collectionId": "hit-chaurasi",
+    "index": 287,
+    "titleDevanagari": "हरिवंश चरण उर धरनि धरि - श्री ध्रुवदास, बयालीस लीला, वृन्दावन शत लीला (8)",
+    "author": "श्री ध्रुवदास",
+    "slug": "harivansh-charan-ur-dharani-dhari-shri-dhruvdas-vrindavan-shat-leela-8",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "हरिवंश चरण उर धरनि धरि, मन वच कै विस्वास।",
+          "कुँवरि कृपा ह्वै है तबहि, अरु वृन्दावन वास॥",
+          "- श्री ध्रुवदास, बयालीस लीला, वृन्दावन शत लीला (8)"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध व टीका",
+    "verseNumber": 8
+  },
+  {
+    "id": "hita-harivansh-kripa-bina-shri-hariram-vyas-vyas-vani-saakhi-09",
+    "collectionId": "hit-chaurasi",
+    "index": 288,
+    "titleDevanagari": "हित हरिवंश कृपा बिना - श्री हरिराम व्यास, व्यास वाणी, सिद्धांत की साखी (09)",
+    "author": "श्री हरिराम व्यास",
+    "slug": "hita-harivansh-kripa-bina-shri-hariram-vyas-vyas-vani-saakhi-09",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "हित हरिवंश कृपा बिना, निमिष नहीं कहुँ ठौर।",
+          "व्यास दास की स्वामिनी, प्रगटि सब सिरमौर॥",
+          "- श्री हरिराम व्यास, व्यास वाणी, सिद्धांत की साखी (09)"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध व टीका",
+    "verseNumber": 9
+  },
+  {
+    "id": "shri-lalita-harivansh-vapu-shri-vanshi-ali-hriday-sarvasv-16",
+    "collectionId": "hit-chaurasi",
+    "index": 289,
+    "titleDevanagari": "श्री ललिता हरिवंश वपु - श्री वंशी अलि, हृदय सर्वस्व (16)",
+    "author": "श्री वंशी अलि",
+    "slug": "shri-lalita-harivansh-vapu-shri-vanshi-ali-hriday-sarvasv-16",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "श्री ललिता हरिवंश वपु, प्रगटी रसनिधि आय।",
+          "चरन माधुरी कुंवर की, दीनी सबन जनाय॥",
+          "- श्री वंशी अलि, हृदय सर्वस्व (16)"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध व टीका",
+    "verseNumber": 16
+  },
+  {
+    "id": "sun-mero-vachan-chabeeli-radha-tein-payo-ras-sindhu-agadha-jo-ras-neti-neti-shruti-bakhyo-tako-tain-adhar-sudharas-chakhyo-shri-hita-harivansh-mahaprabhu",
+    "collectionId": "hit-chaurasi",
+    "index": 290,
+    "titleDevanagari": "सुन मेरो वचन छबीली राधा, तें पायो रस सिंधु अगाधा  - श्री हित हरिवंश महाप्रभु - श्री हित चतुरासी (18)",
+    "author": "श्री हित चतुरासी",
+    "slug": "sun-mero-vachan-chabeeli-radha-tein-payo-ras-sindhu-agadha-jo-ras-neti-neti-shruti-bakhyo-tako-tain-adhar-sudharas-chakhyo-shri-hita-harivansh-mahaprabhu",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "सुनि मेरौ वचन छबीली राधा, तैं पायौ रस सिन्धु अगाधा।",
+          "जो रस नेति-नेति श्रुति भाख्यौ, ताकौ तैं अधर सुधारस चाख्यौ ॥",
+          "- श्री हित हरिवंश महाप्रभु - श्री हित चतुरासी (18)"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध व टीका",
+    "verseNumber": 18
+  },
+  {
+    "id": "shri-harivansh-swaroop-hain-shriharidas-udaar-shri-vanshi-ali-hriday-sarvasv-18",
+    "collectionId": "hit-chaurasi",
+    "index": 291,
+    "titleDevanagari": "श्री हरिवंश स्वरूप हैं श्रीहरिदास उदार - श्री वंशी अलि, हृदय सर्वस्व (18)",
+    "author": "श्री वंशी अलि",
+    "slug": "shri-harivansh-swaroop-hain-shriharidas-udaar-shri-vanshi-ali-hriday-sarvasv-18",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "श्री हरिवंश स्वरूप हैं, श्रीहरिदास उदार।",
+          "जे जे बातें महल की, बरनत नित्य विहार॥",
+          "- श्री वंशी अलि, हृदय सर्वस्व (18)"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध व टीका",
+    "verseNumber": 18
+  },
+  {
+    "id": "harivansh-haridasi-jahan-vyas-aas-kari-vaas-shri-hita-roop-lal-shri-vrindavan-samaran-41",
+    "collectionId": "hit-chaurasi",
+    "index": 292,
+    "titleDevanagari": "हरिवंशी हरिदासी जहां व्यास - श्री हित रूप लाल, श्री वृंदावन स्मरण (41)",
+    "author": "श्री हित रूप लाल",
+    "slug": "harivansh-haridasi-jahan-vyas-aas-kari-vaas-shri-hita-roop-lal-shri-vrindavan-samaran-41",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "हरिवंशी हरिदासी जहां, व्यास आस करि वास।",
+          "रसिक त्रिवेणी विपिन में, नित्य विहार उपास॥",
+          "- श्री हित रूप लाल, श्री वृंदावन स्मरण (41)"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध व टीका",
+    "verseNumber": 41
+  },
+  {
+    "id": "bado-raas-mandal-ihan-sewit-hit-harivansh-shri-hita-roop-lal-shri-vrindavan-samaran-42",
+    "collectionId": "hit-chaurasi",
+    "index": 293,
+    "titleDevanagari": "बडौ रास मंडल इहां सेवित हित हरिवंश - श्री हित रूप लाल, श्री वृंदावन स्मरण (42)",
+    "author": "श्री हित रूप लाल",
+    "slug": "bado-raas-mandal-ihan-sewit-hit-harivansh-shri-hita-roop-lal-shri-vrindavan-samaran-42",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "बडौ रास मंडल इहां, सेवित हित हरिवंश।",
+          "गुहौ जनेऊ तोर के, व्यास दास अवतंश॥",
+          "- श्री हित रूप लाल, श्री वृंदावन स्मरण (42)"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध व टीका",
+    "verseNumber": 42
+  },
+  {
+    "id": "aasu-kau-haridas-rasik-harivansh-shri-hariram-vyas-vyas-vani-purvardh-80",
+    "collectionId": "hit-chaurasi",
+    "index": 294,
+    "titleDevanagari": "आसू कौ हरिदास रसिक हरिवंश  - श्री हरिराम व्यास, व्यास वाणी, पूर्वार्ध (80)",
+    "author": "श्री हरिराम व्यास",
+    "slug": "aasu-kau-haridas-rasik-harivansh-shri-hariram-vyas-vyas-vani-purvardh-80",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "आसू कौ हरिदास रसिक हरिवंश न मोहिं बिसारौ।",
+          "यहि पथ चलत स्याम-स्यामा के व्यासहिं बोरौ भावे तारौ॥",
+          "- श्री हरिराम व्यास, व्यास वाणी, पूर्वार्ध (80)"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध व टीका",
+    "verseNumber": 80
+  },
+  {
+    "id": "suni-mero-vachan-chabeeli-radha-shri-hita-harivansh-mahaprabhu-shri-hita-chaturasi-18",
+    "collectionId": "hit-chaurasi",
+    "index": 295,
+    "titleDevanagari": "सुनि मेरो वचन छबीली राधा, तैं पायो रस सिंधु अगाधा -  श्री हित हरिवंश महाप्रभु - श्री हित चतुरासी (98)",
+    "author": "श्री हित चतुरासी",
+    "slug": "suni-mero-vachan-chabeeli-radha-shri-hita-harivansh-mahaprabhu-shri-hita-chaturasi-18",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(राग आसावरी)",
+          "सुनि मेरो वचन छबीली राधा, तैं पायो रस सिंधु अगाधा॥",
+          "तूँ वृषभानु गोप की बेटी, मोहनलाल रसिक हँसि भेंटी।",
+          "जाहि बिरंचि उमापति नाये, तापै तैं बन फूल बिनाये॥",
+          "जो रस नेति-नेति श्रुति भाख्यो, ताकौ तैं अधर सुधारस चाख्यौ।",
+          "तेरौ रूप कहत नहीं आवै, जै श्रीहित हरिवंश कछुक जस गावै।",
+          "- मुरली अवतार श्री हित हरिवंश महाप्रभु - श्री हित चतुरासी (18)"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध व टीका",
+    "verseNumber": 98
+  },
+  {
+    "id": "shri-harivansh-sarana-je-aye-sri-neh-nagridas-ji-ki-vani-siddhant-136",
+    "collectionId": "hit-chaurasi",
+    "index": 296,
+    "titleDevanagari": "श्री हरिवंश सरन जे आये - श्री नेह नागरी दास जी की वाणी, सिद्धांत (136)",
+    "author": "श्री नेह नागरी दास जी की वाणी",
+    "slug": "shri-harivansh-sarana-je-aye-sri-neh-nagridas-ji-ki-vani-siddhant-136",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(राग गौरी)",
+          "श्री हरिवंश सरन जे आये।",
+          "श्री वृषभानुकुमरि नंदनंदन, निजकर अपनी चिट्ठी चढ़ाये॥ [1]",
+          "दिये मुकराय कछू नहि गोयौ, किये मनोरथ मन के भाये।",
+          "श्रीव्यास सुवन चरनन रज परसत, ‘नागरीदास’ से रंक जिवाये॥ [2]",
+          "- श्री नेह नागरी दास, श्री नेह नागरी दास जी की वाणी, सिद्धांत (136)"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध व टीका",
+    "verseNumber": 136
+  },
+  {
+    "id": "aacharaj-harivansh-ko-shrivrindavan-dham-shri-hita-parmanand-das",
+    "collectionId": "hit-chaurasi",
+    "index": 297,
+    "titleDevanagari": "आचारज हरिवंश कौ श्रीवृन्दावन धाम - श्री हित परमानंद दास जी",
+    "author": "श्री हित परमानंद दास जी",
+    "slug": "aacharaj-harivansh-ko-shrivrindavan-dham-shri-hita-parmanand-das",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "आचारज हरिवंश कौ, श्रीवृन्दावन धाम।",
+          "‘हित परमानंद’ सब जपत, राधा राधा नाम॥",
+          "- श्री हित परमानंद दास",
+          "अचरज हरिवंश कौ, श्री वृन्दावन धाम। हित परमानंद, राधा, सब जपें राधा नाम.. - श्री हित परमानंद दास"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध व टीका",
+    "verseNumber": 163
+  },
+  {
+    "id": "jinke-shri-harivansh-sahayak-sri-neh-nagridas-ji-ki-vani",
+    "collectionId": "hit-chaurasi",
+    "index": 298,
+    "titleDevanagari": "जिनके श्रीहरिवंश सहायक - श्री नेह नागरी दास जी की वाणी",
+    "author": "श्री नेह नागरी दास जी की वाणी",
+    "slug": "jinke-shri-harivansh-sahayak-sri-neh-nagridas-ji-ki-vani",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "जिनके श्रीहरिवंश सहायक।",
+          "तेई सजन भजन अधिकारी",
+          "वृन्दावन घन बसिवे लायक॥ [1]",
+          "अलक लड़े आनन्द भरे डोलें",
+          "सिर पर व्याससुवन सुखदायक।",
+          "कुंवरि कुंवर जाहि सुलभ नागरिदास",
+          "रसिक शिरोमनि के गुनगायक॥ [2]",
+          "- श्री नेह नागरी दास, श्री नेह नागरी दास जी की वाणी"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध व टीका",
+    "verseNumber": 183
+  },
+  {
+    "id": "haha-he-harivansh-prabhu-shri-magan-ali",
+    "collectionId": "hit-chaurasi",
+    "index": 299,
+    "titleDevanagari": "हा-हा हे हरिवंश प्रभु शरण गही है आय - श्री मगल अलि",
+    "author": "श्री मगल अलि",
+    "slug": "haha-he-harivansh-prabhu-shri-magan-ali",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "हा-हा हे हरिवंश प्रभु, शरण गही है आय।",
+          "जानि दीन दीजे टहल, वृन्दा विपिन बसाय॥",
+          "- श्री मगल अलि"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध व टीका",
+    "verseNumber": 246
+  },
+  {
+    "id": "vyas-suvan-harivansh-ju-guru-shri-radha-keen-shri-hita-parmanand-das",
+    "collectionId": "hit-chaurasi",
+    "index": 300,
+    "titleDevanagari": "व्याससुवन हरिवंश जू गुरु श्री राधा कीन - श्री हित परमानंद दास जी",
+    "author": "श्री हित परमानंद दास जी",
+    "slug": "vyas-suvan-harivansh-ju-guru-shri-radha-keen-shri-hita-parmanand-das",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "व्याससुवन हरिवंश जू, गुरु श्री राधा कीन।",
+          "राधा राधा मंत्र जपि, राधा दरसन दीन॥",
+          "- श्री हित परमानंद दास"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध व टीका",
+    "verseNumber": 249
+  },
+  {
+    "id": "shriharivansh-su-reeti-sunaoon-shri-damodardas-sevak-ji-shri-sevak-vani-47",
+    "collectionId": "hit-chaurasi",
+    "index": 301,
+    "titleDevanagari": "श्रीहरिवंश सु रीति सुनाऊँ - श्री दामोदरदास (सेवक जी), श्री सेवक वाणी (4.7)",
+    "author": "श्री दामोदरदास (सेवक जी)",
+    "slug": "shriharivansh-su-reeti-sunaoon-shri-damodardas-sevak-ji-shri-sevak-vani-47",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "श्रीहरिवंश सु रीति सुनाऊँ, श्यामा-श्याम एक सँग गाऊँ। [1]",
+          "छिन इक कबहुँ न अन्तर होई, प्रान सु एक देह हैं दोई॥ [2]",
+          "राधा संग बिना नहीं श्याम, श्याम बिना नहिं राधा नाम। [3]",
+          "छिन-छिन प्रति आराधत रहहीं, राधा नाम श्याम तब कहहीं॥ [4]",
+          "ललितादिकनि संग सचु पावैं, श्रीहरिवंश सुरत-रति गावैं॥ [5]",
+          "- श्री दामोदरदास (सेवक जी), श्री सेवक वाणी (4.7)"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध व टीका",
+    "verseNumber": 257
+  },
+  {
+    "id": "gosvami-harivavsha-ju-bachan-kahyau-pad-manhi-shri-kishori-ali",
+    "collectionId": "hit-chaurasi",
+    "index": 302,
+    "titleDevanagari": "गोस्वामि हरिवंश जू बचन कह्यौ पद माँहि - श्री किशोरी अलि",
+    "author": "श्री किशोरी अलि",
+    "slug": "gosvami-harivavsha-ju-bachan-kahyau-pad-manhi-shri-kishori-ali",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "गोस्वामि हरिवंश जू, बचन कह्यौ पद माँहि।",
+          "या रज के सेये बिना, अनत कहूँ सुख नाहि॥",
+          "- श्री किशोरी अलि"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध व टीका",
+    "verseNumber": 301
   }
 ]

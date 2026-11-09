@@ -293,8 +293,71 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   const [selectedRaga, setSelectedRaga] = useState<string>('all');
   const [sidebarQuery, setSidebarQuery] = useState('');
 
-  // Main Grantha / Author Segmented Pill Track Auto-Scroll
+  // Scripture Category Pills Sliding Indicator
+  const categoryRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
+  const [categoryPillStyle, setCategoryPillStyle] = useState<{ left: number; width: number; ready: boolean }>({
+    left: 0,
+    width: 0,
+    ready: false,
+  });
+
+  useEffect(() => {
+    const updateCategoryPill = () => {
+      const el = categoryRefs.current[granthaCategory];
+      if (el) {
+        setCategoryPillStyle({
+          left: el.offsetLeft,
+          width: el.offsetWidth,
+          ready: true,
+        });
+      } else {
+        setCategoryPillStyle((prev) => ({ ...prev, ready: false }));
+      }
+    };
+    updateCategoryPill();
+    const frame = requestAnimationFrame(updateCategoryPill);
+    const timer = setTimeout(updateCategoryPill, 40);
+    window.addEventListener('resize', updateCategoryPill);
+    return () => {
+      cancelAnimationFrame(frame);
+      clearTimeout(timer);
+      window.removeEventListener('resize', updateCategoryPill);
+    };
+  }, [granthaCategory]);
+
+  // Main Grantha / Author Segmented Pill Track Sliding Indicator
   const granthaRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
+  const [granthaPillStyle, setGranthaPillStyle] = useState<{ left: number; width: number; ready: boolean }>({
+    left: 0,
+    width: 0,
+    ready: false,
+  });
+
+  useEffect(() => {
+    const updateGranthaPill = () => {
+      const activeKey = granthaCategory === 'authors' ? (selectedAuthor || 'all') : selectedGrantha;
+      const el = granthaRefs.current[activeKey] || granthaRefs.current['all'];
+      if (el) {
+        setGranthaPillStyle({
+          left: el.offsetLeft,
+          width: el.offsetWidth,
+          ready: true,
+        });
+      } else {
+        setGranthaPillStyle((prev) => ({ ...prev, ready: false }));
+      }
+    };
+
+    updateGranthaPill();
+    const frame = requestAnimationFrame(updateGranthaPill);
+    const timer = setTimeout(updateGranthaPill, 40);
+    window.addEventListener('resize', updateGranthaPill);
+    return () => {
+      cancelAnimationFrame(frame);
+      clearTimeout(timer);
+      window.removeEventListener('resize', updateGranthaPill);
+    };
+  }, [selectedGrantha, displayedGranthas, granthaCategory, selectedAuthor]);
 
   useEffect(() => {
     const activeKey = granthaCategory === 'authors' ? (selectedAuthor || 'all') : selectedGrantha;
@@ -326,6 +389,41 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       setSelectedRaga('all');
     }
   }, [availableRagas, selectedRaga]);
+
+  // Raga Sub-Filter Strip Elastic Indicator
+  const ragaRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
+  const [ragaPillStyle, setRagaPillStyle] = useState<{ left: number; width: number; ready: boolean }>({
+    left: 0,
+    width: 0,
+    ready: false,
+  });
+
+  useEffect(() => {
+    const updateRagaPill = () => {
+      const el = ragaRefs.current[selectedRaga] || ragaRefs.current['all'];
+      if (el) {
+        setRagaPillStyle({
+          left: el.offsetLeft,
+          width: el.offsetWidth,
+          ready: true,
+        });
+      } else {
+        setRagaPillStyle((prev) => ({ ...prev, ready: false }));
+      }
+    };
+
+    if (hasRagas) {
+      updateRagaPill();
+      const frame = requestAnimationFrame(updateRagaPill);
+      const timer = setTimeout(updateRagaPill, 40);
+      window.addEventListener('resize', updateRagaPill);
+      return () => {
+        cancelAnimationFrame(frame);
+        clearTimeout(timer);
+        window.removeEventListener('resize', updateRagaPill);
+      };
+    }
+  }, [selectedRaga, hasRagas, renderedRagas]);
 
   // Automatically reset selectedChapter if it does not exist in the newly selected grantha
   useEffect(() => {
@@ -1628,7 +1726,20 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       {!isFocusReadingMode && (
         <div className="mb-5 space-y-2.5">
           {/* Scripture Category Filter Strip (महाग्रंथ, रसिक वाणी, काव्य व छंद, धाम व लीला, संत व रचयिता) */}
-          <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar p-1 bg-white/95 border border-neutral-200/80 shadow-2xs rounded-full text-xs">
+          <div className="relative flex items-center gap-1.5 overflow-x-auto no-scrollbar p-1 bg-white/95 border border-neutral-200/80 shadow-2xs rounded-full text-xs">
+            {/* Dynamic Elastic Sliding Indicator Bar */}
+            {categoryPillStyle.ready && (
+              <span
+                aria-hidden="true"
+                className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[340ms] ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[transform,width] z-0 shadow-2xs"
+                style={{
+                  transform: `translate3d(${categoryPillStyle.left}px, 0, 0)`,
+                  width: `${categoryPillStyle.width}px`,
+                  left: 0,
+                }}
+              />
+            )}
+
             {[
               { id: 'all' as GranthaCategory, label: 'समस्त संग्रह' },
               { id: 'mahagranth' as GranthaCategory, label: 'सनातन महाग्रंथ' },
@@ -1647,12 +1758,17 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               return (
                 <button
                   key={cat.id}
+                  ref={(el) => {
+                    categoryRefs.current[cat.id] = el;
+                  }}
                   type="button"
                   onClick={() => handleSelectCategory(cat.id)}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none inline-flex items-center gap-1 ${
+                  className={`relative z-10 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none inline-flex items-center gap-1 ${
                     isActive
-                      ? 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
-                      : 'text-[#64748B] hover:text-[#0F172A] hover:bg-neutral-100/70'
+                      ? categoryPillStyle.ready
+                        ? 'text-[#18181B] font-bold'
+                        : 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
+                      : 'text-[#64748B] hover:text-[#0F172A] hover:bg-neutral-100/50'
                   }`}
                 >
                   <span>{cat.label}</span>
@@ -1669,7 +1785,20 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
           </div>
 
           {/* Main Grantha / Author Segmented Pill Track */}
-          <div className="flex items-center gap-1 overflow-x-auto no-scrollbar p-1 bg-white/95 border border-neutral-200/80 shadow-2xs rounded-full">
+          <div className="relative flex items-center gap-1 overflow-x-auto no-scrollbar p-1 bg-white/95 border border-neutral-200/80 shadow-2xs rounded-full">
+            {/* Dynamic Elastic Sliding Indicator Bar */}
+            {granthaPillStyle.ready && (
+              <span
+                aria-hidden="true"
+                className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[340ms] ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[transform,width] z-0 shadow-2xs"
+                style={{
+                  transform: `translate3d(${granthaPillStyle.left}px, 0, 0)`,
+                  width: `${granthaPillStyle.width}px`,
+                  left: 0,
+                }}
+              />
+            )}
+
             {granthaCategory === 'authors' ? (
               <>
                 <button
@@ -1678,10 +1807,12 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   }}
                   type="button"
                   onClick={() => handleSelectAuthor(null)}
-                  className={`px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none inline-flex items-center gap-1.5 ${
+                  className={`relative z-10 px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none inline-flex items-center gap-1.5 ${
                     !selectedAuthor
-                      ? 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
-                      : 'text-[#64748B] hover:text-[#0F172A] hover:bg-neutral-100/70'
+                      ? granthaPillStyle.ready
+                        ? 'text-[#18181B] font-bold'
+                        : 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
+                      : 'text-[#64748B] hover:text-[#0F172A] hover:bg-neutral-100/50'
                   }`}
                 >
                   <span>समस्त संत / रचयिता</span>
@@ -1699,10 +1830,12 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                       }}
                       type="button"
                       onClick={() => handleSelectAuthor(a.name)}
-                      className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none inline-flex items-center gap-1.5 ${
+                      className={`relative z-10 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none inline-flex items-center gap-1.5 ${
                         isActive
-                          ? 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
-                          : 'text-[#64748B] hover:text-[#0F172A] hover:bg-neutral-100/70'
+                          ? granthaPillStyle.ready
+                            ? 'text-[#18181B] font-bold'
+                            : 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
+                          : 'text-[#64748B] hover:text-[#0F172A] hover:bg-neutral-100/50'
                       }`}
                     >
                       <span>{a.name}</span>
@@ -1721,10 +1854,12 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   }}
                   type="button"
                   onClick={() => handleSelectGrantha('all')}
-                  className={`px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none inline-flex items-center gap-1.5 ${
+                  className={`relative z-10 px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none inline-flex items-center gap-1.5 ${
                     selectedGrantha === 'all'
-                      ? 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
-                      : 'text-[#64748B] hover:text-[#0F172A] hover:bg-neutral-100/70'
+                      ? granthaPillStyle.ready
+                        ? 'text-[#18181B] font-bold'
+                        : 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
+                      : 'text-[#64748B] hover:text-[#0F172A] hover:bg-neutral-100/50'
                   }`}
                 >
                   {loadingGranthaId === 'all' && <IOSSpinner size="xs" theme="amber" />}
@@ -1744,10 +1879,12 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                       }}
                       type="button"
                       onClick={() => handleSelectGrantha(g.id)}
-                      className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none inline-flex items-center gap-1.5 ${
+                      className={`relative z-10 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none inline-flex items-center gap-1.5 ${
                         isActive
-                          ? 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
-                          : 'text-[#64748B] hover:text-[#0F172A] hover:bg-neutral-100/70'
+                          ? granthaPillStyle.ready
+                            ? 'text-[#18181B] font-bold'
+                            : 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
+                          : 'text-[#64748B] hover:text-[#0F172A] hover:bg-neutral-100/50'
                       }`}
                     >
                       {isLoadingThis && <IOSSpinner size="xs" theme="amber" />}
@@ -1772,20 +1909,38 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             aria-hidden={!hasRagas}
           >
             <div className="min-h-0 overflow-hidden">
-              <div className="flex items-center gap-1 overflow-x-auto no-scrollbar text-xs px-2 py-0.5">
+              <div className="relative flex items-center gap-1 overflow-x-auto no-scrollbar text-xs px-2 py-0.5">
                 <span className="text-[10px] font-mono font-bold text-[#CA8A04] uppercase tracking-wider shrink-0 mr-1 flex items-center gap-1">
                   <Music className="w-3 h-3 text-[#CA8A04]" />
                   राग:
                 </span>
 
+                {/* Dynamic Elastic Sliding Indicator Bar */}
+                {ragaPillStyle.ready && (
+                  <span
+                    aria-hidden="true"
+                    className="absolute top-0.5 bottom-0.5 rounded-full bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[340ms] ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[transform,width] z-0 shadow-2xs"
+                    style={{
+                      transform: `translate3d(${ragaPillStyle.left}px, 0, 0)`,
+                      width: `${ragaPillStyle.width}px`,
+                      left: 0,
+                    }}
+                  />
+                )}
+
                 <button
+                  ref={(el) => {
+                    ragaRefs.current['all'] = el;
+                  }}
                   type="button"
                   tabIndex={hasRagas ? 0 : -1}
                   onClick={() => handleSelectRaga('all')}
-                  className={`px-3 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none ${
+                  className={`relative z-10 px-3 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none ${
                     selectedRaga === 'all'
-                      ? 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
-                      : 'text-[#64748B] hover:text-[#0F172A] hover:bg-neutral-100/70'
+                      ? ragaPillStyle.ready
+                        ? 'text-[#18181B] font-bold'
+                        : 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
+                      : 'text-[#64748B] hover:text-[#0F172A] hover:bg-neutral-100/50'
                   }`}
                 >
                   सभी राग
@@ -1800,13 +1955,18 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   return (
                     <button
                       key={r}
+                      ref={(el) => {
+                        ragaRefs.current[r] = el;
+                      }}
                       type="button"
                       tabIndex={hasRagas ? 0 : -1}
                       onClick={() => handleSelectRaga(r)}
-                      className={`px-3 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none inline-flex items-center gap-1 ${
+                      className={`relative z-10 px-3 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none inline-flex items-center gap-1 ${
                         isActive
-                          ? 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
-                          : 'text-[#64748B] hover:text-[#0F172A] hover:bg-neutral-100/70'
+                          ? ragaPillStyle.ready
+                            ? 'text-[#18181B] font-bold'
+                            : 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
+                          : 'text-[#64748B] hover:text-[#0F172A] hover:bg-neutral-100/50'
                       }`}
                     >
                       <span>{r}</span>
@@ -2293,9 +2453,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 <div className="flex items-center gap-1 overflow-x-auto no-scrollbar py-0.5 flex-1 min-w-0">
                   {filteredPads.slice(0, 100).map((pad, idx) => {
                     const isActive = (activeScrollerVerseId || selectedPad.id) === pad.id;
-                    const isChapterScoped = selectedGrantha !== 'all' && selectedChapter !== 'all';
-                    // Show canonical verse number if in specific chapter; otherwise sequential stream index (1, 2, 3...)
-                    const displayNumber = isChapterScoped && pad.verseNumber ? pad.verseNumber : idx + 1;
+                    const displayNumber = idx + 1;
                     return (
                       <button
                         key={pad.id}
@@ -2380,7 +2538,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                         <div className={`flex items-center justify-between pb-3 mb-4 border-b ${currentTheme.borderColor} gap-2 flex-wrap`}>
                           <div className="flex items-center gap-2 flex-wrap">
                             <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-[#FEF08A] text-[#78350F]">
-                              ॥ पद {selectedGrantha !== 'all' && selectedChapter !== 'all' && pad.verseNumber ? pad.verseNumber : pIdx + 1} ॥
+                              ॥ पद {pIdx + 1} ॥
                             </span>
                             {selectedGrantha === 'all' && (
                               <span className="text-[11px] font-serif font-bold text-amber-900 bg-amber-100/70 px-2.5 py-0.5 rounded-full border border-amber-300/60">

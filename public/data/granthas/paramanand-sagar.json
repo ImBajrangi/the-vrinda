@@ -1,32 +1,8 @@
 [
   {
-    "id": "पस-खलत-ह-पय-पयर",
-    "collectionId": "paramanand-sagar",
-    "index": 1,
-    "titleDevanagari": "पासा खेलत है पिय प्यारी।।",
-    "author": "श्री परमानन्ददास जी",
-    "slug": "पस-खलत-ह-पय-पयर",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "पासा खेलत है पिय प्यारी।।",
-          "रतन खचित चोकी पर डारत, हंसत करत किलकारी ।।१।।",
-          "पहले दाव पर्यो स्यामाको, पीत पिछोरी हारी ।।",
-          "अबकी बेर पिय मुरली लगावो, तो रंग रहेगो भारी ।।२।।",
-          "छलबल करके़ं जीती भामिनी, पिय करत मनुहारी।।",
-          "परमानंद दास को ठाकुर, जीती वृषभान दुलारी।।"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 1
-  },
-  {
     "id": "aavat-ri-yamuna-bhar-paani-shri-parmanand-das-ji-parmanand-sagar",
     "collectionId": "paramanand-sagar",
-    "index": 2,
+    "index": 1,
     "titleDevanagari": "आवत री यमुना भर पानी - श्री परमानन्द दास, परमानंद सागर",
     "author": "श्री परमानन्द दास",
     "slug": "aavat-ri-yamuna-bhar-paani-shri-parmanand-das-ji-parmanand-sagar",
@@ -44,14 +20,922 @@
         ]
       }
     ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
+    "chapterId": "ch-परमानंद सागर",
+    "chapterName": "परमानंद सागर",
     "verseNumber": 2
+  },
+  {
+    "id": "aaj-divari-mangal-chaar-shri-parmanand-das-parmanand-sagar",
+    "collectionId": "paramanand-sagar",
+    "index": 2,
+    "titleDevanagari": "आज दिवारी मंगल चार - श्री परमानन्द दास जी, परमानंद सागर",
+    "author": "श्री परमानन्द दास जी",
+    "slug": "aaj-divari-mangal-chaar-shri-parmanand-das-parmanand-sagar",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "आज दिवारी मंगल चार।",
+          "ब्रज जुवतिजन मंगल गावत, चौक पुरावत नंद कुमार॥ [1]",
+          "मधु मेवा पकवान मिठाई भरि भरि लीने कंचन थार।",
+          "परमानंददास को ठाकुर पहिरे आभूषन सिंगार॥ [2]",
+          "- श्री परमानन्द दास जी, परमानंद सागर"
+        ]
+      }
+    ],
+    "chapterId": "ch-परमानंद सागर",
+    "chapterName": "परमानंद सागर",
+    "verseNumber": 35
+  },
+  {
+    "id": "paan-mukh-beeri-raachi-shri-parmanand-das-parmanand-sagar",
+    "collectionId": "paramanand-sagar",
+    "index": 3,
+    "titleDevanagari": "पान मुख बीरी राची - श्री परमानन्द दास, परमानंद सागर",
+    "author": "श्री परमानन्द दास",
+    "slug": "paan-mukh-beeri-raachi-shri-parmanand-das-parmanand-sagar",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(राग मलहार)",
+          "पान मुख बीरी राची हरि को रंग सुरंगे।",
+          "ऐसी कृपा सदां हम ऊपर टारो जिन तुम संगे॥ [1]",
+          "हरि हम तुम बिन कोन काम के परत प्रेम में भंग।",
+          "परमानन्द दूध में पानी ज्यों मिळवो अंग में अंग॥ [2]",
+          "- श्री परमानन्द दास, परमानंद सागर"
+        ]
+      }
+    ],
+    "chapterId": "ch-परमानंद सागर",
+    "chapterName": "परमानंद सागर",
+    "verseNumber": 39
+  },
+  {
+    "id": "pragatyo-sab-vraj-ko-singaar-shri-paramanand-das-ji",
+    "collectionId": "paramanand-sagar",
+    "index": 4,
+    "titleDevanagari": "प्रगट्यो सब व्रज को सिंगार - श्री परमानन्द दास, परमानंद सागर (49)",
+    "author": "श्री परमानन्द दास",
+    "slug": "pragatyo-sab-vraj-ko-singaar-shri-paramanand-das-ji",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(राग सारंग)",
+          "प्रगट्यो सब व्रज को सिंगार।",
+          "कीरती कूख अवतरी कन्या सुन्दरता को सार॥",
+          "नखसिक रूप कहाँ लों बरनो कोटिक मन बलिहार।",
+          "परमानन्द वृषभानु नन्दनी जोरी नंददुलार॥",
+          "- श्री परमानन्द दास, परमानंद सागर (49)"
+        ]
+      }
+    ],
+    "chapterId": "ch-परमानंद सागर",
+    "chapterName": "परमानंद सागर",
+    "verseNumber": 49
+  },
+  {
+    "id": "shrighanshyam-manohar-murti-karat-vihar-vrindavan-shri-parmanand-das-ji-parmanand-sagar",
+    "collectionId": "paramanand-sagar",
+    "index": 5,
+    "titleDevanagari": "श्रीघनश्याम मनोहर मूरति करत विहार वृन्दावन - श्री परमानन्द दास, परमानंद सागर",
+    "author": "श्री परमानन्द दास",
+    "slug": "shrighanshyam-manohar-murti-karat-vihar-vrindavan-shri-parmanand-das-ji-parmanand-sagar",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "श्रीघनश्याम मनोहर मूरति करत विहार वृन्दावन।",
+          "परमानंददास कौ ठाकुर करत रंग निसि दिन मन भावन॥",
+          "- श्री परमानन्द दास, परमानंद सागर"
+        ]
+      }
+    ],
+    "chapterId": "ch-परमानंद सागर",
+    "chapterName": "परमानंद सागर",
+    "verseNumber": 66
+  },
+  {
+    "id": "braj-mein-hot-kulahal-bhaari-shri-parmanand-das-ji",
+    "collectionId": "paramanand-sagar",
+    "index": 6,
+    "titleDevanagari": "ब्रज में होत कुलाहल भारी - श्री परमानन्द दास जी, परमानंद सागर",
+    "author": "श्री परमानन्द दास जी",
+    "slug": "braj-mein-hot-kulahal-bhaari-shri-parmanand-das-ji",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(राग मारू)",
+          "ब्रज में होत कुलाहल भारी।",
+          "आनन्द मगन ग्वाल सब नाचत,",
+          "देत परस्पर तारी॥ [1]",
+          "नन्दराय के भवन में आवत,",
+          "आनंदित ब्रजनारी।",
+          "पुत्र जनम सुनि हर्ष भयौ है,",
+          "'परमानन्द' बलिहारी॥ [2]",
+          "- श्री परमानन्द दास जी"
+        ]
+      }
+    ],
+    "chapterId": "ch-परमानंद सागर",
+    "chapterName": "परमानंद सागर",
+    "verseNumber": 72
+  },
+  {
+    "id": "tanak-sohago-daarikein-jadh-kanchan-pighlay-shri-parmanand-das-ji-parmanand-sagar",
+    "collectionId": "paramanand-sagar",
+    "index": 7,
+    "titleDevanagari": "तनक सोहागो डारिकें जड़ कंचन पिघलाय - श्री परमानन्द दास, परमानंद सागर",
+    "author": "श्री परमानन्द दास",
+    "slug": "tanak-sohago-daarikein-jadh-kanchan-pighlay-shri-parmanand-das-ji-parmanand-sagar",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "तनक सोहागो डारिकें, जड़ कंचन पिघलाय।",
+          "सदा सुहागिनी राधिका, क्यों न कृष्ण ललचाय॥",
+          "- श्री परमानन्द दास जी"
+        ]
+      }
+    ],
+    "chapterId": "ch-परमानंद सागर",
+    "chapterName": "परमानंद सागर",
+    "verseNumber": 77
+  },
+  {
+    "id": "braj-ke-shvapach-bade-badabhagi-shri-parmanand-das-ji-parmanand-sagar",
+    "collectionId": "paramanand-sagar",
+    "index": 8,
+    "titleDevanagari": "ब्रज के श्वपच बड़े बड़भागी - श्री परमानन्द दास, परमानंद सागर",
+    "author": "श्री परमानन्द दास",
+    "slug": "braj-ke-shvapach-bade-badabhagi-shri-parmanand-das-ji-parmanand-sagar",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "ब्रज के श्वपच बड़े बड़भागी।",
+          "जा रजकों ब्रह्मादिक तरसें सो इन अंगन लागी॥ [1]",
+          "महाप्रसाद नित्यप्रति पावत तातें अति अनुरागी।",
+          "परमानन्द कहाँ लौं वरनौं प्रेमभक्ति रसपागी॥ [2]",
+          "- श्री परमानन्द दास, परमानंद सागर"
+        ]
+      }
+    ],
+    "chapterId": "ch-परमानंद सागर",
+    "chapterName": "परमानंद सागर",
+    "verseNumber": 116
+  },
+  {
+    "id": "aarati-yugal-kishor-ki-shri-parmanand-das-ji",
+    "collectionId": "paramanand-sagar",
+    "index": 9,
+    "titleDevanagari": "आरती युगल किशोर की - श्री परमानन्द दास, परमानंद सागर (380)",
+    "author": "श्री परमानन्द दास",
+    "slug": "aarati-yugal-kishor-ki-shri-parmanand-das-ji",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(राग गोरी)",
+          "आरती युगल किशोर की कीजै।",
+          "तन मन धन न्योछावर दीजै॥[1]",
+          "गौर श्याम मुख निरखत जीजै।",
+          "प्रेम स्वरूप नयन भर पीजै॥ [2]",
+          "रवि शशि कोटि वदन की शोभा।",
+          "ताहि देखत मेरौ मन लोभा॥ [3]",
+          "नंद नंदन वृषभानु किशोरी।",
+          "परमानन्द प्रभु अविचल जोरी॥ [4]",
+          "- श्री परमानन्द दास, परमानंद सागर (380)"
+        ]
+      }
+    ],
+    "chapterId": "ch-परमानंद सागर",
+    "chapterName": "परमानंद सागर",
+    "verseNumber": 380
+  },
+  {
+    "id": "jabate-priti-shyam-son-shri-parmanand-das-ji",
+    "collectionId": "paramanand-sagar",
+    "index": 10,
+    "titleDevanagari": "जबते प्रीति श्याम सों - श्री परमानन्द दास, परमानंद सागर (417)",
+    "author": "श्री परमानन्द दास",
+    "slug": "jabate-priti-shyam-son-shri-parmanand-das-ji",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(राग सारंग)",
+          "जबते प्रीति श्याम सों कीनी।",
+          "तादिन ते मेरे इन नैंननि ने नेकहु नींद न लीनी॥ [1]",
+          "सदा रहत चित चाक चढ्यो सो और कछु न सुहाय।",
+          "मन में रहे उपाय मिलन को इहै विचारत जाय॥ [2]",
+          "परमानंद पीर प्रेम की काहु सों नहीं कहिये।",
+          "जैसे बिथा मूक बालक की अपने तन मन सहिये॥ [3]",
+          "- श्री परमानन्द दास, परमानंद सागर (417)"
+        ]
+      }
+    ],
+    "chapterId": "ch-परमानंद सागर",
+    "chapterName": "परमानंद सागर",
+    "verseNumber": 417
+  },
+  {
+    "id": "mero-man-babrau-bhayo-shri-parmanand-das-ji-parmanand-sagar",
+    "collectionId": "paramanand-sagar",
+    "index": 11,
+    "titleDevanagari": "मेरौ मन बाबरौ भयौ - श्री परमानन्द दास, परमानंद सागर (430)",
+    "author": "श्री परमानन्द दास",
+    "slug": "mero-man-babrau-bhayo-shri-parmanand-das-ji-parmanand-sagar",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(राग धनाश्री व सारंग)",
+          "मेरौ मन बाबरौ भयौ।",
+          "लरका एक इहाँ हुतो ठाड़ो ताही के संग गयो॥ [1]",
+          "जानों नहीं कोन को ढोटा चित्र विचित्र ठयौ।",
+          "पीतांबर छबि निरख हर्यो मन पढ़ कछु मोहि दयौ॥ [2]",
+          "ग्वालिनी एक पाहुनी आई ताकी यह गति कीनी।",
+          "परमानन्द प्रभु हसत सेन दे प्रेम पागि गहि लीनी॥ [3]",
+          "- श्री परमानंद दास जी, परमानंद सागर (430)"
+        ]
+      }
+    ],
+    "chapterId": "ch-परमानंद सागर",
+    "chapterName": "परमानंद सागर",
+    "verseNumber": 430
+  },
+  {
+    "id": "preeti-tau-ekahin-thaur-bhali-shri-parmanand-das-ji-parmanand-sagar",
+    "collectionId": "paramanand-sagar",
+    "index": 12,
+    "titleDevanagari": "प्रीति तौ एकहिं ठौर भली -  श्री परमानन्द दास, परमानंद सागर (455)",
+    "author": "श्री परमानन्द दास",
+    "slug": "preeti-tau-ekahin-thaur-bhali-shri-parmanand-das-ji-parmanand-sagar",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(राग कल्याण व गौरी)",
+          "प्रीति तौ एकहिं ठौर भली।",
+          "यह जु कहा मति चरन कमल तजि फिरे जु चली चली॥[1]",
+          "ते जानै जे सब विधि नागर सार सार गहि लोग।",
+          "पायौ स्वाद मधुप रस लोभी स्याम धाम संयोग॥ [2]",
+          "‘परमानंददास' गुन सुंदर नारदादि मुनि ग्यानी।",
+          "सदा विचार विषय रस त्यागी जसु गावत मधु बानी॥ [3]",
+          "- श्री परमानन्द दास जी, परमानंद सागर (455)"
+        ]
+      }
+    ],
+    "chapterId": "ch-परमानंद सागर",
+    "chapterName": "परमानंद सागर",
+    "verseNumber": 455
+  },
+  {
+    "id": "anand-sindhu-badhyau-hari-tan-mein-shri-parmanand-das-ji-parmanand-sagar",
+    "collectionId": "paramanand-sagar",
+    "index": 13,
+    "titleDevanagari": "आनंद सिंधु बढ्यौ हरि तन में -  श्री परमानन्द दास, परमानंद सागर (551)",
+    "author": "श्री परमानन्द दास",
+    "slug": "anand-sindhu-badhyau-hari-tan-mein-shri-parmanand-das-ji-parmanand-sagar",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(राग गौरी)",
+          "आनंद सिंधु बढ्यौ हरि तन में।",
+          "श्रीराधा मुख पूरण शशि निरखत उमगि चल्यौ ब्रज वृंदावन में॥ [1]",
+          "इत रोक्यौ यमुना उत गोपिन कछु एक फैल पर्यौ त्रिभुवन में।",
+          "ना परसौ कर्मठ और ज्ञानी अटक रह्यौ रसिकन के मन में॥ [2]",
+          "मंद मंद अवगाहत बुद्धि बल भक्त हेत लीला छिन-छिन में।",
+          "कछु एक लह्यौ नंदसुवन कृपा ते सो देखियत परमानंद जन में॥ [3]",
+          "- श्री परमानन्द दास जी, परमानंद सागर (551)"
+        ]
+      }
+    ],
+    "chapterId": "ch-परमानंद सागर",
+    "chapterName": "परमानंद सागर",
+    "verseNumber": 551
+  },
+  {
+    "id": "girdhar-sabhi-ang-ko-banko-shri-parmanand-das-ji",
+    "collectionId": "paramanand-sagar",
+    "index": 14,
+    "titleDevanagari": "गिरधर सबही अंग को बाँको - श्री परमानन्द दास, परमानंद सागर (554)",
+    "author": "श्री परमानन्द दास",
+    "slug": "girdhar-sabhi-ang-ko-banko-shri-parmanand-das-ji",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(राग गौरी व कल्याण)",
+          "गिरधर सबही अंग को बाँको,",
+          "बाँकी चाल चलत गोकुल में छैल छबीलो काको [1]",
+          "बाँकी भौंह चरन गति बाँकी बाँको हृदय है ताको,",
+          "परमानन्द दास को ठाकुर कियो खोर ब्रज सांको [2]",
+          "- श्री परमानन्द दास, परमानंद सागर (554)"
+        ]
+      }
+    ],
+    "chapterId": "ch-परमानंद सागर",
+    "chapterName": "परमानंद सागर",
+    "verseNumber": 554
+  },
+  {
+    "id": "dhan-dhan-radhika-ke-charan-shri-parmanand-das-ji",
+    "collectionId": "paramanand-sagar",
+    "index": 15,
+    "titleDevanagari": "धन धन राधिका के चरन - श्री परमानन्द दास, परमानंद सागर (581)",
+    "author": "श्री परमानन्द दास",
+    "slug": "dhan-dhan-radhika-ke-charan-shri-parmanand-das-ji",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(राग विहाग व गौरी)",
+          "धन धन राधिका के चरन।",
+          "सुभग शीतल अतिसे कोमल कमल के से वरन॥",
+          "नख चन्द्रिका अनूप राजत विविध शोभा वरन।",
+          "कुन्नित नूपुर कुँज विहरत परम कौतुक करन॥",
+          "नन्द सुत मन मोद कारी, विरह सागर तरन।",
+          "दास परमानन्द छिन-छिन श्याम जाकी शरन॥",
+          "- श्री परमानन्द दास, परमानंद सागर (581)"
+        ]
+      }
+    ],
+    "chapterId": "ch-परमानंद सागर",
+    "chapterName": "परमानंद सागर",
+    "verseNumber": 581
+  },
+  {
+    "id": "sahaj-preeti-gopalai-bhave-shri-parmanand-das-parmanand-sagar-605",
+    "collectionId": "paramanand-sagar",
+    "index": 16,
+    "titleDevanagari": "सहज प्रीति गोपालै भावे - श्री परमानन्द दास जी, परमानंद सागर (605)",
+    "author": "श्री परमानन्द दास जी",
+    "slug": "sahaj-preeti-gopalai-bhave-shri-parmanand-das-parmanand-sagar-605",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(राग बसंत)",
+          "सहज प्रीति गोपालै भावे।",
+          "मुख देखें सुख होय सखीरी, प्रीतम नैन सों नैन मिलावे॥[1]",
+          "सहज प्रीति कमल और भानें, सहज प्रीति कुमोदनी और चंदे।",
+          "सहज प्रीति कोकिला बसंते, सहज प्रीति राधा नंदनंदे॥ [2]",
+          "सहज प्रीति चात्रक और स्वांते, सहज प्रीति धरनी जल धारे।",
+          "मन क्रम बचन ‘दास परमानंद', सहज प्रीति कृष्ण अवतारे॥ [3]",
+          "- श्री परमानन्द दास जी, परमानंद सागर (605)"
+        ]
+      }
+    ],
+    "chapterId": "ch-परमानंद सागर",
+    "chapterName": "परमानंद सागर",
+    "verseNumber": 605
+  },
+  {
+    "id": "saanchi-preeti-bhayi-ik-thaur-shri-parmanand-das-ji",
+    "collectionId": "paramanand-sagar",
+    "index": 17,
+    "titleDevanagari": "साँची प्रीति भई इक ठौर - श्री परमानन्द दास, परमानंद सागर (794)",
+    "author": "श्री परमानन्द दास",
+    "slug": "saanchi-preeti-bhayi-ik-thaur-shri-parmanand-das-ji",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(राग सारंग)",
+          "साँची प्रीति भई इक ठौर।",
+          "मृगनयनी कमल दल लोचन, लाल श्याम राधा तन गौर॥",
+          "इत सिर सोहत पाट की डोरी, हरि सिर रुचिर चन्द्रिका मोर।",
+          "यह रसिकनी वे रसिक शिरोमणि, यह ग्वालिन वे माखन चोर॥",
+          "यह करनी वे गजवर नायक, यह मालिनी वे भोगी भोंर।",
+          "परमानन्द नन्द नन्दन की, राधासी प्यारी नहीं और॥",
+          "- श्री परमानन्द दास, परमानंद सागर (794)"
+        ]
+      }
+    ],
+    "chapterId": "ch-परमानंद सागर",
+    "chapterName": "परमानंद सागर",
+    "verseNumber": 794
+  },
+  {
+    "id": "aaj-bane-sakhi-nandkumar-shri-parmanand-das",
+    "collectionId": "paramanand-sagar",
+    "index": 18,
+    "titleDevanagari": "आज बने सखि नंदकुमार - श्री परमानन्द दास, परमानंद सागर (795)",
+    "author": "श्री परमानन्द दास",
+    "slug": "aaj-bane-sakhi-nandkumar-shri-parmanand-das",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(राग कान्हरौ व यमन)",
+          "आज बने सखि नंदकुमार।",
+          "वाम भाग वृषभान नंदिनी ललितादिक गावे सिंहद्वार॥ [1]",
+          "कंचन थार लियेजु कमल कर मुक्ता फल फूलन के हार।",
+          "रोरी को सिर तिलक विराजत करत आरती हरस अपार॥ [2]",
+          "यह जोरी अविचल श्रीवृन्दावन असीस देत सकल व्रजनार।",
+          "कुँजमहल में राजत दोऊ परमानन्द दास बलिहार॥ [3]",
+          "- श्री परमानन्द दास, परमानंद सागर (795)"
+        ]
+      }
+    ],
+    "chapterId": "ch-परमानंद सागर",
+    "chapterName": "परमानंद सागर",
+    "verseNumber": 795
+  },
+  {
+    "id": "alakladi-mohan-ki-jori-shri-parmanand-das-ji-parmanand-sagar",
+    "collectionId": "paramanand-sagar",
+    "index": 19,
+    "titleDevanagari": "अलकलड़ी मोहन की जोरी - श्री परमानन्द दास, परमानंद सागर (800)",
+    "author": "श्री परमानन्द दास",
+    "slug": "alakladi-mohan-ki-jori-shri-parmanand-das-ji-parmanand-sagar",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(राग सारंग)",
+          "अलकलड़ी मोहन की जोरी।",
+          "वे रस पुंज नंद जू की जीवनि यह दुलहिन वृषभानु किसोरी॥ [1]",
+          "वे कुंचित कच मधुप बिसेखित यह सुवेस ग्रथित सिर डोरी।",
+          "वे अंबुज मुख यह बिधु बदनी वे कोमल कर उरज कठोरी॥ [2]",
+          "वे गज मत्त प्रबल ब्रज नायक यह सारंग रिपु कृस कटि थोरी।",
+          "वे ब्रन्दाबन ससि 'परमानंद' अहनिसि नागरि नैन चकोरी॥ [3]",
+          "- श्री परमानन्द दास, परमानंद सागर (800)"
+        ]
+      }
+    ],
+    "chapterId": "ch-परमानंद सागर",
+    "chapterName": "परमानंद सागर",
+    "verseNumber": 800
+  },
+  {
+    "id": "kunj-mahal-mein-paude-dou-shri-parmanand-das-ji",
+    "collectionId": "paramanand-sagar",
+    "index": 20,
+    "titleDevanagari": "कुञ्ज महल में पौड़े दोउ - श्री परमानन्द दास, परमानंद सागर (819)",
+    "author": "श्री परमानन्द दास",
+    "slug": "kunj-mahal-mein-paude-dou-shri-parmanand-das-ji",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(राग केदारौ)",
+          "कुञ्ज महल में पौड़े दोउ। [1]",
+          "नन्द नंदनंदन वृषभानु नंदिनी उपमा कौं दूजौ नहिं कोऊ॥ [2]",
+          "नाना कुसुम की सेज रची है, कोक कला जानत हैं सोऊ। [3]",
+          "रसिक मुकुट मणि रंग में भीनें \"परमानन्द\" तहाँ द्वारें होउ॥ [4]",
+          "- श्री परमानन्द दास, परमानंद सागर (819)"
+        ]
+      }
+    ],
+    "chapterId": "ch-परमानंद सागर",
+    "chapterName": "परमानंद सागर",
+    "verseNumber": 819
+  },
+  {
+    "id": "aawati-aanand-kand-dulari-shri-parmanand-das-ji-parmanand-sagar",
+    "collectionId": "paramanand-sagar",
+    "index": 21,
+    "titleDevanagari": "आवति आनंद कंद दुलारी - श्री परमानन्द दास, परमानंद सागर (825)",
+    "author": "श्री परमानन्द दास",
+    "slug": "aawati-aanand-kand-dulari-shri-parmanand-das-ji-parmanand-sagar",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(राग सारंग)",
+          "आवति आनंद कंद दुलारी।",
+          "विधु बदनी मृग नयनी राधा दामोदर की प्यारी॥ [1]",
+          "जाके रूप कहत नहिं आवैं गुन विचित्र सुकुमारी।",
+          "मानो कछू पर्यौ धन आखरि विधना रच्यो संवारी॥ [2]",
+          "प्रीति परस्पर ग्रंथि न छूटे ब्रजजन रहे बिचारी।",
+          "परमानंददास बलिहारी मानो साँचे ढारी॥ [3]",
+          "- श्री परमानन्द दास, परमानंद सागर (825)"
+        ]
+      }
+    ],
+    "chapterId": "ch-परमानंद सागर",
+    "chapterName": "परमानंद सागर",
+    "verseNumber": 825
+  },
+  {
+    "id": "banha-dulavati-aavti-radha-shri-parmanand-das-parmanand-sagar-826",
+    "collectionId": "paramanand-sagar",
+    "index": 22,
+    "titleDevanagari": "बाँह डुलावति आवति राधा - श्री परमानन्द दास जी, परमानंद सागर (826)",
+    "author": "श्री परमानन्द दास जी",
+    "slug": "banha-dulavati-aavti-radha-shri-parmanand-das-parmanand-sagar-826",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(राग सारंग)",
+          "बाँह डुलावति आवति राधा।",
+          "बदन-कमल झंपति न उघारति, रह्यौ है तिलक मिटि आधा॥ [1]",
+          "गिरिधरलाल कुँवर नंदनंदन, तैं जु प्रेम करि लाधा।",
+          "रहसि मिली प्रान-प्यारे कौं, रही न एकौ साधा॥ [2]",
+          "काजर अधर मिल्यौ नैननि कौ, मिटी काम की बाधा।",
+          "'परमानंद' स्वामी रति-नागर, तेरौ पुन्य अगाधा॥ [3]",
+          "- श्री परमानन्द दास जी, परमानंद सागर (826)"
+        ]
+      }
+    ],
+    "chapterId": "ch-परमानंद सागर",
+    "chapterName": "परमानंद सागर",
+    "verseNumber": 826
+  },
+  {
+    "id": "baah-dulabati-aavati-radha-shri-parmanand-das-ji-parmanand-sagar-826",
+    "collectionId": "paramanand-sagar",
+    "index": 23,
+    "titleDevanagari": "बाँह डुलाबति आवति राधा -  श्री परमानन्द दास, परमानंद सागर (826)",
+    "author": "श्री परमानन्द दास",
+    "slug": "baah-dulabati-aavati-radha-shri-parmanand-das-ji-parmanand-sagar-826",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(राग सारंग)",
+          "बाँह डुलाबति आवति राधा।",
+          "बदन कमल झँपति न उघारति रह्यौ है तिलक मिटि आधा॥ [1]",
+          "गिरिधर लाल कुंवर नंदनंदनतैं जु प्रेम करि लाधा।",
+          "रहसि मिली प्राण प्यारे कौं रही न एकौ साधा॥ [2]",
+          "कारज अधर मिल्यौ नैननि कौं मिटी काम की बाधा।",
+          "‘परमानंद' स्वामी रति नागर तेरौ पुन्य अगाधा॥ [3]",
+          "- श्री परमानन्द दास जी, परमानंद सागर (826)"
+        ]
+      }
+    ],
+    "chapterId": "ch-परमानंद सागर",
+    "chapterName": "परमानंद सागर",
+    "verseNumber": 826
+  },
+  {
+    "id": "kaun-rasik-hai-in-batan-kau-shri-parmanand-das-ji-parmanand-sagar",
+    "collectionId": "paramanand-sagar",
+    "index": 24,
+    "titleDevanagari": "कौन रसिक है इन बातनि कौ -  श्री परमानन्द दास, परमानंद सागर (1001)",
+    "author": "श्री परमानन्द दास",
+    "slug": "kaun-rasik-hai-in-batan-kau-shri-parmanand-das-ji-parmanand-sagar",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(राग कान्हरो)",
+          "कौन रसिक है इन बातनि कौ।",
+          "नंदनंदन बिनु कासों कहिए",
+          "सुनिरी सखी मेरे दुःख या तन कौ॥ [1]",
+          "कहाँ वह जमुना पुलिन मनोहर",
+          "कहाँ वह चंद सरद-रातनि कौ॥ [2]",
+          "कहाँ वह सेज पौढिबौ बन कौ",
+          "फूल बिछौना मृदु पातनि कौ। [3]",
+          "कहाँ वह मंद-सुगंध अनिल-रस",
+          "कहाँ वह षटपद जल-जातनि कौ। [4]",
+          "कहाँ वह दरस परस 'परमानंद'",
+          "कमलनैन कोमल गातनि कौ॥ [5]",
+          "- श्री परमानन्द दास, परमानंद सागर (1001)"
+        ]
+      }
+    ],
+    "chapterId": "ch-परमानंद सागर",
+    "chapterName": "परमानंद सागर",
+    "verseNumber": 1001
+  },
+  {
+    "id": "khelat-madan-gopal-basant-shri-parmanand-das-ji-parmanand-sagar-1165",
+    "collectionId": "paramanand-sagar",
+    "index": 25,
+    "titleDevanagari": "खेलत मदन गोपाल बंसत -  श्री परमानन्द दास, परमानंद सागर (1165)",
+    "author": "श्री परमानन्द दास",
+    "slug": "khelat-madan-gopal-basant-shri-parmanand-das-ji-parmanand-sagar-1165",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(राग बसंत)",
+          "खेलत मदन गोपाल बंसत।",
+          "नागरि नवल रसिक-चूडामनि, सब बिधि रसिक राधिका कंत॥ [1]",
+          "नैन-नैन-प्रति चारु बिलोकनि, बदन-बदन-प्रति सुंदर हास।",
+          "अंग-अंग प्रति प्रीति निरंतर, रितु आगम निसि करहिं विलास॥ [2]",
+          "बाजत ताल मृदंग अधौटी, डफ बाँसुरी कोलाहल केलि।",
+          "'परमानंद' स्वामी के संगम, मिलि नाचत-गावत रँग-केलि॥ [3]",
+          "- श्री परमानन्द दास जी, परमानंद सागर (1165)"
+        ]
+      }
+    ],
+    "chapterId": "ch-परमानंद सागर",
+    "chapterName": "परमानंद सागर",
+    "verseNumber": 1165
+  },
+  {
+    "id": "chali-radha-tokau-syam-bulavai-shri-parmanand-das-parmanand-sagar-1194",
+    "collectionId": "paramanand-sagar",
+    "index": 26,
+    "titleDevanagari": "चलि राधा! तोकौं स्याम बुलावै - श्री परमानन्द दास जी, परमानंद सागर (1194)",
+    "author": "श्री परमानन्द दास जी",
+    "slug": "chali-radha-tokau-syam-bulavai-shri-parmanand-das-parmanand-sagar-1194",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(राग बसंत)",
+          "चलि राधा! तोकौं स्याम बुलावै।",
+          "उहै देखि बैनु मधुरे धुनि, तेरौ नामहिं लै लै गावै॥ [1]",
+          "देखौ वृन्दावन की सोभा, ठौर ठौर द्रुम फूलें।",
+          "कोकिल नाद सुनत मन आनन्द, भँवर भ्रमत रस-झूलें॥ [2]",
+          "उन्मद जोवन मदन कुलाहल, यह औसर है नीकौ।",
+          "‘परमानन्द’ प्रभु प्रथम समागम, मिलयौ भावतौ जीकौ॥ [3]",
+          "- श्री परमानन्द दास जी, परमानंद सागर (1194)"
+        ]
+      }
+    ],
+    "chapterId": "ch-परमानंद सागर",
+    "chapterName": "परमानंद सागर",
+    "verseNumber": 1194
+  },
+  {
+    "id": "preeti-to-nandanan-son-kijai-shri-parmanand-das-ji-parmanand-sagar",
+    "collectionId": "paramanand-sagar",
+    "index": 27,
+    "titleDevanagari": "प्रीति तो नंदनंदन सों कीजै -  श्री परमानन्द दास, परमानंद सागर (1302)",
+    "author": "श्री परमानन्द दास",
+    "slug": "preeti-to-nandanan-son-kijai-shri-parmanand-das-ji-parmanand-sagar",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(राग आसावरी)",
+          "प्रीति तो नंदनंदन सों कीजै।",
+          "संपति विपति परे प्रतिपाले, कृपा करें तो जीजे॥ [1]",
+          "परम उदार चतुर चिंतामणि, सेवा सुमिरन मानें।",
+          "हस्त कमल की छाया राखत, अंतरगति की जानें॥ [2]",
+          "वेद पुरान श्री भागवत भाखे, कियो भक्तन मन भायो।",
+          "परमानन्द! इंद्र सो वैभव, विप्र सुदामा पायो॥ [3]",
+          "- श्री परमानन्द दास जी, परमानंद सागर (1302)"
+        ]
+      }
+    ],
+    "chapterId": "ch-परमानंद सागर",
+    "chapterName": "परमानंद सागर",
+    "verseNumber": 1302
+  },
+  {
+    "id": "tan-man-naval-jugal-par-varaun-shri-parmanand-das-ji-parmanand-sagar",
+    "collectionId": "paramanand-sagar",
+    "index": 28,
+    "titleDevanagari": "तन मन नवल जुगल पर वारौं - श्री परमानन्द दास, परमानंद सागर (1346)",
+    "author": "श्री परमानन्द दास",
+    "slug": "tan-man-naval-jugal-par-varaun-shri-parmanand-das-ji-parmanand-sagar",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(राग धनाश्री)",
+          "तन मन नवल जुगल पर वारौं।",
+          "कुंज रंध्र गौर स्याम छबि बारंबार निहारौं॥ [1]",
+          "अपनी टहल कृपा करि दीजे ता संग जीव उबारौं।",
+          "'परमानंद' जु लाभ भजन बिन काज सबै लै जारों॥ [2]",
+          "- श्री परमानन्द दास, परमानंद सागर (1346)"
+        ]
+      }
+    ],
+    "chapterId": "ch-परमानंद सागर",
+    "chapterName": "परमानंद सागर",
+    "verseNumber": 1346
+  },
+  {
+    "id": "yah-mangon-gopijanballabh-shri-parmanand-das-parmanand-sagar-1350",
+    "collectionId": "paramanand-sagar",
+    "index": 29,
+    "titleDevanagari": "यह माँगों गोपी-जन-बल्लभ - श्री परमानन्द दास जी, परमानंद सागर (1350)",
+    "author": "श्री परमानन्द दास जी",
+    "slug": "yah-mangon-gopijanballabh-shri-parmanand-das-parmanand-sagar-1350",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(राग कान्हरौ)",
+          "यह माँगों गोपी-जन-बल्लभ।",
+          "मानुस-जनम और हरि-सेवा, ब्रज-बसिबौ दीजै मोहि सुल्लभ॥ [1]",
+          "श्रीबल्लभ-कुल कौ हौं चेरौ, बैष्णवजन कौ दास कहाऊँ।",
+          "श्रीजमुना-जल नित-प्रति न्हाऊँ, मन-बच-कर्म कृष्ण-गुन गाऊँ॥ [2]",
+          "श्रीमद्भागवत स्रवन सुनौ नित, इन तजि चित कहुँ अनत न लाऊँ।",
+          "'परमानंद' इहि माँगत नित-नित, निरखौं हौं कबहूँ न अघाऊँ॥ [3]",
+          "- श्री परमानन्द दास जी, परमानंद सागर (1350)"
+        ]
+      }
+    ],
+    "chapterId": "ch-परमानंद सागर",
+    "chapterName": "परमानंद सागर",
+    "verseNumber": 1350
+  },
+  {
+    "id": "jo-jan-hirdai-naam-dharai-shri-parmanand-das-ji-parmanand-sagar",
+    "collectionId": "paramanand-sagar",
+    "index": 30,
+    "titleDevanagari": "जो जन हिरदै नाम धरै - श्री परमानन्द दास, परमानंद सागर (1359)",
+    "author": "श्री परमानन्द दास",
+    "slug": "jo-jan-hirdai-naam-dharai-shri-parmanand-das-ji-parmanand-sagar",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(राग धनाश्री व सारंग)",
+          "जो जन हिरदै नाम धरै।",
+          "अष्ट सिद्धि नव निधि को बपुरी लटकत लारि फिरै॥ [1]",
+          "ब्रह्मलोक इंद्र लोक सिवलोक सबहू तै ऊपरै।",
+          "जो न पत्याऊं तौ चितवौ ध्रुव तन टारयौ हू न टरै॥ [2]",
+          "सुंदर स्याम कमल दल लोचन सब दुख दूरि करै।",
+          "'परमानंददास' कौ ठाकुर वाचा ते न टरै॥ [3]",
+          "- श्री परमानन्द दास, परमानंद सागर (1359)"
+        ]
+      }
+    ],
+    "chapterId": "ch-परमानंद सागर",
+    "chapterName": "परमानंद सागर",
+    "verseNumber": 1359
+  },
+  {
+    "id": "vrajvasi-jane-ras-reeti-shri-parmanand-das-ji",
+    "collectionId": "paramanand-sagar",
+    "index": 31,
+    "titleDevanagari": "व्रजवासी जाने रस रीति - श्री परमानन्द दास, परमानंद सागर (1368)",
+    "author": "श्री परमानन्द दास",
+    "slug": "vrajvasi-jane-ras-reeti-shri-parmanand-das-ji",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(राग गौरी व सारंग)",
+          "व्रजवासी जाने रस रीति।",
+          "जिनके हृदय और नहीं भावत नंदसुवन पद प्रीति॥ [1]",
+          "सर्व भाव सर्वात्म निवेदन रहत हैं त्रिगुणातीत।",
+          "करत महल में टहल निरंतर जात याम युग बीत॥ [2]",
+          "जिनकी गति और नहीं जाने बिच जवनिका भीति।",
+          "कोई एक लहै दास परमानंद गुरु प्रसाद प्रतीति॥ [3]",
+          "- श्री परमानन्द दास, परमानंद सागर (1368)"
+        ]
+      }
+    ],
+    "chapterId": "ch-परमानंद सागर",
+    "chapterName": "परमानंद सागर",
+    "verseNumber": 1368
+  },
+  {
+    "id": "dhani-dhani-brindavan-ke-vaasi-shri-parmanand-das",
+    "collectionId": "paramanand-sagar",
+    "index": 32,
+    "titleDevanagari": "धनि धनि बृंदावन के वासी - श्री परमानन्द दास, परमानंद सागर (1372)",
+    "author": "श्री परमानन्द दास",
+    "slug": "dhani-dhani-brindavan-ke-vaasi-shri-parmanand-das",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(राग धनाश्री व सारंग)",
+          "धनि धनि बृंदावन के वासी।",
+          "नित प्रति चरन कमल अनुरागी, स्यामा स्याम उपासी॥ [1]",
+          "या रस को जो मरम न जानै जाय बसौ सो कासी।",
+          "भसम लगाय गरैं लिंग बाँधौ सदाइ रहौ उदासी॥ [2]",
+          "अष्ट महासिद्धि द्वारें ठाढ़ी मुकुति चरन की दासी।",
+          "'परमानंद' चरन कमल भजि सुंदर घोष निवासी॥ [3]",
+          "- श्री परमानन्द दास, परमानंद सागर (1372)"
+        ]
+      }
+    ],
+    "chapterId": "ch-परमानंद सागर",
+    "chapterName": "परमानंद सागर",
+    "verseNumber": 1372
+  },
+  {
+    "id": "lage-jo-shri-vrindavan-kau-rang-shri-parmanand-das-ji",
+    "collectionId": "paramanand-sagar",
+    "index": 33,
+    "titleDevanagari": "लगै जो श्रीवृन्दावन कौ रंग - श्री परमानन्द दास, परमानंद सागर (1374)",
+    "author": "श्री परमानन्द दास",
+    "slug": "lage-jo-shri-vrindavan-kau-rang-shri-parmanand-das-ji",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(राग बिलावल)",
+          "लगै जो श्रीवृन्दावन कौ रंग। [1]",
+          "देह अभिमान सवै मिटि जावै अरु विषयन कौ संग॥ [2]",
+          "सखि भाव सहज होय सजनी पुरुष भाव होय भंग। [3]",
+          "श्री राधा वर सेवत सुमिरत उपजत लहर तरंग॥ [4]",
+          "मन को मैल सबै छुट जई है मन सा होए अपंग। [5]",
+          "‘परमानंद’ स्वामी गुन गावत, मिट गए कोटि अनंग॥ [6]",
+          "- श्री परमानन्द दास, परमानंद सागर (1374)"
+        ]
+      }
+    ],
+    "chapterId": "ch-परमानंद सागर",
+    "chapterName": "परमानंद सागर",
+    "verseNumber": 1374
+  },
+  {
+    "id": "vrindavan-kyon-na-bhaye-ham-mor-shri-parmanand-das-parmanand-sagar-1375",
+    "collectionId": "paramanand-sagar",
+    "index": 34,
+    "titleDevanagari": "वृंदावन क्यों न भये हम मोर - श्री परमानन्द दास जी, परमानंद सागर (1375)",
+    "author": "श्री परमानन्द दास जी",
+    "slug": "vrindavan-kyon-na-bhaye-ham-mor-shri-parmanand-das-parmanand-sagar-1375",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(राग मलार)",
+          "वृंदावन क्यों न भये हम मोर।",
+          "करत निवास गोवर्धन ऊपर, निरखत नंदकिशोर॥ [1]",
+          "क्यों न भये बंसी कुल सजनी, अधर पीबत घनघोर।",
+          "क्यों न भये गुंजा बनवेली, रहत स्याम जु की ओर॥ [2]",
+          "क्यों न भये मकराकृत कुंडल, स्याम श्रवन झकझोर।",
+          "परमानंद दास को ठाकुर, गोपिन के चित्तचोर॥ [3]",
+          "- श्री परमानन्द दास जी, परमानंद सागर (1375)"
+        ]
+      }
+    ],
+    "chapterId": "ch-परमानंद सागर",
+    "chapterName": "परमानंद सागर",
+    "verseNumber": 1375
+  },
+  {
+    "id": "parmanand-swrupini-manharni-sukh-raas-shri-kishori-ali-radha-namavali-23",
+    "collectionId": "paramanand-sagar",
+    "index": 35,
+    "titleDevanagari": "परमानन्द स्वरुपिनी मनहरनी सुख रास - श्री किशोरी अलि, राधा नामावलि (23)",
+    "author": "श्री किशोरी अलि",
+    "slug": "parmanand-swrupini-manharni-sukh-raas-shri-kishori-ali-radha-namavali-23",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "परमानन्द स्वरुपिनी, मनहरनी सुख रास।",
+          "पिय हिय उर कुल्लोलिनी, प्रीतम हिये निवास॥",
+          "- श्री किशोरी अलि, राधा नामावलि (23)"
+        ]
+      }
+    ],
+    "chapterId": "ch-राधा नामावलि",
+    "chapterName": "राधा नामावलि",
+    "verseNumber": 23
+  },
+  {
+    "id": "sakhi-mero-agam-ko-dina-ayo-shri-parmanand-das-parmanand-sagar-223",
+    "collectionId": "paramanand-sagar",
+    "index": 36,
+    "titleDevanagari": "सखी मेरो आगम को दिन आयो - श्री परमानन्द दास, परमानन्द सागर (223)",
+    "author": "श्री परमानन्द दास",
+    "slug": "sakhi-mero-agam-ko-dina-ayo-shri-parmanand-das-parmanand-sagar-223",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "सखी मेरो आगम को दिन आयो।",
+          "ग्रीष्म तपत गयो मेरी सजनी बदरन छायौ॥ [1]",
+          "मेरे पिय आये है अबही नेह नीर भर आयौ।",
+          "परमानन्द स्वामी रतिनायक सुरत हिंडोरे झुलायो॥ [2]",
+          "- श्री परमानन्द दास, परमानन्द सागर (223)"
+        ]
+      }
+    ],
+    "chapterId": "ch-परमानन्द सागर",
+    "chapterName": "परमानन्द सागर",
+    "verseNumber": 223
+  },
+  {
+    "id": "पस-खलत-ह-पय-पयर",
+    "collectionId": "paramanand-sagar",
+    "index": 37,
+    "titleDevanagari": "पासा खेलत है पिय प्यारी।।",
+    "author": "श्री परमानन्ददास जी",
+    "slug": "पस-खलत-ह-पय-पयर",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "पासा खेलत है पिय प्यारी।।",
+          "रतन खचित चोकी पर डारत, हंसत करत किलकारी ।।१।।",
+          "पहले दाव पर्यो स्यामाको, पीत पिछोरी हारी ।।",
+          "अबकी बेर पिय मुरली लगावो, तो रंग रहेगो भारी ।।२।।",
+          "छलबल करके़ं जीती भामिनी, पिय करत मनुहारी।।",
+          "परमानंद दास को ठाकुर, जीती वृषभान दुलारी।।"
+        ]
+      }
+    ],
+    "chapterId": "ch-सामान्य पद",
+    "chapterName": "सामान्य पद",
+    "verseNumber": 1
   },
   {
     "id": "radhe-tu-badabhaginu-kaun-tapasya-keen-shri-parmanand-das-ji",
     "collectionId": "paramanand-sagar",
-    "index": 3,
+    "index": 38,
     "titleDevanagari": "राधे तू बड़भागिनी कौन तपस्या कीन - श्री परमानन्द दास जी",
     "author": "श्री परमानन्द दास जी",
     "slug": "radhe-tu-badabhaginu-kaun-tapasya-keen-shri-parmanand-das-ji",
@@ -65,14 +949,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 3
   },
   {
     "id": "पवतर-पहरत-रजकमर",
     "collectionId": "paramanand-sagar",
-    "index": 4,
+    "index": 39,
     "titleDevanagari": "पवित्रा पहेरत राजकुमार ।",
     "author": "श्री परमानन्ददास जी",
     "slug": "पवतर-पहरत-रजकमर",
@@ -87,14 +971,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 4
   },
   {
     "id": "मई-मर-शयम-लग-र-सग-डल",
     "collectionId": "paramanand-sagar",
-    "index": 5,
+    "index": 40,
     "titleDevanagari": "माई मेरे श्याम लगो री संग डोले",
     "author": "श्री परमानन्ददास जी",
     "slug": "मई-मर-शयम-लग-र-सग-डल",
@@ -109,14 +993,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 5
   },
   {
     "id": "शरवनदवन-कञज-महल-रधकवललभलल",
     "collectionId": "paramanand-sagar",
-    "index": 6,
+    "index": 41,
     "titleDevanagari": "श्रीवृन्दावन कुञ्ज महल राधिकावल्लभलाल",
     "author": "श्री परमानन्ददास जी",
     "slug": "शरवनदवन-कञज-महल-रधकवललभलल",
@@ -131,14 +1015,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 6
   },
   {
     "id": "ललन-पयर-मल-जप-रध",
     "collectionId": "paramanand-sagar",
-    "index": 7,
+    "index": 42,
     "titleDevanagari": "लालन प्यारौ माला जपै राधा",
     "author": "श्री परमानन्ददास जी",
     "slug": "ललन-पयर-मल-जप-रध",
@@ -153,14 +1037,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 7
   },
   {
     "id": "khelat-madan-gopal-basant",
     "collectionId": "paramanand-sagar",
-    "index": 8,
+    "index": 43,
     "titleDevanagari": "खेलत मदन गोपाल बंसत",
     "author": "श्री परमानन्ददास जी",
     "slug": "khelat-madan-gopal-basant",
@@ -178,14 +1062,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 8
   },
   {
     "id": "aali-ri-ras-mandal-madhya-nirtat",
     "collectionId": "paramanand-sagar",
-    "index": 9,
+    "index": 44,
     "titleDevanagari": "आली री रासमंडल मध्य निरतत",
     "author": "श्री परमानन्ददास जी",
     "slug": "aali-ri-ras-mandal-madhya-nirtat",
@@ -201,14 +1085,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 9
   },
   {
     "id": "main-vari-ghanshyam-bana-ki-chhavi-dekh-banari-mridu-muskani",
     "collectionId": "paramanand-sagar",
-    "index": 10,
+    "index": 45,
     "titleDevanagari": "मैं वारी घनश्याम बना की, छवि देख बनरी मृदु मुस्कानी ।",
     "author": "श्री परमानन्ददास जी",
     "slug": "main-vari-ghanshyam-bana-ki-chhavi-dekh-banari-mridu-muskani",
@@ -224,14 +1108,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 10
   },
   {
     "id": "baliraja-ko-samarpan-sancho",
     "collectionId": "paramanand-sagar",
-    "index": 11,
+    "index": 46,
     "titleDevanagari": "बलिराजा को समर्पण सांचौ।",
     "author": "श्री परमानन्ददास जी",
     "slug": "baliraja-ko-samarpan-sancho",
@@ -247,14 +1131,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 11
   },
   {
     "id": "झल-र-रधवललभ-पयर",
     "collectionId": "paramanand-sagar",
-    "index": 12,
+    "index": 47,
     "titleDevanagari": "झूलें री राधावल्लभ प्यारे",
     "author": "श्री परमानन्ददास जी",
     "slug": "झल-र-रधवललभ-पयर",
@@ -269,14 +1153,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 12
   },
   {
     "id": "आज-बधई-क-दन-नक",
     "collectionId": "paramanand-sagar",
-    "index": 13,
+    "index": 48,
     "titleDevanagari": "आज बधाई को दिन नीको ।",
     "author": "श्री परमानन्ददास जी",
     "slug": "आज-बधई-क-दन-नक",
@@ -293,14 +1177,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 13
   },
   {
     "id": "परण-मस-परण-तथ-शरगरधर-करत-सनन-मन-भय",
     "collectionId": "paramanand-sagar",
-    "index": 14,
+    "index": 49,
     "titleDevanagari": "पूरण मास पूरण तिथि श्रीगिरिधर करत स्नान मन भायो",
     "author": "श्री परमानन्ददास जी",
     "slug": "परण-मस-परण-तथ-शरगरधर-करत-सनन-मन-भय",
@@ -315,14 +1199,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 14
   },
   {
     "id": "kaha-karun-baikunthahi-jay",
     "collectionId": "paramanand-sagar",
-    "index": 15,
+    "index": 50,
     "titleDevanagari": "कहा करूं बैकुण्ठहि जाय ।",
     "author": "श्री परमानन्ददास जी",
     "slug": "kaha-karun-baikunthahi-jay",
@@ -338,14 +1222,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 15
   },
   {
     "id": "meri-bhari-matukiya-le-gayo-ri",
     "collectionId": "paramanand-sagar",
-    "index": 16,
+    "index": 51,
     "titleDevanagari": "मेरी भरी मटु़किया लैगयो री",
     "author": "श्री परमानन्ददास जी",
     "slug": "meri-bhari-matukiya-le-gayo-ri",
@@ -361,14 +1245,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 16
   },
   {
     "id": "das-parmanand-chhinchhin-shyam-jaaki-sharan",
     "collectionId": "paramanand-sagar",
-    "index": 17,
+    "index": 52,
     "titleDevanagari": "दास परमानन्द छिन-छिन श्याम जाकी शरन",
     "author": "श्री परमानन्ददास जी",
     "slug": "das-parmanand-chhinchhin-shyam-jaaki-sharan",
@@ -382,14 +1266,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 17
   },
   {
     "id": "udi-udavan-lage-lal",
     "collectionId": "paramanand-sagar",
-    "index": 18,
+    "index": 53,
     "titleDevanagari": "उडी उड़ावन लागे लाल।",
     "author": "श्री परमानन्ददास जी",
     "slug": "udi-udavan-lage-lal",
@@ -407,14 +1291,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 18
   },
   {
     "id": "radhe-chhavi-albeli-vanari-banara-mohan-pyaro-hai",
     "collectionId": "paramanand-sagar",
-    "index": 19,
+    "index": 54,
     "titleDevanagari": "राधे छवि अलबेली वनरी, बनरा मोहन प्यारो है ।",
     "author": "श्री परमानन्ददास जी",
     "slug": "radhe-chhavi-albeli-vanari-banara-mohan-pyaro-hai",
@@ -430,14 +1314,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 19
   },
   {
     "id": "lal-ko-bhave-gud-gande-aur-ber",
     "collectionId": "paramanand-sagar",
-    "index": 20,
+    "index": 55,
     "titleDevanagari": "लाल कों भावें गुड़ गांडे और बेर।",
     "author": "श्री परमानन्ददास जी",
     "slug": "lal-ko-bhave-gud-gande-aur-ber",
@@ -453,14 +1337,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 20
   },
   {
     "id": "radhe-chhabi-albeli-banari-banara-mohan-pyaro-hai",
     "collectionId": "paramanand-sagar",
-    "index": 21,
+    "index": 56,
     "titleDevanagari": "राधे छबि अलबेली बनरी, बनरा मोंहन प्यारौ है |",
     "author": "श्री परमानन्ददास जी",
     "slug": "radhe-chhabi-albeli-banari-banara-mohan-pyaro-hai",
@@ -476,35 +1360,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 21
   },
   {
-    "id": "parmanand-swrupini-manharni-sukh-raas-shri-kishori-ali-radha-namavali-23",
-    "collectionId": "paramanand-sagar",
-    "index": 22,
-    "titleDevanagari": "परमानन्द स्वरुपिनी मनहरनी सुख रास - श्री किशोरी अलि, राधा नामावलि (23)",
-    "author": "श्री किशोरी अलि",
-    "slug": "parmanand-swrupini-manharni-sukh-raas-shri-kishori-ali-radha-namavali-23",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "परमानन्द स्वरुपिनी, मनहरनी सुख रास।",
-          "पिय हिय उर कुल्लोलिनी, प्रीतम हिये निवास॥",
-          "- श्री किशोरी अलि, राधा नामावलि (23)"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 23
-  },
-  {
     "id": "apne-rang-firat-gokul-mein-shyam-varan-jaise-bhonra",
     "collectionId": "paramanand-sagar",
-    "index": 23,
+    "index": 57,
     "titleDevanagari": "अपने रंग फिरत गोकुल में श्यामवरण जैसे भोंरा ॥",
     "author": "श्री परमानन्ददास जी",
     "slug": "apne-rang-firat-gokul-mein-shyam-varan-jaise-bhonra",
@@ -521,14 +1384,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 23
   },
   {
     "id": "sahaj-preeti-gopalai-bhave",
     "collectionId": "paramanand-sagar",
-    "index": 24,
+    "index": 58,
     "titleDevanagari": "सहज प्रीति गोपालै भावे",
     "author": "श्री परमानन्ददास जी",
     "slug": "sahaj-preeti-gopalai-bhave",
@@ -546,14 +1409,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 24
   },
   {
     "id": "हर-जनमत-ह-आनद-भय",
     "collectionId": "paramanand-sagar",
-    "index": 25,
+    "index": 59,
     "titleDevanagari": "हरि जन्मत ही आनंद भयो",
     "author": "श्री परमानन्ददास जी",
     "slug": "हर-जनमत-ह-आनद-भय",
@@ -570,14 +1433,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 25
   },
   {
     "id": "आज-अयधय-परगट-रम",
     "collectionId": "paramanand-sagar",
-    "index": 26,
+    "index": 60,
     "titleDevanagari": "आज अयोध्या प्रगटे राम",
     "author": "श्री परमानन्ददास जी",
     "slug": "आज-अयधय-परगट-रम",
@@ -592,14 +1455,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 26
   },
   {
     "id": "भगय-सबनत-नयर-रन-तर",
     "collectionId": "paramanand-sagar",
-    "index": 27,
+    "index": 61,
     "titleDevanagari": "भाग्य सबनते न्यारो रानी तेरो",
     "author": "श्री परमानन्ददास जी",
     "slug": "भगय-सबनत-नयर-रन-तर",
@@ -614,14 +1477,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 27
   },
   {
     "id": "mandap-mein-palika-pe-biraje-sabe-sukh-saaj-dhare-chahudha-ri",
     "collectionId": "paramanand-sagar",
-    "index": 28,
+    "index": 62,
     "titleDevanagari": "मंडप में पलिका पै विराजे, सबै सुख साज धरे चहुँधा री ।",
     "author": "श्री परमानन्ददास जी",
     "slug": "mandap-mein-palika-pe-biraje-sabe-sukh-saaj-dhare-chahudha-ri",
@@ -634,14 +1497,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 28
   },
   {
     "id": "lal-nek-bhawan-hamare-aayo",
     "collectionId": "paramanand-sagar",
-    "index": 29,
+    "index": 63,
     "titleDevanagari": "लाल नेक भवन हमारे आवो ।",
     "author": "श्री परमानन्ददास जी",
     "slug": "lal-nek-bhawan-hamare-aayo",
@@ -659,14 +1522,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 29
   },
   {
     "id": "makhan-chor-ri-ho-payo",
     "collectionId": "paramanand-sagar",
-    "index": 30,
+    "index": 64,
     "titleDevanagari": "माखन चोर री हौ पायो",
     "author": "श्री परमानन्ददास जी",
     "slug": "makhan-chor-ri-ho-payo",
@@ -682,14 +1545,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 30
   },
   {
     "id": "dhan-dhan-radhika-ke-charan",
     "collectionId": "paramanand-sagar",
-    "index": 31,
+    "index": 65,
     "titleDevanagari": "धन धन राधिका के चरन।",
     "author": "श्री परमानन्ददास जी",
     "slug": "dhan-dhan-radhika-ke-charan",
@@ -707,14 +1570,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 31
   },
   {
     "id": "डल-झलय-दऊ-पयर",
     "collectionId": "paramanand-sagar",
-    "index": 32,
+    "index": 66,
     "titleDevanagari": "डोल झूलिये दोऊ प्यारे",
     "author": "श्री परमानन्ददास जी",
     "slug": "डल-झलय-दऊ-पयर",
@@ -729,14 +1592,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 32
   },
   {
     "id": "chirjiyo-lal-goverdhandhari",
     "collectionId": "paramanand-sagar",
-    "index": 33,
+    "index": 67,
     "titleDevanagari": "चिरजीयो लाल गोवर्धनधारी।",
     "author": "श्री परमानन्ददास जी",
     "slug": "chirjiyo-lal-goverdhandhari",
@@ -754,14 +1617,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 33
   },
   {
     "id": "कज-भवन-म-मगलचर",
     "collectionId": "paramanand-sagar",
-    "index": 34,
+    "index": 68,
     "titleDevanagari": "कुँज-भवन में मंगलाचार",
     "author": "श्री परमानन्ददास जी",
     "slug": "कज-भवन-म-मगलचर",
@@ -778,37 +1641,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 34
   },
   {
-    "id": "aaj-divari-mangal-chaar-shri-parmanand-das-parmanand-sagar",
-    "collectionId": "paramanand-sagar",
-    "index": 35,
-    "titleDevanagari": "आज दिवारी मंगल चार - श्री परमानन्द दास जी, परमानंद सागर",
-    "author": "श्री परमानन्द दास जी",
-    "slug": "aaj-divari-mangal-chaar-shri-parmanand-das-parmanand-sagar",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "आज दिवारी मंगल चार।",
-          "ब्रज जुवतिजन मंगल गावत, चौक पुरावत नंद कुमार॥ [1]",
-          "मधु मेवा पकवान मिठाई भरि भरि लीने कंचन थार।",
-          "परमानंददास को ठाकुर पहिरे आभूषन सिंगार॥ [2]",
-          "- श्री परमानन्द दास जी, परमानंद सागर"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 35
-  },
-  {
     "id": "शर-रध-कन-गर-त-पज",
     "collectionId": "paramanand-sagar",
-    "index": 36,
+    "index": 69,
     "titleDevanagari": "श्री राधे कौन गोर तें पूजी",
     "author": "श्री परमानन्ददास जी",
     "slug": "शर-रध-कन-गर-त-पज",
@@ -823,14 +1663,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 36
   },
   {
     "id": "गकल-बजत-बधई-गकल-बजत-आज-बधई",
     "collectionId": "paramanand-sagar",
-    "index": 37,
+    "index": 70,
     "titleDevanagari": "गोकुल बजत बधाई, गोकुल बाजत आज बधाई",
     "author": "श्री परमानन्ददास जी",
     "slug": "गकल-बजत-बधई-गकल-बजत-आज-बधई",
@@ -847,14 +1687,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 37
   },
   {
     "id": "achaman-karat-kishor-kishori",
     "collectionId": "paramanand-sagar",
-    "index": 38,
+    "index": 71,
     "titleDevanagari": "अचमन करत किशोर किशोरी।",
     "author": "श्री परमानन्ददास जी",
     "slug": "achaman-karat-kishor-kishori",
@@ -867,38 +1707,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 38
   },
   {
-    "id": "paan-mukh-beeri-raachi-shri-parmanand-das-parmanand-sagar",
-    "collectionId": "paramanand-sagar",
-    "index": 39,
-    "titleDevanagari": "पान मुख बीरी राची - श्री परमानन्द दास, परमानंद सागर",
-    "author": "श्री परमानन्द दास",
-    "slug": "paan-mukh-beeri-raachi-shri-parmanand-das-parmanand-sagar",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "(राग मलहार)",
-          "पान मुख बीरी राची हरि को रंग सुरंगे।",
-          "ऐसी कृपा सदां हम ऊपर टारो जिन तुम संगे॥ [1]",
-          "हरि हम तुम बिन कोन काम के परत प्रेम में भंग।",
-          "परमानन्द दूध में पानी ज्यों मिळवो अंग में अंग॥ [2]",
-          "- श्री परमानन्द दास, परमानंद सागर"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 39
-  },
-  {
     "id": "पहर-पवतर-बठ-हडर-दऊ-नरखत-नन-सरन",
     "collectionId": "paramanand-sagar",
-    "index": 40,
+    "index": 72,
     "titleDevanagari": "पहरे पवित्रा बैठे हिंडोरे दोऊ निरखत नेन सिराने",
     "author": "श्री परमानन्ददास जी",
     "slug": "पहर-पवतर-बठ-हडर-दऊ-नरखत-नन-सरन",
@@ -913,14 +1729,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 40
   },
   {
     "id": "मगल-मध-नम-उचर",
     "collectionId": "paramanand-sagar",
-    "index": 41,
+    "index": 73,
     "titleDevanagari": "मंगल माधो नाम उचार",
     "author": "श्री परमानन्ददास जी",
     "slug": "मगल-मध-नम-उचर",
@@ -941,14 +1757,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 41
   },
   {
     "id": "gwalin-kyon-thadi-nand-pouri",
     "collectionId": "paramanand-sagar",
-    "index": 42,
+    "index": 74,
     "titleDevanagari": "ग्वालिन क्यों ठाढी नंद पौरी ।",
     "author": "श्री परमानन्ददास जी",
     "slug": "gwalin-kyon-thadi-nand-pouri",
@@ -968,14 +1784,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 42
   },
   {
     "id": "jago-mere-jagat-ujiyare",
     "collectionId": "paramanand-sagar",
-    "index": 43,
+    "index": 75,
     "titleDevanagari": "जागो मेरे लाल जगत उजियारे ।",
     "author": "श्री परमानन्ददास जी",
     "slug": "jago-mere-jagat-ujiyare",
@@ -991,38 +1807,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 43
   },
   {
-    "id": "pragatyo-sab-vraj-ko-singaar-shri-paramanand-das-ji",
-    "collectionId": "paramanand-sagar",
-    "index": 44,
-    "titleDevanagari": "प्रगट्यो सब व्रज को सिंगार - श्री परमानन्द दास, परमानंद सागर (49)",
-    "author": "श्री परमानन्द दास",
-    "slug": "pragatyo-sab-vraj-ko-singaar-shri-paramanand-das-ji",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "(राग सारंग)",
-          "प्रगट्यो सब व्रज को सिंगार।",
-          "कीरती कूख अवतरी कन्या सुन्दरता को सार॥",
-          "नखसिक रूप कहाँ लों बरनो कोटिक मन बलिहार।",
-          "परमानन्द वृषभानु नन्दनी जोरी नंददुलार॥",
-          "- श्री परमानन्द दास, परमानंद सागर (49)"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 49
-  },
-  {
     "id": "lal-ko-mukh-dekhan-ho-aai",
     "collectionId": "paramanand-sagar",
-    "index": 45,
+    "index": 76,
     "titleDevanagari": "लाल को मुख देखन हों आई।",
     "author": "श्री परमानन्ददास जी",
     "slug": "lal-ko-mukh-dekhan-ho-aai",
@@ -1035,14 +1827,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 45
   },
   {
     "id": "गग-तन-लक-उदधरक",
     "collectionId": "paramanand-sagar",
-    "index": 46,
+    "index": 77,
     "titleDevanagari": "गंगा तीन लोक उद्धारक।",
     "author": "श्री परमानन्ददास जी",
     "slug": "गग-तन-लक-उदधरक",
@@ -1057,14 +1849,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 46
   },
   {
     "id": "yah-lo-nek-nand-rani-ju",
     "collectionId": "paramanand-sagar",
-    "index": 47,
+    "index": 78,
     "titleDevanagari": "यहां लौ नेक चली नंदरानी जू",
     "author": "श्री परमानन्ददास जी",
     "slug": "yah-lo-nek-nand-rani-ju",
@@ -1082,14 +1874,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 47
   },
   {
     "id": "aarti-yugal-kishor-ki-kije",
     "collectionId": "paramanand-sagar",
-    "index": 48,
+    "index": 79,
     "titleDevanagari": "आरति युगल किशोर कि कीजै",
     "author": "श्री परमानन्ददास जी",
     "slug": "aarti-yugal-kishor-ki-kije",
@@ -1109,14 +1901,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 48
   },
   {
     "id": "apne-lal-ko-vyah-karugi-bade-gop-ki-beti-so",
     "collectionId": "paramanand-sagar",
-    "index": 49,
+    "index": 80,
     "titleDevanagari": "अपने लाल को ब्याह करूँगी,बड़े गोप की बेटी सों",
     "author": "श्री परमानन्ददास जी",
     "slug": "apne-lal-ko-vyah-karugi-bade-gop-ki-beti-so",
@@ -1129,14 +1921,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 49
   },
   {
     "id": "basant-aagam-sundar-nand-nandan-jo-pau",
     "collectionId": "paramanand-sagar",
-    "index": 50,
+    "index": 81,
     "titleDevanagari": "वसंत आगम सुन्दर नंद नंदन जो पाऊ ।",
     "author": "श्री परमानन्ददास जी",
     "slug": "basant-aagam-sundar-nand-nandan-jo-pau",
@@ -1152,14 +1944,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 50
   },
   {
     "id": "फलन-क-उर-हर-हमल-लय-कर-पकज-फल-फरव",
     "collectionId": "paramanand-sagar",
-    "index": 51,
+    "index": 82,
     "titleDevanagari": "फूलन के उर हार हमेल लियें कर पंकज फूल फिरावै",
     "author": "श्री परमानन्ददास जी",
     "slug": "फलन-क-उर-हर-हमल-लय-कर-पकज-फल-फरव",
@@ -1178,14 +1970,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 51
   },
   {
     "id": "परफललत-वन-ववध-रग-झलकत-यमन-तरग",
     "collectionId": "paramanand-sagar",
-    "index": 52,
+    "index": 83,
     "titleDevanagari": "प्रफुल्लित वन विविध रंग झलकत यमुना तरंग",
     "author": "श्री परमानन्ददास जी",
     "slug": "परफललत-वन-ववध-रग-झलकत-यमन-तरग",
@@ -1204,14 +1996,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 52
   },
   {
     "id": "chhanh-ghani-ramani-van-beli-bani-vidhi-so-kahi-upama-na",
     "collectionId": "paramanand-sagar",
-    "index": 53,
+    "index": 84,
     "titleDevanagari": "छाँह घनी रमनी वन बेलि, बनी विधि सौं कहि ऊपमु ना |",
     "author": "श्री परमानन्ददास जी",
     "slug": "chhanh-ghani-ramani-van-beli-bani-vidhi-so-kahi-upama-na",
@@ -1227,14 +2019,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 53
   },
   {
     "id": "nirakh-mukh-thadi-haveju-hanse",
     "collectionId": "paramanand-sagar",
-    "index": 54,
+    "index": 85,
     "titleDevanagari": "निरख मुख ठाढी हवेजु हँसें ।",
     "author": "श्री परमानन्ददास जी",
     "slug": "nirakh-mukh-thadi-haveju-hanse",
@@ -1252,14 +2044,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 54
   },
   {
     "id": "sari-meri-bhijat-hai-ju-nai",
     "collectionId": "paramanand-sagar",
-    "index": 55,
+    "index": 86,
     "titleDevanagari": "साड़ी मेरी भीजत है जु नई ।",
     "author": "श्री परमानन्ददास जी",
     "slug": "sari-meri-bhijat-hai-ju-nai",
@@ -1277,14 +2069,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 55
   },
   {
     "id": "manavat-haar-pari-meri-maai",
     "collectionId": "paramanand-sagar",
-    "index": 56,
+    "index": 87,
     "titleDevanagari": "मनावत हार परी मेरी माई",
     "author": "श्री परमानन्ददास जी",
     "slug": "manavat-haar-pari-meri-maai",
@@ -1314,14 +2106,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 56
   },
   {
     "id": "ho-pyari-lage-brij-ki-dagar",
     "collectionId": "paramanand-sagar",
-    "index": 57,
+    "index": 88,
     "titleDevanagari": "हो प्यारी लागे ब्रजकी डगर",
     "author": "श्री परमानन्ददास जी",
     "slug": "ho-pyari-lage-brij-ki-dagar",
@@ -1337,14 +2129,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 57
   },
   {
     "id": "biography-of-shri-parmananddas-ji",
     "collectionId": "paramanand-sagar",
-    "index": 58,
+    "index": 89,
     "titleDevanagari": "श्री परमानन्ददास जी की जीवनी",
     "author": "श्री परमानन्ददास जी",
     "slug": "biography-of-shri-parmananddas-ji",
@@ -1358,14 +2150,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 58
   },
   {
     "id": "aaj-ekadashi-devdiwari-tajo-nidra-utho-giridhari",
     "collectionId": "paramanand-sagar",
-    "index": 59,
+    "index": 90,
     "titleDevanagari": "आज एकादशी देवदिवारी तजो निद्रा उठो गिरिधारी।",
     "author": "श्री परमानन्ददास जी",
     "slug": "aaj-ekadashi-devdiwari-tajo-nidra-utho-giridhari",
@@ -1381,14 +2173,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 59
   },
   {
     "id": "यह-धन-धरम-ह-त-पय",
     "collectionId": "paramanand-sagar",
-    "index": 60,
+    "index": 91,
     "titleDevanagari": "यह धन धर्म ही तें पायो।",
     "author": "श्री परमानन्ददास जी",
     "slug": "यह-धन-धरम-ह-त-पय",
@@ -1405,14 +2197,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 60
   },
   {
     "id": "mahabal-kino-ho-brijnath",
     "collectionId": "paramanand-sagar",
-    "index": 61,
+    "index": 92,
     "titleDevanagari": "महाबल कीनो हो व्रजनाथ l",
     "author": "श्री परमानन्ददास जी",
     "slug": "mahabal-kino-ho-brijnath",
@@ -1430,14 +2222,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 61
   },
   {
     "id": "दख-र-यह-कस-बलक-रन-यशमत-जय-ह",
     "collectionId": "paramanand-sagar",
-    "index": 62,
+    "index": 93,
     "titleDevanagari": "देखो री यह कैसो बालक रानी यशोमति जायो है",
     "author": "श्री परमानन्ददास जी",
     "slug": "दख-र-यह-कस-बलक-रन-यशमत-जय-ह",
@@ -1463,14 +2255,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 62
   },
   {
     "id": "सहत-शयम-मनहर-गत",
     "collectionId": "paramanand-sagar",
-    "index": 63,
+    "index": 94,
     "titleDevanagari": "सोहत श्याम मनोहर गात",
     "author": "श्री परमानन्ददास जी",
     "slug": "सहत-शयम-मनहर-गत",
@@ -1485,14 +2277,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 63
   },
   {
     "id": "पतग-क-गड-उडवन-लग-वरजबल",
     "collectionId": "paramanand-sagar",
-    "index": 64,
+    "index": 95,
     "titleDevanagari": "पतंग की गुडी उडावन लागे व्रजबाल॥",
     "author": "श्री परमानन्ददास जी",
     "slug": "पतग-क-गड-उडवन-लग-वरजबल",
@@ -1509,14 +2301,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 64
   },
   {
     "id": "kapar-dhota-nayan-nachavat-ko-hai-tihare-baba-ki-cheri",
     "collectionId": "paramanand-sagar",
-    "index": 65,
+    "index": 96,
     "titleDevanagari": "कापर ढोटा नयन नचावत,को हे तिहारे बाबा की चेरी।",
     "author": "श्री परमानन्ददास जी",
     "slug": "kapar-dhota-nayan-nachavat-ko-hai-tihare-baba-ki-cheri",
@@ -1534,35 +2326,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 65
   },
   {
-    "id": "shrighanshyam-manohar-murti-karat-vihar-vrindavan-shri-parmanand-das-ji-parmanand-sagar",
-    "collectionId": "paramanand-sagar",
-    "index": 66,
-    "titleDevanagari": "श्रीघनश्याम मनोहर मूरति करत विहार वृन्दावन - श्री परमानन्द दास, परमानंद सागर",
-    "author": "श्री परमानन्द दास",
-    "slug": "shrighanshyam-manohar-murti-karat-vihar-vrindavan-shri-parmanand-das-ji-parmanand-sagar",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "श्रीघनश्याम मनोहर मूरति करत विहार वृन्दावन।",
-          "परमानंददास कौ ठाकुर करत रंग निसि दिन मन भावन॥",
-          "- श्री परमानन्द दास, परमानंद सागर"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 66
-  },
-  {
     "id": "maiya-mohi-aisi-dulhani-bhave",
     "collectionId": "paramanand-sagar",
-    "index": 67,
+    "index": 97,
     "titleDevanagari": "मैया मोहि ऐसी दुल्हनि भावै ।",
     "author": "श्री परमानन्ददास जी",
     "slug": "maiya-mohi-aisi-dulhani-bhave",
@@ -1575,14 +2346,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 67
   },
   {
     "id": "आज-दध-मठ-मदन-गपल",
     "collectionId": "paramanand-sagar",
-    "index": 68,
+    "index": 98,
     "titleDevanagari": "आज दधि मीठो मदन गोपाल",
     "author": "श्री परमानन्ददास जी",
     "slug": "आज-दध-मठ-मदन-गपल",
@@ -1601,14 +2372,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 68
   },
   {
     "id": "आज-धर-गरधर-पय-धत",
     "collectionId": "paramanand-sagar",
-    "index": 69,
+    "index": 99,
     "titleDevanagari": "आज धरी गिरधर पिय धोती",
     "author": "श्री परमानन्ददास जी",
     "slug": "आज-धर-गरधर-पय-धत",
@@ -1623,14 +2394,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 69
   },
   {
     "id": "dev-diwari-shubh-ekadashi-hari-prabodh-kijeho-aaj",
     "collectionId": "paramanand-sagar",
-    "index": 70,
+    "index": 100,
     "titleDevanagari": "देव दिवारी शुभ एकादशी हरि प्रबोध किजेहो आज ।",
     "author": "श्री परमानन्ददास जी",
     "slug": "dev-diwari-shubh-ekadashi-hari-prabodh-kijeho-aaj",
@@ -1643,14 +2414,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 70
   },
   {
     "id": "maiya-main-to-gaay-charavan-jaiho",
     "collectionId": "paramanand-sagar",
-    "index": 71,
+    "index": 101,
     "titleDevanagari": "मैया मैं गाय चरावन जैहो",
     "author": "श्री परमानन्ददास जी",
     "slug": "maiya-main-to-gaay-charavan-jaiho",
@@ -1668,41 +2439,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 71
   },
   {
-    "id": "braj-mein-hot-kulahal-bhaari-shri-parmanand-das-ji",
-    "collectionId": "paramanand-sagar",
-    "index": 72,
-    "titleDevanagari": "ब्रज में होत कुलाहल भारी - श्री परमानन्द दास जी, परमानंद सागर",
-    "author": "श्री परमानन्द दास जी",
-    "slug": "braj-mein-hot-kulahal-bhaari-shri-parmanand-das-ji",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "(राग मारू)",
-          "ब्रज में होत कुलाहल भारी।",
-          "आनन्द मगन ग्वाल सब नाचत,",
-          "देत परस्पर तारी॥ [1]",
-          "नन्दराय के भवन में आवत,",
-          "आनंदित ब्रजनारी।",
-          "पुत्र जनम सुनि हर्ष भयौ है,",
-          "'परमानन्द' बलिहारी॥ [2]",
-          "- श्री परमानन्द दास जी"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 72
-  },
-  {
     "id": "परथम-गचरण-चल-कनहइ",
     "collectionId": "paramanand-sagar",
-    "index": 73,
+    "index": 102,
     "titleDevanagari": "प्रथम गोचारण चले कन्हाइ",
     "author": "श्री परमानन्ददास जी",
     "slug": "परथम-गचरण-चल-कनहइ",
@@ -1719,14 +2463,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 73
   },
   {
     "id": "baah-dulabati-aavati-radha",
     "collectionId": "paramanand-sagar",
-    "index": 74,
+    "index": 103,
     "titleDevanagari": "बाँह डुलाबति आवति राधा",
     "author": "श्री परमानन्ददास जी",
     "slug": "baah-dulabati-aavati-radha",
@@ -1744,14 +2488,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 74
   },
   {
     "id": "kundan-so-rang-rangi-dulhi-din-dulah-nil-mani-chhabi-bhari",
     "collectionId": "paramanand-sagar",
-    "index": 75,
+    "index": 104,
     "titleDevanagari": "कुंदन सो रंग रंगी दुलही, दिन दूल्ह नील मणि छवि भारी ।",
     "author": "श्री परमानन्ददास जी",
     "slug": "kundan-so-rang-rangi-dulhi-din-dulah-nil-mani-chhabi-bhari",
@@ -1767,14 +2511,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 75
   },
   {
     "id": "brij-mein-foole-firat-ahir",
     "collectionId": "paramanand-sagar",
-    "index": 76,
+    "index": 105,
     "titleDevanagari": "ब्रज में फूले फिरत अहीर।",
     "author": "श्री परमानन्ददास जी",
     "slug": "brij-mein-foole-firat-ahir",
@@ -1792,35 +2536,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 76
   },
   {
-    "id": "tanak-sohago-daarikein-jadh-kanchan-pighlay-shri-parmanand-das-ji-parmanand-sagar",
-    "collectionId": "paramanand-sagar",
-    "index": 77,
-    "titleDevanagari": "तनक सोहागो डारिकें जड़ कंचन पिघलाय - श्री परमानन्द दास, परमानंद सागर",
-    "author": "श्री परमानन्द दास",
-    "slug": "tanak-sohago-daarikein-jadh-kanchan-pighlay-shri-parmanand-das-ji-parmanand-sagar",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "तनक सोहागो डारिकें, जड़ कंचन पिघलाय।",
-          "सदा सुहागिनी राधिका, क्यों न कृष्ण ललचाय॥",
-          "- श्री परमानन्द दास जी"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 77
-  },
-  {
     "id": "ललन-सग-खलन-चल",
     "collectionId": "paramanand-sagar",
-    "index": 78,
+    "index": 106,
     "titleDevanagari": "लालन संग खेलन चली,",
     "author": "श्री परमानन्ददास जी",
     "slug": "ललन-सग-खलन-चल",
@@ -1850,14 +2573,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 78
   },
   {
     "id": "prakat-bhaye-hari-shri-gokul-mein",
     "collectionId": "paramanand-sagar",
-    "index": 79,
+    "index": 107,
     "titleDevanagari": "प्रकट भये हरि श्रीगोकुल में",
     "author": "श्री परमानन्ददास जी",
     "slug": "prakat-bhaye-hari-shri-gokul-mein",
@@ -1873,14 +2596,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 79
   },
   {
     "id": "radhe-banari-bani-chhavi-albeli-chatur-sujan",
     "collectionId": "paramanand-sagar",
-    "index": 80,
+    "index": 108,
     "titleDevanagari": "राधे बनरी बनी छवि , अलबेली चतुर सुजान ।",
     "author": "श्री परमानन्ददास जी",
     "slug": "radhe-banari-bani-chhavi-albeli-chatur-sujan",
@@ -1896,14 +2619,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 80
   },
   {
     "id": "सखर-लभ-मर-नयन",
     "collectionId": "paramanand-sagar",
-    "index": 81,
+    "index": 109,
     "titleDevanagari": "सखीरी लोभी मेरे नयन",
     "author": "श्री परमानन्ददास जी",
     "slug": "सखर-लभ-मर-नयन",
@@ -1920,14 +2643,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 81
   },
   {
     "id": "sajni-ri-gao-mangal-char-sajni-gao-mangal-char",
     "collectionId": "paramanand-sagar",
-    "index": 82,
+    "index": 110,
     "titleDevanagari": "सजनी री गाओ मंगल चार, सजनी गावो मंगल चार ।",
     "author": "श्री परमानन्ददास जी",
     "slug": "sajni-ri-gao-mangal-char-sajni-gao-mangal-char",
@@ -1947,14 +2670,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 82
   },
   {
     "id": "jage-jagjivan-jagnayak",
     "collectionId": "paramanand-sagar",
-    "index": 83,
+    "index": 111,
     "titleDevanagari": "जागे जगजीवन जगनायक।",
     "author": "श्री परमानन्ददास जी",
     "slug": "jage-jagjivan-jagnayak",
@@ -1972,14 +2695,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 83
   },
   {
     "id": "dhani-yah-radhika-ke-charan",
     "collectionId": "paramanand-sagar",
-    "index": 84,
+    "index": 112,
     "titleDevanagari": "धनि यह राधिका के चरण।",
     "author": "श्री परमानन्ददास जी",
     "slug": "dhani-yah-radhika-ke-charan",
@@ -1995,14 +2718,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 84
   },
   {
     "id": "yugal-karat-brijnaar-aarti",
     "collectionId": "paramanand-sagar",
-    "index": 85,
+    "index": 113,
     "titleDevanagari": "युगल करत बृजनार आरती।",
     "author": "श्री परमानन्ददास जी",
     "slug": "yugal-karat-brijnaar-aarti",
@@ -2015,14 +2738,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 85
   },
   {
     "id": "preeti-tau-ekahin-thaur-bhali",
     "collectionId": "paramanand-sagar",
-    "index": 86,
+    "index": 114,
     "titleDevanagari": "प्रीति तौ एकहिं ठौर भली",
     "author": "श्री परमानन्ददास जी",
     "slug": "preeti-tau-ekahin-thaur-bhali",
@@ -2040,14 +2763,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 86
   },
   {
     "id": "halro-hularve-mata-bali-bali-jau-ghosh-sukh-data",
     "collectionId": "paramanand-sagar",
-    "index": 87,
+    "index": 115,
     "titleDevanagari": "हालरो हुलारवे माता, बलि बलि जाऊ घोष सुख दाता।",
     "author": "श्री परमानन्ददास जी",
     "slug": "halro-hularve-mata-bali-bali-jau-ghosh-sukh-data",
@@ -2060,14 +2783,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 87
   },
   {
     "id": "maiya-mohe-aisi-dulhan-bhave",
     "collectionId": "paramanand-sagar",
-    "index": 88,
+    "index": 116,
     "titleDevanagari": "मैया मोहे ऐसी दुल्हन भावे।",
     "author": "श्री परमानन्ददास जी",
     "slug": "maiya-mohe-aisi-dulhan-bhave",
@@ -2080,14 +2803,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 88
   },
   {
     "id": "जनम-सन-मर-मई",
     "collectionId": "paramanand-sagar",
-    "index": 89,
+    "index": 117,
     "titleDevanagari": "जनम सुनो मेरी माई,",
     "author": "श्री परमानन्ददास जी",
     "slug": "जनम-सन-मर-मई",
@@ -2106,14 +2829,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 89
   },
   {
     "id": "shri-yamune-piya-ko-bas-tumju-keene",
     "collectionId": "paramanand-sagar",
-    "index": 90,
+    "index": 118,
     "titleDevanagari": "श्री यमुने पिय को बस तुमजु कीने ।",
     "author": "श्री परमानन्ददास जी",
     "slug": "shri-yamune-piya-ko-bas-tumju-keene",
@@ -2129,14 +2852,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 90
   },
   {
     "id": "रन-तर-भगय-सबन-त-नयर",
     "collectionId": "paramanand-sagar",
-    "index": 91,
+    "index": 119,
     "titleDevanagari": "रानी तेरो भाग्य सबन तै न्यारो",
     "author": "श्री परमानन्ददास जी",
     "slug": "रन-तर-भगय-सबन-त-नयर",
@@ -2151,14 +2874,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 91
   },
   {
     "id": "bhagya-sabante-nyaro-rani-tero",
     "collectionId": "paramanand-sagar",
-    "index": 92,
+    "index": 120,
     "titleDevanagari": "भाग्य सबनते न्यारो रानी तेरो।",
     "author": "श्री परमानन्ददास जी",
     "slug": "bhagya-sabante-nyaro-rani-tero",
@@ -2174,14 +2897,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 92
   },
   {
     "id": "chanchal-nainan-anjan-de-man-ranjan-hai-muskan-tihari",
     "collectionId": "paramanand-sagar",
-    "index": 93,
+    "index": 121,
     "titleDevanagari": "चंचल नैनन अंजन दे, मन रंजन है मुस्कान तिहारी ।",
     "author": "श्री परमानन्ददास जी",
     "slug": "chanchal-nainan-anjan-de-man-ranjan-hai-muskan-tihari",
@@ -2197,14 +2920,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 93
   },
   {
     "id": "बदवन-कय-न-भए-हम-मर",
     "collectionId": "paramanand-sagar",
-    "index": 94,
+    "index": 122,
     "titleDevanagari": "बृंदावन क्यों न भए हम मोर",
     "author": "श्री परमानन्ददास जी",
     "slug": "बदवन-कय-न-भए-हम-मर",
@@ -2221,14 +2944,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 94
   },
   {
     "id": "anand-sindhu-badhyau-hari-tan-mein",
     "collectionId": "paramanand-sagar",
-    "index": 95,
+    "index": 123,
     "titleDevanagari": "आनंद सिंधु बढ्यौ हरि तन में",
     "author": "श्री परमानन्ददास जी",
     "slug": "anand-sindhu-badhyau-hari-tan-mein",
@@ -2246,14 +2969,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 95
   },
   {
     "id": "जसद-तर-भगय-क-कह-न-जई",
     "collectionId": "paramanand-sagar",
-    "index": 96,
+    "index": 124,
     "titleDevanagari": "जसोदा तेरे भाग्य की कही न जाई",
     "author": "श्री परमानन्ददास जी",
     "slug": "जसद-तर-भगय-क-कह-न-जई",
@@ -2271,14 +2994,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 96
   },
   {
     "id": "घर-घर-गवल-दत-ह-हर",
     "collectionId": "paramanand-sagar",
-    "index": 97,
+    "index": 125,
     "titleDevanagari": "घर घर ग्वाल देत हैं हेरी",
     "author": "श्री परमानन्ददास जी",
     "slug": "घर-घर-गवल-दत-ह-हर",
@@ -2295,14 +3018,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 97
   },
   {
     "id": "bhushan-apne-leri-maiya-morki-chandrika",
     "collectionId": "paramanand-sagar",
-    "index": 98,
+    "index": 126,
     "titleDevanagari": "भूषण अपने लेरी मैया मोरकि चंद्रिका",
     "author": "श्री परमानन्ददास जी",
     "slug": "bhushan-apne-leri-maiya-morki-chandrika",
@@ -2324,14 +3047,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 98
   },
   {
     "id": "चल-सख-दखन-नद-कशर",
     "collectionId": "paramanand-sagar",
-    "index": 99,
+    "index": 127,
     "titleDevanagari": "चल सखी देखन नंद किशोर",
     "author": "श्री परमानन्ददास जी",
     "slug": "चल-सख-दखन-नद-कशर",
@@ -2348,14 +3071,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 99
   },
   {
     "id": "दव-जगवत-यशद-रन",
     "collectionId": "paramanand-sagar",
-    "index": 100,
+    "index": 128,
     "titleDevanagari": "देव जगावत यशोदा रानी",
     "author": "श्री परमानन्ददास जी",
     "slug": "दव-जगवत-यशद-रन",
@@ -2372,14 +3095,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 100
   },
   {
     "id": "vrindavan-kyon-na-bhaye-ham-mor",
     "collectionId": "paramanand-sagar",
-    "index": 101,
+    "index": 129,
     "titleDevanagari": "वृंदावन क्यों न भये हम मोर।",
     "author": "श्री परमानन्ददास जी",
     "slug": "vrindavan-kyon-na-bhaye-ham-mor",
@@ -2397,14 +3120,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 101
   },
   {
     "id": "yah-tan-naval-kunwar-par-varon-shri-parmanand-das-ji",
     "collectionId": "paramanand-sagar",
-    "index": 102,
+    "index": 130,
     "titleDevanagari": "यह तन नवल कुँवर पर वारौं - श्री परमानन्द दास जी",
     "author": "श्री परमानन्द दास जी",
     "slug": "yah-tan-naval-kunwar-par-varon-shri-parmanand-das-ji",
@@ -2421,14 +3144,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 102
   },
   {
     "id": "madan-gupal-hamare-ram",
     "collectionId": "paramanand-sagar",
-    "index": 103,
+    "index": 131,
     "titleDevanagari": "मदन गुपाल हमारे राम ।",
     "author": "श्री परमानन्ददास जी",
     "slug": "madan-gupal-hamare-ram",
@@ -2446,14 +3169,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 103
   },
   {
     "id": "आज-दवर-मगल-चर",
     "collectionId": "paramanand-sagar",
-    "index": 104,
+    "index": 132,
     "titleDevanagari": "आज दिवारी मंगल चार",
     "author": "श्री परमानन्ददास जी",
     "slug": "आज-दवर-मगल-चर",
@@ -2468,14 +3191,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 104
   },
   {
     "id": "godhan-puje-godhan-gave",
     "collectionId": "paramanand-sagar",
-    "index": 105,
+    "index": 133,
     "titleDevanagari": "गोधन पूजें गोधन गावें ।",
     "author": "श्री परमानन्ददास जी",
     "slug": "godhan-puje-godhan-gave",
@@ -2493,14 +3216,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 105
   },
   {
     "id": "padam-dharyo-jan-taap-nivaran",
     "collectionId": "paramanand-sagar",
-    "index": 106,
+    "index": 134,
     "titleDevanagari": "पद्म धर्यो जन ताप निवारण।",
     "author": "श्री परमानन्ददास जी",
     "slug": "padam-dharyo-jan-taap-nivaran",
@@ -2518,14 +3241,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 106
   },
   {
     "id": "gopi-prem-ki-dhuja",
     "collectionId": "paramanand-sagar",
-    "index": 107,
+    "index": 135,
     "titleDevanagari": "गोपी प्रेमकी धुुजा ।",
     "author": "श्री परमानन्ददास जी",
     "slug": "gopi-prem-ki-dhuja",
@@ -2543,14 +3266,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 107
   },
   {
     "id": "braj-mein-hot-kulahal-bhaari",
     "collectionId": "paramanand-sagar",
-    "index": 108,
+    "index": 136,
     "titleDevanagari": "ब्रज में होत कुलाहल भारी",
     "author": "श्री परमानन्ददास जी",
     "slug": "braj-mein-hot-kulahal-bhaari",
@@ -2566,14 +3289,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 108
   },
   {
     "id": "yaha-lo-naik-chalo-nandrani-ju",
     "collectionId": "paramanand-sagar",
-    "index": 109,
+    "index": 137,
     "titleDevanagari": "यहां लो नेक चलौ नन्दरानी जू।",
     "author": "श्री परमानन्ददास जी",
     "slug": "yaha-lo-naik-chalo-nandrani-ju",
@@ -2591,14 +3314,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 109
   },
   {
     "id": "braj-vanita-madhya-rasik-radhika-bani-sharad-ki-rati-ho",
     "collectionId": "paramanand-sagar",
-    "index": 110,
+    "index": 138,
     "titleDevanagari": "ब्रज वनिता मध्य रसिक राधिका बनी शरद की राति हो ।",
     "author": "श्री परमानन्ददास जी",
     "slug": "braj-vanita-madhya-rasik-radhika-bani-sharad-ki-rati-ho",
@@ -2616,14 +3339,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 110
   },
   {
     "id": "hamaro-dev-goverdhan-rano",
     "collectionId": "paramanand-sagar",
-    "index": 111,
+    "index": 139,
     "titleDevanagari": "हमारो देव गोवर्धन रानो।",
     "author": "श्री परमानन्ददास जी",
     "slug": "hamaro-dev-goverdhan-rano",
@@ -2641,14 +3364,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 111
   },
   {
     "id": "radha-pyari-baat-suno-ik-mori",
     "collectionId": "paramanand-sagar",
-    "index": 112,
+    "index": 140,
     "titleDevanagari": "राधा प्यारी बात सुनो इक मोरी",
     "author": "श्री परमानन्ददास जी",
     "slug": "radha-pyari-baat-suno-ik-mori",
@@ -2664,14 +3387,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 112
   },
   {
     "id": "अर-इन-मरन-क-भत-दख-नचत-गपल",
     "collectionId": "paramanand-sagar",
-    "index": 113,
+    "index": 141,
     "titleDevanagari": "अरी इन मोरन की भांत देख नाचत गोपाला",
     "author": "श्री परमानन्ददास जी",
     "slug": "अर-इन-मरन-क-भत-दख-नचत-गपल",
@@ -2690,14 +3413,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 113
   },
   {
     "id": "aisi-dhupan-mein-piya-jane-na-deungi",
     "collectionId": "paramanand-sagar",
-    "index": 114,
+    "index": 142,
     "titleDevanagari": "ऐसी धुपन में पिय जाने न देउँगी।",
     "author": "श्री परमानन्ददास जी",
     "slug": "aisi-dhupan-mein-piya-jane-na-deungi",
@@ -2713,14 +3436,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 114
   },
   {
     "id": "pragat-bhaye-hai-ram-maai",
     "collectionId": "paramanand-sagar",
-    "index": 115,
+    "index": 143,
     "titleDevanagari": "प्रगट भए है राम माई।",
     "author": "श्री परमानन्ददास जी",
     "slug": "pragat-bhaye-hai-ram-maai",
@@ -2738,37 +3461,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 115
   },
   {
-    "id": "braj-ke-shvapach-bade-badabhagi-shri-parmanand-das-ji-parmanand-sagar",
-    "collectionId": "paramanand-sagar",
-    "index": 116,
-    "titleDevanagari": "ब्रज के श्वपच बड़े बड़भागी - श्री परमानन्द दास, परमानंद सागर",
-    "author": "श्री परमानन्द दास",
-    "slug": "braj-ke-shvapach-bade-badabhagi-shri-parmanand-das-ji-parmanand-sagar",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "ब्रज के श्वपच बड़े बड़भागी।",
-          "जा रजकों ब्रह्मादिक तरसें सो इन अंगन लागी॥ [1]",
-          "महाप्रसाद नित्यप्रति पावत तातें अति अनुरागी।",
-          "परमानन्द कहाँ लौं वरनौं प्रेमभक्ति रसपागी॥ [2]",
-          "- श्री परमानन्द दास, परमानंद सागर"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 116
-  },
-  {
     "id": "धन-धन-लड़ल-क-चरन",
     "collectionId": "paramanand-sagar",
-    "index": 117,
+    "index": 144,
     "titleDevanagari": "धनि धनि लाड़ली के चरन",
     "author": "श्री परमानन्ददास जी",
     "slug": "धन-धन-लड़ल-क-चरन",
@@ -2785,14 +3485,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 117
   },
   {
     "id": "heri-hai-bhaiya-ho-gopi-ho-gwal-ho",
     "collectionId": "paramanand-sagar",
-    "index": 118,
+    "index": 145,
     "titleDevanagari": "हेरी है भैया हो गोपी हो ग्वाल हो,",
     "author": "श्री परमानन्ददास जी",
     "slug": "heri-hai-bhaiya-ho-gopi-ho-gwal-ho",
@@ -2834,14 +3534,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 118
   },
   {
     "id": "chali-radha-tokau-syam-bulavai",
     "collectionId": "paramanand-sagar",
-    "index": 119,
+    "index": 146,
     "titleDevanagari": "चलि राधा! तोकौं स्याम बुलावै",
     "author": "श्री परमानन्ददास जी",
     "slug": "chali-radha-tokau-syam-bulavai",
@@ -2859,14 +3559,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 119
   },
   {
     "id": "मगल-दवस-छट-क-आय",
     "collectionId": "paramanand-sagar",
-    "index": 120,
+    "index": 147,
     "titleDevanagari": "मंगल दिवस छटी को आयो।",
     "author": "श्री परमानन्ददास जी",
     "slug": "मगल-दवस-छट-क-आय",
@@ -2881,14 +3581,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 120
   },
   {
     "id": "गवद-लडल-लडबर",
     "collectionId": "paramanand-sagar",
-    "index": 121,
+    "index": 148,
     "titleDevanagari": "गोविंद लाडिलो लडबोरा",
     "author": "श्री परमानन्ददास जी",
     "slug": "गवद-लडल-लडबर",
@@ -2905,14 +3605,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 121
   },
   {
     "id": "आज-ललन-क-हत-सगई",
     "collectionId": "paramanand-sagar",
-    "index": 122,
+    "index": 149,
     "titleDevanagari": "आज ललन की होत सगाई ।",
     "author": "श्री परमानन्ददास जी",
     "slug": "आज-ललन-क-हत-सगई",
@@ -2935,14 +3635,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 122
   },
   {
     "id": "sohat-lal-lakuti-kar-rati",
     "collectionId": "paramanand-sagar",
-    "index": 123,
+    "index": 150,
     "titleDevanagari": "सोहत लाल लकुटी कर राती l",
     "author": "श्री परमानन्ददास जी",
     "slug": "sohat-lal-lakuti-kar-rati",
@@ -2960,708 +3660,8 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 123
-  },
-  {
-    "id": "sakhi-mero-agam-ko-dina-ayo-shri-parmanand-das-parmanand-sagar-223",
-    "collectionId": "paramanand-sagar",
-    "index": 124,
-    "titleDevanagari": "सखी मेरो आगम को दिन आयो - श्री परमानन्द दास, परमानन्द सागर (223)",
-    "author": "श्री परमानन्द दास",
-    "slug": "sakhi-mero-agam-ko-dina-ayo-shri-parmanand-das-parmanand-sagar-223",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "सखी मेरो आगम को दिन आयो।",
-          "ग्रीष्म तपत गयो मेरी सजनी बदरन छायौ॥ [1]",
-          "मेरे पिय आये है अबही नेह नीर भर आयौ।",
-          "परमानन्द स्वामी रतिनायक सुरत हिंडोरे झुलायो॥ [2]",
-          "- श्री परमानन्द दास, परमानन्द सागर (223)"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 223
-  },
-  {
-    "id": "aarati-yugal-kishor-ki-shri-parmanand-das-ji",
-    "collectionId": "paramanand-sagar",
-    "index": 125,
-    "titleDevanagari": "आरती युगल किशोर की - श्री परमानन्द दास, परमानंद सागर (380)",
-    "author": "श्री परमानन्द दास",
-    "slug": "aarati-yugal-kishor-ki-shri-parmanand-das-ji",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "(राग गोरी)",
-          "आरती युगल किशोर की कीजै।",
-          "तन मन धन न्योछावर दीजै॥[1]",
-          "गौर श्याम मुख निरखत जीजै।",
-          "प्रेम स्वरूप नयन भर पीजै॥ [2]",
-          "रवि शशि कोटि वदन की शोभा।",
-          "ताहि देखत मेरौ मन लोभा॥ [3]",
-          "नंद नंदन वृषभानु किशोरी।",
-          "परमानन्द प्रभु अविचल जोरी॥ [4]",
-          "- श्री परमानन्द दास, परमानंद सागर (380)"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 380
-  },
-  {
-    "id": "jabate-priti-shyam-son-shri-parmanand-das-ji",
-    "collectionId": "paramanand-sagar",
-    "index": 126,
-    "titleDevanagari": "जबते प्रीति श्याम सों - श्री परमानन्द दास, परमानंद सागर (417)",
-    "author": "श्री परमानन्द दास",
-    "slug": "jabate-priti-shyam-son-shri-parmanand-das-ji",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "(राग सारंग)",
-          "जबते प्रीति श्याम सों कीनी।",
-          "तादिन ते मेरे इन नैंननि ने नेकहु नींद न लीनी॥ [1]",
-          "सदा रहत चित चाक चढ्यो सो और कछु न सुहाय।",
-          "मन में रहे उपाय मिलन को इहै विचारत जाय॥ [2]",
-          "परमानंद पीर प्रेम की काहु सों नहीं कहिये।",
-          "जैसे बिथा मूक बालक की अपने तन मन सहिये॥ [3]",
-          "- श्री परमानन्द दास, परमानंद सागर (417)"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 417
-  },
-  {
-    "id": "mero-man-babrau-bhayo-shri-parmanand-das-ji-parmanand-sagar",
-    "collectionId": "paramanand-sagar",
-    "index": 127,
-    "titleDevanagari": "मेरौ मन बाबरौ भयौ - श्री परमानन्द दास, परमानंद सागर (430)",
-    "author": "श्री परमानन्द दास",
-    "slug": "mero-man-babrau-bhayo-shri-parmanand-das-ji-parmanand-sagar",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "(राग धनाश्री व सारंग)",
-          "मेरौ मन बाबरौ भयौ।",
-          "लरका एक इहाँ हुतो ठाड़ो ताही के संग गयो॥ [1]",
-          "जानों नहीं कोन को ढोटा चित्र विचित्र ठयौ।",
-          "पीतांबर छबि निरख हर्यो मन पढ़ कछु मोहि दयौ॥ [2]",
-          "ग्वालिनी एक पाहुनी आई ताकी यह गति कीनी।",
-          "परमानन्द प्रभु हसत सेन दे प्रेम पागि गहि लीनी॥ [3]",
-          "- श्री परमानंद दास जी, परमानंद सागर (430)"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 430
-  },
-  {
-    "id": "preeti-tau-ekahin-thaur-bhali-shri-parmanand-das-ji-parmanand-sagar",
-    "collectionId": "paramanand-sagar",
-    "index": 128,
-    "titleDevanagari": "प्रीति तौ एकहिं ठौर भली -  श्री परमानन्द दास, परमानंद सागर (455)",
-    "author": "श्री परमानन्द दास",
-    "slug": "preeti-tau-ekahin-thaur-bhali-shri-parmanand-das-ji-parmanand-sagar",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "(राग कल्याण व गौरी)",
-          "प्रीति तौ एकहिं ठौर भली।",
-          "यह जु कहा मति चरन कमल तजि फिरे जु चली चली॥[1]",
-          "ते जानै जे सब विधि नागर सार सार गहि लोग।",
-          "पायौ स्वाद मधुप रस लोभी स्याम धाम संयोग॥ [2]",
-          "‘परमानंददास' गुन सुंदर नारदादि मुनि ग्यानी।",
-          "सदा विचार विषय रस त्यागी जसु गावत मधु बानी॥ [3]",
-          "- श्री परमानन्द दास जी, परमानंद सागर (455)"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 455
-  },
-  {
-    "id": "anand-sindhu-badhyau-hari-tan-mein-shri-parmanand-das-ji-parmanand-sagar",
-    "collectionId": "paramanand-sagar",
-    "index": 129,
-    "titleDevanagari": "आनंद सिंधु बढ्यौ हरि तन में -  श्री परमानन्द दास, परमानंद सागर (551)",
-    "author": "श्री परमानन्द दास",
-    "slug": "anand-sindhu-badhyau-hari-tan-mein-shri-parmanand-das-ji-parmanand-sagar",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "(राग गौरी)",
-          "आनंद सिंधु बढ्यौ हरि तन में।",
-          "श्रीराधा मुख पूरण शशि निरखत उमगि चल्यौ ब्रज वृंदावन में॥ [1]",
-          "इत रोक्यौ यमुना उत गोपिन कछु एक फैल पर्यौ त्रिभुवन में।",
-          "ना परसौ कर्मठ और ज्ञानी अटक रह्यौ रसिकन के मन में॥ [2]",
-          "मंद मंद अवगाहत बुद्धि बल भक्त हेत लीला छिन-छिन में।",
-          "कछु एक लह्यौ नंदसुवन कृपा ते सो देखियत परमानंद जन में॥ [3]",
-          "- श्री परमानन्द दास जी, परमानंद सागर (551)"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 551
-  },
-  {
-    "id": "girdhar-sabhi-ang-ko-banko-shri-parmanand-das-ji",
-    "collectionId": "paramanand-sagar",
-    "index": 130,
-    "titleDevanagari": "गिरधर सबही अंग को बाँको - श्री परमानन्द दास, परमानंद सागर (554)",
-    "author": "श्री परमानन्द दास",
-    "slug": "girdhar-sabhi-ang-ko-banko-shri-parmanand-das-ji",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "(राग गौरी व कल्याण)",
-          "गिरधर सबही अंग को बाँको,",
-          "बाँकी चाल चलत गोकुल में छैल छबीलो काको [1]",
-          "बाँकी भौंह चरन गति बाँकी बाँको हृदय है ताको,",
-          "परमानन्द दास को ठाकुर कियो खोर ब्रज सांको [2]",
-          "- श्री परमानन्द दास, परमानंद सागर (554)"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 554
-  },
-  {
-    "id": "dhan-dhan-radhika-ke-charan-shri-parmanand-das-ji",
-    "collectionId": "paramanand-sagar",
-    "index": 131,
-    "titleDevanagari": "धन धन राधिका के चरन - श्री परमानन्द दास, परमानंद सागर (581)",
-    "author": "श्री परमानन्द दास",
-    "slug": "dhan-dhan-radhika-ke-charan-shri-parmanand-das-ji",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "(राग विहाग व गौरी)",
-          "धन धन राधिका के चरन।",
-          "सुभग शीतल अतिसे कोमल कमल के से वरन॥",
-          "नख चन्द्रिका अनूप राजत विविध शोभा वरन।",
-          "कुन्नित नूपुर कुँज विहरत परम कौतुक करन॥",
-          "नन्द सुत मन मोद कारी, विरह सागर तरन।",
-          "दास परमानन्द छिन-छिन श्याम जाकी शरन॥",
-          "- श्री परमानन्द दास, परमानंद सागर (581)"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 581
-  },
-  {
-    "id": "sahaj-preeti-gopalai-bhave-shri-parmanand-das-parmanand-sagar-605",
-    "collectionId": "paramanand-sagar",
-    "index": 132,
-    "titleDevanagari": "सहज प्रीति गोपालै भावे - श्री परमानन्द दास जी, परमानंद सागर (605)",
-    "author": "श्री परमानन्द दास जी",
-    "slug": "sahaj-preeti-gopalai-bhave-shri-parmanand-das-parmanand-sagar-605",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "(राग बसंत)",
-          "सहज प्रीति गोपालै भावे।",
-          "मुख देखें सुख होय सखीरी, प्रीतम नैन सों नैन मिलावे॥[1]",
-          "सहज प्रीति कमल और भानें, सहज प्रीति कुमोदनी और चंदे।",
-          "सहज प्रीति कोकिला बसंते, सहज प्रीति राधा नंदनंदे॥ [2]",
-          "सहज प्रीति चात्रक और स्वांते, सहज प्रीति धरनी जल धारे।",
-          "मन क्रम बचन ‘दास परमानंद', सहज प्रीति कृष्ण अवतारे॥ [3]",
-          "- श्री परमानन्द दास जी, परमानंद सागर (605)"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 605
-  },
-  {
-    "id": "saanchi-preeti-bhayi-ik-thaur-shri-parmanand-das-ji",
-    "collectionId": "paramanand-sagar",
-    "index": 133,
-    "titleDevanagari": "साँची प्रीति भई इक ठौर - श्री परमानन्द दास, परमानंद सागर (794)",
-    "author": "श्री परमानन्द दास",
-    "slug": "saanchi-preeti-bhayi-ik-thaur-shri-parmanand-das-ji",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "(राग सारंग)",
-          "साँची प्रीति भई इक ठौर।",
-          "मृगनयनी कमल दल लोचन, लाल श्याम राधा तन गौर॥",
-          "इत सिर सोहत पाट की डोरी, हरि सिर रुचिर चन्द्रिका मोर।",
-          "यह रसिकनी वे रसिक शिरोमणि, यह ग्वालिन वे माखन चोर॥",
-          "यह करनी वे गजवर नायक, यह मालिनी वे भोगी भोंर।",
-          "परमानन्द नन्द नन्दन की, राधासी प्यारी नहीं और॥",
-          "- श्री परमानन्द दास, परमानंद सागर (794)"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 794
-  },
-  {
-    "id": "aaj-bane-sakhi-nandkumar-shri-parmanand-das",
-    "collectionId": "paramanand-sagar",
-    "index": 134,
-    "titleDevanagari": "आज बने सखि नंदकुमार - श्री परमानन्द दास, परमानंद सागर (795)",
-    "author": "श्री परमानन्द दास",
-    "slug": "aaj-bane-sakhi-nandkumar-shri-parmanand-das",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "(राग कान्हरौ व यमन)",
-          "आज बने सखि नंदकुमार।",
-          "वाम भाग वृषभान नंदिनी ललितादिक गावे सिंहद्वार॥ [1]",
-          "कंचन थार लियेजु कमल कर मुक्ता फल फूलन के हार।",
-          "रोरी को सिर तिलक विराजत करत आरती हरस अपार॥ [2]",
-          "यह जोरी अविचल श्रीवृन्दावन असीस देत सकल व्रजनार।",
-          "कुँजमहल में राजत दोऊ परमानन्द दास बलिहार॥ [3]",
-          "- श्री परमानन्द दास, परमानंद सागर (795)"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 795
-  },
-  {
-    "id": "alakladi-mohan-ki-jori-shri-parmanand-das-ji-parmanand-sagar",
-    "collectionId": "paramanand-sagar",
-    "index": 135,
-    "titleDevanagari": "अलकलड़ी मोहन की जोरी - श्री परमानन्द दास, परमानंद सागर (800)",
-    "author": "श्री परमानन्द दास",
-    "slug": "alakladi-mohan-ki-jori-shri-parmanand-das-ji-parmanand-sagar",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "(राग सारंग)",
-          "अलकलड़ी मोहन की जोरी।",
-          "वे रस पुंज नंद जू की जीवनि यह दुलहिन वृषभानु किसोरी॥ [1]",
-          "वे कुंचित कच मधुप बिसेखित यह सुवेस ग्रथित सिर डोरी।",
-          "वे अंबुज मुख यह बिधु बदनी वे कोमल कर उरज कठोरी॥ [2]",
-          "वे गज मत्त प्रबल ब्रज नायक यह सारंग रिपु कृस कटि थोरी।",
-          "वे ब्रन्दाबन ससि 'परमानंद' अहनिसि नागरि नैन चकोरी॥ [3]",
-          "- श्री परमानन्द दास, परमानंद सागर (800)"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 800
-  },
-  {
-    "id": "kunj-mahal-mein-paude-dou-shri-parmanand-das-ji",
-    "collectionId": "paramanand-sagar",
-    "index": 136,
-    "titleDevanagari": "कुञ्ज महल में पौड़े दोउ - श्री परमानन्द दास, परमानंद सागर (819)",
-    "author": "श्री परमानन्द दास",
-    "slug": "kunj-mahal-mein-paude-dou-shri-parmanand-das-ji",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "(राग केदारौ)",
-          "कुञ्ज महल में पौड़े दोउ। [1]",
-          "नन्द नंदनंदन वृषभानु नंदिनी उपमा कौं दूजौ नहिं कोऊ॥ [2]",
-          "नाना कुसुम की सेज रची है, कोक कला जानत हैं सोऊ। [3]",
-          "रसिक मुकुट मणि रंग में भीनें \"परमानन्द\" तहाँ द्वारें होउ॥ [4]",
-          "- श्री परमानन्द दास, परमानंद सागर (819)"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 819
-  },
-  {
-    "id": "aawati-aanand-kand-dulari-shri-parmanand-das-ji-parmanand-sagar",
-    "collectionId": "paramanand-sagar",
-    "index": 137,
-    "titleDevanagari": "आवति आनंद कंद दुलारी - श्री परमानन्द दास, परमानंद सागर (825)",
-    "author": "श्री परमानन्द दास",
-    "slug": "aawati-aanand-kand-dulari-shri-parmanand-das-ji-parmanand-sagar",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "(राग सारंग)",
-          "आवति आनंद कंद दुलारी।",
-          "विधु बदनी मृग नयनी राधा दामोदर की प्यारी॥ [1]",
-          "जाके रूप कहत नहिं आवैं गुन विचित्र सुकुमारी।",
-          "मानो कछू पर्यौ धन आखरि विधना रच्यो संवारी॥ [2]",
-          "प्रीति परस्पर ग्रंथि न छूटे ब्रजजन रहे बिचारी।",
-          "परमानंददास बलिहारी मानो साँचे ढारी॥ [3]",
-          "- श्री परमानन्द दास, परमानंद सागर (825)"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 825
-  },
-  {
-    "id": "banha-dulavati-aavti-radha-shri-parmanand-das-parmanand-sagar-826",
-    "collectionId": "paramanand-sagar",
-    "index": 138,
-    "titleDevanagari": "बाँह डुलावति आवति राधा - श्री परमानन्द दास जी, परमानंद सागर (826)",
-    "author": "श्री परमानन्द दास जी",
-    "slug": "banha-dulavati-aavti-radha-shri-parmanand-das-parmanand-sagar-826",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "(राग सारंग)",
-          "बाँह डुलावति आवति राधा।",
-          "बदन-कमल झंपति न उघारति, रह्यौ है तिलक मिटि आधा॥ [1]",
-          "गिरिधरलाल कुँवर नंदनंदन, तैं जु प्रेम करि लाधा।",
-          "रहसि मिली प्रान-प्यारे कौं, रही न एकौ साधा॥ [2]",
-          "काजर अधर मिल्यौ नैननि कौ, मिटी काम की बाधा।",
-          "'परमानंद' स्वामी रति-नागर, तेरौ पुन्य अगाधा॥ [3]",
-          "- श्री परमानन्द दास जी, परमानंद सागर (826)"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 826
-  },
-  {
-    "id": "baah-dulabati-aavati-radha-shri-parmanand-das-ji-parmanand-sagar-826",
-    "collectionId": "paramanand-sagar",
-    "index": 139,
-    "titleDevanagari": "बाँह डुलाबति आवति राधा -  श्री परमानन्द दास, परमानंद सागर (826)",
-    "author": "श्री परमानन्द दास",
-    "slug": "baah-dulabati-aavati-radha-shri-parmanand-das-ji-parmanand-sagar-826",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "(राग सारंग)",
-          "बाँह डुलाबति आवति राधा।",
-          "बदन कमल झँपति न उघारति रह्यौ है तिलक मिटि आधा॥ [1]",
-          "गिरिधर लाल कुंवर नंदनंदनतैं जु प्रेम करि लाधा।",
-          "रहसि मिली प्राण प्यारे कौं रही न एकौ साधा॥ [2]",
-          "कारज अधर मिल्यौ नैननि कौं मिटी काम की बाधा।",
-          "‘परमानंद' स्वामी रति नागर तेरौ पुन्य अगाधा॥ [3]",
-          "- श्री परमानन्द दास जी, परमानंद सागर (826)"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 826
-  },
-  {
-    "id": "kaun-rasik-hai-in-batan-kau-shri-parmanand-das-ji-parmanand-sagar",
-    "collectionId": "paramanand-sagar",
-    "index": 140,
-    "titleDevanagari": "कौन रसिक है इन बातनि कौ -  श्री परमानन्द दास, परमानंद सागर (1001)",
-    "author": "श्री परमानन्द दास",
-    "slug": "kaun-rasik-hai-in-batan-kau-shri-parmanand-das-ji-parmanand-sagar",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "(राग कान्हरो)",
-          "कौन रसिक है इन बातनि कौ।",
-          "नंदनंदन बिनु कासों कहिए",
-          "सुनिरी सखी मेरे दुःख या तन कौ॥ [1]",
-          "कहाँ वह जमुना पुलिन मनोहर",
-          "कहाँ वह चंद सरद-रातनि कौ॥ [2]",
-          "कहाँ वह सेज पौढिबौ बन कौ",
-          "फूल बिछौना मृदु पातनि कौ। [3]",
-          "कहाँ वह मंद-सुगंध अनिल-रस",
-          "कहाँ वह षटपद जल-जातनि कौ। [4]",
-          "कहाँ वह दरस परस 'परमानंद'",
-          "कमलनैन कोमल गातनि कौ॥ [5]",
-          "- श्री परमानन्द दास, परमानंद सागर (1001)"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 1001
-  },
-  {
-    "id": "khelat-madan-gopal-basant-shri-parmanand-das-ji-parmanand-sagar-1165",
-    "collectionId": "paramanand-sagar",
-    "index": 141,
-    "titleDevanagari": "खेलत मदन गोपाल बंसत -  श्री परमानन्द दास, परमानंद सागर (1165)",
-    "author": "श्री परमानन्द दास",
-    "slug": "khelat-madan-gopal-basant-shri-parmanand-das-ji-parmanand-sagar-1165",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "(राग बसंत)",
-          "खेलत मदन गोपाल बंसत।",
-          "नागरि नवल रसिक-चूडामनि, सब बिधि रसिक राधिका कंत॥ [1]",
-          "नैन-नैन-प्रति चारु बिलोकनि, बदन-बदन-प्रति सुंदर हास।",
-          "अंग-अंग प्रति प्रीति निरंतर, रितु आगम निसि करहिं विलास॥ [2]",
-          "बाजत ताल मृदंग अधौटी, डफ बाँसुरी कोलाहल केलि।",
-          "'परमानंद' स्वामी के संगम, मिलि नाचत-गावत रँग-केलि॥ [3]",
-          "- श्री परमानन्द दास जी, परमानंद सागर (1165)"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 1165
-  },
-  {
-    "id": "chali-radha-tokau-syam-bulavai-shri-parmanand-das-parmanand-sagar-1194",
-    "collectionId": "paramanand-sagar",
-    "index": 142,
-    "titleDevanagari": "चलि राधा! तोकौं स्याम बुलावै - श्री परमानन्द दास जी, परमानंद सागर (1194)",
-    "author": "श्री परमानन्द दास जी",
-    "slug": "chali-radha-tokau-syam-bulavai-shri-parmanand-das-parmanand-sagar-1194",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "(राग बसंत)",
-          "चलि राधा! तोकौं स्याम बुलावै।",
-          "उहै देखि बैनु मधुरे धुनि, तेरौ नामहिं लै लै गावै॥ [1]",
-          "देखौ वृन्दावन की सोभा, ठौर ठौर द्रुम फूलें।",
-          "कोकिल नाद सुनत मन आनन्द, भँवर भ्रमत रस-झूलें॥ [2]",
-          "उन्मद जोवन मदन कुलाहल, यह औसर है नीकौ।",
-          "‘परमानन्द’ प्रभु प्रथम समागम, मिलयौ भावतौ जीकौ॥ [3]",
-          "- श्री परमानन्द दास जी, परमानंद सागर (1194)"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 1194
-  },
-  {
-    "id": "preeti-to-nandanan-son-kijai-shri-parmanand-das-ji-parmanand-sagar",
-    "collectionId": "paramanand-sagar",
-    "index": 143,
-    "titleDevanagari": "प्रीति तो नंदनंदन सों कीजै -  श्री परमानन्द दास, परमानंद सागर (1302)",
-    "author": "श्री परमानन्द दास",
-    "slug": "preeti-to-nandanan-son-kijai-shri-parmanand-das-ji-parmanand-sagar",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "(राग आसावरी)",
-          "प्रीति तो नंदनंदन सों कीजै।",
-          "संपति विपति परे प्रतिपाले, कृपा करें तो जीजे॥ [1]",
-          "परम उदार चतुर चिंतामणि, सेवा सुमिरन मानें।",
-          "हस्त कमल की छाया राखत, अंतरगति की जानें॥ [2]",
-          "वेद पुरान श्री भागवत भाखे, कियो भक्तन मन भायो।",
-          "परमानन्द! इंद्र सो वैभव, विप्र सुदामा पायो॥ [3]",
-          "- श्री परमानन्द दास जी, परमानंद सागर (1302)"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 1302
-  },
-  {
-    "id": "tan-man-naval-jugal-par-varaun-shri-parmanand-das-ji-parmanand-sagar",
-    "collectionId": "paramanand-sagar",
-    "index": 144,
-    "titleDevanagari": "तन मन नवल जुगल पर वारौं - श्री परमानन्द दास, परमानंद सागर (1346)",
-    "author": "श्री परमानन्द दास",
-    "slug": "tan-man-naval-jugal-par-varaun-shri-parmanand-das-ji-parmanand-sagar",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "(राग धनाश्री)",
-          "तन मन नवल जुगल पर वारौं।",
-          "कुंज रंध्र गौर स्याम छबि बारंबार निहारौं॥ [1]",
-          "अपनी टहल कृपा करि दीजे ता संग जीव उबारौं।",
-          "'परमानंद' जु लाभ भजन बिन काज सबै लै जारों॥ [2]",
-          "- श्री परमानन्द दास, परमानंद सागर (1346)"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 1346
-  },
-  {
-    "id": "yah-mangon-gopijanballabh-shri-parmanand-das-parmanand-sagar-1350",
-    "collectionId": "paramanand-sagar",
-    "index": 145,
-    "titleDevanagari": "यह माँगों गोपी-जन-बल्लभ - श्री परमानन्द दास जी, परमानंद सागर (1350)",
-    "author": "श्री परमानन्द दास जी",
-    "slug": "yah-mangon-gopijanballabh-shri-parmanand-das-parmanand-sagar-1350",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "(राग कान्हरौ)",
-          "यह माँगों गोपी-जन-बल्लभ।",
-          "मानुस-जनम और हरि-सेवा, ब्रज-बसिबौ दीजै मोहि सुल्लभ॥ [1]",
-          "श्रीबल्लभ-कुल कौ हौं चेरौ, बैष्णवजन कौ दास कहाऊँ।",
-          "श्रीजमुना-जल नित-प्रति न्हाऊँ, मन-बच-कर्म कृष्ण-गुन गाऊँ॥ [2]",
-          "श्रीमद्भागवत स्रवन सुनौ नित, इन तजि चित कहुँ अनत न लाऊँ।",
-          "'परमानंद' इहि माँगत नित-नित, निरखौं हौं कबहूँ न अघाऊँ॥ [3]",
-          "- श्री परमानन्द दास जी, परमानंद सागर (1350)"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 1350
-  },
-  {
-    "id": "jo-jan-hirdai-naam-dharai-shri-parmanand-das-ji-parmanand-sagar",
-    "collectionId": "paramanand-sagar",
-    "index": 146,
-    "titleDevanagari": "जो जन हिरदै नाम धरै - श्री परमानन्द दास, परमानंद सागर (1359)",
-    "author": "श्री परमानन्द दास",
-    "slug": "jo-jan-hirdai-naam-dharai-shri-parmanand-das-ji-parmanand-sagar",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "(राग धनाश्री व सारंग)",
-          "जो जन हिरदै नाम धरै।",
-          "अष्ट सिद्धि नव निधि को बपुरी लटकत लारि फिरै॥ [1]",
-          "ब्रह्मलोक इंद्र लोक सिवलोक सबहू तै ऊपरै।",
-          "जो न पत्याऊं तौ चितवौ ध्रुव तन टारयौ हू न टरै॥ [2]",
-          "सुंदर स्याम कमल दल लोचन सब दुख दूरि करै।",
-          "'परमानंददास' कौ ठाकुर वाचा ते न टरै॥ [3]",
-          "- श्री परमानन्द दास, परमानंद सागर (1359)"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 1359
-  },
-  {
-    "id": "vrajvasi-jane-ras-reeti-shri-parmanand-das-ji",
-    "collectionId": "paramanand-sagar",
-    "index": 147,
-    "titleDevanagari": "व्रजवासी जाने रस रीति - श्री परमानन्द दास, परमानंद सागर (1368)",
-    "author": "श्री परमानन्द दास",
-    "slug": "vrajvasi-jane-ras-reeti-shri-parmanand-das-ji",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "(राग गौरी व सारंग)",
-          "व्रजवासी जाने रस रीति।",
-          "जिनके हृदय और नहीं भावत नंदसुवन पद प्रीति॥ [1]",
-          "सर्व भाव सर्वात्म निवेदन रहत हैं त्रिगुणातीत।",
-          "करत महल में टहल निरंतर जात याम युग बीत॥ [2]",
-          "जिनकी गति और नहीं जाने बिच जवनिका भीति।",
-          "कोई एक लहै दास परमानंद गुरु प्रसाद प्रतीति॥ [3]",
-          "- श्री परमानन्द दास, परमानंद सागर (1368)"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 1368
-  },
-  {
-    "id": "dhani-dhani-brindavan-ke-vaasi-shri-parmanand-das",
-    "collectionId": "paramanand-sagar",
-    "index": 148,
-    "titleDevanagari": "धनि धनि बृंदावन के वासी - श्री परमानन्द दास, परमानंद सागर (1372)",
-    "author": "श्री परमानन्द दास",
-    "slug": "dhani-dhani-brindavan-ke-vaasi-shri-parmanand-das",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "(राग धनाश्री व सारंग)",
-          "धनि धनि बृंदावन के वासी।",
-          "नित प्रति चरन कमल अनुरागी, स्यामा स्याम उपासी॥ [1]",
-          "या रस को जो मरम न जानै जाय बसौ सो कासी।",
-          "भसम लगाय गरैं लिंग बाँधौ सदाइ रहौ उदासी॥ [2]",
-          "अष्ट महासिद्धि द्वारें ठाढ़ी मुकुति चरन की दासी।",
-          "'परमानंद' चरन कमल भजि सुंदर घोष निवासी॥ [3]",
-          "- श्री परमानन्द दास, परमानंद सागर (1372)"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 1372
-  },
-  {
-    "id": "lage-jo-shri-vrindavan-kau-rang-shri-parmanand-das-ji",
-    "collectionId": "paramanand-sagar",
-    "index": 149,
-    "titleDevanagari": "लगै जो श्रीवृन्दावन कौ रंग - श्री परमानन्द दास, परमानंद सागर (1374)",
-    "author": "श्री परमानन्द दास",
-    "slug": "lage-jo-shri-vrindavan-kau-rang-shri-parmanand-das-ji",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "(राग बिलावल)",
-          "लगै जो श्रीवृन्दावन कौ रंग। [1]",
-          "देह अभिमान सवै मिटि जावै अरु विषयन कौ संग॥ [2]",
-          "सखि भाव सहज होय सजनी पुरुष भाव होय भंग। [3]",
-          "श्री राधा वर सेवत सुमिरत उपजत लहर तरंग॥ [4]",
-          "मन को मैल सबै छुट जई है मन सा होए अपंग। [5]",
-          "‘परमानंद’ स्वामी गुन गावत, मिट गए कोटि अनंग॥ [6]",
-          "- श्री परमानन्द दास, परमानंद सागर (1374)"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 1374
-  },
-  {
-    "id": "vrindavan-kyon-na-bhaye-ham-mor-shri-parmanand-das-parmanand-sagar-1375",
-    "collectionId": "paramanand-sagar",
-    "index": 150,
-    "titleDevanagari": "वृंदावन क्यों न भये हम मोर - श्री परमानन्द दास जी, परमानंद सागर (1375)",
-    "author": "श्री परमानन्द दास जी",
-    "slug": "vrindavan-kyon-na-bhaye-ham-mor-shri-parmanand-das-parmanand-sagar-1375",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "(राग मलार)",
-          "वृंदावन क्यों न भये हम मोर।",
-          "करत निवास गोवर्धन ऊपर, निरखत नंदकिशोर॥ [1]",
-          "क्यों न भये बंसी कुल सजनी, अधर पीबत घनघोर।",
-          "क्यों न भये गुंजा बनवेली, रहत स्याम जु की ओर॥ [2]",
-          "क्यों न भये मकराकृत कुंडल, स्याम श्रवन झकझोर।",
-          "परमानंद दास को ठाकुर, गोपिन के चित्तचोर॥ [3]",
-          "- श्री परमानन्द दास जी, परमानंद सागर (1375)"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 1375
   }
 ]

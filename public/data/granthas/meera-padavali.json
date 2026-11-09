@@ -1,8 +1,32 @@
 [
   {
-    "id": "महर-ओलगय-घर-आय-ज",
+    "id": "mirabai-temple-vrindavan",
     "collectionId": "meera-padavali",
     "index": 1,
+    "titleDevanagari": "मीराबाई मन्दिर - वृंदावन",
+    "author": "भक्त शिरोमणि मीराबाई",
+    "slug": "mirabai-temple-vrindavan",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "मीराबाई भगवान श्री कृष्ण और उनकी खोज में साल 1524 में वृंदावन आयी थी। वह वृंदावन में 1524 से 1539 तक रही थीं। उसके बाद, उन्होंने वृंदावन छोड़ दिया और अपनी मृत्यु तक (वर्ष 1550) द्वारका में ही रही। मीराबाई भगवान श्री कृष्ण को अपने पति के रूप में मानती थीं। जबकि वृंदावन के रसिक संत, सहचरी भाव या श्री राधा रानी की सखी भाव में युगल उपसना (राधा कृष्ण एक साथ) के रूप में आदेश किये हैं जिसका रस निकुंज रस है और सर्वोत्तम है और श्री राधा रानी को वृन्दावन में रसिक संतों का जीवन माना जाता है। और द्वारिका में, श्री कृष्ण को पति के रूप में पूजा की जाता है जो वृन्दावन के रसिकों को नहीं सुहाता।",
+          "मंदिर का समय:",
+          "सवेरे 10:00 बजे - मंगला आरती",
+          "शाम  07:00 -08:00 बजे - शयन आरती",
+          "स्थान:",
+          "मीराबाई मन्दिर राधा-दामोदर मन्दिर के निकट स्थित है।"
+        ]
+      }
+    ],
+    "chapterId": "ch-वृंदावन",
+    "chapterName": "वृंदावन",
+    "verseNumber": 42
+  },
+  {
+    "id": "महर-ओलगय-घर-आय-ज",
+    "collectionId": "meera-padavali",
+    "index": 2,
     "titleDevanagari": "म्हारा ओलगिया घर आया जी",
     "author": "भक्त शिरोमणि मीराबाई",
     "slug": "महर-ओलगय-घर-आय-ज",
@@ -21,14 +45,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 1
   },
   {
     "id": "piya-bin-suno-chhai-ji-mharo-des-shri-mira-bai",
     "collectionId": "meera-padavali",
-    "index": 2,
+    "index": 3,
     "titleDevanagari": "पिय बिन सूनो छै जी म्हारो देस - श्री मीरा बाई",
     "author": "श्री मीरा बाई",
     "slug": "piya-bin-suno-chhai-ji-mharo-des-shri-mira-bai",
@@ -46,14 +70,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 2
   },
   {
     "id": "jago-banshivare-lalna-jago-more-pyare",
     "collectionId": "meera-padavali",
-    "index": 3,
+    "index": 4,
     "titleDevanagari": "जागो वंशीवारे ललना, जागो मोरे प्यारे ।",
     "author": "भक्त शिरोमणि मीराबाई",
     "slug": "jago-banshivare-lalna-jago-more-pyare",
@@ -72,14 +96,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 3
   },
   {
     "id": "main-govind-gun-gaana-shri-mirabai",
     "collectionId": "meera-padavali",
-    "index": 4,
+    "index": 5,
     "titleDevanagari": "मैं गोबिंद गुण गाणा - श्री मीराबाई",
     "author": "श्री मीराबाई",
     "slug": "main-govind-gun-gaana-shri-mirabai",
@@ -100,14 +124,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 4
   },
   {
     "id": "अब-म-सरण-तहर-ज",
     "collectionId": "meera-padavali",
-    "index": 5,
+    "index": 6,
     "titleDevanagari": "अब मैं सरण तिहारी जी,",
     "author": "भक्त शिरोमणि मीराबाई",
     "slug": "अब-म-सरण-तहर-ज",
@@ -125,14 +149,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 5
   },
   {
     "id": "hamaro-pranaam-banke-bihari-ko-shri-meerabai-ji",
     "collectionId": "meera-padavali",
-    "index": 6,
+    "index": 7,
     "titleDevanagari": "हमरो प्रणाम बांके बिहारी को - श्री मीराबाई जी",
     "author": "श्री मीराबाई जी",
     "slug": "hamaro-pranaam-banke-bihari-ko-shri-meerabai-ji",
@@ -149,14 +173,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 6
   },
   {
     "id": "कल-म-मर-नम-धरय",
     "collectionId": "meera-padavali",
-    "index": 7,
+    "index": 8,
     "titleDevanagari": "कलि में मीरा नाम धरायो",
     "author": "भक्त शिरोमणि मीराबाई",
     "slug": "कल-म-मर-नम-धरय",
@@ -180,14 +204,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 7
   },
   {
     "id": "shri-radhe-rani-de-daro-banshi-mori-shri-mirabai",
     "collectionId": "meera-padavali",
-    "index": 8,
+    "index": 9,
     "titleDevanagari": "श्रीराधे रानी दे डारो बंशी मोरी - श्री मीराबाई",
     "author": "श्री मीराबाई",
     "slug": "shri-radhe-rani-de-daro-banshi-mori-shri-mirabai",
@@ -205,14 +229,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 8
   },
   {
     "id": "achchha-lehu-brijvasi-kanhaiya-achchha-lehu-re",
     "collectionId": "meera-padavali",
-    "index": 9,
+    "index": 10,
     "titleDevanagari": "अच्छा लेहु ब्रजवासी कन्हैया अच्छा लेहु रे ॥",
     "author": "भक्त शिरोमणि मीराबाई",
     "slug": "achchha-lehu-brijvasi-kanhaiya-achchha-lehu-re",
@@ -231,14 +255,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 9
   },
   {
     "id": "tumare-kaaran-sab-sukh-chhodyo-shri-mira-ji",
     "collectionId": "meera-padavali",
-    "index": 10,
+    "index": 11,
     "titleDevanagari": "तुमरे कारण सब सुख छोड़यो - श्री मीरा जी",
     "author": "श्री मीरा जी",
     "slug": "tumare-kaaran-sab-sukh-chhodyo-shri-mira-ji",
@@ -254,14 +278,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 10
   },
   {
     "id": "aali-mhane-laage-vrindavan-niko-mirabai",
     "collectionId": "meera-padavali",
-    "index": 11,
+    "index": 12,
     "titleDevanagari": "'आली म्हाँने लागे वृन्दावन नीको' - मीराबाई",
     "author": "मीराबाई",
     "slug": "aali-mhane-laage-vrindavan-niko-mirabai",
@@ -274,14 +298,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 11
   },
   {
     "id": "य-बरज-म-कछ-दखय-र-टन",
     "collectionId": "meera-padavali",
-    "index": 12,
+    "index": 13,
     "titleDevanagari": "या ब्रज में कछु देख्यो री टोना",
     "author": "भक्त शिरोमणि मीराबाई",
     "slug": "य-बरज-म-कछ-दखय-र-टन",
@@ -301,14 +325,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 12
   },
   {
     "id": "म-त-सवर-क-रग-रच",
     "collectionId": "meera-padavali",
-    "index": 13,
+    "index": 14,
     "titleDevanagari": "मैं तो सांवरे के रंग रांची",
     "author": "भक्त शिरोमणि मीराबाई",
     "slug": "म-त-सवर-क-रग-रच",
@@ -325,14 +349,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 13
   },
   {
     "id": "य-महनक-म-रप-लभन",
     "collectionId": "meera-padavali",
-    "index": 14,
+    "index": 15,
     "titleDevanagari": "या मोहनके मैं रूप लुभानी",
     "author": "भक्त शिरोमणि मीराबाई",
     "slug": "य-महनक-म-रप-लभन",
@@ -347,14 +371,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 14
   },
   {
     "id": "man-re-parsi-hari-ke-charan",
     "collectionId": "meera-padavali",
-    "index": 15,
+    "index": 16,
     "titleDevanagari": "मन रे परसि हरि के चरण ।।",
     "author": "भक्त शिरोमणि मीराबाई",
     "slug": "man-re-parsi-hari-ke-charan",
@@ -375,14 +399,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 15
   },
   {
     "id": "mere-girdhar-gupal-dusro-na-koi",
     "collectionId": "meera-padavali",
-    "index": 16,
+    "index": 17,
     "titleDevanagari": "मेरे गिरिधर गुपाल दूसरो न कोई ।",
     "author": "भक्त शिरोमणि मीराबाई",
     "slug": "mere-girdhar-gupal-dusro-na-koi",
@@ -403,14 +427,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 16
   },
   {
     "id": "बसवर-आजय-महर-दस",
     "collectionId": "meera-padavali",
-    "index": 17,
+    "index": 18,
     "titleDevanagari": "बंसीवारा आज्यो म्हारे देस",
     "author": "भक्त शिरोमणि मीराबाई",
     "slug": "बसवर-आजय-महर-दस",
@@ -430,14 +454,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 17
   },
   {
     "id": "baso-more-nainan-mein-nandlal-mirabai",
     "collectionId": "meera-padavali",
-    "index": 18,
+    "index": 19,
     "titleDevanagari": "बसो मोरे नैनन में नंदलालबसो मोरे नैनन में नंदलाल - मीराबाई",
     "author": "मीराबाई",
     "slug": "baso-more-nainan-mein-nandlal-mirabai",
@@ -454,14 +478,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 18
   },
   {
     "id": "jo-main-aisa-jaanti-preet-kare-dukh-hoye-sri-mirabai",
     "collectionId": "meera-padavali",
-    "index": 19,
+    "index": 20,
     "titleDevanagari": "जो मैं ऐसा जानती प्रीत करे दुःख होए - श्री मीराबाई",
     "author": "श्री मीराबाई",
     "slug": "jo-main-aisa-jaanti-preet-kare-dukh-hoye-sri-mirabai",
@@ -475,14 +499,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 19
   },
   {
     "id": "रम-मलण-र-घण-उमव",
     "collectionId": "meera-padavali",
-    "index": 20,
+    "index": 21,
     "titleDevanagari": "राम मिलण रो घणो उमावो",
     "author": "भक्त शिरोमणि मीराबाई",
     "slug": "रम-मलण-र-घण-उमव",
@@ -501,14 +525,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 20
   },
   {
     "id": "sanvare-ki-drishti-mano-prem-ki-katari-hai-shri-mira-bai",
     "collectionId": "meera-padavali",
-    "index": 21,
+    "index": 22,
     "titleDevanagari": "साँवरे की दृष्टि मानो प्रेम की कटारी है - श्री मीरा बाई",
     "author": "श्री मीरा बाई",
     "slug": "sanvare-ki-drishti-mano-prem-ki-katari-hai-shri-mira-bai",
@@ -530,14 +554,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 21
   },
   {
     "id": "sanvare-di-bhalan-mayen",
     "collectionId": "meera-padavali",
-    "index": 22,
+    "index": 23,
     "titleDevanagari": "सांवरे दी भालन मायें सानूं प्रेमदी कटारियां।",
     "author": "भक्त शिरोमणि मीराबाई",
     "slug": "sanvare-di-bhalan-mayen",
@@ -554,14 +578,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 22
   },
   {
     "id": "ho-gaye-shyam-duj-ke-chanda",
     "collectionId": "meera-padavali",
-    "index": 23,
+    "index": 24,
     "titleDevanagari": "हो गये श्याम दूज के चंदा।",
     "author": "भक्त शिरोमणि मीराबाई",
     "slug": "ho-gaye-shyam-duj-ke-chanda",
@@ -576,14 +600,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 23
   },
   {
     "id": "बरस-बदरय-सवन-क-सवन-क-मनभवन-क",
     "collectionId": "meera-padavali",
-    "index": 24,
+    "index": 25,
     "titleDevanagari": "बरसै   बदरिया   सावन   की,  सावन  की   मनभावन की",
     "author": "भक्त शिरोमणि मीराबाई",
     "slug": "बरस-बदरय-सवन-क-सवन-क-मनभवन-क",
@@ -599,14 +623,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 24
   },
   {
     "id": "main-giridhar-sang-rati-gweyan",
     "collectionId": "meera-padavali",
-    "index": 25,
+    "index": 26,
     "titleDevanagari": "मैं गिरिधर सँग राती ग्वैंयां ॥",
     "author": "भक्त शिरोमणि मीराबाई",
     "slug": "main-giridhar-sang-rati-gweyan",
@@ -629,14 +653,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 25
   },
   {
     "id": "main-to-sanware-ke-rang-raanchi-shri-mirabai",
     "collectionId": "meera-padavali",
-    "index": 26,
+    "index": 27,
     "titleDevanagari": "मैं तो सांवरे के रंग रांची - श्री मीराबाई",
     "author": "श्री मीराबाई",
     "slug": "main-to-sanware-ke-rang-raanchi-shri-mirabai",
@@ -654,14 +678,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 26
   },
   {
     "id": "शररध-रन-द-डर-बश-मर",
     "collectionId": "meera-padavali",
-    "index": 27,
+    "index": 28,
     "titleDevanagari": "श्रीराधे रानी दे डारो बंशी मोरी",
     "author": "भक्त शिरोमणि मीराबाई",
     "slug": "शररध-रन-द-डर-बश-मर",
@@ -678,14 +702,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 27
   },
   {
     "id": "ya-braj-mein-kachhu-dekhyau-ri-tona-shri-mirabai",
     "collectionId": "meera-padavali",
-    "index": 28,
+    "index": 29,
     "titleDevanagari": "या ब्रज में कछु देख्यौ री टोना - श्री मीराबाई",
     "author": "श्री मीराबाई",
     "slug": "ya-braj-mein-kachhu-dekhyau-ri-tona-shri-mirabai",
@@ -707,14 +731,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 28
   },
   {
     "id": "aaye-aaye-ji-mahraj-apne-bhakt-ke-kaaj-sare",
     "collectionId": "meera-padavali",
-    "index": 29,
+    "index": 30,
     "titleDevanagari": "आये आये जी महाराज अपने भक्त के काज सारे ।",
     "author": "भक्त शिरोमणि मीराबाई",
     "slug": "aaye-aaye-ji-mahraj-apne-bhakt-ke-kaaj-sare",
@@ -730,14 +754,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 29
   },
   {
     "id": "variyan-ve-lal-variyan",
     "collectionId": "meera-padavali",
-    "index": 30,
+    "index": 31,
     "titleDevanagari": "वारियांवे लाल वारियां",
     "author": "भक्त शिरोमणि मीराबाई",
     "slug": "variyan-ve-lal-variyan",
@@ -754,14 +778,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 30
   },
   {
     "id": "kahin-dekhe-ri-van-shyama",
     "collectionId": "meera-padavali",
-    "index": 31,
+    "index": 32,
     "titleDevanagari": "कहीं देखे री वन श्यामा॥",
     "author": "भक्त शिरोमणि मीराबाई",
     "slug": "kahin-dekhe-ri-van-shyama",
@@ -782,14 +806,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 31
   },
   {
     "id": "ram-milan-ke-aaj-sakhi-mere-aarti-ur-me-jaagi-ri",
     "collectionId": "meera-padavali",
-    "index": 32,
+    "index": 33,
     "titleDevanagari": "राम मिलण के काज सखी मेरे आरति उर में जागी री।",
     "author": "भक्त शिरोमणि मीराबाई",
     "slug": "ram-milan-ke-aaj-sakhi-mere-aarti-ur-me-jaagi-ri",
@@ -808,14 +832,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 32
   },
   {
     "id": "din-nahin-bhookh-rain-nahin-nidra-shri-mirabai",
     "collectionId": "meera-padavali",
-    "index": 33,
+    "index": 34,
     "titleDevanagari": "दिन नहिं भूख, रैन नहीं निद्रा - श्री मीराबाई",
     "author": "श्री मीराबाई",
     "slug": "din-nahin-bhookh-rain-nahin-nidra-shri-mirabai",
@@ -829,14 +853,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 33
   },
   {
     "id": "rana-ji-tain-jahar-dini-main-jani",
     "collectionId": "meera-padavali",
-    "index": 34,
+    "index": 35,
     "titleDevanagari": "रानाजी तैं जहर दीनी मैं जानी।",
     "author": "भक्त शिरोमणि मीराबाई",
     "slug": "rana-ji-tain-jahar-dini-main-jani",
@@ -854,14 +878,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 34
   },
   {
     "id": "jake-priya-na-ram-badaidi-shri-tulsidas-a-letter-sent-to-mirabai",
     "collectionId": "meera-padavali",
-    "index": 35,
+    "index": 36,
     "titleDevanagari": "जाके प्रिय न राम बैदैही - श्री तुलसीदास जी (मीराबाई को भेजा पत्र)",
     "author": "श्री तुलसीदास जी (मीराबाई को भेजा पत्र)",
     "slug": "jake-priya-na-ram-badaidi-shri-tulsidas-a-letter-sent-to-mirabai",
@@ -882,14 +906,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 35
   },
   {
     "id": "ya-brij-mein-kachhu-dekhyo-ri-tona",
     "collectionId": "meera-padavali",
-    "index": 36,
+    "index": 37,
     "titleDevanagari": "या ब्रजमें कछु देख्यो री टोना ।",
     "author": "भक्त शिरोमणि मीराबाई",
     "slug": "ya-brij-mein-kachhu-dekhyo-ri-tona",
@@ -906,14 +930,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 36
   },
   {
     "id": "main-shyam-divani-mera-darad-na-jane-koy",
     "collectionId": "meera-padavali",
-    "index": 37,
+    "index": 38,
     "titleDevanagari": "मैं श्याम दिवानी मेरा दरद न जाने कोय ।",
     "author": "भक्त शिरोमणि मीराबाई",
     "slug": "main-shyam-divani-mera-darad-na-jane-koy",
@@ -929,14 +953,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 37
   },
   {
     "id": "pyari-main-aise-dekhe-shyam-bansuri-bajawat-gaavat-kalyan",
     "collectionId": "meera-padavali",
-    "index": 38,
+    "index": 39,
     "titleDevanagari": "प्यारी मै ऐसे देखे श्याम, बांसुरी बजावत गावत कल्याण।",
     "author": "भक्त शिरोमणि मीराबाई",
     "slug": "pyari-main-aise-dekhe-shyam-bansuri-bajawat-gaavat-kalyan",
@@ -955,14 +979,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 38
   },
   {
     "id": "aali-mhane-laage-vrindavan-niko",
     "collectionId": "meera-padavali",
-    "index": 39,
+    "index": 40,
     "titleDevanagari": "आली म्हाँने लागे बृन्दावन नीकौ - मीराबाई",
     "author": "मीराबाई",
     "slug": "aali-mhane-laage-vrindavan-niko",
@@ -985,14 +1009,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 39
   },
   {
     "id": "chaakar-rahsun-baag-lagaasun-nit-uth-darsan-paasun-meerabai",
     "collectionId": "meera-padavali",
-    "index": 40,
+    "index": 41,
     "titleDevanagari": "चाकर रहसूं बाग़ लगासूं, नित उठ दरसन पासूं - मीराबाई",
     "author": "मीराबाई",
     "slug": "chaakar-rahsun-baag-lagaasun-nit-uth-darsan-paasun-meerabai",
@@ -1006,14 +1030,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 40
   },
   {
     "id": "jab-te-mohi-nandnandan-drishti-paro-mai",
     "collectionId": "meera-padavali",
-    "index": 41,
+    "index": 42,
     "titleDevanagari": "जब ते मोहि नन्दनंदन दृष्टि परो माई ।",
     "author": "भक्त शिरोमणि मीराबाई",
     "slug": "jab-te-mohi-nandnandan-drishti-paro-mai",
@@ -1039,33 +1063,9 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 41
-  },
-  {
-    "id": "mirabai-temple-vrindavan",
-    "collectionId": "meera-padavali",
-    "index": 42,
-    "titleDevanagari": "मीराबाई मन्दिर - वृंदावन",
-    "author": "भक्त शिरोमणि मीराबाई",
-    "slug": "mirabai-temple-vrindavan",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "मीराबाई भगवान श्री कृष्ण और उनकी खोज में साल 1524 में वृंदावन आयी थी। वह वृंदावन में 1524 से 1539 तक रही थीं। उसके बाद, उन्होंने वृंदावन छोड़ दिया और अपनी मृत्यु तक (वर्ष 1550) द्वारका में ही रही। मीराबाई भगवान श्री कृष्ण को अपने पति के रूप में मानती थीं। जबकि वृंदावन के रसिक संत, सहचरी भाव या श्री राधा रानी की सखी भाव में युगल उपसना (राधा कृष्ण एक साथ) के रूप में आदेश किये हैं जिसका रस निकुंज रस है और सर्वोत्तम है और श्री राधा रानी को वृन्दावन में रसिक संतों का जीवन माना जाता है। और द्वारिका में, श्री कृष्ण को पति के रूप में पूजा की जाता है जो वृन्दावन के रसिकों को नहीं सुहाता।",
-          "मंदिर का समय:",
-          "सवेरे 10:00 बजे - मंगला आरती",
-          "शाम  07:00 -08:00 बजे - शयन आरती",
-          "स्थान:",
-          "मीराबाई मन्दिर राधा-दामोदर मन्दिर के निकट स्थित है।"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 42
   },
   {
     "id": "fagun-ke-din-char-holi-khel-mana-re",
@@ -1089,7 +1089,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 43
   },
@@ -1112,7 +1112,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 44
   },
@@ -1142,7 +1142,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 45
   },
@@ -1162,7 +1162,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 46
   },
@@ -1188,7 +1188,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 47
   }

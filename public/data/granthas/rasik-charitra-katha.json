@@ -1,8 +1,204 @@
 [
   {
-    "id": "मर-चरतर-भग-33",
+    "id": "kaan-katha-man-dhyan-shri-madhuri-das-utkantha-madhuri-26",
     "collectionId": "rasik-charitra-katha",
     "index": 1,
+    "titleDevanagari": "कान कथा मन ध्यान - श्री माधुरी दास, उत्कंठा माधुरी (26)",
+    "author": "श्री माधुरी दास",
+    "slug": "kaan-katha-man-dhyan-shri-madhuri-das-utkantha-madhuri-26",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "कान कथा मन ध्यान, रसना नाम अधार धरि।",
+          "नयनन गति नहिं आन, बिन देखे मुख माधुरी॥",
+          "- श्री माधुरी दास, उत्कंठा माधुरी (26)"
+        ]
+      }
+    ],
+    "chapterId": "ch-उत्कंठा माधुरी",
+    "chapterName": "उत्कंठा माधुरी",
+    "verseNumber": 26
+  },
+  {
+    "id": "shri-radhaballabh-gun-charit-shri-vrindavan-das-chacha-ji-vivek-lakshan-beli-26",
+    "collectionId": "rasik-charitra-katha",
+    "index": 2,
+    "titleDevanagari": "श्री राधाबल्लभ गुन चरित - श्री वृंदावन दास चाचा जी, विवेक लक्षण बेली (26)",
+    "author": "श्री वृंदावन दास चाचा जी",
+    "slug": "shri-radhaballabh-gun-charit-shri-vrindavan-das-chacha-ji-vivek-lakshan-beli-26",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "श्री राधाबल्लभ गुन चरित, जाके हियें निवास।",
+          "वृन्दावन हित भक्त वह, सब सुख-मंगल रासि॥",
+          "- श्री वृंदावन दास चाचा जी, विवेक लक्षण बेली (26)"
+        ]
+      }
+    ],
+    "chapterId": "ch-विवेक लक्षण बेली",
+    "chapterName": "विवेक लक्षण बेली",
+    "verseNumber": 26
+  },
+  {
+    "id": "krishan-charitr-tridha-tribhuvan-mein-shri-biharin-dev-ji-shri-biharin-dev-ji-ki-vani",
+    "collectionId": "rasik-charitra-katha",
+    "index": 3,
+    "titleDevanagari": "कृष्ण चरित्र त्रिधा त्रिभुवन में - श्री बिहारिन देव जी, श्री बिहारिन देव जी की वाणी",
+    "author": "श्री बिहारिन देव जी",
+    "slug": "krishan-charitr-tridha-tribhuvan-mein-shri-biharin-dev-ji-shri-biharin-dev-ji-ki-vani",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "कृष्ण चरित्र त्रिधा त्रिभुवन में, बहु भक्ति भेद विस्तार।",
+          "जहाँ जु रस तहाँ तिहिं वैस, सुख देति सबनि उदार॥ [1]",
+          "गाय, ग्वाल, गोप, गोपीजन न्यारौ ब्रज व्यौहार।",
+          "सबते दूर दुर्जन दुर्यौ क्यों सुलभ होत सुकुमार॥ [2]",
+          "- श्री बिहारिन देव जी, श्री बिहारिन देव जी की वाणी"
+        ]
+      }
+    ],
+    "chapterId": "ch-श्री बिहारिन देव जी की वाणी",
+    "chapterName": "श्री बिहारिन देव जी की वाणी",
+    "verseNumber": 7
+  },
+  {
+    "id": "bhakt-pad-dhuri-chaitanya-charitamrit",
+    "collectionId": "rasik-charitra-katha",
+    "index": 4,
+    "titleDevanagari": "भक्त पद धूलि आर भक्त पद जल - चैतन्य-चरितामृत, अंत्य: लीला (16.61/62)",
+    "author": "श्री रसिक चरित",
+    "slug": "bhakt-pad-dhuri-chaitanya-charitamrit",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "भक्त-पद-धूलि आर भक्त-पद-जल। भक्त-भुक्त-अवशेष–तीन महाबल॥",
+          "एइ तीन सेवा हैते कृष्ण प्रेम हय। पुनः पुनः सर्व शास्त्रे पुकारिया कय॥",
+          "- चैतन्य-चरितामृत, अंत्य: लीला (16.61-16.62)"
+        ]
+      }
+    ],
+    "chapterId": "ch-अंत्य: लीला (16.61/62)",
+    "chapterName": "अंत्य: लीला (16.61/62)",
+    "verseNumber": 79
+  },
+  {
+    "id": "atisaahasamaacharitam-virudhy-shri-prabodhanand-saraswati-vrindavan-mahimamrit-914",
+    "collectionId": "rasik-charitra-katha",
+    "index": 5,
+    "titleDevanagari": "अतिसाहसमाचरितं विरुध्य - श्री प्रबोधानन्द सरस्वती, वृन्दावन महिमामृत (9.14)",
+    "author": "श्री प्रबोधानन्द सरस्वती",
+    "slug": "atisaahasamaacharitam-virudhy-shri-prabodhanand-saraswati-vrindavan-mahimamrit-914",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "अतिसाहसमाचरितं विरुध्य गुरुशास्त्राविद्वद्वर्यैः।",
+          "त्वयि वृन्दावन! आप वासायेन्द्रियवशमप्यतो न हि त्यज माम्॥",
+          "- श्री प्रबोधानन्द सरस्वती, वृन्दावन महिमामृत (9.14)"
+        ]
+      }
+    ],
+    "chapterId": "ch-वृन्दावन महिमामृत (9.14)",
+    "chapterName": "वृन्दावन महिमामृत (9.14)",
+    "verseNumber": 36
+  },
+  {
+    "id": "uchisthamrit-bhuktvaiv-charitam-shravanamstvaiv-smran-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-240",
+    "collectionId": "rasik-charitra-katha",
+    "index": 6,
+    "titleDevanagari": "उच्छिष्टामृत भुक्तवैव चरितं श्रृण्वंस्तवैव स्मरन् - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (240)",
+    "author": "श्री हित हरिवंश महाप्रभु",
+    "slug": "uchisthamrit-bhuktvaiv-charitam-shravanamstvaiv-smran-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-240",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "उच्छिष्टामृत भुक्तवैव चरितं श्रृण्वंस्तवैव स्मरन्, पादाम्भोज रजस्तवैव विचरन्कुञ्जास्तवैवालयान्।",
+          "गायन्दिव्य गुणांस्त्तवैव रसदे पश्यंस्तवैवकृतिं, श्रीराधे तनुवाङ्गनोमनोभिरमलै: सोहं तवैवाश्रित:॥",
+          "- श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (240)"
+        ]
+      }
+    ],
+    "chapterId": "ch-श्री राधा सुधा निधि",
+    "chapterName": "श्री राधा सुधा निधि",
+    "verseNumber": 240
+  },
+  {
+    "id": "gyan-katha-seekhi-ghani-prashan-karat-ati-goodh-shri-narayan-swami-anurag-ras-43",
+    "collectionId": "rasik-charitra-katha",
+    "index": 7,
+    "titleDevanagari": "ज्ञान कथा सीखी घनी  - श्री नारायण स्वामी, अनुराग रस (43)",
+    "author": "श्री नारायण स्वामी",
+    "slug": "gyan-katha-seekhi-ghani-prashan-karat-ati-goodh-shri-narayan-swami-anurag-ras-43",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "ज्ञान कथा सीखी घनी, प्रश्न करत अति गूढ़।",
+          "नारायण बिन धारणा, वृथा बकत है मूढ़॥",
+          "- श्री नारायण स्वामी, अनुराग रस (43)"
+        ]
+      }
+    ],
+    "chapterId": "ch-अनुराग रस",
+    "chapterName": "अनुराग रस",
+    "verseNumber": 43
+  },
+  {
+    "id": "vrndavanam-parityajya-sa-kvacin-naiva-gacchati-chaitanya-charitamrit",
+    "collectionId": "rasik-charitra-katha",
+    "index": 8,
+    "titleDevanagari": "वृन्दावनं परित्यज्य सा कवासिन नैवा गच्छेति - चैतन्य चरितमृत",
+    "author": "श्री रसिक चरित",
+    "slug": "vrndavanam-parityajya-sa-kvacin-naiva-gacchati-chaitanya-charitamrit",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "\"वृन्दावनं परित्यज्य सा कवासिन नैवा गच्छेति\"",
+          "- चैतन्य चरितमृत,  अंत्य: (1.67)"
+        ]
+      }
+    ],
+    "chapterId": "ch-चैतन्य चरितमृत",
+    "chapterName": "चैतन्य चरितमृत",
+    "verseNumber": 92
+  },
+  {
+    "id": "radha-madhav-bhaint-bhai-shri-surdas",
+    "collectionId": "rasik-charitra-katha",
+    "index": 9,
+    "titleDevanagari": "राधा माधव भैंट भई - श्री सूरदास, सूरसागर, द्वारिका चरित (50)",
+    "author": "श्री सूरदास",
+    "slug": "radha-madhav-bhaint-bhai-shri-surdas",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(राग आसावरी)",
+          "राधा माधव भैंट भई।",
+          "राधा माधव माधव राधा,",
+          "कीट - भंग - गति होई जो गई॥ [1]",
+          "माधव राधा के रंग राचे, राधा माधव रंग रई।",
+          "माधव राधा प्राति निरंतर, रसना कही न गई॥ [2]",
+          "विहंसि कह्यौ हम तुम नहीं, अन्तर यह कहि व्रज पठई।",
+          "'सूरदास' प्रभु राधा माधव वृज विहार नित नई नई॥ [3]",
+          "- श्री सूरदास, सूरसागर, द्वारिका चरित (50)"
+        ]
+      }
+    ],
+    "chapterId": "ch-द्वारिका चरित",
+    "chapterName": "द्वारिका चरित",
+    "verseNumber": 50
+  },
+  {
+    "id": "मर-चरतर-भग-33",
+    "collectionId": "rasik-charitra-katha",
+    "index": 10,
     "titleDevanagari": "मीरा चरित्र भाग - 33",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-33",
@@ -17,14 +213,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 1
   },
   {
     "id": "मर-चरतर-भग-59",
     "collectionId": "rasik-charitra-katha",
-    "index": 2,
+    "index": 11,
     "titleDevanagari": "मीरा चरित्र भाग - 59",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-59",
@@ -57,14 +253,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 2
   },
   {
     "id": "मर-चरतर-भग-58",
     "collectionId": "rasik-charitra-katha",
-    "index": 3,
+    "index": 12,
     "titleDevanagari": "मीरा चरित्र भाग - 58",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-58",
@@ -87,14 +283,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 3
   },
   {
     "id": "मर-चरतर-भग-83",
     "collectionId": "rasik-charitra-katha",
-    "index": 4,
+    "index": 13,
     "titleDevanagari": "मीरा चरित्र भाग - 83",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-83",
@@ -111,14 +307,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 4
   },
   {
     "id": "मर-चरतर-भग-68",
     "collectionId": "rasik-charitra-katha",
-    "index": 5,
+    "index": 14,
     "titleDevanagari": "मीरा चरित्र भाग - 68",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-68",
@@ -142,14 +338,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 5
   },
   {
     "id": "मर-चरतर-भग-3",
     "collectionId": "rasik-charitra-katha",
-    "index": 6,
+    "index": 15,
     "titleDevanagari": "मीरा चरित्र भाग - 3",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-3",
@@ -168,37 +364,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 6
   },
   {
-    "id": "krishan-charitr-tridha-tribhuvan-mein-shri-biharin-dev-ji-shri-biharin-dev-ji-ki-vani",
-    "collectionId": "rasik-charitra-katha",
-    "index": 7,
-    "titleDevanagari": "कृष्ण चरित्र त्रिधा त्रिभुवन में - श्री बिहारिन देव जी, श्री बिहारिन देव जी की वाणी",
-    "author": "श्री बिहारिन देव जी",
-    "slug": "krishan-charitr-tridha-tribhuvan-mein-shri-biharin-dev-ji-shri-biharin-dev-ji-ki-vani",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "कृष्ण चरित्र त्रिधा त्रिभुवन में, बहु भक्ति भेद विस्तार।",
-          "जहाँ जु रस तहाँ तिहिं वैस, सुख देति सबनि उदार॥ [1]",
-          "गाय, ग्वाल, गोप, गोपीजन न्यारौ ब्रज व्यौहार।",
-          "सबते दूर दुर्जन दुर्यौ क्यों सुलभ होत सुकुमार॥ [2]",
-          "- श्री बिहारिन देव जी, श्री बिहारिन देव जी की वाणी"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 7
-  },
-  {
     "id": "मर-चरतर-भग-46",
     "collectionId": "rasik-charitra-katha",
-    "index": 8,
+    "index": 16,
     "titleDevanagari": "मीरा चरित्र भाग - 46",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-46",
@@ -215,14 +388,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 8
   },
   {
     "id": "मर-चरतर-भग-55",
     "collectionId": "rasik-charitra-katha",
-    "index": 9,
+    "index": 17,
     "titleDevanagari": "मीरा चरित्र भाग - 55",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-55",
@@ -237,14 +410,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 9
   },
   {
     "id": "मर-चरतर-भग-27",
     "collectionId": "rasik-charitra-katha",
-    "index": 10,
+    "index": 18,
     "titleDevanagari": "मीरा चरित्र भाग - 27",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-27",
@@ -259,14 +432,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 10
   },
   {
     "id": "मर-चरतर-भग-11",
     "collectionId": "rasik-charitra-katha",
-    "index": 11,
+    "index": 19,
     "titleDevanagari": "मीरा चरित्र भाग - 11",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-11",
@@ -283,14 +456,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 11
   },
   {
     "id": "मर-चरतर-भग-22",
     "collectionId": "rasik-charitra-katha",
-    "index": 12,
+    "index": 20,
     "titleDevanagari": "मीरा चरित्र भाग - 22",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-22",
@@ -307,14 +480,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 12
   },
   {
     "id": "मर-चरतर-भग-57",
     "collectionId": "rasik-charitra-katha",
-    "index": 13,
+    "index": 21,
     "titleDevanagari": "मीरा चरित्र भाग - 57",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-57",
@@ -334,14 +507,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 13
   },
   {
     "id": "मर-चरतर-भग-56",
     "collectionId": "rasik-charitra-katha",
-    "index": 14,
+    "index": 22,
     "titleDevanagari": "मीरा चरित्र भाग - 56",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-56",
@@ -363,14 +536,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 14
   },
   {
     "id": "मर-चरतर-भग-18",
     "collectionId": "rasik-charitra-katha",
-    "index": 15,
+    "index": 23,
     "titleDevanagari": "मीरा चरित्र भाग - 18",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-18",
@@ -386,14 +559,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 15
   },
   {
     "id": "मर-चरतर-भग-13",
     "collectionId": "rasik-charitra-katha",
-    "index": 16,
+    "index": 24,
     "titleDevanagari": "मीरा चरित्र भाग - 13",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-13",
@@ -408,14 +581,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 16
   },
   {
     "id": "मर-चरतर-भग-43",
     "collectionId": "rasik-charitra-katha",
-    "index": 17,
+    "index": 25,
     "titleDevanagari": "मीरा चरित्र भाग - 43",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-43",
@@ -430,14 +603,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 17
   },
   {
     "id": "मर-चरतर-भग-51",
     "collectionId": "rasik-charitra-katha",
-    "index": 18,
+    "index": 26,
     "titleDevanagari": "मीरा चरित्र भाग - 51",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-51",
@@ -501,14 +674,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 18
   },
   {
     "id": "मर-चरतर-भग-89",
     "collectionId": "rasik-charitra-katha",
-    "index": 19,
+    "index": 27,
     "titleDevanagari": "मीरा चरित्र भाग - 89",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-89",
@@ -523,14 +696,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 19
   },
   {
     "id": "मर-चरतर-भग-17",
     "collectionId": "rasik-charitra-katha",
-    "index": 20,
+    "index": 28,
     "titleDevanagari": "मीरा चरित्र भाग - 17",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-17",
@@ -597,14 +770,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 20
   },
   {
     "id": "मर-चरतर-भग-29",
     "collectionId": "rasik-charitra-katha",
-    "index": 21,
+    "index": 29,
     "titleDevanagari": "मीरा चरित्र भाग - 29",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-29",
@@ -629,14 +802,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 21
   },
   {
     "id": "मर-चरतर-भग-47",
     "collectionId": "rasik-charitra-katha",
-    "index": 22,
+    "index": 30,
     "titleDevanagari": "मीरा चरित्र भाग - 47",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-47",
@@ -653,14 +826,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 22
   },
   {
     "id": "मर-चरतर-भग-19",
     "collectionId": "rasik-charitra-katha",
-    "index": 23,
+    "index": 31,
     "titleDevanagari": "मीरा चरित्र भाग - 19",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-19",
@@ -674,14 +847,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 23
   },
   {
     "id": "मर-चरतर-भग-49",
     "collectionId": "rasik-charitra-katha",
-    "index": 24,
+    "index": 32,
     "titleDevanagari": "मीरा चरित्र भाग - 49",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-49",
@@ -696,14 +869,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 24
   },
   {
     "id": "मर-चरतर-भग-32",
     "collectionId": "rasik-charitra-katha",
-    "index": 25,
+    "index": 33,
     "titleDevanagari": "मीरा चरित्र भाग - 32",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-32",
@@ -727,14 +900,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 25
   },
   {
     "id": "biography-of-shri-hita-harivansh-mahaprabhu",
     "collectionId": "rasik-charitra-katha",
-    "index": 26,
+    "index": 34,
     "titleDevanagari": "श्री हित हरिवंश महाप्रभु जी का चरित्र",
     "author": "श्री रसिक चरित",
     "slug": "biography-of-shri-hita-harivansh-mahaprabhu",
@@ -762,56 +935,14 @@
         ]
       }
     ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 26
-  },
-  {
-    "id": "kaan-katha-man-dhyan-shri-madhuri-das-utkantha-madhuri-26",
-    "collectionId": "rasik-charitra-katha",
-    "index": 27,
-    "titleDevanagari": "कान कथा मन ध्यान - श्री माधुरी दास, उत्कंठा माधुरी (26)",
-    "author": "श्री माधुरी दास",
-    "slug": "kaan-katha-man-dhyan-shri-madhuri-das-utkantha-madhuri-26",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "कान कथा मन ध्यान, रसना नाम अधार धरि।",
-          "नयनन गति नहिं आन, बिन देखे मुख माधुरी॥",
-          "- श्री माधुरी दास, उत्कंठा माधुरी (26)"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 26
-  },
-  {
-    "id": "shri-radhaballabh-gun-charit-shri-vrindavan-das-chacha-ji-vivek-lakshan-beli-26",
-    "collectionId": "rasik-charitra-katha",
-    "index": 28,
-    "titleDevanagari": "श्री राधाबल्लभ गुन चरित - श्री वृंदावन दास चाचा जी, विवेक लक्षण बेली (26)",
-    "author": "श्री वृंदावन दास चाचा जी",
-    "slug": "shri-radhaballabh-gun-charit-shri-vrindavan-das-chacha-ji-vivek-lakshan-beli-26",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "श्री राधाबल्लभ गुन चरित, जाके हियें निवास।",
-          "वृन्दावन हित भक्त वह, सब सुख-मंगल रासि॥",
-          "- श्री वृंदावन दास चाचा जी, विवेक लक्षण बेली (26)"
-        ]
-      }
-    ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 26
   },
   {
     "id": "मर-चरतर-भग-45",
     "collectionId": "rasik-charitra-katha",
-    "index": 29,
+    "index": 35,
     "titleDevanagari": "मीरा चरित्र भाग - 45",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-45",
@@ -828,14 +959,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 29
   },
   {
     "id": "मर-चरतर-भग-74",
     "collectionId": "rasik-charitra-katha",
-    "index": 30,
+    "index": 36,
     "titleDevanagari": "मीरा चरित्र भाग - 74",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-74",
@@ -850,14 +981,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 30
   },
   {
     "id": "मर-चरतर-भग-53",
     "collectionId": "rasik-charitra-katha",
-    "index": 31,
+    "index": 37,
     "titleDevanagari": "मीरा चरित्र भाग - 53",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-53",
@@ -900,14 +1031,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 31
   },
   {
     "id": "मर-चरतर-भग-84",
     "collectionId": "rasik-charitra-katha",
-    "index": 32,
+    "index": 38,
     "titleDevanagari": "मीरा चरित्र भाग - 84",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-84",
@@ -925,14 +1056,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 32
   },
   {
     "id": "मर-चरतर-भग-69",
     "collectionId": "rasik-charitra-katha",
-    "index": 33,
+    "index": 39,
     "titleDevanagari": "मीरा चरित्र भाग - 69",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-69",
@@ -951,14 +1082,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 33
   },
   {
     "id": "मर-चरतर-भग-92",
     "collectionId": "rasik-charitra-katha",
-    "index": 34,
+    "index": 40,
     "titleDevanagari": "मीरा चरित्र भाग - 92",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-92",
@@ -973,14 +1104,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 34
   },
   {
     "id": "मर-चरतर-भग-73",
     "collectionId": "rasik-charitra-katha",
-    "index": 35,
+    "index": 41,
     "titleDevanagari": "मीरा चरित्र भाग - 73",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-73",
@@ -998,35 +1129,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 35
   },
   {
-    "id": "atisaahasamaacharitam-virudhy-shri-prabodhanand-saraswati-vrindavan-mahimamrit-914",
-    "collectionId": "rasik-charitra-katha",
-    "index": 36,
-    "titleDevanagari": "अतिसाहसमाचरितं विरुध्य - श्री प्रबोधानन्द सरस्वती, वृन्दावन महिमामृत (9.14)",
-    "author": "श्री प्रबोधानन्द सरस्वती",
-    "slug": "atisaahasamaacharitam-virudhy-shri-prabodhanand-saraswati-vrindavan-mahimamrit-914",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "अतिसाहसमाचरितं विरुध्य गुरुशास्त्राविद्वद्वर्यैः।",
-          "त्वयि वृन्दावन! आप वासायेन्द्रियवशमप्यतो न हि त्यज माम्॥",
-          "- श्री प्रबोधानन्द सरस्वती, वृन्दावन महिमामृत (9.14)"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 36
-  },
-  {
     "id": "मर-चरतर-भग-28",
     "collectionId": "rasik-charitra-katha",
-    "index": 37,
+    "index": 42,
     "titleDevanagari": "मीरा चरित्र भाग - 28",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-28",
@@ -1041,14 +1151,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 37
   },
   {
     "id": "मर-चरतर-भग-41",
     "collectionId": "rasik-charitra-katha",
-    "index": 38,
+    "index": 43,
     "titleDevanagari": "मीरा चरित्र भाग - 41",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-41",
@@ -1075,14 +1185,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 38
   },
   {
     "id": "मरगशरष-मस-कषण-पकष-क-उतपनन-एकदश-क-महतमय-एकदश-क-वध-उतपतत-कथ-और-महम-क-वरणन",
     "collectionId": "rasik-charitra-katha",
-    "index": 39,
+    "index": 44,
     "titleDevanagari": "मार्गशीर्ष मास कृष्ण पक्ष की 'उत्पन्ना' एकादशी का माहात्म्य (एकादशी की विधि, उत्पत्ति-कथा और महिमा का वर्णन )",
     "author": "श्री रसिक चरित",
     "slug": "मरगशरष-मस-कषण-पकष-क-उतपनन-एकदश-क-महतमय-एकदश-क-वध-उतपतत-कथ-और-महम-क-वरणन",
@@ -1096,14 +1206,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 39
   },
   {
     "id": "मर-चरतर-भग-50",
     "collectionId": "rasik-charitra-katha",
-    "index": 40,
+    "index": 45,
     "titleDevanagari": "मीरा चरित्र भाग - 50",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-50",
@@ -1117,14 +1227,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 40
   },
   {
     "id": "मर-चरतर-भग-44",
     "collectionId": "rasik-charitra-katha",
-    "index": 41,
+    "index": 46,
     "titleDevanagari": "मीरा चरित्र भाग - 44",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-44",
@@ -1143,14 +1253,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 41
   },
   {
     "id": "मर-चरतर-भग-76",
     "collectionId": "rasik-charitra-katha",
-    "index": 42,
+    "index": 47,
     "titleDevanagari": "मीरा चरित्र भाग - 76",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-76",
@@ -1165,14 +1275,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 42
   },
   {
     "id": "मर-चरतर-भग-81",
     "collectionId": "rasik-charitra-katha",
-    "index": 43,
+    "index": 48,
     "titleDevanagari": "मीरा चरित्र भाग - 81",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-81",
@@ -1187,14 +1297,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 43
   },
   {
     "id": "मर-चरतर-भग-21",
     "collectionId": "rasik-charitra-katha",
-    "index": 44,
+    "index": 49,
     "titleDevanagari": "मीरा चरित्र भाग - 21",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-21",
@@ -1211,14 +1321,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 44
   },
   {
     "id": "मर-चरतर-भग-4",
     "collectionId": "rasik-charitra-katha",
-    "index": 45,
+    "index": 50,
     "titleDevanagari": "मीरा चरित्र भाग - 4",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-4",
@@ -1233,35 +1343,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 45
   },
   {
-    "id": "gyan-katha-seekhi-ghani-prashan-karat-ati-goodh-shri-narayan-swami-anurag-ras-43",
-    "collectionId": "rasik-charitra-katha",
-    "index": 46,
-    "titleDevanagari": "ज्ञान कथा सीखी घनी  - श्री नारायण स्वामी, अनुराग रस (43)",
-    "author": "श्री नारायण स्वामी",
-    "slug": "gyan-katha-seekhi-ghani-prashan-karat-ati-goodh-shri-narayan-swami-anurag-ras-43",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "ज्ञान कथा सीखी घनी, प्रश्न करत अति गूढ़।",
-          "नारायण बिन धारणा, वृथा बकत है मूढ़॥",
-          "- श्री नारायण स्वामी, अनुराग रस (43)"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 43
-  },
-  {
     "id": "मर-चरतर-भग-79",
     "collectionId": "rasik-charitra-katha",
-    "index": 47,
+    "index": 51,
     "titleDevanagari": "मीरा चरित्र भाग - 79",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-79",
@@ -1275,14 +1364,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 47
   },
   {
     "id": "मर-चरतर-भग-31",
     "collectionId": "rasik-charitra-katha",
-    "index": 48,
+    "index": 52,
     "titleDevanagari": "मीरा चरित्र भाग - 31",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-31",
@@ -1305,14 +1394,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 48
   },
   {
     "id": "sahjai-shri-krishnakatha-thaur-thaur-shri-nagridas-ji-ki-vani",
     "collectionId": "rasik-charitra-katha",
-    "index": 49,
+    "index": 53,
     "titleDevanagari": "सहजै श्रीकृष्ण-कथा ठौर-ठौर - श्री नागरीदास जी की वाणी",
     "author": "श्री नागरीदास जी की वाणी",
     "slug": "sahjai-shri-krishnakatha-thaur-thaur-shri-nagridas-ji-ki-vani",
@@ -1333,14 +1422,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 49
   },
   {
     "id": "मर-चरतर-भग-64",
     "collectionId": "rasik-charitra-katha",
-    "index": 50,
+    "index": 54,
     "titleDevanagari": "मीरा चरित्र भाग - 64",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-64",
@@ -1356,14 +1445,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 50
   },
   {
     "id": "मर-चरतर-भग-36",
     "collectionId": "rasik-charitra-katha",
-    "index": 51,
+    "index": 55,
     "titleDevanagari": "मीरा चरित्र भाग - 36",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-36",
@@ -1378,14 +1467,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 51
   },
   {
     "id": "मर-चरतर-भग-15",
     "collectionId": "rasik-charitra-katha",
-    "index": 52,
+    "index": 56,
     "titleDevanagari": "मीरा चरित्र भाग - 15",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-15",
@@ -1423,14 +1512,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 52
   },
   {
     "id": "मर-चरतर-भग-65",
     "collectionId": "rasik-charitra-katha",
-    "index": 53,
+    "index": 57,
     "titleDevanagari": "मीरा चरित्र भाग - 65",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-65",
@@ -1448,41 +1537,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 53
   },
   {
-    "id": "radha-madhav-bhaint-bhai-shri-surdas",
-    "collectionId": "rasik-charitra-katha",
-    "index": 54,
-    "titleDevanagari": "राधा माधव भैंट भई - श्री सूरदास, सूरसागर, द्वारिका चरित (50)",
-    "author": "श्री सूरदास",
-    "slug": "radha-madhav-bhaint-bhai-shri-surdas",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "(राग आसावरी)",
-          "राधा माधव भैंट भई।",
-          "राधा माधव माधव राधा,",
-          "कीट - भंग - गति होई जो गई॥ [1]",
-          "माधव राधा के रंग राचे, राधा माधव रंग रई।",
-          "माधव राधा प्राति निरंतर, रसना कही न गई॥ [2]",
-          "विहंसि कह्यौ हम तुम नहीं, अन्तर यह कहि व्रज पठई।",
-          "'सूरदास' प्रभु राधा माधव वृज विहार नित नई नई॥ [3]",
-          "- श्री सूरदास, सूरसागर, द्वारिका चरित (50)"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 50
-  },
-  {
     "id": "मर-चरतर-भग-78",
     "collectionId": "rasik-charitra-katha",
-    "index": 55,
+    "index": 58,
     "titleDevanagari": "मीरा चरित्र भाग - 78",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-78",
@@ -1504,14 +1566,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 55
   },
   {
     "id": "मर-चरतर-भग-54",
     "collectionId": "rasik-charitra-katha",
-    "index": 56,
+    "index": 59,
     "titleDevanagari": "मीरा चरित्र भाग - 54",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-54",
@@ -1528,14 +1590,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 56
   },
   {
     "id": "krishn-bhakt-nishkaam-ataiv-shant",
     "collectionId": "rasik-charitra-katha",
-    "index": 57,
+    "index": 60,
     "titleDevanagari": "कृष्ण भक्त निष्काम अतैव शांत -चैतन्य चरितामृत, मध्य (19.149)",
     "author": "श्री रसिक चरित",
     "slug": "krishn-bhakt-nishkaam-ataiv-shant",
@@ -1548,37 +1610,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 57
   },
   {
-    "id": "yad-govindakathasudharasahrade-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-114",
-    "collectionId": "rasik-charitra-katha",
-    "index": 58,
-    "titleDevanagari": "यद्गोविन्द-कथा-सुधा-रस-हृदे - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (114)",
-    "author": "श्री रसिक चरित",
-    "slug": "yad-govindakathasudharasahrade-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-114",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "यद्गोविन्द-कथा-सुधा-रस-हृदे चेतो मया जृम्भितम्,",
-          "यद्वा तद्गुण कीर्त्तनार्चन विभूषाद्यैर्दिनं प्रापितम्।",
-          "यद्यत्प्रीतिरकारि तत्प्रिय-जनेष्वात्यन्तिकी तेन मे,",
-          "गोपेन्द्रात्मज जीवन-प्रणयिनी श्रीराधिका तुष्यतु॥",
-          "- श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (114)"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 58
-  },
-  {
     "id": "मर-चरतर-भग-66",
     "collectionId": "rasik-charitra-katha",
-    "index": 59,
+    "index": 61,
     "titleDevanagari": "मीरा चरित्र भाग - 66",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-66",
@@ -1594,14 +1633,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 59
   },
   {
     "id": "मर-चरतर-भग-30",
     "collectionId": "rasik-charitra-katha",
-    "index": 60,
+    "index": 62,
     "titleDevanagari": "मीरा चरित्र भाग - 30",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-30",
@@ -1617,14 +1656,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 60
   },
   {
     "id": "braj-chadi-krishn-kabhu-na-jaan-kahante-shri-krishn-never-leaves-braj-chaitanya-mahaprabhu-chaitanya-charitamrit",
     "collectionId": "rasik-charitra-katha",
-    "index": 61,
+    "index": 63,
     "titleDevanagari": "ब्रज छाँड़ि कृष्ण कभू न जान कहाँते- चैतन्य महाप्रभु, चैतन्य चरितामृत",
     "author": "श्री रसिक चरित",
     "slug": "braj-chadi-krishn-kabhu-na-jaan-kahante-shri-krishn-never-leaves-braj-chaitanya-mahaprabhu-chaitanya-charitamrit",
@@ -1637,14 +1676,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 61
   },
   {
     "id": "मर-चरतर-भग-86",
     "collectionId": "rasik-charitra-katha",
-    "index": 62,
+    "index": 64,
     "titleDevanagari": "मीरा चरित्र भाग - 86",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-86",
@@ -1665,14 +1704,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 62
   },
   {
     "id": "मर-चरतर-भग-61",
     "collectionId": "rasik-charitra-katha",
-    "index": 63,
+    "index": 65,
     "titleDevanagari": "मीरा चरित्र भाग - 61",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-61",
@@ -1698,14 +1737,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 63
   },
   {
     "id": "मर-चरतर-भग-1",
     "collectionId": "rasik-charitra-katha",
-    "index": 64,
+    "index": 66,
     "titleDevanagari": "मीरा चरित्र भाग - 1",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-1",
@@ -1752,14 +1791,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 64
   },
   {
     "id": "मर-चरतर-भग-71",
     "collectionId": "rasik-charitra-katha",
-    "index": 65,
+    "index": 67,
     "titleDevanagari": "मीरा चरित्र भाग - 71",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-71",
@@ -1798,14 +1837,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 65
   },
   {
     "id": "मर-चरतर-भग-14",
     "collectionId": "rasik-charitra-katha",
-    "index": 66,
+    "index": 68,
     "titleDevanagari": "मीरा चरित्र भाग - 14",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-14",
@@ -1824,14 +1863,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 66
   },
   {
     "id": "मर-चरतर-भग-20",
     "collectionId": "rasik-charitra-katha",
-    "index": 67,
+    "index": 69,
     "titleDevanagari": "मीरा चरित्र भाग - 20",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-20",
@@ -1858,14 +1897,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 67
   },
   {
     "id": "मर-चरतर-भग-24",
     "collectionId": "rasik-charitra-katha",
-    "index": 68,
+    "index": 70,
     "titleDevanagari": "मीरा चरित्र भाग - 24",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-24",
@@ -1922,14 +1961,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 68
   },
   {
     "id": "ham-katha-sunate-ram-sakal-gundham-ki",
     "collectionId": "rasik-charitra-katha",
-    "index": 69,
+    "index": 71,
     "titleDevanagari": "हम कथा सुनाते राम सकल गुणधाम की",
     "author": "श्री रसिक चरित",
     "slug": "ham-katha-sunate-ram-sakal-gundham-ki",
@@ -2022,14 +2061,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 69
   },
   {
     "id": "gautam-ki-nari-taki-katha-bahut-vistari",
     "collectionId": "rasik-charitra-katha",
-    "index": 70,
+    "index": 72,
     "titleDevanagari": "गौतमकी नारी ताकी कथा बहुत विस्तारी",
     "author": "श्री रसिक चरित",
     "slug": "gautam-ki-nari-taki-katha-bahut-vistari",
@@ -2045,14 +2084,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 70
   },
   {
     "id": "मर-चरतर-भग-7",
     "collectionId": "rasik-charitra-katha",
-    "index": 71,
+    "index": 73,
     "titleDevanagari": "मीरा चरित्र भाग - 7",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-7",
@@ -2067,14 +2106,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 71
   },
   {
     "id": "मर-चरतर-भग-82",
     "collectionId": "rasik-charitra-katha",
-    "index": 72,
+    "index": 74,
     "titleDevanagari": "मीरा चरित्र भाग - 82",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-82",
@@ -2092,14 +2131,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 72
   },
   {
     "id": "hari-katha-sukh-ki-nidhi-jagat-katha-santap-shri-nupi-bai",
     "collectionId": "rasik-charitra-katha",
-    "index": 73,
+    "index": 75,
     "titleDevanagari": "हरि कथा सुख की निधि जगत कथा संताप - श्री नूपीबाई जी",
     "author": "श्री नूपीबाई जी",
     "slug": "hari-katha-sukh-ki-nidhi-jagat-katha-santap-shri-nupi-bai",
@@ -2113,14 +2152,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 73
   },
   {
     "id": "yog-katha-pathai-vraj-ko-sab",
     "collectionId": "rasik-charitra-katha",
-    "index": 74,
+    "index": 76,
     "titleDevanagari": "योग कथा पठई व्रज को सब",
     "author": "श्री रसिक चरित",
     "slug": "yog-katha-pathai-vraj-ko-sab",
@@ -2136,14 +2175,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 74
   },
   {
     "id": "मर-चरतर-भग-37",
     "collectionId": "rasik-charitra-katha",
-    "index": 75,
+    "index": 77,
     "titleDevanagari": "मीरा चरित्र भाग - 37",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-37",
@@ -2162,14 +2201,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 75
   },
   {
     "id": "मर-चरतर-भग-38",
     "collectionId": "rasik-charitra-katha",
-    "index": 76,
+    "index": 78,
     "titleDevanagari": "मीरा चरित्र भाग - 38",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-38",
@@ -2194,14 +2233,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 76
   },
   {
     "id": "मर-चरतर-भग-77",
     "collectionId": "rasik-charitra-katha",
-    "index": 77,
+    "index": 79,
     "titleDevanagari": "मीरा चरित्र भाग - 77",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-77",
@@ -2216,14 +2255,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 77
   },
   {
     "id": "मर-चरतर-भग-40",
     "collectionId": "rasik-charitra-katha",
-    "index": 78,
+    "index": 80,
     "titleDevanagari": "मीरा चरित्र भाग - 40",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-40",
@@ -2240,35 +2279,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 78
   },
   {
-    "id": "bhakt-pad-dhuri-chaitanya-charitamrit",
-    "collectionId": "rasik-charitra-katha",
-    "index": 79,
-    "titleDevanagari": "भक्त पद धूलि आर भक्त पद जल - चैतन्य-चरितामृत, अंत्य: लीला (16.61/62)",
-    "author": "श्री रसिक चरित",
-    "slug": "bhakt-pad-dhuri-chaitanya-charitamrit",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "भक्त-पद-धूलि आर भक्त-पद-जल। भक्त-भुक्त-अवशेष–तीन महाबल॥",
-          "एइ तीन सेवा हैते कृष्ण प्रेम हय। पुनः पुनः सर्व शास्त्रे पुकारिया कय॥",
-          "- चैतन्य-चरितामृत, अंत्य: लीला (16.61-16.62)"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 79
-  },
-  {
     "id": "मर-चरतर-भग-25",
     "collectionId": "rasik-charitra-katha",
-    "index": 80,
+    "index": 81,
     "titleDevanagari": "मीरा चरित्र भाग - 25",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-25",
@@ -2283,14 +2301,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 80
   },
   {
     "id": "मर-चरतर-भग-70",
     "collectionId": "rasik-charitra-katha",
-    "index": 81,
+    "index": 82,
     "titleDevanagari": "मीरा चरित्र भाग - 70",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-70",
@@ -2309,14 +2327,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 81
   },
   {
     "id": "मर-चरतर-भग-80",
     "collectionId": "rasik-charitra-katha",
-    "index": 82,
+    "index": 83,
     "titleDevanagari": "मीरा चरित्र भाग - 80",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-80",
@@ -2335,14 +2353,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 82
   },
   {
     "id": "मर-चरतर-भग-42",
     "collectionId": "rasik-charitra-katha",
-    "index": 83,
+    "index": 84,
     "titleDevanagari": "मीरा चरित्र भाग - 42",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-42",
@@ -2363,14 +2381,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 83
   },
   {
     "id": "अकथ-कथ",
     "collectionId": "rasik-charitra-katha",
-    "index": 84,
+    "index": 85,
     "titleDevanagari": "अकथ कथा",
     "author": "श्री रसिक चरित",
     "slug": "अकथ-कथ",
@@ -2386,14 +2404,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 84
   },
   {
     "id": "मर-चरतर-भग-52",
     "collectionId": "rasik-charitra-katha",
-    "index": 85,
+    "index": 86,
     "titleDevanagari": "मीरा चरित्र भाग - 52",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-52",
@@ -2412,14 +2430,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 85
   },
   {
     "id": "मर-चरतर-भग-39",
     "collectionId": "rasik-charitra-katha",
-    "index": 86,
+    "index": 87,
     "titleDevanagari": "मीरा चरित्र भाग - 39",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-39",
@@ -2439,14 +2457,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 86
   },
   {
     "id": "मर-चरतर-भग-75",
     "collectionId": "rasik-charitra-katha",
-    "index": 87,
+    "index": 88,
     "titleDevanagari": "मीरा चरित्र भाग - 75",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-75",
@@ -2479,14 +2497,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 87
   },
   {
     "id": "मर-चरतर-भग-91",
     "collectionId": "rasik-charitra-katha",
-    "index": 88,
+    "index": 89,
     "titleDevanagari": "मीरा चरित्र भाग - 91",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-91",
@@ -2503,14 +2521,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 88
   },
   {
     "id": "मर-चरतर-भग-12",
     "collectionId": "rasik-charitra-katha",
-    "index": 89,
+    "index": 90,
     "titleDevanagari": "मीरा चरित्र भाग - 12",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-12",
@@ -2525,14 +2543,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 89
   },
   {
     "id": "मर-चरतर-भग-87",
     "collectionId": "rasik-charitra-katha",
-    "index": 90,
+    "index": 91,
     "titleDevanagari": "मीरा चरित्र भाग - 87",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-87",
@@ -2547,14 +2565,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 90
   },
   {
     "id": "मर-चरतर-भग-85",
     "collectionId": "rasik-charitra-katha",
-    "index": 91,
+    "index": 92,
     "titleDevanagari": "मीरा चरित्र भाग - 85",
     "author": "श्री रसिक चरित",
     "slug": "मर-चरतर-भग-85",
@@ -2570,29 +2588,9 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 91
-  },
-  {
-    "id": "vrndavanam-parityajya-sa-kvacin-naiva-gacchati-chaitanya-charitamrit",
-    "collectionId": "rasik-charitra-katha",
-    "index": 92,
-    "titleDevanagari": "वृन्दावनं परित्यज्य सा कवासिन नैवा गच्छेति - चैतन्य चरितमृत",
-    "author": "श्री रसिक चरित",
-    "slug": "vrndavanam-parityajya-sa-kvacin-naiva-gacchati-chaitanya-charitamrit",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "\"वृन्दावनं परित्यज्य सा कवासिन नैवा गच्छेति\"",
-          "- चैतन्य चरितमृत,  अंत्य: (1.67)"
-        ]
-      }
-    ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 92
   },
   {
     "id": "मर-चरतर-भग-6",
@@ -2612,7 +2610,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 93
   },
@@ -2647,7 +2645,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 94
   },
@@ -2683,7 +2681,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 95
   },
@@ -2703,7 +2701,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 96
   },
@@ -2724,7 +2722,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 97
   },
@@ -2750,7 +2748,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 98
   },
@@ -2774,7 +2772,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 99
   },
@@ -2798,7 +2796,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 100
   },
@@ -2819,7 +2817,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 101
   },
@@ -2845,7 +2843,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 102
   },
@@ -2871,7 +2869,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 103
   },
@@ -2899,7 +2897,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 104
   },
@@ -2923,7 +2921,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 105
   },
@@ -2945,7 +2943,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 106
   },
@@ -2996,7 +2994,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 107
   },
@@ -3023,7 +3021,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 108
   },
@@ -3045,7 +3043,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 109
   },
@@ -3070,7 +3068,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 110
   },
@@ -3096,7 +3094,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 111
   },
@@ -3124,7 +3122,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 112
   },
@@ -3148,29 +3146,31 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 113
   },
   {
-    "id": "uchisthamrit-bhuktvaiv-charitam-shravanamstvaiv-smran-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-240",
+    "id": "yad-govindakathasudharasahrade-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-114",
     "collectionId": "rasik-charitra-katha",
     "index": 114,
-    "titleDevanagari": "उच्छिष्टामृत भुक्तवैव चरितं श्रृण्वंस्तवैव स्मरन् - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (240)",
-    "author": "श्री हित हरिवंश महाप्रभु",
-    "slug": "uchisthamrit-bhuktvaiv-charitam-shravanamstvaiv-smran-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-240",
+    "titleDevanagari": "यद्गोविन्द-कथा-सुधा-रस-हृदे - श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (114)",
+    "author": "श्री रसिक चरित",
+    "slug": "yad-govindakathasudharasahrade-shri-hita-harivansh-mahaprabhu-shri-radha-sudha-nidhi-114",
     "verses": [
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "उच्छिष्टामृत भुक्तवैव चरितं श्रृण्वंस्तवैव स्मरन्, पादाम्भोज रजस्तवैव विचरन्कुञ्जास्तवैवालयान्।",
-          "गायन्दिव्य गुणांस्त्तवैव रसदे पश्यंस्तवैवकृतिं, श्रीराधे तनुवाङ्गनोमनोभिरमलै: सोहं तवैवाश्रित:॥",
-          "- श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (240)"
+          "यद्गोविन्द-कथा-सुधा-रस-हृदे चेतो मया जृम्भितम्,",
+          "यद्वा तद्गुण कीर्त्तनार्चन विभूषाद्यैर्दिनं प्रापितम्।",
+          "यद्यत्प्रीतिरकारि तत्प्रिय-जनेष्वात्यन्तिकी तेन मे,",
+          "गोपेन्द्रात्मज जीवन-प्रणयिनी श्रीराधिका तुष्यतु॥",
+          "- श्री हित हरिवंश महाप्रभु, श्री राधा सुधा निधि (114)"
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 240
+    "verseNumber": 114
   }
 ]

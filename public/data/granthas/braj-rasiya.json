@@ -1,8 +1,31 @@
 [
   {
-    "id": "कन-रग-दन-र-रसय-कसर-क-बदन-म",
+    "id": "chirjeevo-hori-ke-rasiya-shri-bhartendu-harishchandra-bhartendu-granthawali",
     "collectionId": "braj-rasiya",
     "index": 1,
+    "titleDevanagari": "चिरजीवो होरी के रसिया - श्री भारतेंदु हरिशचंद्र, भारतेन्दु ग्रंथावली, होली (13)",
+    "author": "श्री भारतेंदु हरिशचंद्र",
+    "slug": "chirjeevo-hori-ke-rasiya-shri-bhartendu-harishchandra-bhartendu-granthawali",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "चिरजीवो होरी के रसिया।",
+          "नित प्रति आवौं मेरे होरी खेलन, नित गारी नित ही हँसिया॥ [1]",
+          "माथे मुकुट लकुट लीनें कर, पीत पिछौरी कटि कसिया।",
+          "हरीचन्द्र के नैंन सिरावो, राधा प्यारी कौ ये रसिया॥ [2]",
+          "- श्री भारतेंदु हरिशचंद्र, भारतेन्दु ग्रंथावली, होली (13)"
+        ]
+      }
+    ],
+    "chapterId": "ch-होली",
+    "chapterName": "होली",
+    "verseNumber": 13
+  },
+  {
+    "id": "कन-रग-दन-र-रसय-कसर-क-बदन-म",
+    "collectionId": "braj-rasiya",
+    "index": 2,
     "titleDevanagari": "किन रंग दीनीं रे रसिया केसर की बूँदन में,",
     "author": "विविध रसिक संत",
     "slug": "कन-रग-दन-र-रसय-कसर-क-बदन-म",
@@ -18,14 +41,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 1
   },
   {
     "id": "रसय-मर-छल-अवधवस",
     "collectionId": "braj-rasiya",
-    "index": 2,
+    "index": 3,
     "titleDevanagari": "रसिया मेरो छैल अवधवासी।",
     "author": "विविध रसिक संत",
     "slug": "रसय-मर-छल-अवधवस",
@@ -40,14 +63,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 2
   },
   {
     "id": "रसय-मर-लहर-उतर-रस-त-ल-दन-ननन-क",
     "collectionId": "braj-rasiya",
-    "index": 3,
+    "index": 4,
     "titleDevanagari": "रसिया मेरी लहर उतार रस तो लै दोनू नैनन को ।।",
     "author": "विविध रसिक संत",
     "slug": "रसय-मर-लहर-उतर-रस-त-ल-दन-ननन-क",
@@ -64,14 +87,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 3
   },
   {
     "id": "fagun-maas-suhayo-rasiya-hori-khelan-aayo",
     "collectionId": "braj-rasiya",
-    "index": 4,
+    "index": 5,
     "titleDevanagari": "फागुन मास सुहायो रसिया, होरी खेलन आयो।",
     "author": "विविध रसिक संत",
     "slug": "fagun-maas-suhayo-rasiya-hori-khelan-aayo",
@@ -87,14 +110,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 4
   },
   {
     "id": "मगनन-नर-नवल-रसय",
     "collectionId": "braj-rasiya",
-    "index": 5,
+    "index": 6,
     "titleDevanagari": "मृगनैनी नारि नवल रसिया ।।",
     "author": "विविध रसिक संत",
     "slug": "मगनन-नर-नवल-रसय",
@@ -113,14 +136,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 5
   },
   {
     "id": "फगन-मस-सहय-रसय",
     "collectionId": "braj-rasiya",
-    "index": 6,
+    "index": 7,
     "titleDevanagari": "फागुन मास सुहायो रसिया",
     "author": "विविध रसिक संत",
     "slug": "फगन-मस-सहय-रसय",
@@ -135,14 +158,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 6
   },
   {
     "id": "हर-तत-न-खल-शयम-रसय-1",
     "collectionId": "braj-rasiya",
-    "index": 7,
+    "index": 8,
     "titleDevanagari": "होरी तोते न खेलूं श्याम रसिया",
     "author": "विविध रसिक संत",
     "slug": "हर-तत-न-खल-शयम-रसय-1",
@@ -159,14 +182,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 7
   },
   {
     "id": "रसय-क-महलल-नयर-र-रसय-क",
     "collectionId": "braj-rasiya",
-    "index": 8,
+    "index": 9,
     "titleDevanagari": "रसिया को मोहल्ला न्यारो री रसिया को ।।",
     "author": "विविध रसिक संत",
     "slug": "रसय-क-महलल-नयर-र-रसय-क",
@@ -182,14 +205,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 8
   },
   {
     "id": "hori-khelan-ladaiti-rasiya-lalit-tribhangi-shri-kishoridas-of-gaudiya-sect",
     "collectionId": "braj-rasiya",
-    "index": 9,
+    "index": 10,
     "titleDevanagari": "होरी खेलन लड़ैती रसिया ललित त्रिभंगी - श्री किशोरीदास (गौड़ीय संत)",
     "author": "श्री किशोरीदास (गौड़ीय संत)",
     "slug": "hori-khelan-ladaiti-rasiya-lalit-tribhangi-shri-kishoridas-of-gaudiya-sect",
@@ -206,14 +229,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 9
   },
   {
     "id": "रसय-कसर-क-बदन-म-अगय-कन-रग-दन-र",
     "collectionId": "braj-rasiya",
-    "index": 10,
+    "index": 11,
     "titleDevanagari": "रसिया केसर की बूंदन में अंगिया किन रंग दीनी रे ।।",
     "author": "विविध रसिक संत",
     "slug": "रसय-कसर-क-बदन-म-अगय-कन-रग-दन-र",
@@ -228,14 +251,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 10
   },
   {
     "id": "चरजव-हर-क-रसय-हरचनद",
     "collectionId": "braj-rasiya",
-    "index": 11,
+    "index": 12,
     "titleDevanagari": "चिरजीवो होरी के रसिया। (हरिचन्द )",
     "author": "विविध रसिक संत",
     "slug": "चरजव-हर-क-रसय-हरचनद",
@@ -250,14 +273,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 11
   },
   {
     "id": "lakh-log-nagari-baso-rasiya-bin-kachu-na-suhay",
     "collectionId": "braj-rasiya",
-    "index": 12,
+    "index": 13,
     "titleDevanagari": "लाख लोग नगरी बसौ रसिया बिन कछु न सुहाय",
     "author": "विविध रसिक संत",
     "slug": "lakh-log-nagari-baso-rasiya-bin-kachu-na-suhay",
@@ -276,14 +299,14 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 12
   },
   {
     "id": "रसय-मह-मल-मलय-लज",
     "collectionId": "braj-rasiya",
-    "index": 13,
+    "index": 14,
     "titleDevanagari": "रसिया मोहे मोल मुलाय लीजो",
     "author": "विविध रसिक संत",
     "slug": "रसय-मह-मल-मलय-लज",
@@ -298,30 +321,7 @@
         ]
       }
     ],
-    "chapterId": "general",
-    "chapterName": "सामान्य पद",
-    "verseNumber": 13
-  },
-  {
-    "id": "chirjeevo-hori-ke-rasiya-shri-bhartendu-harishchandra-bhartendu-granthawali",
-    "collectionId": "braj-rasiya",
-    "index": 14,
-    "titleDevanagari": "चिरजीवो होरी के रसिया - श्री भारतेंदु हरिशचंद्र, भारतेन्दु ग्रंथावली, होली (13)",
-    "author": "श्री भारतेंदु हरिशचंद्र",
-    "slug": "chirjeevo-hori-ke-rasiya-shri-bhartendu-harishchandra-bhartendu-granthawali",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "चिरजीवो होरी के रसिया।",
-          "नित प्रति आवौं मेरे होरी खेलन, नित गारी नित ही हँसिया॥ [1]",
-          "माथे मुकुट लकुट लीनें कर, पीत पिछौरी कटि कसिया।",
-          "हरीचन्द्र के नैंन सिरावो, राधा प्यारी कौ ये रसिया॥ [2]",
-          "- श्री भारतेंदु हरिशचंद्र, भारतेन्दु ग्रंथावली, होली (13)"
-        ]
-      }
-    ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 13
   },
@@ -347,7 +347,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 15
   },
@@ -370,7 +370,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 16
   },
@@ -394,7 +394,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 17
   },
@@ -422,7 +422,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 18
   },
@@ -447,7 +447,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 19
   },
@@ -470,7 +470,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 20
   },
@@ -490,7 +490,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 21
   },
@@ -513,7 +513,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 22
   },
@@ -535,7 +535,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 23
   },
@@ -559,7 +559,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 24
   },
@@ -582,7 +582,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 25
   },
@@ -607,7 +607,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 26
   },
@@ -629,7 +629,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 27
   },
@@ -649,7 +649,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 28
   },
@@ -672,7 +672,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 29
   },
@@ -694,7 +694,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 30
   },
@@ -718,7 +718,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 31
   },
@@ -742,7 +742,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 32
   },
@@ -773,7 +773,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 33
   },
@@ -808,7 +808,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 34
   },
@@ -830,7 +830,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 35
   },
@@ -854,7 +854,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 36
   },
@@ -886,7 +886,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 37
   },
@@ -908,7 +908,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 38
   },
@@ -931,7 +931,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 39
   },
@@ -955,7 +955,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 40
   },
@@ -977,7 +977,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 41
   },
@@ -999,7 +999,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 42
   },
@@ -1028,7 +1028,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 43
   },
@@ -1052,7 +1052,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 44
   },
@@ -1079,7 +1079,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 45
   },
@@ -1115,7 +1115,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 46
   },
@@ -1140,7 +1140,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 47
   },
@@ -1165,7 +1165,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 48
   },
@@ -1187,7 +1187,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 49
   },
@@ -1210,7 +1210,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 50
   },
@@ -1241,7 +1241,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 51
   },
@@ -1264,7 +1264,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 52
   },
@@ -1291,7 +1291,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 53
   },
@@ -1313,7 +1313,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 54
   },
@@ -1337,7 +1337,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 55
   },
@@ -1360,7 +1360,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 56
   },
@@ -1382,7 +1382,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 57
   },
@@ -1410,7 +1410,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 58
   },
@@ -1438,7 +1438,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 59
   },
@@ -1460,7 +1460,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 60
   },
@@ -1484,7 +1484,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 61
   },
@@ -1510,7 +1510,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 62
   },
@@ -1533,7 +1533,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 63
   },
@@ -1555,7 +1555,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 64
   },
@@ -1580,7 +1580,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 65
   },
@@ -1605,7 +1605,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 66
   },
@@ -1627,7 +1627,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 67
   },
@@ -1650,7 +1650,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 68
   },
@@ -1678,7 +1678,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 69
   },
@@ -1698,7 +1698,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 70
   },
@@ -1720,7 +1720,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 71
   },
@@ -1763,7 +1763,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 72
   },
@@ -1785,7 +1785,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 73
   },
@@ -1807,7 +1807,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 74
   },
@@ -1830,7 +1830,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 75
   },
@@ -1854,7 +1854,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 76
   },
@@ -1886,7 +1886,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 77
   },
@@ -1910,7 +1910,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 78
   },
@@ -1932,7 +1932,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 79
   },
@@ -1956,7 +1956,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 80
   },
@@ -1980,7 +1980,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 81
   },
@@ -2002,7 +2002,7 @@
         ]
       }
     ],
-    "chapterId": "general",
+    "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
     "verseNumber": 82
   }

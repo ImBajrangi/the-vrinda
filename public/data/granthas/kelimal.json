@@ -1,29 +1,8 @@
 [
   {
-    "id": "shri-swami-haridas-ke-charan-kamal-chit-lau-shri-kant-kishor-kant-rasik-ji-ki-vani-doha-1",
-    "collectionId": "kelimal",
-    "index": 1,
-    "titleDevanagari": "श्री स्वामी हरिदास के चरन कमल चित लाउ - श्री कान्त किशोर, कान्त रसिक जी की वाणी, दोहा (1)",
-    "author": "श्री कान्त किशोर",
-    "slug": "shri-swami-haridas-ke-charan-kamal-chit-lau-shri-kant-kishor-kant-rasik-ji-ki-vani-doha-1",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "श्री स्वामी हरिदास के, चरन कमल चित लाउ।",
-          "कान्त रसिक रस-माधुरी, लखै न और उपाउ॥",
-          "- श्री कान्त किशोर, कान्त रसिक जी की वाणी, दोहा (1)"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 1
-  },
-  {
     "id": "jyonhijyonhi-tum-raakhat-ho",
     "collectionId": "kelimal",
-    "index": 2,
+    "index": 1,
     "titleDevanagari": "ज्यौंही-ज्यौंही तुम राखत हौ - स्वामी श्री हरिदास जी, अष्टादश पद (01)",
     "author": "स्वामी श्री हरिदास जी",
     "slug": "jyonhijyonhi-tum-raakhat-ho",
@@ -45,30 +24,9 @@
     "verseNumber": 1
   },
   {
-    "id": "shri-haridas-karain-so-hoi-shri-lalitmohini-dev-shri-lalitmohini-dev-ju-ki-vani-1",
-    "collectionId": "kelimal",
-    "index": 3,
-    "titleDevanagari": "श्री हरिदास करैं सो होइ - श्री ललितमोहिनी देव, श्री ललितमोहिनी देव जू की वाणी (1)",
-    "author": "श्री ललितमोहिनी देव",
-    "slug": "shri-haridas-karain-so-hoi-shri-lalitmohini-dev-shri-lalitmohini-dev-ju-ki-vani-1",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "श्री हरिदास करैं सो होइ। श्रीबिहारी बिहारिनि कौ मुख जोइ॥",
-          "श्री वृन्दावन रहिये सोइ। नित उठि पीजै जमुना तोइ॥",
-          "- श्री ललितमोहिनी देव, श्री ललितमोहिनी देव जू की वाणी (1)"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 1
-  },
-  {
     "id": "ruchi-ke-prakaas-paraspar-khelan-laage-shri-swami-haridas-ji-kelimal-2",
     "collectionId": "kelimal",
-    "index": 4,
+    "index": 2,
     "titleDevanagari": "रुचि के प्रकास परस्पर खेलन लागे - श्री स्वामी हरिदास जी, केलीमाल (2)",
     "author": "श्री स्वामी हरिदास जी",
     "slug": "ruchi-ke-prakaas-paraspar-khelan-laage-shri-swami-haridas-ji-kelimal-2",
@@ -91,30 +49,9 @@
     "verseNumber": 2
   },
   {
-    "id": "jo-tau-haun-sancho-bhajaun-shri-swami-haridas-shri-chaturdas-ji-ki-vani-2",
-    "collectionId": "kelimal",
-    "index": 5,
-    "titleDevanagari": "जो तो हौं साँचौ भजौं, श्री स्वामी हरिदास - श्री चतुर दास जी की वाणी (2)",
-    "author": "श्री चतुर दास जी की वाणी",
-    "slug": "jo-tau-haun-sancho-bhajaun-shri-swami-haridas-shri-chaturdas-ji-ki-vani-2",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "जो तो हौं साँचौ भजौं, श्री स्वामी हरिदास।",
-          "तौ तुम दीजौ लाड़िली, मोहिं विपिन कौ वास॥",
-          "- श्री चतुर दास जी, श्री चतुर दास जी की वाणी, सिद्धांत की साखी (2)"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 2
-  },
-  {
     "id": "kahu-ko-bas-nahin-tumhari-kripa-tein-swami-shri-haridas-ji-ashtadash-pada-02",
     "collectionId": "kelimal",
-    "index": 6,
+    "index": 3,
     "titleDevanagari": "काहू कौ बस नाहिं, तुम्हारी कृपा तें सब होय बिहारी-बिहारिनि -  श्री हरिदास जी, अष्टादश पद (02)",
     "author": "श्री हरिदास जी",
     "slug": "kahu-ko-bas-nahin-tumhari-kripa-tein-swami-shri-haridas-ji-ashtadash-pada-02",
@@ -138,7 +75,7 @@
   {
     "id": "kabhu-kabhu-mana-ita-uta-jaat-swami-shri-haridas-astadash-pada-03",
     "collectionId": "kelimal",
-    "index": 7,
+    "index": 4,
     "titleDevanagari": "कबहूँ-कबहूँ मन इत-उत जात, यातैंब कौन अधिक सुख - श्री हरिदास जी, अष्टादश पद (03)",
     "author": "श्री हरिदास जी",
     "slug": "kabhu-kabhu-mana-ita-uta-jaat-swami-shri-haridas-astadash-pada-03",
@@ -162,7 +99,7 @@
   {
     "id": "aiseinyi-dekhat-rahaun-janam-suphal-kari-maanaun-shri-swami-haridas-ji-kelimal-3",
     "collectionId": "kelimal",
-    "index": 8,
+    "index": 5,
     "titleDevanagari": "ऐसैंई देखत रहौं जनम सुफल करि मानौं - श्री स्वामी हरिदास जी, केलीमाल (3)",
     "author": "श्री स्वामी हरिदास जी",
     "slug": "aiseinyi-dekhat-rahaun-janam-suphal-kari-maanaun-shri-swami-haridas-ji-kelimal-3",
@@ -184,30 +121,9 @@
     "verseNumber": 3
   },
   {
-    "id": "shri-swami-haridas-kau-anugat-jo-jan-hoi-shri-roop-sakhi-siddhant-ke-doha-4",
-    "collectionId": "kelimal",
-    "index": 9,
-    "titleDevanagari": "श्री स्वामी हरिदास को - श्री रूप सखी, सिद्धांत के दोहा (4)",
-    "author": "श्री रूप सखी",
-    "slug": "shri-swami-haridas-kau-anugat-jo-jan-hoi-shri-roop-sakhi-siddhant-ke-doha-4",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "श्री स्वामी हरिदास को, अनुगत जो जन होई।",
-          "नित्यविहार निरखै सदा, सखी तन रूप समोई॥",
-          "- श्री रूप सखी, सिद्धांत के दोहा (4)"
-        ]
-      }
-    ],
-    "chapterId": "siddhant",
-    "chapterName": "सिद्धांत के पद",
-    "verseNumber": 4
-  },
-  {
     "id": "hari-bhaj-hari-bhaj-lalita-avtar-shri-haridas-ji-ashtadash-pada-04",
     "collectionId": "kelimal",
-    "index": 10,
+    "index": 6,
     "titleDevanagari": "हरि भज हरि भज -ललिता अवतार श्री हरिदास जी, अष्टादश पद (4)",
     "author": "स्वामी श्री हरिदास जी",
     "slug": "hari-bhaj-hari-bhaj-lalita-avtar-shri-haridas-ji-ashtadash-pada-04",
@@ -229,7 +145,7 @@
   {
     "id": "jori-vichitra-banayi-ri-maee-shri-swami-haridas-kelimal-4",
     "collectionId": "kelimal",
-    "index": 11,
+    "index": 7,
     "titleDevanagari": "जोरी विचित्र बनाई री माई - श्री स्वामी हरिदास, केलीमाल (4)",
     "author": "श्री स्वामी हरिदास",
     "slug": "jori-vichitra-banayi-ri-maee-shri-swami-haridas-kelimal-4",
@@ -253,30 +169,9 @@
     "verseNumber": 4
   },
   {
-    "id": "bansiali-haridas-ji-hit-haribansh-samet-shri-sanket-ali-sanket-lata-5",
-    "collectionId": "kelimal",
-    "index": 12,
-    "titleDevanagari": "बंशीअलि हरिदास जी, हित हरिबंश समेत - श्री संकेत अली, संकेत लता (5)",
-    "author": "श्री संकेत अली",
-    "slug": "bansiali-haridas-ji-hit-haribansh-samet-shri-sanket-ali-sanket-lata-5",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "बंशीअलि हरिदास जी, हित हरिबंश समेत।",
-          "वंदि चरण रज धारी शिर, प्रणत अलीसंकेत॥",
-          "- श्री संकेत अली, संकेत लता (5)"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 5
-  },
-  {
     "id": "pyaaree-jaiso-tero-aankhin-mein-swami-haridas-kelimal",
     "collectionId": "kelimal",
-    "index": 13,
+    "index": 8,
     "titleDevanagari": "प्यारी जैसो तेरो आँखिन में, मैं हौं अपनपौं देखत|  तैसो तुम देखती हो किधौं नाहीं || हौं तोसों कहौं प्यारे, आँखिन मूंदी रहौं । लाल निकसि कहूँ जाहिं ||- श्री केलीमल, स्वामी श्री हरिदास जी (6)",
     "author": "स्वामी श्री हरिदास जी",
     "slug": "pyaaree-jaiso-tero-aankhin-mein-swami-haridas-kelimal",
@@ -298,7 +193,7 @@
   {
     "id": "pyari-jaiso-teri-aankhein-mein-pad-written-by-swami-shri-haridas",
     "collectionId": "kelimal",
-    "index": 14,
+    "index": 9,
     "titleDevanagari": "प्यारी जैसो तेरो आँखिन में मैं होँ - स्वामी श्री हरिदास, केलिमाल (6)",
     "author": "स्वामी श्री हरिदास",
     "slug": "pyari-jaiso-teri-aankhein-mein-pad-written-by-swami-shri-haridas",
@@ -322,7 +217,7 @@
   {
     "id": "bande-akhatyaar-bhala-lalita-avtar-shri-swami-haridas-ji-astadash-pada-6",
     "collectionId": "kelimal",
-    "index": 15,
+    "index": 10,
     "titleDevanagari": "बंदे, अखतियार भला - ललिता अवतार श्री हरिदास जी, अष्टादश पद (6)",
     "author": "ललिता अवतार श्री हरिदास जी",
     "slug": "bande-akhatyaar-bhala-lalita-avtar-shri-swami-haridas-ji-astadash-pada-6",
@@ -346,7 +241,7 @@
   {
     "id": "hita-to-kijeye-kamal-nain-son-lalita-avtar-shri-haridas-astadasha-pada-07",
     "collectionId": "kelimal",
-    "index": 16,
+    "index": 11,
     "titleDevanagari": "हित तौ कीजै कमलनैन सौं - ललिता अवतार श्री हरिदास जी, अष्टादश पद (07)",
     "author": "ललिता अवतार श्री हरिदास जी",
     "slug": "hita-to-kijeye-kamal-nain-son-lalita-avtar-shri-haridas-astadasha-pada-07",
@@ -367,7 +262,7 @@
   {
     "id": "pyari-terau-badan-amrit-ki-pank-taamein-shri-haridas-ji-kelimal-7",
     "collectionId": "kelimal",
-    "index": 17,
+    "index": 12,
     "titleDevanagari": "प्यारी तेरौ बदन अमृत की पंक तामें बींधे नैंन द्वै  - श्री स्वामी हरिदास जी, केलीमाल (7)",
     "author": "श्री स्वामी हरिदास जी",
     "slug": "pyari-terau-badan-amrit-ki-pank-taamein-shri-haridas-ji-kelimal-7",
@@ -389,32 +284,9 @@
     "verseNumber": 7
   },
   {
-    "id": "mai-ri-sahaj-jori-prakat-bhai-ju",
-    "collectionId": "kelimal",
-    "index": 18,
-    "titleDevanagari": "माई री सहज जोरी प्रकट भई जु रंग की गौर श्याम धन-दामिनी जैसे ।",
-    "author": "स्वामी श्री हरिदास जी",
-    "slug": "mai-ri-sahaj-jori-prakat-bhai-ju",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "माई री सहज जोरी प्रकट भई जु रंग की गौर श्याम धन-दामिनी जैसे ।",
-          "प्रथम हूँ हुती अबहूँ आगे हूँ रहिहैं न टरिहैं तैंसे ॥",
-          "अंग-अंग की उजराई सुधराई चतुराई सुन्दरता ऐसे।",
-          "श्रीहरिदास के स्वामी श्यामा-कुंजबिहारी सम वस वैसे ॥",
-          "- स्वामी श्री हरिदास"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 18
-  },
-  {
     "id": "aavat-jaat-bajaavat-nupur-swami-haridas-ji-kelimal-8",
     "collectionId": "kelimal",
-    "index": 19,
+    "index": 13,
     "titleDevanagari": "आवत जात बजावत नूपुर - श्री स्वामी हरिदास जी, केलीमाल (8)",
     "author": "श्री स्वामी हरिदास जी",
     "slug": "aavat-jaat-bajaavat-nupur-swami-haridas-ji-kelimal-8",
@@ -440,7 +312,7 @@
   {
     "id": "tinka-jyon-bayaar-ke-bas-lalita-avtar-shri-swami-haridas-ji-kelimaal-8",
     "collectionId": "kelimal",
-    "index": 20,
+    "index": 14,
     "titleDevanagari": "तिनुका ज्यौं बयार के बस - ललिता अवतार श्री स्वामी हरिदास जी, अष्टादश के पद (8)",
     "author": "ललिता अवतार श्री स्वामी हरिदास जी",
     "slug": "tinka-jyon-bayaar-ke-bas-lalita-avtar-shri-swami-haridas-ji-kelimaal-8",
@@ -464,7 +336,7 @@
   {
     "id": "drishti-chaump-bar-phanda-man-shri-swami-haridas-ji-kelimal-9",
     "collectionId": "kelimal",
-    "index": 21,
+    "index": 15,
     "titleDevanagari": "दृष्टि चौंप बर फंदा मन राख्यौ लै पंछी बिहारी - स्वामी हरिदास जी, केलीमाल (9)",
     "author": "स्वामी हरिदास जी",
     "slug": "drishti-chaump-bar-phanda-man-shri-swami-haridas-ji-kelimal-9",
@@ -487,30 +359,9 @@
     "verseNumber": 9
   },
   {
-    "id": "shri-swami-haridas-bhajo-man-shri-haridas-bhajo-shri-chaturdas-ji-ki-vani-siddhant-ki-saakhi-9",
-    "collectionId": "kelimal",
-    "index": 22,
-    "titleDevanagari": "श्री स्वामी हरिदास भजो मन, श्री हरिदास भजौ - श्री चतुर दास जी की वाणी, सिद्धांत की साखी (9)",
-    "author": "श्री चतुर दास जी की वाणी",
-    "slug": "shri-swami-haridas-bhajo-man-shri-haridas-bhajo-shri-chaturdas-ji-ki-vani-siddhant-ki-saakhi-9",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "श्री स्वामी हरिदास भजो मन, श्री हरिदास भजौ।",
-          "औरन के औगुन कहा देखौ, अपनी ओर लजौ॥",
-          "- श्री चतुर दास, श्री चतुर दास जी की वाणी, सिद्धांत की साखी (9)"
-        ]
-      }
-    ],
-    "chapterId": "siddhant",
-    "chapterName": "सिद्धांत के पद",
-    "verseNumber": 9
-  },
-  {
     "id": "samudra-manusha-meen-nakar-shri-haridas-ji-ashtadash-pada-09",
     "collectionId": "kelimal",
-    "index": 23,
+    "index": 16,
     "titleDevanagari": "संसार समुद्र मनुष्य मीन - श्री हरिदास जी, अष्टादश पद (09)",
     "author": "श्री हरिदास जी",
     "slug": "samudra-manusha-meen-nakar-shri-haridas-ji-ashtadash-pada-09",
@@ -532,51 +383,9 @@
     "verseNumber": 9
   },
   {
-    "id": "shri-haridas-upasana-shri-rasik-dev-shri-rasik-dev-ju-ki-vani-vishistha-pada-saakhi-10",
-    "collectionId": "kelimal",
-    "index": 24,
-    "titleDevanagari": "श्री हरिदास उपासना - श्री रसिक देव जी की वाणी, विशिष्ट पद एवं साखी (10)",
-    "author": "श्री रसिक देव जी की वाणी",
-    "slug": "shri-haridas-upasana-shri-rasik-dev-shri-rasik-dev-ju-ki-vani-vishistha-pada-saakhi-10",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "श्री हरिदास उपासना, लख में पावै एक।",
-          "रस रीति हूँ पावै नहीं, पचि पचि मरे अनेक॥",
-          "- श्री रसिक देव जी, श्री रसिक देव जी की वाणी, विशिष्ट पद एवं साखी (10)"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 10
-  },
-  {
-    "id": "shriswami-haridas-bhaj-shri-chaturdas-ji-ki-vani-siddhant-ki-saakhi-10",
-    "collectionId": "kelimal",
-    "index": 25,
-    "titleDevanagari": "श्रीस्वामी हरिदास भज - श्री चतुर दास जी की वाणी, सिद्धांत की साखी (10)",
-    "author": "श्री चतुर दास जी की वाणी",
-    "slug": "shriswami-haridas-bhaj-shri-chaturdas-ji-ki-vani-siddhant-ki-saakhi-10",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "श्रीस्वामी हरिदास भज, छाँडि सकल जंजार।",
-          "या चक्कर में मति परै, यह झूठौ संसार॥",
-          "- श्री चतुर दास, श्री चतुर दास जी की वाणी, सिद्धांत की साखी (10)"
-        ]
-      }
-    ],
-    "chapterId": "siddhant",
-    "chapterName": "सिद्धांत के पद",
-    "verseNumber": 10
-  },
-  {
     "id": "bhulainbhulain-maan-na-kari-ri-pyari-swami-haridas-ji-kelimal-10",
     "collectionId": "kelimal",
-    "index": 26,
+    "index": 17,
     "titleDevanagari": "भूलैं-भूलैं मान न करि री प्यारी - श्री स्वामी हरिदास जी, केलीमाल (10)",
     "author": "श्री स्वामी हरिदास जी",
     "slug": "bhulainbhulain-maan-na-kari-ri-pyari-swami-haridas-ji-kelimal-10",
@@ -604,7 +413,7 @@
   {
     "id": "hari-ke-naam-kon-aalas-kat-karat-hai-re-shri-swami-haridas-ashtadash-pada-10",
     "collectionId": "kelimal",
-    "index": 27,
+    "index": 18,
     "titleDevanagari": "हरि के नाम कों आलस कत करत है रे - श्री स्वामी हरिदास, अष्टादश पद (10)",
     "author": "श्री स्वामी हरिदास",
     "slug": "hari-ke-naam-kon-aalas-kat-karat-hai-re-shri-swami-haridas-ashtadash-pada-10",
@@ -629,7 +438,7 @@
   {
     "id": "dekhau-ini-logan-ki-laavani-lalita-avtar-shri-swami-haridas-ji-astadash-pada-11",
     "collectionId": "kelimal",
-    "index": 28,
+    "index": 19,
     "titleDevanagari": "देखौ इनि लोगन की लावनि - स्वामी श्री हरिदास जी, अष्टादश पद (11)",
     "author": "स्वामी श्री हरिदास जी",
     "slug": "dekhau-ini-logan-ki-laavani-lalita-avtar-shri-swami-haridas-ji-astadash-pada-11",
@@ -653,7 +462,7 @@
   {
     "id": "baat-tau-kahat-kahi-gayi-lalita-avtar-shri-haridas-ji-kelimal-11",
     "collectionId": "kelimal",
-    "index": 29,
+    "index": 20,
     "titleDevanagari": "बात तौ कहत कहि गई - ललिता अवतार श्री हरिदास जी, केलीमाल (11)",
     "author": "ललिता अवतार श्री हरिदास जी",
     "slug": "baat-tau-kahat-kahi-gayi-lalita-avtar-shri-haridas-ji-kelimal-11",
@@ -675,74 +484,9 @@
     "verseNumber": 11
   },
   {
-    "id": "shriswami-haridas-bhaji-siddh-hoi-sab-kaam-shri-chaturdas-ji-ki-vani-siddhant-ki-saakhi-11",
-    "collectionId": "kelimal",
-    "index": 30,
-    "titleDevanagari": "श्रीस्वामी हरिदास भजि, सिद्ध होइ सब काम - श्री चतुर दास जी की वाणी, सिद्धांत की साखी (11)",
-    "author": "श्री चतुर दास जी की वाणी",
-    "slug": "shriswami-haridas-bhaji-siddh-hoi-sab-kaam-shri-chaturdas-ji-ki-vani-siddhant-ki-saakhi-11",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "श्रीस्वामी हरिदास भजि, सिद्ध होइ सब काम।",
-          "चतुरदास यह भाव भजि, निरखे स्यामास्याम॥",
-          "- श्री चतुर दास जी, श्री चतुर दास जी की वाणी, सिद्धांत की साखी (11)"
-        ]
-      }
-    ],
-    "chapterId": "siddhant",
-    "chapterName": "सिद्धांत के पद",
-    "verseNumber": 11
-  },
-  {
-    "id": "chaturdas-shri-haridas-kai-adbhut-nity-bihar-shri-chatur-das-ji",
-    "collectionId": "kelimal",
-    "index": 31,
-    "titleDevanagari": "चतुरदास (श्री) हरिदास कै, अद्भुत नित्य बिहार - श्री चतुर दास जी की वाणी (12)",
-    "author": "श्री चतुर दास जी की वाणी",
-    "slug": "chaturdas-shri-haridas-kai-adbhut-nity-bihar-shri-chatur-das-ji",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "चतुरदास (श्री) हरिदास कै, अद्भुत नित्य बिहार।",
-          "इहाँ औरनि की कहा चलै, वेद न पावै पार॥",
-          "- श्री चतुर दास जी, श्री चतुर दास जी की वाणी, सिद्धांत की साखी (12)"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 12
-  },
-  {
-    "id": "baarak-shri-haridas-vilokat",
-    "collectionId": "kelimal",
-    "index": 32,
-    "titleDevanagari": "बारक श्रीहरिदास विलोकत",
-    "author": "स्वामी श्री हरिदास जी",
-    "slug": "baarak-shri-haridas-vilokat",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "बारक श्रीहरिदास विलोकत, तेल की बूँद समुद्र तरी।",
-          "बादि करै श्रम साधन कोटिक, पंक में ढारि भरी गगरी॥",
-          "न तुलै करुनालय लाडिली कौ बल, लालहि लै अनुराग ढरी।",
-          "श्रीबिहारिनिदासि ह्वै सेय तिन्हैं, जिनि दंपति संपति साँचि धरी॥",
-          "- बिहारिन देव जी"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 32
-  },
-  {
     "id": "hari-kau-aisoi-sab-khel-shri-swami-haridas-ashtadash-pada-13",
     "collectionId": "kelimal",
-    "index": 33,
+    "index": 21,
     "titleDevanagari": "हरि कौ ऐसोई सब खेल - श्री स्वामी हरिदास, अष्टादश पद (13)",
     "author": "श्री स्वामी हरिदास",
     "slug": "hari-kau-aisoi-sab-khel-shri-swami-haridas-ashtadash-pada-13",
@@ -766,7 +510,7 @@
   {
     "id": "ek-samai-ekaant-ban-mein-swami-haridas-kelimal-13",
     "collectionId": "kelimal",
-    "index": 34,
+    "index": 22,
     "titleDevanagari": "एक समै एकांत बन - श्री स्वामी हरिदास जी, केलीमाल (13)",
     "author": "श्री स्वामी हरिदास जी",
     "slug": "ek-samai-ekaant-ban-mein-swami-haridas-kelimal-13",
@@ -791,7 +535,7 @@
   {
     "id": "jhoothi-baat-saanchi-kari-dikhaavat-shri-swami-haridas-ashtadash-pad-14",
     "collectionId": "kelimal",
-    "index": 35,
+    "index": 23,
     "titleDevanagari": "झूठी बात सांची करि दिखावत - श्री स्वामी हरिदास, अष्टादश पद (14)",
     "author": "श्री स्वामी हरिदास",
     "slug": "jhoothi-baat-saanchi-kari-dikhaavat-shri-swami-haridas-ashtadash-pad-14",
@@ -815,7 +559,7 @@
   {
     "id": "radhe-chali-ri-hari-bolat-kokila-alaapat-shri-swami-haridas-kelimal-14",
     "collectionId": "kelimal",
-    "index": 36,
+    "index": 24,
     "titleDevanagari": "राधे चलि री हरि बोलत - ललिता अवतार श्री स्वामी हरिदास जी, केलीमाल (14)",
     "author": "ललिता अवतार श्री स्वामी हरिदास जी",
     "slug": "radhe-chali-ri-hari-bolat-kokila-alaapat-shri-swami-haridas-kelimal-14",
@@ -841,33 +585,9 @@
     "verseNumber": 14
   },
   {
-    "id": "man-lagay-priti-kijai-kar-karuva-saun-shri-haridas-astadash-pada",
-    "collectionId": "kelimal",
-    "index": 37,
-    "titleDevanagari": "मन लगाय प्रीति कीजै, कर करवा - श्री हरिदास जी, अष्टादश पद",
-    "author": "श्री हरिदास जी",
-    "slug": "man-lagay-priti-kijai-kar-karuva-saun-shri-haridas-astadash-pada",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "(राग आसावरी)",
-          "मन लगाय प्रीति कीजै, कर करवा सौं ब्रज-बीथिन दीजै सोहनी। [1]",
-          "वृन्दावन सौं, बन-उपवन सौं, गुंज-माल हाथ पोहनी॥ [2]",
-          "गो गो-सुतनि सौं, मृगी मृग-सुतनि सौं, और तन नैंकु न जोहनी। [3]",
-          "श्रीहरिदास के स्वामी स्यामा-कुंजबिहारी सौं चित, ज्यौं सिर पर दोहनी॥ [4]",
-          "- ललिता अवतार श्री हरिदास जी, अष्टादश पद (12)"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 37
-  },
-  {
     "id": "jagat-preeti-kari-dekhi-lalita-avatar-shri-swami-haridas-ji-ashtadash-pada-15",
     "collectionId": "kelimal",
-    "index": 38,
+    "index": 25,
     "titleDevanagari": "जगत प्रीति करि देखी - ललिता अवतार श्री स्वामी हरिदास जी, अष्टादश पद (15)",
     "author": "ललिता अवतार श्री स्वामी हरिदास जी",
     "slug": "jagat-preeti-kari-dekhi-lalita-avatar-shri-swami-haridas-ji-ashtadash-pada-15",
@@ -891,7 +611,7 @@
   {
     "id": "terau-mag-jovat-laal-bihari-shri-swami-haridas-ji-kelimal-15",
     "collectionId": "kelimal",
-    "index": 39,
+    "index": 26,
     "titleDevanagari": "तेरौ मग जोवत लाल बिहारी - श्री स्वामी हरिदास जी, केलीमाल (15)",
     "author": "श्री स्वामी हरिदास जी",
     "slug": "terau-mag-jovat-laal-bihari-shri-swami-haridas-ji-kelimal-15",
@@ -915,7 +635,7 @@
   {
     "id": "maani-tub-chali-ri-ek-sang-rahayau-keejai-swami-haridas-kelimal-16",
     "collectionId": "kelimal",
-    "index": 40,
+    "index": 27,
     "titleDevanagari": "मानि तूब चलि री एक संग रह्यौ कीजै - श्री स्वामी हरिदास, केलीमाल (16)",
     "author": "श्री स्वामी हरिदास",
     "slug": "maani-tub-chali-ri-ek-sang-rahayau-keejai-swami-haridas-kelimal-16",
@@ -940,7 +660,7 @@
   {
     "id": "log-to-bhulen-bhale-bhulen-shri-swami-haridas-ashtadash-pad-16",
     "collectionId": "kelimal",
-    "index": 41,
+    "index": 28,
     "titleDevanagari": "लोग तो भूलैं भलैं भूलैं - श्री स्वामी हरिदास, अष्टादश पद (16)",
     "author": "श्री स्वामी हरिदास",
     "slug": "log-to-bhulen-bhale-bhulen-shri-swami-haridas-ashtadash-pad-16",
@@ -962,31 +682,9 @@
     "verseNumber": 16
   },
   {
-    "id": "परगट-भई-ललतपरय-हरदस",
-    "collectionId": "kelimal",
-    "index": 42,
-    "titleDevanagari": "प्रगट भई ललितप्रिये हरिदासी",
-    "author": "स्वामी श्री हरिदास जी",
-    "slug": "परगट-भई-ललतपरय-हरदस",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "प्रगट भई ललितप्रिये हरिदासी।",
-          "रसिकनि के आनंद भयौ अति पाई सुख की रासी।।",
-          "छिन छिन गावति प्रति दुलरावति हियें सु प्रेम हुलसी।",
-          "श्रीविपुल बिहरिनिदासी की जीवनि नित्य विपिन की बासी।।"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 42
-  },
-  {
     "id": "jaulaun-jeevai-taulaun-hari-bhaj-shri-swami-haridas-ji-ashtadash-pada-17",
     "collectionId": "kelimal",
-    "index": 43,
+    "index": 29,
     "titleDevanagari": "जौलौं जीवै तौलौं हरि भज रे मन और बात सब बादि - श्री स्वामी हरिदास जी, अष्टादश पद (17)",
     "author": "श्री स्वामी हरिदास जी",
     "slug": "jaulaun-jeevai-taulaun-hari-bhaj-shri-swami-haridas-ji-ashtadash-pada-17",
@@ -1010,7 +708,7 @@
   {
     "id": "tu-ris-chhaandi-ri-radhe-radhe-shri-swami-haridas-ji-kelimal-17",
     "collectionId": "kelimal",
-    "index": 44,
+    "index": 30,
     "titleDevanagari": "तू रिस छाँड़ि री राधे राधे - श्री स्वामी हरिदास जी, केलीमाल (17)",
     "author": "श्री स्वामी हरिदास जी",
     "slug": "tu-ris-chhaandi-ri-radhe-radhe-shri-swami-haridas-ji-kelimal-17",
@@ -1032,9 +730,32 @@
     "verseNumber": 17
   },
   {
+    "id": "mai-ri-sahaj-jori-prakat-bhai-ju",
+    "collectionId": "kelimal",
+    "index": 31,
+    "titleDevanagari": "माई री सहज जोरी प्रकट भई जु रंग की गौर श्याम धन-दामिनी जैसे ।",
+    "author": "स्वामी श्री हरिदास जी",
+    "slug": "mai-ri-sahaj-jori-prakat-bhai-ju",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "माई री सहज जोरी प्रकट भई जु रंग की गौर श्याम धन-दामिनी जैसे ।",
+          "प्रथम हूँ हुती अबहूँ आगे हूँ रहिहैं न टरिहैं तैंसे ॥",
+          "अंग-अंग की उजराई सुधराई चतुराई सुन्दरता ऐसे।",
+          "श्रीहरिदास के स्वामी श्यामा-कुंजबिहारी सम वस वैसे ॥",
+          "- स्वामी श्री हरिदास"
+        ]
+      }
+    ],
+    "chapterId": "kelimal",
+    "chapterName": "श्री केलिमाल (११० पद)",
+    "verseNumber": 18
+  },
+  {
     "id": "prem-samudra-roop-ras-gehre-kaise-paun-thaah-lalita-sakhi-avtaar-shri-haridas",
     "collectionId": "kelimal",
-    "index": 45,
+    "index": 32,
     "titleDevanagari": "प्रेम समुद्र रूप रस गहरे - ललिता अवतार श्री हरिदास, अष्टादश पद (18)",
     "author": "ललिता अवतार श्री हरिदास",
     "slug": "prem-samudra-roop-ras-gehre-kaise-paun-thaah-lalita-sakhi-avtaar-shri-haridas",
@@ -1052,29 +773,9 @@
     "verseNumber": 18
   },
   {
-    "id": "hari-ke-naam-ko-aalas-kyun-karat-hari-re-kaal-firat-sar-sandhey-swami-shri-haridas",
-    "collectionId": "kelimal",
-    "index": 46,
-    "titleDevanagari": "हरि के नाम को आलस क्यों करत हैं रे - स्वामी श्री हरिदास",
-    "author": "स्वामी श्री हरिदास",
-    "slug": "hari-ke-naam-ko-aalas-kyun-karat-hari-re-kaal-firat-sar-sandhey-swami-shri-haridas",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "\" हरि के नाम को आलस क्यों करत हैं रे, काल फिरत सर साँधे । ”",
-          "- स्वामी श्री हरिदास"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 46
-  },
-  {
     "id": "aaj-trin-tootat-hai-ree-lalit-tribhangee-par-kelimal-swami-haridas",
     "collectionId": "kelimal",
-    "index": 47,
+    "index": 33,
     "titleDevanagari": "आज तृण टूटत है री, ललित त्रिभंगी पर - केलिमाल, स्वामी श्री हरिदास (18)",
     "author": "स्वामी श्री हरिदास जी",
     "slug": "aaj-trin-tootat-hai-ree-lalit-tribhangee-par-kelimal-swami-haridas",
@@ -1097,30 +798,9 @@
     "verseNumber": 18
   },
   {
-    "id": "bandau-shri-haridas-ke-shri-kant-kishor-kant-rasik-ji-ki-vani-doha-19",
-    "collectionId": "kelimal",
-    "index": 48,
-    "titleDevanagari": "बंदौं श्रीहरिदास के चरन कमल चित लाइ - श्री कान्त किशोर, कान्त रसिक जी की वाणी, दोहा (19)",
-    "author": "श्री कान्त किशोर",
-    "slug": "bandau-shri-haridas-ke-shri-kant-kishor-kant-rasik-ji-ki-vani-doha-19",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "बंदौं श्रीहरिदास के, चरन-कमल चित लाइ।",
-          "जिन निज उर की माधुरी, दई प्रतच्छ दिखाइ॥",
-          "- श्री कान्त किशोर, कान्त रसिक जी की वाणी, दोहा (19)"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 19
-  },
-  {
     "id": "dvai-lar-motin-ki-ek-punja-shri-swami-haridas-ji-kelimal-20",
     "collectionId": "kelimal",
-    "index": 49,
+    "index": 34,
     "titleDevanagari": "द्वै लर मोतिन की एक पुंजा पोति कौ सादा - श्री स्वामी हरिदास जी, केलीमाल (20)",
     "author": "श्री स्वामी हरिदास जी",
     "slug": "dvai-lar-motin-ki-ek-punja-shri-swami-haridas-ji-kelimal-20",
@@ -1146,29 +826,9 @@
     "verseNumber": 20
   },
   {
-    "id": "kahin-shri-haridas-hita-kije-shri-bihari-ju-son-aur-nibhahu-jaani-jiko-shri-haridas-ji-lalita-avtar",
-    "collectionId": "kelimal",
-    "index": 50,
-    "titleDevanagari": "कहिं श्रीहरिदास हित कीजे श्री बिहारी जू सौं - श्री हरिदास जी (ललिता अवतार)",
-    "author": "श्री हरिदास जी (ललिता अवतार)",
-    "slug": "kahin-shri-haridas-hita-kije-shri-bihari-ju-son-aur-nibhahu-jaani-jiko-shri-haridas-ji-lalita-avtar",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "“ कहिं श्रीहरिदास हित कीजे श्री बिहारी जू सौं, ओर निबाहु जानि जिकौ॥ ”",
-          "- श्री हरिदास जी (ललिता अवतार)"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 50
-  },
-  {
     "id": "radhe-dulari-maan-taji-lalita-avatar-shri-swami-haridas-ji-kelimal-22",
     "collectionId": "kelimal",
-    "index": 51,
+    "index": 35,
     "titleDevanagari": "राधे दुलारी मान तजि -  श्री स्वामी हरिदास जी, केलीमाल (22)",
     "author": "श्री स्वामी हरिदास जी",
     "slug": "radhe-dulari-maan-taji-lalita-avatar-shri-swami-haridas-ji-kelimal-22",
@@ -1191,30 +851,9 @@
     "verseNumber": 22
   },
   {
-    "id": "shri-swami-haridas-bhaji-sab-sarnai-ko-saar-shri-thakurdas-ji",
-    "collectionId": "kelimal",
-    "index": 52,
-    "titleDevanagari": "श्री स्वामी हरिदास भजि सब सारनि कौ सार - श्री ठाकुर दास जी",
-    "author": "श्री ठाकुर दास जी",
-    "slug": "shri-swami-haridas-bhaji-sab-sarnai-ko-saar-shri-thakurdas-ji",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "श्री स्वामी हरिदास भजि, सब सारनि कौ सार।",
-          "ललित मोहिनी कृपा सौं, पायौ नित्त बिहार॥",
-          "- श्री ठाकुर दास, श्री ठाकुर दास जी की वाणी, साखी (7)"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 52
-  },
-  {
     "id": "gun-ki-baat-radhe-tere-aagain-ko-jaanain-shri-swami-haridas-ji-kelimal-23",
     "collectionId": "kelimal",
-    "index": 53,
+    "index": 36,
     "titleDevanagari": "गुन की बात राधे तेरे आगैं को जानैं - श्री स्वामी हरिदास जी, केलीमाल (23)",
     "author": "श्री स्वामी हरिदास जी",
     "slug": "gun-ki-baat-radhe-tere-aagain-ko-jaanain-shri-swami-haridas-ji-kelimal-23",
@@ -1242,7 +881,7 @@
   {
     "id": "sughar-bhayai-hau-bihari-yahi-chhanh-tein-shri-swami-haridas-kelimal-24",
     "collectionId": "kelimal",
-    "index": 54,
+    "index": 37,
     "titleDevanagari": "सुघर भयै हौ बिहारी याही छाँह तें - श्री स्वामी हरिदास जी, केलीमाल (24)",
     "author": "श्री स्वामी हरिदास जी",
     "slug": "sughar-bhayai-hau-bihari-yahi-chhanh-tein-shri-swami-haridas-kelimal-24",
@@ -1269,7 +908,7 @@
   {
     "id": "pyari-teri-mahima-varni-na-jaye",
     "collectionId": "kelimal",
-    "index": 55,
+    "index": 38,
     "titleDevanagari": "प्यारी तेरी महिमा वरनी न जाय - स्वामी श्री हरिदास, केलिमाल (26)",
     "author": "स्वामी श्री हरिदास",
     "slug": "pyari-teri-mahima-varni-na-jaye",
@@ -1293,80 +932,9 @@
     "verseNumber": 26
   },
   {
-    "id": "sri-haridas-anany-jai-var-vihar-ras-keli-shri-rup-sakhi-siddhant-ke-doha-26",
-    "collectionId": "kelimal",
-    "index": 56,
-    "titleDevanagari": "श्री हरिदास अनन्य जै, वर विहार-रस केलि - श्री रूप सखी, सिद्धांत के दोहा (26)",
-    "author": "श्री रूप सखी",
-    "slug": "sri-haridas-anany-jai-var-vihar-ras-keli-shri-rup-sakhi-siddhant-ke-doha-26",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "श्री हरिदास अनन्य जै, वर विहार-रस केलि।",
-          "दंपति रति गति माधुरी, राखी नैंननि झेलि॥",
-          "- श्री रूप सखी, सिद्धांत के दोहा (26)"
-        ]
-      }
-    ],
-    "chapterId": "siddhant",
-    "chapterName": "सिद्धांत के पद",
-    "verseNumber": 26
-  },
-  {
-    "id": "bhajan-karai-haridas-ko-pavai-nitya-bihar-shri-lalit-kishori-dev-ju-ki-vani-siddhant-ki-saakhi-27",
-    "collectionId": "kelimal",
-    "index": 57,
-    "titleDevanagari": "भजन करै हरिदास को पावै नित्य बिहार -  श्री ललित किशोरी देव जू की वाणी, सिद्धान्त की साखी (27)",
-    "author": "श्री ललित किशोरी देव जू की वाणी",
-    "slug": "bhajan-karai-haridas-ko-pavai-nitya-bihar-shri-lalit-kishori-dev-ju-ki-vani-siddhant-ki-saakhi-27",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "भजन करै हरिदास को पावै नित्य बिहार।",
-          "कुंजबिहारिनि लाडिली करि राखे उर हार॥",
-          "- श्री ललित किशोरी देव, श्री ललित किशोरी देव जी की बानी, सिद्धान्त की साखी (27)"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 27
-  },
-  {
-    "id": "ananya-nripati-shri-swami-haridas",
-    "collectionId": "kelimal",
-    "index": 58,
-    "titleDevanagari": "अनन्य नृपति श्रीस्वामी हरिदास",
-    "author": "स्वामी श्री हरिदास जी",
-    "slug": "ananya-nripati-shri-swami-haridas",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "अनन्य नृपति श्रीस्वामी हरिदास।",
-          "कुंजबिहारी सेये बिनु जिनि, छिन न करी काहूकी आस॥",
-          "सेवा सावधान अति जानि, सुघर गावत दिन रस रास।",
-          "ऐसौ रसिक भयौ नहिं ह्वै है, भुवमंडल आकास ॥",
-          "देह विदेह भए जीवत ही, विसरे बिस्व बिलास।",
-          "वृंदाबन रेनु तन मन भजि, तजि लोक वेद की त्रास॥",
-          "प्रीति रीति कीनी सबहिन सौं, किये न खास खवास।",
-          "अपनौ व्रत यह ओर निभायो, जौलौं कंठ उसास॥",
-          "सुरपति भुवपति कंचन कामिनी, जिनके भायैं घास।",
-          "अबके साधु 'व्यास' हमहूँ से, जगत करत उपहास॥",
-          "- हरिराम व्यास"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 58
-  },
-  {
     "id": "aju-ki-banik-pyare-teri-pyari-tumhari-chhavi-barani-n-jai-chhabi-29",
     "collectionId": "kelimal",
-    "index": 59,
+    "index": 39,
     "titleDevanagari": "आजु की बानिक प्यारे तेरी , प्यारी तुम्हारी छवि बरनी न जाइ छबि। (29)",
     "author": "स्वामी श्री हरिदास जी",
     "slug": "aju-ki-banik-pyare-teri-pyari-tumhari-chhavi-barani-n-jai-chhabi-29",
@@ -1386,7 +954,7 @@
   {
     "id": "aaaju-kee-banik-pyare-teri-pad-written-by-swami-shri-haridas-ji",
     "collectionId": "kelimal",
-    "index": 60,
+    "index": 40,
     "titleDevanagari": "आजु की बानिक प्यारे तेरी - श्री हरिदास, केलिमाल (29)",
     "author": "श्री हरिदास",
     "slug": "aaaju-kee-banik-pyare-teri-pad-written-by-swami-shri-haridas-ji",
@@ -1410,7 +978,7 @@
   {
     "id": "dekhi-dekhi-phul-bhi-lalita-avtar-shri-haridas-ji-kelimal-30",
     "collectionId": "kelimal",
-    "index": 61,
+    "index": 41,
     "titleDevanagari": "देखि देखि फूल भई -  श्री स्वामी हरिदास जी, केलीमाल (30)",
     "author": "श्री स्वामी हरिदास जी",
     "slug": "dekhi-dekhi-phul-bhi-lalita-avtar-shri-haridas-ji-kelimal-30",
@@ -1434,30 +1002,9 @@
     "verseNumber": 30
   },
   {
-    "id": "shri-haridas-ananya-jai-jinkai-prem-pradhan-shri-roop-sakhi-siddhant-ke-doha-31",
-    "collectionId": "kelimal",
-    "index": 62,
-    "titleDevanagari": "श्री हरिदास अनन्य जै, जिनकै प्रेम प्रधान - श्री रूप सखी, सिद्धांत के दोहा (31)",
-    "author": "श्री रूप सखी",
-    "slug": "shri-haridas-ananya-jai-jinkai-prem-pradhan-shri-roop-sakhi-siddhant-ke-doha-31",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "श्री हरिदास अनन्य जे, जिनकै प्रेम प्रधान।",
-          "प्यारी-पिय निजु सखिनि की, रूप माधुरी पान॥",
-          "- श्री रूप सखी, सिद्धांत के दोहा (31)"
-        ]
-      }
-    ],
-    "chapterId": "siddhant",
-    "chapterName": "सिद्धांत के पद",
-    "verseNumber": 31
-  },
-  {
     "id": "aisi-tau-vichitra-jori-bani-aisi-kahun-dekhi-suni-na-bani-swami-haridas-kelimal",
     "collectionId": "kelimal",
-    "index": 63,
+    "index": 42,
     "titleDevanagari": "ऐसि तौ विचित्र जोरि बनी, ऐसि कहुँ देखि सुनि न बनी - श्री हरिदास, केलिमाल (31)",
     "author": "श्री हरिदास",
     "slug": "aisi-tau-vichitra-jori-bani-aisi-kahun-dekhi-suni-na-bani-swami-haridas-kelimal",
@@ -1477,7 +1024,7 @@
   {
     "id": "aisi-tau-bichitr-jori-bani-lalita-avatar-shri-haridas-ji-kelimal-31",
     "collectionId": "kelimal",
-    "index": 64,
+    "index": 43,
     "titleDevanagari": "ऐसी तौ बिचित्र जोरी बनी - ललिता अवतार श्री हरिदास जी, केलीमाल (31)",
     "author": "ललिता अवतार श्री हरिदास जी",
     "slug": "aisi-tau-bichitr-jori-bani-lalita-avatar-shri-haridas-ji-kelimal-31",
@@ -1499,9 +1046,32 @@
     "verseNumber": 31
   },
   {
+    "id": "baarak-shri-haridas-vilokat",
+    "collectionId": "kelimal",
+    "index": 44,
+    "titleDevanagari": "बारक श्रीहरिदास विलोकत",
+    "author": "स्वामी श्री हरिदास जी",
+    "slug": "baarak-shri-haridas-vilokat",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "बारक श्रीहरिदास विलोकत, तेल की बूँद समुद्र तरी।",
+          "बादि करै श्रम साधन कोटिक, पंक में ढारि भरी गगरी॥",
+          "न तुलै करुनालय लाडिली कौ बल, लालहि लै अनुराग ढरी।",
+          "श्रीबिहारिनिदासि ह्वै सेय तिन्हैं, जिनि दंपति संपति साँचि धरी॥",
+          "- बिहारिन देव जी"
+        ]
+      }
+    ],
+    "chapterId": "kelimal",
+    "chapterName": "श्री केलिमाल (११० पद)",
+    "verseNumber": 32
+  },
+  {
     "id": "hansat-khelat-bolat-milat-dekhau-shri-haridas-ji-kelimal-32",
     "collectionId": "kelimal",
-    "index": 65,
+    "index": 45,
     "titleDevanagari": "हँसत खेलत बोलत मिलत - श्री स्वामी हरिदास जी, केलीमाल (32)",
     "author": "श्री स्वामी हरिदास जी",
     "slug": "hansat-khelat-bolat-milat-dekhau-shri-haridas-ji-kelimal-32",
@@ -1528,7 +1098,7 @@
   {
     "id": "adbhut-gati-upajati-ati-nrittat-lalita-avatar-shri-swami-haridas-ji-kelimal-33",
     "collectionId": "kelimal",
-    "index": 66,
+    "index": 46,
     "titleDevanagari": "अद्भुत गति उपजति अति नृत्तत - ललिता अवतार श्री स्वामी हरिदास जी, केलीमाल (33)",
     "author": "ललिता अवतार श्री स्वामी हरिदास जी",
     "slug": "adbhut-gati-upajati-ati-nrittat-lalita-avatar-shri-swami-haridas-ji-kelimal-33",
@@ -1563,7 +1133,7 @@
   {
     "id": "pyari-ju-jab-dekhon-swami-shri-hari-das-ji-kelimal",
     "collectionId": "kelimal",
-    "index": 67,
+    "index": 47,
     "titleDevanagari": "प्यारी जू जब जब देखौं तेरो मुख - स्वामी हरिदास, केलीमाल (34)",
     "author": "स्वामी हरिदास",
     "slug": "pyari-ju-jab-dekhon-swami-shri-hari-das-ji-kelimal",
@@ -1586,32 +1156,9 @@
     "verseNumber": 34
   },
   {
-    "id": "shri-haridas-sarana-haun-aayo-shri-kant-kishor-kant-rasik-ji-ki-vani-35",
-    "collectionId": "kelimal",
-    "index": 68,
-    "titleDevanagari": "श्रीहरिदास सरन हौं आयौ - श्री कान्त किशोर, कान्त रसिक जी की वाणी (35)",
-    "author": "श्री कान्त किशोर",
-    "slug": "shri-haridas-sarana-haun-aayo-shri-kant-kishor-kant-rasik-ji-ki-vani-35",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "श्रीहरिदास सरन हौं आयौ।",
-          "झूठे सब बंधान जगत के छूटे, सुचि सुख पायौ॥ [1]",
-          "कुंज महल की गौर स्याम छबि, मत्त भयौ उर लायौ।",
-          "‘कान्त रसिक’ के स्याम किसोरी, हुलसि हुलसि जस गायौ॥ [2]",
-          "- श्री कान्त किशोर, कान्त रसिक जी की वाणी, पद (35)"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 35
-  },
-  {
     "id": "aisi-jiy-hot-jo-jiy-saun-jiy-milai-lalita-avatar-shri-swami-haridas-ji-kelimal-35",
     "collectionId": "kelimal",
-    "index": 69,
+    "index": 48,
     "titleDevanagari": "ऐसी जिय होत जो जिय सौं जिय मिलै - ललिता अवतार श्री स्वामी हरिदास जी, केलीमाल (35)",
     "author": "ललिता अवतार श्री स्वामी हरिदास जी",
     "slug": "aisi-jiy-hot-jo-jiy-saun-jiy-milai-lalita-avatar-shri-swami-haridas-ji-kelimal-35",
@@ -1637,54 +1184,33 @@
     "verseNumber": 35
   },
   {
-    "id": "jai-shriharidas-rasik-var-ki-shri-roop-sakhi-ji-ki-vani-siddhant-ke-pad-36",
+    "id": "man-lagay-priti-kijai-kar-karuva-saun-shri-haridas-astadash-pada",
     "collectionId": "kelimal",
-    "index": 70,
-    "titleDevanagari": "जै श्रीहरिदास रसिक वर की - श्री रूप सखी जी की वाणी, सिद्धांत के पद (36)",
-    "author": "श्री रूप सखी जी की वाणी",
-    "slug": "jai-shriharidas-rasik-var-ki-shri-roop-sakhi-ji-ki-vani-siddhant-ke-pad-36",
+    "index": 49,
+    "titleDevanagari": "मन लगाय प्रीति कीजै, कर करवा - श्री हरिदास जी, अष्टादश पद",
+    "author": "श्री हरिदास जी",
+    "slug": "man-lagay-priti-kijai-kar-karuva-saun-shri-haridas-astadash-pada",
     "verses": [
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सोरठ)",
-          "जै श्रीहरिदास रसिक वर की।",
-          "परम अनन्य सुधरम बतायौ, करमनि की छाती धरकी॥ [1]",
-          "नित्यविहार निरंतर निरखैं, जहाँ नहीं गम विधि-हरकी।",
-          "रूप-रंग रस-जस कल गावैं, तिनुका लौं माया तरकी॥ [2]",
-          "- श्री रूप सखी, श्री रूप सखी जी की वाणी, सिद्धांत के पद (36)"
+          "(राग आसावरी)",
+          "मन लगाय प्रीति कीजै, कर करवा सौं ब्रज-बीथिन दीजै सोहनी। [1]",
+          "वृन्दावन सौं, बन-उपवन सौं, गुंज-माल हाथ पोहनी॥ [2]",
+          "गो गो-सुतनि सौं, मृगी मृग-सुतनि सौं, और तन नैंकु न जोहनी। [3]",
+          "श्रीहरिदास के स्वामी स्यामा-कुंजबिहारी सौं चित, ज्यौं सिर पर दोहनी॥ [4]",
+          "- ललिता अवतार श्री हरिदास जी, अष्टादश पद (12)"
         ]
       }
     ],
-    "chapterId": "siddhant",
-    "chapterName": "सिद्धांत के पद",
-    "verseNumber": 36
-  },
-  {
-    "id": "shri-swami-haridas-ki-sarivar-rasik-na-aur-shri-roop-sakhi-siddhant-ke-doha-36",
-    "collectionId": "kelimal",
-    "index": 71,
-    "titleDevanagari": "श्री स्वामी हरिदास की, सरिवर रसिक न और - श्री रूप सखी, सिद्धांत के दोहा (36)",
-    "author": "श्री रूप सखी",
-    "slug": "shri-swami-haridas-ki-sarivar-rasik-na-aur-shri-roop-sakhi-siddhant-ke-doha-36",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "श्री स्वामी हरिदास की, सरिवर रसिक न और।",
-          "निरखै नित्यविहार सुख, सबही के सिरमौर॥",
-          "- श्री रूप सखी, सिद्धांत के दोहा (36)"
-        ]
-      }
-    ],
-    "chapterId": "siddhant",
-    "chapterName": "सिद्धांत के पद",
-    "verseNumber": 36
+    "chapterId": "kelimal",
+    "chapterName": "श्री केलिमाल (११० पद)",
+    "verseNumber": 37
   },
   {
     "id": "pyari-teri-baufin-baan-sumaar-shri-swami-haridas-ji-kelimal-37",
     "collectionId": "kelimal",
-    "index": 72,
+    "index": 50,
     "titleDevanagari": "प्यारी तेरी बॉफिन बान सुमार - श्री स्वामी हरिदास जी, केलीमाल (37)",
     "author": "श्री स्वामी हरिदास जी",
     "slug": "pyari-teri-baufin-baan-sumaar-shri-swami-haridas-ji-kelimal-37",
@@ -1707,56 +1233,9 @@
     "verseNumber": 37
   },
   {
-    "id": "ललत-हरदस-हय-म-बसय",
-    "collectionId": "kelimal",
-    "index": 73,
-    "titleDevanagari": "ललिता हरिदास हिये में बस्यौ",
-    "author": "स्वामी श्री हरिदास जी",
-    "slug": "ललत-हरदस-हय-म-बसय",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "ललिता हरिदास हिये में बस्यौ, अब और सखी कछु ना चहिये।",
-          "दिन-रैन सदा संग लाग्यो रहै, बिन चैन न आवै कहा कहिये॥",
-          "श्याम रिझावत स्यामाँहिं प्रेम सों, केलि करें रस वेलहु लहिये।",
-          "हों तो गुलाम ललाम भई छबि, पिय प्यारे निहारे कहाँ जहिये॥"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 73
-  },
-  {
-    "id": "ajahun-kaha-kahati-hai-ri-marai-nain-arani",
-    "collectionId": "kelimal",
-    "index": 74,
-    "titleDevanagari": "अजहूँ कहा कहति है री मारै नैंन आरनि",
-    "author": "स्वामी श्री हरिदास जी",
-    "slug": "ajahun-kaha-kahati-hai-ri-marai-nain-arani",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "अजहूँ कहा कहति है री मारै नैंन आरनि।",
-          "भौंहैं ज्यौं धनुष चितवनि बान बाँफिन",
-          "फौंक धरैं कहत स्याम प्यारनि॥",
-          "तू ही जीवन तू ही भूषन तू ही प्रान धन यारनि।",
-          "श्रीहरिदास के स्वामी स्यामा कुंजबिहारी सौं",
-          "मेरु भयौ बिहारनि॥",
-          "- स्वामी श्री हरिदास"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 74
-  },
-  {
     "id": "rom-rom-rasna-jo-hoti-tau-tere-gun-na-bakhane-jaat",
     "collectionId": "kelimal",
-    "index": 75,
+    "index": 51,
     "titleDevanagari": "“रोम रोम रसना जो होती, तऊ तेरे गुन न बखाने जात || ” - स्वामी श्री हरिदास, केलिमाल (40)",
     "author": "स्वामी श्री हरिदास",
     "slug": "rom-rom-rasna-jo-hoti-tau-tere-gun-na-bakhane-jaat",
@@ -1774,29 +1253,9 @@
     "verseNumber": 40
   },
   {
-    "id": "pyari-ju-jab-jab-dekho-tero-mukh",
-    "collectionId": "kelimal",
-    "index": 76,
-    "titleDevanagari": "प्यारी जू जब जब देखौं तेरो मुख तब तब नयों नयों लागत।",
-    "author": "स्वामी श्री हरिदास जी",
-    "slug": "pyari-ju-jab-jab-dekho-tero-mukh",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "प्यारी जू जब जब देखौं तेरो मुख तब तब नयों नयों लागत।ऐसे भ्रम होत मैं कहूँ देखि न री दुति कौं दुति लेखनी न कागत॥कोटि चन्द्र तैं कहाँ दुराये री नये नये रागत ।श्री हरिदास के स्वामी स्याम कहत काम की सांति न होई न होई तृप्ति रहौं निसी दिन जागत ॥",
-          "- स्वामी श्री हरिदास"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 76
-  },
-  {
     "id": "tuv-jas-koti-brahmand-birajai-radhe-shri-swami-haridas-shri-kelimal-41",
     "collectionId": "kelimal",
-    "index": 77,
+    "index": 52,
     "titleDevanagari": "तुव जस कोटि ब्रह्माण्ड बिराजे राधे - श्री हरिदास जी (ललिता अवतार), केलिमाल (41)",
     "author": "श्री हरिदास जी (ललिता अवतार)",
     "slug": "tuv-jas-koti-brahmand-birajai-radhe-shri-swami-haridas-shri-kelimal-41",
@@ -1815,9 +1274,31 @@
     "verseNumber": 41
   },
   {
+    "id": "परगट-भई-ललतपरय-हरदस",
+    "collectionId": "kelimal",
+    "index": 53,
+    "titleDevanagari": "प्रगट भई ललितप्रिये हरिदासी",
+    "author": "स्वामी श्री हरिदास जी",
+    "slug": "परगट-भई-ललतपरय-हरदस",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "प्रगट भई ललितप्रिये हरिदासी।",
+          "रसिकनि के आनंद भयौ अति पाई सुख की रासी।।",
+          "छिन छिन गावति प्रति दुलरावति हियें सु प्रेम हुलसी।",
+          "श्रीविपुल बिहरिनिदासी की जीवनि नित्य विपिन की बासी।।"
+        ]
+      }
+    ],
+    "chapterId": "kelimal",
+    "chapterName": "श्री केलिमाल (११० पद)",
+    "verseNumber": 42
+  },
+  {
     "id": "phulin-sab-sakhi-dekhi-dekhi-shri-haridas-ji-kelimal-42",
     "collectionId": "kelimal",
-    "index": 78,
+    "index": 54,
     "titleDevanagari": "फूलीं सब सखी देखि देखि - श्री स्वामी हरिदास जी, केलीमाल (42)",
     "author": "श्री स्वामी हरिदास जी",
     "slug": "phulin-sab-sakhi-dekhi-dekhi-shri-haridas-ji-kelimal-42",
@@ -1842,29 +1323,9 @@
     "verseNumber": 42
   },
   {
-    "id": "aise-hi-dekhat-raho-janm-sufal-kari-mano",
-    "collectionId": "kelimal",
-    "index": 79,
-    "titleDevanagari": "ऐसे ही देखत रहौं जन्म सुफल करी मानों।",
-    "author": "स्वामी श्री हरिदास जी",
-    "slug": "aise-hi-dekhat-raho-janm-sufal-kari-mano",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "ऐसे ही देखत रहौं जन्म सुफल करी मानों।प्रिये की भांवती भांवती के प्रिय जुगल किशोर जानौं॥छिनु न तरौ पल होहु न इत उत रहौ एक तनौं।श्रीहरिदास के स्वामी श्यामा कुंजबिहारी मन राणौं॥",
-          "- स्वामी श्री हरिदास"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 79
-  },
-  {
     "id": "piy-saun-tu-joee-joee-karai-soee-chhaajai-swami-haridas-kelimal-43",
     "collectionId": "kelimal",
-    "index": 80,
+    "index": 55,
     "titleDevanagari": "पिय सौं तू जोई जोई करै सोई छाजै - श्री स्वामी हरिदास, केलीमाल (43)",
     "author": "श्री स्वामी हरिदास",
     "slug": "piy-saun-tu-joee-joee-karai-soee-chhaajai-swami-haridas-kelimal-43",
@@ -1889,7 +1350,7 @@
   {
     "id": "soi-tau-bachan-mosaun-maani-shri-swami-haridas-ji-kelimal-44",
     "collectionId": "kelimal",
-    "index": 81,
+    "index": 56,
     "titleDevanagari": "सोई तौ बचन मोसौं मानि - श्री स्वामी हरिदास जी, केलिमाल (44)",
     "author": "श्री स्वामी हरिदास जी",
     "slug": "soi-tau-bachan-mosaun-maani-shri-swami-haridas-ji-kelimal-44",
@@ -1915,56 +1376,9 @@
     "verseNumber": 44
   },
   {
-    "id": "चल-र-भड़-त-नयरई",
-    "collectionId": "kelimal",
-    "index": 82,
-    "titleDevanagari": "चली री भीड़ ते न्यारेई",
-    "author": "स्वामी श्री हरिदास जी",
-    "slug": "चल-र-भड़-त-नयरई",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "चलि री भीर तें न्यारेई खैलैं।",
-          "कुंज निकुंज मंजु में झैलैं।।",
-          "जहाँ पंछिन सहित सखी न संग कोऊ तिहिं बन चलि मिलि कैलैं।",
-          "श्री हरिदास के स्वामी स्यामा प्रेम परस्पर बूका बंदन मैलैं।।"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 82
-  },
-  {
-    "id": "jori-adbhut-aaj-bani",
-    "collectionId": "kelimal",
-    "index": 83,
-    "titleDevanagari": "जोरी अद्भुत आज बनी ।",
-    "author": "स्वामी श्री हरिदास जी",
-    "slug": "jori-adbhut-aaj-bani",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "जोरी अद्भुत आज बनी ।",
-          "कोटी काम नखत छवि पर, उज्जवल नील मणि ।।",
-          "उपमा देत सकुच निर उपमति, घन दामिनी लजनी ।।",
-          "करत हास परिहास प्रेम युत, सरस विलास सनी ।।",
-          "कहां री कहूँ लावण्य रूप गुण, शोभा सहज घनी ।।",
-          "श्री बिहारिन दास दुलरावत, श्री हरिदास कृपा बरनी ।।",
-          "- स्वामी श्री हरिदास"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 83
-  },
-  {
     "id": "jo-kachu-kahat-ladilo-ladili-ju-shri-haridas-ji-kelimal-45",
     "collectionId": "kelimal",
-    "index": 84,
+    "index": 57,
     "titleDevanagari": "जो कछु कहत लाड़िलौ लाड़िली  - श्री स्वामी हरिदास जी, केलीमाल (45)",
     "author": "श्री स्वामी हरिदास जी",
     "slug": "jo-kachu-kahat-ladilo-ladili-ju-shri-haridas-ji-kelimal-45",
@@ -1986,9 +1400,29 @@
     "verseNumber": 45
   },
   {
+    "id": "hari-ke-naam-ko-aalas-kyun-karat-hari-re-kaal-firat-sar-sandhey-swami-shri-haridas",
+    "collectionId": "kelimal",
+    "index": 58,
+    "titleDevanagari": "हरि के नाम को आलस क्यों करत हैं रे - स्वामी श्री हरिदास",
+    "author": "स्वामी श्री हरिदास",
+    "slug": "hari-ke-naam-ko-aalas-kyun-karat-hari-re-kaal-firat-sar-sandhey-swami-shri-haridas",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "\" हरि के नाम को आलस क्यों करत हैं रे, काल फिरत सर साँधे । ”",
+          "- स्वामी श्री हरिदास"
+        ]
+      }
+    ],
+    "chapterId": "kelimal",
+    "chapterName": "श्री केलिमाल (११० पद)",
+    "verseNumber": 46
+  },
+  {
     "id": "pyari-ju-aage-chali-lalita-avatar-shri-swami-haridas-ji-kelimal-46",
     "collectionId": "kelimal",
-    "index": 85,
+    "index": 59,
     "titleDevanagari": "प्यारी जू आगै चलि - ललिता अवतार श्री स्वामी हरिदास जी, केलीमाल (46)",
     "author": "ललिता अवतार श्री स्वामी हरिदास जी",
     "slug": "pyari-ju-aage-chali-lalita-avatar-shri-swami-haridas-ji-kelimal-46",
@@ -2013,30 +1447,9 @@
     "verseNumber": 46
   },
   {
-    "id": "shri-haridas-anoop-ali-rasik-roop-balihar-shri-roop-sakhi-siddhant-ke-doha-47",
-    "collectionId": "kelimal",
-    "index": 86,
-    "titleDevanagari": "श्री हरिदास अनूप अलि रसिक रूप बलिहार - श्री रूप सखी, सिद्धांत के दोहा (47)",
-    "author": "श्री रूप सखी",
-    "slug": "shri-haridas-anoop-ali-rasik-roop-balihar-shri-roop-sakhi-siddhant-ke-doha-47",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "श्री हरिदास अनूप अलि, रसिक रूप बलिहार।",
-          "अनमिष इकटक निरषिहीं, निरवधि नित्य-विहार॥",
-          "- श्री रूप सखी, सिद्धांत के दोहा (47)"
-        ]
-      }
-    ],
-    "chapterId": "siddhant",
-    "chapterName": "सिद्धांत के पद",
-    "verseNumber": 47
-  },
-  {
     "id": "pyari-ab-soi-gayi-shri-swami-haridas-ji-kelimal-47",
     "collectionId": "kelimal",
-    "index": 87,
+    "index": 60,
     "titleDevanagari": "प्यारी अब सोइ गई - श्री स्वामी हरिदास जी, केलीमाल (47)",
     "author": "श्री स्वामी हरिदास जी",
     "slug": "pyari-ab-soi-gayi-shri-swami-haridas-ji-kelimal-47",
@@ -2063,7 +1476,7 @@
   {
     "id": "dol-jhulat-dulhani-dulahu",
     "collectionId": "kelimal",
-    "index": 88,
+    "index": 61,
     "titleDevanagari": "डोल झूलत दुलहिनि दूलहु - श्री स्वामी हरिदास जी, केलीमाल (48)",
     "author": "श्री स्वामी हरिदास जी",
     "slug": "dol-jhulat-dulhani-dulahu",
@@ -2089,7 +1502,7 @@
   {
     "id": "pyari-pahirein-chunari-lalita-avtar-shri-haridas-ji-kelimal-49",
     "collectionId": "kelimal",
-    "index": 89,
+    "index": 62,
     "titleDevanagari": "प्यारी पहिरैं चुनरी - ललिता अवतार श्री स्वामी हरिदास जी, केलीमाल (49)",
     "author": "ललिता अवतार श्री स्वामी हरिदास जी",
     "slug": "pyari-pahirein-chunari-lalita-avtar-shri-haridas-ji-kelimal-49",
@@ -2113,9 +1526,29 @@
     "verseNumber": 49
   },
   {
+    "id": "kahin-shri-haridas-hita-kije-shri-bihari-ju-son-aur-nibhahu-jaani-jiko-shri-haridas-ji-lalita-avtar",
+    "collectionId": "kelimal",
+    "index": 63,
+    "titleDevanagari": "कहिं श्रीहरिदास हित कीजे श्री बिहारी जू सौं - श्री हरिदास जी (ललिता अवतार)",
+    "author": "श्री हरिदास जी (ललिता अवतार)",
+    "slug": "kahin-shri-haridas-hita-kije-shri-bihari-ju-son-aur-nibhahu-jaani-jiko-shri-haridas-ji-lalita-avtar",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "“ कहिं श्रीहरिदास हित कीजे श्री बिहारी जू सौं, ओर निबाहु जानि जिकौ॥ ”",
+          "- श्री हरिदास जी (ललिता अवतार)"
+        ]
+      }
+    ],
+    "chapterId": "kelimal",
+    "chapterName": "श्री केलिमाल (११० पद)",
+    "verseNumber": 50
+  },
+  {
     "id": "bani-ri-tere-char-char-churi-karani-shri-swami-haridas-ji-kelimal-50",
     "collectionId": "kelimal",
-    "index": 90,
+    "index": 64,
     "titleDevanagari": "बनी री तेरे चारि चारि चूरी करनि - श्री स्वामी हरिदास जी, केलीमाल (50)",
     "author": "श्री स्वामी हरिदास जी",
     "slug": "bani-ri-tere-char-char-churi-karani-shri-swami-haridas-ji-kelimal-50",
@@ -2139,7 +1572,7 @@
   {
     "id": "suni-dhuni-murali-ban-baajai-shri-swami-haridas-ji-kelimal-52",
     "collectionId": "kelimal",
-    "index": 91,
+    "index": 65,
     "titleDevanagari": "सुनि धुनि मुरली बन बाजै - श्री स्वामी हरिदास जी, केलीमाल (52)",
     "author": "श्री स्वामी हरिदास जी",
     "slug": "suni-dhuni-murali-ban-baajai-shri-swami-haridas-ji-kelimal-52",
@@ -2164,33 +1597,9 @@
     "verseNumber": 52
   },
   {
-    "id": "shri-haridas-sharan-je-aye-shri-lalit-kishori-dev-shri-lalit-kishori-dev-ju-ki-vani-52",
-    "collectionId": "kelimal",
-    "index": 92,
-    "titleDevanagari": "श्री हरिदास शरण जे आये  - श्री ललित किशोरी देव, श्री ललित किशोरी देव जू की वाणी, सिद्धांत के पद (52)",
-    "author": "श्री ललित किशोरी देव",
-    "slug": "shri-haridas-sharan-je-aye-shri-lalit-kishori-dev-shri-lalit-kishori-dev-ju-ki-vani-52",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "(राग गौरी)",
-          "श्री हरिदास शरण जे आये।",
-          "कुंजबिहारी ललित लाडिले अपने जानि निकट बैठाये॥ (1)",
-          "कुंज केलि निरखें निसि बासर अति आनंद हिये में छाये।",
-          "दास बिहारिनि सब सुखरासी प्रानप्रिय हँसि कंठ लगाये॥ (2)",
-          "- श्री ललित किशोरी देव, श्री ललित किशोरी देव जू की वाणी, सिद्धांत के पद (52)"
-        ]
-      }
-    ],
-    "chapterId": "siddhant",
-    "chapterName": "सिद्धांत के पद",
-    "verseNumber": 52
-  },
-  {
     "id": "jahan-jahan-charan-padat-pyari-ju-tere-tahan-tahan-mana-mero-karat-firat-parchai-lalita-avtar-shri-haridas-kelimal",
     "collectionId": "kelimal",
-    "index": 93,
+    "index": 66,
     "titleDevanagari": "जहाँ जहाँ चरन पडत प्यारी जू तेरे - श्री हरिदास जी (ललिता अवतार), केलिमाल (53)",
     "author": "श्री हरिदास जी (ललिता अवतार)",
     "slug": "jahan-jahan-charan-padat-pyari-ju-tere-tahan-tahan-mana-mero-karat-firat-parchai-lalita-avtar-shri-haridas-kelimal",
@@ -2210,7 +1619,7 @@
   {
     "id": "jahan-jahan-charan-parat-pyari-swami-shri-haridas-kelimal-53",
     "collectionId": "kelimal",
-    "index": 94,
+    "index": 67,
     "titleDevanagari": "जहाँ जहाँ चरन परत प्यारी - श्री हरिदास जी (ललिता अवतार), केलिमाल (53)",
     "author": "श्री हरिदास जी (ललिता अवतार)",
     "slug": "jahan-jahan-charan-parat-pyari-swami-shri-haridas-kelimal-53",
@@ -2236,29 +1645,9 @@
     "verseNumber": 53
   },
   {
-    "id": "maee-ri-sahaj-jori-pragat-bhayi-lalita-avtar-shri-haridas-ji-kelimal-1",
-    "collectionId": "kelimal",
-    "index": 95,
-    "titleDevanagari": "माई री, सहज जोरी प्रगट - स्वामी श्री हरिदास",
-    "author": "स्वामी श्री हरिदास",
-    "slug": "maee-ri-sahaj-jori-pragat-bhayi-lalita-avtar-shri-haridas-ji-kelimal-1",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "\"माई री, सहज जोरी प्रगट भई, जु रंग की गौर-स्याम घन-दामिनि जैसैं। प्रथम हूँ हुती, अब हूँ आगें हूँ रहिहै, न टरिहै तैसैं”",
-          "- स्वामी श्री हरिदास"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 95
-  },
-  {
     "id": "yeh-kaun-baat-ju-abhin-aur-abhin-aur-shri-haridas-ke-swami-shyama-kunj-bihari-ya-ras-hi-bas-bhaye-aur-ki-aur-swami-shri-haridas-ji-kelimal",
     "collectionId": "kelimal",
-    "index": 96,
+    "index": 68,
     "titleDevanagari": "यह कौन बात जु अबही और अबही और - स्वामी हरिदास जी, केलीमाल (54)",
     "author": "स्वामी हरिदास जी",
     "slug": "yeh-kaun-baat-ju-abhin-aur-abhin-aur-shri-haridas-ke-swami-shyama-kunj-bihari-ya-ras-hi-bas-bhaye-aur-ki-aur-swami-shri-haridas-ji-kelimal",
@@ -2282,32 +1671,9 @@
     "verseNumber": 54
   },
   {
-    "id": "to-si-tuhi-haridas-dulari-shri-lalit-kishori-dev-shri-lalit-kishori-dev-ju-ki-vani-siddhant-ke-pad-55",
-    "collectionId": "kelimal",
-    "index": 97,
-    "titleDevanagari": "तो सी तुही हरिदास दुलारी - श्री ललित किशोरी देव, श्री ललित किशोरी देव जू की वाणी, सिद्धांत के पद (55)",
-    "author": "श्री ललित किशोरी देव",
-    "slug": "to-si-tuhi-haridas-dulari-shri-lalit-kishori-dev-shri-lalit-kishori-dev-ju-ki-vani-siddhant-ke-pad-55",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "तो सी तुही हरिदास दुलारी।",
-          "तेरी सरि दूजौ नहिं कोई तेरेई रस बस कुंज बिहारी॥ [1]",
-          "तेरौ रूप कहत नहिं आवै तैसीये तेरी प्रीति महा री।",
-          "तैसीये ललित केलि सुखरासी रसिकसिरोमनि प्रान अधारी॥ [2]",
-          "- श्री ललित किशोरी देव, श्री ललित किशोरी देव जू की वाणी, सिद्धांत के पद (55)"
-        ]
-      }
-    ],
-    "chapterId": "siddhant",
-    "chapterName": "सिद्धांत के पद",
-    "verseNumber": 55
-  },
-  {
     "id": "kasturi-kau-mardan-ang-mein-kiyain-murali-dharain-shri-swami-haridas-ji-kelimal-56",
     "collectionId": "kelimal",
-    "index": 98,
+    "index": 69,
     "titleDevanagari": "कस्तूरी कौ मर्दन अंग में कियैं मुरली धरैं - श्री स्वामी हरिदास जी, केलीमाल (56)",
     "author": "श्री स्वामी हरिदास जी",
     "slug": "kasturi-kau-mardan-ang-mein-kiyain-murali-dharain-shri-swami-haridas-ji-kelimal-56",
@@ -2335,7 +1701,7 @@
   {
     "id": "pyari-terau-badan-chand-dekhain-shri-swami-haridas-ji-kelimal-57",
     "collectionId": "kelimal",
-    "index": 99,
+    "index": 70,
     "titleDevanagari": "प्यारी तेरौ बदन चंद देखैं - श्री स्वामी हरिदास जी, केलीमाल (57)",
     "author": "श्री स्वामी हरिदास जी",
     "slug": "pyari-terau-badan-chand-dekhain-shri-swami-haridas-ji-kelimal-57",
@@ -2361,33 +1727,38 @@
     "verseNumber": 57
   },
   {
-    "id": "hamare-dhan-vrindavan-pyari",
+    "id": "ananya-nripati-shri-swami-haridas",
     "collectionId": "kelimal",
-    "index": 100,
-    "titleDevanagari": "हमारे धन वृन्दावन प्यारी ।",
+    "index": 71,
+    "titleDevanagari": "अनन्य नृपति श्रीस्वामी हरिदास",
     "author": "स्वामी श्री हरिदास जी",
-    "slug": "hamare-dhan-vrindavan-pyari",
+    "slug": "ananya-nripati-shri-swami-haridas",
     "verses": [
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "हमारे धन वृन्दावन प्यारी ।",
-          "खरचत खात घटै नहिं कबहूँ बाढत छिन छिन अति अधिहमारे धन वृन्दावन प्यारी ।",
-          "खरचत खात घटै नहिं कबहूँ बाढत छिन छिन अति अधिकारी ।।",
-          "ताही कौ अभिमान सदाई ताही बल बस कुंज बिहारी ।",
-          "श्री हरिदासी रसिक सिरोमनि प्रान प्रान मिलि कीनी यारी ॥",
-          "- स्वामी श्री हरिदास"
+          "अनन्य नृपति श्रीस्वामी हरिदास।",
+          "कुंजबिहारी सेये बिनु जिनि, छिन न करी काहूकी आस॥",
+          "सेवा सावधान अति जानि, सुघर गावत दिन रस रास।",
+          "ऐसौ रसिक भयौ नहिं ह्वै है, भुवमंडल आकास ॥",
+          "देह विदेह भए जीवत ही, विसरे बिस्व बिलास।",
+          "वृंदाबन रेनु तन मन भजि, तजि लोक वेद की त्रास॥",
+          "प्रीति रीति कीनी सबहिन सौं, किये न खास खवास।",
+          "अपनौ व्रत यह ओर निभायो, जौलौं कंठ उसास॥",
+          "सुरपति भुवपति कंचन कामिनी, जिनके भायैं घास।",
+          "अबके साधु 'व्यास' हमहूँ से, जगत करत उपहास॥",
+          "- हरिराम व्यास"
         ]
       }
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 100
+    "verseNumber": 58
   },
   {
     "id": "bachan-dai-man-na-karaun-shri-swami-haridas-ji-kelimal-59",
     "collectionId": "kelimal",
-    "index": 101,
+    "index": 72,
     "titleDevanagari": "बचन दै मान न करौं - श्री स्वामी हरिदास जी, केलीमाल (59)",
     "author": "श्री स्वामी हरिदास जी",
     "slug": "bachan-dai-man-na-karaun-shri-swami-haridas-ji-kelimal-59",
@@ -2411,76 +1782,9 @@
     "verseNumber": 59
   },
   {
-    "id": "suni-dhun-murli-vain-baje-hari-ras-rachyo",
-    "collectionId": "kelimal",
-    "index": 102,
-    "titleDevanagari": "सुनि धुन मुरली वैन बाजे हरि रास रच्यो",
-    "author": "स्वामी श्री हरिदास जी",
-    "slug": "suni-dhun-murli-vain-baje-hari-ras-rachyo",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "सुनि धुन मुरली वैन बाजे हरि रास रच्यो ।",
-          "कुंज द्रुम बेली प्रफुलित मंडल कंचन मणिन रच्यो ।",
-          "निर्तत युगल किशोर युवतिजन रासमें राग केदार रच्यो ।",
-          "हरिदास के स्वामी श्यामा कुंजविहारी नीके ही आज गोपाल नच्यो ॥",
-          "- स्वामी श्री हरिदास"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 102
-  },
-  {
-    "id": "suni-dhuni-murli-ban-baje-e-hari-ras-rachyo",
-    "collectionId": "kelimal",
-    "index": 103,
-    "titleDevanagari": "सुनि  धुनि  मुरली  बन  बाजै  ए  हरि  रास  रच्यौ  ।",
-    "author": "स्वामी श्री हरिदास जी",
-    "slug": "suni-dhuni-murli-ban-baje-e-hari-ras-rachyo",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "सुनि  धुनि  मुरली  बन  बाजै  ए  हरि  रास  रच्यौ  ।",
-          "कु़ज-कुंज  द्रुम  वेलि  प्रफुल्लित  मंडल  कंचन  मणिनु  खच्यौ  ।।",
-          "निर्तत  जुगल  किशोर  जुवति  जन  श्रुति  घुर  राग  केदारौ  मच्यौ  ।",
-          "श्रीहरिदास  के  स्वामी  स्यामा कुंजबिहारी  नीकें  प्यारौ  लाल  नच्यौ  ।।",
-          "- स्वामी श्री हरिदास"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 103
-  },
-  {
-    "id": "jai-shriharidas-rasik-var-ki",
-    "collectionId": "kelimal",
-    "index": 104,
-    "titleDevanagari": "जै श्रीहरिदास रसिक वर की",
-    "author": "स्वामी श्री हरिदास जी",
-    "slug": "jai-shriharidas-rasik-var-ki",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "जै श्रीहरिदास रसिक वर की।",
-          "परम अनन्य सुधरम बतायौ, करमनि की छाती धरकी॥ नित्यविहार निरंतर निरखैं, जहाँ नहीं गम विधि-हरकी।रूप-रंग रस-जस कल गावैं, तिनुका लौं माया तरकी॥",
-          "- ललित किशोरी देव"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 104
-  },
-  {
     "id": "ajahun-kaha-kahati-hai-ri-marai-nain-arani-shri-swami-haridas-ji-kelimal-64",
     "collectionId": "kelimal",
-    "index": 105,
+    "index": 73,
     "titleDevanagari": "अजहूँ कहा कहति है री मारै नैंन आरनि - श्री स्वामी हरिदास जी, केलीमाल (64)",
     "author": "श्री स्वामी हरिदास जी",
     "slug": "ajahun-kaha-kahati-hai-ri-marai-nain-arani-shri-swami-haridas-ji-kelimal-64",
@@ -2506,7 +1810,7 @@
   {
     "id": "pyari-tu-gunani-rai-sirmaur-shri-swami-haridas-ji-kelimal-65",
     "collectionId": "kelimal",
-    "index": 106,
+    "index": 74,
     "titleDevanagari": "प्यारी तू गुननि राइ सिरमौर - श्री स्वामी हरिदास जी, केलीमाल (65)",
     "author": "श्री स्वामी हरिदास जी",
     "slug": "pyari-tu-gunani-rai-sirmaur-shri-swami-haridas-ji-kelimal-65",
@@ -2531,30 +1835,9 @@
     "verseNumber": 65
   },
   {
-    "id": "lalitpriye-haridasi-ju-nitya-keli-sukh-dani-shri-lalit-kishori-dev-ju-ki-vani-vishistha-pada-saakhi-65",
-    "collectionId": "kelimal",
-    "index": 107,
-    "titleDevanagari": "ललितप्रिये हरिदासि जू नित्य केलि सुख दानि - श्री ललितकिशोरी देव जू की वाणी, विशिष्ट पद एवं साखी (65)",
-    "author": "श्री ललितकिशोरी देव जू की वाणी",
-    "slug": "lalitpriye-haridasi-ju-nitya-keli-sukh-dani-shri-lalit-kishori-dev-ju-ki-vani-vishistha-pada-saakhi-65",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "ललितप्रिये हरिदासि जू, नित्य केलि सुख दानि।",
-          "कुँजबिहारिनी लाड़िली, प्रगटी रस की खानि॥",
-          "- श्री ललितकिशोरी देव, श्री ललितकिशोरी देव जू की वाणी, विशिष्ट पद एवं साखी (65)"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 65
-  },
-  {
     "id": "pyari-taupe-kitauk-sangrah-chhabin-kau-shri-haridas-ji-kelimal-66",
     "collectionId": "kelimal",
-    "index": 108,
+    "index": 75,
     "titleDevanagari": "प्यारी तौपै कितौक संग्रह छबिन कौ - श्री स्वामी हरिदास जी, केलीमाल (66)",
     "author": "श्री स्वामी हरिदास जी",
     "slug": "pyari-taupe-kitauk-sangrah-chhabin-kau-shri-haridas-ji-kelimal-66",
@@ -2582,7 +1865,7 @@
   {
     "id": "chaliye-chhabili-chhabilau-bolat-swami-haridas-kelimal-69",
     "collectionId": "kelimal",
-    "index": 109,
+    "index": 76,
     "titleDevanagari": "चलिये छबीली छबीलौ बोलत - श्री स्वामी हरिदास, केलीमाल (69)",
     "author": "श्री स्वामी हरिदास",
     "slug": "chaliye-chhabili-chhabilau-bolat-swami-haridas-kelimal-69",
@@ -2606,61 +1889,9 @@
     "verseNumber": 69
   },
   {
-    "id": "आज-बदन-त-बरषत-फल",
-    "collectionId": "kelimal",
-    "index": 110,
-    "titleDevanagari": "आजु बदन ते बर्षत फूल ।",
-    "author": "स्वामी श्री हरिदास जी",
-    "slug": "आज-बदन-त-बरषत-फल",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "आजु बदन ते बर्षत फूल ।",
-          "प्रमुदित मानौं कली कुन्दन की अलक अलि रहे भूल ॥",
-          "महल निकुंज कुसुम सेज पर गौर स्याम परसत भुज मूल।",
-          "रसिक रूप हरिदास निरखि छवि सदासु अंग-अंग अनुकूल ॥"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 110
-  },
-  {
-    "id": "ananya-nripati-shri-swami-haridas-shri-hariram-vyas-vyas-vani-purvardh-70",
-    "collectionId": "kelimal",
-    "index": 111,
-    "titleDevanagari": "अनन्य नृपति श्रीस्वामी हरिदास - श्री हरिराम व्यास, व्यास वाणी, पूर्वार्ध (70)",
-    "author": "श्री हरिराम व्यास",
-    "slug": "ananya-nripati-shri-swami-haridas-shri-hariram-vyas-vyas-vani-purvardh-70",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "(राग सारंग)",
-          "अनन्य नृपति श्रीस्वामी हरिदास।",
-          "कुंजबिहारी सेये बिनु जिनि, छिन न करी काहूकी आस॥ [1]",
-          "सेवा सावधान अति जानि, सुघर गावत दिन रस रास।",
-          "ऐसौ रसिक भयौ नहिं ह्वै है, भुवमंडल आकास॥ [2]",
-          "देह विदेह भए जीवत ही, विसरे बिस्व बिलास।",
-          "वृंदाबन रेनु तन मन भजि, तजि लोक वेद की त्रास॥ [3]",
-          "प्रीति रीति कीनी सबहिन सौं, किये न खास खवास।",
-          "अपनौ व्रत यह ओर निभायो, जौलौं कंठ उसास॥ [4]",
-          "सुरपति भुवपति कंचन कामिनी, जिनके भायैं घास।",
-          "अबके साधु 'व्यास' हमहूँ से, जगत करत उपहास॥ [5]",
-          "- श्री हरिराम व्यास, व्यास वाणी, पूर्वार्ध (70)"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 70
-  },
-  {
     "id": "beni-gunthi-kaha-kou-jane-meri-si-shri-swami-haridas-ji-kelimal-70",
     "collectionId": "kelimal",
-    "index": 112,
+    "index": 77,
     "titleDevanagari": "बेंनी गूँथि कहा कोउ जानें मेरी सी - श्री स्वामी हरिदास जी, केलीमाल (70)",
     "author": "श्री स्वामी हरिदास जी",
     "slug": "beni-gunthi-kaha-kou-jane-meri-si-shri-swami-haridas-ji-kelimal-70",
@@ -2684,7 +1915,7 @@
   {
     "id": "sughar-bhayai-hau-bihari-yahi-chhanh-tein-shri-swami-haridas-kelimal-71",
     "collectionId": "kelimal",
-    "index": 113,
+    "index": 78,
     "titleDevanagari": "प्यारी तेरी पुतरी काजर हू तैं कारी - श्री स्वामी हरिदास जी, केलीमाल (71)",
     "author": "श्री स्वामी हरिदास जी",
     "slug": "sughar-bhayai-hau-bihari-yahi-chhanh-tein-shri-swami-haridas-kelimal-71",
@@ -2707,57 +1938,56 @@
     "verseNumber": 71
   },
   {
-    "id": "chal-ri-bheed-te-nyarei-khele",
+    "id": "ललत-हरदस-हय-म-बसय",
     "collectionId": "kelimal",
-    "index": 114,
-    "titleDevanagari": "चल री भीड ते न्यारेई खेलैं।",
+    "index": 79,
+    "titleDevanagari": "ललिता हरिदास हिये में बस्यौ",
     "author": "स्वामी श्री हरिदास जी",
-    "slug": "chal-ri-bheed-te-nyarei-khele",
+    "slug": "ललत-हरदस-हय-म-बसय",
     "verses": [
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "चल री भीड ते न्यारेई खेलैं।",
-          "कुंज निकुंज मंजु में झेलै।।1।।",
-          "जहां पंछी न सहित सखी न संग कोउ।",
-          "तिहिं बन चलि मिलि केलै।।2।।",
-          "श्री हरिदास के स्वामी स्याम प्रेम।",
-          "परस्पर बूदा बंदन मेलै।।3।।",
+          "ललिता हरिदास हिये में बस्यौ, अब और सखी कछु ना चहिये।",
+          "दिन-रैन सदा संग लाग्यो रहै, बिन चैन न आवै कहा कहिये॥",
+          "श्याम रिझावत स्यामाँहिं प्रेम सों, केलि करें रस वेलहु लहिये।",
+          "हों तो गुलाम ललाम भई छबि, पिय प्यारे निहारे कहाँ जहिये॥"
+        ]
+      }
+    ],
+    "chapterId": "kelimal",
+    "chapterName": "श्री केलिमाल (११० पद)",
+    "verseNumber": 73
+  },
+  {
+    "id": "ajahun-kaha-kahati-hai-ri-marai-nain-arani",
+    "collectionId": "kelimal",
+    "index": 80,
+    "titleDevanagari": "अजहूँ कहा कहति है री मारै नैंन आरनि",
+    "author": "स्वामी श्री हरिदास जी",
+    "slug": "ajahun-kaha-kahati-hai-ri-marai-nain-arani",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "अजहूँ कहा कहति है री मारै नैंन आरनि।",
+          "भौंहैं ज्यौं धनुष चितवनि बान बाँफिन",
+          "फौंक धरैं कहत स्याम प्यारनि॥",
+          "तू ही जीवन तू ही भूषन तू ही प्रान धन यारनि।",
+          "श्रीहरिदास के स्वामी स्यामा कुंजबिहारी सौं",
+          "मेरु भयौ बिहारनि॥",
           "- स्वामी श्री हरिदास"
         ]
       }
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 114
-  },
-  {
-    "id": "lalita-shri-haridasi-ke-aagan-sukhad-badhai-baje-ho",
-    "collectionId": "kelimal",
-    "index": 115,
-    "titleDevanagari": "ललिता श्रीहरिदासी के आँगन सुखद बधाई बाजैं हो।",
-    "author": "स्वामी श्री हरिदास जी",
-    "slug": "lalita-shri-haridasi-ke-aagan-sukhad-badhai-baje-ho",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "ललिता श्रीहरिदासी के आँगन सुखद बधाई बाजैं हो।",
-          "महल तें प्रगटे श्रीबाँकेबिहारी रसिकनि के सुख काजैं हो।।",
-          "सखी सहेली सहचरी गावति अति आनंद समाजैं हो।",
-          "श्रीराधाचरन छबि निरखत बीठलबीपुल प्रेम सुख साजैं हो।।",
-          "- अज्ञात"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 115
+    "verseNumber": 74
   },
   {
     "id": "dol-jhoolat-bihari-biharini-lalita-avatar-shri-swami-haridas-ji-kelimal-75",
     "collectionId": "kelimal",
-    "index": 116,
+    "index": 81,
     "titleDevanagari": "डोल झूलत बिहारी बिहारिनि - ललिता अवतार श्री स्वामी हरिदास जी, केलीमाल (75)",
     "author": "ललिता अवतार श्री स्वामी हरिदास जी",
     "slug": "dol-jhoolat-bihari-biharini-lalita-avatar-shri-swami-haridas-ji-kelimal-75",
@@ -2782,78 +2012,49 @@
     "verseNumber": 75
   },
   {
-    "id": "baarak-shri-haridas-vilokat-shri-biharin-dev-ji-ki-vani-siddhant-ke-kavittsewaiya-76",
+    "id": "pyari-ju-jab-jab-dekho-tero-mukh",
     "collectionId": "kelimal",
-    "index": 117,
-    "titleDevanagari": "बारक श्रीहरिदास विलोकत - श्री बिहारिन देव जी की वाणी, सिद्धांत के कवित्त-सवैया (76)",
-    "author": "श्री बिहारिन देव जी की वाणी",
-    "slug": "baarak-shri-haridas-vilokat-shri-biharin-dev-ji-ki-vani-siddhant-ke-kavittsewaiya-76",
+    "index": 82,
+    "titleDevanagari": "प्यारी जू जब जब देखौं तेरो मुख तब तब नयों नयों लागत।",
+    "author": "स्वामी श्री हरिदास जी",
+    "slug": "pyari-ju-jab-jab-dekho-tero-mukh",
     "verses": [
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(सवैया)",
-          "बारक श्रीहरिदास विलोकत, तेल की बूँद समुद्र तरी। [1]",
-          "बादि करै श्रम साधन कोटिक, पंक में ढारि भरी गगरी॥ [2]",
-          "न तुलै करुनालय लाडिली कौ बल, लालहि लै अनुराग ढरी। [3]",
-          "श्रीबिहारिनिदासि ह्वै सेय तिन्हैं, जिनि दंपति संपति साँचि धरी॥ [4]",
-          "- श्री बिहारिन देव जी, श्री बिहारिन देव जी की वाणी, सिद्धांत के कवित्त-सवैया (76)"
+          "प्यारी जू जब जब देखौं तेरो मुख तब तब नयों नयों लागत।ऐसे भ्रम होत मैं कहूँ देखि न री दुति कौं दुति लेखनी न कागत॥कोटि चन्द्र तैं कहाँ दुराये री नये नये रागत ।श्री हरिदास के स्वामी स्याम कहत काम की सांति न होई न होई तृप्ति रहौं निसी दिन जागत ॥",
+          "- स्वामी श्री हरिदास"
         ]
       }
     ],
-    "chapterId": "siddhant",
-    "chapterName": "सिद्धांत के पद",
+    "chapterId": "kelimal",
+    "chapterName": "श्री केलिमाल (११० पद)",
     "verseNumber": 76
   },
   {
-    "id": "ram-krishn-ke-vishnu-ke-bhaktan-kau-nahin-paar-shri-charan-das-of-haridasi-sect-rahasya-chandrika",
+    "id": "aise-hi-dekhat-raho-janm-sufal-kari-mano",
     "collectionId": "kelimal",
-    "index": 118,
-    "titleDevanagari": "राम कृष्ण के, विष्णु के, भक्तन कौ नहिं पार - श्री चरण दास (हरिदासी संप्रदाय के भक्त), रहस्य चंद्रिका",
-    "author": "श्री चरण दास (हरिदासी संप्रदाय के भक्त)",
-    "slug": "ram-krishn-ke-vishnu-ke-bhaktan-kau-nahin-paar-shri-charan-das-of-haridasi-sect-rahasya-chandrika",
+    "index": 83,
+    "titleDevanagari": "ऐसे ही देखत रहौं जन्म सुफल करी मानों।",
+    "author": "स्वामी श्री हरिदास जी",
+    "slug": "aise-hi-dekhat-raho-janm-sufal-kari-mano",
     "verses": [
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "राम कृष्ण के, विष्णु के, भक्तन कौ नहिं पार।",
-          "पै हरिदासी कृपा बिनु, लहै न नित्यविहार॥",
-          "- श्री चरण दास (हरिदासी संप्रदाय के भक्त), रहस्य चंद्रिका"
+          "ऐसे ही देखत रहौं जन्म सुफल करी मानों।प्रिये की भांवती भांवती के प्रिय जुगल किशोर जानौं॥छिनु न तरौ पल होहु न इत उत रहौ एक तनौं।श्रीहरिदास के स्वामी श्यामा कुंजबिहारी मन राणौं॥",
+          "- स्वामी श्री हरिदास"
         ]
       }
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 118
-  },
-  {
-    "id": "shriharidas-ke-sangam-tirth-shri-kant-rasik",
-    "collectionId": "kelimal",
-    "index": 119,
-    "titleDevanagari": "श्रीहरिदास के संगम तीरथ - श्री कान्त रसिक",
-    "author": "श्री कान्त रसिक",
-    "slug": "shriharidas-ke-sangam-tirth-shri-kant-rasik",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "(सवैया)",
-          "श्रीहरिदास के संगम-तीरथ, कौ न समाई, न सूतक-पातौ। [1]",
-          "दूर करौ सुख बैकुंठ कौ, मनमोहन-मोहिनी के सुख रातौ॥ [2]",
-          "ना व्रत-नेम न संजम-साधन, मुक्ति कौ मारग हु न सुहातौ। [3]",
-          "‘कान्त’ अनेकन सौं न सरै, हम मानत एक निकुंज कौ नातौ॥ [4]",
-          "- श्री कान्त रसिक"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 119
+    "verseNumber": 79
   },
   {
     "id": "pyari-ju-hum-tum-dou-ek-kunj-ke-sakha-shri-swami-haridas-ji-kelimal-79",
     "collectionId": "kelimal",
-    "index": 120,
+    "index": 84,
     "titleDevanagari": "प्यारी जू हम तुम दोऊ इहाँ न कोउ हितू मेरौ - श्री स्वामी हरिदास जी, केलीमाल (79)",
     "author": "श्री स्वामी हरिदास जी",
     "slug": "pyari-ju-hum-tum-dou-ek-kunj-ke-sakha-shri-swami-haridas-ji-kelimal-79",
@@ -2876,53 +2077,9 @@
     "verseNumber": 79
   },
   {
-    "id": "bani-ri-tere-char-char-churi-karani",
-    "collectionId": "kelimal",
-    "index": 121,
-    "titleDevanagari": "बनी री तेरे चारि चारि चूरी करनि",
-    "author": "स्वामी श्री हरिदास जी",
-    "slug": "bani-ri-tere-char-char-churi-karani",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "बनी री तेरे चारि चारि चूरी करनि।",
-          "कंठसिरी दुलरी हीरनि की नासा मुकता ढरनि॥",
-          "तैसोई नैननि कजरा फबि रह्यौ निरिख काम डरनि।",
-          "श्रीहरिदास के स्वामी श्यामा कुंजबिहारी, रीझि रीझि पग परनि॥",
-          "- स्वामी श्री हरिदास"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 121
-  },
-  {
-    "id": "shri-harivansi-shri-haridasi-sarvopari-rasrasi-shri-kishori-ali-saar-chandrika",
-    "collectionId": "kelimal",
-    "index": 122,
-    "titleDevanagari": "श्री हरिवंसी श्री हरिदासी सर्वोपरि रसरासी - श्री किशोरी अलि, सार चंद्रिका",
-    "author": "श्री किशोरी अलि",
-    "slug": "shri-harivansi-shri-haridasi-sarvopari-rasrasi-shri-kishori-ali-saar-chandrika",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "श्री हरिवंसी श्री हरिदासी, सर्वोपरि रसरासी।",
-          "विट्ठलविपुल व्यास ध्रुव, नागरीदास बिहारिनी दासी॥",
-          "- श्री किशोरी अलि, सार चंद्रिका"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 122
-  },
-  {
     "id": "duhunni-ki-sahaj-bisaanti-lalita-avtar-shri-haridas-ji-kelimal-81",
     "collectionId": "kelimal",
-    "index": 123,
+    "index": 85,
     "titleDevanagari": "दुहुँनि की सहज बिसाँति - ललिता अवतार श्री स्वामी हरिदास जी, केलीमाल (81)",
     "author": "ललिता अवतार श्री स्वामी हरिदास जी",
     "slug": "duhunni-ki-sahaj-bisaanti-lalita-avtar-shri-haridas-ji-kelimal-81",
@@ -2946,80 +2103,56 @@
     "verseNumber": 81
   },
   {
-    "id": "aaju-mahamangal-bhayo-maai",
+    "id": "चल-र-भड़-त-नयरई",
     "collectionId": "kelimal",
-    "index": 124,
-    "titleDevanagari": "आजु महामंगल भयो माई |",
+    "index": 86,
+    "titleDevanagari": "चली री भीड़ ते न्यारेई",
     "author": "स्वामी श्री हरिदास जी",
-    "slug": "aaju-mahamangal-bhayo-maai",
+    "slug": "चल-र-भड़-त-नयरई",
     "verses": [
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "आजु महामंगल भयो माई |",
-          "भई  प्रसन्न  शिरोमणि  राधे  यह  सुख  कह्यो  न  जाई ||",
-          "परम  प्रीती  सो  विलसत  दोऊ      प्रेम  बढ्यो  अधिकाई |",
-          "श्रीहरिदासीजू रसिकसिरोमनि उमँगीउमँगी आनंद झरलाई ||",
+          "चलि री भीर तें न्यारेई खैलैं।",
+          "कुंज निकुंज मंजु में झैलैं।।",
+          "जहाँ पंछिन सहित सखी न संग कोऊ तिहिं बन चलि मिलि कैलैं।",
+          "श्री हरिदास के स्वामी स्यामा प्रेम परस्पर बूका बंदन मैलैं।।"
+        ]
+      }
+    ],
+    "chapterId": "kelimal",
+    "chapterName": "श्री केलिमाल (११० पद)",
+    "verseNumber": 82
+  },
+  {
+    "id": "jori-adbhut-aaj-bani",
+    "collectionId": "kelimal",
+    "index": 87,
+    "titleDevanagari": "जोरी अद्भुत आज बनी ।",
+    "author": "स्वामी श्री हरिदास जी",
+    "slug": "jori-adbhut-aaj-bani",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "जोरी अद्भुत आज बनी ।",
+          "कोटी काम नखत छवि पर, उज्जवल नील मणि ।।",
+          "उपमा देत सकुच निर उपमति, घन दामिनी लजनी ।।",
+          "करत हास परिहास प्रेम युत, सरस विलास सनी ।।",
+          "कहां री कहूँ लावण्य रूप गुण, शोभा सहज घनी ।।",
+          "श्री बिहारिन दास दुलरावत, श्री हरिदास कृपा बरनी ।।",
           "- स्वामी श्री हरिदास"
         ]
       }
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 124
-  },
-  {
-    "id": "jay-shri-haridasi-radhe-ju-shri-lalit-kishori-dev",
-    "collectionId": "kelimal",
-    "index": 125,
-    "titleDevanagari": "जय श्री हरिदासी राधे जू - श्री ललित किशोरी देव, श्री ललित किशोरी देव जू की वाणी, सिद्धांत के पद (84)",
-    "author": "श्री ललित किशोरी देव",
-    "slug": "jay-shri-haridasi-radhe-ju-shri-lalit-kishori-dev",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "जय श्री हरिदासी राधे जू। [1]",
-          "महा प्रेम भरि अति सुखरासी अद्भुत रूप अगाधे जू॥ [2]",
-          "परम कृपाल उदार रसिक वर हरत लाल की बाधे जू। [3]",
-          "श्री कुंजबिहारिनि ललित किसोरी, पुरई मन की साधे जू॥ [4]",
-          "- श्री ललित किशोरी देव, श्री ललित किशोरी देव जू की वाणी, सिद्धांत के पद (84)"
-        ]
-      }
-    ],
-    "chapterId": "siddhant",
-    "chapterName": "सिद्धांत के पद",
-    "verseNumber": 84
-  },
-  {
-    "id": "jai-jai-shri-kunj-biharin-pyari",
-    "collectionId": "kelimal",
-    "index": 126,
-    "titleDevanagari": "जै जै श्री कुँज  बिहारिन प्यारी।",
-    "author": "स्वामी श्री हरिदास जी",
-    "slug": "jai-jai-shri-kunj-biharin-pyari",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "जै जै श्री कुँज  बिहारिन प्यारी।",
-          "जै जै प्रीतम श्री कुँज बिहारी।१।",
-          "जै श्री ललिता प्रेम मई नित रस माधुर्य  केलि संचारी।",
-          "जै श्री जमुना जै श्री वृन्दावन    सेवत कृष्णचन्द्र सुकुमारी।२।",
-          "जै श्री नित्य बिहार प्रकासिनि श्री राधाचरन नखमणि उजियारी।",
-          "जैहरिदासी कुँज महल हिय सुख बिलसत श्री राधाबिहारी।३।",
-          "- स्वामी श्री हरिदास"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 126
+    "verseNumber": 83
   },
   {
     "id": "hindoremb-jhoolat-laal-din-dulahu-swami-haridas-kelimal-88",
     "collectionId": "kelimal",
-    "index": 127,
+    "index": 88,
     "titleDevanagari": "हिंडोरेंब झूलत लाल दिन दूलहु - श्री स्वामी हरिदास जी, केलीमाल (88)",
     "author": "श्री स्वामी हरिदास जी",
     "slug": "hindoremb-jhoolat-laal-din-dulahu-swami-haridas-kelimal-88",
@@ -3042,30 +2175,9 @@
     "verseNumber": 88
   },
   {
-    "id": "shri-swami-haridas-ko-jo-kou-nij-kari-hoy-shri-lalit-kishori-dev",
-    "collectionId": "kelimal",
-    "index": 128,
-    "titleDevanagari": "श्री स्वामी हरिदास को - श्री ललित किशोरी देव जी की बानी, सिद्धान्त की साखी (89)",
-    "author": "श्री ललित किशोरी देव जी की बानी",
-    "slug": "shri-swami-haridas-ko-jo-kou-nij-kari-hoy-shri-lalit-kishori-dev",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "श्री स्वामी हरिदास को, जो कोउ निज करि होय।",
-          "रहे प्रिया के सुख सुखी, सहज अपनपो खोय॥",
-          "- श्री ललित किशोरी देव, श्री ललित किशोरी देव जी की बानी, सिद्धान्त की साखी (89)"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 89
-  },
-  {
     "id": "yeh-achraj-dekhyau-na-sunyau-kahun-swami-haridas-kelimal-91",
     "collectionId": "kelimal",
-    "index": 129,
+    "index": 89,
     "titleDevanagari": "यह अचरज देख्यौ न सुन्यौ कहूँ - श्री स्वामी हरिदास, केलीमाल (91)",
     "author": "श्री स्वामी हरिदास",
     "slug": "yeh-achraj-dekhyau-na-sunyau-kahun-swami-haridas-kelimal-91",
@@ -3092,7 +2204,7 @@
   {
     "id": "bheenjan-laage-ri-dou-jan-lalita-avataar-shri-haridas-ji-kelimaal-93",
     "collectionId": "kelimal",
-    "index": 130,
+    "index": 90,
     "titleDevanagari": "भींजन लागे री दोऊ जन - ललिता अवतार श्री हरिदास जी, केलीमाल (93)",
     "author": "ललिता अवतार श्री हरिदास जी",
     "slug": "bheenjan-laage-ri-dou-jan-lalita-avataar-shri-haridas-ji-kelimaal-93",
@@ -3116,9 +2228,29 @@
     "verseNumber": 93
   },
   {
+    "id": "maee-ri-sahaj-jori-pragat-bhayi-lalita-avtar-shri-haridas-ji-kelimal-1",
+    "collectionId": "kelimal",
+    "index": 91,
+    "titleDevanagari": "माई री, सहज जोरी प्रगट - स्वामी श्री हरिदास",
+    "author": "स्वामी श्री हरिदास",
+    "slug": "maee-ri-sahaj-jori-pragat-bhayi-lalita-avtar-shri-haridas-ji-kelimal-1",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "\"माई री, सहज जोरी प्रगट भई, जु रंग की गौर-स्याम घन-दामिनि जैसैं। प्रथम हूँ हुती, अब हूँ आगें हूँ रहिहै, न टरिहै तैसैं”",
+          "- स्वामी श्री हरिदास"
+        ]
+      }
+    ],
+    "chapterId": "kelimal",
+    "chapterName": "श्री केलिमाल (११० पद)",
+    "verseNumber": 95
+  },
+  {
     "id": "damini-kahat-megh-saun-lalita-avtar-shri-haridas-ji-kelimal-95",
     "collectionId": "kelimal",
-    "index": 131,
+    "index": 92,
     "titleDevanagari": "दामिनि कहत मेघ सौं - ललिता अवतार श्री स्वामी हरिदास जी, केलीमाल (95)",
     "author": "ललिता अवतार श्री स्वामी हरिदास जी",
     "slug": "damini-kahat-megh-saun-lalita-avtar-shri-haridas-ji-kelimal-95",
@@ -3145,7 +2277,7 @@
   {
     "id": "nachat-morani-sang-syam-lalita-avatar-shri-swami-haridas-ji-kelimal-96",
     "collectionId": "kelimal",
-    "index": 132,
+    "index": 93,
     "titleDevanagari": "नाचत मोरनि संग स्याम -  ललिता अवतार श्री स्वामी हरिदास जी, केलीमाल (96)",
     "author": "ललिता अवतार श्री स्वामी हरिदास जी",
     "slug": "nachat-morani-sang-syam-lalita-avatar-shri-swami-haridas-ji-kelimal-96",
@@ -3173,7 +2305,7 @@
   {
     "id": "hari-ke-ang-kau-chandan-laptanau-shri-haridas-ji-kelimal-97",
     "collectionId": "kelimal",
-    "index": 133,
+    "index": 94,
     "titleDevanagari": "हरि के अंग कौ चंदन लपटानौ - श्री स्वामी हरिदास जी, केलीमाल (97)",
     "author": "श्री स्वामी हरिदास जी",
     "slug": "hari-ke-ang-kau-chandan-laptanau-shri-haridas-ji-kelimal-97",
@@ -3199,9 +2331,33 @@
     "verseNumber": 97
   },
   {
+    "id": "hamare-dhan-vrindavan-pyari",
+    "collectionId": "kelimal",
+    "index": 95,
+    "titleDevanagari": "हमारे धन वृन्दावन प्यारी ।",
+    "author": "स्वामी श्री हरिदास जी",
+    "slug": "hamare-dhan-vrindavan-pyari",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "हमारे धन वृन्दावन प्यारी ।",
+          "खरचत खात घटै नहिं कबहूँ बाढत छिन छिन अति अधिहमारे धन वृन्दावन प्यारी ।",
+          "खरचत खात घटै नहिं कबहूँ बाढत छिन छिन अति अधिकारी ।।",
+          "ताही कौ अभिमान सदाई ताही बल बस कुंज बिहारी ।",
+          "श्री हरिदासी रसिक सिरोमनि प्रान प्रान मिलि कीनी यारी ॥",
+          "- स्वामी श्री हरिदास"
+        ]
+      }
+    ],
+    "chapterId": "kelimal",
+    "chapterName": "श्री केलिमाल (११० पद)",
+    "verseNumber": 100
+  },
+  {
     "id": "chali-ri-bhir-tein-nyarie-khelain-shri-haridas-ji-kelimal-100",
     "collectionId": "kelimal",
-    "index": 134,
+    "index": 96,
     "titleDevanagari": "चलि री भीर तें न्यारेई खेलैं - श्री स्वामी हरिदास जी, केलीमाल (100)",
     "author": "श्री स्वामी हरिदास जी",
     "slug": "chali-ri-bhir-tein-nyarie-khelain-shri-haridas-ji-kelimal-100",
@@ -3225,77 +2381,76 @@
     "verseNumber": 100
   },
   {
-    "id": "ras-shekhar-rasarajvar-ras-ananya-haridas-sri-prahlad-ji",
+    "id": "suni-dhun-murli-vain-baje-hari-ras-rachyo",
     "collectionId": "kelimal",
-    "index": 135,
-    "titleDevanagari": "रसशेखर रसराजवर रस अनन्य हरिदास - श्री प्रह्लाद जी",
-    "author": "श्री प्रह्लाद जी",
-    "slug": "ras-shekhar-rasarajvar-ras-ananya-haridas-sri-prahlad-ji",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "रसशेखर रसराजवर, रस अनन्य हरिदास।",
-          "सुमिरत दर्शत मन हरत, रंग महल नित वास॥",
-          "- श्री प्रह्लाद जी"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 135
-  },
-  {
-    "id": "शरबहर-वहरन-क-र-मप-यह-छब-बरन-न-जय",
-    "collectionId": "kelimal",
-    "index": 136,
-    "titleDevanagari": "श्रीबिहारी विहारिनि की (रे) मोपै यह छबि बरनी ना जाय ।।",
+    "index": 97,
+    "titleDevanagari": "सुनि धुन मुरली वैन बाजे हरि रास रच्यो",
     "author": "स्वामी श्री हरिदास जी",
-    "slug": "शरबहर-वहरन-क-र-मप-यह-छब-बरन-न-जय",
+    "slug": "suni-dhun-murli-vain-baje-hari-ras-rachyo",
     "verses": [
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "श्रीबिहारी विहारिनि की (रे) मोपै यह छबि बरनी ना जाय ।।",
-          "तन मन मिले झिले मृदु रस में आनन्द उर न समाय । श्री…",
-          "रंगमहल में होरी खेलैं, अंग अंग रंग चुचाय । श्री…",
-          "श्रीहरिदास ललित छबि निरखत, सेवत नव-नव भाय ।। श्री…"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 136
-  },
-  {
-    "id": "gud-ke-gunja-pua-suhari-godhan-pujat-vrij-ki-nari",
-    "collectionId": "kelimal",
-    "index": 137,
-    "titleDevanagari": "गुड़ के गुंजा पुआ सुहारी, गोधन पूजत व्रज की नारी ।। 1 ।।",
-    "author": "स्वामी श्री हरिदास जी",
-    "slug": "gud-ke-gunja-pua-suhari-godhan-pujat-vrij-ki-nari",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "गुड़ के गुंजा पुआ सुहारी, गोधन पूजत व्रज की नारी ।। 1 ।।",
-          "घर घर गोमय प्रतिमा धारी, बाजत रुचिर पखावज थारी ।। 2 ।।",
-          "गोद लीयें मंगल गुन गावत, कमल नयन कों पाय लगावत ।। 3 ।।",
-          "हरद दधि रोचनके टीके, यह व्रज सुरपुर लागत फीके ।। 4 ।।",
-          "राती पीरी गाय श्रृंगारी, बोलत ग्वाल दे दे करतारी ।। 5 ।।",
-          "‘हरिदास’ प्रभु कुंजबिहारी मानत सुख त्यौहार दीवारी ।। 6 ।।",
+          "सुनि धुन मुरली वैन बाजे हरि रास रच्यो ।",
+          "कुंज द्रुम बेली प्रफुलित मंडल कंचन मणिन रच्यो ।",
+          "निर्तत युगल किशोर युवतिजन रासमें राग केदार रच्यो ।",
+          "हरिदास के स्वामी श्यामा कुंजविहारी नीके ही आज गोपाल नच्यो ॥",
           "- स्वामी श्री हरिदास"
         ]
       }
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 137
+    "verseNumber": 102
+  },
+  {
+    "id": "suni-dhuni-murli-ban-baje-e-hari-ras-rachyo",
+    "collectionId": "kelimal",
+    "index": 98,
+    "titleDevanagari": "सुनि  धुनि  मुरली  बन  बाजै  ए  हरि  रास  रच्यौ  ।",
+    "author": "स्वामी श्री हरिदास जी",
+    "slug": "suni-dhuni-murli-ban-baje-e-hari-ras-rachyo",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "सुनि  धुनि  मुरली  बन  बाजै  ए  हरि  रास  रच्यौ  ।",
+          "कु़ज-कुंज  द्रुम  वेलि  प्रफुल्लित  मंडल  कंचन  मणिनु  खच्यौ  ।।",
+          "निर्तत  जुगल  किशोर  जुवति  जन  श्रुति  घुर  राग  केदारौ  मच्यौ  ।",
+          "श्रीहरिदास  के  स्वामी  स्यामा कुंजबिहारी  नीकें  प्यारौ  लाल  नच्यौ  ।।",
+          "- स्वामी श्री हरिदास"
+        ]
+      }
+    ],
+    "chapterId": "kelimal",
+    "chapterName": "श्री केलिमाल (११० पद)",
+    "verseNumber": 103
+  },
+  {
+    "id": "jai-shriharidas-rasik-var-ki",
+    "collectionId": "kelimal",
+    "index": 99,
+    "titleDevanagari": "जै श्रीहरिदास रसिक वर की",
+    "author": "स्वामी श्री हरिदास जी",
+    "slug": "jai-shriharidas-rasik-var-ki",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "जै श्रीहरिदास रसिक वर की।",
+          "परम अनन्य सुधरम बतायौ, करमनि की छाती धरकी॥ नित्यविहार निरंतर निरखैं, जहाँ नहीं गम विधि-हरकी।रूप-रंग रस-जस कल गावैं, तिनुका लौं माया तरकी॥",
+          "- ललित किशोरी देव"
+        ]
+      }
+    ],
+    "chapterId": "kelimal",
+    "chapterName": "श्री केलिमाल (११० पद)",
+    "verseNumber": 104
   },
   {
     "id": "jhulat-dol-dou-jan-thaade-shri-swami-haridas-kelimal-107",
     "collectionId": "kelimal",
-    "index": 138,
+    "index": 100,
     "titleDevanagari": "झुलत डोल दोऊ जन ठाढ़े - श्री स्वामी हरिदास जी, केलिमाल (107)",
     "author": "श्री स्वामी हरिदास जी",
     "slug": "jhulat-dol-dou-jan-thaade-shri-swami-haridas-kelimal-107",
@@ -3319,61 +2474,218 @@
     "verseNumber": 107
   },
   {
-    "id": "shri-haridas-ke-garv-bhare-shri-biharin-dev-ji-ki-vani-siddhant-ke-kavittsewaiya-111",
+    "id": "आज-बदन-त-बरषत-फल",
     "collectionId": "kelimal",
-    "index": 139,
-    "titleDevanagari": "श्री हरिदास के गर्व भरे  - श्री बिहारिन देव जी की वाणी, सिद्धांत के कवित्त-सवैया (111)",
-    "author": "श्री बिहारिन देव जी की वाणी",
-    "slug": "shri-haridas-ke-garv-bhare-shri-biharin-dev-ji-ki-vani-siddhant-ke-kavittsewaiya-111",
+    "index": 101,
+    "titleDevanagari": "आजु बदन ते बर्षत फूल ।",
+    "author": "स्वामी श्री हरिदास जी",
+    "slug": "आज-बदन-त-बरषत-फल",
     "verses": [
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(सवैया)",
-          "श्री हरिदास के गर्व भरे, अमनैंक अनन्य निहारिनी के।",
-          "महा-मधुरे-रस पाँन करें, अवसाँन खता सिलहारनि के॥ [1]",
-          "दियौ नहिं लेहि ते मांगहि क्यों, बरनैं गुन कौंन तिहारिनि के।",
-          "किये रहैं ऐंड बिहारी हूँ सौं, हम वेपरवाह बिहारिनी के॥ [2]",
-          "- श्री बिहारिन देव जी, श्री बिहारिन देव जी की वाणी, सिद्धांत के कवित्त-सवैया (111)"
-        ]
-      }
-    ],
-    "chapterId": "siddhant",
-    "chapterName": "सिद्धांत के पद",
-    "verseNumber": 111
-  },
-  {
-    "id": "namo-namo-shriharidas-vrindavipin-shri-agradas-ji-spiritual-master-of-nabha-ji",
-    "collectionId": "kelimal",
-    "index": 140,
-    "titleDevanagari": "नमो नमो श्रीहरिदास वृन्दाविपिन - श्री अग्रदास जी (श्री नाभा जी के गुरु)",
-    "author": "श्री अग्रदास जी (श्री नाभा जी के गुरु)",
-    "slug": "namo-namo-shriharidas-vrindavipin-shri-agradas-ji-spiritual-master-of-nabha-ji",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "(सवैया)",
-          "नमो नमो श्रीहरिदास वृन्दाविपिन",
-          "वास वर प्रान सर्वस बांकेबिहारी। [1]",
-          "श्यामाश्याम जुगल रूप माधुर्य के",
-          "रसिक रिझवार प्रेम अवतारी॥ [2]",
-          "परम बैराग-निधि बसत निधिबन",
-          "सदा भावना लीन सुप्रवीण भारी। [3]",
-          "कामना कल्पतरु सकल संतापहरु",
-          "‘अग्रदास’ अलि कल्याणकारी॥ [4]",
-          "- श्री अग्रदास जी (श्री नाभा जी के गुरु)"
+          "आजु बदन ते बर्षत फूल ।",
+          "प्रमुदित मानौं कली कुन्दन की अलक अलि रहे भूल ॥",
+          "महल निकुंज कुसुम सेज पर गौर स्याम परसत भुज मूल।",
+          "रसिक रूप हरिदास निरखि छवि सदासु अंग-अंग अनुकूल ॥"
         ]
       }
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 140
+    "verseNumber": 110
+  },
+  {
+    "id": "chal-ri-bheed-te-nyarei-khele",
+    "collectionId": "kelimal",
+    "index": 102,
+    "titleDevanagari": "चल री भीड ते न्यारेई खेलैं।",
+    "author": "स्वामी श्री हरिदास जी",
+    "slug": "chal-ri-bheed-te-nyarei-khele",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "चल री भीड ते न्यारेई खेलैं।",
+          "कुंज निकुंज मंजु में झेलै।।1।।",
+          "जहां पंछी न सहित सखी न संग कोउ।",
+          "तिहिं बन चलि मिलि केलै।।2।।",
+          "श्री हरिदास के स्वामी स्याम प्रेम।",
+          "परस्पर बूदा बंदन मेलै।।3।।",
+          "- स्वामी श्री हरिदास"
+        ]
+      }
+    ],
+    "chapterId": "kelimal",
+    "chapterName": "श्री केलिमाल (११० पद)",
+    "verseNumber": 114
+  },
+  {
+    "id": "lalita-shri-haridasi-ke-aagan-sukhad-badhai-baje-ho",
+    "collectionId": "kelimal",
+    "index": 103,
+    "titleDevanagari": "ललिता श्रीहरिदासी के आँगन सुखद बधाई बाजैं हो।",
+    "author": "स्वामी श्री हरिदास जी",
+    "slug": "lalita-shri-haridasi-ke-aagan-sukhad-badhai-baje-ho",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "ललिता श्रीहरिदासी के आँगन सुखद बधाई बाजैं हो।",
+          "महल तें प्रगटे श्रीबाँकेबिहारी रसिकनि के सुख काजैं हो।।",
+          "सखी सहेली सहचरी गावति अति आनंद समाजैं हो।",
+          "श्रीराधाचरन छबि निरखत बीठलबीपुल प्रेम सुख साजैं हो।।",
+          "- अज्ञात"
+        ]
+      }
+    ],
+    "chapterId": "kelimal",
+    "chapterName": "श्री केलिमाल (११० पद)",
+    "verseNumber": 115
+  },
+  {
+    "id": "ram-krishn-ke-vishnu-ke-bhaktan-kau-nahin-paar-shri-charan-das-of-haridasi-sect-rahasya-chandrika",
+    "collectionId": "kelimal",
+    "index": 104,
+    "titleDevanagari": "राम कृष्ण के, विष्णु के, भक्तन कौ नहिं पार - श्री चरण दास (हरिदासी संप्रदाय के भक्त), रहस्य चंद्रिका",
+    "author": "श्री चरण दास (हरिदासी संप्रदाय के भक्त)",
+    "slug": "ram-krishn-ke-vishnu-ke-bhaktan-kau-nahin-paar-shri-charan-das-of-haridasi-sect-rahasya-chandrika",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "राम कृष्ण के, विष्णु के, भक्तन कौ नहिं पार।",
+          "पै हरिदासी कृपा बिनु, लहै न नित्यविहार॥",
+          "- श्री चरण दास (हरिदासी संप्रदाय के भक्त), रहस्य चंद्रिका"
+        ]
+      }
+    ],
+    "chapterId": "kelimal",
+    "chapterName": "श्री केलिमाल (११० पद)",
+    "verseNumber": 118
+  },
+  {
+    "id": "bani-ri-tere-char-char-churi-karani",
+    "collectionId": "kelimal",
+    "index": 105,
+    "titleDevanagari": "बनी री तेरे चारि चारि चूरी करनि",
+    "author": "स्वामी श्री हरिदास जी",
+    "slug": "bani-ri-tere-char-char-churi-karani",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "बनी री तेरे चारि चारि चूरी करनि।",
+          "कंठसिरी दुलरी हीरनि की नासा मुकता ढरनि॥",
+          "तैसोई नैननि कजरा फबि रह्यौ निरिख काम डरनि।",
+          "श्रीहरिदास के स्वामी श्यामा कुंजबिहारी, रीझि रीझि पग परनि॥",
+          "- स्वामी श्री हरिदास"
+        ]
+      }
+    ],
+    "chapterId": "kelimal",
+    "chapterName": "श्री केलिमाल (११० पद)",
+    "verseNumber": 121
+  },
+  {
+    "id": "aaju-mahamangal-bhayo-maai",
+    "collectionId": "kelimal",
+    "index": 106,
+    "titleDevanagari": "आजु महामंगल भयो माई |",
+    "author": "स्वामी श्री हरिदास जी",
+    "slug": "aaju-mahamangal-bhayo-maai",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "आजु महामंगल भयो माई |",
+          "भई  प्रसन्न  शिरोमणि  राधे  यह  सुख  कह्यो  न  जाई ||",
+          "परम  प्रीती  सो  विलसत  दोऊ      प्रेम  बढ्यो  अधिकाई |",
+          "श्रीहरिदासीजू रसिकसिरोमनि उमँगीउमँगी आनंद झरलाई ||",
+          "- स्वामी श्री हरिदास"
+        ]
+      }
+    ],
+    "chapterId": "kelimal",
+    "chapterName": "श्री केलिमाल (११० पद)",
+    "verseNumber": 124
+  },
+  {
+    "id": "jai-jai-shri-kunj-biharin-pyari",
+    "collectionId": "kelimal",
+    "index": 107,
+    "titleDevanagari": "जै जै श्री कुँज  बिहारिन प्यारी।",
+    "author": "स्वामी श्री हरिदास जी",
+    "slug": "jai-jai-shri-kunj-biharin-pyari",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "जै जै श्री कुँज  बिहारिन प्यारी।",
+          "जै जै प्रीतम श्री कुँज बिहारी।१।",
+          "जै श्री ललिता प्रेम मई नित रस माधुर्य  केलि संचारी।",
+          "जै श्री जमुना जै श्री वृन्दावन    सेवत कृष्णचन्द्र सुकुमारी।२।",
+          "जै श्री नित्य बिहार प्रकासिनि श्री राधाचरन नखमणि उजियारी।",
+          "जैहरिदासी कुँज महल हिय सुख बिलसत श्री राधाबिहारी।३।",
+          "- स्वामी श्री हरिदास"
+        ]
+      }
+    ],
+    "chapterId": "kelimal",
+    "chapterName": "श्री केलिमाल (११० पद)",
+    "verseNumber": 126
+  },
+  {
+    "id": "शरबहर-वहरन-क-र-मप-यह-छब-बरन-न-जय",
+    "collectionId": "kelimal",
+    "index": 108,
+    "titleDevanagari": "श्रीबिहारी विहारिनि की (रे) मोपै यह छबि बरनी ना जाय ।।",
+    "author": "स्वामी श्री हरिदास जी",
+    "slug": "शरबहर-वहरन-क-र-मप-यह-छब-बरन-न-जय",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "श्रीबिहारी विहारिनि की (रे) मोपै यह छबि बरनी ना जाय ।।",
+          "तन मन मिले झिले मृदु रस में आनन्द उर न समाय । श्री…",
+          "रंगमहल में होरी खेलैं, अंग अंग रंग चुचाय । श्री…",
+          "श्रीहरिदास ललित छबि निरखत, सेवत नव-नव भाय ।। श्री…"
+        ]
+      }
+    ],
+    "chapterId": "kelimal",
+    "chapterName": "श्री केलिमाल (११० पद)",
+    "verseNumber": 136
+  },
+  {
+    "id": "gud-ke-gunja-pua-suhari-godhan-pujat-vrij-ki-nari",
+    "collectionId": "kelimal",
+    "index": 109,
+    "titleDevanagari": "गुड़ के गुंजा पुआ सुहारी, गोधन पूजत व्रज की नारी ।। 1 ।।",
+    "author": "स्वामी श्री हरिदास जी",
+    "slug": "gud-ke-gunja-pua-suhari-godhan-pujat-vrij-ki-nari",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "गुड़ के गुंजा पुआ सुहारी, गोधन पूजत व्रज की नारी ।। 1 ।।",
+          "घर घर गोमय प्रतिमा धारी, बाजत रुचिर पखावज थारी ।। 2 ।।",
+          "गोद लीयें मंगल गुन गावत, कमल नयन कों पाय लगावत ।। 3 ।।",
+          "हरद दधि रोचनके टीके, यह व्रज सुरपुर लागत फीके ।। 4 ।।",
+          "राती पीरी गाय श्रृंगारी, बोलत ग्वाल दे दे करतारी ।। 5 ।।",
+          "‘हरिदास’ प्रभु कुंजबिहारी मानत सुख त्यौहार दीवारी ।। 6 ।।",
+          "- स्वामी श्री हरिदास"
+        ]
+      }
+    ],
+    "chapterId": "kelimal",
+    "chapterName": "श्री केलिमाल (११० पद)",
+    "verseNumber": 137
   },
   {
     "id": "kahu-ko-bas-nahin-tumhari-kripatein-sab-hoy-bihari-biharin-jahin-tumson-hit-taahi-tum-hit-karo-sab-sukh-karni-swami-shri-haridas",
     "collectionId": "kelimal",
-    "index": 141,
+    "index": 110,
     "titleDevanagari": "काहू कौ बस नहीं तुम्हारी कृपातें, सब होय बिहारी बिहारिन - स्वामी श्री हरिदास",
     "author": "स्वामी श्री हरिदास",
     "slug": "kahu-ko-bas-nahin-tumhari-kripatein-sab-hoy-bihari-biharin-jahin-tumson-hit-taahi-tum-hit-karo-sab-sukh-karni-swami-shri-haridas",
@@ -3394,7 +2706,7 @@
   {
     "id": "when-emperor-akbar-met-swami-haridas-at-nidhi-van-vrindavan",
     "collectionId": "kelimal",
-    "index": 142,
+    "index": 111,
     "titleDevanagari": "जब सम्राट अकबर स्वामी हरिदास से निधिवन, वृंदावन में मिले",
     "author": "स्वामी श्री हरिदास जी",
     "slug": "when-emperor-akbar-met-swami-haridas-at-nidhi-van-vrindavan",
@@ -3416,7 +2728,7 @@
   {
     "id": "pyari-terau-badan-chand-dekhain",
     "collectionId": "kelimal",
-    "index": 143,
+    "index": 112,
     "titleDevanagari": "प्यारी तेरौ बदन चंद देखैं",
     "author": "स्वामी श्री हरिदास जी",
     "slug": "pyari-terau-badan-chand-dekhain",
@@ -3439,7 +2751,7 @@
   {
     "id": "namo-namo-shriharidas-vrindavipin",
     "collectionId": "kelimal",
-    "index": 144,
+    "index": 113,
     "titleDevanagari": "नमो नमो श्रीहरिदास वृन्दाविपिन",
     "author": "स्वामी श्री हरिदास जी",
     "slug": "namo-namo-shriharidas-vrindavipin",
@@ -3462,7 +2774,7 @@
   {
     "id": "beni-guth-kaha-koi-jane-meri-si-teri-souh-radhe",
     "collectionId": "kelimal",
-    "index": 145,
+    "index": 114,
     "titleDevanagari": "बेणी गूथ कहा कोई जाने मेरी सी तेरी सौह राधे",
     "author": "स्वामी श्री हरिदास जी",
     "slug": "beni-guth-kaha-koi-jane-meri-si-teri-souh-radhe",
@@ -3480,32 +2792,9 @@
     "verseNumber": 145
   },
   {
-    "id": "shri-swami-haridas-ji-rasik-maha-harivyas-shri-charan-das",
-    "collectionId": "kelimal",
-    "index": 146,
-    "titleDevanagari": "श्री स्वामी हरिदास जी रसिक महा हरिव्यास  - श्री चरण दास",
-    "author": "श्री चरण दास",
-    "slug": "shri-swami-haridas-ji-rasik-maha-harivyas-shri-charan-das",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "श्री स्वामी हरिदास जी, रसिक महा हरिव्यास।",
-          "कृष्णदास अरु हित अली, इन मारग सुखरास॥ [1]",
-          "सोई मेरौ मार्ग है, महा मोद की खान।",
-          "उन्नत परम निकुंज रस, तिन बानिन परमान॥ [2]",
-          "- श्री चरणदास"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 146
-  },
-  {
     "id": "tero-mukh-niko-ki-mereo-mukh-pyari",
     "collectionId": "kelimal",
-    "index": 147,
+    "index": 115,
     "titleDevanagari": "तेरो मुख नीको के मेरो मुख प्यारी।",
     "author": "स्वामी श्री हरिदास जी",
     "slug": "tero-mukh-niko-ki-mereo-mukh-pyari",
@@ -3528,7 +2817,7 @@
   {
     "id": "ae-hari-mo-sau-na-bigaran-kou-lalita-avtar-shri-haridas-ji-ashtadash-pada-05",
     "collectionId": "kelimal",
-    "index": 148,
+    "index": 116,
     "titleDevanagari": "ऐ हरी मो सौ न बिगारन कौ - केलिमाल, स्वामी श्री हरिदास जी",
     "author": "स्वामी श्री हरिदास जी",
     "slug": "ae-hari-mo-sau-na-bigaran-kou-lalita-avtar-shri-haridas-ji-ashtadash-pada-05",
@@ -3548,7 +2837,7 @@
   {
     "id": "पयर-तर-बफन-बन-समर",
     "collectionId": "kelimal",
-    "index": 149,
+    "index": 117,
     "titleDevanagari": "प्यारी तेरी बॉफिन बान सुमार",
     "author": "स्वामी श्री हरिदास जी",
     "slug": "पयर-तर-बफन-बन-समर",
@@ -3571,7 +2860,7 @@
   {
     "id": "भद-सकल-अषटम-भ-पर-परगट-शरहरदस",
     "collectionId": "kelimal",
-    "index": 150,
+    "index": 118,
     "titleDevanagari": "भादौं   सुकल   अष्टमी   भू   पर  प्रगटे  श्रीहरिदास",
     "author": "स्वामी श्री हरिदास जी",
     "slug": "भद-सकल-अषटम-भ-पर-परगट-शरहरदस",
@@ -3593,7 +2882,7 @@
   {
     "id": "सरत-रथ-जगल-कशर-चल",
     "collectionId": "kelimal",
-    "index": 151,
+    "index": 119,
     "titleDevanagari": "सुरति रथ जुगल किशोर चले",
     "author": "स्वामी श्री हरिदास जी",
     "slug": "सरत-रथ-जगल-कशर-चल",
@@ -3617,7 +2906,7 @@
   {
     "id": "pyari-tu-gunani-rai-sirmaur",
     "collectionId": "kelimal",
-    "index": 152,
+    "index": 120,
     "titleDevanagari": "प्यारी तू गुननि राइ सिरमौर",
     "author": "स्वामी श्री हरिदास जी",
     "slug": "pyari-tu-gunani-rai-sirmaur",
@@ -3640,7 +2929,7 @@
   {
     "id": "तर-मख-नक-क-मर-मख-पयरहरदस",
     "collectionId": "kelimal",
-    "index": 153,
+    "index": 121,
     "titleDevanagari": "तेरो मुख नीको के मेरो मुख प्यारी।(हरिदास)",
     "author": "स्वामी श्री हरिदास जी",
     "slug": "तर-मख-नक-क-मर-मख-पयरहरदस",
@@ -3662,7 +2951,7 @@
   {
     "id": "lalita-haridas-hiye-mein-basyau-braj-ke-sawaiya",
     "collectionId": "kelimal",
-    "index": 154,
+    "index": 122,
     "titleDevanagari": "ललिता हरिदास हिये में बस्यौ - ब्रज के सवैया",
     "author": "स्वामी श्री हरिदास जी",
     "slug": "lalita-haridas-hiye-mein-basyau-braj-ke-sawaiya",
@@ -3683,56 +2972,9 @@
     "verseNumber": 154
   },
   {
-    "id": "shri-swami-haridas-ko-adbhut-nityavihar-shri-rasik-ali",
-    "collectionId": "kelimal",
-    "index": 155,
-    "titleDevanagari": "श्रीस्वामी हरिदास को अद्भुत नित्यविहार - श्री रसिक अली",
-    "author": "श्री रसिक अली",
-    "slug": "shri-swami-haridas-ko-adbhut-nityavihar-shri-rasik-ali",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "(कुण्डलियाँ)",
-          "श्रीस्वामी हरिदास को, अद्भुत नित्यविहार।",
-          "बिलसै निधुवन कुंज में, रसिकन जीवन-सार॥ [1]",
-          "रसिकन जीवन-सार, श्याम-श्यामा की लीला।",
-          "अनुपम पावन नित्य केलि, सखि निरखें क्रीला॥ [2]",
-          "निरखें नैना सुख बहे, निरखें सुख अंग-अंग।",
-          "‘रसिकअली’ को सुख यही, याहि को नित संग॥ [3]",
-          "- श्री रसिक अली"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 155
-  },
-  {
-    "id": "mero-man-shri-vrindavan-atkyo-rakhyo-shri-haridas-vipul-bal-bhuli-na-ita-uta-bhatkyo-shri-biharin-dev-shri-biharin-dev-ju-ki-vani",
-    "collectionId": "kelimal",
-    "index": 156,
-    "titleDevanagari": "मेरौ मन श्री वृन्दावन अटक्यो, राख्यो श्री हरिदास विपुल बल, भूली न इत उत भटक्यो।  - श्री बिहारिन देव - बिहारिन देव जी की वाणी, सिद्धांत के पद (154)",
-    "author": "बिहारिन देव जी की वाणी",
-    "slug": "mero-man-shri-vrindavan-atkyo-rakhyo-shri-haridas-vipul-bal-bhuli-na-ita-uta-bhatkyo-shri-biharin-dev-shri-biharin-dev-ju-ki-vani",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "मेरौ मन श्री वृन्दावन अटक्यो,",
-          "राख्यो श्री हरिदास विपुल बल, भूली न इत उत भटक्यो।",
-          "- श्री बिहारिन देव - बिहारिन देव जी की वाणी, सिद्धांत के पद (154)"
-        ]
-      }
-    ],
-    "chapterId": "siddhant",
-    "chapterName": "सिद्धांत के पद",
-    "verseNumber": 154
-  },
-  {
     "id": "shriharidas-ke-sangam-tirth",
     "collectionId": "kelimal",
-    "index": 157,
+    "index": 123,
     "titleDevanagari": "श्रीहरिदास के संगम तीरथ",
     "author": "स्वामी श्री हरिदास जी",
     "slug": "shriharidas-ke-sangam-tirth",
@@ -3755,7 +2997,7 @@
   {
     "id": "shri-swami-haridas-ko-adbhut-nityavihar",
     "collectionId": "kelimal",
-    "index": 158,
+    "index": 124,
     "titleDevanagari": "श्रीस्वामी हरिदास को अद्भुत नित्यविहार",
     "author": "स्वामी श्री हरिदास जी",
     "slug": "shri-swami-haridas-ko-adbhut-nityavihar",
@@ -3778,9 +3020,361 @@
     "verseNumber": 158
   },
   {
+    "id": "shri-swami-haridas-kau-anugat-jo-jan-hoi-shri-roop-sakhi-siddhant-ke-doha-4",
+    "collectionId": "kelimal",
+    "index": 125,
+    "titleDevanagari": "श्री स्वामी हरिदास को - श्री रूप सखी, सिद्धांत के दोहा (4)",
+    "author": "श्री रूप सखी",
+    "slug": "shri-swami-haridas-kau-anugat-jo-jan-hoi-shri-roop-sakhi-siddhant-ke-doha-4",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "श्री स्वामी हरिदास को, अनुगत जो जन होई।",
+          "नित्यविहार निरखै सदा, सखी तन रूप समोई॥",
+          "- श्री रूप सखी, सिद्धांत के दोहा (4)"
+        ]
+      }
+    ],
+    "chapterId": "siddhant-ke-pad",
+    "chapterName": "सिद्धांत के पद (१८ पद)",
+    "verseNumber": 4
+  },
+  {
+    "id": "shri-swami-haridas-bhajo-man-shri-haridas-bhajo-shri-chaturdas-ji-ki-vani-siddhant-ki-saakhi-9",
+    "collectionId": "kelimal",
+    "index": 126,
+    "titleDevanagari": "श्री स्वामी हरिदास भजो मन, श्री हरिदास भजौ - श्री चतुर दास जी की वाणी, सिद्धांत की साखी (9)",
+    "author": "श्री चतुर दास जी की वाणी",
+    "slug": "shri-swami-haridas-bhajo-man-shri-haridas-bhajo-shri-chaturdas-ji-ki-vani-siddhant-ki-saakhi-9",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "श्री स्वामी हरिदास भजो मन, श्री हरिदास भजौ।",
+          "औरन के औगुन कहा देखौ, अपनी ओर लजौ॥",
+          "- श्री चतुर दास, श्री चतुर दास जी की वाणी, सिद्धांत की साखी (9)"
+        ]
+      }
+    ],
+    "chapterId": "siddhant-ke-pad",
+    "chapterName": "सिद्धांत के पद (१८ पद)",
+    "verseNumber": 9
+  },
+  {
+    "id": "shriswami-haridas-bhaj-shri-chaturdas-ji-ki-vani-siddhant-ki-saakhi-10",
+    "collectionId": "kelimal",
+    "index": 127,
+    "titleDevanagari": "श्रीस्वामी हरिदास भज - श्री चतुर दास जी की वाणी, सिद्धांत की साखी (10)",
+    "author": "श्री चतुर दास जी की वाणी",
+    "slug": "shriswami-haridas-bhaj-shri-chaturdas-ji-ki-vani-siddhant-ki-saakhi-10",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "श्रीस्वामी हरिदास भज, छाँडि सकल जंजार।",
+          "या चक्कर में मति परै, यह झूठौ संसार॥",
+          "- श्री चतुर दास, श्री चतुर दास जी की वाणी, सिद्धांत की साखी (10)"
+        ]
+      }
+    ],
+    "chapterId": "siddhant-ke-pad",
+    "chapterName": "सिद्धांत के पद (१८ पद)",
+    "verseNumber": 10
+  },
+  {
+    "id": "shriswami-haridas-bhaji-siddh-hoi-sab-kaam-shri-chaturdas-ji-ki-vani-siddhant-ki-saakhi-11",
+    "collectionId": "kelimal",
+    "index": 128,
+    "titleDevanagari": "श्रीस्वामी हरिदास भजि, सिद्ध होइ सब काम - श्री चतुर दास जी की वाणी, सिद्धांत की साखी (11)",
+    "author": "श्री चतुर दास जी की वाणी",
+    "slug": "shriswami-haridas-bhaji-siddh-hoi-sab-kaam-shri-chaturdas-ji-ki-vani-siddhant-ki-saakhi-11",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "श्रीस्वामी हरिदास भजि, सिद्ध होइ सब काम।",
+          "चतुरदास यह भाव भजि, निरखे स्यामास्याम॥",
+          "- श्री चतुर दास जी, श्री चतुर दास जी की वाणी, सिद्धांत की साखी (11)"
+        ]
+      }
+    ],
+    "chapterId": "siddhant-ke-pad",
+    "chapterName": "सिद्धांत के पद (१८ पद)",
+    "verseNumber": 11
+  },
+  {
+    "id": "sri-haridas-anany-jai-var-vihar-ras-keli-shri-rup-sakhi-siddhant-ke-doha-26",
+    "collectionId": "kelimal",
+    "index": 129,
+    "titleDevanagari": "श्री हरिदास अनन्य जै, वर विहार-रस केलि - श्री रूप सखी, सिद्धांत के दोहा (26)",
+    "author": "श्री रूप सखी",
+    "slug": "sri-haridas-anany-jai-var-vihar-ras-keli-shri-rup-sakhi-siddhant-ke-doha-26",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "श्री हरिदास अनन्य जै, वर विहार-रस केलि।",
+          "दंपति रति गति माधुरी, राखी नैंननि झेलि॥",
+          "- श्री रूप सखी, सिद्धांत के दोहा (26)"
+        ]
+      }
+    ],
+    "chapterId": "siddhant-ke-pad",
+    "chapterName": "सिद्धांत के पद (१८ पद)",
+    "verseNumber": 26
+  },
+  {
+    "id": "bhajan-karai-haridas-ko-pavai-nitya-bihar-shri-lalit-kishori-dev-ju-ki-vani-siddhant-ki-saakhi-27",
+    "collectionId": "kelimal",
+    "index": 130,
+    "titleDevanagari": "भजन करै हरिदास को पावै नित्य बिहार -  श्री ललित किशोरी देव जू की वाणी, सिद्धान्त की साखी (27)",
+    "author": "श्री ललित किशोरी देव जू की वाणी",
+    "slug": "bhajan-karai-haridas-ko-pavai-nitya-bihar-shri-lalit-kishori-dev-ju-ki-vani-siddhant-ki-saakhi-27",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "भजन करै हरिदास को पावै नित्य बिहार।",
+          "कुंजबिहारिनि लाडिली करि राखे उर हार॥",
+          "- श्री ललित किशोरी देव, श्री ललित किशोरी देव जी की बानी, सिद्धान्त की साखी (27)"
+        ]
+      }
+    ],
+    "chapterId": "siddhant-ke-pad",
+    "chapterName": "सिद्धांत के पद (१८ पद)",
+    "verseNumber": 27
+  },
+  {
+    "id": "shri-haridas-ananya-jai-jinkai-prem-pradhan-shri-roop-sakhi-siddhant-ke-doha-31",
+    "collectionId": "kelimal",
+    "index": 131,
+    "titleDevanagari": "श्री हरिदास अनन्य जै, जिनकै प्रेम प्रधान - श्री रूप सखी, सिद्धांत के दोहा (31)",
+    "author": "श्री रूप सखी",
+    "slug": "shri-haridas-ananya-jai-jinkai-prem-pradhan-shri-roop-sakhi-siddhant-ke-doha-31",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "श्री हरिदास अनन्य जे, जिनकै प्रेम प्रधान।",
+          "प्यारी-पिय निजु सखिनि की, रूप माधुरी पान॥",
+          "- श्री रूप सखी, सिद्धांत के दोहा (31)"
+        ]
+      }
+    ],
+    "chapterId": "siddhant-ke-pad",
+    "chapterName": "सिद्धांत के पद (१८ पद)",
+    "verseNumber": 31
+  },
+  {
+    "id": "jai-shriharidas-rasik-var-ki-shri-roop-sakhi-ji-ki-vani-siddhant-ke-pad-36",
+    "collectionId": "kelimal",
+    "index": 132,
+    "titleDevanagari": "जै श्रीहरिदास रसिक वर की - श्री रूप सखी जी की वाणी, सिद्धांत के पद (36)",
+    "author": "श्री रूप सखी जी की वाणी",
+    "slug": "jai-shriharidas-rasik-var-ki-shri-roop-sakhi-ji-ki-vani-siddhant-ke-pad-36",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(राग सोरठ)",
+          "जै श्रीहरिदास रसिक वर की।",
+          "परम अनन्य सुधरम बतायौ, करमनि की छाती धरकी॥ [1]",
+          "नित्यविहार निरंतर निरखैं, जहाँ नहीं गम विधि-हरकी।",
+          "रूप-रंग रस-जस कल गावैं, तिनुका लौं माया तरकी॥ [2]",
+          "- श्री रूप सखी, श्री रूप सखी जी की वाणी, सिद्धांत के पद (36)"
+        ]
+      }
+    ],
+    "chapterId": "siddhant-ke-pad",
+    "chapterName": "सिद्धांत के पद (१८ पद)",
+    "verseNumber": 36
+  },
+  {
+    "id": "shri-swami-haridas-ki-sarivar-rasik-na-aur-shri-roop-sakhi-siddhant-ke-doha-36",
+    "collectionId": "kelimal",
+    "index": 133,
+    "titleDevanagari": "श्री स्वामी हरिदास की, सरिवर रसिक न और - श्री रूप सखी, सिद्धांत के दोहा (36)",
+    "author": "श्री रूप सखी",
+    "slug": "shri-swami-haridas-ki-sarivar-rasik-na-aur-shri-roop-sakhi-siddhant-ke-doha-36",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "श्री स्वामी हरिदास की, सरिवर रसिक न और।",
+          "निरखै नित्यविहार सुख, सबही के सिरमौर॥",
+          "- श्री रूप सखी, सिद्धांत के दोहा (36)"
+        ]
+      }
+    ],
+    "chapterId": "siddhant-ke-pad",
+    "chapterName": "सिद्धांत के पद (१८ पद)",
+    "verseNumber": 36
+  },
+  {
+    "id": "shri-haridas-anoop-ali-rasik-roop-balihar-shri-roop-sakhi-siddhant-ke-doha-47",
+    "collectionId": "kelimal",
+    "index": 134,
+    "titleDevanagari": "श्री हरिदास अनूप अलि रसिक रूप बलिहार - श्री रूप सखी, सिद्धांत के दोहा (47)",
+    "author": "श्री रूप सखी",
+    "slug": "shri-haridas-anoop-ali-rasik-roop-balihar-shri-roop-sakhi-siddhant-ke-doha-47",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "श्री हरिदास अनूप अलि, रसिक रूप बलिहार।",
+          "अनमिष इकटक निरषिहीं, निरवधि नित्य-विहार॥",
+          "- श्री रूप सखी, सिद्धांत के दोहा (47)"
+        ]
+      }
+    ],
+    "chapterId": "siddhant-ke-pad",
+    "chapterName": "सिद्धांत के पद (१८ पद)",
+    "verseNumber": 47
+  },
+  {
+    "id": "shri-haridas-sharan-je-aye-shri-lalit-kishori-dev-shri-lalit-kishori-dev-ju-ki-vani-52",
+    "collectionId": "kelimal",
+    "index": 135,
+    "titleDevanagari": "श्री हरिदास शरण जे आये  - श्री ललित किशोरी देव, श्री ललित किशोरी देव जू की वाणी, सिद्धांत के पद (52)",
+    "author": "श्री ललित किशोरी देव",
+    "slug": "shri-haridas-sharan-je-aye-shri-lalit-kishori-dev-shri-lalit-kishori-dev-ju-ki-vani-52",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(राग गौरी)",
+          "श्री हरिदास शरण जे आये।",
+          "कुंजबिहारी ललित लाडिले अपने जानि निकट बैठाये॥ (1)",
+          "कुंज केलि निरखें निसि बासर अति आनंद हिये में छाये।",
+          "दास बिहारिनि सब सुखरासी प्रानप्रिय हँसि कंठ लगाये॥ (2)",
+          "- श्री ललित किशोरी देव, श्री ललित किशोरी देव जू की वाणी, सिद्धांत के पद (52)"
+        ]
+      }
+    ],
+    "chapterId": "siddhant-ke-pad",
+    "chapterName": "सिद्धांत के पद (१८ पद)",
+    "verseNumber": 52
+  },
+  {
+    "id": "to-si-tuhi-haridas-dulari-shri-lalit-kishori-dev-shri-lalit-kishori-dev-ju-ki-vani-siddhant-ke-pad-55",
+    "collectionId": "kelimal",
+    "index": 136,
+    "titleDevanagari": "तो सी तुही हरिदास दुलारी - श्री ललित किशोरी देव, श्री ललित किशोरी देव जू की वाणी, सिद्धांत के पद (55)",
+    "author": "श्री ललित किशोरी देव",
+    "slug": "to-si-tuhi-haridas-dulari-shri-lalit-kishori-dev-shri-lalit-kishori-dev-ju-ki-vani-siddhant-ke-pad-55",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "तो सी तुही हरिदास दुलारी।",
+          "तेरी सरि दूजौ नहिं कोई तेरेई रस बस कुंज बिहारी॥ [1]",
+          "तेरौ रूप कहत नहिं आवै तैसीये तेरी प्रीति महा री।",
+          "तैसीये ललित केलि सुखरासी रसिकसिरोमनि प्रान अधारी॥ [2]",
+          "- श्री ललित किशोरी देव, श्री ललित किशोरी देव जू की वाणी, सिद्धांत के पद (55)"
+        ]
+      }
+    ],
+    "chapterId": "siddhant-ke-pad",
+    "chapterName": "सिद्धांत के पद (१८ पद)",
+    "verseNumber": 55
+  },
+  {
+    "id": "baarak-shri-haridas-vilokat-shri-biharin-dev-ji-ki-vani-siddhant-ke-kavittsewaiya-76",
+    "collectionId": "kelimal",
+    "index": 137,
+    "titleDevanagari": "बारक श्रीहरिदास विलोकत - श्री बिहारिन देव जी की वाणी, सिद्धांत के कवित्त-सवैया (76)",
+    "author": "श्री बिहारिन देव जी की वाणी",
+    "slug": "baarak-shri-haridas-vilokat-shri-biharin-dev-ji-ki-vani-siddhant-ke-kavittsewaiya-76",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(सवैया)",
+          "बारक श्रीहरिदास विलोकत, तेल की बूँद समुद्र तरी। [1]",
+          "बादि करै श्रम साधन कोटिक, पंक में ढारि भरी गगरी॥ [2]",
+          "न तुलै करुनालय लाडिली कौ बल, लालहि लै अनुराग ढरी। [3]",
+          "श्रीबिहारिनिदासि ह्वै सेय तिन्हैं, जिनि दंपति संपति साँचि धरी॥ [4]",
+          "- श्री बिहारिन देव जी, श्री बिहारिन देव जी की वाणी, सिद्धांत के कवित्त-सवैया (76)"
+        ]
+      }
+    ],
+    "chapterId": "siddhant-ke-pad",
+    "chapterName": "सिद्धांत के पद (१८ पद)",
+    "verseNumber": 76
+  },
+  {
+    "id": "jay-shri-haridasi-radhe-ju-shri-lalit-kishori-dev",
+    "collectionId": "kelimal",
+    "index": 138,
+    "titleDevanagari": "जय श्री हरिदासी राधे जू - श्री ललित किशोरी देव, श्री ललित किशोरी देव जू की वाणी, सिद्धांत के पद (84)",
+    "author": "श्री ललित किशोरी देव",
+    "slug": "jay-shri-haridasi-radhe-ju-shri-lalit-kishori-dev",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "जय श्री हरिदासी राधे जू। [1]",
+          "महा प्रेम भरि अति सुखरासी अद्भुत रूप अगाधे जू॥ [2]",
+          "परम कृपाल उदार रसिक वर हरत लाल की बाधे जू। [3]",
+          "श्री कुंजबिहारिनि ललित किसोरी, पुरई मन की साधे जू॥ [4]",
+          "- श्री ललित किशोरी देव, श्री ललित किशोरी देव जू की वाणी, सिद्धांत के पद (84)"
+        ]
+      }
+    ],
+    "chapterId": "siddhant-ke-pad",
+    "chapterName": "सिद्धांत के पद (१८ पद)",
+    "verseNumber": 84
+  },
+  {
+    "id": "shri-haridas-ke-garv-bhare-shri-biharin-dev-ji-ki-vani-siddhant-ke-kavittsewaiya-111",
+    "collectionId": "kelimal",
+    "index": 139,
+    "titleDevanagari": "श्री हरिदास के गर्व भरे  - श्री बिहारिन देव जी की वाणी, सिद्धांत के कवित्त-सवैया (111)",
+    "author": "श्री बिहारिन देव जी की वाणी",
+    "slug": "shri-haridas-ke-garv-bhare-shri-biharin-dev-ji-ki-vani-siddhant-ke-kavittsewaiya-111",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(सवैया)",
+          "श्री हरिदास के गर्व भरे, अमनैंक अनन्य निहारिनी के।",
+          "महा-मधुरे-रस पाँन करें, अवसाँन खता सिलहारनि के॥ [1]",
+          "दियौ नहिं लेहि ते मांगहि क्यों, बरनैं गुन कौंन तिहारिनि के।",
+          "किये रहैं ऐंड बिहारी हूँ सौं, हम वेपरवाह बिहारिनी के॥ [2]",
+          "- श्री बिहारिन देव जी, श्री बिहारिन देव जी की वाणी, सिद्धांत के कवित्त-सवैया (111)"
+        ]
+      }
+    ],
+    "chapterId": "siddhant-ke-pad",
+    "chapterName": "सिद्धांत के पद (१८ पद)",
+    "verseNumber": 111
+  },
+  {
+    "id": "mero-man-shri-vrindavan-atkyo-rakhyo-shri-haridas-vipul-bal-bhuli-na-ita-uta-bhatkyo-shri-biharin-dev-shri-biharin-dev-ju-ki-vani",
+    "collectionId": "kelimal",
+    "index": 140,
+    "titleDevanagari": "मेरौ मन श्री वृन्दावन अटक्यो, राख्यो श्री हरिदास विपुल बल, भूली न इत उत भटक्यो।  - श्री बिहारिन देव - बिहारिन देव जी की वाणी, सिद्धांत के पद (154)",
+    "author": "बिहारिन देव जी की वाणी",
+    "slug": "mero-man-shri-vrindavan-atkyo-rakhyo-shri-haridas-vipul-bal-bhuli-na-ita-uta-bhatkyo-shri-biharin-dev-shri-biharin-dev-ju-ki-vani",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "मेरौ मन श्री वृन्दावन अटक्यो,",
+          "राख्यो श्री हरिदास विपुल बल, भूली न इत उत भटक्यो।",
+          "- श्री बिहारिन देव - बिहारिन देव जी की वाणी, सिद्धांत के पद (154)"
+        ]
+      }
+    ],
+    "chapterId": "siddhant-ke-pad",
+    "chapterName": "सिद्धांत के पद (१८ पद)",
+    "verseNumber": 154
+  },
+  {
     "id": "shri-biharidas-haridas-kau-shri-biharin-dev-ji-ki-vani-siddhant-ki-saakhi-215",
     "collectionId": "kelimal",
-    "index": 159,
+    "index": 141,
     "titleDevanagari": "श्री बिहारीदास हरिदास कौ, संतत सुखद विहार - श्री बिहारिन देव जी की वाणी, सिद्धान्त की साखी (215)",
     "author": "श्री बिहारिन देव जी की वाणी",
     "slug": "shri-biharidas-haridas-kau-shri-biharin-dev-ji-ki-vani-siddhant-ki-saakhi-215",
@@ -3794,35 +3388,14 @@
         ]
       }
     ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
+    "chapterId": "siddhant-ke-pad",
+    "chapterName": "सिद्धांत के पद (१८ पद)",
     "verseNumber": 215
-  },
-  {
-    "id": "saran-gahau-shri-haridas-ki-shri-lalit-kishori-dev-shri-lalit-kishori-dev-ju-ki-vani",
-    "collectionId": "kelimal",
-    "index": 160,
-    "titleDevanagari": "सरन गहौ श्री हरिदास की - श्री ललित किशोरी देव जू की वाणी, सिद्धान्त की साखी (260)",
-    "author": "श्री ललित किशोरी देव जू की वाणी",
-    "slug": "saran-gahau-shri-haridas-ki-shri-lalit-kishori-dev-shri-lalit-kishori-dev-ju-ki-vani",
-    "verses": [
-      {
-        "stanzaNumber": 1,
-        "linesDevanagari": [
-          "सरन गहौ श्री हरिदास की, माया छुए न छाँह।",
-          "कुंजबिहारिनि लाड़िली, बेगि गहेंगी बाँह॥",
-          "- श्री ललित किशोरी देव, श्री ललित किशोरी देव जू की वाणी, सिद्धान्त की साखी (260)"
-        ]
-      }
-    ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 260
   },
   {
     "id": "shri-swami-haridas-ko-dharm-sumer-saman-shri-lalit-kishori-dev-ju-ki-vani-siddhant-ki-saakhi-317",
     "collectionId": "kelimal",
-    "index": 161,
+    "index": 142,
     "titleDevanagari": "श्री स्वामी हरिदास को धर्म सुमेर समान - श्री ललित किशोरी देव जू की वाणी, सिद्धान्त की साखी (317)",
     "author": "श्री ललित किशोरी देव जू की वाणी",
     "slug": "shri-swami-haridas-ko-dharm-sumer-saman-shri-lalit-kishori-dev-ju-ki-vani-siddhant-ki-saakhi-317",
@@ -3836,14 +3409,14 @@
         ]
       }
     ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
+    "chapterId": "siddhant-ke-pad",
+    "chapterName": "सिद्धांत के पद (१८ पद)",
     "verseNumber": 317
   },
   {
     "id": "shriswami-haridas-ke-shri-lalit-kishori-dev-ju-ki-vani-siddhant-ki-saakhi-437",
     "collectionId": "kelimal",
-    "index": 162,
+    "index": 143,
     "titleDevanagari": "श्रीस्वामी हरिदास के - श्री ललित किशोरी देव जू की वाणी, सिद्धान्त की साखी (437)",
     "author": "श्री ललित किशोरी देव जू की वाणी",
     "slug": "shriswami-haridas-ke-shri-lalit-kishori-dev-ju-ki-vani-siddhant-ki-saakhi-437",
@@ -3857,14 +3430,14 @@
         ]
       }
     ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
+    "chapterId": "siddhant-ke-pad",
+    "chapterName": "सिद्धांत के पद (१८ पद)",
     "verseNumber": 437
   },
   {
     "id": "shri-swami-haridas-ki-sari-nahin-doojo-koi-shri-lalit-kishori-dev-ju-ki-vani-siddhant-ki-saakhi-158",
     "collectionId": "kelimal",
-    "index": 163,
+    "index": 144,
     "titleDevanagari": "श्री स्वामी हरिदास की, सरि नहिं दूजो कोई  -  श्री ललित किशोरी देव जू की वाणी, सिद्धान्त की साखी (443)",
     "author": "श्री ललित किशोरी देव जू की वाणी",
     "slug": "shri-swami-haridas-ki-sari-nahin-doojo-koi-shri-lalit-kishori-dev-ju-ki-vani-siddhant-ki-saakhi-158",
@@ -3878,9 +3451,436 @@
         ]
       }
     ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
+    "chapterId": "siddhant-ke-pad",
+    "chapterName": "सिद्धांत के पद (१८ पद)",
     "verseNumber": 443
+  },
+  {
+    "id": "shri-swami-haridas-ke-charan-kamal-chit-lau-shri-kant-kishor-kant-rasik-ji-ki-vani-doha-1",
+    "collectionId": "kelimal",
+    "index": 145,
+    "titleDevanagari": "श्री स्वामी हरिदास के चरन कमल चित लाउ - श्री कान्त किशोर, कान्त रसिक जी की वाणी, दोहा (1)",
+    "author": "श्री कान्त किशोर",
+    "slug": "shri-swami-haridas-ke-charan-kamal-chit-lau-shri-kant-kishor-kant-rasik-ji-ki-vani-doha-1",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "श्री स्वामी हरिदास के, चरन कमल चित लाउ।",
+          "कान्त रसिक रस-माधुरी, लखै न और उपाउ॥",
+          "- श्री कान्त किशोर, कान्त रसिक जी की वाणी, दोहा (1)"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध",
+    "verseNumber": 1
+  },
+  {
+    "id": "shri-haridas-karain-so-hoi-shri-lalitmohini-dev-shri-lalitmohini-dev-ju-ki-vani-1",
+    "collectionId": "kelimal",
+    "index": 146,
+    "titleDevanagari": "श्री हरिदास करैं सो होइ - श्री ललितमोहिनी देव, श्री ललितमोहिनी देव जू की वाणी (1)",
+    "author": "श्री ललितमोहिनी देव",
+    "slug": "shri-haridas-karain-so-hoi-shri-lalitmohini-dev-shri-lalitmohini-dev-ju-ki-vani-1",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "श्री हरिदास करैं सो होइ। श्रीबिहारी बिहारिनि कौ मुख जोइ॥",
+          "श्री वृन्दावन रहिये सोइ। नित उठि पीजै जमुना तोइ॥",
+          "- श्री ललितमोहिनी देव, श्री ललितमोहिनी देव जू की वाणी (1)"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध",
+    "verseNumber": 1
+  },
+  {
+    "id": "jo-tau-haun-sancho-bhajaun-shri-swami-haridas-shri-chaturdas-ji-ki-vani-2",
+    "collectionId": "kelimal",
+    "index": 147,
+    "titleDevanagari": "जो तो हौं साँचौ भजौं, श्री स्वामी हरिदास - श्री चतुर दास जी की वाणी (2)",
+    "author": "श्री चतुर दास जी की वाणी",
+    "slug": "jo-tau-haun-sancho-bhajaun-shri-swami-haridas-shri-chaturdas-ji-ki-vani-2",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "जो तो हौं साँचौ भजौं, श्री स्वामी हरिदास।",
+          "तौ तुम दीजौ लाड़िली, मोहिं विपिन कौ वास॥",
+          "- श्री चतुर दास जी, श्री चतुर दास जी की वाणी, सिद्धांत की साखी (2)"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध",
+    "verseNumber": 2
+  },
+  {
+    "id": "bansiali-haridas-ji-hit-haribansh-samet-shri-sanket-ali-sanket-lata-5",
+    "collectionId": "kelimal",
+    "index": 148,
+    "titleDevanagari": "बंशीअलि हरिदास जी, हित हरिबंश समेत - श्री संकेत अली, संकेत लता (5)",
+    "author": "श्री संकेत अली",
+    "slug": "bansiali-haridas-ji-hit-haribansh-samet-shri-sanket-ali-sanket-lata-5",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "बंशीअलि हरिदास जी, हित हरिबंश समेत।",
+          "वंदि चरण रज धारी शिर, प्रणत अलीसंकेत॥",
+          "- श्री संकेत अली, संकेत लता (5)"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध",
+    "verseNumber": 5
+  },
+  {
+    "id": "shri-haridas-upasana-shri-rasik-dev-shri-rasik-dev-ju-ki-vani-vishistha-pada-saakhi-10",
+    "collectionId": "kelimal",
+    "index": 149,
+    "titleDevanagari": "श्री हरिदास उपासना - श्री रसिक देव जी की वाणी, विशिष्ट पद एवं साखी (10)",
+    "author": "श्री रसिक देव जी की वाणी",
+    "slug": "shri-haridas-upasana-shri-rasik-dev-shri-rasik-dev-ju-ki-vani-vishistha-pada-saakhi-10",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "श्री हरिदास उपासना, लख में पावै एक।",
+          "रस रीति हूँ पावै नहीं, पचि पचि मरे अनेक॥",
+          "- श्री रसिक देव जी, श्री रसिक देव जी की वाणी, विशिष्ट पद एवं साखी (10)"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध",
+    "verseNumber": 10
+  },
+  {
+    "id": "chaturdas-shri-haridas-kai-adbhut-nity-bihar-shri-chatur-das-ji",
+    "collectionId": "kelimal",
+    "index": 150,
+    "titleDevanagari": "चतुरदास (श्री) हरिदास कै, अद्भुत नित्य बिहार - श्री चतुर दास जी की वाणी (12)",
+    "author": "श्री चतुर दास जी की वाणी",
+    "slug": "chaturdas-shri-haridas-kai-adbhut-nity-bihar-shri-chatur-das-ji",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "चतुरदास (श्री) हरिदास कै, अद्भुत नित्य बिहार।",
+          "इहाँ औरनि की कहा चलै, वेद न पावै पार॥",
+          "- श्री चतुर दास जी, श्री चतुर दास जी की वाणी, सिद्धांत की साखी (12)"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध",
+    "verseNumber": 12
+  },
+  {
+    "id": "bandau-shri-haridas-ke-shri-kant-kishor-kant-rasik-ji-ki-vani-doha-19",
+    "collectionId": "kelimal",
+    "index": 151,
+    "titleDevanagari": "बंदौं श्रीहरिदास के चरन कमल चित लाइ - श्री कान्त किशोर, कान्त रसिक जी की वाणी, दोहा (19)",
+    "author": "श्री कान्त किशोर",
+    "slug": "bandau-shri-haridas-ke-shri-kant-kishor-kant-rasik-ji-ki-vani-doha-19",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "बंदौं श्रीहरिदास के, चरन-कमल चित लाइ।",
+          "जिन निज उर की माधुरी, दई प्रतच्छ दिखाइ॥",
+          "- श्री कान्त किशोर, कान्त रसिक जी की वाणी, दोहा (19)"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध",
+    "verseNumber": 19
+  },
+  {
+    "id": "shri-haridas-sarana-haun-aayo-shri-kant-kishor-kant-rasik-ji-ki-vani-35",
+    "collectionId": "kelimal",
+    "index": 152,
+    "titleDevanagari": "श्रीहरिदास सरन हौं आयौ - श्री कान्त किशोर, कान्त रसिक जी की वाणी (35)",
+    "author": "श्री कान्त किशोर",
+    "slug": "shri-haridas-sarana-haun-aayo-shri-kant-kishor-kant-rasik-ji-ki-vani-35",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "श्रीहरिदास सरन हौं आयौ।",
+          "झूठे सब बंधान जगत के छूटे, सुचि सुख पायौ॥ [1]",
+          "कुंज महल की गौर स्याम छबि, मत्त भयौ उर लायौ।",
+          "‘कान्त रसिक’ के स्याम किसोरी, हुलसि हुलसि जस गायौ॥ [2]",
+          "- श्री कान्त किशोर, कान्त रसिक जी की वाणी, पद (35)"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध",
+    "verseNumber": 35
+  },
+  {
+    "id": "shri-swami-haridas-bhaji-sab-sarnai-ko-saar-shri-thakurdas-ji",
+    "collectionId": "kelimal",
+    "index": 153,
+    "titleDevanagari": "श्री स्वामी हरिदास भजि सब सारनि कौ सार - श्री ठाकुर दास जी",
+    "author": "श्री ठाकुर दास जी",
+    "slug": "shri-swami-haridas-bhaji-sab-sarnai-ko-saar-shri-thakurdas-ji",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "श्री स्वामी हरिदास भजि, सब सारनि कौ सार।",
+          "ललित मोहिनी कृपा सौं, पायौ नित्त बिहार॥",
+          "- श्री ठाकुर दास, श्री ठाकुर दास जी की वाणी, साखी (7)"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध",
+    "verseNumber": 52
+  },
+  {
+    "id": "lalitpriye-haridasi-ju-nitya-keli-sukh-dani-shri-lalit-kishori-dev-ju-ki-vani-vishistha-pada-saakhi-65",
+    "collectionId": "kelimal",
+    "index": 154,
+    "titleDevanagari": "ललितप्रिये हरिदासि जू नित्य केलि सुख दानि - श्री ललितकिशोरी देव जू की वाणी, विशिष्ट पद एवं साखी (65)",
+    "author": "श्री ललितकिशोरी देव जू की वाणी",
+    "slug": "lalitpriye-haridasi-ju-nitya-keli-sukh-dani-shri-lalit-kishori-dev-ju-ki-vani-vishistha-pada-saakhi-65",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "ललितप्रिये हरिदासि जू, नित्य केलि सुख दानि।",
+          "कुँजबिहारिनी लाड़िली, प्रगटी रस की खानि॥",
+          "- श्री ललितकिशोरी देव, श्री ललितकिशोरी देव जू की वाणी, विशिष्ट पद एवं साखी (65)"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध",
+    "verseNumber": 65
+  },
+  {
+    "id": "ananya-nripati-shri-swami-haridas-shri-hariram-vyas-vyas-vani-purvardh-70",
+    "collectionId": "kelimal",
+    "index": 155,
+    "titleDevanagari": "अनन्य नृपति श्रीस्वामी हरिदास - श्री हरिराम व्यास, व्यास वाणी, पूर्वार्ध (70)",
+    "author": "श्री हरिराम व्यास",
+    "slug": "ananya-nripati-shri-swami-haridas-shri-hariram-vyas-vyas-vani-purvardh-70",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(राग सारंग)",
+          "अनन्य नृपति श्रीस्वामी हरिदास।",
+          "कुंजबिहारी सेये बिनु जिनि, छिन न करी काहूकी आस॥ [1]",
+          "सेवा सावधान अति जानि, सुघर गावत दिन रस रास।",
+          "ऐसौ रसिक भयौ नहिं ह्वै है, भुवमंडल आकास॥ [2]",
+          "देह विदेह भए जीवत ही, विसरे बिस्व बिलास।",
+          "वृंदाबन रेनु तन मन भजि, तजि लोक वेद की त्रास॥ [3]",
+          "प्रीति रीति कीनी सबहिन सौं, किये न खास खवास।",
+          "अपनौ व्रत यह ओर निभायो, जौलौं कंठ उसास॥ [4]",
+          "सुरपति भुवपति कंचन कामिनी, जिनके भायैं घास।",
+          "अबके साधु 'व्यास' हमहूँ से, जगत करत उपहास॥ [5]",
+          "- श्री हरिराम व्यास, व्यास वाणी, पूर्वार्ध (70)"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध",
+    "verseNumber": 70
+  },
+  {
+    "id": "shri-swami-haridas-ko-jo-kou-nij-kari-hoy-shri-lalit-kishori-dev",
+    "collectionId": "kelimal",
+    "index": 156,
+    "titleDevanagari": "श्री स्वामी हरिदास को - श्री ललित किशोरी देव जी की बानी, सिद्धान्त की साखी (89)",
+    "author": "श्री ललित किशोरी देव जी की बानी",
+    "slug": "shri-swami-haridas-ko-jo-kou-nij-kari-hoy-shri-lalit-kishori-dev",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "श्री स्वामी हरिदास को, जो कोउ निज करि होय।",
+          "रहे प्रिया के सुख सुखी, सहज अपनपो खोय॥",
+          "- श्री ललित किशोरी देव, श्री ललित किशोरी देव जी की बानी, सिद्धान्त की साखी (89)"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध",
+    "verseNumber": 89
+  },
+  {
+    "id": "shriharidas-ke-sangam-tirth-shri-kant-rasik",
+    "collectionId": "kelimal",
+    "index": 157,
+    "titleDevanagari": "श्रीहरिदास के संगम तीरथ - श्री कान्त रसिक",
+    "author": "श्री कान्त रसिक",
+    "slug": "shriharidas-ke-sangam-tirth-shri-kant-rasik",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(सवैया)",
+          "श्रीहरिदास के संगम-तीरथ, कौ न समाई, न सूतक-पातौ। [1]",
+          "दूर करौ सुख बैकुंठ कौ, मनमोहन-मोहिनी के सुख रातौ॥ [2]",
+          "ना व्रत-नेम न संजम-साधन, मुक्ति कौ मारग हु न सुहातौ। [3]",
+          "‘कान्त’ अनेकन सौं न सरै, हम मानत एक निकुंज कौ नातौ॥ [4]",
+          "- श्री कान्त रसिक"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध",
+    "verseNumber": 119
+  },
+  {
+    "id": "shri-harivansi-shri-haridasi-sarvopari-rasrasi-shri-kishori-ali-saar-chandrika",
+    "collectionId": "kelimal",
+    "index": 158,
+    "titleDevanagari": "श्री हरिवंसी श्री हरिदासी सर्वोपरि रसरासी - श्री किशोरी अलि, सार चंद्रिका",
+    "author": "श्री किशोरी अलि",
+    "slug": "shri-harivansi-shri-haridasi-sarvopari-rasrasi-shri-kishori-ali-saar-chandrika",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "श्री हरिवंसी श्री हरिदासी, सर्वोपरि रसरासी।",
+          "विट्ठलविपुल व्यास ध्रुव, नागरीदास बिहारिनी दासी॥",
+          "- श्री किशोरी अलि, सार चंद्रिका"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध",
+    "verseNumber": 122
+  },
+  {
+    "id": "ras-shekhar-rasarajvar-ras-ananya-haridas-sri-prahlad-ji",
+    "collectionId": "kelimal",
+    "index": 159,
+    "titleDevanagari": "रसशेखर रसराजवर रस अनन्य हरिदास - श्री प्रह्लाद जी",
+    "author": "श्री प्रह्लाद जी",
+    "slug": "ras-shekhar-rasarajvar-ras-ananya-haridas-sri-prahlad-ji",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "रसशेखर रसराजवर, रस अनन्य हरिदास।",
+          "सुमिरत दर्शत मन हरत, रंग महल नित वास॥",
+          "- श्री प्रह्लाद जी"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध",
+    "verseNumber": 135
+  },
+  {
+    "id": "namo-namo-shriharidas-vrindavipin-shri-agradas-ji-spiritual-master-of-nabha-ji",
+    "collectionId": "kelimal",
+    "index": 160,
+    "titleDevanagari": "नमो नमो श्रीहरिदास वृन्दाविपिन - श्री अग्रदास जी (श्री नाभा जी के गुरु)",
+    "author": "श्री अग्रदास जी (श्री नाभा जी के गुरु)",
+    "slug": "namo-namo-shriharidas-vrindavipin-shri-agradas-ji-spiritual-master-of-nabha-ji",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(सवैया)",
+          "नमो नमो श्रीहरिदास वृन्दाविपिन",
+          "वास वर प्रान सर्वस बांकेबिहारी। [1]",
+          "श्यामाश्याम जुगल रूप माधुर्य के",
+          "रसिक रिझवार प्रेम अवतारी॥ [2]",
+          "परम बैराग-निधि बसत निधिबन",
+          "सदा भावना लीन सुप्रवीण भारी। [3]",
+          "कामना कल्पतरु सकल संतापहरु",
+          "‘अग्रदास’ अलि कल्याणकारी॥ [4]",
+          "- श्री अग्रदास जी (श्री नाभा जी के गुरु)"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध",
+    "verseNumber": 140
+  },
+  {
+    "id": "shri-swami-haridas-ji-rasik-maha-harivyas-shri-charan-das",
+    "collectionId": "kelimal",
+    "index": 161,
+    "titleDevanagari": "श्री स्वामी हरिदास जी रसिक महा हरिव्यास  - श्री चरण दास",
+    "author": "श्री चरण दास",
+    "slug": "shri-swami-haridas-ji-rasik-maha-harivyas-shri-charan-das",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "श्री स्वामी हरिदास जी, रसिक महा हरिव्यास।",
+          "कृष्णदास अरु हित अली, इन मारग सुखरास॥ [1]",
+          "सोई मेरौ मार्ग है, महा मोद की खान।",
+          "उन्नत परम निकुंज रस, तिन बानिन परमान॥ [2]",
+          "- श्री चरणदास"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध",
+    "verseNumber": 146
+  },
+  {
+    "id": "shri-swami-haridas-ko-adbhut-nityavihar-shri-rasik-ali",
+    "collectionId": "kelimal",
+    "index": 162,
+    "titleDevanagari": "श्रीस्वामी हरिदास को अद्भुत नित्यविहार - श्री रसिक अली",
+    "author": "श्री रसिक अली",
+    "slug": "shri-swami-haridas-ko-adbhut-nityavihar-shri-rasik-ali",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "(कुण्डलियाँ)",
+          "श्रीस्वामी हरिदास को, अद्भुत नित्यविहार।",
+          "बिलसै निधुवन कुंज में, रसिकन जीवन-सार॥ [1]",
+          "रसिकन जीवन-सार, श्याम-श्यामा की लीला।",
+          "अनुपम पावन नित्य केलि, सखि निरखें क्रीला॥ [2]",
+          "निरखें नैना सुख बहे, निरखें सुख अंग-अंग।",
+          "‘रसिकअली’ को सुख यही, याहि को नित संग॥ [3]",
+          "- श्री रसिक अली"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध",
+    "verseNumber": 155
+  },
+  {
+    "id": "saran-gahau-shri-haridas-ki-shri-lalit-kishori-dev-shri-lalit-kishori-dev-ju-ki-vani",
+    "collectionId": "kelimal",
+    "index": 163,
+    "titleDevanagari": "सरन गहौ श्री हरिदास की - श्री ललित किशोरी देव जू की वाणी, सिद्धान्त की साखी (260)",
+    "author": "श्री ललित किशोरी देव जू की वाणी",
+    "slug": "saran-gahau-shri-haridas-ki-shri-lalit-kishori-dev-shri-lalit-kishori-dev-ju-ki-vani",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "सरन गहौ श्री हरिदास की, माया छुए न छाँह।",
+          "कुंजबिहारिनि लाड़िली, बेगि गहेंगी बाँह॥",
+          "- श्री ललित किशोरी देव, श्री ललित किशोरी देव जू की वाणी, सिद्धान्त की साखी (260)"
+        ]
+      }
+    ],
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध",
+    "verseNumber": 260
   },
   {
     "id": "lakh-baar-hari-hari-kaho-ek-baar-haridas-ati-prasann-shri-laldli-deta-vipin-ko-vaas",
@@ -3899,8 +3899,8 @@
         ]
       }
     ],
-    "chapterId": "kelimal",
-    "chapterName": "श्री केलिमाल (११० पद)",
+    "chapterId": "rasik-anubandh",
+    "chapterName": "रसिक वाणी अनुबन्ध",
     "verseNumber": 447
   }
 ]
