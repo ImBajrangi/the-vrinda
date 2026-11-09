@@ -75,20 +75,31 @@ const EPICS_META: Record<string, { name: string; author: string; desc: string }>
   },
 };
 
+const saintsList: any[] = Array.isArray(canonicalSaintsData)
+  ? canonicalSaintsData
+  : (canonicalSaintsData as any)?.default || [];
+
+const granthasList: any[] = Array.isArray(canonicalGranthasData)
+  ? canonicalGranthasData
+  : (canonicalGranthasData as any)?.default || [];
+
+const snippetsObj: Record<string, any> =
+  (chapterSnippetsData as any)?.default || chapterSnippetsData || {};
+
 const GRANTHAS_MAP = new Map<string, { id: string; name: string; author: string; description: string; category?: string }>();
-for (const g of (canonicalGranthasData as any[])) {
+for (const g of granthasList) {
   GRANTHAS_MAP.set(g.id, g);
   if (g.slug && g.slug !== g.id) GRANTHAS_MAP.set(g.slug, g);
 }
 
 const SAINTS_MAP = new Map<string, { id: string; name: string; slug: string; tradition?: string; biography?: string }>();
-for (const s of (canonicalSaintsData as any[])) {
+for (const s of saintsList) {
   if (s.slug) SAINTS_MAP.set(s.slug, s);
   if (s.nameEng) SAINTS_MAP.set(s.nameEng.toLowerCase().replace(/[^a-z0-9]+/g, '-'), s);
   if (s.name) SAINTS_MAP.set(s.name, s);
 }
 
-const CHAPTER_SNIPPETS = (chapterSnippetsData || {}) as Record<string, {
+const CHAPTER_SNIPPETS = snippetsObj as Record<string, {
   granthaId: string;
   granthaName: string;
   author: string;
