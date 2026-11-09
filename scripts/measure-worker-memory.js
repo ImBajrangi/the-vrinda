@@ -60,3 +60,4 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const res = measureWorkerMemory();
   console.log(JSON.stringify(res));
 }
+
