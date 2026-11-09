@@ -100,7 +100,7 @@ async function prerender() {
     { url: '/?tab=granthas&grantha=durga-saptashati&chapter=adhyay-1', file: 'grantha-durga-saptashati-adhyay-1.html' },
     { url: '/?tab=padavali&pad=radheju-merau-janam-sudharau', file: 'pad-radheju-merau-janam-sudharau.html' },
     { url: '/?tab=padavali&pad=shri-radha-kripa-kataksha-stotram', file: 'pad-shri-radha-kripa-kataksha-stotram.html' },
-    { url: '/?tab=padavali&pad=bainu-mai-baje-bansivat-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-64', file: 'pad-bainu-mai-baje-bansivat.html' }
+    { url: '/?tab=padavali&pad=bainu-maai-baajai-bansivat-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-64', file: 'pad-bainu-mai-baje-bansivat.html' }
   );
 
   console.log('🌸 Pre-rendering Vrindopnisad routes for SEO & SSR...');

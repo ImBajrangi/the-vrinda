@@ -122,6 +122,12 @@ const KNOWN_PADAS_META: Record<string, { title: string; author: string; desc: st
     desc: 'मुनीन्द्रवृन्दवन्दिते त्रिलोकशोकहारिणी। श्री राधा रानी के पावन कृपा कटाक्ष का दिव्य स्तोत्र। वृन्दोपनिषद् 2.0',
     sampleVerse: 'मुनीन्द्रवृन्दवन्दिते त्रिलोकशोकहारिणी, प्रसन्नास्यपङ्कजे निकुञ्जभूविलासिनी।\nव्रजेन्द्रभानुगोपिके नमामि राधिके सदा, कदा करिष्यसीह मां कृपाकटाक्षभाजनम्॥',
   },
+  'bainu-maai-baajai-bansivat-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-64': {
+    title: 'बैनु मैं बाजै बंसीवट',
+    author: 'श्री हित हरिवंश महाप्रभु',
+    desc: 'श्री हित चौरासी पद ६४: बैनु मैं बाजै बंसीवट। नित्य विलास व ब्रज रस का अमर पद। वृन्दोपनिषद् 2.0',
+    sampleVerse: 'बैनु मैं बाजै बंसीवट।\nसुनत सखी आनंदित भईं, तजि गृह सुख कुल वट॥',
+  },
   'bainu-mai-baje-bansivat-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-64': {
     title: 'बैनु मैं बाजै बंसीवट',
     author: 'श्री हित हरिवंश महाप्रभु',
@@ -340,57 +346,8 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   const isGranthasParayana = activeTab === 'granthas' || (qGrantha && EPICS_META[qGrantha]);
   const canonicalBaseDomain = isGranthasParayana ? 'https://path.vrindopnishad.in' : 'https://bhav.vrindopnishad.in';
 
-  // 5. Pre-rendered Static HTML File Mapping
-  let staticFileToFetch: string | null = null;
-  if (pathname === '/' || pathname === '/granthas' || pathname === '/padavali' || pathname === '/feed' || pathname === '/milestones' || pathname.startsWith('/pad/')) {
-    // Grantha collections (all 29 collections have grantha-[id].html pre-rendered)
-    if (qGrantha && !qChapter) {
-      staticFileToFetch = `/grantha-${qGrantha}.html`;
-    } else if (qGrantha === 'bhagavad-gita' && qChapter === 'adhyay-1') {
-      staticFileToFetch = '/grantha-bhagavad-gita-adhyay-1.html';
-    } else if (qGrantha === 'bhagavad-gita' && qChapter === 'adhyay-2') {
-      staticFileToFetch = '/grantha-bhagavad-gita-adhyay-2.html';
-    } else if (qGrantha === 'ramcharitmanas' && qChapter?.includes('बालकाण्ड')) {
-      staticFileToFetch = '/grantha-ramcharitmanas-kand-1.html';
-    } else if (qGrantha === 'durga-saptashati' && qChapter === 'adhyay-1') {
-      staticFileToFetch = '/grantha-durga-saptashati-adhyay-1.html';
-    } else if (qAuthor) {
-      staticFileToFetch = `/saint-${qAuthor}.html`;
-    } else if (qPad === 'radheju-merau-janam-sudharau' || pathname === '/pad/radheju-merau-janam-sudharau') {
-      staticFileToFetch = '/pad-radheju-merau-janam-sudharau.html';
-    } else if (qPad === 'shri-radha-kripa-kataksha-stotram' || pathname === '/pad/shri-radha-kripa-kataksha-stotram') {
-      staticFileToFetch = '/pad-shri-radha-kripa-kataksha-stotram.html';
-    } else if (qPad?.includes('bainu-mai-baje-bansivat') || pathname.includes('bainu-mai-baje-bansivat')) {
-      staticFileToFetch = '/pad-bainu-mai-baje-bansivat.html';
-    } else if (activeTab === 'granthas' && !qGrantha) {
-      staticFileToFetch = '/granthas.html';
-    } else if (activeTab === 'padavali' && !qPad && !qAuthor && !qGrantha) {
-      staticFileToFetch = '/padavali.html';
-    } else if (activeTab === 'feed') {
-      staticFileToFetch = '/feed.html';
-    } else if (activeTab === 'milestones') {
-      staticFileToFetch = '/milestones.html';
-    } else if (activeTab === 'smaran' && !qPad && !qAuthor && !qGrantha) {
-      staticFileToFetch = '/smaran.html';
-    }
-  }
-
-  // Fetch target static HTML
-  let response: Response;
-  if (staticFileToFetch) {
-    try {
-      const staticReqUrl = new URL(staticFileToFetch, request.url);
-      response = await next(new Request(staticReqUrl.toString(), request));
-      if (response.status !== 200) {
-        response = await next();
-      }
-    } catch {
-      response = await next();
-    }
-  } else {
-    response = await next();
-  }
-
+  // 5. Fetch HTML response from Pages CDN
+  const response = await next();
   const contentType = response.headers.get('content-type') || '';
   if (!contentType.includes('text/html')) {
     return response;
@@ -430,27 +387,25 @@ export const onRequest: PagesFunction<Env> = async (context) => {
       },
     };
 
-    if (!staticFileToFetch) {
-      dynamicRootHtml = `
-        <article class="sanctuary-ssr-content" style="max-width: 820px; margin: 0 auto; padding: 2.5rem 1.25rem; font-family: 'Noto Serif Devanagari', serif;">
-          <nav style="margin-bottom: 1.5rem; font-size: 0.875rem; color: #b45309;">
-            <a href="/" style="color: #b45309; text-decoration: none;">वृन्दोपनिषद् 2.0</a> &rsaquo; <span>पावन पदावली</span>
-          </nav>
-          <header style="margin-bottom: 2rem;">
-            <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; background-color: #fef3c7; color: #92400e; margin-bottom: 0.75rem;">रसिक वाणी संग्रह</span>
-            <h1 style="font-size: 2rem; font-weight: 700; line-height: 1.3; color: #1c1917; margin: 0 0 0.75rem 0;">${padTitle}</h1>
-            <p style="font-size: 0.95rem; color: #78716c; margin: 0;">रचयिता: ${padAuthor} • नित्य स्वाध्याय व अनुशीलन</p>
-          </header>
-          <section class="verse-body" style="font-size: 1.25rem; line-height: 2; color: #292524; background-color: #fffbeb; padding: 1.5rem; border-radius: 1rem; border: 1px solid #fef3c7; white-space: pre-line;">
-            ${known?.sampleVerse || '«पावन वाणी का मूल पाठ लोड हो रहा है...»'}
-          </section>
-          <footer style="margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid #f5f5f4; font-size: 0.875rem; color: #a8a29e; display: flex; justify-content: space-between; align-items: center;">
-            <span>वृन्दोपनिषद् 2.0 • Digital Sanctuary for Nitya Nikunj Ras</span>
-            <a href="${canonicalUrl}" style="color: #b45309; text-decoration: underline;">मूल पाठ व स्वाध्याय</a>
-          </footer>
-        </article>
-      `;
-    }
+    dynamicRootHtml = `
+      <article class="sanctuary-ssr-content" style="max-width: 820px; margin: 0 auto; padding: 2.5rem 1.25rem; font-family: 'Noto Serif Devanagari', serif;">
+        <nav style="margin-bottom: 1.5rem; font-size: 0.875rem; color: #b45309;">
+          <a href="/" style="color: #b45309; text-decoration: none;">वृन्दोपनिषद् 2.0</a> &rsaquo; <span>पावन पदावली</span>
+        </nav>
+        <header style="margin-bottom: 2rem;">
+          <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; background-color: #fef3c7; color: #92400e; margin-bottom: 0.75rem;">रसिक वाणी संग्रह</span>
+          <h1 style="font-size: 2rem; font-weight: 700; line-height: 1.3; color: #1c1917; margin: 0 0 0.75rem 0;">${padTitle}</h1>
+          <p style="font-size: 0.95rem; color: #78716c; margin: 0;">रचयिता: ${padAuthor} • नित्य स्वाध्याय व अनुशीलन</p>
+        </header>
+        <section class="verse-body" style="font-size: 1.25rem; line-height: 2; color: #292524; background-color: #fffbeb; padding: 1.5rem; border-radius: 1rem; border: 1px solid #fef3c7; white-space: pre-line;">
+          ${known?.sampleVerse || '«पावन वाणी का मूल पाठ लोड हो रहा है...»'}
+        </section>
+        <footer style="margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid #f5f5f4; font-size: 0.875rem; color: #a8a29e; display: flex; justify-content: space-between; align-items: center;">
+          <span>वृन्दोपनिषद् 2.0 • Digital Sanctuary for Nitya Nikunj Ras</span>
+          <a href="${canonicalUrl}" style="color: #b45309; text-decoration: underline;">मूल पाठ व स्वाध्याय</a>
+        </footer>
+      </article>
+    `;
   } else if (qAuthor) {
     const saintName = formatSlug(qAuthor);
     title = `${saintName} • रसिक संत पदावली व जीवन चरित | वृन्दोपनिषद् 2.0`;
@@ -465,21 +420,19 @@ export const onRequest: PagesFunction<Env> = async (context) => {
       },
     };
 
-    if (!staticFileToFetch) {
-      dynamicRootHtml = `
-        <article class="sanctuary-ssr-content" style="max-width: 820px; margin: 0 auto; padding: 2.5rem 1.25rem; font-family: 'Noto Serif Devanagari', serif;">
-          <nav style="margin-bottom: 1.5rem; font-size: 0.875rem; color: #b45309;">
-            <a href="/" style="color: #b45309; text-decoration: none;">वृन्दोपनिषद् 2.0</a> &rsaquo; <span>संत परंपरा</span>
-          </nav>
-          <header style="margin-bottom: 2rem;">
-            <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; background-color: #fef3c7; color: #92400e; margin-bottom: 0.75rem;">रसिक संत परंपरा</span>
-            <h1 style="font-size: 2rem; font-weight: 700; line-height: 1.3; color: #1c1917; margin: 0 0 0.75rem 0;">${saintName}</h1>
-            <p style="font-size: 0.95rem; color: #78716c; margin: 0;">पावन वाणी व रसिक पद संग्रह</p>
-          </header>
-          <p style="font-size: 1.1rem; line-height: 1.8; color: #44403c;">${description}</p>
-        </article>
-      `;
-    }
+    dynamicRootHtml = `
+      <article class="sanctuary-ssr-content" style="max-width: 820px; margin: 0 auto; padding: 2.5rem 1.25rem; font-family: 'Noto Serif Devanagari', serif;">
+        <nav style="margin-bottom: 1.5rem; font-size: 0.875rem; color: #b45309;">
+          <a href="/" style="color: #b45309; text-decoration: none;">वृन्दोपनिषद् 2.0</a> &rsaquo; <span>संत परंपरा</span>
+        </nav>
+        <header style="margin-bottom: 2rem;">
+          <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; background-color: #fef3c7; color: #92400e; margin-bottom: 0.75rem;">रसिक संत परंपरा</span>
+          <h1 style="font-size: 2rem; font-weight: 700; line-height: 1.3; color: #1c1917; margin: 0 0 0.75rem 0;">${saintName}</h1>
+          <p style="font-size: 0.95rem; color: #78716c; margin: 0;">पावन वाणी व रसिक पद संग्रह</p>
+        </header>
+        <p style="font-size: 1.1rem; line-height: 1.8; color: #44403c;">${description}</p>
+      </article>
+    `;
   } else if (qGrantha && EPICS_META[qGrantha]) {
     const epic = EPICS_META[qGrantha];
     if (qChapter) {
@@ -506,27 +459,25 @@ export const onRequest: PagesFunction<Env> = async (context) => {
         },
       };
 
-      if (!staticFileToFetch) {
-        dynamicRootHtml = `
-          <article class="sanctuary-ssr-content" style="max-width: 820px; margin: 0 auto; padding: 2.5rem 1.25rem; font-family: 'Noto Serif Devanagari', serif;">
-            <nav style="margin-bottom: 1.5rem; font-size: 0.875rem; color: #b45309;">
-              <a href="https://path.vrindopnishad.in/" style="color: #b45309; text-decoration: none;">महाग्रंथ पारायण</a> &rsaquo; <span>${epic.name}</span>
-            </nav>
-            <header style="margin-bottom: 2rem;">
-              <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; background-color: #fef3c7; color: #92400e; margin-bottom: 0.75rem;">सनातन महाग्रंथ</span>
-              <h1 style="font-size: 2rem; font-weight: 700; line-height: 1.3; color: #1c1917; margin: 0 0 0.75rem 0;">${chName}</h1>
-              <p style="font-size: 0.95rem; color: #78716c; margin: 0;">${epic.name} • प्रणेता: ${epic.author} • ${chVerseCount} पावन श्लोक</p>
-            </header>
-            <section class="verse-body" style="font-size: 1.25rem; line-height: 2; color: #292524; background-color: #fffbeb; padding: 1.5rem; border-radius: 1rem; border: 1px solid #fef3c7; white-space: pre-line;">
-              ${chOpeningVerse}
-            </section>
-            <footer style="margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid #f5f5f4; font-size: 0.875rem; color: #a8a29e; display: flex; justify-content: space-between; align-items: center;">
-              <span>वृन्दोपनिषद् 2.0 • Digital Sanctuary for Sanatan Mahagranth Parayana</span>
-              <a href="${canonicalUrl}" style="color: #b45309; text-decoration: underline;">अखंड स्वाध्याय व पाठ</a>
-            </footer>
-          </article>
-        `;
-      }
+      dynamicRootHtml = `
+        <article class="sanctuary-ssr-content" style="max-width: 820px; margin: 0 auto; padding: 2.5rem 1.25rem; font-family: 'Noto Serif Devanagari', serif;">
+          <nav style="margin-bottom: 1.5rem; font-size: 0.875rem; color: #b45309;">
+            <a href="https://path.vrindopnishad.in/" style="color: #b45309; text-decoration: none;">महाग्रंथ पारायण</a> &rsaquo; <span>${epic.name}</span>
+          </nav>
+          <header style="margin-bottom: 2rem;">
+            <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; background-color: #fef3c7; color: #92400e; margin-bottom: 0.75rem;">सनातन महाग्रंथ</span>
+            <h1 style="font-size: 2rem; font-weight: 700; line-height: 1.3; color: #1c1917; margin: 0 0 0.75rem 0;">${chName}</h1>
+            <p style="font-size: 0.95rem; color: #78716c; margin: 0;">${epic.name} • प्रणेता: ${epic.author} • ${chVerseCount} पावन श्लोक</p>
+          </header>
+          <section class="verse-body" style="font-size: 1.25rem; line-height: 2; color: #292524; background-color: #fffbeb; padding: 1.5rem; border-radius: 1rem; border: 1px solid #fef3c7; white-space: pre-line;">
+            ${chOpeningVerse}
+          </section>
+          <footer style="margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid #f5f5f4; font-size: 0.875rem; color: #a8a29e; display: flex; justify-content: space-between; align-items: center;">
+            <span>वृन्दोपनिषद् 2.0 • Digital Sanctuary for Sanatan Mahagranth Parayana</span>
+            <a href="${canonicalUrl}" style="color: #b45309; text-decoration: underline;">अखंड स्वाध्याय व पाठ</a>
+          </footer>
+        </article>
+      `;
     } else {
       title = `${epic.name} (${epic.author}) • संपूर्ण मूल पाठ व पारायण | वृन्दोपनिषद् 2.0`;
       description = `${epic.desc}। प्रणेता: ${epic.author}। वृन्दोपनिषद् 2.0`;
