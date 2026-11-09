@@ -38,3 +38,4 @@ jobs:
           name: daily-seo-health-report
           path: .seo-reports/daily-seo-health.json
           retention-days: 30
+
