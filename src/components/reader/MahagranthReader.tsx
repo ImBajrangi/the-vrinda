@@ -322,6 +322,84 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
     };
   }, [selectedChapterId, filteredChapters]);
 
+  // Quick Jump Shloka Grid 2D Elastic Sliding Indicator
+  const shlokaGridRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
+  const [shlokaPillStyle, setShlokaPillStyle] = useState<{
+    left: number;
+    top: number;
+    width: number;
+    height: number;
+    ready: boolean;
+  }>({
+    left: 0,
+    top: 0,
+    width: 0,
+    height: 0,
+    ready: false,
+  });
+
+  useEffect(() => {
+    const updateShlokaPill = () => {
+      const el = shlokaGridRefs.current[activeVerseId];
+      if (el) {
+        setShlokaPillStyle({
+          left: el.offsetLeft,
+          top: el.offsetTop,
+          width: el.offsetWidth,
+          height: el.offsetHeight,
+          ready: true,
+        });
+      } else {
+        setShlokaPillStyle((prev) => ({ ...prev, ready: false }));
+      }
+    };
+    updateShlokaPill();
+    const frame = requestAnimationFrame(updateShlokaPill);
+    const timer = setTimeout(updateShlokaPill, 40);
+    window.addEventListener('resize', updateShlokaPill);
+    return () => {
+      cancelAnimationFrame(frame);
+      clearTimeout(timer);
+      window.removeEventListener('resize', updateShlokaPill);
+    };
+  }, [activeVerseId, chapterPadas]);
+
+  // Collapsed Shloka Rail Elastic Sliding Indicator
+  const railShlokaRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
+  const [railPillStyle, setRailPillStyle] = useState<{
+    top: number;
+    height: number;
+    ready: boolean;
+  }>({
+    top: 0,
+    height: 0,
+    ready: false,
+  });
+
+  useEffect(() => {
+    const updateRailPill = () => {
+      const el = railShlokaRefs.current[activeVerseId];
+      if (el) {
+        setRailPillStyle({
+          top: el.offsetTop,
+          height: el.offsetHeight,
+          ready: true,
+        });
+      } else {
+        setRailPillStyle((prev) => ({ ...prev, ready: false }));
+      }
+    };
+    updateRailPill();
+    const frame = requestAnimationFrame(updateRailPill);
+    const timer = setTimeout(updateRailPill, 40);
+    window.addEventListener('resize', updateRailPill);
+    return () => {
+      cancelAnimationFrame(frame);
+      clearTimeout(timer);
+      window.removeEventListener('resize', updateRailPill);
+    };
+  }, [activeVerseId, chapterPadas]);
+
   const activePad = useMemo(() => {
     return chapterPadas.find((p) => p.id === activeVerseId) || chapterPadas[0] || null;
   }, [chapterPadas, activeVerseId]);
@@ -490,13 +568,27 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
 
               <div className="w-6 h-px bg-amber-900/10 my-2" />
 
-              {/* Vertical Scrollable Numbered Shloka Badges Rail */}
-              <div className="flex-1 w-full space-y-1.5 overflow-y-auto no-scrollbar py-1">
+              {/* Vertical Scrollable Numbered Shloka Badges Rail with Elastic Sliding Pill */}
+              <div className="relative flex-1 w-full space-y-1.5 overflow-y-auto no-scrollbar py-1">
+                {railPillStyle.ready && (
+                  <span
+                    aria-hidden="true"
+                    className="absolute left-1.5 right-1.5 rounded-[8px] bg-[#FEF08A] pointer-events-none transition-[transform,height] duration-[340ms] ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[transform,height] z-0 shadow-xs"
+                    style={{
+                      transform: `translate3d(0, ${railPillStyle.top}px, 0)`,
+                      height: `${railPillStyle.height}px`,
+                      top: 0,
+                    }}
+                  />
+                )}
                 {chapterPadas.map((pad, idx) => {
                   const isSelected = activeVerseId === pad.id;
                   return (
                     <button
                       key={pad.id}
+                      ref={(el) => {
+                        railShlokaRefs.current[pad.id] = el;
+                      }}
                       type="button"
                       onClick={() => {
                         setActiveVerseId(pad.id);
@@ -504,9 +596,11 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                         if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
                       }}
                       title={`श्लोक ${idx + 1}: ${pad.titleDevanagari}`}
-                      className={`w-9 h-9 mx-auto rounded-[8px] flex items-center justify-center text-xs font-mono transition-colors cursor-pointer ${
+                      className={`relative z-10 w-9 h-9 mx-auto rounded-[8px] flex items-center justify-center text-xs font-mono transition-colors duration-150 cursor-pointer select-none ${
                         isSelected
-                          ? 'bg-[#FEF08A] text-[#78350F] font-bold shadow-xs'
+                          ? railPillStyle.ready
+                            ? 'text-[#78350F] font-bold'
+                            : 'bg-[#FEF08A] text-[#78350F] font-bold shadow-xs'
                           : 'text-[#64748B] hover:bg-black/5'
                       }`}
                     >
@@ -1007,22 +1101,41 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                 <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-800 block">
                   वर्तमान {currentEpicConfig.chapterTerm} के {currentEpicConfig.verseTerm} ({chapterPadas.length})
                 </span>
-                <div className="grid grid-cols-5 gap-1.5 max-h-[30vh] overflow-y-auto no-scrollbar pt-1">
+                <div className="relative grid grid-cols-5 gap-1.5 max-h-[30vh] overflow-y-auto no-scrollbar pt-1 p-0.5">
+                  {/* Dynamic 2D Elastic Sliding Indicator Bar */}
+                  {shlokaPillStyle.ready && (
+                    <span
+                      aria-hidden="true"
+                      className="absolute rounded-[6px] bg-[#FEF08A] pointer-events-none transition-[transform,width,height] duration-[340ms] ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[transform,width,height] z-0 shadow-2xs"
+                      style={{
+                        transform: `translate3d(${shlokaPillStyle.left}px, ${shlokaPillStyle.top}px, 0)`,
+                        width: `${shlokaPillStyle.width}px`,
+                        height: `${shlokaPillStyle.height}px`,
+                        top: 0,
+                        left: 0,
+                      }}
+                    />
+                  )}
                   {chapterPadas.map((pad, idx) => {
                     const isSelected = activeVerseId === pad.id;
                     return (
                       <button
                         key={pad.id}
+                        ref={(el) => {
+                          shlokaGridRefs.current[pad.id] = el;
+                        }}
                         type="button"
                         onClick={() => {
                           setActiveVerseId(pad.id);
                           const el = document.getElementById(`shloka-${pad.id}`);
                           if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
                         }}
-                        className={`h-7 rounded-[6px] text-[11px] font-mono font-semibold transition-colors cursor-pointer flex items-center justify-center ${
+                        className={`relative z-10 h-7 rounded-[6px] text-[11px] font-mono font-semibold transition-colors duration-150 cursor-pointer flex items-center justify-center select-none ${
                           isSelected
-                            ? 'bg-[#FEF08A] text-[#78350F] font-bold shadow-2xs'
-                            : 'bg-white hover:bg-neutral-100 text-neutral-600 border border-neutral-200/60'
+                            ? shlokaPillStyle.ready
+                              ? 'text-[#78350F] font-bold border border-transparent'
+                              : 'bg-[#FEF08A] text-[#78350F] font-bold shadow-2xs'
+                            : 'bg-white/80 hover:bg-white text-neutral-600 border border-neutral-200/60'
                         }`}
                       >
                         {idx + 1}
