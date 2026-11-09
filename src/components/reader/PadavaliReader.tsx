@@ -199,7 +199,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   const [selectedGrantha, setSelectedGrantha] = useState<string>(
     selectedGranthaId || getReaderStateSync().selectedTradition || 'all'
   );
-  type GranthaCategory = 'all' | 'mahagranth' | 'rasik-vani' | 'kavya' | 'dham-leela' | 'authors';
+  type GranthaCategory = 'all' | 'rasik-vani' | 'kavya' | 'dham-leela' | 'authors';
   const [granthaCategory, setGranthaCategory] = useState<GranthaCategory>(() => {
     if (selectedAuthorProp) return 'authors';
     if (selectedGranthaId) {
@@ -1879,7 +1879,6 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
             {[
               { id: 'all' as GranthaCategory, label: 'समस्त संग्रह' },
-              { id: 'mahagranth' as GranthaCategory, label: 'सनातन महाग्रंथ' },
               { id: 'rasik-vani' as GranthaCategory, label: 'रसिक वाणी' },
               { id: 'kavya' as GranthaCategory, label: 'काव्य व छंद' },
               { id: 'dham-leela' as GranthaCategory, label: 'धाम व लीला' },
@@ -1889,11 +1888,9 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               const count =
                 cat.id === 'all'
                   ? allGranthas.length
-                  : cat.id === 'mahagranth'
-                    ? 5
-                    : cat.id === 'authors'
-                      ? (hierarchyAuthors.length || 761)
-                      : allGranthas.filter((g) => g.category === cat.id).length;
+                  : cat.id === 'authors'
+                    ? (hierarchyAuthors.length || 761)
+                    : allGranthas.filter((g) => g.category === cat.id).length;
               return (
                 <button
                   key={cat.id}
@@ -1902,11 +1899,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   }}
                   type="button"
                   onClick={() => {
-                    if (cat.id === 'mahagranth' && onSwitchToMahagranth) {
-                      onSwitchToMahagranth();
-                    } else {
-                      handleSelectCategory(cat.id);
-                    }
+                    handleSelectCategory(cat.id);
                   }}
                   className={`relative z-10 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none inline-flex items-center gap-1 ${isActive
                       ? categoryPillStyle.ready
