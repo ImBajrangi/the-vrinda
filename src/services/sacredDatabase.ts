@@ -1230,11 +1230,16 @@ export const SacredDatabase = {
     }));
   },
 
-  getAvailableRagas(granthaId?: string): string[] {
+  getAvailableRagas(granthaId?: string, authorName?: string | null): string[] {
     const ragaCounts = new Map<string, number>();
-    const padasToScan = (!granthaId || granthaId === 'all')
-      ? allPadas
-      : (padasByGrantha.get(granthaId) || []);
+    let padasToScan: SacredPad[];
+    if (authorName) {
+      padasToScan = this.getPadasByAuthor(authorName);
+    } else if (!granthaId || granthaId === 'all') {
+      padasToScan = allPadas;
+    } else {
+      padasToScan = padasByGrantha.get(granthaId) || [];
+    }
 
     padasToScan.forEach((p) => {
       if (p.rag && p.rag.trim()) {
@@ -1327,7 +1332,11 @@ export const SacredDatabase = {
     if (cachedHierarchy?.authors) {
       return Object.values(cachedHierarchy.authors).sort((a, b) => b.verseCount - a.verseCount);
     }
-    return [];
+    return allSaints.map((s) => ({
+      name: s.name,
+      verseCount: s.articleCount || 10,
+      granthas: [],
+    })).sort((a, b) => b.verseCount - a.verseCount);
   },
 
   /**
@@ -1353,7 +1362,8 @@ export const SacredDatabase = {
     if (!authorName) return [];
     const rawClean = authorName.trim().toLowerCase();
     if (authorCache.has(rawClean)) {
-      return authorCache.get(rawClean)!;
+      const cached = authorCache.get(rawClean)!;
+      if (cached.length > 0) return cached;
     }
 
     const coreName = rawClean
@@ -1366,10 +1376,18 @@ export const SacredDatabase = {
       const pAuthor = (p.author || '').toLowerCase();
       if (pAuthor.includes(rawClean)) return true;
       if (coreName && pAuthor.includes(coreName)) return true;
+      const pCore = pAuthor
+        .replace(/\(.*?\)/g, '')
+        .replace(/^श्री\s+/, '')
+        .replace(/\s+जी$/, '')
+        .trim();
+      if (pCore === coreName || (coreName && pCore.includes(coreName)) || (pCore && coreName.includes(pCore))) return true;
       return false;
     });
 
-    authorCache.set(rawClean, result);
+    if (result.length > 0) {
+      authorCache.set(rawClean, result);
+    }
     return result;
   },
 
@@ -1392,25 +1410,46 @@ export const SacredDatabase = {
     }
 
     const chunksToLoad = new Set<string>();
-    if (coreName.includes('रसखान')) chunksToLoad.add('raskhan-padavali');
-    else if (coreName.includes('नागरीदास')) chunksToLoad.add('nagaridas-vani');
-    else if (coreName.includes('सूरदास')) chunksToLoad.add('sur-sagar');
-    else if (coreName.includes('मीरा')) chunksToLoad.add('meera-padavali');
-    else if (coreName.includes('व्यास')) chunksToLoad.add('vyas-vani');
-    else if (coreName.includes('हरिवंश') || coreName.includes('हित')) chunksToLoad.add('hit-chaurasi');
-    else if (coreName.includes('हरिदास')) chunksToLoad.add('kelimal');
-    else if (coreName.includes('बिहारिन')) chunksToLoad.add('biharin-dev-vani');
-    else if (coreName.includes('नारायण स्वामी')) chunksToLoad.add('narayan-swami-vani');
-    else if (coreName.includes('ललित किशोरी')) chunksToLoad.add('lalit-kishori-vani');
-    else if (coreName.includes('ध्रुवदास')) chunksToLoad.add('bayalees-leela');
-    else if (coreName.includes('परमानन्द')) chunksToLoad.add('paramanand-sagar');
-    else if (coreName.includes('चन्द्रसखी')) chunksToLoad.add('chandrasakhi-padavali');
-    else if (coreName.includes('वाल्मीकि')) chunksToLoad.add('valmiki-ramayana');
-    else if (coreName.includes('वेदव्यास')) chunksToLoad.add('shrimad-bhagavatam');
-    else if (coreName.includes('तुलसीदास')) chunksToLoad.add('ramcharitmanas');
-    else {
-      // General rasik saints (Kishori Ali, Vitthal Vipul, Giridhar Lal, Bhori Sakhi, etc.)
-      chunksToLoad.add('rasik-vani-sangrah');
+
+    // 1. Direct relational lookup via scripture hierarchy (covers all 764 authors)
+    const hierarchy = cachedHierarchy || (await this.getScriptureHierarchy());
+    if (hierarchy?.authors) {
+      const match =
+        hierarchy.authors[authorName] ||
+        Object.entries(hierarchy.authors).find(([k]) => {
+          const kClean = k.trim().toLowerCase();
+          const kCore = kClean.replace(/\(.*?\)/g, '').replace(/^श्री\s+/, '').replace(/\s+जी$/, '').trim();
+          return kClean === rawClean || kCore === coreName || (coreName && kCore.includes(coreName)) || (kCore && coreName.includes(kCore));
+        })?.[1];
+
+      if (match?.granthas && match.granthas.length > 0) {
+        match.granthas.forEach((g) => chunksToLoad.add(g));
+      }
+    }
+
+    // 2. Specific heuristic fallbacks if not matched in hierarchy
+    if (chunksToLoad.size === 0) {
+      if (coreName.includes('रसखान')) chunksToLoad.add('raskhan-padavali');
+      else if (coreName.includes('नागरीदास')) chunksToLoad.add('nagaridas-vani');
+      else if (coreName.includes('सूरदास')) chunksToLoad.add('sur-sagar');
+      else if (coreName.includes('मीरा')) chunksToLoad.add('meera-padavali');
+      else if (coreName.includes('व्यास')) chunksToLoad.add('vyas-vani');
+      else if (coreName.includes('हरिवंश') || coreName.includes('हित')) chunksToLoad.add('hit-chaurasi');
+      else if (coreName.includes('हरिदास')) chunksToLoad.add('kelimal');
+      else if (coreName.includes('बिहारिन')) chunksToLoad.add('biharin-dev-vani');
+      else if (coreName.includes('नारायण स्वामी')) chunksToLoad.add('narayan-swami-vani');
+      else if (coreName.includes('ललित किशोरी')) chunksToLoad.add('lalit-kishori-vani');
+      else if (coreName.includes('ध्रुवदास')) chunksToLoad.add('bayalees-leela');
+      else if (coreName.includes('परमानन्द')) chunksToLoad.add('paramanand-sagar');
+      else if (coreName.includes('चन्द्रसखी')) chunksToLoad.add('chandrasakhi-padavali');
+      else if (coreName.includes('वाल्मीकि')) chunksToLoad.add('valmiki-ramayana');
+      else if (coreName.includes('वेदव्यास')) chunksToLoad.add('shrimad-bhagavatam');
+      else if (coreName.includes('तुलसीदास')) chunksToLoad.add('ramcharitmanas');
+      else if (coreName.includes('रसिक परंपरा')) chunksToLoad.add('stotras');
+      else {
+        // General rasik saints (Kishori Ali, Vitthal Vipul, Giridhar Lal, Bhori Sakhi, etc.)
+        chunksToLoad.add('rasik-vani-sangrah');
+      }
     }
 
     for (const chunkId of chunksToLoad) {
@@ -1420,6 +1459,10 @@ export const SacredDatabase = {
         console.warn('Failed to pre-hydrate chunk for author:', chunkId, err);
       }
     }
+
+    // Invalidate authorCache so fresh hydrated padas are immediately indexed
+    authorCache.delete(rawClean);
+    if (coreName) authorCache.delete(coreName);
 
     return this.getPadasByAuthor(authorName);
   },

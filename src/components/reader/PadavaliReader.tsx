@@ -215,15 +215,6 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   const [selectedChapter, setSelectedChapter] = useState<string>('all');
   const [isChapterDropdownOpen, setIsChapterDropdownOpen] = useState<boolean>(false);
   const [activeScrollerVerseId, setActiveScrollerVerseId] = useState<string>('');
-  const [isScopedSession, setIsScopedSession] = useState<boolean>(() => {
-    if (typeof window !== 'undefined') {
-      try {
-        const p = new URLSearchParams(window.location.search);
-        if (p.get('pad') || p.get('grantha') || p.get('author')) return true;
-      } catch {}
-    }
-    return Boolean(initialPadId || (selectedGranthaId && selectedGranthaId !== 'all') || selectedAuthorProp);
-  });
 
   type ReadingMode = 'continuous' | 'single';
   const [readingMode, setReadingMode] = useState<ReadingMode>(() => {
@@ -385,10 +376,10 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     }
   }, [selectedGrantha, selectedAuthor, granthaCategory]);
 
-  // Dynamically compute available classical ragas based on selected scripture collection
+  // Dynamically compute available classical ragas based on selected scripture collection or saint
   const availableRagas = useMemo(() => {
-    return SacredDatabase.getAvailableRagas(selectedGrantha);
-  }, [selectedGrantha]);
+    return SacredDatabase.getAvailableRagas(selectedGrantha, selectedAuthor);
+  }, [selectedGrantha, selectedAuthor, allPadas]);
 
   // Retain rendered ragas during collapsing animation so items smoothly slide without disappearing abruptly
   const [renderedRagas, setRenderedRagas] = useState<string[]>(availableRagas);
@@ -469,6 +460,38 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     width: 0,
     ready: false,
   });
+
+  // Reading Mode Toggle Elastic Sliding Indicator
+  const modeRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
+  const [modePillStyle, setModePillStyle] = useState<{ left: number; width: number; ready: boolean }>({
+    left: 0,
+    width: 0,
+    ready: false,
+  });
+
+  useEffect(() => {
+    const updateModePill = () => {
+      const el = modeRefs.current[readingMode];
+      if (el) {
+        setModePillStyle({
+          left: el.offsetLeft,
+          width: el.offsetWidth,
+          ready: true,
+        });
+      } else {
+        setModePillStyle((prev) => ({ ...prev, ready: false }));
+      }
+    };
+    updateModePill();
+    const frame = requestAnimationFrame(updateModePill);
+    const timer = setTimeout(updateModePill, 40);
+    window.addEventListener('resize', updateModePill);
+    return () => {
+      cancelAnimationFrame(frame);
+      clearTimeout(timer);
+      window.removeEventListener('resize', updateModePill);
+    };
+  }, [readingMode]);
 
   const initialReader = getReaderStateSync();
   const initialPad =
@@ -1058,6 +1081,10 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     navigationProgress.start();
     setLoadingGranthaId(granthaId);
     setSelectedGrantha(granthaId);
+    if (granthaCategory !== 'authors') {
+      setSelectedAuthor(null);
+      if (onSelectAuthorProp) onSelectAuthorProp(null);
+    }
     if (onSelectGranthaId) onSelectGranthaId(granthaId);
     setSelectedRaga('all');
     setSearchQuery('');
@@ -1158,17 +1185,25 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     requestAnimationFrame(() => navigationProgress.done());
   };
 
-  const handleSelectAuthor = (authorName: string | null) => {
+  const handleSelectAuthor = async (authorName: string | null) => {
     navigationProgress.start();
     setSelectedAuthor(authorName);
     if (onSelectAuthorProp) onSelectAuthorProp(authorName);
+    setSelectedGrantha('all');
     setSelectedChapter('all');
     setSelectedRaga('all');
     setVisibleCount(30);
     if (authorName) {
-      SacredDatabase.ensureAuthorPadasLoaded(authorName).then(() => {
+      try {
+        const loaded = await SacredDatabase.ensureAuthorPadasLoaded(authorName);
         setAllPadas([...SacredDatabase.getAllPadas()]);
-      });
+        if (loaded && loaded.length > 0) {
+          setSelectedPad(loaded[0]);
+          setActiveScrollerVerseId(loaded[0].id);
+        }
+      } catch (err) {
+        console.warn('Failed to load author compositions:', err);
+      }
     }
     requestAnimationFrame(() => navigationProgress.done());
   };
@@ -1265,12 +1300,12 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
     // Step 1: Select smallest pre-indexed slice directly from SacredDatabase
     let baseList: SacredPad[];
-    if (selectedGrantha !== 'all') {
+    if (selectedAuthor) {
+      baseList = SacredDatabase.getPadasByAuthor(selectedAuthor);
+    } else if (selectedGrantha !== 'all') {
       baseList = selectedChapter !== 'all'
         ? SacredDatabase.getPadasByChapter(selectedGrantha, selectedChapter)
         : SacredDatabase.getPadasByGrantha(selectedGrantha);
-    } else if (selectedAuthor) {
-      baseList = SacredDatabase.getPadasByAuthor(selectedAuthor);
     } else if (granthaCategory !== 'all' && granthaCategory !== 'authors') {
       baseList = SacredDatabase.getPadasByCategory(granthaCategory);
     } else {
@@ -1813,39 +1848,9 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       </div>
 
       {/* ========================================================================= */}
-      {/* 2. Context-Aware Scoped Bar or Full Grantha Shelf                        */}
+      {/* 2. Scripture Bridge & Category Filter Shelf                               */}
       {/* ========================================================================= */}
-      {!isFocusReadingMode && isScopedSession && (
-        <div className="mb-5 px-4 py-2.5 rounded-2xl bg-gradient-to-r from-amber-50/70 via-white to-amber-50/70 border border-amber-900/10 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-          <div className="flex items-center gap-2.5 min-w-0">
-            <div className="w-7 h-7 rounded-lg bg-amber-100/80 flex items-center justify-center text-amber-800 shrink-0">
-              <BookOpen className="w-3.5 h-3.5" />
-            </div>
-            <div className="min-w-0 flex items-center gap-2 flex-wrap">
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-800 bg-amber-100/70 px-2 py-0.5 rounded-md">
-                सम्बद्ध पाठ धारा
-              </span>
-              <span className="text-sm font-serif font-bold text-neutral-900 truncate">
-                {granthaDisplayName} {selectedAuthor ? `• ${selectedAuthor}` : ''}
-              </span>
-              <span className="text-xs text-neutral-500 font-mono hidden sm:inline">
-                ({formatDevanagariNumerals(filteredPads.length)} पद संकलित)
-              </span>
-            </div>
-          </div>
-          <button
-            type="button"
-            onClick={() => setIsScopedSession(false)}
-            className="px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#FEF08A] hover:bg-amber-300 text-[#78350F] transition-colors cursor-pointer select-none shrink-0 shadow-2xs flex items-center gap-1.5 self-start sm:self-auto"
-            title={`समस्त ${formatDevanagariNumerals(allGranthas.length)} पावन संग्रह खोलें`}
-          >
-            <span>समस्त {formatDevanagariNumerals(allGranthas.length)} संग्रह देखें</span>
-            <ChevronRight className="w-3.5 h-3.5" />
-          </button>
-        </div>
-      )}
-
-      {!isFocusReadingMode && !isScopedSession && (
+      {!isFocusReadingMode && (
         <div className="mb-5 space-y-2.5">
           {/* Serene Sacred Bridge to Monumental Epics */}
           {onSwitchToMahagranth && (
@@ -1867,7 +1872,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             </div>
           )}
 
-          {/* Scripture Category Filter Strip (महाग्रंथ, रसिक वाणी, काव्य व छंद, धाम व लीला, संत व रचयिता) */}
+          {/* Scripture Category Filter Strip (रसिक वाणी, काव्य व छंद, धाम व लीला, संत व रचयिता) */}
           <div className="relative flex items-center gap-1.5 overflow-x-auto no-scrollbar p-1 bg-white/95 border border-neutral-200/80 shadow-2xs rounded-full text-xs">
             {/* Dynamic Elastic Sliding Indicator Bar */}
             {categoryPillStyle.ready && (
@@ -1892,10 +1897,11 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               const isActive = granthaCategory === cat.id;
               const count =
                 cat.id === 'all'
-                  ? allGranthas.length
+                  ? (allGranthas.length || 24)
                   : cat.id === 'authors'
-                    ? (hierarchyAuthors.length || 761)
-                    : allGranthas.filter((g) => g.category === cat.id).length;
+                    ? (hierarchyAuthors.length || 764)
+                    : (allGranthas.filter((g) => g.category === cat.id).length ||
+                       (cat.id === 'rasik-vani' ? 16 : cat.id === 'kavya' ? 6 : cat.id === 'dham-leela' ? 2 : 0));
               return (
                 <button
                   key={cat.id}
@@ -2249,7 +2255,9 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                     <div className="flex items-center gap-1.5 min-w-0">
                       <BookOpen className="w-3.5 h-3.5 text-[#FACC15] shrink-0" />
                       <span className={`font-serif font-bold ${currentTheme.titleColor} truncate`}>
-                        {selectedGrantha === 'all'
+                        {selectedAuthor
+                          ? selectedAuthor
+                          : selectedGrantha === 'all'
                           ? 'समस्त पावन ग्रंथ'
                           : allGranthas.find((g) => g.id === selectedGrantha)?.name}
                       </span>
@@ -2443,7 +2451,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   <button
                     type="button"
                     onClick={() => setIsChapterDropdownOpen(!isChapterDropdownOpen)}
-                    className="px-3 py-1 rounded-full text-xs font-bold bg-white hover:bg-neutral-50 text-amber-950 border border-amber-300/70 flex items-center gap-1.5 cursor-pointer transition-colors shadow-2xs"
+                    className="px-3.5 py-1.5 rounded-full text-xs font-bold bg-neutral-200/50 hover:bg-neutral-200/80 text-amber-950 flex items-center gap-1.5 cursor-pointer transition-colors shadow-2xs"
                   >
                     <span>{currentChapter ? currentChapter.name : 'समस्त अध्याय'}</span>
                     <span className="text-[10px] text-amber-800 font-mono font-bold">
@@ -2500,35 +2508,53 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   <span className="text-xs sm:text-sm font-serif font-bold text-neutral-900 truncate">
                     {selectedAuthor ? `संत: ${selectedAuthor}` : (displayedGranthas.find((g) => g.id === selectedGrantha)?.name || 'समस्त ग्रंथ')}
                   </span>
-                  <span className="text-xs text-neutral-400 font-mono hidden md:inline">
-                    • कुल {formatDevanagariNumerals(displayedSidebarPads.length)} पद संकलित
+                  <span className="text-xs text-neutral-500 font-mono hidden md:inline">
+                    • कुल {formatDevanagariNumerals(displayedSidebarPads.length || filteredPads.length)} पद संकलित
                   </span>
                 </div>
               )}
             </div>
 
-            {/* Right: Reading Mode Toggle (अखंड पाठ vs एकल पद) */}
-            <div className="flex items-center gap-1 p-0.5 bg-neutral-100/90 border border-neutral-200/80 rounded-full text-xs shrink-0 self-start sm:self-auto">
+            {/* Right: Reading Mode Toggle (अखंड पाठ vs एकल पद) with Dynamic Elastic Sliding Pill */}
+            <div className="relative flex items-center p-1 bg-white/95 border border-neutral-200/80 shadow-2xs rounded-full text-xs shrink-0 self-start sm:self-auto select-none">
+              {/* Dynamic Elastic Sliding Indicator Bar */}
+              {modePillStyle.ready && (
+                <span
+                  aria-hidden="true"
+                  className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[340ms] ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[transform,width] z-0 shadow-2xs"
+                  style={{
+                    transform: `translate3d(${modePillStyle.left}px, 0, 0)`,
+                    width: `${modePillStyle.width}px`,
+                    left: 0,
+                  }}
+                />
+              )}
               <button
+                ref={(el) => {
+                  modeRefs.current['continuous'] = el;
+                }}
                 type="button"
                 onClick={() => handleSetReadingMode('continuous')}
-                className={`px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer select-none ${readingMode === 'continuous'
-                    ? 'bg-white text-neutral-900 font-bold shadow-2xs'
-                    : 'text-neutral-500 hover:text-neutral-900'
+                className={`relative z-10 px-3.5 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 transition-colors duration-150 cursor-pointer select-none ${readingMode === 'continuous'
+                    ? 'text-[#18181B] font-bold'
+                    : 'text-[#64748B] hover:text-[#0F172A] hover:bg-neutral-100/40'
                   }`}
               >
-                <BookOpen className="w-3.5 h-3.5 text-amber-700" />
+                <BookOpen className="w-3.5 h-3.5 text-amber-800" />
                 <span>अखंड पाठ</span>
               </button>
               <button
+                ref={(el) => {
+                  modeRefs.current['single'] = el;
+                }}
                 type="button"
                 onClick={() => handleSetReadingMode('single')}
-                className={`px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer select-none ${readingMode === 'single'
-                    ? 'bg-white text-neutral-900 font-bold shadow-2xs'
-                    : 'text-neutral-500 hover:text-neutral-900'
+                className={`relative z-10 px-3.5 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 transition-colors duration-150 cursor-pointer select-none ${readingMode === 'single'
+                    ? 'text-[#18181B] font-bold'
+                    : 'text-[#64748B] hover:text-[#0F172A] hover:bg-neutral-100/40'
                   }`}
               >
-                <Sparkles className="w-3.5 h-3.5 text-amber-700" />
+                <Sparkles className="w-3.5 h-3.5 text-amber-800" />
                 <span>एकल पद</span>
               </button>
             </div>
