@@ -119,6 +119,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
   onSwitchToPadavali,
 }) => {
   const [selectedGranthaId, setSelectedGranthaId] = useState<string>(initialGranthaId);
+  const [loadingGranthaId, setLoadingGranthaId] = useState<string | null>(null);
   const [epicIndex, setEpicIndex] = useState<EpicIndexData | null>(null);
   const [loadingIndex, setLoadingIndex] = useState<boolean>(true);
 
@@ -228,43 +229,86 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
     return EPICS.find((e) => e.id === selectedGranthaId) || EPICS[0];
   }, [selectedGranthaId]);
 
-  // Load Epic Index when selectedGranthaId changes
+  // Unified, atomic loader for Grantha switch
   useEffect(() => {
     let cancelled = false;
+    setLoadingGranthaId(selectedGranthaId);
     setLoadingIndex(true);
-    SacredDatabase.getEpicIndex(selectedGranthaId).then((idx) => {
-      if (cancelled) return;
-      setEpicIndex(idx);
-      setLoadingIndex(false);
-      if (idx && idx.chapters.length > 0) {
-        const targetChapter = initialChapterId && idx.chapters.some((c) => c.id === initialChapterId)
-          ? initialChapterId
-          : idx.chapters[0].id;
-        setSelectedChapterId(targetChapter);
-      }
-    });
+    setLoadingChapter(true);
+
+    SacredDatabase.getEpicIndex(selectedGranthaId)
+      .then(async (idx) => {
+        if (cancelled) return;
+        setEpicIndex(idx);
+        setLoadingIndex(false);
+
+        if (idx && idx.chapters.length > 0) {
+          const targetChapter =
+            initialChapterId && idx.chapters.some((c) => c.id === initialChapterId)
+              ? initialChapterId
+              : idx.chapters[0].id;
+          setSelectedChapterId(targetChapter);
+
+          const padas = await SacredDatabase.fetchEpicChapter(selectedGranthaId, targetChapter);
+          if (cancelled) return;
+          setChapterPadas(padas);
+          setLoadingChapter(false);
+          setLoadingGranthaId(null);
+          navigationProgress.done();
+          if (padas.length > 0) {
+            setActiveVerseId(padas[0].id);
+          }
+        } else {
+          setChapterPadas([]);
+          setLoadingChapter(false);
+          setLoadingGranthaId(null);
+          navigationProgress.done();
+        }
+      })
+      .catch((err) => {
+        if (!cancelled) {
+          console.error('[MahagranthReader] Failed to load grantha index/chapter:', err);
+          setLoadingIndex(false);
+          setLoadingChapter(false);
+          setLoadingGranthaId(null);
+          navigationProgress.done();
+        }
+      });
+
     return () => {
       cancelled = true;
     };
-  }, [selectedGranthaId, initialChapterId]);
+  }, [selectedGranthaId]);
 
-  // Load target chapter chunk on-demand (piece-by-piece ~15-35 KB)
+  // Load target chapter chunk on-demand (when switching chapters within the same grantha)
   useEffect(() => {
     if (!selectedGranthaId || !selectedChapterId) return;
+    if (loadingGranthaId) return; // Already handled by the grantha switch effect!
+
     let cancelled = false;
     setLoadingChapter(true);
-    SacredDatabase.fetchEpicChapter(selectedGranthaId, selectedChapterId).then((padas) => {
-      if (cancelled) return;
-      setChapterPadas(padas);
-      setLoadingChapter(false);
-      if (padas.length > 0) {
-        setActiveVerseId(padas[0].id);
-      }
-    });
+    SacredDatabase.fetchEpicChapter(selectedGranthaId, selectedChapterId)
+      .then((padas) => {
+        if (cancelled) return;
+        setChapterPadas(padas);
+        setLoadingChapter(false);
+        navigationProgress.done();
+        if (padas.length > 0) {
+          setActiveVerseId(padas[0].id);
+        }
+      })
+      .catch((err) => {
+        if (!cancelled) {
+          console.error('[MahagranthReader] Failed to fetch chapter:', err);
+          setLoadingChapter(false);
+          navigationProgress.done();
+        }
+      });
+
     return () => {
       cancelled = true;
     };
-  }, [selectedGranthaId, selectedChapterId]);
+  }, [selectedChapterId]);
 
   const currentChapter = useMemo(() => {
     if (!epicIndex) return null;
@@ -451,6 +495,8 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
   }, [chapterPadas, activeVerseId]);
 
   const handleSelectGrantha = (gId: string) => {
+    if (gId === selectedGranthaId && !loadingGranthaId) return;
+
     const el = epicCardRefs.current[gId];
     if (el) {
       setEpicPillStyle({
@@ -462,11 +508,11 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
       });
     }
     navigationProgress.start();
+    setLoadingGranthaId(gId);
     setSelectedGranthaId(gId);
     setTocFilterSection('all');
     setChapterSearchQuery('');
     if (onSelectGrantha) onSelectGrantha(gId);
-    requestAnimationFrame(() => navigationProgress.done());
   };
 
   const handleSelectChapter = (chId: string) => {
@@ -544,6 +590,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
             )}
             {EPICS.map((epic) => {
               const isSelected = selectedGranthaId === epic.id;
+              const isLoadingThis = loadingGranthaId === epic.id;
               return (
                 <button
                   key={epic.id}
@@ -566,7 +613,11 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                     style={{ background: epic.coverBg }}
                   >
                     <div className="absolute left-1 top-0 bottom-0 w-0.5 bg-amber-400/40" />
-                    <div className="w-1.5 h-1.5 rounded-full bg-amber-300 shadow-2xs z-10" />
+                    {isLoadingThis ? (
+                      <div className="z-10 animate-spin w-2.5 h-2.5 border-2 border-amber-200 border-t-transparent rounded-full" />
+                    ) : (
+                      <div className="w-1.5 h-1.5 rounded-full bg-amber-300 shadow-2xs z-10" />
+                    )}
                     <span className="text-[10.5px] font-serif font-bold text-amber-100 z-10 select-none">
                       {epic.spineGlyph}
                     </span>
@@ -574,13 +625,20 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                   </div>
 
                   <div className="min-w-0 flex-1">
-                    <span
-                      className={`text-[10px] font-serif font-bold uppercase tracking-wider block truncate ${
-                        isSelected ? 'text-[#B45309]' : 'text-neutral-400'
-                      }`}
-                    >
-                      {epic.tag}
-                    </span>
+                    <div className="flex items-center gap-1.5">
+                      <span
+                        className={`text-[10px] font-serif font-bold uppercase tracking-wider block truncate ${
+                          isSelected ? 'text-[#B45309]' : 'text-neutral-400'
+                        }`}
+                      >
+                        {epic.tag}
+                      </span>
+                      {isLoadingThis && (
+                        <span className="inline-flex items-center text-amber-800 shrink-0">
+                          <IOSSpinner size="xs" theme="amber" />
+                        </span>
+                      )}
+                    </div>
                     <div
                       className={`font-serif font-bold text-xs sm:text-sm truncate mt-0.5 ${
                         isSelected ? 'text-[#18181B] font-black' : 'text-neutral-700'
@@ -818,8 +876,8 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                     }}
                   />
                 )}
-                {loadingIndex ? (
-                  <div className="py-12 flex flex-col items-center justify-center text-center space-y-2">
+                {loadingGranthaId || loadingIndex ? (
+                  <div className="py-16 flex flex-col items-center justify-center text-center space-y-2">
                     <IOSSpinner size="sm" theme="amber" />
                     <p className="font-serif text-xs text-neutral-400">अनुक्रमणिका संकलित हो रही है...</p>
                   </div>
@@ -874,13 +932,15 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                 <BookOpen className="w-3.5 h-3.5" />
                 <span>{currentEpicConfig.name}</span>
                 <span>•</span>
-                <span>{currentChapter?.section || 'पारायण पाठ'}</span>
+                <span>{!loadingGranthaId && currentChapter?.section ? currentChapter.section : 'पारायण पाठ'}</span>
               </div>
               <h1 className="font-serif font-bold text-xl sm:text-2xl text-neutral-900 mt-1">
-                {currentChapter ? currentChapter.name : 'पावन पाठ'}
+                {!loadingGranthaId && currentChapter ? currentChapter.name : 'पावन पाठ'}
               </h1>
               <p className="text-xs text-neutral-500 font-serif mt-0.5">
-                कुल {formatDevanagariNumerals(chapterPadas.length)} {currentEpicConfig.verseTerm} संकलित • ऑन-डिमांड त्वरित पाठ
+                {loadingGranthaId
+                  ? 'पावन महाग्रंथ संकलित हो रहा है...'
+                  : `कुल ${formatDevanagariNumerals(chapterPadas.length)} ${currentEpicConfig.verseTerm} संकलित • ऑन-डिमांड त्वरित पाठ`}
               </p>
             </div>
 
@@ -928,14 +988,14 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
           </div>
 
           {/* Reading Stream */}
-          {loadingChapter ? (
-            <div className="py-20 flex flex-col items-center justify-center text-center space-y-3">
+          {loadingGranthaId || loadingChapter ? (
+            <div className="py-24 px-6 flex flex-col items-center justify-center text-center space-y-3 select-none">
               <IOSSpinner size="md" theme="amber" />
-              <p className="font-serif text-sm font-semibold text-neutral-700">
-                {currentChapter?.name || 'अध्याय'} संकलित हो रहा है...
+              <p className="font-serif font-bold text-base sm:text-lg text-neutral-800">
+                {currentEpicConfig.name} {currentChapter?.name && !loadingGranthaId ? `• ${currentChapter.name}` : ''} संकलित हो रहा है...
               </p>
-              <p className="font-mono text-xs text-neutral-400">
-                केवल सम्बद्ध {currentEpicConfig.chapterTerm} का त्वरित प्रवाह (~25 KB)
+              <p className="font-serif text-xs text-neutral-400">
+                पावन मूल शास्त्र पाठ संकलित हो रहा है (~15-35 KB)
               </p>
             </div>
           ) : (
