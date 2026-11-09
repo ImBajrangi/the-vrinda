@@ -2420,7 +2420,9 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 <div className="flex items-center gap-1 overflow-x-auto no-scrollbar py-0.5 flex-1 min-w-0">
                   {filteredPads.slice(0, 100).map((pad, idx) => {
                     const isActive = (activeScrollerVerseId || selectedPad.id) === pad.id;
-                    const vNum = pad.verseNumber || idx + 1;
+                    const isChapterScoped = selectedGrantha !== 'all' && selectedChapter !== 'all';
+                    // Show canonical verse number if in specific chapter; otherwise sequential stream index (1, 2, 3...)
+                    const displayNumber = isChapterScoped && pad.verseNumber ? pad.verseNumber : idx + 1;
                     return (
                       <button
                         key={pad.id}
@@ -2436,9 +2438,9 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                             ? 'bg-[#FEF08A] text-[#78350F] ring-1 ring-amber-400 font-bold'
                             : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200'
                         }`}
-                        title={pad.titleDevanagari}
+                        title={pad.verseNumber ? `पद ${pad.verseNumber}: ${pad.titleDevanagari}` : pad.titleDevanagari}
                       >
-                        {vNum}
+                        {displayNumber}
                       </button>
                     );
                   })}
@@ -2503,10 +2505,15 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                       >
                         {/* Verse Header Line */}
                         <div className={`flex items-center justify-between pb-3 mb-4 border-b ${currentTheme.borderColor} gap-2 flex-wrap`}>
-                          <div className="flex items-center gap-2">
+                          <div className="flex items-center gap-2 flex-wrap">
                             <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-[#FEF08A] text-[#78350F]">
                               ॥ पद {pad.verseNumber || pIdx + 1} ॥
                             </span>
+                            {selectedGrantha === 'all' && (
+                              <span className="text-[11px] font-serif font-bold text-amber-900 bg-amber-100/70 px-2.5 py-0.5 rounded-full border border-amber-300/60">
+                                {allGranthas.find((g) => g.id === pad.collectionId)?.name || pad.collectionId}
+                              </span>
+                            )}
                             <span className={`text-xs font-serif font-bold ${currentTheme.titleColor}`}>
                               {pad.author}
                             </span>
