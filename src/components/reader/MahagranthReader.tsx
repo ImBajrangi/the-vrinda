@@ -4,11 +4,16 @@ import {
   ChevronRight,
   ChevronLeft,
   Sparkles,
-  ScrollText,
   Bookmark,
   Copy,
   Check,
-  ArrowRight
+  ArrowRight,
+  PanelLeftOpen,
+  PanelLeftClose,
+  PanelRightOpen,
+  PanelRightClose,
+  Search,
+  Feather
 } from 'lucide-react';
 import { SacredDatabase } from '../../services/sacredDatabase';
 import { SacredPad, EpicIndexData } from '../../types/devotional';
@@ -44,7 +49,7 @@ const EPICS = [
     kandaLabel: 'स्कन्ध / अध्याय',
     color: '#1E3A8A',
     coverBg: 'linear-gradient(135deg, #172554 0%, #1E40AF 50%, #1D4ED8 100%)',
-    totalVerses: 12428,
+    totalVerses: 12301,
     description: 'परमहंस संहिता, श्रीकृष्ण लीलामृत एवं अमलरस की सर्वोच्च भागवती ज्ञानधारा'
   },
   {
@@ -95,8 +100,25 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
   const [selectedChapterId, setSelectedChapterId] = useState<string>('');
   const [chapterPadas, setChapterPadas] = useState<SacredPad[]>([]);
   const [loadingChapter, setLoadingChapter] = useState<boolean>(false);
+  const [activeVerseId, setActiveVerseId] = useState<string>('');
+
+  // Shrinkable Sidebars States with LocalStorage Persistence
+  const [isLeftSidebarCollapsed, setIsLeftSidebarCollapsed] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('vrind_epic_reader_left_collapsed') === 'true';
+    }
+    return false;
+  });
+
+  const [isRightSidebarCollapsed, setIsRightSidebarCollapsed] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('vrind_epic_reader_right_collapsed') === 'true';
+    }
+    return false;
+  });
 
   const [tocFilterSection, setTocFilterSection] = useState<string>('all');
+  const [chapterSearchQuery, setChapterSearchQuery] = useState<string>('');
   const [copiedSlug, setCopiedSlug] = useState<string | null>(null);
   const [activePurportId, setActivePurportId] = useState<string | null>(null);
   const [bookmarkedIds, setBookmarkedIds] = useState<string[]>([]);
@@ -106,6 +128,26 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
   useEffect(() => {
     getCachedBookmarks().then(setBookmarkedIds).catch(() => {});
   }, []);
+
+  const handleToggleLeftSidebar = () => {
+    setIsLeftSidebarCollapsed((prev) => {
+      const next = !prev;
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('vrind_epic_reader_left_collapsed', String(next));
+      }
+      return next;
+    });
+  };
+
+  const handleToggleRightSidebar = () => {
+    setIsRightSidebarCollapsed((prev) => {
+      const next = !prev;
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('vrind_epic_reader_right_collapsed', String(next));
+      }
+      return next;
+    });
+  };
 
   const currentEpicConfig = useMemo(() => {
     return EPICS.find((e) => e.id === selectedGranthaId) || EPICS[0];
@@ -140,9 +182,9 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
       if (cancelled) return;
       setChapterPadas(padas);
       setLoadingChapter(false);
-      // Scroll to canvas top smoothly
-      const el = document.getElementById('epic-canvas-top');
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (padas.length > 0) {
+        setActiveVerseId(padas[0].id);
+      }
     });
     return () => {
       cancelled = true;
@@ -173,21 +215,33 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
     if (!epicIndex) return [];
     const secSet = new Set<string>();
     epicIndex.chapters.forEach((c) => {
-      if (c.section) secSet.add(c.section);
+      if (c.section && c.section !== 'मूल पाठ') secSet.add(c.section);
     });
     return Array.from(secSet);
   }, [epicIndex]);
 
   const filteredChapters = useMemo(() => {
     if (!epicIndex) return [];
-    if (tocFilterSection === 'all') return epicIndex.chapters;
-    return epicIndex.chapters.filter((c) => c.section === tocFilterSection);
-  }, [epicIndex, tocFilterSection]);
+    let list = epicIndex.chapters;
+    if (tocFilterSection !== 'all') {
+      list = list.filter((c) => c.section === tocFilterSection);
+    }
+    if (chapterSearchQuery.trim()) {
+      const q = chapterSearchQuery.toLowerCase().trim();
+      list = list.filter((c) => c.name.toLowerCase().includes(q) || c.id.toLowerCase().includes(q));
+    }
+    return list;
+  }, [epicIndex, tocFilterSection, chapterSearchQuery]);
+
+  const activePad = useMemo(() => {
+    return chapterPadas.find((p) => p.id === activeVerseId) || chapterPadas[0] || null;
+  }, [chapterPadas, activeVerseId]);
 
   const handleSelectGrantha = (gId: string) => {
     navigationProgress.start();
     setSelectedGranthaId(gId);
     setTocFilterSection('all');
+    setChapterSearchQuery('');
     if (onSelectGrantha) onSelectGrantha(gId);
     requestAnimationFrame(() => navigationProgress.done());
   };
@@ -195,6 +249,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
   const handleSelectChapter = (chId: string) => {
     navigationProgress.start();
     setSelectedChapterId(chId);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     requestAnimationFrame(() => navigationProgress.done());
   };
 
@@ -215,10 +270,10 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
   return (
     <div className="w-full max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 py-4">
       {/* Top Banner: Sanatan Mahagranth Parayan Gateway */}
-      <div className="mb-6 p-4 sm:p-5 rounded-[28px] bg-white border border-neutral-200/80 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="mb-6 p-4 sm:p-5 rounded-[28px] sm:rounded-[32px] bg-white border border-neutral-200/80 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="px-2.5 py-0.5 rounded-[10px] text-[10px] font-mono font-bold tracking-wider uppercase bg-[#FEF08A] text-[#78350F]">
+            <span className="px-2.5 py-0.5 rounded-[8px] text-[10px] font-mono font-bold tracking-wider uppercase bg-[#FEF08A] text-[#78350F]">
               सनातन महाग्रंथ पारायण
             </span>
             <span className="text-xs font-serif text-neutral-400">
@@ -260,7 +315,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
             >
               {/* Proportional Mini Pothi Book Cover */}
               <div
-                className="w-10 h-14 rounded-[4px_8px_8px_4px] text-white flex flex-col justify-between p-1.5 shadow-sm shrink-0"
+                className="w-10 h-14 rounded-[4px_6px_6px_4px] text-white flex flex-col justify-between p-1.5 shadow-sm shrink-0"
                 style={{ background: epic.coverBg }}
               >
                 <div className="w-1.5 h-1.5 rounded-full bg-amber-300/80" />
@@ -288,94 +343,216 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
         })}
       </div>
 
-      {/* Main Reading Canvas & Sidebar Grid */}
-      <div className="flex flex-col lg:flex-row items-start gap-6">
-        {/* Left Column: Parayan Navigation Desk & Table of Contents (Hidden on mobile modal) */}
-        <aside className="w-full lg:w-80 shrink-0 bg-white rounded-[24px] p-4 border border-neutral-200/80 shadow-xs">
-          <div className="flex items-center justify-between pb-3 border-b border-neutral-100 mb-3">
-            <div className="flex items-center gap-2">
-              <ScrollText className="w-4 h-4 text-amber-700" />
-              <h3 className="font-serif font-bold text-sm text-neutral-900">
-                अध्याय / सर्ग अनुक्रमणिका
-              </h3>
-            </div>
-            <span className="text-xs font-mono font-bold text-amber-800 bg-amber-50 px-2 py-0.5 rounded-[4px]">
-              {epicIndex?.totalChapters || 0} सर्ग/अध्याय
-            </span>
-          </div>
+      {/* ========================================================================= */}
+      {/* 3-Column Desk Architecture (Identical to Padavali & Chhand Sanctuary)      */}
+      {/* Left Column: Sarga/Chapter Rail | Center: Main Canvas | Right: Commentary */}
+      {/* ========================================================================= */}
+      <div className="w-full flex flex-col md:flex-row items-start gap-4 sm:gap-6 transition-all duration-300">
 
-          {/* Section Filter Pills (Kandas / Skandhas) */}
-          {sectionsList.length > 1 && (
-            <div className="mb-3 flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1">
+        {/* ========================================================================= */}
+        {/* Left Column: Sarga/Chapter Catalog Desk (Desktop: hidden md:block)         */}
+        {/* ========================================================================= */}
+        <aside
+          className={`hidden md:block sticky top-24 shrink-0 overflow-hidden rounded-[28px] sm:rounded-[32px] border border-amber-900/10 bg-[#FAF8F5] shadow-xs transition-[width,min-width,max-width] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[width] ${
+            isLeftSidebarCollapsed
+              ? 'w-14 min-w-[56px] max-w-[56px]'
+              : 'w-72 lg:w-80 min-w-[288px] lg:min-w-[320px] max-w-[320px]'
+          }`}
+        >
+          <div className="relative w-full h-full min-h-[520px] max-h-[82vh] flex flex-col">
+            {/* Shrunk / Compact Icon Rail Layer */}
+            <div
+              className={`absolute inset-0 flex flex-col items-center p-2.5 transition-all duration-300 ease-out z-10 ${
+                isLeftSidebarCollapsed
+                  ? 'opacity-100 pointer-events-auto delay-150'
+                  : 'opacity-0 pointer-events-none'
+              }`}
+            >
+              {/* Expand Toggle */}
               <button
                 type="button"
-                onClick={() => setTocFilterSection('all')}
-                className={`px-2.5 py-1 rounded-[8px] text-[11px] font-semibold whitespace-nowrap cursor-pointer transition-colors ${
-                  tocFilterSection === 'all'
-                    ? 'bg-[#FEF08A] text-[#78350F] font-bold'
-                    : 'bg-neutral-100 hover:bg-neutral-200 text-neutral-600'
-                }`}
+                onClick={handleToggleLeftSidebar}
+                className="w-9 h-9 rounded-[8px] hover:bg-black/5 flex items-center justify-center text-[#CA8A04] transition-colors cursor-pointer"
+                title="Expand Sarga Index (सर्ग/अध्याय सूची खोलें)"
+                aria-label="Expand Sarga Index"
               >
-                समस्त
+                <PanelLeftOpen className="w-4 h-4 text-[#CA8A04]" />
               </button>
-              {sectionsList.map((sec) => (
-                <button
-                  key={sec}
-                  type="button"
-                  onClick={() => setTocFilterSection(sec)}
-                  className={`px-2.5 py-1 rounded-[8px] text-[11px] font-semibold whitespace-nowrap cursor-pointer transition-colors ${
-                    tocFilterSection === sec
-                      ? 'bg-[#FEF08A] text-[#78350F] font-bold'
-                      : 'bg-neutral-100 hover:bg-neutral-200 text-neutral-600'
-                  }`}
-                >
-                  {sec}
-                </button>
-              ))}
-            </div>
-          )}
 
-          {/* Chapters Scroller */}
-          {loadingIndex ? (
-            <div className="py-12 flex flex-col items-center justify-center text-center space-y-2">
-              <IOSSpinner size="sm" theme="amber" />
-              <p className="font-serif text-xs text-neutral-400">अनुक्रमणिका संकलित हो रही है...</p>
+              <div className="w-6 h-px bg-amber-900/10 my-2" />
+
+              {/* Shrunk Quick Search Icon - reopens with search */}
+              <button
+                type="button"
+                onClick={() => setIsLeftSidebarCollapsed(false)}
+                className="w-9 h-9 rounded-[8px] hover:bg-black/5 flex items-center justify-center text-[#64748B] hover:text-[#0F172A] transition-colors cursor-pointer"
+                title="Search Chapters (अध्याय खोजें)"
+              >
+                <Search className="w-4 h-4" />
+              </button>
+
+              <div className="w-6 h-px bg-amber-900/10 my-2" />
+
+              {/* Vertical Scrollable Numbered Shloka Badges Rail */}
+              <div className="flex-1 w-full space-y-1.5 overflow-y-auto no-scrollbar py-1">
+                {chapterPadas.map((pad, idx) => {
+                  const isSelected = activeVerseId === pad.id;
+                  return (
+                    <button
+                      key={pad.id}
+                      type="button"
+                      onClick={() => {
+                        setActiveVerseId(pad.id);
+                        const el = document.getElementById(`shloka-${pad.id}`);
+                        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                      }}
+                      title={`श्लोक ${idx + 1}: ${pad.titleDevanagari}`}
+                      className={`w-9 h-9 mx-auto rounded-[8px] flex items-center justify-center text-xs font-mono transition-colors cursor-pointer ${
+                        isSelected
+                          ? 'bg-[#FEF08A] text-[#78350F] font-bold shadow-xs'
+                          : 'text-[#64748B] hover:bg-black/5'
+                      }`}
+                    >
+                      #{idx + 1}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
-          ) : (
-            <div className="max-h-[60vh] overflow-y-auto space-y-1.5 pr-1">
-              {filteredChapters.map((ch) => {
-                const isSelected = ch.id === selectedChapterId;
-                return (
-                  <button
-                    key={ch.id}
-                    type="button"
-                    onClick={() => handleSelectChapter(ch.id)}
-                    className={`w-full text-left p-2.5 rounded-[8px] text-xs font-semibold flex items-center justify-between transition-colors cursor-pointer select-none ${
-                      isSelected
-                        ? 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
-                        : 'hover:bg-[#FAF8F5] text-neutral-700'
-                    }`}
-                  >
-                    <div className="min-w-0 pr-2">
-                      <div className="truncate font-serif">{ch.name}</div>
-                      <div className="text-[10px] text-neutral-400 font-mono mt-0.5">
-                        {ch.section}
-                      </div>
-                    </div>
-                    <span className="text-[10px] font-mono shrink-0 px-1.5 py-0.5 rounded-[4px] bg-black/5">
-                      {ch.verseCount} श्लोक
+
+            {/* Full Expanded Left Sidebar Layer */}
+            <div
+              className={`w-72 lg:w-80 flex flex-col h-full max-h-[82vh] transition-all duration-300 ease-out ${
+                isLeftSidebarCollapsed
+                  ? 'opacity-0 pointer-events-none'
+                  : 'opacity-100 pointer-events-auto delay-100'
+              }`}
+            >
+              {/* Header with Active Scripture Name, Counter & Shrink Button */}
+              <div className="p-4 border-b border-amber-900/10 space-y-2.5">
+                <div className="flex items-center justify-between text-xs">
+                  <div className="flex items-center gap-1.5 min-w-0">
+                    <BookOpen className="w-3.5 h-3.5 text-amber-700 shrink-0" />
+                    <span className="font-serif font-bold text-neutral-900 truncate">
+                      {currentEpicConfig.name}
                     </span>
-                  </button>
-                );
-              })}
+                  </div>
+                  <div className="flex items-center gap-1.5 shrink-0">
+                    <span className="text-[11px] font-mono font-semibold px-2 py-0.5 rounded-full bg-white text-[#CA8A04] border border-amber-900/10">
+                      {epicIndex?.totalChapters || 0} सर्ग
+                    </span>
+                    <button
+                      type="button"
+                      onClick={handleToggleLeftSidebar}
+                      className="w-6 h-6 rounded-[6px] hover:bg-black/5 flex items-center justify-center text-[#64748B] hover:text-[#0F172A] transition-colors cursor-pointer"
+                      title="Shrink Sidebar (सूची समेटें)"
+                      aria-label="Shrink Sarga Index Sidebar"
+                    >
+                      <PanelLeftClose className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                </div>
+
+                {/* Instant Sarga / Chapter Search Input */}
+                <div className="relative">
+                  <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400" />
+                  <input
+                    type="text"
+                    value={chapterSearchQuery}
+                    onChange={(e) => setChapterSearchQuery(e.target.value)}
+                    placeholder="सर्ग / अध्याय खोजें..."
+                    className="w-full pl-8 pr-3 py-1.5 text-xs rounded-[8px] bg-white border border-neutral-200/80 focus:border-amber-400 focus:outline-none text-neutral-800 placeholder-neutral-400"
+                  />
+                  {chapterSearchQuery && (
+                    <button
+                      type="button"
+                      onClick={() => setChapterSearchQuery('')}
+                      className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[10px] text-neutral-400 hover:text-neutral-700"
+                    >
+                      ✕
+                    </button>
+                  )}
+                </div>
+
+                {/* Section Filter Pills (Kandas / Skandhas) */}
+                {sectionsList.length > 1 && (
+                  <div className="flex items-center gap-1 overflow-x-auto no-scrollbar pt-1">
+                    <button
+                      type="button"
+                      onClick={() => setTocFilterSection('all')}
+                      className={`px-2 py-0.5 rounded-[6px] text-[10px] font-semibold whitespace-nowrap cursor-pointer transition-colors ${
+                        tocFilterSection === 'all'
+                          ? 'bg-[#FEF08A] text-[#78350F] font-bold'
+                          : 'bg-white hover:bg-neutral-100 text-neutral-600 border border-neutral-200/60'
+                      }`}
+                    >
+                      समस्त
+                    </button>
+                    {sectionsList.map((sec) => (
+                      <button
+                        key={sec}
+                        type="button"
+                        onClick={() => setTocFilterSection(sec)}
+                        className={`px-2 py-0.5 rounded-[6px] text-[10px] font-semibold whitespace-nowrap cursor-pointer transition-colors ${
+                          tocFilterSection === sec
+                            ? 'bg-[#FEF08A] text-[#78350F] font-bold'
+                            : 'bg-white hover:bg-neutral-100 text-neutral-600 border border-neutral-200/60'
+                        }`}
+                      >
+                        {sec}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Scrollable Chapters List */}
+              <div className="flex-1 overflow-y-auto p-2 space-y-1">
+                {loadingIndex ? (
+                  <div className="py-12 flex flex-col items-center justify-center text-center space-y-2">
+                    <IOSSpinner size="sm" theme="amber" />
+                    <p className="font-serif text-xs text-neutral-400">अनुक्रमणिका संकलित हो रही है...</p>
+                  </div>
+                ) : (
+                  filteredChapters.map((ch) => {
+                    const isSelected = ch.id === selectedChapterId;
+                    return (
+                      <button
+                        key={ch.id}
+                        type="button"
+                        onClick={() => handleSelectChapter(ch.id)}
+                        className={`w-full text-left p-2.5 rounded-[8px] text-xs font-semibold flex items-center justify-between transition-colors cursor-pointer select-none ${
+                          isSelected
+                            ? 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
+                            : 'hover:bg-white text-neutral-700'
+                        }`}
+                      >
+                        <div className="min-w-0 pr-2">
+                          <div className="truncate font-serif">{ch.name}</div>
+                          <div className="text-[10px] text-neutral-400 font-mono mt-0.5">
+                            {ch.section}
+                          </div>
+                        </div>
+                        <span className="text-[10px] font-mono shrink-0 px-1.5 py-0.5 rounded-[4px] bg-black/5">
+                          {ch.verseCount} श्लोक
+                        </span>
+                      </button>
+                    );
+                  })
+                )}
+              </div>
             </div>
-          )}
+          </div>
         </aside>
 
-        {/* Right Column: Piece-by-Piece Sacred Reading Canvas */}
+        {/* ========================================================================= */}
+        {/* Center Column: Continuous Sacred Shloka Reading Stream                    */}
+        {/* ========================================================================= */}
         <article
           id="epic-canvas-top"
-          className="flex-1 min-w-0 w-full bg-white rounded-[28px] sm:rounded-[32px] p-4 sm:p-6 border border-neutral-200/80 shadow-xs"
+          className={`flex-1 min-w-0 w-full bg-white rounded-[28px] sm:rounded-[32px] p-5 sm:p-8 border border-neutral-200/80 shadow-xs transition-all duration-300 ${
+            isLeftSidebarCollapsed && isRightSidebarCollapsed ? 'max-w-4xl mx-auto' : ''
+          }`}
         >
           {/* Chapter Header Bar */}
           <div className="pb-5 mb-6 border-b border-neutral-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
@@ -394,7 +571,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
               </p>
             </div>
 
-            {/* Quick Sizing & Chapter Selector Pill */}
+            {/* Quick Sizing Control Pill */}
             <div className="flex items-center gap-2 self-start sm:self-auto">
               <div className="flex items-center bg-neutral-100 p-0.5 rounded-full border border-neutral-200/80 text-[11px] font-mono font-semibold">
                 <button
@@ -439,11 +616,18 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                 const isBookmarked = bookmarkedIds.includes(pad.id);
                 const isPurportOpen = activePurportId === pad.id;
                 const isCopied = copiedSlug === (pad.slug || pad.id);
+                const isActive = activeVerseId === pad.id;
 
                 return (
                   <div
                     key={pad.id}
-                    className="p-4 sm:p-5 rounded-[16px] sm:rounded-[20px] bg-[#FAF8F5] border border-amber-900/10 space-y-3"
+                    id={`shloka-${pad.id}`}
+                    onClick={() => setActiveVerseId(pad.id)}
+                    className={`p-4 sm:p-5 rounded-[16px] sm:rounded-[20px] border transition-colors duration-200 space-y-3 cursor-pointer ${
+                      isActive
+                        ? 'bg-[#FAF8F5] border-amber-300 ring-1 ring-amber-300/60 shadow-xs'
+                        : 'bg-[#FAF8F5]/60 hover:bg-[#FAF8F5] border-amber-900/10'
+                    }`}
                   >
                     {/* Verse Meta Header */}
                     <div className="flex items-center justify-between pb-2 border-b border-amber-900/10 text-xs">
@@ -457,7 +641,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                       </div>
 
                       {/* Utility Action Buttons */}
-                      <div className="flex items-center gap-1.5">
+                      <div className="flex items-center gap-1.5" onClick={(e) => e.stopPropagation()}>
                         <button
                           type="button"
                           onClick={() => handleCopyPad(pad)}
@@ -527,7 +711,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
               <button
                 type="button"
                 onClick={() => handleSelectChapter(prevChapter.id)}
-                className="px-4 py-2.5 rounded-[12px] bg-neutral-100 hover:bg-neutral-200 text-xs font-bold text-neutral-800 flex items-center gap-2 cursor-pointer transition-colors shadow-2xs"
+                className="px-4 py-2.5 rounded-[8px] bg-neutral-100 hover:bg-neutral-200 text-xs font-bold text-neutral-800 flex items-center gap-2 cursor-pointer transition-colors shadow-2xs"
               >
                 <ChevronLeft className="w-4 h-4" />
                 <span>पिछला: {prevChapter.name}</span>
@@ -538,7 +722,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
               <button
                 type="button"
                 onClick={() => handleSelectChapter(nextChapter.id)}
-                className="px-5 py-2.5 rounded-[12px] bg-[#FEF08A] hover:bg-amber-300 text-xs font-bold text-[#78350F] flex items-center gap-2 cursor-pointer transition-colors shadow-2xs self-end sm:self-auto"
+                className="px-5 py-2.5 rounded-[8px] bg-[#FEF08A] hover:bg-amber-300 text-xs font-bold text-[#78350F] flex items-center gap-2 cursor-pointer transition-colors shadow-2xs self-end sm:self-auto"
               >
                 <span>अगला सर्ग/अध्याय: {nextChapter.name}</span>
                 <ChevronRight className="w-4 h-4" />
@@ -546,6 +730,154 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
             )}
           </div>
         </article>
+
+        {/* ========================================================================= */}
+        {/* Right Column: Dedicated Epic Commentary Desk (Desktop: hidden xl:block)   */}
+        {/* ========================================================================= */}
+        <aside
+          className={`hidden xl:block sticky top-24 shrink-0 overflow-hidden rounded-[28px] sm:rounded-[32px] border border-amber-900/10 bg-[#FAF8F5] shadow-xs transition-[width,min-width,max-width] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[width] ${
+            isRightSidebarCollapsed
+              ? 'w-14 min-w-[56px] max-w-[56px]'
+              : 'w-72 lg:w-80 min-w-[288px] lg:min-w-[320px] max-w-[320px]'
+          }`}
+        >
+          <div className="relative w-full h-full min-h-[520px] flex flex-col">
+            {/* Shrunk / Compact Commentary Rail Layer */}
+            <div
+              className={`absolute inset-0 flex flex-col items-center p-2.5 transition-all duration-300 ease-out z-10 ${
+                isRightSidebarCollapsed
+                  ? 'opacity-100 pointer-events-auto delay-150'
+                  : 'opacity-0 pointer-events-none'
+              }`}
+            >
+              <button
+                type="button"
+                onClick={handleToggleRightSidebar}
+                className="w-9 h-9 rounded-[8px] hover:bg-black/5 flex items-center justify-center text-[#CA8A04] transition-colors cursor-pointer"
+                title="Expand Commentary (भावार्थ खोलें)"
+                aria-label="Expand Commentary Sidebar"
+              >
+                <PanelRightOpen className="w-4 h-4 text-[#CA8A04]" />
+              </button>
+
+              <div className="w-6 h-px bg-amber-900/10 my-2" />
+
+              <button
+                type="button"
+                onClick={handleToggleRightSidebar}
+                className="w-9 h-9 rounded-[8px] hover:bg-black/5 flex items-center justify-center text-[#CA8A04] transition-colors cursor-pointer"
+                title="Sanatan Purport & Commentary (महाग्रंथ टीका)"
+              >
+                <Feather className="w-4 h-4" />
+              </button>
+
+              <div className="w-6 h-px bg-amber-900/10 my-2" />
+
+              {/* Vertical Sacred Accent Tag */}
+              <span
+                className="text-[10.5px] font-mono font-bold tracking-widest text-[#B45309] select-none [writing-mode:vertical-lr] rotate-180 py-3 opacity-90"
+              >
+                महाग्रंथ टीका
+              </span>
+            </div>
+
+            {/* Full Expanded Right Sidebar Layer */}
+            <div
+              className={`w-72 lg:w-80 flex flex-col transition-all duration-300 ease-out p-4 space-y-4 ${
+                isRightSidebarCollapsed
+                  ? 'opacity-0 pointer-events-none'
+                  : 'opacity-100 pointer-events-auto delay-100'
+              }`}
+            >
+              {/* Header */}
+              <div className="flex items-center justify-between pb-3 border-b border-amber-900/10">
+                <div className="flex items-center gap-2">
+                  <div className="w-7 h-7 rounded-[6px] bg-[#FEF08A] flex items-center justify-center text-[#78350F]">
+                    <Feather className="w-3.5 h-3.5" />
+                  </div>
+                  <div>
+                    <h3 className="font-serif font-bold text-sm text-neutral-900">
+                      महाग्रंथ भावार्थ व टीका
+                    </h3>
+                    <span className="text-[10px] text-amber-800 font-mono font-semibold">
+                      Sanatan Purport & Guidance
+                    </span>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={handleToggleRightSidebar}
+                  className="w-6 h-6 rounded-[6px] hover:bg-black/5 flex items-center justify-center text-[#64748B] hover:text-[#0F172A] transition-colors cursor-pointer"
+                  title="Shrink Commentary (समेटें)"
+                  aria-label="Shrink Commentary Sidebar"
+                >
+                  <PanelRightClose className="w-3.5 h-3.5" />
+                </button>
+              </div>
+
+              {/* Active Shloka Indicator Pill */}
+              {activePad && (
+                <div className="bg-white rounded-[10px] p-3 border border-amber-900/10 shadow-2xs space-y-1.5">
+                  <div className="flex items-center justify-between text-[11px]">
+                    <span className="font-mono font-bold text-[#78350F] bg-[#FEF08A] px-2 py-0.5 rounded-[4px]">
+                      श्लोक {formatDevanagariNumerals(activePad.index || 1)}
+                    </span>
+                    <span className="font-serif text-neutral-500 truncate max-w-[150px]">
+                      {currentChapter?.name}
+                    </span>
+                  </div>
+                  <h4 className="font-serif font-bold text-xs text-neutral-900 line-clamp-2">
+                    {activePad.titleDevanagari}
+                  </h4>
+                </div>
+              )}
+
+              {/* Divine Summary / Purport Card */}
+              <div className="bg-[#FEF9C3]/75 border border-amber-200/80 rounded-[12px] p-3.5 text-xs text-[#451A03] leading-relaxed shadow-2xs space-y-2">
+                <div className="flex items-center gap-1.5 text-neutral-900 font-serif font-bold text-xs">
+                  <Sparkles className="w-3.5 h-3.5 text-[#CA8A04]" />
+                  <span>दिव्य भाव संक्षेप एवं शास्त्रीय मर्म</span>
+                </div>
+                <p className="text-xs leading-relaxed text-[#451A03] font-serif font-normal">
+                  {activePad?.verses?.[0]?.linesEnglish?.join(' ') ||
+                    activePad?.verses?.[0]?.linesTransliteration?.join(' ') ||
+                    `${currentEpicConfig.name} का यह पावन श्लोक प्रभु के दिव्य स्वरूप, धर्म एवं आत्म-कल्याण का पवित्र सोपान है।`}
+                </p>
+              </div>
+
+              {/* Quick Jump Grid for Current Chapter Shlokas */}
+              <div className="space-y-1.5 pt-2 border-t border-amber-900/10">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-800 block">
+                  वर्तमान सर्ग के श्लोक ({chapterPadas.length})
+                </span>
+                <div className="grid grid-cols-5 gap-1.5 max-h-[30vh] overflow-y-auto no-scrollbar pt-1">
+                  {chapterPadas.map((pad, idx) => {
+                    const isSelected = activeVerseId === pad.id;
+                    return (
+                      <button
+                        key={pad.id}
+                        type="button"
+                        onClick={() => {
+                          setActiveVerseId(pad.id);
+                          const el = document.getElementById(`shloka-${pad.id}`);
+                          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }}
+                        className={`h-7 rounded-[6px] text-[11px] font-mono font-semibold transition-colors cursor-pointer flex items-center justify-center ${
+                          isSelected
+                            ? 'bg-[#FEF08A] text-[#78350F] font-bold shadow-2xs'
+                            : 'bg-white hover:bg-neutral-100 text-neutral-600 border border-neutral-200/60'
+                        }`}
+                      >
+                        {idx + 1}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+
       </div>
     </div>
   );

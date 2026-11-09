@@ -41,9 +41,21 @@ export function splitEpicChunks() {
     const targetEpicDir = path.resolve(targetEpicsBaseDir, epic.id);
     fs.mkdirSync(targetEpicDir, { recursive: true });
 
+    // Filter out mismatched non-epic verses if any (e.g. scraped brajrasik articles with keyword 'भागवत')
+    const validData = epicData.filter((pad) => {
+      if (epic.id === 'shrimad-bhagavatam') {
+        const auth = pad.author || '';
+        const title = pad.titleDevanagari || '';
+        if (auth.includes('भगवत रसिक') || auth.includes('विहारीवल्लभ') || title.includes('भगवत रसिक')) {
+          return false;
+        }
+      }
+      return true;
+    });
+
     // Group padas by chapterId (or chapterName)
     const chapterMap = new Map();
-    epicData.forEach((pad, idx) => {
+    validData.forEach((pad, idx) => {
       const chId = pad.chapterId || `chapter-${idx + 1}`;
       const chName = pad.chapterName || `अध्याय ${idx + 1}`;
       if (!chapterMap.has(chId)) {
@@ -92,7 +104,7 @@ export function splitEpicChunks() {
       name: epic.name,
       author: epic.author,
       description: epic.description,
-      totalVerses: epicData.length,
+      totalVerses: validData.length,
       totalChapters: chaptersIndex.length,
       chapters: chaptersIndex
     };
@@ -103,14 +115,14 @@ export function splitEpicChunks() {
       'utf-8'
     );
 
-    console.log(`  ✓ ${epic.name} (${epic.id}): Split into ${chaptersIndex.length} on-demand chapter chunks (${epicData.length} total verses)`);
+    console.log(`  ✓ ${epic.name} (${epic.id}): Split into ${chaptersIndex.length} on-demand chapter chunks (${validData.length} total verses)`);
 
     manifestEpics.push({
       id: epic.id,
       name: epic.name,
       author: epic.author,
       description: epic.description,
-      totalVerses: epicData.length,
+      totalVerses: validData.length,
       totalChapters: chaptersIndex.length,
       indexPath: `/data/epics/${epic.id}/index.json`
     });
@@ -133,3 +145,4 @@ export function splitEpicChunks() {
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   splitEpicChunks();
 }
+

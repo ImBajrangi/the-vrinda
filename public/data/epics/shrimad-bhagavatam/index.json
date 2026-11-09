@@ -3,14 +3,14 @@
   "name": "श्रीमद् भागवत महापुराण",
   "author": "महर्षि वेदव्यास",
   "description": "परमहंस संहिता, श्रीकृष्ण लीलामृत एवं अमलरस की सर्वोच्च भागवती ज्ञानधारा",
-  "totalVerses": 12428,
+  "totalVerses": 12301,
   "totalChapters": 334,
   "chapters": [
     {
       "id": "skandh-1-adhyay-1",
       "name": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 1",
       "section": "प्रथम स्कन्ध (सृष्टि लीला)",
-      "verseCount": 186,
+      "verseCount": 59,
       "file": "ch-001-skandh-1-adhyay-1.json",
       "firstPadId": "shrimad-bhagwat-skandh-1-adhyay-1-shlok-1",
       "firstPadSlug": "shrimad-bhagwat-skandh-1-adhyay-1-shlok-1"

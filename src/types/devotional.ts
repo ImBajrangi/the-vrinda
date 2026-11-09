@@ -14,6 +14,7 @@ export interface SacredPad {
     stanzaNumber: number;
     linesDevanagari: string[];
     linesTransliteration?: string[];
+    linesEnglish?: string[];
   }>;
   audioUrl?: string;
   isStub?: boolean;
