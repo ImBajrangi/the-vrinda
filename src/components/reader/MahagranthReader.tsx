@@ -7,7 +7,6 @@ import {
   Bookmark,
   Copy,
   Check,
-  ArrowRight,
   PanelLeftOpen,
   PanelLeftClose,
   PanelRightOpen,
@@ -116,7 +115,6 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
   initialGranthaId = 'valmiki-ramayana',
   initialChapterId,
   onSelectGrantha,
-  onSwitchToPadavali,
 }) => {
   const [selectedGranthaId, setSelectedGranthaId] = useState<string>(initialGranthaId);
   const [loadingGranthaId, setLoadingGranthaId] = useState<string | null>(null);
@@ -559,16 +557,6 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
               {currentEpicConfig.description} • प्रणेता: <strong className="text-neutral-800">{currentEpicConfig.author}</strong>
             </p>
           </div>
-
-          {/* Action Button: Jump to Rasik Padavali & Chhand */}
-          <button
-            type="button"
-            onClick={onSwitchToPadavali}
-            className="px-4 py-2 rounded-full bg-[#FAF8F5] hover:bg-[#F3EFE6] border border-amber-900/10 text-xs font-semibold text-amber-950 flex items-center gap-2 cursor-pointer transition-colors shadow-2xs self-start md:self-auto shrink-0"
-          >
-            <span>रसिक पद्यावली व छंद देखें</span>
-            <ArrowRight className="w-3.5 h-3.5 text-amber-700" />
-          </button>
         </div>
 
         {/* 5 Monumental Epics Segmented Pothi Grid */}
