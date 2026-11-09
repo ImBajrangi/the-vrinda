@@ -78,10 +78,19 @@ export default defineConfig(({ isSsrBuild }) => ({
       ? {}
       : {
           output: {
-            manualChunks: {
-              'vendor-react': ['react', 'react-dom'],
-              'vendor-icons': ['lucide-react'],
-              'vendor-data': ['@supabase/supabase-js', 'idb-keyval'],
+            manualChunks(id) {
+              if (id.includes('node_modules/react') || id.includes('node_modules/react-dom')) {
+                return 'vendor-react';
+              }
+              if (id.includes('node_modules/lucide-react')) {
+                return 'vendor-icons';
+              }
+              if (id.includes('node_modules/@supabase') || id.includes('node_modules/idb-keyval')) {
+                return 'vendor-data';
+              }
+              if (id.includes('src/data/canonicalGranthas.json') || id.includes('src/data/canonicalSaints.json')) {
+                return 'data-canonical';
+              }
             },
           },
         },

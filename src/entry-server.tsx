@@ -5,6 +5,7 @@ import { NavTab } from './components/common/FloatingNavbar';
 import { SacredDatabase } from './services/sacredDatabase';
 import { generateSEOMetadata, SEOMetadataResult, SEOConfig } from './services/seoService';
 import canonicalPadasData from './data/canonicalPadas.json';
+import chapterSnippetsData from './data/chapterSnippets.json';
 import { SacredPad } from './types/devotional';
 import { PadavaliReader } from './components/reader/PadavaliReader';
 import { MahagranthReader } from './components/reader/MahagranthReader';
@@ -142,10 +143,16 @@ export function render(url: string = '/'): RenderResult {
   } else if (granthaQuery && epicsMeta[granthaQuery]) {
     const e = epicsMeta[granthaQuery];
     if (chapterQuery) {
+      const snippetKey = `${granthaQuery}:${chapterQuery}`;
+      const snippet = (chapterSnippetsData as Record<string, any>)[snippetKey];
+      const chName = snippet ? snippet.chapterName : chapterQuery;
+      const snippetVerse = snippet?.openingVerse ? `«${snippet.openingVerse}» ` : '';
+      const verseCountText = snippet?.verseCount ? ` (${snippet.verseCount} श्लोक)` : '';
+
       seoConfig = {
         tab: 'granthas',
-        title: `${e.name} (${chapterQuery}) • प्रणेता: ${e.author} | वृन्दोपनिषद् 2.0`,
-        description: `${e.name} का पावन अध्याय ${chapterQuery}। मूल श्लोक, अवधी/संस्कृत पाठ व पारायण। वृन्दोपनिषद् 2.0`,
+        title: `${chName} (${e.name}) • प्रणेता: ${e.author} | वृन्दोपनिषद् 2.0`,
+        description: `${snippetVerse}${e.name} का पावन अध्याय ${chName}${verseCountText}। प्रणेता: ${e.author}। वृन्दोपनिषद् 2.0`,
         canonicalUrl: `https://path.vrindopnishad.in/?tab=granthas&grantha=${encodeURIComponent(granthaQuery)}&chapter=${encodeURIComponent(chapterQuery)}`,
         grantha: {
           id: granthaQuery,
@@ -156,7 +163,8 @@ export function render(url: string = '/'): RenderResult {
         },
         chapter: {
           id: chapterQuery,
-          name: `${e.name} - ${chapterQuery}`,
+          name: chName,
+          verseCount: snippet?.verseCount || undefined,
           granthaId: granthaQuery,
           granthaName: e.name,
           author: e.author,

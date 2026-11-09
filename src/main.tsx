@@ -6,8 +6,17 @@ import './index.css';
 const rootElement = document.getElementById('root');
 
 if (rootElement) {
-  // Seamless hydration support: if pre-rendered HTML exists from SSR/SSG, hydrate it; otherwise mount with createRoot
-  if (rootElement.hasChildNodes()) {
+  // Seamless hydration architecture:
+  // 1. If edge-injected dynamic fallback content is detected, mount with createRoot to avoid hydration mismatches
+  // 2. If full static SSR markup is present, hydrate cleanly with hydrateRoot
+  // 3. Otherwise mount with createRoot
+  if (rootElement.querySelector('.sanctuary-ssr-content')) {
+    createRoot(rootElement).render(
+      <StrictMode>
+        <App />
+      </StrictMode>
+    );
+  } else if (rootElement.hasChildNodes()) {
     hydrateRoot(
       rootElement,
       <StrictMode>

@@ -1,8 +1,8 @@
 /**
  * Vrindopnisad 2.0 - Cloudflare Pages Functions Edge Interceptor
- * Dynamically handles edge SEO, multi-domain canonical ownership, pre-rendered static HTML routing,
- * initial semantic HTML content injection into #root, dynamic JSON-LD Schema.org graphs,
- * and staging noindex protection for the-vrinda.pages.dev.
+ * Dynamically handles edge SEO, 301 cross-domain redirects, multi-domain canonical ownership,
+ * pre-rendered static HTML routing for all 29 collections, response-level content injection for all 781 chapters,
+ * dynamic JSON-LD Schema.org graphs, and staging noindex protection for the-vrinda.pages.dev.
  */
 
 interface Env {}
@@ -130,6 +130,31 @@ const KNOWN_PADAS_META: Record<string, { title: string; author: string; desc: st
   },
 };
 
+// Edge chapter snippet isolate cache
+let cachedSnippets: Record<string, {
+  granthaId: string;
+  granthaName: string;
+  author: string;
+  chapterId: string;
+  chapterName: string;
+  section?: string;
+  verseCount: number;
+  openingVerse: string;
+}> | null = null;
+
+async function getChapterSnippet(request: Request, granthaId: string, chapterId: string) {
+  if (!cachedSnippets) {
+    try {
+      const snippetsUrl = new URL('/data/epics/chapter-snippets.json', request.url);
+      const res = await fetch(snippetsUrl.toString());
+      if (res.ok) {
+        cachedSnippets = await res.json();
+      }
+    } catch {}
+  }
+  return cachedSnippets?.[`${granthaId}:${chapterId}`] || null;
+}
+
 function formatSlug(slug: string): string {
   return slug
     .split('-')
@@ -185,7 +210,14 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   const isPathDomain = host === 'path.vrindopnishad.in' || host.startsWith('path.');
   const pathname = url.pathname.replace(/\/+$/, '') || '/';
 
-  // 1. Dynamic Robots.txt routing per domain (bhav vs path vs staging)
+  // 1. Trailing slash normalization: 301 redirect /path/ to /path
+  if (url.pathname.length > 1 && url.pathname.endsWith('/')) {
+    const cleanUrl = new URL(request.url);
+    cleanUrl.pathname = url.pathname.replace(/\/+$/, '');
+    return Response.redirect(cleanUrl.toString(), 301);
+  }
+
+  // 2. Dynamic Robots.txt routing per domain (bhav vs path vs staging)
   if (pathname === '/robots.txt') {
     const sitemapUrl = isPathDomain
       ? 'https://path.vrindopnishad.in/sitemap.xml'
@@ -212,7 +244,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     });
   }
 
-  // 2. Intelligent Sitemap Routing for path.vrindopnishad.in
+  // 3. Intelligent Sitemap Routing for path.vrindopnishad.in
   if (isPathDomain) {
     if (pathname === '/sitemap.xml') {
       const redirectedUrl = new URL('/sitemap-path.xml', request.url);
@@ -228,7 +260,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     }
   }
 
-  // Fast-path for non-HTML assets
+  // Fast-path for non-HTML static assets
   const staticExtensions = [
     '.js', '.css', '.png', '.webp', '.jpg', '.jpeg', '.gif', '.svg',
     '.ico', '.xml', '.gz', '.json', '.webmanifest', '.woff', '.woff2', '.ttf',
@@ -258,6 +290,31 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   const qAuthor = url.searchParams.get('author');
   const qChapter = url.searchParams.get('chapter');
 
+  // 4. Cross-Domain 301 Permanent Redirects for duplicated URLs
+  if (isPathDomain && !isStaging) {
+    // path.vrindopnishad.in owns ONLY Mahagranth Parayana (epics & chapters)
+    if (qTab && qTab !== 'granthas') {
+      return Response.redirect(`https://bhav.vrindopnishad.in${url.search}`, 301);
+    }
+    if (qPad || qAuthor) {
+      return Response.redirect(`https://bhav.vrindopnishad.in${url.search}`, 301);
+    }
+    if (pathname === '/padavali' || pathname.startsWith('/pad/')) {
+      return Response.redirect(`https://bhav.vrindopnishad.in${url.pathname}${url.search}`, 301);
+    }
+    if (pathname === '/feed' || pathname === '/milestones' || pathname === '/smaran') {
+      return Response.redirect(`https://bhav.vrindopnishad.in${url.pathname}${url.search}`, 301);
+    }
+  } else if (!isPathDomain && !isStaging) {
+    // bhav.vrindopnishad.in redirects direct deep epic requests to path.vrindopnishad.in
+    if (pathname === '/granthas') {
+      return Response.redirect('https://path.vrindopnishad.in/?tab=granthas', 301);
+    }
+    if (qGrantha && EPICS_META[qGrantha]) {
+      return Response.redirect(`https://path.vrindopnishad.in${url.search}`, 301);
+    }
+  }
+
   let activeTab = isPathDomain ? 'granthas' : 'smaran';
   if (qTab && ['smaran', 'padavali', 'granthas', 'feed', 'milestones'].includes(qTab)) {
     activeTab = qTab;
@@ -279,43 +336,46 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     activeTab = 'milestones';
   }
 
-  // Domain Canonical Ownership Strategy (Mission 2):
-  // path.vrindopnishad.in owns Sanatan Mahagranth Parayana (epics & chapters)
-  // bhav.vrindopnishad.in owns Sacred Ras Padavali, Home Sanctuary, Darshan Feed & Milestones
+  // Canonical base domain
   const isGranthasParayana = activeTab === 'granthas' || (qGrantha && EPICS_META[qGrantha]);
   const canonicalBaseDomain = isGranthasParayana ? 'https://path.vrindopnishad.in' : 'https://bhav.vrindopnishad.in';
 
-  // 3. Map requests to pre-rendered static HTML files where available
+  // 5. Pre-rendered Static HTML File Mapping
   let staticFileToFetch: string | null = null;
   if (pathname === '/' || pathname === '/granthas' || pathname === '/padavali' || pathname === '/feed' || pathname === '/milestones' || pathname.startsWith('/pad/')) {
-    if (qGrantha === 'valmiki-ramayana' && !qChapter) staticFileToFetch = '/grantha-valmiki-ramayana.html';
-    else if (qGrantha === 'shrimad-bhagavatam' && !qChapter) staticFileToFetch = '/grantha-shrimad-bhagavatam.html';
-    else if (qGrantha === 'ramcharitmanas' && !qChapter) staticFileToFetch = '/grantha-ramcharitmanas.html';
-    else if (qGrantha === 'ramcharitmanas' && qChapter === 'kanda-01') staticFileToFetch = '/grantha-ramcharitmanas-kanda-01.html';
-    else if (qGrantha === 'bhagavad-gita' && !qChapter) staticFileToFetch = '/grantha-bhagavad-gita.html';
-    else if (qGrantha === 'bhagavad-gita' && qChapter === 'chapter-01') staticFileToFetch = '/grantha-bhagavad-gita-chapter-01.html';
-    else if (qGrantha === 'bhagavad-gita' && qChapter === 'chapter-02') staticFileToFetch = '/grantha-bhagavad-gita-chapter-02.html';
-    else if (qGrantha === 'durga-saptashati' && !qChapter) staticFileToFetch = '/grantha-durga-saptashati.html';
-    else if (qGrantha === 'hit-chaurasi') staticFileToFetch = '/grantha-hit-chaurasi.html';
-    else if (qGrantha === 'kelimal') staticFileToFetch = '/grantha-kelimal.html';
-    else if (qGrantha === 'radha-sudha-nidhi') staticFileToFetch = '/grantha-radha-sudha-nidhi.html';
-    else if (qGrantha === 'sur-sagar') staticFileToFetch = '/grantha-sur-sagar.html';
-    else if (qGrantha === 'vyas-vani') staticFileToFetch = '/grantha-vyas-vani.html';
-    else if (qGrantha === 'meera-padavali') staticFileToFetch = '/grantha-meera-padavali.html';
-    else if (qGrantha === 'raskhan-padavali') staticFileToFetch = '/grantha-raskhan-padavali.html';
-    else if (qAuthor === 'shri-hit-harivansh-mahaprabhu') staticFileToFetch = '/saint-shri-hit-harivansh.html';
-    else if (qAuthor === 'swami-shri-haridas-ji') staticFileToFetch = '/saint-swami-shri-haridas.html';
-    else if (qPad === 'radheju-merau-janam-sudharau' || pathname === '/pad/radheju-merau-janam-sudharau') staticFileToFetch = '/pad-radheju-merau-janam-sudharau.html';
-    else if (qPad === 'shri-radha-kripa-kataksha-stotram' || pathname === '/pad/shri-radha-kripa-kataksha-stotram') staticFileToFetch = '/pad-shri-radha-kripa-kataksha-stotram.html';
-    else if (qPad?.includes('bainu-mai-baje-bansivat') || pathname.includes('bainu-mai-baje-bansivat')) staticFileToFetch = '/pad-bainu-mai-baje-bansivat.html';
-    else if (activeTab === 'granthas' && !qGrantha) staticFileToFetch = '/granthas.html';
-    else if (activeTab === 'padavali' && !qPad && !qAuthor && !qGrantha) staticFileToFetch = '/padavali.html';
-    else if (activeTab === 'feed') staticFileToFetch = '/feed.html';
-    else if (activeTab === 'milestones') staticFileToFetch = '/milestones.html';
-    else if (activeTab === 'smaran' && !qPad && !qAuthor && !qGrantha) staticFileToFetch = '/smaran.html';
+    // Grantha collections (all 29 collections have grantha-[id].html pre-rendered)
+    if (qGrantha && !qChapter) {
+      staticFileToFetch = `/grantha-${qGrantha}.html`;
+    } else if (qGrantha === 'bhagavad-gita' && qChapter === 'adhyay-1') {
+      staticFileToFetch = '/grantha-bhagavad-gita-adhyay-1.html';
+    } else if (qGrantha === 'bhagavad-gita' && qChapter === 'adhyay-2') {
+      staticFileToFetch = '/grantha-bhagavad-gita-adhyay-2.html';
+    } else if (qGrantha === 'ramcharitmanas' && qChapter?.includes('बालकाण्ड')) {
+      staticFileToFetch = '/grantha-ramcharitmanas-kand-1.html';
+    } else if (qGrantha === 'durga-saptashati' && qChapter === 'adhyay-1') {
+      staticFileToFetch = '/grantha-durga-saptashati-adhyay-1.html';
+    } else if (qAuthor) {
+      staticFileToFetch = `/saint-${qAuthor}.html`;
+    } else if (qPad === 'radheju-merau-janam-sudharau' || pathname === '/pad/radheju-merau-janam-sudharau') {
+      staticFileToFetch = '/pad-radheju-merau-janam-sudharau.html';
+    } else if (qPad === 'shri-radha-kripa-kataksha-stotram' || pathname === '/pad/shri-radha-kripa-kataksha-stotram') {
+      staticFileToFetch = '/pad-shri-radha-kripa-kataksha-stotram.html';
+    } else if (qPad?.includes('bainu-mai-baje-bansivat') || pathname.includes('bainu-mai-baje-bansivat')) {
+      staticFileToFetch = '/pad-bainu-mai-baje-bansivat.html';
+    } else if (activeTab === 'granthas' && !qGrantha) {
+      staticFileToFetch = '/granthas.html';
+    } else if (activeTab === 'padavali' && !qPad && !qAuthor && !qGrantha) {
+      staticFileToFetch = '/padavali.html';
+    } else if (activeTab === 'feed') {
+      staticFileToFetch = '/feed.html';
+    } else if (activeTab === 'milestones') {
+      staticFileToFetch = '/milestones.html';
+    } else if (activeTab === 'smaran' && !qPad && !qAuthor && !qGrantha) {
+      staticFileToFetch = '/smaran.html';
+    }
   }
 
-  // Fetch the target static HTML file
+  // Fetch target static HTML
   let response: Response;
   if (staticFileToFetch) {
     try {
@@ -423,16 +483,24 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   } else if (qGrantha && EPICS_META[qGrantha]) {
     const epic = EPICS_META[qGrantha];
     if (qChapter) {
-      title = `${epic.name} (${qChapter}) • प्रणेता: ${epic.author} | वृन्दोपनिषद् 2.0`;
-      description = `${epic.name} का पावन अध्याय ${qChapter}। मूल श्लोक, अवधी/संस्कृत पाठ व पारायण। वृन्दोपनिषद् 2.0`;
+      // Response-Level Chapter Resolution for all 781 chapters
+      const chSnippet = await getChapterSnippet(request, qGrantha, qChapter);
+      const chName = chSnippet ? chSnippet.chapterName : qChapter;
+      const chOpeningVerse = chSnippet?.openingVerse || `${epic.name} का पावन अध्याय ${chName}`;
+      const chVerseCount = chSnippet?.verseCount || 0;
+
+      title = `${chName} (${epic.name}) • प्रणेता: ${epic.author} | वृन्दोपनिषद् 2.0`;
+      description = `«${chOpeningVerse}» ${epic.name} का पावन अध्याय ${chName} (${chVerseCount} श्लोक)। मूल श्लोक, पाठ व पारायण। वृन्दोपनिषद् 2.0`;
       canonicalUrl = `https://path.vrindopnishad.in/?tab=granthas&grantha=${encodeURIComponent(qGrantha)}&chapter=${encodeURIComponent(qChapter)}`;
 
       entitySchema = {
         '@type': 'Chapter',
         '@id': `${canonicalUrl}#chapter`,
-        'name': `${epic.name} - ${qChapter}`,
+        'name': `${epic.name} - ${chName}`,
+        'numberOfPages': chVerseCount || undefined,
         'isPartOf': {
           '@type': 'Book',
+          '@id': `https://path.vrindopnishad.in/?tab=granthas&grantha=${encodeURIComponent(qGrantha)}#book`,
           'name': epic.name,
           'author': { '@type': 'Person', 'name': epic.author },
         },
@@ -446,10 +514,16 @@ export const onRequest: PagesFunction<Env> = async (context) => {
             </nav>
             <header style="margin-bottom: 2rem;">
               <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; background-color: #fef3c7; color: #92400e; margin-bottom: 0.75rem;">सनातन महाग्रंथ</span>
-              <h1 style="font-size: 2rem; font-weight: 700; line-height: 1.3; color: #1c1917; margin: 0 0 0.75rem 0;">${epic.name} (${qChapter})</h1>
-              <p style="font-size: 0.95rem; color: #78716c; margin: 0;">प्रणेता: ${epic.author} • संपूर्ण मूल श्लोक व पारायण</p>
+              <h1 style="font-size: 2rem; font-weight: 700; line-height: 1.3; color: #1c1917; margin: 0 0 0.75rem 0;">${chName}</h1>
+              <p style="font-size: 0.95rem; color: #78716c; margin: 0;">${epic.name} • प्रणेता: ${epic.author} • ${chVerseCount} पावन श्लोक</p>
             </header>
-            <p style="font-size: 1.1rem; line-height: 1.8; color: #44403c;">${description}</p>
+            <section class="verse-body" style="font-size: 1.25rem; line-height: 2; color: #292524; background-color: #fffbeb; padding: 1.5rem; border-radius: 1rem; border: 1px solid #fef3c7; white-space: pre-line;">
+              ${chOpeningVerse}
+            </section>
+            <footer style="margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid #f5f5f4; font-size: 0.875rem; color: #a8a29e; display: flex; justify-content: space-between; align-items: center;">
+              <span>वृन्दोपनिषद् 2.0 • Digital Sanctuary for Sanatan Mahagranth Parayana</span>
+              <a href="${canonicalUrl}" style="color: #b45309; text-decoration: underline;">अखंड स्वाध्याय व पाठ</a>
+            </footer>
           </article>
         `;
       }

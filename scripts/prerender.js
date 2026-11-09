@@ -53,37 +53,55 @@ async function prerender() {
   const template = fs.readFileSync(templatePath, 'utf-8');
   const { render } = await import(`file://${serverEntryPath}`);
 
-  // Routes to pre-render for static HTML delivery
+  // 1. Core Sanctuary Tabs
   const routes = [
     { url: '/', file: 'index.html' },
     { url: '/?tab=smaran', file: 'smaran.html' },
     { url: '/?tab=padavali', file: 'padavali.html' },
     { url: '/?tab=granthas', file: 'granthas.html' },
-    { url: '/?tab=granthas&grantha=valmiki-ramayana', file: 'grantha-valmiki-ramayana.html' },
-    { url: '/?tab=granthas&grantha=shrimad-bhagavatam', file: 'grantha-shrimad-bhagavatam.html' },
-    { url: '/?tab=granthas&grantha=ramcharitmanas', file: 'grantha-ramcharitmanas.html' },
-    { url: '/?tab=granthas&grantha=bhagavad-gita', file: 'grantha-bhagavad-gita.html' },
-    { url: '/?tab=granthas&grantha=durga-saptashati', file: 'grantha-durga-saptashati.html' },
-    { url: '/?tab=padavali&grantha=hit-chaurasi', file: 'grantha-hit-chaurasi.html' },
-    { url: '/?tab=padavali&grantha=kelimal', file: 'grantha-kelimal.html' },
-    { url: '/?tab=padavali&grantha=radha-sudha-nidhi', file: 'grantha-radha-sudha-nidhi.html' },
-    { url: '/?tab=padavali&grantha=sur-sagar', file: 'grantha-sur-sagar.html' },
-    { url: '/?tab=padavali&grantha=vyas-vani', file: 'grantha-vyas-vani.html' },
-    { url: '/?tab=padavali&grantha=meera-padavali', file: 'grantha-meera-padavali.html' },
-    { url: '/?tab=padavali&grantha=raskhan-padavali', file: 'grantha-raskhan-padavali.html' },
-    // Popular canonical chapters & saints
-    { url: '/?tab=granthas&grantha=bhagavad-gita&chapter=chapter-01', file: 'grantha-bhagavad-gita-chapter-01.html' },
-    { url: '/?tab=granthas&grantha=bhagavad-gita&chapter=chapter-02', file: 'grantha-bhagavad-gita-chapter-02.html' },
-    { url: '/?tab=granthas&grantha=ramcharitmanas&chapter=kanda-01', file: 'grantha-ramcharitmanas-kanda-01.html' },
-    { url: '/?tab=padavali&author=shri-hit-harivansh-mahaprabhu', file: 'saint-shri-hit-harivansh.html' },
-    { url: '/?tab=padavali&author=swami-shri-haridas-ji', file: 'saint-swami-shri-haridas.html' },
     { url: '/?tab=feed', file: 'feed.html' },
     { url: '/?tab=milestones', file: 'milestones.html' },
-    // Popular canonical pada deep links for zero-js search bots with headline slugs
+  ];
+
+  // 2. Pre-render ALL 29 Scripture Collections (5 Epics + 24 Rasik Granthas)
+  const granthasPath = path.resolve(projectRoot, 'src/data/canonicalGranthas.json');
+  if (fs.existsSync(granthasPath)) {
+    const granthasData = JSON.parse(fs.readFileSync(granthasPath, 'utf-8'));
+    for (const g of granthasData) {
+      const isEpic = g.category === 'mahagranth' || ['valmiki-ramayana', 'shrimad-bhagavatam', 'ramcharitmanas', 'bhagavad-gita', 'durga-saptashati'].includes(g.id);
+      const tabName = isEpic ? 'granthas' : 'padavali';
+      const routeUrl = `/?tab=${tabName}&grantha=${encodeURIComponent(g.id)}`;
+      const routeFile = `grantha-${g.id}.html`;
+      if (!routes.some((r) => r.file === routeFile)) {
+        routes.push({ url: routeUrl, file: routeFile });
+      }
+    }
+  }
+
+  // 3. Pre-render Top Canonical Saints Profiles
+  const saintsPath = path.resolve(projectRoot, 'src/data/canonicalSaints.json');
+  if (fs.existsSync(saintsPath)) {
+    const saintsData = JSON.parse(fs.readFileSync(saintsPath, 'utf-8'));
+    for (const s of saintsData.slice(0, 10)) {
+      const slug = s.slug || s.id;
+      const routeUrl = `/?tab=padavali&author=${encodeURIComponent(slug)}`;
+      const routeFile = `saint-${slug}.html`;
+      if (!routes.some((r) => r.file === routeFile)) {
+        routes.push({ url: routeUrl, file: routeFile });
+      }
+    }
+  }
+
+  // 4. Pre-render Authentic Epic Chapter Samples
+  routes.push(
+    { url: '/?tab=granthas&grantha=bhagavad-gita&chapter=adhyay-1', file: 'grantha-bhagavad-gita-adhyay-1.html' },
+    { url: '/?tab=granthas&grantha=bhagavad-gita&chapter=adhyay-2', file: 'grantha-bhagavad-gita-adhyay-2.html' },
+    { url: '/?tab=granthas&grantha=ramcharitmanas&chapter=kand-%E0%A4%AC%E0%A4%BE%E0%A4%B2%E0%A4%95%E0%A4%BE%E0%A4%A3%E0%A4%A1', file: 'grantha-ramcharitmanas-kand-1.html' },
+    { url: '/?tab=granthas&grantha=durga-saptashati&chapter=adhyay-1', file: 'grantha-durga-saptashati-adhyay-1.html' },
     { url: '/?tab=padavali&pad=radheju-merau-janam-sudharau', file: 'pad-radheju-merau-janam-sudharau.html' },
     { url: '/?tab=padavali&pad=shri-radha-kripa-kataksha-stotram', file: 'pad-shri-radha-kripa-kataksha-stotram.html' },
-    { url: '/?tab=padavali&pad=bainu-mai-baje-bansivat-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-64', file: 'pad-bainu-mai-baje-bansivat.html' },
-  ];
+    { url: '/?tab=padavali&pad=bainu-mai-baje-bansivat-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-64', file: 'pad-bainu-mai-baje-bansivat.html' }
+  );
 
   console.log('🌸 Pre-rendering Vrindopnisad routes for SEO & SSR...');
 
