@@ -81,6 +81,7 @@ export default defineConfig(({ isSsrBuild }) => ({
             manualChunks: {
               'vendor-react': ['react', 'react-dom'],
               'vendor-icons': ['lucide-react'],
+              'vendor-data': ['@supabase/supabase-js', 'idb-keyval'],
             },
           },
         },

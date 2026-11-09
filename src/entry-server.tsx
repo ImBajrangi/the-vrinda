@@ -6,6 +6,9 @@ import { SacredDatabase } from './services/sacredDatabase';
 import { generateSEOMetadata, SEOMetadataResult, SEOConfig } from './services/seoService';
 import canonicalPadasData from './data/canonicalPadas.json';
 import { SacredPad } from './types/devotional';
+import { PadavaliReader } from './components/reader/PadavaliReader';
+import { MahagranthReader } from './components/reader/MahagranthReader';
+import { MilestonesView } from './components/milestones/MilestonesView';
 
 // Ensure SSR server pre-warms with full 4,204 canonical padas for instant bot rendering and SEO extraction
 function ensureDatabasePrewarmed(): void {
@@ -30,6 +33,7 @@ export function render(url: string = '/'): RenderResult {
   let padId: string | undefined;
   let authorQuery: string | undefined;
   let granthaQuery: string | undefined;
+  let chapterQuery: string | undefined;
 
   try {
     const parsed = new URL(url, 'https://bhav.vrindopnishad.in');
@@ -37,9 +41,11 @@ export function render(url: string = '/'): RenderResult {
     const qPad = parsed.searchParams.get('pad');
     const qAuthor = parsed.searchParams.get('author');
     const qGrantha = parsed.searchParams.get('grantha');
+    const qChapter = parsed.searchParams.get('chapter');
 
     if (qAuthor) authorQuery = qAuthor;
     if (qGrantha) granthaQuery = qGrantha;
+    if (qChapter) chapterQuery = qChapter;
 
     if (qTab && ['smaran', 'granthas', 'padavali', 'feed', 'milestones'].includes(qTab)) {
       tab = qTab;
@@ -80,9 +86,15 @@ export function render(url: string = '/'): RenderResult {
   // Look up specific pad if requested for deep-link SEO
   const pad = padId ? SacredDatabase.getPadById(padId) : undefined;
 
+  // Domain Canonical Ownership:
+  // path.vrindopnishad.in owns Sanatan Mahagranth Parayana (epics & chapters)
+  // bhav.vrindopnishad.in owns Sacred Ras Padavali, Sanctuary, Feed & Milestones
+  const isGranthasView = tab === 'granthas' || (granthaQuery && ['valmiki-ramayana', 'shrimad-bhagavatam', 'ramcharitmanas', 'bhagavad-gita', 'durga-saptashati'].includes(granthaQuery));
+  const canonicalDomain = isGranthasView ? 'https://path.vrindopnishad.in' : 'https://bhav.vrindopnishad.in';
+
   let seoConfig: SEOConfig = {
     tab,
-    canonicalUrl: `https://bhav.vrindopnishad.in${url}`,
+    canonicalUrl: `${canonicalDomain}${url}`,
   };
 
   const epicsMeta: Record<string, { name: string; author: string; desc: string }> = {
@@ -106,6 +118,7 @@ export function render(url: string = '/'): RenderResult {
       title: `${pad.titleDevanagari} (${pad.author})${granthaText} • पावन रसिक पद`,
       description: `${snippet}${ragaText}रचयिता: ${pad.author}। नित्य स्वाध्याय व पारायण। वृन्दोपनिषद् 2.0`,
       canonicalUrl: `https://bhav.vrindopnishad.in/?tab=padavali&pad=${encodeURIComponent(slug)}`,
+      audioUrl: pad.audioUrl || undefined,
     };
   } else if (authorQuery) {
     const saint = SacredDatabase.getSaintBySlugOrName(authorQuery);
@@ -117,15 +130,53 @@ export function render(url: string = '/'): RenderResult {
       title: `${saintName}${tradition} • रसिक संत पदावली | वृन्दोपनिषद् 2.0`,
       description: `${bio}${saintName} की समस्त पावन पदों व वाणियों का प्रामाणिक संग्रह। वृन्दोपनिषद् 2.0`,
       canonicalUrl: `https://bhav.vrindopnishad.in/?tab=padavali&author=${saint?.slug || encodeURIComponent(authorQuery)}`,
+      author: saint ? {
+        name: saint.name,
+        slug: saint.slug,
+        biography: saint.biography,
+        tradition: saint.tradition,
+      } : {
+        name: authorQuery,
+      },
     };
   } else if (granthaQuery && epicsMeta[granthaQuery]) {
     const e = epicsMeta[granthaQuery];
-    seoConfig = {
-      tab: 'granthas',
-      title: `${e.name} (${e.author}) • संपूर्ण मूल पाठ व पारायण | वृन्दोपनिषद् 2.0`,
-      description: `${e.desc}। प्रणेता: ${e.author}। वृन्दोपनिषद् 2.0`,
-      canonicalUrl: `https://bhav.vrindopnishad.in/?tab=granthas&grantha=${granthaQuery}`,
-    };
+    if (chapterQuery) {
+      seoConfig = {
+        tab: 'granthas',
+        title: `${e.name} (${chapterQuery}) • प्रणेता: ${e.author} | वृन्दोपनिषद् 2.0`,
+        description: `${e.name} का पावन अध्याय ${chapterQuery}। मूल श्लोक, अवधी/संस्कृत पाठ व पारायण। वृन्दोपनिषद् 2.0`,
+        canonicalUrl: `https://path.vrindopnishad.in/?tab=granthas&grantha=${encodeURIComponent(granthaQuery)}&chapter=${encodeURIComponent(chapterQuery)}`,
+        grantha: {
+          id: granthaQuery,
+          name: e.name,
+          author: e.author,
+          description: e.desc,
+          category: 'Sanatan Mahagranth',
+        },
+        chapter: {
+          id: chapterQuery,
+          name: `${e.name} - ${chapterQuery}`,
+          granthaId: granthaQuery,
+          granthaName: e.name,
+          author: e.author,
+        },
+      };
+    } else {
+      seoConfig = {
+        tab: 'granthas',
+        title: `${e.name} (${e.author}) • संपूर्ण मूल पाठ व पारायण | वृन्दोपनिषद् 2.0`,
+        description: `${e.desc}। प्रणेता: ${e.author}। वृन्दोपनिषद् 2.0`,
+        canonicalUrl: `https://path.vrindopnishad.in/?tab=granthas&grantha=${encodeURIComponent(granthaQuery)}`,
+        grantha: {
+          id: granthaQuery,
+          name: e.name,
+          author: e.author,
+          description: e.desc,
+          category: 'Sanatan Mahagranth',
+        },
+      };
+    }
   } else if (granthaQuery) {
     const grantha = SacredDatabase.getGranthaById(granthaQuery);
     const gName = grantha ? grantha.name : granthaQuery;
@@ -136,28 +187,40 @@ export function render(url: string = '/'): RenderResult {
       title: `${gName}${gAuthor} • संपूर्ण वाणी संग्रह | वृन्दोपनिषद् 2.0`,
       description: `${gDesc}${gName} के समस्त पावन श्लोकों व पदों का नित्य स्वाध्याय व अनुशीलन। वृन्दोपनिषद् 2.0`,
       canonicalUrl: `https://bhav.vrindopnishad.in/?tab=padavali&grantha=${grantha?.id || encodeURIComponent(granthaQuery)}`,
+      grantha: {
+        id: grantha?.id || granthaQuery,
+        name: gName,
+        author: grantha?.author || '',
+        description: gDesc,
+        category: 'Rasik Vani',
+      },
     };
   } else {
     switch (tab) {
       case 'smaran':
         seoConfig.title = 'Home Sanctuary • दैनिक स्मरण व नित्य सेवा';
         seoConfig.description = 'दैनिक अष्टयाम लीला, नाम जप, वाणी श्रवण और स्वाध्याय का पावन साधना स्थल।';
+        seoConfig.canonicalUrl = 'https://bhav.vrindopnishad.in/';
         break;
       case 'granthas':
         seoConfig.title = 'Sanatan Mahagranth Parayana • ५ अमर महाकाव्य एवं अखंड शास्त्र स्वाध्याय';
         seoConfig.description = 'श्रीमद् वाल्मीकि रामायण, श्रीमद्भागवत महापुराण, श्री रामचरितमानस, श्रीमद्भगवद्गीता व श्री दुर्गा सप्तशती का संपूर्ण मूल पाठ व ऑन-डिमांड त्वरित पारायण।';
+        seoConfig.canonicalUrl = 'https://path.vrindopnishad.in/?tab=granthas';
         break;
       case 'padavali':
         seoConfig.title = 'Scriptures Repository • ४४,०००+ पावन महाग्रंथ व रसिक वाणी संग्रह';
         seoConfig.description = 'वाल्मीकि रामायण, श्रीमद् भागवत, रामचरितमानस, भगवद्गीता, हित चौरासी, केलिमाल, सूरसागर सहित सनातन महाग्रंथ व समस्त रसिक वाणी का अगाध संग्रह।';
+        seoConfig.canonicalUrl = 'https://bhav.vrindopnishad.in/?tab=padavali';
         break;
       case 'feed':
         seoConfig.title = 'Darshan Feed • नित्य वृन्दावन धाम दर्शन';
         seoConfig.description = 'श्री वृन्दावन धाम के प्रमुख मंदिरों के प्रत्यक्ष दर्शन, उत्सव, आरती व नित्य विलास।';
+        seoConfig.canonicalUrl = 'https://bhav.vrindopnishad.in/?tab=feed';
         break;
       case 'milestones':
         seoConfig.title = 'Devotion Milestones • अखंड निष्ठा व साधना सोपान';
         seoConfig.description = 'अखंड साधना स्ट्रीक, अंतरंग ध्यान सिद्धि एवं श्रीजी कृपा के पावन सोपान।';
+        seoConfig.canonicalUrl = 'https://bhav.vrindopnishad.in/?tab=milestones';
         break;
     }
   }
@@ -166,7 +229,11 @@ export function render(url: string = '/'): RenderResult {
 
   const html = renderToString(
     <StrictMode>
-      <App initialTab={tab} initialPadId={padId} />
+      <App
+        initialTab={tab}
+        initialPadId={padId}
+        components={{ PadavaliReader, MahagranthReader, MilestonesView }}
+      />
     </StrictMode>
   );
 

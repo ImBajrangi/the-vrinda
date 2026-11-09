@@ -66,6 +66,17 @@ async function prerender() {
     { url: '/?tab=granthas&grantha=durga-saptashati', file: 'grantha-durga-saptashati.html' },
     { url: '/?tab=padavali&grantha=hit-chaurasi', file: 'grantha-hit-chaurasi.html' },
     { url: '/?tab=padavali&grantha=kelimal', file: 'grantha-kelimal.html' },
+    { url: '/?tab=padavali&grantha=radha-sudha-nidhi', file: 'grantha-radha-sudha-nidhi.html' },
+    { url: '/?tab=padavali&grantha=sur-sagar', file: 'grantha-sur-sagar.html' },
+    { url: '/?tab=padavali&grantha=vyas-vani', file: 'grantha-vyas-vani.html' },
+    { url: '/?tab=padavali&grantha=meera-padavali', file: 'grantha-meera-padavali.html' },
+    { url: '/?tab=padavali&grantha=raskhan-padavali', file: 'grantha-raskhan-padavali.html' },
+    // Popular canonical chapters & saints
+    { url: '/?tab=granthas&grantha=bhagavad-gita&chapter=chapter-01', file: 'grantha-bhagavad-gita-chapter-01.html' },
+    { url: '/?tab=granthas&grantha=bhagavad-gita&chapter=chapter-02', file: 'grantha-bhagavad-gita-chapter-02.html' },
+    { url: '/?tab=granthas&grantha=ramcharitmanas&chapter=kanda-01', file: 'grantha-ramcharitmanas-kanda-01.html' },
+    { url: '/?tab=padavali&author=shri-hit-harivansh-mahaprabhu', file: 'saint-shri-hit-harivansh.html' },
+    { url: '/?tab=padavali&author=swami-shri-haridas-ji', file: 'saint-swami-shri-haridas.html' },
     { url: '/?tab=feed', file: 'feed.html' },
     { url: '/?tab=milestones', file: 'milestones.html' },
     // Popular canonical pada deep links for zero-js search bots with headline slugs

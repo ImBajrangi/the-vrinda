@@ -16,6 +16,30 @@ export interface SEOConfig {
   ogImage?: string;
   pad?: SacredPad;
   tab?: 'smaran' | 'granthas' | 'padavali' | 'feed' | 'milestones';
+  grantha?: {
+    id: string;
+    name: string;
+    author: string;
+    description?: string;
+    category?: string;
+    totalVerses?: number;
+  };
+  chapter?: {
+    id: string;
+    name: string;
+    section?: string;
+    verseCount?: number;
+    granthaId: string;
+    granthaName?: string;
+    author?: string;
+  };
+  author?: {
+    name: string;
+    slug?: string;
+    biography?: string;
+    tradition?: string;
+  };
+  audioUrl?: string;
 }
 
 export interface SEOMetadataResult {
@@ -88,10 +112,14 @@ export function generateSEOMetadata(config: SEOConfig = {}): SEOMetadataResult {
     {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
+      '@id': `${DEFAULT_SEO.baseUrl}/#website`,
       name: DEFAULT_SEO.siteName,
       url: DEFAULT_SEO.baseUrl,
       description: DEFAULT_SEO.description,
       inLanguage: ['hi', 'sa', 'en'],
+      publisher: {
+        '@id': `${DEFAULT_SEO.baseUrl}/#organization`,
+      },
       potentialAction: {
         '@type': 'SearchAction',
         target: `${DEFAULT_SEO.baseUrl}/?tab=padavali&q={search_term_string}`,
@@ -102,6 +130,7 @@ export function generateSEOMetadata(config: SEOConfig = {}): SEOMetadataResult {
     {
       '@context': 'https://schema.org',
       '@type': 'ReligiousOrganization',
+      '@id': `${DEFAULT_SEO.baseUrl}/#organization`,
       name: DEFAULT_SEO.siteName,
       url: DEFAULT_SEO.baseUrl,
       logo: `${DEFAULT_SEO.baseUrl}/official-logo.svg`,
@@ -109,14 +138,15 @@ export function generateSEOMetadata(config: SEOConfig = {}): SEOMetadataResult {
     },
   ];
 
-  // 3. CreativeWork / Article Schema if viewing a specific Pada
+  // 3. Structured Data for specific Sacred Pada
   if (config.pad) {
     const pad = config.pad;
     const stanzaSample =
       pad.verses?.[0]?.linesDevanagari?.join(' ') || pad.titleDevanagari;
-    schemas.push({
+    const padSchema: any = {
       '@context': 'https://schema.org',
       '@type': 'CreativeWork',
+      '@id': `${canonicalUrl}#verse`,
       headline: pad.titleDevanagari,
       alternativeHeadline: pad.titleEnglish,
       name: pad.titleDevanagari,
@@ -129,13 +159,26 @@ export function generateSEOMetadata(config: SEOConfig = {}): SEOMetadataResult {
       text: stanzaSample,
       musicalKey: pad.rag,
       publisher: {
-        '@type': 'Organization',
-        name: DEFAULT_SEO.siteName,
-        url: DEFAULT_SEO.baseUrl,
+        '@id': `${DEFAULT_SEO.baseUrl}/#organization`,
+      },
+      isPartOf: {
+        '@id': `${DEFAULT_SEO.baseUrl}/#website`,
       },
       url: canonicalUrl,
       image: ogImage,
-    });
+    };
+
+    if (config.audioUrl || pad.audioUrl) {
+      padSchema.audio = {
+        '@type': 'AudioObject',
+        '@id': `${canonicalUrl}#audio`,
+        name: `${pad.titleDevanagari} • Sacred Audio Recitation`,
+        contentUrl: config.audioUrl || pad.audioUrl,
+        inLanguage: 'hi',
+      };
+    }
+
+    schemas.push(padSchema);
 
     // Breadcrumb Schema
     schemas.push({
@@ -157,7 +200,151 @@ export function generateSEOMetadata(config: SEOConfig = {}): SEOMetadataResult {
         {
           '@type': 'ListItem',
           position: 3,
+          name: pad.collectionId || 'Braj Ras Vani',
+          item: `${DEFAULT_SEO.baseUrl}/?tab=padavali&grantha=${encodeURIComponent(pad.collectionId || '')}`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 4,
           name: pad.titleDevanagari,
+          item: canonicalUrl,
+        },
+      ],
+    });
+  } else if (config.chapter) {
+    // 4. Chapter Schema for Monumental Epic Chapters
+    const ch = config.chapter;
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'Chapter',
+      '@id': `${canonicalUrl}#chapter`,
+      name: ch.name,
+      headline: ch.name,
+      inLanguage: ['hi', 'sa'],
+      numberOfPages: ch.verseCount || undefined,
+      isPartOf: {
+        '@type': 'Book',
+        '@id': `${DEFAULT_SEO.baseUrl}/?tab=granthas&grantha=${encodeURIComponent(ch.granthaId)}#book`,
+        name: ch.granthaName || ch.granthaId,
+        author: ch.author ? { '@type': 'Person', name: ch.author } : undefined,
+      },
+      url: canonicalUrl,
+    });
+
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home Sanctuary',
+          item: DEFAULT_SEO.baseUrl,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Mahagranth Parayana',
+          item: `${DEFAULT_SEO.baseUrl}/?tab=granthas`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: ch.granthaName || ch.granthaId,
+          item: `${DEFAULT_SEO.baseUrl}/?tab=granthas&grantha=${encodeURIComponent(ch.granthaId)}`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 4,
+          name: ch.name,
+          item: canonicalUrl,
+        },
+      ],
+    });
+  } else if (config.grantha) {
+    // 5. Book Schema for Epics and Major Scriptures
+    const g = config.grantha;
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'Book',
+      '@id': `${canonicalUrl}#book`,
+      name: g.name,
+      author: {
+        '@type': 'Person',
+        name: g.author,
+      },
+      description: g.description,
+      inLanguage: ['hi', 'sa'],
+      publisher: {
+        '@id': `${DEFAULT_SEO.baseUrl}/#organization`,
+      },
+      isPartOf: {
+        '@id': `${DEFAULT_SEO.baseUrl}/#website`,
+      },
+      url: canonicalUrl,
+    });
+
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home Sanctuary',
+          item: DEFAULT_SEO.baseUrl,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: g.category === 'mahagranth' ? 'Mahagranth Parayana' : 'Scriptures Repository',
+          item: `${DEFAULT_SEO.baseUrl}/?tab=${g.category === 'mahagranth' ? 'granthas' : 'padavali'}`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: g.name,
+          item: canonicalUrl,
+        },
+      ],
+    });
+  } else if (config.author) {
+    // 6. ProfilePage & Person Schema for Canonical Saints
+    const a = config.author;
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'ProfilePage',
+      '@id': `${canonicalUrl}#profile`,
+      mainEntity: {
+        '@type': 'Person',
+        '@id': `${canonicalUrl}#person`,
+        name: a.name,
+        description: a.biography,
+        memberOf: a.tradition ? { '@type': 'Organization', name: a.tradition } : undefined,
+      },
+      url: canonicalUrl,
+    });
+
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home Sanctuary',
+          item: DEFAULT_SEO.baseUrl,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Saints & Acharyas',
+          item: `${DEFAULT_SEO.baseUrl}/?tab=padavali`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: a.name,
           item: canonicalUrl,
         },
       ],

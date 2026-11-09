@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import { Radio, Sun, Heart, Check, Sparkles, ExternalLink } from 'lucide-react';
 import { FloatingNavbar, NavTab } from './components/common/FloatingNavbar';
 import { DynamicNotchNavbar } from './components/common/DynamicNotchNavbar';
@@ -8,22 +8,53 @@ import { CategoriesRow } from './components/smaran/CategoriesRow';
 import { NityaSevaCard } from './components/smaran/NityaSevaCard';
 import { ArtworkGraphicSlot } from './components/common/ArtworkGraphicSlot';
 import { FeedCard } from './components/feed/FeedCard';
-import { MilestonesView } from './components/milestones/MilestonesView';
-import { PadavaliReader } from './components/reader/PadavaliReader';
-import { MahagranthReader } from './components/reader/MahagranthReader';
-import { FloatingAudioPlayer } from './components/player/FloatingAudioPlayer';
-import { SpotlightSearchModal } from './components/common/SpotlightSearchModal';
-import { SaintsDirectoryModal } from './components/common/SaintsDirectoryModal';
-import { DhyanaFocusModal } from './components/focus/DhyanaFocusModal';
-import { SadhanaPillarModal, PillarType } from './components/smaran/SadhanaPillarModal';
+import type { PillarType } from './components/smaran/SadhanaPillarModal';
 import { SadhanaRingProgress } from './components/smaran/SadhanaRingProgress';
 import { AshtayamaTimelineDeck } from './components/smaran/AshtayamaTimelineDeck';
-import { BeginnerGuideModal } from './components/smaran/BeginnerGuideModal';
 import { IOSTopProgressBar, navigationProgress } from './components/common/IOSActivityIndicator';
 import { SACRED_FEED_POSTS } from './data/feed';
 import { SacredPad, SadhanaState, DhyanaImpactState, DhyanaSessionRecord } from './types/devotional';
 import { SacredDatabase, CanonicalSaint, CanonicalGrantha } from './services/sacredDatabase';
 import { seo } from './services/seoService';
+
+// Feature-level Code Splitting: Lazy load heavy readers, views and modals
+const LazyPadavaliReader = lazy(() =>
+  import('./components/reader/PadavaliReader').then((m) => ({ default: m.PadavaliReader }))
+);
+const LazyMahagranthReader = lazy(() =>
+  import('./components/reader/MahagranthReader').then((m) => ({ default: m.MahagranthReader }))
+);
+const LazyMilestonesView = lazy(() =>
+  import('./components/milestones/MilestonesView').then((m) => ({ default: m.MilestonesView }))
+);
+const LazyFloatingAudioPlayer = lazy(() =>
+  import('./components/player/FloatingAudioPlayer').then((m) => ({ default: m.FloatingAudioPlayer }))
+);
+const LazySadhanaPillarModal = lazy(() =>
+  import('./components/smaran/SadhanaPillarModal').then((m) => ({ default: m.SadhanaPillarModal }))
+);
+const LazySpotlightSearchModal = lazy(() =>
+  import('./components/common/SpotlightSearchModal').then((m) => ({ default: m.SpotlightSearchModal }))
+);
+const LazySaintsDirectoryModal = lazy(() =>
+  import('./components/common/SaintsDirectoryModal').then((m) => ({ default: m.SaintsDirectoryModal }))
+);
+const LazyDhyanaFocusModal = lazy(() =>
+  import('./components/focus/DhyanaFocusModal').then((m) => ({ default: m.DhyanaFocusModal }))
+);
+const LazyBeginnerGuideModal = lazy(() =>
+  import('./components/smaran/BeginnerGuideModal').then((m) => ({ default: m.BeginnerGuideModal }))
+);
+
+function ReaderLoadingSkeleton() {
+  return (
+    <div className="w-full min-h-[50vh] flex flex-col items-center justify-center py-20 px-4 text-center">
+      <div className="w-10 h-10 rounded-full border-2 border-amber-600/30 border-t-amber-600 animate-spin mb-4" />
+      <p className="font-serif text-base text-stone-700 dark:text-stone-300">पावन वाणी लोड हो रही है...</p>
+      <p className="text-xs text-stone-400 mt-1">Vrindopnisad 2.0 Sacred Reader</p>
+    </div>
+  );
+}
 import {
   loadCachedSadhanaSync,
   loadCachedSadhana,
@@ -63,12 +94,22 @@ function getDynamicWeekDays(): DayItem[] {
   return days;
 }
 
+export interface AppComponents {
+  PadavaliReader?: React.ComponentType<any>;
+  MahagranthReader?: React.ComponentType<any>;
+  MilestonesView?: React.ComponentType<any>;
+}
+
 export interface AppProps {
   initialTab?: NavTab;
   initialPadId?: string;
+  components?: AppComponents;
 }
 
-export function App({ initialTab, initialPadId }: AppProps = {}) {
+export function App({ initialTab, initialPadId, components }: AppProps = {}) {
+  const PadavaliReaderComp = components?.PadavaliReader || LazyPadavaliReader;
+  const MahagranthReaderComp = components?.MahagranthReader || LazyMahagranthReader;
+  const MilestonesViewComp = components?.MilestonesView || LazyMilestonesView;
   const [activeTab, setActiveTab] = useState<NavTab>(() => {
     if (initialTab && ['smaran', 'granthas', 'padavali', 'feed', 'milestones'].includes(initialTab)) {
       return initialTab;
@@ -1216,54 +1257,58 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
 
           {/* Tab 2: Sanatan Mahagranth Parayana (Piece-by-Piece Streaming Reader for Epics) */}
           {activeTab === 'granthas' && (
-            <MahagranthReader
-              initialGranthaId={
-                selectedGranthaFilter !== 'all' && SacredDatabase.isEpicGrantha(selectedGranthaFilter)
-                  ? selectedGranthaFilter
-                  : 'valmiki-ramayana'
-              }
-              onSelectGrantha={(gId) => {
-                setSelectedGranthaFilter(gId);
-                if (typeof window !== 'undefined') {
-                  try {
-                    const url = new URL(window.location.href);
-                    url.searchParams.set('tab', 'granthas');
-                    url.searchParams.set('grantha', gId);
-                    window.history.replaceState({}, '', url.toString());
-                  } catch {}
+            <Suspense fallback={<ReaderLoadingSkeleton />}>
+              <MahagranthReaderComp
+                initialGranthaId={
+                  selectedGranthaFilter !== 'all' && SacredDatabase.isEpicGrantha(selectedGranthaFilter)
+                    ? selectedGranthaFilter
+                    : 'valmiki-ramayana'
                 }
-              }}
-              onSwitchToPadavali={() => handleTabSwitch('padavali')}
-            />
+                onSelectGrantha={(gId) => {
+                  setSelectedGranthaFilter(gId);
+                  if (typeof window !== 'undefined') {
+                    try {
+                      const url = new URL(window.location.href);
+                      url.searchParams.set('tab', 'granthas');
+                      url.searchParams.set('grantha', gId);
+                      window.history.replaceState({}, '', url.toString());
+                    } catch {}
+                  }
+                }}
+                onSwitchToPadavali={() => handleTabSwitch('padavali')}
+              />
+            </Suspense>
           )}
 
           {/* Tab 3: Sacred Padavali & Chhand Sanctuary */}
           {activeTab === 'padavali' && (
-            <PadavaliReader
-              onPlayPad={handlePlayPad}
-              activePlayingPadId={currentPad?.id}
-              isPlaying={isPlayingAudio}
-              selectedGranthaId={selectedGranthaFilter}
-              onSelectGranthaId={(gId) => {
-                if (SacredDatabase.isEpicGrantha(gId)) {
-                  handleSelectBook(gId);
-                } else {
-                  setSelectedGranthaFilter(gId);
+            <Suspense fallback={<ReaderLoadingSkeleton />}>
+              <PadavaliReaderComp
+                onPlayPad={handlePlayPad}
+                activePlayingPadId={currentPad?.id}
+                isPlaying={isPlayingAudio}
+                selectedGranthaId={selectedGranthaFilter}
+                onSelectGranthaId={(gId) => {
+                  if (SacredDatabase.isEpicGrantha(gId)) {
+                    handleSelectBook(gId);
+                  } else {
+                    setSelectedGranthaFilter(gId);
+                  }
+                }}
+                onSelectPad={(p) => setCurrentPad(p)}
+                selectedSearchQuery={readerSearchQuery}
+                selectedAuthor={selectedAuthor}
+                onSelectAuthor={(author) => setSelectedAuthor(author)}
+                selectedPadId={currentPad?.id}
+                initialPadId={
+                  initialPadId ||
+                  (typeof window !== 'undefined'
+                    ? new URLSearchParams(window.location.search).get('pad') || undefined
+                    : undefined)
                 }
-              }}
-              onSelectPad={(p) => setCurrentPad(p)}
-              selectedSearchQuery={readerSearchQuery}
-              selectedAuthor={selectedAuthor}
-              onSelectAuthor={(author) => setSelectedAuthor(author)}
-              selectedPadId={currentPad?.id}
-              initialPadId={
-                initialPadId ||
-                (typeof window !== 'undefined'
-                  ? new URLSearchParams(window.location.search).get('pad') || undefined
-                  : undefined)
-              }
-              onSwitchToMahagranth={() => handleTabSwitch('granthas')}
-            />
+                onSwitchToMahagranth={() => handleTabSwitch('granthas')}
+              />
+            </Suspense>
           )}
 
           {/* Tab 3: Devotional Darshan Feed */}
@@ -1403,20 +1448,24 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
 
           {/* Tab 4: Milestones & Streaks */}
           {activeTab === 'milestones' && (
-            <MilestonesView onBack={() => handleTabSwitch('smaran')} />
+            <Suspense fallback={<ReaderLoadingSkeleton />}>
+              <MilestonesViewComp onBack={() => handleTabSwitch('smaran')} />
+            </Suspense>
           )}
           </div>
         </main>
 
         {/* Floating Ambient Shravan Player (Responsive Workstation Bar) */}
         {showPlayer && (
-          <FloatingAudioPlayer
-            currentPad={currentPad}
-            isPlaying={isPlayingAudio}
-            onTogglePlay={handleTogglePlay}
-            onClose={() => setShowPlayer(false)}
-            onOpenLyrics={() => handleTabSwitch('padavali')}
-          />
+          <Suspense fallback={null}>
+            <LazyFloatingAudioPlayer
+              currentPad={currentPad}
+              isPlaying={isPlayingAudio}
+              onTogglePlay={handleTogglePlay}
+              onClose={() => setShowPlayer(false)}
+              onOpenLyrics={() => handleTabSwitch('padavali')}
+            />
+          </Suspense>
         )}
 
         {/* Mobile Floating Bottom Ambient Scrim: Whisper-light parchment fade (Zero GPU blur overhead) */}
@@ -1434,75 +1483,95 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
         />
 
         {/* Sacred Devotional Pillar Control Modal */}
-        <SadhanaPillarModal
-          isOpen={activePillarModal !== null}
-          pillarType={activePillarModal}
-          onClose={() => setActivePillarModal(null)}
-          sadhana={sadhana}
-          onUpdateSadhana={handleUpdateSadhana}
-          onOpenFocusModal={() => setIsFocusModalOpen(true)}
-          onOpenPadavaliReader={() => handleTabSwitch('padavali')}
-          onToggleAudio={handleTogglePlay}
-          isPlayingAudio={isPlayingAudio}
-          currentPad={currentPad}
-          onOpenPlayer={handleFabClick}
-        />
+        {activePillarModal !== null && (
+          <Suspense fallback={null}>
+            <LazySadhanaPillarModal
+              isOpen={activePillarModal !== null}
+              pillarType={activePillarModal}
+              onClose={() => setActivePillarModal(null)}
+              sadhana={sadhana}
+              onUpdateSadhana={handleUpdateSadhana}
+              onOpenFocusModal={() => setIsFocusModalOpen(true)}
+              onOpenPadavaliReader={() => handleTabSwitch('padavali')}
+              onToggleAudio={handleTogglePlay}
+              isPlayingAudio={isPlayingAudio}
+              currentPad={currentPad}
+              onOpenPlayer={handleFabClick}
+            />
+          </Suspense>
+        )}
 
         {/* Global Apple Spotlight Search Modal (Cmd+K) */}
-        <SpotlightSearchModal
-          isOpen={isSpotlightOpen}
-          onClose={() => setIsSpotlightOpen(false)}
-          onSelectPad={handleSelectSearchedPad}
-          onSelectSaint={handleSelectSearchedSaint}
-          onSelectGrantha={handleSelectSearchedGrantha}
-        />
+        {isSpotlightOpen && (
+          <Suspense fallback={null}>
+            <LazySpotlightSearchModal
+              isOpen={isSpotlightOpen}
+              onClose={() => setIsSpotlightOpen(false)}
+              onSelectPad={handleSelectSearchedPad}
+              onSelectSaint={handleSelectSearchedSaint}
+              onSelectGrantha={handleSelectSearchedGrantha}
+            />
+          </Suspense>
+        )}
 
         {/* Rasik Saints Directory Modal (131 Saints) */}
-        <SaintsDirectoryModal
-          isOpen={isSaintsModalOpen}
-          onClose={() => setIsSaintsModalOpen(false)}
-          onSelectSaint={handleSelectSearchedSaint}
-        />
+        {isSaintsModalOpen && (
+          <Suspense fallback={null}>
+            <LazySaintsDirectoryModal
+              isOpen={isSaintsModalOpen}
+              onClose={() => setIsSaintsModalOpen(false)}
+              onSelectSaint={handleSelectSearchedSaint}
+            />
+          </Suspense>
+        )}
 
         {/* Dhyana Mental Focus Sanctuary Modal & Cognitive Impact */}
-        <DhyanaFocusModal
-          isOpen={isFocusModalOpen}
-          onClose={() => setIsFocusModalOpen(false)}
-          onAddJapaMala={incrementJapa}
-          onSessionComplete={async (session: DhyanaSessionRecord) => {
-            const updatedImpact = await recordDhyanaSession(session);
-            setDhyanaImpact(updatedImpact);
-            const sessionMins = Math.round(session.durationSeconds / 60);
-            const updated: SadhanaState = {
-              ...sadhana,
-              dhyanaMinutesCompleted: (sadhana.dhyanaMinutesCompleted || 0) + sessionMins,
-              chittaShantiScore: session.stillnessScore,
-              manasiSewaMinutes: (sadhana.manasiSewaMinutes || 0) + sessionMins,
-            };
-            setSadhana(updated);
-            persistSadhana(updated);
-          }}
-          isLowSpec={isLowSpecMode}
-        />
+        {isFocusModalOpen && (
+          <Suspense fallback={null}>
+            <LazyDhyanaFocusModal
+              isOpen={isFocusModalOpen}
+              onClose={() => setIsFocusModalOpen(false)}
+              onAddJapaMala={incrementJapa}
+              onSessionComplete={async (session: DhyanaSessionRecord) => {
+                const updatedImpact = await recordDhyanaSession(session);
+                setDhyanaImpact(updatedImpact);
+                const sessionMins = Math.round(session.durationSeconds / 60);
+                const updated: SadhanaState = {
+                  ...sadhana,
+                  dhyanaMinutesCompleted: (sadhana.dhyanaMinutesCompleted || 0) + sessionMins,
+                  chittaShantiScore: session.stillnessScore,
+                  manasiSewaMinutes: (sadhana.manasiSewaMinutes || 0) + sessionMins,
+                };
+                setSadhana(updated);
+                persistSadhana(updated);
+              }}
+              isLowSpec={isLowSpecMode}
+            />
+          </Suspense>
+        )}
 
         {/* Beginner Sacred Sadhana Quick Guide Modal */}
-        <BeginnerGuideModal
-          isOpen={isGuideModalOpen}
-          onClose={() => setIsGuideModalOpen(false)}
-          onStartChanting={() => {
-            setIsGuideModalOpen(false);
-            setActivePillarModal('japa');
-          }}
-          onOpenPlayer={() => {
-            setIsGuideModalOpen(false);
-            setShowPlayer(true);
-            setIsPlayingAudio(true);
-          }}
-          onOpenReader={() => {
-            setIsGuideModalOpen(false);
-            handleTabSwitch('padavali');
-          }}
-        />
+        {isGuideModalOpen && (
+          <Suspense fallback={null}>
+            <LazyBeginnerGuideModal
+              isOpen={isGuideModalOpen}
+              onClose={() => setIsGuideModalOpen(false)}
+              onStartChanting={() => {
+                setIsGuideModalOpen(false);
+                setActivePillarModal('japa');
+              }}
+              onOpenPlayer={() => {
+                setIsGuideModalOpen(false);
+                setShowPlayer(true);
+                setIsPlayingAudio(true);
+              }}
+              onOpenReader={() => {
+                setIsGuideModalOpen(false);
+                handleTabSwitch('padavali');
+              }}
+            />
+          </Suspense>
+        )}
       </div>
     </div>
   );

@@ -52,6 +52,74 @@ function createSitemapSuite(baseUrl, prefix = '') {
   const granthasPath = path.resolve(projectRoot, 'src/data/canonicalGranthas.json');
   const saintsPath = path.resolve(projectRoot, 'src/data/canonicalSaints.json');
 
+  const granthas = JSON.parse(fs.readFileSync(granthasPath, 'utf-8'));
+  const saints = JSON.parse(fs.readFileSync(saintsPath, 'utf-8'));
+
+  const isPathDomain = prefix === 'path';
+  const filePrefix = prefix ? `sitemap-${prefix}` : 'sitemap';
+
+  if (isPathDomain) {
+    // -------------------------------------------------------------
+    // path.vrindopnishad.in - Sanatan Mahagranth Parayana Domain
+    // Dedicated exclusively to the 5 Monumental Epics and 781 Chapters
+    // -------------------------------------------------------------
+    const mainUrls = [
+      { loc: `${baseUrl}/`, lastmod: today, changefreq: 'daily', priority: 1.0 },
+      { loc: `${baseUrl}/?tab=granthas`, lastmod: today, changefreq: 'daily', priority: 0.95 },
+    ];
+    const mainXml = buildUrlset(mainUrls);
+
+    const granthasUrls = [];
+    const epicsManifestPath = path.resolve(projectRoot, 'public/data/epics/manifest.json');
+    if (fs.existsSync(epicsManifestPath)) {
+      try {
+        const epicsManifest = JSON.parse(fs.readFileSync(epicsManifestPath, 'utf-8'));
+        for (const epic of epicsManifest.epics || []) {
+          granthasUrls.push({
+            loc: `${baseUrl}/?tab=granthas&grantha=${encodeURIComponent(epic.id)}`,
+            lastmod: today,
+            changefreq: 'weekly',
+            priority: 0.95,
+          });
+
+          const epicIndexPath = path.resolve(projectRoot, `public/data/epics/${epic.id}/index.json`);
+          if (fs.existsSync(epicIndexPath)) {
+            const epicData = JSON.parse(fs.readFileSync(epicIndexPath, 'utf-8'));
+            for (const ch of epicData.chapters || []) {
+              granthasUrls.push({
+                loc: `${baseUrl}/?tab=granthas&grantha=${encodeURIComponent(epic.id)}&chapter=${encodeURIComponent(ch.id)}`,
+                lastmod: today,
+                changefreq: 'monthly',
+                priority: 0.85,
+              });
+            }
+          }
+        }
+      } catch (e) {
+        console.warn('  ⚠ Warning loading epics for path sitemap:', e.message);
+      }
+    }
+    const granthasXml = buildUrlset(granthasUrls);
+
+    const indexXml = [
+      '<?xml version="1.0" encoding="UTF-8"?>',
+      '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+      `  <sitemap><loc>${baseUrl}/${filePrefix}-main.xml</loc><lastmod>${today}</lastmod></sitemap>`,
+      `  <sitemap><loc>${baseUrl}/${filePrefix}-granthas.xml</loc><lastmod>${today}</lastmod></sitemap>`,
+      '</sitemapindex>',
+    ].join('\n');
+
+    return {
+      [`${filePrefix}.xml`]: { content: indexXml, isBinary: false },
+      [`${filePrefix}-main.xml`]: { content: mainXml, isBinary: false },
+      [`${filePrefix}-granthas.xml`]: { content: granthasXml, isBinary: false },
+    };
+  }
+
+  // -------------------------------------------------------------
+  // bhav.vrindopnishad.in - Primary Ras & Padavali Sanctuary Domain
+  // Dedicated to 44,000+ Padas, 29 Ras Collections, 131 Saints, Daily Seva
+  // -------------------------------------------------------------
   let padas = [];
   if (fs.existsSync(catalogPath)) {
     const rawCatalog = JSON.parse(fs.readFileSync(catalogPath, 'utf-8'));
@@ -69,21 +137,17 @@ function createSitemapSuite(baseUrl, prefix = '') {
     padas = JSON.parse(fs.readFileSync(padasPath, 'utf-8'));
   }
 
-  const granthas = JSON.parse(fs.readFileSync(granthasPath, 'utf-8'));
-  const saints = JSON.parse(fs.readFileSync(saintsPath, 'utf-8'));
-
   // 1. Core Sanctuary Views
   const mainUrls = [
     { loc: `${baseUrl}/`, lastmod: today, changefreq: 'daily', priority: 1.0 },
     { loc: `${baseUrl}/?tab=smaran`, lastmod: today, changefreq: 'daily', priority: 0.95 },
     { loc: `${baseUrl}/?tab=padavali`, lastmod: today, changefreq: 'daily', priority: 0.95 },
-    { loc: `${baseUrl}/?tab=granthas`, lastmod: today, changefreq: 'daily', priority: 0.95 },
     { loc: `${baseUrl}/?tab=feed`, lastmod: today, changefreq: 'hourly', priority: 0.9 },
     { loc: `${baseUrl}/?tab=milestones`, lastmod: today, changefreq: 'weekly', priority: 0.85 },
   ];
   const mainXml = buildUrlset(mainUrls);
 
-  // 2. Granthas (Padavali collections + 5 Monumental Epics & Chapters)
+  // 2. Granthas (29 Ras Collections)
   const EPIC_IDS = new Set(['valmiki-ramayana', 'shrimad-bhagavatam', 'ramcharitmanas', 'bhagavad-gita', 'durga-saptashati']);
   const granthasUrls = granthas
     .filter((g) => !EPIC_IDS.has(g.id))
@@ -93,41 +157,9 @@ function createSitemapSuite(baseUrl, prefix = '') {
       changefreq: 'weekly',
       priority: 0.9,
     }));
-
-  // Add 5 Monumental Epics & their chapters
-  const epicsManifestPath = path.resolve(projectRoot, 'public/data/epics/manifest.json');
-  if (fs.existsSync(epicsManifestPath)) {
-    try {
-      const epicsManifest = JSON.parse(fs.readFileSync(epicsManifestPath, 'utf-8'));
-      for (const epic of epicsManifest.epics || []) {
-        granthasUrls.push({
-          loc: `${baseUrl}/?tab=granthas&grantha=${encodeURIComponent(epic.id)}`,
-          lastmod: today,
-          changefreq: 'weekly',
-          priority: 0.95,
-        });
-
-        const epicIndexPath = path.resolve(projectRoot, `public/data/epics/${epic.id}/index.json`);
-        if (fs.existsSync(epicIndexPath)) {
-          const epicData = JSON.parse(fs.readFileSync(epicIndexPath, 'utf-8'));
-          for (const ch of epicData.chapters || []) {
-            granthasUrls.push({
-              loc: `${baseUrl}/?tab=granthas&grantha=${encodeURIComponent(epic.id)}&chapter=${encodeURIComponent(ch.id)}`,
-              lastmod: today,
-              changefreq: 'monthly',
-              priority: 0.85,
-            });
-          }
-        }
-      }
-    } catch (e) {
-      console.warn('  ⚠ Warning loading epics for sitemap:', e.message);
-    }
-  }
-
   const granthasXml = buildUrlset(granthasUrls);
 
-  // 3. Saints
+  // 3. Saints (131 Canonical Saints)
   const saintsUrls = saints.map((s) => ({
     loc: `${baseUrl}/?tab=padavali&author=${s.slug || s.id || encodeURIComponent(s.name)}`,
     lastmod: today,
@@ -151,7 +183,6 @@ function createSitemapSuite(baseUrl, prefix = '') {
   const padasXmlGz = zlib.gzipSync(Buffer.from(padasXml), { level: 9 });
 
   // 5. Sitemap Index (pointing to standard .xml and .xml.gz)
-  const filePrefix = prefix ? `sitemap-${prefix}` : 'sitemap';
   const indexXml = [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',

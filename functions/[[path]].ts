@@ -1,6 +1,7 @@
 /**
  * Vrindopnisad 2.0 - Cloudflare Pages Functions Edge Interceptor
- * Dynamically handles edge SEO, deep link canonicals, meta injection via HTMLRewriter,
+ * Dynamically handles edge SEO, multi-domain canonical ownership, pre-rendered static HTML routing,
+ * initial semantic HTML content injection into #root, dynamic JSON-LD Schema.org graphs,
  * and staging noindex protection for the-vrinda.pages.dev.
  */
 
@@ -108,21 +109,24 @@ const GRANTHAS_META: Record<string, { name: string; author: string; desc: string
   },
 };
 
-const KNOWN_PADAS_META: Record<string, { title: string; author: string; desc: string }> = {
+const KNOWN_PADAS_META: Record<string, { title: string; author: string; desc: string; sampleVerse?: string }> = {
   'radheju-merau-janam-sudharau': {
     title: 'राधेजू मेरौ जनम सुधारौ',
     author: 'श्री हित हरिवंश महाप्रभु',
     desc: 'राधेजू मेरौ जनम सुधारौ। नित्य निकुंज रस व किशोरी जी की अनन्य कृपा का पावन पद। वृन्दोपनिषद् 2.0',
+    sampleVerse: 'राधेजू मेरौ जनम सुधारौ।\nकरहु कृपा करुणामयी राधे, अपनौ जानि उर धारौ॥',
   },
   'shri-radha-kripa-kataksha-stotram': {
     title: 'श्री राधा कृपा कटाक्ष स्तोत्रम्',
     author: 'उर्ध्वान्नाय तंत्र',
     desc: 'मुनीन्द्रवृन्दवन्दिते त्रिलोकशोकहारिणी। श्री राधा रानी के पावन कृपा कटाक्ष का दिव्य स्तोत्र। वृन्दोपनिषद् 2.0',
+    sampleVerse: 'मुनीन्द्रवृन्दवन्दिते त्रिलोकशोकहारिणी, प्रसन्नास्यपङ्कजे निकुञ्जभूविलासिनी।\nव्रजेन्द्रभानुगोपिके नमामि राधिके सदा, कदा करिष्यसीह मां कृपाकटाक्षभाजनम्॥',
   },
   'bainu-mai-baje-bansivat-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-64': {
     title: 'बैनु मैं बाजै बंसीवट',
     author: 'श्री हित हरिवंश महाप्रभु',
     desc: 'श्री हित चौरासी पद ६४: बैनु मैं बाजै बंसीवट। नित्य विलास व ब्रज रस का अमर पद। वृन्दोपनिषद् 2.0',
+    sampleVerse: 'बैनु मैं बाजै बंसीवट।\nसुनत सखी आनंदित भईं, तजि गृह सुख कुल वट॥',
   },
 };
 
@@ -160,6 +164,18 @@ class ElementTextModifier {
   }
 }
 
+class ElementHtmlModifier {
+  private content: string;
+
+  constructor(content: string) {
+    this.content = content;
+  }
+
+  element(el: CFElement) {
+    el.setInnerContent(this.content, { html: true });
+  }
+}
+
 export const onRequest: PagesFunction<Env> = async (context) => {
   const { request, next } = context;
   const url = new URL(request.url);
@@ -167,7 +183,6 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   const host = url.hostname;
   const isStaging = host.endsWith('.pages.dev');
   const isPathDomain = host === 'path.vrindopnishad.in' || host.startsWith('path.');
-  const baseDomain = isPathDomain ? 'https://path.vrindopnishad.in' : 'https://bhav.vrindopnishad.in';
   const pathname = url.pathname.replace(/\/+$/, '') || '/';
 
   // 1. Dynamic Robots.txt routing per domain (bhav vs path vs staging)
@@ -184,7 +199,6 @@ export const onRequest: PagesFunction<Env> = async (context) => {
       'Disallow: /admin/',
       '',
       `Sitemap: ${sitemapUrl}`,
-      ...(isPathDomain ? ['Sitemap: https://path.vrindopnishad.in/sitemap-path.xml'] : []),
       '',
     ].join('\n');
 
@@ -199,8 +213,6 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   }
 
   // 2. Intelligent Sitemap Routing for path.vrindopnishad.in
-  // If request is made to path.vrindopnishad.in and asks for standard sitemap URLs,
-  // transparently map it to the corresponding sitemap-path-* file.
   if (isPathDomain) {
     if (pathname === '/sitemap.xml') {
       const redirectedUrl = new URL('/sitemap-path.xml', request.url);
@@ -212,14 +224,6 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     }
     if (pathname === '/sitemap-granthas.xml') {
       const redirectedUrl = new URL('/sitemap-path-granthas.xml', request.url);
-      return next(new Request(redirectedUrl.toString(), request));
-    }
-    if (pathname === '/sitemap-saints.xml') {
-      const redirectedUrl = new URL('/sitemap-path-saints.xml', request.url);
-      return next(new Request(redirectedUrl.toString(), request));
-    }
-    if (pathname === '/sitemap-padas.xml.gz') {
-      const redirectedUrl = new URL('/sitemap-path-padas.xml.gz', request.url);
       return next(new Request(redirectedUrl.toString(), request));
     }
   }
@@ -247,21 +251,14 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     return res;
   }
 
-  // Fetch the static HTML from Pages CDN
-  const response = await next();
-  const contentType = response.headers.get('content-type') || '';
-  if (!contentType.includes('text/html')) {
-    return response;
-  }
-
-  // Determine SEO metadata based on URL and query params
+  // Parse queries and determine active domain & tab
   const qTab = url.searchParams.get('tab');
   const qPad = url.searchParams.get('pad');
   const qGrantha = url.searchParams.get('grantha');
   const qAuthor = url.searchParams.get('author');
   const qChapter = url.searchParams.get('chapter');
 
-  let activeTab = 'smaran';
+  let activeTab = isPathDomain ? 'granthas' : 'smaran';
   if (qTab && ['smaran', 'padavali', 'granthas', 'feed', 'milestones'].includes(qTab)) {
     activeTab = qTab;
   } else if (qPad || qAuthor) {
@@ -282,78 +279,273 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     activeTab = 'milestones';
   }
 
+  // Domain Canonical Ownership Strategy (Mission 2):
+  // path.vrindopnishad.in owns Sanatan Mahagranth Parayana (epics & chapters)
+  // bhav.vrindopnishad.in owns Sacred Ras Padavali, Home Sanctuary, Darshan Feed & Milestones
+  const isGranthasParayana = activeTab === 'granthas' || (qGrantha && EPICS_META[qGrantha]);
+  const canonicalBaseDomain = isGranthasParayana ? 'https://path.vrindopnishad.in' : 'https://bhav.vrindopnishad.in';
+
+  // 3. Map requests to pre-rendered static HTML files where available
+  let staticFileToFetch: string | null = null;
+  if (pathname === '/' || pathname === '/granthas' || pathname === '/padavali' || pathname === '/feed' || pathname === '/milestones' || pathname.startsWith('/pad/')) {
+    if (qGrantha === 'valmiki-ramayana' && !qChapter) staticFileToFetch = '/grantha-valmiki-ramayana.html';
+    else if (qGrantha === 'shrimad-bhagavatam' && !qChapter) staticFileToFetch = '/grantha-shrimad-bhagavatam.html';
+    else if (qGrantha === 'ramcharitmanas' && !qChapter) staticFileToFetch = '/grantha-ramcharitmanas.html';
+    else if (qGrantha === 'ramcharitmanas' && qChapter === 'kanda-01') staticFileToFetch = '/grantha-ramcharitmanas-kanda-01.html';
+    else if (qGrantha === 'bhagavad-gita' && !qChapter) staticFileToFetch = '/grantha-bhagavad-gita.html';
+    else if (qGrantha === 'bhagavad-gita' && qChapter === 'chapter-01') staticFileToFetch = '/grantha-bhagavad-gita-chapter-01.html';
+    else if (qGrantha === 'bhagavad-gita' && qChapter === 'chapter-02') staticFileToFetch = '/grantha-bhagavad-gita-chapter-02.html';
+    else if (qGrantha === 'durga-saptashati' && !qChapter) staticFileToFetch = '/grantha-durga-saptashati.html';
+    else if (qGrantha === 'hit-chaurasi') staticFileToFetch = '/grantha-hit-chaurasi.html';
+    else if (qGrantha === 'kelimal') staticFileToFetch = '/grantha-kelimal.html';
+    else if (qGrantha === 'radha-sudha-nidhi') staticFileToFetch = '/grantha-radha-sudha-nidhi.html';
+    else if (qGrantha === 'sur-sagar') staticFileToFetch = '/grantha-sur-sagar.html';
+    else if (qGrantha === 'vyas-vani') staticFileToFetch = '/grantha-vyas-vani.html';
+    else if (qGrantha === 'meera-padavali') staticFileToFetch = '/grantha-meera-padavali.html';
+    else if (qGrantha === 'raskhan-padavali') staticFileToFetch = '/grantha-raskhan-padavali.html';
+    else if (qAuthor === 'shri-hit-harivansh-mahaprabhu') staticFileToFetch = '/saint-shri-hit-harivansh.html';
+    else if (qAuthor === 'swami-shri-haridas-ji') staticFileToFetch = '/saint-swami-shri-haridas.html';
+    else if (qPad === 'radheju-merau-janam-sudharau' || pathname === '/pad/radheju-merau-janam-sudharau') staticFileToFetch = '/pad-radheju-merau-janam-sudharau.html';
+    else if (qPad === 'shri-radha-kripa-kataksha-stotram' || pathname === '/pad/shri-radha-kripa-kataksha-stotram') staticFileToFetch = '/pad-shri-radha-kripa-kataksha-stotram.html';
+    else if (qPad?.includes('bainu-mai-baje-bansivat') || pathname.includes('bainu-mai-baje-bansivat')) staticFileToFetch = '/pad-bainu-mai-baje-bansivat.html';
+    else if (activeTab === 'granthas' && !qGrantha) staticFileToFetch = '/granthas.html';
+    else if (activeTab === 'padavali' && !qPad && !qAuthor && !qGrantha) staticFileToFetch = '/padavali.html';
+    else if (activeTab === 'feed') staticFileToFetch = '/feed.html';
+    else if (activeTab === 'milestones') staticFileToFetch = '/milestones.html';
+    else if (activeTab === 'smaran' && !qPad && !qAuthor && !qGrantha) staticFileToFetch = '/smaran.html';
+  }
+
+  // Fetch the target static HTML file
+  let response: Response;
+  if (staticFileToFetch) {
+    try {
+      const staticReqUrl = new URL(staticFileToFetch, request.url);
+      response = await next(new Request(staticReqUrl.toString(), request));
+      if (response.status !== 200) {
+        response = await next();
+      }
+    } catch {
+      response = await next();
+    }
+  } else {
+    response = await next();
+  }
+
+  const contentType = response.headers.get('content-type') || '';
+  if (!contentType.includes('text/html')) {
+    return response;
+  }
+
+  // Build entity SEO metadata and Schema.org graph
   let title = 'वृन्दोपनिषद् 2.0 • Sacred Vrindavan Ras Sanctuary & Canonical Pada Literature';
   let description = 'Digital sanctuary for Nitya Nikunj Ras. Explore 44,000+ canonical Braj Ras verses, Hit Chaurasi, Radha Sudha Nidhi, Kelimal, Ashtayama daily seva schedule, and contemplative dhyana sadhana.';
-  let canonicalUrl = `${baseDomain}${url.search ? url.search : (pathname === '/' ? '/' : pathname)}`;
+  let canonicalUrl = `${canonicalBaseDomain}${url.search ? url.search : (pathname === '/' ? '/' : pathname)}`;
+  let entitySchema: Record<string, unknown> | null = null;
+  let dynamicRootHtml: string | null = null;
 
   const padId = qPad || (pathname.startsWith('/pad/') ? decodeURIComponent(pathname.replace('/pad/', '')).trim() : null);
 
   if (padId) {
     const known = KNOWN_PADAS_META[padId];
-    if (known) {
-      title = `${known.title} (${known.author}) • वृन्दोपनिषद् 2.0`;
-      description = known.desc;
-    } else {
-      const formattedName = formatSlug(padId);
-      title = `${formattedName} • पावन रसिक पद | वृन्दोपनिषद् 2.0`;
-      description = `${formattedName} के पावन पद, मूल पाठ, राग, भावार्थ व नित्य अनुशीलन। वृन्दोपनिषद् 2.0`;
+    const padTitle = known ? known.title : formatSlug(padId);
+    const padAuthor = known ? known.author : 'रसिक संत';
+    title = `${padTitle} (${padAuthor}) • पावन रसिक पद | वृन्दोपनिषद् 2.0`;
+    description = known ? known.desc : `${padTitle} के पावन पद, मूल पाठ, राग, भावार्थ व नित्य अनुशीलन। वृन्दोपनिषद् 2.0`;
+    canonicalUrl = `https://bhav.vrindopnishad.in/?tab=padavali&pad=${encodeURIComponent(padId)}`;
+
+    entitySchema = {
+      '@type': 'CreativeWork',
+      '@id': `${canonicalUrl}#creativework`,
+      'headline': padTitle,
+      'name': padTitle,
+      'author': {
+        '@type': 'Person',
+        'name': padAuthor,
+      },
+      'inLanguage': 'hi',
+      'isPartOf': {
+        '@type': 'WebSite',
+        'name': 'वृन्दोपनिषद् 2.0 (Vrindopnisad)',
+        'url': 'https://bhav.vrindopnishad.in/',
+      },
+    };
+
+    if (!staticFileToFetch) {
+      dynamicRootHtml = `
+        <article class="sanctuary-ssr-content" style="max-width: 820px; margin: 0 auto; padding: 2.5rem 1.25rem; font-family: 'Noto Serif Devanagari', serif;">
+          <nav style="margin-bottom: 1.5rem; font-size: 0.875rem; color: #b45309;">
+            <a href="/" style="color: #b45309; text-decoration: none;">वृन्दोपनिषद् 2.0</a> &rsaquo; <span>पावन पदावली</span>
+          </nav>
+          <header style="margin-bottom: 2rem;">
+            <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; background-color: #fef3c7; color: #92400e; margin-bottom: 0.75rem;">रसिक वाणी संग्रह</span>
+            <h1 style="font-size: 2rem; font-weight: 700; line-height: 1.3; color: #1c1917; margin: 0 0 0.75rem 0;">${padTitle}</h1>
+            <p style="font-size: 0.95rem; color: #78716c; margin: 0;">रचयिता: ${padAuthor} • नित्य स्वाध्याय व अनुशीलन</p>
+          </header>
+          <section class="verse-body" style="font-size: 1.25rem; line-height: 2; color: #292524; background-color: #fffbeb; padding: 1.5rem; border-radius: 1rem; border: 1px solid #fef3c7; white-space: pre-line;">
+            ${known?.sampleVerse || '«पावन वाणी का मूल पाठ लोड हो रहा है...»'}
+          </section>
+          <footer style="margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid #f5f5f4; font-size: 0.875rem; color: #a8a29e; display: flex; justify-content: space-between; align-items: center;">
+            <span>वृन्दोपनिषद् 2.0 • Digital Sanctuary for Nitya Nikunj Ras</span>
+            <a href="${canonicalUrl}" style="color: #b45309; text-decoration: underline;">मूल पाठ व स्वाध्याय</a>
+          </footer>
+        </article>
+      `;
     }
-    canonicalUrl = `${baseDomain}/?tab=padavali&pad=${encodeURIComponent(padId)}`;
   } else if (qAuthor) {
-    title = `${qAuthor} • रसिक संत पदावली व जीवन चरित | वृन्दोपनिषद् 2.0`;
-    description = `${qAuthor} की समस्त पावन पदों व वाणियों का प्रामाणिक संग्रह। वृन्दोपनिषद् 2.0`;
-    canonicalUrl = `${baseDomain}/?tab=padavali&author=${encodeURIComponent(qAuthor)}`;
+    const saintName = formatSlug(qAuthor);
+    title = `${saintName} • रसिक संत पदावली व जीवन चरित | वृन्दोपनिषद् 2.0`;
+    description = `${saintName} की समस्त पावन पदों व वाणियों का प्रामाणिक संग्रह। वृन्दोपनिषद् 2.0`;
+    canonicalUrl = `https://bhav.vrindopnishad.in/?tab=padavali&author=${encodeURIComponent(qAuthor)}`;
+
+    entitySchema = {
+      '@type': 'ProfilePage',
+      'mainEntity': {
+        '@type': 'Person',
+        'name': saintName,
+      },
+    };
+
+    if (!staticFileToFetch) {
+      dynamicRootHtml = `
+        <article class="sanctuary-ssr-content" style="max-width: 820px; margin: 0 auto; padding: 2.5rem 1.25rem; font-family: 'Noto Serif Devanagari', serif;">
+          <nav style="margin-bottom: 1.5rem; font-size: 0.875rem; color: #b45309;">
+            <a href="/" style="color: #b45309; text-decoration: none;">वृन्दोपनिषद् 2.0</a> &rsaquo; <span>संत परंपरा</span>
+          </nav>
+          <header style="margin-bottom: 2rem;">
+            <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; background-color: #fef3c7; color: #92400e; margin-bottom: 0.75rem;">रसिक संत परंपरा</span>
+            <h1 style="font-size: 2rem; font-weight: 700; line-height: 1.3; color: #1c1917; margin: 0 0 0.75rem 0;">${saintName}</h1>
+            <p style="font-size: 0.95rem; color: #78716c; margin: 0;">पावन वाणी व रसिक पद संग्रह</p>
+          </header>
+          <p style="font-size: 1.1rem; line-height: 1.8; color: #44403c;">${description}</p>
+        </article>
+      `;
+    }
   } else if (qGrantha && EPICS_META[qGrantha]) {
     const epic = EPICS_META[qGrantha];
     if (qChapter) {
       title = `${epic.name} (${qChapter}) • प्रणेता: ${epic.author} | वृन्दोपनिषद् 2.0`;
       description = `${epic.name} का पावन अध्याय ${qChapter}। मूल श्लोक, अवधी/संस्कृत पाठ व पारायण। वृन्दोपनिषद् 2.0`;
-      canonicalUrl = `${baseDomain}/?tab=granthas&grantha=${encodeURIComponent(qGrantha)}&chapter=${encodeURIComponent(qChapter)}`;
+      canonicalUrl = `https://path.vrindopnishad.in/?tab=granthas&grantha=${encodeURIComponent(qGrantha)}&chapter=${encodeURIComponent(qChapter)}`;
+
+      entitySchema = {
+        '@type': 'Chapter',
+        '@id': `${canonicalUrl}#chapter`,
+        'name': `${epic.name} - ${qChapter}`,
+        'isPartOf': {
+          '@type': 'Book',
+          'name': epic.name,
+          'author': { '@type': 'Person', 'name': epic.author },
+        },
+      };
+
+      if (!staticFileToFetch) {
+        dynamicRootHtml = `
+          <article class="sanctuary-ssr-content" style="max-width: 820px; margin: 0 auto; padding: 2.5rem 1.25rem; font-family: 'Noto Serif Devanagari', serif;">
+            <nav style="margin-bottom: 1.5rem; font-size: 0.875rem; color: #b45309;">
+              <a href="https://path.vrindopnishad.in/" style="color: #b45309; text-decoration: none;">महाग्रंथ पारायण</a> &rsaquo; <span>${epic.name}</span>
+            </nav>
+            <header style="margin-bottom: 2rem;">
+              <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; background-color: #fef3c7; color: #92400e; margin-bottom: 0.75rem;">सनातन महाग्रंथ</span>
+              <h1 style="font-size: 2rem; font-weight: 700; line-height: 1.3; color: #1c1917; margin: 0 0 0.75rem 0;">${epic.name} (${qChapter})</h1>
+              <p style="font-size: 0.95rem; color: #78716c; margin: 0;">प्रणेता: ${epic.author} • संपूर्ण मूल श्लोक व पारायण</p>
+            </header>
+            <p style="font-size: 1.1rem; line-height: 1.8; color: #44403c;">${description}</p>
+          </article>
+        `;
+      }
     } else {
       title = `${epic.name} (${epic.author}) • संपूर्ण मूल पाठ व पारायण | वृन्दोपनिषद् 2.0`;
       description = `${epic.desc}। प्रणेता: ${epic.author}। वृन्दोपनिषद् 2.0`;
-      canonicalUrl = `${baseDomain}/?tab=granthas&grantha=${encodeURIComponent(qGrantha)}`;
+      canonicalUrl = `https://path.vrindopnishad.in/?tab=granthas&grantha=${encodeURIComponent(qGrantha)}`;
+
+      entitySchema = {
+        '@type': 'Book',
+        '@id': `${canonicalUrl}#book`,
+        'name': epic.name,
+        'author': { '@type': 'Person', 'name': epic.author },
+        'description': epic.desc,
+      };
     }
   } else if (qGrantha && GRANTHAS_META[qGrantha]) {
     const g = GRANTHAS_META[qGrantha];
     title = `${g.name} (${g.author}) • संपूर्ण वाणी संग्रह | वृन्दोपनिषद् 2.0`;
     description = `${g.desc} वृन्दोपनिषद् 2.0`;
-    canonicalUrl = `${baseDomain}/?tab=padavali&grantha=${encodeURIComponent(qGrantha)}`;
+    canonicalUrl = `https://bhav.vrindopnishad.in/?tab=padavali&grantha=${encodeURIComponent(qGrantha)}`;
+
+    entitySchema = {
+      '@type': 'Book',
+      '@id': `${canonicalUrl}#book`,
+      'name': g.name,
+      'author': { '@type': 'Person', 'name': g.author },
+      'description': g.desc,
+    };
   } else if (qGrantha) {
     const formatted = formatSlug(qGrantha);
     title = `${formatted} • संपूर्ण ग्रंथ संग्रह | वृन्दोपनिषद् 2.0`;
     description = `${formatted} के समस्त पावन पदों व श्लोकों का संग्रह। वृन्दोपनिषद् 2.0`;
-    canonicalUrl = `${baseDomain}/?tab=padavali&grantha=${encodeURIComponent(qGrantha)}`;
+    canonicalUrl = `https://bhav.vrindopnishad.in/?tab=padavali&grantha=${encodeURIComponent(qGrantha)}`;
   } else {
     switch (activeTab) {
       case 'granthas':
         title = 'Sanatan Mahagranth Parayana • ५ अमर महाकाव्य एवं अखंड शास्त्र स्वाध्याय | वृन्दोपनिषद् 2.0';
         description = 'श्रीमद् वाल्मीकि रामायण, श्रीमद्भागवत महापुराण, श्री रामचरितमानस, श्रीमद्भगवद्गीता व श्री दुर्गा सप्तशती का संपूर्ण मूल पाठ व ऑन-डिमांड त्वरित पारायण।';
-        canonicalUrl = `${baseDomain}/?tab=granthas`;
+        canonicalUrl = 'https://path.vrindopnishad.in/?tab=granthas';
         break;
       case 'padavali':
         title = 'Scriptures Repository • ४४,०००+ पावन महाग्रंथ व रसिक वाणी संग्रह | वृन्दोपनिषद् 2.0';
         description = 'वाल्मीकि रामायण, श्रीमद् भागवत, रामचरितमानस, भगवद्गीता, हित चौरासी, केलिमाल, सूरसागर सहित सनातन महाग्रंथ व समस्त रसिक वाणी का अगाध संग्रह।';
-        canonicalUrl = `${baseDomain}/?tab=padavali`;
+        canonicalUrl = 'https://bhav.vrindopnishad.in/?tab=padavali';
         break;
       case 'feed':
         title = 'Darshan Feed • नित्य वृन्दावन धाम दर्शन | वृन्दोपनिषद् 2.0';
         description = 'श्री वृन्दावन धाम के प्रमुख मंदिरों के प्रत्यक्ष दर्शन, उत्सव, आरती व नित्य विलास।';
-        canonicalUrl = `${baseDomain}/?tab=feed`;
+        canonicalUrl = 'https://bhav.vrindopnishad.in/?tab=feed';
         break;
       case 'milestones':
         title = 'Devotion Milestones • अखंड निष्ठा व साधना सोपान | वृन्दोपनिषद् 2.0';
         description = 'अखंड साधना स्ट्रीक, अंतरंग ध्यान सिद्धि एवं श्रीजी कृपा के पावन सोपान।';
-        canonicalUrl = `${baseDomain}/?tab=milestones`;
+        canonicalUrl = 'https://bhav.vrindopnishad.in/?tab=milestones';
         break;
       default:
         title = 'Home Sanctuary • दैनिक स्मरण व नित्य सेवा | वृन्दोपनिषद् 2.0';
         description = 'दैनिक अष्टयाम लीला, नाम जप, वाणी श्रवण और स्वाध्याय का पावन साधना स्थल।';
-        canonicalUrl = `${baseDomain}/`;
+        canonicalUrl = 'https://bhav.vrindopnishad.in/';
         break;
     }
   }
 
+  // Generate dynamic Schema.org JSON-LD
+  const schemaGraph: Record<string, unknown>[] = [
+    {
+      '@type': 'WebSite',
+      'name': 'वृन्दोपनिषद् 2.0 (Vrindopnisad)',
+      'url': 'https://bhav.vrindopnishad.in/',
+      'description': 'Digital sanctuary for Nitya Nikunj Ras & Canonical Braj Pada Literature',
+      'inLanguage': ['hi', 'sa', 'en'],
+      'potentialAction': {
+        '@type': 'SearchAction',
+        'target': 'https://bhav.vrindopnishad.in/?tab=padavali&q={search_term_string}',
+        'query-input': 'required name=search_term_string',
+      },
+    },
+    {
+      '@type': 'ReligiousOrganization',
+      'name': 'वृन्दोपनिषद् 2.0',
+      'url': 'https://bhav.vrindopnishad.in/',
+      'logo': 'https://bhav.vrindopnishad.in/official-logo.svg',
+    },
+  ];
+
+  if (entitySchema) {
+    schemaGraph.push(entitySchema);
+  }
+
+  const jsonLdString = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@graph': schemaGraph,
+  });
+
+  // Edge HTML rewriting
   let rewriter = new HTMLRewriter()
     .on('title', new ElementTextModifier(title))
     .on('meta[name="title"]', new ElementAttributeModifier('content', title))
@@ -363,7 +555,13 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     .on('meta[property="og:url"]', new ElementAttributeModifier('content', canonicalUrl))
     .on('meta[name="twitter:title"]', new ElementAttributeModifier('content', title))
     .on('meta[name="twitter:description"]', new ElementAttributeModifier('content', description))
-    .on('link[rel="canonical"]', new ElementAttributeModifier('href', canonicalUrl));
+    .on('link[rel="canonical"]', new ElementAttributeModifier('href', canonicalUrl))
+    .on('script#vrindopnisad-schema', new ElementTextModifier(jsonLdString));
+
+  // If this deep-link did not hit a pre-rendered static HTML file, inject semantic article into #root
+  if (dynamicRootHtml) {
+    rewriter = rewriter.on('#root', new ElementHtmlModifier(dynamicRootHtml));
+  }
 
   if (isStaging) {
     rewriter = rewriter.on('meta[name="robots"]', new ElementAttributeModifier('content', 'noindex, nofollow'));
@@ -383,4 +581,3 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     })
   );
 };
-
