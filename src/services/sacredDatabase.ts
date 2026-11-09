@@ -162,6 +162,8 @@ export function cleanSacredString(str: string): string {
   return res.replace(/&(?:zwnj|zwj|#x200c|#x200C|#8204|#x200d|#x200D|#8205);?/gi, '');
 }
 
+export const sanitizeSacredText = cleanSacredString;
+
 /**
  * Normalizes all canonical padas into uniform SacredPad instances
  * with authenticated grantha attribution, classical raga harmonization, and full verse structure.
@@ -258,6 +260,17 @@ const padasById = new Map<string, SacredPad>();
 const padasBySlug = new Map<string, SacredPad>();
 const padasByGrantha = new Map<string, SacredPad[]>();
 const padasByRaga = new Map<string, SacredPad[]>();
+
+const loadedGranthas = new Set<string>();
+const categoryCache = new Map<string, SacredPad[]>();
+const chapterCache = new Map<string, SacredPad[]>();
+const authorCache = new Map<string, SacredPad[]>();
+
+function clearDerivedCaches() {
+  categoryCache.clear();
+  chapterCache.clear();
+  authorCache.clear();
+}
 
 function indexPadas(pads: SacredPad[]) {
   pads.forEach((pad) => {
@@ -381,35 +394,41 @@ export const SacredDatabase = {
       const existing = padasById.get(pad.id);
       if (!existing) {
         allPadas.push(pad);
+        padasById.set(pad.id, pad);
         addedCount++;
       } else {
-        // Upgrade existing seed pad with full verses if available
-        if (pad.verses && pad.verses.length > 0 && (!existing.verses || existing.verses.length <= 1)) {
-          Object.assign(existing, pad);
-          addedCount++;
-        }
+        // Upgrade existing seed pad with full canonical fields (chapterId, verseNumber, verses)
+        Object.assign(existing, pad);
+        addedCount++;
       }
 
-      padasById.set(pad.id, pad);
       if (pad.slug) {
         padasBySlug.set(pad.slug, pad);
         padasBySlug.set(pad.slug.toLowerCase(), pad);
       }
 
       const gList = padasByGrantha.get(pad.collectionId) || [];
-      if (!gList.some((p) => p.id === pad.id)) {
+      const gIdx = gList.findIndex((p) => p.id === pad.id);
+      if (gIdx === -1) {
         gList.push(pad);
-        padasByGrantha.set(pad.collectionId, gList);
+      } else {
+        Object.assign(gList[gIdx], pad);
       }
+      padasByGrantha.set(pad.collectionId, gList);
 
       if (pad.rag) {
         const rList = padasByRaga.get(pad.rag) || [];
-        if (!rList.some((p) => p.id === pad.id)) {
+        const rIdx = rList.findIndex((p) => p.id === pad.id);
+        if (rIdx === -1) {
           rList.push(pad);
-          padasByRaga.set(pad.rag, rList);
+        } else {
+          Object.assign(rList[rIdx], pad);
         }
+        padasByRaga.set(pad.rag, rList);
       }
     });
+
+    clearDerivedCaches();
 
     if (addedCount > 0) {
       dbListeners.forEach((fn) => {
@@ -468,7 +487,7 @@ export const SacredDatabase = {
 
         // Step 3: Ensure default scripture collection (Sri Hit Chaurasi) is loaded
         const hitPadas = padasByGrantha.get('hit-chaurasi');
-        if (!hitPadas || hitPadas.length === 0) {
+        if (!hitPadas || hitPadas.length < 300 || !hitPadas[0]?.chapterId) {
           const currentHitMeta = activeManifest?.granthas?.['hit-chaurasi'];
           const targetFile = currentHitMeta?.file || 'hit-chaurasi.json';
           const cacheKey = currentHitMeta?.hash ? `vrind_grantha_hit-chaurasi_${currentHitMeta.hash}` : 'vrind_grantha_hit-chaurasi';
@@ -478,9 +497,12 @@ export const SacredDatabase = {
             if (chunkRes.ok) {
               const freshHitPadas = await chunkRes.json();
               SacredDatabase.appendPadas(freshHitPadas);
+              loadedGranthas.add('hit-chaurasi');
               await set(cacheKey, freshHitPadas);
             }
           } catch {}
+        } else {
+          loadedGranthas.add('hit-chaurasi');
         }
 
         // Step 4: Restore Cloud Bookmarks in Background (non-blocking)
@@ -563,10 +585,18 @@ export const SacredDatabase = {
    */
   async fetchGranthaPadas(granthaId: string): Promise<SacredPad[]> {
     if (!granthaId || granthaId === 'all') return allPadas;
-    const existing = padasByGrantha.get(granthaId);
-    if (existing && existing.length > 5) return existing;
+    if (loadedGranthas.has(granthaId)) {
+      return padasByGrantha.get(granthaId) || [];
+    }
 
+    const existing = padasByGrantha.get(granthaId);
     const granthaMeta = activeManifest?.granthas?.[granthaId];
+    const metaCount = granthaMeta?.count || this.getGranthaById(granthaId)?.count || 0;
+    if (existing && existing.length > 0 && metaCount > 0 && existing.length >= metaCount && existing[0]?.chapterId) {
+      loadedGranthas.add(granthaId);
+      return existing;
+    }
+
     const targetFile = granthaMeta?.file || `${granthaId}.json`;
     const cacheKey = granthaMeta?.hash ? `vrind_grantha_${granthaId}_${granthaMeta.hash}` : `vrind_grantha_${granthaId}`;
 
@@ -575,6 +605,7 @@ export const SacredDatabase = {
       const cached = await get<SacredPad[]>(cacheKey);
       if (cached && Array.isArray(cached) && cached.length > 0) {
         this.appendPadas(cached);
+        loadedGranthas.add(granthaId);
         return padasByGrantha.get(granthaId) || cached;
       }
 
@@ -584,6 +615,7 @@ export const SacredDatabase = {
         if (cdnRes.ok) {
           const chunkData = await cdnRes.json();
           this.appendPadas(chunkData);
+          loadedGranthas.add(granthaId);
           try {
             await set(cacheKey, chunkData);
           } catch {}
@@ -613,15 +645,17 @@ export const SacredDatabase = {
           verses: r.verses,
         }));
         this.appendPadas(mapped);
+        loadedGranthas.add(granthaId);
         try {
           await set(cacheKey, mapped);
         } catch {}
-        return padasByGrantha.get(granthaId) || mapped;
+        return mapped;
       }
     } catch (err) {
-      console.warn(`Failed to fetch grantha ${granthaId}:`, err);
+      console.warn(`Error loading grantha ${granthaId}:`, err);
     }
-    return padasByGrantha.get(granthaId) || [];
+
+    return padasByGrantha.get(granthaId) || existing || [];
   },
 
   /**
@@ -991,12 +1025,33 @@ export const SacredDatabase = {
   },
 
   /**
+   * Returns all padas belonging to a scripture category (सनातन महाग्रंथ, रसिक वाणी, काव्य व छंद, धाम व लीला)
+   */
+  getPadasByCategory(category: string): SacredPad[] {
+    if (!category || category === 'all') return allPadas;
+    if (categoryCache.has(category)) {
+      return categoryCache.get(category)!;
+    }
+    const catGranthaIds = new Set(
+      allGranthas.filter((g) => g.category === category).map((g) => g.id)
+    );
+    const result = allPadas.filter((p) => catGranthaIds.has(p.collectionId));
+    categoryCache.set(category, result);
+    return result;
+  },
+
+  /**
    * Returns all padas composed by a specific author
    */
   getPadasByAuthor(authorName: string): SacredPad[] {
     if (!authorName) return [];
     const clean = authorName.trim().toLowerCase();
-    return allPadas.filter((p) => p.author.toLowerCase().includes(clean));
+    if (authorCache.has(clean)) {
+      return authorCache.get(clean)!;
+    }
+    const result = allPadas.filter((p) => p.author.toLowerCase().includes(clean));
+    authorCache.set(clean, result);
+    return result;
   },
 
   /**
@@ -1005,7 +1060,13 @@ export const SacredDatabase = {
   getPadasByChapter(granthaId: string, chapterId: string): SacredPad[] {
     const list = padasByGrantha.get(granthaId) || [];
     if (!chapterId || chapterId === 'all') return list;
-    return list.filter((p) => p.chapterId === chapterId);
+    const cacheKey = `${granthaId}:${chapterId}`;
+    if (chapterCache.has(cacheKey)) {
+      return chapterCache.get(cacheKey)!;
+    }
+    const result = list.filter((p) => p.chapterId === chapterId);
+    chapterCache.set(cacheKey, result);
+    return result;
   },
 
   /**

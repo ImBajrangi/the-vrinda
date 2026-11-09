@@ -7,6 +7,7 @@ import {
 } from '../../services/devotionalSummaryService';
 import { Sparkles } from 'lucide-react';
 import { SacredPad } from '../../types/devotional';
+import { sanitizeSacredText } from '../../services/sacredDatabase';
 
 interface InlinePurportCardProps {
   pad: SacredPad;
@@ -62,9 +63,10 @@ export const InlinePurportCard: React.FC<InlinePurportCardProps> = ({ pad, isOpe
         </div>
       ) : (
         <p className="text-sm sm:text-base leading-relaxed text-neutral-800 font-devanagari">
-          {summary || req.fallbackText}
+          {sanitizeSacredText(summary || req.fallbackText || '')}
         </p>
       )}
     </div>
   );
 };
+
