@@ -6,6 +6,42 @@
 
 interface Env {}
 
+// Cloudflare Workers / Pages runtime ambient type definitions
+interface CFElement {
+  getAttribute(name: string): string | null;
+  hasAttribute(name: string): boolean;
+  setAttribute(name: string, value: string): void;
+  removeAttribute(name: string): void;
+  before(content: string, extra?: { html?: boolean }): void;
+  after(content: string, extra?: { html?: boolean }): void;
+  prepend(content: string, extra?: { html?: boolean }): void;
+  append(content: string, extra?: { html?: boolean }): void;
+  setInnerContent(content: string, extra?: { html?: boolean }): void;
+  remove(): void;
+  removeAndKeepContent(): void;
+  tagName: string;
+}
+
+interface CFHTMLRewriter {
+  on(selector: string, handlers: { element?: (el: CFElement) => void }): CFHTMLRewriter;
+  onDocument(handlers: { comments?: (comment: unknown) => void; text?: (text: unknown) => void }): CFHTMLRewriter;
+  transform(response: Response): Response;
+}
+
+declare const HTMLRewriter: {
+  prototype: CFHTMLRewriter;
+  new (): CFHTMLRewriter;
+};
+
+type PagesFunction<T = Record<string, unknown>> = (context: {
+  request: Request;
+  next: (input?: Request | string, init?: RequestInit) => Promise<Response>;
+  env: T;
+  params: Record<string, string | string[]>;
+  data: Record<string, unknown>;
+  waitUntil: (promise: Promise<unknown>) => void;
+}) => Promise<Response>;
+
 const EPICS_META: Record<string, { name: string; author: string; desc: string }> = {
   'valmiki-ramayana': {
     name: 'श्रीमद् वाल्मीकि रामायण',
@@ -107,7 +143,7 @@ class ElementAttributeModifier {
     this.value = value;
   }
 
-  element(el: Element) {
+  element(el: CFElement) {
     el.setAttribute(this.attributeName, this.value);
   }
 }
@@ -119,7 +155,7 @@ class ElementTextModifier {
     this.content = content;
   }
 
-  element(el: Element) {
+  element(el: CFElement) {
     el.setInnerContent(this.content);
   }
 }
