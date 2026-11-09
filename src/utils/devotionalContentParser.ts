@@ -214,22 +214,27 @@ export function parseDevotionalContent(rawLines: string[]): ParsedSacredPadaCont
     }
 
     // 1. Heading line (e.g. "झूलन उत्सव संध्या दर्शन ||" or "आरती श्री युगल किशोर की")
+    const cleanCandidate = line.replace(/^[\{\[\(\s]+/, '').replace(/[\}\]\)\s]+$/, '').trim();
     if (
       i === 0 &&
-      (line.includes('दर्शन') ||
-        line.includes('उत्सव') ||
-        line.includes('लीला') ||
-        line.includes('आरती') ||
-        line.includes('मंगलाचरण') ||
-        line.endsWith('||') ||
-        line.endsWith('॥'))
+      (cleanCandidate.includes('दर्शन') ||
+        cleanCandidate.includes('उत्सव') ||
+        cleanCandidate.includes('लीला') ||
+        cleanCandidate.includes('आरती') ||
+        cleanCandidate.includes('मंगलाचरण') ||
+        cleanCandidate.endsWith('||') ||
+        cleanCandidate.endsWith('॥'))
     ) {
-      units.push({ type: 'poem_title', text: line });
+      const normalizedTitle = cleanCandidate
+        .replace(/\|\|/g, '')
+        .replace(/॥/g, '')
+        .trim();
+      units.push({ type: 'poem_title', text: normalizedTitle || cleanCandidate });
       continue;
     }
 
     // 2. Floral Garland line (e.g. "🥀🌹🥀🌹🥀🌹🥀🌹🥀" or "🪷 ❀ 🪷 ❀ 🪷")
-    if (/^[🥀🌹🌸🌺🪷🌻🌷🌼🌾🌿🍃🍂❀✿\s]+$/.test(line)) {
+    if (/^[🥀🌹🌸🌺🪷🌻🌷🌼🌾🌿🍃🍂❀✿\s\-_=~*•+]+$/.test(line)) {
       units.push({ type: 'garland', text: line });
       continue;
     }

@@ -119,26 +119,47 @@ export const DevotionalVersePresenter: React.FC<DevotionalVersePresenterProps> =
       {/* Main Devotional Presentation Body */}
       <div className={`space-y-4 ${textAlignClass}`}>
         {parsed.units.map((unit, idx) => {
-          // 1. Festive / Darshan Poem Title (e.g. "झूलन उत्सव संध्या दर्शन ||")
+          // 1. Festive / Darshan Poem Title (e.g. "झूलन उत्सव संध्या दर्शन")
           if (unit.type === 'poem_title') {
             return (
-              <div key={idx} className="text-center pt-2 pb-1">
-                <span className="inline-block text-base sm:text-lg lg:text-xl font-bold font-serif text-amber-950 bg-amber-100/75 border border-amber-300/80 px-5 py-1.5 rounded-full shadow-2xs">
-                  {unit.text}
-                </span>
+              <div key={idx} className="text-center pt-3 pb-1 select-none space-y-1">
+                <div className="inline-flex items-center justify-center gap-2">
+                  <span className="h-px w-6 sm:w-10 bg-gradient-to-r from-transparent to-amber-500/60" />
+                  <span className="text-[10px] sm:text-[11px] font-mono font-bold tracking-widest text-amber-800 uppercase">
+                    लीला उत्सव प्रसंग
+                  </span>
+                  <span className="h-px w-6 sm:w-10 bg-gradient-to-l from-transparent to-amber-500/60" />
+                </div>
+                <h3 className={`text-lg sm:text-xl lg:text-2xl font-serif font-bold text-amber-950 tracking-normal leading-snug ${fontClass}`}>
+                  ॥ {unit.text} ॥
+                </h3>
               </div>
             );
           }
 
-          // 2. Sacred Floral Garland Line (e.g. "🥀🌹🥀🌹🥀🌹🥀🌹🥀")
+          // 2. Sacred Floral Garland Line (Pushpa Mala)
           if (unit.type === 'garland') {
             return (
               <div
                 key={idx}
-                className="py-1 text-center select-none text-xl sm:text-2xl tracking-[0.35em] drop-shadow-2xs opacity-90"
+                className="py-2.5 sm:py-3.5 flex items-center justify-center select-none"
                 aria-hidden="true"
               >
-                {unit.text}
+                <div className="flex items-center gap-2 sm:gap-3 text-amber-700/80">
+                  <span className="h-px w-8 sm:w-16 bg-gradient-to-r from-transparent via-amber-400/50 to-amber-500/70" />
+                  <div className="flex items-center gap-1.5 sm:gap-2 px-3 py-1 rounded-full bg-amber-50/60 border border-amber-900/10 shadow-2xs">
+                    <span className="text-rose-500 text-xs sm:text-sm">❀</span>
+                    <span className="w-1 h-1 rounded-full bg-amber-400/90" />
+                    <span className="text-amber-600 text-xs sm:text-sm">✿</span>
+                    <span className="w-1 h-1 rounded-full bg-emerald-700/70" title="तुलसी दल" />
+                    <span className="text-amber-700 text-sm sm:text-base font-serif px-0.5">𑁍</span>
+                    <span className="w-1 h-1 rounded-full bg-emerald-700/70" title="तुलसी दल" />
+                    <span className="text-amber-600 text-xs sm:text-sm">✿</span>
+                    <span className="w-1 h-1 rounded-full bg-amber-400/90" />
+                    <span className="text-rose-500 text-xs sm:text-sm">❀</span>
+                  </div>
+                  <span className="h-px w-8 sm:w-16 bg-gradient-to-l from-transparent via-amber-400/50 to-amber-500/70" />
+                </div>
               </div>
             );
           }
@@ -231,7 +252,7 @@ export const DevotionalVersePresenter: React.FC<DevotionalVersePresenterProps> =
 
             return (
               <div key={idx} className="pt-3 pb-1 text-left">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold text-amber-950 bg-amber-100/90 border border-amber-300/80 shadow-2xs">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold text-amber-950 bg-amber-50/90 border border-amber-900/10 shadow-2xs">
                   {isLocation ? (
                     <MapPin className="w-3.5 h-3.5 text-amber-800 shrink-0" />
                   ) : isLeela ? (
