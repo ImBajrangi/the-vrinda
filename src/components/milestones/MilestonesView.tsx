@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import {
   ArrowLeft,
-  MoreVertical,
   Award,
   Flame,
   CalendarCheck,
@@ -44,38 +43,38 @@ interface BadgeItem {
   spiritualSignificance: string;
 }
 
+const getDevotionalStage = (
+  streakDays: number,
+  completedBadges: number,
+  japaCount: number,
+  dhyanaMinutes: number
+): { title: string; subtitle: string } => {
+  // Stage 4: Rasik Sharana (Deep absorption in Nikunj Lila & unbroken devotion)
+  if (streakDays >= 30 || completedBadges >= 8 || japaCount >= 108 || dhyanaMinutes >= 180) {
+    return { title: 'रसिक आश्रय', subtitle: 'Rasik Sharana' };
+  }
+  // Stage 3: Ananya Sevi (Dedicated daily practice & sustained focus)
+  if (streakDays >= 14 || completedBadges >= 5 || japaCount >= 48 || dhyanaMinutes >= 60) {
+    return { title: 'अनन्य सेवी', subtitle: 'Ananya Sevi' };
+  }
+  // Stage 2: Nitya Sadhak (Regular committed daily rhythm)
+  if (streakDays >= 7 || completedBadges >= 2 || japaCount >= 16 || dhyanaMinutes >= 20) {
+    return { title: 'नित्य साधक', subtitle: 'Nitya Sadhak' };
+  }
+  // Stage 1: Anuragi Aspirant (Actively begun regular japa, reading, or streak)
+  if (streakDays >= 1 || japaCount > 0 || dhyanaMinutes > 0) {
+    return { title: 'अनुरागी साधक', subtitle: 'Anuragi Sadhak' };
+  }
+  // Base Stage: Jigyasu Sadhak (Initial seeker stepping onto the sacred path)
+  return { title: 'जिज्ञासु साधक', subtitle: 'Jigyasu Sadhak' };
+};
+
 export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
   const [sadhana, setSadhana] = useState<SadhanaState>(() => loadCachedSadhanaSync());
   const [dhyanaImpact, setDhyanaImpact] = useState<DhyanaImpactState>(() => loadDhyanaImpactSync());
   const [selectedBadge, setSelectedBadge] = useState<BadgeItem | null>(null);
   const [isBadgeClosing, setIsBadgeClosing] = useState(false);
   const badgeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isMenuRendered, setIsMenuRendered] = useState(false);
-  const [isMenuClosing, setIsMenuClosing] = useState(false);
-  const menuTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  useEffect(() => {
-    if (isMenuOpen) {
-      if (menuTimerRef.current) {
-        clearTimeout(menuTimerRef.current);
-        menuTimerRef.current = null;
-      }
-      setIsMenuRendered(true);
-      setIsMenuClosing(false);
-    } else if (isMenuRendered) {
-      setIsMenuClosing(true);
-      if (menuTimerRef.current) {
-        clearTimeout(menuTimerRef.current);
-      }
-      menuTimerRef.current = setTimeout(() => {
-        setIsMenuRendered(false);
-        setIsMenuClosing(false);
-        menuTimerRef.current = null;
-      }, 240);
-    }
-  }, [isMenuOpen]);
 
   const [isRulesModalOpen, setIsRulesModalOpen] = useState(false);
   const [isRulesClosing, setIsRulesClosing] = useState(false);
@@ -85,7 +84,6 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
   useEffect(() => {
     return () => {
       if (badgeTimerRef.current) clearTimeout(badgeTimerRef.current);
-      if (menuTimerRef.current) clearTimeout(menuTimerRef.current);
       if (rulesTimerRef.current) clearTimeout(rulesTimerRef.current);
     };
   }, []);
@@ -132,27 +130,6 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
       rulesTimerRef.current = null;
     }, 240);
   };
-
-  useEffect(() => {
-    if (!isMenuOpen) return;
-    const handleClickOutside = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (!target.closest('[data-milestones-menu]')) {
-        setIsMenuOpen(false);
-      }
-    };
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        setIsMenuOpen(false);
-      }
-    };
-    window.addEventListener('click', handleClickOutside);
-    window.addEventListener('keydown', handleKeyDown);
-    return () => {
-      window.removeEventListener('click', handleClickOutside);
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [isMenuOpen]);
 
   useEffect(() => {
     if (!toastMessage) return;
@@ -222,9 +199,15 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
 
   const completedAntarangaCount = antarangaBadges.filter((b) => !b.isLocked).length;
 
+  const devotionalStage = getDevotionalStage(
+    sadhana.currentStreakDays,
+    completedMilestonesCount + completedAntarangaCount,
+    sadhana.japaCompleted,
+    sadhana.dhyanaMinutesCompleted || 0
+  );
+
   const handleShareMilestones = async () => {
-    setIsMenuOpen(false);
-    const text = `🌸 वृन्दोपनिषद् २.० • साधना सिद्धि\nअखंड निष्ठा: ${sadhana.currentStreakDays} दिवस\nसिद्ध सोपान: ${completedMilestonesCount} / ${milestones.length}\nचित्त शान्ति सिद्धि: ${sadhana.chittaShantiScore || 98}%\nश्रीजी कृपा • नित्य नव निकुंज उपासना\nजय श्री राधे!`;
+    const text = `🌸 वृन्दोपनिषद् २.० • साधना सिद्धि\nसाधना सोपान: ${devotionalStage.title} (${devotionalStage.subtitle})\nअखंड निष्ठा: ${sadhana.currentStreakDays} ${sadhana.currentStreakDays === 1 ? 'दिवस' : 'दिवस'}\nनाम जप: ${sadhana.japaCompleted} माला\nसिद्ध सोपान: ${completedMilestonesCount + completedAntarangaCount} / ${milestones.length + antarangaBadges.length}\nश्रीजी कृपा • नित्य नव निकुंज उपासना\nजय श्री राधे!`;
     if (typeof navigator !== 'undefined' && navigator.share) {
       try {
         await navigator.share({
@@ -245,12 +228,12 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
   };
 
   const handleExportBackup = () => {
-    setIsMenuOpen(false);
     const backupData = {
       app: 'Vrindopnisad 2.0',
       exportedAt: new Date().toISOString(),
       sadhana,
       dhyanaImpact,
+      devotionalStage,
     };
     const blob = new Blob([JSON.stringify(backupData, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
@@ -265,7 +248,6 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
   };
 
   const handleRefreshSync = async () => {
-    setIsMenuOpen(false);
     const cached = await loadCachedSadhana();
     if (cached) setSadhana(cached);
     const cachedImpact = await loadDhyanaImpact();
@@ -275,119 +257,80 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
 
   return (
     <div className="w-full pb-44 md:pb-32 pt-1 max-w-5xl mx-auto">
-      {/* Top Header Bar */}
-      <div className="flex items-center justify-between mb-4">
-        <button
-          type="button"
-          onClick={onBack}
-          aria-label="Back to dashboard"
-          className="w-10 h-10 rounded-full border border-neutral-200/80 shadow-xs flex items-center justify-center text-[#111111] pressable bg-white md:hidden"
-        >
-          <ArrowLeft className="w-4 h-4" />
-        </button>
-
-        <div className="flex items-center gap-2">
-          <span className="font-doto text-xs uppercase tracking-widest text-[#B84A28] font-bold bg-[#B84A28]/10 px-3 py-1 rounded-full">
-            Milestones & Streaks
-          </span>
-          <span className="text-xs text-[#6B6F6B] font-medium hidden sm:inline">
-            • Spiritual Milestones by Shriji's Grace
-          </span>
-        </div>
-
-        {/* More Options Dropdown Container */}
-        <div className="relative" data-milestones-menu>
+      {/* Top Header Bar with Spontaneous Devotional Action Controls */}
+      <div className="flex items-center justify-between mb-4 gap-2">
+        <div className="flex items-center gap-2 min-w-0">
           <button
             type="button"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="More options"
-            aria-expanded={isMenuOpen}
-            className="w-10 h-10 rounded-full border border-neutral-200/80 shadow-xs flex items-center justify-center text-[#111111] pressable bg-white hover:bg-neutral-50 transition-colors"
+            onClick={onBack}
+            aria-label="Back to dashboard"
+            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-neutral-200/80 shadow-2xs flex items-center justify-center text-[#111111] pressable bg-white md:hidden shrink-0"
           >
-            <MoreVertical className="w-4 h-4" />
+            <ArrowLeft className="w-4 h-4" />
           </button>
 
-          {/* Glassmorphic Dropdown Popover */}
-          {isMenuRendered && (
-            <div className={`absolute right-0 top-12 z-40 w-64 sm:w-72 bg-white border border-black/10 rounded-2xl shadow-2xl p-1.5 text-left transform-gpu will-change-transform ${
-              isMenuClosing ? 'apple-dialog-exit' : 'apple-dialog-enter'
-            }`}>
-              <div className="px-3 py-2 border-b border-black/5">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#B84A28]">
-                  Sadhana Options & Backup
-                </span>
-                <p className="text-xs font-semibold text-[#111111]">
-                  Spiritual Discipline Management
-                </p>
-              </div>
+          <div className="flex items-center gap-2 min-w-0">
+            <span className="font-doto text-[11px] sm:text-xs uppercase tracking-widest text-[#B84A28] font-bold bg-[#B84A28]/10 px-2.5 sm:px-3 py-1 rounded-full shrink-0">
+              Milestones
+            </span>
+            <span className="text-xs text-[#6B6F6B] font-medium hidden sm:inline truncate">
+              • Spiritual Milestones by Shriji's Grace
+            </span>
+          </div>
+        </div>
 
-              <div className="py-1 space-y-0.5">
-                <button
-                  type="button"
-                  onClick={handleShareMilestones}
-                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-[#222222] hover:bg-black/5 pressable transition-colors text-left"
-                >
-                  <div className="w-7 h-7 rounded-lg bg-amber-50 flex items-center justify-center shrink-0">
-                    <Share2 className="w-3.5 h-3.5 text-amber-700" />
-                  </div>
-                  <div className="min-w-0">
-                    <span className="block font-semibold text-[#111111]">Share Milestones</span>
-                    <span className="text-[10.5px] text-[#6B6F6B]">Send devotion progress card</span>
-                  </div>
-                </button>
+        {/* Spontaneous Devotional Quick Actions (Replaces sterile 3-dots button) */}
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+          {/* Rules & Guidelines Pill */}
+          <button
+            type="button"
+            onClick={() => setIsRulesModalOpen(true)}
+            className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3.5 py-1.5 rounded-full bg-white border border-neutral-200/80 shadow-2xs text-xs font-semibold text-[#111111] hover:bg-[#FAF9F5] transition-colors pressable"
+            title="साधना नियम व मर्यादा (Spiritual Rules & Guidelines)"
+          >
+            <ShieldCheck className="w-3.5 h-3.5 text-[#B84A28] shrink-0" />
+            <span className="hidden xs:inline">नियम</span>
+            <span className="hidden md:inline">व मर्यादा</span>
+          </button>
 
-                <button
-                  type="button"
-                  onClick={() => {
-                    setIsMenuOpen(false);
-                    setIsRulesModalOpen(true);
-                  }}
-                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-[#222222] hover:bg-black/5 pressable transition-colors text-left"
-                >
-                  <div className="w-7 h-7 rounded-lg bg-amber-50 flex items-center justify-center shrink-0">
-                    <BookOpen className="w-3.5 h-3.5 text-amber-700" />
-                  </div>
-                  <div className="min-w-0">
-                    <span className="block font-semibold text-[#111111]">Observance Guidelines & Rules</span>
-                    <span className="text-[10.5px] text-[#6B6F6B]">Japa, vrats & niyam rules</span>
-                  </div>
-                </button>
+          {/* Share Grace Pill */}
+          <button
+            type="button"
+            onClick={handleShareMilestones}
+            className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3.5 py-1.5 rounded-full bg-white border border-neutral-200/80 shadow-2xs text-xs font-semibold text-[#111111] hover:bg-[#FAF9F5] transition-colors pressable"
+            title="साधना सिद्धि साझा करें (Share Milestones)"
+          >
+            <Share2 className="w-3.5 h-3.5 text-amber-700 shrink-0" />
+            <span className="hidden xs:inline">साझा</span>
+            <span className="hidden md:inline">करें</span>
+          </button>
 
-                <button
-                  type="button"
-                  onClick={handleExportBackup}
-                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-[#222222] hover:bg-black/5 pressable transition-colors text-left"
-                >
-                  <div className="w-7 h-7 rounded-lg bg-[#3B82F6]/10 flex items-center justify-center shrink-0">
-                    <Download className="w-3.5 h-3.5 text-[#3B82F6]" />
-                  </div>
-                  <div className="min-w-0">
-                    <span className="block font-semibold text-[#111111]">Export Data Backup</span>
-                    <span className="text-[10.5px] text-[#6B6F6B]">Safely download JSON records</span>
-                  </div>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={handleRefreshSync}
-                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-[#222222] hover:bg-black/5 pressable transition-colors text-left"
-                >
-                  <div className="w-7 h-7 rounded-lg bg-amber-500/10 flex items-center justify-center shrink-0">
-                    <RefreshCw className="w-3.5 h-3.5 text-amber-600" />
-                  </div>
-                  <div className="min-w-0">
-                    <span className="block font-semibold text-[#111111]">Sync Sadhana Records</span>
-                    <span className="text-[10.5px] text-[#6B6F6B]">IndexedDB & multi-tab refresh</span>
-                  </div>
-                </button>
-              </div>
-            </div>
-          )}
+          {/* Sync & Backup Quick Group */}
+          <div className="flex items-center bg-white border border-neutral-200/80 rounded-full p-0.5 shadow-2xs">
+            <button
+              type="button"
+              onClick={handleRefreshSync}
+              className="w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-[#555555] hover:text-[#111111] hover:bg-black/5 transition-colors pressable"
+              title="साधना डेटा सिंक करें (Sync Sadhana Records)"
+              aria-label="Sync Sadhana"
+            >
+              <RefreshCw className="w-3.5 h-3.5" />
+            </button>
+            <button
+              type="button"
+              onClick={handleExportBackup}
+              className="w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-[#555555] hover:text-[#111111] hover:bg-black/5 transition-colors pressable"
+              title="साधना रिकॉर्ड बैकअप डाउनलोड करें (Export Backup)"
+              aria-label="Export Data Backup"
+            >
+              <Download className="w-3.5 h-3.5" />
+            </button>
+          </div>
         </div>
       </div>
 
       {/* Hero Header & Headline */}
-      <div className="mb-6 flex flex-col md:flex-row md:items-end justify-between gap-4 bg-white p-6 rounded-[28px]">
+      <div className="mb-6 flex flex-col md:flex-row md:items-end justify-between gap-4 bg-white p-5 sm:p-6 rounded-[28px] border border-black/5 shadow-xs">
         <div>
           <h1 className="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-[#111111] leading-tight">
             Unbroken Devotion • अखंड निष्ठा
@@ -397,45 +340,61 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
           </p>
         </div>
 
-        {/* Bento Stats Summary Pills */}
+        {/* Bento Stats Summary Pills - 100% Real Live Metrics */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 w-full md:w-auto">
-          <div className="bg-[#FAF9F5] p-3 rounded-2xl flex flex-col">
+          {/* 1. Streak with grammatical pluralization */}
+          <div className="bg-[#FAF9F5] p-3 rounded-2xl flex flex-col justify-between">
             <span className="text-[10px] text-[#6B6F6B] font-semibold flex items-center gap-1 uppercase">
               <Flame className="w-3 h-3 text-[#EF4444]" />
               Streak
             </span>
             <span className="font-doto font-bold text-lg text-[#111111] mt-0.5">
-              {sadhana.currentStreakDays} Days
+              {sadhana.currentStreakDays} {sadhana.currentStreakDays === 1 ? 'Day' : 'Days'}
+            </span>
+            <span className="text-[10px] text-[#6B6F6B] font-medium font-devanagari mt-0.5">
+              {sadhana.currentStreakDays > 0 ? 'अखंड निष्ठा' : 'साधना प्रारंभ'}
             </span>
           </div>
 
-          <div className="bg-[#FAF9F5] p-3 rounded-2xl flex flex-col">
+          {/* 2. Real Live Naam Japa Malas (Replacing fake Ekadashi Vrats 10 / 12) */}
+          <div className="bg-[#FAF9F5] p-3 rounded-2xl flex flex-col justify-between">
             <span className="text-[10px] text-[#6B6F6B] font-semibold flex items-center gap-1 uppercase">
-              <CalendarCheck className="w-3 h-3 text-amber-600" />
-              Ekadashi Vrats
+              <Sparkles className="w-3 h-3 text-amber-600" />
+              Naam Japa
             </span>
             <span className="font-doto font-bold text-lg text-[#111111] mt-0.5">
-              10 / 12
+              {sadhana.japaCompleted} / {sadhana.japaTarget || 16}
+            </span>
+            <span className="text-[10px] text-[#6B6F6B] font-medium font-devanagari mt-0.5">
+              {sadhana.japaCompleted === 1 ? '१ माला पूर्ण' : `${sadhana.japaCompleted} मालाएं पूर्ण`}
             </span>
           </div>
 
-          <div className="bg-[#FAF9F5] p-3 rounded-2xl flex flex-col">
+          {/* 3. Real Svadhyaya Padas with grammatical pluralization */}
+          <div className="bg-[#FAF9F5] p-3 rounded-2xl flex flex-col justify-between">
             <span className="text-[10px] text-[#6B6F6B] font-semibold flex items-center gap-1 uppercase">
               <BookOpen className="w-3 h-3 text-amber-700" />
-              Memorized Padas
+              Svadhyaya
             </span>
             <span className="font-doto font-bold text-lg text-[#111111] mt-0.5">
-              {sadhana.svadhyayaPadas} Padas
+              {sadhana.svadhyayaPadas || 0} {(sadhana.svadhyayaPadas || 0) === 1 ? 'Pada' : 'Padas'}
+            </span>
+            <span className="text-[10px] text-[#6B6F6B] font-medium font-devanagari mt-0.5">
+              स्वाध्याय अनुशीलन
             </span>
           </div>
 
-          <div className="bg-[#FAF9F5] p-3 rounded-2xl flex flex-col">
+          {/* 4. Real Dynamic Devotional Stage (Replacing hardcoded static Rasik Sharana) */}
+          <div className="bg-[#FAF9F5] p-3 rounded-2xl flex flex-col justify-between">
             <span className="text-[10px] text-[#6B6F6B] font-semibold flex items-center gap-1 uppercase">
               <Crown className="w-3 h-3 text-[#D4A359]" />
-              Rank
+              Sadhana Stage
             </span>
-            <span className="font-semibold text-xs text-[#111111] mt-1 truncate">
-              Rasik Sharana
+            <span className="font-semibold text-sm text-[#111111] mt-1 truncate font-devanagari">
+              {devotionalStage.title}
+            </span>
+            <span className="text-[10px] text-[#6B6F6B] font-medium truncate mt-0.5">
+              {devotionalStage.subtitle}
             </span>
           </div>
         </div>
@@ -444,7 +403,7 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
       {/* Two Balanced Columns: Milestones on Left, Streaks on Right on Tablet & Desktop */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
         {/* Card 1: Milestones */}
-        <div className="bg-[#FAF9F5] rounded-[28px] p-3.5 sm:p-6">
+        <div className="bg-[#FAF9F5] rounded-[28px] p-3.5 sm:p-6 border border-black/5 shadow-xs">
           <div className="flex items-center justify-between mb-4 pb-3 border-b border-black/5">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 rounded-full bg-[#EF4444]/10 flex items-center justify-center">
@@ -480,7 +439,7 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
         </div>
 
         {/* Card 2: Consecutive Streaks */}
-        <div className="bg-[#FAF9F5] rounded-[28px] p-3.5 sm:p-6">
+        <div className="bg-[#FAF9F5] rounded-[28px] p-3.5 sm:p-6 border border-black/5 shadow-xs">
           <div className="flex items-center justify-between mb-4 pb-3 border-b border-black/5">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center">
@@ -517,7 +476,7 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
       </div>
 
       {/* Card 3: Antaranga Sewa (Contemplative & Mental Stillness Milestones) */}
-      <div className="mt-6 bg-[#FAF9F5] rounded-[28px] p-3.5 sm:p-6">
+      <div className="mt-6 bg-[#FAF9F5] rounded-[28px] p-3.5 sm:p-6 border border-black/5 shadow-xs">
         <div className="flex items-center justify-between mb-4 pb-3 border-b border-neutral-100">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-full bg-amber-50 flex items-center justify-center">
@@ -776,3 +735,4 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
     </div>
   );
 };
+
