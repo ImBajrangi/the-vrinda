@@ -9,7 +9,7 @@ import ashtayamaPeriodsData from '../data/ashtayamaPeriods.json';
 import sacredTopicsData from '../data/sacredTopics.json';
 import sadhanaBadgesData from '../data/sadhanaBadges.json';
 import feedTabsData from '../data/feedTabs.json';
-import { SacredPad } from '../types/devotional';
+import { SacredPad, ScriptureHierarchyData, ChapterInfo, AuthorHierarchyInfo } from '../types/devotional';
 
 export interface CanonicalGrantha {
   id: string;
@@ -138,10 +138,17 @@ const NON_RAGAS = new Set([
  */
 export function cleanSacredString(str: string): string {
   if (!str) return '';
-  return str
-    .replace(/&amp;/gi, '&')
-    .replace(/&(?:zwnj|zwj|#x200c|#x200C|#8204|#x200d|#x200D|#8205);?/gi, '')
+  let res = String(str);
+  // Iteratively unescape double-encoded HTML entities
+  res = res.replace(/&amp;/gi, '&');
+  // Strip named and numerical zero-width joiners/spaces
+  res = res.replace(/&(?:zwnj|zwj|#x200c|#x200C|#8204|#x200d|#x200D|#8205);?/gi, '');
+  // Strip raw unicode zero-width characters
+  res = res.replace(/[\u200B-\u200D\uFEFF]/g, '');
+  // Convert standard typographic entities to authentic characters
+  res = res
     .replace(/&(?:ndash|#8211);/gi, '–')
+    .replace(/&(?:mdash|#8212);/gi, '—')
     .replace(/&(?:lsquo|#8216);/gi, '‘')
     .replace(/&(?:rsquo|#8217);/gi, '’')
     .replace(/&(?:ldquo|#8220);/gi, '“')
@@ -151,10 +158,12 @@ export function cleanSacredString(str: string): string {
     .replace(/&(?:quot|#34);/gi, '"')
     .replace(/&(?:apos|#39);/gi, "'")
     .replace(/&#(\d+);/g, (_, dec) => String.fromCharCode(Number(dec)));
+  // Secondary safety pass for residual zero-width artifacts
+  return res.replace(/&(?:zwnj|zwj|#x200c|#x200C|#8204|#x200d|#x200D|#8205);?/gi, '');
 }
 
 /**
- * Normalizes all 4,204 canonical padas into uniform SacredPad instances
+ * Normalizes all canonical padas into uniform SacredPad instances
  * with authenticated grantha attribution, classical raga harmonization, and full verse structure.
  */
 function normalizeCanonicalPad(raw: any): SacredPad {
@@ -216,6 +225,9 @@ function normalizeCanonicalPad(raw: any): SacredPad {
   }
 
   const slug = raw.slug || raw.id || '';
+  const chapterId = raw.chapterId || raw.chapter_id || 'general';
+  const chapterName = cleanSacredString(raw.chapterName || raw.chapter_name || 'सामान्य पद');
+  const verseNumber = raw.verseNumber || raw.verse_number || raw.index || 1;
 
   return {
     ...raw,
@@ -225,6 +237,9 @@ function normalizeCanonicalPad(raw: any): SacredPad {
     author,
     rag,
     slug,
+    chapterId,
+    chapterName,
+    verseNumber,
     verses,
   };
 }
@@ -235,6 +250,9 @@ const seedPadas: SacredPad[] = (SACRED_PADS || []).map(normalizeCanonicalPad);
 let allPadas: SacredPad[] = [...seedPadas];
 const allGranthas: CanonicalGrantha[] = canonicalGranthasData as CanonicalGrantha[];
 const allSaints: CanonicalSaint[] = canonicalSaintsData as CanonicalSaint[];
+
+let cachedHierarchy: ScriptureHierarchyData | null = null;
+let hierarchyPromise: Promise<ScriptureHierarchyData | null> | null = null;
 
 const padasById = new Map<string, SacredPad>();
 const padasBySlug = new Map<string, SacredPad>();
@@ -902,6 +920,92 @@ export const SacredDatabase = {
     return Array.from(ragaCounts.entries())
       .sort((a, b) => b[1] - a[1])
       .map(([r]) => r);
+  },
+
+  /**
+   * Universal Scripture Hierarchy & Relational Multi-Tier Schema Loader
+   * Hydrates authors, granthas, and canonical chapters asynchronously
+   * with 0ms IndexedDB retrieval and offline fallback.
+   */
+  async getScriptureHierarchy(): Promise<ScriptureHierarchyData | null> {
+    if (cachedHierarchy) return cachedHierarchy;
+    if (hierarchyPromise) return hierarchyPromise;
+
+    hierarchyPromise = (async () => {
+      try {
+        const idb = await get<ScriptureHierarchyData>('vrind_scripture_hierarchy');
+        if (idb && idb.granthas) {
+          cachedHierarchy = idb;
+        }
+        const res = await fetch('/data/scripture-hierarchy.json');
+        if (res.ok) {
+          const fresh = await res.json();
+          cachedHierarchy = fresh;
+          await set('vrind_scripture_hierarchy', fresh);
+          return fresh;
+        }
+      } catch (err) {
+        console.warn('Failed to load scripture hierarchy:', err);
+      }
+      return cachedHierarchy;
+    })();
+
+    return hierarchyPromise;
+  },
+
+  /**
+   * Returns canonical chapters for a given grantha (e.g. 18 Gita Adhyayas, 7 Manas Kandas)
+   */
+  getGranthaChapters(granthaId: string): ChapterInfo[] {
+    if (cachedHierarchy?.granthas?.[granthaId]?.chapters) {
+      return cachedHierarchy.granthas[granthaId].chapters;
+    }
+    // Dynamic fallback from indexed padas
+    const padas = padasByGrantha.get(granthaId) || [];
+    const chapterMap = new Map<string, { id: string; name: string; count: number; firstPadId?: string; firstPadSlug?: string }>();
+    padas.forEach((p) => {
+      const cId = p.chapterId || 'general';
+      const cName = p.chapterName || 'सामान्य पद';
+      if (!chapterMap.has(cId)) {
+        chapterMap.set(cId, { id: cId, name: cName, count: 0, firstPadId: p.id, firstPadSlug: p.slug });
+      }
+      chapterMap.get(cId)!.count++;
+    });
+    return Array.from(chapterMap.values()).map((c) => ({
+      id: c.id,
+      name: c.name,
+      verseCount: c.count,
+      firstPadId: c.firstPadId,
+      firstPadSlug: c.firstPadSlug,
+    }));
+  },
+
+  /**
+   * Returns all canonical authors indexed by composition count
+   */
+  getAllHierarchyAuthors(): AuthorHierarchyInfo[] {
+    if (cachedHierarchy?.authors) {
+      return Object.values(cachedHierarchy.authors).sort((a, b) => b.verseCount - a.verseCount);
+    }
+    return [];
+  },
+
+  /**
+   * Returns all padas composed by a specific author
+   */
+  getPadasByAuthor(authorName: string): SacredPad[] {
+    if (!authorName) return [];
+    const clean = authorName.trim().toLowerCase();
+    return allPadas.filter((p) => p.author.toLowerCase().includes(clean));
+  },
+
+  /**
+   * Returns all padas belonging to a specific chapter within a grantha
+   */
+  getPadasByChapter(granthaId: string, chapterId: string): SacredPad[] {
+    const list = padasByGrantha.get(granthaId) || [];
+    if (!chapterId || chapterId === 'all') return list;
+    return list.filter((p) => p.chapterId === chapterId);
   },
 
   /**

@@ -51,6 +51,14 @@ export function generateStaticGranthas(outputDirs = ['public', 'dist']) {
       );
     }
 
+    // Sync scripture-hierarchy.json
+    if (fs.existsSync(path.resolve(sourceDataDir, 'scripture-hierarchy.json'))) {
+      fs.copyFileSync(
+        path.resolve(sourceDataDir, 'scripture-hierarchy.json'),
+        path.resolve(targetDataDir, 'scripture-hierarchy.json')
+      );
+    }
+
     // Remove redundant monolithic canonicalPadas.json to preserve storage diet
     const staleCanonical = path.resolve(targetDataDir, 'canonicalPadas.json');
     if (fs.existsSync(staleCanonical)) {

@@ -7,12 +7,41 @@ export interface SacredPad {
   author: string;
   rag: string;
   slug?: string;
+  chapterId?: string;
+  chapterName?: string;
+  verseNumber?: number;
   verses: Array<{
     stanzaNumber: number;
     linesDevanagari: string[];
     linesTransliteration?: string[];
   }>;
   audioUrl?: string;
+}
+
+export interface ChapterInfo {
+  id: string;
+  name: string;
+  verseCount: number;
+  firstPadId?: string;
+  firstPadSlug?: string;
+}
+
+export interface GranthaHierarchyInfo {
+  id: string;
+  verseCount: number;
+  chaptersCount: number;
+  chapters: ChapterInfo[];
+}
+
+export interface AuthorHierarchyInfo {
+  name: string;
+  verseCount: number;
+  granthas: string[];
+}
+
+export interface ScriptureHierarchyData {
+  granthas: Record<string, GranthaHierarchyInfo>;
+  authors: Record<string, AuthorHierarchyInfo>;
 }
 
 export interface DevotionalFeedPost {

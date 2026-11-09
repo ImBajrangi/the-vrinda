@@ -9,6 +9,8 @@ import {
   Music,
   ChevronLeft,
   ChevronRight,
+  ChevronDown,
+  ScrollText,
   Feather,
   X,
   Sparkles,
@@ -29,7 +31,8 @@ import {
   Palette,
 } from 'lucide-react';
 import { SacredDatabase } from '../../services/sacredDatabase';
-import { SacredPad } from '../../types/devotional';
+import { SacredPad, AuthorHierarchyInfo } from '../../types/devotional';
+import { InlinePurportCard } from './InlinePurportCard';
 import { seo } from '../../services/seoService';
 import {
   getReaderStateSync,
@@ -66,6 +69,7 @@ type ReaderTextAlign = 'left' | 'center' | 'justify';
 const ENTITY_REGEX_MAP: [RegExp, string][] = [
   [/&(?:zwnj|zwj|#x200c|#x200C|#8204|#x200d|#x200D|#8205);?/gi, ''],
   [/&(?:ndash|#8211);/gi, '–'],
+  [/&(?:mdash|#8212);/gi, '—'],
   [/&(?:lsquo|#8216);/gi, '‘'],
   [/&(?:rsquo|#8217);/gi, '’'],
   [/&(?:ldquo|#8220);/gi, '“'],
@@ -78,14 +82,15 @@ const ENTITY_REGEX_MAP: [RegExp, string][] = [
 
 export const sanitizeSacredText = (text: string): string => {
   if (!text) return '';
-  let res = text;
+  let res = String(text);
   res = res.replace(/&amp;/gi, '&');
   res = res.replace(/&(?:zwnj|zwj|#x200c|#x200C|#8204|#x200d|#x200D|#8205);?/gi, '');
+  res = res.replace(/[\u200B-\u200D\uFEFF]/g, '');
   for (const [regex, replacement] of ENTITY_REGEX_MAP) {
     res = res.replace(regex, replacement);
   }
   res = res.replace(/&#(\d+);/g, (_, dec) => String.fromCharCode(Number(dec)));
-  return res;
+  return res.replace(/&(?:zwnj|zwj|#x200c|#x200C|#8204|#x200d|#x200D|#8205);?/gi, '');
 };
 
 /**
@@ -204,7 +209,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   const [selectedGrantha, setSelectedGrantha] = useState<string>(
     selectedGranthaId || getReaderStateSync().selectedTradition || 'all'
   );
-  type GranthaCategory = 'all' | 'mahagranth' | 'rasik-vani' | 'kavya' | 'dham-leela';
+  type GranthaCategory = 'all' | 'mahagranth' | 'rasik-vani' | 'kavya' | 'dham-leela' | 'authors';
   const [granthaCategory, setGranthaCategory] = useState<GranthaCategory>(() => {
     if (selectedGranthaId) {
       const g = SacredDatabase.getGranthaById(selectedGranthaId);
@@ -213,8 +218,91 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     return 'all';
   });
 
+  const [selectedAuthor, setSelectedAuthor] = useState<string | null>(null);
+  const [selectedChapter, setSelectedChapter] = useState<string>('all');
+  const [isChapterDropdownOpen, setIsChapterDropdownOpen] = useState<boolean>(false);
+  const [activeScrollerVerseId, setActiveScrollerVerseId] = useState<string>('');
+
+  type ReadingMode = 'continuous' | 'single';
+  const [readingMode, setReadingMode] = useState<ReadingMode>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('vrind_reading_mode') as ReadingMode;
+      if (saved === 'single' || saved === 'continuous') return saved;
+    }
+    return 'continuous';
+  });
+
+  const handleSetReadingMode = (mode: ReadingMode) => {
+    setReadingMode(mode);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('vrind_reading_mode', mode);
+    }
+  };
+
+  const [expandedPurportPadIds, setExpandedPurportPadIds] = useState<Set<string>>(new Set());
+  const toggleInlinePurport = (padId: string) => {
+    setExpandedPurportPadIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(padId)) next.delete(padId);
+      else next.add(padId);
+      return next;
+    });
+  };
+
+  const [isAutoScrolling, setIsAutoScrolling] = useState<boolean>(false);
+  const autoScrollRafRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    if (!isAutoScrolling) {
+      if (autoScrollRafRef.current) cancelAnimationFrame(autoScrollRafRef.current);
+      return;
+    }
+
+    let lastTime = performance.now();
+    const speed = 0.65;
+
+    const scrollStep = (currentTime: number) => {
+      const elapsed = currentTime - lastTime;
+      lastTime = currentTime;
+      if (elapsed > 0 && elapsed < 100) {
+        window.scrollBy({ top: speed * (elapsed / 16.6), behavior: 'auto' });
+      }
+      autoScrollRafRef.current = requestAnimationFrame(scrollStep);
+    };
+
+    autoScrollRafRef.current = requestAnimationFrame(scrollStep);
+    return () => {
+      if (autoScrollRafRef.current) cancelAnimationFrame(autoScrollRafRef.current);
+    };
+  }, [isAutoScrolling]);
+
+  useEffect(() => {
+    if (!isAutoScrolling) return;
+    const handlePauseScroll = () => {
+      setIsAutoScrolling(false);
+    };
+    window.addEventListener('wheel', handlePauseScroll, { passive: true });
+    window.addEventListener('touchmove', handlePauseScroll, { passive: true });
+    return () => {
+      window.removeEventListener('wheel', handlePauseScroll);
+      window.removeEventListener('touchmove', handlePauseScroll);
+    };
+  }, [isAutoScrolling]);
+
+  const [hierarchyAuthors, setHierarchyAuthors] = useState<AuthorHierarchyInfo[]>(() =>
+    SacredDatabase.getAllHierarchyAuthors()
+  );
+
+  useEffect(() => {
+    SacredDatabase.getScriptureHierarchy().then((h) => {
+      if (h && h.authors) {
+        setHierarchyAuthors(Object.values(h.authors).sort((a, b) => b.verseCount - a.verseCount));
+      }
+    });
+  }, []);
+
   const displayedGranthas = useMemo(() => {
-    if (granthaCategory === 'all') return allGranthas;
+    if (granthaCategory === 'all' || granthaCategory === 'authors') return allGranthas;
     return allGranthas.filter((g) => g.category === granthaCategory);
   }, [allGranthas, granthaCategory]);
 
@@ -222,6 +310,36 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   const [sidebarQuery, setSidebarQuery] = useState('');
 
   // Scripture Category Pills Sliding Indicator
+  const categoryRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
+  const [categoryPillStyle, setCategoryPillStyle] = useState<{ left: number; width: number; ready: boolean }>({
+    left: 0,
+    width: 0,
+    ready: false,
+  });
+
+  useEffect(() => {
+    const updateCategoryPill = () => {
+      const el = categoryRefs.current[granthaCategory];
+      if (el) {
+        setCategoryPillStyle({
+          left: el.offsetLeft,
+          width: el.offsetWidth,
+          ready: true,
+        });
+      }
+    };
+    updateCategoryPill();
+    const frame = requestAnimationFrame(updateCategoryPill);
+    const timer = setTimeout(updateCategoryPill, 40);
+    window.addEventListener('resize', updateCategoryPill);
+    return () => {
+      cancelAnimationFrame(frame);
+      clearTimeout(timer);
+      window.removeEventListener('resize', updateCategoryPill);
+    };
+  }, [granthaCategory]);
+
+  // Main Grantha / Author Segmented Pill Track Sliding Indicator
   const granthaRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
   const [granthaPillStyle, setGranthaPillStyle] = useState<{ left: number; width: number; ready: boolean }>({
     left: 0,
@@ -231,13 +349,23 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
   useEffect(() => {
     const updateGranthaPill = () => {
-      const el = granthaRefs.current[selectedGrantha];
+      const activeKey = granthaCategory === 'authors' ? (selectedAuthor || 'all') : selectedGrantha;
+      const el = granthaRefs.current[activeKey];
       if (el) {
         setGranthaPillStyle({
           left: el.offsetLeft,
           width: el.offsetWidth,
           ready: true,
         });
+      } else {
+        const fallback = granthaRefs.current['all'];
+        if (fallback) {
+          setGranthaPillStyle({
+            left: fallback.offsetLeft,
+            width: fallback.offsetWidth,
+            ready: true,
+          });
+        }
       }
     };
 
@@ -251,7 +379,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       clearTimeout(timer);
       window.removeEventListener('resize', updateGranthaPill);
     };
-  }, [selectedGrantha, displayedGranthas, granthaCategory]);
+  }, [selectedGrantha, displayedGranthas, granthaCategory, selectedAuthor]);
 
   useEffect(() => {
     const el = granthaRefs.current[selectedGrantha];
@@ -699,11 +827,17 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   }, [selectedPad]);
 
   const granthaDisplayName = useMemo(() => {
-    if (granthaRef) return granthaRef.toUpperCase();
     const g = allGranthas.find((item) => item.id === selectedPad.collectionId);
-    if (g) return `${g.name.toUpperCase()} (${g.author})`;
-    if (selectedPad.collectionId === 'stotras') return 'STOTRAMALA (स्तोत्रमाला संग्रह)';
-    return 'SACRED RASIK VANI (पावन वाणी संग्रह)';
+    const mainName = g
+      ? `${g.name} (${g.author})`
+      : selectedPad.collectionId === 'stotras'
+      ? 'स्तोत्रमाला संग्रह'
+      : 'पावन वाणी संग्रह';
+
+    if (granthaRef && !mainName.toLowerCase().includes(granthaRef.toLowerCase())) {
+      return `${mainName} • ${granthaRef}`.toUpperCase();
+    }
+    return mainName.toUpperCase();
   }, [allGranthas, selectedPad, granthaRef]);
 
   const summaryReq: DevotionalSummaryRequest = useMemo(() => {
@@ -879,6 +1013,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     setSelectedRaga('all');
     setSearchQuery('');
     setSidebarQuery('');
+    setSelectedChapter('all');
     setVisibleCount(30);
     saveReaderState({ selectedTradition: granthaId });
 
@@ -887,15 +1022,20 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
         const cached = SacredDatabase.getPadasByGrantha(granthaId);
         if (cached && cached.length > 0) {
           setSelectedPad(cached[0]);
+          setActiveScrollerVerseId(cached[0].id);
         } else {
           const loaded = await SacredDatabase.fetchGranthaPadas(granthaId);
           if (loaded && loaded.length > 0) {
             setSelectedPad(loaded[0]);
+            setActiveScrollerVerseId(loaded[0].id);
           }
         }
       } else {
         const first = allPadas[0];
-        if (first) setSelectedPad(first);
+        if (first) {
+          setSelectedPad(first);
+          setActiveScrollerVerseId(first.id);
+        }
       }
     } catch (err) {
       console.warn('Error loading grantha chunk:', err);
@@ -906,6 +1046,74 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       });
     }
   };
+
+  const handleSelectCategory = (catId: GranthaCategory) => {
+    navigationProgress.start();
+    setGranthaCategory(catId);
+    setSelectedAuthor(null);
+    setSelectedChapter('all');
+
+    if (catId === 'all') {
+      // Keep or reset
+    } else if (catId === 'authors') {
+      setSelectedGrantha('all');
+    } else {
+      const catGranthas = allGranthas.filter((g) => g.category === catId);
+      const isCurrentInCat = catGranthas.some((g) => g.id === selectedGrantha);
+      if (!isCurrentInCat && catGranthas.length > 0) {
+        handleSelectGrantha(catGranthas[0].id);
+      }
+    }
+    requestAnimationFrame(() => navigationProgress.done());
+  };
+
+  const handleSelectAuthor = (authorName: string | null) => {
+    navigationProgress.start();
+    setSelectedAuthor(authorName);
+    setSelectedChapter('all');
+    setSelectedRaga('all');
+    setVisibleCount(30);
+    requestAnimationFrame(() => navigationProgress.done());
+  };
+
+  const handleSelectChapter = (chapterId: string) => {
+    navigationProgress.start();
+    setSelectedChapter(chapterId);
+    setVisibleCount(30);
+    const target = allPadas.find(
+      (p) =>
+        (selectedGrantha === 'all' || p.collectionId === selectedGrantha) &&
+        (chapterId === 'all' || p.chapterId === chapterId)
+    );
+    if (target) {
+      setSelectedPad(target);
+      setActiveScrollerVerseId(target.id);
+    }
+    requestAnimationFrame(() => {
+      navigationProgress.done();
+      const el = document.getElementById('reading-canvas-top');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  };
+
+  const availableChapters = useMemo(() => {
+    if (selectedGrantha === 'all') return [];
+    return SacredDatabase.getGranthaChapters(selectedGrantha);
+  }, [selectedGrantha, allPadas]);
+
+  const currentChapter = useMemo(() => {
+    if (selectedChapter === 'all') return null;
+    return availableChapters.find((c) => c.id === selectedChapter) || null;
+  }, [availableChapters, selectedChapter]);
+
+  const nextChapter = useMemo(() => {
+    if (!currentChapter || availableChapters.length <= 1) return null;
+    const idx = availableChapters.findIndex((c) => c.id === currentChapter.id);
+    if (idx >= 0 && idx < availableChapters.length - 1) {
+      return availableChapters[idx + 1];
+    }
+    return null;
+  }, [availableChapters, currentChapter]);
 
   const handleSelectRaga = (raga: string) => {
     navigationProgress.start();
@@ -928,6 +1136,11 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   // Memoized instantaneous search & filter engine
   const filteredPads = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
+    const catGranthaIds =
+      granthaCategory !== 'all' && granthaCategory !== 'authors'
+        ? new Set(allGranthas.filter((g) => g.category === granthaCategory).map((g) => g.id))
+        : null;
+
     return allPadas.filter((p) => {
       const matchesSearch =
         !q ||
@@ -939,12 +1152,37 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       const matchesTradition =
         selectedTradition === 'all' || p.collectionId === selectedTradition;
 
+      const matchesCategory =
+        !catGranthaIds || selectedTradition !== 'all' || catGranthaIds.has(p.collectionId);
+
+      const matchesAuthor =
+        !selectedAuthor || p.author.toLowerCase().includes(selectedAuthor.toLowerCase());
+
+      const matchesChapter =
+        selectedChapter === 'all' || p.chapterId === selectedChapter;
+
       const matchesRaga =
         selectedRaga === 'all' || p.rag === selectedRaga;
 
-      return matchesSearch && matchesTradition && matchesRaga;
+      return (
+        matchesSearch &&
+        matchesTradition &&
+        matchesCategory &&
+        matchesAuthor &&
+        matchesChapter &&
+        matchesRaga
+      );
     });
-  }, [allPadas, searchQuery, selectedTradition, selectedRaga]);
+  }, [
+    allPadas,
+    searchQuery,
+    selectedTradition,
+    granthaCategory,
+    selectedAuthor,
+    selectedChapter,
+    selectedRaga,
+    allGranthas,
+  ]);
 
   // Ensure selectedPad automatically syncs to active filtered subset
   useEffect(() => {
@@ -1455,43 +1693,58 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     </div>
 
       {/* ========================================================================= */}
-      {/* 2. Canonical Grantha Filter Shelf (Hidden in Distraction-Free Mode)       */}
+      {/* 2. Canonical Grantha & Author Shelf (Hidden in Distraction-Free Mode)    */}
       {/* ========================================================================= */}
       {!isFocusReadingMode && (
         <div className="mb-5 space-y-2.5">
-          {/* Scripture Category Filter Strip (महाग्रंथ, रसिक वाणी, काव्य व छंद, धाम व लीला) */}
-          <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-0.5 text-xs">
+          {/* Scripture Category Filter Strip (महाग्रंथ, रसिक वाणी, काव्य व छंद, धाम व लीला, संत व रचयिता) */}
+          <div className="relative flex items-center gap-1.5 overflow-x-auto no-scrollbar p-1 bg-white/95 border border-neutral-200/80 shadow-2xs rounded-full text-xs">
+            {/* Dynamic Elastic Sliding Indicator for Category Strip */}
+            {categoryPillStyle.ready && (
+              <span
+                aria-hidden="true"
+                className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[340ms] ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[transform,width]"
+                style={{
+                  transform: `translate3d(${categoryPillStyle.left}px, 0, 0)`,
+                  width: `${categoryPillStyle.width}px`,
+                  left: 0,
+                }}
+              />
+            )}
+
             {[
-              { id: 'all', label: 'समस्त संग्रह' },
-              { id: 'mahagranth', label: 'सनातन महाग्रंथ' },
-              { id: 'rasik-vani', label: 'रसिक वाणी' },
-              { id: 'kavya', label: 'काव्य व छंद' },
-              { id: 'dham-leela', label: 'धाम व लीला' },
+              { id: 'all' as GranthaCategory, label: 'समस्त संग्रह' },
+              { id: 'mahagranth' as GranthaCategory, label: 'सनातन महाग्रंथ' },
+              { id: 'rasik-vani' as GranthaCategory, label: 'रसिक वाणी' },
+              { id: 'kavya' as GranthaCategory, label: 'काव्य व छंद' },
+              { id: 'dham-leela' as GranthaCategory, label: 'धाम व लीला' },
+              { id: 'authors' as GranthaCategory, label: 'संत व रचयिता' },
             ].map((cat) => {
               const isActive = granthaCategory === cat.id;
               const count =
                 cat.id === 'all'
                   ? allGranthas.length
+                  : cat.id === 'authors'
+                  ? (hierarchyAuthors.length || 761)
                   : allGranthas.filter((g) => g.category === cat.id).length;
               return (
                 <button
                   key={cat.id}
-                  type="button"
-                  onClick={() => {
-                    navigationProgress.start();
-                    setGranthaCategory(cat.id as any);
-                    requestAnimationFrame(() => navigationProgress.done());
+                  ref={(el) => {
+                    categoryRefs.current[cat.id] = el;
                   }}
-                  className={`px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer select-none ${
+                  type="button"
+                  onClick={() => handleSelectCategory(cat.id)}
+                  className={`relative z-10 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer select-none inline-flex items-center gap-1 ${
                     isActive
-                      ? 'bg-amber-100 text-amber-900 font-bold border border-amber-300/70 shadow-2xs'
-                      : 'bg-white/80 text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 border border-neutral-200/60'
+                      ? 'text-[#18181B] font-bold'
+                      : 'text-[#64748B] hover:text-[#0F172A]'
                   }`}
                 >
                   <span>{cat.label}</span>
                   <span
-                    className={`ml-1 text-[10px] font-mono ${
-                      isActive ? 'text-amber-800 font-bold' : 'text-neutral-400'
+                    className={`ml-0.5 text-[10px] font-mono font-bold ${
+                      isActive ? 'text-[#B45309]' : 'text-[#94A3B8]'
                     }`}
                   >
                     ({count})
@@ -1501,7 +1754,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             })}
           </div>
 
-          {/* Main Grantha Segmented Pill Track */}
+          {/* Main Grantha / Author Segmented Pill Track */}
           <div className="relative flex items-center gap-1 overflow-x-auto no-scrollbar p-1 bg-white/95 border border-neutral-200/80 shadow-2xs rounded-full">
             {/* Dynamic Elastic Sliding Indicator Bar */}
             {granthaPillStyle.ready && (
@@ -1516,46 +1769,96 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               />
             )}
 
-            <button
-              ref={(el) => {
-                granthaRefs.current['all'] = el;
-              }}
-              type="button"
-              onClick={() => handleSelectGrantha('all')}
-              className={`relative z-10 px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer select-none inline-flex items-center gap-1.5 ${
-                selectedGrantha === 'all'
-                  ? 'text-[#18181B] font-bold'
-                  : 'text-[#64748B] hover:text-[#0F172A] hover:bg-[#F8FAFC]'
-              }`}
-            >
-              {loadingGranthaId === 'all' && <IOSSpinner size="xs" theme="amber" />}
-              <span>समस्त ग्रंथ</span> <span className={`text-[10px] font-mono ml-0.5 ${selectedGrantha === 'all' ? 'text-[#B45309] font-bold' : 'text-[#94A3B8]'}`}>({allPadas.length})</span>
-            </button>
-            {displayedGranthas.map((g) => {
-              const isActive = selectedGrantha === g.id;
-              const isLoadingThis = loadingGranthaId === g.id;
-              return (
+            {granthaCategory === 'authors' ? (
+              <>
                 <button
-                  key={g.id}
                   ref={(el) => {
-                    granthaRefs.current[g.id] = el;
+                    granthaRefs.current['all'] = el;
                   }}
                   type="button"
-                  onClick={() => handleSelectGrantha(g.id)}
-                  className={`relative z-10 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer select-none inline-flex items-center gap-1.5 ${
-                    isActive
+                  onClick={() => handleSelectAuthor(null)}
+                  className={`relative z-10 px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer select-none inline-flex items-center gap-1.5 ${
+                    !selectedAuthor
                       ? 'text-[#18181B] font-bold'
                       : 'text-[#64748B] hover:text-[#0F172A] hover:bg-[#F8FAFC]'
                   }`}
                 >
-                  {isLoadingThis && <IOSSpinner size="xs" theme="amber" />}
-                  <span>{g.name}</span>
-                  <span className={`ml-1 text-[10px] font-mono font-bold ${isActive ? 'text-[#B45309]' : 'text-[#94A3B8]'}`}>
-                    ({g.count})
+                  <span>समस्त संत / रचयिता</span>
+                  <span className={`text-[10px] font-mono ml-0.5 ${!selectedAuthor ? 'text-[#B45309] font-bold' : 'text-[#94A3B8]'}`}>
+                    ({hierarchyAuthors.length || SacredDatabase.getAllSaints().length})
                   </span>
                 </button>
-              );
-            })}
+                {hierarchyAuthors.slice(0, 35).map((a) => {
+                  const isActive = selectedAuthor === a.name;
+                  return (
+                    <button
+                      key={a.name}
+                      ref={(el) => {
+                        granthaRefs.current[a.name] = el;
+                      }}
+                      type="button"
+                      onClick={() => handleSelectAuthor(a.name)}
+                      className={`relative z-10 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer select-none inline-flex items-center gap-1.5 ${
+                        isActive
+                          ? 'text-[#18181B] font-bold'
+                          : 'text-[#64748B] hover:text-[#0F172A] hover:bg-[#F8FAFC]'
+                      }`}
+                    >
+                      <span>{a.name}</span>
+                      <span className={`ml-1 text-[10px] font-mono font-bold ${isActive ? 'text-[#B45309]' : 'text-[#94A3B8]'}`}>
+                        ({a.verseCount})
+                      </span>
+                    </button>
+                  );
+                })}
+              </>
+            ) : (
+              <>
+                <button
+                  ref={(el) => {
+                    granthaRefs.current['all'] = el;
+                  }}
+                  type="button"
+                  onClick={() => handleSelectGrantha('all')}
+                  className={`relative z-10 px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer select-none inline-flex items-center gap-1.5 ${
+                    selectedGrantha === 'all'
+                      ? 'text-[#18181B] font-bold'
+                      : 'text-[#64748B] hover:text-[#0F172A] hover:bg-[#F8FAFC]'
+                  }`}
+                >
+                  {loadingGranthaId === 'all' && <IOSSpinner size="xs" theme="amber" />}
+                  <span>समस्त ग्रंथ</span>
+                  <span className={`text-[10px] font-mono ml-0.5 ${selectedGrantha === 'all' ? 'text-[#B45309] font-bold' : 'text-[#94A3B8]'}`}>
+                    ({displayedGranthas.reduce((acc, g) => acc + g.count, 0) || allPadas.length})
+                  </span>
+                </button>
+                {displayedGranthas.map((g) => {
+                  const isActive = selectedGrantha === g.id;
+                  const isLoadingThis = loadingGranthaId === g.id;
+                  return (
+                    <button
+                      key={g.id}
+                      ref={(el) => {
+                        granthaRefs.current[g.id] = el;
+                      }}
+                      type="button"
+                      onClick={() => handleSelectGrantha(g.id)}
+                      className={`relative z-10 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer select-none inline-flex items-center gap-1.5 ${
+                        isActive
+                          ? 'text-[#18181B] font-bold'
+                          : 'text-[#64748B] hover:text-[#0F172A] hover:bg-[#F8FAFC]'
+                      }`}
+                    >
+                      {isLoadingThis && <IOSSpinner size="xs" theme="amber" />}
+                      <span>{g.name}</span>
+                      <span className={`ml-1 text-[10px] font-mono font-bold ${isActive ? 'text-[#B45309]' : 'text-[#94A3B8]'}`}>
+                        ({g.count})
+                      </span>
+                    </button>
+                  );
+                })}
+              </>
+            )}
           </div>
 
           {/* Raga Sub-Filter Strip: Fluid Relative Sliding Transition */}
@@ -1952,15 +2255,341 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
         {/* ========================================================================= */}
         {/* Center Column: Serene Editorial Reading Canvas                             */}
         {/* ========================================================================= */}
-        <article className={`flex-1 min-w-0 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
-          isFocusReadingMode
-            ? `w-full dhyana-reader-canvas p-6 sm:p-10 ${currentTheme.canvasBg} ${currentTheme.canvasText}`
-            : `w-full rounded-3xl p-6 sm:p-9 ${currentTheme.canvasBg} ${currentTheme.canvasText} ${
-                isLeftSidebarCollapsed && isRightSidebarCollapsed ? 'max-w-4xl mx-auto' : ''
-              }`
-        }`}>
+        <article
+          id="reading-canvas-top"
+          className={`flex-1 min-w-0 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+            isFocusReadingMode
+              ? `w-full dhyana-reader-canvas p-6 sm:p-10 ${currentTheme.canvasBg} ${currentTheme.canvasText}`
+              : `w-full rounded-3xl p-6 sm:p-9 ${currentTheme.canvasBg} ${currentTheme.canvasText} ${
+                  isLeftSidebarCollapsed && isRightSidebarCollapsed ? 'max-w-4xl mx-auto' : ''
+                }`
+          }`}
+        >
+          {/* Chapter Hierarchy & Continuous Reading Mode Bar */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 rounded-2xl bg-[#FAF8F5] border border-amber-900/10 mb-6">
+            {/* Left: Chapter / Adhyaya Selector */}
+            <div className="flex items-center gap-2 min-w-0">
+              <ScrollText className="w-4 h-4 text-amber-700 shrink-0" />
+              <span className="text-xs font-mono font-bold text-neutral-500 uppercase tracking-wider">
+                {availableChapters.length > 1 ? 'अध्याय / खण्ड:' : 'पावन संग्रह:'}
+              </span>
+              {availableChapters.length > 1 ? (
+                <div className="relative">
+                  <button
+                    type="button"
+                    onClick={() => setIsChapterDropdownOpen(!isChapterDropdownOpen)}
+                    className="px-3 py-1 rounded-full text-xs font-bold bg-amber-100/80 hover:bg-amber-200/80 text-amber-950 border border-amber-300/70 flex items-center gap-1.5 cursor-pointer transition-colors shadow-2xs"
+                  >
+                    <span>{currentChapter ? currentChapter.name : 'समस्त अध्याय'}</span>
+                    <span className="text-[10px] text-amber-800 font-mono font-bold">
+                      ({currentChapter ? `${currentChapter.verseCount} पद` : `${availableChapters.reduce((acc, c) => acc + c.verseCount, 0)} पद`})
+                    </span>
+                    <ChevronDown className={`w-3.5 h-3.5 text-amber-800 transition-transform duration-200 ${isChapterDropdownOpen ? 'rotate-180' : ''}`} />
+                  </button>
+
+                  {isChapterDropdownOpen && (
+                    <div className="absolute left-0 top-full mt-1.5 z-40 w-72 sm:w-80 max-h-80 overflow-y-auto bg-white rounded-2xl border border-neutral-200 shadow-xl p-1.5 space-y-1">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          handleSelectChapter('all');
+                          setIsChapterDropdownOpen(false);
+                        }}
+                        className={`w-full text-left px-3 py-2 rounded-xl text-xs font-semibold flex items-center justify-between transition-colors cursor-pointer ${
+                          selectedChapter === 'all'
+                            ? 'bg-[#FEF08A] text-[#18181B] font-bold'
+                            : 'hover:bg-neutral-100 text-neutral-700'
+                        }`}
+                      >
+                        <span>समस्त अध्याय</span>
+                        <span className="text-[10px] font-mono text-neutral-400">
+                          ({availableChapters.reduce((acc, c) => acc + c.verseCount, 0)})
+                        </span>
+                      </button>
+                      {availableChapters.map((ch) => (
+                        <button
+                          key={ch.id}
+                          type="button"
+                          onClick={() => {
+                            handleSelectChapter(ch.id);
+                            setIsChapterDropdownOpen(false);
+                          }}
+                          className={`w-full text-left px-3 py-2 rounded-xl text-xs font-semibold flex items-center justify-between transition-colors cursor-pointer ${
+                            selectedChapter === ch.id
+                              ? 'bg-[#FEF08A] text-[#18181B] font-bold'
+                              : 'hover:bg-neutral-100 text-neutral-700'
+                          }`}
+                        >
+                          <span className="truncate pr-2">{ch.name}</span>
+                          <span className="text-[10px] font-mono text-amber-800 font-bold shrink-0">
+                            ({ch.verseCount} पद)
+                          </span>
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <span className="text-xs font-serif font-bold text-neutral-800 truncate">
+                  {selectedAuthor ? `संत: ${selectedAuthor}` : (displayedGranthas.find((g) => g.id === selectedGrantha)?.name || 'समस्त ग्रंथ')}
+                </span>
+              )}
+            </div>
+
+            {/* Right: Reading Mode Toggle (अखंड पाठ vs एकल पद) */}
+            <div className="flex items-center gap-1 p-1 bg-white border border-neutral-200/80 rounded-full text-xs shrink-0 self-start sm:self-auto">
+              <button
+                type="button"
+                onClick={() => handleSetReadingMode('continuous')}
+                className={`px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer select-none ${
+                  readingMode === 'continuous'
+                    ? 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
+                    : 'text-neutral-500 hover:text-neutral-900'
+                }`}
+              >
+                <BookOpen className="w-3.5 h-3.5 text-amber-700" />
+                <span>अखंड पाठ</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => handleSetReadingMode('single')}
+                className={`px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer select-none ${
+                  readingMode === 'single'
+                    ? 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
+                    : 'text-neutral-500 hover:text-neutral-900'
+                }`}
+              >
+                <Sparkles className="w-3.5 h-3.5 text-amber-700" />
+                <span>एकल पद</span>
+              </button>
+            </div>
+          </div>
           
-          {/* Header Bar */}
+          {/* ========================================================================= */}
+          {/* MODE A: Continuous Reading Stream (अखंड पाठ)                               */}
+          {/* ========================================================================= */}
+          {readingMode === 'continuous' ? (
+            <div className="space-y-6">
+              {/* Header Title for Chapter Stream */}
+              <div className={`pb-5 border-b ${currentTheme.borderColor} flex items-center justify-between gap-3 flex-wrap`}>
+                <div>
+                  <div className={`flex items-center gap-2 ${currentTheme.metaColor} font-mono text-[11px] font-bold tracking-wider uppercase`}>
+                    <span>{granthaDisplayName}</span>
+                    {currentChapter && (
+                      <>
+                        <span className="text-[#FACC15]">•</span>
+                        <span>{currentChapter.name}</span>
+                      </>
+                    )}
+                  </div>
+                  <h2 className={`${fontClass} font-bold text-2xl sm:text-3xl lg:text-[32px] text-neutral-900 mt-1.5`}>
+                    {currentChapter ? currentChapter.name : cleanTitle}
+                  </h2>
+                  <p className="text-xs text-neutral-500 font-serif mt-1">
+                    अखंड स्वाध्याय धारा • {filteredPads.length} पावन पद उपलब्ध
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <button
+                    ref={settingsToggleBottomRef}
+                    type="button"
+                    onClick={handleToggleSettings}
+                    className="h-8 px-3 rounded-full bg-white hover:bg-neutral-100 text-neutral-600 hover:text-neutral-900 border border-neutral-200 text-xs font-semibold flex items-center gap-1.5 cursor-pointer transition-colors shadow-2xs"
+                  >
+                    <SlidersHorizontal className="w-3.5 h-3.5" />
+                    <span>फ़ॉन्ट व शैली</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Sticky Quick-Jump Verse Scrubber */}
+              <div className="sticky top-2 z-20 p-2 rounded-2xl bg-white/95 backdrop-blur-md border border-amber-900/10 shadow-xs flex items-center gap-2">
+                <span className="text-[10px] font-mono font-bold text-amber-800 shrink-0 uppercase tracking-wider pl-1.5">
+                  पद क्रम:
+                </span>
+                <div className="flex items-center gap-1 overflow-x-auto no-scrollbar py-0.5 flex-1 min-w-0">
+                  {filteredPads.slice(0, 100).map((pad, idx) => {
+                    const isActive = (activeScrollerVerseId || selectedPad.id) === pad.id;
+                    const vNum = pad.verseNumber || idx + 1;
+                    return (
+                      <button
+                        key={pad.id}
+                        type="button"
+                        onClick={() => {
+                          setActiveScrollerVerseId(pad.id);
+                          setSelectedPad(pad);
+                          const el = document.getElementById(`verse-stream-${pad.id}`);
+                          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }}
+                        className={`min-w-7 h-7 px-2 rounded-full text-xs font-mono font-bold flex items-center justify-center transition-colors cursor-pointer shrink-0 ${
+                          isActive
+                            ? 'bg-[#FEF08A] text-[#78350F] ring-1 ring-amber-400 font-bold'
+                            : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200'
+                        }`}
+                        title={pad.titleDevanagari}
+                      >
+                        {vNum}
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* Swadhyay Auto-Scroll Button */}
+                <button
+                  type="button"
+                  onClick={() => setIsAutoScrolling(!isAutoScrolling)}
+                  className={`h-7 px-3 rounded-full text-xs font-semibold flex items-center gap-1.5 shrink-0 transition-colors cursor-pointer select-none ${
+                    isAutoScrolling
+                      ? 'bg-amber-600 text-white font-bold animate-pulse'
+                      : 'bg-amber-100 hover:bg-amber-200 text-amber-900'
+                  }`}
+                  title="Continuous Contemplative Recitation Auto-Scroll"
+                >
+                  {isAutoScrolling ? <Pause className="w-3 h-3 fill-current" /> : <Play className="w-3 h-3 fill-current ml-0.5" />}
+                  <span className="hidden sm:inline">{isAutoScrolling ? 'विराम' : 'स्वाध्याय प्रवाह'}</span>
+                </button>
+              </div>
+
+              {/* Continuous Stream of Verses */}
+              <div className="space-y-6 sm:space-y-8">
+                {filteredPads.length === 0 ? (
+                  <div className="py-20 text-center space-y-3">
+                    <IOSSpinner size="md" theme="amber" />
+                    <p className="font-serif font-bold text-base text-neutral-700">
+                      पावन ग्रंथ पाठ संकलित हो रहा है...
+                    </p>
+                  </div>
+                ) : (
+                  filteredPads.slice(0, 100).map((pad, pIdx) => {
+                    const isPadPlaying = activePlayingPadId === pad.id && Boolean(isPlaying);
+                    const isPadBookmarked = bookmarkedPadIds.includes(pad.id);
+                    const isPurportOpen = expandedPurportPadIds.has(pad.id);
+
+                    return (
+                      <div
+                        key={pad.id}
+                        id={`verse-stream-${pad.id}`}
+                        className={`p-5 sm:p-7 rounded-2xl border transition-colors duration-200 ${currentTheme.borderColor} ${currentTheme.cardHoverBg} ${
+                          selectedPad.id === pad.id ? 'ring-2 ring-amber-300/80' : ''
+                        }`}
+                      >
+                        {/* Verse Header Line */}
+                        <div className={`flex items-center justify-between pb-3 mb-4 border-b ${currentTheme.borderColor} gap-2 flex-wrap`}>
+                          <div className="flex items-center gap-2">
+                            <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-[#FEF08A] text-[#78350F]">
+                              ॥ पद {pad.verseNumber || pIdx + 1} ॥
+                            </span>
+                            <span className={`text-xs font-serif font-bold ${currentTheme.titleColor}`}>
+                              {pad.author}
+                            </span>
+                            {pad.rag && (
+                              <span className="text-[11px] text-[#B45309] font-mono">
+                                • राग {pad.rag}
+                              </span>
+                            )}
+                          </div>
+
+                          <div className="flex items-center gap-1.5">
+                            <button
+                              type="button"
+                              onClick={() => onPlayPad(pad)}
+                              className="w-7 h-7 rounded-full bg-[#FEF08A] hover:bg-amber-300 text-[#78350F] flex items-center justify-center cursor-pointer transition-transform active:scale-95"
+                              title="Play Audio Shravan"
+                            >
+                              {isPadPlaying ? <Pause className="w-3 h-3 fill-current" /> : <Play className="w-3 h-3 fill-current ml-0.5" />}
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => {
+                                const exists = bookmarkedPadIds.includes(pad.id);
+                                const updated = exists
+                                  ? bookmarkedPadIds.filter((id) => id !== pad.id)
+                                  : [...bookmarkedPadIds, pad.id];
+                                setBookmarkedPadIds(updated);
+                                saveCachedBookmarks(updated);
+                              }}
+                              className={`w-7 h-7 rounded-full flex items-center justify-center cursor-pointer transition-colors ${
+                                isPadBookmarked ? 'bg-[#FEF08A] text-[#78350F]' : 'bg-neutral-100 text-neutral-500 hover:bg-neutral-200'
+                              }`}
+                              title="Bookmark Verse"
+                            >
+                              <Bookmark className={`w-3.5 h-3.5 ${isPadBookmarked ? 'fill-[#CA8A04] text-[#CA8A04]' : ''}`} />
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => toggleInlinePurport(pad.id)}
+                              className={`px-2.5 py-1 rounded-full text-xs font-medium flex items-center gap-1 cursor-pointer transition-colors ${
+                                isPurportOpen ? 'bg-amber-200 text-amber-950 font-bold' : 'bg-neutral-100 hover:bg-neutral-200 text-neutral-700'
+                              }`}
+                            >
+                              <Sparkles className="w-3 h-3 text-amber-700" />
+                              <span>भावार्थ ▾</span>
+                            </button>
+                          </div>
+                        </div>
+
+                        {/* Verse Lines */}
+                        <div className={`space-y-2.5 py-1 ${textAlignClass}`}>
+                          {(pad.verses?.[0]?.linesDevanagari || [pad.titleDevanagari]).map((line, lIdx) => {
+                            const sanitizedLine = sanitizeSacredText(line);
+                            return (
+                              <p
+                                key={lIdx}
+                                className={`${fontClass} ${
+                                  lIdx === 0 ? 'font-semibold' : 'font-normal'
+                                } tracking-normal ${currentTheme.lineColor} ${
+                                  fontSize === 'sm'
+                                    ? 'text-[17px] sm:text-[19px] leading-[2.1]'
+                                    : fontSize === 'md'
+                                    ? 'text-[20px] sm:text-[22px] leading-[2.2]'
+                                    : fontSize === 'lg'
+                                    ? 'text-[23px] sm:text-[25px] leading-[2.3]'
+                                    : 'text-[26px] sm:text-[28px] leading-[2.4]'
+                                }`}
+                              >
+                                {sanitizedLine}
+                              </p>
+                            );
+                          })}
+                        </div>
+
+                        {/* Inline Purport Drawer */}
+                        <InlinePurportCard pad={pad} isOpen={isPurportOpen} />
+                      </div>
+                    );
+                  })
+                )}
+              </div>
+
+              {/* Bottom Chapter Completion / Advance Card */}
+              {nextChapter && (
+                <div className="mt-8 p-5 rounded-2xl bg-[#FAF8F5] border border-amber-900/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-center sm:text-left">
+                  <div>
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-amber-800 font-bold">
+                      वर्तमान अध्याय सम्पन्न • अगला अध्याय
+                    </span>
+                    <h4 className="text-base sm:text-lg font-serif font-bold text-neutral-900 mt-0.5">
+                      {nextChapter.name}
+                    </h4>
+                    <p className="text-xs text-neutral-500">
+                      कुल {nextChapter.verseCount} पावन पद / श्लोक
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => handleSelectChapter(nextChapter.id)}
+                    className="px-5 py-2.5 rounded-full bg-[#FEF08A] hover:bg-amber-300 text-[#18181B] font-bold text-xs flex items-center justify-center gap-2 cursor-pointer transition-transform active:scale-95 shadow-2xs"
+                  >
+                    <span>अग्रिम अध्याय प्रारम्भ करें</span>
+                    <ChevronRight className="w-4 h-4 text-neutral-900" />
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <div>
+              {/* Header Bar */}
           <div className={`pb-6 mb-7 border-b ${currentTheme.borderColor} space-y-4`}>
             {/* Top Meta Line & Bookmark */}
             <div className="flex items-center justify-between text-xs gap-2 flex-wrap">
@@ -2276,7 +2905,9 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               <ChevronRight className="w-4 h-4 text-[#CA8A04]" />
             </button>
           </div>
-        </article>
+        </div>
+      )}
+    </article>
 
         {/* ========================================================================= */}
         {/* Right Column: Dedicated Desktop Commentary Desk (Visible on xl:block)     */}
