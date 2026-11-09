@@ -611,7 +611,7 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
                 onClick={() => setSelectedBadge(null)}
                 className="w-full py-2.5 sm:py-3 rounded-full bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
               >
-                Close • प्रणाम
+                Close
               </button>
             </div>
           </div>
