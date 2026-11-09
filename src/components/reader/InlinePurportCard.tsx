@@ -51,7 +51,7 @@ export const InlinePurportCard: React.FC<InlinePurportCardProps> = ({ pad, isOpe
   if (!isOpen) return null;
 
   return (
-    <div className="mt-3 p-4 rounded-2xl bg-amber-50/70 border border-amber-200/80 text-neutral-800 transition-all duration-300">
+    <div className="mt-3 p-4 rounded-xl bg-amber-50/70 border border-amber-200/80 text-neutral-800 transition-all duration-300">
       <div className="flex items-center gap-1.5 text-xs font-bold text-amber-900 uppercase font-mono tracking-wider mb-2">
         <Sparkles className="w-3.5 h-3.5 text-amber-700" />
         <span>भावार्थ एवं चिंतन (Purport)</span>

@@ -430,13 +430,11 @@ export const SacredDatabase = {
 
     clearDerivedCaches();
 
-    if (addedCount > 0) {
-      dbListeners.forEach((fn) => {
-        try {
-          fn();
-        } catch {}
-      });
-    }
+    dbListeners.forEach((fn) => {
+      try {
+        fn();
+      } catch {}
+    });
   },
 
   async initialize(): Promise<void> {
@@ -1065,8 +1063,12 @@ export const SacredDatabase = {
       return chapterCache.get(cacheKey)!;
     }
     const result = list.filter((p) => p.chapterId === chapterId);
-    chapterCache.set(cacheKey, result);
-    return result;
+    if (result.length > 0) {
+      chapterCache.set(cacheKey, result);
+      return result;
+    }
+    // Defensive fallback: if chapterId yields 0 matches, return full grantha list
+    return list;
   },
 
   /**
