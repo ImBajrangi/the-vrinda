@@ -1891,7 +1891,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   onClick={() => {
                     handleSelectCategory(cat.id);
                   }}
-                  className={`relative z-10 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none inline-flex items-center gap-1 ${isActive
+                  className={`relative z-10 flex-1 min-w-max justify-center px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none inline-flex items-center gap-1 ${isActive
                       ? categoryPillStyle.ready
                         ? 'text-[#18181B] font-bold'
                         : 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
@@ -1933,7 +1933,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   }}
                   type="button"
                   onClick={() => handleSelectAuthor(null)}
-                  className={`relative z-10 px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none inline-flex items-center gap-1.5 ${!selectedAuthor
+                  className={`relative z-10 flex-1 min-w-max justify-center px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none inline-flex items-center gap-1.5 ${!selectedAuthor
                       ? granthaPillStyle.ready
                         ? 'text-[#18181B] font-bold'
                         : 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
@@ -1955,7 +1955,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                       }}
                       type="button"
                       onClick={() => handleSelectAuthor(a.name)}
-                      className={`relative z-10 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none inline-flex items-center gap-1.5 ${isActive
+                      className={`relative z-10 flex-1 min-w-max justify-center px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none inline-flex items-center gap-1.5 ${isActive
                           ? granthaPillStyle.ready
                             ? 'text-[#18181B] font-bold'
                             : 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
@@ -1978,7 +1978,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   }}
                   type="button"
                   onClick={() => handleSelectGrantha('all')}
-                  className={`relative z-10 px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none inline-flex items-center gap-1.5 ${selectedGrantha === 'all'
+                  className={`relative z-10 flex-1 min-w-max justify-center px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none inline-flex items-center gap-1.5 ${selectedGrantha === 'all'
                       ? granthaPillStyle.ready
                         ? 'text-[#18181B] font-bold'
                         : 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
@@ -2002,7 +2002,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                       }}
                       type="button"
                       onClick={() => handleSelectGrantha(g.id)}
-                      className={`relative z-10 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none inline-flex items-center gap-1.5 ${isActive
+                      className={`relative z-10 flex-1 min-w-max justify-center px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none inline-flex items-center gap-1.5 ${isActive
                           ? granthaPillStyle.ready
                             ? 'text-[#18181B] font-bold'
                             : 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
