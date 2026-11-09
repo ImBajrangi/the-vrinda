@@ -95,11 +95,16 @@ export function render(url: string = '/'): RenderResult {
 
   if (pad) {
     const slug = pad.slug || pad.id;
+    const firstLines = pad.verses?.[0]?.linesDevanagari?.slice(0, 2).join(' • ') || '';
+    const snippet = firstLines ? `«${firstLines}» ` : '';
+    const ragaText = pad.rag ? `राग ${pad.rag} में निबद्ध पावन पद। ` : '';
+    const granthaText = pad.collectionId ? ` (${pad.collectionId})` : '';
+
     seoConfig = {
       tab: 'padavali',
       pad,
-      title: `${pad.titleDevanagari} (${pad.author})`,
-      description: `राग ${pad.rag} में निबद्ध पावन पद। रचयिता: ${pad.author}। वृन्दोपनिषद् 2.0`,
+      title: `${pad.titleDevanagari} (${pad.author})${granthaText} • पावन रसिक पद`,
+      description: `${snippet}${ragaText}रचयिता: ${pad.author}। नित्य स्वाध्याय व पारायण। वृन्दोपनिषद् 2.0`,
       canonicalUrl: `https://bhav.vrindopnishad.in/?tab=padavali&pad=${encodeURIComponent(slug)}`,
     };
   } else if (authorQuery) {

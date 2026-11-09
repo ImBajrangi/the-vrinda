@@ -593,11 +593,15 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   // Real-time Dynamic Verse SEO, Meta tags, and Schema.org synchronization
   useEffect(() => {
     if (selectedPad) {
+      const firstLines = selectedPad.verses?.[0]?.linesDevanagari?.slice(0, 2).map((l) => sanitizeSacredText(l)).join(' • ') || '';
+      const snippet = firstLines ? `«${firstLines}» ` : '';
+      const ragaText = selectedPad.rag ? `राग ${selectedPad.rag} में निबद्ध पावन पद। ` : '';
+
       seo.updateSEO({
         tab: 'padavali',
         pad: selectedPad,
-        title: `${selectedPad.titleDevanagari} (${selectedPad.author})`,
-        description: `राग ${selectedPad.rag} में निबद्ध पावन पद। रचयिता: ${selectedPad.author}। वृन्दोपनिषद् 2.0`,
+        title: `${selectedPad.titleDevanagari} (${selectedPad.author}) • पावन रसिक पद | वृन्दोपनिषद् 2.0`,
+        description: `${snippet}${ragaText}रचयिता: ${selectedPad.author}। नित्य स्वाध्याय व पारायण। वृन्दोपनिषद् 2.0`,
       });
     }
   }, [selectedPad]);
@@ -1497,10 +1501,10 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       {/* ========================================================================= */}
       <div className="mb-4 flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4 bg-white border border-neutral-200/80 shadow-2xs rounded-2xl p-4 sm:p-5">
         <div>
-          <h1 className="font-serif text-xl sm:text-2xl text-[#0F172A] font-bold flex items-center gap-2 leading-tight">
+          <div className="font-serif text-xl sm:text-2xl text-[#0F172A] font-bold flex items-center gap-2 leading-tight">
             <BookOpen className="w-5 h-5 text-[#FACC15] shrink-0" />
             <span>Sacred Padavali & Stotras</span>
-          </h1>
+          </div>
           <p className="text-xs text-[#64748B] font-medium mt-0.5">
             Rasik Vani & Sacred Scriptures ({filteredPads.length} verses available)
           </p>
@@ -2572,9 +2576,9 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                       </>
                     )}
                   </div>
-                  <h2 className={`${fontClass} font-bold text-2xl sm:text-3xl lg:text-[32px] text-neutral-900 mt-1.5`}>
+                  <h1 className={`${fontClass} font-bold text-2xl sm:text-3xl lg:text-[32px] text-neutral-900 mt-1.5`}>
                     {currentChapter ? currentChapter.name : cleanTitle}
-                  </h2>
+                  </h1>
                   <p className="text-xs text-neutral-500 font-serif mt-1">
                     अखंड स्वाध्याय धारा • {filteredPads.length} पावन पद उपलब्ध
                   </p>
@@ -2850,7 +2854,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
                 {/* Noble Headline & Author */}
                 <div className={textAlign === 'center' ? 'text-center' : 'text-left'}>
-                  <h2 className={`${fontClass} font-bold leading-tight tracking-tight ${currentTheme.titleColor} ${fontSize === 'sm'
+                  <h1 className={`${fontClass} font-bold leading-tight tracking-tight ${currentTheme.titleColor} ${fontSize === 'sm'
                       ? 'text-xl sm:text-2xl'
                       : fontSize === 'md'
                         ? 'text-2xl sm:text-3xl lg:text-[32px]'
@@ -2859,7 +2863,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                           : 'text-4xl sm:text-5xl lg:text-[40px]'
                     }`}>
                     {cleanTitle}
-                  </h2>
+                  </h1>
                   <div className={`flex items-center gap-2 text-sm ${currentTheme.metaColor} ${fontClass} font-normal mt-2 flex-wrap ${textAlign === 'center' ? 'justify-center' : 'justify-start'
                     }`}>
                     <span className={`${currentTheme.titleColor} font-semibold`}>{authorName}</span>

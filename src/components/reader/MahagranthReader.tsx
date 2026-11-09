@@ -20,6 +20,7 @@ import { DevotionalVersePresenter } from './DevotionalVersePresenter';
 import { InlinePurportCard } from './InlinePurportCard';
 import { formatDevanagariNumerals, getCachedBookmarks, saveCachedBookmarks } from '../../services/cacheService';
 import { IOSSpinner, navigationProgress } from '../common/IOSActivityIndicator';
+import { seo } from '../../services/seoService';
 
 interface MahagranthReaderProps {
   initialGranthaId?: string;
@@ -312,6 +313,18 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
     if (!epicIndex) return null;
     return epicIndex.chapters.find((c) => c.id === selectedChapterId) || epicIndex.chapters[0] || null;
   }, [epicIndex, selectedChapterId]);
+
+  // Real-time Dynamic Epic & Chapter SEO synchronization
+  useEffect(() => {
+    if (currentEpicConfig) {
+      const chName = currentChapter ? ` • ${currentChapter.name}` : '';
+      seo.updateSEO({
+        tab: 'granthas',
+        title: `${currentEpicConfig.name}${chName} (${currentEpicConfig.author}) • संपूर्ण मूल पाठ व पारायण | वृन्दोपनिषद् 2.0`,
+        description: `${currentEpicConfig.name}${chName}। प्रणेता: ${currentEpicConfig.author}। संपूर्ण मूल श्लोक, अवधी/संस्कृत पाठ व ऑन-डिमांड पारायण। वृन्दोपनिषद् 2.0`,
+      });
+    }
+  }, [selectedGranthaId, currentEpicConfig, currentChapter]);
 
   const currentChapterIdx = useMemo(() => {
     if (!epicIndex || !currentChapter) return -1;

@@ -262,39 +262,47 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
 
   // Real-time Dynamic SEO & URL Permalinks Synchronization
   useEffect(() => {
+    // If URL contains a specific deep link (pad, grantha, author, chapter), do not overwrite with generic tab SEO
+    if (typeof window !== 'undefined') {
+      const searchParams = new URLSearchParams(window.location.search);
+      if (searchParams.get('pad') || searchParams.get('grantha') || searchParams.get('author') || searchParams.get('chapter')) {
+        return;
+      }
+    }
+
     switch (activeTab) {
       case 'smaran':
         seo.updateSEO({
           tab: 'smaran',
-          title: 'Home Sanctuary • दैनिक स्मरण व नित्य सेवा',
+          title: 'Home Sanctuary • दैनिक स्मरण व नित्य सेवा | वृन्दोपनिषद् 2.0',
           description: 'दैनिक अष्टयाम लीला, नाम जप, वाणी श्रवण और स्वाध्याय का पावन साधना स्थल।',
         });
         break;
       case 'granthas':
         seo.updateSEO({
           tab: 'granthas',
-          title: 'सनातन महाग्रंथ पारायण • वाल्मीकि रामायण, भागवत, गीता, रामचरितमानस',
-          description: 'सनातन महाग्रंथों (श्रीमद् वाल्मीकि रामायण, श्रीमद्भागवत महापुराण, श्री रामचरितमानस, श्रीमद्भगवद्गीता, श्री दुर्गा सप्तशती) का अखण्ड, अध्यायवार पावन पाठ।',
+          title: 'Sanatan Mahagranth Parayana • ५ अमर महाकाव्य एवं अखंड शास्त्र स्वाध्याय | वृन्दोपनिषद् 2.0',
+          description: 'श्रीमद् वाल्मीकि रामायण, श्रीमद्भागवत महापुराण, श्री रामचरितमानस, श्रीमद्भगवद्गीता व श्री दुर्गा सप्तशती का संपूर्ण मूल पाठ व ऑन-डिमांड त्वरित पारायण।',
         });
         break;
       case 'padavali':
         seo.updateSEO({
           tab: 'padavali',
-          title: 'Scriptures Repository • ४२००+ पावन पद वाणी संग्रह',
-          description: 'हित चौरासी, राधा सुधा निधि, केलिमाल, सूरसागर, रसखान पदावली सहित समस्त रसिक वाणियों का अगाध संग्रह।',
+          title: 'Scriptures Repository • ४४,०००+ पावन महाग्रंथ व रसिक वाणी संग्रह | वृन्दोपनिषद् 2.0',
+          description: 'वाल्मीकि रामायण, श्रीमद् भागवत, रामचरितमानस, भगवद्गीता, हित चौरासी, केलिमाल, सूरसागर सहित सनातन महाग्रंथ व समस्त रसिक वाणी का अगाध संग्रह।',
         });
         break;
       case 'feed':
         seo.updateSEO({
           tab: 'feed',
-          title: 'Darshan Feed • नित्य वृन्दावन धाम दर्शन',
+          title: 'Darshan Feed • नित्य वृन्दावन धाम दर्शन | वृन्दोपनिषद् 2.0',
           description: 'श्री वृन्दावन धाम के प्रमुख मंदिरों के प्रत्यक्ष दर्शन, उत्सव, आरती व नित्य विलास।',
         });
         break;
       case 'milestones':
         seo.updateSEO({
           tab: 'milestones',
-          title: 'Devotion Milestones • अखंड निष्ठा व साधना सोपान',
+          title: 'Devotion Milestones • अखंड निष्ठा व साधना सोपान | वृन्दोपनिषद् 2.0',
           description: 'अखंड साधना स्ट्रीक, अंतरंग ध्यान सिद्धि एवं श्रीजी कृपा के पावन सोपान।',
         });
         break;
