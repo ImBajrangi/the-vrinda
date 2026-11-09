@@ -1,0 +1,36 @@
+{
+  "timestamp": "2026-11-09T16:36:08.333Z",
+  "status": "HEALTHY",
+  "checks": [
+    {
+      "target": "Primary Domain Robots.txt",
+      "url": "https://bhav.vrindopnishad.in/robots.txt",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "target": "Secondary Domain Robots.txt",
+      "url": "https://path.vrindopnishad.in/robots.txt",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "target": "Grantha 301 Cross-Domain Redirect",
+      "url": "https://bhav.vrindopnishad.in/granthas",
+      "status": 301,
+      "passed": true
+    },
+    {
+      "target": "Padavali 301 Cross-Domain Redirect",
+      "url": "https://path.vrindopnishad.in/padavali",
+      "status": 301,
+      "passed": true
+    },
+    {
+      "target": "Trailing Slash 301 Normalization",
+      "url": "https://bhav.vrindopnishad.in/granthas/",
+      "status": 301,
+      "passed": true
+    }
+  ]
+}

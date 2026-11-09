@@ -8,6 +8,7 @@
 import chapterSnippetsData from '../src/data/chapterSnippets.json';
 import canonicalGranthasData from '../src/data/canonicalGranthas.json';
 import canonicalSaintsData from '../src/data/canonicalSaints.json';
+import catalogData from '../public/data/catalog.json';
 
 interface Env {}
 
@@ -109,6 +110,21 @@ const CHAPTER_SNIPPETS = snippetsObj as Record<string, {
   verseCount: number;
   openingVerse: string;
 }>;
+
+const catObj: any = (catalogData as any)?.default || catalogData || {};
+const catItems: any[] = catObj.items || [];
+const catAuthors: string[] = catObj.authors || [];
+const catCols: string[] = catObj.cols || [];
+
+const PADA_MAP = new Map<string, { title: string; author: string; grantha: string }>();
+for (const item of catItems) {
+  const [slug, titleDev, colIdx, authIdx] = item;
+  PADA_MAP.set(slug, {
+    title: titleDev,
+    author: catAuthors[authIdx] || 'रसिक संत',
+    grantha: catCols[colIdx] || '',
+  });
+}
 
 function getChapterSnippet(granthaId: string, chapterId: string) {
   return CHAPTER_SNIPPETS[`${granthaId}:${chapterId}`] || null;
@@ -344,10 +360,15 @@ export const onRequest: PagesFunction<Env> = async (context) => {
 
   if (padId) {
     const known = KNOWN_PADAS_META[padId];
-    const padTitle = known ? known.title : formatSlug(padId);
-    const padAuthor = known ? known.author : 'रसिक संत';
+    const catItem = PADA_MAP.get(padId) || PADA_MAP.get(decodeURIComponent(padId).trim());
+    const padTitle = known?.title || catItem?.title || formatSlug(padId);
+    const padAuthor = known?.author || catItem?.author || 'रसिक संत';
+    const granthaMeta = catItem?.grantha ? GRANTHAS_MAP.get(catItem.grantha) : null;
+    const granthaLabel = granthaMeta?.name || 'रसिक वाणी संग्रह';
+    const granthaCategory = granthaMeta?.category === 'mahagranth' ? 'सनातन महाग्रंथ' : 'रसिक वाणी संग्रह';
+
     title = `${padTitle} (${padAuthor}) • पावन रसिक पद | वृन्दोपनिषद् 2.0`;
-    description = known ? known.desc : `${padTitle} के पावन पद, मूल पाठ, राग, भावार्थ व नित्य अनुशीलन। वृन्दोपनिषद् 2.0`;
+    description = known ? known.desc : `${padTitle} (${granthaLabel}) के पावन पद, मूल पाठ, भावार्थ व नित्य अनुशीलन। रचयिता: ${padAuthor}। वृन्दोपनिषद् 2.0`;
     canonicalUrl = `https://bhav.vrindopnishad.in/?tab=padavali&pad=${encodeURIComponent(padId)}`;
 
     entitySchema = {
@@ -370,12 +391,12 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     dynamicRootHtml = `
       <article class="sanctuary-ssr-content" style="max-width: 820px; margin: 0 auto; padding: 2.5rem 1.25rem; font-family: 'Noto Serif Devanagari', serif;">
         <nav style="margin-bottom: 1.5rem; font-size: 0.875rem; color: #b45309;">
-          <a href="/" style="color: #b45309; text-decoration: none;">वृन्दोपनिषद् 2.0</a> &rsaquo; <span>पावन पदावली</span>
+          <a href="/" style="color: #b45309; text-decoration: none;">वृन्दोपनिषद् 2.0</a> &rsaquo; <span>${granthaLabel}</span>
         </nav>
         <header style="margin-bottom: 2rem;">
-          <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; background-color: #fef3c7; color: #92400e; margin-bottom: 0.75rem;">रसिक वाणी संग्रह</span>
+          <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; background-color: #fef3c7; color: #92400e; margin-bottom: 0.75rem;">${granthaCategory}</span>
           <h1 style="font-size: 2rem; font-weight: 700; line-height: 1.3; color: #1c1917; margin: 0 0 0.75rem 0;">${padTitle}</h1>
-          <p style="font-size: 0.95rem; color: #78716c; margin: 0;">रचयिता: ${padAuthor} • नित्य स्वाध्याय व अनुशीलन</p>
+          <p style="font-size: 0.95rem; color: #78716c; margin: 0;">रचयिता: ${padAuthor} • संग्रह: ${granthaLabel}</p>
         </header>
         <section class="verse-body" style="font-size: 1.25rem; line-height: 2; color: #292524; background-color: #fffbeb; padding: 1.5rem; border-radius: 1rem; border: 1px solid #fef3c7; white-space: pre-line;">
           ${known?.sampleVerse || '«पावन वाणी का मूल पाठ लोड हो रहा है...»'}

@@ -6,7 +6,24 @@ import { SacredDatabase } from './services/sacredDatabase';
 import { generateSEOMetadata, SEOMetadataResult, SEOConfig } from './services/seoService';
 import canonicalPadasData from './data/canonicalPadas.json';
 import chapterSnippetsData from './data/chapterSnippets.json';
+import catalogData from '../public/data/catalog.json';
 import { SacredPad } from './types/devotional';
+
+const catObj: any = (catalogData as any)?.default || catalogData || {};
+const catItems: any[] = catObj.items || [];
+const catAuthors: string[] = catObj.authors || [];
+const catCols: string[] = catObj.cols || [];
+
+const CATALOG_PADAS_MAP = new Map<string, { id: string; titleDevanagari: string; author: string; collectionId: string }>();
+for (const item of catItems) {
+  const [slug, titleDev, colIdx, authIdx] = item;
+  CATALOG_PADAS_MAP.set(slug, {
+    id: slug,
+    titleDevanagari: titleDev,
+    author: catAuthors[authIdx] || 'रसिक संत',
+    collectionId: catCols[colIdx] || '',
+  });
+}
 import { PadavaliReader } from './components/reader/PadavaliReader';
 import { MahagranthReader } from './components/reader/MahagranthReader';
 import { MilestonesView } from './components/milestones/MilestonesView';
@@ -85,7 +102,27 @@ export function render(url: string = '/'): RenderResult {
   }
 
   // Look up specific pad if requested for deep-link SEO
-  const pad = padId ? SacredDatabase.getPadById(padId) : undefined;
+  let pad = padId ? SacredDatabase.getPadById(padId) : undefined;
+  if (!pad && padId) {
+    const fromCat = CATALOG_PADAS_MAP.get(padId) || CATALOG_PADAS_MAP.get(decodeURIComponent(padId).trim());
+    if (fromCat) {
+      pad = {
+        id: fromCat.id,
+        slug: fromCat.id,
+        titleDevanagari: fromCat.titleDevanagari,
+        titleEnglish: fromCat.id,
+        author: fromCat.author,
+        collectionId: fromCat.collectionId,
+        rag: '',
+        index: 1,
+        verses: [{
+          stanzaNumber: 1,
+          linesDevanagari: [fromCat.titleDevanagari],
+          linesEnglish: [],
+        }],
+      };
+    }
+  }
 
   // Domain Canonical Ownership:
   // path.vrindopnishad.in owns Sanatan Mahagranth Parayana (epics & chapters)
