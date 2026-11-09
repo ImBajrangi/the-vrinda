@@ -2451,11 +2451,11 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   <button
                     type="button"
                     onClick={() => setIsChapterDropdownOpen(!isChapterDropdownOpen)}
-                    className="px-3.5 py-1.5 rounded-full text-xs font-bold bg-neutral-200/50 hover:bg-neutral-200/80 text-amber-950 flex items-center gap-1.5 cursor-pointer transition-colors shadow-2xs"
+                    className="px-3.5 py-1.5 rounded-full text-xs font-bold bg-white hover:bg-neutral-50 border border-neutral-200/80 text-amber-950 flex items-center gap-1.5 cursor-pointer transition-colors shadow-2xs"
                   >
                     <span>{currentChapter ? currentChapter.name : 'समस्त अध्याय'}</span>
-                    <span className="text-[10px] text-amber-800 font-mono font-bold">
-                      ({currentChapter ? `${currentChapter.verseCount} पद` : `${availableChapters.reduce((acc, c) => acc + c.verseCount, 0)} पद`})
+                    <span className="text-[10px] text-amber-800 font-serif font-bold">
+                      ({currentChapter ? `${formatDevanagariNumerals(currentChapter.verseCount)} पद` : `${formatDevanagariNumerals(availableChapters.reduce((acc, c) => acc + c.verseCount, 0))} पद`})
                     </span>
                     <ChevronDown className={`w-3.5 h-3.5 text-amber-800 transition-transform duration-200 ${isChapterDropdownOpen ? 'rotate-180' : ''}`} />
                   </button>

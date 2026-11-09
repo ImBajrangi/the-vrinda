@@ -451,6 +451,16 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
   }, [chapterPadas, activeVerseId]);
 
   const handleSelectGrantha = (gId: string) => {
+    const el = epicCardRefs.current[gId];
+    if (el) {
+      setEpicPillStyle({
+        left: el.offsetLeft,
+        top: el.offsetTop,
+        width: el.offsetWidth,
+        height: el.offsetHeight,
+        ready: true,
+      });
+    }
     navigationProgress.start();
     setSelectedGranthaId(gId);
     setTocFilterSection('all');
@@ -516,13 +526,13 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
         </div>
 
         {/* 5 Monumental Epics Segmented Pothi Grid */}
-        <div className="relative p-1.5 rounded-[22px] bg-[#FAF8F5]/70 border border-amber-900/10">
-          <div className="relative grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-2.5">
+        <div className="relative p-1 sm:p-1.5 rounded-[20px] bg-[#FAF8F5] border border-amber-900/10 shadow-2xs">
+          <div className="relative grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-1.5 sm:gap-2">
             {/* Dynamic 2D Elastic Sliding Indicator for Active Epic */}
             {epicPillStyle.ready && (
               <span
                 aria-hidden="true"
-                className="absolute rounded-[16px] bg-[#FFFDF9] border border-amber-300/80 pointer-events-none transition-[transform,width,height] duration-[340ms] ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[transform,width,height] z-0 shadow-[0_2px_10px_-2px_rgba(217,119,6,0.12),0_1px_3px_0_rgba(0,0,0,0.04)]"
+                className="absolute rounded-[14px] bg-[#FEF08A] pointer-events-none transition-[transform,width,height] duration-[340ms] ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[transform,width,height] z-0 shadow-2xs"
                 style={{
                   transform: `translate3d(${epicPillStyle.left}px, ${epicPillStyle.top}px, 0)`,
                   width: `${epicPillStyle.width}px`,
@@ -542,12 +552,12 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                   }}
                   type="button"
                   onClick={() => handleSelectGrantha(epic.id)}
-                  className={`relative z-10 flex items-center gap-2.5 p-2.5 sm:p-3 rounded-[16px] cursor-pointer select-none transition-colors duration-150 border text-left ${
+                  className={`relative z-10 flex items-center gap-2.5 p-2 sm:p-2.5 rounded-[14px] cursor-pointer select-none transition-colors duration-150 text-left border-0 ${
                     isSelected
                       ? epicPillStyle.ready
-                        ? 'bg-transparent border-transparent text-neutral-900'
-                        : 'bg-[#FFFDF9] border-amber-300/80 text-neutral-900 shadow-xs'
-                      : 'bg-white/70 hover:bg-white border-amber-900/10 hover:border-amber-900/20 text-neutral-800'
+                        ? 'text-[#18181B]'
+                        : 'bg-[#FEF08A] text-[#18181B] shadow-2xs'
+                      : 'text-neutral-600 hover:text-neutral-900 hover:bg-black/[0.03]'
                   }`}
                 >
                   {/* Authentic Miniature Pothi Spine */}
@@ -566,15 +576,23 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                   <div className="min-w-0 flex-1">
                     <span
                       className={`text-[10px] font-serif font-bold uppercase tracking-wider block truncate ${
-                        isSelected ? 'text-amber-800' : 'text-amber-900/60'
+                        isSelected ? 'text-[#B45309]' : 'text-neutral-400'
                       }`}
                     >
                       {epic.tag}
                     </span>
-                    <div className="font-serif font-bold text-xs sm:text-sm text-neutral-900 truncate mt-0.5">
+                    <div
+                      className={`font-serif font-bold text-xs sm:text-sm truncate mt-0.5 ${
+                        isSelected ? 'text-[#18181B] font-black' : 'text-neutral-700'
+                      }`}
+                    >
                       {epic.shortName || epic.name}
                     </div>
-                    <div className="text-[11px] text-neutral-500 font-serif mt-0.5">
+                    <div
+                      className={`text-[11px] font-serif mt-0.5 ${
+                        isSelected ? 'text-[#78350F]/80 font-medium' : 'text-neutral-400'
+                      }`}
+                    >
                       {formatDevanagariNumerals(epic.totalVerses)} {epic.verseTerm}
                     </div>
                   </div>
