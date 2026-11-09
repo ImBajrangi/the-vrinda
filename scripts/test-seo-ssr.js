@@ -275,6 +275,12 @@ async function runPhase23QualityGates() {
   console.log(`    - Decimal kB (Vite build output): ${decimalKb} kB`);
   console.log(`    - Binary KiB (Filesystem/Node stat): ${binaryKib} KiB`);
 
+  if (parseFloat(decimalKb) > 200) {
+    console.warn(`  ⚠️ Warning: Main entry bundle (${decimalKb} kB) exceeds the 200 kB soft ceiling. (Soft Target: <= 200 kB, Hard Ceiling: <= 220 kB)`);
+  } else {
+    console.log(`  ✓ Main entry bundle strictly within 200 kB soft target (${decimalKb} kB).`);
+  }
+
   if (parseFloat(decimalKb) > 220) {
     throw new Error(`Gate 8 Failed: Main entry bundle (${decimalKb} kB) exceeds strict 220 KB budget!`);
   }

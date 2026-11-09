@@ -34,5 +34,6 @@ coverage
 tests/.build_tmp
 backups/
 *.enc
+.seo-reports/
 
 screenshots/*
