@@ -77,18 +77,54 @@ function createSitemapSuite(baseUrl, prefix = '') {
     { loc: `${baseUrl}/`, lastmod: today, changefreq: 'daily', priority: 1.0 },
     { loc: `${baseUrl}/?tab=smaran`, lastmod: today, changefreq: 'daily', priority: 0.95 },
     { loc: `${baseUrl}/?tab=padavali`, lastmod: today, changefreq: 'daily', priority: 0.95 },
+    { loc: `${baseUrl}/?tab=granthas`, lastmod: today, changefreq: 'daily', priority: 0.95 },
     { loc: `${baseUrl}/?tab=feed`, lastmod: today, changefreq: 'hourly', priority: 0.9 },
     { loc: `${baseUrl}/?tab=milestones`, lastmod: today, changefreq: 'weekly', priority: 0.85 },
   ];
   const mainXml = buildUrlset(mainUrls);
 
-  // 2. Granthas
-  const granthasUrls = granthas.map((g) => ({
-    loc: `${baseUrl}/?tab=padavali&grantha=${encodeURIComponent(g.id)}`,
-    lastmod: today,
-    changefreq: 'weekly',
-    priority: 0.9,
-  }));
+  // 2. Granthas (Padavali collections + 5 Monumental Epics & Chapters)
+  const EPIC_IDS = new Set(['valmiki-ramayana', 'shrimad-bhagavatam', 'ramcharitmanas', 'bhagavad-gita', 'durga-saptashati']);
+  const granthasUrls = granthas
+    .filter((g) => !EPIC_IDS.has(g.id))
+    .map((g) => ({
+      loc: `${baseUrl}/?tab=padavali&grantha=${encodeURIComponent(g.id)}`,
+      lastmod: today,
+      changefreq: 'weekly',
+      priority: 0.9,
+    }));
+
+  // Add 5 Monumental Epics & their chapters
+  const epicsManifestPath = path.resolve(projectRoot, 'public/data/epics/manifest.json');
+  if (fs.existsSync(epicsManifestPath)) {
+    try {
+      const epicsManifest = JSON.parse(fs.readFileSync(epicsManifestPath, 'utf-8'));
+      for (const epic of epicsManifest.epics || []) {
+        granthasUrls.push({
+          loc: `${baseUrl}/?tab=granthas&grantha=${encodeURIComponent(epic.id)}`,
+          lastmod: today,
+          changefreq: 'weekly',
+          priority: 0.95,
+        });
+
+        const epicIndexPath = path.resolve(projectRoot, `public/data/epics/${epic.id}/index.json`);
+        if (fs.existsSync(epicIndexPath)) {
+          const epicData = JSON.parse(fs.readFileSync(epicIndexPath, 'utf-8'));
+          for (const ch of epicData.chapters || []) {
+            granthasUrls.push({
+              loc: `${baseUrl}/?tab=granthas&grantha=${encodeURIComponent(epic.id)}&chapter=${encodeURIComponent(ch.id)}`,
+              lastmod: today,
+              changefreq: 'monthly',
+              priority: 0.85,
+            });
+          }
+        }
+      }
+    } catch (e) {
+      console.warn('  ⚠ Warning loading epics for sitemap:', e.message);
+    }
+  }
+
   const granthasXml = buildUrlset(granthasUrls);
 
   // 3. Saints

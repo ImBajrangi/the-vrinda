@@ -157,7 +157,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
   });
 
   // 5 Epics Shelf Elastic Sliding Indicator
-  const epicCardRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
+  const epicCardRefs = useRef<{ [key: string]: HTMLElement | null }>({});
   const [epicPillStyle, setEpicPillStyle] = useState<{
     left: number;
     top: number;
@@ -375,7 +375,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
   }, [epicIndex, tocFilterSection, chapterSearchQuery]);
 
   // Chapter List Elastic Sliding Indicator
-  const chapterItemRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
+  const chapterItemRefs = useRef<{ [key: string]: HTMLElement | null }>({});
   const [chapterPillStyle, setChapterPillStyle] = useState<{ top: number; height: number; ready: boolean }>({
     top: 0,
     height: 0,
@@ -580,14 +580,19 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
               const isSelected = selectedGranthaId === epic.id;
               const isLoadingThis = loadingGranthaId === epic.id;
               return (
-                <button
+                <a
                   key={epic.id}
                   ref={(el) => {
                     epicCardRefs.current[epic.id] = el;
                   }}
-                  type="button"
-                  onClick={() => handleSelectGrantha(epic.id)}
-                  className={`relative z-10 flex items-center gap-2.5 p-2 sm:p-2.5 rounded-[14px] cursor-pointer select-none transition-colors duration-150 text-left border-0 ${
+                  href={`/?tab=granthas&grantha=${encodeURIComponent(epic.id)}`}
+                  onClick={(e) => {
+                    if (!e.metaKey && !e.ctrlKey) {
+                      e.preventDefault();
+                      handleSelectGrantha(epic.id);
+                    }
+                  }}
+                  className={`relative z-10 flex items-center gap-2.5 p-2 sm:p-2.5 rounded-[14px] cursor-pointer select-none transition-colors duration-150 text-left border-0 no-underline ${
                     isSelected
                       ? epicPillStyle.ready
                         ? 'text-[#18181B]'
@@ -642,7 +647,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                       {formatDevanagariNumerals(epic.totalVerses)} {epic.verseTerm}
                     </div>
                   </div>
-                </button>
+                </a>
               );
             })}
           </div>
@@ -873,14 +878,19 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                   filteredChapters.map((ch) => {
                     const isSelected = ch.id === selectedChapterId;
                     return (
-                      <button
+                      <a
                         key={ch.id}
                         ref={(el) => {
                           chapterItemRefs.current[ch.id] = el;
                         }}
-                        type="button"
-                        onClick={() => handleSelectChapter(ch.id)}
-                        className={`relative z-10 w-full text-left p-2.5 rounded-[8px] text-xs font-semibold flex items-center justify-between transition-colors duration-150 cursor-pointer select-none ${
+                        href={`/?tab=granthas&grantha=${encodeURIComponent(selectedGranthaId)}&chapter=${encodeURIComponent(ch.id)}`}
+                        onClick={(e) => {
+                          if (!e.metaKey && !e.ctrlKey) {
+                            e.preventDefault();
+                            handleSelectChapter(ch.id);
+                          }
+                        }}
+                        className={`relative z-10 w-full text-left p-2.5 rounded-[8px] text-xs font-semibold flex items-center justify-between transition-colors duration-150 cursor-pointer select-none no-underline ${
                           isSelected
                             ? chapterPillStyle.ready
                               ? 'text-[#18181B] font-bold'
@@ -897,7 +907,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                         <span className="text-[10px] font-mono shrink-0 px-1.5 py-0.5 rounded-[4px] bg-black/5">
                           {ch.verseCount} {currentEpicConfig.verseTerm}
                         </span>
-                      </button>
+                      </a>
                     );
                   })
                 )}
@@ -1096,25 +1106,35 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
           {/* Sequential Chapter Transition Footer */}
           <div className="mt-10 pt-6 border-t border-neutral-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             {prevChapter ? (
-              <button
-                type="button"
-                onClick={() => handleSelectChapter(prevChapter.id)}
-                className="px-4 py-2.5 rounded-[8px] bg-neutral-100 hover:bg-neutral-200 text-xs font-bold text-neutral-800 flex items-center gap-2 cursor-pointer transition-colors shadow-2xs"
+              <a
+                href={`/?tab=granthas&grantha=${encodeURIComponent(selectedGranthaId)}&chapter=${encodeURIComponent(prevChapter.id)}`}
+                onClick={(e) => {
+                  if (!e.metaKey && !e.ctrlKey) {
+                    e.preventDefault();
+                    handleSelectChapter(prevChapter.id);
+                  }
+                }}
+                className="px-4 py-2.5 rounded-[8px] bg-neutral-100 hover:bg-neutral-200 text-xs font-bold text-neutral-800 flex items-center gap-2 cursor-pointer transition-colors shadow-2xs no-underline"
               >
                 <ChevronLeft className="w-4 h-4" />
                 <span>पिछला: {prevChapter.name}</span>
-              </button>
+              </a>
             ) : <div />}
 
             {nextChapter && (
-              <button
-                type="button"
-                onClick={() => handleSelectChapter(nextChapter.id)}
-                className="px-5 py-2.5 rounded-[8px] bg-[#FEF08A] hover:bg-amber-300 text-xs font-bold text-[#78350F] flex items-center gap-2 cursor-pointer transition-colors shadow-2xs self-end sm:self-auto"
+              <a
+                href={`/?tab=granthas&grantha=${encodeURIComponent(selectedGranthaId)}&chapter=${encodeURIComponent(nextChapter.id)}`}
+                onClick={(e) => {
+                  if (!e.metaKey && !e.ctrlKey) {
+                    e.preventDefault();
+                    handleSelectChapter(nextChapter.id);
+                  }
+                }}
+                className="px-5 py-2.5 rounded-[8px] bg-[#FEF08A] hover:bg-amber-300 text-xs font-bold text-[#78350F] flex items-center gap-2 cursor-pointer transition-colors shadow-2xs self-end sm:self-auto no-underline"
               >
                 <span>अगला {currentEpicConfig.chapterTerm}: {nextChapter.name}</span>
                 <ChevronRight className="w-4 h-4" />
-              </button>
+              </a>
             )}
           </div>
         </article>

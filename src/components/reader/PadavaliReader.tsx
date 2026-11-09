@@ -445,7 +445,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   }, [selectedGrantha, selectedChapter]);
 
   // Desktop Sidebar Pada List Elastic Sliding Indicator
-  const sidebarItemRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+  const sidebarItemRefs = useRef<{ [key: string]: HTMLElement | null }>({});
   const [sidebarPillStyle, setSidebarPillStyle] = useState<{ top: number; height: number; ready: boolean }>({
     top: 0,
     height: 0,
@@ -453,7 +453,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   });
 
   // Mobile Horizontal Carousel Elastic Sliding Indicator
-  const mobilePadRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
+  const mobilePadRefs = useRef<{ [key: string]: HTMLElement | null }>({});
   const [mobilePillStyle, setMobilePillStyle] = useState<{ left: number; width: number; ready: boolean }>({
     left: 0,
     width: 0,
@@ -2122,14 +2122,19 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
           {filteredPads.slice(0, visibleCount).map((pad, idx) => {
             const isSelected = selectedPad.id === pad.id;
             return (
-              <button
+              <a
                 key={pad.id}
                 ref={(el) => {
                   mobilePadRefs.current[pad.id] = el;
                 }}
-                type="button"
-                onClick={() => handleSelectPad(pad)}
-                className={`relative z-10 shrink-0 h-8 px-3 rounded-full transition-colors duration-200 cursor-pointer select-none flex items-center gap-1.5 text-xs ${isSelected
+                href={`/?tab=padavali&pad=${encodeURIComponent(pad.slug || pad.id)}`}
+                onClick={(e) => {
+                  if (!e.metaKey && !e.ctrlKey) {
+                    e.preventDefault();
+                    handleSelectPad(pad);
+                  }
+                }}
+                className={`relative z-10 shrink-0 h-8 px-3 rounded-full transition-colors duration-200 cursor-pointer select-none flex items-center gap-1.5 text-xs no-underline ${isSelected
                     ? 'text-[#18181B] font-bold'
                     : 'bg-white text-[#1E293B] hover:bg-[#F8FAFC] font-medium'
                   }`}
@@ -2145,7 +2150,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 <span className="font-serif truncate max-w-[130px]">
                   {pad.titleDevanagari}
                 </span>
-              </button>
+              </a>
             );
           })}
         </div>
@@ -2204,18 +2209,23 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   {displayedSidebarPads.slice(0, visibleCount).map((pad, idx) => {
                     const isSelected = selectedPad.id === pad.id;
                     return (
-                      <button
+                      <a
                         key={pad.id}
-                        type="button"
-                        onClick={() => handleSelectPad(pad)}
+                        href={`/?tab=padavali&pad=${encodeURIComponent(pad.slug || pad.id)}`}
+                        onClick={(e) => {
+                          if (!e.metaKey && !e.ctrlKey) {
+                            e.preventDefault();
+                            handleSelectPad(pad);
+                          }
+                        }}
                         title={`${idx + 1}. ${pad.titleDevanagari} (${pad.author})`}
-                        className={`w-9 h-9 mx-auto rounded-xl flex items-center justify-center text-xs font-mono transition-colors cursor-pointer ${isSelected
+                        className={`w-9 h-9 mx-auto rounded-xl flex items-center justify-center text-xs font-mono transition-colors cursor-pointer no-underline ${isSelected
                             ? 'bg-[#FEF08A] text-[#78350F] font-bold shadow-xs'
                             : 'text-[#64748B] hover:bg-black/5'
                           }`}
                       >
                         #{idx + 1}
-                      </button>
+                      </a>
                     );
                   })}
                 </div>
@@ -2320,13 +2330,19 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                       const isSelected = selectedPad.id === pad.id;
                       const isCurrentlyPlaying = activePlayingPadId === pad.id && isPlaying;
                       return (
-                        <div
+                        <a
                           key={pad.id}
                           ref={(el) => {
                             sidebarItemRefs.current[pad.id] = el;
                           }}
-                          onClick={() => handleSelectPad(pad)}
-                          className={`group relative z-10 px-3 py-2.5 rounded-2xl flex items-start gap-2.5 cursor-pointer select-none transition-colors duration-200 ${isSelected
+                          href={`/?tab=padavali&pad=${encodeURIComponent(pad.slug || pad.id)}`}
+                          onClick={(e) => {
+                            if (!e.metaKey && !e.ctrlKey) {
+                              e.preventDefault();
+                              handleSelectPad(pad);
+                            }
+                          }}
+                          className={`group relative z-10 px-3 py-2.5 rounded-2xl flex items-start gap-2.5 cursor-pointer select-none transition-colors duration-200 no-underline ${isSelected
                               ? 'text-[#0F172A]'
                               : 'hover:bg-black/5 text-[#0F172A]'
                             }`}
@@ -2386,7 +2402,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                               <Play className="w-3 h-3 ml-0.5 fill-current" />
                             )}
                           </button>
-                        </div>
+                        </a>
                       );
                     })
                   )}
@@ -3058,35 +3074,51 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
               {/* Bottom Prev / Next Navigation Controls */}
               <div className={`flex items-center justify-between pt-6 mt-8 border-t ${currentTheme.borderColor}`}>
-                <button
-                  type="button"
-                  disabled={!hasPrev}
-                  onClick={handlePrevPad}
-                  className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer ${hasPrev
-                      ? 'bg-[#F1F5F9] text-[#1E293B] hover:bg-[#E2E8F0]'
-                      : 'opacity-40 cursor-not-allowed text-[#94A3B8] bg-neutral-50'
-                    }`}
-                >
-                  <ChevronLeft className="w-4 h-4" />
-                  <span>पिछला पद</span>
-                </button>
+                {hasPrev ? (
+                  <a
+                    href={`/?tab=padavali&pad=${encodeURIComponent(filteredPads[currentIdx - 1]?.slug || filteredPads[currentIdx - 1]?.id)}`}
+                    onClick={(e) => {
+                      if (!e.metaKey && !e.ctrlKey) {
+                        e.preventDefault();
+                        handlePrevPad();
+                      }
+                    }}
+                    className="flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer bg-[#F1F5F9] text-[#1E293B] hover:bg-[#E2E8F0] no-underline"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                    <span>पिछला पद</span>
+                  </a>
+                ) : (
+                  <span className="flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold opacity-40 cursor-not-allowed text-[#94A3B8] bg-neutral-50">
+                    <ChevronLeft className="w-4 h-4" />
+                    <span>पिछला पद</span>
+                  </span>
+                )}
 
                 <span className={`text-xs ${currentTheme.translitColor} font-mono font-medium`}>
                   पद {currentIdx + 1} / {filteredPads.length}
                 </span>
 
-                <button
-                  type="button"
-                  disabled={!hasNext}
-                  onClick={handleNextPad}
-                  className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer ${hasNext
-                      ? 'bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] font-bold'
-                      : 'opacity-40 cursor-not-allowed text-[#94A3B8] bg-neutral-100'
-                    }`}
-                >
-                  <span>अगला पद</span>
-                  <ChevronRight className="w-4 h-4 text-[#CA8A04]" />
-                </button>
+                {hasNext ? (
+                  <a
+                    href={`/?tab=padavali&pad=${encodeURIComponent(filteredPads[currentIdx + 1]?.slug || filteredPads[currentIdx + 1]?.id)}`}
+                    onClick={(e) => {
+                      if (!e.metaKey && !e.ctrlKey) {
+                        e.preventDefault();
+                        handleNextPad();
+                      }
+                    }}
+                    className="flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] font-bold no-underline"
+                  >
+                    <span>अगला पद</span>
+                    <ChevronRight className="w-4 h-4 text-[#CA8A04]" />
+                  </a>
+                ) : (
+                  <span className="flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold opacity-40 cursor-not-allowed text-[#94A3B8] bg-neutral-100">
+                    <span>अगला पद</span>
+                    <ChevronRight className="w-4 h-4 text-[#CA8A04]" />
+                  </span>
+                )}
               </div>
             </div>
           )}
@@ -3112,11 +3144,17 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 {relatedPadas.map(({ pad: rPad, reason, badge }, rIdx) => {
                   const firstLine = rPad.verses?.[0]?.linesDevanagari?.[0] || rPad.titleDevanagari;
                   return (
-                    <div
+                    <a
                       key={rPad.id || rIdx}
-                      onClick={() => handleSelectPad(rPad)}
+                      href={`/?tab=padavali&pad=${encodeURIComponent(rPad.slug || rPad.id)}`}
+                      onClick={(e) => {
+                        if (!e.metaKey && !e.ctrlKey) {
+                          e.preventDefault();
+                          handleSelectPad(rPad);
+                        }
+                      }}
                       title={reason}
-                      className="p-3.5 rounded-2xl bg-[#FAF8F5] hover:bg-[#F3EFE6] border border-amber-900/10 cursor-pointer select-none transition-colors duration-150 flex flex-col justify-between"
+                      className="p-3.5 rounded-2xl bg-[#FAF8F5] hover:bg-[#F3EFE6] border border-amber-900/10 cursor-pointer select-none transition-colors duration-150 flex flex-col justify-between no-underline"
                     >
                       <div>
                         <div className="flex items-center justify-between gap-1 mb-2">
@@ -3135,7 +3173,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                         <span className="truncate">{rPad.author || 'रसिक संत'}</span>
                         <ChevronRight className="w-3.5 h-3.5 text-amber-700 shrink-0 ml-1" />
                       </div>
-                    </div>
+                    </a>
                   );
                 })}
               </div>
