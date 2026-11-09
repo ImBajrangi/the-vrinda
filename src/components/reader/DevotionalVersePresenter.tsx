@@ -172,10 +172,10 @@ export const DevotionalVersePresenter: React.FC<DevotionalVersePresenterProps> =
               <div
                 key={idx}
                 onClick={() => setFocusedStanzaIndex(isFocused ? null : idx)}
-                className={`group/stanza relative py-2.5 px-3 sm:px-3.5 rounded-lg transition-colors duration-300 cursor-pointer ${
+                className={`group/stanza relative py-3 px-3.5 sm:px-4 rounded-xl transition-colors duration-200 cursor-pointer ${
                   isFocused
-                    ? 'bg-amber-50/45 shadow-2xs'
-                    : 'hover:bg-amber-900/[0.015]'
+                    ? 'bg-amber-50/70 shadow-2xs'
+                    : 'hover:bg-amber-50/30'
                 }`}
                 title="टैप करके इस चरण पर एकाग्रता पाठ करें"
               >
@@ -185,7 +185,7 @@ export const DevotionalVersePresenter: React.FC<DevotionalVersePresenterProps> =
                     className={`inline-block mb-1 px-2 py-0.5 rounded-full text-[10px] font-mono font-bold transition-colors select-none ${
                       isFocused
                         ? 'bg-[#FEF08A] text-[#78350F]'
-                        : 'bg-neutral-100/80 text-neutral-400 group-hover/stanza:text-amber-800 group-hover/stanza:bg-amber-100/40'
+                        : 'bg-neutral-100 text-neutral-400 group-hover/stanza:text-amber-800 group-hover/stanza:bg-amber-100/60'
                     }`}
                   >
                     ॥ {formatDevanagariNumerals(unit.stanzaNumber)} ॥

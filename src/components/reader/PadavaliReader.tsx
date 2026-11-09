@@ -120,26 +120,26 @@ const themeStyles: Record<
   }
 > = {
   ivory: {
-    canvasBg: 'bg-[#FAF8F5]',
+    canvasBg: 'bg-white',
     canvasText: 'text-[#18181B]',
-    cardActiveBg: 'bg-amber-100/35',
-    cardHoverBg: 'hover:bg-amber-900/[0.015]',
-    cardDefaultBg: 'bg-white',
+    cardActiveBg: 'bg-[#FEF9C3]/75',
+    cardHoverBg: 'hover:bg-[#FAF9F5]',
+    cardDefaultBg: 'bg-transparent',
     titleColor: 'text-[#0F172A]',
     metaColor: 'text-[#B45309]',
     lineColor: 'text-[#0F172A]',
     translitColor: 'text-[#64748B]',
     bhavarthBg: 'bg-[#F8FAFC]',
     bhavarthText: 'text-[#334155]',
-    borderColor: 'border-neutral-200/60',
+    borderColor: 'border-neutral-100',
     commentaryBg: 'bg-white',
   },
   mint: {
     canvasBg: 'bg-[#F0FDF4]',
     canvasText: 'text-[#14532D]',
-    cardActiveBg: 'bg-[#DCFCE7]/60',
-    cardHoverBg: 'hover:bg-emerald-900/[0.018]',
-    cardDefaultBg: 'bg-white/80',
+    cardActiveBg: 'bg-[#DCFCE7]',
+    cardHoverBg: 'hover:bg-[#DCFCE7]/50',
+    cardDefaultBg: 'bg-transparent',
     titleColor: 'text-[#064E3B]',
     metaColor: 'text-[#15803D]',
     lineColor: 'text-[#064E3B]',
@@ -152,9 +152,9 @@ const themeStyles: Record<
   chandan: {
     canvasBg: 'bg-[#FAF7EE]',
     canvasText: 'text-[#3D260F]',
-    cardActiveBg: 'bg-[#FEF08A]/40',
-    cardHoverBg: 'hover:bg-amber-900/[0.018]',
-    cardDefaultBg: 'bg-white/70',
+    cardActiveBg: 'bg-[#FEF08A]/75',
+    cardHoverBg: 'hover:bg-[#FEFCE8]/75',
+    cardDefaultBg: 'bg-transparent',
     titleColor: 'text-[#291807]',
     metaColor: 'text-[#B45309]',
     lineColor: 'text-[#3D260F]',
@@ -2518,8 +2518,8 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                       <div
                         key={pad.id}
                         id={`verse-stream-${pad.id}`}
-                        className={`p-5 sm:p-7 rounded-2xl border transition-colors duration-300 ${currentTheme.cardDefaultBg} ${currentTheme.cardHoverBg} ${selectedPad.id === pad.id
-                            ? 'ring-1 ring-amber-300/50 border-amber-300/40 shadow-xs'
+                        className={`p-5 sm:p-7 rounded-2xl border transition-colors duration-200 ${currentTheme.cardHoverBg} ${selectedPad.id === pad.id
+                            ? 'ring-1 ring-amber-300/50 border-amber-300/40'
                             : currentTheme.borderColor
                           }`}
                       >
@@ -2805,7 +2805,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                         key={verse.stanzaNumber}
                         id={`stanza-${vIdx}`}
                         onClick={() => setActiveStanzaIndex(vIdx)}
-                        className={`p-5 sm:p-6 rounded-2xl transition-colors duration-300 cursor-pointer ${currentTheme.cardDefaultBg} ${isStanzaActive
+                        className={`p-5 sm:p-6 rounded-2xl transition-colors duration-200 cursor-pointer ${isStanzaActive
                             ? currentTheme.cardActiveBg
                             : isStanzaDimmed
                               ? 'opacity-40'
