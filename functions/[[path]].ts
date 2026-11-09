@@ -164,8 +164,65 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   const { request, next } = context;
   const url = new URL(request.url);
 
-  const isStaging = url.hostname.endsWith('.pages.dev');
+  const host = url.hostname;
+  const isStaging = host.endsWith('.pages.dev');
+  const isPathDomain = host === 'path.vrindopnishad.in' || host.startsWith('path.');
+  const baseDomain = isPathDomain ? 'https://path.vrindopnishad.in' : 'https://bhav.vrindopnishad.in';
   const pathname = url.pathname.replace(/\/+$/, '') || '/';
+
+  // 1. Dynamic Robots.txt routing per domain (bhav vs path vs staging)
+  if (pathname === '/robots.txt') {
+    const sitemapUrl = isPathDomain
+      ? 'https://path.vrindopnishad.in/sitemap.xml'
+      : 'https://bhav.vrindopnishad.in/sitemap.xml';
+
+    const robotsBody = [
+      '# https://www.robotstxt.org/robotstxt.html',
+      'User-agent: *',
+      'Allow: /',
+      'Disallow: /api/',
+      'Disallow: /admin/',
+      '',
+      `Sitemap: ${sitemapUrl}`,
+      ...(isPathDomain ? ['Sitemap: https://path.vrindopnishad.in/sitemap-path.xml'] : []),
+      '',
+    ].join('\n');
+
+    return new Response(robotsBody, {
+      status: 200,
+      headers: {
+        'Content-Type': 'text/plain; charset=UTF-8',
+        'Cache-Control': 'public, max-age=86400, s-maxage=604800, stale-while-revalidate=86400',
+        ...(isStaging ? { 'X-Robots-Tag': 'noindex, nofollow' } : {}),
+      },
+    });
+  }
+
+  // 2. Intelligent Sitemap Routing for path.vrindopnishad.in
+  // If request is made to path.vrindopnishad.in and asks for standard sitemap URLs,
+  // transparently map it to the corresponding sitemap-path-* file.
+  if (isPathDomain) {
+    if (pathname === '/sitemap.xml') {
+      const redirectedUrl = new URL('/sitemap-path.xml', request.url);
+      return next(new Request(redirectedUrl.toString(), request));
+    }
+    if (pathname === '/sitemap-main.xml') {
+      const redirectedUrl = new URL('/sitemap-path-main.xml', request.url);
+      return next(new Request(redirectedUrl.toString(), request));
+    }
+    if (pathname === '/sitemap-granthas.xml') {
+      const redirectedUrl = new URL('/sitemap-path-granthas.xml', request.url);
+      return next(new Request(redirectedUrl.toString(), request));
+    }
+    if (pathname === '/sitemap-saints.xml') {
+      const redirectedUrl = new URL('/sitemap-path-saints.xml', request.url);
+      return next(new Request(redirectedUrl.toString(), request));
+    }
+    if (pathname === '/sitemap-padas.xml.gz') {
+      const redirectedUrl = new URL('/sitemap-path-padas.xml.gz', request.url);
+      return next(new Request(redirectedUrl.toString(), request));
+    }
+  }
 
   // Fast-path for non-HTML assets
   const staticExtensions = [
@@ -227,7 +284,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
 
   let title = 'वृन्दोपनिषद् 2.0 • Sacred Vrindavan Ras Sanctuary & Canonical Pada Literature';
   let description = 'Digital sanctuary for Nitya Nikunj Ras. Explore 44,000+ canonical Braj Ras verses, Hit Chaurasi, Radha Sudha Nidhi, Kelimal, Ashtayama daily seva schedule, and contemplative dhyana sadhana.';
-  let canonicalUrl = `https://bhav.vrindopnishad.in${url.search ? url.search : (pathname === '/' ? '/' : pathname)}`;
+  let canonicalUrl = `${baseDomain}${url.search ? url.search : (pathname === '/' ? '/' : pathname)}`;
 
   const padId = qPad || (pathname.startsWith('/pad/') ? decodeURIComponent(pathname.replace('/pad/', '')).trim() : null);
 
@@ -241,58 +298,58 @@ export const onRequest: PagesFunction<Env> = async (context) => {
       title = `${formattedName} • पावन रसिक पद | वृन्दोपनिषद् 2.0`;
       description = `${formattedName} के पावन पद, मूल पाठ, राग, भावार्थ व नित्य अनुशीलन। वृन्दोपनिषद् 2.0`;
     }
-    canonicalUrl = `https://bhav.vrindopnishad.in/?tab=padavali&pad=${encodeURIComponent(padId)}`;
+    canonicalUrl = `${baseDomain}/?tab=padavali&pad=${encodeURIComponent(padId)}`;
   } else if (qAuthor) {
     title = `${qAuthor} • रसिक संत पदावली व जीवन चरित | वृन्दोपनिषद् 2.0`;
     description = `${qAuthor} की समस्त पावन पदों व वाणियों का प्रामाणिक संग्रह। वृन्दोपनिषद् 2.0`;
-    canonicalUrl = `https://bhav.vrindopnishad.in/?tab=padavali&author=${encodeURIComponent(qAuthor)}`;
+    canonicalUrl = `${baseDomain}/?tab=padavali&author=${encodeURIComponent(qAuthor)}`;
   } else if (qGrantha && EPICS_META[qGrantha]) {
     const epic = EPICS_META[qGrantha];
     if (qChapter) {
       title = `${epic.name} (${qChapter}) • प्रणेता: ${epic.author} | वृन्दोपनिषद् 2.0`;
       description = `${epic.name} का पावन अध्याय ${qChapter}। मूल श्लोक, अवधी/संस्कृत पाठ व पारायण। वृन्दोपनिषद् 2.0`;
-      canonicalUrl = `https://bhav.vrindopnishad.in/?tab=granthas&grantha=${encodeURIComponent(qGrantha)}&chapter=${encodeURIComponent(qChapter)}`;
+      canonicalUrl = `${baseDomain}/?tab=granthas&grantha=${encodeURIComponent(qGrantha)}&chapter=${encodeURIComponent(qChapter)}`;
     } else {
       title = `${epic.name} (${epic.author}) • संपूर्ण मूल पाठ व पारायण | वृन्दोपनिषद् 2.0`;
       description = `${epic.desc}। प्रणेता: ${epic.author}। वृन्दोपनिषद् 2.0`;
-      canonicalUrl = `https://bhav.vrindopnishad.in/?tab=granthas&grantha=${encodeURIComponent(qGrantha)}`;
+      canonicalUrl = `${baseDomain}/?tab=granthas&grantha=${encodeURIComponent(qGrantha)}`;
     }
   } else if (qGrantha && GRANTHAS_META[qGrantha]) {
     const g = GRANTHAS_META[qGrantha];
     title = `${g.name} (${g.author}) • संपूर्ण वाणी संग्रह | वृन्दोपनिषद् 2.0`;
     description = `${g.desc} वृन्दोपनिषद् 2.0`;
-    canonicalUrl = `https://bhav.vrindopnishad.in/?tab=padavali&grantha=${encodeURIComponent(qGrantha)}`;
+    canonicalUrl = `${baseDomain}/?tab=padavali&grantha=${encodeURIComponent(qGrantha)}`;
   } else if (qGrantha) {
     const formatted = formatSlug(qGrantha);
     title = `${formatted} • संपूर्ण ग्रंथ संग्रह | वृन्दोपनिषद् 2.0`;
     description = `${formatted} के समस्त पावन पदों व श्लोकों का संग्रह। वृन्दोपनिषद् 2.0`;
-    canonicalUrl = `https://bhav.vrindopnishad.in/?tab=padavali&grantha=${encodeURIComponent(qGrantha)}`;
+    canonicalUrl = `${baseDomain}/?tab=padavali&grantha=${encodeURIComponent(qGrantha)}`;
   } else {
     switch (activeTab) {
       case 'granthas':
         title = 'Sanatan Mahagranth Parayana • ५ अमर महाकाव्य एवं अखंड शास्त्र स्वाध्याय | वृन्दोपनिषद् 2.0';
         description = 'श्रीमद् वाल्मीकि रामायण, श्रीमद्भागवत महापुराण, श्री रामचरितमानस, श्रीमद्भगवद्गीता व श्री दुर्गा सप्तशती का संपूर्ण मूल पाठ व ऑन-डिमांड त्वरित पारायण।';
-        canonicalUrl = 'https://bhav.vrindopnishad.in/?tab=granthas';
+        canonicalUrl = `${baseDomain}/?tab=granthas`;
         break;
       case 'padavali':
         title = 'Scriptures Repository • ४४,०००+ पावन महाग्रंथ व रसिक वाणी संग्रह | वृन्दोपनिषद् 2.0';
         description = 'वाल्मीकि रामायण, श्रीमद् भागवत, रामचरितमानस, भगवद्गीता, हित चौरासी, केलिमाल, सूरसागर सहित सनातन महाग्रंथ व समस्त रसिक वाणी का अगाध संग्रह।';
-        canonicalUrl = 'https://bhav.vrindopnishad.in/?tab=padavali';
+        canonicalUrl = `${baseDomain}/?tab=padavali`;
         break;
       case 'feed':
         title = 'Darshan Feed • नित्य वृन्दावन धाम दर्शन | वृन्दोपनिषद् 2.0';
         description = 'श्री वृन्दावन धाम के प्रमुख मंदिरों के प्रत्यक्ष दर्शन, उत्सव, आरती व नित्य विलास।';
-        canonicalUrl = 'https://bhav.vrindopnishad.in/?tab=feed';
+        canonicalUrl = `${baseDomain}/?tab=feed`;
         break;
       case 'milestones':
         title = 'Devotion Milestones • अखंड निष्ठा व साधना सोपान | वृन्दोपनिषद् 2.0';
         description = 'अखंड साधना स्ट्रीक, अंतरंग ध्यान सिद्धि एवं श्रीजी कृपा के पावन सोपान।';
-        canonicalUrl = 'https://bhav.vrindopnishad.in/?tab=milestones';
+        canonicalUrl = `${baseDomain}/?tab=milestones`;
         break;
       default:
         title = 'Home Sanctuary • दैनिक स्मरण व नित्य सेवा | वृन्दोपनिषद् 2.0';
         description = 'दैनिक अष्टयाम लीला, नाम जप, वाणी श्रवण और स्वाध्याय का पावन साधना स्थल।';
-        canonicalUrl = 'https://bhav.vrindopnishad.in/';
+        canonicalUrl = `${baseDomain}/`;
         break;
     }
   }
