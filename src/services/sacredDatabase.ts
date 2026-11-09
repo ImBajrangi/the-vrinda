@@ -483,10 +483,13 @@ export const SacredDatabase = {
     initPromise = (async () => {
       try {
         // Step 1: Instant Local Hydration (0ms local retrieval, 0 bytes network bandwidth)
-        const cachedManifest = await get<any>('vrind_manifest_v2');
+        del('vrind_canonical_padas_v2').catch(() => {});
+        del('vrind_manifest_v2').catch(() => {});
+
+        const cachedManifest = await get<any>('vrind_manifest_v3');
         if (cachedManifest) activeManifest = cachedManifest;
 
-        const cachedPadas = await get<any[]>('vrind_canonical_padas_v2');
+        const cachedPadas = await get<any[]>('vrind_canonical_padas_v3');
         if (cachedPadas && Array.isArray(cachedPadas) && cachedPadas.length > 50) {
           SacredDatabase.loadPadas(cachedPadas);
         }
@@ -517,7 +520,7 @@ export const SacredDatabase = {
             }
 
             activeManifest = freshManifest;
-            await set('vrind_manifest_v2', freshManifest);
+            await set('vrind_manifest_v3', freshManifest);
           }
         } catch {}
 
@@ -558,7 +561,7 @@ export const SacredDatabase = {
   async getManifestAsync(): Promise<any> {
     if (activeManifest) return activeManifest;
     try {
-      const cached = await get<any>('vrind_manifest_v2');
+      const cached = await get<any>('vrind_manifest_v3');
       if (cached) {
         activeManifest = cached;
         return cached;
@@ -566,7 +569,7 @@ export const SacredDatabase = {
       const res = await fetch('/data/manifest.json');
       if (res.ok) {
         activeManifest = await res.json();
-        await set('vrind_manifest_v2', activeManifest);
+        await set('vrind_manifest_v3', activeManifest);
         return activeManifest;
       }
     } catch {}
@@ -603,7 +606,7 @@ export const SacredDatabase = {
 
       if (allChunks.length > 0) {
         this.loadPadas(allChunks);
-        await set('vrind_canonical_padas_v2', allChunks).catch(() => {});
+        await set('vrind_canonical_padas_v3', allChunks).catch(() => {});
         return true;
       }
     } catch (err) {
@@ -668,7 +671,7 @@ export const SacredDatabase = {
         // Level 4: Supabase REST API fallback (specific columns only, never select('*'))
         const { data, error } = await supabase
           .from('padas')
-          .select('id, collection_id, index, title_devanagari, title_english, author, rag, slug, verses')
+          .select('id, collection_id, index, title_devanagari, title_english, author, rag, slug, verses, chapter_id, chapter_name, verse_number')
           .eq('collection_id', granthaId)
           .order('index', { ascending: true });
 
@@ -683,6 +686,9 @@ export const SacredDatabase = {
             rag: r.rag,
             slug: r.slug,
             verses: r.verses,
+            chapterId: r.chapter_id,
+            chapterName: r.chapter_name,
+            verseNumber: r.verse_number,
           }));
           this.appendPadas(mapped);
           loadedGranthas.add(granthaId);
@@ -1108,13 +1114,23 @@ export const SacredDatabase = {
     if (chapterCache.has(cacheKey)) {
       return chapterCache.get(cacheKey)!;
     }
-    const result = list.filter((p) => p.chapterId === chapterId);
+
+    const cleanTarget = chapterId.replace(/^(ch|leela|adhyay|sarga)-/, '').trim().toLowerCase();
+    const result = list.filter((p) => {
+      if (p.chapterId === chapterId) return true;
+      if (p.chapterName === chapterId) return true;
+      const pClean = (p.chapterId || '').replace(/^(ch|leela|adhyay|sarga)-/, '').trim().toLowerCase();
+      if (pClean && pClean === cleanTarget) return true;
+      const nameClean = (p.chapterName || '').trim().toLowerCase();
+      if (nameClean && (nameClean === cleanTarget || nameClean === chapterId.toLowerCase())) return true;
+      return false;
+    });
+
     if (result.length > 0) {
       chapterCache.set(cacheKey, result);
       return result;
     }
-    // Defensive fallback: if chapterId yields 0 matches, return full grantha list
-    return list;
+    return [];
   },
 
   /**

@@ -819,8 +819,8 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     const mainName = g
       ? `${g.name} (${g.author})`
       : selectedPad.collectionId === 'stotras'
-      ? 'स्तोत्रमाला संग्रह'
-      : 'पावन वाणी संग्रह';
+        ? 'स्तोत्रमाला संग्रह'
+        : 'पावन वाणी संग्रह';
 
     if (granthaRef && !mainName.toLowerCase().includes(granthaRef.toLowerCase())) {
       return `${mainName} • ${granthaRef}`.toUpperCase();
@@ -833,8 +833,8 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       selectedPad.id === 'shri-radha-kripa-kataksha-stotram' || selectedPad.id === 'radha-kripa-kataksha'
         ? 'shri-radha-kripa-kataksha-stotram-1'
         : selectedPad.id.startsWith('hit-chaurasi-01')
-        ? 'hit-chaurasi-01-1'
-        : selectedPad.id;
+          ? 'hit-chaurasi-01-1'
+          : selectedPad.id;
 
     const verseText =
       selectedPad.verses?.map((v) => v.linesDevanagari?.join(' ')).filter(Boolean).join('\n') ||
@@ -870,7 +870,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
           .catch(() => {
             setSummaryText(
               summaryReq.fallbackText ||
-                'श्री युगल रस का यह पावन पद अंतःकरण में असीम शांति और दिव्य प्रेम का संचार करता है।'
+              'श्री युगल रस का यह पावन पद अंतःकरण में असीम शांति और दिव्य प्रेम का संचार करता है।'
             );
           })
           .finally(() => {
@@ -897,7 +897,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
           .catch(() => {
             setSummaryText(
               summaryReq.fallbackText ||
-                'श्री युगल रस का यह पावन पद अंतःकरण में असीम शांति और दिव्य प्रेम का संचार करता है।'
+              'श्री युगल रस का यह पावन पद अंतःकरण में असीम शांति और दिव्य प्रेम का संचार करता है।'
             );
           })
           .finally(() => {
@@ -1123,10 +1123,15 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       ? SacredDatabase.getPadasByGrantha(selectedGrantha)
       : SacredDatabase.getPadasByChapter(selectedGrantha, chapterId);
 
+    const cleanTarget = chapterId.replace(/^(ch|leela|adhyay|sarga)-/, '').trim().toLowerCase();
     const target = chapterPads[0] || allPadas.find(
       (p) =>
         (selectedGrantha === 'all' || p.collectionId === selectedGrantha) &&
-        (chapterId === 'all' || p.chapterId === chapterId)
+        (chapterId === 'all' ||
+          p.chapterId === chapterId ||
+          p.chapterName === chapterId ||
+          (p.chapterId || '').replace(/^(ch|leela|adhyay|sarga)-/, '').trim().toLowerCase() === cleanTarget ||
+          (p.chapterName || '').trim().toLowerCase() === cleanTarget)
     );
     if (target) {
       setSelectedPad(target);
@@ -1186,11 +1191,6 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       baseList = selectedChapter !== 'all'
         ? SacredDatabase.getPadasByChapter(selectedGrantha, selectedChapter)
         : SacredDatabase.getPadasByGrantha(selectedGrantha);
-
-      // Defensive fallback: If chapter filtering returns 0 padas, fallback to the full grantha padas
-      if (!baseList || baseList.length === 0) {
-        baseList = SacredDatabase.getPadasByGrantha(selectedGrantha);
-      }
     } else if (selectedAuthor) {
       baseList = SacredDatabase.getPadasByAuthor(selectedAuthor);
     } else if (granthaCategory !== 'all' && granthaCategory !== 'authors') {
@@ -1364,7 +1364,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       audioElements.forEach((el) => {
         try {
           el.playbackRate = rate;
-        } catch {}
+        } catch { }
       });
     }
   }, [playbackPace]);
@@ -1375,8 +1375,8 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     textAlign === 'center'
       ? 'text-center'
       : textAlign === 'justify'
-      ? 'text-justify'
-      : 'text-left';
+        ? 'text-justify'
+        : 'text-left';
 
   return (
     <div className="w-full pb-44 md:pb-32 pt-2 sm:pt-4">
@@ -1424,11 +1424,10 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               ref={settingsToggleTopRef}
               type="button"
               onClick={handleToggleSettings}
-              className={`h-8 px-3 rounded-full text-xs font-medium flex items-center gap-1.5 transition-colors cursor-pointer shrink-0 ${
-                isSettingsOpen
+              className={`h-8 px-3 rounded-full text-xs font-medium flex items-center gap-1.5 transition-colors cursor-pointer shrink-0 ${isSettingsOpen
                   ? 'bg-[#FEF08A] text-[#78350F] font-bold'
                   : 'bg-[#F1F5F9] hover:bg-[#E2E8F0] text-[#334155]'
-              }`}
+                }`}
               title="Appearance & Typography Controls"
             >
               <SlidersHorizontal className={`w-3.5 h-3.5 ${isSettingsOpen ? 'text-[#78350F]' : 'text-[#64748B]'}`} />
@@ -1450,11 +1449,10 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             <button
               type="button"
               onClick={handleToggleTransliteration}
-              className={`h-8 px-3 rounded-full text-xs font-medium transition-colors cursor-pointer shrink-0 ${
-                showTransliteration
+              className={`h-8 px-3 rounded-full text-xs font-medium transition-colors cursor-pointer shrink-0 ${showTransliteration
                   ? 'bg-[#FEF08A] text-[#78350F] font-bold'
                   : 'bg-[#F1F5F9] hover:bg-[#E2E8F0] text-[#334155]'
-              }`}
+                }`}
               title="Toggle IAST Roman Transliteration"
             >
               {showTransliteration ? 'IAST: On' : 'IAST: Off'}
@@ -1464,11 +1462,10 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             <button
               type="button"
               onClick={() => setIsFocusReadingMode(!isFocusReadingMode)}
-              className={`h-8 px-3.5 rounded-full text-xs font-medium flex items-center gap-1.5 transition-colors cursor-pointer shrink-0 ${
-                isFocusReadingMode
+              className={`h-8 px-3.5 rounded-full text-xs font-medium flex items-center gap-1.5 transition-colors cursor-pointer shrink-0 ${isFocusReadingMode
                   ? 'bg-[#FEF08A] text-[#78350F] font-bold'
                   : 'bg-[#F1F5F9] hover:bg-[#E2E8F0] text-[#334155]'
-              }`}
+                }`}
               title="Distraction-Free Reading Mode"
             >
               <Wind className="w-3.5 h-3.5" />
@@ -1494,254 +1491,248 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       >
         <div ref={settingsTrayRef} className="pb-5">
           <div className="native-drawer-surface p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-white border border-neutral-200/80 shadow-2xs space-y-4 text-[#18181B]">
-          {/* Top Section: Sacred Ambiance Canvas Selection (Full Width 3-Column Grid) */}
-          <div className="space-y-2">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-neutral-500 font-mono">
-                <Palette className="w-3.5 h-3.5 text-amber-600" />
-                <span>पवित्र परिवेश • Sacred Ambiance Theme</span>
+            {/* Top Section: Sacred Ambiance Canvas Selection (Full Width 3-Column Grid) */}
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-neutral-500 font-mono">
+                  <Palette className="w-3.5 h-3.5 text-amber-600" />
+                  <span>पवित्र परिवेश • Sacred Ambiance Theme</span>
+                </div>
+                <span className="text-[11px] text-neutral-400 font-mono hidden sm:inline">
+                  {readerTheme === 'ivory' ? 'Porcelain White Canvas' : readerTheme === 'mint' ? 'Tamal Green Grove Canvas' : 'Chandan Gold Sandalwood Canvas'}
+                </span>
               </div>
-              <span className="text-[11px] text-neutral-400 font-mono hidden sm:inline">
-                {readerTheme === 'ivory' ? 'Porcelain White Canvas' : readerTheme === 'mint' ? 'Tamal Green Grove Canvas' : 'Chandan Gold Sandalwood Canvas'}
-              </span>
-            </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 w-full">
-              {[
-                {
-                  id: 'ivory' as ReaderTheme,
-                  label: 'पावन पत्र',
-                  desc: 'Porcelain White',
-                  cardBg: 'bg-white',
-                  borderColor: 'border-neutral-200',
-                  activeRing: 'ring-2 ring-neutral-900/10 border-neutral-900 shadow-xs',
-                  titleColor: 'text-[#0F172A]',
-                  subColor: 'text-neutral-500',
-                  swatchBg: '#FFFFFF',
-                  swatchBorder: '#D4D4D8',
-                },
-                {
-                  id: 'mint' as ReaderTheme,
-                  label: 'तमाल निकुंज',
-                  desc: 'Tamal Green',
-                  cardBg: 'bg-[#F0FDF4]',
-                  borderColor: 'border-emerald-200',
-                  activeRing: 'ring-2 ring-emerald-500/20 border-emerald-600 shadow-xs',
-                  titleColor: 'text-[#14532D]',
-                  subColor: 'text-emerald-700/80',
-                  swatchBg: '#DCFCE7',
-                  swatchBorder: '#86EFAC',
-                },
-                {
-                  id: 'chandan' as ReaderTheme,
-                  label: 'चन्दन प्रभा',
-                  desc: 'Chandan Gold',
-                  cardBg: 'bg-[#FAF7EE]',
-                  borderColor: 'border-amber-200',
-                  activeRing: 'ring-2 ring-amber-500/20 border-amber-600 shadow-xs',
-                  titleColor: 'text-[#3D260F]',
-                  subColor: 'text-amber-800/80',
-                  swatchBg: '#FEF08A',
-                  swatchBorder: '#FCD34D',
-                },
-              ].map((t) => {
-                const isThemeActive = readerTheme === t.id;
-                return (
-                  <button
-                    key={t.id}
-                    type="button"
-                    onClick={() => handleSetReaderTheme(t.id)}
-                    className={`group relative flex items-center justify-between p-3 rounded-2xl text-left transition-all duration-200 cursor-pointer border ${t.cardBg} ${
-                      isThemeActive
-                        ? `${t.activeRing} font-bold`
-                        : `${t.borderColor} opacity-85 hover:opacity-100`
-                    }`}
-                  >
-                    <div className="flex items-center gap-3 min-w-0">
-                      <div
-                        className={`w-6 h-6 rounded-full shrink-0 border ${t.swatchBorder} shadow-2xs flex items-center justify-center`}
-                        style={{ backgroundColor: t.swatchBg }}
-                      >
-                        {isThemeActive && (
-                          <span className="w-2 h-2 rounded-full bg-current opacity-70" />
-                        )}
-                      </div>
-                      <div className="min-w-0">
-                        <div className={`text-sm font-semibold font-devanagari leading-snug truncate ${t.titleColor}`}>
-                          {t.label}
-                        </div>
-                        <div className={`text-[11px] font-mono leading-tight truncate ${t.subColor}`}>
-                          {t.desc}
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="shrink-0 ml-2">
-                      {isThemeActive ? (
-                        <div className="w-5 h-5 rounded-full bg-amber-400 text-neutral-900 flex items-center justify-center shadow-2xs">
-                          <Check className="w-3.5 h-3.5 stroke-[2.5]" />
-                        </div>
-                      ) : (
-                        <div className="w-5 h-5 rounded-full border border-neutral-300/60 opacity-30 group-hover:opacity-60" />
-                      )}
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Delicate Hairline Divider */}
-          <div className="border-t border-neutral-100" />
-
-          {/* Bottom Section: 4 Equal Symmetrical Reading & Audio Controls (4-Column Grid) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 w-full">
-            {/* Control 1: Font Size Stepper */}
-            <div className="space-y-1.5">
-              <div className="flex items-center gap-1.5 text-[11px] font-bold text-neutral-500 uppercase tracking-wider font-mono">
-                <Type className="w-3.5 h-3.5 text-neutral-400" />
-                <span>Font Size</span>
-              </div>
-              <div className="relative flex items-center p-1 bg-neutral-100/90 rounded-full w-full">
-                <span
-                  aria-hidden="true"
-                  className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
-                  style={{
-                    width: 'calc((100% - 8px) / 4)',
-                    left: '4px',
-                    transform: `translateX(${['sm', 'md', 'lg', 'xl'].indexOf(fontSize) * 100}%)`,
-                  }}
-                />
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 w-full">
                 {[
-                  { id: 'sm' as ReaderFontSize, label: 'Small' },
-                  { id: 'md' as ReaderFontSize, label: 'Normal' },
-                  { id: 'lg' as ReaderFontSize, label: 'Large' },
-                  { id: 'xl' as ReaderFontSize, label: 'Extra' },
-                ].map((s) => (
-                  <button
-                    key={s.id}
-                    type="button"
-                    onClick={() => handleSetFontSize(s.id)}
-                    className={`relative z-10 flex-1 py-1 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer text-center ${
-                      fontSize === s.id ? 'text-[#18181B] font-bold' : 'text-neutral-500 hover:text-neutral-900'
-                    }`}
-                  >
-                    {s.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Control 2: Typeface Serif vs Sans */}
-            <div className="space-y-1.5">
-              <div className="flex items-center gap-1.5 text-[11px] font-bold text-neutral-500 uppercase tracking-wider font-mono">
-                <BookOpen className="w-3.5 h-3.5 text-neutral-400" />
-                <span>Typeface</span>
-              </div>
-              <div className="relative flex items-center p-1 bg-neutral-100/90 rounded-full w-full">
-                <span
-                  aria-hidden="true"
-                  className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
-                  style={{
-                    width: 'calc((100% - 8px) / 2)',
-                    left: '4px',
-                    transform: `translateX(${fontFamily === 'serif' ? 0 : 100}%)`,
-                  }}
-                />
-                <button
-                  type="button"
-                  onClick={() => handleSetFontFamily('serif')}
-                  className={`relative z-10 flex-1 py-1 px-1 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer text-center ${
-                    fontFamily === 'serif' ? 'text-[#18181B] font-bold' : 'text-neutral-500 hover:text-neutral-900'
-                  }`}
-                >
-                  Serif (पारंपरिक)
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleSetFontFamily('devanagari')}
-                  className={`relative z-10 flex-1 py-1 px-1 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer text-center ${
-                    fontFamily === 'devanagari' ? 'text-[#18181B] font-bold' : 'text-neutral-500 hover:text-neutral-900'
-                  }`}
-                >
-                  Sans (आधुनिक)
-                </button>
-              </div>
-            </div>
-
-            {/* Control 3: Alignment (Left, Center, Justified) */}
-            <div className="space-y-1.5">
-              <div className="flex items-center gap-1.5 text-[11px] font-bold text-neutral-500 uppercase tracking-wider font-mono">
-                <AlignLeft className="w-3.5 h-3.5 text-neutral-400" />
-                <span>Alignment</span>
-              </div>
-              <div className="relative flex items-center p-1 bg-neutral-100/90 rounded-full w-full">
-                <span
-                  aria-hidden="true"
-                  className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
-                  style={{
-                    width: 'calc((100% - 8px) / 3)',
-                    left: '4px',
-                    transform: `translateX(${['left', 'center', 'justify'].indexOf(textAlign) * 100}%)`,
-                  }}
-                />
-                {[
-                  { id: 'left' as ReaderTextAlign, label: 'Left', icon: AlignLeft },
-                  { id: 'center' as ReaderTextAlign, label: 'Center', icon: AlignCenter },
-                  { id: 'justify' as ReaderTextAlign, label: 'Justified', icon: AlignJustify },
-                ].map((a) => {
-                  const Icon = a.icon;
+                  {
+                    id: 'ivory' as ReaderTheme,
+                    label: 'पावन पत्र',
+                    desc: 'Porcelain White',
+                    cardBg: 'bg-white',
+                    borderColor: 'border-neutral-200',
+                    activeRing: 'ring-2 ring-neutral-900/10 border-neutral-900 shadow-xs',
+                    titleColor: 'text-[#0F172A]',
+                    subColor: 'text-neutral-500',
+                    swatchBg: '#FFFFFF',
+                    swatchBorder: '#D4D4D8',
+                  },
+                  {
+                    id: 'mint' as ReaderTheme,
+                    label: 'तमाल निकुंज',
+                    desc: 'Tamal Green',
+                    cardBg: 'bg-[#F0FDF4]',
+                    borderColor: 'border-emerald-200',
+                    activeRing: 'ring-2 ring-emerald-500/20 border-emerald-600 shadow-xs',
+                    titleColor: 'text-[#14532D]',
+                    subColor: 'text-emerald-700/80',
+                    swatchBg: '#DCFCE7',
+                    swatchBorder: '#86EFAC',
+                  },
+                  {
+                    id: 'chandan' as ReaderTheme,
+                    label: 'चन्दन प्रभा',
+                    desc: 'Chandan Gold',
+                    cardBg: 'bg-[#FAF7EE]',
+                    borderColor: 'border-amber-200',
+                    activeRing: 'ring-2 ring-amber-500/20 border-amber-600 shadow-xs',
+                    titleColor: 'text-[#3D260F]',
+                    subColor: 'text-amber-800/80',
+                    swatchBg: '#FEF08A',
+                    swatchBorder: '#FCD34D',
+                  },
+                ].map((t) => {
+                  const isThemeActive = readerTheme === t.id;
                   return (
                     <button
-                      key={a.id}
+                      key={t.id}
                       type="button"
-                      onClick={() => handleSetTextAlign(a.id)}
-                      className={`relative z-10 flex-1 py-1 px-1.5 rounded-full text-xs font-semibold flex items-center justify-center gap-1 transition-colors duration-200 cursor-pointer ${
-                        textAlign === a.id ? 'text-[#18181B] font-bold' : 'text-neutral-500 hover:text-neutral-900'
-                      }`}
+                      onClick={() => handleSetReaderTheme(t.id)}
+                      className={`group relative flex items-center justify-between p-3 rounded-2xl text-left transition-all duration-200 cursor-pointer border ${t.cardBg} ${isThemeActive
+                          ? `${t.activeRing} font-bold`
+                          : `${t.borderColor} opacity-85 hover:opacity-100`
+                        }`}
                     >
-                      <Icon className="w-3.5 h-3.5 shrink-0" />
-                      <span className="hidden xl:inline">{a.label}</span>
+                      <div className="flex items-center gap-3 min-w-0">
+                        <div
+                          className={`w-6 h-6 rounded-full shrink-0 border ${t.swatchBorder} shadow-2xs flex items-center justify-center`}
+                          style={{ backgroundColor: t.swatchBg }}
+                        >
+                          {isThemeActive && (
+                            <span className="w-2 h-2 rounded-full bg-current opacity-70" />
+                          )}
+                        </div>
+                        <div className="min-w-0">
+                          <div className={`text-sm font-semibold font-devanagari leading-snug truncate ${t.titleColor}`}>
+                            {t.label}
+                          </div>
+                          <div className={`text-[11px] font-mono leading-tight truncate ${t.subColor}`}>
+                            {t.desc}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="shrink-0 ml-2">
+                        {isThemeActive ? (
+                          <div className="w-5 h-5 rounded-full bg-amber-400 text-neutral-900 flex items-center justify-center shadow-2xs">
+                            <Check className="w-3.5 h-3.5 stroke-[2.5]" />
+                          </div>
+                        ) : (
+                          <div className="w-5 h-5 rounded-full border border-neutral-300/60 opacity-30 group-hover:opacity-60" />
+                        )}
+                      </div>
                     </button>
                   );
                 })}
               </div>
             </div>
 
-            {/* Control 4: Recitation Audio Pace */}
-            <div className="space-y-1.5">
-              <div className="flex items-center gap-1.5 text-[11px] font-bold text-neutral-500 uppercase tracking-wider font-mono">
-                <Gauge className="w-3.5 h-3.5 text-neutral-400" />
-                <span>Audio Pace</span>
+            {/* Delicate Hairline Divider */}
+            <div className="border-t border-neutral-100" />
+
+            {/* Bottom Section: 4 Equal Symmetrical Reading & Audio Controls (4-Column Grid) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 w-full">
+              {/* Control 1: Font Size Stepper */}
+              <div className="space-y-1.5">
+                <div className="flex items-center gap-1.5 text-[11px] font-bold text-neutral-500 uppercase tracking-wider font-mono">
+                  <Type className="w-3.5 h-3.5 text-neutral-400" />
+                  <span>Font Size</span>
+                </div>
+                <div className="relative flex items-center p-1 bg-neutral-100/90 rounded-full w-full">
+                  <span
+                    aria-hidden="true"
+                    className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+                    style={{
+                      width: 'calc((100% - 8px) / 4)',
+                      left: '4px',
+                      transform: `translateX(${['sm', 'md', 'lg', 'xl'].indexOf(fontSize) * 100}%)`,
+                    }}
+                  />
+                  {[
+                    { id: 'sm' as ReaderFontSize, label: 'Small' },
+                    { id: 'md' as ReaderFontSize, label: 'Normal' },
+                    { id: 'lg' as ReaderFontSize, label: 'Large' },
+                    { id: 'xl' as ReaderFontSize, label: 'Extra' },
+                  ].map((s) => (
+                    <button
+                      key={s.id}
+                      type="button"
+                      onClick={() => handleSetFontSize(s.id)}
+                      className={`relative z-10 flex-1 py-1 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer text-center ${fontSize === s.id ? 'text-[#18181B] font-bold' : 'text-neutral-500 hover:text-neutral-900'
+                        }`}
+                    >
+                      {s.label}
+                    </button>
+                  ))}
+                </div>
               </div>
-              <div className="relative flex items-center p-1 bg-neutral-100/90 rounded-full w-full">
-                <span
-                  aria-hidden="true"
-                  className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
-                  style={{
-                    width: 'calc((100% - 8px) / 3)',
-                    left: '4px',
-                    transform: `translateX(${Math.max(0, ['0.8x', '1.0x', '1.2x'].indexOf(playbackPace)) * 100}%)`,
-                  }}
-                />
-                {(['0.8x', '1.0x', '1.2x'] as const).map((pace) => (
+
+              {/* Control 2: Typeface Serif vs Sans */}
+              <div className="space-y-1.5">
+                <div className="flex items-center gap-1.5 text-[11px] font-bold text-neutral-500 uppercase tracking-wider font-mono">
+                  <BookOpen className="w-3.5 h-3.5 text-neutral-400" />
+                  <span>Typeface</span>
+                </div>
+                <div className="relative flex items-center p-1 bg-neutral-100/90 rounded-full w-full">
+                  <span
+                    aria-hidden="true"
+                    className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+                    style={{
+                      width: 'calc((100% - 8px) / 2)',
+                      left: '4px',
+                      transform: `translateX(${fontFamily === 'serif' ? 0 : 100}%)`,
+                    }}
+                  />
                   <button
-                    key={pace}
                     type="button"
-                    onClick={() => handleSetPlaybackPace(pace)}
-                    className={`relative z-10 flex-1 py-1 rounded-full text-xs font-mono font-semibold transition-colors duration-200 cursor-pointer text-center ${
-                      playbackPace === pace ? 'text-[#18181B] font-bold' : 'text-neutral-500 hover:text-neutral-900'
-                    }`}
+                    onClick={() => handleSetFontFamily('serif')}
+                    className={`relative z-10 flex-1 py-1 px-1 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer text-center ${fontFamily === 'serif' ? 'text-[#18181B] font-bold' : 'text-neutral-500 hover:text-neutral-900'
+                      }`}
                   >
-                    {pace}
+                    Serif (पारंपरिक)
                   </button>
-                ))}
+                  <button
+                    type="button"
+                    onClick={() => handleSetFontFamily('devanagari')}
+                    className={`relative z-10 flex-1 py-1 px-1 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer text-center ${fontFamily === 'devanagari' ? 'text-[#18181B] font-bold' : 'text-neutral-500 hover:text-neutral-900'
+                      }`}
+                  >
+                    Sans (आधुनिक)
+                  </button>
+                </div>
+              </div>
+
+              {/* Control 3: Alignment (Left, Center, Justified) */}
+              <div className="space-y-1.5">
+                <div className="flex items-center gap-1.5 text-[11px] font-bold text-neutral-500 uppercase tracking-wider font-mono">
+                  <AlignLeft className="w-3.5 h-3.5 text-neutral-400" />
+                  <span>Alignment</span>
+                </div>
+                <div className="relative flex items-center p-1 bg-neutral-100/90 rounded-full w-full">
+                  <span
+                    aria-hidden="true"
+                    className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+                    style={{
+                      width: 'calc((100% - 8px) / 3)',
+                      left: '4px',
+                      transform: `translateX(${['left', 'center', 'justify'].indexOf(textAlign) * 100}%)`,
+                    }}
+                  />
+                  {[
+                    { id: 'left' as ReaderTextAlign, label: 'Left', icon: AlignLeft },
+                    { id: 'center' as ReaderTextAlign, label: 'Center', icon: AlignCenter },
+                    { id: 'justify' as ReaderTextAlign, label: 'Justified', icon: AlignJustify },
+                  ].map((a) => {
+                    const Icon = a.icon;
+                    return (
+                      <button
+                        key={a.id}
+                        type="button"
+                        onClick={() => handleSetTextAlign(a.id)}
+                        className={`relative z-10 flex-1 py-1 px-1.5 rounded-full text-xs font-semibold flex items-center justify-center gap-1 transition-colors duration-200 cursor-pointer ${textAlign === a.id ? 'text-[#18181B] font-bold' : 'text-neutral-500 hover:text-neutral-900'
+                          }`}
+                      >
+                        <Icon className="w-3.5 h-3.5 shrink-0" />
+                        <span className="hidden xl:inline">{a.label}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Control 4: Recitation Audio Pace */}
+              <div className="space-y-1.5">
+                <div className="flex items-center gap-1.5 text-[11px] font-bold text-neutral-500 uppercase tracking-wider font-mono">
+                  <Gauge className="w-3.5 h-3.5 text-neutral-400" />
+                  <span>Audio Pace</span>
+                </div>
+                <div className="relative flex items-center p-1 bg-neutral-100/90 rounded-full w-full">
+                  <span
+                    aria-hidden="true"
+                    className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+                    style={{
+                      width: 'calc((100% - 8px) / 3)',
+                      left: '4px',
+                      transform: `translateX(${Math.max(0, ['0.8x', '1.0x', '1.2x'].indexOf(playbackPace)) * 100}%)`,
+                    }}
+                  />
+                  {(['0.8x', '1.0x', '1.2x'] as const).map((pace) => (
+                    <button
+                      key={pace}
+                      type="button"
+                      onClick={() => handleSetPlaybackPace(pace)}
+                      className={`relative z-10 flex-1 py-1 rounded-full text-xs font-mono font-semibold transition-colors duration-200 cursor-pointer text-center ${playbackPace === pace ? 'text-[#18181B] font-bold' : 'text-neutral-500 hover:text-neutral-900'
+                        }`}
+                    >
+                      {pace}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
       {/* ========================================================================= */}
       {/* 2. Canonical Grantha & Author Shelf (Hidden in Distraction-Free Mode)    */}
@@ -1776,8 +1767,8 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 cat.id === 'all'
                   ? allGranthas.length
                   : cat.id === 'authors'
-                  ? (hierarchyAuthors.length || 761)
-                  : allGranthas.filter((g) => g.category === cat.id).length;
+                    ? (hierarchyAuthors.length || 761)
+                    : allGranthas.filter((g) => g.category === cat.id).length;
               return (
                 <button
                   key={cat.id}
@@ -1786,19 +1777,17 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   }}
                   type="button"
                   onClick={() => handleSelectCategory(cat.id)}
-                  className={`relative z-10 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none inline-flex items-center gap-1 ${
-                    isActive
+                  className={`relative z-10 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none inline-flex items-center gap-1 ${isActive
                       ? categoryPillStyle.ready
                         ? 'text-[#18181B] font-bold'
                         : 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
                       : 'text-[#64748B] hover:text-[#0F172A] hover:bg-neutral-100/50'
-                  }`}
+                    }`}
                 >
                   <span>{cat.label}</span>
                   <span
-                    className={`ml-0.5 text-[10px] font-mono font-bold ${
-                      isActive ? 'text-[#B45309]' : 'text-[#94A3B8]'
-                    }`}
+                    className={`ml-0.5 text-[10px] font-mono font-bold ${isActive ? 'text-[#B45309]' : 'text-[#94A3B8]'
+                      }`}
                   >
                     ({count})
                   </span>
@@ -1830,13 +1819,12 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   }}
                   type="button"
                   onClick={() => handleSelectAuthor(null)}
-                  className={`relative z-10 px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none inline-flex items-center gap-1.5 ${
-                    !selectedAuthor
+                  className={`relative z-10 px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none inline-flex items-center gap-1.5 ${!selectedAuthor
                       ? granthaPillStyle.ready
                         ? 'text-[#18181B] font-bold'
                         : 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
                       : 'text-[#64748B] hover:text-[#0F172A] hover:bg-neutral-100/50'
-                  }`}
+                    }`}
                 >
                   <span>समस्त संत / रचयिता</span>
                   <span className={`text-[10px] font-mono ml-0.5 ${!selectedAuthor ? 'text-[#B45309] font-bold' : 'text-[#94A3B8]'}`}>
@@ -1853,13 +1841,12 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                       }}
                       type="button"
                       onClick={() => handleSelectAuthor(a.name)}
-                      className={`relative z-10 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none inline-flex items-center gap-1.5 ${
-                        isActive
+                      className={`relative z-10 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none inline-flex items-center gap-1.5 ${isActive
                           ? granthaPillStyle.ready
                             ? 'text-[#18181B] font-bold'
                             : 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
                           : 'text-[#64748B] hover:text-[#0F172A] hover:bg-neutral-100/50'
-                      }`}
+                        }`}
                     >
                       <span>{a.name}</span>
                       <span className={`ml-1 text-[10px] font-mono font-bold ${isActive ? 'text-[#B45309]' : 'text-[#94A3B8]'}`}>
@@ -1877,13 +1864,12 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   }}
                   type="button"
                   onClick={() => handleSelectGrantha('all')}
-                  className={`relative z-10 px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none inline-flex items-center gap-1.5 ${
-                    selectedGrantha === 'all'
+                  className={`relative z-10 px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none inline-flex items-center gap-1.5 ${selectedGrantha === 'all'
                       ? granthaPillStyle.ready
                         ? 'text-[#18181B] font-bold'
                         : 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
                       : 'text-[#64748B] hover:text-[#0F172A] hover:bg-neutral-100/50'
-                  }`}
+                    }`}
                 >
                   {loadingGranthaId === 'all' && <IOSSpinner size="xs" theme="amber" />}
                   <span>समस्त ग्रंथ</span>
@@ -1902,13 +1888,12 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                       }}
                       type="button"
                       onClick={() => handleSelectGrantha(g.id)}
-                      className={`relative z-10 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none inline-flex items-center gap-1.5 ${
-                        isActive
+                      className={`relative z-10 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none inline-flex items-center gap-1.5 ${isActive
                           ? granthaPillStyle.ready
                             ? 'text-[#18181B] font-bold'
                             : 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
                           : 'text-[#64748B] hover:text-[#0F172A] hover:bg-neutral-100/50'
-                      }`}
+                        }`}
                     >
                       {isLoadingThis && <IOSSpinner size="xs" theme="amber" />}
                       <span>{g.name}</span>
@@ -1924,11 +1909,10 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
           {/* Raga Sub-Filter Strip: Fluid Relative Sliding Transition */}
           <div
-            className={`grid transition-[grid-template-rows,opacity,margin] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden ${
-              hasRagas
+            className={`grid transition-[grid-template-rows,opacity,margin] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden ${hasRagas
                 ? 'grid-rows-[1fr] opacity-100 mt-1'
                 : 'grid-rows-[0fr] opacity-0 mt-0 pointer-events-none'
-            }`}
+              }`}
             aria-hidden={!hasRagas}
           >
             <div className="min-h-0 overflow-hidden">
@@ -1958,13 +1942,12 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   type="button"
                   tabIndex={hasRagas ? 0 : -1}
                   onClick={() => handleSelectRaga('all')}
-                  className={`relative z-10 px-3 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none ${
-                    selectedRaga === 'all'
+                  className={`relative z-10 px-3 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none ${selectedRaga === 'all'
                       ? ragaPillStyle.ready
                         ? 'text-[#18181B] font-bold'
                         : 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
                       : 'text-[#64748B] hover:text-[#0F172A] hover:bg-neutral-100/50'
-                  }`}
+                    }`}
                 >
                   सभी राग
                 </button>
@@ -1984,13 +1967,12 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                       type="button"
                       tabIndex={hasRagas ? 0 : -1}
                       onClick={() => handleSelectRaga(r)}
-                      className={`relative z-10 px-3 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none inline-flex items-center gap-1 ${
-                        isActive
+                      className={`relative z-10 px-3 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none inline-flex items-center gap-1 ${isActive
                           ? ragaPillStyle.ready
                             ? 'text-[#18181B] font-bold'
                             : 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
                           : 'text-[#64748B] hover:text-[#0F172A] hover:bg-neutral-100/50'
-                      }`}
+                        }`}
                     >
                       <span>{r}</span>
                       <span className={`ml-1 text-[9.5px] font-mono font-bold ${isActive ? 'text-[#B45309]' : 'text-[#94A3B8]'}`}>
@@ -2033,18 +2015,16 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 }}
                 type="button"
                 onClick={() => handleSelectPad(pad)}
-                className={`relative z-10 shrink-0 h-8 px-3 rounded-full transition-colors duration-200 cursor-pointer select-none flex items-center gap-1.5 text-xs ${
-                  isSelected
+                className={`relative z-10 shrink-0 h-8 px-3 rounded-full transition-colors duration-200 cursor-pointer select-none flex items-center gap-1.5 text-xs ${isSelected
                     ? 'text-[#18181B] font-bold'
                     : 'bg-white text-[#1E293B] hover:bg-[#F8FAFC] font-medium'
-                }`}
+                  }`}
               >
                 {loadingPadId === pad.id ? (
                   <IOSSpinner size="xs" theme="amber" />
                 ) : (
-                  <span className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full transition-colors ${
-                    isSelected ? 'bg-white/90 text-[#854D0E] font-bold' : 'bg-[#F1F5F9] text-[#64748B]'
-                  }`}>
+                  <span className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full transition-colors ${isSelected ? 'bg-white/90 text-[#854D0E] font-bold' : 'bg-[#F1F5F9] text-[#64748B]'
+                    }`}>
                     #{idx + 1}
                   </span>
                 )}
@@ -2061,26 +2041,24 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       {/* 3. Main Responsive Devotional Desk / Distraction-Free Sanctuary            */}
       {/* ========================================================================= */}
       <div className={`w-full flex flex-col md:flex-row items-start gap-4 sm:gap-6 transition-all duration-300 ${isFocusReadingMode ? 'max-w-3xl mx-auto' : ''}`}>
-        
+
         {/* ========================================================================= */}
         {/* Left Column: Pada Index Catalog (Desktop only: hidden md:block)           */}
         {/* ========================================================================= */}
         {!isFocusReadingMode && (
           <aside
-            className={`hidden md:block sticky top-24 shrink-0 overflow-hidden rounded-3xl border shadow-xs transition-[width,min-width,max-width] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[width] ${currentTheme.commentaryBg} ${currentTheme.borderColor} ${
-              isLeftSidebarCollapsed
+            className={`hidden md:block sticky top-24 shrink-0 overflow-hidden rounded-3xl border shadow-xs transition-[width,min-width,max-width] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[width] ${currentTheme.commentaryBg} ${currentTheme.borderColor} ${isLeftSidebarCollapsed
                 ? 'w-14 min-w-[56px] max-w-[56px]'
                 : 'w-72 lg:w-80 min-w-[288px] lg:min-w-[320px] max-w-[320px]'
-            }`}
+              }`}
           >
             <div className="relative w-full h-full min-h-[500px] max-h-[82vh] flex flex-col">
               {/* Shrunk / Compact Icon Rail Layer */}
               <div
-                className={`absolute inset-0 flex flex-col items-center p-2.5 transition-all duration-300 ease-out z-10 ${
-                  isLeftSidebarCollapsed
+                className={`absolute inset-0 flex flex-col items-center p-2.5 transition-all duration-300 ease-out z-10 ${isLeftSidebarCollapsed
                     ? 'opacity-100 pointer-events-auto delay-150'
                     : 'opacity-0 pointer-events-none'
-                }`}
+                  }`}
               >
                 {/* Expand Toggle */}
                 <button
@@ -2117,11 +2095,10 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                         type="button"
                         onClick={() => handleSelectPad(pad)}
                         title={`${idx + 1}. ${pad.titleDevanagari} (${pad.author})`}
-                        className={`w-9 h-9 mx-auto rounded-xl flex items-center justify-center text-xs font-mono transition-colors cursor-pointer ${
-                          isSelected
+                        className={`w-9 h-9 mx-auto rounded-xl flex items-center justify-center text-xs font-mono transition-colors cursor-pointer ${isSelected
                             ? 'bg-[#FEF08A] text-[#78350F] font-bold shadow-xs'
                             : 'text-[#64748B] hover:bg-black/5'
-                        }`}
+                          }`}
                       >
                         #{idx + 1}
                       </button>
@@ -2132,11 +2109,10 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
               {/* Full Expanded Left Sidebar Layer */}
               <div
-                className={`w-72 lg:w-80 flex flex-col h-full max-h-[82vh] transition-all duration-300 ease-out ${
-                  isLeftSidebarCollapsed
+                className={`w-72 lg:w-80 flex flex-col h-full max-h-[82vh] transition-all duration-300 ease-out ${isLeftSidebarCollapsed
                     ? 'opacity-0 pointer-events-none'
                     : 'opacity-100 pointer-events-auto delay-100'
-                }`}
+                  }`}
               >
                 {/* Header with Active Scripture Name, Counter & Shrink Button */}
                 <div className={`p-4 border-b ${currentTheme.borderColor} space-y-2.5`}>
@@ -2234,11 +2210,10 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                             sidebarItemRefs.current[pad.id] = el;
                           }}
                           onClick={() => handleSelectPad(pad)}
-                          className={`group relative z-10 px-3 py-2.5 rounded-2xl flex items-start gap-2.5 cursor-pointer select-none transition-colors duration-200 ${
-                            isSelected
+                          className={`group relative z-10 px-3 py-2.5 rounded-2xl flex items-start gap-2.5 cursor-pointer select-none transition-colors duration-200 ${isSelected
                               ? 'text-[#0F172A]'
                               : 'hover:bg-black/5 text-[#0F172A]'
-                          }`}
+                            }`}
                         >
                           {/* Compact Slim Index Number / Equalizer */}
                           <div className="w-7 shrink-0 pt-0.5 text-right font-mono text-xs select-none flex items-center justify-end">
@@ -2251,9 +2226,8 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                                 <span className="w-0.5 rounded-full animate-apple-eq-3 bg-[#CA8A04]" />
                               </div>
                             ) : (
-                              <span className={`px-1.5 py-0.5 rounded-md text-[10.5px] font-mono transition-colors ${
-                                isSelected ? 'bg-white/90 text-[#854D0E] font-bold' : 'text-[#94A3B8]'
-                              }`}>
+                              <span className={`px-1.5 py-0.5 rounded-md text-[10.5px] font-mono transition-colors ${isSelected ? 'bg-white/90 text-[#854D0E] font-bold' : 'text-[#94A3B8]'
+                                }`}>
                                 #{idx + 1}
                               </span>
                             )}
@@ -2285,11 +2259,10 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                               onPlayPad(pad);
                             }}
                             aria-label={`Play ${pad.titleDevanagari}`}
-                            className={`w-7 h-7 rounded-full shrink-0 flex items-center justify-center transition-all cursor-pointer ${
-                              isCurrentlyPlaying || isSelected
+                            className={`w-7 h-7 rounded-full shrink-0 flex items-center justify-center transition-all cursor-pointer ${isCurrentlyPlaying || isSelected
                                 ? 'bg-[#FACC15] hover:bg-[#FDE047] text-[#18181B] font-bold'
                                 : 'bg-[#F1F5F9] text-[#64748B] hover:text-[#0F172A] hover:bg-[#E2E8F0]'
-                            }`}
+                              }`}
                           >
                             {isCurrentlyPlaying ? (
                               <Pause className="w-3 h-3 fill-current" />
@@ -2322,13 +2295,11 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
         {/* ========================================================================= */}
         <article
           id="reading-canvas-top"
-          className={`flex-1 min-w-0 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
-            isFocusReadingMode
+          className={`flex-1 min-w-0 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${isFocusReadingMode
               ? `w-full dhyana-reader-canvas p-6 sm:p-10 ${currentTheme.canvasBg} ${currentTheme.canvasText}`
-              : `w-full rounded-3xl p-6 sm:p-9 ${currentTheme.canvasBg} ${currentTheme.canvasText} ${
-                  isLeftSidebarCollapsed && isRightSidebarCollapsed ? 'max-w-4xl mx-auto' : ''
-                }`
-          }`}
+              : `w-full rounded-3xl p-6 sm:p-9 ${currentTheme.canvasBg} ${currentTheme.canvasText} ${isLeftSidebarCollapsed && isRightSidebarCollapsed ? 'max-w-4xl mx-auto' : ''
+              }`
+            }`}
         >
           {/* Chapter Hierarchy & Continuous Reading Mode Bar */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 rounded-2xl bg-[#FAF8F5] border border-amber-900/10 mb-6">
@@ -2360,11 +2331,10 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                           handleSelectChapter('all');
                           setIsChapterDropdownOpen(false);
                         }}
-                        className={`w-full text-left px-3 py-2 rounded-xl text-xs font-semibold flex items-center justify-between transition-colors cursor-pointer ${
-                          selectedChapter === 'all'
+                        className={`w-full text-left px-3 py-2 rounded-xl text-xs font-semibold flex items-center justify-between transition-colors cursor-pointer ${selectedChapter === 'all'
                             ? 'bg-[#FEF08A] text-[#18181B] font-bold'
                             : 'hover:bg-neutral-100 text-neutral-700'
-                        }`}
+                          }`}
                       >
                         <span>समस्त अध्याय</span>
                         <span className="text-[10px] font-mono text-neutral-400">
@@ -2379,11 +2349,10 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                             handleSelectChapter(ch.id);
                             setIsChapterDropdownOpen(false);
                           }}
-                          className={`w-full text-left px-3 py-2 rounded-xl text-xs font-semibold flex items-center justify-between transition-colors cursor-pointer ${
-                            selectedChapter === ch.id
+                          className={`w-full text-left px-3 py-2 rounded-xl text-xs font-semibold flex items-center justify-between transition-colors cursor-pointer ${selectedChapter === ch.id
                               ? 'bg-[#FEF08A] text-[#18181B] font-bold'
                               : 'hover:bg-neutral-100 text-neutral-700'
-                          }`}
+                            }`}
                         >
                           <span className="truncate pr-2">{ch.name}</span>
                           <span className="text-[10px] font-mono text-amber-800 font-bold shrink-0">
@@ -2406,11 +2375,10 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               <button
                 type="button"
                 onClick={() => handleSetReadingMode('continuous')}
-                className={`px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer select-none ${
-                  readingMode === 'continuous'
+                className={`px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer select-none ${readingMode === 'continuous'
                     ? 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
                     : 'text-neutral-500 hover:text-neutral-900'
-                }`}
+                  }`}
               >
                 <BookOpen className="w-3.5 h-3.5 text-amber-700" />
                 <span>अखंड पाठ</span>
@@ -2418,18 +2386,17 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               <button
                 type="button"
                 onClick={() => handleSetReadingMode('single')}
-                className={`px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer select-none ${
-                  readingMode === 'single'
+                className={`px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer select-none ${readingMode === 'single'
                     ? 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
                     : 'text-neutral-500 hover:text-neutral-900'
-                }`}
+                  }`}
               >
                 <Sparkles className="w-3.5 h-3.5 text-amber-700" />
                 <span>एकल पद</span>
               </button>
             </div>
           </div>
-          
+
           {/* ========================================================================= */}
           {/* MODE A: Continuous Reading Stream (अखंड पाठ)                               */}
           {/* ========================================================================= */}
@@ -2487,11 +2454,10 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                           const el = document.getElementById(`verse-stream-${pad.id}`);
                           if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
                         }}
-                        className={`min-w-7 h-7 px-2 rounded-full text-xs font-mono font-bold flex items-center justify-center transition-colors cursor-pointer shrink-0 ${
-                          isActive
+                        className={`min-w-7 h-7 px-2 rounded-full text-xs font-mono font-bold flex items-center justify-center transition-colors cursor-pointer shrink-0 ${isActive
                             ? 'bg-[#FEF08A] text-[#78350F] font-bold shadow-2xs'
                             : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200'
-                        }`}
+                          }`}
                         title={pad.verseNumber ? `पद ${pad.verseNumber}: ${pad.titleDevanagari}` : pad.titleDevanagari}
                       >
                         {displayNumber}
@@ -2504,11 +2470,10 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 <button
                   type="button"
                   onClick={() => setIsAutoScrolling(!isAutoScrolling)}
-                  className={`h-7 px-3 rounded-full text-xs font-semibold flex items-center gap-1.5 shrink-0 transition-colors cursor-pointer select-none ${
-                    isAutoScrolling
+                  className={`h-7 px-3 rounded-full text-xs font-semibold flex items-center gap-1.5 shrink-0 transition-colors cursor-pointer select-none ${isAutoScrolling
                       ? 'bg-amber-600 text-white font-bold animate-pulse'
                       : 'bg-amber-100 hover:bg-amber-200 text-amber-900'
-                  }`}
+                    }`}
                   title="Continuous Contemplative Recitation Auto-Scroll"
                 >
                   {isAutoScrolling ? <Pause className="w-3 h-3 fill-current" /> : <Play className="w-3 h-3 fill-current ml-0.5" />}
@@ -2553,11 +2518,10 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                       <div
                         key={pad.id}
                         id={`verse-stream-${pad.id}`}
-                        className={`p-5 sm:p-7 rounded-2xl border transition-colors duration-200 ${currentTheme.cardHoverBg} ${
-                          selectedPad.id === pad.id
+                        className={`p-5 sm:p-7 rounded-2xl border transition-colors duration-200 ${currentTheme.cardHoverBg} ${selectedPad.id === pad.id
                             ? 'ring-1 ring-amber-300/50 border-amber-300/40'
                             : currentTheme.borderColor
-                        }`}
+                          }`}
                       >
                         {/* Verse Header Line */}
                         <div className={`flex items-center justify-between pb-3 mb-4 border-b ${currentTheme.borderColor} gap-2 flex-wrap`}>
@@ -2599,9 +2563,8 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                                 setBookmarkedPadIds(updated);
                                 saveCachedBookmarks(updated);
                               }}
-                              className={`w-7 h-7 rounded-full flex items-center justify-center cursor-pointer transition-colors ${
-                                isPadBookmarked ? 'bg-[#FEF08A] text-[#78350F]' : 'bg-neutral-100 text-neutral-500 hover:bg-neutral-200'
-                              }`}
+                              className={`w-7 h-7 rounded-full flex items-center justify-center cursor-pointer transition-colors ${isPadBookmarked ? 'bg-[#FEF08A] text-[#78350F]' : 'bg-neutral-100 text-neutral-500 hover:bg-neutral-200'
+                                }`}
                               title="Bookmark Verse"
                             >
                               <Bookmark className={`w-3.5 h-3.5 ${isPadBookmarked ? 'fill-[#CA8A04] text-[#CA8A04]' : ''}`} />
@@ -2609,9 +2572,8 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                             <button
                               type="button"
                               onClick={() => toggleInlinePurport(pad.id)}
-                              className={`px-2.5 py-1 rounded-full text-xs font-medium flex items-center gap-1 cursor-pointer transition-colors ${
-                                isPurportOpen ? 'bg-amber-200 text-amber-950 font-bold' : 'bg-neutral-100 hover:bg-neutral-200 text-neutral-700'
-                              }`}
+                              className={`px-2.5 py-1 rounded-full text-xs font-medium flex items-center gap-1 cursor-pointer transition-colors ${isPurportOpen ? 'bg-amber-200 text-amber-950 font-bold' : 'bg-neutral-100 hover:bg-neutral-200 text-neutral-700'
+                                }`}
                             >
                               <Sparkles className="w-3 h-3 text-amber-700" />
                               <span>भावार्थ ▾</span>
@@ -2664,322 +2626,313 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
           ) : (
             <div>
               {/* Header Bar */}
-          <div className={`pb-6 mb-7 border-b ${currentTheme.borderColor} space-y-4`}>
-            {/* Top Meta Line & Bookmark */}
-            <div className="flex items-center justify-between text-xs gap-2 flex-wrap">
-              <div className={`flex items-center gap-2 ${currentTheme.metaColor} font-mono text-[11px] font-bold tracking-wider uppercase`}>
-                <span>{granthaDisplayName}</span>
-                {selectedPad.rag && (
-                  <>
-                    <span className="text-[#FACC15]">•</span>
-                    <span>राग {selectedPad.rag}</span>
-                  </>
-                )}
-              </div>
-
-              <div className="flex items-center gap-2 shrink-0">
-                {/* Bookmark Button */}
-                <button
-                  type="button"
-                  onClick={handleToggleBookmark}
-                  title={isBookmarked ? "Saved to Bookmarks" : "Save Pad to Bookmarks"}
-                  className={`h-7 px-3 rounded-full flex items-center gap-1.5 text-xs font-medium transition-colors cursor-pointer select-none ${
-                    isBookmarked
-                      ? 'bg-[#FEF08A] text-[#78350F] font-bold'
-                      : 'bg-[#F1F5F9] hover:bg-[#E2E8F0] text-[#475569]'
-                  }`}
-                >
-                  <Bookmark className={`w-3.5 h-3.5 ${isBookmarked ? 'fill-[#CA8A04] text-[#CA8A04]' : ''}`} />
-                  <span className="text-[11px]">{isBookmarked ? 'संग्रहित' : 'बुकमार्क'}</span>
-                </button>
-              </div>
-            </div>
-
-            {/* Noble Headline & Author */}
-            <div className={textAlign === 'center' ? 'text-center' : 'text-left'}>
-              <h2 className={`${fontClass} font-bold leading-tight tracking-tight ${currentTheme.titleColor} ${
-                fontSize === 'sm'
-                  ? 'text-xl sm:text-2xl'
-                  : fontSize === 'md'
-                  ? 'text-2xl sm:text-3xl lg:text-[32px]'
-                  : fontSize === 'lg'
-                  ? 'text-3xl sm:text-4xl lg:text-[36px]'
-                  : 'text-4xl sm:text-5xl lg:text-[40px]'
-              }`}>
-                {cleanTitle}
-              </h2>
-              <div className={`flex items-center gap-2 text-sm ${currentTheme.metaColor} ${fontClass} font-normal mt-2 flex-wrap ${
-                textAlign === 'center' ? 'justify-center' : 'justify-start'
-              }`}>
-                <span className={`${currentTheme.titleColor} font-semibold`}>{authorName}</span>
-                {granthaRef && (
-                  <>
-                    <span className="text-[#CA8A04]">•</span>
-                    <span>{granthaRef}</span>
-                  </>
-                )}
-              </div>
-            </div>
-
-            {/* Sleek Minimal Audio Player Pill (Warm Golden-Cream Sanctuary Bar) */}
-            <div className="p-3.5 sm:px-4 sm:py-3.5 rounded-2xl bg-[#FEF9C3] text-[#0F172A] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-              <div className="flex items-center gap-3 min-w-0">
-                <button
-                  type="button"
-                  onClick={() => onPlayPad(selectedPad)}
-                  className="w-10 h-10 rounded-full bg-[#FACC15] hover:bg-[#FDE047] text-[#18181B] flex items-center justify-center shrink-0 transition-transform active:scale-95 cursor-pointer font-bold"
-                  aria-label={isCurrentPadPlaying ? 'Pause Audio' : 'Play Audio'}
-                >
-                  {isCurrentPadPlaying ? (
-                    <Pause className="w-4 h-4 fill-current" />
-                  ) : (
-                    <Play className="w-4 h-4 fill-current ml-0.5" />
-                  )}
-                </button>
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-center gap-2">
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-[#B45309] font-bold">
-                      {isCurrentPadPlaying ? 'Now Playing' : 'Audio Shravan'}
-                    </span>
-                    <span className="px-1.5 py-0.5 rounded text-[9.5px] font-mono font-bold bg-[#FACC15] text-[#78350F]">
-                      {playbackPace}
-                    </span>
-                    {isCurrentPadPlaying && (
-                      <div className="flex items-end gap-0.5 h-2.5">
-                        <span className="w-0.5 bg-[#CA8A04] rounded-full animate-apple-eq-1" />
-                        <span className="w-0.5 bg-[#CA8A04] rounded-full animate-apple-eq-2" />
-                        <span className="w-0.5 bg-[#CA8A04] rounded-full animate-apple-eq-3" />
-                      </div>
+              <div className={`pb-6 mb-7 border-b ${currentTheme.borderColor} space-y-4`}>
+                {/* Top Meta Line & Bookmark */}
+                <div className="flex items-center justify-between text-xs gap-2 flex-wrap">
+                  <div className={`flex items-center gap-2 ${currentTheme.metaColor} font-mono text-[11px] font-bold tracking-wider uppercase`}>
+                    <span>{granthaDisplayName}</span>
+                    {selectedPad.rag && (
+                      <>
+                        <span className="text-[#FACC15]">•</span>
+                        <span>राग {selectedPad.rag}</span>
+                      </>
                     )}
                   </div>
-                  <p className="text-xs font-serif font-bold text-[#0F172A] truncate mt-0.5">
-                    {cleanTitle} <span className="font-normal text-[#64748B]">• {selectedPad.rag || 'विभास'} ({playbackPace})</span>
-                  </p>
-                </div>
-              </div>
 
-              <div className="flex items-center gap-2 shrink-0">
-                <button
-                  type="button"
-                  onClick={handleToggleSummary}
-                  className="px-3 py-1.5 rounded-full bg-white hover:bg-white/80 text-[#78350F] text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
-                >
-                  <Sparkles className="w-3.5 h-3.5 text-[#CA8A04]" />
-                  <span>{isSummaryOpen ? 'भाव संक्षेप छुपाएं' : 'भाव संक्षेप'}</span>
-                </button>
-
-                <button
-                  ref={settingsToggleBottomRef}
-                  type="button"
-                  onClick={handleToggleSettings}
-                  className="w-8 h-8 rounded-full bg-white hover:bg-white/80 text-[#64748B] hover:text-[#0F172A] flex items-center justify-center transition-colors cursor-pointer"
-                  title="Typography & Ambiance Settings"
-                >
-                  <SlidersHorizontal className="w-3.5 h-3.5 text-[#64748B]" />
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Collapsible Summary Card with Expert Measured Height Architecture */}
-          <div
-            className="w-full overflow-hidden transition-[height,opacity] duration-[340ms] ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[height,opacity]"
-            style={{
-              height: isSummaryOpen ? `${summaryHeight}px` : '0px',
-              opacity: isSummaryOpen ? 1 : 0,
-              pointerEvents: isSummaryOpen ? 'auto' : 'none',
-            }}
-            aria-hidden={!isSummaryOpen}
-            inert={!isSummaryOpen ? true : undefined}
-          >
-            <div ref={summaryTrayRef} className="pb-7">
-              <div className={`native-drawer-surface ${currentTheme.bhavarthBg} border ${currentTheme.borderColor} rounded-2xl p-4 sm:p-5`}>
-                <div className={`flex items-center justify-between pb-2 mb-2 border-b ${currentTheme.borderColor}`}>
-                  <div className={`flex items-center gap-1.5 text-xs font-bold ${currentTheme.titleColor} font-serif`}>
-                    <Sparkles className="w-3.5 h-3.5 text-[#CA8A04]" />
-                    <span>भाव संक्षेप एवं रस-गूढ़ार्थ</span>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => setIsSummaryOpen(false)}
-                    className={`text-xs ${currentTheme.translitColor} hover:${currentTheme.lineColor} font-medium cursor-pointer`}
-                  >
-                    बंद करें ×
-                  </button>
-                </div>
-                {isSummaryLoading && !summaryText ? (
-                  <div className={`flex items-center gap-2 py-3 text-xs ${currentTheme.translitColor} font-medium min-h-[48px]`}>
-                    <IOSSpinner size="xs" theme="amber" />
-                    <span>प्रस्तुत किया जा रहा है...</span>
-                  </div>
-                ) : (
-                  <p className={`text-xs sm:text-sm font-devanagari ${currentTheme.bhavarthText} leading-relaxed break-words font-normal`}>
-                    {summaryText ||
-                      'श्री युगल रस का यह पावन पद अंतःकरण में असीम शांति और दिव्य प्रेम का संचार करता है।'}
-                  </p>
-                )}
-              </div>
-            </div>
-          </div>
-
-          {/* Verses Stanza Block */}
-          <div className="space-y-6 sm:space-y-8">
-            {loadingGranthaId || (loadingPadId && (!selectedPad?.verses || selectedPad.verses.length === 0)) || !selectedPad?.verses || selectedPad.verses.length === 0 ? (
-              <div className="py-24 px-6 flex flex-col items-center justify-center text-center space-y-3 select-none">
-                <IOSSpinner size="lg" theme="amber" />
-                <p className="font-serif font-bold text-base sm:text-lg text-[#18181B]">
-                  पावन ग्रंथ पाठ संकलित हो रहा है...
-                </p>
-                <p className="font-mono text-xs text-[#71717A]">
-                  श्री वृन्दावन कृपा • निरंतरता संधान
-                </p>
-              </div>
-            ) : (
-              selectedPad.verses.map((verse, vIdx) => {
-              const isStanzaActive = isFocusReadingMode
-                ? activeStanzaIndex === vIdx
-                : (isCurrentPadPlaying && activeStanzaIndex === vIdx);
-              const isStanzaDimmed = isFocusReadingMode && activeStanzaIndex !== vIdx;
-
-              return (
-                <div
-                  key={verse.stanzaNumber}
-                  id={`stanza-${vIdx}`}
-                  onClick={() => setActiveStanzaIndex(vIdx)}
-                  className={`p-5 sm:p-6 rounded-2xl transition-colors duration-200 cursor-pointer ${
-                    isStanzaActive
-                      ? currentTheme.cardActiveBg
-                      : isStanzaDimmed
-                      ? 'opacity-40'
-                      : currentTheme.cardHoverBg
-                  }`}
-                >
-                  {/* Stanza Utility Header: Stanza Number + Verse Copy Action */}
-                  <div className={`flex items-center justify-between pb-2.5 mb-3 border-b ${currentTheme.borderColor}`}>
-                    <span className={`text-xs font-mono font-bold ${currentTheme.metaColor} uppercase tracking-wider`}>
-                      चरण {formatDevanagariNumerals(verse.stanzaNumber)}
-                    </span>
-
+                  <div className="flex items-center gap-2 shrink-0">
+                    {/* Bookmark Button */}
                     <button
                       type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleCopyVerse(verse, vIdx);
-                      }}
-                      className={`px-2.5 py-1 rounded-full text-[11px] font-medium ${currentTheme.translitColor} hover:${currentTheme.lineColor} hover:bg-black/5 flex items-center gap-1 cursor-pointer transition-colors`}
-                      title="Copy verse stanza to clipboard"
+                      onClick={handleToggleBookmark}
+                      title={isBookmarked ? "Saved to Bookmarks" : "Save Pad to Bookmarks"}
+                      className={`h-7 px-3 rounded-full flex items-center gap-1.5 text-xs font-medium transition-colors cursor-pointer select-none ${isBookmarked
+                          ? 'bg-[#FEF08A] text-[#78350F] font-bold'
+                          : 'bg-[#F1F5F9] hover:bg-[#E2E8F0] text-[#475569]'
+                        }`}
                     >
-                      {copiedStanzaIdx === vIdx ? (
-                        <>
-                          <Check className="w-3.5 h-3.5 text-emerald-600" />
-                          <span className="text-emerald-700 font-semibold">प्रतिलिपि सफल ✓</span>
-                        </>
-                      ) : (
-                        <>
-                          <Copy className="w-3.5 h-3.5 opacity-60" />
-                          <span>प्रतिलिपि</span>
-                        </>
-                      )}
+                      <Bookmark className={`w-3.5 h-3.5 ${isBookmarked ? 'fill-[#CA8A04] text-[#CA8A04]' : ''}`} />
+                      <span className="text-[11px]">{isBookmarked ? 'संग्रहित' : 'बुकमार्क'}</span>
                     </button>
                   </div>
+                </div>
 
-                  {/* Inherently Distributed Devanagari Verses Typography */}
-                  <DevotionalVersePresenter
-                    lines={verse.linesDevanagari || []}
-                    fontClass={fontClass}
-                    fontSize={fontSize}
-                    textAlignClass={textAlignClass}
-                    currentTheme={currentTheme}
-                  />
+                {/* Noble Headline & Author */}
+                <div className={textAlign === 'center' ? 'text-center' : 'text-left'}>
+                  <h2 className={`${fontClass} font-bold leading-tight tracking-tight ${currentTheme.titleColor} ${fontSize === 'sm'
+                      ? 'text-xl sm:text-2xl'
+                      : fontSize === 'md'
+                        ? 'text-2xl sm:text-3xl lg:text-[32px]'
+                        : fontSize === 'lg'
+                          ? 'text-3xl sm:text-4xl lg:text-[36px]'
+                          : 'text-4xl sm:text-5xl lg:text-[40px]'
+                    }`}>
+                    {cleanTitle}
+                  </h2>
+                  <div className={`flex items-center gap-2 text-sm ${currentTheme.metaColor} ${fontClass} font-normal mt-2 flex-wrap ${textAlign === 'center' ? 'justify-center' : 'justify-start'
+                    }`}>
+                    <span className={`${currentTheme.titleColor} font-semibold`}>{authorName}</span>
+                    {granthaRef && (
+                      <>
+                        <span className="text-[#CA8A04]">•</span>
+                        <span>{granthaRef}</span>
+                      </>
+                    )}
+                  </div>
+                </div>
 
-                  {/* Simple Dignified Delimiter */}
-                  <div className="flex items-center justify-center my-4 select-none">
-                    <span className={`${fontClass} font-bold text-xs tracking-widest ${currentTheme.metaColor}`}>
-                      ॥ {formatDevanagariNumerals(verse.stanzaNumber)} ॥
-                    </span>
+                {/* Sleek Minimal Audio Player Pill (Warm Golden-Cream Sanctuary Bar) */}
+                <div className="p-3.5 sm:px-4 sm:py-3.5 rounded-2xl bg-[#FEF9C3] text-[#0F172A] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div className="flex items-center gap-3 min-w-0">
+                    <button
+                      type="button"
+                      onClick={() => onPlayPad(selectedPad)}
+                      className="w-10 h-10 rounded-full bg-[#FACC15] hover:bg-[#FDE047] text-[#18181B] flex items-center justify-center shrink-0 transition-transform active:scale-95 cursor-pointer font-bold"
+                      aria-label={isCurrentPadPlaying ? 'Pause Audio' : 'Play Audio'}
+                    >
+                      {isCurrentPadPlaying ? (
+                        <Pause className="w-4 h-4 fill-current" />
+                      ) : (
+                        <Play className="w-4 h-4 fill-current ml-0.5" />
+                      )}
+                    </button>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-mono uppercase tracking-wider text-[#B45309] font-bold">
+                          {isCurrentPadPlaying ? 'Now Playing' : 'Audio Shravan'}
+                        </span>
+                        <span className="px-1.5 py-0.5 rounded text-[9.5px] font-mono font-bold bg-[#FACC15] text-[#78350F]">
+                          {playbackPace}
+                        </span>
+                        {isCurrentPadPlaying && (
+                          <div className="flex items-end gap-0.5 h-2.5">
+                            <span className="w-0.5 bg-[#CA8A04] rounded-full animate-apple-eq-1" />
+                            <span className="w-0.5 bg-[#CA8A04] rounded-full animate-apple-eq-2" />
+                            <span className="w-0.5 bg-[#CA8A04] rounded-full animate-apple-eq-3" />
+                          </div>
+                        )}
+                      </div>
+                      <p className="text-xs font-serif font-bold text-[#0F172A] truncate mt-0.5">
+                        {cleanTitle} <span className="font-normal text-[#64748B]">• {selectedPad.rag || 'विभास'} ({playbackPace})</span>
+                      </p>
+                    </div>
                   </div>
 
-                  {/* Transliteration */}
-                  {showTransliteration && (verse.linesTransliteration?.length ?? 0) > 0 && (
-                    <div className={`space-y-1 pt-2 border-t ${currentTheme.borderColor} mt-2.5 ${textAlignClass}`}>
-                      {verse.linesTransliteration?.map((line, lIdx) => (
-                        <p key={lIdx} className={`${fontClass} italic ${currentTheme.translitColor} ${textAlignClass} ${
-                          fontSize === 'sm'
-                            ? 'text-[11px] sm:text-xs leading-relaxed'
-                            : fontSize === 'md'
-                            ? 'text-xs sm:text-sm leading-relaxed'
-                            : fontSize === 'lg'
-                            ? 'text-sm sm:text-base leading-relaxed'
-                            : 'text-base sm:text-lg leading-relaxed'
-                        }`}>
-                          {sanitizeSacredText(line)}
-                        </p>
-                      ))}
-                    </div>
-                  )}
+                  <div className="flex items-center gap-2 shrink-0">
+                    <button
+                      type="button"
+                      onClick={handleToggleSummary}
+                      className="px-3 py-1.5 rounded-full bg-white hover:bg-white/80 text-[#78350F] text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+                    >
+                      <Sparkles className="w-3.5 h-3.5 text-[#CA8A04]" />
+                      <span>{isSummaryOpen ? 'भाव संक्षेप छुपाएं' : 'भाव संक्षेप'}</span>
+                    </button>
 
+                    <button
+                      ref={settingsToggleBottomRef}
+                      type="button"
+                      onClick={handleToggleSettings}
+                      className="w-8 h-8 rounded-full bg-white hover:bg-white/80 text-[#64748B] hover:text-[#0F172A] flex items-center justify-center transition-colors cursor-pointer"
+                      title="Typography & Ambiance Settings"
+                    >
+                      <SlidersHorizontal className="w-3.5 h-3.5 text-[#64748B]" />
+                    </button>
+                  </div>
                 </div>
-              );
-            }))}
-          </div>
+              </div>
 
-          {/* Bottom Prev / Next Navigation Controls */}
-          <div className={`flex items-center justify-between pt-6 mt-8 border-t ${currentTheme.borderColor}`}>
-            <button
-              type="button"
-              disabled={!hasPrev}
-              onClick={handlePrevPad}
-              className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer ${
-                hasPrev
-                  ? 'bg-[#F1F5F9] text-[#1E293B] hover:bg-[#E2E8F0]'
-                  : 'opacity-40 cursor-not-allowed text-[#94A3B8] bg-neutral-50'
-              }`}
-            >
-              <ChevronLeft className="w-4 h-4" />
-              <span>पिछला पद</span>
-            </button>
+              {/* Collapsible Summary Card with Expert Measured Height Architecture */}
+              <div
+                className="w-full overflow-hidden transition-[height,opacity] duration-[340ms] ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[height,opacity]"
+                style={{
+                  height: isSummaryOpen ? `${summaryHeight}px` : '0px',
+                  opacity: isSummaryOpen ? 1 : 0,
+                  pointerEvents: isSummaryOpen ? 'auto' : 'none',
+                }}
+                aria-hidden={!isSummaryOpen}
+                inert={!isSummaryOpen ? true : undefined}
+              >
+                <div ref={summaryTrayRef} className="pb-7">
+                  <div className={`native-drawer-surface ${currentTheme.bhavarthBg} border ${currentTheme.borderColor} rounded-2xl p-4 sm:p-5`}>
+                    <div className={`flex items-center justify-between pb-2 mb-2 border-b ${currentTheme.borderColor}`}>
+                      <div className={`flex items-center gap-1.5 text-xs font-bold ${currentTheme.titleColor} font-serif`}>
+                        <Sparkles className="w-3.5 h-3.5 text-[#CA8A04]" />
+                        <span>भाव संक्षेप एवं रस-गूढ़ार्थ</span>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => setIsSummaryOpen(false)}
+                        className={`text-xs ${currentTheme.translitColor} hover:${currentTheme.lineColor} font-medium cursor-pointer`}
+                      >
+                        बंद करें ×
+                      </button>
+                    </div>
+                    {isSummaryLoading && !summaryText ? (
+                      <div className={`flex items-center gap-2 py-3 text-xs ${currentTheme.translitColor} font-medium min-h-[48px]`}>
+                        <IOSSpinner size="xs" theme="amber" />
+                        <span>प्रस्तुत किया जा रहा है...</span>
+                      </div>
+                    ) : (
+                      <p className={`text-xs sm:text-sm font-devanagari ${currentTheme.bhavarthText} leading-relaxed break-words font-normal`}>
+                        {summaryText ||
+                          'श्री युगल रस का यह पावन पद अंतःकरण में असीम शांति और दिव्य प्रेम का संचार करता है।'}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </div>
 
-            <span className={`text-xs ${currentTheme.translitColor} font-mono font-medium`}>
-              पद {currentIdx + 1} / {filteredPads.length}
-            </span>
+              {/* Verses Stanza Block */}
+              <div className="space-y-6 sm:space-y-8">
+                {loadingGranthaId || (loadingPadId && (!selectedPad?.verses || selectedPad.verses.length === 0)) || !selectedPad?.verses || selectedPad.verses.length === 0 ? (
+                  <div className="py-24 px-6 flex flex-col items-center justify-center text-center space-y-3 select-none">
+                    <IOSSpinner size="lg" theme="amber" />
+                    <p className="font-serif font-bold text-base sm:text-lg text-[#18181B]">
+                      पावन ग्रंथ पाठ संकलित हो रहा है...
+                    </p>
+                    <p className="font-mono text-xs text-[#71717A]">
+                      श्री वृन्दावन कृपा • निरंतरता संधान
+                    </p>
+                  </div>
+                ) : (
+                  selectedPad.verses.map((verse, vIdx) => {
+                    const isStanzaActive = isFocusReadingMode
+                      ? activeStanzaIndex === vIdx
+                      : (isCurrentPadPlaying && activeStanzaIndex === vIdx);
+                    const isStanzaDimmed = isFocusReadingMode && activeStanzaIndex !== vIdx;
 
-            <button
-              type="button"
-              disabled={!hasNext}
-              onClick={handleNextPad}
-              className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer ${
-                hasNext
-                  ? 'bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] font-bold'
-                  : 'opacity-40 cursor-not-allowed text-[#94A3B8] bg-neutral-100'
-              }`}
-            >
-              <span>अगला पद</span>
-              <ChevronRight className="w-4 h-4 text-[#CA8A04]" />
-            </button>
-          </div>
-        </div>
-      )}
-    </article>
+                    return (
+                      <div
+                        key={verse.stanzaNumber}
+                        id={`stanza-${vIdx}`}
+                        onClick={() => setActiveStanzaIndex(vIdx)}
+                        className={`p-5 sm:p-6 rounded-2xl transition-colors duration-200 cursor-pointer ${isStanzaActive
+                            ? currentTheme.cardActiveBg
+                            : isStanzaDimmed
+                              ? 'opacity-40'
+                              : currentTheme.cardHoverBg
+                          }`}
+                      >
+                        {/* Stanza Utility Header: Stanza Number + Verse Copy Action */}
+                        <div className={`flex items-center justify-between pb-2.5 mb-3 border-b ${currentTheme.borderColor}`}>
+                          <span className={`text-xs font-mono font-bold ${currentTheme.metaColor} uppercase tracking-wider`}>
+                            चरण {formatDevanagariNumerals(verse.stanzaNumber)}
+                          </span>
+
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleCopyVerse(verse, vIdx);
+                            }}
+                            className={`px-2.5 py-1 rounded-full text-[11px] font-medium ${currentTheme.translitColor} hover:${currentTheme.lineColor} hover:bg-black/5 flex items-center gap-1 cursor-pointer transition-colors`}
+                            title="Copy verse stanza to clipboard"
+                          >
+                            {copiedStanzaIdx === vIdx ? (
+                              <>
+                                <Check className="w-3.5 h-3.5 text-emerald-600" />
+                                <span className="text-emerald-700 font-semibold">प्रतिलिपि सफल ✓</span>
+                              </>
+                            ) : (
+                              <>
+                                <Copy className="w-3.5 h-3.5 opacity-60" />
+                                <span>प्रतिलिपि</span>
+                              </>
+                            )}
+                          </button>
+                        </div>
+
+                        {/* Inherently Distributed Devanagari Verses Typography */}
+                        <DevotionalVersePresenter
+                          lines={verse.linesDevanagari || []}
+                          fontClass={fontClass}
+                          fontSize={fontSize}
+                          textAlignClass={textAlignClass}
+                          currentTheme={currentTheme}
+                        />
+
+                        {/* Simple Dignified Delimiter */}
+                        <div className="flex items-center justify-center my-4 select-none">
+                          <span className={`${fontClass} font-bold text-xs tracking-widest ${currentTheme.metaColor}`}>
+                            ॥ {formatDevanagariNumerals(verse.stanzaNumber)} ॥
+                          </span>
+                        </div>
+
+                        {/* Transliteration */}
+                        {showTransliteration && (verse.linesTransliteration?.length ?? 0) > 0 && (
+                          <div className={`space-y-1 pt-2 border-t ${currentTheme.borderColor} mt-2.5 ${textAlignClass}`}>
+                            {verse.linesTransliteration?.map((line, lIdx) => (
+                              <p key={lIdx} className={`${fontClass} italic ${currentTheme.translitColor} ${textAlignClass} ${fontSize === 'sm'
+                                  ? 'text-[11px] sm:text-xs leading-relaxed'
+                                  : fontSize === 'md'
+                                    ? 'text-xs sm:text-sm leading-relaxed'
+                                    : fontSize === 'lg'
+                                      ? 'text-sm sm:text-base leading-relaxed'
+                                      : 'text-base sm:text-lg leading-relaxed'
+                                }`}>
+                                {sanitizeSacredText(line)}
+                              </p>
+                            ))}
+                          </div>
+                        )}
+
+                      </div>
+                    );
+                  }))}
+              </div>
+
+              {/* Bottom Prev / Next Navigation Controls */}
+              <div className={`flex items-center justify-between pt-6 mt-8 border-t ${currentTheme.borderColor}`}>
+                <button
+                  type="button"
+                  disabled={!hasPrev}
+                  onClick={handlePrevPad}
+                  className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer ${hasPrev
+                      ? 'bg-[#F1F5F9] text-[#1E293B] hover:bg-[#E2E8F0]'
+                      : 'opacity-40 cursor-not-allowed text-[#94A3B8] bg-neutral-50'
+                    }`}
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                  <span>पिछला पद</span>
+                </button>
+
+                <span className={`text-xs ${currentTheme.translitColor} font-mono font-medium`}>
+                  पद {currentIdx + 1} / {filteredPads.length}
+                </span>
+
+                <button
+                  type="button"
+                  disabled={!hasNext}
+                  onClick={handleNextPad}
+                  className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer ${hasNext
+                      ? 'bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] font-bold'
+                      : 'opacity-40 cursor-not-allowed text-[#94A3B8] bg-neutral-100'
+                    }`}
+                >
+                  <span>अगला पद</span>
+                  <ChevronRight className="w-4 h-4 text-[#CA8A04]" />
+                </button>
+              </div>
+            </div>
+          )}
+        </article>
 
         {/* ========================================================================= */}
         {/* Right Column: Dedicated Desktop Commentary Desk (Visible on xl:block)     */}
         {/* ========================================================================= */}
         {!isFocusReadingMode && (
           <aside
-            className={`hidden xl:block sticky top-24 shrink-0 overflow-hidden rounded-3xl border shadow-xs transition-[width,min-width,max-width] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[width] ${currentTheme.commentaryBg} ${currentTheme.borderColor} ${
-              isRightSidebarCollapsed
+            className={`hidden xl:block sticky top-24 shrink-0 overflow-hidden rounded-3xl border shadow-xs transition-[width,min-width,max-width] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[width] ${currentTheme.commentaryBg} ${currentTheme.borderColor} ${isRightSidebarCollapsed
                 ? 'w-14 min-w-[56px] max-w-[56px]'
                 : 'w-72 lg:w-80 min-w-[288px] lg:min-w-[320px] max-w-[320px]'
-            }`}
+              }`}
           >
             <div className="relative w-full h-full min-h-[500px] flex flex-col">
               {/* Shrunk / Compact Commentary Rail Layer */}
               <div
-                className={`absolute inset-0 flex flex-col items-center p-2.5 transition-all duration-300 ease-out z-10 ${
-                  isRightSidebarCollapsed
+                className={`absolute inset-0 flex flex-col items-center p-2.5 transition-all duration-300 ease-out z-10 ${isRightSidebarCollapsed
                     ? 'opacity-100 pointer-events-auto delay-150'
                     : 'opacity-0 pointer-events-none'
-                }`}
+                  }`}
               >
                 <button
                   type="button"
@@ -3014,11 +2967,10 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
               {/* Full Expanded Right Sidebar Layer */}
               <div
-                className={`w-72 lg:w-80 flex flex-col transition-all duration-300 ease-out p-5 space-y-4 ${
-                  isRightSidebarCollapsed
+                className={`w-72 lg:w-80 flex flex-col transition-all duration-300 ease-out p-5 space-y-4 ${isRightSidebarCollapsed
                     ? 'opacity-0 pointer-events-none'
                     : 'opacity-100 pointer-events-auto delay-100'
-                }`}
+                  }`}
               >
                 <div className="space-y-4">
                   <div className={`flex items-center justify-between pb-3 mb-3 border-b ${currentTheme.borderColor}`}>
@@ -3080,11 +3032,10 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                             const stanzaEl = document.getElementById(`stanza-${v.stanzaNumber - 1}`);
                             if (stanzaEl) stanzaEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                           }}
-                          className={`w-full text-left p-2.5 rounded-xl transition-colors cursor-pointer flex items-center justify-between ${
-                            isActive
+                          className={`w-full text-left p-2.5 rounded-xl transition-colors cursor-pointer flex items-center justify-between ${isActive
                               ? currentTheme.cardActiveBg
                               : `${currentTheme.cardHoverBg} opacity-85 hover:opacity-100`
-                          }`}
+                            }`}
                         >
                           <span className={`text-xs font-mono font-semibold ${currentTheme.metaColor}`}>
                             चरण {formatDevanagariNumerals(v.stanzaNumber)}
@@ -3124,15 +3075,13 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       {/* ========================================================================= */}
       {isCommentaryOpen && typeof document !== 'undefined' && createPortal(
         <div
-          className={`xl:hidden fixed inset-0 z-[100] bg-black/45 flex items-end justify-center p-0 sm:p-4 transition-opacity ${
-            isCommentaryClosing ? 'modal-backdrop-exit' : 'modal-backdrop-enter'
-          }`}
+          className={`xl:hidden fixed inset-0 z-[100] bg-black/45 flex items-end justify-center p-0 sm:p-4 transition-opacity ${isCommentaryClosing ? 'modal-backdrop-exit' : 'modal-backdrop-enter'
+            }`}
           onClick={handleCloseCommentary}
         >
           <div
-            className={`${currentTheme.commentaryBg} ${currentTheme.canvasText} rounded-t-[28px] sm:rounded-[28px] max-h-[85vh] w-full max-w-lg overflow-y-auto p-5 sm:p-6 space-y-4 relative ${
-              isCommentaryClosing ? 'sheet-exit' : 'sheet-enter'
-            }`}
+            className={`${currentTheme.commentaryBg} ${currentTheme.canvasText} rounded-t-[28px] sm:rounded-[28px] max-h-[85vh] w-full max-w-lg overflow-y-auto p-5 sm:p-6 space-y-4 relative ${isCommentaryClosing ? 'sheet-exit' : 'sheet-enter'
+              }`}
             onClick={(e) => e.stopPropagation()}
           >
             <div className={`flex items-center justify-between pb-3 border-b ${currentTheme.borderColor}`}>
@@ -3188,7 +3137,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               onClick={handleCloseCommentary}
               className="w-full mt-2 py-3 rounded-2xl bg-neutral-100 hover:bg-neutral-200 text-[#18181B] text-xs font-bold uppercase tracking-wider cursor-pointer"
             >
-              Dismiss • Close
+              Close
             </button>
           </div>
         </div>,
@@ -3200,15 +3149,13 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       {/* ========================================================================= */}
       {isGlossaryOpen && typeof document !== 'undefined' && createPortal(
         <div
-          className={`fixed inset-0 z-[100] bg-black/45 flex items-end sm:items-center justify-center p-0 sm:p-4 transition-opacity ${
-            isGlossaryClosing ? 'modal-backdrop-exit' : 'modal-backdrop-enter'
-          }`}
+          className={`fixed inset-0 z-[100] bg-black/45 flex items-end sm:items-center justify-center p-0 sm:p-4 transition-opacity ${isGlossaryClosing ? 'modal-backdrop-exit' : 'modal-backdrop-enter'
+            }`}
           onClick={handleCloseGlossary}
         >
           <div
-            className={`bg-white rounded-t-[28px] sm:rounded-[28px] max-h-[85vh] w-full max-w-lg overflow-y-auto p-5 sm:p-6 space-y-4 relative text-[#18181B] ${
-              isGlossaryClosing ? 'sheet-exit' : 'sheet-enter'
-            }`}
+            className={`bg-white rounded-t-[28px] sm:rounded-[28px] max-h-[85vh] w-full max-w-lg overflow-y-auto p-5 sm:p-6 space-y-4 relative text-[#18181B] ${isGlossaryClosing ? 'sheet-exit' : 'sheet-enter'
+              }`}
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between pb-3 border-b border-neutral-100">
@@ -3262,7 +3209,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               onClick={handleCloseGlossary}
               className="w-full mt-2 py-3 rounded-2xl bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] text-xs font-bold uppercase tracking-wider cursor-pointer"
             >
-              Dismiss • Close
+              Close
             </button>
           </div>
         </div>,
