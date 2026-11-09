@@ -2681,17 +2681,26 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                       <div
                         key={pad.id}
                         id={`verse-stream-${pad.id}`}
-                        className={`scroll-mt-24 sm:scroll-mt-28 p-5 sm:p-7 rounded-2xl border transition-colors duration-200 ${currentTheme.cardHoverBg} ${selectedPad.id === pad.id
-                            ? 'ring-1 ring-amber-300/50 border-amber-300/40'
-                            : currentTheme.borderColor
+                        className={`scroll-mt-24 sm:scroll-mt-28 p-5 sm:p-7 rounded-2xl border transition-all duration-200 relative overflow-hidden ${selectedPad.id === pad.id
+                            ? 'bg-gradient-to-r from-amber-50/40 via-[#FFFDF9] to-white border-neutral-200/90 border-l-[3.5px] border-l-amber-500 shadow-xs'
+                            : `${currentTheme.cardHoverBg} ${currentTheme.borderColor} border-l-[3.5px] border-l-transparent`
                           }`}
                       >
                         {/* Verse Header Line */}
                         <div className={`flex items-center justify-between pb-3 mb-4 border-b ${currentTheme.borderColor} gap-2 flex-wrap`}>
                           <div className="flex items-center gap-2 flex-wrap">
-                            <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-[#FEF08A] text-[#78350F]">
+                            <span className={`px-2.5 py-0.5 rounded-full text-xs font-mono font-bold transition-colors ${selectedPad.id === pad.id
+                                ? 'bg-[#FEF08A] text-[#78350F]'
+                                : 'bg-neutral-100 text-neutral-700'
+                              }`}>
                               ॥ पद {pIdx + 1} ॥
                             </span>
+                            {selectedPad.id === pad.id && (
+                              <span className="text-[10px] font-mono font-semibold text-amber-800 bg-amber-100/70 px-2 py-0.5 rounded-full inline-flex items-center gap-1 select-none">
+                                <span className="w-1.5 h-1.5 rounded-full bg-amber-600 animate-pulse" />
+                                <span>सक्रिय पद</span>
+                              </span>
+                            )}
                             {selectedGrantha === 'all' && (
                               <span className="text-[11px] font-serif font-bold text-amber-900 bg-amber-100/70 px-2.5 py-0.5 rounded-full border border-amber-300/60">
                                 {allGranthas.find((g) => g.id === pad.collectionId)?.name || pad.collectionId}

@@ -866,21 +866,31 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                     key={pad.id}
                     id={`shloka-${pad.id}`}
                     onClick={() => setActiveVerseId(pad.id)}
-                    className={`scroll-mt-28 p-5 sm:p-6 rounded-[16px] border transition-colors duration-200 space-y-4 cursor-pointer select-text ${
+                    className={`scroll-mt-28 p-5 sm:p-6 rounded-[16px] border transition-all duration-200 space-y-4 cursor-pointer select-text relative overflow-hidden ${
                       isActive
-                        ? 'bg-[#FAF8F5] border-amber-300 ring-1 ring-amber-300/50 shadow-2xs'
-                        : 'bg-[#FAF8F5]/50 hover:bg-[#FAF8F5] border-amber-900/10'
+                        ? 'bg-gradient-to-r from-amber-50/40 via-[#FFFDF9] to-white border-neutral-200/90 border-l-[3.5px] border-l-amber-500 shadow-xs'
+                        : 'bg-[#FAF8F5]/60 hover:bg-[#FAF8F5] border-amber-900/10 border-l-[3.5px] border-l-transparent'
                     }`}
                   >
                     {/* Verse Meta Header */}
                     <div className="flex items-center justify-between pb-3 border-b border-amber-900/10 gap-2 flex-wrap text-xs">
                       <div className="flex items-center gap-2 flex-wrap">
-                        <span className="px-2.5 py-0.5 rounded-[6px] font-serif font-bold text-xs bg-[#FEF08A] text-[#78350F] border border-amber-300/60 shrink-0">
+                        <span className={`px-2.5 py-0.5 rounded-[6px] font-serif font-bold text-xs transition-colors shrink-0 ${
+                          isActive
+                            ? 'bg-[#FEF08A] text-[#78350F]'
+                            : 'bg-neutral-100 text-neutral-700'
+                        }`}>
                           ॥ {currentEpicConfig.verseTerm} {formatDevanagariNumerals(idx + 1)} ॥
                         </span>
                         <span className="font-serif font-semibold text-neutral-800 text-xs sm:text-sm">
                           {pad.titleDevanagari}
                         </span>
+                        {isActive && (
+                          <span className="text-[10px] font-mono font-semibold text-amber-800 bg-amber-100/70 px-2 py-0.5 rounded-full inline-flex items-center gap-1 select-none">
+                            <span className="w-1.5 h-1.5 rounded-full bg-amber-600 animate-pulse" />
+                            <span>सक्रिय श्लोक</span>
+                          </span>
+                        )}
                       </div>
 
                       {/* Utility Action Buttons */}
