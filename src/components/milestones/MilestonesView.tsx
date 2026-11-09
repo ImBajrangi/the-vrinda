@@ -330,10 +330,12 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
       </div>
 
       {/* Hero Header & Headline */}
-      <div className="mb-6 flex flex-col md:flex-row md:items-end justify-between gap-4 bg-white p-5 sm:p-6 rounded-[28px] border border-black/5 shadow-xs">
+      <div className="mb-6 flex flex-col md:flex-row md:items-end justify-between gap-4 bg-white p-5 sm:p-6 rounded-[28px] sm:rounded-[32px] border border-black/5 shadow-xs">
         <div>
-          <h1 className="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-[#111111] leading-tight">
-            Unbroken Devotion • <span className="inline-block whitespace-nowrap">अखंड निष्ठा</span>
+          <h1 className="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-[#111111] leading-tight flex flex-wrap items-center gap-x-2">
+            <span className="inline-block whitespace-nowrap">Unbroken Devotion</span>
+            <span className="text-neutral-400 font-normal select-none">•</span>
+            <span className="inline-block whitespace-nowrap">अखंड निष्ठा</span>
           </h1>
           <p className="text-xs sm:text-sm text-[#555555] mt-2 font-medium">
             Grace at every step • Eternal Nikunj Remembrance
@@ -343,7 +345,7 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
         {/* Bento Stats Summary Pills - 100% Real Live Metrics */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 w-full md:w-auto">
           {/* 1. Streak with grammatical pluralization */}
-          <div className="bg-[#FAF9F5] p-3 rounded-2xl flex flex-col justify-between">
+          <div className="bg-[#FAF9F5] p-3 rounded-[8px] flex flex-col justify-between">
             <span className="text-[10px] text-[#6B6F6B] font-semibold flex items-center gap-1 uppercase">
               <Flame className="w-3 h-3 text-[#EF4444]" />
               Streak
@@ -357,7 +359,7 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
           </div>
 
           {/* 2. Real Live Naam Japa Malas (Replacing fake Ekadashi Vrats 10 / 12) */}
-          <div className="bg-[#FAF9F5] p-3 rounded-2xl flex flex-col justify-between">
+          <div className="bg-[#FAF9F5] p-3 rounded-[8px] flex flex-col justify-between">
             <span className="text-[10px] text-[#6B6F6B] font-semibold flex items-center gap-1 uppercase">
               <Sparkles className="w-3 h-3 text-amber-600" />
               Naam Japa
@@ -371,7 +373,7 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
           </div>
 
           {/* 3. Real Svadhyaya Padas with grammatical pluralization */}
-          <div className="bg-[#FAF9F5] p-3 rounded-2xl flex flex-col justify-between">
+          <div className="bg-[#FAF9F5] p-3 rounded-[8px] flex flex-col justify-between">
             <span className="text-[10px] text-[#6B6F6B] font-semibold flex items-center gap-1 uppercase">
               <BookOpen className="w-3 h-3 text-amber-700" />
               Svadhyaya
@@ -385,7 +387,7 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
           </div>
 
           {/* 4. Real Dynamic Devotional Stage (Replacing hardcoded static Rasik Sharana) */}
-          <div className="bg-[#FAF9F5] p-3 rounded-2xl flex flex-col justify-between">
+          <div className="bg-[#FAF9F5] p-3 rounded-[8px] flex flex-col justify-between">
             <span className="text-[10px] text-[#6B6F6B] font-semibold flex items-center gap-1 uppercase">
               <Crown className="w-3 h-3 text-[#D4A359]" />
               Sadhana Stage

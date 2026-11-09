@@ -10,6 +10,7 @@ import { ArtworkGraphicSlot } from './components/common/ArtworkGraphicSlot';
 import { FeedCard } from './components/feed/FeedCard';
 import { MilestonesView } from './components/milestones/MilestonesView';
 import { PadavaliReader } from './components/reader/PadavaliReader';
+import { MahagranthReader } from './components/reader/MahagranthReader';
 import { FloatingAudioPlayer } from './components/player/FloatingAudioPlayer';
 import { SpotlightSearchModal } from './components/common/SpotlightSearchModal';
 import { SaintsDirectoryModal } from './components/common/SaintsDirectoryModal';
@@ -69,18 +70,26 @@ export interface AppProps {
 
 export function App({ initialTab, initialPadId }: AppProps = {}) {
   const [activeTab, setActiveTab] = useState<NavTab>(() => {
-    if (initialTab && ['smaran', 'padavali', 'feed', 'milestones'].includes(initialTab)) {
+    if (initialTab && ['smaran', 'granthas', 'padavali', 'feed', 'milestones'].includes(initialTab)) {
       return initialTab;
     }
     if (initialPadId) {
+      const p = SacredDatabase.getPadById(initialPadId);
+      if (p && SacredDatabase.isEpicGrantha(p.collectionId)) {
+        return 'granthas';
+      }
       return 'padavali';
     }
     try {
       if (typeof window !== 'undefined') {
         const params = new URLSearchParams(window.location.search);
         const t = params.get('tab') as NavTab;
-        if (t && ['smaran', 'padavali', 'feed', 'milestones'].includes(t)) {
+        if (t && ['smaran', 'granthas', 'padavali', 'feed', 'milestones'].includes(t)) {
           return t;
+        }
+        const g = params.get('grantha');
+        if (g && SacredDatabase.isEpicGrantha(g)) {
+          return 'granthas';
         }
         if (params.get('pad') || params.get('author') || params.get('grantha')) {
           return 'padavali';
@@ -261,6 +270,13 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
           description: 'दैनिक अष्टयाम लीला, नाम जप, वाणी श्रवण और स्वाध्याय का पावन साधना स्थल।',
         });
         break;
+      case 'granthas':
+        seo.updateSEO({
+          tab: 'granthas',
+          title: 'सनातन महाग्रंथ पारायण • वाल्मीकि रामायण, भागवत, गीता, रामचरितमानस',
+          description: 'सनातन महाग्रंथों (श्रीमद् वाल्मीकि रामायण, श्रीमद्भागवत महापुराण, श्री रामचरितमानस, श्रीमद्भगवद्गीता, श्री दुर्गा सप्तशती) का अखण्ड, अध्यायवार पावन पाठ।',
+        });
+        break;
       case 'padavali':
         seo.updateSEO({
           tab: 'padavali',
@@ -343,7 +359,11 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
     if (pad.collectionId) {
       setSelectedGranthaFilter(pad.collectionId);
     }
-    setActiveTab('padavali');
+    if (pad.collectionId && SacredDatabase.isEpicGrantha(pad.collectionId)) {
+      setActiveTab('granthas');
+    } else {
+      setActiveTab('padavali');
+    }
     setIsSpotlightOpen(false);
     requestAnimationFrame(() => {
       navigationProgress.done();
@@ -355,6 +375,25 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
     setSelectedGranthaFilter(granthaId);
     setSelectedAuthor(null);
     setReaderSearchQuery('');
+
+    if (SacredDatabase.isEpicGrantha(granthaId)) {
+      setActiveTab('granthas');
+      if (typeof window !== 'undefined') {
+        try {
+          const url = new URL(window.location.href);
+          url.searchParams.set('tab', 'granthas');
+          url.searchParams.set('grantha', granthaId);
+          url.searchParams.delete('author');
+          url.searchParams.delete('pad');
+          window.history.pushState({}, '', url.toString());
+        } catch {}
+      }
+      requestAnimationFrame(() => {
+        navigationProgress.done();
+      });
+      return;
+    }
+
     setActiveTab('padavali');
     if (typeof window !== 'undefined') {
       try {
@@ -499,6 +538,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
   const getScreenBackground = () => {
     switch (activeTab) {
       case 'smaran':
+      case 'granthas':
       case 'padavali':
         // Warm sacred Chandan & Ivory sanctuary canvas with subtle golden aura
         return 'radial-gradient(circle at 50% 0%, #FFFFFF 0%, #FDFBF7 35%, #F7F2E7 100%)';
@@ -512,6 +552,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
   const getScrimGradient = () => {
     switch (activeTab) {
       case 'smaran':
+      case 'granthas':
       case 'padavali':
         // Soft, feather-light Chandan ivory fade matching the page background
         return 'from-[#F7F2E7]/70 via-[#F7F2E7]/25 to-transparent';
@@ -1165,14 +1206,43 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
             </div>
           )}
 
-          {/* Tab 2: Sacred Padavali Reader (3-Column Desktop Desk, 2-Column Tablet, 1-Column Mobile) */}
+          {/* Tab 2: Sanatan Mahagranth Parayana (Piece-by-Piece Streaming Reader for Epics) */}
+          {activeTab === 'granthas' && (
+            <MahagranthReader
+              initialGranthaId={
+                selectedGranthaFilter !== 'all' && SacredDatabase.isEpicGrantha(selectedGranthaFilter)
+                  ? selectedGranthaFilter
+                  : 'valmiki-ramayana'
+              }
+              onSelectGrantha={(gId) => {
+                setSelectedGranthaFilter(gId);
+                if (typeof window !== 'undefined') {
+                  try {
+                    const url = new URL(window.location.href);
+                    url.searchParams.set('tab', 'granthas');
+                    url.searchParams.set('grantha', gId);
+                    window.history.replaceState({}, '', url.toString());
+                  } catch {}
+                }
+              }}
+              onSwitchToPadavali={() => handleTabSwitch('padavali')}
+            />
+          )}
+
+          {/* Tab 3: Sacred Padavali & Chhand Sanctuary */}
           {activeTab === 'padavali' && (
             <PadavaliReader
               onPlayPad={handlePlayPad}
               activePlayingPadId={currentPad?.id}
               isPlaying={isPlayingAudio}
               selectedGranthaId={selectedGranthaFilter}
-              onSelectGranthaId={(gId) => setSelectedGranthaFilter(gId)}
+              onSelectGranthaId={(gId) => {
+                if (SacredDatabase.isEpicGrantha(gId)) {
+                  handleSelectBook(gId);
+                } else {
+                  setSelectedGranthaFilter(gId);
+                }
+              }}
               onSelectPad={(p) => setCurrentPad(p)}
               selectedSearchQuery={readerSearchQuery}
               selectedAuthor={selectedAuthor}
@@ -1184,6 +1254,7 @@ export function App({ initialTab, initialPadId }: AppProps = {}) {
                   ? new URLSearchParams(window.location.search).get('pad') || undefined
                   : undefined)
               }
+              onSwitchToMahagranth={() => handleTabSwitch('granthas')}
             />
           )}
 

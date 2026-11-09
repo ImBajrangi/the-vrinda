@@ -1,0 +1,51 @@
+{
+  "generatedAt": "2026-11-09T08:10:39.838Z",
+  "epicsCount": 5,
+  "epics": [
+    {
+      "id": "valmiki-ramayana",
+      "name": "श्रीमद् वाल्मीकि रामायण",
+      "author": "महर्षि वाल्मीकि",
+      "description": "आदिकवि महर्षि वाल्मीकि प्रणीत प्रभु श्री राम के दिव्य चरित्र का अमर महाकाव्य",
+      "totalVerses": 14079,
+      "totalChapters": 408,
+      "indexPath": "/data/epics/valmiki-ramayana/index.json"
+    },
+    {
+      "id": "shrimad-bhagavatam",
+      "name": "श्रीमद् भागवत महापुराण",
+      "author": "महर्षि वेदव्यास",
+      "description": "परमहंस संहिता, श्रीकृष्ण लीलामृत एवं अमलरस की सर्वोच्च भागवती ज्ञानधारा",
+      "totalVerses": 12428,
+      "totalChapters": 334,
+      "indexPath": "/data/epics/shrimad-bhagavatam/index.json"
+    },
+    {
+      "id": "ramcharitmanas",
+      "name": "श्री रामचरितमानस",
+      "author": "गोस्वामी तुलसीदास",
+      "description": "कलयुग तारक प्रभु श्री राम के पावन चरित्र का अवधी महाकाव्य",
+      "totalVerses": 960,
+      "totalChapters": 7,
+      "indexPath": "/data/epics/ramcharitmanas/index.json"
+    },
+    {
+      "id": "bhagavad-gita",
+      "name": "श्रीमद्भगवद्गीता",
+      "author": "महर्षि वेदव्यास",
+      "description": "कुरुक्षेत्र के समरांगण में योगेश्वर श्रीकृष्ण द्वारा अर्जुन को दिया गया आत्मज्ञान",
+      "totalVerses": 658,
+      "totalChapters": 18,
+      "indexPath": "/data/epics/bhagavad-gita/index.json"
+    },
+    {
+      "id": "durga-saptashati",
+      "name": "श्री दुर्गा सप्तशती",
+      "author": "महर्षि मार्कण्डेय",
+      "description": "मार्कण्डेय पुराणान्तर्गत आदिशक्ति माँ भगवती के प्राकट्य व महात्म्य की पवित्र सप्तशती",
+      "totalVerses": 555,
+      "totalChapters": 14,
+      "indexPath": "/data/epics/durga-saptashati/index.json"
+    }
+  ]
+}

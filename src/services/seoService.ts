@@ -15,7 +15,7 @@ export interface SEOConfig {
   ogType?: 'website' | 'article' | 'book';
   ogImage?: string;
   pad?: SacredPad;
-  tab?: 'smaran' | 'padavali' | 'feed' | 'milestones';
+  tab?: 'smaran' | 'granthas' | 'padavali' | 'feed' | 'milestones';
 }
 
 export interface SEOMetadataResult {

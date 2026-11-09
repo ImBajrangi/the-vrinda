@@ -1,0 +1,981 @@
+[
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-1",
+    "collectionId": "valmiki-ramayana",
+    "index": 9255,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 1",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-1",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "तत्र दिव्योपमं मुख्यं स्फाटिकं रत्नभूषितम्।",
+          "अवेक्षमाणो हनुमान् ददर्श शयनासनम्॥१॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 1
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-2",
+    "collectionId": "valmiki-ramayana",
+    "index": 9256,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 2",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-2",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "दान्तकाञ्चनचित्रांगैवैदूर्यैश्च वरासनैः।",
+          "महार्हास्तरणोपेतैरुपपन्नं महाधनैः॥२॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 2
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-3",
+    "collectionId": "valmiki-ramayana",
+    "index": 9257,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 3",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-3",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "तस्य चैकतमे देशे दिव्यमालोपशोभितम्।",
+          "ददर्श पाण्डुरं छत्रं ताराधिपतिसंनिभम्॥३॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 3
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-4",
+    "collectionId": "valmiki-ramayana",
+    "index": 9258,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 4",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-4",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "जातरूपपरिक्षिप्तं चित्रभानोः समप्रभम्।",
+          "अशोकमालाविततं ददर्श परमासनम्॥४॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 4
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-5",
+    "collectionId": "valmiki-ramayana",
+    "index": 9259,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 5",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-5",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "वालव्यजनहस्ताभिर्वीज्यमानं समन्ततः।",
+          "गन्धैश्च विविधैर्जुष्टं वरधूपेन धूपितम्॥५॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 5
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-6",
+    "collectionId": "valmiki-ramayana",
+    "index": 9260,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 6",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-6",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "परमास्तरणास्तीर्णमाविकाजिनसंवृतम्।",
+          "दामभिर्वरमाल्यानां समन्तादुपशोभितम्॥६॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 6
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-10",
+    "collectionId": "valmiki-ramayana",
+    "index": 9261,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 10",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-10",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "॥ श्रीसीतारामचन्द्राभ्यां नमः॥",
+          "श्रीमद्वाल्मीकीय रामायण",
+          "सुन्दरकाण्डम्",
+          "दशमः सर्गः (10)",
+          "इत्याचे श्रीमद्रामायणे वाल्मीकीये आदिकाव्ये सुन्दरकाण्डे दशमः सर्गः॥१०॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 10
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-11",
+    "collectionId": "valmiki-ramayana",
+    "index": 9262,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 11",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-11",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "तस्मिञ्जीमूतसंकाशं प्रदीप्तोज्ज्वलकुण्डलम्।",
+          "लोहिताक्षं महाबाहुं महारजतवाससम्॥७॥",
+          "लोहितेनानुलिप्तांगं चन्दनेन सुगन्धिना।",
+          "संध्यारक्तमिवाकाशे तोयदं सतडिद्गुणम्॥८॥",
+          "वृतमाभरणैर्दिव्यैः सुरूपं कामरूपिणम्।",
+          "सवृक्षवनगुल्माढ्यं प्रसुप्तमिव मन्दरम्॥९॥",
+          "क्रीडित्वोपरतं रात्रौ वराभरणभूषितम्।",
+          "प्रियं राक्षसकन्यानां राक्षसानां सुखावहम्॥१०॥",
+          "पीत्वाप्युपरतं चापि ददर्श स महाकपिः।",
+          "भास्वरे शयने वीरं प्रसुप्तं राक्षसाधिपम्॥११॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 11
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-13",
+    "collectionId": "valmiki-ramayana",
+    "index": 9263,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 13",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-13",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "निःश्वसन्तं यथा नागं रावणं वानरोत्तमः।",
+          "आसाद्य परमोद्विग्नः सोपासर्पत् सुभीतवत्॥१२॥",
+          "अथारोहणमासाद्य वेदिकान्तरमाश्रितः।",
+          "क्षीबं राक्षसशार्दूलं प्रेक्षते स्म महाकपिः॥१३॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 13
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-14",
+    "collectionId": "valmiki-ramayana",
+    "index": 9264,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 14",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-14",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "शुशुभे राक्षसेन्द्रस्य स्वपतः शयनं शुभम्।",
+          "गन्धहस्तिनि संविष्टे यथा प्रस्रवणं महत्॥१४॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 14
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-15",
+    "collectionId": "valmiki-ramayana",
+    "index": 9265,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 15",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-15",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "काञ्चनांगदसंनद्धौ ददर्श स महात्मनः।",
+          "विक्षिप्तौ राक्षसेन्द्रस्य भुजाविन्द्रध्वजोपमौ॥१५॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 15
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-16",
+    "collectionId": "valmiki-ramayana",
+    "index": 9266,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 16",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-16",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "ऐरावतविषाणा|रापीडनकृतव्रणौ।",
+          "वज्रोल्लिखितपीनांसौ विष्णुचक्रपरिक्षतौ॥१६॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 16
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-17",
+    "collectionId": "valmiki-ramayana",
+    "index": 9267,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 17",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-17",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "पीनौ समसुजातांसौ संगतौ बलसंयुतौ।",
+          "सुलक्षणनखांगुष्ठौ स्वंगुलीयकलक्षितौ॥१७॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 17
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-18",
+    "collectionId": "valmiki-ramayana",
+    "index": 9268,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 18",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-18",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "संहतौ परिघाकारौ वृत्तौ करिकरोपमौ।",
+          "विक्षिप्तौ शयने शुभ्रे पञ्चशीर्षाविवोरगौ॥१८॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 18
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-19",
+    "collectionId": "valmiki-ramayana",
+    "index": 9269,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 19",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-19",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "शशक्षतजकल्पेन सुशीतेन सुगन्धिना।",
+          "चन्दनेन परायेन स्वनुलिप्तौ स्वलंकृतौ॥१९॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 19
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-20",
+    "collectionId": "valmiki-ramayana",
+    "index": 9270,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 20",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-20",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "उत्तमस्त्रीविमृदितौ गन्धोत्तमनिषेवितौ।",
+          "यक्षपन्नगगन्धर्वदेवदानवराविणौ ॥२०॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 20
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-21",
+    "collectionId": "valmiki-ramayana",
+    "index": 9271,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 21",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-21",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "ददर्श स कपिस्तस्य बाहू शयनसंस्थितौ।",
+          "मन्दरस्यान्तरे सुप्तौ महाही रुषिताविव॥२१॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 21
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-22",
+    "collectionId": "valmiki-ramayana",
+    "index": 9272,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 22",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-22",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "ताभ्यां स परिपूर्णाभ्यामुभाभ्यां राक्षसेश्वरः।",
+          "शुशुभेऽचलसंकाशः श्रृंगाभ्यामिव मन्दरः॥२२॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 22
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-24",
+    "collectionId": "valmiki-ramayana",
+    "index": 9273,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 24",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-24",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "चूतनागसुरभिर्बकुलोत्तमसंयुतः।",
+          "मृष्टान्नरससंयुक्तः पानगन्धपुरःसरः॥२३॥",
+          "तस्य राक्षसराजस्य निश्चक्राम महामुखात्।",
+          "शयानस्य विनिःश्वासः पूरयन्निव तद् गृहम्॥२४॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 24
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-25",
+    "collectionId": "valmiki-ramayana",
+    "index": 9274,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 25",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-25",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "मुक्तामणिविचित्रेण काञ्चनेन विराजिता।",
+          "मुकुटेनापवृत्तेन कुण्डलोज्ज्वलिताननम्॥२५॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 25
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-26",
+    "collectionId": "valmiki-ramayana",
+    "index": 9275,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 26",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-26",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "रक्तचन्दनदिग्धेन तथा हारेण शोभिना।",
+          "पीनायतविशालेन वक्षसाभिविराजिता॥२६॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 26
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-27",
+    "collectionId": "valmiki-ramayana",
+    "index": 9276,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 27",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-27",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "पाण्डुरेणापविद्धन क्षौमेण क्षतजेक्षणम्।",
+          "महार्हेण सुसंवीतं पीतेनोत्तरवाससा॥२७॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 27
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-28",
+    "collectionId": "valmiki-ramayana",
+    "index": 9277,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 28",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-28",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "माषराशिप्रतीकाशं निःश्वसन्तं भुजंगवत्।",
+          "गांगे महति तोयान्ते प्रसुप्तमिव कुञ्जरम्॥२८॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 28
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-29",
+    "collectionId": "valmiki-ramayana",
+    "index": 9278,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 29",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-29",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "चतुर्भिः काञ्चनैर्दीपैर्दीप्यमानं चतुर्दिशम्।",
+          "प्रकाशीकृतसर्वांगं मेघ विद्युद्गणैरिव॥२९॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 29
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-30",
+    "collectionId": "valmiki-ramayana",
+    "index": 9279,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 30",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-30",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "पादमूलगताश्चापि ददर्श सुमहात्मनः।",
+          "पत्नीः स प्रियभार्यस्य तस्य रक्षःपतेहे ॥३०॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 30
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-31",
+    "collectionId": "valmiki-ramayana",
+    "index": 9280,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 31",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-31",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "शशिप्रकाशवदना वरकुण्डलभूषणाः।",
+          "अम्लानमाल्याभरणा ददर्श हरियूथपः॥३१॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 31
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-32",
+    "collectionId": "valmiki-ramayana",
+    "index": 9281,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 32",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-32",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "नृत्यवादित्रकुशला राक्षसेन्द्रभुजाङ्कगाः।",
+          "वराभरणधारिण्यो निषण्णा ददृशे कपिः॥ ३२॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 32
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-33",
+    "collectionId": "valmiki-ramayana",
+    "index": 9282,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 33",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-33",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "वज्रवैदूर्यगर्भाणि श्रवणान्तेषु योषिताम्।",
+          "ददर्श तापनीयानि कुण्डलान्यंगदानि च॥३३॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 33
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-34",
+    "collectionId": "valmiki-ramayana",
+    "index": 9283,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 34",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-34",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "तासां चन्द्रोपमैर्वक्त्रैः शुभैललितकुण्डलैः।",
+          "विरराज विमानं तन्नभस्तारागणैरिव॥३४॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 34
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-35",
+    "collectionId": "valmiki-ramayana",
+    "index": 9284,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 35",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-35",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "मदव्यायामखिन्नास्ता राक्षसेन्द्रस्य योषितः।",
+          "तेषु तेष्ववकाशेषु प्रसुप्तास्तनुमध्यमाः॥ ३५॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 35
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-36",
+    "collectionId": "valmiki-ramayana",
+    "index": 9285,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 36",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-36",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "अंगहारैस्तथैवान्या कोमलैर्नृत्यशालिनी।",
+          "विन्यस्तशुभसर्वांगी प्रसुप्ता वरवर्णिनी॥३६॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 36
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-37",
+    "collectionId": "valmiki-ramayana",
+    "index": 9286,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 37",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-37",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "काचिद् वीणां परिष्वज्य प्रसुप्ता सम्प्रकाशते।",
+          "महानदीप्रकीर्णेव नलिनी पोतमाश्रिता॥३७॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 37
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-38",
+    "collectionId": "valmiki-ramayana",
+    "index": 9287,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 38",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-38",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "अन्या कक्षगतेनैव मड्डकेनासितेक्षणा।",
+          "प्रसुप्ता भामिनी भाति बालपुत्रेव वत्सला॥३८॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 38
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-39",
+    "collectionId": "valmiki-ramayana",
+    "index": 9288,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 39",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-39",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "पटहं चारुसर्वांगी न्यस्य शेते शुभस्तनी।",
+          "चिरस्य रमणं लब्ध्वा परिष्वज्येव कामिनी॥३९॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 39
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-40",
+    "collectionId": "valmiki-ramayana",
+    "index": 9289,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 40",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-40",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "काचिद् वीणां परिष्वज्य सुप्ता कमललोचना।",
+          "वरं प्रियतमं गृह्य सकामेव हि कामिनी॥४०॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 40
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-41",
+    "collectionId": "valmiki-ramayana",
+    "index": 9290,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 41",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-41",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "विपञ्ची परिगृह्यान्या नियता नृत्यशालिनी।",
+          "निद्रावशमनुप्राप्ता सहकान्तेव भामिनी॥४१॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 41
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-42",
+    "collectionId": "valmiki-ramayana",
+    "index": 9291,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 42",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-42",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "अन्या कनकसंकाशैर्मृदुपीनैर्मनोरमैः।",
+          "मृदंगं परिविद्ध्यांगैः प्रसुप्ता मत्तलोचना॥४२॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 42
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-43",
+    "collectionId": "valmiki-ramayana",
+    "index": 9292,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 43",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-43",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "भुजपाशान्तरस्थेन कक्षगेन कृशोदरी।",
+          "पणवेन सहानिन्द्या सुप्ता मदकृतश्रमा॥४३॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 43
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-44",
+    "collectionId": "valmiki-ramayana",
+    "index": 9293,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 44",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-44",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "डिण्डिमं परिगृह्यान्या तथैवासक्तडिण्डिमा।",
+          "प्रसुप्ता तरुणं वत्समुपगुह्येव भामिनी॥४४॥",
+          "४४॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 44
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-45",
+    "collectionId": "valmiki-ramayana",
+    "index": 9294,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 45",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-45",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "काचिदाडम्बरं नारी भुजसम्भोगपीडितम्।",
+          "कृत्वा कमलपत्राक्षी प्रसुप्ता मदमोहिता॥४५॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 45
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-46",
+    "collectionId": "valmiki-ramayana",
+    "index": 9295,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 46",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-46",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "कलशीमपविद्ध्यान्या प्रसुप्ता भाति भामिनी।",
+          "वसन्ते पुष्पशबला मालेव परिमार्जिता॥४६॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 46
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-47",
+    "collectionId": "valmiki-ramayana",
+    "index": 9296,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 47",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-47",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "पाणिभ्यां च कुचौ काचित् सुवर्णकलशोपमौ।",
+          "उपगुह्याबला सुप्ता निद्राबलपराजिता॥४७॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 47
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-48",
+    "collectionId": "valmiki-ramayana",
+    "index": 9297,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 48",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-48",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "अन्या कमलपत्राक्षी पूर्णेन्दुसदृशानना।",
+          "अन्यामालिंग्य सुश्रोणी प्रसुप्ता मदविह्वला॥४८॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 48
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-49",
+    "collectionId": "valmiki-ramayana",
+    "index": 9298,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 49",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-49",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "आतोद्यानि विचित्राणि परिष्वज्य वरस्त्रियः।",
+          "निपीड्य च कुचैः सुप्ताः कामिन्यः कामुकानिव॥४९॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 49
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-50",
+    "collectionId": "valmiki-ramayana",
+    "index": 9299,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 50",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-50",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "तासामेकान्तविन्यस्ते शयानां शयने शुभे।",
+          "ददर्श रूपसम्पन्नामथ तां स कपिः स्त्रियम्॥५०॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 50
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-51",
+    "collectionId": "valmiki-ramayana",
+    "index": 9300,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 51",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-51",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "मुक्तामणिसमायुक्तैर्भूषणैः सुविभूषिताम्।",
+          "विभूषयन्तीमिव च स्वश्रिया भवनोत्तमम्॥५१॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 51
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-53",
+    "collectionId": "valmiki-ramayana",
+    "index": 9301,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 53",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-53",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "गौरी कनकवर्णाभामिष्टामन्तःपुरेश्वरीम्।",
+          "कपिर्मन्दोदरी तत्र शयानां चारुरूपिणीम्॥५२॥",
+          "स तां दृष्ट्वा महाबाहुर्भूषितां मारुतात्मजः।",
+          "तर्कयामास सीतेति रूपयौवनसम्पदा।",
+          "हर्षेण महता युक्तो ननन्द हरियूथपः॥५३॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 53
+  },
+  {
+    "id": "valmiki-ramayana-5-sarga-10-shlok-54",
+    "collectionId": "valmiki-ramayana",
+    "index": 9302,
+    "titleDevanagari": "वाल्मीकि रामायण, सुन्दरकाण्ड, सर्ग 10, श्लोक 54",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-5-sarga-10-shlok-54",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "आस्फोटयामास चुचुम्ब पुच्छं ननन्द चिक्रीड जगौ जगाम।",
+          "स्तम्भानरोहन्निपपात भूमौ निदर्शयन् स्वां प्रकृति कपीनाम्॥५४॥"
+        ]
+      }
+    ],
+    "chapterId": "सुन्दरकाण्ड-sarga-10",
+    "chapterName": "सुन्दरकाण्ड, सर्ग 10",
+    "verseNumber": 54
+  }
+]

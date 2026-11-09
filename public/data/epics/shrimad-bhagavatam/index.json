@@ -1,0 +1,3016 @@
+{
+  "id": "shrimad-bhagavatam",
+  "name": "श्रीमद् भागवत महापुराण",
+  "author": "महर्षि वेदव्यास",
+  "description": "परमहंस संहिता, श्रीकृष्ण लीलामृत एवं अमलरस की सर्वोच्च भागवती ज्ञानधारा",
+  "totalVerses": 12428,
+  "totalChapters": 334,
+  "chapters": [
+    {
+      "id": "skandh-1-adhyay-1",
+      "name": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 1",
+      "section": "प्रथम स्कन्ध (सृष्टि लीला)",
+      "verseCount": 186,
+      "file": "ch-001-skandh-1-adhyay-1.json",
+      "firstPadId": "shrimad-bhagwat-skandh-1-adhyay-1-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-1-adhyay-1-shlok-1"
+    },
+    {
+      "id": "skandh-1-adhyay-2",
+      "name": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 2",
+      "section": "प्रथम स्कन्ध (सृष्टि लीला)",
+      "verseCount": 30,
+      "file": "ch-002-skandh-1-adhyay-2.json",
+      "firstPadId": "shrimad-bhagwat-skandh-1-adhyay-2-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-1-adhyay-2-shlok-1"
+    },
+    {
+      "id": "skandh-1-adhyay-3",
+      "name": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 3",
+      "section": "प्रथम स्कन्ध (सृष्टि लीला)",
+      "verseCount": 42,
+      "file": "ch-003-skandh-1-adhyay-3.json",
+      "firstPadId": "shrimad-bhagwat-skandh-1-adhyay-3-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-1-adhyay-3-shlok-1"
+    },
+    {
+      "id": "skandh-1-adhyay-4",
+      "name": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 4",
+      "section": "प्रथम स्कन्ध (सृष्टि लीला)",
+      "verseCount": 27,
+      "file": "ch-004-skandh-1-adhyay-4.json",
+      "firstPadId": "shrimad-bhagwat-skandh-1-adhyay-4-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-1-adhyay-4-shlok-1"
+    },
+    {
+      "id": "skandh-1-adhyay-5",
+      "name": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 5",
+      "section": "प्रथम स्कन्ध (सृष्टि लीला)",
+      "verseCount": 38,
+      "file": "ch-005-skandh-1-adhyay-5.json",
+      "firstPadId": "shrimad-bhagwat-skandh-1-adhyay-5-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-1-adhyay-5-shlok-1"
+    },
+    {
+      "id": "skandh-1-adhyay-6",
+      "name": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 6",
+      "section": "प्रथम स्कन्ध (सृष्टि लीला)",
+      "verseCount": 3,
+      "file": "ch-006-skandh-1-adhyay-6.json",
+      "firstPadId": "shrimad-bhagwat-skandh-1-adhyay-6-shlok-27",
+      "firstPadSlug": "shrimad-bhagwat-skandh-1-adhyay-6-shlok-27"
+    },
+    {
+      "id": "skandh-1-adhyay-7",
+      "name": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 7",
+      "section": "प्रथम स्कन्ध (सृष्टि लीला)",
+      "verseCount": 52,
+      "file": "ch-007-skandh-1-adhyay-7.json",
+      "firstPadId": "shrimad-bhagwat-skandh-1-adhyay-7-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-1-adhyay-7-shlok-1"
+    },
+    {
+      "id": "skandh-1-adhyay-8",
+      "name": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 8",
+      "section": "प्रथम स्कन्ध (सृष्टि लीला)",
+      "verseCount": 46,
+      "file": "ch-008-skandh-1-adhyay-8.json",
+      "firstPadId": "shrimad-bhagwat-skandh-1-adhyay-8-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-1-adhyay-8-shlok-1"
+    },
+    {
+      "id": "skandh-1-adhyay-9",
+      "name": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 9",
+      "section": "प्रथम स्कन्ध (सृष्टि लीला)",
+      "verseCount": 9,
+      "file": "ch-009-skandh-1-adhyay-9.json",
+      "firstPadId": "shrimad-bhagwat-skandh-1-adhyay-9-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-1-adhyay-9-shlok-1"
+    },
+    {
+      "id": "skandh-1-adhyay-10",
+      "name": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 10",
+      "section": "प्रथम स्कन्ध (सृष्टि लीला)",
+      "verseCount": 5,
+      "file": "ch-010-skandh-1-adhyay-10.json",
+      "firstPadId": "shrimad-bhagwat-skandh-1-adhyay-10-shlok-20",
+      "firstPadSlug": "shrimad-bhagwat-skandh-1-adhyay-10-shlok-20"
+    },
+    {
+      "id": "skandh-1-adhyay-12",
+      "name": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 12",
+      "section": "प्रथम स्कन्ध (सृष्टि लीला)",
+      "verseCount": 1,
+      "file": "ch-011-skandh-1-adhyay-12.json",
+      "firstPadId": "shrimad-bhagwat-skandh-1-adhyay-12-shlok-3",
+      "firstPadSlug": "shrimad-bhagwat-skandh-1-adhyay-12-shlok-3"
+    },
+    {
+      "id": "skandh-1-adhyay-13",
+      "name": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 13",
+      "section": "प्रथम स्कन्ध (सृष्टि लीला)",
+      "verseCount": 2,
+      "file": "ch-012-skandh-1-adhyay-13.json",
+      "firstPadId": "shrimad-bhagwat-skandh-1-adhyay-13-shlok-14",
+      "firstPadSlug": "shrimad-bhagwat-skandh-1-adhyay-13-shlok-14"
+    },
+    {
+      "id": "skandh-1-adhyay-14",
+      "name": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 14",
+      "section": "प्रथम स्कन्ध (सृष्टि लीला)",
+      "verseCount": 40,
+      "file": "ch-013-skandh-1-adhyay-14.json",
+      "firstPadId": "shrimad-bhagwat-skandh-1-adhyay-14-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-1-adhyay-14-shlok-1"
+    },
+    {
+      "id": "skandh-1-adhyay-15",
+      "name": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 15",
+      "section": "प्रथम स्कन्ध (सृष्टि लीला)",
+      "verseCount": 46,
+      "file": "ch-014-skandh-1-adhyay-15.json",
+      "firstPadId": "shrimad-bhagwat-skandh-1-adhyay-15-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-1-adhyay-15-shlok-1"
+    },
+    {
+      "id": "skandh-1-adhyay-16",
+      "name": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 16",
+      "section": "प्रथम स्कन्ध (सृष्टि लीला)",
+      "verseCount": 28,
+      "file": "ch-015-skandh-1-adhyay-16.json",
+      "firstPadId": "shrimad-bhagwat-skandh-1-adhyay-16-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-1-adhyay-16-shlok-1"
+    },
+    {
+      "id": "skandh-1-adhyay-17",
+      "name": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 17",
+      "section": "प्रथम स्कन्ध (सृष्टि लीला)",
+      "verseCount": 10,
+      "file": "ch-016-skandh-1-adhyay-17.json",
+      "firstPadId": "shrimad-bhagwat-skandh-1-adhyay-17-shlok-16",
+      "firstPadSlug": "shrimad-bhagwat-skandh-1-adhyay-17-shlok-16"
+    },
+    {
+      "id": "skandh-1-adhyay-18",
+      "name": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 18",
+      "section": "प्रथम स्कन्ध (सृष्टि लीला)",
+      "verseCount": 4,
+      "file": "ch-017-skandh-1-adhyay-18.json",
+      "firstPadId": "shrimad-bhagwat-skandh-1-adhyay-18-shlok-46",
+      "firstPadSlug": "shrimad-bhagwat-skandh-1-adhyay-18-shlok-46"
+    },
+    {
+      "id": "skandh-1-adhyay-19",
+      "name": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 19",
+      "section": "प्रथम स्कन्ध (सृष्टि लीला)",
+      "verseCount": 20,
+      "file": "ch-018-skandh-1-adhyay-19.json",
+      "firstPadId": "shrimad-bhagwat-skandh-1-adhyay-19-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-1-adhyay-19-shlok-1"
+    },
+    {
+      "id": "skandh-2-adhyay-1",
+      "name": "द्वितीय स्कन्ध (साधन लीला), अध्याय 1",
+      "section": "द्वितीय स्कन्ध (साधन लीला)",
+      "verseCount": 39,
+      "file": "ch-019-skandh-2-adhyay-1.json",
+      "firstPadId": "shrimad-bhagwat-skandh-2-adhyay-1-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-2-adhyay-1-shlok-1"
+    },
+    {
+      "id": "skandh-2-adhyay-2",
+      "name": "द्वितीय स्कन्ध (साधन लीला), अध्याय 2",
+      "section": "द्वितीय स्कन्ध (साधन लीला)",
+      "verseCount": 37,
+      "file": "ch-020-skandh-2-adhyay-2.json",
+      "firstPadId": "shrimad-bhagwat-skandh-2-adhyay-2-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-2-adhyay-2-shlok-1"
+    },
+    {
+      "id": "skandh-2-adhyay-3",
+      "name": "द्वितीय स्कन्ध (साधन लीला), अध्याय 3",
+      "section": "द्वितीय स्कन्ध (साधन लीला)",
+      "verseCount": 24,
+      "file": "ch-021-skandh-2-adhyay-3.json",
+      "firstPadId": "shrimad-bhagwat-skandh-2-adhyay-3-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-2-adhyay-3-shlok-1"
+    },
+    {
+      "id": "skandh-2-adhyay-4",
+      "name": "द्वितीय स्कन्ध (साधन लीला), अध्याय 4",
+      "section": "द्वितीय स्कन्ध (साधन लीला)",
+      "verseCount": 24,
+      "file": "ch-022-skandh-2-adhyay-4.json",
+      "firstPadId": "shrimad-bhagwat-skandh-2-adhyay-4-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-2-adhyay-4-shlok-1"
+    },
+    {
+      "id": "skandh-2-adhyay-5",
+      "name": "द्वितीय स्कन्ध (साधन लीला), अध्याय 5",
+      "section": "द्वितीय स्कन्ध (साधन लीला)",
+      "verseCount": 38,
+      "file": "ch-023-skandh-2-adhyay-5.json",
+      "firstPadId": "shrimad-bhagwat-skandh-2-adhyay-5-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-2-adhyay-5-shlok-1"
+    },
+    {
+      "id": "skandh-2-adhyay-6",
+      "name": "द्वितीय स्कन्ध (साधन लीला), अध्याय 6",
+      "section": "द्वितीय स्कन्ध (साधन लीला)",
+      "verseCount": 35,
+      "file": "ch-024-skandh-2-adhyay-6.json",
+      "firstPadId": "shrimad-bhagwat-skandh-2-adhyay-6-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-2-adhyay-6-shlok-1"
+    },
+    {
+      "id": "skandh-2-adhyay-7",
+      "name": "द्वितीय स्कन्ध (साधन लीला), अध्याय 7",
+      "section": "द्वितीय स्कन्ध (साधन लीला)",
+      "verseCount": 48,
+      "file": "ch-025-skandh-2-adhyay-7.json",
+      "firstPadId": "shrimad-bhagwat-skandh-2-adhyay-7-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-2-adhyay-7-shlok-1"
+    },
+    {
+      "id": "skandh-2-adhyay-8",
+      "name": "द्वितीय स्कन्ध (साधन लीला), अध्याय 8",
+      "section": "द्वितीय स्कन्ध (साधन लीला)",
+      "verseCount": 26,
+      "file": "ch-026-skandh-2-adhyay-8.json",
+      "firstPadId": "shrimad-bhagwat-skandh-2-adhyay-8-shlok-2",
+      "firstPadSlug": "shrimad-bhagwat-skandh-2-adhyay-8-shlok-2"
+    },
+    {
+      "id": "skandh-2-adhyay-9",
+      "name": "द्वितीय स्कन्ध (साधन लीला), अध्याय 9",
+      "section": "द्वितीय स्कन्ध (साधन लीला)",
+      "verseCount": 42,
+      "file": "ch-027-skandh-2-adhyay-9.json",
+      "firstPadId": "shrimad-bhagwat-skandh-2-adhyay-9-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-2-adhyay-9-shlok-1"
+    },
+    {
+      "id": "skandh-2-adhyay-10",
+      "name": "द्वितीय स्कन्ध (साधन लीला), अध्याय 10",
+      "section": "द्वितीय स्कन्ध (साधन लीला)",
+      "verseCount": 47,
+      "file": "ch-028-skandh-2-adhyay-10.json",
+      "firstPadId": "shrimad-bhagwat-skandh-2-adhyay-10-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-2-adhyay-10-shlok-1"
+    },
+    {
+      "id": "skandh-3-adhyay-1",
+      "name": "तृतीय स्कन्ध (सर्ग लीला), अध्याय 1",
+      "section": "तृतीय स्कन्ध (सर्ग लीला)",
+      "verseCount": 40,
+      "file": "ch-029-skandh-3-adhyay-1.json",
+      "firstPadId": "shrimad-bhagwat-skandh-3-adhyay-1-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-3-adhyay-1-shlok-1"
+    },
+    {
+      "id": "skandh-3-adhyay-2",
+      "name": "तृतीय स्कन्ध (सर्ग लीला), अध्याय 2",
+      "section": "तृतीय स्कन्ध (सर्ग लीला)",
+      "verseCount": 32,
+      "file": "ch-030-skandh-3-adhyay-2.json",
+      "firstPadId": "shrimad-bhagwat-skandh-3-adhyay-2-shlok-2",
+      "firstPadSlug": "shrimad-bhagwat-skandh-3-adhyay-2-shlok-2"
+    },
+    {
+      "id": "skandh-3-adhyay-3",
+      "name": "तृतीय स्कन्ध (सर्ग लीला), अध्याय 3",
+      "section": "तृतीय स्कन्ध (सर्ग लीला)",
+      "verseCount": 26,
+      "file": "ch-031-skandh-3-adhyay-3.json",
+      "firstPadId": "shrimad-bhagwat-skandh-3-adhyay-3-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-3-adhyay-3-shlok-1"
+    },
+    {
+      "id": "skandh-3-adhyay-4",
+      "name": "तृतीय स्कन्ध (सर्ग लीला), अध्याय 4",
+      "section": "तृतीय स्कन्ध (सर्ग लीला)",
+      "verseCount": 30,
+      "file": "ch-032-skandh-3-adhyay-4.json",
+      "firstPadId": "shrimad-bhagwat-skandh-3-adhyay-4-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-3-adhyay-4-shlok-1"
+    },
+    {
+      "id": "skandh-3-adhyay-5",
+      "name": "तृतीय स्कन्ध (सर्ग लीला), अध्याय 5",
+      "section": "तृतीय स्कन्ध (सर्ग लीला)",
+      "verseCount": 47,
+      "file": "ch-033-skandh-3-adhyay-5.json",
+      "firstPadId": "shrimad-bhagwat-skandh-3-adhyay-5-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-3-adhyay-5-shlok-1"
+    },
+    {
+      "id": "skandh-3-adhyay-6",
+      "name": "तृतीय स्कन्ध (सर्ग लीला), अध्याय 6",
+      "section": "तृतीय स्कन्ध (सर्ग लीला)",
+      "verseCount": 36,
+      "file": "ch-034-skandh-3-adhyay-6.json",
+      "firstPadId": "shrimad-bhagwat-skandh-3-adhyay-6-shlok-3",
+      "firstPadSlug": "shrimad-bhagwat-skandh-3-adhyay-6-shlok-3"
+    },
+    {
+      "id": "skandh-3-adhyay-7",
+      "name": "तृतीय स्कन्ध (सर्ग लीला), अध्याय 7",
+      "section": "तृतीय स्कन्ध (सर्ग लीला)",
+      "verseCount": 37,
+      "file": "ch-035-skandh-3-adhyay-7.json",
+      "firstPadId": "shrimad-bhagwat-skandh-3-adhyay-7-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-3-adhyay-7-shlok-1"
+    },
+    {
+      "id": "skandh-3-adhyay-8",
+      "name": "तृतीय स्कन्ध (सर्ग लीला), अध्याय 8",
+      "section": "तृतीय स्कन्ध (सर्ग लीला)",
+      "verseCount": 30,
+      "file": "ch-036-skandh-3-adhyay-8.json",
+      "firstPadId": "shrimad-bhagwat-skandh-3-adhyay-8-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-3-adhyay-8-shlok-1"
+    },
+    {
+      "id": "skandh-3-adhyay-9",
+      "name": "तृतीय स्कन्ध (सर्ग लीला), अध्याय 9",
+      "section": "तृतीय स्कन्ध (सर्ग लीला)",
+      "verseCount": 42,
+      "file": "ch-037-skandh-3-adhyay-9.json",
+      "firstPadId": "shrimad-bhagwat-skandh-3-adhyay-9-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-3-adhyay-9-shlok-1"
+    },
+    {
+      "id": "skandh-3-adhyay-10",
+      "name": "तृतीय स्कन्ध (सर्ग लीला), अध्याय 10",
+      "section": "तृतीय स्कन्ध (सर्ग लीला)",
+      "verseCount": 28,
+      "file": "ch-038-skandh-3-adhyay-10.json",
+      "firstPadId": "shrimad-bhagwat-skandh-3-adhyay-10-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-3-adhyay-10-shlok-1"
+    },
+    {
+      "id": "skandh-3-adhyay-11",
+      "name": "तृतीय स्कन्ध (सर्ग लीला), अध्याय 11",
+      "section": "तृतीय स्कन्ध (सर्ग लीला)",
+      "verseCount": 38,
+      "file": "ch-039-skandh-3-adhyay-11.json",
+      "firstPadId": "shrimad-bhagwat-skandh-3-adhyay-11-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-3-adhyay-11-shlok-1"
+    },
+    {
+      "id": "skandh-3-adhyay-12",
+      "name": "तृतीय स्कन्ध (सर्ग लीला), अध्याय 12",
+      "section": "तृतीय स्कन्ध (सर्ग लीला)",
+      "verseCount": 43,
+      "file": "ch-040-skandh-3-adhyay-12.json",
+      "firstPadId": "shrimad-bhagwat-skandh-3-adhyay-12-shlok-2",
+      "firstPadSlug": "shrimad-bhagwat-skandh-3-adhyay-12-shlok-2"
+    },
+    {
+      "id": "skandh-3-adhyay-13",
+      "name": "तृतीय स्कन्ध (सर्ग लीला), अध्याय 13",
+      "section": "तृतीय स्कन्ध (सर्ग लीला)",
+      "verseCount": 44,
+      "file": "ch-041-skandh-3-adhyay-13.json",
+      "firstPadId": "shrimad-bhagwat-skandh-3-adhyay-13-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-3-adhyay-13-shlok-1"
+    },
+    {
+      "id": "skandh-3-adhyay-14",
+      "name": "तृतीय स्कन्ध (सर्ग लीला), अध्याय 14",
+      "section": "तृतीय स्कन्ध (सर्ग लीला)",
+      "verseCount": 45,
+      "file": "ch-042-skandh-3-adhyay-14.json",
+      "firstPadId": "shrimad-bhagwat-skandh-3-adhyay-14-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-3-adhyay-14-shlok-1"
+    },
+    {
+      "id": "skandh-3-adhyay-15",
+      "name": "तृतीय स्कन्ध (सर्ग लीला), अध्याय 15",
+      "section": "तृतीय स्कन्ध (सर्ग लीला)",
+      "verseCount": 48,
+      "file": "ch-043-skandh-3-adhyay-15.json",
+      "firstPadId": "shrimad-bhagwat-skandh-3-adhyay-15-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-3-adhyay-15-shlok-1"
+    },
+    {
+      "id": "skandh-3-adhyay-16",
+      "name": "तृतीय स्कन्ध (सर्ग लीला), अध्याय 16",
+      "section": "तृतीय स्कन्ध (सर्ग लीला)",
+      "verseCount": 35,
+      "file": "ch-044-skandh-3-adhyay-16.json",
+      "firstPadId": "shrimad-bhagwat-skandh-3-adhyay-16-shlok-2",
+      "firstPadSlug": "shrimad-bhagwat-skandh-3-adhyay-16-shlok-2"
+    },
+    {
+      "id": "skandh-3-adhyay-17",
+      "name": "तृतीय स्कन्ध (सर्ग लीला), अध्याय 17",
+      "section": "तृतीय स्कन्ध (सर्ग लीला)",
+      "verseCount": 31,
+      "file": "ch-045-skandh-3-adhyay-17.json",
+      "firstPadId": "shrimad-bhagwat-skandh-3-adhyay-17-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-3-adhyay-17-shlok-1"
+    },
+    {
+      "id": "skandh-3-adhyay-18",
+      "name": "तृतीय स्कन्ध (सर्ग लीला), अध्याय 18",
+      "section": "तृतीय स्कन्ध (सर्ग लीला)",
+      "verseCount": 27,
+      "file": "ch-046-skandh-3-adhyay-18.json",
+      "firstPadId": "shrimad-bhagwat-skandh-3-adhyay-18-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-3-adhyay-18-shlok-1"
+    },
+    {
+      "id": "skandh-3-adhyay-19",
+      "name": "तृतीय स्कन्ध (सर्ग लीला), अध्याय 19",
+      "section": "तृतीय स्कन्ध (सर्ग लीला)",
+      "verseCount": 34,
+      "file": "ch-047-skandh-3-adhyay-19.json",
+      "firstPadId": "shrimad-bhagwat-skandh-3-adhyay-19-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-3-adhyay-19-shlok-1"
+    },
+    {
+      "id": "skandh-3-adhyay-20",
+      "name": "तृतीय स्कन्ध (सर्ग लीला), अध्याय 20",
+      "section": "तृतीय स्कन्ध (सर्ग लीला)",
+      "verseCount": 48,
+      "file": "ch-048-skandh-3-adhyay-20.json",
+      "firstPadId": "shrimad-bhagwat-skandh-3-adhyay-20-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-3-adhyay-20-shlok-1"
+    },
+    {
+      "id": "skandh-3-adhyay-21",
+      "name": "तृतीय स्कन्ध (सर्ग लीला), अध्याय 21",
+      "section": "तृतीय स्कन्ध (सर्ग लीला)",
+      "verseCount": 48,
+      "file": "ch-049-skandh-3-adhyay-21.json",
+      "firstPadId": "shrimad-bhagwat-skandh-3-adhyay-21-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-3-adhyay-21-shlok-1"
+    },
+    {
+      "id": "skandh-3-adhyay-22",
+      "name": "तृतीय स्कन्ध (सर्ग लीला), अध्याय 22",
+      "section": "तृतीय स्कन्ध (सर्ग लीला)",
+      "verseCount": 35,
+      "file": "ch-050-skandh-3-adhyay-22.json",
+      "firstPadId": "shrimad-bhagwat-skandh-3-adhyay-22-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-3-adhyay-22-shlok-1"
+    },
+    {
+      "id": "skandh-3-adhyay-23",
+      "name": "तृतीय स्कन्ध (सर्ग लीला), अध्याय 23",
+      "section": "तृतीय स्कन्ध (सर्ग लीला)",
+      "verseCount": 52,
+      "file": "ch-051-skandh-3-adhyay-23.json",
+      "firstPadId": "shrimad-bhagwat-skandh-3-adhyay-23-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-3-adhyay-23-shlok-1"
+    },
+    {
+      "id": "skandh-3-adhyay-24",
+      "name": "तृतीय स्कन्ध (सर्ग लीला), अध्याय 24",
+      "section": "तृतीय स्कन्ध (सर्ग लीला)",
+      "verseCount": 44,
+      "file": "ch-052-skandh-3-adhyay-24.json",
+      "firstPadId": "shrimad-bhagwat-skandh-3-adhyay-24-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-3-adhyay-24-shlok-1"
+    },
+    {
+      "id": "skandh-3-adhyay-25",
+      "name": "तृतीय स्कन्ध (सर्ग लीला), अध्याय 25",
+      "section": "तृतीय स्कन्ध (सर्ग लीला)",
+      "verseCount": 37,
+      "file": "ch-053-skandh-3-adhyay-25.json",
+      "firstPadId": "shrimad-bhagwat-skandh-3-adhyay-25-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-3-adhyay-25-shlok-1"
+    },
+    {
+      "id": "skandh-3-adhyay-26",
+      "name": "तृतीय स्कन्ध (सर्ग लीला), अध्याय 26",
+      "section": "तृतीय स्कन्ध (सर्ग लीला)",
+      "verseCount": 69,
+      "file": "ch-054-skandh-3-adhyay-26.json",
+      "firstPadId": "shrimad-bhagwat-skandh-3-adhyay-26-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-3-adhyay-26-shlok-1"
+    },
+    {
+      "id": "skandh-3-adhyay-27",
+      "name": "तृतीय स्कन्ध (सर्ग लीला), अध्याय 27",
+      "section": "तृतीय स्कन्ध (सर्ग लीला)",
+      "verseCount": 19,
+      "file": "ch-055-skandh-3-adhyay-27.json",
+      "firstPadId": "shrimad-bhagwat-skandh-3-adhyay-27-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-3-adhyay-27-shlok-1"
+    },
+    {
+      "id": "skandh-3-adhyay-28",
+      "name": "तृतीय स्कन्ध (सर्ग लीला), अध्याय 28",
+      "section": "तृतीय स्कन्ध (सर्ग लीला)",
+      "verseCount": 42,
+      "file": "ch-056-skandh-3-adhyay-28.json",
+      "firstPadId": "shrimad-bhagwat-skandh-3-adhyay-28-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-3-adhyay-28-shlok-1"
+    },
+    {
+      "id": "skandh-3-adhyay-29",
+      "name": "तृतीय स्कन्ध (सर्ग लीला), अध्याय 29",
+      "section": "तृतीय स्कन्ध (सर्ग लीला)",
+      "verseCount": 35,
+      "file": "ch-057-skandh-3-adhyay-29.json",
+      "firstPadId": "shrimad-bhagwat-skandh-3-adhyay-29-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-3-adhyay-29-shlok-1"
+    },
+    {
+      "id": "skandh-3-adhyay-30",
+      "name": "तृतीय स्कन्ध (सर्ग लीला), अध्याय 30",
+      "section": "तृतीय स्कन्ध (सर्ग लीला)",
+      "verseCount": 31,
+      "file": "ch-058-skandh-3-adhyay-30.json",
+      "firstPadId": "shrimad-bhagwat-skandh-3-adhyay-30-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-3-adhyay-30-shlok-1"
+    },
+    {
+      "id": "skandh-3-adhyay-31",
+      "name": "तृतीय स्कन्ध (सर्ग लीला), अध्याय 31",
+      "section": "तृतीय स्कन्ध (सर्ग लीला)",
+      "verseCount": 44,
+      "file": "ch-059-skandh-3-adhyay-31.json",
+      "firstPadId": "shrimad-bhagwat-skandh-3-adhyay-31-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-3-adhyay-31-shlok-1"
+    },
+    {
+      "id": "skandh-3-adhyay-32",
+      "name": "तृतीय स्कन्ध (सर्ग लीला), अध्याय 32",
+      "section": "तृतीय स्कन्ध (सर्ग लीला)",
+      "verseCount": 26,
+      "file": "ch-060-skandh-3-adhyay-32.json",
+      "firstPadId": "shrimad-bhagwat-skandh-3-adhyay-32-shlok-3",
+      "firstPadSlug": "shrimad-bhagwat-skandh-3-adhyay-32-shlok-3"
+    },
+    {
+      "id": "skandh-3-adhyay-33",
+      "name": "तृतीय स्कन्ध (सर्ग लीला), अध्याय 33",
+      "section": "तृतीय स्कन्ध (सर्ग लीला)",
+      "verseCount": 25,
+      "file": "ch-061-skandh-3-adhyay-33.json",
+      "firstPadId": "shrimad-bhagwat-skandh-3-adhyay-33-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-3-adhyay-33-shlok-1"
+    },
+    {
+      "id": "skandh-4-adhyay-1",
+      "name": "चतुर्थ स्कन्ध (विसर्ग लीला), अध्याय 1",
+      "section": "चतुर्थ स्कन्ध (विसर्ग लीला)",
+      "verseCount": 58,
+      "file": "ch-062-skandh-4-adhyay-1.json",
+      "firstPadId": "shrimad-bhagwat-skandh-4-adhyay-1-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-4-adhyay-1-shlok-1"
+    },
+    {
+      "id": "skandh-4-adhyay-2",
+      "name": "चतुर्थ स्कन्ध (विसर्ग लीला), अध्याय 2",
+      "section": "चतुर्थ स्कन्ध (विसर्ग लीला)",
+      "verseCount": 26,
+      "file": "ch-063-skandh-4-adhyay-2.json",
+      "firstPadId": "shrimad-bhagwat-skandh-4-adhyay-2-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-4-adhyay-2-shlok-1"
+    },
+    {
+      "id": "skandh-4-adhyay-3",
+      "name": "चतुर्थ स्कन्ध (विसर्ग लीला), अध्याय 3",
+      "section": "चतुर्थ स्कन्ध (विसर्ग लीला)",
+      "verseCount": 22,
+      "file": "ch-064-skandh-4-adhyay-3.json",
+      "firstPadId": "shrimad-bhagwat-skandh-4-adhyay-3-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-4-adhyay-3-shlok-1"
+    },
+    {
+      "id": "skandh-4-adhyay-4",
+      "name": "चतुर्थ स्कन्ध (विसर्ग लीला), अध्याय 4",
+      "section": "चतुर्थ स्कन्ध (विसर्ग लीला)",
+      "verseCount": 34,
+      "file": "ch-065-skandh-4-adhyay-4.json",
+      "firstPadId": "shrimad-bhagwat-skandh-4-adhyay-4-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-4-adhyay-4-shlok-1"
+    },
+    {
+      "id": "skandh-4-adhyay-5",
+      "name": "चतुर्थ स्कन्ध (विसर्ग लीला), अध्याय 5",
+      "section": "चतुर्थ स्कन्ध (विसर्ग लीला)",
+      "verseCount": 26,
+      "file": "ch-066-skandh-4-adhyay-5.json",
+      "firstPadId": "shrimad-bhagwat-skandh-4-adhyay-5-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-4-adhyay-5-shlok-1"
+    },
+    {
+      "id": "skandh-4-adhyay-6",
+      "name": "चतुर्थ स्कन्ध (विसर्ग लीला), अध्याय 6",
+      "section": "चतुर्थ स्कन्ध (विसर्ग लीला)",
+      "verseCount": 44,
+      "file": "ch-067-skandh-4-adhyay-6.json",
+      "firstPadId": "shrimad-bhagwat-skandh-4-adhyay-6-shlok-3",
+      "firstPadSlug": "shrimad-bhagwat-skandh-4-adhyay-6-shlok-3"
+    },
+    {
+      "id": "skandh-4-adhyay-7",
+      "name": "चतुर्थ स्कन्ध (विसर्ग लीला), अध्याय 7",
+      "section": "चतुर्थ स्कन्ध (विसर्ग लीला)",
+      "verseCount": 55,
+      "file": "ch-068-skandh-4-adhyay-7.json",
+      "firstPadId": "shrimad-bhagwat-skandh-4-adhyay-7-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-4-adhyay-7-shlok-1"
+    },
+    {
+      "id": "skandh-4-adhyay-8",
+      "name": "चतुर्थ स्कन्ध (विसर्ग लीला), अध्याय 8",
+      "section": "चतुर्थ स्कन्ध (विसर्ग लीला)",
+      "verseCount": 76,
+      "file": "ch-069-skandh-4-adhyay-8.json",
+      "firstPadId": "shrimad-bhagwat-skandh-4-adhyay-8-shlok-4",
+      "firstPadSlug": "shrimad-bhagwat-skandh-4-adhyay-8-shlok-4"
+    },
+    {
+      "id": "skandh-4-adhyay-9",
+      "name": "चतुर्थ स्कन्ध (विसर्ग लीला), अध्याय 9",
+      "section": "चतुर्थ स्कन्ध (विसर्ग लीला)",
+      "verseCount": 58,
+      "file": "ch-070-skandh-4-adhyay-9.json",
+      "firstPadId": "shrimad-bhagwat-skandh-4-adhyay-9-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-4-adhyay-9-shlok-1"
+    },
+    {
+      "id": "skandh-4-adhyay-10",
+      "name": "चतुर्थ स्कन्ध (विसर्ग लीला), अध्याय 10",
+      "section": "चतुर्थ स्कन्ध (विसर्ग लीला)",
+      "verseCount": 24,
+      "file": "ch-071-skandh-4-adhyay-10.json",
+      "firstPadId": "shrimad-bhagwat-skandh-4-adhyay-10-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-4-adhyay-10-shlok-1"
+    },
+    {
+      "id": "skandh-4-adhyay-11",
+      "name": "चतुर्थ स्कन्ध (विसर्ग लीला), अध्याय 11",
+      "section": "चतुर्थ स्कन्ध (विसर्ग लीला)",
+      "verseCount": 33,
+      "file": "ch-072-skandh-4-adhyay-11.json",
+      "firstPadId": "shrimad-bhagwat-skandh-4-adhyay-11-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-4-adhyay-11-shlok-1"
+    },
+    {
+      "id": "skandh-4-adhyay-12",
+      "name": "चतुर्थ स्कन्ध (विसर्ग लीला), अध्याय 12",
+      "section": "चतुर्थ स्कन्ध (विसर्ग लीला)",
+      "verseCount": 44,
+      "file": "ch-073-skandh-4-adhyay-12.json",
+      "firstPadId": "shrimad-bhagwat-skandh-4-adhyay-12-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-4-adhyay-12-shlok-1"
+    },
+    {
+      "id": "skandh-4-adhyay-13",
+      "name": "चतुर्थ स्कन्ध (विसर्ग लीला), अध्याय 13",
+      "section": "चतुर्थ स्कन्ध (विसर्ग लीला)",
+      "verseCount": 39,
+      "file": "ch-074-skandh-4-adhyay-13.json",
+      "firstPadId": "shrimad-bhagwat-skandh-4-adhyay-13-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-4-adhyay-13-shlok-1"
+    },
+    {
+      "id": "skandh-4-adhyay-14",
+      "name": "चतुर्थ स्कन्ध (विसर्ग लीला), अध्याय 14",
+      "section": "चतुर्थ स्कन्ध (विसर्ग लीला)",
+      "verseCount": 34,
+      "file": "ch-075-skandh-4-adhyay-14.json",
+      "firstPadId": "shrimad-bhagwat-skandh-4-adhyay-14-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-4-adhyay-14-shlok-1"
+    },
+    {
+      "id": "skandh-4-adhyay-15",
+      "name": "चतुर्थ स्कन्ध (विसर्ग लीला), अध्याय 15",
+      "section": "चतुर्थ स्कन्ध (विसर्ग लीला)",
+      "verseCount": 18,
+      "file": "ch-076-skandh-4-adhyay-15.json",
+      "firstPadId": "shrimad-bhagwat-skandh-4-adhyay-15-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-4-adhyay-15-shlok-1"
+    },
+    {
+      "id": "skandh-4-adhyay-16",
+      "name": "चतुर्थ स्कन्ध (विसर्ग लीला), अध्याय 16",
+      "section": "चतुर्थ स्कन्ध (विसर्ग लीला)",
+      "verseCount": 23,
+      "file": "ch-077-skandh-4-adhyay-16.json",
+      "firstPadId": "shrimad-bhagwat-skandh-4-adhyay-16-shlok-2",
+      "firstPadSlug": "shrimad-bhagwat-skandh-4-adhyay-16-shlok-2"
+    },
+    {
+      "id": "skandh-4-adhyay-17",
+      "name": "चतुर्थ स्कन्ध (विसर्ग लीला), अध्याय 17",
+      "section": "चतुर्थ स्कन्ध (विसर्ग लीला)",
+      "verseCount": 31,
+      "file": "ch-078-skandh-4-adhyay-17.json",
+      "firstPadId": "shrimad-bhagwat-skandh-4-adhyay-17-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-4-adhyay-17-shlok-1"
+    },
+    {
+      "id": "skandh-4-adhyay-18",
+      "name": "चतुर्थ स्कन्ध (विसर्ग लीला), अध्याय 18",
+      "section": "चतुर्थ स्कन्ध (विसर्ग लीला)",
+      "verseCount": 25,
+      "file": "ch-079-skandh-4-adhyay-18.json",
+      "firstPadId": "shrimad-bhagwat-skandh-4-adhyay-18-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-4-adhyay-18-shlok-1"
+    },
+    {
+      "id": "skandh-4-adhyay-19",
+      "name": "चतुर्थ स्कन्ध (विसर्ग लीला), अध्याय 19",
+      "section": "चतुर्थ स्कन्ध (विसर्ग लीला)",
+      "verseCount": 34,
+      "file": "ch-080-skandh-4-adhyay-19.json",
+      "firstPadId": "shrimad-bhagwat-skandh-4-adhyay-19-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-4-adhyay-19-shlok-1"
+    },
+    {
+      "id": "skandh-4-adhyay-20",
+      "name": "चतुर्थ स्कन्ध (विसर्ग लीला), अध्याय 20",
+      "section": "चतुर्थ स्कन्ध (विसर्ग लीला)",
+      "verseCount": 33,
+      "file": "ch-081-skandh-4-adhyay-20.json",
+      "firstPadId": "shrimad-bhagwat-skandh-4-adhyay-20-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-4-adhyay-20-shlok-1"
+    },
+    {
+      "id": "skandh-4-adhyay-21",
+      "name": "चतुर्थ स्कन्ध (विसर्ग लीला), अध्याय 21",
+      "section": "चतुर्थ स्कन्ध (विसर्ग लीला)",
+      "verseCount": 40,
+      "file": "ch-082-skandh-4-adhyay-21.json",
+      "firstPadId": "shrimad-bhagwat-skandh-4-adhyay-21-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-4-adhyay-21-shlok-1"
+    },
+    {
+      "id": "skandh-4-adhyay-22",
+      "name": "चतुर्थ स्कन्ध (विसर्ग लीला), अध्याय 22",
+      "section": "चतुर्थ स्कन्ध (विसर्ग लीला)",
+      "verseCount": 55,
+      "file": "ch-083-skandh-4-adhyay-22.json",
+      "firstPadId": "shrimad-bhagwat-skandh-4-adhyay-22-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-4-adhyay-22-shlok-1"
+    },
+    {
+      "id": "skandh-4-adhyay-23",
+      "name": "चतुर्थ स्कन्ध (विसर्ग लीला), अध्याय 23",
+      "section": "चतुर्थ स्कन्ध (विसर्ग लीला)",
+      "verseCount": 33,
+      "file": "ch-084-skandh-4-adhyay-23.json",
+      "firstPadId": "shrimad-bhagwat-skandh-4-adhyay-23-shlok-4",
+      "firstPadSlug": "shrimad-bhagwat-skandh-4-adhyay-23-shlok-4"
+    },
+    {
+      "id": "skandh-4-adhyay-24",
+      "name": "चतुर्थ स्कन्ध (विसर्ग लीला), अध्याय 24",
+      "section": "चतुर्थ स्कन्ध (विसर्ग लीला)",
+      "verseCount": 74,
+      "file": "ch-085-skandh-4-adhyay-24.json",
+      "firstPadId": "shrimad-bhagwat-skandh-4-adhyay-24-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-4-adhyay-24-shlok-1"
+    },
+    {
+      "id": "skandh-4-adhyay-25",
+      "name": "चतुर्थ स्कन्ध (विसर्ग लीला), अध्याय 25",
+      "section": "चतुर्थ स्कन्ध (विसर्ग लीला)",
+      "verseCount": 57,
+      "file": "ch-086-skandh-4-adhyay-25.json",
+      "firstPadId": "shrimad-bhagwat-skandh-4-adhyay-25-shlok-2",
+      "firstPadSlug": "shrimad-bhagwat-skandh-4-adhyay-25-shlok-2"
+    },
+    {
+      "id": "skandh-4-adhyay-26",
+      "name": "चतुर्थ स्कन्ध (विसर्ग लीला), अध्याय 26",
+      "section": "चतुर्थ स्कन्ध (विसर्ग लीला)",
+      "verseCount": 23,
+      "file": "ch-087-skandh-4-adhyay-26.json",
+      "firstPadId": "shrimad-bhagwat-skandh-4-adhyay-26-shlok-4",
+      "firstPadSlug": "shrimad-bhagwat-skandh-4-adhyay-26-shlok-4"
+    },
+    {
+      "id": "skandh-4-adhyay-27",
+      "name": "चतुर्थ स्कन्ध (विसर्ग लीला), अध्याय 27",
+      "section": "चतुर्थ स्कन्ध (विसर्ग लीला)",
+      "verseCount": 23,
+      "file": "ch-088-skandh-4-adhyay-27.json",
+      "firstPadId": "shrimad-bhagwat-skandh-4-adhyay-27-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-4-adhyay-27-shlok-1"
+    },
+    {
+      "id": "skandh-4-adhyay-28",
+      "name": "चतुर्थ स्कन्ध (विसर्ग लीला), अध्याय 28",
+      "section": "चतुर्थ स्कन्ध (विसर्ग लीला)",
+      "verseCount": 55,
+      "file": "ch-089-skandh-4-adhyay-28.json",
+      "firstPadId": "shrimad-bhagwat-skandh-4-adhyay-28-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-4-adhyay-28-shlok-1"
+    },
+    {
+      "id": "skandh-4-adhyay-29",
+      "name": "चतुर्थ स्कन्ध (विसर्ग लीला), अध्याय 29",
+      "section": "चतुर्थ स्कन्ध (विसर्ग लीला)",
+      "verseCount": 69,
+      "file": "ch-090-skandh-4-adhyay-29.json",
+      "firstPadId": "shrimad-bhagwat-skandh-4-adhyay-29-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-4-adhyay-29-shlok-1"
+    },
+    {
+      "id": "skandh-4-adhyay-30",
+      "name": "चतुर्थ स्कन्ध (विसर्ग लीला), अध्याय 30",
+      "section": "चतुर्थ स्कन्ध (विसर्ग लीला)",
+      "verseCount": 46,
+      "file": "ch-091-skandh-4-adhyay-30.json",
+      "firstPadId": "shrimad-bhagwat-skandh-4-adhyay-30-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-4-adhyay-30-shlok-1"
+    },
+    {
+      "id": "skandh-4-adhyay-31",
+      "name": "चतुर्थ स्कन्ध (विसर्ग लीला), अध्याय 31",
+      "section": "चतुर्थ स्कन्ध (विसर्ग लीला)",
+      "verseCount": 24,
+      "file": "ch-092-skandh-4-adhyay-31.json",
+      "firstPadId": "shrimad-bhagwat-skandh-4-adhyay-31-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-4-adhyay-31-shlok-1"
+    },
+    {
+      "id": "skandh-5-adhyay-1",
+      "name": "पंचम स्कन्ध (स्थान लीला), अध्याय 1",
+      "section": "पंचम स्कन्ध (स्थान लीला)",
+      "verseCount": 34,
+      "file": "ch-093-skandh-5-adhyay-1.json",
+      "firstPadId": "shrimad-bhagwat-skandh-5-adhyay-1-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-5-adhyay-1-shlok-1"
+    },
+    {
+      "id": "skandh-5-adhyay-2",
+      "name": "पंचम स्कन्ध (स्थान लीला), अध्याय 2",
+      "section": "पंचम स्कन्ध (स्थान लीला)",
+      "verseCount": 19,
+      "file": "ch-094-skandh-5-adhyay-2.json",
+      "firstPadId": "shrimad-bhagwat-skandh-5-adhyay-2-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-5-adhyay-2-shlok-1"
+    },
+    {
+      "id": "skandh-5-adhyay-3",
+      "name": "पंचम स्कन्ध (स्थान लीला), अध्याय 3",
+      "section": "पंचम स्कन्ध (स्थान लीला)",
+      "verseCount": 15,
+      "file": "ch-095-skandh-5-adhyay-3.json",
+      "firstPadId": "shrimad-bhagwat-skandh-5-adhyay-3-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-5-adhyay-3-shlok-1"
+    },
+    {
+      "id": "skandh-5-adhyay-4",
+      "name": "पंचम स्कन्ध (स्थान लीला), अध्याय 4",
+      "section": "पंचम स्कन्ध (स्थान लीला)",
+      "verseCount": 17,
+      "file": "ch-096-skandh-5-adhyay-4.json",
+      "firstPadId": "shrimad-bhagwat-skandh-5-adhyay-4-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-5-adhyay-4-shlok-1"
+    },
+    {
+      "id": "skandh-5-adhyay-5",
+      "name": "पंचम स्कन्ध (स्थान लीला), अध्याय 5",
+      "section": "पंचम स्कन्ध (स्थान लीला)",
+      "verseCount": 30,
+      "file": "ch-097-skandh-5-adhyay-5.json",
+      "firstPadId": "shrimad-bhagwat-skandh-5-adhyay-5-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-5-adhyay-5-shlok-1"
+    },
+    {
+      "id": "skandh-5-adhyay-6",
+      "name": "पंचम स्कन्ध (स्थान लीला), अध्याय 6",
+      "section": "पंचम स्कन्ध (स्थान लीला)",
+      "verseCount": 17,
+      "file": "ch-098-skandh-5-adhyay-6.json",
+      "firstPadId": "shrimad-bhagwat-skandh-5-adhyay-6-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-5-adhyay-6-shlok-1"
+    },
+    {
+      "id": "skandh-5-adhyay-7",
+      "name": "पंचम स्कन्ध (स्थान लीला), अध्याय 7",
+      "section": "पंचम स्कन्ध (स्थान लीला)",
+      "verseCount": 12,
+      "file": "ch-099-skandh-5-adhyay-7.json",
+      "firstPadId": "shrimad-bhagwat-skandh-5-adhyay-7-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-5-adhyay-7-shlok-1"
+    },
+    {
+      "id": "skandh-5-adhyay-8",
+      "name": "पंचम स्कन्ध (स्थान लीला), अध्याय 8",
+      "section": "पंचम स्कन्ध (स्थान लीला)",
+      "verseCount": 28,
+      "file": "ch-100-skandh-5-adhyay-8.json",
+      "firstPadId": "shrimad-bhagwat-skandh-5-adhyay-8-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-5-adhyay-8-shlok-1"
+    },
+    {
+      "id": "skandh-5-adhyay-9",
+      "name": "पंचम स्कन्ध (स्थान लीला), अध्याय 9",
+      "section": "पंचम स्कन्ध (स्थान लीला)",
+      "verseCount": 19,
+      "file": "ch-101-skandh-5-adhyay-9.json",
+      "firstPadId": "shrimad-bhagwat-skandh-5-adhyay-9-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-5-adhyay-9-shlok-1"
+    },
+    {
+      "id": "skandh-5-adhyay-10",
+      "name": "पंचम स्कन्ध (स्थान लीला), अध्याय 10",
+      "section": "पंचम स्कन्ध (स्थान लीला)",
+      "verseCount": 22,
+      "file": "ch-102-skandh-5-adhyay-10.json",
+      "firstPadId": "shrimad-bhagwat-skandh-5-adhyay-10-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-5-adhyay-10-shlok-1"
+    },
+    {
+      "id": "skandh-5-adhyay-11",
+      "name": "पंचम स्कन्ध (स्थान लीला), अध्याय 11",
+      "section": "पंचम स्कन्ध (स्थान लीला)",
+      "verseCount": 16,
+      "file": "ch-103-skandh-5-adhyay-11.json",
+      "firstPadId": "shrimad-bhagwat-skandh-5-adhyay-11-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-5-adhyay-11-shlok-1"
+    },
+    {
+      "id": "skandh-5-adhyay-12",
+      "name": "पंचम स्कन्ध (स्थान लीला), अध्याय 12",
+      "section": "पंचम स्कन्ध (स्थान लीला)",
+      "verseCount": 16,
+      "file": "ch-104-skandh-5-adhyay-12.json",
+      "firstPadId": "shrimad-bhagwat-skandh-5-adhyay-12-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-5-adhyay-12-shlok-1"
+    },
+    {
+      "id": "skandh-5-adhyay-13",
+      "name": "पंचम स्कन्ध (स्थान लीला), अध्याय 13",
+      "section": "पंचम स्कन्ध (स्थान लीला)",
+      "verseCount": 26,
+      "file": "ch-105-skandh-5-adhyay-13.json",
+      "firstPadId": "shrimad-bhagwat-skandh-5-adhyay-13-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-5-adhyay-13-shlok-1"
+    },
+    {
+      "id": "skandh-5-adhyay-14",
+      "name": "पंचम स्कन्ध (स्थान लीला), अध्याय 14",
+      "section": "पंचम स्कन्ध (स्थान लीला)",
+      "verseCount": 43,
+      "file": "ch-106-skandh-5-adhyay-14.json",
+      "firstPadId": "shrimad-bhagwat-skandh-5-adhyay-14-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-5-adhyay-14-shlok-1"
+    },
+    {
+      "id": "skandh-5-adhyay-15",
+      "name": "पंचम स्कन्ध (स्थान लीला), अध्याय 15",
+      "section": "पंचम स्कन्ध (स्थान लीला)",
+      "verseCount": 13,
+      "file": "ch-107-skandh-5-adhyay-15.json",
+      "firstPadId": "shrimad-bhagwat-skandh-5-adhyay-15-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-5-adhyay-15-shlok-1"
+    },
+    {
+      "id": "skandh-5-adhyay-16",
+      "name": "पंचम स्कन्ध (स्थान लीला), अध्याय 16",
+      "section": "पंचम स्कन्ध (स्थान लीला)",
+      "verseCount": 28,
+      "file": "ch-108-skandh-5-adhyay-16.json",
+      "firstPadId": "shrimad-bhagwat-skandh-5-adhyay-16-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-5-adhyay-16-shlok-1"
+    },
+    {
+      "id": "skandh-5-adhyay-17",
+      "name": "पंचम स्कन्ध (स्थान लीला), अध्याय 17",
+      "section": "पंचम स्कन्ध (स्थान लीला)",
+      "verseCount": 22,
+      "file": "ch-109-skandh-5-adhyay-17.json",
+      "firstPadId": "shrimad-bhagwat-skandh-5-adhyay-17-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-5-adhyay-17-shlok-1"
+    },
+    {
+      "id": "skandh-5-adhyay-18",
+      "name": "पंचम स्कन्ध (स्थान लीला), अध्याय 18",
+      "section": "पंचम स्कन्ध (स्थान लीला)",
+      "verseCount": 34,
+      "file": "ch-110-skandh-5-adhyay-18.json",
+      "firstPadId": "shrimad-bhagwat-skandh-5-adhyay-18-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-5-adhyay-18-shlok-1"
+    },
+    {
+      "id": "skandh-5-adhyay-19",
+      "name": "पंचम स्कन्ध (स्थान लीला), अध्याय 19",
+      "section": "पंचम स्कन्ध (स्थान लीला)",
+      "verseCount": 28,
+      "file": "ch-111-skandh-5-adhyay-19.json",
+      "firstPadId": "shrimad-bhagwat-skandh-5-adhyay-19-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-5-adhyay-19-shlok-1"
+    },
+    {
+      "id": "skandh-5-adhyay-20",
+      "name": "पंचम स्कन्ध (स्थान लीला), अध्याय 20",
+      "section": "पंचम स्कन्ध (स्थान लीला)",
+      "verseCount": 36,
+      "file": "ch-112-skandh-5-adhyay-20.json",
+      "firstPadId": "shrimad-bhagwat-skandh-5-adhyay-20-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-5-adhyay-20-shlok-1"
+    },
+    {
+      "id": "skandh-5-adhyay-21",
+      "name": "पंचम स्कन्ध (स्थान लीला), अध्याय 21",
+      "section": "पंचम स्कन्ध (स्थान लीला)",
+      "verseCount": 18,
+      "file": "ch-113-skandh-5-adhyay-21.json",
+      "firstPadId": "shrimad-bhagwat-skandh-5-adhyay-21-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-5-adhyay-21-shlok-1"
+    },
+    {
+      "id": "skandh-5-adhyay-22",
+      "name": "पंचम स्कन्ध (स्थान लीला), अध्याय 22",
+      "section": "पंचम स्कन्ध (स्थान लीला)",
+      "verseCount": 16,
+      "file": "ch-114-skandh-5-adhyay-22.json",
+      "firstPadId": "shrimad-bhagwat-skandh-5-adhyay-22-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-5-adhyay-22-shlok-1"
+    },
+    {
+      "id": "skandh-5-adhyay-23",
+      "name": "पंचम स्कन्ध (स्थान लीला), अध्याय 23",
+      "section": "पंचम स्कन्ध (स्थान लीला)",
+      "verseCount": 9,
+      "file": "ch-115-skandh-5-adhyay-23.json",
+      "firstPadId": "shrimad-bhagwat-skandh-5-adhyay-23-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-5-adhyay-23-shlok-1"
+    },
+    {
+      "id": "skandh-5-adhyay-24",
+      "name": "पंचम स्कन्ध (स्थान लीला), अध्याय 24",
+      "section": "पंचम स्कन्ध (स्थान लीला)",
+      "verseCount": 24,
+      "file": "ch-116-skandh-5-adhyay-24.json",
+      "firstPadId": "shrimad-bhagwat-skandh-5-adhyay-24-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-5-adhyay-24-shlok-1"
+    },
+    {
+      "id": "skandh-5-adhyay-25",
+      "name": "पंचम स्कन्ध (स्थान लीला), अध्याय 25",
+      "section": "पंचम स्कन्ध (स्थान लीला)",
+      "verseCount": 15,
+      "file": "ch-117-skandh-5-adhyay-25.json",
+      "firstPadId": "shrimad-bhagwat-skandh-5-adhyay-25-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-5-adhyay-25-shlok-1"
+    },
+    {
+      "id": "skandh-5-adhyay-26",
+      "name": "पंचम स्कन्ध (स्थान लीला), अध्याय 26",
+      "section": "पंचम स्कन्ध (स्थान लीला)",
+      "verseCount": 40,
+      "file": "ch-118-skandh-5-adhyay-26.json",
+      "firstPadId": "shrimad-bhagwat-skandh-5-adhyay-26-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-5-adhyay-26-shlok-1"
+    },
+    {
+      "id": "skandh-6-adhyay-1",
+      "name": "षष्ठ स्कन्ध (पोषण लीला), अध्याय 1",
+      "section": "षष्ठ स्कन्ध (पोषण लीला)",
+      "verseCount": 60,
+      "file": "ch-119-skandh-6-adhyay-1.json",
+      "firstPadId": "shrimad-bhagwat-skandh-6-adhyay-1-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-6-adhyay-1-shlok-1"
+    },
+    {
+      "id": "skandh-6-adhyay-2",
+      "name": "षष्ठ स्कन्ध (पोषण लीला), अध्याय 2",
+      "section": "षष्ठ स्कन्ध (पोषण लीला)",
+      "verseCount": 40,
+      "file": "ch-120-skandh-6-adhyay-2.json",
+      "firstPadId": "shrimad-bhagwat-skandh-6-adhyay-2-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-6-adhyay-2-shlok-1"
+    },
+    {
+      "id": "skandh-6-adhyay-3",
+      "name": "षष्ठ स्कन्ध (पोषण लीला), अध्याय 3",
+      "section": "षष्ठ स्कन्ध (पोषण लीला)",
+      "verseCount": 29,
+      "file": "ch-121-skandh-6-adhyay-3.json",
+      "firstPadId": "shrimad-bhagwat-skandh-6-adhyay-3-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-6-adhyay-3-shlok-1"
+    },
+    {
+      "id": "skandh-6-adhyay-4",
+      "name": "षष्ठ स्कन्ध (पोषण लीला), अध्याय 4",
+      "section": "षष्ठ स्कन्ध (पोषण लीला)",
+      "verseCount": 49,
+      "file": "ch-122-skandh-6-adhyay-4.json",
+      "firstPadId": "shrimad-bhagwat-skandh-6-adhyay-4-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-6-adhyay-4-shlok-1"
+    },
+    {
+      "id": "skandh-6-adhyay-5",
+      "name": "षष्ठ स्कन्ध (पोषण लीला), अध्याय 5",
+      "section": "षष्ठ स्कन्ध (पोषण लीला)",
+      "verseCount": 37,
+      "file": "ch-123-skandh-6-adhyay-5.json",
+      "firstPadId": "shrimad-bhagwat-skandh-6-adhyay-5-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-6-adhyay-5-shlok-1"
+    },
+    {
+      "id": "skandh-6-adhyay-6",
+      "name": "षष्ठ स्कन्ध (पोषण लीला), अध्याय 6",
+      "section": "षष्ठ स्कन्ध (पोषण लीला)",
+      "verseCount": 36,
+      "file": "ch-124-skandh-6-adhyay-6.json",
+      "firstPadId": "shrimad-bhagwat-skandh-6-adhyay-6-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-6-adhyay-6-shlok-1"
+    },
+    {
+      "id": "skandh-6-adhyay-7",
+      "name": "षष्ठ स्कन्ध (पोषण लीला), अध्याय 7",
+      "section": "षष्ठ स्कन्ध (पोषण लीला)",
+      "verseCount": 34,
+      "file": "ch-125-skandh-6-adhyay-7.json",
+      "firstPadId": "shrimad-bhagwat-skandh-6-adhyay-7-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-6-adhyay-7-shlok-1"
+    },
+    {
+      "id": "skandh-6-adhyay-8",
+      "name": "षष्ठ स्कन्ध (पोषण लीला), अध्याय 8",
+      "section": "षष्ठ स्कन्ध (पोषण लीला)",
+      "verseCount": 34,
+      "file": "ch-126-skandh-6-adhyay-8.json",
+      "firstPadId": "shrimad-bhagwat-skandh-6-adhyay-8-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-6-adhyay-8-shlok-1"
+    },
+    {
+      "id": "skandh-6-adhyay-9",
+      "name": "षष्ठ स्कन्ध (पोषण लीला), अध्याय 9",
+      "section": "षष्ठ स्कन्ध (पोषण लीला)",
+      "verseCount": 49,
+      "file": "ch-127-skandh-6-adhyay-9.json",
+      "firstPadId": "shrimad-bhagwat-skandh-6-adhyay-9-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-6-adhyay-9-shlok-1"
+    },
+    {
+      "id": "skandh-6-adhyay-10",
+      "name": "षष्ठ स्कन्ध (पोषण लीला), अध्याय 10",
+      "section": "षष्ठ स्कन्ध (पोषण लीला)",
+      "verseCount": 26,
+      "file": "ch-128-skandh-6-adhyay-10.json",
+      "firstPadId": "shrimad-bhagwat-skandh-6-adhyay-10-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-6-adhyay-10-shlok-1"
+    },
+    {
+      "id": "skandh-6-adhyay-11",
+      "name": "षष्ठ स्कन्ध (पोषण लीला), अध्याय 11",
+      "section": "षष्ठ स्कन्ध (पोषण लीला)",
+      "verseCount": 26,
+      "file": "ch-129-skandh-6-adhyay-11.json",
+      "firstPadId": "shrimad-bhagwat-skandh-6-adhyay-11-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-6-adhyay-11-shlok-1"
+    },
+    {
+      "id": "skandh-6-adhyay-12",
+      "name": "षष्ठ स्कन्ध (पोषण लीला), अध्याय 12",
+      "section": "षष्ठ स्कन्ध (पोषण लीला)",
+      "verseCount": 30,
+      "file": "ch-130-skandh-6-adhyay-12.json",
+      "firstPadId": "shrimad-bhagwat-skandh-6-adhyay-12-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-6-adhyay-12-shlok-1"
+    },
+    {
+      "id": "skandh-6-adhyay-13",
+      "name": "षष्ठ स्कन्ध (पोषण लीला), अध्याय 13",
+      "section": "षष्ठ स्कन्ध (पोषण लीला)",
+      "verseCount": 22,
+      "file": "ch-131-skandh-6-adhyay-13.json",
+      "firstPadId": "shrimad-bhagwat-skandh-6-adhyay-13-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-6-adhyay-13-shlok-1"
+    },
+    {
+      "id": "skandh-6-adhyay-14",
+      "name": "षष्ठ स्कन्ध (पोषण लीला), अध्याय 14",
+      "section": "षष्ठ स्कन्ध (पोषण लीला)",
+      "verseCount": 58,
+      "file": "ch-132-skandh-6-adhyay-14.json",
+      "firstPadId": "shrimad-bhagwat-skandh-6-adhyay-14-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-6-adhyay-14-shlok-1"
+    },
+    {
+      "id": "skandh-6-adhyay-15",
+      "name": "षष्ठ स्कन्ध (पोषण लीला), अध्याय 15",
+      "section": "षष्ठ स्कन्ध (पोषण लीला)",
+      "verseCount": 22,
+      "file": "ch-133-skandh-6-adhyay-15.json",
+      "firstPadId": "shrimad-bhagwat-skandh-6-adhyay-15-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-6-adhyay-15-shlok-1"
+    },
+    {
+      "id": "skandh-6-adhyay-16",
+      "name": "षष्ठ स्कन्ध (पोषण लीला), अध्याय 16",
+      "section": "षष्ठ स्कन्ध (पोषण लीला)",
+      "verseCount": 64,
+      "file": "ch-134-skandh-6-adhyay-16.json",
+      "firstPadId": "shrimad-bhagwat-skandh-6-adhyay-16-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-6-adhyay-16-shlok-1"
+    },
+    {
+      "id": "skandh-6-adhyay-17",
+      "name": "षष्ठ स्कन्ध (पोषण लीला), अध्याय 17",
+      "section": "षष्ठ स्कन्ध (पोषण लीला)",
+      "verseCount": 34,
+      "file": "ch-135-skandh-6-adhyay-17.json",
+      "firstPadId": "shrimad-bhagwat-skandh-6-adhyay-17-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-6-adhyay-17-shlok-1"
+    },
+    {
+      "id": "skandh-6-adhyay-18",
+      "name": "षष्ठ स्कन्ध (पोषण लीला), अध्याय 18",
+      "section": "षष्ठ स्कन्ध (पोषण लीला)",
+      "verseCount": 74,
+      "file": "ch-136-skandh-6-adhyay-18.json",
+      "firstPadId": "shrimad-bhagwat-skandh-6-adhyay-18-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-6-adhyay-18-shlok-1"
+    },
+    {
+      "id": "skandh-6-adhyay-19",
+      "name": "षष्ठ स्कन्ध (पोषण लीला), अध्याय 19",
+      "section": "षष्ठ स्कन्ध (पोषण लीला)",
+      "verseCount": 26,
+      "file": "ch-137-skandh-6-adhyay-19.json",
+      "firstPadId": "shrimad-bhagwat-skandh-6-adhyay-19-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-6-adhyay-19-shlok-1"
+    },
+    {
+      "id": "skandh-7-adhyay-1",
+      "name": "सप्तम स्कन्ध (ऊति लीला), अध्याय 1",
+      "section": "सप्तम स्कन्ध (ऊति लीला)",
+      "verseCount": 44,
+      "file": "ch-138-skandh-7-adhyay-1.json",
+      "firstPadId": "shrimad-bhagwat-skandh-7-adhyay-1-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-7-adhyay-1-shlok-1"
+    },
+    {
+      "id": "skandh-7-adhyay-2",
+      "name": "सप्तम स्कन्ध (ऊति लीला), अध्याय 2",
+      "section": "सप्तम स्कन्ध (ऊति लीला)",
+      "verseCount": 52,
+      "file": "ch-139-skandh-7-adhyay-2.json",
+      "firstPadId": "shrimad-bhagwat-skandh-7-adhyay-2-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-7-adhyay-2-shlok-1"
+    },
+    {
+      "id": "skandh-7-adhyay-3",
+      "name": "सप्तम स्कन्ध (ऊति लीला), अध्याय 3",
+      "section": "सप्तम स्कन्ध (ऊति लीला)",
+      "verseCount": 31,
+      "file": "ch-140-skandh-7-adhyay-3.json",
+      "firstPadId": "shrimad-bhagwat-skandh-7-adhyay-3-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-7-adhyay-3-shlok-1"
+    },
+    {
+      "id": "skandh-7-adhyay-4",
+      "name": "सप्तम स्कन्ध (ऊति लीला), अध्याय 4",
+      "section": "सप्तम स्कन्ध (ऊति लीला)",
+      "verseCount": 42,
+      "file": "ch-141-skandh-7-adhyay-4.json",
+      "firstPadId": "shrimad-bhagwat-skandh-7-adhyay-4-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-7-adhyay-4-shlok-1"
+    },
+    {
+      "id": "skandh-7-adhyay-5",
+      "name": "सप्तम स्कन्ध (ऊति लीला), अध्याय 5",
+      "section": "सप्तम स्कन्ध (ऊति लीला)",
+      "verseCount": 51,
+      "file": "ch-142-skandh-7-adhyay-5.json",
+      "firstPadId": "shrimad-bhagwat-skandh-7-adhyay-5-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-7-adhyay-5-shlok-1"
+    },
+    {
+      "id": "skandh-7-adhyay-6",
+      "name": "सप्तम स्कन्ध (ऊति लीला), अध्याय 6",
+      "section": "सप्तम स्कन्ध (ऊति लीला)",
+      "verseCount": 28,
+      "file": "ch-143-skandh-7-adhyay-6.json",
+      "firstPadId": "shrimad-bhagwat-skandh-7-adhyay-6-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-7-adhyay-6-shlok-1"
+    },
+    {
+      "id": "skandh-7-adhyay-7",
+      "name": "सप्तम स्कन्ध (ऊति लीला), अध्याय 7",
+      "section": "सप्तम स्कन्ध (ऊति लीला)",
+      "verseCount": 49,
+      "file": "ch-144-skandh-7-adhyay-7.json",
+      "firstPadId": "shrimad-bhagwat-skandh-7-adhyay-7-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-7-adhyay-7-shlok-1"
+    },
+    {
+      "id": "skandh-7-adhyay-8",
+      "name": "सप्तम स्कन्ध (ऊति लीला), अध्याय 8",
+      "section": "सप्तम स्कन्ध (ऊति लीला)",
+      "verseCount": 52,
+      "file": "ch-145-skandh-7-adhyay-8.json",
+      "firstPadId": "shrimad-bhagwat-skandh-7-adhyay-8-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-7-adhyay-8-shlok-1"
+    },
+    {
+      "id": "skandh-7-adhyay-9",
+      "name": "सप्तम स्कन्ध (ऊति लीला), अध्याय 9",
+      "section": "सप्तम स्कन्ध (ऊति लीला)",
+      "verseCount": 53,
+      "file": "ch-146-skandh-7-adhyay-9.json",
+      "firstPadId": "shrimad-bhagwat-skandh-7-adhyay-9-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-7-adhyay-9-shlok-1"
+    },
+    {
+      "id": "skandh-7-adhyay-10",
+      "name": "सप्तम स्कन्ध (ऊति लीला), अध्याय 10",
+      "section": "सप्तम स्कन्ध (ऊति लीला)",
+      "verseCount": 66,
+      "file": "ch-147-skandh-7-adhyay-10.json",
+      "firstPadId": "shrimad-bhagwat-skandh-7-adhyay-10-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-7-adhyay-10-shlok-1"
+    },
+    {
+      "id": "skandh-7-adhyay-11",
+      "name": "सप्तम स्कन्ध (ऊति लीला), अध्याय 11",
+      "section": "सप्तम स्कन्ध (ऊति लीला)",
+      "verseCount": 29,
+      "file": "ch-148-skandh-7-adhyay-11.json",
+      "firstPadId": "shrimad-bhagwat-skandh-7-adhyay-11-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-7-adhyay-11-shlok-1"
+    },
+    {
+      "id": "skandh-7-adhyay-12",
+      "name": "सप्तम स्कन्ध (ऊति लीला), अध्याय 12",
+      "section": "सप्तम स्कन्ध (ऊति लीला)",
+      "verseCount": 26,
+      "file": "ch-149-skandh-7-adhyay-12.json",
+      "firstPadId": "shrimad-bhagwat-skandh-7-adhyay-12-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-7-adhyay-12-shlok-1"
+    },
+    {
+      "id": "skandh-7-adhyay-13",
+      "name": "सप्तम स्कन्ध (ऊति लीला), अध्याय 13",
+      "section": "सप्तम स्कन्ध (ऊति लीला)",
+      "verseCount": 43,
+      "file": "ch-150-skandh-7-adhyay-13.json",
+      "firstPadId": "shrimad-bhagwat-skandh-7-adhyay-13-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-7-adhyay-13-shlok-1"
+    },
+    {
+      "id": "skandh-7-adhyay-14",
+      "name": "सप्तम स्कन्ध (ऊति लीला), अध्याय 14",
+      "section": "सप्तम स्कन्ध (ऊति लीला)",
+      "verseCount": 33,
+      "file": "ch-151-skandh-7-adhyay-14.json",
+      "firstPadId": "shrimad-bhagwat-skandh-7-adhyay-14-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-7-adhyay-14-shlok-1"
+    },
+    {
+      "id": "skandh-7-adhyay-15",
+      "name": "सप्तम स्कन्ध (ऊति लीला), अध्याय 15",
+      "section": "सप्तम स्कन्ध (ऊति लीला)",
+      "verseCount": 73,
+      "file": "ch-152-skandh-7-adhyay-15.json",
+      "firstPadId": "shrimad-bhagwat-skandh-7-adhyay-15-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-7-adhyay-15-shlok-1"
+    },
+    {
+      "id": "skandh-8-adhyay-1",
+      "name": "अष्टम स्कन्ध (मन्वन्तर लीला), अध्याय 1",
+      "section": "अष्टम स्कन्ध (मन्वन्तर लीला)",
+      "verseCount": 31,
+      "file": "ch-153-skandh-8-adhyay-1.json",
+      "firstPadId": "shrimad-bhagwat-skandh-8-adhyay-1-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-8-adhyay-1-shlok-1"
+    },
+    {
+      "id": "skandh-8-adhyay-2",
+      "name": "अष्टम स्कन्ध (मन्वन्तर लीला), अध्याय 2",
+      "section": "अष्टम स्कन्ध (मन्वन्तर लीला)",
+      "verseCount": 25,
+      "file": "ch-154-skandh-8-adhyay-2.json",
+      "firstPadId": "shrimad-bhagwat-skandh-8-adhyay-2-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-8-adhyay-2-shlok-1"
+    },
+    {
+      "id": "skandh-8-adhyay-3",
+      "name": "अष्टम स्कन्ध (मन्वन्तर लीला), अध्याय 3",
+      "section": "अष्टम स्कन्ध (मन्वन्तर लीला)",
+      "verseCount": 31,
+      "file": "ch-155-skandh-8-adhyay-3.json",
+      "firstPadId": "shrimad-bhagwat-skandh-8-adhyay-3-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-8-adhyay-3-shlok-1"
+    },
+    {
+      "id": "skandh-8-adhyay-4",
+      "name": "अष्टम स्कन्ध (मन्वन्तर लीला), अध्याय 4",
+      "section": "अष्टम स्कन्ध (मन्वन्तर लीला)",
+      "verseCount": 18,
+      "file": "ch-156-skandh-8-adhyay-4.json",
+      "firstPadId": "shrimad-bhagwat-skandh-8-adhyay-4-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-8-adhyay-4-shlok-1"
+    },
+    {
+      "id": "skandh-8-adhyay-5",
+      "name": "अष्टम स्कन्ध (मन्वन्तर लीला), अध्याय 5",
+      "section": "अष्टम स्कन्ध (मन्वन्तर लीला)",
+      "verseCount": 50,
+      "file": "ch-157-skandh-8-adhyay-5.json",
+      "firstPadId": "shrimad-bhagwat-skandh-8-adhyay-5-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-8-adhyay-5-shlok-1"
+    },
+    {
+      "id": "skandh-8-adhyay-6",
+      "name": "अष्टम स्कन्ध (मन्वन्तर लीला), अध्याय 6",
+      "section": "अष्टम स्कन्ध (मन्वन्तर लीला)",
+      "verseCount": 35,
+      "file": "ch-158-skandh-8-adhyay-6.json",
+      "firstPadId": "shrimad-bhagwat-skandh-8-adhyay-6-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-8-adhyay-6-shlok-1"
+    },
+    {
+      "id": "skandh-8-adhyay-7",
+      "name": "अष्टम स्कन्ध (मन्वन्तर लीला), अध्याय 7",
+      "section": "अष्टम स्कन्ध (मन्वन्तर लीला)",
+      "verseCount": 43,
+      "file": "ch-159-skandh-8-adhyay-7.json",
+      "firstPadId": "shrimad-bhagwat-skandh-8-adhyay-7-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-8-adhyay-7-shlok-1"
+    },
+    {
+      "id": "skandh-8-adhyay-8",
+      "name": "अष्टम स्कन्ध (मन्वन्तर लीला), अध्याय 8",
+      "section": "अष्टम स्कन्ध (मन्वन्तर लीला)",
+      "verseCount": 40,
+      "file": "ch-160-skandh-8-adhyay-8.json",
+      "firstPadId": "shrimad-bhagwat-skandh-8-adhyay-8-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-8-adhyay-8-shlok-1"
+    },
+    {
+      "id": "skandh-8-adhyay-9",
+      "name": "अष्टम स्कन्ध (मन्वन्तर लीला), अध्याय 9",
+      "section": "अष्टम स्कन्ध (मन्वन्तर लीला)",
+      "verseCount": 28,
+      "file": "ch-161-skandh-8-adhyay-9.json",
+      "firstPadId": "shrimad-bhagwat-skandh-8-adhyay-9-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-8-adhyay-9-shlok-1"
+    },
+    {
+      "id": "skandh-8-adhyay-10",
+      "name": "अष्टम स्कन्ध (मन्वन्तर लीला), अध्याय 10",
+      "section": "अष्टम स्कन्ध (मन्वन्तर लीला)",
+      "verseCount": 48,
+      "file": "ch-162-skandh-8-adhyay-10.json",
+      "firstPadId": "shrimad-bhagwat-skandh-8-adhyay-10-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-8-adhyay-10-shlok-1"
+    },
+    {
+      "id": "skandh-8-adhyay-11",
+      "name": "अष्टम स्कन्ध (मन्वन्तर लीला), अध्याय 11",
+      "section": "अष्टम स्कन्ध (मन्वन्तर लीला)",
+      "verseCount": 47,
+      "file": "ch-163-skandh-8-adhyay-11.json",
+      "firstPadId": "shrimad-bhagwat-skandh-8-adhyay-11-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-8-adhyay-11-shlok-1"
+    },
+    {
+      "id": "skandh-8-adhyay-12",
+      "name": "अष्टम स्कन्ध (मन्वन्तर लीला), अध्याय 12",
+      "section": "अष्टम स्कन्ध (मन्वन्तर लीला)",
+      "verseCount": 46,
+      "file": "ch-164-skandh-8-adhyay-12.json",
+      "firstPadId": "shrimad-bhagwat-skandh-8-adhyay-12-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-8-adhyay-12-shlok-1"
+    },
+    {
+      "id": "skandh-8-adhyay-13",
+      "name": "अष्टम स्कन्ध (मन्वन्तर लीला), अध्याय 13",
+      "section": "अष्टम स्कन्ध (मन्वन्तर लीला)",
+      "verseCount": 25,
+      "file": "ch-165-skandh-8-adhyay-13.json",
+      "firstPadId": "shrimad-bhagwat-skandh-8-adhyay-13-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-8-adhyay-13-shlok-1"
+    },
+    {
+      "id": "skandh-8-adhyay-14",
+      "name": "अष्टम स्कन्ध (मन्वन्तर लीला), अध्याय 14",
+      "section": "अष्टम स्कन्ध (मन्वन्तर लीला)",
+      "verseCount": 36,
+      "file": "ch-166-skandh-8-adhyay-14.json",
+      "firstPadId": "shrimad-bhagwat-skandh-8-adhyay-14-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-8-adhyay-14-shlok-1"
+    },
+    {
+      "id": "skandh-8-adhyay-15",
+      "name": "अष्टम स्कन्ध (मन्वन्तर लीला), अध्याय 15",
+      "section": "अष्टम स्कन्ध (मन्वन्तर लीला)",
+      "verseCount": 36,
+      "file": "ch-167-skandh-8-adhyay-15.json",
+      "firstPadId": "shrimad-bhagwat-skandh-8-adhyay-15-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-8-adhyay-15-shlok-1"
+    },
+    {
+      "id": "skandh-8-adhyay-16",
+      "name": "अष्टम स्कन्ध (मन्वन्तर लीला), अध्याय 16",
+      "section": "अष्टम स्कन्ध (मन्वन्तर लीला)",
+      "verseCount": 58,
+      "file": "ch-168-skandh-8-adhyay-16.json",
+      "firstPadId": "shrimad-bhagwat-skandh-8-adhyay-16-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-8-adhyay-16-shlok-1"
+    },
+    {
+      "id": "skandh-8-adhyay-17",
+      "name": "अष्टम स्कन्ध (मन्वन्तर लीला), अध्याय 17",
+      "section": "अष्टम स्कन्ध (मन्वन्तर लीला)",
+      "verseCount": 26,
+      "file": "ch-169-skandh-8-adhyay-17.json",
+      "firstPadId": "shrimad-bhagwat-skandh-8-adhyay-17-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-8-adhyay-17-shlok-1"
+    },
+    {
+      "id": "skandh-8-adhyay-18",
+      "name": "अष्टम स्कन्ध (मन्वन्तर लीला), अध्याय 18",
+      "section": "अष्टम स्कन्ध (मन्वन्तर लीला)",
+      "verseCount": 30,
+      "file": "ch-170-skandh-8-adhyay-18.json",
+      "firstPadId": "shrimad-bhagwat-skandh-8-adhyay-18-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-8-adhyay-18-shlok-1"
+    },
+    {
+      "id": "skandh-8-adhyay-19",
+      "name": "अष्टम स्कन्ध (मन्वन्तर लीला), अध्याय 19",
+      "section": "अष्टम स्कन्ध (मन्वन्तर लीला)",
+      "verseCount": 43,
+      "file": "ch-171-skandh-8-adhyay-19.json",
+      "firstPadId": "shrimad-bhagwat-skandh-8-adhyay-19-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-8-adhyay-19-shlok-1"
+    },
+    {
+      "id": "skandh-8-adhyay-20",
+      "name": "अष्टम स्कन्ध (मन्वन्तर लीला), अध्याय 20",
+      "section": "अष्टम स्कन्ध (मन्वन्तर लीला)",
+      "verseCount": 31,
+      "file": "ch-172-skandh-8-adhyay-20.json",
+      "firstPadId": "shrimad-bhagwat-skandh-8-adhyay-20-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-8-adhyay-20-shlok-1"
+    },
+    {
+      "id": "skandh-8-adhyay-21",
+      "name": "अष्टम स्कन्ध (मन्वन्तर लीला), अध्याय 21",
+      "section": "अष्टम स्कन्ध (मन्वन्तर लीला)",
+      "verseCount": 31,
+      "file": "ch-173-skandh-8-adhyay-21.json",
+      "firstPadId": "shrimad-bhagwat-skandh-8-adhyay-21-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-8-adhyay-21-shlok-1"
+    },
+    {
+      "id": "skandh-8-adhyay-22",
+      "name": "अष्टम स्कन्ध (मन्वन्तर लीला), अध्याय 22",
+      "section": "अष्टम स्कन्ध (मन्वन्तर लीला)",
+      "verseCount": 35,
+      "file": "ch-174-skandh-8-adhyay-22.json",
+      "firstPadId": "shrimad-bhagwat-skandh-8-adhyay-22-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-8-adhyay-22-shlok-1"
+    },
+    {
+      "id": "skandh-8-adhyay-23",
+      "name": "अष्टम स्कन्ध (मन्वन्तर लीला), अध्याय 23",
+      "section": "अष्टम स्कन्ध (मन्वन्तर लीला)",
+      "verseCount": 27,
+      "file": "ch-175-skandh-8-adhyay-23.json",
+      "firstPadId": "shrimad-bhagwat-skandh-8-adhyay-23-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-8-adhyay-23-shlok-1"
+    },
+    {
+      "id": "skandh-8-adhyay-24",
+      "name": "अष्टम स्कन्ध (मन्वन्तर लीला), अध्याय 24",
+      "section": "अष्टम स्कन्ध (मन्वन्तर लीला)",
+      "verseCount": 61,
+      "file": "ch-176-skandh-8-adhyay-24.json",
+      "firstPadId": "shrimad-bhagwat-skandh-8-adhyay-24-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-8-adhyay-24-shlok-1"
+    },
+    {
+      "id": "skandh-9-adhyay-1",
+      "name": "नवम स्कन्ध (ईशानुकथा लीला), अध्याय 1",
+      "section": "नवम स्कन्ध (ईशानुकथा लीला)",
+      "verseCount": 40,
+      "file": "ch-177-skandh-9-adhyay-1.json",
+      "firstPadId": "shrimad-bhagwat-skandh-9-adhyay-1-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-9-adhyay-1-shlok-1"
+    },
+    {
+      "id": "skandh-9-adhyay-2",
+      "name": "नवम स्कन्ध (ईशानुकथा लीला), अध्याय 2",
+      "section": "नवम स्कन्ध (ईशानुकथा लीला)",
+      "verseCount": 34,
+      "file": "ch-178-skandh-9-adhyay-2.json",
+      "firstPadId": "shrimad-bhagwat-skandh-9-adhyay-2-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-9-adhyay-2-shlok-1"
+    },
+    {
+      "id": "skandh-9-adhyay-3",
+      "name": "नवम स्कन्ध (ईशानुकथा लीला), अध्याय 3",
+      "section": "नवम स्कन्ध (ईशानुकथा लीला)",
+      "verseCount": 31,
+      "file": "ch-179-skandh-9-adhyay-3.json",
+      "firstPadId": "shrimad-bhagwat-skandh-9-adhyay-3-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-9-adhyay-3-shlok-1"
+    },
+    {
+      "id": "skandh-9-adhyay-4",
+      "name": "नवम स्कन्ध (ईशानुकथा लीला), अध्याय 4",
+      "section": "नवम स्कन्ध (ईशानुकथा लीला)",
+      "verseCount": 62,
+      "file": "ch-180-skandh-9-adhyay-4.json",
+      "firstPadId": "shrimad-bhagwat-skandh-9-adhyay-4-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-9-adhyay-4-shlok-1"
+    },
+    {
+      "id": "skandh-9-adhyay-5",
+      "name": "नवम स्कन्ध (ईशानुकथा लीला), अध्याय 5",
+      "section": "नवम स्कन्ध (ईशानुकथा लीला)",
+      "verseCount": 23,
+      "file": "ch-181-skandh-9-adhyay-5.json",
+      "firstPadId": "shrimad-bhagwat-skandh-9-adhyay-5-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-9-adhyay-5-shlok-1"
+    },
+    {
+      "id": "skandh-9-adhyay-6",
+      "name": "नवम स्कन्ध (ईशानुकथा लीला), अध्याय 6",
+      "section": "नवम स्कन्ध (ईशानुकथा लीला)",
+      "verseCount": 45,
+      "file": "ch-182-skandh-9-adhyay-6.json",
+      "firstPadId": "shrimad-bhagwat-skandh-9-adhyay-6-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-9-adhyay-6-shlok-1"
+    },
+    {
+      "id": "skandh-9-adhyay-7",
+      "name": "नवम स्कन्ध (ईशानुकथा लीला), अध्याय 7",
+      "section": "नवम स्कन्ध (ईशानुकथा लीला)",
+      "verseCount": 19,
+      "file": "ch-183-skandh-9-adhyay-7.json",
+      "firstPadId": "shrimad-bhagwat-skandh-9-adhyay-7-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-9-adhyay-7-shlok-1"
+    },
+    {
+      "id": "skandh-9-adhyay-8",
+      "name": "नवम स्कन्ध (ईशानुकथा लीला), अध्याय 8",
+      "section": "नवम स्कन्ध (ईशानुकथा लीला)",
+      "verseCount": 26,
+      "file": "ch-184-skandh-9-adhyay-8.json",
+      "firstPadId": "shrimad-bhagwat-skandh-9-adhyay-8-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-9-adhyay-8-shlok-1"
+    },
+    {
+      "id": "skandh-9-adhyay-9",
+      "name": "नवम स्कन्ध (ईशानुकथा लीला), अध्याय 9",
+      "section": "नवम स्कन्ध (ईशानुकथा लीला)",
+      "verseCount": 42,
+      "file": "ch-185-skandh-9-adhyay-9.json",
+      "firstPadId": "shrimad-bhagwat-skandh-9-adhyay-9-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-9-adhyay-9-shlok-1"
+    },
+    {
+      "id": "skandh-9-adhyay-10",
+      "name": "नवम स्कन्ध (ईशानुकथा लीला), अध्याय 10",
+      "section": "नवम स्कन्ध (ईशानुकथा लीला)",
+      "verseCount": 48,
+      "file": "ch-186-skandh-9-adhyay-10.json",
+      "firstPadId": "shrimad-bhagwat-skandh-9-adhyay-10-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-9-adhyay-10-shlok-1"
+    },
+    {
+      "id": "skandh-9-adhyay-11",
+      "name": "नवम स्कन्ध (ईशानुकथा लीला), अध्याय 11",
+      "section": "नवम स्कन्ध (ईशानुकथा लीला)",
+      "verseCount": 33,
+      "file": "ch-187-skandh-9-adhyay-11.json",
+      "firstPadId": "shrimad-bhagwat-skandh-9-adhyay-11-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-9-adhyay-11-shlok-1"
+    },
+    {
+      "id": "skandh-9-adhyay-12",
+      "name": "नवम स्कन्ध (ईशानुकथा लीला), अध्याय 12",
+      "section": "नवम स्कन्ध (ईशानुकथा लीला)",
+      "verseCount": 16,
+      "file": "ch-188-skandh-9-adhyay-12.json",
+      "firstPadId": "shrimad-bhagwat-skandh-9-adhyay-12-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-9-adhyay-12-shlok-1"
+    },
+    {
+      "id": "skandh-9-adhyay-13",
+      "name": "नवम स्कन्ध (ईशानुकथा लीला), अध्याय 13",
+      "section": "नवम स्कन्ध (ईशानुकथा लीला)",
+      "verseCount": 25,
+      "file": "ch-189-skandh-9-adhyay-13.json",
+      "firstPadId": "shrimad-bhagwat-skandh-9-adhyay-13-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-9-adhyay-13-shlok-1"
+    },
+    {
+      "id": "skandh-9-adhyay-14",
+      "name": "नवम स्कन्ध (ईशानुकथा लीला), अध्याय 14",
+      "section": "नवम स्कन्ध (ईशानुकथा लीला)",
+      "verseCount": 45,
+      "file": "ch-190-skandh-9-adhyay-14.json",
+      "firstPadId": "shrimad-bhagwat-skandh-9-adhyay-14-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-9-adhyay-14-shlok-1"
+    },
+    {
+      "id": "skandh-9-adhyay-15",
+      "name": "नवम स्कन्ध (ईशानुकथा लीला), अध्याय 15",
+      "section": "नवम स्कन्ध (ईशानुकथा लीला)",
+      "verseCount": 39,
+      "file": "ch-191-skandh-9-adhyay-15.json",
+      "firstPadId": "shrimad-bhagwat-skandh-9-adhyay-15-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-9-adhyay-15-shlok-1"
+    },
+    {
+      "id": "skandh-9-adhyay-16",
+      "name": "नवम स्कन्ध (ईशानुकथा लीला), अध्याय 16",
+      "section": "नवम स्कन्ध (ईशानुकथा लीला)",
+      "verseCount": 34,
+      "file": "ch-192-skandh-9-adhyay-16.json",
+      "firstPadId": "shrimad-bhagwat-skandh-9-adhyay-16-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-9-adhyay-16-shlok-1"
+    },
+    {
+      "id": "skandh-9-adhyay-17",
+      "name": "नवम स्कन्ध (ईशानुकथा लीला), अध्याय 17",
+      "section": "नवम स्कन्ध (ईशानुकथा लीला)",
+      "verseCount": 10,
+      "file": "ch-193-skandh-9-adhyay-17.json",
+      "firstPadId": "shrimad-bhagwat-skandh-9-adhyay-17-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-9-adhyay-17-shlok-1"
+    },
+    {
+      "id": "skandh-9-adhyay-18",
+      "name": "नवम स्कन्ध (ईशानुकथा लीला), अध्याय 18",
+      "section": "नवम स्कन्ध (ईशानुकथा लीला)",
+      "verseCount": 42,
+      "file": "ch-194-skandh-9-adhyay-18.json",
+      "firstPadId": "shrimad-bhagwat-skandh-9-adhyay-18-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-9-adhyay-18-shlok-1"
+    },
+    {
+      "id": "skandh-9-adhyay-19",
+      "name": "नवम स्कन्ध (ईशानुकथा लीला), अध्याय 19",
+      "section": "नवम स्कन्ध (ईशानुकथा लीला)",
+      "verseCount": 26,
+      "file": "ch-195-skandh-9-adhyay-19.json",
+      "firstPadId": "shrimad-bhagwat-skandh-9-adhyay-19-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-9-adhyay-19-shlok-1"
+    },
+    {
+      "id": "skandh-9-adhyay-20",
+      "name": "नवम स्कन्ध (ईशानुकथा लीला), अध्याय 20",
+      "section": "नवम स्कन्ध (ईशानुकथा लीला)",
+      "verseCount": 35,
+      "file": "ch-196-skandh-9-adhyay-20.json",
+      "firstPadId": "shrimad-bhagwat-skandh-9-adhyay-20-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-9-adhyay-20-shlok-1"
+    },
+    {
+      "id": "skandh-9-adhyay-21",
+      "name": "नवम स्कन्ध (ईशानुकथा लीला), अध्याय 21",
+      "section": "नवम स्कन्ध (ईशानुकथा लीला)",
+      "verseCount": 29,
+      "file": "ch-197-skandh-9-adhyay-21.json",
+      "firstPadId": "shrimad-bhagwat-skandh-9-adhyay-21-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-9-adhyay-21-shlok-1"
+    },
+    {
+      "id": "skandh-9-adhyay-22",
+      "name": "नवम स्कन्ध (ईशानुकथा लीला), अध्याय 22",
+      "section": "नवम स्कन्ध (ईशानुकथा लीला)",
+      "verseCount": 33,
+      "file": "ch-198-skandh-9-adhyay-22.json",
+      "firstPadId": "shrimad-bhagwat-skandh-9-adhyay-22-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-9-adhyay-22-shlok-1"
+    },
+    {
+      "id": "skandh-9-adhyay-23",
+      "name": "नवम स्कन्ध (ईशानुकथा लीला), अध्याय 23",
+      "section": "नवम स्कन्ध (ईशानुकथा लीला)",
+      "verseCount": 24,
+      "file": "ch-199-skandh-9-adhyay-23.json",
+      "firstPadId": "shrimad-bhagwat-skandh-9-adhyay-23-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-9-adhyay-23-shlok-1"
+    },
+    {
+      "id": "skandh-9-adhyay-24",
+      "name": "नवम स्कन्ध (ईशानुकथा लीला), अध्याय 24",
+      "section": "नवम स्कन्ध (ईशानुकथा लीला)",
+      "verseCount": 47,
+      "file": "ch-200-skandh-9-adhyay-24.json",
+      "firstPadId": "shrimad-bhagwat-skandh-9-adhyay-24-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-9-adhyay-24-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-1",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 1",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 63,
+      "file": "ch-201-skandh-10-adhyay-1.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-1-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-1-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-2",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 2",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 37,
+      "file": "ch-202-skandh-10-adhyay-2.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-2-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-2-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-3",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 3",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 47,
+      "file": "ch-203-skandh-10-adhyay-3.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-3-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-3-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-4",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 4",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 43,
+      "file": "ch-204-skandh-10-adhyay-4.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-4-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-4-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-5",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 5",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 29,
+      "file": "ch-205-skandh-10-adhyay-5.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-5-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-5-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-6",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 6",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 41,
+      "file": "ch-206-skandh-10-adhyay-6.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-6-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-6-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-7",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 7",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 35,
+      "file": "ch-207-skandh-10-adhyay-7.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-7-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-7-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-8",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 8",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 44,
+      "file": "ch-208-skandh-10-adhyay-8.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-8-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-8-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-9",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 9",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 21,
+      "file": "ch-209-skandh-10-adhyay-9.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-9-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-9-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-10",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 10",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 40,
+      "file": "ch-210-skandh-10-adhyay-10.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-10-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-10-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-11",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 11",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 57,
+      "file": "ch-211-skandh-10-adhyay-11.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-11-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-11-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-12",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 12",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 42,
+      "file": "ch-212-skandh-10-adhyay-12.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-12-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-12-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-13",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 13",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 62,
+      "file": "ch-213-skandh-10-adhyay-13.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-13-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-13-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-14",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 14",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 59,
+      "file": "ch-214-skandh-10-adhyay-14.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-14-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-14-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-15",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 15",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 50,
+      "file": "ch-215-skandh-10-adhyay-15.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-15-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-15-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-16",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 16",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 65,
+      "file": "ch-216-skandh-10-adhyay-16.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-16-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-16-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-17",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 17",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 25,
+      "file": "ch-217-skandh-10-adhyay-17.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-17-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-17-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-18",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 18",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 31,
+      "file": "ch-218-skandh-10-adhyay-18.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-18-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-18-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-19",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 19",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 16,
+      "file": "ch-219-skandh-10-adhyay-19.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-19-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-19-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-20",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 20",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 48,
+      "file": "ch-220-skandh-10-adhyay-20.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-20-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-20-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-21",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 21",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 18,
+      "file": "ch-221-skandh-10-adhyay-21.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-21-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-21-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-22",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 22",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 34,
+      "file": "ch-222-skandh-10-adhyay-22.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-22-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-22-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-23",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 23",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 46,
+      "file": "ch-223-skandh-10-adhyay-23.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-23-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-23-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-24",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 24",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 35,
+      "file": "ch-224-skandh-10-adhyay-24.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-24-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-24-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-25",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 25",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 30,
+      "file": "ch-225-skandh-10-adhyay-25.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-25-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-25-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-26",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 26",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 23,
+      "file": "ch-226-skandh-10-adhyay-26.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-26-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-26-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-27",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 27",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 26,
+      "file": "ch-227-skandh-10-adhyay-27.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-27-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-27-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-28",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 28",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 15,
+      "file": "ch-228-skandh-10-adhyay-28.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-28-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-28-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-29",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 29",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 44,
+      "file": "ch-229-skandh-10-adhyay-29.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-29-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-29-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-30",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 30",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 42,
+      "file": "ch-230-skandh-10-adhyay-30.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-30-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-30-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-31",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 31",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 19,
+      "file": "ch-231-skandh-10-adhyay-31.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-31-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-31-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-32",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 32",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 22,
+      "file": "ch-232-skandh-10-adhyay-32.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-32-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-32-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-33",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 33",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 39,
+      "file": "ch-233-skandh-10-adhyay-33.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-33-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-33-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-34",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 34",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 27,
+      "file": "ch-234-skandh-10-adhyay-34.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-34-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-34-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-35",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 35",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 14,
+      "file": "ch-235-skandh-10-adhyay-35.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-35-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-35-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-36",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 36",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 34,
+      "file": "ch-236-skandh-10-adhyay-36.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-36-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-36-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-37",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 37",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 33,
+      "file": "ch-237-skandh-10-adhyay-37.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-37-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-37-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-38",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 38",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 1,
+      "file": "ch-238-skandh-10-adhyay-38.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-38-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-38-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-39",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 39",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 52,
+      "file": "ch-239-skandh-10-adhyay-39.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-39-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-39-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-40",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 40",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 29,
+      "file": "ch-240-skandh-10-adhyay-40.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-40-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-40-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-41",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 41",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 50,
+      "file": "ch-241-skandh-10-adhyay-41.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-41-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-41-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-42",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 42",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 37,
+      "file": "ch-242-skandh-10-adhyay-42.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-42-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-42-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-43",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 43",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 40,
+      "file": "ch-243-skandh-10-adhyay-43.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-43-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-43-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-44",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 44",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 49,
+      "file": "ch-244-skandh-10-adhyay-44.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-44-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-44-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-45",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 45",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 45,
+      "file": "ch-245-skandh-10-adhyay-45.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-45-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-45-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-46",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 46",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 47,
+      "file": "ch-246-skandh-10-adhyay-46.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-46-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-46-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-47",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 47",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 66,
+      "file": "ch-247-skandh-10-adhyay-47.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-47-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-47-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-48",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 48",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 33,
+      "file": "ch-248-skandh-10-adhyay-48.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-48-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-48-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-49",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 49",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 28,
+      "file": "ch-249-skandh-10-adhyay-49.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-49-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-49-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-50",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 50",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 50,
+      "file": "ch-250-skandh-10-adhyay-50.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-50-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-50-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-51",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 51",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 51,
+      "file": "ch-251-skandh-10-adhyay-51.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-51-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-51-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-52",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 52",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 41,
+      "file": "ch-252-skandh-10-adhyay-52.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-52-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-52-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-53",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 53",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 56,
+      "file": "ch-253-skandh-10-adhyay-53.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-53-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-53-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-54",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 54",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 57,
+      "file": "ch-254-skandh-10-adhyay-54.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-54-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-54-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-55",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 55",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 37,
+      "file": "ch-255-skandh-10-adhyay-55.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-55-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-55-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-56",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 56",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 42,
+      "file": "ch-256-skandh-10-adhyay-56.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-56-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-56-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-57",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 57",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 36,
+      "file": "ch-257-skandh-10-adhyay-57.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-57-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-57-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-58",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 58",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 52,
+      "file": "ch-258-skandh-10-adhyay-58.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-58-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-58-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-59",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 59",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 39,
+      "file": "ch-259-skandh-10-adhyay-59.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-59-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-59-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-60",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 60",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 58,
+      "file": "ch-260-skandh-10-adhyay-60.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-60-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-60-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-61",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 61",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 35,
+      "file": "ch-261-skandh-10-adhyay-61.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-61-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-61-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-62",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 62",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 33,
+      "file": "ch-262-skandh-10-adhyay-62.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-62-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-62-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-63",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 63",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 50,
+      "file": "ch-263-skandh-10-adhyay-63.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-63-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-63-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-64",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 64",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 39,
+      "file": "ch-264-skandh-10-adhyay-64.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-64-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-64-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-65",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 65",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 29,
+      "file": "ch-265-skandh-10-adhyay-65.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-65-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-65-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-66",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 66",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 35,
+      "file": "ch-266-skandh-10-adhyay-66.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-66-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-66-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-67",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 67",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 22,
+      "file": "ch-267-skandh-10-adhyay-67.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-67-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-67-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-68",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 68",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 50,
+      "file": "ch-268-skandh-10-adhyay-68.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-68-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-68-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-69",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 69",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 42,
+      "file": "ch-269-skandh-10-adhyay-69.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-69-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-69-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-70",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 70",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 43,
+      "file": "ch-270-skandh-10-adhyay-70.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-70-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-70-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-71",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 71",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 43,
+      "file": "ch-271-skandh-10-adhyay-71.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-71-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-71-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-72",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 72",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 46,
+      "file": "ch-272-skandh-10-adhyay-72.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-72-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-72-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-73",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 73",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 29,
+      "file": "ch-273-skandh-10-adhyay-73.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-73-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-73-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-74",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 74",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 46,
+      "file": "ch-274-skandh-10-adhyay-74.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-74-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-74-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-75",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 75",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 34,
+      "file": "ch-275-skandh-10-adhyay-75.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-75-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-75-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-76",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 76",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 30,
+      "file": "ch-276-skandh-10-adhyay-76.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-76-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-76-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-77",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 77",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 35,
+      "file": "ch-277-skandh-10-adhyay-77.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-77-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-77-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-78",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 78",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 33,
+      "file": "ch-278-skandh-10-adhyay-78.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-78-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-78-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-79",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 79",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 29,
+      "file": "ch-279-skandh-10-adhyay-79.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-79-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-79-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-80",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 80",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 41,
+      "file": "ch-280-skandh-10-adhyay-80.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-80-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-80-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-81",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 81",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 31,
+      "file": "ch-281-skandh-10-adhyay-81.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-81-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-81-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-82",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 82",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 38,
+      "file": "ch-282-skandh-10-adhyay-82.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-82-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-82-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-83",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 83",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 37,
+      "file": "ch-283-skandh-10-adhyay-83.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-83-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-83-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-84",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 84",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 64,
+      "file": "ch-284-skandh-10-adhyay-84.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-84-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-84-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-85",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 85",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 54,
+      "file": "ch-285-skandh-10-adhyay-85.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-85-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-85-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-86",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 86",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 53,
+      "file": "ch-286-skandh-10-adhyay-86.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-86-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-86-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-87",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 87",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 46,
+      "file": "ch-287-skandh-10-adhyay-87.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-87-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-87-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-88",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 88",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 37,
+      "file": "ch-288-skandh-10-adhyay-88.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-88-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-88-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-89",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 89",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 60,
+      "file": "ch-289-skandh-10-adhyay-89.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-89-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-89-shlok-1"
+    },
+    {
+      "id": "skandh-10-adhyay-90",
+      "name": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला), अध्याय 90",
+      "section": "दशम स्कन्ध (श्रीकृष्ण निरोध लीला)",
+      "verseCount": 42,
+      "file": "ch-290-skandh-10-adhyay-90.json",
+      "firstPadId": "shrimad-bhagwat-skandh-10-adhyay-90-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-10-adhyay-90-shlok-1"
+    },
+    {
+      "id": "skandh-11-adhyay-1",
+      "name": "एकादश स्कन्ध (मुक्ति लीला), अध्याय 1",
+      "section": "एकादश स्कन्ध (मुक्ति लीला)",
+      "verseCount": 19,
+      "file": "ch-291-skandh-11-adhyay-1.json",
+      "firstPadId": "shrimad-bhagwat-skandh-11-adhyay-1-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-11-adhyay-1-shlok-1"
+    },
+    {
+      "id": "skandh-11-adhyay-2",
+      "name": "एकादश स्कन्ध (मुक्ति लीला), अध्याय 2",
+      "section": "एकादश स्कन्ध (मुक्ति लीला)",
+      "verseCount": 50,
+      "file": "ch-292-skandh-11-adhyay-2.json",
+      "firstPadId": "shrimad-bhagwat-skandh-11-adhyay-2-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-11-adhyay-2-shlok-1"
+    },
+    {
+      "id": "skandh-11-adhyay-3",
+      "name": "एकादश स्कन्ध (मुक्ति लीला), अध्याय 3",
+      "section": "एकादश स्कन्ध (मुक्ति लीला)",
+      "verseCount": 50,
+      "file": "ch-293-skandh-11-adhyay-3.json",
+      "firstPadId": "shrimad-bhagwat-skandh-11-adhyay-3-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-11-adhyay-3-shlok-1"
+    },
+    {
+      "id": "skandh-11-adhyay-4",
+      "name": "एकादश स्कन्ध (मुक्ति लीला), अध्याय 4",
+      "section": "एकादश स्कन्ध (मुक्ति लीला)",
+      "verseCount": 22,
+      "file": "ch-294-skandh-11-adhyay-4.json",
+      "firstPadId": "shrimad-bhagwat-skandh-11-adhyay-4-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-11-adhyay-4-shlok-1"
+    },
+    {
+      "id": "skandh-11-adhyay-5",
+      "name": "एकादश स्कन्ध (मुक्ति लीला), अध्याय 5",
+      "section": "एकादश स्कन्ध (मुक्ति लीला)",
+      "verseCount": 46,
+      "file": "ch-295-skandh-11-adhyay-5.json",
+      "firstPadId": "shrimad-bhagwat-skandh-11-adhyay-5-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-11-adhyay-5-shlok-1"
+    },
+    {
+      "id": "skandh-11-adhyay-6",
+      "name": "एकादश स्कन्ध (मुक्ति लीला), अध्याय 6",
+      "section": "एकादश स्कन्ध (मुक्ति लीला)",
+      "verseCount": 41,
+      "file": "ch-296-skandh-11-adhyay-6.json",
+      "firstPadId": "shrimad-bhagwat-skandh-11-adhyay-6-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-11-adhyay-6-shlok-1"
+    },
+    {
+      "id": "skandh-11-adhyay-7",
+      "name": "एकादश स्कन्ध (मुक्ति लीला), अध्याय 7",
+      "section": "एकादश स्कन्ध (मुक्ति लीला)",
+      "verseCount": 72,
+      "file": "ch-297-skandh-11-adhyay-7.json",
+      "firstPadId": "shrimad-bhagwat-skandh-11-adhyay-7-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-11-adhyay-7-shlok-1"
+    },
+    {
+      "id": "skandh-11-adhyay-8",
+      "name": "एकादश स्कन्ध (मुक्ति लीला), अध्याय 8",
+      "section": "एकादश स्कन्ध (मुक्ति लीला)",
+      "verseCount": 43,
+      "file": "ch-298-skandh-11-adhyay-8.json",
+      "firstPadId": "shrimad-bhagwat-skandh-11-adhyay-8-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-11-adhyay-8-shlok-1"
+    },
+    {
+      "id": "skandh-11-adhyay-9",
+      "name": "एकादश स्कन्ध (मुक्ति लीला), अध्याय 9",
+      "section": "एकादश स्कन्ध (मुक्ति लीला)",
+      "verseCount": 28,
+      "file": "ch-299-skandh-11-adhyay-9.json",
+      "firstPadId": "shrimad-bhagwat-skandh-11-adhyay-9-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-11-adhyay-9-shlok-1"
+    },
+    {
+      "id": "skandh-11-adhyay-10",
+      "name": "एकादश स्कन्ध (मुक्ति लीला), अध्याय 10",
+      "section": "एकादश स्कन्ध (मुक्ति लीला)",
+      "verseCount": 32,
+      "file": "ch-300-skandh-11-adhyay-10.json",
+      "firstPadId": "shrimad-bhagwat-skandh-11-adhyay-10-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-11-adhyay-10-shlok-1"
+    },
+    {
+      "id": "skandh-11-adhyay-11",
+      "name": "एकादश स्कन्ध (मुक्ति लीला), अध्याय 11",
+      "section": "एकादश स्कन्ध (मुक्ति लीला)",
+      "verseCount": 46,
+      "file": "ch-301-skandh-11-adhyay-11.json",
+      "firstPadId": "shrimad-bhagwat-skandh-11-adhyay-11-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-11-adhyay-11-shlok-1"
+    },
+    {
+      "id": "skandh-11-adhyay-12",
+      "name": "एकादश स्कन्ध (मुक्ति लीला), अध्याय 12",
+      "section": "एकादश स्कन्ध (मुक्ति लीला)",
+      "verseCount": 18,
+      "file": "ch-302-skandh-11-adhyay-12.json",
+      "firstPadId": "shrimad-bhagwat-skandh-11-adhyay-12-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-11-adhyay-12-shlok-1"
+    },
+    {
+      "id": "skandh-11-adhyay-13",
+      "name": "एकादश स्कन्ध (मुक्ति लीला), अध्याय 13",
+      "section": "एकादश स्कन्ध (मुक्ति लीला)",
+      "verseCount": 38,
+      "file": "ch-303-skandh-11-adhyay-13.json",
+      "firstPadId": "shrimad-bhagwat-skandh-11-adhyay-13-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-11-adhyay-13-shlok-1"
+    },
+    {
+      "id": "skandh-11-adhyay-14",
+      "name": "एकादश स्कन्ध (मुक्ति लीला), अध्याय 14",
+      "section": "एकादश स्कन्ध (मुक्ति लीला)",
+      "verseCount": 41,
+      "file": "ch-304-skandh-11-adhyay-14.json",
+      "firstPadId": "shrimad-bhagwat-skandh-11-adhyay-14-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-11-adhyay-14-shlok-1"
+    },
+    {
+      "id": "skandh-11-adhyay-15",
+      "name": "एकादश स्कन्ध (मुक्ति लीला), अध्याय 15",
+      "section": "एकादश स्कन्ध (मुक्ति लीला)",
+      "verseCount": 35,
+      "file": "ch-305-skandh-11-adhyay-15.json",
+      "firstPadId": "shrimad-bhagwat-skandh-11-adhyay-15-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-11-adhyay-15-shlok-1"
+    },
+    {
+      "id": "skandh-11-adhyay-16",
+      "name": "एकादश स्कन्ध (मुक्ति लीला), अध्याय 16",
+      "section": "एकादश स्कन्ध (मुक्ति लीला)",
+      "verseCount": 42,
+      "file": "ch-306-skandh-11-adhyay-16.json",
+      "firstPadId": "shrimad-bhagwat-skandh-11-adhyay-16-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-11-adhyay-16-shlok-1"
+    },
+    {
+      "id": "skandh-11-adhyay-17",
+      "name": "एकादश स्कन्ध (मुक्ति लीला), अध्याय 17",
+      "section": "एकादश स्कन्ध (मुक्ति लीला)",
+      "verseCount": 54,
+      "file": "ch-307-skandh-11-adhyay-17.json",
+      "firstPadId": "shrimad-bhagwat-skandh-11-adhyay-17-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-11-adhyay-17-shlok-1"
+    },
+    {
+      "id": "skandh-11-adhyay-18",
+      "name": "एकादश स्कन्ध (मुक्ति लीला), अध्याय 18",
+      "section": "एकादश स्कन्ध (मुक्ति लीला)",
+      "verseCount": 45,
+      "file": "ch-308-skandh-11-adhyay-18.json",
+      "firstPadId": "shrimad-bhagwat-skandh-11-adhyay-18-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-11-adhyay-18-shlok-1"
+    },
+    {
+      "id": "skandh-11-adhyay-19",
+      "name": "एकादश स्कन्ध (मुक्ति लीला), अध्याय 19",
+      "section": "एकादश स्कन्ध (मुक्ति लीला)",
+      "verseCount": 41,
+      "file": "ch-309-skandh-11-adhyay-19.json",
+      "firstPadId": "shrimad-bhagwat-skandh-11-adhyay-19-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-11-adhyay-19-shlok-1"
+    },
+    {
+      "id": "skandh-11-adhyay-20",
+      "name": "एकादश स्कन्ध (मुक्ति लीला), अध्याय 20",
+      "section": "एकादश स्कन्ध (मुक्ति लीला)",
+      "verseCount": 33,
+      "file": "ch-310-skandh-11-adhyay-20.json",
+      "firstPadId": "shrimad-bhagwat-skandh-11-adhyay-20-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-11-adhyay-20-shlok-1"
+    },
+    {
+      "id": "skandh-11-adhyay-21",
+      "name": "एकादश स्कन्ध (मुक्ति लीला), अध्याय 21",
+      "section": "एकादश स्कन्ध (मुक्ति लीला)",
+      "verseCount": 39,
+      "file": "ch-311-skandh-11-adhyay-21.json",
+      "firstPadId": "shrimad-bhagwat-skandh-11-adhyay-21-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-11-adhyay-21-shlok-1"
+    },
+    {
+      "id": "skandh-11-adhyay-22",
+      "name": "एकादश स्कन्ध (मुक्ति लीला), अध्याय 22",
+      "section": "एकादश स्कन्ध (मुक्ति लीला)",
+      "verseCount": 54,
+      "file": "ch-312-skandh-11-adhyay-22.json",
+      "firstPadId": "shrimad-bhagwat-skandh-11-adhyay-22-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-11-adhyay-22-shlok-1"
+    },
+    {
+      "id": "skandh-11-adhyay-23",
+      "name": "एकादश स्कन्ध (मुक्ति लीला), अध्याय 23",
+      "section": "एकादश स्कन्ध (मुक्ति लीला)",
+      "verseCount": 57,
+      "file": "ch-313-skandh-11-adhyay-23.json",
+      "firstPadId": "shrimad-bhagwat-skandh-11-adhyay-23-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-11-adhyay-23-shlok-1"
+    },
+    {
+      "id": "skandh-11-adhyay-24",
+      "name": "एकादश स्कन्ध (मुक्ति लीला), अध्याय 24",
+      "section": "एकादश स्कन्ध (मुक्ति लीला)",
+      "verseCount": 28,
+      "file": "ch-314-skandh-11-adhyay-24.json",
+      "firstPadId": "shrimad-bhagwat-skandh-11-adhyay-24-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-11-adhyay-24-shlok-1"
+    },
+    {
+      "id": "skandh-11-adhyay-25",
+      "name": "एकादश स्कन्ध (मुक्ति लीला), अध्याय 25",
+      "section": "एकादश स्कन्ध (मुक्ति लीला)",
+      "verseCount": 33,
+      "file": "ch-315-skandh-11-adhyay-25.json",
+      "firstPadId": "shrimad-bhagwat-skandh-11-adhyay-25-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-11-adhyay-25-shlok-1"
+    },
+    {
+      "id": "skandh-11-adhyay-26",
+      "name": "एकादश स्कन्ध (मुक्ति लीला), अध्याय 26",
+      "section": "एकादश स्कन्ध (मुक्ति लीला)",
+      "verseCount": 33,
+      "file": "ch-316-skandh-11-adhyay-26.json",
+      "firstPadId": "shrimad-bhagwat-skandh-11-adhyay-26-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-11-adhyay-26-shlok-1"
+    },
+    {
+      "id": "skandh-11-adhyay-27",
+      "name": "एकादश स्कन्ध (मुक्ति लीला), अध्याय 27",
+      "section": "एकादश स्कन्ध (मुक्ति लीला)",
+      "verseCount": 47,
+      "file": "ch-317-skandh-11-adhyay-27.json",
+      "firstPadId": "shrimad-bhagwat-skandh-11-adhyay-27-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-11-adhyay-27-shlok-1"
+    },
+    {
+      "id": "skandh-11-adhyay-28",
+      "name": "एकादश स्कन्ध (मुक्ति लीला), अध्याय 28",
+      "section": "एकादश स्कन्ध (मुक्ति लीला)",
+      "verseCount": 43,
+      "file": "ch-318-skandh-11-adhyay-28.json",
+      "firstPadId": "shrimad-bhagwat-skandh-11-adhyay-28-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-11-adhyay-28-shlok-1"
+    },
+    {
+      "id": "skandh-11-adhyay-29",
+      "name": "एकादश स्कन्ध (मुक्ति लीला), अध्याय 29",
+      "section": "एकादश स्कन्ध (मुक्ति लीला)",
+      "verseCount": 46,
+      "file": "ch-319-skandh-11-adhyay-29.json",
+      "firstPadId": "shrimad-bhagwat-skandh-11-adhyay-29-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-11-adhyay-29-shlok-1"
+    },
+    {
+      "id": "skandh-11-adhyay-30",
+      "name": "एकादश स्कन्ध (मुक्ति लीला), अध्याय 30",
+      "section": "एकादश स्कन्ध (मुक्ति लीला)",
+      "verseCount": 44,
+      "file": "ch-320-skandh-11-adhyay-30.json",
+      "firstPadId": "shrimad-bhagwat-skandh-11-adhyay-30-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-11-adhyay-30-shlok-1"
+    },
+    {
+      "id": "skandh-11-adhyay-31",
+      "name": "एकादश स्कन्ध (मुक्ति लीला), अध्याय 31",
+      "section": "एकादश स्कन्ध (मुक्ति लीला)",
+      "verseCount": 24,
+      "file": "ch-321-skandh-11-adhyay-31.json",
+      "firstPadId": "shrimad-bhagwat-skandh-11-adhyay-31-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-11-adhyay-31-shlok-1"
+    },
+    {
+      "id": "skandh-12-adhyay-1",
+      "name": "द्वादश स्कन्ध (आश्रय लीला), अध्याय 1",
+      "section": "द्वादश स्कन्ध (आश्रय लीला)",
+      "verseCount": 30,
+      "file": "ch-322-skandh-12-adhyay-1.json",
+      "firstPadId": "shrimad-bhagwat-skandh-12-adhyay-1-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-12-adhyay-1-shlok-1"
+    },
+    {
+      "id": "skandh-12-adhyay-2",
+      "name": "द्वादश स्कन्ध (आश्रय लीला), अध्याय 2",
+      "section": "द्वादश स्कन्ध (आश्रय लीला)",
+      "verseCount": 36,
+      "file": "ch-323-skandh-12-adhyay-2.json",
+      "firstPadId": "shrimad-bhagwat-skandh-12-adhyay-2-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-12-adhyay-2-shlok-1"
+    },
+    {
+      "id": "skandh-12-adhyay-3",
+      "name": "द्वादश स्कन्ध (आश्रय लीला), अध्याय 3",
+      "section": "द्वादश स्कन्ध (आश्रय लीला)",
+      "verseCount": 42,
+      "file": "ch-324-skandh-12-adhyay-3.json",
+      "firstPadId": "shrimad-bhagwat-skandh-12-adhyay-3-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-12-adhyay-3-shlok-1"
+    },
+    {
+      "id": "skandh-12-adhyay-4",
+      "name": "द्वादश स्कन्ध (आश्रय लीला), अध्याय 4",
+      "section": "द्वादश स्कन्ध (आश्रय लीला)",
+      "verseCount": 37,
+      "file": "ch-325-skandh-12-adhyay-4.json",
+      "firstPadId": "shrimad-bhagwat-skandh-12-adhyay-4-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-12-adhyay-4-shlok-1"
+    },
+    {
+      "id": "skandh-12-adhyay-5",
+      "name": "द्वादश स्कन्ध (आश्रय लीला), अध्याय 5",
+      "section": "द्वादश स्कन्ध (आश्रय लीला)",
+      "verseCount": 13,
+      "file": "ch-326-skandh-12-adhyay-5.json",
+      "firstPadId": "shrimad-bhagwat-skandh-12-adhyay-5-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-12-adhyay-5-shlok-1"
+    },
+    {
+      "id": "skandh-12-adhyay-6",
+      "name": "द्वादश स्कन्ध (आश्रय लीला), अध्याय 6",
+      "section": "द्वादश स्कन्ध (आश्रय लीला)",
+      "verseCount": 69,
+      "file": "ch-327-skandh-12-adhyay-6.json",
+      "firstPadId": "shrimad-bhagwat-skandh-12-adhyay-6-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-12-adhyay-6-shlok-1"
+    },
+    {
+      "id": "skandh-12-adhyay-7",
+      "name": "द्वादश स्कन्ध (आश्रय लीला), अध्याय 7",
+      "section": "द्वादश स्कन्ध (आश्रय लीला)",
+      "verseCount": 22,
+      "file": "ch-328-skandh-12-adhyay-7.json",
+      "firstPadId": "shrimad-bhagwat-skandh-12-adhyay-7-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-12-adhyay-7-shlok-1"
+    },
+    {
+      "id": "skandh-12-adhyay-8",
+      "name": "द्वादश स्कन्ध (आश्रय लीला), अध्याय 8",
+      "section": "द्वादश स्कन्ध (आश्रय लीला)",
+      "verseCount": 48,
+      "file": "ch-329-skandh-12-adhyay-8.json",
+      "firstPadId": "shrimad-bhagwat-skandh-12-adhyay-8-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-12-adhyay-8-shlok-1"
+    },
+    {
+      "id": "skandh-12-adhyay-9",
+      "name": "द्वादश स्कन्ध (आश्रय लीला), अध्याय 9",
+      "section": "द्वादश स्कन्ध (आश्रय लीला)",
+      "verseCount": 32,
+      "file": "ch-330-skandh-12-adhyay-9.json",
+      "firstPadId": "shrimad-bhagwat-skandh-12-adhyay-9-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-12-adhyay-9-shlok-1"
+    },
+    {
+      "id": "skandh-12-adhyay-10",
+      "name": "द्वादश स्कन्ध (आश्रय लीला), अध्याय 10",
+      "section": "द्वादश स्कन्ध (आश्रय लीला)",
+      "verseCount": 39,
+      "file": "ch-331-skandh-12-adhyay-10.json",
+      "firstPadId": "shrimad-bhagwat-skandh-12-adhyay-10-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-12-adhyay-10-shlok-1"
+    },
+    {
+      "id": "skandh-12-adhyay-11",
+      "name": "द्वादश स्कन्ध (आश्रय लीला), अध्याय 11",
+      "section": "द्वादश स्कन्ध (आश्रय लीला)",
+      "verseCount": 43,
+      "file": "ch-332-skandh-12-adhyay-11.json",
+      "firstPadId": "shrimad-bhagwat-skandh-12-adhyay-11-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-12-adhyay-11-shlok-1"
+    },
+    {
+      "id": "skandh-12-adhyay-12",
+      "name": "द्वादश स्कन्ध (आश्रय लीला), अध्याय 12",
+      "section": "द्वादश स्कन्ध (आश्रय लीला)",
+      "verseCount": 51,
+      "file": "ch-333-skandh-12-adhyay-12.json",
+      "firstPadId": "shrimad-bhagwat-skandh-12-adhyay-12-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-12-adhyay-12-shlok-1"
+    },
+    {
+      "id": "skandh-12-adhyay-13",
+      "name": "द्वादश स्कन्ध (आश्रय लीला), अध्याय 13",
+      "section": "द्वादश स्कन्ध (आश्रय लीला)",
+      "verseCount": 23,
+      "file": "ch-334-skandh-12-adhyay-13.json",
+      "firstPadId": "shrimad-bhagwat-skandh-12-adhyay-13-shlok-1",
+      "firstPadSlug": "shrimad-bhagwat-skandh-12-adhyay-13-shlok-1"
+    }
+  ]
+}

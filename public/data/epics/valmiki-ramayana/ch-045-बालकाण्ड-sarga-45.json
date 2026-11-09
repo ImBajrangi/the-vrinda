@@ -1,0 +1,791 @@
+[
+  {
+    "id": "valmiki-ramayana-1-sarga-45-shlok-1-1",
+    "collectionId": "valmiki-ramayana",
+    "index": 2130,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 45, श्लोक 1",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-45-shlok-1-1",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "सर्वांश्चाहूय सुग्रीवः प्लवगान् प्लवगर्षभः।",
+          "समस्तांश्चाब्रवीद् राजा रामकार्यार्थसिद्धये ॥१॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-45",
+    "chapterName": "बालकाण्ड, सर्ग 45",
+    "verseNumber": 1
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-45-shlok-2-1",
+    "collectionId": "valmiki-ramayana",
+    "index": 2131,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 45, श्लोक 2",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-45-shlok-2-1",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "एवमेतद् विचेतव्यं भवद्भिर्वानरोत्तमैः।",
+          "तदुग्रशासनं भर्तुर्विज्ञाय हरिपुंगवाः ॥२॥",
+          "शलभा इव संछाद्य मेदिनीं सम्प्रतस्थिरे।"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-45",
+    "chapterName": "बालकाण्ड, सर्ग 45",
+    "verseNumber": 2
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-45-shlok-3",
+    "collectionId": "valmiki-ramayana",
+    "index": 2132,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 45, श्लोक 3",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-45-shlok-3",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "रामः प्रस्रवणे तस्मिन् न्यवसत् सहलक्ष्मणः॥३॥",
+          "प्रतीक्षमाणस्तं मासं सीताधिगमने कृतः।"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-45",
+    "chapterName": "बालकाण्ड, सर्ग 45",
+    "verseNumber": 3
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-45-shlok-4-1",
+    "collectionId": "valmiki-ramayana",
+    "index": 2133,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 45, श्लोक 4",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-45-shlok-4-1",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "उत्तरां तु दिशं रम्यां गिरिराजसमावृताम्॥४॥",
+          "प्रतस्थे सहसा वीरो हरिः शतबलिस्तदा।"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-45",
+    "chapterName": "बालकाण्ड, सर्ग 45",
+    "verseNumber": 4
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-45-shlok-5",
+    "collectionId": "valmiki-ramayana",
+    "index": 2134,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 45, श्लोक 5",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-45-shlok-5",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "ततः प्रभाते विमले विश्वामित्रं तपोधनम्।",
+          "उवाच राघवो वाक्यं कृताह्निकमरिंदमः॥५॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-45",
+    "chapterName": "बालकाण्ड, सर्ग 45",
+    "verseNumber": 5
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-45-shlok-6",
+    "collectionId": "valmiki-ramayana",
+    "index": 2135,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 45, श्लोक 6",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-45-shlok-6",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "गता भगवती रात्रिः श्रोतव्यं परमं श्रुतम्।",
+          "तराम सरितां श्रेष्ठां पुण्यां त्रिपथगां नदीम्॥६॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-45",
+    "chapterName": "बालकाण्ड, सर्ग 45",
+    "verseNumber": 6
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-45-shlok-7",
+    "collectionId": "valmiki-ramayana",
+    "index": 2136,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 45, श्लोक 7",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-45-shlok-7",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "पूर्वां दिशं प्रतिययौ विनतो हरियूथपः॥५॥",
+          "ताराङ्गदादिसहितः प्लवगः पवनात्मजः।",
+          "अगस्त्याचरितामाशां दक्षिणां हरियूथपः॥६॥",
+          "पश्चिमां च दिशं घोरां सुषेणः प्लवगेश्वरः।",
+          "प्रतस्थे हरिशार्दूलो दिशं वरुणपालिताम्॥७॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-45",
+    "chapterName": "बालकाण्ड, सर्ग 45",
+    "verseNumber": 7
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-45-shlok-8",
+    "collectionId": "valmiki-ramayana",
+    "index": 2137,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 45, श्लोक 8",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-45-shlok-8",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "ततः सर्वा दिशो राजा चोदयित्वा यथातथम्।",
+          "कपिसेनापतिर्वीरो मुमोद सुखितः सुखम्॥८॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-45",
+    "chapterName": "बालकाण्ड, सर्ग 45",
+    "verseNumber": 8
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-45-shlok-9-1",
+    "collectionId": "valmiki-ramayana",
+    "index": 2138,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 45, श्लोक 9",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-45-shlok-9-1",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "एवं संचोदिताः सर्वे राज्ञा वानरयूथपाः।",
+          "स्वां स्वां दिशमभिप्रेत्य त्वरिताः सम्प्रतस्थिरे॥९॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-45",
+    "chapterName": "बालकाण्ड, सर्ग 45",
+    "verseNumber": 9
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-45-shlok-10",
+    "collectionId": "valmiki-ramayana",
+    "index": 2139,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 45, श्लोक 10",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-45-shlok-10",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "ततो मुनिवरस्तूर्णं जगाम सहराघवः।",
+          "विशाला नगरी रम्यां दिव्यां स्वर्गोपमां तदा॥ १०॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-45",
+    "chapterName": "बालकाण्ड, सर्ग 45",
+    "verseNumber": 10
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-45-shlok-12",
+    "collectionId": "valmiki-ramayana",
+    "index": 2140,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 45, श्लोक 12",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-45-shlok-12",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "कतमो राजवंशोऽयं विशालायां महामुने।",
+          "श्रोतुमिच्छामि भद्रं ते परं कौतूहलं हि मे ॥१२॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-45",
+    "chapterName": "बालकाण्ड, सर्ग 45",
+    "verseNumber": 12
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-45-shlok-13",
+    "collectionId": "valmiki-ramayana",
+    "index": 2141,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 45, श्लोक 13",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-45-shlok-13",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "तस्य तद् वचनं श्रुत्वा रामस्य मुनिपुंगवः।",
+          "आख्यातुं तत्समारेभे विशालायाः पुरातनम्॥ १३॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-45",
+    "chapterName": "बालकाण्ड, सर्ग 45",
+    "verseNumber": 13
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-45-shlok-14",
+    "collectionId": "valmiki-ramayana",
+    "index": 2142,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 45, श्लोक 14",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-45-shlok-14",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "श्रूयतां राम शक्रस्य कथां कथयतः श्रुताम्।",
+          "अस्मिन् देशे हि यद् वृत्तं शृणु तत्त्वेन राघव॥ १४॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-45",
+    "chapterName": "बालकाण्ड, सर्ग 45",
+    "verseNumber": 14
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-45-shlok-15",
+    "collectionId": "valmiki-ramayana",
+    "index": 2143,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 45, श्लोक 15",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-45-shlok-15",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "पूर्वं कृतयुगे राम दितेः पुत्रा महाबलाः।",
+          "अदितेश्च महाभागा वीर्यवन्तः सुधार्मिकाः॥ १५॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-45",
+    "chapterName": "बालकाण्ड, सर्ग 45",
+    "verseNumber": 15
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-45-shlok-16-1",
+    "collectionId": "valmiki-ramayana",
+    "index": 2144,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 45, श्लोक 16",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-45-shlok-16-1",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "नदन्तश्चोन्नदन्तश्च गर्जन्तश्च प्लवंगमाः।",
+          "क्ष्वेडन्तो धावमानाश्च विनदन्तो महाबलाः॥ १०॥",
+          "एवं संचोदिताः सर्वे राज्ञा वानरयूथपाः।",
+          "आनयिष्यामहे सीतां हनिष्यामश्च रावणम्॥ ११॥",
+          "अहमेको वधिष्यामि प्राप्तं रावणमाहवे।",
+          "ततश्चोन्मथ्य सहसा हरिष्ये जनकात्मजाम्॥ १२॥",
+          "वेपमानां श्रमेणाद्य भवद्भिः स्थीयतामिति।",
+          "एक एवाहरिष्यामि पातालादपि जानकीम्॥१३॥",
+          "विधमिष्याम्यहं वृक्षान् दारयिष्याम्यहं गिरीन्।",
+          "धरणी दारयिष्यामि क्षोभयिष्यामि सागरान्॥१४॥",
+          "अहं योजनसंख्यायाः प्लवेयं नात्र संशयः।",
+          "शतयोजनसंख्यायाः शतं समधिकं ह्यहम्॥१५॥",
+          "भूतले सागरे वापि शैलेषु च वनेषु च।",
+          "पातालस्यापि वा मध्ये न ममाच्छिद्यते गतिः॥१६॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-45",
+    "chapterName": "बालकाण्ड, सर्ग 45",
+    "verseNumber": 16
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-45-shlok-17-1",
+    "collectionId": "valmiki-ramayana",
+    "index": 2145,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 45, श्लोक 17",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-45-shlok-17-1",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "इत्येकैकस्तदा तत्र वानरा बलदर्पिताः।",
+          "ऊचुश्च वचनं तस्य हरिराजस्य संनिधौ॥१७॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-45",
+    "chapterName": "बालकाण्ड, सर्ग 45",
+    "verseNumber": 17
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-45-shlok-18",
+    "collectionId": "valmiki-ramayana",
+    "index": 2146,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 45, श्लोक 18",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-45-shlok-18",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "ततो निश्चित्य मथनं योक्त्रं कृत्वा च वासुकिम्।",
+          "मन्थानं मन्दरं कृत्वा ममन्थुरमितौजसः॥१८॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-45",
+    "chapterName": "बालकाण्ड, सर्ग 45",
+    "verseNumber": 18
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-45-shlok-19",
+    "collectionId": "valmiki-ramayana",
+    "index": 2147,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 45, श्लोक 19",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-45-shlok-19",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "अथ वर्षसहस्रेण योकत्रसर्पशिरांसि च। ।",
+          "वमन्तोऽतिविषं तत्र ददंशुर्दशनैः शिलाः॥१९॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-45",
+    "chapterName": "बालकाण्ड, सर्ग 45",
+    "verseNumber": 19
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-45-shlok-20",
+    "collectionId": "valmiki-ramayana",
+    "index": 2148,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 45, श्लोक 20",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-45-shlok-20",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "उत्पपाताग्निसंकाशं हालाहलमहाविषम्।",
+          "तेन दग्धं जगत् सर्वं सदेवासुरमानुषम्॥२०॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-45",
+    "chapterName": "बालकाण्ड, सर्ग 45",
+    "verseNumber": 20
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-45-shlok-21",
+    "collectionId": "valmiki-ramayana",
+    "index": 2149,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 45, श्लोक 21",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-45-shlok-21",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "अथ देवा महादेवं शङ्करं शरणार्थिनः।",
+          "जग्मुः पशुपतिं रुद्रं त्राहि त्राहीति तुष्टवुः ॥२१॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-45",
+    "chapterName": "बालकाण्ड, सर्ग 45",
+    "verseNumber": 21
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-45-shlok-22",
+    "collectionId": "valmiki-ramayana",
+    "index": 2150,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 45, श्लोक 22",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-45-shlok-22",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "एवमुक्तस्ततो देवैर्देवदेवेश्वरः प्रभुः।",
+          "प्रादुरासीत् ततोऽत्रैव शङ्खचक्रधरो हरिः॥ २२॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-45",
+    "chapterName": "बालकाण्ड, सर्ग 45",
+    "verseNumber": 22
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-45-shlok-24",
+    "collectionId": "valmiki-ramayana",
+    "index": 2151,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 45, श्लोक 24",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-45-shlok-24",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "उवाचैनं स्मितं कृत्वा रुद्रं शूलधरं हरिः।",
+          "दैवतैर्मथ्यमाने तु यत्पूर्वं समुपस्थितम्॥२३॥",
+          "तत् त्वदीयं सुरश्रेष्ठ सुराणामग्रतो हि यत्।",
+          "अग्रपूजामिह स्थित्वा गृहाणेदं विषं प्रभो॥२४॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-45",
+    "chapterName": "बालकाण्ड, सर्ग 45",
+    "verseNumber": 24
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-45-shlok-26",
+    "collectionId": "valmiki-ramayana",
+    "index": 2152,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 45, श्लोक 26",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-45-shlok-26",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "इत्युक्त्वा च सुरश्रेष्ठस्तत्रैवान्तरधीयत।",
+          "देवतानां भयं दृष्ट्वा श्रुत्वा वाक्यं तु शाङ्गिणः॥ २५॥",
+          "हालाहलं विषं घोरं संजग्राहामृतोपमम्।",
+          "देवान् विसृज्य देवेशो जगाम भगवान् हरः॥२६॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-45",
+    "chapterName": "बालकाण्ड, सर्ग 45",
+    "verseNumber": 26
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-45-shlok-27",
+    "collectionId": "valmiki-ramayana",
+    "index": 2153,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 45, श्लोक 27",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-45-shlok-27",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "ततो देवासुराः सर्वे ममन्थू रघुनन्दन।",
+          "प्रविवेशाथ पातालं मन्थानः पर्वतोत्तमः॥२७॥",
+          "ततो देवाः सगन्धर्वास्तुष्टवुर्मधुसूदनम्।",
+          "त्वं गतिः सर्वभूतानां विशेषेण दिवौकसाम्॥ २८॥",
+          "पालयास्मान् महाबाहो गिरिमुद्धर्तुमर्हसि।",
+          "पर्वताग्रं तु लोकात्मा हस्तेनाक्रम्य केशवः॥ ३०॥",
+          "देवानां मध्यतः स्थित्वा ममन्थ पुरुषोत्तमः।"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-45",
+    "chapterName": "बालकाण्ड, सर्ग 45",
+    "verseNumber": 27
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-45-shlok-32",
+    "collectionId": "valmiki-ramayana",
+    "index": 2154,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 45, श्लोक 32",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-45-shlok-32",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "अथ वर्षसहस्रेण आयुर्वेदमयः पुमान्॥३१॥",
+          "उदतिष्ठत् सुधर्मात्मा सदण्डः सकमण्डलुः।",
+          "पूर्वं धन्वन्तरि म अप्सराश्च सुवर्चसः॥ ३२॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-45",
+    "chapterName": "बालकाण्ड, सर्ग 45",
+    "verseNumber": 32
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-45-shlok-33",
+    "collectionId": "valmiki-ramayana",
+    "index": 2155,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 45, श्लोक 33",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-45-shlok-33",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "अप्सु निर्मथनादेव रसात् तस्माद् वरस्त्रियः।",
+          "उत्पेतुर्मनुजश्रेष्ठ तस्मादप्सरसोऽभवन्॥ ३३॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-45",
+    "chapterName": "बालकाण्ड, सर्ग 45",
+    "verseNumber": 33
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-45-shlok-34",
+    "collectionId": "valmiki-ramayana",
+    "index": 2156,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 45, श्लोक 34",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-45-shlok-34",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "षष्टिः कोट्योऽभवंस्तासामप्सराणां सुवर्चसाम्।",
+          "असंख्येयास्तु काकुत्स्थ यास्तासां परिचारिकाः॥ ३४॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-45",
+    "chapterName": "बालकाण्ड, सर्ग 45",
+    "verseNumber": 34
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-45-shlok-35",
+    "collectionId": "valmiki-ramayana",
+    "index": 2157,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 45, श्लोक 35",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-45-shlok-35",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "न ताः स्म प्रतिगृह्णन्ति सर्वे ते देवदानवाः।",
+          "अप्रतिग्रहणादेव ता वै साधारणाः स्मृताः॥ ३५॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-45",
+    "chapterName": "बालकाण्ड, सर्ग 45",
+    "verseNumber": 35
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-45-shlok-36",
+    "collectionId": "valmiki-ramayana",
+    "index": 2158,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 45, श्लोक 36",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-45-shlok-36",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "वरुणस्य ततः कन्या वारुणी रघुनन्दन।",
+          "उत्पपात महाभागा मार्गमाणा परिग्रहम्॥३६॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-45",
+    "chapterName": "बालकाण्ड, सर्ग 45",
+    "verseNumber": 36
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-45-shlok-37",
+    "collectionId": "valmiki-ramayana",
+    "index": 2159,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 45, श्लोक 37",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-45-shlok-37",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "दितेः पुत्रा न तां राम जगृहुर्वरुणात्मजाम्।",
+          "अदितेस्तु सुता वीर जगृहुस्तामनिन्दिताम्॥ ३७॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-45",
+    "chapterName": "बालकाण्ड, सर्ग 45",
+    "verseNumber": 37
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-45-shlok-38",
+    "collectionId": "valmiki-ramayana",
+    "index": 2160,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 45, श्लोक 38",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-45-shlok-38",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "असुरास्तेन दैतेयाः सुरास्तेनादितेः सुताः।",
+          "हृष्टाः प्रमुदिताश्चासन् वारुणीग्रहणात् सुराः॥ ३८॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-45",
+    "chapterName": "बालकाण्ड, सर्ग 45",
+    "verseNumber": 38
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-45-shlok-39",
+    "collectionId": "valmiki-ramayana",
+    "index": 2161,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 45, श्लोक 39",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-45-shlok-39",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "उच्चैःश्रवा हयश्रेष्ठो मणिरत्नं च कौस्तुभम्।",
+          "उदतिष्ठन्नरश्रेष्ठ तथैवामृतमुत्तमम्॥ ३९॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-45",
+    "chapterName": "बालकाण्ड, सर्ग 45",
+    "verseNumber": 39
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-45-shlok-40",
+    "collectionId": "valmiki-ramayana",
+    "index": 2162,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 45, श्लोक 40",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-45-shlok-40",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "अथ तस्य कृते राम महानासीत् कुलक्षयः।",
+          "अदितेस्तु ततः पुत्रा दितिपुत्रानयोधयन्॥४०॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-45",
+    "chapterName": "बालकाण्ड, सर्ग 45",
+    "verseNumber": 40
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-45-shlok-41",
+    "collectionId": "valmiki-ramayana",
+    "index": 2163,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 45, श्लोक 41",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-45-shlok-41",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "एकतामगमन् सर्वे असुरा राक्षसैः सह।",
+          "युद्धमासीन्महाघोरं वीर त्रैलोक्यमोहनम्॥४१॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-45",
+    "chapterName": "बालकाण्ड, सर्ग 45",
+    "verseNumber": 41
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-45-shlok-42",
+    "collectionId": "valmiki-ramayana",
+    "index": 2164,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 45, श्लोक 42",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-45-shlok-42",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "यदा क्षयं गतं सर्वं तदा विष्णुर्महाबलः।",
+          "अमृतं सोऽहरत् तूर्णं मायामास्थाय मोहिनीम्॥ ४२॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-45",
+    "chapterName": "बालकाण्ड, सर्ग 45",
+    "verseNumber": 42
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-45-shlok-43",
+    "collectionId": "valmiki-ramayana",
+    "index": 2165,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 45, श्लोक 43",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-45-shlok-43",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "ये गताभिमुखं विष्णुमक्षरं पुरुषोत्तमम्।",
+          "सम्पिष्टास्ते तदा युद्धे विष्णुना प्रभविष्णुना॥ ४३॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-45",
+    "chapterName": "बालकाण्ड, सर्ग 45",
+    "verseNumber": 43
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-45-shlok-44",
+    "collectionId": "valmiki-ramayana",
+    "index": 2166,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 45, श्लोक 44",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-45-shlok-44",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "अदितेरात्मजा वीरा दितेः पुत्रान् निजजिरे।",
+          "अस्मिन् घोरे महायुद्धे दैतेयादित्ययो शम्॥ ४४॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-45",
+    "chapterName": "बालकाण्ड, सर्ग 45",
+    "verseNumber": 44
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-45-shlok-45-1",
+    "collectionId": "valmiki-ramayana",
+    "index": 2167,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 45, श्लोक 45",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-45-shlok-45-1",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "॥ श्रीसीतारामचन्द्राभ्यां नमः॥",
+          "श्रीमद्वाल्मीकीय रामायण",
+          "किष्किन्धाकाण्डम्",
+          "पञ्चचत्वारिंशः सर्गः (सर्ग 45)",
+          "इत्यार्षे श्रीमद्रामायणे वाल्मीकीये आदिकाव्ये किष्किन्धाकाण्डे पञ्चचत्वारिंशः सर्गः॥ ४५ ॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-45",
+    "chapterName": "बालकाण्ड, सर्ग 45",
+    "verseNumber": 45
+  }
+]

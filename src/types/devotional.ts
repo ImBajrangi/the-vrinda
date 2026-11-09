@@ -172,5 +172,36 @@ export interface DhyanaImpactState {
   unlockedAntarangaBadges: string[];
 }
 
+export interface EpicChapterItem {
+  id: string;
+  name: string;
+  section: string;
+  verseCount: number;
+  file: string;
+  firstPadId?: string;
+  firstPadSlug?: string;
+}
+
+export interface EpicIndexData {
+  id: string;
+  name: string;
+  author: string;
+  description: string;
+  totalVerses: number;
+  totalChapters: number;
+  chapters: EpicChapterItem[];
+}
+
+export interface EpicManifestEntry {
+  id: string;
+  name: string;
+  author: string;
+  description: string;
+  totalVerses: number;
+  totalChapters: number;
+  indexPath: string;
+}
+
+
 
 

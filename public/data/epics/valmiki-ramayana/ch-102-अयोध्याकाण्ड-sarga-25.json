@@ -1,0 +1,857 @@
+[
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-1",
+    "collectionId": "valmiki-ramayana",
+    "index": 3894,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 1",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-1",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "सा विनीय तमायासमुपस्पृश्य जलं शुचि।",
+          "चकार माता रामस्य मङ्गलानि मनस्विनी॥१॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 1
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-2",
+    "collectionId": "valmiki-ramayana",
+    "index": 3895,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 2",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-2",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "न शक्यसे वारयितुं गच्छेदानीं रघूत्तम।",
+          "शीघ्रं च विनिवर्तस्व वर्तस्व च सतां क्रमे॥२॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 2
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-3",
+    "collectionId": "valmiki-ramayana",
+    "index": 3896,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 3",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-3",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "यं पालयसि धर्मं त्वं प्रीत्या च नियमेन च।",
+          "स वै राघवशार्दूल धर्मस्त्वामभिरक्षतु॥३॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 3
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-4",
+    "collectionId": "valmiki-ramayana",
+    "index": 3897,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 4",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-4",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "येभ्यः प्रणमसे पुत्र देवेष्वायतनेषु च।",
+          "ते च त्वामभिरक्षन्तु वने सह महर्षिभिः॥४॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 4
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-5",
+    "collectionId": "valmiki-ramayana",
+    "index": 3898,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 5",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-5",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "यानि दत्तानि तेऽस्त्राणि विश्वामित्रेण धीमता।",
+          "तानि त्वामभिरक्षन्तु गुणैः समुदितं सदा॥५॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 5
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-6",
+    "collectionId": "valmiki-ramayana",
+    "index": 3899,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 6",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-6",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "पितृशुश्रूषया पुत्र मातृशुश्रूषया तथा।",
+          "सत्येन च महाबाहो चिरं जीवाभिरक्षितः॥६॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 6
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-7",
+    "collectionId": "valmiki-ramayana",
+    "index": 3900,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 7",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-7",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "समित्कुशपवित्राणि वेद्यश्चायतनानि च।",
+          "स्थण्डिलानि च विप्राणां शैला वृक्षाः क्षुपा ह्रदाः।",
+          "पतङ्गाः पन्नगाः सिंहास्त्वां रक्षन्तु नरोत्तम॥७॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 7
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-8",
+    "collectionId": "valmiki-ramayana",
+    "index": 3901,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 8",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-8",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "स्वस्ति साध्याश्च विश्वे च मरुतश्च महर्षिभिः।"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 8
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-10",
+    "collectionId": "valmiki-ramayana",
+    "index": 3902,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 10",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-10",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "लोकपालाश्च ते सर्वे वासवप्रमुखास्तथा।",
+          "ऋतवः षट् च ते सर्वे मासाः संवत्सराः क्षपाः॥",
+          "दिनानि च मुहूर्ताश्च स्वस्ति कुर्वन्तु ते सदा।",
+          "श्रुतिः स्मृतिश्च धर्मश्च पातु त्वां पुत्र सर्वतः॥ १०॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 10
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-11",
+    "collectionId": "valmiki-ramayana",
+    "index": 3903,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 11",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-11",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "स्कन्दश्च भगवान् देवः सोमश्च सबृहस्पतिः।",
+          "सप्तर्षयो नारदश्च ते त्वां रक्षन्तु सर्वतः॥११॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 11
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-12",
+    "collectionId": "valmiki-ramayana",
+    "index": 3904,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 12",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-12",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "ते चापि सर्वतः सिद्धा दिशश्च सदिगीश्वराः।",
+          "स्तुता मया वने तस्मिन् पान्तु त्वां पुत्र नित्यशः॥ १२॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 12
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-14",
+    "collectionId": "valmiki-ramayana",
+    "index": 3905,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 14",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-14",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "शैलाः सर्वे समुद्राश्च राजा वरुण एव च।",
+          "द्यौरन्तरिक्षं पृथिवी वायुश्च सचराचरः॥१३॥",
+          "नक्षत्राणि च सर्वाणि ग्रहाश्च सह दैवतैः।",
+          "अहोरात्रे तथा संध्ये पान्तु त्वां वनमाश्रितम्॥ १४॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 14
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-15",
+    "collectionId": "valmiki-ramayana",
+    "index": 3906,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 15",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-15",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "ऋतवश्चापि षट् चान्ये मासाः संवत्सरास्तथा।",
+          "कलाश्च काष्ठाश्च तथा तव शर्म दिशन्तु ते॥ १५॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 15
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-16",
+    "collectionId": "valmiki-ramayana",
+    "index": 3907,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 16",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-16",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "महावनेऽपि चरतो मुनिवेषस्य धीमतः।",
+          "तथा देवाश्च दैत्याश्च भवन्तु सुखदाः सदा॥ १६॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 16
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-17",
+    "collectionId": "valmiki-ramayana",
+    "index": 3908,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 17",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-17",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "राक्षसानां पिशाचानां रौद्राणां क्रूरकर्मणाम्।",
+          "क्रव्यादानां च सर्वेषां मा भूत् पुत्रक ते भयम्॥ १७॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 17
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-18",
+    "collectionId": "valmiki-ramayana",
+    "index": 3909,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 18",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-18",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "प्लवगा वृश्चिका दंशा मशकाश्चैव कानने।",
+          "सरीसृपाश्च कीटाश्च मा भूवन् गहने तव॥ १८॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 18
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-19",
+    "collectionId": "valmiki-ramayana",
+    "index": 3910,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 19",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-19",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "महाद्विपाश्च सिंहाश्च व्याघ्रा ऋक्षाश्च दंष्ट्रिणः।",
+          "महिषाः शृङ्गिणो रौद्रा न ते द्रुह्यन्तु पुत्रक॥१९॥",
+          "‘पुत्र! बड़े-बड़े हाथी, सिंह, व्याघ्र, रीछ, दाढ़ वाले अन्य जीव तथा विशाल सींगवाले भयंकर भैंसे वन में तुमसे द्रोह न करें॥ १९॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 19
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-20",
+    "collectionId": "valmiki-ramayana",
+    "index": 3911,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 20",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-20",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "नृमांसभोजना रौद्रा ये चान्ये सर्वजातयः।",
+          "मा च त्वां हिंसिषुः पुत्र मया सम्पूजितास्त्विह॥ २०॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 20
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-21",
+    "collectionId": "valmiki-ramayana",
+    "index": 3912,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 21",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-21",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "आगमास्ते शिवाः सन्तु सिध्यन्तु च पराक्रमाः।",
+          "सर्वसम्पत्तयो राम स्वस्तिमान् गच्छ पुत्रक॥ २१॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 21
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-22",
+    "collectionId": "valmiki-ramayana",
+    "index": 3913,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 22",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-22",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "स्वस्ति तेऽस्त्वान्तरिक्षेभ्यः पार्थिवेभ्यः पुनः पुनः",
+          "सर्वेभ्यश्चैव देवेभ्यो ये च ते परिपन्थिनः॥ २२॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 22
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-23",
+    "collectionId": "valmiki-ramayana",
+    "index": 3914,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 23",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-23",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "शुक्रः सोमश्च सूर्यश्च धनदोऽथ यमस्तथा।",
+          "पान्तु त्वामर्चिता राम दण्डकारण्यवासिनम॥ २३॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 23
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-24",
+    "collectionId": "valmiki-ramayana",
+    "index": 3915,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 24",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-24",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "अग्निर्वायुस्तथा धूमो मन्त्राश्चर्षिमुखच्युताः।",
+          "उपस्पर्शनकाले तु पान्तु त्वां रघुनन्दन॥२४॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 24
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-25",
+    "collectionId": "valmiki-ramayana",
+    "index": 3916,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 25",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-25",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "॥ श्रीसीतारामचन्द्राभ्यां नमः॥",
+          "श्रीमद्वाल्मीकीय रामायण",
+          "अयोध्याकाण्डम्",
+          "पञ्चविंशः सर्गः (सर्ग 25)",
+          "सर्वलोकप्रभुर्ब्रह्मा भूतकर्तृ तथर्षयः।",
+          "ये च शेषाः सुरास्ते तु रक्षन्तु वनवासिनम्॥ २५॥",
+          "इत्",
+          "याचे श्रीमद्रामायणे वाल्मीकीये आदिकाव्येऽयोध्याकाण्डे पञ्चविंशः सर्गः ॥२५॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 25
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-27",
+    "collectionId": "valmiki-ramayana",
+    "index": 3917,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 27",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-27",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "ज्वलनं समुपादाय ब्राह्मणेन महात्मना।",
+          "हावयामास विधिना राममङ्गलकारणात्॥२७॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 27
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-28",
+    "collectionId": "valmiki-ramayana",
+    "index": 3918,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 28",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-28",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "घृतं श्वेतानि माल्यानि समिधश्चैव सर्षपान्।",
+          "उपसम्पादयामास कौसल्या परमाङ्गना॥२८॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 28
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-29",
+    "collectionId": "valmiki-ramayana",
+    "index": 3919,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 29",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-29",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "उपाध्यायः स विधिना हुत्वा शान्तिमनामयम्।",
+          "हतहव्यावशेषेण बाह्यं बलिमकल्पयत्॥२९॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 29
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-30",
+    "collectionId": "valmiki-ramayana",
+    "index": 3920,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 30",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-30",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "मधुदध्यक्षतघृतैः स्वस्तिवाच्यं द्विजांस्ततः।",
+          "वाचयामास रामस्य वने स्वस्त्ययनक्रियाम्॥ ३०॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 30
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-31",
+    "collectionId": "valmiki-ramayana",
+    "index": 3921,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 31",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-31",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "ततस्तस्मै द्विजेन्द्राय राममाता यशस्विनी।",
+          "दक्षिणां प्रददौ काम्यां राघवं चेदमब्रवीत्॥३१॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 31
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-32",
+    "collectionId": "valmiki-ramayana",
+    "index": 3922,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 32",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-32",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "यन्मङ्गलं सहस्राक्षे सर्वदेवनमस्कृते।",
+          "वृत्रनाशे समभवत् तत् ते भवतु मङ्गलम्॥३२॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 32
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-33",
+    "collectionId": "valmiki-ramayana",
+    "index": 3923,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 33",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-33",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "यन्मङ्गलं सुपर्णस्य विनताकल्पयत् पुरा।",
+          "अमृतं प्रार्थयानस्य तत् ते भवतु मङ्गलम्॥३३॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 33
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-34",
+    "collectionId": "valmiki-ramayana",
+    "index": 3924,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 34",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-34",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "अमृतोत्पादने दैत्यान् नतो वज्रधरस्य यत्।",
+          "अदितिर्मङ्गलं प्रादात् तत् ते भवतु मङ्गलम्॥ ३४॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 34
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-35",
+    "collectionId": "valmiki-ramayana",
+    "index": 3925,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 35",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-35",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "त्रिविक्रमान प्रक्रमतो विष्णोरतलतेजसः।",
+          "यदासीन्मङ्गलं राम तत् ते भवतु मङ्गलम्॥३५॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 35
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-36",
+    "collectionId": "valmiki-ramayana",
+    "index": 3926,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 36",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-36",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "ऋषयः सागरा दीपा वेदा लोका दिशश्च ते।",
+          "मङ्गलानि महाबाहो दिशन्तु शुभमङ्गलम्॥३६॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 36
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-39",
+    "collectionId": "valmiki-ramayana",
+    "index": 3927,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 39",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-39",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "उवाचापि प्रहृष्टेव सा दुःखवशवर्तिनी।",
+          "वामात्रेण न भावेन वाचा संसज्जमानया॥३९॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 39
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-40",
+    "collectionId": "valmiki-ramayana",
+    "index": 3928,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 40",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-40",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "पूनम को नही चांद मिलयो तोरी राधा अमावस रात सी ह्वै गई।",
+          "कहा कहो लिखवो नही जाय, वा एक जुंआरी की मात सी ह्वै गई।।",
+          "तेने कदम्ब सो फूल कही, वा कदम्ब तरे झरे पात सी ह्वै गई।",
+          "आवो हरी बृज डूबत राधा बिना बदरा बरसात सी ह्वै गई।।"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 40
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-41",
+    "collectionId": "valmiki-ramayana",
+    "index": 3929,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 41",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-41",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "आनम्य मूर्ध्नि चाघ्राय परिष्वज्य यशस्विनी।",
+          "अवदत् पुत्रमिष्टार्थो गच्छ राम यथासुखम्॥ ४०॥",
+          "अरोगं सर्वसिद्धार्थमयोध्यां पुनरागतम्।",
+          "पश्यामि त्वां सुखं वत्स संधितं राजवर्त्मसु॥ ४१॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 41
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-42",
+    "collectionId": "valmiki-ramayana",
+    "index": 3930,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 42",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-42",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "प्रणष्टदुःखसंकल्पा हर्षविद्योतितानना।",
+          "द्रक्ष्यामि त्वां वनात् प्राप्तं पूर्णचन्द्रमिवोदितम्॥ ४२॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 42
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-43",
+    "collectionId": "valmiki-ramayana",
+    "index": 3931,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 43",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-43",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "भद्रासनगतं राम वनवासादिहागतम्।",
+          "द्रक्ष्यामि च पुनस्त्वां तु तीर्णवन्तं पितुर्वचः॥ ४३॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 43
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-44",
+    "collectionId": "valmiki-ramayana",
+    "index": 3932,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 44",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-44",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "मङ्गलैरुपसम्पन्नो वनवासादिहागतः।",
+          "वध्वाश्च मम नित्यं त्वं कामान् संवर्ध याहि भोः॥४४॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 44
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-45",
+    "collectionId": "valmiki-ramayana",
+    "index": 3933,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 45",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-45",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "मयार्चिता देवगणाः शिवादयो महर्षयो भूतगणाः सुरोरगाः।",
+          "अभिप्रयातस्य वनं चिराय ते हितानि कांक्षन्तु दिशश्च राघव॥४५॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 45
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-46",
+    "collectionId": "valmiki-ramayana",
+    "index": 3934,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 46",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-46",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "अतीव चाश्रुप्रतिपूर्णलोचना समाप्य च स्वस्त्ययनं यथाविधि।",
+          "प्रदक्षिणं चापि चकार राघवं पुनः पुनश्चापि निरीक्ष्य सस्वजे॥४६॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 46
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-25-shlok-47",
+    "collectionId": "valmiki-ramayana",
+    "index": 3935,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 25, श्लोक 47",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-25-shlok-47",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "तया हि देव्या च कृतप्रदक्षिणो निपीड्य मातुश्चरणौ पुनः पुनः।",
+          "जगाम सीतानिलयं महायशाः स राघवः प्रज्वलितस्तया श्रिया॥४७॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-25",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 25",
+    "verseNumber": 47
+  }
+]

@@ -1,0 +1,908 @@
+[
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-1-2",
+    "collectionId": "valmiki-ramayana",
+    "index": 1163,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 1",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-1-2",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "निवर्तमानः संहृष्टो रावणः स दुरात्मवान्।",
+          "जढे पथि नरेन्द्रर्षिदेवदानवकन्यकाः॥१॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 1
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-2-1",
+    "collectionId": "valmiki-ramayana",
+    "index": 1164,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 2",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-2-1",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "स बाष्पपूर्णेन मुखेन पश्यन् क्षणेन निर्विण्णमना मनस्वी।",
+          "जगाम रामस्य शनैः समीपं भृत्यैर्वृतः सम्परिदूयमानः॥२॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 2
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-3",
+    "collectionId": "valmiki-ramayana",
+    "index": 1165,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 3",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-3",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "एवं पन्नगकन्याश्च राक्षसासुरमानुषीः।",
+          "यक्षदानवकन्याश्च विमाने सोऽध्यरोपयत्॥३॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 3
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-4-1",
+    "collectionId": "valmiki-ramayana",
+    "index": 1166,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 4",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-4-1",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "यथा प्रतिज्ञातमिदं नरेन्द्र कृतं त्वया दृष्टफलं च कर्म।",
+          "ममाद्य भोगेषु नरेन्द्रसूनो मनो निवृत्तं हतजीवितेन॥४॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 4
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-5-1",
+    "collectionId": "valmiki-ramayana",
+    "index": 1167,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 5",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-5-1",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "ताभिः सर्वानवद्याभिर्नदीभिरिव सागरः।",
+          "आपूरितं विमानं तद् भयशोकाशिवाश्रुभिः॥५॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 5
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-6",
+    "collectionId": "valmiki-ramayana",
+    "index": 1168,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 6",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-6",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "नागगन्धर्वकन्याश्च महर्षितनयाश्च याः।",
+          "दैत्यदानवकन्याश्च विमाने शतशोऽरुदन्॥६॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 6
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-7",
+    "collectionId": "valmiki-ramayana",
+    "index": 1169,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 7",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-7",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "श्रेयोऽद्य मन्ये मम शैलमुख्ये तस्मिन् हि वासश्चिरमृष्यमूके।",
+          "यथा तथा वर्तयतः स्ववृत्त्या नेमं निहत्य त्रिदिवस्य लाभः॥७॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 7
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-8-2",
+    "collectionId": "valmiki-ramayana",
+    "index": 1170,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 8",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-8-2",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "दीर्घकेश्यः सुचाङ्ग्यः पूर्णचन्द्रनिभाननाः।",
+          "पीनस्तनतटा मध्ये वज्रवेदिसमप्रभाः॥७॥",
+          "रथकूबरसंकाशैः श्रोणिदेशैर्मनोहराः।।",
+          "स्त्रियः सुराङ्गनाप्रख्या निष्टप्तकनकप्रभाः॥८॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 8
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-9",
+    "collectionId": "valmiki-ramayana",
+    "index": 1171,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 9",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-9",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "शोकदुःखभयत्रस्ता विह्वलाश्च सुमध्यमाः।",
+          "तासां निःश्वासवातेन सर्वतः सम्प्रदीपितम्॥९॥",
+          "अग्निहोत्रमिवाभाति संनिरुद्धाग्नि पुष्पकम्।"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 9
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-10-2",
+    "collectionId": "valmiki-ramayana",
+    "index": 1172,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 10",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-10-2",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "दशग्रीववशं प्राप्तास्तास्तु शोकाकुलाः स्त्रियः॥१०॥",
+          "दीनवक्त्रेक्षणाः श्यामा मृग्यः सिंहवशा इव।"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 10
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-11-1",
+    "collectionId": "valmiki-ramayana",
+    "index": 1173,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 11",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-11-1",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "काचिच्चिन्तयती तत्र किं न मां भक्षयिष्यति॥११॥",
+          "काचिद् दध्यौ सुदुःखार्ता अपि मां मारयेदयम्।"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 11
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-12",
+    "collectionId": "valmiki-ramayana",
+    "index": 1174,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 12",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-12",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "भ्रातृत्वमार्यभावश्च धर्मश्चानेन रक्षितः।",
+          "मया क्रोधश्च कामश्च कपित्वं च प्रदर्शितम्॥ १२॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 12
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-13-1",
+    "collectionId": "valmiki-ramayana",
+    "index": 1175,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 13",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-13-1",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "कथं नु खलु मे पुत्रो भविष्यति मया विना॥१३॥",
+          "कथं माता कथं भ्राता निमग्नाः शोकसागरे।"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 13
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-14-1",
+    "collectionId": "valmiki-ramayana",
+    "index": 1176,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 14",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-14-1",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "पाप्मानमिन्द्रस्य मही जलं च वृक्षाश्च कामं जगृहुः स्त्रियश्च।"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 14
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-15-1",
+    "collectionId": "valmiki-ramayana",
+    "index": 1177,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 15",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-15-1",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "नार्हामि सम्मानमिमं प्रजानां न यौवराज्यं कुत एव राज्यम्।",
+          "अधर्मयुक्तं कुलनाशयुक्तमेवंविधं राघव कर्म कृत्वा॥१५॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 15
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-16",
+    "collectionId": "valmiki-ramayana",
+    "index": 1178,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 16",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-16",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "हा कथं नु करिष्यामि भर्तुस्तस्मादहं विना॥१४॥",
+          "मृत्यो प्रसादयामि त्वां नय मां दुःखभागिनीम्।",
+          "किं नु तद् दुष्कृतं कर्म पुरा देहान्तरे कृतम्॥१५॥",
+          "एवं स्म दुःखिताः सर्वाः पतिताः शोकसागरे।",
+          "न खल्विदानीं पश्यामो दुःखस्यास्यान्तमात्मनः॥१६॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 16
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-17",
+    "collectionId": "valmiki-ramayana",
+    "index": 1179,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 17",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-17",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "अहो धिमानुषं लोकं नास्ति खल्वधमः परः।",
+          "यद् दुर्बला बलवता भर्तारो रावणेन नः ॥१७॥",
+          "सूर्येणोदयता काले नक्षत्राणीव नाशिताः।"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 17
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-18-1",
+    "collectionId": "valmiki-ramayana",
+    "index": 1180,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 18",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-18-1",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "अंहो बतेदं नवराविषह्यं निवर्तते मे हृदि साधुवृत्तम्।",
+          "अग्नौ विवर्णं परितप्यमानं किनॊ यथा राघव जातरूपम्॥१८॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 18
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-19-1",
+    "collectionId": "valmiki-ramayana",
+    "index": 1181,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 19",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-19-1",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "महाबलानां हरियूथपानामिदं कुलं राघव मन्निमित्तम्।",
+          "अस्याङ्गदस्यापि च शोकतापा दर्धस्थितप्राणमितीव मन्ये॥१९॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 19
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-20-2",
+    "collectionId": "valmiki-ramayana",
+    "index": 1182,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 20",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-20-2",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "यस्मादेष परक्यासु रमते राक्षसाधमः॥२०॥",
+          "तस्माद वै स्त्रीकृतेनैव वधं प्राप्स्यति दर्मतिः।"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 20
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-21",
+    "collectionId": "valmiki-ramayana",
+    "index": 1183,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 21",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-21",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "सतीभिर्वरनारीभिरेवं वाक्येऽभ्युदीरिते॥२१॥",
+          "नेदुर्दुन्दुभयः खस्थाः पुष्पवृष्टिः पपात च।।"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 21
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-22-1",
+    "collectionId": "valmiki-ramayana",
+    "index": 1184,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 22",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-22-1",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "शप्तः स्त्रीभिः स तु समं हतौजा इव निष्प्रभः॥२२॥",
+          "पतिव्रताभिः साध्वीभिर्बभूव विमना इव।"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 22
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-23-1",
+    "collectionId": "valmiki-ramayana",
+    "index": 1185,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 23",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-23-1",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "एवं विलपितं तासां शृण्वन् राक्षसपुङ्गवः॥२३॥",
+          "प्रविवेश पुरीं लङ्कां पूज्यमानो निशाचरैः।",
+          "एतस्मिन्नन्तरे घोरा राक्षसी कामरूपिणी ॥ २४॥",
+          "सहसा पतिता भूमौ भगिनी रावणस्य सा।"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 23
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-24-1",
+    "collectionId": "valmiki-ramayana",
+    "index": 1186,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 24",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-24-1",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "॥ श्रीसीतारामचन्द्राभ्यां नमः॥",
+          "श्रीमद्वाल्मीकीय रामायण",
+          "किष्किन्धाकाण्डम्",
+          "चतुर्विंशः सर्गः (सर्ग 24)",
+          "इत्येवमार्तस्य रघुप्रवीरः श्रुत्वा वचो वालिजघन्यजस्य।",
+          "संजातबाष्पः परवीरहन्ता रामो मुहूर्तं विमना बभूव॥ २४॥",
+          "इत्याचे श्रीमद्रामायणे वाल्मीकीये आदिकाव्ये किष्किन्धाकाण्डे चतुर्विंशः सर्गः ॥२४॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 24
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-25",
+    "collectionId": "valmiki-ramayana",
+    "index": 1187,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 25",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-25",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "तां स्वसारं समुत्थाप्य रावणः परिसान्त्वयन्॥२५॥",
+          "अब्रवीत् किमिदं भद्रे वक्तुकामासि मां द्रुतम्।"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 25
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-26-1",
+    "collectionId": "valmiki-ramayana",
+    "index": 1188,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 26",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-26-1",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "सा बाष्पपरिरुद्धाक्षी रक्ताक्षी वाक्यमब्रवीत्॥२६॥",
+          "कृतास्मि विधवा राजंस्त्वया बलवता बलात्।"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 26
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-27-1",
+    "collectionId": "valmiki-ramayana",
+    "index": 1189,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 27",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-27-1",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "सा विस्फुरन्ती परिरभ्यमाणा भर्तुः समीपादपनीयमाना।",
+          "ददर्श रामं शरचापपाणिं स्वतेजसा सूर्यमिव ज्वलन्तम्॥२७॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 27
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-28-1",
+    "collectionId": "valmiki-ramayana",
+    "index": 1190,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 28",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-28-1",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "प्राणेभ्योऽपि गरीयान् मे तत्र भर्ता महाबलः॥२८॥",
+          "सोऽपि त्वया हतस्तात रिपुणा भ्रातृगन्धिना।"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 28
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-29",
+    "collectionId": "valmiki-ramayana",
+    "index": 1191,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 29",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-29",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "त्वयास्मि निहता राजन् स्वयमेव हि बन्धुना॥२९॥",
+          "राजन् वैधव्यशब्दं च भोक्ष्यामि त्वत्कृतं ह्यहम्।"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 29
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-30",
+    "collectionId": "valmiki-ramayana",
+    "index": 1192,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 30",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-30",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "ननु नाम त्वया रक्ष्यो जामाता समरेष्वपि॥३०॥",
+          "स त्वया निहतो युद्ध स्वयमेव न लज्जसे।"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 30
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-31-1",
+    "collectionId": "valmiki-ramayana",
+    "index": 1193,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 31",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-31-1",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "त्वमप्रमेयश्च दुरासदश्च जितेन्द्रियश्चोत्तमधर्मकश्च।",
+          "अक्षीणकीर्तिश्च विचक्षणश्च क्षितिक्षमावान् क्षतजोपमाक्षः॥३१॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 31
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-32",
+    "collectionId": "valmiki-ramayana",
+    "index": 1194,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 32",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-32",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "अलं वत्से रुदित्वा ते न भेतव्यं च सर्वशः॥३२॥",
+          "दानमानप्रसादैस्त्वां तोषयिष्यामि यत्नतः।"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 32
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-33",
+    "collectionId": "valmiki-ramayana",
+    "index": 1195,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 33",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-33",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "येनैव बाणेन हतः प्रियो मे तेनैव बाणेन हि मां जहीहि।",
+          "हता गमिष्यामि समीपमस्य न मां विना वीर रमेत वाली॥३३॥",
+          "स्वर्गेऽपि पद्मामलपत्रनेत्र समेत्य सम्प्रेक्ष्य च मामपश्यन्।",
+          "न ह्येष उच्चावचताम्रचूडा विचित्रवेषाप्सरसोऽभजिष्यत्॥३३॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 33
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-34",
+    "collectionId": "valmiki-ramayana",
+    "index": 1196,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 34",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-34",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "युद्धप्रमत्तो व्याक्षिप्तो जयाकांक्षी क्षिपन् शरान्॥",
+          "नाहमज्ञासिषं युध्यन् स्वान् परान् वापि संयुगे।",
+          "जामातरं न जाने स्म प्रहरन् युद्धदुर्मदः॥ ३४॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 34
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-35-1",
+    "collectionId": "valmiki-ramayana",
+    "index": 1197,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 35",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-35-1",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "तेनासौ निहतः संख्ये मया भर्ता तव स्वसः।",
+          "अस्मिन् काले तु यत् प्राप्तं तत् करिष्यामि ते हितम्॥३५॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 35
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-36",
+    "collectionId": "valmiki-ramayana",
+    "index": 1198,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 36",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-36",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "भ्रातुरैश्वर्ययुक्तस्य खरस्य वस पार्श्वतः।",
+          "चतुर्दशानां भ्राता ते सहस्राणां भविष्यति॥३६॥",
+          "प्रभुः प्रयाणे दाने च राक्षसानां महाबलः।",
+          "तत्र मातृष्वसेयस्ते भ्रातायं वै खरः प्रभुः॥ ३७॥",
+          "भविष्यति तवादेशं सदा कुर्वन् निशाचरः।"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 36
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-37",
+    "collectionId": "valmiki-ramayana",
+    "index": 1199,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 37",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-37",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "यच्चापि मन्येत भवान् महात्मा स्त्रीघातदोषस्तु भवेन्न मह्यम्।",
+          "आत्मेयमस्येति हि मां जहि त्वं न स्त्रीवधः स्यान्मनुजेन्द्रपुत्र ॥ ३७॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 37
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-38",
+    "collectionId": "valmiki-ramayana",
+    "index": 1200,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 38",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-38",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "शीघ्रं गच्छत्वयं वीरो दण्डकान् परिरक्षितुम्॥३८॥",
+          "दूषणोऽस्य बलाध्यक्षो भविष्यति महाबलः।",
+          "तत्र ते वचनं शूरः करिष्यति सदा खरः॥ ३९॥",
+          "रक्षसां कामरूपाणां प्रभुरेष भविष्यति।"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 38
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-39",
+    "collectionId": "valmiki-ramayana",
+    "index": 1201,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 39",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-39",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "त्वं चापि मां तस्य मम प्रियस्य प्रदास्यसे धर्ममवेक्ष्य वीर।",
+          "अनेन दानेन न लप्स्यसे त्वमधर्मयोगं मम वीर घातात्॥३९॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 39
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-40",
+    "collectionId": "valmiki-ramayana",
+    "index": 1202,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 40",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-40",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "आर्तामनाथामपनीयमानामेवंगतां नार्हसि मामहन्तुम्।",
+          "अहं हि मातङ्गविलासगामिना प्लवंगमानामृषभेण धीमता।",
+          "विना वराहॊत्तमहेममालिना चिरं न शक्ष्यामि नरेन्द्र जीवितुम्॥४०॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 40
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-41",
+    "collectionId": "valmiki-ramayana",
+    "index": 1203,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 41",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-41",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "इत्येवमुक्तस्तु विभुर्महात्मा तारां समाश्वास्य हितं बभाषे।",
+          "मा वीरभार्ये विमतिं कुरुष्व लोको हि सर्वो विहितो विधात्रा॥४१॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 41
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-42",
+    "collectionId": "valmiki-ramayana",
+    "index": 1204,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 42",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-42",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "एवमुक्त्वा दशग्रीवः सैन्यमस्यादिदेश ह॥४०॥",
+          "चतुर्दश सहस्राणि रक्षसां वीर्यशालिनाम्।",
+          "स तैः परिवृतः सः राक्षसै?रदर्शनैः॥४१॥",
+          "आगच्छत खरः शीघ्रं दण्डकानकुतोभयः।",
+          "स तत्र कारयामास राज्यं निहतकण्टकम्।",
+          "सा च शूर्पणखा तत्र न्यवसद् दण्डके वने।४२॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 42
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-43",
+    "collectionId": "valmiki-ramayana",
+    "index": 1205,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 43",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-43",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "प्रीतिं परां प्राप्स्यसि तां तथैव पुत्रश्च ते प्राप्स्यति यौवराज्यम्।",
+          "धात्रा विधानं विहितं तथैव न शूरपत्न्यः परिदेवयन्ति॥४३॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 43
+  },
+  {
+    "id": "valmiki-ramayana-1-sarga-24-shlok-44",
+    "collectionId": "valmiki-ramayana",
+    "index": 1206,
+    "titleDevanagari": "वाल्मीकि रामायण, बालकाण्ड, सर्ग 24, श्लोक 44",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-1-sarga-24-shlok-44",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "आश्वासिता तेन महात्मना तु प्रभावयुक्तेन परंतपेन।",
+          "सा वीरपत्नी ध्वनता मुखेन सुवेषरूपा विरराम तारा॥४४॥"
+        ]
+      }
+    ],
+    "chapterId": "बालकाण्ड-sarga-24",
+    "chapterName": "बालकाण्ड, सर्ग 24",
+    "verseNumber": 44
+  }
+]

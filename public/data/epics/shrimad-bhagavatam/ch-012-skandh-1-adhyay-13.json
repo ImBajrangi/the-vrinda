@@ -1,0 +1,42 @@
+[
+  {
+    "id": "shrimad-bhagwat-skandh-1-adhyay-13-shlok-14",
+    "collectionId": "shrimad-bhagavatam",
+    "index": 440,
+    "titleDevanagari": "स्कन्ध 1, अध्याय 13, श्लोक 14",
+    "author": "महर्षि वेदव्यास",
+    "slug": "shrimad-bhagwat-skandh-1-adhyay-13-shlok-14",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "कञ्चित्कालमथावात्सीत्सत्कृतो देववत्सुखम्।",
+          "भ्रातुर्येष्ठस्य श्रेयस्कृत्सर्वेषां प्रीतिमावहन्॥"
+        ]
+      }
+    ],
+    "chapterId": "skandh-1-adhyay-13",
+    "chapterName": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 13",
+    "verseNumber": 14
+  },
+  {
+    "id": "shrimad-bhagwat-skandh-1-adhyay-13-shlok-30",
+    "collectionId": "shrimad-bhagavatam",
+    "index": 441,
+    "titleDevanagari": "स्कन्ध 1, अध्याय 13, श्लोक 30",
+    "author": "महर्षि वेदव्यास",
+    "slug": "shrimad-bhagwat-skandh-1-adhyay-13-shlok-30",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "अजातशत्रुः कृतमैत्रो हुताग्निविप्रान् नत्वा तिलगोभूमिरुक्मैः।",
+          "गृहं प्रविष्टो गुरुवन्दनाय न चापश्यत्पितरौ सौबली च॥"
+        ]
+      }
+    ],
+    "chapterId": "skandh-1-adhyay-13",
+    "chapterName": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 13",
+    "verseNumber": 30
+  }
+]

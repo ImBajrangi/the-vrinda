@@ -1,0 +1,957 @@
+[
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-1",
+    "collectionId": "valmiki-ramayana",
+    "index": 2990,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 1",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-1",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "॥ श्रीसीतारामचन्द्राभ्यां नमः॥",
+          "श्रीमद्वाल्मीकीय रामायण",
+          "अयोध्याकाण्डम्",
+          "प्रथमः सर्गः (सर्ग 1)",
+          "गच्छता मातुलकुलं भरतेन तदानघः।",
+          "शत्रुघ्नो नित्यशत्रुघ्नो नीतः प्रीतिपुरस्कृतः॥१॥",
+          "इत्यार्षे श्रीमद्रामायणे वाल्मीकीये। आदिकाव्येऽयोध्याकाण्डे प्रथमः सर्गः॥१॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 1
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-2",
+    "collectionId": "valmiki-ramayana",
+    "index": 2991,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 2",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-2",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "स तत्र न्यवसद् भ्रात्रा सह सत्कारसत्कृतः।",
+          "मातुलेनाश्वपतिना पुत्रस्नेहेन लालितः॥२॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 2
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-3",
+    "collectionId": "valmiki-ramayana",
+    "index": 2992,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 3",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-3",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "तत्रापि निवसन्तौ तौ तर्प्यमाणौ च कामतः।",
+          "भ्रातरौ स्मरतां वीरौ वृद्धं दशरथं नृपम्॥३॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 3
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-4",
+    "collectionId": "valmiki-ramayana",
+    "index": 2993,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 4",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-4",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "राजापि तौ महातेजाः सस्मार प्रोषितौ सुतौ।",
+          "उभौ भरतशत्रुघ्नौ महेन्द्रवरुणोपमौ॥४॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 4
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-5",
+    "collectionId": "valmiki-ramayana",
+    "index": 2994,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 5",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-5",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "सर्व एव तु तस्येष्टाश्चत्वारः पुरुषर्षभाः।",
+          "स्वशरीराद् विनिर्वृत्ताश्चत्वार इव बाहवः॥५॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 5
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-6",
+    "collectionId": "valmiki-ramayana",
+    "index": 2995,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 6",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-6",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "तेषामपि महातेजा रामो रतिकरः पितुः।",
+          "स्वयम्भूरिव भूतानां बभूव गुणवत्तरः॥६॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 6
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-7",
+    "collectionId": "valmiki-ramayana",
+    "index": 2996,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 7",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-7",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "स हि देवैरुदीर्णस्य रावणस्य वधार्थिभिः।",
+          "अर्थितो मानुषे लोके जज्ञे विष्णुः सनातनः॥७॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 7
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-8",
+    "collectionId": "valmiki-ramayana",
+    "index": 2997,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 8",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-8",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "कौसल्या शुशुभे तेन पुत्रेणामिततेजसा।",
+          "यथा वरेण देवानामदितिर्वज्रपाणिना॥८॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 8
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-9",
+    "collectionId": "valmiki-ramayana",
+    "index": 2998,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 9",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-9",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "स हि रूपोपपन्नश्च वीर्यवाननसूयकः।",
+          "भूमावनुपमः सूनुर्गुणैर्दशरथोपमः॥९॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 9
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-10",
+    "collectionId": "valmiki-ramayana",
+    "index": 2999,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 10",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-10",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "स च नित्यं प्रशान्तात्मा मृदुपूर्वं च भाषते।",
+          "उच्यमानोऽपि परुषं नोत्तरं प्रतिपद्यते॥१०॥",
+          "कठोर"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 10
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-11",
+    "collectionId": "valmiki-ramayana",
+    "index": 3000,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 11",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-11",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "कदाचिदुपकारेण कृतेनैकेन तुष्यति।",
+          "न स्मरत्यपकाराणां शतमप्यात्मवत्तया॥११॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 11
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-12",
+    "collectionId": "valmiki-ramayana",
+    "index": 3001,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 12",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-12",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "शीलवृद्धैर्ज्ञानवृद्धैर्वयोवृद्धैश्च सज्जनैः।",
+          "कथयन्नास्त वै नित्यमस्त्रयोग्यान्तरेष्वपि॥१२॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 12
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-13",
+    "collectionId": "valmiki-ramayana",
+    "index": 3002,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 13",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-13",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "बुद्धिमान् मधुराभाषी पूर्वभाषी प्रियंवदः।",
+          "वीर्यवान्न च वीर्येण महता स्वेन विस्मितः॥ १३॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 13
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-14",
+    "collectionId": "valmiki-ramayana",
+    "index": 3003,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 14",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-14",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "न चानृतकथो विद्वान् वृद्धानां प्रतिपूजकः।",
+          "अनुरक्तः प्रजाभिश्च प्रजाश्चाप्यनुरज्यते॥१४॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 14
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-15",
+    "collectionId": "valmiki-ramayana",
+    "index": 3004,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 15",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-15",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "सानुक्रोशो जितक्रोधो ब्राह्मणप्रतिपूजकः।",
+          "दीनानुकम्पी धर्मज्ञो नित्यं प्रग्रहवान् शुचिः॥१५॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 15
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-16",
+    "collectionId": "valmiki-ramayana",
+    "index": 3005,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 16",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-16",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "कुलोचितमतिः क्षात्रं स्वधर्मं बहु मन्यते।",
+          "मन्यते परया प्रीत्या महत् स्वर्गफलं ततः॥१६॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 16
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-17",
+    "collectionId": "valmiki-ramayana",
+    "index": 3006,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 17",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-17",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "नाश्रेयसि रतो यश्च न विरुद्धकथारुचिः।",
+          "उत्तरोत्तरयुक्तीनां वक्ता वाचस्पतिर्यथा॥१७॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 17
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-18",
+    "collectionId": "valmiki-ramayana",
+    "index": 3007,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 18",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-18",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "अरोगस्तरुणो वाग्मी वपुष्मान् देशकालवित्।",
+          "लोके पुरुषसारज्ञः साधुरेको विनिर्मितः॥१८॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 18
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-19",
+    "collectionId": "valmiki-ramayana",
+    "index": 3008,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 19",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-19",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "स तु श्रेष्ठैर्गुणैर्युक्तः प्रजानां पार्थिवात्मजः।",
+          "बहिश्चर इव प्राणो बभूव गुणतः प्रियः॥१९॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 19
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-20",
+    "collectionId": "valmiki-ramayana",
+    "index": 3009,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 20",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-20",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "सर्वविद्याव्रतस्नातो यथावत् साङ्गवेदवित्।",
+          "इष्वस्त्रे च पितुः श्रेष्ठो बभूव भरताग्रजः॥ २०॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 20
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-21",
+    "collectionId": "valmiki-ramayana",
+    "index": 3010,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 21",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-21",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "कल्याणाभिजनः साधुरदीनः सत्यवागृजुः।",
+          "वृद्धैरभिविनीतश्च द्विजैर्धर्मार्थदर्शिभिः॥२१॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 21
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-22",
+    "collectionId": "valmiki-ramayana",
+    "index": 3011,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 22",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-22",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "धर्मकामार्थतत्त्वज्ञः स्मृतिमान् प्रतिभानवान्।",
+          "लौकिके समयाचारे कृतकल्पो विशारदः॥ २२॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 22
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-23",
+    "collectionId": "valmiki-ramayana",
+    "index": 3012,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 23",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-23",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "निभृतः संवृताकारो गुप्तमन्त्रः सहायवान्।",
+          "अमोघक्रोधहर्षश्च त्यागसंयमकालवित्॥२३॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 23
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-26",
+    "collectionId": "valmiki-ramayana",
+    "index": 3013,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 26",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-26",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "RamCharit.in",
+          "कच्चिदायस्य चार्धेन चतुर्भागेन वा पुनः।",
+          "पादभागैस्त्रिभिर्वापि व्ययः संशुद्ध्यते तव॥(महा० सभा० ५।७१)"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 26
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-27",
+    "collectionId": "valmiki-ramayana",
+    "index": 3014,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 27",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-27",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "श्रेष्ठ्यं चास्त्रसमूहेषु प्राप्तो व्यामिश्रकेषु च।",
+          "अर्थधर्मी च संगृह्य सुखतन्त्रो न चालसः॥२७॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 27
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-28",
+    "collectionId": "valmiki-ramayana",
+    "index": 3015,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 28",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-28",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "वैहारिकाणां शिल्पानां विज्ञातार्थविभागवित्।",
+          "आरोहे विनये चैव युक्तो वारणवाजिनाम्॥२८॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 28
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-29",
+    "collectionId": "valmiki-ramayana",
+    "index": 3016,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 29",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-29",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "धनुर्वेदविदां श्रेष्ठो लोकेऽतिरथसम्मतः।",
+          "अभियाता प्रहर्ता च सेनानयविशारदः॥ २९॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 29
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-30",
+    "collectionId": "valmiki-ramayana",
+    "index": 3017,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 30",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-30",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "अप्रधृष्यश्च संग्रामे क्रुद्वैरपि सुरासुरैः।",
+          "अनसूयो जितक्रोधो न दृप्तो न च मत्सरी॥३०॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 30
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-32",
+    "collectionId": "valmiki-ramayana",
+    "index": 3018,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 32",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-32",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "नावज्ञेयश्च भूतानां न च कालवशानुगः ।",
+          "एवं श्रेष्ठैर्गुणैर्युक्तः प्रजानां पार्थिवात्मजः॥३१॥",
+          "सम्मतस्त्रिषु लोकेषु वसुधायाः क्षमागुणैः।",
+          "बुद्धया बृहस्पतेस्तुल्यो वीर्ये चापि शचीपतेः॥ ३२॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 32
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-33",
+    "collectionId": "valmiki-ramayana",
+    "index": 3019,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 33",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-33",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "तथा सर्वप्रजाकान्तैः प्रीतिसंजननैः पितुः।",
+          "गुणैर्विरुरुचे रामो दीप्तः सूर्य इवांशुभिः ॥ ३३॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 33
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-34",
+    "collectionId": "valmiki-ramayana",
+    "index": 3020,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 34",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-34",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "तमेवंवृत्तसम्पन्नमप्रधृष्यपराक्रमम्।",
+          "लोकनाथोपमं नाथमकामयत मेदिनी॥३४॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 34
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-35",
+    "collectionId": "valmiki-ramayana",
+    "index": 3021,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 35",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-35",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "एतैस्तु बहुभिर्युक्तं गुणैरनुपमैः सुतम्।",
+          "दृष्ट्वा दशरथो राजा चक्रे चिन्तां परंतपः॥ ३५॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 35
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-36",
+    "collectionId": "valmiki-ramayana",
+    "index": 3022,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 36",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-36",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "अथ राज्ञो बभूवैव वृद्धस्य चिरजीविनः।",
+          "प्रीतिरेषा कथं रामो राजा स्यान्मयि जीवति॥ ३६॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 36
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-37",
+    "collectionId": "valmiki-ramayana",
+    "index": 3023,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 37",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-37",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "यथा धर्माय यशसेऽर्थाय कामाय स्वजनाय च।",
+          "पञ्चधा विभजन् वित्तमिहामुत्र च मोदते॥(श्रीमद्भा०८।१९। ३७)",
+          "एषा ह्यस्य परा प्रीतिर्हृदि सम्परिवर्तते।",
+          "कदा नाम सुतं द्रक्ष्याम्यभिषिक्तमहं प्रियम्॥ ३७॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 37
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-38",
+    "collectionId": "valmiki-ramayana",
+    "index": 3024,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 38",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-38",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "वृद्धिकामो हि लोकस्य सर्वभूतानुकम्पकः।",
+          "मत्तः प्रियतरो लोके पर्जन्य इव वृष्टिमान्॥३८॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 38
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-39",
+    "collectionId": "valmiki-ramayana",
+    "index": 3025,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 39",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-39",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "यमशक्रसमो वीर्ये बृहस्पतिसमो मतौ।",
+          "महीधरसमो धृत्यां मत्तश्च गुणवत्तरः॥३९॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 39
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-40",
+    "collectionId": "valmiki-ramayana",
+    "index": 3026,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 40",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-40",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "महीमहमिमां कृत्स्नामधितिष्ठन्तमात्मजम्।",
+          "अनेन वयसा दृष्ट्वा यथा स्वर्गमवाप्नुयाम्॥४०॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 40
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-42",
+    "collectionId": "valmiki-ramayana",
+    "index": 3027,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 42",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-42",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "इत्येवं विविधैस्तैस्तैरन्यपार्थिवदुर्लभैः।",
+          "शिरपरिमेयैश्च लोके लोकोत्तरैर्गुणैः॥४१॥",
+          "तं समीक्ष्य तदा राजा युक्तं समुदितैर्गुणैः।",
+          "निश्चित्य सचिवैः सार्धं यौवराज्यममन्यत॥ ४२॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 42
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-43",
+    "collectionId": "valmiki-ramayana",
+    "index": 3028,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 43",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-43",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "दिव्यन्तरिक्षे भूमौ च घोरमुत्पातजं भयम्।",
+          "संचचक्षेऽथ मेधावी शरीरे चात्मनो जराम्॥ ४३॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 43
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-44",
+    "collectionId": "valmiki-ramayana",
+    "index": 3029,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 44",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-44",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "पूर्णचन्द्राननस्याथ शोकापनुदमात्मनः।",
+          "लोके रामस्य बुबुधे सम्प्रियत्वं महात्मनः॥४४॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 44
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-45",
+    "collectionId": "valmiki-ramayana",
+    "index": 3030,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 45",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-45",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "आत्मनश्च प्रजानां च श्रेयसे च प्रियेण च।",
+          "प्राप्ते काले स धर्मात्मा भक्त्या त्वरितवान् नृपः॥ ४५॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 45
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-46",
+    "collectionId": "valmiki-ramayana",
+    "index": 3031,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 46",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-46",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "नानानगरवास्तव्यान् पृथग्जानपदानपि।",
+          "समानिनाय मेदिन्यां प्रधानान् पृथिवीपतिः॥ ४६॥",
+          "अयोध्या"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 46
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-47",
+    "collectionId": "valmiki-ramayana",
+    "index": 3032,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 47",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-47",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "तान् वेश्मनानाभरणैर्यथाहँ प्रतिपूजितान्।",
+          "ददर्शालंकृतो राजा प्रजापतिरिव प्रजाः॥४७॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 47
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-48",
+    "collectionId": "valmiki-ramayana",
+    "index": 3033,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 48",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-48",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "न तु केकयराजानं जनकं वा नराधिपः।",
+          "त्वरया चानयामास पश्चात्तौ श्रोष्यतः प्रियम्॥ ४८॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 48
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-49",
+    "collectionId": "valmiki-ramayana",
+    "index": 3034,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 49",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-49",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "अथोपविष्टे नृपतौ तस्मिन् परपुरार्दने।",
+          "ततः प्रविविशुः शेषा राजानो लोकसम्मताः॥ ४९॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 49
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-50",
+    "collectionId": "valmiki-ramayana",
+    "index": 3035,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 50",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-50",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "अथ राजवितीर्णेषु विविधेष्वासनेषु च।",
+          "राजानमेवाभिमुखा निषेदुर्नियता नृपाः॥५०॥"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 50
+  },
+  {
+    "id": "valmiki-ramayana-2-sarga-1-shlok-51",
+    "collectionId": "valmiki-ramayana",
+    "index": 3036,
+    "titleDevanagari": "वाल्मीकि रामायण, अयोध्याकाण्ड, सर्ग 1, श्लोक 51",
+    "author": "महर्षि वाल्मीकि",
+    "slug": "valmiki-ramayana-2-sarga-1-shlok-51",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "स लब्धमानैर्विनयान्वितैर्नृपैः पुरालयैर्जानपदैश्च मानवैः।",
+          "उपोपविष्टैर्नृपतिर्वृतो बभौ सहस्रचक्षुर्भगवानिवामरैः॥५१॥",
+          "RamCharit.in"
+        ]
+      }
+    ],
+    "chapterId": "अयोध्याकाण्ड-sarga-1",
+    "chapterName": "अयोध्याकाण्ड, सर्ग 1",
+    "verseNumber": 51
+  }
+]

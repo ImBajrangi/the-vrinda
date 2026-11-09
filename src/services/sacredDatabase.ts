@@ -9,7 +9,7 @@ import ashtayamaPeriodsData from '../data/ashtayamaPeriods.json';
 import sacredTopicsData from '../data/sacredTopics.json';
 import sadhanaBadgesData from '../data/sadhanaBadges.json';
 import feedTabsData from '../data/feedTabs.json';
-import { SacredPad, ScriptureHierarchyData, ChapterInfo, AuthorHierarchyInfo } from '../types/devotional';
+import { SacredPad, ScriptureHierarchyData, ChapterInfo, AuthorHierarchyInfo, EpicIndexData } from '../types/devotional';
 
 export interface CanonicalGrantha {
   id: string;
@@ -320,6 +320,17 @@ const inFlightGranthaPromises = new Map<string, Promise<SacredPad[]>>();
 const categoryCache = new Map<string, SacredPad[]>();
 const chapterCache = new Map<string, SacredPad[]>();
 const authorCache = new Map<string, SacredPad[]>();
+
+export const EPIC_GRANTHA_IDS = new Set<string>([
+  'valmiki-ramayana',
+  'shrimad-bhagavatam',
+  'ramcharitmanas',
+  'bhagavad-gita',
+  'durga-saptashati',
+]);
+
+const epicIndices = new Map<string, EpicIndexData>();
+const inFlightEpicPromises = new Map<string, Promise<SacredPad[]>>();
 
 function clearDerivedCaches() {
   categoryCache.clear();
@@ -705,6 +716,101 @@ export const SacredDatabase = {
     return false;
   },
 
+  isEpicGrantha(granthaId: string): boolean {
+    return EPIC_GRANTHA_IDS.has(granthaId);
+  },
+
+  getAllEpicGranthas(): CanonicalGrantha[] {
+    return allGranthas.filter((g) => EPIC_GRANTHA_IDS.has(g.id));
+  },
+
+  getAllPadavaliGranthas(): CanonicalGrantha[] {
+    return allGranthas.filter((g) => !EPIC_GRANTHA_IDS.has(g.id));
+  },
+
+  async getEpicIndex(granthaId: string): Promise<EpicIndexData | null> {
+    if (!this.isEpicGrantha(granthaId)) return null;
+    if (epicIndices.has(granthaId)) {
+      return epicIndices.get(granthaId)!;
+    }
+
+    const cacheKey = `vrind_epic_index_${granthaId}`;
+    try {
+      const cached = await get<EpicIndexData>(cacheKey);
+      if (cached && cached.chapters) {
+        epicIndices.set(granthaId, cached);
+        return cached;
+      }
+    } catch {}
+
+    try {
+      const res = await fetch(`/data/epics/${granthaId}/index.json`);
+      if (res.ok) {
+        const data: EpicIndexData = await res.json();
+        epicIndices.set(granthaId, data);
+        set(cacheKey, data).catch(() => {});
+        return data;
+      }
+    } catch (err) {
+      console.warn(`Failed to fetch epic index for ${granthaId}:`, err);
+    }
+    return null;
+  },
+
+  async fetchEpicChapter(granthaId: string, chapterId: string): Promise<SacredPad[]> {
+    const epicIndex = await this.getEpicIndex(granthaId);
+    if (!epicIndex) return [];
+
+    const chapterMeta = epicIndex.chapters.find((c) => c.id === chapterId || c.name === chapterId) || epicIndex.chapters[0];
+    if (!chapterMeta) return [];
+
+    const inFlightKey = `${granthaId}:${chapterMeta.id}`;
+    if (inFlightEpicPromises.has(inFlightKey)) {
+      return inFlightEpicPromises.get(inFlightKey)!;
+    }
+
+    const promise = (async () => {
+      // Check existing in memory
+      const existing = (padasByGrantha.get(granthaId) || []).filter(
+        (p) => p.chapterId === chapterMeta.id && !p.isStub && (p.verses?.[0]?.linesDevanagari?.length || 0) > 0
+      );
+      if (existing.length >= chapterMeta.verseCount && existing.length > 0) {
+        return existing;
+      }
+
+      // Check IndexedDB
+      const cacheKey = `vrind_epic_ch_${granthaId}_${chapterMeta.id}`;
+      try {
+        const cached = await get<SacredPad[]>(cacheKey);
+        if (cached && Array.isArray(cached) && cached.length > 0) {
+          this.appendPadas(cached);
+          return cached;
+        }
+      } catch {}
+
+      // Fetch chunk file from CDN
+      try {
+        const res = await fetch(`/data/epics/${granthaId}/${chapterMeta.file}`);
+        if (res.ok) {
+          const chunkData: SacredPad[] = await res.json();
+          this.appendPadas(chunkData);
+          set(cacheKey, chunkData).catch(() => {});
+          return chunkData;
+        }
+      } catch (err) {
+        console.warn(`Failed to fetch epic chapter ${granthaId}/${chapterMeta.file}:`, err);
+      }
+      return [];
+    })();
+
+    inFlightEpicPromises.set(inFlightKey, promise);
+    try {
+      return await promise;
+    } finally {
+      inFlightEpicPromises.delete(inFlightKey);
+    }
+  },
+
   /**
    * 4-Tier On-Demand Scripture Collection Loader with Content-Hashed URLs
    * Level 1: Memory (0ms)
@@ -714,6 +820,14 @@ export const SacredDatabase = {
    */
   async fetchGranthaPadas(granthaId: string): Promise<SacredPad[]> {
     if (!granthaId || granthaId === 'all') return allPadas;
+
+    // Piece-by-piece fast path for epics: load epic index and only first chapter chunk
+    if (this.isEpicGrantha(granthaId)) {
+      const idx = await this.getEpicIndex(granthaId);
+      if (idx && idx.chapters.length > 0) {
+        return this.fetchEpicChapter(granthaId, idx.chapters[0].id);
+      }
+    }
     const existing = padasByGrantha.get(granthaId);
     const granthaMeta = activeManifest?.granthas?.[granthaId];
     const metaCount = granthaMeta?.count || this.getGranthaById(granthaId)?.count || 0;

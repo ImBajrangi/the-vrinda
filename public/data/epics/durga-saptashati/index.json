@@ -1,0 +1,136 @@
+{
+  "id": "durga-saptashati",
+  "name": "श्री दुर्गा सप्तशती",
+  "author": "महर्षि मार्कण्डेय",
+  "description": "मार्कण्डेय पुराणान्तर्गत आदिशक्ति माँ भगवती के प्राकट्य व महात्म्य की पवित्र सप्तशती",
+  "totalVerses": 555,
+  "totalChapters": 14,
+  "chapters": [
+    {
+      "id": "adhyay-1",
+      "name": "अध्याय 1 (चरित्र 1)",
+      "section": "मूल पाठ",
+      "verseCount": 76,
+      "file": "ch-001-adhyay-1.json",
+      "firstPadId": "durga-saptashati-adhyay-1-shlok-1",
+      "firstPadSlug": "durga-saptashati-adhyay-1-shlok-1"
+    },
+    {
+      "id": "adhyay-2",
+      "name": "अध्याय 2 (चरित्र 2)",
+      "section": "मूल पाठ",
+      "verseCount": 56,
+      "file": "ch-002-adhyay-2.json",
+      "firstPadId": "durga-saptashati-adhyay-2-shlok-2",
+      "firstPadSlug": "durga-saptashati-adhyay-2-shlok-2"
+    },
+    {
+      "id": "adhyay-3",
+      "name": "अध्याय 3 (चरित्र 3)",
+      "section": "मूल पाठ",
+      "verseCount": 37,
+      "file": "ch-003-adhyay-3.json",
+      "firstPadId": "durga-saptashati-adhyay-3-shlok-2",
+      "firstPadSlug": "durga-saptashati-adhyay-3-shlok-2"
+    },
+    {
+      "id": "adhyay-4",
+      "name": "अध्याय 4 (चरित्र 4)",
+      "section": "मूल पाठ",
+      "verseCount": 36,
+      "file": "ch-004-adhyay-4.json",
+      "firstPadId": "durga-saptashati-adhyay-4-shlok-2",
+      "firstPadSlug": "durga-saptashati-adhyay-4-shlok-2"
+    },
+    {
+      "id": "adhyay-5",
+      "name": "अध्याय 5 (चरित्र 5)",
+      "section": "मूल पाठ",
+      "verseCount": 73,
+      "file": "ch-005-adhyay-5.json",
+      "firstPadId": "durga-saptashati-adhyay-5-shlok-2",
+      "firstPadSlug": "durga-saptashati-adhyay-5-shlok-2"
+    },
+    {
+      "id": "adhyay-6",
+      "name": "अध्याय 6 (चरित्र 6)",
+      "section": "मूल पाठ",
+      "verseCount": 20,
+      "file": "ch-006-adhyay-6.json",
+      "firstPadId": "durga-saptashati-adhyay-6-shlok-2",
+      "firstPadSlug": "durga-saptashati-adhyay-6-shlok-2"
+    },
+    {
+      "id": "adhyay-7",
+      "name": "अध्याय 7 (चरित्र 7)",
+      "section": "मूल पाठ",
+      "verseCount": 25,
+      "file": "ch-007-adhyay-7.json",
+      "firstPadId": "durga-saptashati-adhyay-7-shlok-2",
+      "firstPadSlug": "durga-saptashati-adhyay-7-shlok-2"
+    },
+    {
+      "id": "adhyay-8",
+      "name": "अध्याय 8 (चरित्र 8)",
+      "section": "मूल पाठ",
+      "verseCount": 60,
+      "file": "ch-008-adhyay-8.json",
+      "firstPadId": "durga-saptashati-adhyay-8-shlok-2",
+      "firstPadSlug": "durga-saptashati-adhyay-8-shlok-2"
+    },
+    {
+      "id": "adhyay-9",
+      "name": "अध्याय 9 (चरित्र 9)",
+      "section": "मूल पाठ",
+      "verseCount": 39,
+      "file": "ch-009-adhyay-9.json",
+      "firstPadId": "durga-saptashati-adhyay-9-shlok-2",
+      "firstPadSlug": "durga-saptashati-adhyay-9-shlok-2"
+    },
+    {
+      "id": "adhyay-10",
+      "name": "अध्याय 10 (चरित्र 10)",
+      "section": "मूल पाठ",
+      "verseCount": 28,
+      "file": "ch-010-adhyay-10.json",
+      "firstPadId": "durga-saptashati-adhyay-10-shlok-2",
+      "firstPadSlug": "durga-saptashati-adhyay-10-shlok-2"
+    },
+    {
+      "id": "adhyay-11",
+      "name": "अध्याय 11 (चरित्र 11)",
+      "section": "मूल पाठ",
+      "verseCount": 50,
+      "file": "ch-011-adhyay-11.json",
+      "firstPadId": "durga-saptashati-adhyay-11-shlok-2",
+      "firstPadSlug": "durga-saptashati-adhyay-11-shlok-2"
+    },
+    {
+      "id": "adhyay-12",
+      "name": "अध्याय 12 (चरित्र 12)",
+      "section": "मूल पाठ",
+      "verseCount": 38,
+      "file": "ch-012-adhyay-12.json",
+      "firstPadId": "durga-saptashati-adhyay-12-shlok-2",
+      "firstPadSlug": "durga-saptashati-adhyay-12-shlok-2"
+    },
+    {
+      "id": "adhyay-13",
+      "name": "अध्याय 13 (चरित्र 13)",
+      "section": "मूल पाठ",
+      "verseCount": 16,
+      "file": "ch-013-adhyay-13.json",
+      "firstPadId": "durga-saptashati-adhyay-13-shlok-2",
+      "firstPadSlug": "durga-saptashati-adhyay-13-shlok-2"
+    },
+    {
+      "id": "adhyay-99",
+      "name": "अध्याय 99 (चरित्र 99)",
+      "section": "मूल पाठ",
+      "verseCount": 1,
+      "file": "ch-014-adhyay-99.json",
+      "firstPadId": "durga-saptashati-adhyay-99-shlok-13",
+      "firstPadSlug": "durga-saptashati-adhyay-99-shlok-13"
+    }
+  ]
+}

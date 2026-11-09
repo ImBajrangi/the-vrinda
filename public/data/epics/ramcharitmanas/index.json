@@ -1,0 +1,73 @@
+{
+  "id": "ramcharitmanas",
+  "name": "श्री रामचरितमानस",
+  "author": "गोस्वामी तुलसीदास",
+  "description": "कलयुग तारक प्रभु श्री राम के पावन चरित्र का अवधी महाकाव्य",
+  "totalVerses": 960,
+  "totalChapters": 7,
+  "chapters": [
+    {
+      "id": "kand-बालकाण्ड",
+      "name": "बालकाण्ड",
+      "section": "मूल पाठ",
+      "verseCount": 345,
+      "file": "ch-001-kand-बालकाण्ड.json",
+      "firstPadId": "ramcharitmanas-kand-1-doha-1",
+      "firstPadSlug": "ramcharitmanas-kand-1-doha-1"
+    },
+    {
+      "id": "kand-अयोध्याकाण्ड",
+      "name": "अयोध्याकाण्ड",
+      "section": "मूल पाठ",
+      "verseCount": 326,
+      "file": "ch-002-kand-अयोध्याकाण्ड.json",
+      "firstPadId": "ramcharitmanas-kand-2-doha-1-2",
+      "firstPadSlug": "ramcharitmanas-kand-2-doha-1-2"
+    },
+    {
+      "id": "kand-अरण्यकाण्ड",
+      "name": "अरण्यकाण्ड",
+      "section": "मूल पाठ",
+      "verseCount": 37,
+      "file": "ch-003-kand-अरण्यकाण्ड.json",
+      "firstPadId": "ramcharitmanas-kand-3-doha-1",
+      "firstPadSlug": "ramcharitmanas-kand-3-doha-1"
+    },
+    {
+      "id": "kand-किष्किन्धाकाण्ड",
+      "name": "किष्किन्धाकाण्ड",
+      "section": "मूल पाठ",
+      "verseCount": 29,
+      "file": "ch-004-kand-किष्किन्धाकाण्ड.json",
+      "firstPadId": "ramcharitmanas-kand-4-doha-1-2",
+      "firstPadSlug": "ramcharitmanas-kand-4-doha-1-2"
+    },
+    {
+      "id": "kand-सुन्दरकाण्ड",
+      "name": "सुन्दरकाण्ड",
+      "section": "मूल पाठ",
+      "verseCount": 54,
+      "file": "ch-005-kand-सुन्दरकाण्ड.json",
+      "firstPadId": "ramcharitmanas-kand-5-doha-1",
+      "firstPadSlug": "ramcharitmanas-kand-5-doha-1"
+    },
+    {
+      "id": "kand-लंकाकाण्ड",
+      "name": "लंकाकाण्ड",
+      "section": "मूल पाठ",
+      "verseCount": 97,
+      "file": "ch-006-kand-लंकाकाण्ड.json",
+      "firstPadId": "ramcharitmanas-kand-6-doha-1-3",
+      "firstPadSlug": "ramcharitmanas-kand-6-doha-1-3"
+    },
+    {
+      "id": "kand-उत्तरकाण्ड",
+      "name": "उत्तरकाण्ड",
+      "section": "मूल पाठ",
+      "verseCount": 72,
+      "file": "ch-007-kand-उत्तरकाण्ड.json",
+      "firstPadId": "ramcharitmanas-kand-7-doha-1-2",
+      "firstPadSlug": "ramcharitmanas-kand-7-doha-1-2"
+    }
+  ]
+}

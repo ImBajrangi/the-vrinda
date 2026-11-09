@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import {
   Compass,
-  BookOpen,
   Sparkles,
   Trophy,
   Play,
@@ -13,6 +12,8 @@ import {
   Sun,
   Moon,
   ChevronRight,
+  ScrollText,
+  Feather,
 } from 'lucide-react';
 import { NavTab } from './FloatingNavbar';
 import { SacredLogo } from './SacredLogo';
@@ -133,7 +134,8 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
 
   const navItems: { id: NavTab; label: string; shortLabel: string; icon: React.ComponentType<{ className?: string }> }[] = [
     { id: 'smaran', label: 'Home Sanctuary', shortLabel: 'Home', icon: Compass },
-    { id: 'padavali', label: 'Scriptures', shortLabel: 'Read', icon: BookOpen },
+    { id: 'granthas', label: 'Sanatan Epics', shortLabel: 'Epics', icon: ScrollText },
+    { id: 'padavali', label: 'Padavali & Chhand', shortLabel: 'Vani', icon: Feather },
     { id: 'feed', label: 'Darshan Feed', shortLabel: 'Darshan', icon: Sparkles },
     { id: 'milestones', label: 'Devotion', shortLabel: 'Sadhana', icon: Trophy },
   ];
@@ -152,11 +154,18 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
       icon: Compass,
     },
     {
+      id: 'granthas',
+      label: 'सनातन महाग्रंथ',
+      sublabel: 'Epics • रामायण, भागवत, गीता',
+      badge: '५ महाग्रंथ',
+      icon: ScrollText,
+    },
+    {
       id: 'padavali',
-      label: 'रसिक वाणी',
-      sublabel: 'Scriptures • ४२००+ पद',
-      badge: '४२०४',
-      icon: BookOpen,
+      label: 'रसिक पद्यावली व छंद',
+      sublabel: 'Vani • पद, दोहा, सवैया',
+      badge: '१३१ संत',
+      icon: Feather,
     },
     {
       id: 'feed',

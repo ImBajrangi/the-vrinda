@@ -62,6 +62,7 @@ interface PadavaliReaderProps {
   onSelectGranthaId?: (granthaId: string) => void;
   onSelectAuthor?: (author: string | null) => void;
   onSelectPad?: (pad: SacredPad) => void;
+  onSwitchToMahagranth?: () => void;
 }
 
 type ReaderTheme = 'ivory' | 'mint' | 'chandan';
@@ -180,9 +181,10 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   onSelectGranthaId,
   onSelectAuthor: onSelectAuthorProp,
   onSelectPad: onExternalSelectPad,
+  onSwitchToMahagranth,
 }) => {
   const [allPadas, setAllPadas] = useState<SacredPad[]>(() => SacredDatabase.getAllPadas());
-  const allGranthas = SacredDatabase.getAllGranthas();
+  const allGranthas = useMemo(() => SacredDatabase.getAllPadavaliGranthas(), []);
 
   // Subscribe to dynamic sacred database hydration (IndexedDB / CDN)
   useEffect(() => {
@@ -1840,6 +1842,26 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
       {!isFocusReadingMode && !isScopedSession && (
         <div className="mb-5 space-y-2.5">
+          {/* Serene Sacred Bridge to Monumental Epics */}
+          {onSwitchToMahagranth && (
+            <div className="flex items-center justify-between px-4 py-2 rounded-2xl bg-gradient-to-r from-amber-50/80 via-[#FAF7EE] to-amber-50/80 border border-amber-200/60 shadow-2xs">
+              <div className="flex items-center gap-2 min-w-0">
+                <ScrollText className="w-4 h-4 text-amber-700 shrink-0" />
+                <p className="text-xs sm:text-[13px] font-serif text-amber-950 truncate">
+                  <span className="font-bold">सनातन महाग्रंथ पारायण:</span> वाल्मीकि रामायण, श्रीमद्भागवत, रामचरितमानस, गीता व दुर्गा सप्तशती
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={onSwitchToMahagranth}
+                className="ml-3 shrink-0 px-3 py-1 rounded-full bg-[#FEF08A] hover:bg-amber-300 text-[11px] font-mono font-bold text-[#78350F] flex items-center gap-1 transition-colors cursor-pointer shadow-2xs"
+              >
+                <span>पारायण कक्ष</span>
+                <span className="text-xs leading-none">→</span>
+              </button>
+            </div>
+          )}
+
           {/* Scripture Category Filter Strip (महाग्रंथ, रसिक वाणी, काव्य व छंद, धाम व लीला, संत व रचयिता) */}
           <div className="relative flex items-center gap-1.5 overflow-x-auto no-scrollbar p-1 bg-white/95 border border-neutral-200/80 shadow-2xs rounded-full text-xs">
             {/* Dynamic Elastic Sliding Indicator Bar */}
@@ -1867,9 +1889,11 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               const count =
                 cat.id === 'all'
                   ? allGranthas.length
-                  : cat.id === 'authors'
-                    ? (hierarchyAuthors.length || 761)
-                    : allGranthas.filter((g) => g.category === cat.id).length;
+                  : cat.id === 'mahagranth'
+                    ? 5
+                    : cat.id === 'authors'
+                      ? (hierarchyAuthors.length || 761)
+                      : allGranthas.filter((g) => g.category === cat.id).length;
               return (
                 <button
                   key={cat.id}
@@ -1877,7 +1901,13 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                     categoryRefs.current[cat.id] = el;
                   }}
                   type="button"
-                  onClick={() => handleSelectCategory(cat.id)}
+                  onClick={() => {
+                    if (cat.id === 'mahagranth' && onSwitchToMahagranth) {
+                      onSwitchToMahagranth();
+                    } else {
+                      handleSelectCategory(cat.id);
+                    }
+                  }}
                   className={`relative z-10 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-150 cursor-pointer select-none inline-flex items-center gap-1 ${isActive
                       ? categoryPillStyle.ready
                         ? 'text-[#18181B] font-bold'

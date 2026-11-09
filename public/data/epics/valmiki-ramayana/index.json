@@ -1,0 +1,3682 @@
+{
+  "id": "valmiki-ramayana",
+  "name": "श्रीमद् वाल्मीकि रामायण",
+  "author": "महर्षि वाल्मीकि",
+  "description": "आदिकवि महर्षि वाल्मीकि प्रणीत प्रभु श्री राम के दिव्य चरित्र का अमर महाकाव्य",
+  "totalVerses": 14079,
+  "totalChapters": 408,
+  "chapters": [
+    {
+      "id": "बालकाण्ड-sarga-1",
+      "name": "बालकाण्ड, सर्ग 1",
+      "section": "बालकाण्ड",
+      "verseCount": 127,
+      "file": "ch-001-बालकाण्ड-sarga-1.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-1-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-1-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-2",
+      "name": "बालकाण्ड, सर्ग 2",
+      "section": "बालकाण्ड",
+      "verseCount": 40,
+      "file": "ch-002-बालकाण्ड-sarga-2.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-2-shlok-1-2",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-2-shlok-1-2"
+    },
+    {
+      "id": "बालकाण्ड-sarga-3",
+      "name": "बालकाण्ड, सर्ग 3",
+      "section": "बालकाण्ड",
+      "verseCount": 39,
+      "file": "ch-003-बालकाण्ड-sarga-3.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-3-shlok-1-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-3-shlok-1-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-4",
+      "name": "बालकाण्ड, सर्ग 4",
+      "section": "बालकाण्ड",
+      "verseCount": 36,
+      "file": "ch-004-बालकाण्ड-sarga-4.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-4-shlok-1-2",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-4-shlok-1-2"
+    },
+    {
+      "id": "बालकाण्ड-sarga-5",
+      "name": "बालकाण्ड, सर्ग 5",
+      "section": "बालकाण्ड",
+      "verseCount": 42,
+      "file": "ch-005-बालकाण्ड-sarga-5.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-5-shlok-1-2",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-5-shlok-1-2"
+    },
+    {
+      "id": "बालकाण्ड-sarga-6",
+      "name": "बालकाण्ड, सर्ग 6",
+      "section": "बालकाण्ड",
+      "verseCount": 61,
+      "file": "ch-006-बालकाण्ड-sarga-6.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-6-shlok-1-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-6-shlok-1-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-7",
+      "name": "बालकाण्ड, सर्ग 7",
+      "section": "बालकाण्ड",
+      "verseCount": 44,
+      "file": "ch-007-बालकाण्ड-sarga-7.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-7-shlok-1-2",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-7-shlok-1-2"
+    },
+    {
+      "id": "बालकाण्ड-sarga-8",
+      "name": "बालकाण्ड, सर्ग 8",
+      "section": "बालकाण्ड",
+      "verseCount": 46,
+      "file": "ch-008-बालकाण्ड-sarga-8.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-8-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-8-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-9",
+      "name": "बालकाण्ड, सर्ग 9",
+      "section": "बालकाण्ड",
+      "verseCount": 44,
+      "file": "ch-009-बालकाण्ड-sarga-9.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-9-shlok-1-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-9-shlok-1-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-10",
+      "name": "बालकाण्ड, सर्ग 10",
+      "section": "बालकाण्ड",
+      "verseCount": 45,
+      "file": "ch-010-बालकाण्ड-sarga-10.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-10-shlok-1-2",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-10-shlok-1-2"
+    },
+    {
+      "id": "बालकाण्ड-sarga-11",
+      "name": "बालकाण्ड, सर्ग 11",
+      "section": "बालकाण्ड",
+      "verseCount": 90,
+      "file": "ch-011-बालकाण्ड-sarga-11.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-11-shlok-1-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-11-shlok-1-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-12",
+      "name": "बालकाण्ड, सर्ग 12",
+      "section": "बालकाण्ड",
+      "verseCount": 40,
+      "file": "ch-012-बालकाण्ड-sarga-12.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-12-shlok-1-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-12-shlok-1-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-13",
+      "name": "बालकाण्ड, सर्ग 13",
+      "section": "बालकाण्ड",
+      "verseCount": 40,
+      "file": "ch-013-बालकाण्ड-sarga-13.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-13-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-13-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-14",
+      "name": "बालकाण्ड, सर्ग 14",
+      "section": "बालकाण्ड",
+      "verseCount": 56,
+      "file": "ch-014-बालकाण्ड-sarga-14.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-14-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-14-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-15",
+      "name": "बालकाण्ड, सर्ग 15",
+      "section": "बालकाण्ड",
+      "verseCount": 38,
+      "file": "ch-015-बालकाण्ड-sarga-15.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-15-shlok-1-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-15-shlok-1-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-16",
+      "name": "बालकाण्ड, सर्ग 16",
+      "section": "बालकाण्ड",
+      "verseCount": 48,
+      "file": "ch-016-बालकाण्ड-sarga-16.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-16-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-16-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-17",
+      "name": "बालकाण्ड, सर्ग 17",
+      "section": "बालकाण्ड",
+      "verseCount": 54,
+      "file": "ch-017-बालकाण्ड-sarga-17.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-17-shlok-1-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-17-shlok-1-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-18",
+      "name": "बालकाण्ड, सर्ग 18",
+      "section": "बालकाण्ड",
+      "verseCount": 63,
+      "file": "ch-018-बालकाण्ड-sarga-18.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-18-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-18-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-19",
+      "name": "बालकाण्ड, सर्ग 19",
+      "section": "बालकाण्ड",
+      "verseCount": 32,
+      "file": "ch-019-बालकाण्ड-sarga-19.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-19-shlok-1-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-19-shlok-1-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-20",
+      "name": "बालकाण्ड, सर्ग 20",
+      "section": "बालकाण्ड",
+      "verseCount": 31,
+      "file": "ch-020-बालकाण्ड-sarga-20.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-20-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-20-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-21",
+      "name": "बालकाण्ड, सर्ग 21",
+      "section": "बालकाण्ड",
+      "verseCount": 44,
+      "file": "ch-021-बालकाण्ड-sarga-21.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-21-shlok-1-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-21-shlok-1-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-22",
+      "name": "बालकाण्ड, सर्ग 22",
+      "section": "बालकाण्ड",
+      "verseCount": 50,
+      "file": "ch-022-बालकाण्ड-sarga-22.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-22-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-22-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-23",
+      "name": "बालकाण्ड, सर्ग 23",
+      "section": "बालकाण्ड",
+      "verseCount": 52,
+      "file": "ch-023-बालकाण्ड-sarga-23.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-23-shlok-1-2",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-23-shlok-1-2"
+    },
+    {
+      "id": "बालकाण्ड-sarga-24",
+      "name": "बालकाण्ड, सर्ग 24",
+      "section": "बालकाण्ड",
+      "verseCount": 44,
+      "file": "ch-024-बालकाण्ड-sarga-24.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-24-shlok-1-2",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-24-shlok-1-2"
+    },
+    {
+      "id": "बालकाण्ड-sarga-25",
+      "name": "बालकाण्ड, सर्ग 25",
+      "section": "बालकाण्ड",
+      "verseCount": 53,
+      "file": "ch-025-बालकाण्ड-sarga-25.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-25-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-25-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-26",
+      "name": "बालकाण्ड, सर्ग 26",
+      "section": "बालकाण्ड",
+      "verseCount": 59,
+      "file": "ch-026-बालकाण्ड-sarga-26.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-26-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-26-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-27",
+      "name": "बालकाण्ड, सर्ग 27",
+      "section": "बालकाण्ड",
+      "verseCount": 51,
+      "file": "ch-027-बालकाण्ड-sarga-27.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-27-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-27-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-28",
+      "name": "बालकाण्ड, सर्ग 28",
+      "section": "बालकाण्ड",
+      "verseCount": 65,
+      "file": "ch-028-बालकाण्ड-sarga-28.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-28-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-28-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-29",
+      "name": "बालकाण्ड, सर्ग 29",
+      "section": "बालकाण्ड",
+      "verseCount": 42,
+      "file": "ch-029-बालकाण्ड-sarga-29.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-29-shlok-1-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-29-shlok-1-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-30",
+      "name": "बालकाण्ड, सर्ग 30",
+      "section": "बालकाण्ड",
+      "verseCount": 82,
+      "file": "ch-030-बालकाण्ड-sarga-30.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-30-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-30-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-31",
+      "name": "बालकाण्ड, सर्ग 31",
+      "section": "बालकाण्ड",
+      "verseCount": 47,
+      "file": "ch-031-बालकाण्ड-sarga-31.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-31-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-31-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-32",
+      "name": "बालकाण्ड, सर्ग 32",
+      "section": "बालकाण्ड",
+      "verseCount": 26,
+      "file": "ch-032-बालकाण्ड-sarga-32.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-32-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-32-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-33",
+      "name": "बालकाण्ड, सर्ग 33",
+      "section": "बालकाण्ड",
+      "verseCount": 64,
+      "file": "ch-033-बालकाण्ड-sarga-33.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-33-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-33-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-34",
+      "name": "बालकाण्ड, सर्ग 34",
+      "section": "बालकाण्ड",
+      "verseCount": 24,
+      "file": "ch-034-बालकाण्ड-sarga-34.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-34-shlok-1-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-34-shlok-1-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-35",
+      "name": "बालकाण्ड, सर्ग 35",
+      "section": "बालकाण्ड",
+      "verseCount": 25,
+      "file": "ch-035-बालकाण्ड-sarga-35.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-35-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-35-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-36",
+      "name": "बालकाण्ड, सर्ग 36",
+      "section": "बालकाण्ड",
+      "verseCount": 27,
+      "file": "ch-036-बालकाण्ड-sarga-36.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-36-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-36-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-37",
+      "name": "बालकाण्ड, सर्ग 37",
+      "section": "बालकाण्ड",
+      "verseCount": 37,
+      "file": "ch-037-बालकाण्ड-sarga-37.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-37-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-37-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-38",
+      "name": "बालकाण्ड, सर्ग 38",
+      "section": "बालकाण्ड",
+      "verseCount": 34,
+      "file": "ch-038-बालकाण्ड-sarga-38.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-38-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-38-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-39",
+      "name": "बालकाण्ड, सर्ग 39",
+      "section": "बालकाण्ड",
+      "verseCount": 43,
+      "file": "ch-039-बालकाण्ड-sarga-39.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-39-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-39-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-40",
+      "name": "बालकाण्ड, सर्ग 40",
+      "section": "बालकाण्ड",
+      "verseCount": 66,
+      "file": "ch-040-बालकाण्ड-sarga-40.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-40-shlok-1-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-40-shlok-1-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-41",
+      "name": "बालकाण्ड, सर्ग 41",
+      "section": "बालकाण्ड",
+      "verseCount": 46,
+      "file": "ch-041-बालकाण्ड-sarga-41.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-41-shlok-1-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-41-shlok-1-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-42",
+      "name": "बालकाण्ड, सर्ग 42",
+      "section": "बालकाण्ड",
+      "verseCount": 51,
+      "file": "ch-042-बालकाण्ड-sarga-42.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-42-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-42-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-43",
+      "name": "बालकाण्ड, सर्ग 43",
+      "section": "बालकाण्ड",
+      "verseCount": 59,
+      "file": "ch-043-बालकाण्ड-sarga-43.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-43-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-43-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-44",
+      "name": "बालकाण्ड, सर्ग 44",
+      "section": "बालकाण्ड",
+      "verseCount": 22,
+      "file": "ch-044-बालकाण्ड-sarga-44.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-44-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-44-shlok-2"
+    },
+    {
+      "id": "बालकाण्ड-sarga-45",
+      "name": "बालकाण्ड, सर्ग 45",
+      "section": "बालकाण्ड",
+      "verseCount": 38,
+      "file": "ch-045-बालकाण्ड-sarga-45.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-45-shlok-1-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-45-shlok-1-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-46",
+      "name": "बालकाण्ड, सर्ग 46",
+      "section": "बालकाण्ड",
+      "verseCount": 25,
+      "file": "ch-046-बालकाण्ड-sarga-46.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-46-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-46-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-47",
+      "name": "बालकाण्ड, सर्ग 47",
+      "section": "बालकाण्ड",
+      "verseCount": 21,
+      "file": "ch-047-बालकाण्ड-sarga-47.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-47-shlok-1-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-47-shlok-1-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-48",
+      "name": "बालकाण्ड, सर्ग 48",
+      "section": "बालकाण्ड",
+      "verseCount": 30,
+      "file": "ch-048-बालकाण्ड-sarga-48.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-48-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-48-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-49",
+      "name": "बालकाण्ड, सर्ग 49",
+      "section": "बालकाण्ड",
+      "verseCount": 23,
+      "file": "ch-049-बालकाण्ड-sarga-49.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-49-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-49-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-50",
+      "name": "बालकाण्ड, सर्ग 50",
+      "section": "बालकाण्ड",
+      "verseCount": 31,
+      "file": "ch-050-बालकाण्ड-sarga-50.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-50-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-50-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-51",
+      "name": "बालकाण्ड, सर्ग 51",
+      "section": "बालकाण्ड",
+      "verseCount": 25,
+      "file": "ch-051-बालकाण्ड-sarga-51.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-51-shlok-1-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-51-shlok-1-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-52",
+      "name": "बालकाण्ड, सर्ग 52",
+      "section": "बालकाण्ड",
+      "verseCount": 31,
+      "file": "ch-052-बालकाण्ड-sarga-52.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-52-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-52-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-53",
+      "name": "बालकाण्ड, सर्ग 53",
+      "section": "बालकाण्ड",
+      "verseCount": 27,
+      "file": "ch-053-बालकाण्ड-sarga-53.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-53-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-53-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-54",
+      "name": "बालकाण्ड, सर्ग 54",
+      "section": "बालकाण्ड",
+      "verseCount": 24,
+      "file": "ch-054-बालकाण्ड-sarga-54.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-54-shlok-1-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-54-shlok-1-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-55",
+      "name": "बालकाण्ड, सर्ग 55",
+      "section": "बालकाण्ड",
+      "verseCount": 28,
+      "file": "ch-055-बालकाण्ड-sarga-55.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-55-shlok-1-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-55-shlok-1-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-56",
+      "name": "बालकाण्ड, सर्ग 56",
+      "section": "बालकाण्ड",
+      "verseCount": 25,
+      "file": "ch-056-बालकाण्ड-sarga-56.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-56-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-56-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-57",
+      "name": "बालकाण्ड, सर्ग 57",
+      "section": "बालकाण्ड",
+      "verseCount": 21,
+      "file": "ch-057-बालकाण्ड-sarga-57.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-57-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-57-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-58",
+      "name": "बालकाण्ड, सर्ग 58",
+      "section": "बालकाण्ड",
+      "verseCount": 36,
+      "file": "ch-058-बालकाण्ड-sarga-58.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-58-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-58-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-59",
+      "name": "बालकाण्ड, सर्ग 59",
+      "section": "बालकाण्ड",
+      "verseCount": 27,
+      "file": "ch-059-बालकाण्ड-sarga-59.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-59-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-59-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-60",
+      "name": "बालकाण्ड, सर्ग 60",
+      "section": "बालकाण्ड",
+      "verseCount": 29,
+      "file": "ch-060-बालकाण्ड-sarga-60.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-60-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-60-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-61",
+      "name": "बालकाण्ड, सर्ग 61",
+      "section": "बालकाण्ड",
+      "verseCount": 24,
+      "file": "ch-061-बालकाण्ड-sarga-61.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-61-shlok-1-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-61-shlok-1-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-62",
+      "name": "बालकाण्ड, सर्ग 62",
+      "section": "बालकाण्ड",
+      "verseCount": 27,
+      "file": "ch-062-बालकाण्ड-sarga-62.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-62-shlok-1-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-62-shlok-1-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-63",
+      "name": "बालकाण्ड, सर्ग 63",
+      "section": "बालकाण्ड",
+      "verseCount": 20,
+      "file": "ch-063-बालकाण्ड-sarga-63.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-63-shlok-2-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-63-shlok-2-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-64",
+      "name": "बालकाण्ड, सर्ग 64",
+      "section": "बालकाण्ड",
+      "verseCount": 23,
+      "file": "ch-064-बालकाण्ड-sarga-64.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-64-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-64-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-65",
+      "name": "बालकाण्ड, सर्ग 65",
+      "section": "बालकाण्ड",
+      "verseCount": 41,
+      "file": "ch-065-बालकाण्ड-sarga-65.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-65-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-65-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-66",
+      "name": "बालकाण्ड, सर्ग 66",
+      "section": "बालकाण्ड",
+      "verseCount": 36,
+      "file": "ch-066-बालकाण्ड-sarga-66.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-66-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-66-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-67",
+      "name": "बालकाण्ड, सर्ग 67",
+      "section": "बालकाण्ड",
+      "verseCount": 41,
+      "file": "ch-067-बालकाण्ड-sarga-67.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-67-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-67-shlok-2"
+    },
+    {
+      "id": "बालकाण्ड-sarga-68",
+      "name": "बालकाण्ड, सर्ग 68",
+      "section": "बालकाण्ड",
+      "verseCount": 18,
+      "file": "ch-068-बालकाण्ड-sarga-68.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-68-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-68-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-69",
+      "name": "बालकाण्ड, सर्ग 69",
+      "section": "बालकाण्ड",
+      "verseCount": 16,
+      "file": "ch-069-बालकाण्ड-sarga-69.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-69-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-69-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-70",
+      "name": "बालकाण्ड, सर्ग 70",
+      "section": "बालकाण्ड",
+      "verseCount": 33,
+      "file": "ch-070-बालकाण्ड-sarga-70.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-70-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-70-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-71",
+      "name": "बालकाण्ड, सर्ग 71",
+      "section": "बालकाण्ड",
+      "verseCount": 16,
+      "file": "ch-071-बालकाण्ड-sarga-71.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-71-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-71-shlok-2"
+    },
+    {
+      "id": "बालकाण्ड-sarga-72",
+      "name": "बालकाण्ड, सर्ग 72",
+      "section": "बालकाण्ड",
+      "verseCount": 22,
+      "file": "ch-072-बालकाण्ड-sarga-72.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-72-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-72-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-73",
+      "name": "बालकाण्ड, सर्ग 73",
+      "section": "बालकाण्ड",
+      "verseCount": 24,
+      "file": "ch-073-बालकाण्ड-sarga-73.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-73-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-73-shlok-2"
+    },
+    {
+      "id": "बालकाण्ड-sarga-74",
+      "name": "बालकाण्ड, सर्ग 74",
+      "section": "बालकाण्ड",
+      "verseCount": 15,
+      "file": "ch-074-बालकाण्ड-sarga-74.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-74-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-74-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-75",
+      "name": "बालकाण्ड, सर्ग 75",
+      "section": "बालकाण्ड",
+      "verseCount": 23,
+      "file": "ch-075-बालकाण्ड-sarga-75.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-75-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-75-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-76",
+      "name": "बालकाण्ड, सर्ग 76",
+      "section": "बालकाण्ड",
+      "verseCount": 23,
+      "file": "ch-076-बालकाण्ड-sarga-76.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-76-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-76-shlok-1"
+    },
+    {
+      "id": "बालकाण्ड-sarga-77",
+      "name": "बालकाण्ड, सर्ग 77",
+      "section": "बालकाण्ड",
+      "verseCount": 17,
+      "file": "ch-077-बालकाण्ड-sarga-77.json",
+      "firstPadId": "valmiki-ramayana-1-sarga-77-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-1-sarga-77-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-1",
+      "name": "अयोध्याकाण्ड, सर्ग 1",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 47,
+      "file": "ch-078-अयोध्याकाण्ड-sarga-1.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-1-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-1-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-2",
+      "name": "अयोध्याकाण्ड, सर्ग 2",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 42,
+      "file": "ch-079-अयोध्याकाण्ड-sarga-2.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-2-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-2-shlok-2"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-3",
+      "name": "अयोध्याकाण्ड, सर्ग 3",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 31,
+      "file": "ch-080-अयोध्याकाण्ड-sarga-3.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-3-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-3-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-4",
+      "name": "अयोध्याकाण्ड, सर्ग 4",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 38,
+      "file": "ch-081-अयोध्याकाण्ड-sarga-4.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-4-shlok-3",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-4-shlok-3"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-5",
+      "name": "अयोध्याकाण्ड, सर्ग 5",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 24,
+      "file": "ch-082-अयोध्याकाण्ड-sarga-5.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-5-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-5-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-6",
+      "name": "अयोध्याकाण्ड, सर्ग 6",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 24,
+      "file": "ch-083-अयोध्याकाण्ड-sarga-6.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-6-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-6-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-7",
+      "name": "अयोध्याकाण्ड, सर्ग 7",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 31,
+      "file": "ch-084-अयोध्याकाण्ड-sarga-7.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-7-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-7-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-8",
+      "name": "अयोध्याकाण्ड, सर्ग 8",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 37,
+      "file": "ch-085-अयोध्याकाण्ड-sarga-8.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-8-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-8-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-9",
+      "name": "अयोध्याकाण्ड, सर्ग 9",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 51,
+      "file": "ch-086-अयोध्याकाण्ड-sarga-9.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-9-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-9-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-10",
+      "name": "अयोध्याकाण्ड, सर्ग 10",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 26,
+      "file": "ch-087-अयोध्याकाण्ड-sarga-10.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-10-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-10-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-11",
+      "name": "अयोध्याकाण्ड, सर्ग 11",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 24,
+      "file": "ch-088-अयोध्याकाण्ड-sarga-11.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-11-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-11-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-12",
+      "name": "अयोध्याकाण्ड, सर्ग 12",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 89,
+      "file": "ch-089-अयोध्याकाण्ड-sarga-12.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-12-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-12-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-13",
+      "name": "अयोध्याकाण्ड, सर्ग 13",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 20,
+      "file": "ch-090-अयोध्याकाण्ड-sarga-13.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-13-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-13-shlok-2"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-14",
+      "name": "अयोध्याकाण्ड, सर्ग 14",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 52,
+      "file": "ch-091-अयोध्याकाण्ड-sarga-14.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-14-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-14-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-15",
+      "name": "अयोध्याकाण्ड, सर्ग 15",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 33,
+      "file": "ch-092-अयोध्याकाण्ड-sarga-15.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-15-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-15-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-16",
+      "name": "अयोध्याकाण्ड, सर्ग 16",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 39,
+      "file": "ch-093-अयोध्याकाण्ड-sarga-16.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-16-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-16-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-17",
+      "name": "अयोध्याकाण्ड, सर्ग 17",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 16,
+      "file": "ch-094-अयोध्याकाण्ड-sarga-17.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-17-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-17-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-18",
+      "name": "अयोध्याकाण्ड, सर्ग 18",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 38,
+      "file": "ch-095-अयोध्याकाण्ड-sarga-18.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-18-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-18-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-19",
+      "name": "अयोध्याकाण्ड, सर्ग 19",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 38,
+      "file": "ch-096-अयोध्याकाण्ड-sarga-19.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-19-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-19-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-20",
+      "name": "अयोध्याकाण्ड, सर्ग 20",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 53,
+      "file": "ch-097-अयोध्याकाण्ड-sarga-20.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-20-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-20-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-21",
+      "name": "अयोध्याकाण्ड, सर्ग 21",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 60,
+      "file": "ch-098-अयोध्याकाण्ड-sarga-21.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-21-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-21-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-22",
+      "name": "अयोध्याकाण्ड, सर्ग 22",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 28,
+      "file": "ch-099-अयोध्याकाण्ड-sarga-22.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-22-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-22-shlok-2"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-23",
+      "name": "अयोध्याकाण्ड, सर्ग 23",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 35,
+      "file": "ch-100-अयोध्याकाण्ड-sarga-23.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-23-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-23-shlok-2"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-24",
+      "name": "अयोध्याकाण्ड, सर्ग 24",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 28,
+      "file": "ch-101-अयोध्याकाण्ड-sarga-24.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-24-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-24-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-25",
+      "name": "अयोध्याकाण्ड, सर्ग 25",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 42,
+      "file": "ch-102-अयोध्याकाण्ड-sarga-25.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-25-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-25-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-26",
+      "name": "अयोध्याकाण्ड, सर्ग 26",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 35,
+      "file": "ch-103-अयोध्याकाण्ड-sarga-26.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-26-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-26-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-27",
+      "name": "अयोध्याकाण्ड, सर्ग 27",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 22,
+      "file": "ch-104-अयोध्याकाण्ड-sarga-27.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-27-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-27-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-28",
+      "name": "अयोध्याकाण्ड, सर्ग 28",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 26,
+      "file": "ch-105-अयोध्याकाण्ड-sarga-28.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-28-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-28-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-29",
+      "name": "अयोध्याकाण्ड, सर्ग 29",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 24,
+      "file": "ch-106-अयोध्याकाण्ड-sarga-29.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-29-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-29-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-30",
+      "name": "अयोध्याकाण्ड, सर्ग 30",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 44,
+      "file": "ch-107-अयोध्याकाण्ड-sarga-30.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-30-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-30-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-31",
+      "name": "अयोध्याकाण्ड, सर्ग 31",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 32,
+      "file": "ch-108-अयोध्याकाण्ड-sarga-31.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-31-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-31-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-32",
+      "name": "अयोध्याकाण्ड, सर्ग 32",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 36,
+      "file": "ch-109-अयोध्याकाण्ड-sarga-32.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-32-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-32-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-33",
+      "name": "अयोध्याकाण्ड, सर्ग 33",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 25,
+      "file": "ch-110-अयोध्याकाण्ड-sarga-33.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-33-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-33-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-34",
+      "name": "अयोध्याकाण्ड, सर्ग 34",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 52,
+      "file": "ch-111-अयोध्याकाण्ड-sarga-34.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-34-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-34-shlok-2"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-35",
+      "name": "अयोध्याकाण्ड, सर्ग 35",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 30,
+      "file": "ch-112-अयोध्याकाण्ड-sarga-35.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-35-shlok-3",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-35-shlok-3"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-36",
+      "name": "अयोध्याकाण्ड, सर्ग 36",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 30,
+      "file": "ch-113-अयोध्याकाण्ड-sarga-36.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-36-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-36-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-37",
+      "name": "अयोध्याकाण्ड, सर्ग 37",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 31,
+      "file": "ch-114-अयोध्याकाण्ड-sarga-37.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-37-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-37-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-38",
+      "name": "अयोध्याकाण्ड, सर्ग 38",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 15,
+      "file": "ch-115-अयोध्याकाण्ड-sarga-38.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-38-shlok-3",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-38-shlok-3"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-39",
+      "name": "अयोध्याकाण्ड, सर्ग 39",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 39,
+      "file": "ch-116-अयोध्याकाण्ड-sarga-39.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-39-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-39-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-40",
+      "name": "अयोध्याकाण्ड, सर्ग 40",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 50,
+      "file": "ch-117-अयोध्याकाण्ड-sarga-40.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-40-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-40-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-41",
+      "name": "अयोध्याकाण्ड, सर्ग 41",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 19,
+      "file": "ch-118-अयोध्याकाण्ड-sarga-41.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-41-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-41-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-42",
+      "name": "अयोध्याकाण्ड, सर्ग 42",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 32,
+      "file": "ch-119-अयोध्याकाण्ड-sarga-42.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-42-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-42-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-43",
+      "name": "अयोध्याकाण्ड, सर्ग 43",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 22,
+      "file": "ch-120-अयोध्याकाण्ड-sarga-43.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-43-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-43-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-44",
+      "name": "अयोध्याकाण्ड, सर्ग 44",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 30,
+      "file": "ch-121-अयोध्याकाण्ड-sarga-44.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-44-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-44-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-45",
+      "name": "अयोध्याकाण्ड, सर्ग 45",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 33,
+      "file": "ch-122-अयोध्याकाण्ड-sarga-45.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-45-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-45-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-46",
+      "name": "अयोध्याकाण्ड, सर्ग 46",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 32,
+      "file": "ch-123-अयोध्याकाण्ड-sarga-46.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-46-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-46-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-47",
+      "name": "अयोध्याकाण्ड, सर्ग 47",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 19,
+      "file": "ch-124-अयोध्याकाण्ड-sarga-47.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-47-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-47-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-48",
+      "name": "अयोध्याकाण्ड, सर्ग 48",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 32,
+      "file": "ch-125-अयोध्याकाण्ड-sarga-48.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-48-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-48-shlok-2"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-49",
+      "name": "अयोध्याकाण्ड, सर्ग 49",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 19,
+      "file": "ch-126-अयोध्याकाण्ड-sarga-49.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-49-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-49-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-50",
+      "name": "अयोध्याकाण्ड, सर्ग 50",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 44,
+      "file": "ch-127-अयोध्याकाण्ड-sarga-50.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-50-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-50-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-51",
+      "name": "अयोध्याकाण्ड, सर्ग 51",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 24,
+      "file": "ch-128-अयोध्याकाण्ड-sarga-51.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-51-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-51-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-52",
+      "name": "अयोध्याकाण्ड, सर्ग 52",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 95,
+      "file": "ch-129-अयोध्याकाण्ड-sarga-52.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-52-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-52-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-53",
+      "name": "अयोध्याकाण्ड, सर्ग 53",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 32,
+      "file": "ch-130-अयोध्याकाण्ड-sarga-53.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-53-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-53-shlok-2"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-54",
+      "name": "अयोध्याकाण्ड, सर्ग 54",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 35,
+      "file": "ch-131-अयोध्याकाण्ड-sarga-54.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-54-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-54-shlok-2"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-55",
+      "name": "अयोध्याकाण्ड, सर्ग 55",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 27,
+      "file": "ch-132-अयोध्याकाण्ड-sarga-55.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-55-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-55-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-56",
+      "name": "अयोध्याकाण्ड, सर्ग 56",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 35,
+      "file": "ch-133-अयोध्याकाण्ड-sarga-56.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-56-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-56-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-57",
+      "name": "अयोध्याकाण्ड, सर्ग 57",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 28,
+      "file": "ch-134-अयोध्याकाण्ड-sarga-57.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-57-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-57-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-58",
+      "name": "अयोध्याकाण्ड, सर्ग 58",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 31,
+      "file": "ch-135-अयोध्याकाण्ड-sarga-58.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-58-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-58-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-59",
+      "name": "अयोध्याकाण्ड, सर्ग 59",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 29,
+      "file": "ch-136-अयोध्याकाण्ड-sarga-59.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-59-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-59-shlok-2"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-60",
+      "name": "अयोध्याकाण्ड, सर्ग 60",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 24,
+      "file": "ch-137-अयोध्याकाण्ड-sarga-60.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-60-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-60-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-61",
+      "name": "अयोध्याकाण्ड, सर्ग 61",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 26,
+      "file": "ch-138-अयोध्याकाण्ड-sarga-61.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-61-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-61-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-62",
+      "name": "अयोध्याकाण्ड, सर्ग 62",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 19,
+      "file": "ch-139-अयोध्याकाण्ड-sarga-62.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-62-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-62-shlok-2"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-63",
+      "name": "अयोध्याकाण्ड, सर्ग 63",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 31,
+      "file": "ch-140-अयोध्याकाण्ड-sarga-63.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-63-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-63-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-64",
+      "name": "अयोध्याकाण्ड, सर्ग 64",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 67,
+      "file": "ch-141-अयोध्याकाण्ड-sarga-64.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-64-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-64-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-65",
+      "name": "अयोध्याकाण्ड, सर्ग 65",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 28,
+      "file": "ch-142-अयोध्याकाण्ड-sarga-65.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-65-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-65-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-66",
+      "name": "अयोध्याकाण्ड, सर्ग 66",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 28,
+      "file": "ch-143-अयोध्याकाण्ड-sarga-66.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-66-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-66-shlok-2"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-67",
+      "name": "अयोध्याकाण्ड, सर्ग 67",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 38,
+      "file": "ch-144-अयोध्याकाण्ड-sarga-67.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-67-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-67-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-68",
+      "name": "अयोध्याकाण्ड, सर्ग 68",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 21,
+      "file": "ch-145-अयोध्याकाण्ड-sarga-68.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-68-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-68-shlok-2"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-69",
+      "name": "अयोध्याकाण्ड, सर्ग 69",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 18,
+      "file": "ch-146-अयोध्याकाण्ड-sarga-69.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-69-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-69-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-70",
+      "name": "अयोध्याकाण्ड, सर्ग 70",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 31,
+      "file": "ch-147-अयोध्याकाण्ड-sarga-70.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-70-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-70-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-71",
+      "name": "अयोध्याकाण्ड, सर्ग 71",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 34,
+      "file": "ch-148-अयोध्याकाण्ड-sarga-71.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-71-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-71-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-72",
+      "name": "अयोध्याकाण्ड, सर्ग 72",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 47,
+      "file": "ch-149-अयोध्याकाण्ड-sarga-72.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-72-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-72-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-73",
+      "name": "अयोध्याकाण्ड, सर्ग 73",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 28,
+      "file": "ch-150-अयोध्याकाण्ड-sarga-73.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-73-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-73-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-74",
+      "name": "अयोध्याकाण्ड, सर्ग 74",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 34,
+      "file": "ch-151-अयोध्याकाण्ड-sarga-74.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-74-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-74-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-75",
+      "name": "अयोध्याकाण्ड, सर्ग 75",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 63,
+      "file": "ch-152-अयोध्याकाण्ड-sarga-75.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-75-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-75-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-76",
+      "name": "अयोध्याकाण्ड, सर्ग 76",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 22,
+      "file": "ch-153-अयोध्याकाण्ड-sarga-76.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-76-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-76-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-77",
+      "name": "अयोध्याकाण्ड, सर्ग 77",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 26,
+      "file": "ch-154-अयोध्याकाण्ड-sarga-77.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-77-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-77-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-78",
+      "name": "अयोध्याकाण्ड, सर्ग 78",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 26,
+      "file": "ch-155-अयोध्याकाण्ड-sarga-78.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-78-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-78-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-79",
+      "name": "अयोध्याकाण्ड, सर्ग 79",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 17,
+      "file": "ch-156-अयोध्याकाण्ड-sarga-79.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-79-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-79-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-80",
+      "name": "अयोध्याकाण्ड, सर्ग 80",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 14,
+      "file": "ch-157-अयोध्याकाण्ड-sarga-80.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-80-shlok-3",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-80-shlok-3"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-81",
+      "name": "अयोध्याकाण्ड, सर्ग 81",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 15,
+      "file": "ch-158-अयोध्याकाण्ड-sarga-81.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-81-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-81-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-82",
+      "name": "अयोध्याकाण्ड, सर्ग 82",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 32,
+      "file": "ch-159-अयोध्याकाण्ड-sarga-82.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-82-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-82-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-83",
+      "name": "अयोध्याकाण्ड, सर्ग 83",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 23,
+      "file": "ch-160-अयोध्याकाण्ड-sarga-83.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-83-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-83-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-84",
+      "name": "अयोध्याकाण्ड, सर्ग 84",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 17,
+      "file": "ch-161-अयोध्याकाण्ड-sarga-84.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-84-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-84-shlok-2"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-85",
+      "name": "अयोध्याकाण्ड, सर्ग 85",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 22,
+      "file": "ch-162-अयोध्याकाण्ड-sarga-85.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-85-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-85-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-86",
+      "name": "अयोध्याकाण्ड, सर्ग 86",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 22,
+      "file": "ch-163-अयोध्याकाण्ड-sarga-86.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-86-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-86-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-87",
+      "name": "अयोध्याकाण्ड, सर्ग 87",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 22,
+      "file": "ch-164-अयोध्याकाण्ड-sarga-87.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-87-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-87-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-88",
+      "name": "अयोध्याकाण्ड, सर्ग 88",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 26,
+      "file": "ch-165-अयोध्याकाण्ड-sarga-88.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-88-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-88-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-89",
+      "name": "अयोध्याकाण्ड, सर्ग 89",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 21,
+      "file": "ch-166-अयोध्याकाण्ड-sarga-89.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-89-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-89-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-90",
+      "name": "अयोध्याकाण्ड, सर्ग 90",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 22,
+      "file": "ch-167-अयोध्याकाण्ड-sarga-90.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-90-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-90-shlok-2"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-91",
+      "name": "अयोध्याकाण्ड, सर्ग 91",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 75,
+      "file": "ch-168-अयोध्याकाण्ड-sarga-91.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-91-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-91-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-92",
+      "name": "अयोध्याकाण्ड, सर्ग 92",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 32,
+      "file": "ch-169-अयोध्याकाण्ड-sarga-92.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-92-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-92-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-93",
+      "name": "अयोध्याकाण्ड, सर्ग 93",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 26,
+      "file": "ch-170-अयोध्याकाण्ड-sarga-93.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-93-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-93-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-94",
+      "name": "अयोध्याकाण्ड, सर्ग 94",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 22,
+      "file": "ch-171-अयोध्याकाण्ड-sarga-94.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-94-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-94-shlok-2"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-95",
+      "name": "अयोध्याकाण्ड, सर्ग 95",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 19,
+      "file": "ch-172-अयोध्याकाण्ड-sarga-95.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-95-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-95-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-96",
+      "name": "अयोध्याकाण्ड, सर्ग 96",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 26,
+      "file": "ch-173-अयोध्याकाण्ड-sarga-96.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-96-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-96-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-97",
+      "name": "अयोध्याकाण्ड, सर्ग 97",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 30,
+      "file": "ch-174-अयोध्याकाण्ड-sarga-97.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-97-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-97-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-98",
+      "name": "अयोध्याकाण्ड, सर्ग 98",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 16,
+      "file": "ch-175-अयोध्याकाण्ड-sarga-98.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-98-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-98-shlok-2"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-99",
+      "name": "अयोध्याकाण्ड, सर्ग 99",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 37,
+      "file": "ch-176-अयोध्याकाण्ड-sarga-99.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-99-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-99-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-100",
+      "name": "अयोध्याकाण्ड, सर्ग 100",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 64,
+      "file": "ch-177-अयोध्याकाण्ड-sarga-100.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-100-shlok-3",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-100-shlok-3"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-101",
+      "name": "अयोध्याकाण्ड, सर्ग 101",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 26,
+      "file": "ch-178-अयोध्याकाण्ड-sarga-101.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-101-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-101-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-102",
+      "name": "अयोध्याकाण्ड, सर्ग 102",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 8,
+      "file": "ch-179-अयोध्याकाण्ड-sarga-102.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-102-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-102-shlok-2"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-103",
+      "name": "अयोध्याकाण्ड, सर्ग 103",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 43,
+      "file": "ch-180-अयोध्याकाण्ड-sarga-103.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-103-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-103-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-104",
+      "name": "अयोध्याकाण्ड, सर्ग 104",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 31,
+      "file": "ch-181-अयोध्याकाण्ड-sarga-104.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-104-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-104-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-105",
+      "name": "अयोध्याकाण्ड, सर्ग 105",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 42,
+      "file": "ch-182-अयोध्याकाण्ड-sarga-105.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-105-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-105-shlok-2"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-106",
+      "name": "अयोध्याकाण्ड, सर्ग 106",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 33,
+      "file": "ch-183-अयोध्याकाण्ड-sarga-106.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-106-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-106-shlok-2"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-107",
+      "name": "अयोध्याकाण्ड, सर्ग 107",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 17,
+      "file": "ch-184-अयोध्याकाण्ड-sarga-107.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-107-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-107-shlok-2"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-108",
+      "name": "अयोध्याकाण्ड, सर्ग 108",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 18,
+      "file": "ch-185-अयोध्याकाण्ड-sarga-108.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-108-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-108-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-109",
+      "name": "अयोध्याकाण्ड, सर्ग 109",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 38,
+      "file": "ch-186-अयोध्याकाण्ड-sarga-109.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-109-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-109-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-110",
+      "name": "अयोध्याकाण्ड, सर्ग 110",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 33,
+      "file": "ch-187-अयोध्याकाण्ड-sarga-110.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-110-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-110-shlok-2"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-111",
+      "name": "अयोध्याकाण्ड, सर्ग 111",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 31,
+      "file": "ch-188-अयोध्याकाण्ड-sarga-111.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-111-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-111-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-112",
+      "name": "अयोध्याकाण्ड, सर्ग 112",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 29,
+      "file": "ch-189-अयोध्याकाण्ड-sarga-112.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-112-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-112-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-113",
+      "name": "अयोध्याकाण्ड, सर्ग 113",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 25,
+      "file": "ch-190-अयोध्याकाण्ड-sarga-113.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-113-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-113-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-114",
+      "name": "अयोध्याकाण्ड, सर्ग 114",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 26,
+      "file": "ch-191-अयोध्याकाण्ड-sarga-114.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-114-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-114-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-115",
+      "name": "अयोध्याकाण्ड, सर्ग 115",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 28,
+      "file": "ch-192-अयोध्याकाण्ड-sarga-115.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-115-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-115-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-116",
+      "name": "अयोध्याकाण्ड, सर्ग 116",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 23,
+      "file": "ch-193-अयोध्याकाण्ड-sarga-116.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-116-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-116-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-117",
+      "name": "अयोध्याकाण्ड, सर्ग 117",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 25,
+      "file": "ch-194-अयोध्याकाण्ड-sarga-117.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-117-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-117-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-118",
+      "name": "अयोध्याकाण्ड, सर्ग 118",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 51,
+      "file": "ch-195-अयोध्याकाण्ड-sarga-118.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-118-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-118-shlok-1"
+    },
+    {
+      "id": "अयोध्याकाण्ड-sarga-119",
+      "name": "अयोध्याकाण्ड, सर्ग 119",
+      "section": "अयोध्याकाण्ड",
+      "verseCount": 19,
+      "file": "ch-196-अयोध्याकाण्ड-sarga-119.json",
+      "firstPadId": "valmiki-ramayana-2-sarga-119-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-2-sarga-119-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-1",
+      "name": "अरण्यकाण्ड, सर्ग 1",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 19,
+      "file": "ch-197-अरण्यकाण्ड-sarga-1.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-1-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-1-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-2",
+      "name": "अरण्यकाण्ड, सर्ग 2",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 22,
+      "file": "ch-198-अरण्यकाण्ड-sarga-2.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-2-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-2-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-3",
+      "name": "अरण्यकाण्ड, सर्ग 3",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 22,
+      "file": "ch-199-अरण्यकाण्ड-sarga-3.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-3-shlok-3",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-3-shlok-3"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-4",
+      "name": "अरण्यकाण्ड, सर्ग 4",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 29,
+      "file": "ch-200-अरण्यकाण्ड-sarga-4.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-4-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-4-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-5",
+      "name": "अरण्यकाण्ड, सर्ग 5",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 38,
+      "file": "ch-201-अरण्यकाण्ड-sarga-5.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-5-shlok-3",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-5-shlok-3"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-6",
+      "name": "अरण्यकाण्ड, सर्ग 6",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 20,
+      "file": "ch-202-अरण्यकाण्ड-sarga-6.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-6-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-6-shlok-2"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-7",
+      "name": "अरण्यकाण्ड, सर्ग 7",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 23,
+      "file": "ch-203-अरण्यकाण्ड-sarga-7.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-7-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-7-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-8",
+      "name": "अरण्यकाण्ड, सर्ग 8",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 18,
+      "file": "ch-204-अरण्यकाण्ड-sarga-8.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-8-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-8-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-9",
+      "name": "अरण्यकाण्ड, सर्ग 9",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 28,
+      "file": "ch-205-अरण्यकाण्ड-sarga-9.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-9-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-9-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-10",
+      "name": "अरण्यकाण्ड, सर्ग 10",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 15,
+      "file": "ch-206-अरण्यकाण्ड-sarga-10.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-10-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-10-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-11",
+      "name": "अरण्यकाण्ड, सर्ग 11",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 74,
+      "file": "ch-207-अरण्यकाण्ड-sarga-11.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-11-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-11-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-12",
+      "name": "अरण्यकाण्ड, सर्ग 12",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 24,
+      "file": "ch-208-अरण्यकाण्ड-sarga-12.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-12-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-12-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-13",
+      "name": "अरण्यकाण्ड, सर्ग 13",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 24,
+      "file": "ch-209-अरण्यकाण्ड-sarga-13.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-13-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-13-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-14",
+      "name": "अरण्यकाण्ड, सर्ग 14",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 30,
+      "file": "ch-210-अरण्यकाण्ड-sarga-14.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-14-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-14-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-15",
+      "name": "अरण्यकाण्ड, सर्ग 15",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 25,
+      "file": "ch-211-अरण्यकाण्ड-sarga-15.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-15-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-15-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-16",
+      "name": "अरण्यकाण्ड, सर्ग 16",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 40,
+      "file": "ch-212-अरण्यकाण्ड-sarga-16.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-16-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-16-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-17",
+      "name": "अरण्यकाण्ड, सर्ग 17",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 22,
+      "file": "ch-213-अरण्यकाण्ड-sarga-17.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-17-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-17-shlok-2"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-18",
+      "name": "अरण्यकाण्ड, सर्ग 18",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 22,
+      "file": "ch-214-अरण्यकाण्ड-sarga-18.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-18-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-18-shlok-2"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-19",
+      "name": "अरण्यकाण्ड, सर्ग 19",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 23,
+      "file": "ch-215-अरण्यकाण्ड-sarga-19.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-19-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-19-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-20",
+      "name": "अरण्यकाण्ड, सर्ग 20",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 18,
+      "file": "ch-216-अरण्यकाण्ड-sarga-20.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-20-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-20-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-21",
+      "name": "अरण्यकाण्ड, सर्ग 21",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 19,
+      "file": "ch-217-अरण्यकाण्ड-sarga-21.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-21-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-21-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-22",
+      "name": "अरण्यकाण्ड, सर्ग 22",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 18,
+      "file": "ch-218-अरण्यकाण्ड-sarga-22.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-22-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-22-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-23",
+      "name": "अरण्यकाण्ड, सर्ग 23",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 22,
+      "file": "ch-219-अरण्यकाण्ड-sarga-23.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-23-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-23-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-24",
+      "name": "अरण्यकाण्ड, सर्ग 24",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 26,
+      "file": "ch-220-अरण्यकाण्ड-sarga-24.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-24-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-24-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-25",
+      "name": "अरण्यकाण्ड, सर्ग 25",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 33,
+      "file": "ch-221-अरण्यकाण्ड-sarga-25.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-25-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-25-shlok-2"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-26",
+      "name": "अरण्यकाण्ड, सर्ग 26",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 31,
+      "file": "ch-222-अरण्यकाण्ड-sarga-26.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-26-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-26-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-27",
+      "name": "अरण्यकाण्ड, सर्ग 27",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 17,
+      "file": "ch-223-अरण्यकाण्ड-sarga-27.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-27-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-27-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-28",
+      "name": "अरण्यकाण्ड, सर्ग 28",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 31,
+      "file": "ch-224-अरण्यकाण्ड-sarga-28.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-28-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-28-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-29",
+      "name": "अरण्यकाण्ड, सर्ग 29",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 26,
+      "file": "ch-225-अरण्यकाण्ड-sarga-29.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-29-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-29-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-30",
+      "name": "अरण्यकाण्ड, सर्ग 30",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 34,
+      "file": "ch-226-अरण्यकाण्ड-sarga-30.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-30-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-30-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-31",
+      "name": "अरण्यकाण्ड, सर्ग 31",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 45,
+      "file": "ch-227-अरण्यकाण्ड-sarga-31.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-31-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-31-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-32",
+      "name": "अरण्यकाण्ड, सर्ग 32",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 20,
+      "file": "ch-228-अरण्यकाण्ड-sarga-32.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-32-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-32-shlok-2"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-33",
+      "name": "अरण्यकाण्ड, सर्ग 33",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 22,
+      "file": "ch-229-अरण्यकाण्ड-sarga-33.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-33-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-33-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-34",
+      "name": "अरण्यकाण्ड, सर्ग 34",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 23,
+      "file": "ch-230-अरण्यकाण्ड-sarga-34.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-34-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-34-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-35",
+      "name": "अरण्यकाण्ड, सर्ग 35",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 27,
+      "file": "ch-231-अरण्यकाण्ड-sarga-35.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-35-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-35-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-36",
+      "name": "अरण्यकाण्ड, सर्ग 36",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 18,
+      "file": "ch-232-अरण्यकाण्ड-sarga-36.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-36-shlok-3",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-36-shlok-3"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-37",
+      "name": "अरण्यकाण्ड, सर्ग 37",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 23,
+      "file": "ch-233-अरण्यकाण्ड-sarga-37.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-37-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-37-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-38",
+      "name": "अरण्यकाण्ड, सर्ग 38",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 27,
+      "file": "ch-234-अरण्यकाण्ड-sarga-38.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-38-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-38-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-39",
+      "name": "अरण्यकाण्ड, सर्ग 39",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 24,
+      "file": "ch-235-अरण्यकाण्ड-sarga-39.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-39-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-39-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-40",
+      "name": "अरण्यकाण्ड, सर्ग 40",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 24,
+      "file": "ch-236-अरण्यकाण्ड-sarga-40.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-40-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-40-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-41",
+      "name": "अरण्यकाण्ड, सर्ग 41",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 20,
+      "file": "ch-237-अरण्यकाण्ड-sarga-41.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-41-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-41-shlok-2"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-42",
+      "name": "अरण्यकाण्ड, सर्ग 42",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 27,
+      "file": "ch-238-अरण्यकाण्ड-sarga-42.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-42-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-42-shlok-2"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-43",
+      "name": "अरण्यकाण्ड, सर्ग 43",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 44,
+      "file": "ch-239-अरण्यकाण्ड-sarga-43.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-43-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-43-shlok-2"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-44",
+      "name": "अरण्यकाण्ड, सर्ग 44",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 19,
+      "file": "ch-240-अरण्यकाण्ड-sarga-44.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-44-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-44-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-45",
+      "name": "अरण्यकाण्ड, सर्ग 45",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 26,
+      "file": "ch-241-अरण्यकाण्ड-sarga-45.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-45-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-45-shlok-2"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-46",
+      "name": "अरण्यकाण्ड, सर्ग 46",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 27,
+      "file": "ch-242-अरण्यकाण्ड-sarga-46.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-46-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-46-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-47",
+      "name": "अरण्यकाण्ड, सर्ग 47",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 34,
+      "file": "ch-243-अरण्यकाण्ड-sarga-47.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-47-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-47-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-48",
+      "name": "अरण्यकाण्ड, सर्ग 48",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 23,
+      "file": "ch-244-अरण्यकाण्ड-sarga-48.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-48-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-48-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-49",
+      "name": "अरण्यकाण्ड, सर्ग 49",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 38,
+      "file": "ch-245-अरण्यकाण्ड-sarga-49.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-49-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-49-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-50",
+      "name": "अरण्यकाण्ड, सर्ग 50",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 25,
+      "file": "ch-246-अरण्यकाण्ड-sarga-50.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-50-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-50-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-51",
+      "name": "अरण्यकाण्ड, सर्ग 51",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 44,
+      "file": "ch-247-अरण्यकाण्ड-sarga-51.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-51-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-51-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-52",
+      "name": "अरण्यकाण्ड, सर्ग 52",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 38,
+      "file": "ch-248-अरण्यकाण्ड-sarga-52.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-52-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-52-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-53",
+      "name": "अरण्यकाण्ड, सर्ग 53",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 20,
+      "file": "ch-249-अरण्यकाण्ड-sarga-53.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-53-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-53-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-54",
+      "name": "अरण्यकाण्ड, सर्ग 54",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 25,
+      "file": "ch-250-अरण्यकाण्ड-sarga-54.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-54-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-54-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-55",
+      "name": "अरण्यकाण्ड, सर्ग 55",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 29,
+      "file": "ch-251-अरण्यकाण्ड-sarga-55.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-55-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-55-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-56",
+      "name": "अरण्यकाण्ड, सर्ग 56",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 31,
+      "file": "ch-252-अरण्यकाण्ड-sarga-56.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-56-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-56-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-57",
+      "name": "अरण्यकाण्ड, सर्ग 57",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 18,
+      "file": "ch-253-अरण्यकाण्ड-sarga-57.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-57-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-57-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-58",
+      "name": "अरण्यकाण्ड, सर्ग 58",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 17,
+      "file": "ch-254-अरण्यकाण्ड-sarga-58.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-58-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-58-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-59",
+      "name": "अरण्यकाण्ड, सर्ग 59",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 27,
+      "file": "ch-255-अरण्यकाण्ड-sarga-59.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-59-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-59-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-60",
+      "name": "अरण्यकाण्ड, सर्ग 60",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 32,
+      "file": "ch-256-अरण्यकाण्ड-sarga-60.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-60-shlok-3",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-60-shlok-3"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-61",
+      "name": "अरण्यकाण्ड, सर्ग 61",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 24,
+      "file": "ch-257-अरण्यकाण्ड-sarga-61.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-61-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-61-shlok-2"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-62",
+      "name": "अरण्यकाण्ड, सर्ग 62",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 14,
+      "file": "ch-258-अरण्यकाण्ड-sarga-62.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-62-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-62-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-63",
+      "name": "अरण्यकाण्ड, सर्ग 63",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 21,
+      "file": "ch-259-अरण्यकाण्ड-sarga-63.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-63-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-63-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-64",
+      "name": "अरण्यकाण्ड, सर्ग 64",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 48,
+      "file": "ch-260-अरण्यकाण्ड-sarga-64.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-64-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-64-shlok-2"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-65",
+      "name": "अरण्यकाण्ड, सर्ग 65",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 21,
+      "file": "ch-261-अरण्यकाण्ड-sarga-65.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-65-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-65-shlok-2"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-67",
+      "name": "अरण्यकाण्ड, सर्ग 67",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 27,
+      "file": "ch-262-अरण्यकाण्ड-sarga-67.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-67-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-67-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-68",
+      "name": "अरण्यकाण्ड, सर्ग 68",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 35,
+      "file": "ch-263-अरण्यकाण्ड-sarga-68.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-68-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-68-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-69",
+      "name": "अरण्यकाण्ड, सर्ग 69",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 39,
+      "file": "ch-264-अरण्यकाण्ड-sarga-69.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-69-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-69-shlok-2"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-70",
+      "name": "अरण्यकाण्ड, सर्ग 70",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 17,
+      "file": "ch-265-अरण्यकाण्ड-sarga-70.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-70-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-70-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-71",
+      "name": "अरण्यकाण्ड, सर्ग 71",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 23,
+      "file": "ch-266-अरण्यकाण्ड-sarga-71.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-71-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-71-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-72",
+      "name": "अरण्यकाण्ड, सर्ग 72",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 20,
+      "file": "ch-267-अरण्यकाण्ड-sarga-72.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-72-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-72-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-73",
+      "name": "अरण्यकाण्ड, सर्ग 73",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 25,
+      "file": "ch-268-अरण्यकाण्ड-sarga-73.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-73-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-73-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-74",
+      "name": "अरण्यकाण्ड, सर्ग 74",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 32,
+      "file": "ch-269-अरण्यकाण्ड-sarga-74.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-74-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-74-shlok-1"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-75",
+      "name": "अरण्यकाण्ड, सर्ग 75",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 19,
+      "file": "ch-270-अरण्यकाण्ड-sarga-75.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-75-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-75-shlok-2"
+    },
+    {
+      "id": "अरण्यकाण्ड-sarga-99",
+      "name": "अरण्यकाण्ड, सर्ग 99",
+      "section": "अरण्यकाण्ड",
+      "verseCount": 22,
+      "file": "ch-271-अरण्यकाण्ड-sarga-99.json",
+      "firstPadId": "valmiki-ramayana-3-sarga-99-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-3-sarga-99-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-1",
+      "name": "सुन्दरकाण्ड, सर्ग 1",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 192,
+      "file": "ch-272-सुन्दरकाण्ड-sarga-1.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-1-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-1-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-2",
+      "name": "सुन्दरकाण्ड, सर्ग 2",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 50,
+      "file": "ch-273-सुन्दरकाण्ड-sarga-2.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-2-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-2-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-3",
+      "name": "सुन्दरकाण्ड, सर्ग 3",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 43,
+      "file": "ch-274-सुन्दरकाण्ड-sarga-3.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-3-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-3-shlok-2"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-4",
+      "name": "सुन्दरकाण्ड, सर्ग 4",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 23,
+      "file": "ch-275-सुन्दरकाण्ड-sarga-4.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-4-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-4-shlok-2"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-5",
+      "name": "सुन्दरकाण्ड, सर्ग 5",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 24,
+      "file": "ch-276-सुन्दरकाण्ड-sarga-5.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-5-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-5-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-6",
+      "name": "सुन्दरकाण्ड, सर्ग 6",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 35,
+      "file": "ch-277-सुन्दरकाण्ड-sarga-6.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-6-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-6-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-7",
+      "name": "सुन्दरकाण्ड, सर्ग 7",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 17,
+      "file": "ch-278-सुन्दरकाण्ड-sarga-7.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-7-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-7-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-8",
+      "name": "सुन्दरकाण्ड, सर्ग 8",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 7,
+      "file": "ch-279-सुन्दरकाण्ड-sarga-8.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-8-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-8-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-9",
+      "name": "सुन्दरकाण्ड, सर्ग 9",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 65,
+      "file": "ch-280-सुन्दरकाण्ड-sarga-9.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-9-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-9-shlok-2"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-10",
+      "name": "सुन्दरकाण्ड, सर्ग 10",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 48,
+      "file": "ch-281-सुन्दरकाण्ड-sarga-10.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-10-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-10-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-11",
+      "name": "सुन्दरकाण्ड, सर्ग 11",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 41,
+      "file": "ch-282-सुन्दरकाण्ड-sarga-11.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-11-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-11-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-12",
+      "name": "सुन्दरकाण्ड, सर्ग 12",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 22,
+      "file": "ch-283-सुन्दरकाण्ड-sarga-12.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-12-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-12-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-13",
+      "name": "सुन्दरकाण्ड, सर्ग 13",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 63,
+      "file": "ch-284-सुन्दरकाण्ड-sarga-13.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-13-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-13-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-14",
+      "name": "सुन्दरकाण्ड, सर्ग 14",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 41,
+      "file": "ch-285-सुन्दरकाण्ड-sarga-14.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-14-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-14-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-15",
+      "name": "सुन्दरकाण्ड, सर्ग 15",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 41,
+      "file": "ch-286-सुन्दरकाण्ड-sarga-15.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-15-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-15-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-16",
+      "name": "सुन्दरकाण्ड, सर्ग 16",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 30,
+      "file": "ch-287-सुन्दरकाण्ड-sarga-16.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-16-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-16-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-17",
+      "name": "सुन्दरकाण्ड, सर्ग 17",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 26,
+      "file": "ch-288-सुन्दरकाण्ड-sarga-17.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-17-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-17-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-18",
+      "name": "सुन्दरकाण्ड, सर्ग 18",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 27,
+      "file": "ch-289-सुन्दरकाण्ड-sarga-18.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-18-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-18-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-19",
+      "name": "सुन्दरकाण्ड, सर्ग 19",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 17,
+      "file": "ch-290-सुन्दरकाण्ड-sarga-19.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-19-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-19-shlok-2"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-20",
+      "name": "सुन्दरकाण्ड, सर्ग 20",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 35,
+      "file": "ch-291-सुन्दरकाण्ड-sarga-20.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-20-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-20-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-21",
+      "name": "सुन्दरकाण्ड, सर्ग 21",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 32,
+      "file": "ch-292-सुन्दरकाण्ड-sarga-21.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-21-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-21-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-22",
+      "name": "सुन्दरकाण्ड, सर्ग 22",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 39,
+      "file": "ch-293-सुन्दरकाण्ड-sarga-22.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-22-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-22-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-23",
+      "name": "सुन्दरकाण्ड, सर्ग 23",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 15,
+      "file": "ch-294-सुन्दरकाण्ड-sarga-23.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-23-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-23-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-24",
+      "name": "सुन्दरकाण्ड, सर्ग 24",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 39,
+      "file": "ch-295-सुन्दरकाण्ड-sarga-24.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-24-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-24-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-25",
+      "name": "सुन्दरकाण्ड, सर्ग 25",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 19,
+      "file": "ch-296-सुन्दरकाण्ड-sarga-25.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-25-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-25-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-26",
+      "name": "सुन्दरकाण्ड, सर्ग 26",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 54,
+      "file": "ch-297-सुन्दरकाण्ड-sarga-26.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-26-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-26-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-28",
+      "name": "सुन्दरकाण्ड, सर्ग 28",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 19,
+      "file": "ch-298-सुन्दरकाण्ड-sarga-28.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-28-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-28-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-29",
+      "name": "सुन्दरकाण्ड, सर्ग 29",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 9,
+      "file": "ch-299-सुन्दरकाण्ड-sarga-29.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-29-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-29-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-30",
+      "name": "सुन्दरकाण्ड, सर्ग 30",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 40,
+      "file": "ch-300-सुन्दरकाण्ड-sarga-30.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-30-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-30-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-31",
+      "name": "सुन्दरकाण्ड, सर्ग 31",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 17,
+      "file": "ch-301-सुन्दरकाण्ड-sarga-31.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-31-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-31-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-32",
+      "name": "सुन्दरकाण्ड, सर्ग 32",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 13,
+      "file": "ch-302-सुन्दरकाण्ड-sarga-32.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-32-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-32-shlok-2"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-33",
+      "name": "सुन्दरकाण्ड, सर्ग 33",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 26,
+      "file": "ch-303-सुन्दरकाण्ड-sarga-33.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-33-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-33-shlok-2"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-34",
+      "name": "सुन्दरकाण्ड, सर्ग 34",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 37,
+      "file": "ch-304-सुन्दरकाण्ड-sarga-34.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-34-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-34-shlok-2"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-35",
+      "name": "सुन्दरकाण्ड, सर्ग 35",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 69,
+      "file": "ch-305-सुन्दरकाण्ड-sarga-35.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-35-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-35-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-36",
+      "name": "सुन्दरकाण्ड, सर्ग 36",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 46,
+      "file": "ch-306-सुन्दरकाण्ड-sarga-36.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-36-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-36-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-37",
+      "name": "सुन्दरकाण्ड, सर्ग 37",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 65,
+      "file": "ch-307-सुन्दरकाण्ड-sarga-37.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-37-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-37-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-38",
+      "name": "सुन्दरकाण्ड, सर्ग 38",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 58,
+      "file": "ch-308-सुन्दरकाण्ड-sarga-38.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-38-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-38-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-39",
+      "name": "सुन्दरकाण्ड, सर्ग 39",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 52,
+      "file": "ch-309-सुन्दरकाण्ड-sarga-39.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-39-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-39-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-40",
+      "name": "सुन्दरकाण्ड, सर्ग 40",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 25,
+      "file": "ch-310-सुन्दरकाण्ड-sarga-40.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-40-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-40-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-41",
+      "name": "सुन्दरकाण्ड, सर्ग 41",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 21,
+      "file": "ch-311-सुन्दरकाण्ड-sarga-41.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-41-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-41-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-42",
+      "name": "सुन्दरकाण्ड, सर्ग 42",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 40,
+      "file": "ch-312-सुन्दरकाण्ड-sarga-42.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-42-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-42-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-43",
+      "name": "सुन्दरकाण्ड, सर्ग 43",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 17,
+      "file": "ch-313-सुन्दरकाण्ड-sarga-43.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-43-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-43-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-44",
+      "name": "सुन्दरकाण्ड, सर्ग 44",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 19,
+      "file": "ch-314-सुन्दरकाण्ड-sarga-44.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-44-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-44-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-45",
+      "name": "सुन्दरकाण्ड, सर्ग 45",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 16,
+      "file": "ch-315-सुन्दरकाण्ड-sarga-45.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-45-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-45-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-46",
+      "name": "सुन्दरकाण्ड, सर्ग 46",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 37,
+      "file": "ch-316-सुन्दरकाण्ड-sarga-46.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-46-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-46-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-47",
+      "name": "सुन्दरकाण्ड, सर्ग 47",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 36,
+      "file": "ch-317-सुन्दरकाण्ड-sarga-47.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-47-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-47-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-48",
+      "name": "सुन्दरकाण्ड, सर्ग 48",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 58,
+      "file": "ch-318-सुन्दरकाण्ड-sarga-48.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-48-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-48-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-49",
+      "name": "सुन्दरकाण्ड, सर्ग 49",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 18,
+      "file": "ch-319-सुन्दरकाण्ड-sarga-49.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-49-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-49-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-50",
+      "name": "सुन्दरकाण्ड, सर्ग 50",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 16,
+      "file": "ch-320-सुन्दरकाण्ड-sarga-50.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-50-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-50-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-51",
+      "name": "सुन्दरकाण्ड, सर्ग 51",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 43,
+      "file": "ch-321-सुन्दरकाण्ड-sarga-51.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-51-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-51-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-52",
+      "name": "सुन्दरकाण्ड, सर्ग 52",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 26,
+      "file": "ch-322-सुन्दरकाण्ड-sarga-52.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-52-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-52-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-53",
+      "name": "सुन्दरकाण्ड, सर्ग 53",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 37,
+      "file": "ch-323-सुन्दरकाण्ड-sarga-53.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-53-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-53-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-54",
+      "name": "सुन्दरकाण्ड, सर्ग 54",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 40,
+      "file": "ch-324-सुन्दरकाण्ड-sarga-54.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-54-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-54-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-55",
+      "name": "सुन्दरकाण्ड, सर्ग 55",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 32,
+      "file": "ch-325-सुन्दरकाण्ड-sarga-55.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-55-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-55-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-56",
+      "name": "सुन्दरकाण्ड, सर्ग 56",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 46,
+      "file": "ch-326-सुन्दरकाण्ड-sarga-56.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-56-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-56-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-57",
+      "name": "सुन्दरकाण्ड, सर्ग 57",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 43,
+      "file": "ch-327-सुन्दरकाण्ड-sarga-57.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-57-shlok-4",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-57-shlok-4"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-58",
+      "name": "सुन्दरकाण्ड, सर्ग 58",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 137,
+      "file": "ch-328-सुन्दरकाण्ड-sarga-58.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-58-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-58-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-59",
+      "name": "सुन्दरकाण्ड, सर्ग 59",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 27,
+      "file": "ch-329-सुन्दरकाण्ड-sarga-59.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-59-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-59-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-60",
+      "name": "सुन्दरकाण्ड, सर्ग 60",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 15,
+      "file": "ch-330-सुन्दरकाण्ड-sarga-60.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-60-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-60-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-61",
+      "name": "सुन्दरकाण्ड, सर्ग 61",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 24,
+      "file": "ch-331-सुन्दरकाण्ड-sarga-61.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-61-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-61-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-62",
+      "name": "सुन्दरकाण्ड, सर्ग 62",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 34,
+      "file": "ch-332-सुन्दरकाण्ड-sarga-62.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-62-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-62-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-63",
+      "name": "सुन्दरकाण्ड, सर्ग 63",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 29,
+      "file": "ch-333-सुन्दरकाण्ड-sarga-63.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-63-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-63-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-64",
+      "name": "सुन्दरकाण्ड, सर्ग 64",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 39,
+      "file": "ch-334-सुन्दरकाण्ड-sarga-64.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-64-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-64-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-65",
+      "name": "सुन्दरकाण्ड, सर्ग 65",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 21,
+      "file": "ch-335-सुन्दरकाण्ड-sarga-65.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-65-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-65-shlok-2"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-66",
+      "name": "सुन्दरकाण्ड, सर्ग 66",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 15,
+      "file": "ch-336-सुन्दरकाण्ड-sarga-66.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-66-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-66-shlok-2"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-67",
+      "name": "सुन्दरकाण्ड, सर्ग 67",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 35,
+      "file": "ch-337-सुन्दरकाण्ड-sarga-67.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-67-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-67-shlok-1"
+    },
+    {
+      "id": "सुन्दरकाण्ड-sarga-68",
+      "name": "सुन्दरकाण्ड, सर्ग 68",
+      "section": "सुन्दरकाण्ड",
+      "verseCount": 29,
+      "file": "ch-338-सुन्दरकाण्ड-sarga-68.json",
+      "firstPadId": "valmiki-ramayana-5-sarga-68-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-5-sarga-68-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-1",
+      "name": "युद्धकाण्ड, सर्ग 1",
+      "section": "युद्धकाण्ड",
+      "verseCount": 18,
+      "file": "ch-339-युद्धकाण्ड-sarga-1.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-1-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-1-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-2",
+      "name": "युद्धकाण्ड, सर्ग 2",
+      "section": "युद्धकाण्ड",
+      "verseCount": 24,
+      "file": "ch-340-युद्धकाण्ड-sarga-2.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-2-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-2-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-3",
+      "name": "युद्धकाण्ड, सर्ग 3",
+      "section": "युद्धकाण्ड",
+      "verseCount": 28,
+      "file": "ch-341-युद्धकाण्ड-sarga-3.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-3-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-3-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-4",
+      "name": "युद्धकाण्ड, सर्ग 4",
+      "section": "युद्धकाण्ड",
+      "verseCount": 104,
+      "file": "ch-342-युद्धकाण्ड-sarga-4.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-4-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-4-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-5",
+      "name": "युद्धकाण्ड, सर्ग 5",
+      "section": "युद्धकाण्ड",
+      "verseCount": 23,
+      "file": "ch-343-युद्धकाण्ड-sarga-5.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-5-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-5-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-6",
+      "name": "युद्धकाण्ड, सर्ग 6",
+      "section": "युद्धकाण्ड",
+      "verseCount": 17,
+      "file": "ch-344-युद्धकाण्ड-sarga-6.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-6-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-6-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-7",
+      "name": "युद्धकाण्ड, सर्ग 7",
+      "section": "युद्धकाण्ड",
+      "verseCount": 19,
+      "file": "ch-345-युद्धकाण्ड-sarga-7.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-7-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-7-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-8",
+      "name": "युद्धकाण्ड, सर्ग 8",
+      "section": "युद्धकाण्ड",
+      "verseCount": 21,
+      "file": "ch-346-युद्धकाण्ड-sarga-8.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-8-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-8-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-9",
+      "name": "युद्धकाण्ड, सर्ग 9",
+      "section": "युद्धकाण्ड",
+      "verseCount": 18,
+      "file": "ch-347-युद्धकाण्ड-sarga-9.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-9-shlok-5",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-9-shlok-5"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-10",
+      "name": "युद्धकाण्ड, सर्ग 10",
+      "section": "युद्धकाण्ड",
+      "verseCount": 19,
+      "file": "ch-348-युद्धकाण्ड-sarga-10.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-10-shlok-7",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-10-shlok-7"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-11",
+      "name": "युद्धकाण्ड, सर्ग 11",
+      "section": "युद्धकाण्ड",
+      "verseCount": 28,
+      "file": "ch-349-युद्धकाण्ड-sarga-11.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-11-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-11-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-12",
+      "name": "युद्धकाण्ड, सर्ग 12",
+      "section": "युद्धकाण्ड",
+      "verseCount": 37,
+      "file": "ch-350-युद्धकाण्ड-sarga-12.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-12-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-12-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-13",
+      "name": "युद्धकाण्ड, सर्ग 13",
+      "section": "युद्धकाण्ड",
+      "verseCount": 20,
+      "file": "ch-351-युद्धकाण्ड-sarga-13.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-13-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-13-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-14",
+      "name": "युद्धकाण्ड, सर्ग 14",
+      "section": "युद्धकाण्ड",
+      "verseCount": 22,
+      "file": "ch-352-युद्धकाण्ड-sarga-14.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-14-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-14-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-15",
+      "name": "युद्धकाण्ड, सर्ग 15",
+      "section": "युद्धकाण्ड",
+      "verseCount": 15,
+      "file": "ch-353-युद्धकाण्ड-sarga-15.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-15-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-15-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-16",
+      "name": "युद्धकाण्ड, सर्ग 16",
+      "section": "युद्धकाण्ड",
+      "verseCount": 25,
+      "file": "ch-354-युद्धकाण्ड-sarga-16.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-16-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-16-shlok-2"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-17",
+      "name": "युद्धकाण्ड, सर्ग 17",
+      "section": "युद्धकाण्ड",
+      "verseCount": 62,
+      "file": "ch-355-युद्धकाण्ड-sarga-17.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-17-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-17-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-18",
+      "name": "युद्धकाण्ड, सर्ग 18",
+      "section": "युद्धकाण्ड",
+      "verseCount": 35,
+      "file": "ch-356-युद्धकाण्ड-sarga-18.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-18-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-18-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-19",
+      "name": "युद्धकाण्ड, सर्ग 19",
+      "section": "युद्धकाण्ड",
+      "verseCount": 34,
+      "file": "ch-357-युद्धकाण्ड-sarga-19.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-19-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-19-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-20",
+      "name": "युद्धकाण्ड, सर्ग 20",
+      "section": "युद्धकाण्ड",
+      "verseCount": 28,
+      "file": "ch-358-युद्धकाण्ड-sarga-20.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-20-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-20-shlok-2"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-21",
+      "name": "युद्धकाण्ड, सर्ग 21",
+      "section": "युद्धकाण्ड",
+      "verseCount": 30,
+      "file": "ch-359-युद्धकाण्ड-sarga-21.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-21-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-21-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-22",
+      "name": "युद्धकाण्ड, सर्ग 22",
+      "section": "युद्धकाण्ड",
+      "verseCount": 76,
+      "file": "ch-360-युद्धकाण्ड-sarga-22.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-22-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-22-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-23",
+      "name": "युद्धकाण्ड, सर्ग 23",
+      "section": "युद्धकाण्ड",
+      "verseCount": 17,
+      "file": "ch-361-युद्धकाण्ड-sarga-23.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-23-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-23-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-24",
+      "name": "युद्धकाण्ड, सर्ग 24",
+      "section": "युद्धकाण्ड",
+      "verseCount": 41,
+      "file": "ch-362-युद्धकाण्ड-sarga-24.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-24-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-24-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-25",
+      "name": "युद्धकाण्ड, सर्ग 25",
+      "section": "युद्धकाण्ड",
+      "verseCount": 32,
+      "file": "ch-363-युद्धकाण्ड-sarga-25.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-25-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-25-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-26",
+      "name": "युद्धकाण्ड, सर्ग 26",
+      "section": "युद्धकाण्ड",
+      "verseCount": 28,
+      "file": "ch-364-युद्धकाण्ड-sarga-26.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-26-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-26-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-27",
+      "name": "युद्धकाण्ड, सर्ग 27",
+      "section": "युद्धकाण्ड",
+      "verseCount": 20,
+      "file": "ch-365-युद्धकाण्ड-sarga-27.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-27-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-27-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-28",
+      "name": "युद्धकाण्ड, सर्ग 28",
+      "section": "युद्धकाण्ड",
+      "verseCount": 26,
+      "file": "ch-366-युद्धकाण्ड-sarga-28.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-28-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-28-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-30",
+      "name": "युद्धकाण्ड, सर्ग 30",
+      "section": "युद्धकाण्ड",
+      "verseCount": 32,
+      "file": "ch-367-युद्धकाण्ड-sarga-30.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-30-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-30-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-31",
+      "name": "युद्धकाण्ड, सर्ग 31",
+      "section": "युद्धकाण्ड",
+      "verseCount": 37,
+      "file": "ch-368-युद्धकाण्ड-sarga-31.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-31-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-31-shlok-2"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-32",
+      "name": "युद्धकाण्ड, सर्ग 32",
+      "section": "युद्धकाण्ड",
+      "verseCount": 42,
+      "file": "ch-369-युद्धकाण्ड-sarga-32.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-32-shlok-3",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-32-shlok-3"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-33",
+      "name": "युद्धकाण्ड, सर्ग 33",
+      "section": "युद्धकाण्ड",
+      "verseCount": 30,
+      "file": "ch-370-युद्धकाण्ड-sarga-33.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-33-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-33-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-34",
+      "name": "युद्धकाण्ड, सर्ग 34",
+      "section": "युद्धकाण्ड",
+      "verseCount": 29,
+      "file": "ch-371-युद्धकाण्ड-sarga-34.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-34-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-34-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-35",
+      "name": "युद्धकाण्ड, सर्ग 35",
+      "section": "युद्धकाण्ड",
+      "verseCount": 34,
+      "file": "ch-372-युद्धकाण्ड-sarga-35.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-35-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-35-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-36",
+      "name": "युद्धकाण्ड, सर्ग 36",
+      "section": "युद्धकाण्ड",
+      "verseCount": 22,
+      "file": "ch-373-युद्धकाण्ड-sarga-36.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-36-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-36-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-37",
+      "name": "युद्धकाण्ड, सर्ग 37",
+      "section": "युद्धकाण्ड",
+      "verseCount": 31,
+      "file": "ch-374-युद्धकाण्ड-sarga-37.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-37-shlok-3",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-37-shlok-3"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-38",
+      "name": "युद्धकाण्ड, सर्ग 38",
+      "section": "युद्धकाण्ड",
+      "verseCount": 15,
+      "file": "ch-375-युद्धकाण्ड-sarga-38.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-38-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-38-shlok-2"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-39",
+      "name": "युद्धकाण्ड, सर्ग 39",
+      "section": "युद्धकाण्ड",
+      "verseCount": 25,
+      "file": "ch-376-युद्धकाण्ड-sarga-39.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-39-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-39-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-40",
+      "name": "युद्धकाण्ड, सर्ग 40",
+      "section": "युद्धकाण्ड",
+      "verseCount": 24,
+      "file": "ch-377-युद्धकाण्ड-sarga-40.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-40-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-40-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-41",
+      "name": "युद्धकाण्ड, सर्ग 41",
+      "section": "युद्धकाण्ड",
+      "verseCount": 90,
+      "file": "ch-378-युद्धकाण्ड-sarga-41.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-41-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-41-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-42",
+      "name": "युद्धकाण्ड, सर्ग 42",
+      "section": "युद्धकाण्ड",
+      "verseCount": 41,
+      "file": "ch-379-युद्धकाण्ड-sarga-42.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-42-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-42-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-43",
+      "name": "युद्धकाण्ड, सर्ग 43",
+      "section": "युद्धकाण्ड",
+      "verseCount": 42,
+      "file": "ch-380-युद्धकाण्ड-sarga-43.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-43-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-43-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-44",
+      "name": "युद्धकाण्ड, सर्ग 44",
+      "section": "युद्धकाण्ड",
+      "verseCount": 37,
+      "file": "ch-381-युद्धकाण्ड-sarga-44.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-44-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-44-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-45",
+      "name": "युद्धकाण्ड, सर्ग 45",
+      "section": "युद्धकाण्ड",
+      "verseCount": 28,
+      "file": "ch-382-युद्धकाण्ड-sarga-45.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-45-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-45-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-46",
+      "name": "युद्धकाण्ड, सर्ग 46",
+      "section": "युद्धकाण्ड",
+      "verseCount": 44,
+      "file": "ch-383-युद्धकाण्ड-sarga-46.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-46-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-46-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-47",
+      "name": "युद्धकाण्ड, सर्ग 47",
+      "section": "युद्धकाण्ड",
+      "verseCount": 21,
+      "file": "ch-384-युद्धकाण्ड-sarga-47.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-47-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-47-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-48",
+      "name": "युद्धकाण्ड, सर्ग 48",
+      "section": "युद्धकाण्ड",
+      "verseCount": 34,
+      "file": "ch-385-युद्धकाण्ड-sarga-48.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-48-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-48-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-49",
+      "name": "युद्धकाण्ड, सर्ग 49",
+      "section": "युद्धकाण्ड",
+      "verseCount": 28,
+      "file": "ch-386-युद्धकाण्ड-sarga-49.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-49-shlok-2",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-49-shlok-2"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-50",
+      "name": "युद्धकाण्ड, सर्ग 50",
+      "section": "युद्धकाण्ड",
+      "verseCount": 62,
+      "file": "ch-387-युद्धकाण्ड-sarga-50.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-50-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-50-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-51",
+      "name": "युद्धकाण्ड, सर्ग 51",
+      "section": "युद्धकाण्ड",
+      "verseCount": 31,
+      "file": "ch-388-युद्धकाण्ड-sarga-51.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-51-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-51-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-52",
+      "name": "युद्धकाण्ड, सर्ग 52",
+      "section": "युद्धकाण्ड",
+      "verseCount": 37,
+      "file": "ch-389-युद्धकाण्ड-sarga-52.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-52-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-52-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-53",
+      "name": "युद्धकाण्ड, सर्ग 53",
+      "section": "युद्धकाण्ड",
+      "verseCount": 31,
+      "file": "ch-390-युद्धकाण्ड-sarga-53.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-53-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-53-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-54",
+      "name": "युद्धकाण्ड, सर्ग 54",
+      "section": "युद्धकाण्ड",
+      "verseCount": 38,
+      "file": "ch-391-युद्धकाण्ड-sarga-54.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-54-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-54-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-55",
+      "name": "युद्धकाण्ड, सर्ग 55",
+      "section": "युद्धकाण्ड",
+      "verseCount": 28,
+      "file": "ch-392-युद्धकाण्ड-sarga-55.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-55-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-55-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-56",
+      "name": "युद्धकाण्ड, सर्ग 56",
+      "section": "युद्धकाण्ड",
+      "verseCount": 40,
+      "file": "ch-393-युद्धकाण्ड-sarga-56.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-56-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-56-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-57",
+      "name": "युद्धकाण्ड, सर्ग 57",
+      "section": "युद्धकाण्ड",
+      "verseCount": 40,
+      "file": "ch-394-युद्धकाण्ड-sarga-57.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-57-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-57-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-58",
+      "name": "युद्धकाण्ड, सर्ग 58",
+      "section": "युद्धकाण्ड",
+      "verseCount": 50,
+      "file": "ch-395-युद्धकाण्ड-sarga-58.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-58-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-58-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-59",
+      "name": "युद्धकाण्ड, सर्ग 59",
+      "section": "युद्धकाण्ड",
+      "verseCount": 137,
+      "file": "ch-396-युद्धकाण्ड-sarga-59.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-59-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-59-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-60",
+      "name": "युद्धकाण्ड, सर्ग 60",
+      "section": "युद्धकाण्ड",
+      "verseCount": 86,
+      "file": "ch-397-युद्धकाण्ड-sarga-60.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-60-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-60-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-61",
+      "name": "युद्धकाण्ड, सर्ग 61",
+      "section": "युद्धकाण्ड",
+      "verseCount": 39,
+      "file": "ch-398-युद्धकाण्ड-sarga-61.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-61-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-61-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-62",
+      "name": "युद्धकाण्ड, सर्ग 62",
+      "section": "युद्धकाण्ड",
+      "verseCount": 23,
+      "file": "ch-399-युद्धकाण्ड-sarga-62.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-62-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-62-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-63",
+      "name": "युद्धकाण्ड, सर्ग 63",
+      "section": "युद्धकाण्ड",
+      "verseCount": 55,
+      "file": "ch-400-युद्धकाण्ड-sarga-63.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-63-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-63-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-64",
+      "name": "युद्धकाण्ड, सर्ग 64",
+      "section": "युद्धकाण्ड",
+      "verseCount": 32,
+      "file": "ch-401-युद्धकाण्ड-sarga-64.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-64-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-64-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-65",
+      "name": "युद्धकाण्ड, सर्ग 65",
+      "section": "युद्धकाण्ड",
+      "verseCount": 55,
+      "file": "ch-402-युद्धकाण्ड-sarga-65.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-65-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-65-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-66",
+      "name": "युद्धकाण्ड, सर्ग 66",
+      "section": "युद्धकाण्ड",
+      "verseCount": 33,
+      "file": "ch-403-युद्धकाण्ड-sarga-66.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-66-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-66-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-67",
+      "name": "युद्धकाण्ड, सर्ग 67",
+      "section": "युद्धकाण्ड",
+      "verseCount": 166,
+      "file": "ch-404-युद्धकाण्ड-sarga-67.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-67-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-67-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-68",
+      "name": "युद्धकाण्ड, सर्ग 68",
+      "section": "युद्धकाण्ड",
+      "verseCount": 21,
+      "file": "ch-405-युद्धकाण्ड-sarga-68.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-68-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-68-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-69",
+      "name": "युद्धकाण्ड, सर्ग 69",
+      "section": "युद्धकाण्ड",
+      "verseCount": 86,
+      "file": "ch-406-युद्धकाण्ड-sarga-69.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-69-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-69-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-70",
+      "name": "युद्धकाण्ड, सर्ग 70",
+      "section": "युद्धकाण्ड",
+      "verseCount": 64,
+      "file": "ch-407-युद्धकाण्ड-sarga-70.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-70-shlok-1",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-70-shlok-1"
+    },
+    {
+      "id": "युद्धकाण्ड-sarga-71",
+      "name": "युद्धकाण्ड, सर्ग 71",
+      "section": "युद्धकाण्ड",
+      "verseCount": 103,
+      "file": "ch-408-युद्धकाण्ड-sarga-71.json",
+      "firstPadId": "valmiki-ramayana-6-sarga-71-shlok-3",
+      "firstPadSlug": "valmiki-ramayana-6-sarga-71-shlok-3"
+    }
+  ]
+}

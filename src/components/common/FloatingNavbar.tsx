@@ -1,7 +1,7 @@
 import React from 'react';
-import { Home, BookOpen, Users, Award } from 'lucide-react';
+import { Home, BookOpen, Users, Award, Feather } from 'lucide-react';
 
-export type NavTab = 'smaran' | 'padavali' | 'feed' | 'milestones';
+export type NavTab = 'smaran' | 'granthas' | 'padavali' | 'feed' | 'milestones';
 
 interface FloatingNavbarProps {
   activeTab: NavTab;
@@ -96,7 +96,8 @@ export const FloatingNavbar: React.FC<FloatingNavbarProps> = ({
 }) => {
   const tabs = [
     { id: 'smaran' as NavTab, label: 'Sadhana', icon: Home },
-    { id: 'padavali' as NavTab, label: 'Vani', icon: BookOpen },
+    { id: 'granthas' as NavTab, label: 'Epics', icon: BookOpen },
+    { id: 'padavali' as NavTab, label: 'Padavali', icon: Feather },
     { id: 'feed' as NavTab, label: 'Darshan', icon: Users },
     { id: 'milestones' as NavTab, label: 'Streaks', icon: Award },
   ];
@@ -105,18 +106,18 @@ export const FloatingNavbar: React.FC<FloatingNavbarProps> = ({
 
   return (
     // Only displayed on mobile (< md). On tablet & desktop, top header navigation takes over.
-    <div className="md:hidden fixed bottom-3.5 min-[380px]:bottom-5 left-0 right-0 z-40 flex items-center justify-center gap-2 px-2.5 max-w-sm w-full mx-auto pointer-events-none box-border">
+    <div className="md:hidden fixed bottom-3.5 min-[380px]:bottom-5 left-0 right-0 z-40 flex items-center justify-center gap-2 px-2 max-w-md w-full mx-auto pointer-events-none box-border">
       {/* Fluid responsive floating nav pill: Minimalist, power-efficient frosted glass with clean whiteness */}
       <nav
         aria-label="Mobile Navigation"
-        className="relative pointer-events-auto flex-1 min-w-0 max-w-[290px] h-[54px] rounded-[28px] bg-white/95 backdrop-blur-md border border-neutral-900/[0.08] shadow-[0_8px_24px_-4px_rgba(24,24,27,0.10),0_2px_6px_-1px_rgba(24,24,27,0.04)] flex items-center justify-between p-1 box-border transform-gpu will-change-transform"
+        className="relative pointer-events-auto flex-1 min-w-0 max-w-[340px] h-[54px] rounded-[28px] bg-white/95 backdrop-blur-md border border-neutral-900/[0.08] shadow-[0_8px_24px_-4px_rgba(24,24,27,0.10),0_2px_6px_-1px_rgba(24,24,27,0.04)] flex items-center justify-between p-1 box-border transform-gpu will-change-transform"
       >
         {/* Dynamic Elastic Sliding Indicator Bar */}
         <span
           aria-hidden="true"
           className="absolute top-1 bottom-1 rounded-[22px] bg-[#FEF08A] shadow-2xs pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
           style={{
-            width: 'calc((100% - 8px) / 4)',
+            width: 'calc((100% - 8px) / 5)',
             left: '4px',
             transform: `translateX(${activeIndex * 100}%)`,
           }}

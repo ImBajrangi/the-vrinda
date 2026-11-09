@@ -1,0 +1,172 @@
+{
+  "id": "bhagavad-gita",
+  "name": "श्रीमद्भगवद्गीता",
+  "author": "महर्षि वेदव्यास",
+  "description": "कुरुक्षेत्र के समरांगण में योगेश्वर श्रीकृष्ण द्वारा अर्जुन को दिया गया आत्मज्ञान",
+  "totalVerses": 658,
+  "totalChapters": 18,
+  "chapters": [
+    {
+      "id": "adhyay-1",
+      "name": "अध्याय 1: अर्जुनविषादयोग",
+      "section": "अध्याय 1",
+      "verseCount": 39,
+      "file": "ch-001-adhyay-1.json",
+      "firstPadId": "shrimad-bhagavad-gita-adhyay-1-shlok-1",
+      "firstPadSlug": "shrimad-bhagavad-gita-adhyay-1-shlok-1"
+    },
+    {
+      "id": "adhyay-2",
+      "name": "अध्याय 2: सांख्ययोग",
+      "section": "अध्याय 2",
+      "verseCount": 71,
+      "file": "ch-002-adhyay-2.json",
+      "firstPadId": "shrimad-bhagavad-gita-adhyay-2-shlok-1",
+      "firstPadSlug": "shrimad-bhagavad-gita-adhyay-2-shlok-1"
+    },
+    {
+      "id": "adhyay-3",
+      "name": "अध्याय 3: कर्मयोग",
+      "section": "अध्याय 3",
+      "verseCount": 43,
+      "file": "ch-003-adhyay-3.json",
+      "firstPadId": "shrimad-bhagavad-gita-adhyay-3-shlok-1",
+      "firstPadSlug": "shrimad-bhagavad-gita-adhyay-3-shlok-1"
+    },
+    {
+      "id": "adhyay-4",
+      "name": "अध्याय 4: ज्ञानकर्मसंन्यासयोग",
+      "section": "अध्याय 4",
+      "verseCount": 42,
+      "file": "ch-004-adhyay-4.json",
+      "firstPadId": "shrimad-bhagavad-gita-adhyay-4-shlok-1",
+      "firstPadSlug": "shrimad-bhagavad-gita-adhyay-4-shlok-1"
+    },
+    {
+      "id": "adhyay-5",
+      "name": "अध्याय 5: कर्मसंन्यासयोग",
+      "section": "अध्याय 5",
+      "verseCount": 27,
+      "file": "ch-005-adhyay-5.json",
+      "firstPadId": "shrimad-bhagavad-gita-adhyay-5-shlok-1",
+      "firstPadSlug": "shrimad-bhagavad-gita-adhyay-5-shlok-1"
+    },
+    {
+      "id": "adhyay-6",
+      "name": "अध्याय 6: आत्मसंयमयोग",
+      "section": "अध्याय 6",
+      "verseCount": 42,
+      "file": "ch-006-adhyay-6.json",
+      "firstPadId": "shrimad-bhagavad-gita-adhyay-6-shlok-1",
+      "firstPadSlug": "shrimad-bhagavad-gita-adhyay-6-shlok-1"
+    },
+    {
+      "id": "adhyay-7",
+      "name": "अध्याय 7: ज्ञानविज्ञानयोग",
+      "section": "अध्याय 7",
+      "verseCount": 30,
+      "file": "ch-007-adhyay-7.json",
+      "firstPadId": "shrimad-bhagavad-gita-adhyay-7-shlok-1",
+      "firstPadSlug": "shrimad-bhagavad-gita-adhyay-7-shlok-1"
+    },
+    {
+      "id": "adhyay-8",
+      "name": "अध्याय 8: अक्षरब्रह्मयोग",
+      "section": "अध्याय 8",
+      "verseCount": 28,
+      "file": "ch-008-adhyay-8.json",
+      "firstPadId": "shrimad-bhagavad-gita-adhyay-8-shlok-1",
+      "firstPadSlug": "shrimad-bhagavad-gita-adhyay-8-shlok-1"
+    },
+    {
+      "id": "adhyay-9",
+      "name": "अध्याय 9: राजविद्याराजगुह्ययोग",
+      "section": "अध्याय 9",
+      "verseCount": 34,
+      "file": "ch-009-adhyay-9.json",
+      "firstPadId": "shrimad-bhagavad-gita-adhyay-9-shlok-1",
+      "firstPadSlug": "shrimad-bhagavad-gita-adhyay-9-shlok-1"
+    },
+    {
+      "id": "adhyay-10",
+      "name": "अध्याय 10: विभूतियोग",
+      "section": "अध्याय 10",
+      "verseCount": 40,
+      "file": "ch-010-adhyay-10.json",
+      "firstPadId": "shrimad-bhagavad-gita-adhyay-10-shlok-1",
+      "firstPadSlug": "shrimad-bhagavad-gita-adhyay-10-shlok-1"
+    },
+    {
+      "id": "adhyay-11",
+      "name": "अध्याय 11: विश्वरूपदर्शनयोग",
+      "section": "अध्याय 11",
+      "verseCount": 52,
+      "file": "ch-011-adhyay-11.json",
+      "firstPadId": "shrimad-bhagavad-gita-adhyay-11-shlok-1",
+      "firstPadSlug": "shrimad-bhagavad-gita-adhyay-11-shlok-1"
+    },
+    {
+      "id": "adhyay-12",
+      "name": "अध्याय 12: भक्तियोग",
+      "section": "अध्याय 12",
+      "verseCount": 16,
+      "file": "ch-012-adhyay-12.json",
+      "firstPadId": "shrimad-bhagavad-gita-adhyay-12-shlok-1",
+      "firstPadSlug": "shrimad-bhagavad-gita-adhyay-12-shlok-1"
+    },
+    {
+      "id": "adhyay-13",
+      "name": "अध्याय 13: क्षेत्र-क्षेत्रज्ञविभागयोग",
+      "section": "अध्याय 13",
+      "verseCount": 30,
+      "file": "ch-013-adhyay-13.json",
+      "firstPadId": "shrimad-bhagavad-gita-adhyay-13-shlok-1",
+      "firstPadSlug": "shrimad-bhagavad-gita-adhyay-13-shlok-1"
+    },
+    {
+      "id": "adhyay-14",
+      "name": "अध्याय 14: गुणत्रयविभागयोग",
+      "section": "अध्याय 14",
+      "verseCount": 24,
+      "file": "ch-014-adhyay-14.json",
+      "firstPadId": "shrimad-bhagavad-gita-adhyay-14-shlok-1",
+      "firstPadSlug": "shrimad-bhagavad-gita-adhyay-14-shlok-1"
+    },
+    {
+      "id": "adhyay-15",
+      "name": "अध्याय 15: पुरुषोत्तमयोग",
+      "section": "अध्याय 15",
+      "verseCount": 19,
+      "file": "ch-015-adhyay-15.json",
+      "firstPadId": "shrimad-bhagavad-gita-adhyay-15-shlok-1",
+      "firstPadSlug": "shrimad-bhagavad-gita-adhyay-15-shlok-1"
+    },
+    {
+      "id": "adhyay-16",
+      "name": "अध्याय 16: दैवासुरसंपद्विभागयोग",
+      "section": "अध्याय 16",
+      "verseCount": 19,
+      "file": "ch-016-adhyay-16.json",
+      "firstPadId": "shrimad-bhagavad-gita-adhyay-16-shlok-1-3",
+      "firstPadSlug": "shrimad-bhagavad-gita-adhyay-16-shlok-1-3"
+    },
+    {
+      "id": "adhyay-17",
+      "name": "अध्याय 17: श्रद्धात्रयविभागयोग",
+      "section": "अध्याय 17",
+      "verseCount": 26,
+      "file": "ch-017-adhyay-17.json",
+      "firstPadId": "shrimad-bhagavad-gita-adhyay-17-shlok-1",
+      "firstPadSlug": "shrimad-bhagavad-gita-adhyay-17-shlok-1"
+    },
+    {
+      "id": "adhyay-18",
+      "name": "अध्याय 18: मोक्षसंन्यासयोग",
+      "section": "अध्याय 18",
+      "verseCount": 76,
+      "file": "ch-018-adhyay-18.json",
+      "firstPadId": "shrimad-bhagavad-gita-adhyay-18-shlok-1",
+      "firstPadSlug": "shrimad-bhagavad-gita-adhyay-18-shlok-1"
+    }
+  ]
+}

@@ -1,0 +1,1615 @@
+[
+  {
+    "id": "ramcharitmanas-kand-4-doha-1-2",
+    "collectionId": "ramcharitmanas",
+    "index": 709,
+    "titleDevanagari": "रामचरितमानस, किष्किन्धाकाण्ड, दोहा/चौपाई 1",
+    "author": "गोस्वामी तुलसीदास",
+    "slug": "ramcharitmanas-kand-4-doha-1-2",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "॥ श्लोक ॥",
+          "कुन्देन्दीवरसुन्दरावतिबलौ विज्ञानधामावुभौ",
+          "शोभाढ्यौ वरधन्विनौ श्रुतिनुतौ गोविप्रवृन्दप्रियौ।",
+          "मायामानुषरूपिणौ रघुवरौ सद्धर्मवर्मौ हितौ",
+          "सीतान्वेषणतत्परौ पथिगतौ भक्तिप्रदौ तौ हि नः ॥1॥",
+          "॥ चौपाई ॥",
+          "आगें चले बहुरि रघुराया। रिष्यमूक पर्बत निअराया॥",
+          "तहँ रह सचिव सहित सुग्रीवा। आवत देखि अतुल बल सींवा॥1॥",
+          "॥ दोहा ॥",
+          "जग कारन तारन भव भंजन धरनी भार।",
+          "॥ चौपाई ॥",
+          "नाम राम लछिमन दोउ भाई। संग नारि सुकुमारि सुहाई॥1॥",
+          "॥ चौपाई ॥",
+          "जदपि नाथ बहु अवगुन मोरें। सेवक प्रभुहि परै जनि भोरें॥",
+          "नाथ जीव तव मायाँ मोहा। सो निस्तरइ तुम्हारेहिं छोहा॥1॥",
+          "॥ चौपाई ॥",
+          "देखि पवनसुत पति अनुकूला। हृदयँ हरष बीती सब सूला॥",
+          "॥ चौपाई ॥",
+          "कीन्हि प्रीति कछु बीच न राखा। लछिमन राम चरित् सब भाषा॥",
+          "कह सुग्रीव नयन भरि बारी। मिलिहि नाथ मिथिलेसकुमारी॥1॥",
+          "॥ चौपाई ॥",
+          "नाथ बालि अरु मैं द्वौ भाइ। प्रीति रही कछु बरनि न जाई॥",
+          "मयसुत मायावी तेहि नाऊँ। आवा सो प्रभु हमरें गाऊँ॥1॥",
+          "॥ चौपाई ॥",
+          "जे न मित्र दुख होहिं दुखारी। तिन्हहि बिलोकत पातक भारी॥",
+          "निज दुख गिरि सम रज करि जाना। मित्रक दुख रज मेरु समाना॥1॥",
+          "॥ चौपाई ॥",
+          "अस कहि चला महा अभिमानी। तृन समान सुग्रीवहि जानी॥",
+          "भिरे उभौ बाली अति तर्जा। मुठिका मारि महाधुनि गर्जा॥1॥",
+          "॥ चौपाई ॥",
+          "स्याम गात सिर जटा बनाएँ। अरुन नयन सर चाप चढ़ाएँ॥1॥",
+          "॥ चौपाई ॥",
+          "सुनत राम अति कोमल बानी। बालि सीस परसेउ निज पानी॥",
+          "॥ छंद ॥",
+          "सो नयन गोचर जासु गुन नित नेति कहि श्रुति गावहीं।",
+          "जिति पवन मन गो निरस करि मुनि ध्यान कबहुँक पावहीं॥",
+          "मोहि जानि अति अभिमान बस प्रभु कहेउ राखु सरीरही।",
+          "अस कवन सठ हठि काटि सुरतरु बारि करिहि बबूरही॥1॥",
+          "॥ चौपाई ॥",
+          "राम बालि निज धाम पठावा। नगर लोग सब व्याकुल धावा॥",
+          "॥ चौपाई ॥",
+          "उमा राम सम हत जग माहीं। गुरु पितु मातु बंधु प्रभु नाहीं॥",
+          "सुर नर मुनि सब कै यह रीती। स्वारथ लागि करहिं सब प्रीति॥1॥",
+          "॥ चौपाई ॥",
+          "सुंदर बन कुसुमित अति सोभा। गुंजत मधुप निकर मधु लोभा॥",
+          "कंद मूल फल पत्र सुहाए। भए बहुत जब ते प्रभु आए॥1॥",
+          "॥ चौपाई ॥",
+          "घन घमंड नभ गरजत घोरा। प्रिया हीन डरपत मन मोरा॥",
+          "दामिनि दमक रह नघन माहीं। खल कै प्रीति जथा थिर नाहीं॥1॥",
+          "॥ चौपाई ॥",
+          "दादुर धुनि चहु दिसा सुहाई। बेद पढ़हिं जनु बटु समुदाई॥",
+          "नव पल्लव भए बिटप अनेका। साधक मन जस मिलें बिबेका॥1॥",
+          "॥ चौपाई ॥",
+          "बरषा बिगत सरद रितु आई। लछमन देखहु परम सुहाई॥",
+          "फूलें कास सकल महि छाई। जनु बरषाँ कृत प्रगट बुढ़ाई॥1॥",
+          "॥ चौपाई ॥",
+          "सुखी मीन जे नीर अगाधा। जिमि हरि सरन न एकऊ बाधा॥",
+          "फूलें कमल सोह सर कैसा। निर्गुन ब्रह्म सगुन भएँ जैसा॥1॥",
+          "॥ चौपाई ॥",
+          "बरषा गत निर्मल रितु आई। सुधि न तात सीता कै पाई॥",
+          "एक बार कैसेहुँ सुधि जानौं। कालुह जीति निमिष महुँ आनौं॥1॥",
+          "॥ चौपाई ॥",
+          "इहाँ पवनसुत हृदयँ बिचारा। राम काजु सुग्रीवँ बिसारा॥",
+          "निकट जाइ चरनन्हि सिरु नावा। चारिहु बिधि तेहि कहि समुझावा॥1॥",
+          "॥ चौपाई ॥",
+          "चर नाइ सिरु बिनती कीन्ही। लछिमन अभय बाँह तेहि दीन्ही॥",
+          "क्रोधवंत लछिमन सुनि काना। कह कपीस अति भयँ अकुलाना॥1॥",
+          "॥ चौपाई ॥",
+          "अतिसय प्रबल देव तव माया॥ छूटइ राम करहु जौं दाया॥1॥",
+          "॥ चौपाई ॥",
+          "बानर कटक उमा मैं देखा। सो मूरुख जो करन चह लेखा॥",
+          "आइ राम पद नावहिं माथा। निरखि बदनु सब होहिं सनाथा॥1॥",
+          "॥ चौपाई ॥",
+          "सुनहु नील अंगद हनुमाना। जामवंत मतिधीर सुजाना॥",
+          "सकल सुभट मिलि दच्छिन जाहू। सीता सुधि पूँछेहु सब काहू॥1॥",
+          "॥ चौपाई ॥",
+          "कतहुँ होइ निसिचर सैं भेटा। प्रान लेहिं एक एक चपेटा॥",
+          "बहु प्रकार गिरि कानन हेरहिं। कोउ मुनि मिलइ ताहि सब घेरहिं॥1॥",
+          "॥ चौपाई ॥",
+          "दूरि ते ताहि सबन्हि सिरु नावा। पूछें निज बृत्तांत सुनावा॥",
+          "॥ चौपाई ॥",
+          "इहाँ बिचारहिं कपि मन माहीं। बीती अवधि काज कछु नाहीं॥",
+          "॥ चौपाई ॥",
+          "एहि बिधि कथा कहहिं बहु भाँती। गिरि कंदराँ सुनी संपाती॥",
+          "बाहेर होइ देखि बहु कीसा। मोहि अहार दीन्ह जगदीसा॥1॥",
+          "॥ चौपाई ॥",
+          "अनुज क्रिया करि सागर तीरा। कहि निज कथा सुनहु कपि बीरा॥",
+          "॥ चौपाई ॥",
+          "जो नाघइ सत जोजन सागर। करइ सो राम काज मति आगर॥",
+          "मोहि बिलोकि धरहु मन धीरा। राम कृपाँ कस भयउ सरीरा॥1॥",
+          "॥ चौपाई ॥",
+          "अंगद कहइ जाउँ मैं पारा। जियँ संसय कछु फिरती बारा॥"
+        ],
+        "linesTransliteration": [
+          "kundēndīvarasundarāvatibalau vijñānadhāmāvubhau",
+          "śōbhāḍhyau varadhanvinau śrutinutau gōvipravṛndapriyau.",
+          "māyāmānuṣarūpiṇau raghuvarau saddharmavarmauṃ hitau",
+          "sītānvēṣaṇatatparau pathigatau bhaktipradau tau hi naḥ..1..",
+          "āgēṃ calē bahuri raghurāyā. riṣyamūka paravata niarāyā..",
+          "tahaom raha saciva sahita sugrīvā. āvata dēkhi atula bala sīṃvā..",
+          "jaga kārana tārana bhava bhaṃjana dharanī bhāra.",
+          "kī tumha akila bhuvana pati līnha manuja avatāra..1..",
+          "kōsalēsa dasaratha kē jāē . hama pitu bacana māni bana āē..",
+          "nāma rāma lachimana dauu bhāī. saṃga nāri sukumāri suhāī..",
+          "jadapi nātha bahu avaguna mōrēṃ. sēvaka prabhuhi parai jani bhōrēṃ..",
+          "nātha jīva tava māyāom mōhā. sō nistarai tumhārēhiṃ chōhā..",
+          "dēkhi pavana suta pati anukūlā. hṛdayaom haraṣa bītī saba sūlā..",
+          "nātha saila para kapipati rahaī. sō sugrīva dāsa tava ahaī..",
+          "kīnhī prīti kachu bīca na rākhā. lachamina rāma carita saba bhāṣā..",
+          "kaha sugrīva nayana bhari bārī. milihi nātha mithilēsakumārī..",
+          "nāta bāli aru maiṃ dvau bhāī. prīti rahī kachu barani na jāī..",
+          "maya suta māyāvī tēhi nāūom. āvā sō prabhu hamarēṃ gāūom..",
+          "jē na mitra dukha hōhiṃ dukhārī. tinhahi bilōkata pātaka bhārī..",
+          "nija dukha giri sama raja kari jānā. mitraka dukha raja mēru samānā..",
+          "asa kahi calā mahā abhimānī. tṛna samāna sugrīvahi jānī..",
+          "bhirē ubhau bālī ati tarjā . muṭhikā māri mahādhuni garjā..",
+          "parā bikala mahi sara kē lāgēṃ. puni uṭhi baiṭha dēkhi prabhu āgēṃ..",
+          "syāma gāta sira jaṭā banāēom. aruna nayana sara cāpa caḍhaāēom..",
+          "sunata rāma ati kōmala bānī. bāli sīsa parasēu nija pānī..",
+          "acala karauṃ tanu rākhahu prānā. bāli kahā sunu kṛpānidhānā..",
+          "sō nayana gōcara jāsu guna nita nēti kahi śruti gāvahīṃ.",
+          "jiti pavana mana gō nirasa kari muni dhyāna kabahuka pāvahīṃ..",
+          "mōhi jāni ati abhimāna basa prabhu kahēu rākhu sarīrahī.",
+          "asa kavana saṭha haṭhi kāṭi surataru bāri karihi babūrahī..1..",
+          "nānā bidhi bilāpa kara tārā. chūṭē kēsa na dēha saombhārā..",
+          "umā rāma sama hita jaga māhīṃ. guru pitu mātu baṃdhu prabhu nāhīṃ..",
+          "sura nara muni saba kai yaha rītī. svāratha lāgi karahiṃ saba prītī..",
+          "suṃdara bana kusumita ati sōbhā. guṃjata madhupa nikara madhu lōbhā..",
+          "kaṃda mūla phala patra suhāē. bhaē bahuta jaba tē prabhu āē ..",
+          "ghana ghamaṃḍa nabha garajata ghōrā. priyā hīna ḍarapata mana mōrā..",
+          "dāmini damaka raha na ghana māhīṃ. khala kai prīti jathā thira nāhīṃ..",
+          "dādura dhuni cahu disā suhāī. bēda paḍhahiṃ janu baṭu samudāī..",
+          "nava pallava bhaē biṭapa anēkā. sādhaka mana jasa milēṃ bibēkā..",
+          "baraṣā bigata sarada ritu āī. lachimana dēkhahu parama suhāī..",
+          "phūlēṃ kāsa sakala mahi chāī. janu baraṣāom kṛta pragaṭa buḍhaāī..",
+          "sukhī mīna jē nīra agādhā. jimi hari sarana na ēkau bādhā..",
+          "phūlēṃ kamala sōha sara kaisā. nirguna bramha saguna bhaēom jaisā..",
+          "baraṣā gata nirmala ritu āī. sudhi na tāta sītā kai pāī..",
+          "ēka bāra kaisēhu sudhi jānauṃ. kālahu jīta nimiṣa mahu ānauṃ..",
+          "ihāom pavanasuta hṛdayaom bicārā. rāma kāju sugrīvaom bisārā..",
+          "nikaṭa jāi carananhi siru nāvā. cārihu bidhi tēhi kahi samujhāvā..",
+          "carana nāi siru binatī kīnhī. lachimana abhaya bāomha tēhi dīnhī..",
+          "krōdhavaṃta lachimana suni kānā. kaha kapīsa ati bhayaom akulānā..",
+          "nāi carana siru kaha kara jōrī. nātha mōhi kachu nāhina khōrī..",
+          "atisaya prabala dēva taba māyā. chūṭai rāma karahu jauṃ dāyā..",
+          "bānara kaṭaka umā mēṃ dēkhā. sō mūrukha jō karana caha lēkhā..",
+          "āi rāma pada nāvahiṃ māthā. nirakhi badanu saba hōhiṃ sanāthā..",
+          "sunahu nīla aṃgada hanumānā. jāmavaṃta matidhīra sujānā..",
+          "sakala subhaṭa mili dacchina jāhū. sītā sudhi pūomchēu saba kāhū..",
+          "katahu hōi nisicara saiṃ bhēṭā. prāna lēhiṃ ēka ēka capēṭā..",
+          "bahu prakāra giri kānana hērahiṃ. kōu muni milata tāhi saba ghērahiṃ..",
+          "dūri tē tāhi sabanhi sira nāvā. pūchēṃ nija bṛttāṃta sunāvā..",
+          "tēhiṃ taba kahā karahu jala pānā. khāhu surasa suṃdara phala nānā..",
+          "ihāom bicārahiṃ kapi mana māhīṃ. bītī avadhi kāja kachu nāhīṃ..",
+          "saba mili kahahiṃ paraspara bātā. binu sudhi laēom karaba kā bhrātā..",
+          "ēhi bidhi kathā kahahi bahu bhāomtī giri kaṃdarāom sunī saṃpātī..",
+          "bāhēra hōi dēkhi bahu kīsā. mōhi ahāra dīnha jagadīsā..",
+          "anuja kriyā kari sāgara tīrā. kahi nija kathā sunahu kapi bīrā..",
+          "hama dvau baṃdhu prathama tarunāī . gagana gaē rabi nikaṭa uḍāī..",
+          "jō nāghai sata jōjana sāgara . karai sō rāma kāja mati āgara ..",
+          "mōhi bilōki dharahu mana dhīrā . rāma kṛpāom kasa bhayau sarīrā..",
+          "aṃgada kahai jāu maiṃ pārā. jiyaom saṃsaya kachu phiratī bārā..",
+          "jāmavaṃta kaha tumha saba lāyaka. paṭhaia kimi saba hī kara nāyaka.."
+        ],
+        "linesEnglish": [
+          "Lovely as a jasmine and a blue lotus, of surpassing strength, repositories of wisdom, endowed with natural grace, excellent bowmen, hymned by the Vedas, and lovers of the cow and the Brahmanas, who appeared in the form of mortal men through their own Maya (deluding potency) as the two noble scions (Sri Rama & Lakshmana) of Raghu, the armours of true religion, friendly to all and journeying in quest for Sita, may they both grant us Devotion.",
+          "The Lord of Raghus proceeded still further and approached the Risyamuka hill. There dwelt Sugriva (a monkey chief) with his counsellors. When he saw the two brothers, the highest embodiments of immeasurable strength, he was exceedingly alarmed and said (to one of his ministers),",
+          "Or are you the Prime Cause of the world and the Lord of all the spheres, manifested in human form to bridge the ocean of mundane existence and relieve the burden of the earth?”",
+          "“We are sons of King Dasaratha, the lord of Kosala, and have come to the forest in obedience to our father’s command. We two brothers are called by the names of Rama and Laksmana. We had with us a pretty and delicate girl,-",
+          "Although, my lord, I have many faults, let not the servant be cast into oblivion by the master. The Jiva (ego), O Lord, is deluded by Your Maya and can be redeemed only by Your grace.",
+          "When Hanuman, the son of the wind-god, found his master so gracious to him he rejoiced at heart and all his agony disappeared. “My Lord, on the summit of this hill dwells Sugriva, the chief of the monkeys; he is a servant of Yours.",
+          "The alliance was thus unreservedly concluded and Laksmana narrated all the past history of Sri Rama. Said Sugriva with his eyes full of tears, “The daughter of Janaka (the lord of Mithila), my lord, will be surely recovered.",
+          "“My lord, Vali and myself are two brothers. The affection that existed between us was past all telling. Once upon a time, O lord, the son of the demon Maya, who was known by the name of Mayavi, came to our village (Kiskindha).",
+          "“One would incur great sin by the very sight of those who are not distressed to see the distress of a friend. A man should regard his own mountain-like troubles as of no more account than a mere grain of sand, while the troubles of a friend should appear to him like Mount Sumeru, though really they may be as trifling as a grain of sand.",
+          "So saying he sallied forth in his great pride, thinking no more of Sugriva than of a blade of grass. The two brothers closed with each other. Vali browbeat Sugriva, and striking him with his fist roared in a thundering voice.",
+          "Struck by the shaft Vali fell to the ground smarting with pain; again he sprang up and sat, when he saw the Lord before him-dark of hue, with His matted hair coiled on His head, bloodshot eyes and the bow still drawn.",
+          "When Sri Rama heard this most tender speech of Vali, He stroked his head with His hand. ” I make your body immortal; you may keep up your life.”",
+          "“He has appeared before my very eyes, whose praises the Vedas ever sing only in negative terms and whom sages are scarcely able to perceive in their meditation even after they have controlled their breath and mind and freed their senses from passion. Knowing me to be a victim of excessive pride the Lord said to me, ‘ Preserve your life!’ But who would be such a fool as to insist on cutting down a celestial tree and using it as a fence to protect an acacia tree?",
+          "rāma bāli nija dhāma paṭhāvā. nagara lōga saba byākula dhāvā..",
+          "Sri Rama sent away Vali to His own abode. All the people of the city ran in dismay. With dishevelled hair and a tottering frame, Tara (Vali’s wife) wailed in many ways.",
+          "Uma, there is no such friend as Sri Rama in this world-neither preceptor, nor father, nor mother, nor brother, nor master. Gods, men and sages, all as a rule have some selfish motive behind their love.",
+          "The lovely forest, rich in flowers, presented a most splendid sight with its swarms of bees humming in greed of honey. Delightful bulbs, roots, fruit and leaves grew in abundance from the time the Lord came there.",
+          "“The clouds are fast gathering in the sky and making a terrible noise. Bereft as I am of my darling (Sita), my heart trembles to see all this. The lightning flashes fitfully amid the clouds, like the friendship of the wicked, which never endures.",
+          "“On all sides one hears the delightful croaking of frogs, which reminds one of a batch of religious students chanting the Vedas. Clothed with new leaves the trees of different species look as green and cheerful as the mind of a striving soul who has attained spiritual wisdom.",
+          "Look here, Laksmana: the rains are over now and the most charming autumn has arrived. The whole earth is covered by the Kasa grass with its white flowers as if the rainy season has exposed its old age.",
+          "In deep waters the fish are as happy as ever, just as those who have taken refuge in Sri Hari (i.e., Myself) never fall into trouble of any kind. With full-blown lotuses the lake appears as charming as when the absolute Brahma appears with form.",
+          "“The rains are over and the autumn, which is marked by a cloudless sky and limpid waters, has arrived; yet, dear brother, we have received no news about Sita. If only once I could anyhow come to know of her whereabouts I would recover her out of the hands of Death himself.",
+          "There (at Kiskindha) Hanuman, the son of the wind-god, thought to himself, “Sugriva has forgotten the task entrusted to him by Sri Rama.” Approaching Sugriva, therefore, he bowed his head at his feet and tried to bring him round by employing all the four methods of persuasion.",
+          "Angada bowed his head at Laksmana’s feet and made humble petition to him, whereupon Laksmana extended to him his protecting arms. When the report of Laksmana’s wrath reached the ears of the monkey lord (King Sugriva), he was terribly distracted with fear and said,",
+          "Bowing his head at Sri Rama’s feet he exclaimed with joined palms, “My lord, I am not at all to blame (for what I have done). Exceedingly powerful, O Lord, is Your Maya (deluding potency), which withdraws itself only when You, O Rama, show Your grace to a Jiva.",
+          "(Says Sankara:) I saw the army of monkeys, Uma; he is indeed a fool who would try to count them. They came and bowed their head at Sri Rama’s feet and found their true lord in Him when they gazed on His countenance.",
+          "“Listen, O Nila, Angada, Hanuman and Jambavan: you are all resolute of mind and wise. Proceed all of you, gallant warriors, together to the south and enquire of everyone you meet the whereabouts of Sita.",
+          "If at any place they came across some demon they would take his life by a single slap. They looked into every recess of forest and hill; and if they met any hermit they would all surround him.",
+          "From a distance all bowed their head to her and in response to her enquiry told her all about themselves. She then said, “Go and drink water and partake of beautiful and luscious fruits of various kinds.”",
+          "On this side (standing on the sea-coast) the monkeys thought to themselves, “The time-limit (fixed by Sugriva) has expired, yet nothing has been done.” Sitting together they all said to one another, “Without obtaining any news (about Sita) what shall we gain by returning to Kiskindha either?”",
+          "Thus they discoursed among themselves in many ways. Sampati (Jatayu’s elder brother) heard them from his cave in the mountain. When he came out of it and saw a host of monkeys, he said to himself, “God has provided me with a feast:",
+          "Having performed the after-death ceremonies in respect of his departed brother (Jatayu) on the sea-shore Sampati narrated his own story. “Listen, O monkey chiefs: in the prime of our youth we two brothers (Jatayu and myself) soared in the heavens and approached the orb of the sun.",
+          "“He who can leap over the ocean having a width of eight hundred miles and is a repository of intelligence will be able to do Sri Rama’s business. Look at me and take courage in your heart. See how rejuvenated I feel in body (with a new pair of wings) by Sri Rama’s grace.",
+          "Said Angada, “I will leap across; but I have some diffidence in my heart about my getting back.” Jambavan, however, interposed, “Even though you are competent in every way, how can we send you, the leader of us all?”"
+        ]
+      }
+    ],
+    "chapterId": "kand-किष्किन्धाकाण्ड",
+    "chapterName": "किष्किन्धाकाण्ड",
+    "verseNumber": 1
+  },
+  {
+    "id": "ramcharitmanas-kand-4-doha-2-2",
+    "collectionId": "ramcharitmanas",
+    "index": 710,
+    "titleDevanagari": "रामचरितमानस, किष्किन्धाकाण्ड, दोहा/चौपाई 2",
+    "author": "गोस्वामी तुलसीदास",
+    "slug": "ramcharitmanas-kand-4-doha-2-2",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "ब्रह्माम्भोधिसमुद्भवं कलिमलप्रध्वंसनं चाव्ययं",
+          "श्रीमच्छम्भुमुखेन्दुसुन्दरवरे संशोभितं सर्वदा।",
+          "संसारामयभेषजं सुखकरं श्रीजानकीजीवनं",
+          "धन्यास्ते कृतिनः पिबन्ति सततं श्रीरामनामामृतम्॥2॥",
+          "॥ सोरठा ॥",
+          "जहँ बस संभु भवानि सो कासी सेइअ कस न ॥",
+          "जरत सकल सुर बृंद बिषम गरल जेहिं पान किय।",
+          "अति सभीत कह सुनु हनुमाना। पुरुष जुगल बल रूप निधाना॥",
+          "धरि बटु रूप देखु तैं जाई। कहेसु जानि जियँ सयन बुझाई॥2॥",
+          "इहाँ हरी निसिचर बैदेही। बिप्र फिरहिं हम खोजत तेही॥",
+          "॥ दोहा ॥",
+          "एकु मैं मंद मोहबस कुटिल हृदय अग्यान।",
+          "पुनि प्रभु मोहि बिसारेउ दीनबंधु भगवान॥2॥",
+          "सेवक सुत पति मातु भरोसें। रहइ असोच बनइ प्रभु पोसें॥2॥",
+          "तेहि सन नाथ मयत्री कीजे। दीन जानि तेहि अभय करीजे॥",
+          "मंत्रिन्ह सहित इहाँ एक बारा। बैठ रहेउँ मैं करत बिचारा॥",
+          "अर्ध राति पुर द्वार पुकारा। बाली रिपु बल सहै न पारा॥",
+          "धावा बालि देखि सो भागा। मैं पुनि गयउँ बंधु सँग लागा॥2॥",
+          "जिन्ह कें असि मति सहज न आई। ते सठ कत हठि करत मिताई॥",
+          "कुपथ निवारि सुपंथ चलावा। गुन प्रगटै अवगुनन्हि दुरावा॥2॥",
+          "तब सुग्रीव बिकल होइ भागा। मुष्टि प्रहार बज्र सम लागा॥",
+          "पुनि पुनि चितइ चरन चित दीन्हा। सुफल जन्म माना प्रभु चीन्हा॥",
+          "जन्म जन्म मुनि जतनु कराहीं। अंत राम कहि आवत नाहीं॥",
+          "जासु नाम बल संकर कासी। देत सबहि सम गति अबिनासी॥2॥",
+          "अब नाथ करि करुना बिलोकहु देहु जो बर मागऊँ।",
+          "जेहि जोनि जन्मौं कर्म बस तहँ राम पद अनुरागऊँ॥",
+          "यह तनय मम सम बिनय बल कल्यानप्रद प्रभु लीजिये।",
+          "गहि बाँह सुर नर नाह आपन दास अंगद कीजिये॥2॥",
+          "तारा बिकल देखि रघुराया। दीन्ह ग्यान हरि लीन्ही माया॥",
+          "छिति जल पावक गगन समीरा। पंच रचित अति अधम सरीरा॥2॥",
+          "बालि त्रास ब्याकुल दिन राती। तन बहु ब्रन चिंताँ जर छाती॥",
+          "सोइ सुग्रीव कीन्ह कपि राऊ। अति कृपाल रघुबीर सुभाऊ॥2॥",
+          "देखि मनोहर सैल अनूपा। रहे तहँ अनुज सहित सुरभूपा॥",
+          "मधुकर खग मृग तनु धरि देवा। करहिं सिद्ध मुनि प्रभु कै सेवा॥2॥",
+          "बरषहिं जलद भूमि निअराएँ। जथा नवहिं बुध बिद्या पाएँ।",
+          "अर्क जवास पात बिनु भयऊ। जस सुराज खल उद्यम गयऊ॥",
+          "खोजत कतहुँ मिलइ नहिं धूरी। करइ क्रोध जिमि धरमहि दूरी॥2॥",
+          "उदित अगस्ति पंथ जल सोषा। जिमि लोभहिं सोषइ संतोषा॥",
+          "सरिता सर निर्मल जल सोहा। संत हृदय जस गत मद मोहा॥2॥",
+          "गुंजत मधुकर मुखर अनूपा। सुंदर खग रव नाना रूपा॥",
+          "कतहुँ रहउ जौं जीवति होई। तात जतन करि आनउँ सोई॥",
+          "सुग्रीवहुँ सुधि मोरि बिसारी। पावा राज कोस पुर नारी॥2॥",
+          "सुनि सुग्रीवँ परम भय माना। बिषयँ मोर हरि लीन्हेउ ग्याना॥",
+          "अब मारुतसुत दूत समूहा। पठवहु जहँ तहँ बानर जूहा॥2॥",
+          "सुनु हनुमंत संग लै तारा। करि बिनती समुझाउ कुमारा॥",
+          "तारा सहित जाइ हनुमाना। चरन बंदि प्रभु सुजस बखाना॥2॥",
+          "बिषय बस्य सुर नर मुनि स्वामी॥ मैं पावँर पसु कपि अति कामी॥",
+          "नारि नयन सर जाहि न लागा। घोर क्रोध तम निसि जो जागा॥2॥",
+          "अस कपि एक न सेना माहीं। राम कुसल जेहि पूछी नाहीं॥",
+          "यह कछु नहिं प्रभु कइ अधिकाई। बिस्वरूप ब्यापक रघुराई॥2॥",
+          "भानु पीठि सेइअ उर आगी। स्वामिहि सर्ब भाव छल त्यागी॥2॥",
+          "लागि तृषा अतिसय अकुलाने। मिलइ न जल घन गहन भुलाने॥",
+          "मन हनुमान् कीन्ह अनुमाना। मरन चहत सब बिनु जल पाना॥2॥",
+          "मज्जनु कीन्ह मधुर फल खाए। तासु निकट पुनि सब चलि आए॥",
+          "तेहिं सब आपनि कथा सुनाई। मैं अब जाब जहाँ रघुराई॥2॥",
+          "कह अंगद लोचन भरि बारी। दुहुँ प्रकार भइ मृत्यु हमारी॥",
+          "इहाँ न सुधि सीता कै पाई। उहाँ गएँ मारिहि कपिराई॥2॥",
+          "आजु सबहि कहँ भच्छन करऊँ। दिन हबु चले अहार बिनु मरऊँ॥",
+          "कबहुँ न मिल भरि उदर अहारा। आजु दीन्ह बिधि एकहिं बारा॥2॥",
+          "तेज न सहि सक सो फिरि आवा। मैं अभिमानी रबि निअरावा॥",
+          "जरे पंख अति तेज अपारा। परेउँ भूमि करि घोर चिकारा॥2॥",
+          "पापिउ जाकर नाम सुमिरहीं। अति अपार भवसागर तरहीं॥",
+          "तासु दूत तुम्ह तजि कदराई राम हृदयँ धरि करहु उपाई॥2॥",
+          "पवन तनय बल पवन समाना। बुधि बिबेक बिग्यान निधाना॥2॥"
+        ],
+        "linesTransliteration": [
+          "brahmāmbhōdhisamudbhavaṃ kalimalapradhvaṃsanaṃ cāvyayaṃ",
+          "śrīmacchambhumukhēndusundaravarē saṃśōbhitaṃ sarvadā.",
+          "saṃsārāmayabhēṣajaṃ sukhakaraṃ śrījānakījīvanaṃ",
+          "dhanyāstē kṛtinaḥ pibanti satataṃ śrīrāmanāmāmṛtam..2..",
+          "mukti janma mahi jāni gyāna khāni agha hāni kara",
+          "jahaom basa saṃbhu bhavāni sō kāsī sēia kasa na..",
+          "jarata sakala sura bṛṃda biṣama garala jēhiṃ pāna kiya.",
+          "tēhi na bhajasi mana maṃda kō kṛpāla saṃkara sarisa..",
+          "ati sabhīta kaha sunu hanumānā. puruṣa jugala bala rūpa nidhānā..",
+          "dhari baṭu rūpa dēkhu taiṃ jāī. kahēsu jāni jiyaom sayana bujhāī..",
+          "ihāom hari nisicara baidēhī. bipra phirahiṃ hama khōjata tēhī..",
+          "āpana carita kahā hama gāī. kahahu bipra nija kathā bujhāī..",
+          "ēku maiṃ maṃda mōhabasa kuṭila hṛdaya agyāna.",
+          "puni prabhu mōhi bisārēu dīnabaṃdhu bhagavāna..2..",
+          "tā para maiṃ raghubīra dōhāī. jānau nahiṃ kachu bhajana upāī..",
+          "tēhi sana nātha mayatrī kījē. dīna jāni tēhi abhaya karījē..",
+          "sō sītā kara khōja karāihi. jahaom tahaom marakaṭa kōṭi paṭhāihi..",
+          "maṃtrinha sahita ihāom ēka bārā. baiṭha rahēu maiṃ karata bicārā..",
+          "gagana paṃtha dēkhī maiṃ jātā. parabasa parī bahuta bilapātā..",
+          "ardha rāti pura dvāra pukārā. bālī ripu bala sahai na pārā..",
+          "dhāvā bāli dēkhi sō bhāgā. maiṃ puni gayau baṃdhu saomga lāgā..",
+          "jinha kēṃ asi mati sahaja na āī. tē saṭha kata haṭhi karata mitāī..",
+          "kupatha nivāri supaṃtha calāvā. guna pragaṭē avagunanhi durāvā..",
+          "taba sugrīva bikala hōi bhāgā. muṣṭi prahāra bajra sama lāgā..",
+          "maiṃ jō kahā raghubīra kṛpālā. baṃdhu na hōi mōra yaha kālā..",
+          "puni puni citai carana cita dīnhā. suphala janma mānā prabhu cīnhā..",
+          "hṛdayaom prīti mukha bacana kaṭhōrā. bōlā citai rāma kī ōrā..",
+          "janma janma muni jatanu karāhīṃ. aṃta rāma kahi āvata nāhīṃ..",
+          "jāsu nāma bala saṃkara kāsī. dēta sabahi sama gati avināsī..",
+          "aba nātha kari karunā bilōkahu dēhu jō bara māgaūom.",
+          "jēhiṃ jōni janmauṃ karma basa tahaom rāma pada anurāgaūom..",
+          "yaha tanaya mama sama binaya bala kalyānaprada prabhu lījiai.",
+          "gahi bāhaom sura nara nāha āpana dāsa aṃgada kījiai..2..",
+          "tārā bikala dēkhi raghurāyā . dīnha gyāna hari līnhī māyā..",
+          "chiti jala pāvaka gagana samīrā. paṃca racita ati adhama sarīrā..",
+          "sōi sugrīva kīnha kapirāū. ati kṛpāla raghubīra subhāū..",
+          "dēkhi manōhara saila anūpā. rahē tahaom anuja sahita surabhūpā..",
+          "madhukara khaga mṛga tanu dhari dēvā. karahiṃ siddha muni prabhu kai sēvā..",
+          "baraṣahiṃ jalada bhūmi niarāēom. jathā navahiṃ budha bidyā pāēom..",
+          "būomda aghāta sahahiṃ giri kaiṃsēṃ . khala kē bacana saṃta saha jaisēṃ..",
+          "arka jabāsa pāta binu bhayaū. jasa surāja khala udyama gayaū..",
+          "khōjata katahu milai nahiṃ dhūrī. karai krōdha jimi dharamahi dūrī..",
+          "udita agasti paṃtha jala sōṣā. jimi lōbhahi sōṣai saṃtōṣā..",
+          "saritā sara nirmala jala sōhā. saṃta hṛdaya jasa gata mada mōhā..",
+          "guṃjata madhukara mukhara anūpā. suṃdara khaga rava nānā rūpā..",
+          "cakrabāka mana dukha nisi paikhī. jimi durjana para saṃpati dēkhī..",
+          "katahu rahau jauṃ jīvati hōī. tāta jatana kari ānēu sōī..",
+          "sugrīvahu sudhi mōri bisārī. pāvā rāja kōsa pura nārī..",
+          "suni sugrīvaom parama bhaya mānā. biṣayaom mōra hari līnhēu gyānā..",
+          "aba mārutasuta dūta samūhā. paṭhavahu jahaom tahaom bānara jūhā..",
+          "sunu hanumaṃta saṃga lai tārā. kari binatī samujhāu kumārā..",
+          "tārā sahita jāi hanumānā. carana baṃdi prabhu sujasa bakhānā..",
+          "biṣaya basya sura nara muni svāmī. maiṃ pāvaomra pasu kapi ati kāmī..",
+          "nāri nayana sara jāhi na lāgā. ghōra krōdha tama nisi jō jāgā..",
+          "asa kapi ēka na sēnā māhīṃ. rāma kusala jēhi pūchī nāhīṃ..",
+          "mana krama bacana sō jatana bicārēhu. rāmacaṃdra kara kāju saomvārēhu..",
+          "bhānu pīṭhi sēia ura āgī. svāmihi sarba bhāva chala tyāgī..",
+          "lāgi tṛṣā atisaya akulānē. milai na jala ghana gahana bhulānē..",
+          "mana hanumāna kīnha anumānā. marana cahata saba binu jala pānā..",
+          "majjanu kīnha madhura phala khāē. tāsu nikaṭa puni saba cali āē..",
+          "tēhiṃ saba āpani kathā sunāī. maiṃ aba jāba jahāom raghurāī..",
+          "kaha aṃgada lōcana bhari bārī. duhu prakāra bhai mṛtyu hamārī..",
+          "ihāom na sudhi sītā kai pāī. uhāom gaēom mārihi kapirāī..",
+          "āju sabahi kahaom bhacchana karaūom. dina bahu calē ahāra binu maraūom..",
+          "kabahu na mila bhari udara ahārā. āju dīnha bidhi ēkahiṃ bārā..",
+          "tēja na sahi saka sō phiri āvā . mai abhimānī rabi niarāvā ..",
+          "jarē paṃkha ati tēja apārā . parēu bhūmi kari ghōra cikārā ..",
+          "pāpiu jā kara nāma sumirahīṃ. ati apāra bhavasāgara tarahīṃ..",
+          "tāsu dūta tumha taji kadarāī. rāma hṛdayaom dhari karahu upāī..",
+          "kahai rīchapati sunu hanumānā. kā cupa sādhi rahēhu balavānā..",
+          "pavana tanaya bala pavana samānā. budhi bibēka bigyāna nidhānā.."
+        ],
+        "linesEnglish": [
+          "Blessed are those pious souls who ceaselessly quaff the nectar of Sri Rama’s Name, churned out of the ocean of the Vedas, which completely destroys the sins of the Kali age and knows no decay, which shines ever bright in the most beautiful moon-like mouth of the glorious Sambhu (Lord Siva), a palatable remedy for the disease of transmigration and the very life of Sita (Janaka’s Daughter).",
+          "Why not reside in Kasi (the modern Varanasi), the abode of Sambhu and Bhavani (Goddess Parvati), knowing it to be the birthplace of Mukti (final beatitude), the mine of spiritual wisdom and the destroyer of sins?",
+          "O stupid mind, how is it that you do not worship Him who drank off the deadly venom (churned out of the ocean of milk at the dawn of creation), the very presence of which was burning all the host of gods? Who else is so merciful as Lord Sankara?",
+          "“Listen, Hanuman: those two men are repositories of strength and beauty. Disguised as a Brahmana student go and see them and perceiving their intention in your mind inform me accordingly by means of signs.",
+          "-the daughter of King Videha, who has been carried away by some demon here. It is in quest of her that we are moving about, O holy Brahmana. We have furnished you with our account in some detail; now tell us your story in a comprehensive manner, O good Brahmana.”",
+          "“In the first place I am dull-witted and deluded, wicked at heart and ignorant; to crown all, my master, who is a befriender of the humble and is no other than the almighty Lord Himself, had forgotten me.”",
+          "sēvaka suta pati mātu bharōsēṃ. rahai asōca banai prabhu pōsēṃ..",
+          "On top of it, I swear by the Hero of Raghu’s line, I know neither adoration nor any other means (of pleasing You). A servant depends on his master and a child on its mother and both remain free from anxiety; for a master needs must take care of his servant.”",
+          "Make friends with him, my lord; knowing him to be in affliction rid him of all fear. He will have Sita tracked by drafting millions of monkeys in every direction (in search of Her).”",
+          "On one occasion when I sat here deliberating with my counsellors I saw her fallen in the enemy’s hands and being borne through the air loudly wailing.",
+          "At dead of night he called out at the gate of the town. Vali could not brook his enemy’s challenge to a bout and sallied forth to meet him. But when he saw Vali coming, he took to flight. I too had accompanied my brother.",
+          "Those fools who are not of such a temperament presume in vain to make friends with anybody. A friend should restrain his companion from the evil path and lead him on the path of virtue; he should proclaim the latter’s good points and screen his faults,-",
+          "Sugriva now fled in dismay (and returned to Sri Rama); the stroke of his clenched fist had fallen on him as a bolt from heaven. “What did I say, O gracious Hero of Raghu’s line? This is no brother of mine but Death himself.”",
+          "Gazing on Him again and again he fixed his heart on His feet; now that he recognized the Lord he felt that he had realized the reward of his birth. Although his heart was full of love, the words on his lips were harsh; looking towards Sri Rama he said,",
+          "Said Vali, “Listen, O Ocean of Mercy: sages continue their efforts (for God-Realization) during successive births; but at the last moment they fail to utter the name ‘Rama’. But He, on the strength of whose Name Lord Sankara bestows immortality on all alike,-",
+          "Now, my lord, look upon me with compassion and grant me the boon that I ask; in whatever species of life it may be my fate to be born, I may continue to love Sri Rama’s (Your) feet. This son of mine, Angada by name, is my equal in training and strength. O Bestower of Blessedness; therefore, accept him, my master; and holding him by the arm, O Lord of gods and men, treat him as Your servant.”",
+          "When the Lord of Raghus saw her distress, He imparted to her wisdom and dispelled her delusion. “Made up of the five elements, viz., earth, water, fire, ether and air, this body is extremely vile.",
+          "bāli trāsa byākula dina rātī. tana bahu brana ciṃtāom jara chātī..",
+          "The same Sugriva who trembled day and night in fear of Vali, who had many a sore on his body and whose breast ever burnt with the fire of anxiety, was made the king of monkeys! The Hero of Raghu’s line is extremely compassionate by nature.",
+          "Seeing the mountain incomparable in its charms Sri Rama, the suzerain Lord of gods, stayed there with His younger brother. Taking the form of bees, birds and beasts, gods, Siddhas and hermits did service to the Lord.",
+          "The pouring clouds cleave close to the ground even as the learned stoop beneath accumulated lore. The mountains endure the buffeting of showers even as a saint would put up with the taunts of the wicked.",
+          "The leaves of the aka and Javasa plants have fallen off even as under a good government the plans of the wicked come to naught. Dust cannot be found even if one searches for it, just as piety is scared away by anger.",
+          "The constellation known by the name of Agastya (Canopus) has appeared and dried up the water on the roads even as contentment swallows greed. The limpid water of the rivers and lakes looks charming as a saint’s heart devoid of pride and infatuation.",
+          "The bees are making a humming sound which possesses a unique melody of its own, and the birds a charming concert of diverse sounds. The Cakravaka (Ruddy shelduck) bird is sad at heart to see the night, just as a villain is grieved at the sight of another’s fortune.",
+          "Wherever she may be, if only she is still alive I would make an effort to rescue her, dear brother. Sugriva too has forgotten me now that he has got a kingdom, a treasury, the amenities of city life and his own spouse.",
+          "Sugriva felt much alarmed to hear the words of Hanuman. “Sensuality has robbed me of my senses. Now, O son of the wind-god, troops of monkeys are scattered here and there: send batches of messengers to them-",
+          "“Listen, Hanuman: take Tara with you and with suppliant prayers appease the prince (Laksmana).” Hanuman accordingly went with Queen Tara and bowing at Laksmana’s feet recounted the Lord’s glory.",
+          "Gods, men and sages, my master, are all slaves of their senses; while I am a vile brute and a monkey, the most libidinous of animals. A man who is not pierced by the shaft of a woman’s glances, nay, who remains wakeful even in the dark night of anger (who is not swayed by passion)-",
+          "yaha kachu nahiṃ prabhu kai adhikāī. bisvarūpa byāpaka raghurāī..",
+          "In the whole host there was no monkey whose welfare Sri Rama did not personally enquire. This was no miracle for my master, the Lord of Raghus, who has taken all forms and is omnipresent.",
+          "Use every faculty of yours to devise some means of tracing Her and thereby accomplish the object of Sri Ramacandra. (For warming oneself) one should wait upon the sun turning one’s back towards the same, while fire should be waited upon turning one’s breast towards it; but a master must be served with one’s whole being (in thought, word and deed) without resorting to any wiles.",
+          "Presently they felt much oppressed with thirst; but water could be found nowhere and they also lost their way in the dense forest. Hanuman thought to himself that without water to drink all would die.",
+          "They bathed and took some delicious fruits and all came once more to her. She related to them her own story from the beginning to the end and added, “I will now go and see the Lord of Raghus.",
+          "Said Angada with eyes full of tears, “It is death for us both ways. Here we have failed to get tidings of Sita and if we go home King Sugriva (the lord of monkeys) will behead us.",
+          "I will devour them all today. I have been starving for many days past and have never had a full meal; today God has supplied me with abundant food all at a time.”",
+          "Jatayu could not bear the heat of the sun and came back; but I in my pride advanced nearer the sun. My wings were scorched with the inordinate heat and I fell to the ground with a fearful scream.",
+          "Even sinners who invoke Sri Rama’s Name are able to cross the vast and boundless ocean of mundane existence. You, therefore, who are His spies, should never lose nerve but be up and doing with the image of Sri Rama enshrined in your heart.”",
+          "The king of bears then turned towards Hanuman: “Listen, O mighty Hanuman: how is it that you are keeping mum? A son of the wind-god, you are as strong as your father and are a storehouse of intelligence, discretion and spiritual wisdom."
+        ]
+      }
+    ],
+    "chapterId": "kand-किष्किन्धाकाण्ड",
+    "chapterName": "किष्किन्धाकाण्ड",
+    "verseNumber": 2
+  },
+  {
+    "id": "ramcharitmanas-kand-4-doha-3",
+    "collectionId": "ramcharitmanas",
+    "index": 711,
+    "titleDevanagari": "रामचरितमानस, किष्किन्धाकाण्ड, दोहा/चौपाई 3",
+    "author": "गोस्वामी तुलसीदास",
+    "slug": "ramcharitmanas-kand-4-doha-3",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "पठए बालि होहिं मन मैला। भागौं तुरत तजौं यह सैला॥",
+          "बिप्र रूप धरि कपि तहँ गयऊ। माथ नाइ पूछत अस भयऊ॥3॥",
+          "प्रभु पहिचानि परेउ गहि चरना। सो सुख उमा जाइ नहिं बरना॥",
+          "पुलकित तन मुख आव न बचना। देखत रुचिर बेष कै रचना॥3॥",
+          "अस कहि परेउ चरन अकुलाई। निज तनु प्रगटि प्रीति उर छाई॥",
+          "तब रघुपति उठाई उर लावा। निज लोचन जल सींचि जुड़ावा॥3॥",
+          "॥ दोहा ॥",
+          "सो अनन्य जाकें असि मति न टरइ हनुमंत।",
+          "मैं सेवक सचराचर रूप स्वामि भगवंत॥3॥",
+          "एहि बिधि सकल कथा समुझाई। लिए दुऔ जन पीठि चढ़ाई॥",
+          "जब सुग्रीवँ राम कहुँ देखा। अतिसय जन्म धन्य करि लेखा॥3॥",
+          "राम राम हा राम पुकारी। हमहि देखि दीन्हेउ पट डारी॥",
+          "मागा राम तुरत तेहिं दीन्हा। पट उर लाइ सोच अति कीन्हा॥3॥",
+          "परिखेसु मोहि एक पखवारा। नहिं आवौं तब जानेसु मारा॥3॥",
+          "देत लेत मन संक न धरई। बल अनुमान सदा हित करई॥",
+          "एक रूप तुम्ह भ्राता दोऊ तेहि भ्रम तें नहिं मारेउँ सोऊ॥",
+          "मैं बैरी सुग्रीव पिआरा। अवगुन कवन नाथ मोहि मारा॥3॥",
+          "मम लोचन गोचर सोई आवा। बहुरि कि प्रभु अस बनिहि बनावा॥3॥",
+          "प्रगट सो तनु तव आगे सोवा। जीव नित्य केहि लगि तुम्ह रोवा॥",
+          "उपजा ग्यान चरन तब लागी। लीन्हेसि परम भगति बर मागी॥3॥",
+          "जानतहूँ अस प्रभु परिहरहीं। काहे न बिपति जाल नर परहीं॥",
+          "पुनि सुग्रीवहि लीन्ह बोलाई। बहु प्रकार नृपनीति सिखाई॥3॥",
+          "मंगलरूप भयउ बन तब ते। कीन्ह निवास रमापति जब ते॥",
+          "फटिक सिला अति सुभ्र सुहाई। सुख आसीन तहाँ द्वौ भाई॥3॥",
+          "छुद्र नदीं भरि चलीं तोराई। जस थोरेहुँ धन खल इतराई॥",
+          "भूमि परत भा ढाबर पानी। जनु जीवहि माया लपटानी॥3॥",
+          "ससि संपन्न सोह महि कैसी। उपकारी कै संपति जैसी॥",
+          "रस रस सूख सरित सर पानी। ममता त्याग करहिं जिमि ग्यानी॥",
+          "जानि सरद रितु खंजन आए। पाइ समय जिमि सुकृत सुहाए॥3॥",
+          "चातक रटत तृषा अति ओही। जिमि सुख लहइ न संकर द्रोही॥",
+          "सरदातप निसि ससि अपहरई। संत दरस जिमि पातक टरई॥3॥",
+          "जेहिं सायक मारा मैं बाली। तेहिं सर हतौं मूढ़ कहँ काली॥",
+          "जासु कृपाँ छूटहिं मद मोहा। ता कहुँ उमा कि सपनेहुँ कोहा॥3॥",
+          "करि बिनती मंदिर लै आए। चरन पखारि पलँग बैठाए॥",
+          "तब कपीस चरनन्हि सिरु नावा। गहि भुज लछिमन कंठ लगावा॥3॥",
+          "लोभ पाँस जेहिं गर न बँधाया। सो नर तुम्ह समान रघुराया॥",
+          "यह गुन साधन तें नहिं होई। तुम्हरी कृपा पाव कोइ कोई॥3॥",
+          "ठाढ़े जहँ तहँ आयसु पाई। कह सुग्रीव सबहि समुझाई॥",
+          "राम काजु अरु मोर निहोरा। बानर जूथ जाहु चहुँ ओरा॥3॥",
+          "तजि माया सेइअ परलोका। मिटहिं सकल भवसंभव सोका॥",
+          "चढ़ि गिरि सिखर चहूँ दिसि देखा। भूमि बिबर एक कौतुक पेखा॥",
+          "चक्रबाक बक हंस उड़ाहीं। बहुतक खग प्रबिसहिं तेहि माहीं॥3॥",
+          "मूदहु नयन बिबर तजि जाहू। पैहहु सीतहि जनि पछिताहू॥",
+          "नयन मूदि पुनि देखहिं बीरा। ठाढ़े सकल सिंधु कें तीरा॥3॥",
+          "पुनि पुनि अंगद कह सब पाहीं। मरन भयउ कछु संसय नाहीं॥3॥",
+          "डरपे गीध बचन सुनि काना। अब भा मरन सत्य हम जाना॥",
+          "कपि सब उठे गीध कहँ देखी। जामवंत मन सोच बिसेषी॥3॥",
+          "मुनि एक नाम चंद्रमा ओही। लागी दया देखि करि मोही॥",
+          "बहु प्रकार तेहिं ग्यान सुनावा। देहजनित अभिमान छुड़ावा॥3॥",
+          "कवन सो काज कठिन जग माहीं। जो नहिं होइ तात तुम्ह पाहीं॥",
+          "राम काज लगि तव अवतारा। सुनतहिं भयउ पर्बताकारा॥3॥"
+        ],
+        "linesTransliteration": [
+          "paṭhaē bāli hōhiṃ mana mailā. bhāgauṃ turata tajauṃ yaha sailā..",
+          "bipra rūpa dhari kapi tahaom gayaū. mātha nāi pūchata asa bhayaū..",
+          "prabhu pahicāni parēu gahi caranā. sō sukha umā nahiṃ baranā..",
+          "pulakita tana mukha āva na bacanā. dēkhata rucira bēṣa kai racanā..",
+          "asa kahi parēu carana akulāī. nija tanu pragaṭi prīti ura chāī..",
+          "taba raghupati uṭhāi ura lāvā. nija lōcana jala sīṃci juḍaāvā..",
+          "sō ananya jākēṃ asi mati na ṭarai hanumaṃta.",
+          "maiṃ sēvaka sacarācara rūpa svāmi bhagavaṃta..3..",
+          "ēhi bidhi sakala kathā samujhāī. liē duau jana pīṭhi caḍhaāī..",
+          "jaba sugrīvaom rāma kahu dēkhā. atisaya janma dhanya kari lēkhā..",
+          "rāma rāma hā rāma pukārī. hamahi dēkhi dīnhēu paṭa ḍārī..",
+          "māgā rāma turata tēhiṃ dīnhā. paṭa ura lāi sōca ati kīnhā..",
+          "giribara guhāom paiṭha sō jāī. taba bālīṃ mōhi kahā bujhāī..",
+          "parikhēsu mōhi ēka pakhavārā. nahiṃ āvauṃ taba jānēsu mārā..",
+          "dēta lēta mana saṃka na dharaī. bala anumāna sadā hita karaī..",
+          "bipati kāla kara sataguna nēhā. śruti kaha saṃta mitra guna ēhā..",
+          "ēkarūpa tumha bhrātā dōū. tēhi bhrama tēṃ nahiṃ mārēu sōū..",
+          "kara parasā sugrīva sarīrā. tanu bhā kulisa gaī saba pīrā..",
+          "maiṃ bairī sugrīva piārā. avaguna kabana nātha mōhi mārā..",
+          "mama lōcana gōcara sōi āvā. bahuri ki prabhu asa banihi banāvā..",
+          "pragaṭa sō tanu tava āgēṃ sōvā. jīva nitya kēhi lagi tumha rōvā..",
+          "upajā gyāna carana taba lāgī. līnhēsi parama bhagati bara māgī..",
+          "jānatahu asa prabhu pariharahīṃ. kāhē na bipati jāla nara parahīṃ..",
+          "puni sugrīvahi līnha bōlāī. bahu prakāra nṛpanīti sikhāī..",
+          "maṃgalarupa bhayau bana taba tē . kīnha nivāsa ramāpati jaba tē..",
+          "phaṭika silā ati subhra suhāī. sukha āsīna tahāom dvau bhāī..",
+          "chudra nadīṃ bhari calīṃ tōrāī. jasa thōrēhu dhana khala itarāī..",
+          "bhūmi parata bhā ḍhābara pānī. janu jīvahi māyā lapaṭānī..",
+          "sasi saṃpanna sōha mahi kaisī. upakārī kai saṃpati jaisī..",
+          "nisi tama ghana khadyōta birājā. janu daṃbhinha kara milā samājā..",
+          "rasa rasa sūkha sarita sara pānī. mamatā tyāga karahiṃ jimi gyānī..",
+          "jāni sarada ritu khaṃjana āē. pāi samaya jimi sukṛta suhāē..",
+          "cātaka raṭata tṛṣā ati ōhī. jimi sukha lahai na saṃkaradrōhī..",
+          "saradātapa nisi sasi apaharaī. saṃta darasa jimi pātaka ṭaraī..",
+          "jēhiṃ sāyaka mārā maiṃ bālī. tēhiṃ sara hatauṃ mūḍha kahaom kālī..",
+          "jāsu kṛpāom chūṭahīṃ mada mōhā. tā kahu umā ki sapanēhu kōhā..",
+          "kahahu pākha mahu āva na jōī. mōrēṃ kara tā kara badha hōī..",
+          "taba hanumaṃta bōlāē dūtā. saba kara kari sanamāna bahūtā..",
+          "kari binatī maṃdira lai āē. carana pakhāri palaomga baiṭhāē..",
+          "taba kapīsa carananhi siru nāvā. gahi bhuja lachimana kaṃṭha lagāvā..",
+          "lōbha pāomsa jēhiṃ gara na baomdhāyā. sō nara tumha samāna raghurāyā..",
+          "yaha guna sādhana tēṃ nahiṃ hōī. tumharī kṛpāom pāva kōi kōī..",
+          "ṭhāḍhaē jahaom tahaom āyasu pāī. kaha sugrīva sabahi samujhāī..",
+          "rāma kāju aru mōra nihōrā. bānara jūtha jāhu cahu ōrā..",
+          "taji māyā sēia paralōkā. miṭahiṃ sakala bhava saṃbhava sōkā..",
+          "dēha dharē kara yaha phalu bhāī. bhajia rāma saba kāma bihāī..",
+          "caḍhai giri sikhara cahūom disi dēkhā. bhūmi bibira ēka kautuka pēkhā..",
+          "cakrabāka baka haṃsa uḍaāhīṃ. bahutaka khaga prabisahiṃ tēhi māhīṃ..",
+          "mūdahu nayana bibara taji jāhū. paihahu sītahi jani pachitāhū..",
+          "nayana mūdi puni dēkhahiṃ bīrā. ṭhāḍhaē sakala siṃdhu kēṃ tīrā..",
+          "pitā badhē para mārata mōhī. rākhā rāma nihōra na ōhī..",
+          "puni puni aṃgada kaha saba pāhīṃ. marana bhayau kachu saṃsaya nāhīṃ..",
+          "ḍarapē gīdha bacana suni kānā. aba bhā marana satya hama jānā..",
+          "kapi saba uṭhē gīdha kahaom dēkhī. jāmavaṃta mana sōca bisēṣī..",
+          "muni ēka nāma caṃdramā ōhī. lāgī dayā dēkhī kari mōhī..",
+          "bahu prakāra tēṃhi gyāna sunāvā . dēhi janita abhimānī chaḍaāvā ..",
+          "asa kahi garuḍa gīdha jaba gayaū. tinha kēṃ mana ati bisamaya bhayaū..",
+          "nija nija bala saba kāhūom bhāṣā. pāra jāi kara saṃsaya rākhā..",
+          "kavana sō kāja kaṭhina jaga māhīṃ. jō nahiṃ hōi tāta tumha pāhīṃ..",
+          "rāma kāja lagi taba avatārā. sunatahiṃ bhayau parvatākārā.."
+        ],
+        "linesEnglish": [
+          "If they have been despatched by the malicious Vali, I must leave this hill and flee away at once.” Taking the form of a Brahmana the monkey (Hanuman) went up to the two brothers and bowing his head accosted them thus:-",
+          "Now Hanuman recognized his lord and falling to the ground clasped His feet. That joy, Uma, was more than could be described. A thrill ran through his body and no words came to his lips as he gazed on the lovely style of their dress.",
+          "So saying he fell at the Lord’s feet much agitated; his heart was overwhelmed with love and he manifested his own (monkey) form. The Lord of Raghus then lifted and clasped him to His bosom and soothed him by wetting him with the tears of His eyes.",
+          "And he alone, Hanuman, is exclusively devoted to Me, who is steadfast in his conviction that he is the servant and that the Lord manifested in the form of the whole animate and inanimate creation is his master.”",
+          "Having thus explained to Him everything, he lifted both the brothers on his back (and took them to the place where Sugriva was). When Sugriva saw Sri Rama, he accounted his birth as highly blessed.",
+          "Crying ‘Rama, Rama, Ah! my Rama’ she dropped her scarf when she saw us.” When Sri Rama asked for that he handed it over to Him at once. Sri Rama pressed it to His bosom and grieved much.",
+          "The enemy went and entered the cave of a big mountain. Then Vali gave instructions to me, “Await my return till a fortnight. If I do not return, then take me as slain.”",
+          "-should give and take things without any scruple and serve his friend’s interest to the best of his ability and finding him in distress love him a hundred times more than ever. The Vedas declare these to be the qualities of a noble friend.",
+          "“You two brothers are identical in appearance; it was because of this confusion that I did not kill him.” He stroked Sugriva’s body with His hand and Io ! It became as hard as adamant and all his pain was gone.",
+          "dharma hētu avatarēhu gōsāī. mārēhu mōhi byādha kī nāī..",
+          "“Even though, my lord, You descended on earth for upholding righteousness. You have killed me as a hunter would kill a wild beast. I, Your enemy and Sugriva, Your dear friend! For what fault did You take my life,",
+          "-has appeared in a visible form before my very eyes! Shall I ever get such a golden opportunity again?",
+          "The mortal frame lies, buried in eternal sleep before your eyes, while the soul is everlasting. For whom, then, do you lament?” The light of wisdom dawned on her and now she embraced His feet and asked of Him the boon of supreme Devotion.",
+          "No wonder that men who knowingly abandon such a lord should be caught in the meshes of calamity. The Lord then sent for Sugriva and instructed him in the various principles of statecraft.",
+          "The forest became a picture of felicity from the time Sri Rama, the Lord of Laksmi (the goddess of prosperity), took up His residence there. There was a delightful and glistening rock of crystal, on which the two brothers sat at ease.",
+          "The swelling streamlets rush with great speed just as the wicked would feel elated even with a small fortune. The water becomes turbid the moment it descends on earth, even as the Jiva (an embodied soul) is enveloped in Maya as soon as born.",
+          "The earth rich with crops appears as delightful as the wealth of a generous man. In the thick darkness of the night fireflies gleam like a mustered band of hypocrites.",
+          "Drop by drop the water of the streams and lakes is drying up even as the wise shake off the possessive instinct. Knowing that the autumn had set in the Khanjana bird has made its appearance, just as the welcome fruit of one’s meritorious deeds appears at the appointed time (neither sooner nor later).",
+          "The Cataka (Common Hawk-Cuckoo) cries out in its agony of excessive thirst just as an enemy of Sankara knows no rest. The moon by night relieves the heat of the autumnal sun, just as the sight of a holy man drives away sin.",
+          "I will shoot the fool tomorrow with the same arrow which I used in killing Vali.” (Says Sankara) He whose very grace rids one of pride and infatuation, could He ever dream of being angry, Uma ?",
+          "and have it proclaimed that anyone who fails to appear before me within a fortnight shall meet his death at my hands.” Thereupon Hanuman sent for envoys and receiving them most politely-",
+          "With much supplication, he escorted the prince to the palace and after laving his feet seated him on a couch. Then the monkey lord (Sugriva) bowed his head at the prince’s feet, while Laksmana took him by the arm and hugged him.",
+          "and who is never caught in the meshes of greed, is as good as Yourself, O Lord of Raghus. It is a virtue which cannot be attained by personal endeavour; it is only by Your grace that one here and one there can acquire it.”",
+          "They stood in martial array as ordered and King Sugriva thus instructed them all: “I exhort and commission you to do Sri Rama’s work. Therefore, O monkey hosts, go forth in every direction",
+          "Similarly one should strive for (lasting happiness in) the other world by discarding the unrealities of the world. In this way all one’s woes incident to birth and death are eradicated. The consummation of human birth, brethren, lies in worshipping Sri Rama in a disinterested spirit.",
+          "Climbing a hill-top he looked all round and noticing a cavity in the ground saw a strange phenomenon there. Cakravakas, herons and swans hovered at its mouth and a number of other birds were making their way into it.",
+          "Close your eyes and you will find yourself outside the cavern. You shall find Sita; you need not feel remorse.” The champions closed their eyes and looking again, they found themselves standing on the sea-shore.",
+          "He would have finished me immediately my father was killed, had not Sri Rama protected me; hence I owe no gratitude to him.” Again and again Angada told them all, “Our death has arrived: there is no doubt about it.”",
+          "The monkeys trembled with fear to hear the vulture’s words. “Our doom is now sealed, we are sure,” they said to themselves. All the monkeys rose when they saw the vulture; while Jambavan felt much perturbed at heart.",
+          "A sage, Candrama by name, (who lived there) was moved with compassion when he saw me. He taught me spiritual wisdom in many ways and rid me of my identification with the body.",
+          "So saying, O Garuda! Continues Kakabhusundi the vulture departed, leaving them much amazed at heart. Now each one of the monkeys talked of his own strength, but doubted his ability to leap across.",
+          "What undertaking in this world is too difficult for you to accomplish, dear child? It is for the service of Sri Rama that you have come down upon earth.” The moment Hanuman heard these words he grew to the size of a mountain,"
+        ]
+      }
+    ],
+    "chapterId": "kand-किष्किन्धाकाण्ड",
+    "chapterName": "किष्किन्धाकाण्ड",
+    "verseNumber": 3
+  },
+  {
+    "id": "ramcharitmanas-kand-4-doha-4",
+    "collectionId": "ramcharitmanas",
+    "index": 712,
+    "titleDevanagari": "रामचरितमानस, किष्किन्धाकाण्ड, दोहा/चौपाई 4",
+    "author": "गोस्वामी तुलसीदास",
+    "slug": "ramcharitmanas-kand-4-doha-4",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "कठिन भूमि कोमल पद गामी। कवन हेतु बिचरहु बन स्वामी॥4॥",
+          "पुनि धीरजु धरि अस्तुति कीन्ही। हरष हृदयँ निज नाथहि चीन्ही॥",
+          "सुनु कपि जियँ मानसि जनि ऊना। तैं मम प्रिय लछिमन ते दूना॥",
+          "समदरसी मोहि कह सब कोऊ। सेवक प्रिय अनन्य गति सोऊ॥4॥",
+          "सादर मिलेउ नाइ पद माथा। भेंटेउ अनुज सहित रघुनाथा॥",
+          "॥ दोहा ॥",
+          "पावक साखी देइ करि जोरी प्रीति दृढ़ाइ॥4॥",
+          "कह सुग्रीव सुनहु रघुबीरा। तजहु सोच मन आनहु धीरा॥",
+          "सब प्रकार करिहउँ सेवकाई। जेहि बिधि मिलिहि जानकी आई॥4॥",
+          "मास दिवस तहँ रहेउँ खरारी। निसरी रुधिर धार तहँ भारी॥",
+          "बालि हतेसि मोहि मारिहि आई। सिला देइ तहँ चलेउँ पराई॥4॥",
+          "आगें कह मृदु बचन बनाई। पाछें अनहित मन कुटिलाई॥",
+          "मेली कंठ सुमन कै माला। पठवा पुनि बल देइ बिसाला॥",
+          "पुनि नाना बिधि भई लराई। बिटप ओट देखहिं रघुराई॥4॥",
+          "अनुज बधू भगिनी सुत नारी। सुनु सठ कन्या सम ए चारी॥",
+          "इन्हहि कुदृष्टि बिलोकइ जोई। ताहि बधें कछु पाप न होई॥4॥",
+          "तब सुग्रीवहि आयसु दीन्हा। मृतक कर्म बिधिवत सब कीन्हा॥4॥",
+          "कह प्रभु सुनु सुग्रीव हरीसा। पुर न जाउँ दस चारि बरीसा॥",
+          "कहत अनुज सन कथा अनेका। भगति बिरत नृपनीति बिबेका॥",
+          "बरषा काल मेघ नभ छाए। गरजत लागत परम सुहाए॥4॥",
+          "समिटि समिटि जल भरहिं तलावा। जिमि सदगुन सज्जन पहिं आवा॥",
+          "सरिता जल जलनिधि महुँ जोई। होइ अचल जिमि जिव हरि पाई॥4॥",
+          "महाबृष्टि चलि फूटि किआरीं। जिमि सुतंत्र भएँ बिगरहिं नारीं॥",
+          "कृषी निरावहिं चतुर किसाना। जिमि बुध तजहिं मोह मद माना॥4॥",
+          "पंक न रेनु सोह असि धरनी। नीति निपुन नृप कै जसि करनी॥",
+          "जल संकोच बिकल भइँ मीना। अबुध कुटुंबी जिमि धनहीना॥4॥",
+          "देखि इंदु चकोर समुदाई। चितवहिं जिमि हरिजन हरि पाई॥",
+          "मसक दंस बीते हिम त्रासा। जिमि द्विज द्रोह किएँ कुल नासा॥4॥",
+          "जानहिं यह चरित्र मुनि ग्यानी। जिन्ह रघुबीर चरन रति मानी॥",
+          "भय अरु प्रीति नीति देखराई। चले सकल चरनन्हि सिर नाई॥",
+          "एहि अवसर लछिमन पुर आए। क्रोध देखि जहँ तहँ कपि धाए॥4॥",
+          "नाथ विषय सम मद कछु नाहीं। मुनि मन मोह करइ छन माहीं।",
+          "सुनत बिनीत बचन सुख पावा। लछिमन तेहि बहु बिधि समुझावा॥4॥",
+          "अब सोइ जतनु करह मन लाई। जेहि बिधि सीता कै सुधि पाई॥4॥",
+          "जनकसुता कहुँ खोजहु जाई। मास दिवस महँ आएहु भाई॥",
+          "अवधि मेटि जो बिनु सुधि पाएँ। आवइ बनिहि सो मोहि मराएँ॥4॥",
+          "सोइ गुनग्य सोई बड़भागी। जो रघुबीर चरन अनुरागी॥",
+          "आयसु मागि चरन सिरु नाई। चले हरषि सुमिरत रघुराई॥4॥",
+          "गिरि ते उतरि पवनसुत आवा। सब कहुँ लै सोइ बिबर देखावा॥",
+          "आगें कै हनुमंतहि लीन्हा। पैठे बिबर बिलंबु न कीन्हा॥4॥",
+          "नाना भाँति बिनय तेहिं कीन्हीं। अनपायनी भगति प्रभु दीन्हीं॥4॥",
+          "अंगद बचन सुन कपि बीरा। बोलि न सकहिं नयन बह नीरा॥",
+          "छन एक सोच मगन होइ रहे। पुनि अस बचन कहत सब भए॥4॥",
+          "कह अंगद बिचारि मन माहीं। धन्य जटायू सम कोउ नाहीं॥",
+          "राम काज कारन तनु त्यागी। हरि पुर गयउ परम बड़भागी॥4॥",
+          "त्रेताँ ब्रह्म मनुज तनु धरिही। तासु नारि निसिचर पति हरिही॥",
+          "तासु खोज पठइहि प्रभु दूता। तिन्हहि मिलें तैं होब पुनीता॥4॥",
+          "जरठ भयउँ अब कहइ रिछेसा। नहिं तन रहा प्रथम बल लेसा॥",
+          "जबहिं त्रिबिक्रम भए खरारी। तब मैं तरुन रहेउँ बल भारी॥4॥",
+          "सिंहनाद करि बारहिं बारा। लीलहिं नाघउँ जलनिधि खारा॥4॥"
+        ],
+        "linesTransliteration": [
+          "kō tumha syāmala gaura sarīrā. chatrī rūpa phirahu bana bīrā..",
+          "kaṭhina bhūmi kōmala pada gāmī. kavana hētu bicarahu bana svāmī..",
+          "puni dhīraju dhari astuti kīnhī. haraṣa hṛdayaom nija nāthahi cīnhī..",
+          "mōra nyāu maiṃ pūchā sāīṃ. tumha pūchahu kasa nara kī nāīṃ..",
+          "sunu kapi jiyaom mānasi jani ūnā. taiṃ mama priya lachimana tē dūnā..",
+          "samadarasī mōhi kaha saba kōū. sēvaka priya ananyagati sōū..",
+          "sādara milēu nāi pada māthā. bhaiṃṭēu anuja sahita raghunāthā..",
+          "kapi kara mana bicāra ēhi rītī. karihahiṃ bidhi mō sana ē prītī..",
+          "taba hanumaṃta ubhaya disi kī saba kathā sunāi..",
+          "pāvaka sākhī dēi kari jōrī prītī dṛḍhaāi..4..",
+          "kaha sugrīva sunahu raghubīrā. tajahu sōca mana ānahu dhīrā..",
+          "saba prakāra karihau sēvakāī. jēhi bidhi milihi jānakī āī..",
+          "māsa divasa tahaom rahēu kharārī. nisarī rudhira dhāra tahaom bhārī..",
+          "bāli hatēsi mōhi mārihi āī. silā dēi tahaom calēu parāī..",
+          "āgēṃ kaha mṛdu bacana banāī. pāchēṃ anahita mana kuṭilāī..",
+          "jā kara cita ahi gati sama bhāī. asa kumitra pariharēhi bhalāī..",
+          "mēlī kaṃṭha sumana kai mālā. paṭhavā puni bala dēi bisālā..",
+          "puni nānā bidhi bhaī larāī. biṭapa ōṭa dēkhahiṃ raghurāī..",
+          "anuja badhū bhaginī suta nārī. sunu saṭha kanyā sama ē cārī..",
+          "inhahi kuddaṣṭi bilōkai jōī. tāhi badhēṃ kachu pāpa na hōī..",
+          "umā dāru jōṣita kī nāī. sabahi nacāvata rāmu gōsāī..",
+          "taba sugrīvahi āyasu dīnhā. mṛtaka karma bidhibata saba kīnhā..",
+          "kaha prabhu sunu sugrīva harīsā. pura na jāu dasa cāri barīsā..",
+          "gata grīṣama baraṣā ritu āī. rahihau nikaṭa saila para chāī..",
+          "kahata anuja sana kathā anēkā. bhagati birati nṛpanīti bibēkā..",
+          "baraṣā kāla mēgha nabha chāē. garajata lāgata parama suhāē..",
+          "samiṭi samiṭi jala bharahiṃ talāvā. jimi sadaguna sajjana pahiṃ āvā..",
+          "saritā jala jalanidhi mahu jāī. hōī acala jimi jiva hari pāī..",
+          "mahābṛṣṭi cali phūṭi kiārīṃ . jimi sutaṃtra bhaēom bigarahiṃ nārīṃ..",
+          "kṛṣī nirāvahiṃ catura kisānā. jimi budha tajahiṃ mōha mada mānā..",
+          "paṃka na rēnu sōha asi dharanī. nīti nipuna nṛpa kai jasi karanī..",
+          "jala saṃkōca bikala bhaiom mīnā. abudha kuṭuṃbī jimi dhanahīnā..",
+          "dēkhi iṃdu cakōra samudāī. citavatahiṃ jimi harijana hari pāī..",
+          "masaka daṃsa bītē hima trāsā. jimi dvija drōha kiēom kula nāsā..",
+          "jānahiṃ yaha caritra muni gyānī. jinha raghubīra carana rati mānī..",
+          "lachimana krōdhavaṃta prabhu jānā. dhanuṣa caḍhaāi gahē kara bānā..",
+          "bhaya aru prīti nīti dēkhāī. calē sakala carananhi sira nāī..",
+          "ēhi avasara lachimana pura āē. krōdha dēkhi jahaom tahaom kapi dhāē..",
+          "nātha biṣaya sama mada kachu nāhīṃ. muni mana mōha karai chana māhīṃ..",
+          "sunata binīta bacana sukha pāvā. lachimana tēhi bahu bidhi samujhāvā..",
+          "taba raghupati bōlē musakāī. tumha priya mōhi bharata jimi bhāī..",
+          "aba sōi jatanu karahu mana lāī. jēhi bidhi sītā kai sudhi pāī..",
+          "janakasutā kahu khōjahu jāī. māsa divasa mahaom āēhu bhāī..",
+          "avadhi mēṭi jō binu sudhi pāēom. āvai banihi sō mōhi marāēom..",
+          "sōi gunagya sōī baḍabhāgī . jō raghubīra carana anurāgī..",
+          "āyasu māgi carana siru nāī. calē haraṣi sumirata raghurāī..",
+          "giri tē utari pavanasuta āvā. saba kahu lai sōi bibara dēkhāvā..",
+          "āgēṃ kai hanumaṃtahi līnhā. paiṭhē bibara bilaṃbu na kīnhā..",
+          "sō puni gaī jahāom raghunāthā. jāi kamala pada nāēsi māthā..",
+          "nānā bhāomti binaya tēhiṃ kīnhī. anapāyanī bhagati prabhu dīnhī..",
+          "aṃgada bacana sunata kapi bīrā. bōli na sakahiṃ nayana baha nīrā..",
+          "chana ēka sōca magana hōi rahē. puni asa vacana kahata saba bhaē..",
+          "kaha aṃgada bicāri mana māhīṃ. dhanya jaṭāyū sama kōu nāhīṃ..",
+          "rāma kāja kārana tanu tyāgī . hari pura gayau parama baḍa bhāgī..",
+          "trētāom brahma manuja tanu dharihī. tāsu nāri nisicara pati harihī..",
+          "tāsu khōja paṭhaihi prabhū dūtā. tinhahi milēṃ taiṃ hōba punītā..",
+          "jaraṭha bhayau aba kahai richēsā. nahiṃ tana rahā prathama bala lēsā..",
+          "jabahiṃ tribikrama bhaē kharārī. taba maiṃ taruna rahēu bala bhārī..",
+          "kanaka barana tana tēja birājā. mānahu apara girinha kara rājā..",
+          "siṃhanāda kari bārahiṃ bārā. līlahīṃ nāṣau jalanidhi khārā.."
+        ],
+        "linesEnglish": [
+          "“Who are you, heroes-one of dark hue, the other fair-that roam the woods disguised as Ksatriyas? Treading the hard ground with your tender feet, wherefore are you wandering in the forest, my masters?",
+          "Then recovering himself he sang His praises and was glad at heart to have found his master. “It was quite in the fitness of things that I questioned my lord; but how is it that You ask me like a mortal?",
+          "“Listen, O Hanuman: be not depressed at heart; you are twice as dear to Me as Laksmana. Everyone says that I look upon all with the same eye; but a devotee is particularly dear to Me because he too depends on none but Me.”",
+          "He reverently advanced to meet Him and bowed his head at His feet; while the Lord of Raghus and His younger brother embraced him in return. The monkey chief pondered thus within himself, “Will they, good heavens, make friends with me?”",
+          "Then Hanuman related all the circumstances of both the sides, and having installed the sacred fire as a witness he concluded a firm alliance (between Sri Rama and Sugriva).",
+          "Said Sugriva, “Listen, O hero of Raghu’s line; sorrow no more and take courage in your heart. I will render service to you in every way so that Janaka’s daughter may come and see you.”",
+          "When I had waited there for a month, O slayer of Khara, a copious stream of blood issued from the cave. I, therefore, concluded that the demon had slain Vali and that he would come and kill me too. Accordingly, I blocked the mouth of the cave with a rock and fled away.",
+          "He, however, who contrives to speak bland words to your face and harms you behind your back and harbours some evil design in his heart, and whose mind is as tortuous as the movements of a snake is an unworthy friend and one had better bid good-bye to such a friend.",
+          "He put on his neck a wreath of flowers and giving him enormous strength sent him back. Again, the two brothers fought in many ways, while the Lord of Raghus watched them from behind a tree.",
+          "my lord?” “Listen, O wretch: a younger brother’s wife, a sister, a daughter-in-law and one’s own daughter-these four are alike. One would incur no sin by killing him who looks upon these with an evil eye.",
+          "The almighty Sri Rama, O Uma (says Bhagavan Sankara) makes us all dance like so many marionettes. Sri Rama then gave orders to Sugriva, who performed all the funeral rites with due ceremony.",
+          "Said the Lord, “Listen, O Sugriva, lord of the monkeys: I may not enter a town for four years and ten. The hot season is now over and the rains have set in. I will, therefore, encamp on the hills not far from you.",
+          "Sri Rama gave a discourse to His younger brother on many a topic such as Devotion, dispassion, statecraft and spiritual wisdom. As the rains had set in, the sky was overcast with clouds, which made a delightful rumbling noise",
+          "The water coming from various directions gathers into a pool even as commendable virtues find their way into the heart of a noble soul. The water of the stream, becomes still once it pours into the ocean, just as the ego finds eternal rest on attaining union with Sri Hari.",
+          "The embankments of the fields have been breached by torrential rains just as women get spoiled by freedom. Clever husbandmen protect their crop by uprooting the weeds, just as the wise discard infatuation, vanity and pride.",
+          "Devoid of mud and dust the earth has assumed a lovely aspect just like the administration of a monarch well-versed in politics. The fish are distressed on account of the diminishing waters even as an improvident householder suffering from want of money.",
+          "Flocks of Cakora birds fix their gaze on the moon as soon as she comes to their view, even as the votaries of Sri Hari on meeting Him. Mosquitoes and gadflies have perished due to fear of cold, just as hostility to the Brahmanas brings, ruin to the entire family.",
+          "Those enlightened sages alone who have conceived a love for the feet of Sri Rama (the Hero of Raghu’s race) can know the inwardness of this conduct of His. When Laksmana found the Lord angry, he strung his bow and took arrows in his hands.",
+          "-charged them with their duty making use of threats, blandishments and persuasion. They all bowed their head at his feet and proceeded on their journey. That very moment Laksmana entered the city; seeing him angry monkeys ran away helterskelter",
+          "“There is nothing so intoxicating, my lord, as the pleasures of sense which in an instant infatuate the soul even of a sage.” Laksmana was gratified to hear his humble speech and reassured him in many ways.",
+          "Thereupon the Lord of Raghus smiled and said: “Brother, you are dear to me as Bharata. Now with all your heart make some organized effort whereby we may get tidings of Sita.”",
+          "and institute a search for Janaka’s Daughter, but you should all return in course of a month, my brethren, He who returns beyond this limit without any news shall meet his death at my hands.”",
+          "He is verily a man of flair and he alone is highly blessed, who is enamoured of Sri Rama’s feet.” Taking leave of Sugriva and bowing their head at his feet they joyously set out with their thoughts fixed on the Lord of Raghus.",
+          "Coming down the hill Hanuman (the son of the wind-god) took them all and showed them the cavern. They placed Hanuman at their head and entered the cave without further loss of time.",
+          "She on her part went to the Lord of Raghus and drawing near to Him bowed her head at His lotus feet. She made supplication in diverse ways and the Lord granted to her unceasing Devotion.",
+          "When the monkey chiefs heard Angada’s words, they could make no answer and tears rolled from their eyes. For a moment they remained plunged in sorrow; but at last they spoke as follows:",
+          "Angada reflected within himself and said: “There is no one so blessed as Jatayu, who laid down his life in the service of Sri Rama and ascended to the abode of Sri Hari, supremely lucky as he was.”",
+          "‘In the Treta age the Supreme Spirit will take the form of a human being and the demon king (Ravana) will carry off His Spouse. The Lord will send out spies to search Her and you will be absolved of all sins by meeting them.",
+          "Said Jambavan (the king of bears), “I am now too old and not a particle of my former strength is left in my body. When Sri Rama, the Slayer of the demon Khara, assumed the form of Trivikrama (the Lord with three strides, Lord Vamana), I was young and possessed great strength.",
+          "with a body shining as gold and full of splendour as though he was another king of mountains (Sumeru). Roaring again and again like a lion he said, “I can easily spring across the salt ocean-"
+        ]
+      }
+    ],
+    "chapterId": "kand-किष्किन्धाकाण्ड",
+    "chapterName": "किष्किन्धाकाण्ड",
+    "verseNumber": 4
+  },
+  {
+    "id": "ramcharitmanas-kand-4-doha-5",
+    "collectionId": "ramcharitmanas",
+    "index": 713,
+    "titleDevanagari": "रामचरितमानस, किष्किन्धाकाण्ड, दोहा/चौपाई 5",
+    "author": "गोस्वामी तुलसीदास",
+    "slug": "ramcharitmanas-kand-4-doha-5",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "मृदुल मनोहर सुंदर गाता। सहत दुसह बन आतप बाता ॥",
+          "तव माया बस फिरउँ भुलाना। ताते मैं नहिं प्रभु पहिचाना॥5॥",
+          "॥ दोहा ॥",
+          "सखा बचन सुनि हरषे कृपासिंधु बलसींव।",
+          "कारन कवन बसहु बन मोहि कहहु सुग्रीव॥5॥",
+          "मंत्रिन्ह पुर देखा बिनु साईं। दीन्हेउ मोहि राज बरिआईं॥",
+          "बाली ताहि मारि गृह आवा। देखि मोहि जियँ भेद बढ़ावा॥5॥",
+          "सेवक सठ नृप कृपन कुनारी। कपटी मित्र सूल सम चारी॥",
+          "सखा सोच त्यागहु बल मोरें। सब बिधि घटब काज मैं तोरें॥5॥",
+          "मूढ़ तोहि अतिसय अभिमाना। नारि सिखावन करसि न काना॥",
+          "मम भुज बल आश्रित तेहि जानी। मारा चहसि अधम अभिमानी॥5॥",
+          "रघुपति चरन नाइ करि माथा। चले सकल प्रेरित रघुनाथा॥5॥",
+          "अंगद सहित करहु तुम्ह राजू। संतत हृदयँ धरेहु मम काजू॥",
+          "देखिअत चक्रबाक खग नाहीं। कलिहि पाइ जिमि धर्म पराहीं॥",
+          "ऊषर बरषइ तृन नहिं जामा। जिमि हरिजन हियँ उपज न कामा॥5॥",
+          "बिनु घन निर्मल सोह अकासा। हरिजन इव परिहरि सब आसा॥",
+          "कहुँ कहुँ बृष्टि सारदी थोरी। कोउ एक भाव भगति जिमि मोरी॥5॥",
+          "पाछें पवन तनय सिरु नावा। जानि काज प्रभु निकट बोलावा॥",
+          "परसा सीस सरोरुह पानी। करमुद्रिका दीन्हि जन जानी॥5॥",
+          "हम सीता कै सुधि लीन्हें बिना। नहिं जैहैं जुबराज प्रबीना॥",
+          "अस कहि लवन सिंधु तट जाई। बैठे कपि सब दर्भ डसाई॥5॥",
+          "सुनि खग हरष सोक जुत बानी। आवा निकट कपिन्ह भय मानी॥",
+          "तिन्हहि अभय करि पूछेसि जाई। कथा सकल तिन्ह ताहि सुनाई॥5॥",
+          "जमिहहिं पंख करसि जनि चिंता। तिन्हहि देखाइ देहेसु तैं सीता॥",
+          "मुनि कइ गिरा सत्य भइ आजू। सुनि मम बचन करहु प्रभु काजू॥5॥",
+          "सहित सहाय रावनहि मारी। आनउँ इहाँ त्रिकूट उपारी॥",
+          "जामवंत मैं पूँछउँ तोही। उचित सिखावनु दीजहु मोही॥5॥"
+        ],
+        "linesTransliteration": [
+          "mṛdula manōhara suṃdara gātā. sahata dusaha bana ātapa bātā..",
+          "kī tumha tīni dēva mahaom kōū. nara nārāyana kī tumha dōū..",
+          "tava māyā basa phirau bhulānā. tātē maiṃ nahiṃ prabhu pahicānā..",
+          "sakhā bacana suni haraṣē kṛpāsidhu balasīṃva.",
+          "kārana kavana basahu bana mōhi kahahu sugrīva ..5..",
+          "maṃtrinha pura dēkhā binu sāīṃ. dīnhēu mōhi rāja bariāī..",
+          "bāli tāhi māri gṛha āvā. dēkhi mōhi jiyaom bhēda baḍhaāvā..",
+          "sēvaka saṭha nṛpa kṛpana kunārī. kapaṭī mitra sūla sama cārī..",
+          "sakhā sōca tyāgahu bala mōrēṃ. saba bidhi ghaṭaba kāja maiṃ tōrēṃ..",
+          "muḍha tōhi atisaya abhimānā. nāri sikhāvana karasi na kānā..",
+          "mama bhuja bala āśrita tēhi jānī. mārā cahasi adhama abhimānī..",
+          "rāma kahā anujahi samujhāī. rāja dēhu sugrīvahi jāī..",
+          "raghupati carana nāi kari māthā. calē sakala prērita raghunāthā..",
+          "aṃgada sahita karahu tumha rājū. saṃtata hṛdaya dharēhu mama kājū..",
+          "jaba sugrīva bhavana phiri āē. rāmu prabaraṣana giri para chāē..",
+          "dēkhiata cakrabāka khaga nāhīṃ. kalihi pāi jimi dharma parāhīṃ..",
+          "ūṣara baraṣai tṛna nahiṃ jāmā. jimi harijana hiyaom upaja na kāmā..",
+          "binu dhana nirmala sōha akāsā. harijana iva parihari saba āsā..",
+          "kahu kahu bṛṣṭi sāradī thōrī. kōu ēka pāva bhagati jimi mōrī..",
+          "pavana tanaya saba kathā sunāī. jēhi bidhi gaē dūta samudāī..",
+          "pāchēṃ pavana tanaya siru nāvā. jāni kāja prabhu nikaṭa bōlāvā..",
+          "parasā sīsa sarōruha pānī. karamudrikā dīnhi jana jānī..",
+          "hama sītā kai sudhi linhēṃ binā. nahiṃ jaiṃhaiṃ jubarāja prabīnā..",
+          "suni khaga haraṣa sōka juta bānī . āvā nikaṭa kapinha bhaya mānī..",
+          "tinhahi abhaya kari pūchēsi jāī. kathā sakala tinha tāhi sunāī..",
+          "jamihahiṃ paṃkha karasi jani ciṃtā . tinhahi dēkhāi dēhēsu taiṃ sītā..",
+          "muni kai girā satya bhai ājū . suni mama bacana karahu prabhu kājū..",
+          "sahita sahāya rāvanahi mārī. ānau ihāom trikūṭa upārī..",
+          "jāmavaṃta maiṃ pūomchau tōhī. ucita sikhāvanu dījahu mōhī.."
+        ],
+        "linesEnglish": [
+          "Though possessed of delicate, charming and beautiful limbs, how is it that you have exposed yourself to the scorching sun and stormy wind of these wild regions? Do you count in the Trinity (viz., Brahma, Visnu and Siva, the Creator, Preserver and Destroyer of the three worlds) or are you the twin divine sages Nara and Narayana?",
+          "I have been roving in error under the spell of Your Maya (deluding potency); it was for this reason that I failed to recognize my lord.”",
+          "The Ocean of Mercy, who was at the same time the highest embodiment of physical strength, rejoiced to hear his ally’s words, “Tell me, Sugriva, why have you come to stay in the forest?”",
+          "When the ministers saw the town without a master, they forced me to accept the throne. Meanwhile Vali, who had killed the enemy, returned home and saw me (installed on the throne), he nursed a grudge against me in his heart.",
+          "A stupid servant, a stingy monarch, a bad wife and a false friend-these four are tormenting like a pike. Relying on my strength, dear friend, grieve no more; I will serve your cause in everyway possible.”",
+          "Fool, in your extravagant pride you paid no heed to your wife’s warning. You knew that your brother had taken refuge under the might of my arm; and yet in your vile arrogance you sought to kill him!”",
+          "He next instructed His younger brother (Laksmana), “Go and crown Sugriva as the king.” Bowing their head to the Lord of Raghus, all left in obedience to His orders.",
+          "ou and Angada rule over the kingdom, and ever cherish my business in your heart.” When Sugriva returned home, Sri Rama took up His abode on the Pravarsana hills.",
+          "The Cakravaka (Ruddy shelduck) birds are no more to be seen, just as virtues disappear with the Kaliyug age. Even though it rains on the barren lands as well, not a blade of grass sprouts on it, just as concupiscence takes no root in the heart of a servant of Sri Hari.",
+          "The cloudless sky is shining as bright as a devotee of Sri Hari, who has abandoned all desires. Here and there we have light autumnal showers, just as a rare soul comes to develop devotion to Me.",
+          "The son of the wind-god told him all that had happened in the meantime, viz., how batches of spies had been despatched (in various directions).",
+          "The last to make obeisance was Hanuman, (the son of the wind-god). The Lord knew that His work was going to be accomplished by him and therefore called him near. He stroked his head with His lotus hand and recognizing him to be His devotee gave him the ring off His finger.",
+          "asa kahi lavana siṃdhu taṭa jāī. baiṭhē kapi saba darbha ḍasāī..",
+          "“We are not going to return without obtaining Sita’s news, O sagacious prince!” So saying all the monkeys went to the sea-shore and spreading Kusa grass there squatted on it.",
+          "When the bird (Sampati) heard these words, which stirred in him a mixed feeling of joy and grief, he drew near to the monkeys, who felt alarmed by his presence. Assuring them of safety he went and enquired them about his younger brother and the monkeys told him the whole story.",
+          "Your wings will sprout again; worry not any longer on that account. You will have to do only this much: show them where Sita may be.’ The sage’s predictions has come true today; therefore, follow my instructions and set about the business of your Lord.",
+          "and killing Ravana with all his army can uproot the Trikuta hill and bring it here. But I ask you, Jambavan kindly tender me suitable advice.”"
+        ]
+      }
+    ],
+    "chapterId": "kand-किष्किन्धाकाण्ड",
+    "chapterName": "किष्किन्धाकाण्ड",
+    "verseNumber": 5
+  },
+  {
+    "id": "ramcharitmanas-kand-4-doha-6",
+    "collectionId": "ramcharitmanas",
+    "index": 714,
+    "titleDevanagari": "रामचरितमानस, किष्किन्धाकाण्ड, दोहा/चौपाई 6",
+    "author": "गोस्वामी तुलसीदास",
+    "slug": "ramcharitmanas-kand-4-doha-6",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "रिपु सम मोहि मारेसि अति भारी। हरि लीन्हसि सर्बसु अरु नारी॥",
+          "ताकें भय रघुबीर कृपाला सकल भुवन मैं फिरेउँ बिहाला॥6॥",
+          "॥ दोहा ॥",
+          "सुनु सुग्रीव मारिहउँ बालिहि एकहिं बान।",
+          "ब्रह्म रुद्र सरनागत गएँ न उबरिहिं प्रान॥6॥",
+          "कह सुग्रीव सुनहु रघुबीरा। बालि महाबल अति रनधीरा॥",
+          "दुंदुभि अस्थि ताल देखराए। बिनु प्रयास रघुनाथ ढहाए॥6॥",
+          "बिबिध जंतु संकुल महि भ्राजा। प्रजा बाढ़ जिमि पाइ सुराजा॥",
+          "जहँ तहँ रहे पथिक थकि नाना। जिमि इंद्रिय गन उपजें ग्याना॥6॥",
+          "॥ दोहा ॥",
+          "कबहुँ प्रबल बह मारुत जहँ तहँ मेघ बिलाहिं।",
+          "कबहु दिवस महँ निबिड़ तम कबहुँक प्रगट पतंग।",
+          "बिनसइ उपजइ ग्यान जिमि पाइ कुसंग सुसंग॥15ख॥",
+          "बहु प्रकार सीतहि समुझाएहु। कहि बल बिरह बेगि तुम्ह आएहु॥",
+          "हनुमत जन्म सुफल करि माना। चलेउ हृदयँ धरि कृपानिधाना॥6॥",
+          "जामवंत अंगद दुख देखी। कहीं कथा उपदेस बिसेषी॥",
+          "तात राम कहुँ नर जनि मानहु। निर्गुन ब्रह्म अजित अज जानहु॥6॥",
+          "सुनि संपाति बंधु कै करनी। रघुपति महिमा बहुबिधि बरनी॥6॥",
+          "गिरि त्रिकूट ऊपर बस लंका। तहँ रह रावन सहज असंका॥",
+          "तहँ असोक उपबन जहँ रहई। सीता बैठि सोच रत अहई॥6॥",
+          "एतना करहु तात तुम्ह जाई। सीतहि देखि कहहु सुधि आई॥",
+          "तब निज भुज बल राजिवनैना। कौतुक लागि संग कपि सेना॥6॥",
+          "॥ छंद ॥",
+          "जो सुनत गावत कहत समुक्षत परमपद नर पावई।",
+          "रघुबीर पद पाथोज मधुकर दास तुलसी गावई॥",
+          "॥ दोहा ॥",
+          "भव भेषज रघुनाथ जसु सुनहिं जे नर अरु नारि।",
+          "॥ सोरठा ॥",
+          "नीलोत्पल तन स्याम काम कोटि सोभा अधिक।",
+          "सुनिअ तासु गुन ग्राम जासु नाम अघ खग बधिक॥30 ख॥"
+        ],
+        "linesTransliteration": [
+          "ripu sama mōhi mārēsi ati bhārī. hari līnhēsi sarbasu aru nārī..",
+          "tākēṃ bhaya raghubīra kṛpālā. sakala bhuvana maiṃ phirēu bihālā..",
+          "sunu sugrīva mārihau bālihi ēkahiṃ bāna.",
+          "bramha rudra saranāgata gaēom na ubarihiṃ prāna..6..",
+          "kaha sugrīva sunahu raghubīrā. bāli mahābala ati ranadhīrā..",
+          "duṃdubhī asthi tāla dēkharāē. binu prayāsa raghunātha ḍhahāē..",
+          "bibidha jaṃtu saṃkula mahi bhrājā. prajā bāḍha jimi pāi surājā..",
+          "jahaom tahaom rahē pathika thaki nānā. jimi iṃdriya gana upajēṃ gyānā..",
+          "kabahu prabala baha māruta jahaom tahaom mēgha bilāhiṃ.",
+          "jimi kapūta kē upajēṃ kula saddharma nasāhiṃ..15ka..",
+          "kabahu divasa mahaom nibiḍa tama kabahuka pragaṭa pataṃga.",
+          "binasai upajai gyāna jimi pāi kusaṃga susaṃga..15kha..",
+          "bahu prakāra sītahi samujhāēhu. kahi bala biraha bēgi tumha āēhu..",
+          "hanumata janma suphala kari mānā. calēu hṛdayaom dhari kṛpānidhānā..",
+          "jāmavaṃta aṃgada dukha dēkhī. kahiṃ kathā upadēsa bisēṣī..",
+          "tāta rāma kahu nara jani mānahu. nirguna bramha ajita aja jānahu..",
+          "suni saṃpāti baṃdhu kai karanī. raghupati mahimā badhubidhi baranī..",
+          "giri trikūṭa ūpara basa laṃkā . tahaom raha rāvana sahaja asaṃkā ..",
+          "ētanā karahu tāta tumha jāī. sītahi dēkhi kahahu sudhi āī..",
+          "taba nija bhuja bala rājiva nainā. kautuka lāgi saṃga kapi sēnā..",
+          "kapi sēna saṃga saomghāri nisicara rāmu sītahi ānihaiṃ.",
+          "trailōka pāvana sujasu sura muni nāradādi bakhānihaiṃ..",
+          "jō sunata gāvata kahata samujhata parama pada nara pāvaī.",
+          "raghubīra pada pāthōja madhukara dāsa tulasī gāvaī..",
+          "bhava bhēṣaja raghunātha jasu sunahi jē nara aru nāri.",
+          "tinha kara sakala manōratha siddha karihi trisirāri..30ka..",
+          "nīlōtpala tana syāma kāma kōṭi sōbhā adhika.",
+          "sunia tāsu guna grāma jāsu nāma agha khaga badhika..30kha.."
+        ],
+        "linesEnglish": [
+          "He gave me a most severe beating as he would an enemy, and robbed me of all that I had including my wife. For fear of him, O gracious Hero of Raghu’s line, I wandered all over the world in a pitiable condition.",
+          "“Listen, Sugriva: I will kill Vali with a single arrow His life will not be saved even if he takes refuge with Brahma (the Creator) or even with Rudra (Lord Siva).",
+          "Said Sugriva, “Listen, O Hero of Raghu’s race: Vali is possessed of immense strength and is exceedingly staunch in battle.” He then showed Him Dundubhi’s bones and the seven palm-trees, which were struck down by the Lord of Raghus without any exertion.",
+          "The earth looks charming with the swarms of various living creatures even as the population grows under a good government. Many a weary traveller has stopped here and there just as with the dawning of wisdom the senses become still.",
+          "Sometimes a strong wind would blow and disperse the clouds in various directions, just as with the birth of an unworthy son the noble traditions of a family get extinct.",
+          "Now it becomes pitch dark even during the day, while at other times the sun would shine brightly, just as the light of wisdom is obscured in the company of the vile and manifests itself in the company of the good.",
+          "“Comfort Sita in various ways and return quickly after telling Her of my might and the agony of my heart due to separation from Her.” Hanuman felt that he had reaped the reward of his birth and departed with the image of the All-merciful enshrined in his heart.",
+          "Seeing Angada’s distress Jambavan (the old bear chief) gave a highly instructive discourse. “Imagine not Rama to be a mortal, dear child; know Him to be the same as Brahma (the Supreme Spirit) without attributes, invincible and unborn.",
+          "When Sampati heard of his brother’s obsequies (performed by the Lord with His own hands), he glorified the Lord of Raghus in many ways.",
+          "tahaom asōka upabana jahaom rahaī .. sītā baiṭhi sōca rata ahaī..",
+          "On the summit of the Trikuta hill stands the city of Lanka; Ravana, who is fearless by nature, lives there. There, in the Asoka garden, is lodged Sita, who sits there, plunged in grief, even now.",
+          "“All that you have to do, my son, is to go and see Sita and come back with Her tidings. Then the lotus-eyed Sri Rama will recover Her by the strength of His arm taking with Him a host of monkeys for mere sport.",
+          "“Taking with Him an army of monkeys Sri Rama will exterminate the demons and bring back Sita: and the gods as well as Narada and other sages will utter His praises, that sanctify the three spheres. A man who hears, sings, repeats or studies them will attain to the supreme state and Tulasidasa, who is devoted like a bee to the lotus feet of Sri Rama (the Hero of Raghu’s line), ever sings them.",
+          "Sri Rama, the slayer of the demon Trisira, will grant all the desires of those men and women who listen to Trishira’s enemy (Sri Rama’s) praises, the remedy for the disease of transmigration.",
+          "Listen to the praises of Sri Rama, who possesses a form dark as the blue lotus, who by His elegance extinguishes millions of Cupids and whose Name is a veritable fowler for birds in the shape of sins."
+        ]
+      }
+    ],
+    "chapterId": "kand-किष्किन्धाकाण्ड",
+    "chapterName": "किष्किन्धाकाण्ड",
+    "verseNumber": 6
+  },
+  {
+    "id": "ramcharitmanas-kand-4-doha-7",
+    "collectionId": "ramcharitmanas",
+    "index": 715,
+    "titleDevanagari": "रामचरितमानस, किष्किन्धाकाण्ड, दोहा/चौपाई 7",
+    "author": "गोस्वामी तुलसीदास",
+    "slug": "ramcharitmanas-kand-4-doha-7",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "इहाँ साप बस आवत नाहीं। तदपि सभीत रहउँ मन माहीं॥",
+          "सुन सेवक दुःख दीनदयाला फरकि उठीं द्वै भुजा बिसाला॥7॥",
+          "देखि अमित बल बाढ़ी प्रीती। बालि बधब इन्ह भइ परतीती॥",
+          "बार-बार नावइ पद सीसा। प्रभुहि जानि मन हरष कपीसा॥7॥",
+          "॥ दोहा ॥",
+          "कह बाली सुनु भीरु प्रिय समदरसी रघुनाथ।",
+          "जौं कदाचि मोहि मारहिं तौ पुनि होउँ सनाथ॥7॥",
+          "जद्यपि प्रभु जानत सब बाता। राजनीति राखत सुरत्राता॥7॥",
+          "हम सब सेवक अति बड़भागी। संतत सगुन ब्रह्म अनुरागी॥7॥"
+        ],
+        "linesTransliteration": [
+          "ihāom sāpa basa āvata nāhīṃ. tadapi sabhīta rahau mana māhīṃ..",
+          "suni sēvaka dukha dīnadayālā. pharaki uṭhīṃ dvai bhujā bisālā..",
+          "dēkhi amita bala bāḍhaī prītī. bāli badhaba inha bhai paratītī..",
+          "bāra bāra nāvai pada sīsā. prabhuhi jāni mana haraṣa kapīsā..",
+          "kaha bāli sunu bhīru priya samadarasī raghunātha.",
+          "jauṃ kadāci mōhi mārahiṃ tau puni hōu sanātha..7..",
+          "jadyapi prabhu jānata saba bātā. rājanīti rākhata suratrātā..",
+          "hama saba sevaka ati baRabhagi, samtata saguna brahma anuragi.7."
+        ],
+        "linesEnglish": [
+          "A curse prevents him from coming over here; yet I remain ill at ease in mind.” When the gracious Lord heard of His devotee’s distress both His long arms started throbbing (thus showing His martial spirit as well as His determination to punish Vali).",
+          "When Sugriva witnessed Sri Rama’s immeasurable strength his affection for Him grew all the more and he was now satisfied that he would succeed in killing Vali. He bowed his head at His feet again and again and was delighted at heart to recognize the Lord.",
+          "Said Vali, “Listen, my timid darling, the Lord of Raghus looks upon all with the same eye. Even if He kills me, I will attain His divine abode and have Him as my eternal Lord.”",
+          "Although the Lord knew everything, the Protector of the gods respected the recognized principles of statecraft (by sending spies in the first instance to trace out His lost spouse).",
+          "We, His servants, are all highly blessed in that we are ever devoted to the same Brahma endowed with a qualified form."
+        ]
+      }
+    ],
+    "chapterId": "kand-किष्किन्धाकाण्ड",
+    "chapterName": "किष्किन्धाकाण्ड",
+    "verseNumber": 7
+  },
+  {
+    "id": "ramcharitmanas-kand-4-doha-8",
+    "collectionId": "ramcharitmanas",
+    "index": 716,
+    "titleDevanagari": "रामचरितमानस, किष्किन्धाकाण्ड, दोहा/चौपाई 8",
+    "author": "गोस्वामी तुलसीदास",
+    "slug": "ramcharitmanas-kand-4-doha-8",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "उपजा ग्यान बचन तब बोला। नाथ कृपाँ मन भयउ अलोला॥",
+          "सुख संपति परिवार बड़ाई। सब परिहरि करिहउँ सेवकाई॥8॥",
+          "॥ दोहा ॥",
+          "मारा बालि राम तब हृदय माझ सर तानि॥8॥"
+        ],
+        "linesTransliteration": [
+          "upajā gyāna bacana taba bōlā. nātha kṛpāom mana bhayau alōlā..",
+          "sukha saṃpati parivāra baḍaāī. saba parihari karihau sēvakāī..",
+          "bahu chala bala sugrīva kara hiyaom hārā bhaya māni.",
+          "mārā bāli rāma taba hṛdaya mājha sara tāni..8.."
+        ],
+        "linesEnglish": [
+          "When the light of wisdom dawned on him, he said; “My mind, O Lord, has been set at rest by Your grace. Renouncing pleasure, prosperity, home, personal glory and all I will render service to You.",
+          "When Sugriva had tried many a trick and exerted all his might he lost heart and felt much alarmed. Sri Rama then drew His arrow and shot Vali in the heart."
+        ]
+      }
+    ],
+    "chapterId": "kand-किष्किन्धाकाण्ड",
+    "chapterName": "किष्किन्धाकाण्ड",
+    "verseNumber": 8
+  },
+  {
+    "id": "ramcharitmanas-kand-4-doha-9",
+    "collectionId": "ramcharitmanas",
+    "index": 717,
+    "titleDevanagari": "रामचरितमानस, किष्किन्धाकाण्ड, दोहा/चौपाई 9",
+    "author": "गोस्वामी तुलसीदास",
+    "slug": "ramcharitmanas-kand-4-doha-9",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "सत्रु मित्र सुख, दुख जग माहीं। मायाकृत परमारथ नाहीं॥9॥",
+          "॥ दोहा ॥",
+          "सुनहु राम स्वामी सन चल न चातुरी मोरि।",
+          "प्रभु अजहूँ मैं पापी अंतकाल गति तोरि॥9॥"
+        ],
+        "linesTransliteration": [
+          "ē saba rāmabhagati kē bādhaka. kahahiṃ saṃta taba pada avarādhaka..",
+          "satru mitra sukha dukha jaga māhīṃ. māyā kṛta paramāratha nāhīṃ..",
+          "sunahu rāma svāmī sana cala na cāturī mōri.",
+          "prabhu ajahūom maiṃ pāpī aṃtakāla gati tōri..9.."
+        ],
+        "linesEnglish": [
+          "All these are stumbling-blocks on the path of Devotion to Sri Rama (Yourself): so declare saints given to the worship of Your feet. Pairs of opposites such as friend and foe, joy and sorrow, in this world are products of Maya (Illusion) and have no reality.",
+          "Listen, Rama: my shrewdness cannot avail against my master. But, my lord, am I a sinner yet even though I have found shelter in You at the hour of my death?"
+        ]
+      }
+    ],
+    "chapterId": "kand-किष्किन्धाकाण्ड",
+    "chapterName": "किष्किन्धाकाण्ड",
+    "verseNumber": 9
+  },
+  {
+    "id": "ramcharitmanas-kand-4-doha-10",
+    "collectionId": "ramcharitmanas",
+    "index": 718,
+    "titleDevanagari": "रामचरितमानस, किष्किन्धाकाण्ड, दोहा/चौपाई 10",
+    "author": "गोस्वामी तुलसीदास",
+    "slug": "ramcharitmanas-kand-4-doha-10",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "बालि परम हित जासु प्रसादा। मिलेहु राम तुम्ह समन बिषादा॥",
+          "सपनें जेहि सन होइ लराई। जागें समुझत मन सकुचाई॥10॥",
+          "॥ दोहा ॥",
+          "राम चरन दृढ़ प्रीति करि बालि कीन्ह तनु त्याग।",
+          "सुमन माल जिमि कंठ ते गिरत न जानइ नाग॥10॥"
+        ],
+        "linesTransliteration": [
+          "bāli parama hita jāsu prasādā. milēhu rāma tumha samana biṣādā..",
+          "sapanēṃ jēhi sana hōi larāī. jāgēṃ samujhata mana sakucāī..",
+          "rāma carana dṛḍha prīti kari bāli kīnha tanu tyāga.",
+          "sumana māla jimi kaṃṭha tē girata na jānai nāga..10.."
+        ],
+        "linesEnglish": [
+          "Vali is my greatest friend, by whose grace I have met You, Rama, the Allayer of sorrow. On waking from a dream when a man comes to know the identity of him with whom he had fought in the dream, he feels abashed.",
+          "Intensifying his devotion to Sri Rama’s feet Vali dropped his body (without his knowing it) even as an elephant little knows the falling of a wreath of flowers from its neck."
+        ]
+      }
+    ],
+    "chapterId": "kand-किष्किन्धाकाण्ड",
+    "chapterName": "किष्किन्धाकाण्ड",
+    "verseNumber": 10
+  },
+  {
+    "id": "ramcharitmanas-kand-4-doha-11-2",
+    "collectionId": "ramcharitmanas",
+    "index": 719,
+    "titleDevanagari": "रामचरितमानस, किष्किन्धाकाण्ड, दोहा/चौपाई 11",
+    "author": "गोस्वामी तुलसीदास",
+    "slug": "ramcharitmanas-kand-4-doha-11-2",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "अब प्रभु कृपा करहु एहि भाँति। सब तजि भजनु करौं दिन राती॥",
+          "॥ दोहा ॥",
+          "लछिमन तुरत बोलाए पुरजन बिप्र समाज।",
+          "राजु दीन्ह सुग्रीव कहँ अंगद कहँ जुबराज॥11॥"
+        ],
+        "linesTransliteration": [
+          "aba prabhu kṛpā karahu ēhi bhāomtī. saba taji bhajanu karauṃ dina rātī..",
+          "suni birāga saṃjuta kapi bānī. bōlē bihaomsi rāmu dhanupānī..",
+          "lachimana turata bōlāē purajana bipra samāja.",
+          "rāju dīnha sugrīva kahaom aṃgada kahaom jubarāja..11.."
+        ],
+        "linesEnglish": [
+          "Now, my Lord, do me this favour that I may renounce all and worship You night and day.” On hearing the words of Sugriva, imbued as they were with dispassion, Sri Rama, who held a bow in His hand, smiled and said,-",
+          "Laksmana immediately summoned the citizens and the Brahmanas, (in their presence) crowned Sugriva as the king, and installed Angada as the Crown Prince."
+        ]
+      }
+    ],
+    "chapterId": "kand-किष्किन्धाकाण्ड",
+    "chapterName": "किष्किन्धाकाण्ड",
+    "verseNumber": 11
+  },
+  {
+    "id": "ramcharitmanas-kand-4-doha-12-2",
+    "collectionId": "ramcharitmanas",
+    "index": 720,
+    "titleDevanagari": "रामचरितमानस, किष्किन्धाकाण्ड, दोहा/चौपाई 12",
+    "author": "गोस्वामी तुलसीदास",
+    "slug": "ramcharitmanas-kand-4-doha-12-2",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "जो कछु कहेहु सत्य सब सोई। सखा बचन मम मृषा न होई॥",
+          "नट मरकट इव सबहि नचावत। रामु खगेस बेद अस गावत॥12॥",
+          "॥ दोहा ॥",
+          "प्रथमहिं देवन्ह गिरि गुहा राखेउ रुचिर बनाइ।",
+          "राम कृपानिधि कछु दिन बास करहिंगे आइ॥12॥"
+        ],
+        "linesTransliteration": [
+          "jō kachu kahēhu satya saba sōī. sakhā bacana mama mṛṣā na hōī..",
+          "naṭa marakaṭa iva sabahi nacāvata. rāmu khagēsa bēda asa gāvata..",
+          "prathamahiṃ dēvanha giri guhā rākhēu rucira banāi.",
+          "rāma kṛpānidhi kachu dina bāsa karahiṃgē āi..12.."
+        ],
+        "linesEnglish": [
+          "“Whatever you have said is all true; but my words, O friend, can never be otherwise.” Sri Rama (says the saint Kakabhusundi), O Garuda (king of birds), makes us all dance even as a juggler would make his monkey dance: so declare the Vedas.",
+          "The gods had already kept ready for Him a charming cave in the mountain in the hope that the all-merciful Sri Rama would come and stay there for a few days"
+        ]
+      }
+    ],
+    "chapterId": "kand-किष्किन्धाकाण्ड",
+    "chapterName": "किष्किन्धाकाण्ड",
+    "verseNumber": 12
+  },
+  {
+    "id": "ramcharitmanas-kand-4-doha-13-2",
+    "collectionId": "ramcharitmanas",
+    "index": 721,
+    "titleDevanagari": "रामचरितमानस, किष्किन्धाकाण्ड, दोहा/चौपाई 13",
+    "author": "गोस्वामी तुलसीदास",
+    "slug": "ramcharitmanas-kand-4-doha-13-2",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "लै सुग्रीव संग रघुनाथा। चले चाप सायक गहि हाथा॥",
+          "तब रघुपति सुग्रीव पठावा। गर्जेसि जाइ निकट बल पावा॥13॥",
+          "॥ दोहा ॥",
+          "लछिमन देखु मोर गन नाचत बारिद पेखि।",
+          "गृही बिरति रत हरष जस बिष्नुभगत कहुँ देखि॥13॥"
+        ],
+        "linesTransliteration": [
+          "lai sugrīva saṃga raghunāthā. calē cāpa sāyaka gahi hāthā..",
+          "taba raghupati sugrīva paṭhāvā. garjēsi jāi nikaṭa bala pāvā..",
+          "lachimana dēkhu mōra gana nācata bārida paikhi.",
+          "gṛhī birati rata haraṣa jasa biṣnu bhagata kahu dēkhi..13.."
+        ],
+        "linesEnglish": [
+          "Taking Sugriva with Him the Lord of Raghus proceeded with a bow and arrow in His hands. Then the Lord of Raghus sent Sugriva, who, strengthened by Sri Rama, thundered under the very nose of Vali.",
+          "“Look here, Laksmana: the peacocks dance at the sight of the clouds, even as a householder having a leaning towards dispassion would rejoice to see a devotee of Bhagavan Visnu.”"
+        ]
+      }
+    ],
+    "chapterId": "kand-किष्किन्धाकाण्ड",
+    "chapterName": "किष्किन्धाकाण्ड",
+    "verseNumber": 13
+  },
+  {
+    "id": "ramcharitmanas-kand-4-doha-14",
+    "collectionId": "ramcharitmanas",
+    "index": 722,
+    "titleDevanagari": "रामचरितमानस, किष्किन्धाकाण्ड, दोहा/चौपाई 14",
+    "author": "गोस्वामी तुलसीदास",
+    "slug": "ramcharitmanas-kand-4-doha-14",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "सुनु पति जिन्हहि मिलेउ सुग्रीवा। ते द्वौ बंधु तेज बल सींवा॥14॥",
+          "॥ दोहा ॥",
+          "हरित भूमि तृन संकुल समुझि परहिं नहिं पंथ।",
+          "जिमि पाखंड बाद तें गुप्त होहिं सदग्रंथ॥14॥"
+        ],
+        "linesTransliteration": [
+          "sunata bāli krōdhātura dhāvā. gahi kara carana nāri samujhāvā..",
+          "sunu pati jinhahi milēu sugrīvā. tē dvau baṃdhu tēja bala sīṃvā..",
+          "harita bhūmi tṛna saṃkula samujhi parahiṃ nahiṃ paṃtha.",
+          "jimi pākhaṃḍa bāda tēṃ gupta hōhiṃ sadagraṃtha..14.."
+        ],
+        "linesEnglish": [
+          "On hearing his roar Vali sallied forth frantic with fury. His wife, however, clasped his feet with her hands and warned him thus: “Listen, my lord: the two brothers with whom Sugriva has concluded an alliance are of unapproachable majesty and might.",
+          "“The green earth is so choked with grass that the tracks cannot be distinguished, just as holy books are obscured by heretic doctrines."
+        ]
+      }
+    ],
+    "chapterId": "kand-किष्किन्धाकाण्ड",
+    "chapterName": "किष्किन्धाकाण्ड",
+    "verseNumber": 14
+  },
+  {
+    "id": "ramcharitmanas-kand-4-doha-15",
+    "collectionId": "ramcharitmanas",
+    "index": 723,
+    "titleDevanagari": "रामचरितमानस, किष्किन्धाकाण्ड, दोहा/चौपाई 15",
+    "author": "गोस्वामी तुलसीदास",
+    "slug": "ramcharitmanas-kand-4-doha-15",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "कोसलेस सुत लछिमन रामा। कालहु जीति सकहिं संग्रामा॥15॥"
+        ],
+        "linesTransliteration": [
+          "kōsalēsa suta lachimana rāmā. kālahu jīti sakahiṃ saṃgrāmā.."
+        ],
+        "linesEnglish": [
+          "They are no other than Sri Rama and Laksmana, the sons of King Dasaratha (the lord of Kosala), who can conquer Death himself on the field of battle.”"
+        ]
+      }
+    ],
+    "chapterId": "kand-किष्किन्धाकाण्ड",
+    "chapterName": "किष्किन्धाकाण्ड",
+    "verseNumber": 15
+  },
+  {
+    "id": "ramcharitmanas-kand-4-doha-16",
+    "collectionId": "ramcharitmanas",
+    "index": 724,
+    "titleDevanagari": "रामचरितमानस, किष्किन्धाकाण्ड, दोहा/चौपाई 16",
+    "author": "गोस्वामी तुलसीदास",
+    "slug": "ramcharitmanas-kand-4-doha-16",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "॥ दोहा ॥",
+          "चले हरषि तजि नगर नृप तापस बनिक भिखारि।",
+          "जिमि हरिभगति पाइ श्रम तजहिं आश्रमी चारि॥16॥"
+        ],
+        "linesTransliteration": [
+          "calē haraṣi taji nagara nṛpa tāpasa banika bhikhāri.",
+          "jimi haribhagata pāi śrama tajahi āśramī cāri..16.."
+        ],
+        "linesEnglish": [
+          "Kings and ascetics, merchants and mendicants are gladly leaving the city (kings for extending their dominions, ascetics in search of a suitable place for practising penance, merchants for carrying on their trade and mendicants for begging alms), just as men in any of the four stages of life cease to toil (for perfection) once they have acquired devotion to Sri Hari."
+        ]
+      }
+    ],
+    "chapterId": "kand-किष्किन्धाकाण्ड",
+    "chapterName": "किष्किन्धाकाण्ड",
+    "verseNumber": 16
+  },
+  {
+    "id": "ramcharitmanas-kand-4-doha-17",
+    "collectionId": "ramcharitmanas",
+    "index": 725,
+    "titleDevanagari": "रामचरितमानस, किष्किन्धाकाण्ड, दोहा/चौपाई 17",
+    "author": "गोस्वामी तुलसीदास",
+    "slug": "ramcharitmanas-kand-4-doha-17",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "॥ दोहा ॥",
+          "सदगुर मिलें जाहिं जिमि संसय भ्रम समुदाइ॥17॥"
+        ],
+        "linesTransliteration": [
+          "bhūmi jīva saṃkula rahē gaē sarada ritu pāi.",
+          "sadagura milē jāhiṃ jimi saṃsaya bhrama samudāi..17.."
+        ],
+        "linesEnglish": [
+          "The insects that teemed on the earth have perished with the advent of the autumn, just as a man who has found a teacher in the real sense of the term is rid of all doubt and error."
+        ]
+      }
+    ],
+    "chapterId": "kand-किष्किन्धाकाण्ड",
+    "chapterName": "किष्किन्धाकाण्ड",
+    "verseNumber": 17
+  },
+  {
+    "id": "ramcharitmanas-kand-4-doha-18-2",
+    "collectionId": "ramcharitmanas",
+    "index": 726,
+    "titleDevanagari": "रामचरितमानस, किष्किन्धाकाण्ड, दोहा/चौपाई 18",
+    "author": "गोस्वामी तुलसीदास",
+    "slug": "ramcharitmanas-kand-4-doha-18-2",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "॥ दोहा ॥",
+          "तब अनुजहि समुझावा रघुपति करुना सींव।",
+          "भय देखाइ लै आवहु तात सखा सुग्रीव॥18॥"
+        ],
+        "linesTransliteration": [
+          "taba anujahi samujhāvā raghupati karunā sīṃva..",
+          "bhaya dēkhāi lai āvahu tāta sakhā sugrīva..18.."
+        ],
+        "linesEnglish": [
+          "The Lord of Raghus, who was the highest embodiment of compassion, then instructed His younger brother saying, “Sugriva is our friend, dear brother; you should only frighten him and bring him here.”"
+        ]
+      }
+    ],
+    "chapterId": "kand-किष्किन्धाकाण्ड",
+    "chapterName": "किष्किन्धाकाण्ड",
+    "verseNumber": 18
+  },
+  {
+    "id": "ramcharitmanas-kand-4-doha-19",
+    "collectionId": "ramcharitmanas",
+    "index": 727,
+    "titleDevanagari": "रामचरितमानस, किष्किन्धाकाण्ड, दोहा/चौपाई 19",
+    "author": "गोस्वामी तुलसीदास",
+    "slug": "ramcharitmanas-kand-4-doha-19",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "॥ दोहा ॥",
+          "ब्याकुल नगर देखि तब आयउ बालिकुमार॥19॥"
+        ],
+        "linesTransliteration": [
+          "dhanuṣa caḍhaāi kahā taba jāri karau pura chāra."
+        ],
+        "linesEnglish": [
+          "byākula nagara dēkhi taba āyau bālikumāra..19..",
+          "Laksmana then strung his bow and said, “I will burn the city to ashes (by making use of the Agni-astra)”. Thereupon came Vali’s son (prince Angada), seeing the whole city in dismay."
+        ]
+      }
+    ],
+    "chapterId": "kand-किष्किन्धाकाण्ड",
+    "chapterName": "किष्किन्धाकाण्ड",
+    "verseNumber": 19
+  },
+  {
+    "id": "ramcharitmanas-kand-4-doha-20",
+    "collectionId": "ramcharitmanas",
+    "index": 728,
+    "titleDevanagari": "रामचरितमानस, किष्किन्धाकाण्ड, दोहा/चौपाई 20",
+    "author": "गोस्वामी तुलसीदास",
+    "slug": "ramcharitmanas-kand-4-doha-20",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "॥ दोहा ॥",
+          "हरषि चले सुग्रीव तब अंगदादि कपि साथ।",
+          "रामानुज आगें करि आए जहँ रघुनाथ॥20॥"
+        ],
+        "linesTransliteration": [
+          "haraṣi calē sugrīva taba aṃgadādi kapi sātha.",
+          "rāmānuja āgēṃ kari āē jahaom raghunātha..20.."
+        ],
+        "linesEnglish": [
+          "Accompanied by Angada and other monkey’s and placing Sri Rama’s younger brother at the head. King Sugriva went forth with joy and arrived in Sri Rama’s presence."
+        ]
+      }
+    ],
+    "chapterId": "kand-किष्किन्धाकाण्ड",
+    "chapterName": "किष्किन्धाकाण्ड",
+    "verseNumber": 20
+  },
+  {
+    "id": "ramcharitmanas-kand-4-doha-21",
+    "collectionId": "ramcharitmanas",
+    "index": 729,
+    "titleDevanagari": "रामचरितमानस, किष्किन्धाकाण्ड, दोहा/चौपाई 21",
+    "author": "गोस्वामी तुलसीदास",
+    "slug": "ramcharitmanas-kand-4-doha-21",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "॥ दोहा ॥",
+          "एहि बिधि होत बतकही आए बानर जूथ।",
+          "नाना बरन सकल दिसि देखिअ कीस बरूथ॥21॥"
+        ],
+        "linesTransliteration": [
+          "ēhi bidhi hōta batakahī āē bānara jūtha.",
+          "nānā barana sakala disi dēkhia kīsa barutha..21.."
+        ],
+        "linesEnglish": [
+          "While a talk was thus going on between them, multitudes of monkeys arrived. Legions of monkeys of various colours were visible in all the quarters."
+        ]
+      }
+    ],
+    "chapterId": "kand-किष्किन्धाकाण्ड",
+    "chapterName": "किष्किन्धाकाण्ड",
+    "verseNumber": 21
+  },
+  {
+    "id": "ramcharitmanas-kand-4-doha-22-2",
+    "collectionId": "ramcharitmanas",
+    "index": 730,
+    "titleDevanagari": "रामचरितमानस, किष्किन्धाकाण्ड, दोहा/चौपाई 22",
+    "author": "गोस्वामी तुलसीदास",
+    "slug": "ramcharitmanas-kand-4-doha-22-2",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "॥ दोहा ॥",
+          "बचन सुनत सब बानर जहँ तहँ चले तुरंत।",
+          "तब सुग्रीवँ बोलाए अंगद नल हनुमंत॥22॥"
+        ],
+        "linesTransliteration": [
+          "bacana sunata saba bānara jahaom tahaom calē turaṃta .",
+          "taba sugrīvaom bōlāē aṃgada nala hanumaṃta..22.."
+        ],
+        "linesEnglish": [
+          "On hearing his command the monkeys proceeded at once in various directions. Sugriva then called Angada, Nala and Hanuman."
+        ]
+      }
+    ],
+    "chapterId": "kand-किष्किन्धाकाण्ड",
+    "chapterName": "किष्किन्धाकाण्ड",
+    "verseNumber": 22
+  },
+  {
+    "id": "ramcharitmanas-kand-4-doha-23-2",
+    "collectionId": "ramcharitmanas",
+    "index": 731,
+    "titleDevanagari": "रामचरितमानस, किष्किन्धाकाण्ड, दोहा/चौपाई 23",
+    "author": "गोस्वामी तुलसीदास",
+    "slug": "ramcharitmanas-kand-4-doha-23-2",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "॥ दोहा ॥",
+          "चले सकल बन खोजत सरिता सर गिरि खोह।"
+        ],
+        "linesTransliteration": [
+          "calē sakala bana khōjata saritā sara giri khōha.",
+          "rāma kāja layalīna mana bisarā tana kara chōha..23.."
+        ],
+        "linesEnglish": [
+          "All the monkeys set forth ransacking woods, streams, lakes, hills and ravines with their mind wholly devoted to Sri Rama’s business and shaking off all attachment to their body"
+        ]
+      }
+    ],
+    "chapterId": "kand-किष्किन्धाकाण्ड",
+    "chapterName": "किष्किन्धाकाण्ड",
+    "verseNumber": 23
+  },
+  {
+    "id": "ramcharitmanas-kand-4-doha-24",
+    "collectionId": "ramcharitmanas",
+    "index": 732,
+    "titleDevanagari": "रामचरितमानस, किष्किन्धाकाण्ड, दोहा/चौपाई 24",
+    "author": "गोस्वामी तुलसीदास",
+    "slug": "ramcharitmanas-kand-4-doha-24",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "॥ दोहा ॥",
+          "दीख जाइ उपबन बर सर बिगसित बहु कंज।",
+          "मंदिर एक रुचिर तहँ बैठि नारि तप पुंज॥24॥"
+        ],
+        "linesTransliteration": [
+          "dīkha jāi upavana bara sara bigasita bahu kaṃja.",
+          "maṃdira ēka rucira tahaom baiṭhi nāri tapa puṃja..24.."
+        ],
+        "linesEnglish": [
+          "Going further they saw a lovely garden and a lake with many full-blown lotuses. There stood a beautiful temple close by, where sat a woman who was austerity incarnate."
+        ]
+      }
+    ],
+    "chapterId": "kand-किष्किन्धाकाण्ड",
+    "chapterName": "किष्किन्धाकाण्ड",
+    "verseNumber": 24
+  },
+  {
+    "id": "ramcharitmanas-kand-4-doha-25-2",
+    "collectionId": "ramcharitmanas",
+    "index": 733,
+    "titleDevanagari": "रामचरितमानस, किष्किन्धाकाण्ड, दोहा/चौपाई 25",
+    "author": "गोस्वामी तुलसीदास",
+    "slug": "ramcharitmanas-kand-4-doha-25-2",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "॥ दोहा ॥",
+          "उर धरि राम चरन जुग जे बंदत अज ईस॥25॥"
+        ],
+        "linesTransliteration": [
+          "badarībana kahu sō gaī prabhu agyā dhari sīsa .",
+          "ura dhari rāma carana juga jē baṃdata aja īsa..25.."
+        ],
+        "linesEnglish": [
+          "Bowing to the Lord’s command she left for the forest of Badrinatha (in the Himalayas), cherishing in her heart Sri Rama’s feet, that are adored by the unborn Brahma as well as by Lord Sankara."
+        ]
+      }
+    ],
+    "chapterId": "kand-किष्किन्धाकाण्ड",
+    "chapterName": "किष्किन्धाकाण्ड",
+    "verseNumber": 25
+  },
+  {
+    "id": "ramcharitmanas-kand-4-doha-26",
+    "collectionId": "ramcharitmanas",
+    "index": 734,
+    "titleDevanagari": "रामचरितमानस, किष्किन्धाकाण्ड, दोहा/चौपाई 26",
+    "author": "गोस्वामी तुलसीदास",
+    "slug": "ramcharitmanas-kand-4-doha-26",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "॥ दोहा ॥",
+          "निज इच्छाँ प्रभु अवतरइ सुर मह गो द्विज लागि।",
+          "सगुन उपासक संग तहँ रहहिं मोच्छ सब त्यागि॥26॥"
+        ],
+        "linesTransliteration": [
+          "nija icchā prabhu avatarai sura mahi gō dvija lāgi.",
+          "saguna upāsaka saṃga tahaom rahahiṃ mōccha saba tyāgi..26.."
+        ],
+        "linesEnglish": [
+          "“Of His own free will the Lord descends on earth for the sake of gods, Earth, cows and the Brahmanas. Spurning all the varieties of final beatitude† the worshippers of His qualified form (come down and) remain with Him even on earth."
+        ]
+      }
+    ],
+    "chapterId": "kand-किष्किन्धाकाण्ड",
+    "chapterName": "किष्किन्धाकाण्ड",
+    "verseNumber": 26
+  },
+  {
+    "id": "ramcharitmanas-kand-4-doha-27",
+    "collectionId": "ramcharitmanas",
+    "index": 735,
+    "titleDevanagari": "रामचरितमानस, किष्किन्धाकाण्ड, दोहा/चौपाई 27",
+    "author": "गोस्वामी तुलसीदास",
+    "slug": "ramcharitmanas-kand-4-doha-27",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "॥ दोहा ॥",
+          "मोहि लै जाहु सिंधुतट देउँ तिलांजलि ताहि।",
+          "बचन सहाइ करबि मैं पैहहु खोजहु जाहि॥27॥"
+        ],
+        "linesTransliteration": [
+          "mōhi lai jāhu siṃdhutaṭa dēu tilāṃjali tāhi .",
+          "bacana sahāi karavi maiṃ paihahu khōjahu jāhi ..27.."
+        ],
+        "linesEnglish": [
+          "Take me to the sea-shore, so that I may make an offering of water with sesamum seeds (to my departed brother). I can help you only with my instructions, by following which you will succeed in recovering Her whom you seek.”"
+        ]
+      }
+    ],
+    "chapterId": "kand-किष्किन्धाकाण्ड",
+    "chapterName": "किष्किन्धाकाण्ड",
+    "verseNumber": 27
+  },
+  {
+    "id": "ramcharitmanas-kand-4-doha-28",
+    "collectionId": "ramcharitmanas",
+    "index": 736,
+    "titleDevanagari": "रामचरितमानस, किष्किन्धाकाण्ड, दोहा/चौपाई 28",
+    "author": "गोस्वामी तुलसीदास",
+    "slug": "ramcharitmanas-kand-4-doha-28",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "॥ दोहा ॥",
+          "मैं देखउँ तुम्ह नाहीं गीधहि दृष्टि अपार।",
+          "बूढ़ भयउँ न त करतेउँ कछुक सहाय तुम्हार॥28॥"
+        ],
+        "linesTransliteration": [
+          "maiṃ dēkhau tumha nāhi gīghahi daṣṭi apāra..",
+          "būḍha bhayau na ta karatēu kachuka sahāya tumhāra..28.."
+        ],
+        "linesEnglish": [
+          "I see Her, though you cannot; for the range of a vulture’s sight is unlimited. I have grown old now, or else I would have rendered some help to you.”"
+        ]
+      }
+    ],
+    "chapterId": "kand-किष्किन्धाकाण्ड",
+    "chapterName": "किष्किन्धाकाण्ड",
+    "verseNumber": 28
+  },
+  {
+    "id": "ramcharitmanas-kand-4-doha-29",
+    "collectionId": "ramcharitmanas",
+    "index": 737,
+    "titleDevanagari": "रामचरितमानस, किष्किन्धाकाण्ड, दोहा/चौपाई 29",
+    "author": "गोस्वामी तुलसीदास",
+    "slug": "ramcharitmanas-kand-4-doha-29",
+    "verses": [
+      {
+        "stanzaNumber": 1,
+        "linesDevanagari": [
+          "॥ दोहा ॥",
+          "बलि बाँधत प्रभु बाढ़ेउ सो तनु बरनि न जाइ।",
+          "उभय घरी महँ दीन्हीं सात प्रदच्छिन धाइ॥29॥"
+        ],
+        "linesTransliteration": [
+          "bali bāomdhata prabhu bāḍhēu sō tanu barani na jāī.",
+          "ubhaya dharī mahaom dīnhī sāta pradacchina dhāi..29.."
+        ],
+        "linesEnglish": [
+          "“In His effort to make Bali captive the Lord grew to an indescribable size. Yet in less than an hour I devoutly ran clockwise around Him as many as seven times.”"
+        ]
+      }
+    ],
+    "chapterId": "kand-किष्किन्धाकाण्ड",
+    "chapterName": "किष्किन्धाकाण्ड",
+    "verseNumber": 29
+  }
+]
