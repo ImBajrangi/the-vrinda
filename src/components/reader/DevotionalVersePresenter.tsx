@@ -1,12 +1,22 @@
 import React, { useState } from 'react';
-import { Sparkles, MapPin, BookOpen, ScrollText, Eye, EyeOff } from 'lucide-react';
+import {
+  Sparkles,
+  MapPin,
+  BookOpen,
+  ScrollText,
+  Eye,
+  EyeOff,
+  AlignLeft,
+  AlignCenter,
+} from 'lucide-react';
 import { parseDevotionalContent } from '../../utils/devotionalContentParser';
+import { formatDevanagariNumerals } from '../../services/cacheService';
 
 interface DevotionalVersePresenterProps {
   lines: string[];
   fontClass: string;
   fontSize: 'sm' | 'md' | 'lg' | 'xl';
-  textAlignClass: string;
+  textAlignClass?: string;
   currentTheme: {
     lineColor: string;
     titleColor: string;
@@ -18,11 +28,16 @@ export const DevotionalVersePresenter: React.FC<DevotionalVersePresenterProps> =
   lines,
   fontClass,
   fontSize,
-  textAlignClass,
   currentTheme,
 }) => {
-  const [showMeanings, setShowMeanings] = useState(true);
   const parsed = parseDevotionalContent(lines);
+
+  // Reader Preferences: Default to centered alignment for classical rhythmic poetry
+  const [alignment, setAlignment] = useState<'center' | 'left'>(() => {
+    return parsed.hasStanzas ? 'center' : 'left';
+  });
+  const [showMeanings, setShowMeanings] = useState<boolean>(true);
+  const [focusedStanzaIndex, setFocusedStanzaIndex] = useState<number | null>(null);
 
   const verseSizeClass =
     fontSize === 'sm'
@@ -33,35 +48,154 @@ export const DevotionalVersePresenter: React.FC<DevotionalVersePresenterProps> =
       ? 'text-[23px] sm:text-[25px] leading-[2.3]'
       : 'text-[26px] sm:text-[28px] leading-[2.4]';
 
-  return (
-    <div className="space-y-4 py-1">
-      {/* Optional Mode Toggle when Inherent Verse Pairs are detected */}
-      {parsed.hasVersePairs && (
-        <div className="flex items-center justify-end pb-1 border-b border-amber-900/5">
-          <button
-            type="button"
-            onClick={() => setShowMeanings(!showMeanings)}
-            className="px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold flex items-center gap-1.5 transition-colors cursor-pointer select-none bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200/80 shadow-2xs"
-            title="भावार्थ दिखाएँ या छिपाएँ"
-          >
-            {showMeanings ? (
-              <>
-                <EyeOff className="w-3 h-3 text-amber-800" />
-                <span>केवल मूल पद</span>
-              </>
-            ) : (
-              <>
-                <Eye className="w-3 h-3 text-amber-800" />
-                <span>पद एवं भावार्थ</span>
-              </>
-            )}
-          </button>
-        </div>
-      )}
+  const textAlignClass = alignment === 'center' ? 'text-center' : 'text-left';
 
-      {/* Structured Inherently Distributed Units */}
-      <div className={`space-y-3.5 ${textAlignClass}`}>
+  return (
+    <div className="space-y-4 py-1 select-text">
+      {/* Ease-of-Reading Utility Toolbar */}
+      <div className="flex items-center justify-between pb-2 border-b border-amber-900/10 gap-2 flex-wrap text-xs">
+        {/* Left: Reading guidance hint */}
+        <span className="text-[11px] font-mono text-neutral-400 hidden sm:inline-flex items-center gap-1">
+          <ScrollText className="w-3 h-3 text-amber-600" />
+          <span>चरण पर टैप कर एकाग्रता पाठ (Focus Mode) प्रारम्भ करें</span>
+        </span>
+
+        {/* Right: Alignment & Commentary Toggles */}
+        <div className="flex items-center gap-1.5 ml-auto">
+          {/* Poetic Stanza Layout Toggle (Center vs Left) */}
+          <div className="flex items-center bg-neutral-100 p-0.5 rounded-full border border-neutral-200/80">
+            <button
+              type="button"
+              onClick={() => setAlignment('center')}
+              className={`h-6 px-2.5 rounded-full text-[10px] font-mono font-semibold flex items-center gap-1 transition-colors cursor-pointer select-none ${
+                alignment === 'center'
+                  ? 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
+                  : 'text-neutral-500 hover:text-neutral-900'
+              }`}
+              title="संकीर्तन / मध्यस्थ लय (Centered)"
+            >
+              <AlignCenter className="w-2.5 h-2.5" />
+              <span>मध्यस्थ</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setAlignment('left')}
+              className={`h-6 px-2.5 rounded-full text-[10px] font-mono font-semibold flex items-center gap-1 transition-colors cursor-pointer select-none ${
+                alignment === 'left'
+                  ? 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
+                  : 'text-neutral-500 hover:text-neutral-900'
+              }`}
+              title="शास्त्रीय / वामस्थ पाठ (Left-aligned)"
+            >
+              <AlignLeft className="w-2.5 h-2.5" />
+              <span>वामस्थ</span>
+            </button>
+          </div>
+
+          {/* Toggle Inherent Meaning if present */}
+          {parsed.hasVersePairs && (
+            <button
+              type="button"
+              onClick={() => setShowMeanings(!showMeanings)}
+              className="h-6 px-2.5 rounded-full text-[10px] font-mono font-semibold flex items-center gap-1 transition-colors cursor-pointer select-none bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200/80 shadow-2xs"
+              title="भावार्थ दिखाएँ या छिपाएँ"
+            >
+              {showMeanings ? (
+                <>
+                  <EyeOff className="w-2.5 h-2.5 text-amber-800" />
+                  <span>केवल मूल</span>
+                </>
+              ) : (
+                <>
+                  <Eye className="w-2.5 h-2.5 text-amber-800" />
+                  <span>भावार्थ सहित</span>
+                </>
+              )}
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* Main Devotional Presentation Body */}
+      <div className={`space-y-4 ${textAlignClass}`}>
         {parsed.units.map((unit, idx) => {
+          // 1. Festive / Darshan Poem Title (e.g. "झूलन उत्सव संध्या दर्शन ||")
+          if (unit.type === 'poem_title') {
+            return (
+              <div key={idx} className="text-center pt-2 pb-1">
+                <span className="inline-block text-base sm:text-lg lg:text-xl font-bold font-serif text-amber-950 bg-amber-100/75 border border-amber-300/80 px-5 py-1.5 rounded-full shadow-2xs">
+                  {unit.text}
+                </span>
+              </div>
+            );
+          }
+
+          // 2. Sacred Floral Garland Line (e.g. "🥀🌹🥀🌹🥀🌹🥀🌹🥀")
+          if (unit.type === 'garland') {
+            return (
+              <div
+                key={idx}
+                className="py-1 text-center select-none text-xl sm:text-2xl tracking-[0.35em] drop-shadow-2xs opacity-90"
+                aria-hidden="true"
+              >
+                {unit.text}
+              </div>
+            );
+          }
+
+          // 3. Poetic Stanza Grouping (Couplets & Chhands with breathing pauses)
+          if (unit.type === 'stanza') {
+            const isFocused = focusedStanzaIndex === idx;
+
+            return (
+              <div
+                key={idx}
+                onClick={() => setFocusedStanzaIndex(isFocused ? null : idx)}
+                className={`group/stanza relative py-3 px-3.5 sm:px-4 rounded-xl transition-colors duration-200 cursor-pointer ${
+                  isFocused
+                    ? 'bg-amber-50/70 border border-amber-300/80 shadow-2xs'
+                    : 'hover:bg-amber-50/30'
+                }`}
+                title="टैप करके इस चरण पर एकाग्रता पाठ करें"
+              >
+                {/* Floating Stanza Numeral Badge */}
+                {unit.stanzaNumber && (
+                  <span
+                    className={`inline-block mb-1 px-2 py-0.5 rounded-full text-[10px] font-mono font-bold transition-colors select-none ${
+                      isFocused
+                        ? 'bg-[#FEF08A] text-[#78350F]'
+                        : 'bg-neutral-100 text-neutral-400 group-hover/stanza:text-amber-800 group-hover/stanza:bg-amber-100/60'
+                    }`}
+                  >
+                    ॥ {formatDevanagariNumerals(unit.stanzaNumber)} ॥
+                  </span>
+                )}
+
+                {/* Stanza Lines rendered with harmonious cadence */}
+                <div className="space-y-1.5 sm:space-y-2">
+                  {unit.lines.map((line, lIdx) => (
+                    <p
+                      key={lIdx}
+                      className={`${fontClass} ${
+                        lIdx === 0 ? 'font-semibold' : 'font-normal sm:font-medium'
+                      } tracking-normal ${currentTheme.lineColor} ${verseSizeClass}`}
+                    >
+                      {line}
+                    </p>
+                  ))}
+                </div>
+
+                {/* Subtle Stanza Flourish Separator */}
+                {idx < parsed.units.length - 1 && (
+                  <div className="flex items-center justify-center pt-3 select-none text-amber-300/60 text-xs">
+                    ❀
+                  </div>
+                )}
+              </div>
+            );
+          }
+
+          // 4. Quoted Verse + Inherent Line-by-Line Meaning
           if (unit.type === 'verse_pair') {
             return (
               <div key={idx} className="space-y-2 py-1">
@@ -89,6 +223,7 @@ export const DevotionalVersePresenter: React.FC<DevotionalVersePresenterProps> =
             );
           }
 
+          // 5. Section Header Badges (e.g. स्थान, दिव्य लीला)
           if (unit.type === 'section_header') {
             const isLocation = unit.title.includes('स्थान');
             const isLeela = unit.title.includes('लीला');
@@ -119,13 +254,11 @@ export const DevotionalVersePresenter: React.FC<DevotionalVersePresenterProps> =
             );
           }
 
-          // Plain Prose / Couplet Line
+          // 6. Plain Prose Line
           return (
             <p
               key={idx}
-              className={`${fontClass} ${
-                idx === 0 ? 'font-semibold' : 'font-normal'
-              } tracking-normal ${currentTheme.lineColor} ${verseSizeClass}`}
+              className={`${fontClass} font-normal tracking-normal ${currentTheme.lineColor} ${verseSizeClass}`}
             >
               {unit.text}
             </p>

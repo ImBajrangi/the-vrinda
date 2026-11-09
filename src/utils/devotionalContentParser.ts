@@ -6,10 +6,26 @@ export interface VerseMeaningUnit {
   meaning?: string;
 }
 
+export interface StanzaUnit {
+  type: 'stanza';
+  lines: string[];
+  stanzaNumber?: number;
+}
+
 export interface SectionHeaderUnit {
   type: 'section_header';
   title: string;
   content?: string;
+}
+
+export interface FloralGarlandUnit {
+  type: 'garland';
+  text: string;
+}
+
+export interface PoemTitleUnit {
+  type: 'poem_title';
+  text: string;
 }
 
 export interface ProseUnit {
@@ -17,23 +33,39 @@ export interface ProseUnit {
   text: string;
 }
 
-export type DevotionalUnit = VerseMeaningUnit | SectionHeaderUnit | ProseUnit;
+export type DevotionalUnit =
+  | VerseMeaningUnit
+  | StanzaUnit
+  | SectionHeaderUnit
+  | FloralGarlandUnit
+  | PoemTitleUnit
+  | ProseUnit;
 
 export interface ParsedSacredPadaContent {
   detectedRaga?: string;
   attribution?: string;
   units: DevotionalUnit[];
   hasVersePairs: boolean;
+  hasStanzas: boolean;
+}
+
+/**
+ * Checks if a Devanagari line ends with a terminal stanza punctuation:
+ * Double Danda (॥ or \u0965), ASCII double pipe (||), or stanza number bracket/dandas (e.g. ॥ १ ॥, [1])
+ */
+function isStanzaTerminal(line: string): boolean {
+  return /([॥\u0965]|\|\||\[\d+\])\s*$/.test(line) || /॥\s*[\d०-९]+\s*॥\s*$/.test(line);
 }
 
 /**
  * Intelligently decomposes raw Devanagari text into inherently distributed devotional units.
- * Separates sacred poetic verses from inherent line-by-line Hindi meaning, extracts
- * raga tags & attribution signatures, and deduplicates trailing raw scrape dumps.
+ * Separates sacred poetic verses from inherent line-by-line Hindi meaning, partitions traditional
+ * poetry into rhythmic stanzas (छंद / चरण), extracts raga tags & attribution signatures,
+ * and deduplicates trailing raw scrape dumps.
  */
 export function parseDevotionalContent(rawLines: string[]): ParsedSacredPadaContent {
   if (!rawLines || rawLines.length === 0) {
-    return { units: [], hasVersePairs: false };
+    return { units: [], hasVersePairs: false, hasStanzas: false };
   }
 
   let lines = rawLines.map((l) => sanitizeSacredText(l || '').trim()).filter(Boolean);
@@ -105,24 +137,117 @@ export function parseDevotionalContent(rawLines: string[]): ParsedSacredPadaCont
     }
   }
 
-  // 5. Build structured units
+  // Check if content uses quoted verse + meaning format
+  const hasQuotedPairs = expandedLines.some((l) => /^([“"][^”"]+[”"])$/.test(l));
+
+  // 5A. Handle Quoted Verse + Meaning Pairs (Interleaved Commentary)
+  if (hasQuotedPairs) {
+    const units: DevotionalUnit[] = [];
+
+    for (let i = 0; i < expandedLines.length; i++) {
+      const line = expandedLines[i];
+
+      if (/^[-—–]\s*(.+)$/.test(line)) {
+        if (!attribution) attribution = line.replace(/^[-—–]\s*/, '').trim();
+        continue;
+      }
+
+      const secMatch = line.match(
+        /^(स्थान|दिव्य लीला|लीला|दर्शन|कथा|माहात्म्य|भाव|विशेष|प्रसंग|स्वरूप|परिकर)\s*[:：]\s*(.*)$/
+      );
+      if (secMatch) {
+        units.push({
+          type: 'section_header',
+          title: secMatch[1].trim(),
+          content: secMatch[2]?.trim() || undefined,
+        });
+        continue;
+      }
+
+      const isQuoted = /^([“"][^”"]+[”"])$/.test(line);
+      if (isQuoted) {
+        const verseText = line.replace(/^[“"]|[”"]$/g, '').trim();
+        let meaningText: string | undefined = undefined;
+
+        if (i + 1 < expandedLines.length) {
+          const next = expandedLines[i + 1];
+          const nextIsQuoted = /^([“"][^”"]+[”"])$/.test(next);
+          const nextIsSec =
+            /^(स्थान|दिव्य लीला|लीला|दर्शन|कथा|माहात्म्य|भाव|विशेष|प्रसंग|स्वरूप|परिकर)\s*[:：]/.test(
+              next
+            );
+          const nextIsAttr = /^[-—–]/.test(next);
+          if (!nextIsQuoted && !nextIsSec && !nextIsAttr) {
+            meaningText = next;
+            i++; // Consume meaning line
+          }
+        }
+
+        units.push({
+          type: 'verse_pair',
+          verse: verseText,
+          meaning: meaningText,
+        });
+      } else {
+        units.push({
+          type: 'prose',
+          text: line,
+        });
+      }
+    }
+
+    return { detectedRaga, attribution, units, hasVersePairs: true, hasStanzas: false };
+  }
+
+  // 5B. Handle Classical Poetry with Stanza Rhythm (छंद / दोहा / चरण विभाजन)
   const units: DevotionalUnit[] = [];
-  let hasVersePairs = false;
+  let currentStanzaLines: string[] = [];
+  let stanzaCounter = 1;
+  let hasStanzas = false;
 
   for (let i = 0; i < expandedLines.length; i++) {
     const line = expandedLines[i];
 
-    // Check for inline attribution
     if (/^[-—–]\s*(.+)$/.test(line)) {
       if (!attribution) attribution = line.replace(/^[-—–]\s*/, '').trim();
       continue;
     }
 
-    // Check for section headers: e.g. "स्थान:", "दिव्य लीला:", "कथा प्रसंग:"
+    // 1. Heading line (e.g. "झूलन उत्सव संध्या दर्शन ||" or "आरती श्री युगल किशोर की")
+    if (
+      i === 0 &&
+      (line.includes('दर्शन') ||
+        line.includes('उत्सव') ||
+        line.includes('लीला') ||
+        line.includes('आरती') ||
+        line.includes('मंगलाचरण') ||
+        line.endsWith('||') ||
+        line.endsWith('॥'))
+    ) {
+      units.push({ type: 'poem_title', text: line });
+      continue;
+    }
+
+    // 2. Floral Garland line (e.g. "🥀🌹🥀🌹🥀🌹🥀🌹🥀" or "🪷 ❀ 🪷 ❀ 🪷")
+    if (/^[🥀🌹🌸🌺🪷🌻🌷🌼🌾🌿🍃🍂❀✿\s]+$/.test(line)) {
+      units.push({ type: 'garland', text: line });
+      continue;
+    }
+
+    // 3. Section headers
     const secMatch = line.match(
       /^(स्थान|दिव्य लीला|लीला|दर्शन|कथा|माहात्म्य|भाव|विशेष|प्रसंग|स्वरूप|परिकर)\s*[:：]\s*(.*)$/
     );
     if (secMatch) {
+      if (currentStanzaLines.length > 0) {
+        units.push({
+          type: 'stanza',
+          lines: currentStanzaLines,
+          stanzaNumber: stanzaCounter++,
+        });
+        currentStanzaLines = [];
+        hasStanzas = true;
+      }
       units.push({
         type: 'section_header',
         title: secMatch[1].trim(),
@@ -131,40 +256,29 @@ export function parseDevotionalContent(rawLines: string[]): ParsedSacredPadaCont
       continue;
     }
 
-    // Check for quoted verse line
-    const isQuoted = /^([“"][^”"]+[”"])$/.test(line);
-    if (isQuoted) {
-      hasVersePairs = true;
-      const verseText = line.replace(/^[“"]|[”"]$/g, '').trim();
-      let meaningText: string | undefined = undefined;
+    currentStanzaLines.push(line);
 
-      // Look ahead for translation in next line
-      if (i + 1 < expandedLines.length) {
-        const next = expandedLines[i + 1];
-        const nextIsQuoted = /^([“"][^”"]+[”"])$/.test(next);
-        const nextIsSec =
-          /^(स्थान|दिव्य लीला|लीला|दर्शन|कथा|माहात्म्य|भाव|विशेष|प्रसंग|स्वरूप|परिकर)\s*[:：]/.test(
-            next
-          );
-        const nextIsAttr = /^[-—–]/.test(next);
-        if (!nextIsQuoted && !nextIsSec && !nextIsAttr) {
-          meaningText = next;
-          i++; // Consume meaning line
-        }
-      }
-
+    // If terminal danda ॥ or || or [1] reached, conclude stanza
+    if (isStanzaTerminal(line)) {
       units.push({
-        type: 'verse_pair',
-        verse: verseText,
-        meaning: meaningText,
+        type: 'stanza',
+        lines: currentStanzaLines,
+        stanzaNumber: stanzaCounter++,
       });
-    } else {
-      units.push({
-        type: 'prose',
-        text: line,
-      });
+      currentStanzaLines = [];
+      hasStanzas = true;
     }
   }
 
-  return { detectedRaga, attribution, units, hasVersePairs };
+  // Push any trailing lines as final stanza
+  if (currentStanzaLines.length > 0) {
+    units.push({
+      type: 'stanza',
+      lines: currentStanzaLines,
+      stanzaNumber: stanzaCounter++,
+    });
+    hasStanzas = true;
+  }
+
+  return { detectedRaga, attribution, units, hasVersePairs: false, hasStanzas };
 }
