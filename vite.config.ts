@@ -85,8 +85,11 @@ export default defineConfig(({ isSsrBuild }) => ({
               if (id.includes('node_modules/lucide-react')) {
                 return 'vendor-icons';
               }
-              if (id.includes('node_modules/@supabase') || id.includes('node_modules/idb-keyval')) {
-                return 'vendor-data';
+              if (id.includes('node_modules/@supabase')) {
+                return 'vendor-supabase';
+              }
+              if (id.includes('node_modules/idb-keyval')) {
+                return 'vendor-idb';
               }
               if (id.includes('src/data/canonicalGranthas.json') || id.includes('src/data/canonicalSaints.json')) {
                 return 'data-canonical';

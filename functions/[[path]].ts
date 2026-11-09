@@ -5,6 +5,10 @@
  * dynamic JSON-LD Schema.org graphs, and staging noindex protection for the-vrinda.pages.dev.
  */
 
+import chapterSnippetsData from '../src/data/chapterSnippets.json';
+import canonicalGranthasData from '../src/data/canonicalGranthas.json';
+import canonicalSaintsData from '../src/data/canonicalSaints.json';
+
 interface Env {}
 
 // Cloudflare Workers / Pages runtime ambient type definitions
@@ -71,43 +75,33 @@ const EPICS_META: Record<string, { name: string; author: string; desc: string }>
   },
 };
 
-const GRANTHAS_META: Record<string, { name: string; author: string; desc: string }> = {
-  'hit-chaurasi': {
-    name: 'श्री हित चौरासी',
-    author: 'श्री हित हरिवंश महाप्रभु',
-    desc: 'श्री राधा वल्लभ संप्रदाय का शिरोमणि ग्रंथ, ८४ पावन पदों में नित्य निकुंज रस का अमूर्त विलास।',
-  },
-  'kelimal': {
-    name: 'केलिमाल',
-    author: 'स्वामी श्री हरिदास जी',
-    desc: 'श्री स्वामी हरिदास जी महाराज द्वारा रचित नित्य निकुंज रस केलि के परम पावन पद।',
-  },
-  'radha-sudha-nidhi': {
-    name: 'श्री राधा सुधा निधि',
-    author: 'श्री हित हरिवंश महाप्रभु',
-    desc: 'श्री राधा रानी के पावन चरण कमलों की अनन्य निष्ठा व परम रस सुधा का स्तोत्र।',
-  },
-  'sur-sagar': {
-    name: 'सूरसागर',
-    author: 'महाकवि सूरदास',
-    desc: 'महाकवि सूरदास प्रणीत वात्सल्य एवं मधुर रस के अमूल्य पद।',
-  },
-  'vyas-vani': {
-    name: 'व्यास वाणी',
-    author: 'श्री हरिराम व्यास',
-    desc: 'श्री व्यास जी रचित अनन्य रस व ब्रज निष्ठा की पावन वाणी।',
-  },
-  'meera-padavali': {
-    name: 'मीराबाई पदावली',
-    author: 'भक्त शिरोमणि मीराबाई',
-    desc: 'गिरधर गोपाल के अनन्य विरह और समर्पण से ओतप्रोत पावन पद।',
-  },
-  'raskhan-padavali': {
-    name: 'रसखान पदावली',
-    author: 'रसखान',
-    desc: 'ब्रजभूमि और नंदनंदन के पावन प्रेम में निबद्ध सवैये व दोहे।',
-  },
-};
+const GRANTHAS_MAP = new Map<string, { id: string; name: string; author: string; description: string; category?: string }>();
+for (const g of (canonicalGranthasData as any[])) {
+  GRANTHAS_MAP.set(g.id, g);
+  if (g.slug && g.slug !== g.id) GRANTHAS_MAP.set(g.slug, g);
+}
+
+const SAINTS_MAP = new Map<string, { id: string; name: string; slug: string; tradition?: string; biography?: string }>();
+for (const s of (canonicalSaintsData as any[])) {
+  if (s.slug) SAINTS_MAP.set(s.slug, s);
+  if (s.nameEng) SAINTS_MAP.set(s.nameEng.toLowerCase().replace(/[^a-z0-9]+/g, '-'), s);
+  if (s.name) SAINTS_MAP.set(s.name, s);
+}
+
+const CHAPTER_SNIPPETS = (chapterSnippetsData || {}) as Record<string, {
+  granthaId: string;
+  granthaName: string;
+  author: string;
+  chapterId: string;
+  chapterName: string;
+  section?: string;
+  verseCount: number;
+  openingVerse: string;
+}>;
+
+function getChapterSnippet(granthaId: string, chapterId: string) {
+  return CHAPTER_SNIPPETS[`${granthaId}:${chapterId}`] || null;
+}
 
 const KNOWN_PADAS_META: Record<string, { title: string; author: string; desc: string; sampleVerse?: string }> = {
   'radheju-merau-janam-sudharau': {
@@ -135,31 +129,6 @@ const KNOWN_PADAS_META: Record<string, { title: string; author: string; desc: st
     sampleVerse: 'बैनु मैं बाजै बंसीवट।\nसुनत सखी आनंदित भईं, तजि गृह सुख कुल वट॥',
   },
 };
-
-// Edge chapter snippet isolate cache
-let cachedSnippets: Record<string, {
-  granthaId: string;
-  granthaName: string;
-  author: string;
-  chapterId: string;
-  chapterName: string;
-  section?: string;
-  verseCount: number;
-  openingVerse: string;
-}> | null = null;
-
-async function getChapterSnippet(request: Request, granthaId: string, chapterId: string) {
-  if (!cachedSnippets) {
-    try {
-      const snippetsUrl = new URL('/data/epics/chapter-snippets.json', request.url);
-      const res = await fetch(snippetsUrl.toString());
-      if (res.ok) {
-        cachedSnippets = await res.json();
-      }
-    } catch {}
-  }
-  return cachedSnippets?.[`${granthaId}:${chapterId}`] || null;
-}
 
 function formatSlug(slug: string): string {
   return slug
@@ -407,16 +376,23 @@ export const onRequest: PagesFunction<Env> = async (context) => {
       </article>
     `;
   } else if (qAuthor) {
-    const saintName = formatSlug(qAuthor);
-    title = `${saintName} • रसिक संत पदावली व जीवन चरित | वृन्दोपनिषद् 2.0`;
-    description = `${saintName} की समस्त पावन पदों व वाणियों का प्रामाणिक संग्रह। वृन्दोपनिषद् 2.0`;
-    canonicalUrl = `https://bhav.vrindopnishad.in/?tab=padavali&author=${encodeURIComponent(qAuthor)}`;
+    const saint = SAINTS_MAP.get(qAuthor) || SAINTS_MAP.get(decodeURIComponent(qAuthor).trim()) || SAINTS_MAP.get(qAuthor.toLowerCase());
+    const saintName = saint ? saint.name : formatSlug(qAuthor);
+    const tradition = saint?.tradition ? ` (${saint.tradition})` : '';
+    const bio = saint?.biography ? `${saint.biography} ` : '';
+
+    title = `${saintName}${tradition} • रसिक संत पदावली व जीवन चरित | वृन्दोपनिषद् 2.0`;
+    description = `${bio}${saintName} की समस्त पावन पदों व वाणियों का प्रामाणिक संग्रह। वृन्दोपनिषद् 2.0`;
+    canonicalUrl = `https://bhav.vrindopnishad.in/?tab=padavali&author=${encodeURIComponent(saint?.slug || qAuthor)}`;
 
     entitySchema = {
       '@type': 'ProfilePage',
+      'headline': `${saintName} - रसिक संत परंपरा`,
       'mainEntity': {
         '@type': 'Person',
         'name': saintName,
+        'description': saint?.biography || `${saintName} - ब्रज निकुंज रस व पावन वाणी के प्रणेता।`,
+        ...(saint?.tradition ? { 'knowsAbout': saint.tradition } : {}),
       },
     };
 
@@ -428,7 +404,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
         <header style="margin-bottom: 2rem;">
           <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; background-color: #fef3c7; color: #92400e; margin-bottom: 0.75rem;">रसिक संत परंपरा</span>
           <h1 style="font-size: 2rem; font-weight: 700; line-height: 1.3; color: #1c1917; margin: 0 0 0.75rem 0;">${saintName}</h1>
-          <p style="font-size: 0.95rem; color: #78716c; margin: 0;">पावन वाणी व रसिक पद संग्रह</p>
+          <p style="font-size: 0.95rem; color: #78716c; margin: 0;">${saint?.tradition ? `संप्रदाय: ${saint.tradition} • ` : ''}पावन वाणी व रसिक पद संग्रह</p>
         </header>
         <p style="font-size: 1.1rem; line-height: 1.8; color: #44403c;">${description}</p>
       </article>
@@ -436,8 +412,8 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   } else if (qGrantha && EPICS_META[qGrantha]) {
     const epic = EPICS_META[qGrantha];
     if (qChapter) {
-      // Response-Level Chapter Resolution for all 781 chapters
-      const chSnippet = await getChapterSnippet(request, qGrantha, qChapter);
+      // Synchronous response-level chapter resolution for all 781 chapters
+      const chSnippet = getChapterSnippet(qGrantha, qChapter);
       const chName = chSnippet ? chSnippet.chapterName : qChapter;
       const chOpeningVerse = chSnippet?.openingVerse || `${epic.name} का पावन अध्याय ${chName}`;
       const chVerseCount = chSnippet?.verseCount || 0;
@@ -491,19 +467,34 @@ export const onRequest: PagesFunction<Env> = async (context) => {
         'description': epic.desc,
       };
     }
-  } else if (qGrantha && GRANTHAS_META[qGrantha]) {
-    const g = GRANTHAS_META[qGrantha];
-    title = `${g.name} (${g.author}) • संपूर्ण वाणी संग्रह | वृन्दोपनिषद् 2.0`;
-    description = `${g.desc} वृन्दोपनिषद् 2.0`;
-    canonicalUrl = `https://bhav.vrindopnishad.in/?tab=padavali&grantha=${encodeURIComponent(qGrantha)}`;
+  } else if (qGrantha && (GRANTHAS_MAP.has(qGrantha) || GRANTHAS_MAP.has(decodeURIComponent(qGrantha).trim()))) {
+    const g = GRANTHAS_MAP.get(qGrantha) || GRANTHAS_MAP.get(decodeURIComponent(qGrantha).trim())!;
+    const authorText = g.author ? ` (${g.author})` : '';
+    title = `${g.name}${authorText} • संपूर्ण वाणी संग्रह | वृन्दोपनिषद् 2.0`;
+    description = `${g.description || g.name} के समस्त पावन पदों व श्लोकों का संग्रह। वृन्दोपनिषद् 2.0`;
+    canonicalUrl = `https://bhav.vrindopnishad.in/?tab=padavali&grantha=${encodeURIComponent(g.id || qGrantha)}`;
 
     entitySchema = {
       '@type': 'Book',
       '@id': `${canonicalUrl}#book`,
       'name': g.name,
-      'author': { '@type': 'Person', 'name': g.author },
-      'description': g.desc,
+      ...(g.author ? { 'author': { '@type': 'Person', 'name': g.author } } : {}),
+      'description': g.description || description,
     };
+
+    dynamicRootHtml = `
+      <article class="sanctuary-ssr-content" style="max-width: 820px; margin: 0 auto; padding: 2.5rem 1.25rem; font-family: 'Noto Serif Devanagari', serif;">
+        <nav style="margin-bottom: 1.5rem; font-size: 0.875rem; color: #b45309;">
+          <a href="/" style="color: #b45309; text-decoration: none;">वृन्दोपनिषद् 2.0</a> &rsaquo; <span>पावन ग्रंथ संग्रह</span>
+        </nav>
+        <header style="margin-bottom: 2rem;">
+          <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; background-color: #fef3c7; color: #92400e; margin-bottom: 0.75rem;">पावन वाणी ग्रंथ</span>
+          <h1 style="font-size: 2rem; font-weight: 700; line-height: 1.3; color: #1c1917; margin: 0 0 0.75rem 0;">${g.name}</h1>
+          <p style="font-size: 0.95rem; color: #78716c; margin: 0;">रचयिता: ${g.author || 'रसिक संत'} • नित्य स्वाध्याय व अनुशीलन</p>
+        </header>
+        <p style="font-size: 1.1rem; line-height: 1.8; color: #44403c;">${description}</p>
+      </article>
+    `;
   } else if (qGrantha) {
     const formatted = formatSlug(qGrantha);
     title = `${formatted} • संपूर्ण ग्रंथ संग्रह | वृन्दोपनिषद् 2.0`;

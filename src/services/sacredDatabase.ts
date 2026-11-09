@@ -1,5 +1,13 @@
 import { get, set, del } from 'idb-keyval';
-import { supabase } from './supabaseClient';
+// Lazy on-demand Supabase client loader: eliminates 229 kB vendor-data chunk from initial cold load
+let supabaseInstance: typeof import('./supabaseClient').supabase | null = null;
+async function getSupabase() {
+  if (!supabaseInstance) {
+    const mod = await import('./supabaseClient');
+    supabaseInstance = mod.supabase;
+  }
+  return supabaseInstance;
+}
 import { SACRED_PADS } from '../data/padas';
 import canonicalGranthasData from '../data/canonicalGranthas.json';
 import canonicalSaintsData from '../data/canonicalSaints.json';
@@ -396,11 +404,12 @@ async function getOrInitAuthUserId(): Promise<string | null> {
 
   authUserIdPromise = (async () => {
     try {
-      const { data: { session } } = await supabase.auth.getSession();
+      const sb = await getSupabase();
+      const { data: { session } } = await sb.auth.getSession();
       if (session?.user?.id) {
         return session.user.id;
       }
-      const { data, error } = await supabase.auth.signInAnonymously();
+      const { data, error } = await sb.auth.signInAnonymously();
       if (error) return null;
       return data?.user?.id || null;
     } catch {
@@ -879,7 +888,8 @@ export const SacredDatabase = {
         }
 
         // Level 4: Supabase REST API fallback (specific columns only, never select('*'))
-        const { data, error } = await supabase
+        const sb = await getSupabase();
+        const { data, error } = await sb
           .from('padas')
           .select('id, collection_id, index, title_devanagari, title_english, author, rag, slug, verses, chapter_id, chapter_name, verse_number')
           .eq('collection_id', granthaId)
@@ -949,7 +959,8 @@ export const SacredDatabase = {
     }
 
     try {
-      const { data, error } = await supabase
+      const sb = await getSupabase();
+      const { data, error } = await sb
         .from('padas')
         .select('id, collection_id, index, title_devanagari, title_english, author, rag, slug, verses')
         .eq('slug', slug)
@@ -1655,7 +1666,8 @@ export const SacredDatabase = {
     if (!q || q.length < 2) return [];
 
     try {
-      const { data, error } = await supabase
+      const sb = await getSupabase();
+      const { data, error } = await sb
         .from('padas')
         .select('id, collection_id, index, title_devanagari, title_english, author, rag, slug, verses')
         .or(`title_devanagari.ilike.%${q}%,author.ilike.%${q}%,slug.ilike.%${q}%`)
@@ -1715,12 +1727,13 @@ export const SacredDatabase = {
 
     // Asynchronously sync bookmark state to Supabase database with authenticated user ownership
     try {
-      getOrInitAuthUserId().then((userId) => {
+      getOrInitAuthUserId().then(async (userId) => {
         if (!userId) return;
+        const sb = await getSupabase();
         if (exists) {
-          supabase.from('user_bookmarks').delete().match({ user_id: userId, pad_id: padId }).then();
+          sb.from('user_bookmarks').delete().match({ user_id: userId, pad_id: padId }).then();
         } else {
-          supabase.from('user_bookmarks').insert({ user_id: userId, pad_id: padId }).then();
+          sb.from('user_bookmarks').insert({ user_id: userId, pad_id: padId }).then();
         }
       }).catch(() => {});
     } catch {}
@@ -1731,9 +1744,10 @@ export const SacredDatabase = {
   async syncCloudBookmarks(): Promise<void> {
     if (typeof window === 'undefined') return;
     try {
-      const { data: { session } } = await supabase.auth.getSession();
+      const sb = await getSupabase();
+      const { data: { session } } = await sb.auth.getSession();
       if (!session?.user?.id) return;
-      const { data } = await supabase.from('user_bookmarks').select('pad_id').eq('user_id', session.user.id);
+      const { data } = await sb.from('user_bookmarks').select('pad_id').eq('user_id', session.user.id);
       if (data && Array.isArray(data)) {
         const cloudPadIds = data.map((r: any) => r.pad_id);
         const local = await this.getBookmarkedPadIds();
