@@ -33,9 +33,13 @@ const EPICS = [
   {
     id: 'valmiki-ramayana',
     name: 'श्रीमद् वाल्मीकि रामायण',
+    shortName: 'वाल्मीकि रामायण',
     author: 'महर्षि वाल्मीकि',
     tag: 'आदिकाव्य',
     kandaLabel: 'काण्ड / सर्ग',
+    chapterTerm: 'सर्ग',
+    sectionTerm: 'काण्ड',
+    verseTerm: 'श्लोक',
     color: '#047857',
     coverBg: 'linear-gradient(135deg, #064E3B 0%, #047857 50%, #0F766E 100%)',
     totalVerses: 14079,
@@ -44,9 +48,13 @@ const EPICS = [
   {
     id: 'shrimad-bhagavatam',
     name: 'श्रीमद् भागवत महापुराण',
+    shortName: 'श्रीमद्भागवत',
     author: 'महर्षि वेदव्यास',
     tag: 'अमलरस संहिता',
     kandaLabel: 'स्कन्ध / अध्याय',
+    chapterTerm: 'अध्याय',
+    sectionTerm: 'स्कन्ध',
+    verseTerm: 'श्लोक',
     color: '#1E3A8A',
     coverBg: 'linear-gradient(135deg, #172554 0%, #1E40AF 50%, #1D4ED8 100%)',
     totalVerses: 12301,
@@ -55,9 +63,13 @@ const EPICS = [
   {
     id: 'ramcharitmanas',
     name: 'श्री रामचरितमानस',
+    shortName: 'रामचरितमानस',
     author: 'गोस्वामी तुलसीदास',
     tag: 'अवधी महाकाव्य',
     kandaLabel: 'काण्ड',
+    chapterTerm: 'काण्ड',
+    sectionTerm: 'काण्ड',
+    verseTerm: 'दोहा / चौपाई',
     color: '#B45309',
     coverBg: 'linear-gradient(135deg, #78350F 0%, #B45309 50%, #D97706 100%)',
     totalVerses: 960,
@@ -66,9 +78,13 @@ const EPICS = [
   {
     id: 'bhagavad-gita',
     name: 'श्रीमद्भगवद्गीता',
+    shortName: 'भगवद्गीता',
     author: 'महर्षि वेदव्यास',
     tag: 'योगशास्त्र',
     kandaLabel: 'अध्याय',
+    chapterTerm: 'अध्याय',
+    sectionTerm: 'अध्याय',
+    verseTerm: 'श्लोक',
     color: '#4C1D95',
     coverBg: 'linear-gradient(135deg, #2E1065 0%, #5B21B6 50%, #6D28D9 100%)',
     totalVerses: 658,
@@ -77,9 +93,13 @@ const EPICS = [
   {
     id: 'durga-saptashati',
     name: 'श्री दुर्गा सप्तशती',
+    shortName: 'दुर्गा सप्तशती',
     author: 'महर्षि मार्कण्डेय',
     tag: 'चण्डी पाठ',
     kandaLabel: 'अध्याय',
+    chapterTerm: 'अध्याय',
+    sectionTerm: 'अध्याय',
+    verseTerm: 'श्लोक',
     color: '#991B1B',
     coverBg: 'linear-gradient(135deg, #7F1D1D 0%, #B91C1C 50%, #DC2626 100%)',
     totalVerses: 555,
@@ -237,6 +257,10 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
     return chapterPadas.find((p) => p.id === activeVerseId) || chapterPadas[0] || null;
   }, [chapterPadas, activeVerseId]);
 
+  const activeVerseIndex = useMemo(() => {
+    return chapterPadas.findIndex((p) => p.id === activeVerseId);
+  }, [chapterPadas, activeVerseId]);
+
   const handleSelectGrantha = (gId: string) => {
     navigationProgress.start();
     setSelectedGranthaId(gId);
@@ -268,79 +292,82 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
   };
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 py-4">
-      {/* Top Banner: Sanatan Mahagranth Parayan Gateway */}
-      <div className="mb-6 p-4 sm:p-5 rounded-[28px] sm:rounded-[32px] bg-white border border-neutral-200/80 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div>
-          <div className="flex items-center gap-2 flex-wrap">
-            <span className="px-2.5 py-0.5 rounded-[8px] text-[10px] font-mono font-bold tracking-wider uppercase bg-[#FEF08A] text-[#78350F]">
-              सनातन महाग्रंथ पारायण
-            </span>
-            <span className="text-xs font-serif text-neutral-400">
-              मूल शास्त्र एवं अखण्ड पाठ धारा
-            </span>
+    <div className="w-full max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 pt-4 sm:pt-6 pb-32">
+      {/* Master Workstation Header: Unified Sacred Parayan Gateway & Compact 5-Epic Shelf */}
+      <div className="mb-6 p-4 sm:p-5 rounded-[28px] bg-white border border-neutral-200/80 shadow-2xs space-y-4">
+        {/* Top Title & Quick Routing Row */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-3 border-b border-neutral-100">
+          <div>
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="px-2.5 py-0.5 rounded-[6px] text-[10px] font-mono font-bold tracking-wider uppercase bg-[#FEF08A] text-[#78350F]">
+                सनातन महाग्रंथ पारायण
+              </span>
+              <span className="text-xs font-serif text-neutral-400">
+                अखण्ड मूल शास्त्र एवं ऑन-डिमांड त्वरित पाठ
+              </span>
+            </div>
+            <h1 className="font-serif font-bold text-xl sm:text-2xl text-neutral-900 mt-1 flex items-center gap-2">
+              <BookOpen className="w-5 h-5 text-amber-600 shrink-0" />
+              <span>{currentEpicConfig.name}</span>
+            </h1>
+            <p className="text-xs sm:text-sm text-neutral-500 mt-0.5 max-w-2xl">
+              {currentEpicConfig.description} • प्रणेता: <strong className="text-neutral-800">{currentEpicConfig.author}</strong>
+            </p>
           </div>
-          <h2 className="font-serif font-bold text-xl sm:text-2xl text-neutral-900 mt-1">
-            {currentEpicConfig.name}
-          </h2>
-          <p className="text-xs sm:text-sm text-neutral-500 mt-0.5 max-w-2xl">
-            {currentEpicConfig.description} • प्रणेता: <strong className="text-neutral-800">{currentEpicConfig.author}</strong>
-          </p>
+
+          {/* Action Button: Jump to Rasik Padavali & Chhand */}
+          <button
+            type="button"
+            onClick={onSwitchToPadavali}
+            className="px-4 py-2 rounded-full bg-[#FAF8F5] hover:bg-[#F3EFE6] border border-amber-900/10 text-xs font-semibold text-amber-950 flex items-center gap-2 cursor-pointer transition-colors shadow-2xs self-start md:self-auto shrink-0"
+          >
+            <span>रसिक पद्यावली व छंद देखें</span>
+            <ArrowRight className="w-3.5 h-3.5 text-amber-700" />
+          </button>
         </div>
 
-        {/* Action Button: Jump to Rasik Padavali & Chhand */}
-        <button
-          type="button"
-          onClick={onSwitchToPadavali}
-          className="px-4 py-2 rounded-[14px] bg-[#FAF8F5] hover:bg-[#F3EFE6] border border-amber-900/10 text-xs font-semibold text-amber-950 flex items-center gap-2 cursor-pointer transition-colors shadow-2xs self-start md:self-auto shrink-0"
-        >
-          <span>रसिक पद्यावली व छंद देखें</span>
-          <ArrowRight className="w-3.5 h-3.5 text-amber-700" />
-        </button>
-      </div>
-
-      {/* Scripture Selection Deck (5 Monumental Epics with 3D Pothi Covers) */}
-      <div className="mb-6 flex items-center gap-3 overflow-x-auto no-scrollbar pb-2">
-        {EPICS.map((epic) => {
-          const isSelected = selectedGranthaId === epic.id;
-          return (
-            <div
-              key={epic.id}
-              onClick={() => handleSelectGrantha(epic.id)}
-              className={`shrink-0 flex items-center gap-3 p-3 rounded-2xl cursor-pointer select-none transition-colors duration-150 border ${
-                isSelected
-                  ? 'bg-amber-50/80 border-amber-400/80 shadow-xs ring-1 ring-amber-300'
-                  : 'bg-white hover:bg-[#FAF8F5] border-neutral-200/80 text-neutral-800'
-              }`}
-            >
-              {/* Proportional Mini Pothi Book Cover */}
-              <div
-                className="w-10 h-14 rounded-[4px_6px_6px_4px] text-white flex flex-col justify-between p-1.5 shadow-sm shrink-0"
-                style={{ background: epic.coverBg }}
+        {/* 5 Monumental Epics Segmented Pothi Shelf */}
+        <div className="flex items-center gap-2.5 overflow-x-auto no-scrollbar pt-1">
+          {EPICS.map((epic) => {
+            const isSelected = selectedGranthaId === epic.id;
+            return (
+              <button
+                key={epic.id}
+                type="button"
+                onClick={() => handleSelectGrantha(epic.id)}
+                className={`shrink-0 flex items-center gap-2.5 px-3 py-2 rounded-[12px] cursor-pointer select-none transition-colors duration-150 border text-left ${
+                  isSelected
+                    ? 'bg-amber-50/90 border-amber-400/90 shadow-2xs ring-1 ring-amber-300/80'
+                    : 'bg-[#FAF8F5] hover:bg-[#F3EFE6] border-neutral-200/70 text-neutral-800'
+                }`}
               >
-                <div className="w-1.5 h-1.5 rounded-full bg-amber-300/80" />
-                <span className="text-[8px] font-serif font-bold text-center leading-tight line-clamp-2">
-                  {epic.name.split(' ')[1] || epic.name}
-                </span>
-                <span className="text-[7px] font-mono text-center opacity-80">
-                  {epic.totalVerses}
-                </span>
-              </div>
+                {/* Miniature Sacred Pothi Spine */}
+                <div
+                  className="w-7 h-10 rounded-[3px_5px_5px_3px] text-white flex flex-col justify-between p-1 shadow-2xs shrink-0"
+                  style={{ background: epic.coverBg }}
+                >
+                  <div className="w-1 h-1 rounded-full bg-amber-300/80" />
+                  <span className="text-[6.5px] font-serif font-bold text-center leading-tight line-clamp-1">
+                    {epic.shortName || epic.name}
+                  </span>
+                  <div className="w-full h-0.5 bg-amber-200/40 rounded-full" />
+                </div>
 
-              <div className="min-w-0 pr-1">
-                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-800 block">
-                  {epic.tag}
-                </span>
-                <h4 className="font-serif font-bold text-xs sm:text-sm text-neutral-900 truncate">
-                  {epic.name}
-                </h4>
-                <p className="text-[10px] text-neutral-400 mt-0.5">
-                  {epic.totalVerses} श्लोक • {epic.author}
-                </p>
-              </div>
-            </div>
-          );
-        })}
+                <div className="min-w-0 pr-1">
+                  <span className="text-[9.5px] font-mono font-bold uppercase tracking-wider text-amber-800 block">
+                    {epic.tag}
+                  </span>
+                  <div className="font-serif font-bold text-xs text-neutral-900 truncate">
+                    {epic.shortName || epic.name}
+                  </div>
+                  <div className="text-[10px] text-neutral-500 font-mono">
+                    {epic.totalVerses} {epic.verseTerm}
+                  </div>
+                </div>
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       {/* ========================================================================= */}
@@ -439,14 +466,14 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                   </div>
                   <div className="flex items-center gap-1.5 shrink-0">
                     <span className="text-[11px] font-mono font-semibold px-2 py-0.5 rounded-full bg-white text-[#CA8A04] border border-amber-900/10">
-                      {epicIndex?.totalChapters || 0} सर्ग
+                      {epicIndex?.totalChapters || 0} {currentEpicConfig.chapterTerm}
                     </span>
                     <button
                       type="button"
                       onClick={handleToggleLeftSidebar}
                       className="w-6 h-6 rounded-[6px] hover:bg-black/5 flex items-center justify-center text-[#64748B] hover:text-[#0F172A] transition-colors cursor-pointer"
                       title="Shrink Sidebar (सूची समेटें)"
-                      aria-label="Shrink Sarga Index Sidebar"
+                      aria-label="Shrink Chapter Index Sidebar"
                     >
                       <PanelLeftClose className="w-3.5 h-3.5" />
                     </button>
@@ -460,7 +487,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                     type="text"
                     value={chapterSearchQuery}
                     onChange={(e) => setChapterSearchQuery(e.target.value)}
-                    placeholder="सर्ग / अध्याय खोजें..."
+                    placeholder={`${currentEpicConfig.chapterTerm} खोजें...`}
                     className="w-full pl-8 pr-3 py-1.5 text-xs rounded-[8px] bg-white border border-neutral-200/80 focus:border-amber-400 focus:outline-none text-neutral-800 placeholder-neutral-400"
                   />
                   {chapterSearchQuery && (
@@ -534,7 +561,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                           </div>
                         </div>
                         <span className="text-[10px] font-mono shrink-0 px-1.5 py-0.5 rounded-[4px] bg-black/5">
-                          {ch.verseCount} श्लोक
+                          {ch.verseCount} {currentEpicConfig.verseTerm}
                         </span>
                       </button>
                     );
@@ -550,9 +577,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
         {/* ========================================================================= */}
         <article
           id="epic-canvas-top"
-          className={`flex-1 min-w-0 w-full bg-white rounded-[28px] sm:rounded-[32px] p-5 sm:p-8 border border-neutral-200/80 shadow-xs transition-all duration-300 ${
-            isLeftSidebarCollapsed && isRightSidebarCollapsed ? 'max-w-4xl mx-auto' : ''
-          }`}
+          className="flex-1 min-w-0 w-full bg-white rounded-[28px] p-5 sm:p-8 border border-neutral-200/80 shadow-2xs transition-all duration-300"
         >
           {/* Chapter Header Bar */}
           <div className="pb-5 mb-6 border-b border-neutral-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
@@ -567,31 +592,46 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                 {currentChapter ? currentChapter.name : 'पावन पाठ'}
               </h1>
               <p className="text-xs text-neutral-400 font-mono mt-0.5">
-                कुल {chapterPadas.length} श्लोक संकलित • ऑन-डिमांड त्वरित पाठ
+                कुल {chapterPadas.length} {currentEpicConfig.verseTerm} संकलित • ऑन-डिमांड त्वरित पाठ
               </p>
             </div>
 
             {/* Quick Sizing Control Pill */}
             <div className="flex items-center gap-2 self-start sm:self-auto">
-              <div className="flex items-center bg-neutral-100 p-0.5 rounded-full border border-neutral-200/80 text-[11px] font-mono font-semibold">
+              <div className="flex items-center bg-neutral-100/90 p-1 rounded-full border border-neutral-200/80 text-xs font-sans font-medium">
                 <button
                   type="button"
                   onClick={() => setFontSize('sm')}
-                  className={`px-2 py-0.5 rounded-full cursor-pointer ${fontSize === 'sm' ? 'bg-white text-neutral-900 shadow-2xs font-bold' : 'text-neutral-500'}`}
+                  className={`px-2.5 py-0.5 rounded-full transition-colors cursor-pointer select-none ${
+                    fontSize === 'sm'
+                      ? 'bg-white text-neutral-900 shadow-2xs font-bold'
+                      : 'text-neutral-500 hover:text-neutral-800'
+                  }`}
+                  title="छोटा आकार"
                 >
                   अ
                 </button>
                 <button
                   type="button"
                   onClick={() => setFontSize('md')}
-                  className={`px-2 py-0.5 rounded-full cursor-pointer ${fontSize === 'md' ? 'bg-white text-neutral-900 shadow-2xs font-bold' : 'text-neutral-500'}`}
+                  className={`px-2.5 py-0.5 rounded-full transition-colors cursor-pointer select-none ${
+                    fontSize === 'md'
+                      ? 'bg-white text-neutral-900 shadow-2xs font-bold'
+                      : 'text-neutral-500 hover:text-neutral-800'
+                  }`}
+                  title="मध्यम आकार"
                 >
                   आ
                 </button>
                 <button
                   type="button"
                   onClick={() => setFontSize('lg')}
-                  className={`px-2 py-0.5 rounded-full cursor-pointer ${fontSize === 'lg' ? 'bg-white text-neutral-900 shadow-2xs font-bold' : 'text-neutral-500'}`}
+                  className={`px-3 py-0.5 rounded-full transition-colors cursor-pointer select-none whitespace-nowrap ${
+                    fontSize === 'lg'
+                      ? 'bg-white text-neutral-900 shadow-2xs font-bold'
+                      : 'text-neutral-500 hover:text-neutral-800'
+                  }`}
+                  title="बड़ा आकार"
                 >
                   बड़ा
                 </button>
@@ -607,7 +647,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                 {currentChapter?.name || 'अध्याय'} संकलित हो रहा है...
               </p>
               <p className="font-mono text-xs text-neutral-400">
-                केवल सम्बद्ध सर्ग/अध्याय का त्वरित प्रवाह (~25 KB)
+                केवल सम्बद्ध {currentEpicConfig.chapterTerm} का त्वरित प्रवाह (~25 KB)
               </p>
             </div>
           ) : (
@@ -623,19 +663,19 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                     key={pad.id}
                     id={`shloka-${pad.id}`}
                     onClick={() => setActiveVerseId(pad.id)}
-                    className={`p-4 sm:p-5 rounded-[16px] sm:rounded-[20px] border transition-colors duration-200 space-y-3 cursor-pointer ${
+                    className={`scroll-mt-28 p-5 sm:p-6 rounded-[16px] border transition-colors duration-200 space-y-4 cursor-pointer select-text ${
                       isActive
-                        ? 'bg-[#FAF8F5] border-amber-300 ring-1 ring-amber-300/60 shadow-xs'
-                        : 'bg-[#FAF8F5]/60 hover:bg-[#FAF8F5] border-amber-900/10'
+                        ? 'bg-[#FAF8F5] border-amber-300 ring-1 ring-amber-300/50 shadow-2xs'
+                        : 'bg-[#FAF8F5]/50 hover:bg-[#FAF8F5] border-amber-900/10'
                     }`}
                   >
                     {/* Verse Meta Header */}
-                    <div className="flex items-center justify-between pb-2 border-b border-amber-900/10 text-xs">
-                      <div className="flex items-center gap-2">
-                        <span className="px-2 py-0.5 rounded-[4px] font-mono font-bold text-[10px] bg-[#FEF08A] text-[#78350F]">
-                          श्लोक {formatDevanagariNumerals(pad.index || idx + 1)}
+                    <div className="flex items-center justify-between pb-3 border-b border-amber-900/10 gap-2 flex-wrap text-xs">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span className="px-2.5 py-0.5 rounded-[6px] font-serif font-bold text-xs bg-[#FEF08A] text-[#78350F] border border-amber-300/60 shrink-0">
+                          ॥ {currentEpicConfig.verseTerm} {formatDevanagariNumerals(idx + 1)} ॥
                         </span>
-                        <span className="font-serif font-bold text-amber-950 text-xs sm:text-sm">
+                        <span className="font-serif font-semibold text-neutral-800 text-xs sm:text-sm">
                           {pad.titleDevanagari}
                         </span>
                       </div>
@@ -664,7 +704,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                           type="button"
                           onClick={() => setActivePurportId(isPurportOpen ? null : pad.id)}
                           className={`px-2.5 py-1 rounded-full text-xs font-semibold flex items-center gap-1 cursor-pointer transition-colors shadow-2xs ${
-                            isPurportOpen ? 'bg-amber-200 text-amber-950 font-bold' : 'bg-white hover:bg-amber-100/70 text-amber-900'
+                            isPurportOpen ? 'bg-amber-200 text-amber-950 font-bold' : 'bg-white hover:bg-amber-100/70 text-amber-900 border border-amber-200/60'
                           }`}
                         >
                           <Sparkles className="w-3 h-3 text-amber-700" />
@@ -676,7 +716,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                     {/* Verse Typography Presentation */}
                     {pad.verses && pad.verses.length > 0 && pad.verses[0]?.linesDevanagari?.length > 0 ? (
                       pad.verses.map((v, vIdx) => (
-                        <div key={vIdx} className={vIdx > 0 ? 'mt-3 pt-2 border-t border-amber-900/10' : ''}>
+                        <div key={vIdx} className={vIdx > 0 ? 'mt-4 pt-3 border-t border-amber-900/10' : ''}>
                           <DevotionalVersePresenter
                             lines={v.linesDevanagari}
                             fontClass="font-serif"
@@ -687,7 +727,15 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                               titleColor: 'text-[#78350F]',
                               metaColor: 'text-[#92400E]'
                             }}
+                            hideToolbar={true}
                           />
+                          {pad.verses.length > 1 && (
+                            <div className="flex items-center justify-center my-3 select-none">
+                              <span className="font-serif font-bold text-xs tracking-widest text-[#92400E]">
+                                ॥ {formatDevanagariNumerals(v.stanzaNumber || vIdx + 1)} ॥
+                              </span>
+                            </div>
+                          )}
                         </div>
                       ))
                     ) : (
@@ -724,7 +772,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                 onClick={() => handleSelectChapter(nextChapter.id)}
                 className="px-5 py-2.5 rounded-[8px] bg-[#FEF08A] hover:bg-amber-300 text-xs font-bold text-[#78350F] flex items-center gap-2 cursor-pointer transition-colors shadow-2xs self-end sm:self-auto"
               >
-                <span>अगला सर्ग/अध्याय: {nextChapter.name}</span>
+                <span>अगला {currentEpicConfig.chapterTerm}: {nextChapter.name}</span>
                 <ChevronRight className="w-4 h-4" />
               </button>
             )}
@@ -820,7 +868,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                 <div className="bg-white rounded-[10px] p-3 border border-amber-900/10 shadow-2xs space-y-1.5">
                   <div className="flex items-center justify-between text-[11px]">
                     <span className="font-mono font-bold text-[#78350F] bg-[#FEF08A] px-2 py-0.5 rounded-[4px]">
-                      श्लोक {formatDevanagariNumerals(activePad.index || 1)}
+                      {currentEpicConfig.verseTerm} {formatDevanagariNumerals(activeVerseIndex >= 0 ? activeVerseIndex + 1 : 1)}
                     </span>
                     <span className="font-serif text-neutral-500 truncate max-w-[150px]">
                       {currentChapter?.name}
@@ -848,7 +896,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
               {/* Quick Jump Grid for Current Chapter Shlokas */}
               <div className="space-y-1.5 pt-2 border-t border-amber-900/10">
                 <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-800 block">
-                  वर्तमान सर्ग के श्लोक ({chapterPadas.length})
+                  वर्तमान {currentEpicConfig.chapterTerm} के {currentEpicConfig.verseTerm} ({chapterPadas.length})
                 </span>
                 <div className="grid grid-cols-5 gap-1.5 max-h-[30vh] overflow-y-auto no-scrollbar pt-1">
                   {chapterPadas.map((pad, idx) => {

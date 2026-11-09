@@ -22,6 +22,7 @@ interface DevotionalVersePresenterProps {
     titleColor: string;
     metaColor: string;
   };
+  hideToolbar?: boolean;
 }
 
 export const DevotionalVersePresenter: React.FC<DevotionalVersePresenterProps> = ({
@@ -29,6 +30,7 @@ export const DevotionalVersePresenter: React.FC<DevotionalVersePresenterProps> =
   fontClass,
   fontSize,
   currentTheme,
+  hideToolbar = false,
 }) => {
   const parsed = parseDevotionalContent(lines);
 
@@ -53,66 +55,68 @@ export const DevotionalVersePresenter: React.FC<DevotionalVersePresenterProps> =
   return (
     <div className="space-y-4 py-1 select-text">
       {/* Ease-of-Reading Utility Toolbar */}
-      <div className="flex items-center justify-between pb-2 border-b border-amber-900/10 gap-2 flex-wrap text-xs">
-        {/* Left: Reading guidance hint */}
-        <span className="text-[11px] font-mono text-neutral-400 hidden sm:inline-flex items-center gap-1">
-          <ScrollText className="w-3 h-3 text-amber-600" />
-          <span>Focus Mode प्रारम्भ करें</span>
-        </span>
+      {!hideToolbar && (
+        <div className="flex items-center justify-between pb-2 border-b border-amber-900/10 gap-2 flex-wrap text-xs">
+          {/* Left: Reading guidance hint */}
+          <span className="text-[11px] font-mono text-neutral-400 hidden sm:inline-flex items-center gap-1">
+            <ScrollText className="w-3 h-3 text-amber-600" />
+            <span>Focus Mode प्रारम्भ करें</span>
+          </span>
 
-        {/* Right: Alignment & Commentary Toggles */}
-        <div className="flex items-center gap-1.5 ml-auto">
-          {/* Poetic Stanza Layout Toggle (Center vs Left) */}
-          <div className="flex items-center bg-neutral-100 p-0.5 rounded-full border border-neutral-200/80">
-            <button
-              type="button"
-              onClick={() => setAlignment('center')}
-              className={`h-6 px-2.5 rounded-full text-[10px] font-mono font-semibold flex items-center gap-1 transition-colors cursor-pointer select-none ${alignment === 'center'
-                  ? 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
-                  : 'text-neutral-500 hover:text-neutral-900'
-                }`}
-              title="संकीर्तन / मध्यस्थ लय (Centered)"
-            >
-              <AlignCenter className="w-2.5 h-2.5" />
-              <span>मध्यस्थ</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => setAlignment('left')}
-              className={`h-6 px-2.5 rounded-full text-[10px] font-mono font-semibold flex items-center gap-1 transition-colors cursor-pointer select-none ${alignment === 'left'
-                  ? 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
-                  : 'text-neutral-500 hover:text-neutral-900'
-                }`}
-              title="शास्त्रीय / वामस्थ पाठ (Left-aligned)"
-            >
-              <AlignLeft className="w-2.5 h-2.5" />
-              <span>वामस्थ</span>
-            </button>
+          {/* Right: Alignment & Commentary Toggles */}
+          <div className="flex items-center gap-1.5 ml-auto">
+            {/* Poetic Stanza Layout Toggle (Center vs Left) */}
+            <div className="flex items-center bg-neutral-100 p-0.5 rounded-full border border-neutral-200/80">
+              <button
+                type="button"
+                onClick={() => setAlignment('center')}
+                className={`h-6 px-2.5 rounded-full text-[10px] font-mono font-semibold flex items-center gap-1 transition-colors cursor-pointer select-none ${alignment === 'center'
+                    ? 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
+                    : 'text-neutral-500 hover:text-neutral-900'
+                  }`}
+                title="संकीर्तन / मध्यस्थ लय (Centered)"
+              >
+                <AlignCenter className="w-2.5 h-2.5" />
+                <span>मध्यस्थ</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setAlignment('left')}
+                className={`h-6 px-2.5 rounded-full text-[10px] font-mono font-semibold flex items-center gap-1 transition-colors cursor-pointer select-none ${alignment === 'left'
+                    ? 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
+                    : 'text-neutral-500 hover:text-neutral-900'
+                  }`}
+                title="शास्त्रीय / वामस्थ पाठ (Left-aligned)"
+              >
+                <AlignLeft className="w-2.5 h-2.5" />
+                <span>वामस्थ</span>
+              </button>
+            </div>
+
+            {/* Toggle Inherent Meaning if present */}
+            {parsed.hasVersePairs && (
+              <button
+                type="button"
+                onClick={() => setShowMeanings(!showMeanings)}
+                className="h-6 px-2.5 rounded-full text-[10px] font-mono font-semibold flex items-center gap-1 transition-colors cursor-pointer select-none bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200/80 shadow-2xs"
+                title="भावार्थ दिखाएँ या छिपाएँ"
+              >
+                {showMeanings ? (
+                  <>
+                    <EyeOff className="w-2.5 h-2.5 text-amber-800" />
+                    <span>केवल मूल</span>
+                  </>
+                ) : (
+                  <>
+                    <Eye className="w-2.5 h-2.5 text-amber-800" />
+                    <span>भावार्थ सहित</span>
+                  </>
+                )}
+              </button>
+            )}
           </div>
-
-          {/* Toggle Inherent Meaning if present */}
-          {parsed.hasVersePairs && (
-            <button
-              type="button"
-              onClick={() => setShowMeanings(!showMeanings)}
-              className="h-6 px-2.5 rounded-full text-[10px] font-mono font-semibold flex items-center gap-1 transition-colors cursor-pointer select-none bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200/80 shadow-2xs"
-              title="भावार्थ दिखाएँ या छिपाएँ"
-            >
-              {showMeanings ? (
-                <>
-                  <EyeOff className="w-2.5 h-2.5 text-amber-800" />
-                  <span>केवल मूल</span>
-                </>
-              ) : (
-                <>
-                  <Eye className="w-2.5 h-2.5 text-amber-800" />
-                  <span>भावार्थ सहित</span>
-                </>
-              )}
-            </button>
-          )}
         </div>
-      </div>
+      )}
 
       {/* Main Devotional Presentation Body */}
       <div className={`space-y-4 ${textAlignClass}`}>
