@@ -121,12 +121,12 @@ export const FloatingNavbar: React.FC<FloatingNavbarProps> = ({
       {/* Fluid responsive floating nav pill: Minimalist, power-efficient frosted glass with clean whiteness */}
       <nav
         aria-label="Mobile Navigation"
-        className="relative pointer-events-auto flex-1 min-w-0 max-w-[340px] h-[54px] rounded-[28px] bg-white/95 backdrop-blur-md border border-neutral-900/[0.08] shadow-[0_8px_24px_-4px_rgba(24,24,27,0.10),0_2px_6px_-1px_rgba(24,24,27,0.04)] flex items-center justify-between p-1 box-border transform-gpu will-change-transform"
+        className="relative pointer-events-auto flex-1 min-w-0 max-w-[340px] h-[54px] rounded-[28px] bg-white/95 backdrop-blur-md border border-neutral-900/[0.08] shadow-[0_8px_24px_-4px_rgba(24,24,27,0.10),0_2px_6px_-1px_rgba(24,24,27,0.04)] flex items-center justify-between p-1 box-border transform-gpu will-change-transform touch-manipulation select-none"
       >
         {/* Dynamic Elastic Sliding Indicator Bar (Instant 0ms Optimistic Shift) */}
         <span
           aria-hidden="true"
-          className="absolute top-1 bottom-1 rounded-[22px] bg-[#FEF08A] shadow-2xs pointer-events-none transition-transform duration-[320ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+          className="absolute top-1 bottom-1 rounded-[22px] bg-[#FEF08A] shadow-2xs pointer-events-none transition-transform duration-[180ms] ease-out will-change-transform"
           style={{
             width: 'calc((100% - 8px) / 5)',
             left: '4px',
@@ -137,21 +137,28 @@ export const FloatingNavbar: React.FC<FloatingNavbarProps> = ({
         {tabs.map((tab) => {
           const Icon = tab.icon;
           const isActive = currentTab === tab.id;
+          const handleTrigger = (e: React.SyntheticEvent) => {
+            e.stopPropagation();
+            if (currentTab !== tab.id) {
+              setOptimisticTab(tab.id);
+              onSelectTab(tab.id);
+            }
+          };
+
           return (
             <button
               key={tab.id}
               type="button"
-              onClick={() => {
-                setOptimisticTab(tab.id);
-                onSelectTab(tab.id);
-              }}
-              className={`relative z-10 border-0 text-[10px] font-sans flex-1 min-w-0 h-[44px] flex flex-col items-center justify-center gap-0.5 py-1 px-0.5 rounded-[22px] transition-colors duration-200 cursor-pointer ${
+              onTouchStart={handleTrigger}
+              onPointerDown={handleTrigger}
+              onClick={handleTrigger}
+              className={`relative z-10 border-0 text-[10px] font-sans flex-1 min-w-0 h-[44px] flex flex-col items-center justify-center gap-0.5 py-1 px-0.5 rounded-[22px] transition-colors duration-100 cursor-pointer touch-manipulation select-none active:opacity-75 ${
                 isActive
                   ? 'text-[#18181B] font-bold'
                   : 'text-[#52525B] hover:text-[#18181B] font-semibold'
               }`}
             >
-              <Icon className={`w-4 h-4 stroke-[2.2] shrink-0 transition-colors duration-200 ${isActive ? 'text-[#B45309]' : 'text-[#71717A]'}`} />
+              <Icon className={`w-4 h-4 stroke-[2.2] shrink-0 transition-colors duration-100 ${isActive ? 'text-[#B45309]' : 'text-[#71717A]'}`} />
               <span className="leading-none truncate w-full text-center">{tab.label}</span>
             </button>
           );

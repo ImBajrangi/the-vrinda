@@ -326,7 +326,7 @@ button:focus-visible {
 }
 
 .main-wrapper-padding-transition {
-  transition: padding-top 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition: padding-top 0.15s ease-out !important;
 }
 
 /* Apple Screen & View Transition */

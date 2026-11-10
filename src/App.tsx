@@ -18,12 +18,16 @@ import { SacredDatabase, CanonicalSaint, CanonicalGrantha, mapPadToEpicChapter }
 import { seo } from './services/seoService';
 import { useScrollDirection } from './hooks/useScrollDirection';
 
-// Feature-level Code Splitting: Lazy load heavy readers, views and modals
+// Feature-level Code Splitting with Immediate Parallel Pre-warming
+// This eliminates cold chunk import latency on first tab click (0ms cache hit)
+const padavaliModulePromise = typeof window !== 'undefined' ? import('./components/reader/PadavaliReader') : null;
+const mahagranthModulePromise = typeof window !== 'undefined' ? import('./components/reader/MahagranthReader') : null;
+
 const LazyPadavaliReader = lazy(() =>
-  import('./components/reader/PadavaliReader').then((m) => ({ default: m.PadavaliReader }))
+  (padavaliModulePromise || import('./components/reader/PadavaliReader')).then((m) => ({ default: m.PadavaliReader }))
 );
 const LazyMahagranthReader = lazy(() =>
-  import('./components/reader/MahagranthReader').then((m) => ({ default: m.MahagranthReader }))
+  (mahagranthModulePromise || import('./components/reader/MahagranthReader')).then((m) => ({ default: m.MahagranthReader }))
 );
 const LazyMilestonesView = lazy(() =>
   import('./components/milestones/MilestonesView').then((m) => ({ default: m.MilestonesView }))
@@ -226,6 +230,31 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
     return initialRoute.tab;
   });
   const [selectedDate, setSelectedDate] = useState<number>(() => new Date().getDate());
+  const [visitedTabs, setVisitedTabs] = useState<Set<NavTab>>(() => new Set([activeTab]));
+
+  useEffect(() => {
+    setVisitedTabs((prev) => {
+      if (prev.has(activeTab)) return prev;
+      const next = new Set(prev);
+      next.add(activeTab);
+      return next;
+    });
+  }, [activeTab]);
+
+  // Preload reader modules during browser idle time so first tap is instantaneous (0ms)
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const preload = () => {
+      import('./components/reader/PadavaliReader');
+      import('./components/reader/MahagranthReader');
+    };
+    if ('requestIdleCallback' in window) {
+      (window as any).requestIdleCallback(preload, { timeout: 1200 });
+    } else {
+      setTimeout(preload, 500);
+    }
+  }, []);
+
   const [activeFeedTab, setActiveFeedTab] = useState<FeedTabType>('विशेष दर्शन');
   const { showChrome } = useScrollDirection();
   // Two-tier cache: synchronous initial pre-warm (0ms cold render) prevents null flash / layout shift
@@ -780,12 +809,15 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
           isVisibleOnMobile={!isReaderTab}
         />
 
-        {/* Main Tab Content with Apple-grade View Transitions */}
+        {/* Main Tab Content with Instant Keep-Alive Architecture */}
         <main className="w-full max-w-full overflow-x-hidden">
-          <div key={activeTab} className="apple-view-enter">
           {/* Tab 1: Smaran (Dashboard) - Adaptive 3-Column on Desktop (xl:), 2-Column on Tablet, 1-Column on Mobile */}
-          {activeTab === 'smaran' && (
-            <div className="w-full pb-44 md:pb-28">
+          {visitedTabs.has('smaran') && (
+            <div
+              className={`w-full pb-44 md:pb-28 ${activeTab === 'smaran' ? 'block' : 'hidden'}`}
+              style={{ display: activeTab === 'smaran' ? 'block' : 'none' }}
+              aria-hidden={activeTab !== 'smaran'}
+            >
               {/* Daily Sadhana Sanctuary Hero Workstation (Unified Apple/Calm-Grade Station) */}
               <div className="mb-6">
                 <SadhanaRingProgress
@@ -1344,9 +1376,14 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
           )}
 
           {/* Tab 2: Sanatan Mahagranth Parayana (Piece-by-Piece Streaming Reader for Epics) */}
-          {activeTab === 'granthas' && (
-            <Suspense fallback={<ReaderLoadingSkeleton />}>
-              <MahagranthReaderComp
+          {visitedTabs.has('granthas') && (
+            <div
+              className={`w-full ${activeTab === 'granthas' ? 'block' : 'hidden'}`}
+              style={{ display: activeTab === 'granthas' ? 'block' : 'none' }}
+              aria-hidden={activeTab !== 'granthas'}
+            >
+              <Suspense fallback={<ReaderLoadingSkeleton />}>
+                <MahagranthReaderComp
                 initialGranthaId={
                   selectedGranthaFilter !== 'all' && SacredDatabase.isEpicGrantha(selectedGranthaFilter)
                     ? selectedGranthaFilter
@@ -1370,42 +1407,53 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
                 onSwitchToPadavali={() => handleTabSwitch('padavali')}
               />
             </Suspense>
+            </div>
           )}
 
           {/* Tab 3: Sacred Padavali & Chhand Sanctuary */}
-          {activeTab === 'padavali' && (
-            <Suspense fallback={<ReaderLoadingSkeleton />}>
-              <PadavaliReaderComp
-                onPlayPad={handlePlayPad}
-                activePlayingPadId={currentPad?.id}
-                isPlaying={isPlayingAudio}
-                selectedGranthaId={selectedGranthaFilter}
-                onSelectGranthaId={(gId) => {
-                  if (SacredDatabase.isEpicGrantha(gId)) {
-                    handleSelectBook(gId);
-                  } else {
-                    setSelectedGranthaFilter(gId);
+          {visitedTabs.has('padavali') && (
+            <div
+              className={`w-full ${activeTab === 'padavali' ? 'block' : 'hidden'}`}
+              style={{ display: activeTab === 'padavali' ? 'block' : 'none' }}
+              aria-hidden={activeTab !== 'padavali'}
+            >
+              <Suspense fallback={<ReaderLoadingSkeleton />}>
+                <PadavaliReaderComp
+                  onPlayPad={handlePlayPad}
+                  activePlayingPadId={currentPad?.id}
+                  isPlaying={isPlayingAudio}
+                  selectedGranthaId={selectedGranthaFilter}
+                  onSelectGranthaId={(gId) => {
+                    if (SacredDatabase.isEpicGrantha(gId)) {
+                      handleSelectBook(gId);
+                    } else {
+                      setSelectedGranthaFilter(gId);
+                    }
+                  }}
+                  onSelectPad={(p) => setCurrentPad(p)}
+                  selectedSearchQuery={readerSearchQuery}
+                  selectedAuthor={selectedAuthor}
+                  onSelectAuthor={(author) => setSelectedAuthor(author)}
+                  selectedPadId={currentPad?.id}
+                  initialPadId={
+                    initialPadId ||
+                    (typeof window !== 'undefined'
+                      ? new URLSearchParams(window.location.search).get('pad') || undefined
+                      : undefined)
                   }
-                }}
-                onSelectPad={(p) => setCurrentPad(p)}
-                selectedSearchQuery={readerSearchQuery}
-                selectedAuthor={selectedAuthor}
-                onSelectAuthor={(author) => setSelectedAuthor(author)}
-                selectedPadId={currentPad?.id}
-                initialPadId={
-                  initialPadId ||
-                  (typeof window !== 'undefined'
-                    ? new URLSearchParams(window.location.search).get('pad') || undefined
-                    : undefined)
-                }
-                onSwitchToMahagranth={() => handleTabSwitch('granthas')}
-              />
-            </Suspense>
+                  onSwitchToMahagranth={() => handleTabSwitch('granthas')}
+                />
+              </Suspense>
+            </div>
           )}
 
-          {/* Tab 3: Devotional Darshan Feed */}
-          {activeTab === 'feed' && (
-            <div className="w-full pt-1 pb-48 md:pb-28">
+          {/* Tab 4: Devotional Darshan Feed */}
+          {visitedTabs.has('feed') && (
+            <div
+              className={`w-full pt-1 pb-48 md:pb-28 ${activeTab === 'feed' ? 'block' : 'hidden'}`}
+              style={{ display: activeTab === 'feed' ? 'block' : 'none' }}
+              aria-hidden={activeTab !== 'feed'}
+            >
               <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
                 {/* Main Feed Column (8 cols) */}
                 <div className="md:col-span-8 space-y-4">
@@ -1538,13 +1586,18 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
             </div>
           )}
 
-          {/* Tab 4: Milestones & Streaks */}
-          {activeTab === 'milestones' && (
-            <Suspense fallback={<ReaderLoadingSkeleton />}>
-              <MilestonesViewComp onBack={() => handleTabSwitch('smaran')} />
-            </Suspense>
+          {/* Tab 5: Milestones & Streaks */}
+          {visitedTabs.has('milestones') && (
+            <div
+              className={`w-full pb-48 md:pb-28 ${activeTab === 'milestones' ? 'block' : 'hidden'}`}
+              style={{ display: activeTab === 'milestones' ? 'block' : 'none' }}
+              aria-hidden={activeTab !== 'milestones'}
+            >
+              <Suspense fallback={<ReaderLoadingSkeleton />}>
+                <MilestonesViewComp onBack={() => handleTabSwitch('smaran')} />
+              </Suspense>
+            </div>
           )}
-          </div>
         </main>
 
         {/* Floating Ambient Shravan Player (Responsive Workstation Bar) */}
