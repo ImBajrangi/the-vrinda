@@ -49,6 +49,9 @@ import {
   getDevotionalSummary,
   DevotionalSummaryRequest,
 } from '../../services/devotionalSummaryService';
+import { MobileReaderHeader } from './MobileReaderHeader';
+import { MobileScriptureDrawer } from './MobileScriptureDrawer';
+import { useScrollDirection } from '../../hooks/useScrollDirection';
 
 interface PadavaliReaderProps {
   onPlayPad: (pad: SacredPad) => void;
@@ -181,6 +184,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   onSelectGranthaId,
   onSelectAuthor: onSelectAuthorProp,
   onSelectPad: onExternalSelectPad,
+  onSwitchToMahagranth,
 }) => {
   const [allPadas, setAllPadas] = useState<SacredPad[]>(() => SacredDatabase.getAllPadas());
   const allGranthas = useMemo(() => SacredDatabase.getAllPadavaliGranthas(), []);
@@ -214,6 +218,9 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   const [selectedChapter, setSelectedChapter] = useState<string>('all');
   const [isChapterDropdownOpen, setIsChapterDropdownOpen] = useState<boolean>(false);
   const [activeScrollerVerseId, setActiveScrollerVerseId] = useState<string>('');
+  const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState<boolean>(false);
+  const [drawerMode, setDrawerMode] = useState<'padas' | 'granthas' | 'authors'>('padas');
+  const { showChrome } = useScrollDirection();
 
   type ReadingMode = 'continuous' | 'single';
   const [readingMode, setReadingMode] = useState<ReadingMode>(() => {
@@ -1494,12 +1501,91 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
         ? 'text-justify'
         : 'text-left';
 
+  const mobileDrawerItems = useMemo(() => {
+    if (drawerMode === 'granthas') {
+      return allGranthas.map((g) => ({
+        id: g.id,
+        name: g.name,
+        count: g.count,
+        type: 'grantha' as const,
+      }));
+    }
+    if (drawerMode === 'authors') {
+      return hierarchyAuthors.slice(0, 100).map((a) => ({
+        id: a.name,
+        name: a.name,
+        count: a.verseCount,
+        type: 'pada' as const,
+      }));
+    }
+    return displayedSidebarPads.slice(0, 150).map((p, idx) => ({
+      id: p.id,
+      name: `${idx + 1}. ${p.titleDevanagari}`,
+      section: p.author,
+      type: 'pada' as const,
+    }));
+  }, [drawerMode, allGranthas, hierarchyAuthors, displayedSidebarPads]);
+
   return (
-    <div className="w-full pb-44 md:pb-32 pt-2 sm:pt-4">
+    <div className="w-full pb-44 md:pb-32 pt-0 sm:pt-4 px-1 sm:px-0">
+      {/* Mobile-Optimized Reader Header: 1-Tap Drawer, Auto-Hiding Chrome */}
+      <MobileReaderHeader
+        scriptureTitle={
+          selectedAuthor
+            ? selectedAuthor
+            : displayedGranthas.find((g) => g.id === selectedGrantha)?.name || 'समस्त संग्रह'
+        }
+        chapterTitle={currentChapter ? currentChapter.name : selectedPad ? selectedPad.titleDevanagari : undefined}
+        onOpenSelector={() => setIsMobileDrawerOpen(true)}
+        onBack={onSwitchToMahagranth}
+        onToggleAppearance={handleToggleSettings}
+        isAppearanceOpen={isSettingsOpen}
+        isPlayingAudio={isPlaying && activePlayingPadId === selectedPad.id}
+        onToggleAudio={() => onPlayPad(selectedPad)}
+        hasAudio={true}
+        onOpenSearch={() => setIsGlossaryOpen(true)}
+        isVisible={showChrome}
+      />
+
+      {/* Mobile Scripture, Pada & Author Bottom Sheet Selector */}
+      <MobileScriptureDrawer
+        isOpen={isMobileDrawerOpen}
+        onClose={() => setIsMobileDrawerOpen(false)}
+        title={
+          drawerMode === 'padas'
+            ? 'पद चयन (Select Verse)'
+            : drawerMode === 'granthas'
+            ? 'ग्रंथ संग्रह (Select Scripture)'
+            : 'संत व रचयिता (Select Saint)'
+        }
+        subtitle={`${mobileDrawerItems.length} उपलब्ध`}
+        categories={[
+          { id: 'padas', label: `पद (${displayedSidebarPads.length || filteredPads.length})` },
+          { id: 'granthas', label: `ग्रंथ (${allGranthas.length})` },
+          { id: 'authors', label: `संत (${hierarchyAuthors.length})` },
+        ]}
+        activeCategory={drawerMode}
+        onCategoryChange={(cat) => setDrawerMode(cat as any)}
+        items={mobileDrawerItems}
+        selectedId={selectedPad.id}
+        onSelect={(id) => {
+          if (drawerMode === 'granthas') {
+            handleSelectGrantha(id);
+            setDrawerMode('padas');
+          } else if (drawerMode === 'authors') {
+            handleSelectAuthor(id);
+            setDrawerMode('padas');
+          } else {
+            const p = allPadas.find((item) => item.id === id);
+            if (p) handleSelectPad(p);
+          }
+        }}
+      />
+
       {/* ========================================================================= */}
-      {/* 1. Serene Light Header & Spotlight Search Bar                             */}
+      {/* 1. Serene Light Header & Spotlight Search Bar (Desktop Only: hidden md:flex) */}
       {/* ========================================================================= */}
-      <div className="mb-4 flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4 bg-white border border-neutral-200/80 shadow-2xs rounded-2xl p-4 sm:p-5">
+      <div className="hidden md:flex mb-4 flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4 bg-white border border-neutral-200/80 shadow-2xs rounded-2xl p-4 sm:p-5">
         <div>
           <div className="font-serif text-xl sm:text-2xl text-[#0F172A] font-bold flex items-center gap-2 leading-tight">
             <BookOpen className="w-5 h-5 text-[#FACC15] shrink-0" />
@@ -1854,7 +1940,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       {/* 2. Scripture Bridge & Category Filter Shelf                               */}
       {/* ========================================================================= */}
       {!isFocusReadingMode && (
-        <div className="mb-5 space-y-2.5">
+        <div className="hidden md:block mb-5 space-y-2.5">
           {/* Scripture Category Filter Strip (रसिक वाणी, काव्य व छंद, धाम व लीला, संत व रचयिता) */}
           <div className="relative flex items-center gap-1.5 overflow-x-auto no-scrollbar p-1 bg-white/95 border border-neutral-200/80 shadow-2xs rounded-full text-xs">
             {/* Dynamic Elastic Sliding Indicator Bar */}
@@ -2105,11 +2191,9 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
         </div>
       )}
 
-      {/* ========================================================================= */}
-      {/* Mobile Horizontal Carousel (< md, Hidden in Distraction-Free Mode)         */}
-      {/* ========================================================================= */}
+      {/* Mobile Horizontal Carousel (Deprecated in favor of full MobileScriptureDrawer Bottom Sheet) */}
       {!isFocusReadingMode && (
-        <div className="md:hidden relative flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1 mb-3">
+        <div className="hidden">
           {/* Dynamic Elastic Sliding Bouncy Indicator Bar */}
           {mobilePillStyle.ready && (
             <span
@@ -2432,13 +2516,13 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
         <article
           id="reading-canvas-top"
           className={`scroll-mt-24 sm:scroll-mt-28 flex-1 min-w-0 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${isFocusReadingMode
-              ? `w-full dhyana-reader-canvas p-6 sm:p-10 ${currentTheme.canvasBg} ${currentTheme.canvasText}`
-              : `w-full rounded-3xl p-6 sm:p-9 ${currentTheme.canvasBg} ${currentTheme.canvasText} ${isLeftSidebarCollapsed && isRightSidebarCollapsed ? 'max-w-4xl mx-auto' : ''
+              ? `w-full dhyana-reader-canvas p-4 sm:p-10 ${currentTheme.canvasBg} ${currentTheme.canvasText}`
+              : `w-full rounded-2xl sm:rounded-3xl p-3 sm:p-9 ${currentTheme.canvasBg} ${currentTheme.canvasText} ${isLeftSidebarCollapsed && isRightSidebarCollapsed ? 'max-w-4xl mx-auto' : ''
               }`
             }`}
         >
-          {/* Chapter Hierarchy & Continuous Reading Mode Bar */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 px-4 py-2.5 rounded-2xl bg-[#FAF8F5] border border-amber-900/10 mb-6">
+          {/* Chapter Hierarchy & Continuous Reading Mode Bar (Desktop only, mobile uses MobileReaderHeader) */}
+          <div className="hidden sm:flex sm:flex-row sm:items-center justify-between gap-3 px-4 py-2.5 rounded-2xl bg-[#FAF8F5] border border-amber-900/10 mb-6">
             {/* Left: Chapter / Adhyaya Selector & Scripture Identity */}
             <div className="flex items-center gap-2.5 min-w-0">
               <div className="w-7 h-7 rounded-lg bg-amber-100/80 flex items-center justify-center text-amber-800 shrink-0">
@@ -2680,7 +2764,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                       <div
                         key={pad.id}
                         id={`verse-stream-${pad.id}`}
-                        className={`scroll-mt-24 sm:scroll-mt-28 p-5 sm:p-7 rounded-2xl border transition-colors duration-200 ${
+                        className={`scroll-mt-24 sm:scroll-mt-28 p-3.5 sm:p-7 rounded-[14px] sm:rounded-2xl border transition-colors duration-200 ${
                           selectedPad.id === pad.id
                             ? 'bg-[#FFFDF9] border-amber-300/70 shadow-[0_2px_10px_rgba(251,191,36,0.06)]'
                             : `${currentTheme.cardHoverBg} ${currentTheme.borderColor}`

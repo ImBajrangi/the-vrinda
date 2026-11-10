@@ -21,6 +21,9 @@ import { InlinePurportCard } from './InlinePurportCard';
 import { formatDevanagariNumerals, getCachedBookmarks, saveCachedBookmarks } from '../../services/cacheService';
 import { IOSSpinner, navigationProgress } from '../common/IOSActivityIndicator';
 import { seo } from '../../services/seoService';
+import { MobileReaderHeader } from './MobileReaderHeader';
+import { MobileScriptureDrawer } from './MobileScriptureDrawer';
+import { useScrollDirection } from '../../hooks/useScrollDirection';
 
 interface MahagranthReaderProps {
   initialGranthaId?: string;
@@ -118,6 +121,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
   initialChapterId,
   initialVerseId,
   onSelectGrantha,
+  onSwitchToPadavali,
 }) => {
   const [selectedGranthaId, setSelectedGranthaId] = useState<string>(initialGranthaId);
   const [loadingGranthaId, setLoadingGranthaId] = useState<string | null>(null);
@@ -128,6 +132,8 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
   const [chapterPadas, setChapterPadas] = useState<SacredPad[]>([]);
   const [loadingChapter, setLoadingChapter] = useState<boolean>(false);
   const [activeVerseId, setActiveVerseId] = useState<string>('');
+  const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState<boolean>(false);
+  const { showChrome } = useScrollDirection();
 
   // Shrinkable Sidebars States with LocalStorage Persistence
   const [isLeftSidebarCollapsed, setIsLeftSidebarCollapsed] = useState<boolean>(() => {
@@ -595,9 +601,46 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
   };
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 pt-4 sm:pt-6 pb-32">
-      {/* Master Workstation Header: Unified Sacred Parayan Gateway & Compact 5-Epic Shelf */}
-      <div className="mb-6 p-4 sm:p-5 rounded-[28px] bg-white border border-neutral-200/80 shadow-2xs space-y-4">
+    <div className="w-full max-w-7xl mx-auto px-1.5 sm:px-4 lg:px-6 pt-0 sm:pt-6 pb-32">
+      {/* Mobile-Optimized Reader Header: 1-Tap Chapter Drawer, Auto-Hiding Chrome */}
+      <MobileReaderHeader
+        scriptureTitle={currentEpicConfig.shortName || currentEpicConfig.name}
+        chapterTitle={!loadingGranthaId && currentChapter ? currentChapter.name : undefined}
+        onOpenSelector={() => setIsMobileDrawerOpen(true)}
+        onBack={onSwitchToPadavali}
+        onToggleAppearance={() =>
+          setFontSize((prev) => (prev === 'sm' ? 'md' : prev === 'md' ? 'lg' : 'sm'))
+        }
+        isVisible={showChrome}
+        hasAudio={false}
+      />
+
+      {/* Mobile Scripture & Chapter Bottom Sheet Selector */}
+      <MobileScriptureDrawer
+        isOpen={isMobileDrawerOpen}
+        onClose={() => setIsMobileDrawerOpen(false)}
+        title={currentEpicConfig.name}
+        subtitle={`${epicIndex?.totalChapters || 0} ${currentEpicConfig.chapterTerm} उपलब्ध`}
+        categories={EPICS.map((e) => ({ id: e.id, label: e.shortName || e.name }))}
+        activeCategory={selectedGranthaId}
+        onCategoryChange={(epicId) => {
+          handleSelectGrantha(epicId);
+        }}
+        items={filteredChapters.map((ch) => ({
+          id: ch.id,
+          name: ch.name,
+          section: ch.section,
+          count: ch.verseCount,
+          type: 'chapter' as const,
+        }))}
+        selectedId={selectedChapterId}
+        onSelect={(chId) => {
+          handleSelectChapter(chId);
+        }}
+      />
+
+      {/* Master Workstation Header: Unified Sacred Parayan Gateway & Compact 5-Epic Shelf (Desktop Only) */}
+      <div className="hidden md:block mb-6 p-4 sm:p-5 rounded-[28px] bg-white border border-neutral-200/80 shadow-2xs space-y-4">
         {/* Top Title & Quick Routing Row */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-3 border-b border-neutral-100">
           <div>
@@ -981,7 +1024,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
         {/* ========================================================================= */}
         <article
           id="epic-canvas-top"
-          className="flex-1 min-w-0 w-full bg-white rounded-[28px] p-5 sm:p-8 border border-neutral-200/80 shadow-2xs transition-all duration-300"
+          className="flex-1 min-w-0 w-full bg-white rounded-2xl sm:rounded-[28px] p-3 sm:p-8 border border-neutral-200/60 sm:border-neutral-200/80 shadow-2xs transition-all duration-300"
         >
           {/* Chapter Header Bar */}
           <div className="pb-5 mb-6 border-b border-neutral-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
@@ -1069,7 +1112,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                     key={pad.id}
                     id={`shloka-${pad.id}`}
                     onClick={() => setActiveVerseId(pad.id)}
-                    className={`scroll-mt-28 p-5 sm:p-6 rounded-[16px] border transition-colors duration-200 space-y-4 cursor-pointer select-text ${
+                    className={`scroll-mt-28 p-3.5 sm:p-6 rounded-[12px] sm:rounded-[16px] border transition-colors duration-200 space-y-4 cursor-pointer select-text ${
                       isActive
                         ? 'bg-[#FFFDF9] border-amber-300/70 shadow-[0_2px_10px_rgba(251,191,36,0.06)]'
                         : 'bg-[#FAF8F5]/60 hover:bg-[#FAF8F5] border-amber-900/10'

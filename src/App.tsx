@@ -16,6 +16,7 @@ import { SACRED_FEED_POSTS } from './data/feed';
 import { SacredPad, SadhanaState, DhyanaImpactState, DhyanaSessionRecord } from './types/devotional';
 import { SacredDatabase, CanonicalSaint, CanonicalGrantha, mapPadToEpicChapter } from './services/sacredDatabase';
 import { seo } from './services/seoService';
+import { useScrollDirection } from './hooks/useScrollDirection';
 
 // Feature-level Code Splitting: Lazy load heavy readers, views and modals
 const LazyPadavaliReader = lazy(() =>
@@ -198,6 +199,7 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
   });
   const [selectedDate, setSelectedDate] = useState<number>(() => new Date().getDate());
   const [activeFeedTab, setActiveFeedTab] = useState<FeedTabType>('विशेष दर्शन');
+  const { showChrome } = useScrollDirection();
   // Two-tier cache: synchronous initial pre-warm (0ms cold render) prevents null flash / layout shift
   const [sadhana, setSadhana] = useState<SadhanaState>(() => loadCachedSadhanaSync());
   const [feedVersion, setFeedVersion] = useState<number>(0);
@@ -705,6 +707,8 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
     }
   });
 
+  const isReaderTab = activeTab === 'padavali' || activeTab === 'granthas';
+
   return (
     <div
       className={`min-h-screen w-full transition-colors duration-500 flex flex-col items-center ${isLowSpecMode ? 'low-spec' : ''}`}
@@ -718,32 +722,36 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
           - Tablet (768px - 1024px): max-w-4xl with balanced gutters
           - Desktop (1024px+): max-w-6xl xl:max-w-7xl
       */}
-      <div className={`w-full max-w-full md:max-w-5xl xl:max-w-7xl min-h-screen relative px-3.5 sm:px-6 lg:px-8 ${!isScrolled ? 'pt-28 sm:pt-32 lg:pt-36' : 'pt-24 sm:pt-28 lg:pt-32'} pb-36 md:pb-24 box-border main-wrapper-padding-transition`}>
-        {/* Dynamic Top Announcement Marquee Ticker */}
-        <TopAnnouncementMarquee
-          isScrolled={isScrolled}
-          onSelectTab={handleTabSwitch}
-          onOpenSaintsDirectory={() => setIsSaintsModalOpen(true)}
-          streakDays={sadhana?.currentStreakDays ?? 1}
-        />
+      <div className={`w-full max-w-full md:max-w-5xl xl:max-w-7xl min-h-screen relative ${isReaderTab ? 'px-0.5 sm:px-6 lg:px-8 pt-0 sm:pt-32' : `px-3.5 sm:px-6 lg:px-8 ${!isScrolled ? 'pt-28 sm:pt-32 lg:pt-36' : 'pt-24 sm:pt-28 lg:pt-32'}`} pb-36 md:pb-24 box-border main-wrapper-padding-transition`}>
+        {/* Dynamic Top Announcement Marquee Ticker (Desktop always, mobile on non-reader tabs) */}
+        <div className={isReaderTab ? 'hidden md:block' : ''}>
+          <TopAnnouncementMarquee
+            isScrolled={isScrolled}
+            onSelectTab={handleTabSwitch}
+            onOpenSaintsDirectory={() => setIsSaintsModalOpen(true)}
+            streakDays={sadhana?.currentStreakDays ?? 1}
+          />
+        </div>
 
-        {/* Apple Dynamic Notch / Dynamic Island Navbar (Fixed Floating Top Island) */}
-        <DynamicNotchNavbar
-          activeTab={activeTab}
-          onSelectTab={handleTabSwitch}
-          streakDays={sadhana?.currentStreakDays ?? 1}
-          isPlayingAudio={isPlayingAudio}
-          currentTrackTitle={currentPad?.titleDevanagari}
-          onToggleAudio={handleTogglePlay}
-          onOpenPlayer={handleFabClick}
-          isLowSpec={isLowSpecMode}
-          onToggleLowSpec={() => setIsLowSpecMode(!isLowSpecMode)}
-          onOpenSearch={() => setIsSpotlightOpen(true)}
-          onOpenFocus={() => setIsFocusModalOpen(true)}
-          sadhana={sadhana}
-          onQuickJapa={incrementJapa}
-          isMarqueeVisible={!isScrolled}
-        />
+        {/* Apple Dynamic Notch / Dynamic Island Navbar (Desktop always, mobile on non-reader tabs) */}
+        <div className={isReaderTab ? 'hidden md:block' : ''}>
+          <DynamicNotchNavbar
+            activeTab={activeTab}
+            onSelectTab={handleTabSwitch}
+            streakDays={sadhana?.currentStreakDays ?? 1}
+            isPlayingAudio={isPlayingAudio}
+            currentTrackTitle={currentPad?.titleDevanagari}
+            onToggleAudio={handleTogglePlay}
+            onOpenPlayer={handleFabClick}
+            isLowSpec={isLowSpecMode}
+            onToggleLowSpec={() => setIsLowSpecMode(!isLowSpecMode)}
+            onOpenSearch={() => setIsSpotlightOpen(true)}
+            onOpenFocus={() => setIsFocusModalOpen(true)}
+            sadhana={sadhana}
+            onQuickJapa={incrementJapa}
+            isMarqueeVisible={!isScrolled}
+          />
+        </div>
 
         {/* Main Tab Content with Apple-grade View Transitions */}
         <main className="w-full">
@@ -1527,16 +1535,19 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
 
         {/* Mobile Floating Bottom Ambient Scrim: Whisper-light parchment fade (Zero GPU blur overhead) */}
         <div
-          className={`md:hidden fixed bottom-0 left-0 right-0 ${showPlayer ? 'h-20' : 'h-14'} bg-gradient-to-t ${getScrimGradient()} pointer-events-none z-30 transition-colors duration-500`}
+          className={`md:hidden fixed bottom-0 left-0 right-0 ${showPlayer ? 'h-20' : 'h-14'} bg-gradient-to-t ${getScrimGradient()} pointer-events-none z-30 transition-all duration-300 ${
+            showChrome ? 'opacity-100' : 'opacity-0'
+          }`}
           aria-hidden="true"
         />
 
-        {/* Floating Navbar (Mobile Only < md) */}
+        {/* Floating Navbar (Mobile Only < md, with Auto-Hide on Scroll) */}
         <FloatingNavbar
           activeTab={activeTab}
           onSelectTab={handleTabSwitch}
           onOpenFab={handleFabClick}
           isPlayingAudio={isPlayingAudio}
+          isVisible={showChrome}
         />
 
         {/* Sacred Devotional Pillar Control Modal */}
