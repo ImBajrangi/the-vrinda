@@ -330,10 +330,9 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   }
 
   // 3. Intelligent Sitemap Routing & Fix for .xml.gz encoding error
-  // Map legacy .xml.gz sitemap requests to canonical uncompressed .xml sitemaps
-  if (pathname === '/sitemap-padas.xml.gz') {
-    const redirectedUrl = new URL('/sitemap-padas.xml', request.url);
-    return next(new Request(redirectedUrl.toString(), request));
+  // Map legacy .xml.gz sitemap requests to canonical uncompressed .xml sitemaps via 301
+  if (pathname === '/sitemap-padas.xml.gz' || pathname === '/sitemap-path-padas.xml.gz') {
+    return Response.redirect('https://bhav.vrindopnishad.in/sitemap-padas.xml', 301);
   }
 
   // 3.1 Legacy & indexed verse URL 301 redirects (/lyrics/:id, /hi/lyrics/:id, /content/:id, /verse/:id, /pada/:id, /pad/:id)
