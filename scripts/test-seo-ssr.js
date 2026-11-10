@@ -42,8 +42,11 @@ async function runPhase23QualityGates() {
   const catalogData = JSON.parse(fs.readFileSync(catalogPath, 'utf-8'));
   const catalogIds = new Set(catalogData.items.map((it) => it[0]));
 
-  const sitemapPadasGz = fs.readFileSync(path.resolve(projectRoot, 'public/sitemap-padas.xml.gz'));
-  const sitemapPadasXml = zlib.gunzipSync(sitemapPadasGz).toString('utf-8');
+  const sitemapPadasPath = path.resolve(projectRoot, 'public/sitemap-padas.xml');
+  const sitemapPadasGz = path.resolve(projectRoot, 'public/sitemap-padas.xml.gz');
+  const sitemapPadasXml = fs.existsSync(sitemapPadasPath)
+    ? fs.readFileSync(sitemapPadasPath, 'utf-8')
+    : zlib.gunzipSync(fs.readFileSync(sitemapPadasGz)).toString('utf-8');
   const sitemapUrls = [];
   const regex = /<loc>([^<]+)<\/loc>/g;
   let match;

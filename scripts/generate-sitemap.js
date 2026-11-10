@@ -189,7 +189,7 @@ function createSitemapSuite(baseUrl, prefix = '') {
     `  <sitemap><loc>${baseUrl}/${filePrefix}-main.xml</loc><lastmod>${today}</lastmod></sitemap>`,
     `  <sitemap><loc>${baseUrl}/${filePrefix}-granthas.xml</loc><lastmod>${today}</lastmod></sitemap>`,
     `  <sitemap><loc>${baseUrl}/${filePrefix}-saints.xml</loc><lastmod>${today}</lastmod></sitemap>`,
-    `  <sitemap><loc>${baseUrl}/${filePrefix}-padas.xml.gz</loc><lastmod>${today}</lastmod></sitemap>`,
+    `  <sitemap><loc>${baseUrl}/${filePrefix}-padas.xml</loc><lastmod>${today}</lastmod></sitemap>`,
     '</sitemapindex>',
   ].join('\n');
 
@@ -198,6 +198,7 @@ function createSitemapSuite(baseUrl, prefix = '') {
     [`${filePrefix}-main.xml`]: { content: mainXml, isBinary: false },
     [`${filePrefix}-granthas.xml`]: { content: granthasXml, isBinary: false },
     [`${filePrefix}-saints.xml`]: { content: saintsXml, isBinary: false },
+    [`${filePrefix}-padas.xml`]: { content: padasXml, isBinary: false },
     [`${filePrefix}-padas.xml.gz`]: { content: padasXmlGz, isBinary: true },
   };
 }
@@ -219,12 +220,12 @@ export function generateAllSitemaps(outputDirs = ['public', 'dist']) {
       fs.mkdirSync(dir, { recursive: true });
     }
 
-    // Clean up old uncompressed sitemap files to free ~17.2 MB of storage
+    // Clean up old obsolete sitemap files
     const staleFiles = [
-      'sitemap-padas.xml',
-      'sitemap-path-padas.xml',
       'sitemap-all.xml',
       'sitemap-path-all.xml',
+      'sitemap-path-padas.xml.gz',
+      'sitemap-path-saints.xml',
     ];
     for (const stale of staleFiles) {
       const p = path.resolve(dir, stale);

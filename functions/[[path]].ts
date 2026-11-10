@@ -246,7 +246,14 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     });
   }
 
-  // 3. Intelligent Sitemap Routing for path.vrindopnishad.in
+  // 3. Intelligent Sitemap Routing & Fix for .xml.gz encoding error
+  // Map any legacy .xml.gz sitemap requests to canonical uncompressed .xml sitemaps
+  // which Cloudflare edge serves with valid wire compression (Brotli/Gzip) and zero XML parser encoding errors.
+  if (pathname === '/sitemap-padas.xml.gz' || pathname === '/sitemap-path-padas.xml.gz') {
+    const redirectedUrl = new URL('/sitemap-padas.xml', request.url);
+    return next(new Request(redirectedUrl.toString(), request));
+  }
+
   if (isPathDomain) {
     if (pathname === '/sitemap.xml') {
       const redirectedUrl = new URL('/sitemap-path.xml', request.url);
