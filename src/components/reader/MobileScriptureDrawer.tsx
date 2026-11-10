@@ -95,6 +95,19 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
     };
   }, [isOpen]);
 
+  // Auto-scroll to selected item when drawer is opened
+  useEffect(() => {
+    if (isOpen && selectedId && scrollContainerRef.current) {
+      const timer = setTimeout(() => {
+        const selectedEl = scrollContainerRef.current?.querySelector(`[data-selected="true"]`);
+        if (selectedEl) {
+          selectedEl.scrollIntoView({ block: 'center', behavior: 'smooth' });
+        }
+      }, 140);
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen, selectedId, activeCategory]);
+
   // Filter items
   const filteredItems = searchQuery.trim()
     ? items.filter((item) => {
@@ -147,13 +160,12 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
       startTime.current = Date.now();
 
       const target = e.target as HTMLElement;
-      touchStartedInHeader.current = Boolean(target.closest('.drawer-drag-zone'));
+      // Restrict drag-to-dismiss strictly to the grab handle / top header zone
+      // This guarantees fluid, unhindered momentum scrolling inside the items list
+      const isInDragZone = Boolean(target.closest('.drawer-drag-zone'));
+      touchStartedInHeader.current = isInDragZone;
 
-      // If touched inside scrollable list, only drag if scrolled to the top
-      const scrollEl = scrollContainerRef.current;
-      const isAtTop = !scrollEl || scrollEl.scrollTop <= 0;
-
-      if (touchStartedInHeader.current || isAtTop) {
+      if (isInDragZone) {
         isDragging.current = true;
         if (sheetRef.current) sheetRef.current.style.transition = 'none';
         if (backdropRef.current) backdropRef.current.style.transition = 'none';
@@ -171,19 +183,9 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
     currentY.current = touch.clientY;
     const deltaY = currentY.current - startY.current;
 
-    // If scrolling up inside the list, allow natural scrolling
-    if (!touchStartedInHeader.current) {
-      const scrollEl = scrollContainerRef.current;
-      if (scrollEl && scrollEl.scrollTop > 0) {
-        isDragging.current = false;
-        sheetRef.current.style.transform = '';
-        return;
-      }
-    }
-
     // Only allow downward drag
     if (deltaY > 0) {
-      sheetRef.current.style.transform = `translateY(${deltaY}px)`;
+      sheetRef.current.style.transform = `translate3d(0, ${deltaY}px, 0)`;
 
       if (backdropRef.current) {
         const sheetHeight = sheetRef.current.offsetHeight || 500;
@@ -193,7 +195,7 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
     } else {
       // Gentle rubber-band resistance if pulled upwards
       const resistance = Math.max(-12, deltaY * 0.12);
-      sheetRef.current.style.transform = `translateY(${resistance}px)`;
+      sheetRef.current.style.transform = `translate3d(0, ${resistance}px, 0)`;
     }
   }, []);
 
@@ -206,18 +208,18 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
     const elapsed = Math.max(1, Date.now() - startTime.current);
     const velocity = deltaY / elapsed;
 
-    // Fluid dismissal if dragged down more than 50px OR flicked downward (> 0.25 px/ms)
-    const shouldDismiss = wasDragging && (deltaY > 50 || (deltaY > 15 && velocity > 0.25));
+    // Fluid dismissal if dragged down more than 40px OR flicked downward (> 0.2 px/ms)
+    const shouldDismiss = wasDragging && (deltaY > 40 || (deltaY > 15 && velocity > 0.2));
 
     if (shouldDismiss) {
       handleDismiss();
     } else {
       // Always snap back cleanly to 0 if not dismissed
-      sheetRef.current.style.transition = 'transform 240ms cubic-bezier(0.34, 1.2, 0.64, 1)';
-      sheetRef.current.style.transform = 'translateY(0)';
+      sheetRef.current.style.transition = 'transform 200ms cubic-bezier(0.2, 0, 0, 1)';
+      sheetRef.current.style.transform = 'translate3d(0, 0, 0)';
 
       if (backdropRef.current) {
-        backdropRef.current.style.transition = 'opacity 200ms ease-out';
+        backdropRef.current.style.transition = 'opacity 180ms ease-out';
         backdropRef.current.style.opacity = '1';
       }
 
@@ -230,7 +232,7 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
           backdropRef.current.style.transition = '';
           backdropRef.current.style.opacity = '';
         }
-      }, 240);
+      }, 200);
     }
   }, [handleDismiss]);
 
@@ -356,11 +358,10 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
           </div>
         )}
 
-        {/* Scrollable Items List with Safe Area Bottom Padding */}
+        {/* Scrollable Items List */}
         <div
           ref={scrollContainerRef}
-          className="flex-1 overflow-y-auto overscroll-contain px-4 space-y-1 drawer-scrollable"
-          style={{ paddingBottom: 'max(5.5rem, calc(env(safe-area-inset-bottom, 24px) + 3.5rem))' }}
+          className="flex-1 overflow-y-auto overscroll-contain px-4 space-y-1 drawer-scrollable pb-8"
         >
           {filteredItems.length === 0 ? (
             <div className="py-14 text-center select-none">
@@ -374,6 +375,7 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
                 <button
                   key={item.id}
                   type="button"
+                  data-selected={isSelected}
                   onClick={() => handleSelect(item.id)}
                   className={`w-full text-left min-h-[46px] px-3.5 py-2.5 rounded-[12px] flex items-center justify-between gap-3 transition-colors cursor-pointer select-none ${
                     isSelected

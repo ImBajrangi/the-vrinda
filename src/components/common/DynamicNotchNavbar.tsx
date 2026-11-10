@@ -35,6 +35,7 @@ interface DynamicNotchNavbarProps {
   sadhana?: SadhanaState;
   onQuickJapa?: () => void;
   isMarqueeVisible?: boolean;
+  isVisibleOnMobile?: boolean;
 }
 
 export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
@@ -50,6 +51,7 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
   sadhana,
   onQuickJapa,
   isMarqueeVisible = true,
+  isVisibleOnMobile = true,
 }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMenuRendered, setIsMenuRendered] = useState(false);
@@ -232,7 +234,11 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
       <header
         className={`fixed ${
           isMarqueeVisible ? 'top-10 sm:top-12' : 'top-2.5 sm:top-4'
-        } left-0 right-0 z-50 w-full px-3 sm:px-6 pointer-events-none select-none header-banner-transition`}
+        } left-0 right-0 z-50 w-full px-3 sm:px-6 pointer-events-none select-none header-banner-transition transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+          !isVisibleOnMobile
+            ? '-translate-y-[150%] md:translate-y-0 opacity-0 md:opacity-100 pointer-events-none md:pointer-events-auto'
+            : 'translate-y-0 opacity-100'
+        }`}
       >
       <div className="max-w-6xl mx-auto flex flex-col items-center">
         

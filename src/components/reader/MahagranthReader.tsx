@@ -121,7 +121,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
   initialChapterId,
   initialVerseId,
   onSelectGrantha,
-  onSwitchToPadavali,
+  onSwitchToPadavali: _onSwitchToPadavali,
 }) => {
   const [selectedGranthaId, setSelectedGranthaId] = useState<string>(initialGranthaId);
   const [loadingGranthaId, setLoadingGranthaId] = useState<string | null>(null);
@@ -607,7 +607,6 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
         scriptureTitle={currentEpicConfig.shortName || currentEpicConfig.name}
         chapterTitle={!loadingGranthaId && currentChapter ? currentChapter.name : undefined}
         onOpenSelector={() => setIsMobileDrawerOpen(true)}
-        onBack={onSwitchToPadavali}
         onToggleAppearance={() =>
           setFontSize((prev) => (prev === 'sm' ? 'md' : prev === 'md' ? 'lg' : 'sm'))
         }

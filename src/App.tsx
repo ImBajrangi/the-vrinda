@@ -49,10 +49,38 @@ const LazyBeginnerGuideModal = lazy(() =>
 
 function ReaderLoadingSkeleton() {
   return (
-    <div className="w-full min-h-[50vh] flex flex-col items-center justify-center py-20 px-4 text-center">
-      <div className="w-10 h-10 rounded-full border-2 border-amber-600/30 border-t-amber-600 animate-spin mb-4" />
-      <p className="font-serif text-base text-stone-700 dark:text-stone-300">पावन वाणी लोड हो रही है...</p>
-      <p className="text-xs text-stone-400 mt-1">Vrindopnisad 2.0 Sacred Reader</p>
+    <div className="w-full max-w-4xl mx-auto py-4 sm:py-8 px-2 select-none">
+      {/* Top Selector Bar Placeholder */}
+      <div className="w-full max-w-xs mx-auto h-10 rounded-full bg-amber-50/90 border border-amber-200/70 shadow-2xs mb-6 flex items-center justify-center gap-2 px-4 animate-pulse">
+        <div className="w-3.5 h-3.5 rounded-full bg-amber-300/80" />
+        <div className="w-24 h-3 rounded-full bg-amber-200/90" />
+        <div className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+        <div className="w-12 h-3 rounded-full bg-amber-300/80" />
+      </div>
+
+      {/* Sacred Scripture Canvas Card Skeleton */}
+      <div className="w-full rounded-2xl sm:rounded-3xl bg-[#FFFDF9] border border-amber-200/60 p-5 sm:p-9 shadow-2xs space-y-6">
+        {/* Header Skeleton */}
+        <div className="flex items-center justify-between pb-4 border-b border-amber-100">
+          <div className="space-y-2">
+            <div className="w-32 h-3 rounded-full bg-amber-200/60 animate-pulse" />
+            <div className="w-56 h-6 rounded-lg bg-amber-300/40 animate-pulse" />
+          </div>
+          <div className="w-7 h-7 rounded-full border-2 border-amber-500/20 border-t-amber-600 animate-spin" />
+        </div>
+
+        {/* Shimmering Stanzas Placeholder */}
+        <div className="space-y-4 py-4">
+          <div className="w-full h-4 rounded-full bg-neutral-200/60 animate-pulse" />
+          <div className="w-11/12 mx-auto h-4 rounded-full bg-neutral-200/50 animate-pulse" />
+          <div className="w-4/5 mx-auto h-4 rounded-full bg-neutral-200/40 animate-pulse" />
+        </div>
+
+        <div className="pt-4 border-t border-amber-100/80 text-center">
+          <p className="font-serif font-bold text-sm text-amber-900">पावन ग्रन्थावली संकलित हो रही है...</p>
+          <p className="text-[11px] text-neutral-400 font-mono mt-0.5">Vrindopnisad 2.0 • 0ms Cache Hydration</p>
+        </div>
+      </div>
     </div>
   );
 }
@@ -441,6 +469,7 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
   const handleTabSwitch = (tab: NavTab) => {
     if (tab === activeTab) return;
     navigationProgress.start();
+    // Immediate synchronous panel switch (0ms) so the target page/skeleton mounts immediately
     setActiveTab(tab);
     requestAnimationFrame(() => {
       navigationProgress.done();
@@ -722,36 +751,34 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
           - Tablet (768px - 1024px): max-w-4xl with balanced gutters
           - Desktop (1024px+): max-w-6xl xl:max-w-7xl
       */}
-      <div className={`w-full max-w-full overflow-x-hidden md:max-w-5xl xl:max-w-7xl min-h-screen relative ${isReaderTab ? 'px-0 sm:px-6 lg:px-8 pt-0 sm:pt-32' : `px-3.5 sm:px-6 lg:px-8 ${!isScrolled ? 'pt-28 sm:pt-32 lg:pt-36' : 'pt-24 sm:pt-28 lg:pt-32'}`} pb-36 md:pb-24 box-border main-wrapper-padding-transition`}>
-        {/* Dynamic Top Announcement Marquee Ticker (Desktop always, mobile on non-reader tabs) */}
-        <div className={isReaderTab ? 'hidden md:block' : ''}>
-          <TopAnnouncementMarquee
-            isScrolled={isScrolled}
-            onSelectTab={handleTabSwitch}
-            onOpenSaintsDirectory={() => setIsSaintsModalOpen(true)}
-            streakDays={sadhana?.currentStreakDays ?? 1}
-          />
-        </div>
+      <div className={`w-full max-w-full overflow-x-hidden md:max-w-5xl xl:max-w-7xl min-h-screen relative px-3 sm:px-6 lg:px-8 ${isReaderTab ? 'pt-2 sm:pt-32 lg:pt-36' : (!isScrolled ? 'pt-28 sm:pt-32 lg:pt-36' : 'pt-24 sm:pt-28 lg:pt-32')} pb-36 md:pb-24 box-border main-wrapper-padding-transition`}>
+        {/* Dynamic Top Announcement Marquee Ticker (Smoothly slides away on mobile reader tabs) */}
+        <TopAnnouncementMarquee
+          isScrolled={isScrolled}
+          onSelectTab={handleTabSwitch}
+          onOpenSaintsDirectory={() => setIsSaintsModalOpen(true)}
+          streakDays={sadhana?.currentStreakDays ?? 1}
+          isVisibleOnMobile={!isReaderTab}
+        />
 
-        {/* Apple Dynamic Notch / Dynamic Island Navbar (Desktop always, mobile on non-reader tabs) */}
-        <div className={isReaderTab ? 'hidden md:block' : ''}>
-          <DynamicNotchNavbar
-            activeTab={activeTab}
-            onSelectTab={handleTabSwitch}
-            streakDays={sadhana?.currentStreakDays ?? 1}
-            isPlayingAudio={isPlayingAudio}
-            currentTrackTitle={currentPad?.titleDevanagari}
-            onToggleAudio={handleTogglePlay}
-            onOpenPlayer={handleFabClick}
-            isLowSpec={isLowSpecMode}
-            onToggleLowSpec={() => setIsLowSpecMode(!isLowSpecMode)}
-            onOpenSearch={() => setIsSpotlightOpen(true)}
-            onOpenFocus={() => setIsFocusModalOpen(true)}
-            sadhana={sadhana}
-            onQuickJapa={incrementJapa}
-            isMarqueeVisible={!isScrolled}
-          />
-        </div>
+        {/* Apple Dynamic Notch / Dynamic Island Navbar (Smoothly slides away on mobile reader tabs) */}
+        <DynamicNotchNavbar
+          activeTab={activeTab}
+          onSelectTab={handleTabSwitch}
+          streakDays={sadhana?.currentStreakDays ?? 1}
+          isPlayingAudio={isPlayingAudio}
+          currentTrackTitle={currentPad?.titleDevanagari}
+          onToggleAudio={handleTogglePlay}
+          onOpenPlayer={handleFabClick}
+          isLowSpec={isLowSpecMode}
+          onToggleLowSpec={() => setIsLowSpecMode(!isLowSpecMode)}
+          onOpenSearch={() => setIsSpotlightOpen(true)}
+          onOpenFocus={() => setIsFocusModalOpen(true)}
+          sadhana={sadhana}
+          onQuickJapa={incrementJapa}
+          isMarqueeVisible={!isScrolled}
+          isVisibleOnMobile={!isReaderTab}
+        />
 
         {/* Main Tab Content with Apple-grade View Transitions */}
         <main className="w-full max-w-full overflow-x-hidden">

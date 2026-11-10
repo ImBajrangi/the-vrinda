@@ -184,7 +184,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   onSelectGranthaId,
   onSelectAuthor: onSelectAuthorProp,
   onSelectPad: onExternalSelectPad,
-  onSwitchToMahagranth,
+  onSwitchToMahagranth: _onSwitchToMahagranth,
 }) => {
   const [allPadas, setAllPadas] = useState<SacredPad[]>(() => SacredDatabase.getAllPadas());
   const allGranthas = useMemo(() => SacredDatabase.getAllPadavaliGranthas(), []);
@@ -1540,14 +1540,11 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             ? currentChapter.name
             : selectedPad?.verseNumber
             ? `पद ${selectedPad.verseNumber}`
-            : selectedPad?.titleDevanagari
-            ? selectedPad.titleDevanagari.length > 14
-              ? `${selectedPad.titleDevanagari.slice(0, 12)}…`
-              : selectedPad.titleDevanagari
+            : currentIdx >= 0
+            ? `पद ${currentIdx + 1}`
             : undefined
         }
         onOpenSelector={() => setIsMobileDrawerOpen(true)}
-        onBack={onSwitchToMahagranth}
         onToggleAppearance={handleToggleSettings}
         isAppearanceOpen={isSettingsOpen}
         isPlayingAudio={isPlaying && activePlayingPadId === selectedPad.id}
@@ -1587,7 +1584,15 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             setDrawerMode('padas');
           } else {
             const p = allPadas.find((item) => item.id === id);
-            if (p) handleSelectPad(p);
+            if (p) {
+              handleSelectPad(p);
+              if (readingMode === 'continuous') {
+                setTimeout(() => {
+                  const el = document.getElementById(`verse-stream-${p.id}`);
+                  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+              }
+            }
           }
         }}
       />
@@ -2658,10 +2663,10 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
           {/* ========================================================================= */}
           {readingMode === 'continuous' ? (
             <div className="space-y-6">
-              {/* Header Title for Chapter Stream */}
-              <div className={`pb-5 border-b ${currentTheme.borderColor} flex items-center justify-between gap-3 flex-wrap`}>
+              {/* Header Title for Chapter Stream (Streamlined for Mobile Sacred Pothi scheme) */}
+              <div className={`pb-3 sm:pb-5 border-b ${currentTheme.borderColor} flex items-center justify-between gap-3 flex-wrap`}>
                 <div>
-                  <div className={`flex items-center gap-2 ${currentTheme.metaColor} font-mono text-[11px] font-bold tracking-wider uppercase`}>
+                  <div className={`flex items-center gap-2 ${currentTheme.metaColor} font-mono text-[10px] sm:text-[11px] font-bold tracking-wider uppercase`}>
                     <span>{granthaDisplayName}</span>
                     {currentChapter && (
                       <>
@@ -2670,15 +2675,15 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                       </>
                     )}
                   </div>
-                  <h1 className={`${fontClass} font-bold text-2xl sm:text-3xl lg:text-[32px] text-neutral-900 mt-1.5`}>
+                  <h1 className={`${fontClass} font-bold text-xl sm:text-3xl lg:text-[32px] text-neutral-900 mt-1`}>
                     {currentChapter ? currentChapter.name : cleanTitle}
                   </h1>
-                  <p className="text-xs text-neutral-500 font-serif mt-1">
+                  <p className="text-[11px] sm:text-xs text-neutral-500 font-serif mt-0.5 sm:mt-1">
                     अखंड स्वाध्याय धारा • {filteredPads.length} पावन पद उपलब्ध
                   </p>
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="hidden sm:flex items-center gap-2">
                   <button
                     ref={settingsToggleBottomRef}
                     type="button"

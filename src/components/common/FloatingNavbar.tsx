@@ -96,6 +96,12 @@ export const FloatingNavbar: React.FC<FloatingNavbarProps> = ({
   isPlayingAudio = false,
   isVisible = true,
 }) => {
+  const [optimisticTab, setOptimisticTab] = React.useState<NavTab>(activeTab);
+
+  React.useEffect(() => {
+    setOptimisticTab(activeTab);
+  }, [activeTab]);
+
   const tabs = [
     { id: 'smaran' as NavTab, label: 'Sadhana', icon: Home },
     { id: 'granthas' as NavTab, label: 'Epics', icon: BookOpen },
@@ -104,7 +110,8 @@ export const FloatingNavbar: React.FC<FloatingNavbarProps> = ({
     { id: 'milestones' as NavTab, label: 'Streaks', icon: Award },
   ];
 
-  const activeIndex = Math.max(0, tabs.findIndex((tab) => tab.id === activeTab));
+  const currentTab = optimisticTab;
+  const activeIndex = Math.max(0, tabs.findIndex((tab) => tab.id === currentTab));
 
   return (
     // Only displayed on mobile (< md). On tablet & desktop, top header navigation takes over.
@@ -116,10 +123,10 @@ export const FloatingNavbar: React.FC<FloatingNavbarProps> = ({
         aria-label="Mobile Navigation"
         className="relative pointer-events-auto flex-1 min-w-0 max-w-[340px] h-[54px] rounded-[28px] bg-white/95 backdrop-blur-md border border-neutral-900/[0.08] shadow-[0_8px_24px_-4px_rgba(24,24,27,0.10),0_2px_6px_-1px_rgba(24,24,27,0.04)] flex items-center justify-between p-1 box-border transform-gpu will-change-transform"
       >
-        {/* Dynamic Elastic Sliding Indicator Bar */}
+        {/* Dynamic Elastic Sliding Indicator Bar (Instant 0ms Optimistic Shift) */}
         <span
           aria-hidden="true"
-          className="absolute top-1 bottom-1 rounded-[22px] bg-[#FEF08A] shadow-2xs pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+          className="absolute top-1 bottom-1 rounded-[22px] bg-[#FEF08A] shadow-2xs pointer-events-none transition-transform duration-[320ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
           style={{
             width: 'calc((100% - 8px) / 5)',
             left: '4px',
@@ -129,12 +136,15 @@ export const FloatingNavbar: React.FC<FloatingNavbarProps> = ({
 
         {tabs.map((tab) => {
           const Icon = tab.icon;
-          const isActive = activeTab === tab.id;
+          const isActive = currentTab === tab.id;
           return (
             <button
               key={tab.id}
               type="button"
-              onClick={() => onSelectTab(tab.id)}
+              onClick={() => {
+                setOptimisticTab(tab.id);
+                onSelectTab(tab.id);
+              }}
               className={`relative z-10 border-0 text-[10px] font-sans flex-1 min-w-0 h-[44px] flex flex-col items-center justify-center gap-0.5 py-1 px-0.5 rounded-[22px] transition-colors duration-200 cursor-pointer ${
                 isActive
                   ? 'text-[#18181B] font-bold'

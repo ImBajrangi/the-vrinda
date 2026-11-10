@@ -7,6 +7,7 @@ interface TopAnnouncementMarqueeProps {
   onSelectTab?: (tab: NavTab) => void;
   onOpenSaintsDirectory?: () => void;
   streakDays?: number;
+  isVisibleOnMobile?: boolean;
 }
 
 interface MarqueeItemData {
@@ -18,6 +19,7 @@ interface MarqueeItemData {
 export const TopAnnouncementMarquee: React.FC<TopAnnouncementMarqueeProps> = ({
   isScrolled,
   streakDays = 1,
+  isVisibleOnMobile = true,
 }) => {
   // Real-time Ashtayama calculation that refreshes every minute
   const [ashtayama, setAshtayama] = useState(() => computeAshtayamaPhase());
@@ -94,11 +96,11 @@ export const TopAnnouncementMarquee: React.FC<TopAnnouncementMarqueeProps> = ({
   return (
     <aside
       aria-label="Vrindavan Live Announcements Ticker"
-      className={`fixed top-0 left-0 right-0 z-[60] w-full bg-[#FFFDF5]/95 backdrop-blur-md text-stone-800 select-none overflow-hidden border-b border-amber-200/90 shadow-[0_1px_3px_rgba(217,119,6,0.03)] announcement-banner-transition pointer-events-none cursor-default ${
+      className={`fixed top-0 left-0 right-0 z-[60] w-full bg-[#FFFDF5]/95 backdrop-blur-md text-stone-800 select-none overflow-hidden border-b border-amber-200/90 shadow-[0_1px_3px_rgba(217,119,6,0.03)] announcement-banner-transition pointer-events-none cursor-default transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${
         isScrolled
           ? 'h-0 opacity-0 border-b-0'
           : 'h-8 sm:h-9 opacity-100'
-      }`}
+      } ${!isVisibleOnMobile ? '-translate-y-full md:translate-y-0 opacity-0 md:opacity-100' : 'translate-y-0'}`}
     >
       <div className="w-full h-8 sm:h-9 flex items-center top-marquee-mask pointer-events-none">
         {/* Infinite Track with 2 identical sets for seamless -50% loop */}
