@@ -2681,8 +2681,8 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 </div>
               </div>
 
-              {/* Sticky Quick-Jump Verse Scrubber */}
-              <div className="sticky top-2 z-20 p-2 rounded-2xl bg-white/95 backdrop-blur-md border border-amber-900/10 shadow-xs flex items-center gap-2">
+              {/* Sticky Quick-Jump Verse Scrubber (Desktop Only) */}
+              <div className="hidden md:flex sticky top-2 z-20 p-2 rounded-2xl bg-white border border-amber-900/10 shadow-xs items-center gap-2">
                 <span className="text-[10px] font-mono font-bold text-amber-800 shrink-0 uppercase tracking-wider pl-1.5">
                   पद क्रम:
                 </span>

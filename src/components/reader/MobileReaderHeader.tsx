@@ -50,7 +50,7 @@ export const MobileReaderHeader: React.FC<MobileReaderHeaderProps> = ({
         isVisible ? 'translate-y-0' : '-translate-y-full'
       }`}
     >
-      <div className="w-full bg-white/95 backdrop-blur-md border-b border-amber-900/10 px-3 py-2 flex items-center justify-between gap-2 shadow-2xs">
+      <div className="w-full bg-white border-b border-neutral-200/80 px-3 py-2 flex items-center justify-between gap-2 shadow-2xs">
         {/* Left: Back button or Sacred Icon */}
         <div className="flex items-center shrink-0">
           {onBack && (
