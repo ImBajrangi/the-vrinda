@@ -722,7 +722,7 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
           - Tablet (768px - 1024px): max-w-4xl with balanced gutters
           - Desktop (1024px+): max-w-6xl xl:max-w-7xl
       */}
-      <div className={`w-full max-w-full md:max-w-5xl xl:max-w-7xl min-h-screen relative ${isReaderTab ? 'px-0.5 sm:px-6 lg:px-8 pt-0 sm:pt-32' : `px-3.5 sm:px-6 lg:px-8 ${!isScrolled ? 'pt-28 sm:pt-32 lg:pt-36' : 'pt-24 sm:pt-28 lg:pt-32'}`} pb-36 md:pb-24 box-border main-wrapper-padding-transition`}>
+      <div className={`w-full max-w-full overflow-x-hidden md:max-w-5xl xl:max-w-7xl min-h-screen relative ${isReaderTab ? 'px-0 sm:px-6 lg:px-8 pt-0 sm:pt-32' : `px-3.5 sm:px-6 lg:px-8 ${!isScrolled ? 'pt-28 sm:pt-32 lg:pt-36' : 'pt-24 sm:pt-28 lg:pt-32'}`} pb-36 md:pb-24 box-border main-wrapper-padding-transition`}>
         {/* Dynamic Top Announcement Marquee Ticker (Desktop always, mobile on non-reader tabs) */}
         <div className={isReaderTab ? 'hidden md:block' : ''}>
           <TopAnnouncementMarquee
@@ -754,7 +754,7 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
         </div>
 
         {/* Main Tab Content with Apple-grade View Transitions */}
-        <main className="w-full">
+        <main className="w-full max-w-full overflow-x-hidden">
           <div key={activeTab} className="apple-view-enter">
           {/* Tab 1: Smaran (Dashboard) - Adaptive 3-Column on Desktop (xl:), 2-Column on Tablet, 1-Column on Mobile */}
           {activeTab === 'smaran' && (

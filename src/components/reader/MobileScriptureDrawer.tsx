@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 import { X, Search, BookOpen, Feather, ChevronRight } from 'lucide-react';
 
 export interface ScriptureItem {
@@ -23,15 +24,18 @@ interface MobileScriptureDrawerProps {
 }
 
 /**
- * Native-style Mobile Bottom Sheet Drawer.
+ * Native Mobile Bottom Sheet Drawer.
+ *
+ * Uses React Portal to mount directly into document.body,
+ * avoiding any parent CSS transforms or layout constraints.
  *
  * Features:
- * - Crisp native backdrop overlay (ZERO background blur to eliminate lag/flicker)
- * - Fluid, 60fps swipe-down-to-close with spring physics & velocity detection
- * - Works from both the grab handle AND the top of the scrollable list
- * - Real-time backdrop opacity tracking during touch drag
- * - Concentric nested border radius architecture
- * - Flexible for all mobile phones (low-end to high-end)
+ * - 0% background blur (clean crisp dimmed overlay, zero lag)
+ * - True 1:1 touch tracking with instant swipe-down-to-dismiss
+ * - Works from both the grab handle and when pulling down from the top of the list
+ * - Real-time backdrop fade proportional to drag distance
+ * - Safe area padding for iPhone home indicator and Android navigation bar
+ * - Concentric nested border radii
  */
 export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
   isOpen,
@@ -48,6 +52,7 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
   const [searchQuery, setSearchQuery] = useState('');
   const [isRendered, setIsRendered] = useState(isOpen);
   const [isAnimatingOut, setIsAnimatingOut] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   const sheetRef = useRef<HTMLDivElement>(null);
   const backdropRef = useRef<HTMLDivElement>(null);
@@ -61,20 +66,33 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
   const isDragging = useRef<boolean>(false);
   const touchStartedInHeader = useRef<boolean>(false);
 
-  // Sync mount/unmount with animation
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  // Sync open/close states
   useEffect(() => {
     if (isOpen) {
       setIsRendered(true);
       setIsAnimatingOut(false);
       setSearchQuery('');
+      // Prevent body scroll when drawer is open
+      document.body.style.overflow = 'hidden';
     } else if (isRendered) {
       setIsAnimatingOut(true);
       const timer = setTimeout(() => {
         setIsRendered(false);
         setIsAnimatingOut(false);
+        document.body.style.overflow = '';
       }, 240);
-      return () => clearTimeout(timer);
+      return () => {
+        clearTimeout(timer);
+        document.body.style.overflow = '';
+      };
     }
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [isOpen]);
 
   // Filter items
@@ -89,17 +107,17 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
       })
     : items;
 
-  // Programmatic dismiss with native spring slide-out
+  // Programmatic dismiss with spring animation
   const handleDismiss = useCallback(() => {
     if (isAnimatingOut) return;
     setIsAnimatingOut(true);
 
     if (sheetRef.current) {
-      sheetRef.current.style.transition = 'transform 240ms cubic-bezier(0.32, 0.72, 0, 1)';
+      sheetRef.current.style.transition = 'transform 220ms cubic-bezier(0.32, 0.72, 0, 1)';
       sheetRef.current.style.transform = 'translateY(100%)';
     }
     if (backdropRef.current) {
-      backdropRef.current.style.transition = 'opacity 240ms ease-out';
+      backdropRef.current.style.transition = 'opacity 200ms ease-out';
       backdropRef.current.style.opacity = '0';
     }
 
@@ -107,6 +125,7 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
       onClose();
       setIsRendered(false);
       setIsAnimatingOut(false);
+      document.body.style.overflow = '';
       if (sheetRef.current) {
         sheetRef.current.style.transform = '';
         sheetRef.current.style.transition = '';
@@ -115,32 +134,35 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
         backdropRef.current.style.opacity = '';
         backdropRef.current.style.transition = '';
       }
-    }, 240);
+    }, 220);
   }, [onClose, isAnimatingOut]);
 
-  // Touch gesture handlers for swipe-down-to-dismiss
-  const handleTouchStart = useCallback((e: React.TouchEvent) => {
-    if (isAnimatingOut) return;
-    const touch = e.touches[0];
-    startY.current = touch.clientY;
-    currentY.current = touch.clientY;
-    startTime.current = Date.now();
+  // Swipe-down touch handlers with guaranteed gesture safety
+  const handleTouchStart = useCallback(
+    (e: React.TouchEvent) => {
+      if (isAnimatingOut) return;
+      const touch = e.touches[0];
+      startY.current = touch.clientY;
+      currentY.current = touch.clientY;
+      startTime.current = Date.now();
 
-    const target = e.target as HTMLElement;
-    touchStartedInHeader.current = Boolean(target.closest('.drawer-drag-zone'));
+      const target = e.target as HTMLElement;
+      touchStartedInHeader.current = Boolean(target.closest('.drawer-drag-zone'));
 
-    // Check if scroll container is at top
-    const scrollEl = scrollContainerRef.current;
-    const isAtTop = !scrollEl || scrollEl.scrollTop <= 0;
+      // If touched inside scrollable list, only drag if scrolled to the top
+      const scrollEl = scrollContainerRef.current;
+      const isAtTop = !scrollEl || scrollEl.scrollTop <= 0;
 
-    if (touchStartedInHeader.current || isAtTop) {
-      isDragging.current = true;
-      if (sheetRef.current) sheetRef.current.style.transition = 'none';
-      if (backdropRef.current) backdropRef.current.style.transition = 'none';
-    } else {
-      isDragging.current = false;
-    }
-  }, [isAnimatingOut]);
+      if (touchStartedInHeader.current || isAtTop) {
+        isDragging.current = true;
+        if (sheetRef.current) sheetRef.current.style.transition = 'none';
+        if (backdropRef.current) backdropRef.current.style.transition = 'none';
+      } else {
+        isDragging.current = false;
+      }
+    },
+    [isAnimatingOut]
+  );
 
   const handleTouchMove = useCallback((e: React.TouchEvent) => {
     if (!isDragging.current || !sheetRef.current) return;
@@ -149,7 +171,7 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
     currentY.current = touch.clientY;
     const deltaY = currentY.current - startY.current;
 
-    // Check if user is scrolling up inside the list
+    // If scrolling up inside the list, allow natural scrolling
     if (!touchStartedInHeader.current) {
       const scrollEl = scrollContainerRef.current;
       if (scrollEl && scrollEl.scrollTop > 0) {
@@ -161,42 +183,41 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
 
     // Only allow downward drag
     if (deltaY > 0) {
-      // Direct 1:1 finger tracking with zero lag
       sheetRef.current.style.transform = `translateY(${deltaY}px)`;
 
-      // Real-time backdrop fade proportional to drag
       if (backdropRef.current) {
         const sheetHeight = sheetRef.current.offsetHeight || 500;
-        const progress = Math.min(1, deltaY / (sheetHeight * 0.7));
-        backdropRef.current.style.opacity = String(Math.max(0.1, 1 - progress * 0.9));
+        const progress = Math.min(1, deltaY / (sheetHeight * 0.65));
+        backdropRef.current.style.opacity = String(Math.max(0, 1 - progress));
       }
     } else {
-      // Slight resistance if pulled upward
-      const resistance = Math.max(-20, deltaY * 0.2);
+      // Gentle rubber-band resistance if pulled upwards
+      const resistance = Math.max(-12, deltaY * 0.12);
       sheetRef.current.style.transform = `translateY(${resistance}px)`;
     }
   }, []);
 
   const handleTouchEnd = useCallback(() => {
-    if (!isDragging.current || !sheetRef.current) return;
+    if (!sheetRef.current) return;
+    const wasDragging = isDragging.current;
     isDragging.current = false;
 
     const deltaY = currentY.current - startY.current;
     const elapsed = Math.max(1, Date.now() - startTime.current);
-    const velocity = deltaY / elapsed; // px per ms
+    const velocity = deltaY / elapsed;
 
-    // Dismiss if dragged down more than 70px OR flicked downward fast (> 0.35 px/ms)
-    const shouldDismiss = deltaY > 70 || (deltaY > 20 && velocity > 0.35);
+    // Fluid dismissal if dragged down more than 50px OR flicked downward (> 0.25 px/ms)
+    const shouldDismiss = wasDragging && (deltaY > 50 || (deltaY > 15 && velocity > 0.25));
 
     if (shouldDismiss) {
       handleDismiss();
     } else {
-      // Snap back to 0 with native iOS spring physics
-      sheetRef.current.style.transition = 'transform 260ms cubic-bezier(0.34, 1.2, 0.64, 1)';
+      // Always snap back cleanly to 0 if not dismissed
+      sheetRef.current.style.transition = 'transform 240ms cubic-bezier(0.34, 1.2, 0.64, 1)';
       sheetRef.current.style.transform = 'translateY(0)';
 
       if (backdropRef.current) {
-        backdropRef.current.style.transition = 'opacity 220ms ease-out';
+        backdropRef.current.style.transition = 'opacity 200ms ease-out';
         backdropRef.current.style.opacity = '1';
       }
 
@@ -209,7 +230,7 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
           backdropRef.current.style.transition = '';
           backdropRef.current.style.opacity = '';
         }
-      }, 260);
+      }, 240);
     }
   }, [handleDismiss]);
 
@@ -221,18 +242,17 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
     [onSelect, handleDismiss]
   );
 
-  if (!isRendered) return null;
+  if (!isMounted || !isRendered) return null;
 
-  return (
-    <>
+  const content = (
+    <div className="fixed inset-0 z-[100] pointer-events-auto flex flex-col justify-end">
       {/* 
         Crisp Native Backdrop:
-        NO backdrop-blur to eliminate mobile lag and keep scripture behind crisp.
-        Uses pure opacity fade.
+        NO backdrop-blur (zero blur, zero lag, sharp scripture behind).
       */}
       <div
         ref={backdropRef}
-        className={`fixed inset-0 z-50 bg-black/40 pointer-events-auto transition-opacity duration-200 ${
+        className={`fixed inset-0 bg-black/45 transition-opacity duration-200 ${
           isAnimatingOut ? 'opacity-0' : 'opacity-100'
         }`}
         onClick={handleDismiss}
@@ -241,11 +261,12 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
 
       {/* 
         Native Bottom Sheet Canvas:
-        Concentric Radius: outer rounded-t-[28px], padding 16px -> inner element radius 12px.
+        Stuck strictly to bottom-0 of the real viewport via Portal.
+        Concentric Radius: outer rounded-t-[28px], padding 16px -> inner item radius 12px.
       */}
       <div
         ref={sheetRef}
-        className={`fixed bottom-0 left-0 right-0 z-50 max-h-[88vh] bg-white rounded-t-[28px] shadow-[0_-12px_40px_rgba(0,0,0,0.18)] flex flex-col will-change-transform ${
+        className={`relative z-10 w-full max-h-[88vh] bg-white rounded-t-[28px] shadow-[0_-12px_48px_rgba(0,0,0,0.22)] flex flex-col overflow-hidden will-change-transform ${
           isAnimatingOut
             ? 'translate-y-full transition-transform duration-240 ease-[cubic-bezier(0.32,0.72,0,1)]'
             : 'animate-[nativeSheetUp_280ms_cubic-bezier(0.32,0.72,0,1)]'
@@ -255,15 +276,15 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
         onTouchEnd={handleTouchEnd}
         onTouchCancel={handleTouchEnd}
       >
-        {/* Dedicated Drag Zone (Handle + Header) */}
-        <div className="drawer-drag-zone select-none shrink-0 cursor-grab active:cursor-grabbing">
+        {/* Dedicated Drag Zone (Handle + Header) - touch-none prevents browser page-drag collision */}
+        <div className="drawer-drag-zone select-none shrink-0 cursor-grab active:cursor-grabbing bg-white border-b border-neutral-100 touch-none">
           {/* iOS Grab Capsule Handle */}
-          <div className="w-full flex items-center justify-center pt-2.5 pb-1.5">
-            <div className="w-11 h-1.5 rounded-full bg-neutral-300 active:bg-neutral-400 transition-colors" />
+          <div className="w-full flex items-center justify-center pt-2.5 pb-1 pointer-events-none">
+            <div className="w-12 h-1.5 rounded-full bg-neutral-300" />
           </div>
 
           {/* Header Row */}
-          <div className="flex items-center justify-between px-5 pt-1 pb-2.5">
+          <div className="flex items-center justify-between px-5 pt-1 pb-3">
             <div className="min-w-0 flex-1 pr-3">
               <h3 className="font-serif font-bold text-base text-neutral-900 leading-tight truncate">
                 {title}
@@ -286,7 +307,7 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
         </div>
 
         {/* Native Spotlight Search Box */}
-        <div className="px-5 pb-2.5 shrink-0">
+        <div className="px-5 pt-3 pb-2 shrink-0">
           <div className="relative flex items-center w-full h-10 px-3.5 rounded-[12px] bg-[#F2F2F7] border border-neutral-200/60 focus-within:bg-white focus-within:border-amber-400/80 focus-within:ring-2 focus-within:ring-amber-500/15 transition-all duration-150">
             <Search className="w-4 h-4 text-neutral-400 shrink-0 pointer-events-none" />
             <input
@@ -335,10 +356,11 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
           </div>
         )}
 
-        {/* Scrollable Items List */}
+        {/* Scrollable Items List with Safe Area Bottom Padding */}
         <div
           ref={scrollContainerRef}
-          className="flex-1 overflow-y-auto overscroll-contain px-4 pb-8 space-y-1 drawer-scrollable"
+          className="flex-1 overflow-y-auto overscroll-contain px-4 space-y-1 drawer-scrollable"
+          style={{ paddingBottom: 'max(5.5rem, calc(env(safe-area-inset-bottom, 24px) + 3.5rem))' }}
         >
           {filteredItems.length === 0 ? (
             <div className="py-14 text-center select-none">
@@ -424,6 +446,8 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
           }
         }
       `}</style>
-    </>
+    </div>
   );
+
+  return createPortal(content, document.body);
 };

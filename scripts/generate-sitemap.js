@@ -101,6 +101,8 @@ function createSitemapSuite(baseUrl, prefix = '') {
     }
     const granthasXml = buildUrlset(granthasUrls);
 
+    const emptyXml = buildUrlset([]);
+
     const indexXml = [
       '<?xml version="1.0" encoding="UTF-8"?>',
       '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
@@ -113,6 +115,8 @@ function createSitemapSuite(baseUrl, prefix = '') {
       [`${filePrefix}.xml`]: { content: indexXml, isBinary: false },
       [`${filePrefix}-main.xml`]: { content: mainXml, isBinary: false },
       [`${filePrefix}-granthas.xml`]: { content: granthasXml, isBinary: false },
+      [`${filePrefix}-padas.xml`]: { content: emptyXml, isBinary: false },
+      [`${filePrefix}-saints.xml`]: { content: emptyXml, isBinary: false },
     };
   }
 

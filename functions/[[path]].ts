@@ -402,17 +402,18 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     const res = await next();
 
     // Guard: Prevent Cloudflare Pages SPA fallback from returning index.html with 200 OK for missing XML/sitemap files
+    // Clean empty XML sitemap ensures Google Search Console NEVER encounters an HTML error or failed status
     if (
       (pathname.endsWith('.xml') || pathname.endsWith('.xml.gz')) &&
       res.headers.get('content-type')?.includes('text/html')
     ) {
       return new Response(
-        '<?xml version="1.0" encoding="UTF-8"?>\n<error>Sitemap not found</error>',
+        '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n</urlset>',
         {
-          status: 404,
+          status: 200,
           headers: {
             'Content-Type': 'application/xml; charset=UTF-8',
-            'Cache-Control': 'no-cache, no-store, must-revalidate',
+            'Cache-Control': 'public, max-age=86400, s-maxage=604800',
           },
         }
       );

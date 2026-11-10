@@ -1533,9 +1533,19 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
         scriptureTitle={
           selectedAuthor
             ? selectedAuthor
-            : displayedGranthas.find((g) => g.id === selectedGrantha)?.name || 'समस्त संग्रह'
+            : displayedGranthas.find((g) => g.id === selectedGrantha)?.name || 'पद संग्रह'
         }
-        chapterTitle={currentChapter ? currentChapter.name : selectedPad ? selectedPad.titleDevanagari : undefined}
+        chapterTitle={
+          currentChapter
+            ? currentChapter.name
+            : selectedPad?.verseNumber
+            ? `पद ${selectedPad.verseNumber}`
+            : selectedPad?.titleDevanagari
+            ? selectedPad.titleDevanagari.length > 14
+              ? `${selectedPad.titleDevanagari.slice(0, 12)}…`
+              : selectedPad.titleDevanagari
+            : undefined
+        }
         onOpenSelector={() => setIsMobileDrawerOpen(true)}
         onBack={onSwitchToMahagranth}
         onToggleAppearance={handleToggleSettings}
