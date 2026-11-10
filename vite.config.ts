@@ -91,7 +91,15 @@ export default defineConfig(({ isSsrBuild }) => ({
               if (id.includes('node_modules/idb-keyval')) {
                 return 'vendor-idb';
               }
-              if (id.includes('src/data/canonicalGranthas.json') || id.includes('src/data/canonicalSaints.json')) {
+              if (
+                id.includes('src/data/canonicalGranthas.json') ||
+                id.includes('src/data/canonicalSaints.json') ||
+                id.includes('src/data/sadhanaBadges.json') ||
+                id.includes('src/data/brajGlossary.json') ||
+                id.includes('src/data/ashtayamaPeriods.json') ||
+                id.includes('src/data/sacredTopics.json') ||
+                id.includes('src/data/rasikAphorisms.json')
+              ) {
                 return 'data-canonical';
               }
             },

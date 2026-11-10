@@ -14,7 +14,7 @@ import { AshtayamaTimelineDeck } from './components/smaran/AshtayamaTimelineDeck
 import { IOSTopProgressBar, navigationProgress } from './components/common/IOSActivityIndicator';
 import { SACRED_FEED_POSTS } from './data/feed';
 import { SacredPad, SadhanaState, DhyanaImpactState, DhyanaSessionRecord } from './types/devotional';
-import { SacredDatabase, CanonicalSaint, CanonicalGrantha } from './services/sacredDatabase';
+import { SacredDatabase, CanonicalSaint, CanonicalGrantha, mapPadToEpicChapter } from './services/sacredDatabase';
 import { seo } from './services/seoService';
 
 // Feature-level Code Splitting: Lazy load heavy readers, views and modals
@@ -106,10 +106,83 @@ export interface AppProps {
   components?: AppComponents;
 }
 
+interface AppRouteState {
+  tab: NavTab;
+  grantha: string;
+  chapter?: string;
+  verse?: string;
+  pad?: string;
+}
+
+function resolveCurrentRoute(): AppRouteState {
+  if (typeof window === 'undefined') {
+    return { tab: 'smaran', grantha: 'all' };
+  }
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const qTab = params.get('tab') as NavTab | null;
+    const qPad = params.get('pad');
+    const qGrantha = params.get('grantha');
+    const qChapter = params.get('chapter');
+    const qVerse = params.get('verse');
+
+    // Legacy paths like /lyrics/:id, /hi/lyrics/:id, /content/:id, /verse/:id, /pada/:id, /pad/:id
+    const pathMatch = window.location.pathname.match(
+      /^(?:\/(?:hi|en))?\/(?:lyrics|content|verse|pada|pad)\/([^/?#]+)/i
+    );
+    const pathPad = pathMatch ? decodeURIComponent(pathMatch[1]).trim() : null;
+    const targetPad = qPad || pathPad;
+
+    const mappedEpic = targetPad ? mapPadToEpicChapter(targetPad) : null;
+    const host = window.location.hostname;
+    const isPathDomain = host === 'path.vrindopnishad.in' || host.startsWith('path.');
+
+    let resolvedGrantha = qGrantha || (mappedEpic ? mappedEpic.grantha : 'all');
+    let resolvedChapter = qChapter || (mappedEpic ? mappedEpic.chapter : undefined);
+    let resolvedVerse = qVerse || (mappedEpic ? mappedEpic.verseId : undefined);
+
+    // If chapter query is present without grantha, detect grantha
+    if ((!qGrantha || qGrantha === 'all') && resolvedChapter) {
+      const decCh = decodeURIComponent(resolvedChapter).toLowerCase();
+      if (/sundar|सुन्दर/i.test(decCh)) {
+        resolvedGrantha = decCh.includes('sarga') ? 'valmiki-ramayana' : 'ramcharitmanas';
+      } else if (decCh.includes('sarga')) {
+        resolvedGrantha = 'valmiki-ramayana';
+      } else if (decCh.includes('skandh')) {
+        resolvedGrantha = 'shrimad-bhagavatam';
+      } else if (decCh.includes('adhyay')) {
+        resolvedGrantha = 'bhagavad-gita';
+      }
+    }
+
+    const isEpic = (resolvedGrantha !== 'all' && SacredDatabase.isEpicGrantha(resolvedGrantha)) || !!resolvedChapter;
+
+    let determinedTab: NavTab = 'smaran';
+    if (qTab && ['smaran', 'granthas', 'padavali', 'feed', 'milestones'].includes(qTab)) {
+      determinedTab = qTab;
+    } else if (isPathDomain || isEpic) {
+      determinedTab = 'granthas';
+    } else if (targetPad || params.get('author') || (resolvedGrantha !== 'all')) {
+      determinedTab = 'padavali';
+    }
+
+    return {
+      tab: determinedTab,
+      grantha: resolvedGrantha,
+      chapter: resolvedChapter,
+      verse: resolvedVerse,
+      pad: targetPad || undefined,
+    };
+  } catch {
+    return { tab: 'smaran', grantha: 'all' };
+  }
+}
+
 export function App({ initialTab, initialPadId, components }: AppProps = {}) {
   const PadavaliReaderComp = components?.PadavaliReader || LazyPadavaliReader;
   const MahagranthReaderComp = components?.MahagranthReader || LazyMahagranthReader;
   const MilestonesViewComp = components?.MilestonesView || LazyMilestonesView;
+  const [initialRoute] = useState<AppRouteState>(() => resolveCurrentRoute());
   const [activeTab, setActiveTab] = useState<NavTab>(() => {
     if (initialTab && ['smaran', 'granthas', 'padavali', 'feed', 'milestones'].includes(initialTab)) {
       return initialTab;
@@ -121,23 +194,7 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
       }
       return 'padavali';
     }
-    try {
-      if (typeof window !== 'undefined') {
-        const params = new URLSearchParams(window.location.search);
-        const t = params.get('tab') as NavTab;
-        if (t && ['smaran', 'granthas', 'padavali', 'feed', 'milestones'].includes(t)) {
-          return t;
-        }
-        const g = params.get('grantha');
-        if (g && SacredDatabase.isEpicGrantha(g)) {
-          return 'granthas';
-        }
-        if (params.get('pad') || params.get('author') || params.get('grantha')) {
-          return 'padavali';
-        }
-      }
-    } catch {}
-    return 'smaran';
+    return initialRoute.tab;
   });
   const [selectedDate, setSelectedDate] = useState<number>(() => new Date().getDate());
   const [activeFeedTab, setActiveFeedTab] = useState<FeedTabType>('विशेष दर्शन');
@@ -169,12 +226,8 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
   const [isGuideModalOpen, setIsGuideModalOpen] = useState(false);
   const [isAffirmedSankalpa, setIsAffirmedSankalpa] = useState(false);
   const [selectedGranthaFilter, setSelectedGranthaFilter] = useState<string>(() => {
-    if (typeof window !== 'undefined') {
-      try {
-        const params = new URLSearchParams(window.location.search);
-        const g = params.get('grantha');
-        if (g) return g;
-      } catch {}
+    if (initialRoute.grantha && initialRoute.grantha !== 'all') {
+      return initialRoute.grantha;
     }
     return 'all';
   });
@@ -1262,8 +1315,12 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
                 initialGranthaId={
                   selectedGranthaFilter !== 'all' && SacredDatabase.isEpicGrantha(selectedGranthaFilter)
                     ? selectedGranthaFilter
+                    : initialRoute.grantha && SacredDatabase.isEpicGrantha(initialRoute.grantha)
+                    ? initialRoute.grantha
                     : 'valmiki-ramayana'
                 }
+                initialChapterId={initialRoute.chapter}
+                initialVerseId={initialRoute.verse}
                 onSelectGrantha={(gId) => {
                   setSelectedGranthaFilter(gId);
                   if (typeof window !== 'undefined') {

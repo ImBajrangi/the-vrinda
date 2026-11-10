@@ -729,6 +729,10 @@ export const SacredDatabase = {
     return EPIC_GRANTHA_IDS.has(granthaId);
   },
 
+  mapPadToEpicChapter(padId: string): { grantha: string; chapter: string; verseId: string } | null {
+    return mapPadToEpicChapter(padId);
+  },
+
   getAllEpicGranthas(): CanonicalGrantha[] {
     return allGranthas.filter((g) => EPIC_GRANTHA_IDS.has(g.id));
   },
@@ -770,7 +774,22 @@ export const SacredDatabase = {
     const epicIndex = await this.getEpicIndex(granthaId);
     if (!epicIndex) return [];
 
-    const chapterMeta = epicIndex.chapters.find((c) => c.id === chapterId || c.name === chapterId) || epicIndex.chapters[0];
+    const decChapterId = decodeURIComponent(chapterId).trim().toLowerCase();
+    const chapterMeta =
+      epicIndex.chapters.find((c) => {
+        const decCId = decodeURIComponent(c.id).toLowerCase();
+        const decCName = decodeURIComponent(c.name).toLowerCase();
+        return (
+          c.id === chapterId ||
+          decCId === decChapterId ||
+          c.name === chapterId ||
+          decCName === decChapterId ||
+          decCId.includes(decChapterId) ||
+          decChapterId.includes(decCId) ||
+          decCName.includes(decChapterId) ||
+          decChapterId.includes(decCName)
+        );
+      }) || epicIndex.chapters[0];
     if (!chapterMeta) return [];
 
     const inFlightKey = `${granthaId}:${chapterMeta.id}`;
@@ -1781,4 +1800,87 @@ export const SacredDatabase = {
     } catch { }
   },
 };
+
+export function mapPadToEpicChapter(padId: string): { grantha: string; chapter: string; verseId: string } | null {
+  if (!padId) return null;
+  const clean = decodeURIComponent(padId).trim();
+
+  // 1. Ramcharitmanas (e.g. ramcharitmanas-kand-5-doha-14)
+  const rcMatch = clean.match(/^ramcharitmanas(?:-kand)?[-_](\d+|[a-zA-Z]+)(?:[-_](?:doha|chaupai)[-_](\d+.*))?$/i);
+  if (rcMatch || clean.startsWith('ramcharitmanas')) {
+    const kands = ['', 'बालकाण्ड', 'अयोध्याकाण्ड', 'अरण्यकाण्ड', 'किष्किन्धाकाण्ड', 'सुन्दरकाण्ड', 'लंकाकाण्ड', 'उत्तरकाण्ड'];
+    const kNum = rcMatch ? parseInt(rcMatch[1], 10) : 0;
+    let kandName = '';
+    if (kNum >= 1 && kNum <= 7) {
+      kandName = kands[kNum];
+    } else if (/sundar|सुन्दर/i.test(clean)) {
+      kandName = 'सुन्दरकाण्ड';
+    } else if (/bal|बाल/i.test(clean)) {
+      kandName = 'बालकाण्ड';
+    } else if (/ayodhya|अयोध्या/i.test(clean)) {
+      kandName = 'अयोध्याकाण्ड';
+    } else if (/aranya|अरण्य/i.test(clean)) {
+      kandName = 'अरण्यकाण्ड';
+    } else if (/kishkindha|किष्किन्धा/i.test(clean)) {
+      kandName = 'किष्किन्धाकाण्ड';
+    } else if (/lanka|लंका/i.test(clean)) {
+      kandName = 'लंकाकाण्ड';
+    } else if (/uttar|उत्तर/i.test(clean)) {
+      kandName = 'उत्तरकाण्ड';
+    }
+    return {
+      grantha: 'ramcharitmanas',
+      chapter: kandName ? `kand-${kandName}` : 'kand-सुन्दरकाण्ड',
+      verseId: clean,
+    };
+  }
+
+  // 2. Valmiki Ramayana (e.g. valmiki-ramayana-5-sarga-4-shlok-12)
+  const vrMatch = clean.match(/^valmiki-ramayana(?:-kand)?[-_](\d+)[-_]sarga[-_](\d+)/i);
+  if (vrMatch || clean.startsWith('valmiki-ramayana')) {
+    const kands = ['', 'बालकाण्ड', 'अयोध्याकाण्ड', 'अरण्यकाण्ड', 'किष्किन्धाकाण्ड', 'सुन्दरकाण्ड', 'युद्धकाण्ड', 'उत्तरकाण्ड'];
+    const kNum = vrMatch ? parseInt(vrMatch[1], 10) : (/sundar|सुन्दर/i.test(clean) ? 5 : 1);
+    const sNum = vrMatch ? parseInt(vrMatch[2], 10) : 1;
+    const kandName = kands[kNum] || 'बालकाण्ड';
+    return {
+      grantha: 'valmiki-ramayana',
+      chapter: `${kandName}-sarga-${sNum}`,
+      verseId: clean,
+    };
+  }
+
+  // 3. Shrimad Bhagavatam (e.g. shrimad-bhagwat-skandh-1-adhyay-1-shlok-1)
+  const sbMatch = clean.match(/^shrimad-bhagwat[-_]skandh[-_](\d+)[-_]adhyay[-_](\d+)/i) ||
+                  clean.match(/^shrimad-bhagavatam[-_]skandh[-_](\d+)[-_]adhyay[-_](\d+)/i);
+  if (sbMatch) {
+    return {
+      grantha: 'shrimad-bhagavatam',
+      chapter: `skandh-${sbMatch[1]}-adhyay-${sbMatch[2]}`,
+      verseId: clean,
+    };
+  }
+
+  // 4. Bhagavad Gita (e.g. shrimad-bhagavad-gita-adhyay-1-shlok-1)
+  const bgMatch = clean.match(/^(?:shrimad-)?bhagavad-gita[-_]adhyay[-_](\d+)/i) ||
+                  clean.match(/^gita[-_]adhyay[-_](\d+)/i);
+  if (bgMatch) {
+    return {
+      grantha: 'bhagavad-gita',
+      chapter: `adhyay-${bgMatch[1]}`,
+      verseId: clean,
+    };
+  }
+
+  // 5. Durga Saptashati (e.g. durga-saptashati-adhyay-1-shlok-1)
+  const dsMatch = clean.match(/^durga-saptashati[-_]adhyay[-_](\d+)/i);
+  if (dsMatch) {
+    return {
+      grantha: 'durga-saptashati',
+      chapter: `adhyay-${dsMatch[1]}`,
+      verseId: clean,
+    };
+  }
+
+  return null;
+}
 

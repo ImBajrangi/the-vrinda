@@ -130,6 +130,89 @@ function getChapterSnippet(granthaId: string, chapterId: string) {
   return CHAPTER_SNIPPETS[`${granthaId}:${chapterId}`] || null;
 }
 
+function mapPadToEpicChapter(padId: string): { grantha: string; chapter: string; verseId: string } | null {
+  if (!padId) return null;
+  const clean = decodeURIComponent(padId).trim();
+
+  // 1. Ramcharitmanas (e.g. ramcharitmanas-kand-5-doha-14)
+  const rcMatch = clean.match(/^ramcharitmanas(?:-kand)?[-_](\d+|[a-zA-Z]+)(?:[-_](?:doha|chaupai)[-_](\d+.*))?$/i);
+  if (rcMatch || clean.startsWith('ramcharitmanas')) {
+    const kands = ['', 'बालकाण्ड', 'अयोध्याकाण्ड', 'अरण्यकाण्ड', 'किष्किन्धाकाण्ड', 'सुन्दरकाण्ड', 'लंकाकाण्ड', 'उत्तरकाण्ड'];
+    const kNum = rcMatch ? parseInt(rcMatch[1], 10) : 0;
+    let kandName = '';
+    if (kNum >= 1 && kNum <= 7) {
+      kandName = kands[kNum];
+    } else if (/sundar|सुन्दर/i.test(clean)) {
+      kandName = 'सुन्दरकाण्ड';
+    } else if (/bal|बाल/i.test(clean)) {
+      kandName = 'बालकाण्ड';
+    } else if (/ayodhya|अयोध्या/i.test(clean)) {
+      kandName = 'अयोध्याकाण्ड';
+    } else if (/aranya|अरण्य/i.test(clean)) {
+      kandName = 'अरण्यकाण्ड';
+    } else if (/kishkindha|किष्किन्धा/i.test(clean)) {
+      kandName = 'किष्किन्धाकाण्ड';
+    } else if (/lanka|लंका/i.test(clean)) {
+      kandName = 'लंकाकाण्ड';
+    } else if (/uttar|उत्तर/i.test(clean)) {
+      kandName = 'उत्तरकाण्ड';
+    }
+    return {
+      grantha: 'ramcharitmanas',
+      chapter: kandName ? `kand-${kandName}` : 'kand-सुन्दरकाण्ड',
+      verseId: clean,
+    };
+  }
+
+  // 2. Valmiki Ramayana (e.g. valmiki-ramayana-5-sarga-4-shlok-12)
+  const vrMatch = clean.match(/^valmiki-ramayana(?:-kand)?[-_](\d+)[-_]sarga[-_](\d+)/i);
+  if (vrMatch || clean.startsWith('valmiki-ramayana')) {
+    const kands = ['', 'बालकाण्ड', 'अयोध्याकाण्ड', 'अरण्यकाण्ड', 'किष्किन्धाकाण्ड', 'सुन्दरकाण्ड', 'युद्धकाण्ड', 'उत्तरकाण्ड'];
+    const kNum = vrMatch ? parseInt(vrMatch[1], 10) : (/sundar|सुन्दर/i.test(clean) ? 5 : 1);
+    const sNum = vrMatch ? parseInt(vrMatch[2], 10) : 1;
+    const kandName = kands[kNum] || 'बालकाण्ड';
+    return {
+      grantha: 'valmiki-ramayana',
+      chapter: `${kandName}-sarga-${sNum}`,
+      verseId: clean,
+    };
+  }
+
+  // 3. Shrimad Bhagavatam (e.g. shrimad-bhagwat-skandh-1-adhyay-1-shlok-1)
+  const sbMatch = clean.match(/^shrimad-bhagwat[-_]skandh[-_](\d+)[-_]adhyay[-_](\d+)/i) ||
+                  clean.match(/^shrimad-bhagavatam[-_]skandh[-_](\d+)[-_]adhyay[-_](\d+)/i);
+  if (sbMatch) {
+    return {
+      grantha: 'shrimad-bhagavatam',
+      chapter: `skandh-${sbMatch[1]}-adhyay-${sbMatch[2]}`,
+      verseId: clean,
+    };
+  }
+
+  // 4. Bhagavad Gita (e.g. shrimad-bhagavad-gita-adhyay-1-shlok-1)
+  const bgMatch = clean.match(/^(?:shrimad-)?bhagavad-gita[-_]adhyay[-_](\d+)/i) ||
+                  clean.match(/^gita[-_]adhyay[-_](\d+)/i);
+  if (bgMatch) {
+    return {
+      grantha: 'bhagavad-gita',
+      chapter: `adhyay-${bgMatch[1]}`,
+      verseId: clean,
+    };
+  }
+
+  // 5. Durga Saptashati (e.g. durga-saptashati-adhyay-1-shlok-1)
+  const dsMatch = clean.match(/^durga-saptashati[-_]adhyay[-_](\d+)/i);
+  if (dsMatch) {
+    return {
+      grantha: 'durga-saptashati',
+      chapter: `adhyay-${dsMatch[1]}`,
+      verseId: clean,
+    };
+  }
+
+  return null;
+}
+
 const KNOWN_PADAS_META: Record<string, { title: string; author: string; desc: string; sampleVerse?: string }> = {
   'radheju-merau-janam-sudharau': {
     title: 'राधेजू मेरौ जनम सुधारौ',
@@ -247,11 +330,28 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   }
 
   // 3. Intelligent Sitemap Routing & Fix for .xml.gz encoding error
-  // Map any legacy .xml.gz sitemap requests to canonical uncompressed .xml sitemaps
-  // which Cloudflare edge serves with valid wire compression (Brotli/Gzip) and zero XML parser encoding errors.
-  if (pathname === '/sitemap-padas.xml.gz' || pathname === '/sitemap-path-padas.xml.gz') {
+  // Map legacy .xml.gz sitemap requests to canonical uncompressed .xml sitemaps
+  if (pathname === '/sitemap-padas.xml.gz') {
     const redirectedUrl = new URL('/sitemap-padas.xml', request.url);
     return next(new Request(redirectedUrl.toString(), request));
+  }
+
+  // 3.1 Legacy & indexed verse URL 301 redirects (/lyrics/:id, /hi/lyrics/:id, /content/:id, /verse/:id, /pada/:id, /pad/:id)
+  const legacyMatch = pathname.match(/^(?:\/(?:hi|en))?\/(?:lyrics|content|verse|pada|pad)\/([^/?#]+)/i);
+  if (legacyMatch) {
+    const rawPad = decodeURIComponent(legacyMatch[1]).trim();
+    const mappedEpic = mapPadToEpicChapter(rawPad);
+    if (mappedEpic) {
+      return Response.redirect(
+        `https://path.vrindopnishad.in/?tab=granthas&grantha=${encodeURIComponent(mappedEpic.grantha)}&chapter=${encodeURIComponent(mappedEpic.chapter)}&verse=${encodeURIComponent(rawPad)}`,
+        301
+      );
+    } else {
+      return Response.redirect(
+        `https://bhav.vrindopnishad.in/?tab=padavali&pad=${encodeURIComponent(rawPad)}`,
+        301
+      );
+    }
   }
 
   if (isPathDomain) {
@@ -267,6 +367,27 @@ export const onRequest: PagesFunction<Env> = async (context) => {
       const redirectedUrl = new URL('/sitemap-path-granthas.xml', request.url);
       return next(new Request(redirectedUrl.toString(), request));
     }
+    // Path domain strictly owns only Mahagranth Parayana (Epics). Keep both domains 100% separate on Google.
+    // Clean empty XML sitemap ensures GSC never gets an HTML error or cross-domain redirect.
+    if (
+      pathname === '/sitemap-path-padas.xml' ||
+      pathname === '/sitemap-path-padas.xml.gz' ||
+      pathname === '/sitemap-padas.xml' ||
+      pathname === '/sitemap-path-saints.xml' ||
+      pathname === '/sitemap-path-saints.xml.gz' ||
+      pathname === '/sitemap-saints.xml'
+    ) {
+      return new Response(
+        '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n</urlset>',
+        {
+          status: 200,
+          headers: {
+            'Content-Type': 'application/xml; charset=UTF-8',
+            'Cache-Control': 'public, max-age=86400, s-maxage=604800',
+          },
+        }
+      );
+    }
   }
 
   // Fast-path for non-HTML static assets
@@ -280,6 +401,23 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     staticExtensions.some((ext) => pathname.endsWith(ext))
   ) {
     const res = await next();
+
+    // Guard: Prevent Cloudflare Pages SPA fallback from returning index.html with 200 OK for missing XML/sitemap files
+    if (
+      (pathname.endsWith('.xml') || pathname.endsWith('.xml.gz')) &&
+      res.headers.get('content-type')?.includes('text/html')
+    ) {
+      return new Response(
+        '<?xml version="1.0" encoding="UTF-8"?>\n<error>Sitemap not found</error>',
+        {
+          status: 404,
+          headers: {
+            'Content-Type': 'application/xml; charset=UTF-8',
+            'Cache-Control': 'no-cache, no-store, must-revalidate',
+          },
+        }
+      );
+    }
     if (isStaging) {
       const headers = new Headers(res.headers);
       headers.set('X-Robots-Tag', 'noindex, nofollow');
@@ -300,19 +438,38 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   const qChapter = url.searchParams.get('chapter');
 
   // 4. Cross-Domain 301 Permanent Redirects for duplicated URLs
+  const epicPad = qPad ? mapPadToEpicChapter(qPad) : null;
+
   if (isPathDomain && !isStaging) {
     // path.vrindopnishad.in owns ONLY Mahagranth Parayana (epics & chapters)
-    if (qTab && qTab !== 'granthas') {
-      return Response.redirect(`https://bhav.vrindopnishad.in${url.search}`, 301);
-    }
-    if (qPad || qAuthor) {
-      return Response.redirect(`https://bhav.vrindopnishad.in${url.search}`, 301);
-    }
-    if (pathname === '/padavali' || pathname.startsWith('/pad/')) {
-      return Response.redirect(`https://bhav.vrindopnishad.in${url.pathname}${url.search}`, 301);
-    }
-    if (pathname === '/feed' || pathname === '/milestones' || pathname === '/smaran') {
-      return Response.redirect(`https://bhav.vrindopnishad.in${url.pathname}${url.search}`, 301);
+    if (qGrantha && EPICS_META[qGrantha]) {
+      // Epics belong strictly to path.vrindopnishad.in. Ensure tab=granthas without ping-ponging!
+      if (qTab && qTab !== 'granthas') {
+        const target = new URL(url.toString());
+        target.searchParams.set('tab', 'granthas');
+        return Response.redirect(target.toString(), 301);
+      }
+    } else if (epicPad) {
+      // Epic verse query on path.vrindopnishad.in -> normalize to tab=granthas
+      const target = new URL('https://path.vrindopnishad.in/');
+      target.searchParams.set('tab', 'granthas');
+      target.searchParams.set('grantha', epicPad.grantha);
+      target.searchParams.set('chapter', epicPad.chapter);
+      target.searchParams.set('verse', epicPad.verseId);
+      return Response.redirect(target.toString(), 301);
+    } else {
+      if (qTab && qTab !== 'granthas') {
+        return Response.redirect(`https://bhav.vrindopnishad.in${url.search}`, 301);
+      }
+      if (qPad || qAuthor) {
+        return Response.redirect(`https://bhav.vrindopnishad.in${url.search}`, 301);
+      }
+      if (pathname === '/padavali' || pathname.startsWith('/pad/')) {
+        return Response.redirect(`https://bhav.vrindopnishad.in${url.pathname}${url.search}`, 301);
+      }
+      if (pathname === '/feed' || pathname === '/milestones' || pathname === '/smaran') {
+        return Response.redirect(`https://bhav.vrindopnishad.in${url.pathname}${url.search}`, 301);
+      }
     }
   } else if (!isPathDomain && !isStaging) {
     // bhav.vrindopnishad.in redirects direct deep epic requests to path.vrindopnishad.in
@@ -320,7 +477,18 @@ export const onRequest: PagesFunction<Env> = async (context) => {
       return Response.redirect('https://path.vrindopnishad.in/?tab=granthas', 301);
     }
     if (qGrantha && EPICS_META[qGrantha]) {
-      return Response.redirect(`https://path.vrindopnishad.in${url.search}`, 301);
+      const target = new URL(url.toString());
+      target.hostname = 'path.vrindopnishad.in';
+      target.searchParams.set('tab', 'granthas');
+      return Response.redirect(target.toString(), 301);
+    }
+    if (epicPad) {
+      const target = new URL('https://path.vrindopnishad.in/');
+      target.searchParams.set('tab', 'granthas');
+      target.searchParams.set('grantha', epicPad.grantha);
+      target.searchParams.set('chapter', epicPad.chapter);
+      target.searchParams.set('verse', epicPad.verseId);
+      return Response.redirect(target.toString(), 301);
     }
   }
 
@@ -450,16 +618,27 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     `;
   } else if (qGrantha && EPICS_META[qGrantha]) {
     const epic = EPICS_META[qGrantha];
-    if (qChapter) {
-      // Synchronous response-level chapter resolution for all 781 chapters
-      const chSnippet = getChapterSnippet(qGrantha, qChapter);
-      const chName = chSnippet ? chSnippet.chapterName : qChapter;
+    if (qChapter || epicPad?.chapter) {
+      let targetChapter = qChapter || epicPad!.chapter;
+      if (qGrantha === 'ramcharitmanas') {
+        const decCh = decodeURIComponent(targetChapter).toLowerCase();
+        if (/sundar|सुन्दर|kand-5/i.test(decCh)) {
+          targetChapter = 'kand-सुन्दरकाण्ड';
+        }
+      } else if (qGrantha === 'valmiki-ramayana') {
+        const decCh = decodeURIComponent(targetChapter).toLowerCase();
+        if (/sundar|सुन्दर/i.test(decCh) && !decCh.includes('-sarga-')) {
+          targetChapter = 'सुन्दरकाण्ड-sarga-1';
+        }
+      }
+      const chSnippet = getChapterSnippet(qGrantha, targetChapter);
+      const chName = chSnippet ? chSnippet.chapterName : targetChapter;
       const chOpeningVerse = chSnippet?.openingVerse || `${epic.name} का पावन अध्याय ${chName}`;
       const chVerseCount = chSnippet?.verseCount || 0;
 
       title = `${chName} (${epic.name}) • प्रणेता: ${epic.author} | वृन्दोपनिषद् 2.0`;
       description = `«${chOpeningVerse}» ${epic.name} का पावन अध्याय ${chName} (${chVerseCount} श्लोक)। मूल श्लोक, पाठ व पारायण। वृन्दोपनिषद् 2.0`;
-      canonicalUrl = `https://path.vrindopnishad.in/?tab=granthas&grantha=${encodeURIComponent(qGrantha)}&chapter=${encodeURIComponent(qChapter)}`;
+      canonicalUrl = `https://path.vrindopnishad.in/?tab=granthas&grantha=${encodeURIComponent(qGrantha)}&chapter=${encodeURIComponent(targetChapter)}`;
 
       entitySchema = {
         '@type': 'Chapter',

@@ -25,6 +25,7 @@ import { seo } from '../../services/seoService';
 interface MahagranthReaderProps {
   initialGranthaId?: string;
   initialChapterId?: string;
+  initialVerseId?: string;
   onSelectGrantha?: (granthaId: string) => void;
   onSwitchToPadavali?: () => void;
 }
@@ -115,6 +116,7 @@ const EPICS = [
 export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
   initialGranthaId = 'valmiki-ramayana',
   initialChapterId,
+  initialVerseId,
   onSelectGrantha,
 }) => {
   const [selectedGranthaId, setSelectedGranthaId] = useState<string>(initialGranthaId);
@@ -242,10 +244,26 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
         setLoadingIndex(false);
 
         if (idx && idx.chapters.length > 0) {
-          const targetChapter =
-            initialChapterId && idx.chapters.some((c) => c.id === initialChapterId)
-              ? initialChapterId
-              : idx.chapters[0].id;
+          let targetChapter = idx.chapters[0].id;
+          if (initialChapterId) {
+            const decInit = decodeURIComponent(initialChapterId).trim().toLowerCase();
+            const found = idx.chapters.find((c) => {
+              const decId = decodeURIComponent(c.id).toLowerCase();
+              const decName = decodeURIComponent(c.name).toLowerCase();
+              return (
+                c.id === initialChapterId ||
+                decId === decInit ||
+                c.name === initialChapterId ||
+                decName === decInit ||
+                decId.includes(decInit) ||
+                decInit.includes(decId) ||
+                decName.includes(decInit)
+              );
+            });
+            if (found) {
+              targetChapter = found.id;
+            }
+          }
           setSelectedChapterId(targetChapter);
 
           const padas = await SacredDatabase.fetchEpicChapter(selectedGranthaId, targetChapter);
@@ -255,7 +273,28 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
           setLoadingGranthaId(null);
           navigationProgress.done();
           if (padas.length > 0) {
-            setActiveVerseId(padas[0].id);
+            let targetVerseId = padas[0].id;
+            if (initialVerseId) {
+              const cleanV = decodeURIComponent(initialVerseId).trim().toLowerCase();
+              const vFound = padas.find(
+                (p) =>
+                  p.id.toLowerCase() === cleanV ||
+                  (p.slug && p.slug.toLowerCase() === cleanV) ||
+                  p.id.toLowerCase().includes(cleanV)
+              );
+              if (vFound) {
+                targetVerseId = vFound.id;
+              }
+            }
+            setActiveVerseId(targetVerseId);
+            if (initialVerseId) {
+              setTimeout(() => {
+                const el = document.getElementById(`shloka-${targetVerseId}`);
+                if (el) {
+                  el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+              }, 300);
+            }
           }
         } else {
           setChapterPadas([]);
@@ -311,7 +350,15 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
 
   const currentChapter = useMemo(() => {
     if (!epicIndex) return null;
-    return epicIndex.chapters.find((c) => c.id === selectedChapterId) || epicIndex.chapters[0] || null;
+    const decSel = decodeURIComponent(selectedChapterId).trim().toLowerCase();
+    return (
+      epicIndex.chapters.find((c) => {
+        const decId = decodeURIComponent(c.id).toLowerCase();
+        return c.id === selectedChapterId || decId === decSel || decId.includes(decSel) || decSel.includes(decId);
+      }) ||
+      epicIndex.chapters[0] ||
+      null
+    );
   }, [epicIndex, selectedChapterId]);
 
   // Real-time Dynamic Epic & Chapter SEO synchronization

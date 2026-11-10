@@ -63,7 +63,10 @@ export function render(url: string = '/'): RenderResult {
 
     if (qAuthor) authorQuery = qAuthor;
     if (qGrantha) granthaQuery = qGrantha;
-    if (qChapter) chapterQuery = qChapter;
+    if (qChapter) {
+      chapterQuery = qChapter;
+      tab = 'granthas';
+    }
 
     if (qTab && ['smaran', 'granthas', 'padavali', 'feed', 'milestones'].includes(qTab)) {
       tab = qTab;
@@ -292,3 +295,5 @@ export function render(url: string = '/'): RenderResult {
     },
   };
 }
+
+export { mapPadToEpicChapter } from './services/sacredDatabase';
