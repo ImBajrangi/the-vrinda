@@ -137,9 +137,10 @@ export const FloatingNavbar: React.FC<FloatingNavbarProps> = ({
         {tabs.map((tab) => {
           const Icon = tab.icon;
           const isActive = currentTab === tab.id;
-          const handleTrigger = (e: React.SyntheticEvent) => {
+          const handleSelect = (e: React.SyntheticEvent) => {
+            e.preventDefault();
             e.stopPropagation();
-            if (currentTab !== tab.id) {
+            if (activeTab !== tab.id) {
               setOptimisticTab(tab.id);
               onSelectTab(tab.id);
             }
@@ -149,9 +150,8 @@ export const FloatingNavbar: React.FC<FloatingNavbarProps> = ({
             <button
               key={tab.id}
               type="button"
-              onTouchStart={handleTrigger}
-              onPointerDown={handleTrigger}
-              onClick={handleTrigger}
+              onPointerDown={handleSelect}
+              onClick={handleSelect}
               className={`relative z-10 border-0 text-[10px] font-sans flex-1 min-w-0 h-[44px] flex flex-col items-center justify-center gap-0.5 py-1 px-0.5 rounded-[22px] transition-colors duration-100 cursor-pointer touch-manipulation select-none active:opacity-75 ${
                 isActive
                   ? 'text-[#18181B] font-bold'

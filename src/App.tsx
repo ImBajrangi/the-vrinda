@@ -776,11 +776,11 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
       <IOSTopProgressBar />
 
       {/* Outer Adaptive Wrapper:
-          - Mobile & Small Windows (< 768px): Fluid w-full with comfortable 16px-20px padding (ZERO awkward side gaps)
+          - Mobile & Small Windows (< 768px): Fluid w-full with unified rock-solid padding (ZERO layout flicker/jump across tabs)
           - Tablet (768px - 1024px): max-w-4xl with balanced gutters
           - Desktop (1024px+): max-w-6xl xl:max-w-7xl
       */}
-      <div className={`w-full max-w-full overflow-x-hidden md:max-w-5xl xl:max-w-7xl min-h-screen relative px-3 sm:px-6 lg:px-8 ${isReaderTab ? 'pt-2 sm:pt-32 lg:pt-36' : (!isScrolled ? 'pt-28 sm:pt-32 lg:pt-36' : 'pt-24 sm:pt-28 lg:pt-32')} pb-36 md:pb-24 box-border main-wrapper-padding-transition`}>
+      <div className="w-full max-w-full overflow-x-hidden md:max-w-5xl xl:max-w-7xl min-h-screen relative px-3 sm:px-6 lg:px-8 pt-20 sm:pt-28 lg:pt-32 pb-36 md:pb-24 box-border">
         {/* Dynamic Top Announcement Marquee Ticker (Smoothly slides away on mobile reader tabs) */}
         <TopAnnouncementMarquee
           isScrolled={isScrolled}
