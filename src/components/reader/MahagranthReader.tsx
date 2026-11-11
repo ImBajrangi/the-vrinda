@@ -130,6 +130,8 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
   const [chapterPadas, setChapterPadas] = useState<SacredPad[]>([]);
   const [loadingChapter, setLoadingChapter] = useState<boolean>(false);
   const [activeVerseId, setActiveVerseId] = useState<string>('');
+  const isProgrammaticEpicScrollRef = useRef<boolean>(false);
+  const epicScrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState<boolean>(false);
   const { showChrome } = useScrollDirection();
 
@@ -476,6 +478,49 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
       window.removeEventListener('resize', updateShlokaPill);
     };
   }, [activeVerseId, chapterPadas]);
+
+  // Active Shloka ScrollSpy: Synchronizes active verse, bottom grid, and commentary with content on screen
+  useEffect(() => {
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window) || chapterPadas.length === 0) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (isProgrammaticEpicScrollRef.current) return;
+
+        const visibleEntries = entries.filter((e) => e.isIntersecting);
+        if (visibleEntries.length === 0) return;
+
+        visibleEntries.sort(
+          (a, b) => Math.abs(a.boundingClientRect.top - 140) - Math.abs(b.boundingClientRect.top - 140)
+        );
+        const topEntry = visibleEntries[0];
+        const shlokaId = topEntry.target.id.replace('shloka-', '');
+
+        if (shlokaId && shlokaId !== activeVerseId) {
+          setActiveVerseId(shlokaId);
+
+          const gridEl = shlokaGridRefs.current[shlokaId];
+          if (gridEl) {
+            gridEl.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          }
+        }
+      },
+      {
+        root: null,
+        rootMargin: '-100px 0px -55% 0px',
+        threshold: [0, 0.1, 0.3],
+      }
+    );
+
+    const shlokaItems = document.querySelectorAll('[id^="shloka-"]');
+    shlokaItems.forEach((item) => observer.observe(item));
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [chapterPadas, activeVerseId]);
 
   const activePad = useMemo(() => {
     return chapterPadas.find((p) => p.id === activeVerseId) || chapterPadas[0] || null;
@@ -1176,6 +1221,11 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                       }}
                       type="button"
                       onClick={() => {
+                        isProgrammaticEpicScrollRef.current = true;
+                        if (epicScrollTimeoutRef.current) clearTimeout(epicScrollTimeoutRef.current);
+                        epicScrollTimeoutRef.current = setTimeout(() => {
+                          isProgrammaticEpicScrollRef.current = false;
+                        }, 900);
                         setActiveVerseId(pad.id);
                         const el = document.getElementById(`shloka-${pad.id}`);
                         if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });

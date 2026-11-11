@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useRef } from 'react';
+import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import {
   Play,
@@ -217,6 +217,10 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   const [selectedChapter, setSelectedChapter] = useState<string>('all');
   const [isChapterDropdownOpen, setIsChapterDropdownOpen] = useState<boolean>(false);
   const [activeScrollerVerseId, setActiveScrollerVerseId] = useState<string>('');
+  const [streamLimit, setStreamLimit] = useState<number>(100);
+  const scrubberBtnRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
+  const isProgrammaticScrollRef = useRef<boolean>(false);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState<boolean>(false);
   const [drawerMode, setDrawerMode] = useState<'padas' | 'granthas' | 'authors'>('padas');
   const { showChrome } = useScrollDirection();
@@ -235,6 +239,15 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     if (typeof window !== 'undefined') {
       localStorage.setItem('vrind_reading_mode', mode);
     }
+    setTimeout(() => {
+      if (mode === 'continuous') {
+        const el = document.getElementById(`verse-stream-${selectedPad.id}`);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        const canvasEl = document.getElementById('reading-canvas-top');
+        if (canvasEl) canvasEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 120);
   };
 
   const [expandedPurportPadIds, setExpandedPurportPadIds] = useState<Set<string>>(new Set());
@@ -582,6 +595,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       const p = SacredDatabase.getPadById(targetId);
       if (p) {
         setSelectedPad(p);
+        setActiveScrollerVerseId(p.id);
         if (p.collectionId && p.collectionId !== selectedGrantha) {
           setSelectedGrantha(p.collectionId);
           setSelectedChapter(p.chapterId || 'all');
@@ -592,6 +606,9 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
         }
         initialAppliedRef.current = true;
         lastExplicitPadIdRef.current = selectedPadId;
+        setTimeout(() => {
+          scrollToPadView(p.id);
+        }, 300);
       }
     }
   }, [selectedPadId, initialPadId, allPadas]);
@@ -1021,7 +1038,63 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     });
   };
 
-  const handleSelectPad = async (pad: SacredPad) => {
+  const scrollToPadView = useCallback((padId: string, attempt = 0) => {
+    isProgrammaticScrollRef.current = true;
+    if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+    scrollTimeoutRef.current = setTimeout(() => {
+      isProgrammaticScrollRef.current = false;
+    }, 900);
+
+    if (readingMode === 'continuous') {
+      const el = document.getElementById(`verse-stream-${padId}`);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else if (attempt < 8) {
+        setTimeout(() => scrollToPadView(padId, attempt + 1), 60);
+      }
+    } else {
+      const canvasEl = document.getElementById('reading-canvas-top');
+      if (canvasEl) {
+        canvasEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    // Scroll scrubber button horizontally
+    const scrubEl = scrubberBtnRefs.current[padId];
+    if (scrubEl) {
+      scrubEl.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+
+    // Scroll sidebar item into view
+    const sideEl = sidebarItemRefs.current[padId];
+    if (sideEl) {
+      sideEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }, [readingMode]);
+
+  const handleSelectPad = async (pad: SacredPad, options: { scroll?: boolean } = { scroll: true }) => {
+    // 1. Immediately sync active verse highlight for scrubber and sidebar
+    setActiveScrollerVerseId(pad.id);
+
+    // 2. Auto-switch grantha or chapter if content is not in current view
+    if (pad.collectionId && selectedGrantha !== 'all' && pad.collectionId !== selectedGrantha) {
+      setSelectedGrantha(pad.collectionId);
+    }
+    if (pad.chapterId && selectedChapter !== 'all' && pad.chapterId !== selectedChapter) {
+      setSelectedChapter(pad.chapterId);
+    }
+
+    // 3. Ensure stream limit covers this pad in continuous mode
+    const targetIdx = filteredPads.findIndex((p) => p.id === pad.id);
+    if (targetIdx >= streamLimit) {
+      setStreamLimit((prev) => Math.max(prev, targetIdx + 30));
+    }
+
+    // 4. Scroll screen to content according to active bar
+    if (options.scroll !== false) {
+      scrollToPadView(pad.id);
+    }
+
     if (selectedPad.id === pad.id && selectedPad.verses && selectedPad.verses.length > 0) return;
     navigationProgress.start();
     setLoadingPadId(pad.id);
@@ -1408,6 +1481,62 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     const timer = setTimeout(updateMobilePill, 40);
     return () => clearTimeout(timer);
   }, [selectedPad.id, filteredPads, visibleCount]);
+
+  // Active Verse ScrollSpy: Synchronizes active bar, scrubber, and commentary with content currently visible in window
+  useEffect(() => {
+    if (readingMode !== 'continuous' || typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (isProgrammaticScrollRef.current) return;
+
+        const visibleEntries = entries.filter((e) => e.isIntersecting);
+        if (visibleEntries.length === 0) return;
+
+        // Sort by closest to natural reading zone (~120px below top)
+        visibleEntries.sort(
+          (a, b) => Math.abs(a.boundingClientRect.top - 120) - Math.abs(b.boundingClientRect.top - 120)
+        );
+        const topEntry = visibleEntries[0];
+        const padId = topEntry.target.id.replace('verse-stream-', '');
+
+        if (padId && padId !== activeScrollerVerseId) {
+          setActiveScrollerVerseId(padId);
+          const matched = filteredPads.find((p) => p.id === padId);
+          if (matched && matched.id !== selectedPad.id) {
+            setSelectedPad(matched);
+            saveReaderState({ lastPadId: padId });
+
+            // Center scrubber button
+            const scrubEl = scrubberBtnRefs.current[padId];
+            if (scrubEl) {
+              scrubEl.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
+
+            // Keep sidebar item visible in sidebar container
+            const sideEl = sidebarItemRefs.current[padId];
+            if (sideEl) {
+              sideEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+          }
+        }
+      },
+      {
+        root: null,
+        rootMargin: '-100px 0px -55% 0px',
+        threshold: [0, 0.1, 0.3],
+      }
+    );
+
+    const streamItems = document.querySelectorAll('[id^="verse-stream-"]');
+    streamItems.forEach((item) => observer.observe(item));
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [readingMode, filteredPads, activeScrollerVerseId, selectedPad.id]);
 
   // Current Pada Index in Filtered List for Prev/Next
   const currentIdx = filteredPads.findIndex((p) => p.id === selectedPad.id);
@@ -2635,18 +2764,18 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   पद क्रम:
                 </span>
                 <div className="flex items-center gap-1 overflow-x-auto no-scrollbar py-0.5 flex-1 min-w-0">
-                  {filteredPads.slice(0, 100).map((pad, idx) => {
+                  {filteredPads.slice(0, streamLimit).map((pad, idx) => {
                     const isActive = (activeScrollerVerseId || selectedPad.id) === pad.id;
                     const displayNumber = idx + 1;
                     return (
                       <button
                         key={pad.id}
+                        ref={(el) => {
+                          scrubberBtnRefs.current[pad.id] = el;
+                        }}
                         type="button"
                         onClick={() => {
-                          setActiveScrollerVerseId(pad.id);
-                          setSelectedPad(pad);
-                          const el = document.getElementById(`verse-stream-${pad.id}`);
-                          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                          handleSelectPad(pad);
                         }}
                         className={`min-w-7 h-7 px-2 rounded-full text-xs font-mono font-bold flex items-center justify-center transition-colors cursor-pointer shrink-0 ${isActive
                             ? 'bg-[#FEF08A] text-[#78350F] font-bold shadow-2xs'
@@ -2703,7 +2832,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                     </div>
                   )
                 ) : (
-                  filteredPads.slice(0, 100).map((pad, pIdx) => {
+                  filteredPads.slice(0, streamLimit).map((pad, pIdx) => {
                     const isPadPlaying = activePlayingPadId === pad.id && Boolean(isPlaying);
                     const isPadBookmarked = bookmarkedPadIds.includes(pad.id);
                     const isPurportOpen = expandedPurportPadIds.has(pad.id);
@@ -2824,6 +2953,17 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                       </div>
                     );
                   })
+                )}
+                {filteredPads.length > streamLimit && (
+                  <div className="py-4 text-center">
+                    <button
+                      type="button"
+                      onClick={() => setStreamLimit((prev) => Math.min(filteredPads.length, prev + 50))}
+                      className="px-5 py-2.5 rounded-full bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] font-bold text-xs cursor-pointer shadow-2xs font-serif transition-colors"
+                    >
+                      और {filteredPads.length - streamLimit} पद लोड करें...
+                    </button>
+                  </div>
                 )}
               </div>
 
