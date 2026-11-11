@@ -1,0 +1,45 @@
+# Vrindopnisad 2.0 (वृन्दोपनिषद्) - Complete Canonical Knowledge Graph
+
+> Comprehensive canonical index of 44,000+ sacred verses, 24 Ras collections, 131 saints, and 5 epics.
+
+## Complete Scripture & Collection Manifest
+
+### Braj Ras Collections (Canonical Domain: https://bhav.vrindopnishad.in)
+1. **Hit Chaurasi (श्री हित चौरासी)** — 84 Padas by Shri Hit Harivansh Mahaprabhu (`grantha=hit-chaurasi`)
+2. **Sphut Vani (स्फुट वाणी)** — Padas by Shri Hit Harivansh Mahaprabhu (`grantha=sphut-vani`)
+3. **Radha Sudha Nidhi (श्री राधा सुधा निधि)** — 270 Sanskrit Shlokas by Prabhodananda Saraswati (`grantha=radha-sudha-nidhi`)
+4. **Kelimal (केलिमाल)** — Swami Haridas (`grantha=kelimal`)
+5. **Siddhant Ke Pad (सिद्धांत के पद)** — Swami Haridas (`grantha=siddhant-ke-pad`)
+6. **Bayalees Leela (बयालीस लीला)** — Rasik Dhruvdas (`grantha=bayalees-leela`)
+7. **Sur Sagar (सूरसागर)** — Mahakavi Surdas (`grantha=sur-sagar`)
+8. **Raskhan Padavali (रसखान पदावली)** — Rasik Raskhan (`grantha=raskhan-padavali`)
+9. **Vyas Vani (व्यास वाणी)** — Hariram Vyas (`grantha=vyas-vani`)
+10. **Lalit Kishori Dev Vani (ललित किशोरी देव वाणी)** — Shri Lalit Kishori Dev (`grantha=lalit-kishori-dev-vani`)
+11. **Prabodhananda Stotramrit (प्रबोधानन्द स्तोत्रामृत)** — Prabhodananda Saraswati (`grantha=prabodhananda-stotramrit`)
+12. **Rasik Ras Tarangini (रसिक रस तरंगिणी)** — Canonical Rasik Poetry (`grantha=rasik-ras-tarangini`)
+13. **Prem Vani (प्रेम वाणी)** — Braj Ras Collections (`grantha=prem-vani`)
+14. **Yugal Shatak (युगल शतक)** — Shri Shribhatta (`grantha=yugal-shatak`)
+15. **Mahavani (महावाणी)** — Harivyas Devacharyaji (`grantha=mahavani`)
+16. **Chaitanya Padavali (चैतन्य पदावली)** — Gaudiya Acharyas (`grantha=chaitanya-padavali`)
+17. **Meera Padavali (मीरा पदावली)** — Meera Bai (`grantha=meera-padavali`)
+18. **Brij Chaurasi Kos Yatra (ब्रज चौरासी कोस)** — Sacred Pilgrimage Guides (`grantha=brij-chaurasi-kos`)
+19. **Ashtayama Seva Padas (अष्टयाम सेवा पद)** — Temple daily liturgical hymns (`grantha=ashtayama-seva`)
+
+### Sanatan Mahagranth Parayana (Canonical Domain: https://path.vrindopnishad.in)
+1. **Valmiki Ramayana (श्रीमद् वाल्मीकि रामायण)** — 7 Kandas, 646 Sargas (`grantha=valmiki-ramayana`)
+   - Balakanda, Ayodhyakanda, Aranyakanda, Kishkindhakanda, Sundarakanda, Yuddhakanda, Uttarakanda
+2. **Shrimad Bhagavatam (श्रीमद्भागवत महापुराण)** — 12 Skandhas, 335 Adhyayas (`grantha=shrimad-bhagavatam`)
+   - Skandhas 1 to 12 complete text and transliteration
+3. **Ramcharitmanas (श्री रामचरितमानस)** — 7 Kandas by Goswami Tulsidas (`grantha=ramcharitmanas`)
+   - Bal Kand, Ayodhya Kand, Aranya Kand, Kishkindha Kand, Sundar Kand, Lanka Kand, Uttar Kand
+4. **Bhagavad Gita (श्रीमद्भगवद्गीता)** — 18 Chapters, 700 Shlokas (`grantha=bhagavad-gita`)
+5. **Durga Saptashati (श्री दुर्गा सप्तशती)** — 13 Adhyayas (`grantha=durga-saptashati`)
+
+## Search Engine & AI Crawler Endpoints
+
+- Primary Sitemap Index: https://bhav.vrindopnishad.in/sitemap.xml
+- Image Sitemap: https://bhav.vrindopnishad.in/sitemap-images.xml
+- Epics Parayana Sitemap: https://path.vrindopnishad.in/sitemap-path.xml
+- Robots Directives: https://bhav.vrindopnishad.in/robots.txt
+- OpenSearch Description: https://bhav.vrindopnishad.in/opensearch.xml
+- IndexNow Verification: https://bhav.vrindopnishad.in/e3d4891bca7f4a0889c2510b14798e94.txt

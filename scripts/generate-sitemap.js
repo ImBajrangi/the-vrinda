@@ -56,6 +56,158 @@ function buildUrlset(urls) {
   return lines.join('\n');
 }
 
+function buildImageSitemap(baseUrl) {
+  const images = [
+    {
+      page: `${baseUrl}/?tab=feed`,
+      loc: `${baseUrl}/assets/temples/banke-bihari-v2.webp`,
+      title: 'श्री बांके बिहारी जी महाराज दर्शन (वृन्दावन)',
+      caption: 'श्री ठाकुर बांके बिहारी जी महाराज के पावन दर्शन एवं वृन्दावन धाम की अनुपम आभा।',
+      geo: 'Vrindavan, Mathura, Uttar Pradesh, India',
+    },
+    {
+      page: `${baseUrl}/?tab=feed`,
+      loc: `${baseUrl}/assets/temples/banke-bihari-gate.webp`,
+      title: 'श्री बांके बिहारी मंदिर प्रवेश द्वार',
+      caption: 'वृन्दावन धाम स्थित श्री बांके बिहारी मंदिर का भव्य एवं पावन प्रवेश द्वार।',
+      geo: 'Vrindavan, Mathura, Uttar Pradesh, India',
+    },
+    {
+      page: `${baseUrl}/?tab=feed`,
+      loc: `${baseUrl}/assets/temples/banke-bihari.webp`,
+      title: 'ठाकुर श्री बांके बिहारी जी छवि',
+      caption: 'स्वामी हरिदास जी द्वारा सेवित लाड़िले ठाकुर बांके बिहारी जी की अलौकिक छवि।',
+      geo: 'Vrindavan, Mathura, Uttar Pradesh, India',
+    },
+    {
+      page: `${baseUrl}/?tab=feed`,
+      loc: `${baseUrl}/assets/temples/barsana-radharani.webp`,
+      title: 'श्री लाड़ली जी महल (बरसाना)',
+      caption: 'भानुपुरा शिखर पर स्थित श्री राधा रानी मंदिर (लाड़ली जी महल) बरसाना धाम।',
+      geo: 'Barsana, Mathura, Uttar Pradesh, India',
+    },
+    {
+      page: `${baseUrl}/?tab=feed`,
+      loc: `${baseUrl}/assets/temples/radha-raman.webp`,
+      title: 'श्री राधा रमण जी महाराज मंदिर',
+      caption: 'श्रीयुत गोपाल भट्ट गोस्वामी जी द्वारा शालिग्राम शिला से प्रकट स्वयं-प्रकट श्री राधा रमण देव।',
+      geo: 'Vrindavan, Mathura, Uttar Pradesh, India',
+    },
+    {
+      page: `${baseUrl}/?tab=feed`,
+      loc: `${baseUrl}/assets/temples/radha-vallabh.webp`,
+      title: 'श्री राधा वल्लभ जी महाराज मंदिर',
+      caption: 'श्री हित हरिवंश महाप्रभु प्राकट्य एवं राधावल्लभ संप्रदाय का प्रधान देवालय।',
+      geo: 'Vrindavan, Mathura, Uttar Pradesh, India',
+    },
+    {
+      page: `${baseUrl}/?tab=feed`,
+      loc: `${baseUrl}/assets/temples/keshi-ghat.webp`,
+      title: 'पावन केशी घाट एवं यमुना जी तट',
+      caption: 'श्री यमुना जी के पावन तट पर स्थित ऐतिहासिक केशी घाट, वृन्दावन।',
+      geo: 'Vrindavan, Mathura, Uttar Pradesh, India',
+    },
+    {
+      page: `${baseUrl}/?tab=feed`,
+      loc: `${baseUrl}/assets/temples/diya-pujan.webp`,
+      title: 'संध्या आरती दीप पूजन',
+      caption: 'पावन यमुना तट एवं वृन्दावन देवालयों में नित्य दीपदान व संध्या आरती।',
+      geo: 'Vrindavan, Mathura, Uttar Pradesh, India',
+    },
+    {
+      page: `${baseUrl}/?tab=feed`,
+      loc: `${baseUrl}/assets/temples/aarti-lamp.webp`,
+      title: 'मंगला व शयन आरती दीप ज्योति',
+      caption: 'वृन्दावन रसिक संतों द्वारा सेवित युगल सरकार की मंगला व शयन आरती दीप।',
+      geo: 'Vrindavan, Mathura, Uttar Pradesh, India',
+    },
+    {
+      page: `${baseUrl}/?tab=padavali&author=swami-haridas`,
+      loc: `${baseUrl}/assets/saints/swami-haridas.webp`,
+      title: 'संगीत शिरोमणि स्वामी हरिदास जी महाराज',
+      caption: 'निधिवन राज रस प्रणेता एवं तानसेन के गुरु पूज्य स्वामी हरिदास जी महाराज।',
+      geo: 'Nidhivan, Vrindavan, Uttar Pradesh, India',
+    },
+    {
+      page: `${baseUrl}/?tab=padavali&author=chaitanya-mahaprabhu`,
+      loc: `${baseUrl}/assets/saints/chaitanya.webp`,
+      title: 'श्री चैतन्य महाप्रभु (गौर हरि)',
+      caption: 'संकीर्तन आंदोलन के प्रवर्तक एवं प्रेम रस अवतार श्री कृष्ण चैतन्य महाप्रभु।',
+      geo: 'Mayapur, Nadia, West Bengal, India',
+    },
+    {
+      page: `${baseUrl}/?tab=padavali&author=nagaridas`,
+      loc: `${baseUrl}/assets/saints/nagaridas.webp`,
+      title: 'रसिक कवि भक्त नागरीदास जी महाराज',
+      caption: 'किशनगढ़ नरेश सावंत सिंह (भक्त नागरीदास) एवं वाणी रचनाकार।',
+      geo: 'Vrindavan, Mathura, Uttar Pradesh, India',
+    },
+    {
+      page: `${baseUrl}/?tab=padavali&author=raskhan`,
+      loc: `${baseUrl}/assets/saints/raskhan.webp`,
+      title: 'परम कृष्ण भक्त रसखान जी',
+      caption: 'मानुष हों तो वही रसखानि बसौं ब्रज गोकुल गाँव के ग्वारन।',
+      geo: 'Gokul, Mathura, Uttar Pradesh, India',
+    },
+    {
+      page: `${baseUrl}/?tab=padavali&author=vyas-ji`,
+      loc: `${baseUrl}/assets/saints/vyas.webp`,
+      title: 'श्री हरिराम व्यास जी महाराज',
+      caption: 'किशोर वन वृन्दावन के अनन्य रसिक संत श्री हरिराम व्यास जी।',
+      geo: 'Kishore Van, Vrindavan, Uttar Pradesh, India',
+    },
+    {
+      page: `${baseUrl}/?tab=padavali&author=surdas`,
+      loc: `${baseUrl}/assets/saints/surdas.webp`,
+      title: 'महाकवि सूरदास जी',
+      caption: 'सूरसागर एवं अष्टछाप के महाकवि भक्त सूरदास जी महाराज।',
+      geo: 'Parsauli, Mathura, Uttar Pradesh, India',
+    },
+    {
+      page: `${baseUrl}/?tab=padavali&author=nimbarkacharya`,
+      loc: `${baseUrl}/assets/saints/nimbarka.webp`,
+      title: 'जगद्गुरु श्री निम्बार्काचार्य जी',
+      caption: 'द्वैताद्वैत दर्शन एवं राधा-कृष्ण युगल उपासना के आदि आचार्य।',
+      geo: 'Nimgaon, Mathura, Uttar Pradesh, India',
+    },
+    {
+      page: `${baseUrl}/?tab=padavali&author=vallabhacharya`,
+      loc: `${baseUrl}/assets/saints/vallabha.webp`,
+      title: 'जगद्गुरु श्रीमद् वल्लभाचार्य जी महाप्रभु',
+      caption: 'शुद्धाद्वैत दर्शन एवं पुष्टिमार्ग भक्ति परंपरा के प्रणेता।',
+      geo: 'Varanasi, Uttar Pradesh, India',
+    },
+    {
+      page: `${baseUrl}/?tab=padavali&author=meera-bai`,
+      loc: `${baseUrl}/assets/saints/meera.webp`,
+      title: 'अनन्य कृष्ण प्रेमानुरागिणी भक्त मीराबाई जी',
+      caption: 'मेरो तो गिरधर गोपाल दूसरो न कोई। अनन्य प्रेम दीवानी मीराबाई।',
+      geo: 'Vrindavan, Mathura, Uttar Pradesh, India',
+    },
+  ];
+
+  const lines = [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',
+    '        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">',
+  ];
+
+  for (const item of images) {
+    lines.push('  <url>');
+    lines.push(`    <loc>${escapeXml(item.page)}</loc>`);
+    lines.push('    <image:image>');
+    lines.push(`      <image:loc>${escapeXml(item.loc)}</image:loc>`);
+    lines.push(`      <image:title>${escapeXml(item.title)}</image:title>`);
+    lines.push(`      <image:caption>${escapeXml(item.caption)}</image:caption>`);
+    lines.push(`      <image:geo_location>${escapeXml(item.geo)}</image:geo_location>`);
+    lines.push('    </image:image>');
+    lines.push('  </url>');
+  }
+
+  lines.push('</urlset>');
+  return lines.join('\n');
+}
+
 function createSitemapSuite(baseUrl, prefix = '') {
   const today = getTodayIsoDate();
   const granthasPath = path.resolve(projectRoot, 'src/data/canonicalGranthas.json');
@@ -215,13 +367,17 @@ function createSitemapSuite(baseUrl, prefix = '') {
   const padas2Xml = buildUrlset(padas2Urls);
   const padas3Xml = buildUrlset(padas3Urls);
 
-  // 5. Sitemap Index (pointing to standard .xml sitemaps)
+  // 5. Image Sitemap (High-Resolution WebP Vrindavan Temples & Saints with Geolocation)
+  const imagesXml = buildImageSitemap(baseUrl);
+
+  // 6. Sitemap Index (pointing to standard .xml sitemaps)
   const indexXml = [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
     `  <sitemap><loc>${baseUrl}/${filePrefix}-main.xml</loc><lastmod>${today}</lastmod></sitemap>`,
     `  <sitemap><loc>${baseUrl}/${filePrefix}-granthas.xml</loc><lastmod>${today}</lastmod></sitemap>`,
     `  <sitemap><loc>${baseUrl}/${filePrefix}-saints.xml</loc><lastmod>${today}</lastmod></sitemap>`,
+    `  <sitemap><loc>${baseUrl}/${filePrefix}-images.xml</loc><lastmod>${today}</lastmod></sitemap>`,
     `  <sitemap><loc>${baseUrl}/${filePrefix}-padas-1.xml</loc><lastmod>${today}</lastmod></sitemap>`,
     `  <sitemap><loc>${baseUrl}/${filePrefix}-padas-2.xml</loc><lastmod>${today}</lastmod></sitemap>`,
     `  <sitemap><loc>${baseUrl}/${filePrefix}-padas-3.xml</loc><lastmod>${today}</lastmod></sitemap>`,
@@ -234,6 +390,7 @@ function createSitemapSuite(baseUrl, prefix = '') {
     [`${filePrefix}-main.xml`]: { content: mainXml, isBinary: false },
     [`${filePrefix}-granthas.xml`]: { content: granthasXml, isBinary: false },
     [`${filePrefix}-saints.xml`]: { content: saintsXml, isBinary: false },
+    [`${filePrefix}-images.xml`]: { content: imagesXml, isBinary: false },
     [`${filePrefix}-padas.xml`]: { content: padasXml, isBinary: false },
     [`${filePrefix}-padas-1.xml`]: { content: padas1Xml, isBinary: false },
     [`${filePrefix}-padas-2.xml`]: { content: padas2Xml, isBinary: false },

@@ -114,6 +114,86 @@ const CHAPTER_SNIPPETS = snippetsObj as Record<string, {
 const padaSnippetsObj: Record<string, [string, string, string, string]> =
   (padaSnippetsData as any)?.default || padaSnippetsData || {};
 
+const SAINT_KNOWLEDGE_GRAPH: Record<string, string[]> = {
+  'swami-haridas': [
+    'https://www.wikidata.org/wiki/Q11158580',
+    'https://en.wikipedia.org/wiki/Swami_Haridas',
+    'https://hi.wikipedia.org/wiki/%E0%A4%B8%E0%A5%8D%E0%A4%B5%E0%A4%BE%E0%A4%AE%E0%A5%80_%E0%A4%B9%E0%A4%B0%E0%A4%BF%E0%A4%A6%E0%A4%BE%E0%A4%B8',
+  ],
+  'shri-hita-harivansh-mahaprabhu': [
+    'https://www.wikidata.org/wiki/Q5871638',
+    'https://en.wikipedia.org/wiki/Hith_Harivansh_Mahaprabhu',
+    'https://hi.wikipedia.org/wiki/%E0%A4%B9%E0%A4%BF%E0%A4%A4_%E0%A4%B9%E0%A4%B0%E0%A4%BF%E0%A4%B5%E0%A4%82%E0%A4%B6_%E0%A4%AE%E0%A4%B9%E0%A4%BE%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%AD%E0%A5%81',
+  ],
+  'surdas': [
+    'https://www.wikidata.org/wiki/Q12457813',
+    'https://en.wikipedia.org/wiki/Surdas',
+    'https://hi.wikipedia.org/wiki/%E0%A4%B8%E0%A5%82%E0%A4%B0%E0%A4%A6%E0%A4%BE%E0%A4%B8',
+  ],
+  'raskhan': [
+    'https://www.wikidata.org/wiki/Q3635334',
+    'https://en.wikipedia.org/wiki/Raskhan',
+    'https://hi.wikipedia.org/wiki/%E0%A4%B0%E0%A4%B8%E0%A4%96%E0%A4%BE%E0%A4%A8',
+  ],
+  'meera-bai': [
+    'https://www.wikidata.org/wiki/Q300185',
+    'https://en.wikipedia.org/wiki/Mirabai',
+    'https://hi.wikipedia.org/wiki/%E0%A4%AE%E0%A5%80%E0%A4%B0%E0%A4%BE%E0%A4%AC%E0%A4%BE%E0%A4%88',
+  ],
+  'chaitanya-mahaprabhu': [
+    'https://www.wikidata.org/wiki/Q192207',
+    'https://en.wikipedia.org/wiki/Chaitanya_Mahaprabhu',
+    'https://hi.wikipedia.org/wiki/%E0%A4%9A%E0%A5%88%E0%A4%A4%E0%A4%A8%E0%A5%8D%E0%A4%AF_%E0%A4%AE%E0%A4%B9%E0%A4%BE%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%AD%E0%A5%81',
+  ],
+  'tulsidas': [
+    'https://www.wikidata.org/wiki/Q312610',
+    'https://en.wikipedia.org/wiki/Tulsidas',
+    'https://hi.wikipedia.org/wiki/%E0%A4%A4%E0%A5%81%E0%A4%B2%E0%A4%B8%E0%A5%80%E0%A4%A6%E0%A4%BE%E0%A4%B8',
+  ],
+  'nimbarkacharya': [
+    'https://www.wikidata.org/wiki/Q3349767',
+    'https://en.wikipedia.org/wiki/Nimbarka',
+  ],
+  'vallabhacharya': [
+    'https://www.wikidata.org/wiki/Q2722108',
+    'https://en.wikipedia.org/wiki/Vallabha',
+  ],
+  'nagaridas': [
+    'https://www.wikidata.org/wiki/Q7428581',
+    'https://en.wikipedia.org/wiki/Sawant_Singh',
+  ],
+  'maharishi-valmiki': [
+    'https://www.wikidata.org/wiki/Q462000',
+    'https://en.wikipedia.org/wiki/Valmiki',
+  ],
+  'maharishi-vedavyasa': [
+    'https://www.wikidata.org/wiki/Q167384',
+    'https://en.wikipedia.org/wiki/Vyasa',
+  ],
+  'prabodhananda-sarasvati': [
+    'https://www.wikidata.org/wiki/Q4379309',
+  ],
+};
+
+function getSaintSameAs(authorName: string): string[] | undefined {
+  if (!authorName) return undefined;
+  const lower = authorName.toLowerCase();
+  if (/हरिदास|haridas/i.test(lower)) return SAINT_KNOWLEDGE_GRAPH['swami-haridas'];
+  if (/हरिवंश|harivansh/i.test(lower)) return SAINT_KNOWLEDGE_GRAPH['shri-hita-harivansh-mahaprabhu'];
+  if (/सूरदास|surdas/i.test(lower)) return SAINT_KNOWLEDGE_GRAPH['surdas'];
+  if (/रसखान|raskhan/i.test(lower)) return SAINT_KNOWLEDGE_GRAPH['raskhan'];
+  if (/मीरा|meera|mira/i.test(lower)) return SAINT_KNOWLEDGE_GRAPH['meera-bai'];
+  if (/चैतन्य|chaitanya/i.test(lower)) return SAINT_KNOWLEDGE_GRAPH['chaitanya-mahaprabhu'];
+  if (/तुलसी|tulsidas/i.test(lower)) return SAINT_KNOWLEDGE_GRAPH['tulsidas'];
+  if (/निम्बार्क|nimbarka/i.test(lower)) return SAINT_KNOWLEDGE_GRAPH['nimbarkacharya'];
+  if (/वल्लभ|vallabha/i.test(lower)) return SAINT_KNOWLEDGE_GRAPH['vallabhacharya'];
+  if (/नागरी|nagaridas|सावंत/i.test(lower)) return SAINT_KNOWLEDGE_GRAPH['nagaridas'];
+  if (/वाल्मीकि|valmiki/i.test(lower)) return SAINT_KNOWLEDGE_GRAPH['maharishi-valmiki'];
+  if (/वेदव्यास|vedavyasa/i.test(lower)) return SAINT_KNOWLEDGE_GRAPH['maharishi-vedavyasa'];
+  if (/प्रबोधानन्द|prabodhananda/i.test(lower)) return SAINT_KNOWLEDGE_GRAPH['prabodhananda-sarasvati'];
+  return undefined;
+}
+
 function getChapterSnippet(granthaId: string, chapterId: string) {
   return CHAPTER_SNIPPETS[`${granthaId}:${chapterId}`] || null;
 }
@@ -565,15 +645,19 @@ export const onRequest: PagesFunction<Env> = async (context) => {
       'vrindopnisad',
     ].join(', ');
 
+    const authorSameAs = getSaintSameAs(padAuthor);
+
     entitySchema = {
       '@type': 'CreativeWork',
       '@id': `${canonicalUrl}#creativework`,
       'headline': padTitle,
       'name': padTitle,
       'alternativeHeadline': `${romanTitle} Lyrics in Hindi & Braj Bhasha`,
+      'image': 'https://bhav.vrindopnishad.in/assets/temples/banke-bihari-v2.webp',
       'author': {
         '@type': 'Person',
         'name': padAuthor,
+        ...(authorSameAs ? { 'sameAs': authorSameAs } : {}),
       },
       'genre': 'Sacred Braj Ras Literature',
       'inLanguage': ['hi', 'sa', 'en'],
@@ -739,6 +823,8 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     description = `${bio}${saintName} की समस्त पावन पदों व वाणियों का प्रामाणिक संग्रह। वृन्दोपनिषद् 2.0`;
     canonicalUrl = `https://bhav.vrindopnishad.in/?tab=padavali&author=${encodeURIComponent(saint?.slug || qAuthor)}`;
 
+    const saintSameAs = getSaintSameAs(saintName);
+
     entitySchema = {
       '@type': 'ProfilePage',
       'headline': `${saintName} - रसिक संत परंपरा`,
@@ -747,6 +833,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
         'name': saintName,
         'description': saint?.biography || `${saintName} - ब्रज निकुंज रस व पावन वाणी के प्रणेता।`,
         ...(saint?.tradition ? { 'knowsAbout': saint.tradition } : {}),
+        ...(saintSameAs ? { 'sameAs': saintSameAs } : {}),
       },
     };
 
@@ -799,6 +886,8 @@ export const onRequest: PagesFunction<Env> = async (context) => {
         'vedic scriptures online',
       ].join(', ');
 
+      const epicAuthorSameAs = getSaintSameAs(epic.author);
+
       entitySchema = {
         '@type': 'Chapter',
         '@id': `${canonicalUrl}#chapter`,
@@ -809,7 +898,11 @@ export const onRequest: PagesFunction<Env> = async (context) => {
           '@type': 'Book',
           '@id': `https://path.vrindopnishad.in/?tab=granthas&grantha=${encodeURIComponent(qGrantha)}#book`,
           'name': epic.name,
-          'author': { '@type': 'Person', 'name': epic.author },
+          'author': {
+            '@type': 'Person',
+            'name': epic.author,
+            ...(epicAuthorSameAs ? { 'sameAs': epicAuthorSameAs } : {}),
+          },
         },
       };
 

@@ -1,9 +1,61 @@
 # https://www.robotstxt.org/robotstxt.html
+# Vrindopnisad 2.0 - Universal Search & AI Retrieval Directives
+
 User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /admin/
 
-# Sitemap location
-Sitemap: https://bhav.vrindopnishad.in/sitemap.xml
+# Explicit permissions for Primary Search Engines
+User-agent: Googlebot
+Allow: /
 
+User-agent: Bingbot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# Generative Engine Optimization (GEO) & AI Retrieval Crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+# Sitemaps
+Sitemap: https://bhav.vrindopnishad.in/sitemap.xml
+Sitemap: https://bhav.vrindopnishad.in/sitemap-images.xml
+Sitemap: https://path.vrindopnishad.in/sitemap-path.xml
+
+Host: https://bhav.vrindopnishad.in

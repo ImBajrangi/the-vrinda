@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>Vrindopnisad</ShortName>
+  <Description>Search 44,000+ sacred Braj Ras verses, canonical padas, and Sanatan Mahagranths in Vrindopnisad 2.0</Description>
+  <InputEncoding>UTF-8</InputEncoding>
+  <OutputEncoding>UTF-8</OutputEncoding>
+  <Image width="16" height="16" type="image/png">https://bhav.vrindopnishad.in/favicon-16x16.png</Image>
+  <Image width="32" height="32" type="image/png">https://bhav.vrindopnishad.in/favicon-32x32.png</Image>
+  <Url type="text/html" template="https://bhav.vrindopnishad.in/?tab=padavali&amp;q={searchTerms}" />
+</OpenSearchDescription>
