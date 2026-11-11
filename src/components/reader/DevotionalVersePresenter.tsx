@@ -14,7 +14,7 @@ import { formatDevanagariNumerals } from '../../services/cacheService';
 
 interface DevotionalVersePresenterProps {
   lines: string[];
-  fontClass: string;
+  fontClass?: string;
   fontSize: 'sm' | 'md' | 'lg' | 'xl';
   textAlignClass?: string;
   currentTheme: {
@@ -27,7 +27,7 @@ interface DevotionalVersePresenterProps {
 
 export const DevotionalVersePresenter: React.FC<DevotionalVersePresenterProps> = ({
   lines,
-  fontClass,
+  fontClass = 'font-laila',
   fontSize,
   textAlignClass: textAlignClassProp,
   currentTheme,

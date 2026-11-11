@@ -67,7 +67,7 @@ interface PadavaliReaderProps {
 
 type ReaderTheme = 'ivory' | 'mint' | 'chandan';
 type ReaderFontSize = 'sm' | 'md' | 'lg' | 'xl';
-type ReaderFontFamily = 'serif' | 'devanagari';
+type ReaderFontFamily = 'laila' | 'rozha' | 'native' | 'serif' | 'devanagari';
 type ReaderTextAlign = 'left' | 'center' | 'justify';
 
 const ENTITY_REGEX_MAP: [RegExp, string][] = [
@@ -647,9 +647,13 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   const [fontFamily, setFontFamily] = useState<ReaderFontFamily>(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('vrind_reader_fontFamily') as ReaderFontFamily;
-      if (['serif', 'devanagari'].includes(saved)) return saved;
+      if (['laila', 'rozha', 'native', 'serif', 'devanagari'].includes(saved)) {
+        if (saved === 'serif') return 'laila';
+        if (saved === 'devanagari') return 'native';
+        return saved;
+      }
     }
-    return 'serif';
+    return 'laila';
   });
   const [playbackPace, setPlaybackPace] = useState<'0.8x' | '1.0x' | '1.2x'>(() => {
     if (typeof window !== 'undefined') {
@@ -1479,7 +1483,12 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   }, [playbackPace]);
 
   const currentTheme = themeStyles[readerTheme] || themeStyles.ivory;
-  const fontClass = fontFamily === 'serif' ? 'font-serif' : 'font-devanagari font-sans';
+  const fontClass =
+    fontFamily === 'rozha'
+      ? 'font-rozha'
+      : fontFamily === 'native' || fontFamily === 'devanagari'
+        ? 'font-native'
+        : 'font-laila';
   const textAlignClass =
     textAlign === 'center'
       ? 'text-center'
@@ -1830,37 +1839,58 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 </div>
               </div>
 
-              {/* Control 2: Typeface Serif vs Sans */}
+              {/* Control 2: Typeface Laila vs Rozha vs Native OS */}
               <div className="space-y-1.5">
                 <div className="flex items-center gap-1.5 text-[11px] font-bold text-neutral-500 uppercase tracking-wider font-mono">
                   <BookOpen className="w-3.5 h-3.5 text-neutral-400" />
-                  <span>Typeface</span>
+                  <span>Typeface (फॉन्ट शैली)</span>
                 </div>
                 <div className="relative flex items-center p-1 bg-neutral-100/90 rounded-full w-full">
                   <span
                     aria-hidden="true"
                     className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
                     style={{
-                      width: 'calc((100% - 8px) / 2)',
+                      width: 'calc((100% - 8px) / 3)',
                       left: '4px',
-                      transform: `translateX(${fontFamily === 'serif' ? 0 : 100}%)`,
+                      transform: `translateX(${
+                        fontFamily === 'rozha'
+                          ? 100
+                          : fontFamily === 'native' || fontFamily === 'devanagari'
+                          ? 200
+                          : 0
+                      }%)`,
                     }}
                   />
                   <button
                     type="button"
-                    onClick={() => handleSetFontFamily('serif')}
-                    className={`relative z-10 flex-1 py-1 px-1 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer text-center ${fontFamily === 'serif' ? 'text-[#18181B] font-bold' : 'text-neutral-500 hover:text-neutral-900'
-                      }`}
+                    onClick={() => handleSetFontFamily('laila')}
+                    className={`relative z-10 flex-1 py-1 px-1 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer text-center font-laila ${
+                      fontFamily === 'laila' || fontFamily === 'serif'
+                        ? 'text-[#18181B] font-bold'
+                        : 'text-neutral-500 hover:text-neutral-900'
+                    }`}
                   >
-                    Serif (पारंपरिक)
+                    Laila (काव्य)
                   </button>
                   <button
                     type="button"
-                    onClick={() => handleSetFontFamily('devanagari')}
-                    className={`relative z-10 flex-1 py-1 px-1 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer text-center ${fontFamily === 'devanagari' ? 'text-[#18181B] font-bold' : 'text-neutral-500 hover:text-neutral-900'
-                      }`}
+                    onClick={() => handleSetFontFamily('rozha')}
+                    className={`relative z-10 flex-1 py-1 px-1 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer text-center font-rozha ${
+                      fontFamily === 'rozha' ? 'text-[#18181B] font-bold' : 'text-neutral-500 hover:text-neutral-900'
+                    }`}
                   >
-                    Sans (आधुनिक)
+                    Rozha (राजसी)
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleSetFontFamily('native')}
+                    className={`relative z-10 flex-1 py-1 px-1 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer text-center font-native ${
+                      fontFamily === 'native' || fontFamily === 'devanagari'
+                        ? 'text-[#18181B] font-bold'
+                        : 'text-neutral-500 hover:text-neutral-900'
+                    }`}
+                  >
+                    System (आधुनिक)
                   </button>
                 </div>
               </div>
@@ -2578,7 +2608,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                       </>
                     )}
                   </div>
-                  <h1 className={`${fontClass} font-bold text-xl sm:text-3xl lg:text-[32px] text-neutral-900 mt-1`}>
+                  <h1 className={`${fontFamily === 'native' ? 'font-native' : 'font-rozha'} font-bold text-2xl sm:text-3xl lg:text-[34px] text-neutral-900 mt-1 tracking-wide leading-snug`}>
                     {currentChapter ? currentChapter.name : cleanTitle}
                   </h1>
                   <p className="text-[11px] sm:text-xs text-neutral-500 font-serif mt-0.5 sm:mt-1">
@@ -2857,7 +2887,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
                 {/* Noble Headline & Author */}
                 <div className={textAlign === 'center' ? 'text-center' : 'text-left'}>
-                  <h1 className={`${fontClass} font-bold leading-tight tracking-tight ${currentTheme.titleColor} ${fontSize === 'sm'
+                  <h1 className={`${fontFamily === 'native' ? 'font-native' : 'font-rozha'} font-bold leading-tight tracking-wide ${currentTheme.titleColor} ${fontSize === 'sm'
                       ? 'text-xl sm:text-2xl'
                       : fontSize === 'md'
                         ? 'text-2xl sm:text-3xl lg:text-[32px]'

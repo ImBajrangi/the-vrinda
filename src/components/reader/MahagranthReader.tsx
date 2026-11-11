@@ -579,7 +579,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                 अखण्ड मूल शास्त्र एवं ऑन-डिमांड त्वरित पाठ
               </span>
             </div>
-            <h1 className="font-serif font-bold text-xl sm:text-2xl text-neutral-900 mt-1 flex items-center gap-2">
+            <h1 className="font-rozha font-bold text-2xl sm:text-3xl text-neutral-900 mt-1 flex items-center gap-2">
               <BookOpen className="w-5 h-5 text-amber-600 shrink-0" />
               <span>{currentEpicConfig.name}</span>
             </h1>
@@ -860,7 +860,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                 <span>•</span>
                 <span>{!loadingGranthaId && currentChapter?.section ? currentChapter.section : 'पारायण पाठ'}</span>
               </div>
-              <h1 className="font-serif font-bold text-xl sm:text-2xl text-neutral-900 mt-1">
+              <h1 className="font-rozha font-bold text-2xl sm:text-3xl text-neutral-900 mt-1">
                 {!loadingGranthaId && currentChapter ? currentChapter.name : 'पावन पाठ'}
               </h1>
               <p className="text-xs text-neutral-500 font-serif mt-0.5">
@@ -997,7 +997,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                         <div key={vIdx} className={vIdx > 0 ? 'mt-4 pt-3 border-t border-amber-900/10' : ''}>
                           <DevotionalVersePresenter
                             lines={v.linesDevanagari}
-                            fontClass="font-serif"
+                            fontClass="font-laila"
                             fontSize={fontSize}
                             textAlignClass="text-center"
                             currentTheme={{

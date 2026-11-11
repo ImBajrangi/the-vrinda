@@ -35,6 +35,27 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
+/* Sacred Indian Typography Classes (Laila / Rozha One / Native OS) */
+.font-laila {
+  font-family: 'Laila', -apple-system, BlinkMacSystemFont, 'Segoe UI', serif;
+}
+
+.font-rozha {
+  font-family: 'Rozha One', -apple-system, BlinkMacSystemFont, serif;
+}
+
+.font-serif {
+  font-family: 'Laila', -apple-system, BlinkMacSystemFont, 'Segoe UI', serif;
+}
+
+.font-devanagari {
+  font-family: 'Laila', -apple-system, BlinkMacSystemFont, 'Segoe UI', serif;
+}
+
+.font-native {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, system-ui, sans-serif;
+}
+
 /* Apple High-Refraction Frosted Glass Panels (Power-Efficient 12px Blur) */
 .glass-panel {
   background: rgba(255, 255, 255, 0.92);

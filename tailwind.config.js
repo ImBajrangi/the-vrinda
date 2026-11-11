@@ -38,11 +38,13 @@ export default {
       fontFamily: {
         jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
         doto: ['"Plus Jakarta Sans"', 'monospace'],
-        devanagari: ['"Noto Serif Devanagari"', 'serif'],
-        laila: ['"Laila"', 'serif'],
-        rozha: ['"Rozha One"', 'serif'],
-        display: ['"Rozha One"', 'serif'],
-        sans: ['"Inter"', '"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        laila: ['"Laila"', '"Noto Serif Devanagari"', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'serif'],
+        rozha: ['"Rozha One"', '"Laila"', '-apple-system', 'BlinkMacSystemFont', 'serif'],
+        display: ['"Rozha One"', '"Laila"', 'serif'],
+        devanagari: ['"Laila"', '"Noto Serif Devanagari"', '-apple-system', 'BlinkMacSystemFont', 'serif'],
+        serif: ['"Laila"', '"Noto Serif Devanagari"', '-apple-system', 'BlinkMacSystemFont', 'serif'],
+        sans: ['"Plus Jakarta Sans"', '"Inter"', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
+        native: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Text"', '"Segoe UI"', 'Roboto', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
         '2xl': '20px',
