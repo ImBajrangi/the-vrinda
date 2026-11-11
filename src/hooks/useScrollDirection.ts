@@ -60,7 +60,16 @@ export function useScrollDirection(options: UseScrollDirectionOptions = {}): Scr
     // Always show chrome near top of page, near bottom of page, or when scrolling up
     const showChrome = !enabled || isNearTop || isNearBottom || direction === 'up' || direction === 'idle';
 
-    setState({ direction, showChrome, scrollY: currentY, isNearTop });
+    setState((prev) => {
+      if (
+        prev.showChrome === showChrome &&
+        prev.direction === direction &&
+        prev.isNearTop === isNearTop
+      ) {
+        return prev;
+      }
+      return { direction, showChrome, scrollY: currentY, isNearTop };
+    });
     ticking.current = false;
 
     // Reset to idle / visible chrome after 1.5s of reading inactivity
@@ -68,7 +77,10 @@ export function useScrollDirection(options: UseScrollDirectionOptions = {}): Scr
     if (!showChrome) {
       idleTimer.current = setTimeout(() => {
         lastDirection.current = 'idle';
-        setState((prev) => ({ ...prev, direction: 'idle', showChrome: true }));
+        setState((prev) => {
+          if (prev.direction === 'idle' && prev.showChrome) return prev;
+          return { ...prev, direction: 'idle', showChrome: true };
+        });
       }, 1500);
     }
   }, [threshold, enabled]);

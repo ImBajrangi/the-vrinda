@@ -23,10 +23,6 @@ import {
   AlignLeft,
   AlignCenter,
   AlignJustify,
-  PanelLeftClose,
-  PanelLeftOpen,
-  PanelRightClose,
-  PanelRightOpen,
   Gauge,
   Palette,
 } from 'lucide-react';
@@ -703,41 +699,6 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     if (typeof window !== 'undefined') {
       localStorage.setItem('vrind_reader_textAlign', a);
     }
-  };
-
-  // Shrinkable Sidebars States with LocalStorage Persistence
-  const [isLeftSidebarCollapsed, setIsLeftSidebarCollapsed] = useState<boolean>(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('vrind_reader_left_collapsed') === 'true';
-    }
-    return false;
-  });
-
-  const [isRightSidebarCollapsed, setIsRightSidebarCollapsed] = useState<boolean>(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('vrind_reader_right_collapsed') === 'true';
-    }
-    return false;
-  });
-
-  const handleToggleLeftSidebar = () => {
-    setIsLeftSidebarCollapsed((prev) => {
-      const next = !prev;
-      if (typeof window !== 'undefined') {
-        localStorage.setItem('vrind_reader_left_collapsed', String(next));
-      }
-      return next;
-    });
-  };
-
-  const handleToggleRightSidebar = () => {
-    setIsRightSidebarCollapsed((prev) => {
-      const next = !prev;
-      if (typeof window !== 'undefined') {
-        localStorage.setItem('vrind_reader_right_collapsed', String(next));
-      }
-      return next;
-    });
   };
 
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
@@ -2287,113 +2248,31 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       {/* ========================================================================= */}
       {/* 3. Main Responsive Devotional Desk / Distraction-Free Sanctuary            */}
       {/* ========================================================================= */}
-      <div className={`w-full flex flex-col md:flex-row items-start gap-4 sm:gap-6 transition-all duration-300 ${isFocusReadingMode ? 'max-w-3xl mx-auto' : ''}`}>
+      <div className={isFocusReadingMode ? 'w-full max-w-3xl mx-auto' : 'w-full grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6 items-start'}>
 
         {/* ========================================================================= */}
-        {/* Left Column: Pada Index Catalog (Desktop only: hidden md:block)           */}
+        {/* Left Column: Pada Index Catalog (Pinned on desktop md:block)              */}
         {/* ========================================================================= */}
         {!isFocusReadingMode && (
-          <aside
-            className={`hidden md:block sticky top-24 shrink-0 overflow-hidden rounded-3xl border shadow-xs transition-[width,min-width,max-width] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[width] ${currentTheme.commentaryBg} ${currentTheme.borderColor} ${isLeftSidebarCollapsed
-                ? 'w-14 min-w-[56px] max-w-[56px]'
-                : 'w-72 lg:w-80 min-w-[288px] lg:min-w-[320px] max-w-[320px]'
-              }`}
-          >
-            <div className="relative w-full h-full min-h-[500px] max-h-[82vh] flex flex-col">
-              {/* Shrunk / Compact Icon Rail Layer */}
-              <div
-                className={`absolute inset-0 flex flex-col items-center p-2.5 transition-all duration-300 ease-out z-10 ${isLeftSidebarCollapsed
-                    ? 'opacity-100 pointer-events-auto delay-150'
-                    : 'opacity-0 pointer-events-none'
-                  }`}
-              >
-                {/* Expand Toggle */}
-                <button
-                  type="button"
-                  onClick={handleToggleLeftSidebar}
-                  className="w-9 h-9 rounded-xl hover:bg-black/5 flex items-center justify-center text-[#CA8A04] transition-colors cursor-pointer"
-                  title="Expand Sidebar (पद सूची खोलें)"
-                  aria-label="Expand Pada Index Sidebar"
-                >
-                  <PanelLeftOpen className="w-4 h-4 text-[#CA8A04]" />
-                </button>
-
-                <div className={`w-6 h-px ${currentTheme.borderColor} my-2`} />
-
-                {/* Shrunk Quick Search Icon - reopens with search */}
-                <button
-                  type="button"
-                  onClick={() => setIsLeftSidebarCollapsed(false)}
-                  className="w-9 h-9 rounded-xl hover:bg-black/5 flex items-center justify-center text-[#64748B] hover:text-[#0F172A] transition-colors cursor-pointer"
-                  title="Search Padas (खोजें)"
-                >
-                  <Search className="w-4 h-4" />
-                </button>
-
-                <div className={`w-6 h-px ${currentTheme.borderColor} my-2`} />
-
-                {/* Vertical Scrollable Numbered Badges Rail */}
-                <div className="flex-1 w-full space-y-1.5 overflow-y-auto no-scrollbar py-1">
-                  {displayedSidebarPads.slice(0, visibleCount).map((pad, idx) => {
-                    const isSelected = selectedPad.id === pad.id;
-                    return (
-                      <a
-                        key={pad.id}
-                        href={`/?tab=padavali&pad=${encodeURIComponent(pad.slug || pad.id)}`}
-                        onClick={(e) => {
-                          if (!e.metaKey && !e.ctrlKey) {
-                            e.preventDefault();
-                            handleSelectPad(pad);
-                          }
-                        }}
-                        title={`${idx + 1}. ${pad.titleDevanagari} (${pad.author})`}
-                        className={`w-9 h-9 mx-auto rounded-xl flex items-center justify-center text-xs font-mono transition-colors cursor-pointer no-underline ${isSelected
-                            ? 'bg-[#FEF08A] text-[#78350F] font-bold shadow-xs'
-                            : 'text-[#64748B] hover:bg-black/5'
-                          }`}
-                      >
-                        #{idx + 1}
-                      </a>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Full Expanded Left Sidebar Layer */}
-              <div
-                className={`w-72 lg:w-80 flex flex-col h-full max-h-[82vh] transition-all duration-300 ease-out ${isLeftSidebarCollapsed
-                    ? 'opacity-0 pointer-events-none'
-                    : 'opacity-100 pointer-events-auto delay-100'
-                  }`}
-              >
-                {/* Header with Active Scripture Name, Counter & Shrink Button */}
-                <div className={`p-4 border-b ${currentTheme.borderColor} space-y-2.5`}>
-                  <div className="flex items-center justify-between text-xs">
-                    <div className="flex items-center gap-1.5 min-w-0">
-                      <BookOpen className="w-3.5 h-3.5 text-[#FACC15] shrink-0" />
-                      <span className={`font-serif font-bold ${currentTheme.titleColor} truncate`}>
-                        {selectedAuthor
-                          ? selectedAuthor
-                          : selectedGrantha === 'all'
-                          ? 'समस्त पावन ग्रंथ'
-                          : allGranthas.find((g) => g.id === selectedGrantha)?.name}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-1.5 shrink-0">
-                      <span className="text-[11px] font-mono font-semibold px-2 py-0.5 rounded-full bg-[#FAF7F0] text-[#CA8A04]">
-                        {displayedSidebarPads.length} पद
-                      </span>
-                      <button
-                        type="button"
-                        onClick={handleToggleLeftSidebar}
-                        className="w-6 h-6 rounded-lg hover:bg-black/5 flex items-center justify-center text-[#64748B] hover:text-[#0F172A] transition-colors cursor-pointer"
-                        title="Shrink Sidebar (साइडबार समेटें)"
-                        aria-label="Shrink Pada Index Sidebar"
-                      >
-                        <PanelLeftClose className="w-3.5 h-3.5" />
-                      </button>
-                    </div>
+          <aside className="hidden md:block md:col-span-4 xl:col-span-3 sticky top-24 self-start">
+            <div className={`${currentTheme.commentaryBg} rounded-3xl border ${currentTheme.borderColor} shadow-xs overflow-hidden flex flex-col max-h-[calc(100vh-7.5rem)]`}>
+              {/* Header with Active Scripture Name & Counter */}
+              <div className={`p-4 border-b ${currentTheme.borderColor} space-y-2.5`}>
+                <div className="flex items-center justify-between text-xs">
+                  <div className="flex items-center gap-1.5 min-w-0">
+                    <BookOpen className="w-3.5 h-3.5 text-[#FACC15] shrink-0" />
+                    <span className={`font-serif font-bold ${currentTheme.titleColor} truncate`}>
+                      {selectedAuthor
+                        ? selectedAuthor
+                        : selectedGrantha === 'all'
+                        ? 'समस्त पावन ग्रंथ'
+                        : allGranthas.find((g) => g.id === selectedGrantha)?.name}
+                    </span>
                   </div>
+                  <span className="text-[11px] font-mono font-semibold px-2 py-0.5 rounded-full bg-[#FAF7F0] text-[#CA8A04] shrink-0">
+                    {displayedSidebarPads.length} पद
+                  </span>
+                </div>
 
                   {/* Instant In-Sidebar Quick Filter */}
                   <div className="relative flex items-center w-full px-3 py-1.5 rounded-full bg-[#FAF8F5] border border-amber-900/10 focus-within:border-amber-400/80 focus-within:bg-white focus-within:shadow-[0_2px_8px_rgba(217,119,6,0.08)] transition-all duration-200">
@@ -2546,20 +2425,19 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   )}
                 </div>
               </div>
-            </div>
-          </aside>
-        )}
+            </aside>
+          )}
 
         {/* ========================================================================= */}
         {/* Center Column: Serene Editorial Reading Canvas                             */}
         {/* ========================================================================= */}
         <article
           id="reading-canvas-top"
-          className={`scroll-mt-24 sm:scroll-mt-28 flex-1 min-w-0 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${isFocusReadingMode
+          className={`scroll-mt-24 sm:scroll-mt-28 min-w-0 ${
+            isFocusReadingMode
               ? `w-full dhyana-reader-canvas p-4 sm:p-10 min-h-[calc(100vh-8rem)] ${currentTheme.canvasBg} ${currentTheme.canvasText}`
-              : `w-full rounded-2xl sm:rounded-3xl p-3 sm:p-9 min-h-[calc(100vh-8rem)] ${currentTheme.canvasBg} ${currentTheme.canvasText} ${isLeftSidebarCollapsed && isRightSidebarCollapsed ? 'max-w-4xl mx-auto' : ''
-              }`
-            }`}
+              : `md:col-span-8 xl:col-span-6 rounded-2xl sm:rounded-3xl p-3 sm:p-9 min-h-[calc(100vh-8rem)] ${currentTheme.canvasBg} ${currentTheme.canvasText}`
+          }`}
         >
           {/* Chapter Hierarchy & Continuous Reading Mode Bar (Desktop only, mobile uses MobileReaderHeader) */}
           <div className="hidden sm:flex sm:flex-row sm:items-center justify-between gap-3 px-4 py-2.5 rounded-2xl bg-[#FAF8F5] border border-amber-900/10 mb-6">
@@ -3343,149 +3221,85 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
         {/* Right Column: Dedicated Desktop Commentary Desk (Visible on xl:block)     */}
         {/* ========================================================================= */}
         {!isFocusReadingMode && (
-          <aside
-            className={`hidden xl:block sticky top-24 shrink-0 overflow-hidden rounded-3xl border shadow-xs transition-[width,min-width,max-width] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[width] ${currentTheme.commentaryBg} ${currentTheme.borderColor} ${isRightSidebarCollapsed
-                ? 'w-14 min-w-[56px] max-w-[56px]'
-                : 'w-72 lg:w-80 min-w-[288px] lg:min-w-[320px] max-w-[320px]'
-              }`}
-          >
-            <div className="relative w-full h-full min-h-[500px] flex flex-col">
-              {/* Shrunk / Compact Commentary Rail Layer */}
-              <div
-                className={`absolute inset-0 flex flex-col items-center p-2.5 transition-all duration-300 ease-out z-10 ${isRightSidebarCollapsed
-                    ? 'opacity-100 pointer-events-auto delay-150'
-                    : 'opacity-0 pointer-events-none'
-                  }`}
-              >
-                <button
-                  type="button"
-                  onClick={handleToggleRightSidebar}
-                  className="w-9 h-9 rounded-xl hover:bg-black/5 flex items-center justify-center text-[#CA8A04] transition-colors cursor-pointer"
-                  title="Expand Commentary (भावार्थ खोलें)"
-                  aria-label="Expand Commentary Sidebar"
-                >
-                  <PanelRightOpen className="w-4 h-4 text-[#CA8A04]" />
-                </button>
-
-                <div className={`w-6 h-px ${currentTheme.borderColor} my-2`} />
-
-                <button
-                  type="button"
-                  onClick={handleToggleRightSidebar}
-                  className="w-9 h-9 rounded-xl hover:bg-black/5 flex items-center justify-center text-[#CA8A04] transition-colors cursor-pointer"
-                  title="Rasik Commentary & Purport (भावार्थ देखें)"
-                >
-                  <Feather className="w-4 h-4" />
-                </button>
-
-                <div className={`w-6 h-px ${currentTheme.borderColor} my-2`} />
-
-                {/* Vertical Sacred Accent Tag */}
-                <span
-                  className={`text-[10.5px] font-mono font-bold tracking-widest ${currentTheme.metaColor} select-none [writing-mode:vertical-lr] rotate-180 py-3 opacity-90`}
-                >
-                  भावार्थ
-                </span>
+          <aside className="hidden xl:block xl:col-span-3 space-y-4 sticky top-24 self-start">
+            <div className={`${currentTheme.commentaryBg} rounded-3xl p-5 border ${currentTheme.borderColor} shadow-xs transition-colors duration-300`}>
+              <div className={`flex items-center gap-2 pb-3 mb-3 border-b ${currentTheme.borderColor}`}>
+                <div className="w-7 h-7 rounded-lg bg-[#FAF7F0] flex items-center justify-center text-[#CA8A04]">
+                  <Feather className="w-3.5 h-3.5" />
+                </div>
+                <div>
+                  <h3 className={`${fontClass} font-bold text-sm ${currentTheme.titleColor}`}>
+                    रसिक भावार्थ एवं गूढ़ार्थ
+                  </h3>
+                  <span className={`text-[10px] ${currentTheme.metaColor} font-mono font-semibold`}>
+                    Rasik Commentary & Purport
+                  </span>
+                </div>
               </div>
 
-              {/* Full Expanded Right Sidebar Layer */}
-              <div
-                className={`w-72 lg:w-80 flex flex-col transition-all duration-300 ease-out p-5 space-y-4 ${isRightSidebarCollapsed
-                    ? 'opacity-0 pointer-events-none'
-                    : 'opacity-100 pointer-events-auto delay-100'
-                  }`}
-              >
-                <div className="space-y-4">
-                  <div className={`flex items-center justify-between pb-3 mb-3 border-b ${currentTheme.borderColor}`}>
-                    <div className="flex items-center gap-2">
-                      <div className="w-7 h-7 rounded-lg bg-[#FAF7F0] flex items-center justify-center text-[#CA8A04]">
-                        <Feather className="w-3.5 h-3.5" />
-                      </div>
-                      <div>
-                        <h3 className={`${fontClass} font-bold text-sm ${currentTheme.titleColor}`}>
-                          रसिक भावार्थ एवं गूढ़ार्थ
-                        </h3>
-                        <span className={`text-[10px] ${currentTheme.metaColor} font-mono font-semibold`}>
-                          Rasik Commentary & Purport
-                        </span>
-                      </div>
-                    </div>
-                    <button
-                      type="button"
-                      onClick={handleToggleRightSidebar}
-                      className="w-6 h-6 rounded-lg hover:bg-black/5 flex items-center justify-center text-[#64748B] hover:text-[#0F172A] transition-colors cursor-pointer"
-                      title="Shrink Commentary (भावार्थ समेटें)"
-                      aria-label="Shrink Commentary Sidebar"
-                    >
-                      <PanelRightClose className="w-3.5 h-3.5" />
-                    </button>
-                  </div>
-
-                  {/* AI Devotional Summary Card */}
-                  <div className={`${currentTheme.bhavarthBg} border ${currentTheme.borderColor} rounded-2xl p-4 text-xs ${currentTheme.canvasText} leading-relaxed transition-colors shadow-xs space-y-2`}>
-                    <div className={`flex items-center gap-1.5 ${currentTheme.titleColor} font-serif font-bold text-xs`}>
-                      <Sparkles className="w-3.5 h-3.5 text-[#CA8A04]" />
-                      <span>दिव्य भाव संक्षेप एवं रस-गूढ़ार्थ</span>
-                    </div>
-                    {isSummaryLoading && !summaryText ? (
-                      <div className={`flex items-center gap-2 py-2 text-xs ${currentTheme.translitColor} font-medium`}>
-                        <Sparkles className="w-3.5 h-3.5 text-[#CA8A04] animate-spin" />
-                        <span>प्रस्तुत किया जा रहा है...</span>
-                      </div>
-                    ) : (
-                      <p className={`text-xs leading-relaxed ${currentTheme.bhavarthText} font-devanagari font-normal`}>
-                        {summaryText || 'श्री युगल रस का यह पावन पद अंतःकरण में असीम शांति और दिव्य प्रेम का संचार करता है।'}
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Stanza Navigation List */}
-                  <div className="space-y-1.5 max-h-[42vh] overflow-y-auto custom-scroll pr-1">
-                    <span className={`text-[10px] font-mono font-bold ${currentTheme.metaColor} uppercase tracking-wider block mb-1`}>
-                      चरण सूची • Stanza Navigation
-                    </span>
-                    {selectedPad.verses.map((v) => {
-                      const isActive = activeStanzaIndex === v.stanzaNumber - 1;
-                      return (
-                        <button
-                          key={v.stanzaNumber}
-                          type="button"
-                          onClick={() => {
-                            setActiveStanzaIndex(v.stanzaNumber - 1);
-                            const stanzaEl = document.getElementById(`stanza-${v.stanzaNumber - 1}`);
-                            if (stanzaEl) stanzaEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                          }}
-                          className={`w-full text-left p-2.5 rounded-xl transition-colors cursor-pointer flex items-center justify-between ${isActive
-                              ? currentTheme.cardActiveBg
-                              : `${currentTheme.cardHoverBg} opacity-85 hover:opacity-100`
-                            }`}
-                        >
-                          <span className={`text-xs font-mono font-semibold ${currentTheme.metaColor}`}>
-                            चरण {formatDevanagariNumerals(v.stanzaNumber)}
-                          </span>
-                          <span className={`text-[11px] truncate max-w-[150px] font-devanagari ${currentTheme.titleColor}`}>
-                            {v.linesDevanagari?.[0] || ''}
-                          </span>
-                        </button>
-                      );
-                    })}
-                  </div>
+              {/* AI Devotional Summary Card */}
+              <div className={`${currentTheme.bhavarthBg} border ${currentTheme.borderColor} rounded-2xl p-4 text-xs ${currentTheme.canvasText} leading-relaxed transition-colors shadow-xs space-y-2 mb-3`}>
+                <div className={`flex items-center gap-1.5 ${currentTheme.titleColor} font-serif font-bold text-xs`}>
+                  <Sparkles className="w-3.5 h-3.5 text-[#CA8A04]" />
+                  <span>दिव्य भाव संक्षेप एवं रस-गूढ़ार्थ</span>
                 </div>
-
-                {/* Luminous Sacred Footnote */}
-                <div className={`${currentTheme.commentaryBg} border ${currentTheme.borderColor} rounded-2xl p-4 text-xs ${currentTheme.canvasText} leading-relaxed transition-colors shadow-xs`}>
-                  <div className={`flex items-center gap-1.5 mb-1 ${currentTheme.titleColor} font-serif font-bold`}>
-                    <Sparkles className="w-3.5 h-3.5 text-[#CA8A04]" />
-                    <span>नित्य निकुंज विहार दर्शन</span>
+                {isSummaryLoading && !summaryText ? (
+                  <div className={`flex items-center gap-2 py-2 text-xs ${currentTheme.translitColor} font-medium`}>
+                    <Sparkles className="w-3.5 h-3.5 text-[#CA8A04] animate-spin" />
+                    <span>प्रस्तुत किया जा रहा है...</span>
                   </div>
-                  <p className={`text-[11.5px] ${currentTheme.translitColor} font-devanagari`}>
-                    श्री वृन्दावन धाम में प्रिया-प्रियतम की नित्य विहार लीला अखंड एवं नित्य-नूतन है। यहाँ प्रेम ही साधन है और प्रेम ही साध्य है।
+                ) : (
+                  <p className={`text-xs leading-relaxed ${currentTheme.bhavarthText} font-devanagari font-normal`}>
+                    {summaryText || 'श्री युगल रस का यह पावन पद अंतःकरण में असीम शांति और दिव्य प्रेम का संचार करता है।'}
                   </p>
-                  <div className={`pt-2 mt-2 border-t ${currentTheme.borderColor} flex items-center justify-between text-[10px] ${currentTheme.metaColor} font-mono font-semibold`}>
-                    <span>॥ अगाध निकुंज रस ॥</span>
-                    <span>राधा कृपा कटाक्ष</span>
-                  </div>
-                </div>
+                )}
+              </div>
+
+              {/* Stanza Navigation List */}
+              <div className="space-y-1.5 max-h-[42vh] overflow-y-auto custom-scroll pr-1">
+                <span className={`text-[10px] font-mono font-bold ${currentTheme.metaColor} uppercase tracking-wider block mb-1`}>
+                  चरण सूची • Stanza Navigation
+                </span>
+                {selectedPad.verses.map((v) => {
+                  const isActive = activeStanzaIndex === v.stanzaNumber - 1;
+                  return (
+                    <button
+                      key={v.stanzaNumber}
+                      type="button"
+                      onClick={() => {
+                        setActiveStanzaIndex(v.stanzaNumber - 1);
+                        const stanzaEl = document.getElementById(`stanza-${v.stanzaNumber - 1}`);
+                        if (stanzaEl) stanzaEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                      }}
+                      className={`w-full text-left p-2.5 rounded-xl transition-colors cursor-pointer flex items-center justify-between ${isActive
+                          ? currentTheme.cardActiveBg
+                          : `${currentTheme.cardHoverBg} opacity-85 hover:opacity-100`
+                        }`}
+                    >
+                      <span className={`text-xs font-mono font-semibold ${currentTheme.metaColor}`}>
+                        चरण {formatDevanagariNumerals(v.stanzaNumber)}
+                      </span>
+                      <span className={`text-[11px] truncate max-w-[150px] font-devanagari ${currentTheme.titleColor}`}>
+                        {v.linesDevanagari?.[0] || ''}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Luminous Sacred Footnote */}
+            <div className={`${currentTheme.commentaryBg} border ${currentTheme.borderColor} rounded-2xl p-4 text-xs ${currentTheme.canvasText} leading-relaxed transition-colors shadow-xs`}>
+              <div className={`flex items-center gap-1.5 mb-1 ${currentTheme.titleColor} font-serif font-bold`}>
+                <Sparkles className="w-3.5 h-3.5 text-[#CA8A04]" />
+                <span>नित्य निकुंज विहार दर्शन</span>
+              </div>
+              <p className={`text-[11.5px] ${currentTheme.translitColor} font-devanagari`}>
+                श्री वृन्दावन धाम में प्रिया-प्रियतम की नित्य विहार लीला अखंड एवं नित्य-नूतन है। यहाँ प्रेम ही साधन है और प्रेम ही साध्य है।
+              </p>
+              <div className={`pt-2 mt-2 border-t ${currentTheme.borderColor} flex items-center justify-between text-[10px] ${currentTheme.metaColor} font-mono font-semibold`}>
+                <span>॥ अगाध निकुंज रस ॥</span>
+                <span>राधा कृपा कटाक्ष</span>
               </div>
             </div>
           </aside>

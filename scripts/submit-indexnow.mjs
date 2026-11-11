@@ -87,3 +87,4 @@ export async function runIndexNowSubmission() {
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   runIndexNowSubmission();
 }
+
