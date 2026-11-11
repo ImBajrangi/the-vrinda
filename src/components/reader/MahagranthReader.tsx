@@ -822,8 +822,8 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                         className={`relative z-10 w-full text-left p-2.5 rounded-[8px] text-xs font-semibold flex items-center justify-between transition-colors duration-150 cursor-pointer select-none no-underline ${
                           isSelected
                             ? chapterPillStyle.ready
-                              ? 'text-[#18181B] font-bold'
-                              : 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
+                              ? 'text-[#18181B] font-semibold'
+                              : 'bg-[#FEF08A] text-[#18181B] font-semibold shadow-2xs'
                             : 'hover:bg-white/80 text-neutral-700'
                         }`}
                       >

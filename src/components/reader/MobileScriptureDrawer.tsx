@@ -586,7 +586,7 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
                       <div className="min-w-0 flex-1">
                         <span
                           className={`font-serif text-[13.5px] leading-snug block truncate ${
-                            isSelected ? 'font-bold text-[#78350F]' : 'font-medium text-stone-900'
+                            isSelected ? 'font-semibold text-[#78350F]' : 'font-medium text-stone-900'
                           }`}
                         >
                           {item.name}

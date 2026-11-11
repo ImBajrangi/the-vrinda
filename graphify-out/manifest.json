@@ -4385,8 +4385,8 @@
     "semantic_hash": ""
   },
   "src/components/reader/MahagranthReader.tsx": {
-    "mtime": 1794402443.2027223,
-    "ast_hash": "47123c090983a9091f3a1eb30bb481de",
+    "mtime": 1794403545.2980056,
+    "ast_hash": "b4cec02dbca7406ec67de015cb615c3a",
     "semantic_hash": ""
   },
   "src/components/reader/MobileReaderHeader.tsx": {
@@ -4395,13 +4395,13 @@
     "semantic_hash": ""
   },
   "src/components/reader/MobileScriptureDrawer.tsx": {
-    "mtime": 1794371598.6397767,
-    "ast_hash": "56c58cfc30148265b5adc3d55b9051af",
+    "mtime": 1794403538.5068085,
+    "ast_hash": "422149afea47dd72675f61dfa8b35a41",
     "semantic_hash": ""
   },
   "src/components/reader/PadavaliReader.tsx": {
-    "mtime": 1794402412.6582038,
-    "ast_hash": "e9f5731be6c9faee5e37bbbab56e84b1",
+    "mtime": 1794403532.7395883,
+    "ast_hash": "7c2c8c0aef33b9831b721b8a3a6ec3a0",
     "semantic_hash": ""
   },
   "src/components/smaran/AshtayamaTimelineDeck.tsx": {

@@ -2404,7 +2404,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
                           {/* Verse Title & Meta */}
                           <div className="min-w-0 flex-1">
-                            <div className="font-serif font-bold text-sm leading-snug break-words text-[#0F172A]">
+                            <div className={`font-serif text-[13.5px] leading-snug break-words ${isSelected ? 'font-semibold text-[#18181B]' : 'font-medium text-neutral-800'}`}>
                               {pad.titleDevanagari}
                             </div>
                             <div className="flex items-center gap-1.5 text-xs mt-0.5 flex-wrap text-[#64748B] font-normal">
