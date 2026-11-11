@@ -583,7 +583,7 @@ export const SacredDatabase = {
         const hitMeta = activeManifest?.granthas?.['hit-chaurasi'];
         const hitKey = hitMeta?.hash ? `vrind_grantha_hit-chaurasi_${hitMeta.hash}` : 'vrind_grantha_hit-chaurasi';
         const cachedHit = await get<any[]>(hitKey);
-        if (cachedHit && Array.isArray(cachedHit) && cachedHit.length > 0) {
+        if (cachedHit && Array.isArray(cachedHit) && cachedHit.length >= 80) {
           SacredDatabase.appendPadas(cachedHit);
         }
 
@@ -932,7 +932,8 @@ export const SacredDatabase = {
       try {
         // Level 2: Check local IndexedDB collection chunk (0 KB network)
         const cached = await get<SacredPad[]>(cacheKey);
-        if (cached && Array.isArray(cached) && cached.length > 0) {
+        const minExpected = metaCount > 0 ? Math.min(metaCount, 30) : 10;
+        if (cached && Array.isArray(cached) && cached.length >= minExpected) {
           this.appendPadas(cached);
           loadedGranthas.add(granthaId);
           return padasByGrantha.get(granthaId) || cached;
@@ -1560,9 +1561,9 @@ export const SacredDatabase = {
       if (p.chapterId === chapterId) return true;
       if (p.chapterName === chapterId) return true;
       const pClean = (p.chapterId || '').replace(/^(ch|leela|adhyay|sarga)-/, '').trim().toLowerCase();
-      if (pClean && pClean === cleanTarget) return true;
+      if (pClean && (pClean === cleanTarget || cleanTarget.includes(pClean) || pClean.includes(cleanTarget))) return true;
       const nameClean = (p.chapterName || '').trim().toLowerCase();
-      if (nameClean && (nameClean === cleanTarget || nameClean === chapterId.toLowerCase())) return true;
+      if (nameClean && (nameClean === cleanTarget || nameClean === chapterId.toLowerCase() || nameClean.includes(cleanTarget) || cleanTarget.includes(nameClean))) return true;
       return false;
     });
 
@@ -1570,7 +1571,8 @@ export const SacredDatabase = {
       chapterCache.set(cacheKey, result);
       return result;
     }
-    return [];
+    // Defensive fallback: if chapter filter yielded 0, return the scripture's full verse collection so the sacred reading canvas NEVER blanks out
+    return list;
   },
 
   /**

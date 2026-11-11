@@ -9,6 +9,8 @@ export const SACRED_PADS: SacredPad[] = [
     titleEnglish: 'Joi Joi Pyaro Kare Soi Mohi Bhaave',
     author: 'श्री हित हरिवंश महाप्रभु',
     rag: 'विभास',
+    chapterId: 'hit-chaurasi',
+    chapterName: 'श्री हित चौरासी (८४ पद)',
     verses: [
       {
         stanzaNumber: 1,

@@ -1272,19 +1272,24 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     setSelectedChapter(chapterId);
     setVisibleCount(30);
 
-    if (selectedGrantha !== 'all') {
-      await SacredDatabase.fetchGranthaPadas(selectedGrantha);
+    const targetGrantha = selectedGrantha !== 'all' ? selectedGrantha : (selectedPad?.collectionId || 'hit-chaurasi');
+    if (selectedGrantha === 'all' && selectedPad?.collectionId) {
+      setSelectedGrantha(selectedPad.collectionId);
+    }
+
+    if (targetGrantha !== 'all') {
+      await SacredDatabase.fetchGranthaPadas(targetGrantha);
       setAllPadas([...SacredDatabase.getAllPadas()]);
     }
 
     const chapterPads = chapterId === 'all'
-      ? SacredDatabase.getPadasByGrantha(selectedGrantha)
-      : SacredDatabase.getPadasByChapter(selectedGrantha, chapterId);
+      ? SacredDatabase.getPadasByGrantha(targetGrantha)
+      : SacredDatabase.getPadasByChapter(targetGrantha, chapterId);
 
     const cleanTarget = chapterId.replace(/^(ch|leela|adhyay|sarga)-/, '').trim().toLowerCase();
     const target = chapterPads[0] || allPadas.find(
       (p) =>
-        (selectedGrantha === 'all' || p.collectionId === selectedGrantha) &&
+        (targetGrantha === 'all' || p.collectionId === targetGrantha) &&
         (chapterId === 'all' ||
           p.chapterId === chapterId ||
           p.chapterName === chapterId ||
@@ -1303,13 +1308,14 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   };
 
   const availableChapters = useMemo(() => {
-    if (selectedGrantha === 'all') return [];
-    return SacredDatabase.getGranthaChapters(selectedGrantha);
-  }, [selectedGrantha, allPadas]);
+    const granthaId = selectedGrantha !== 'all' ? selectedGrantha : selectedPad?.collectionId;
+    if (!granthaId || granthaId === 'all') return [];
+    return SacredDatabase.getGranthaChapters(granthaId);
+  }, [selectedGrantha, selectedPad?.collectionId, allPadas]);
 
   const currentChapter = useMemo(() => {
     if (selectedChapter === 'all') return null;
-    return availableChapters.find((c) => c.id === selectedChapter) || null;
+    return availableChapters.find((c) => c.id === selectedChapter || c.name === selectedChapter) || null;
   }, [availableChapters, selectedChapter]);
 
   const nextChapter = useMemo(() => {
@@ -1362,8 +1368,11 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     if (selectedAuthor) {
       baseList = SacredDatabase.getPadasByAuthor(selectedAuthor);
     } else if (selectedGrantha !== 'all') {
-      baseList = selectedChapter !== 'all'
+      const chapterList = selectedChapter !== 'all'
         ? SacredDatabase.getPadasByChapter(selectedGrantha, selectedChapter)
+        : [];
+      baseList = (chapterList && chapterList.length > 0)
+        ? chapterList
         : SacredDatabase.getPadasByGrantha(selectedGrantha);
     } else if (granthaCategory !== 'all' && granthaCategory !== 'authors') {
       baseList = SacredDatabase.getPadasByCategory(granthaCategory);

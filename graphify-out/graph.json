@@ -5237,8 +5237,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_app_getdynamicweekdays",
-      "community": 18,
-      "community_name": "App",
+      "community": 1,
+      "community_name": "cacheService.ts",
       "norm_label": "getdynamicweekdays()"
     },
     {
@@ -5300,8 +5300,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_app_app",
-      "community": 18,
-      "community_name": "App",
+      "community": 1,
+      "community_name": "cacheService.ts",
       "norm_label": "app()"
     },
     {
@@ -5766,8 +5766,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_common_scallopedbadge",
-      "community": 18,
-      "community_name": "App",
+      "community": 16,
+      "community_name": "SacredDatabase",
       "norm_label": "scallopedbadge.tsx"
     },
     {
@@ -5779,8 +5779,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_scallopedbadge_scallopedbadgeprops",
-      "community": 18,
-      "community_name": "App",
+      "community": 16,
+      "community_name": "SacredDatabase",
       "norm_label": "scallopedbadgeprops"
     },
     {
@@ -5791,8 +5791,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_common_scallopedbadge_scallopedbadge",
-      "community": 18,
-      "community_name": "App",
+      "community": 16,
+      "community_name": "SacredDatabase",
       "norm_label": "scallopedbadge()"
     },
     {
@@ -6023,8 +6023,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_focus_dhyanafocusmodal_dhyanafocusmodal",
-      "community": 1,
-      "community_name": "cacheService.ts",
+      "community": 5,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "dhyanafocusmodal()"
     },
     {
@@ -6034,8 +6034,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_milestones_milestonesview",
-      "community": 18,
-      "community_name": "App",
+      "community": 16,
+      "community_name": "SacredDatabase",
       "norm_label": "milestonesview.tsx"
     },
     {
@@ -6047,8 +6047,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_milestones_milestonesview_milestonesviewprops",
-      "community": 18,
-      "community_name": "App",
+      "community": 16,
+      "community_name": "SacredDatabase",
       "norm_label": "milestonesviewprops"
     },
     {
@@ -6060,8 +6060,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_milestones_milestonesview_badgeitem",
-      "community": 18,
-      "community_name": "App",
+      "community": 16,
+      "community_name": "SacredDatabase",
       "norm_label": "badgeitem"
     },
     {
@@ -6072,8 +6072,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_milestones_milestonesview_getdevotionalstage",
-      "community": 18,
-      "community_name": "App",
+      "community": 16,
+      "community_name": "SacredDatabase",
       "norm_label": "getdevotionalstage()"
     },
     {
@@ -6203,8 +6203,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_reader_mahagranthreader",
-      "community": 16,
-      "community_name": "SacredDatabase",
+      "community": 5,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "mahagranthreader.tsx"
     },
     {
@@ -6216,8 +6216,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_reader_mahagranthreader_mahagranthreaderprops",
-      "community": 16,
-      "community_name": "SacredDatabase",
+      "community": 5,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "mahagranthreaderprops"
     },
     {
@@ -6227,8 +6227,8 @@
       "source_location": "L33",
       "_origin": "ast",
       "id": "src_components_reader_mahagranthreader_epics",
-      "community": 16,
-      "community_name": "SacredDatabase",
+      "community": 5,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "epics"
     },
     {
@@ -6458,8 +6458,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_reader_padavalireader_padavalireader",
-      "community": 16,
-      "community_name": "SacredDatabase",
+      "community": 5,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "padavalireader()"
     },
     {
@@ -6971,8 +6971,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_hooks_usescrolldirection",
-      "community": 16,
-      "community_name": "SacredDatabase",
+      "community": 5,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "usescrolldirection.ts"
     },
     {
@@ -6984,8 +6984,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_hooks_usescrolldirection_scrolldirection",
-      "community": 16,
-      "community_name": "SacredDatabase",
+      "community": 5,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "scrolldirection"
     },
     {
@@ -6997,8 +6997,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_hooks_usescrolldirection_usescrolldirectionoptions",
-      "community": 16,
-      "community_name": "SacredDatabase",
+      "community": 5,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "usescrolldirectionoptions"
     },
     {
@@ -7010,8 +7010,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_hooks_usescrolldirection_scrolldirectionstate",
-      "community": 16,
-      "community_name": "SacredDatabase",
+      "community": 5,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "scrolldirectionstate"
     },
     {
@@ -7022,8 +7022,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_hooks_usescrolldirection_usescrolldirection",
-      "community": 16,
-      "community_name": "SacredDatabase",
+      "community": 5,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "usescrolldirection()"
     },
     {
@@ -7034,8 +7034,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_hooks_usescrolldirection_usetaptotoggle",
-      "community": 16,
-      "community_name": "SacredDatabase",
+      "community": 5,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "usetaptotoggle()"
     },
     {
@@ -7045,8 +7045,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_main",
-      "community": 18,
-      "community_name": "App",
+      "community": 1,
+      "community_name": "cacheService.ts",
       "norm_label": "main.tsx"
     },
     {
@@ -7056,8 +7056,8 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "src_main_rootelement",
-      "community": 18,
-      "community_name": "App",
+      "community": 1,
+      "community_name": "cacheService.ts",
       "norm_label": "rootelement"
     },
     {
@@ -7067,8 +7067,8 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "src_main_seoprerender",
-      "community": 18,
-      "community_name": "App",
+      "community": 1,
+      "community_name": "cacheService.ts",
       "norm_label": "seoprerender"
     },
     {
@@ -7222,8 +7222,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_reconcilesadhana",
-      "community": 18,
-      "community_name": "App",
+      "community": 1,
+      "community_name": "cacheService.ts",
       "norm_label": "reconcilesadhana()"
     },
     {
@@ -7234,8 +7234,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_reconciledhyanaimpact",
-      "community": 18,
-      "community_name": "App",
+      "community": 1,
+      "community_name": "cacheService.ts",
       "norm_label": "reconciledhyanaimpact()"
     },
     {
@@ -7306,8 +7306,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_loadcachedsadhanasync",
-      "community": 18,
-      "community_name": "App",
+      "community": 1,
+      "community_name": "cacheService.ts",
       "norm_label": "loadcachedsadhanasync()"
     },
     {
@@ -7318,8 +7318,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_loadcachedsadhana",
-      "community": 18,
-      "community_name": "App",
+      "community": 1,
+      "community_name": "cacheService.ts",
       "norm_label": "loadcachedsadhana()"
     },
     {
@@ -7342,8 +7342,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_getfeedinteractionssync",
-      "community": 18,
-      "community_name": "App",
+      "community": 1,
+      "community_name": "cacheService.ts",
       "norm_label": "getfeedinteractionssync()"
     },
     {
@@ -7354,8 +7354,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_getfeedinteractions",
-      "community": 18,
-      "community_name": "App",
+      "community": 1,
+      "community_name": "cacheService.ts",
       "norm_label": "getfeedinteractions()"
     },
     {
@@ -7450,8 +7450,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_getcachedbookmarks",
-      "community": 16,
-      "community_name": "SacredDatabase",
+      "community": 1,
+      "community_name": "cacheService.ts",
       "norm_label": "getcachedbookmarks()"
     },
     {
@@ -7474,8 +7474,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_initmultitabsync",
-      "community": 18,
-      "community_name": "App",
+      "community": 1,
+      "community_name": "cacheService.ts",
       "norm_label": "initmultitabsync()"
     },
     {
@@ -7497,8 +7497,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_formatdevanagarinumerals",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 5,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "formatdevanagarinumerals()"
     },
     {
@@ -7582,8 +7582,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_loaddhyanaimpactsync",
-      "community": 18,
-      "community_name": "App",
+      "community": 1,
+      "community_name": "cacheService.ts",
       "norm_label": "loaddhyanaimpactsync()"
     },
     {
@@ -7605,8 +7605,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_loaddhyanaimpact",
-      "community": 18,
-      "community_name": "App",
+      "community": 1,
+      "community_name": "cacheService.ts",
       "norm_label": "loaddhyanaimpact()"
     },
     {
@@ -8454,8 +8454,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_services_devotionalsummaryservice_devotionalsummaryrequest",
-      "community": 13,
-      "community_name": "devotional.ts",
+      "community": 5,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "devotionalsummaryrequest"
     },
     {
@@ -9254,7 +9254,7 @@
       "label": "mapPadToEpicChapter()",
       "file_type": "code",
       "source_file": "src/services/sacredDatabase.ts",
-      "source_location": "L1851",
+      "source_location": "L1853",
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_sacreddatabase_mappadtoepicchapter",
@@ -9906,8 +9906,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_types_devotional_dhyanaimpactstate",
-      "community": 18,
-      "community_name": "App",
+      "community": 16,
+      "community_name": "SacredDatabase",
       "norm_label": "dhyanaimpactstate"
     },
     {
@@ -9932,8 +9932,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_types_devotional_epicindexdata",
-      "community": 16,
-      "community_name": "SacredDatabase",
+      "community": 5,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "epicindexdata"
     },
     {
@@ -30399,7 +30399,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/reader/PadavaliReader.tsx",
-      "source_location": "L2639",
+      "source_location": "L2648",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_reader_padavalireader_padavalireader",
@@ -35874,7 +35874,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/services/sacredDatabase.ts",
-      "source_location": "L1851",
+      "source_location": "L1853",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_services_sacreddatabase",
@@ -47923,5 +47923,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "64c5900ed99aebf2889d5accfb01885ad7f8ec02"
+  "built_at_commit": "134d7112a0fc2785b5261ab3b29dfb1be7c8769a"
 }
