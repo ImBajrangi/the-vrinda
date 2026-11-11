@@ -522,6 +522,8 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   let description = 'Digital sanctuary for Nitya Nikunj Ras. Explore 44,000+ canonical Braj Ras verses, Hit Chaurasi, Radha Sudha Nidhi, Kelimal, Ashtayama daily seva schedule, and contemplative dhyana sadhana.';
   let canonicalUrl = `${canonicalBaseDomain}${url.search ? url.search : (pathname === '/' ? '/' : pathname)}`;
   let entitySchema: Record<string, unknown> | null = null;
+  const extraSchemas: Record<string, unknown>[] = [];
+  let customKeywords: string | null = null;
   let dynamicRootHtml: string | null = null;
 
   const padId = qPad || (pathname.startsWith('/pad/') ? decodeURIComponent(pathname.replace('/pad/', '')).trim() : null);
@@ -538,6 +540,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     const granthaLabel = granthaMeta?.name || 'रसिक वाणी संग्रह';
     const granthaCategory = 'रसिक वाणी संग्रह';
     const openingVerse = known?.sampleVerse || snippet?.[3] || '';
+    const romanTitle = formatSlug(cleanPadId);
 
     title = `${padTitle} (${padAuthor}) • पावन रसिक पद | वृन्दोपनिषद् 2.0`;
     description = openingVerse
@@ -545,16 +548,35 @@ export const onRequest: PagesFunction<Env> = async (context) => {
       : `${padTitle} (${granthaLabel}) के पावन पद, मूल पाठ, भावार्थ व नित्य अनुशीलन। रचयिता: ${padAuthor}। वृन्दोपनिषद् 2.0`;
     canonicalUrl = `https://bhav.vrindopnishad.in/?tab=padavali&pad=${encodeURIComponent(cleanPadId)}`;
 
+    customKeywords = [
+      padTitle,
+      padAuthor,
+      granthaLabel,
+      `${romanTitle} lyrics`,
+      `${romanTitle} in hindi`,
+      `${romanTitle} meaning`,
+      `${padTitle} lyrics`,
+      `${padTitle} अर्थ`,
+      `${padTitle} भावार्थ`,
+      'vrindavan ras vani',
+      'radha rasik vani',
+      'hit chaurasi padas',
+      'braj ras padavali',
+      'vrindopnisad',
+    ].join(', ');
+
     entitySchema = {
       '@type': 'CreativeWork',
       '@id': `${canonicalUrl}#creativework`,
       'headline': padTitle,
       'name': padTitle,
+      'alternativeHeadline': `${romanTitle} Lyrics in Hindi & Braj Bhasha`,
       'author': {
         '@type': 'Person',
         'name': padAuthor,
       },
-      'inLanguage': 'hi',
+      'genre': 'Sacred Braj Ras Literature',
+      'inLanguage': ['hi', 'sa', 'en'],
       'text': openingVerse || padTitle,
       'isPartOf': {
         '@type': 'WebSite',
@@ -563,20 +585,145 @@ export const onRequest: PagesFunction<Env> = async (context) => {
       },
     };
 
+    extraSchemas.push({
+      '@type': 'BreadcrumbList',
+      '@id': `${canonicalUrl}#breadcrumb`,
+      'itemListElement': [
+        {
+          '@type': 'ListItem',
+          'position': 1,
+          'name': 'वृन्दोपनिषद् 2.0',
+          'item': 'https://bhav.vrindopnishad.in/',
+        },
+        {
+          '@type': 'ListItem',
+          'position': 2,
+          'name': granthaLabel,
+          'item': `https://bhav.vrindopnishad.in/?tab=padavali&grantha=${encodeURIComponent(granthaId || '')}`,
+        },
+        {
+          '@type': 'ListItem',
+          'position': 3,
+          'name': padTitle,
+          'item': canonicalUrl,
+        },
+      ],
+    });
+
+    extraSchemas.push({
+      '@type': 'FAQPage',
+      '@id': `${canonicalUrl}#faq`,
+      'mainEntity': [
+        {
+          '@type': 'Question',
+          'name': `${padTitle} के रचयिता कौन हैं?`,
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': `इस पावन पद के रचयिता ${padAuthor} जी हैं, जो श्री धाम वृन्दावन की पावन रसिक वाणी परंपरा के प्रमुख संत हैं।`,
+          },
+        },
+        {
+          '@type': 'Question',
+          'name': `यह पद किस पावन संग्रह में संकलित है?`,
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': `यह पद '${granthaLabel}' संग्रह में संकलित है।`,
+          },
+        },
+        {
+          '@type': 'Question',
+          'name': `इस पद का मुख्य आध्यात्मिक भाव क्या है?`,
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': `${padTitle} में श्री प्रिया-प्रियतम के नित्य निकुंज विलास, अनन्य प्रेम व युगल चरण शरणागति का पावन गान है।`,
+          },
+        },
+      ],
+    });
+
     dynamicRootHtml = `
-      <article class="sanctuary-ssr-content" style="max-width: 820px; margin: 0 auto; padding: 2.5rem 1.25rem; font-family: 'Noto Serif Devanagari', serif;">
-        <nav style="margin-bottom: 1.5rem; font-size: 0.875rem; color: #b45309;">
-          <a href="/" style="color: #b45309; text-decoration: none;">वृन्दोपनिषद् 2.0</a> &rsaquo; <span>${granthaLabel}</span>
+      <article class="sanctuary-ssr-content" style="max-width: 860px; margin: 0 auto; padding: 2.5rem 1.25rem; font-family: 'Noto Serif Devanagari', Georgia, serif; color: #1c1917; line-height: 1.8;">
+        <!-- Breadcrumb Navigation with Microdata -->
+        <nav aria-label="Breadcrumb" style="margin-bottom: 1.5rem; font-size: 0.875rem;">
+          <ol itemscope itemtype="https://schema.org/BreadcrumbList" style="display: flex; flex-wrap: wrap; list-style: none; padding: 0; margin: 0; gap: 0.5rem; color: #b45309;">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+              <a itemprop="item" href="/" style="color: #b45309; text-decoration: none;"><span itemprop="name">वृन्दोपनिषद् 2.0</span></a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li style="color: #d97706;">&rsaquo;</li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+              <a itemprop="item" href="/?tab=padavali&grantha=${encodeURIComponent(granthaId || '')}" style="color: #b45309; text-decoration: none;"><span itemprop="name">${granthaLabel}</span></a>
+              <meta itemprop="position" content="2" />
+            </li>
+            <li style="color: #d97706;">&rsaquo;</li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+              <span itemprop="name" style="color: #78716c;">${padTitle}</span>
+              <meta itemprop="position" content="3" />
+            </li>
+          </ol>
         </nav>
-        <header style="margin-bottom: 2rem;">
-          <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; background-color: #fef3c7; color: #92400e; margin-bottom: 0.75rem;">${granthaCategory}</span>
-          <h1 style="font-size: 2rem; font-weight: 700; line-height: 1.3; color: #1c1917; margin: 0 0 0.75rem 0;">${padTitle}</h1>
-          <p style="font-size: 0.95rem; color: #78716c; margin: 0;">रचयिता: ${padAuthor} • संग्रह: ${granthaLabel}</p>
+
+        <!-- Article Header -->
+        <header style="margin-bottom: 2rem; border-bottom: 2px solid #fef3c7; padding-bottom: 1.5rem;">
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.75rem;">
+            <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; background-color: #fef3c7; color: #92400e;">${granthaCategory}</span>
+            <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; background-color: #fae8ff; color: #86198f;">${granthaLabel}</span>
+          </div>
+          <h1 class="sanctuary-ssr-title" style="font-size: 2.25rem; font-weight: 700; line-height: 1.25; color: #1c1917; margin: 0 0 0.5rem 0;">${padTitle}</h1>
+          <p style="font-size: 1rem; color: #78716c; margin: 0;">रचयिता: <strong style="color: #b45309;">${padAuthor}</strong> • पावन वाणी संग्रह: <strong>${granthaLabel}</strong></p>
+          <p style="font-size: 0.85rem; color: #a8a29e; margin-top: 0.25rem;">Hinglish / Roman: <em>${romanTitle}</em> • भाषा: ब्रजभाषा / संस्कृत</p>
         </header>
-        <section class="verse-body" style="font-size: 1.25rem; line-height: 2; color: #292524; background-color: #fffbeb; padding: 1.5rem; border-radius: 1rem; border: 1px solid #fef3c7; white-space: pre-line;">
+
+        <!-- Authentic Sacred Verse Body -->
+        <section class="verse-body" style="font-size: 1.35rem; line-height: 2.1; color: #292524; background: linear-gradient(180deg, #fffbeb 0%, #fef9c3 100%); padding: 2rem; border-radius: 1rem; border: 1px solid #fde68a; white-space: pre-line; box-shadow: 0 4px 12px rgba(217, 119, 6, 0.06); text-align: center;">
           ${openingVerse || `${padTitle} के पावन पद का अखंड स्वाध्याय व चिंतन।`}
         </section>
-        <footer style="margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid #f5f5f4; font-size: 0.875rem; color: #a8a29e; display: flex; justify-content: space-between; align-items: center;">
+
+        <!-- Sacred Meaning / Spiritual Context -->
+        <section style="margin-top: 2rem; background-color: #fafaf9; border-radius: 0.75rem; border: 1px solid #f5f5f4; padding: 1.5rem;">
+          <h2 style="font-size: 1.25rem; font-weight: 600; color: #78350f; margin: 0 0 0.75rem 0;">पावन भाव व अनुशीलन</h2>
+          <p style="font-size: 1rem; line-height: 1.8; color: #44403c; margin: 0;">
+            ${padTitle} श्री धाम वृन्दावन की पावन रसिक वाणी परंपरा का अनुपम पद है। इस पावन पद में श्री प्रिया-प्रियतम (श्रीराधा-कृष्ण) के नित्य निकुंज रस, परम विलास एवं अनन्य शरणागति का दिव्य वर्णन मिलता है। रसिक संतों के अनुसार इस वाणी का नित्य अनुशीलन हृदय में अहैतुकी प्रीति व शांति का संचार करता है।
+          </p>
+        </section>
+
+        <!-- Structured Metadata Table (GeeksforGeeks-Style Schema Table) -->
+        <section style="margin-top: 2rem;">
+          <h2 style="font-size: 1.25rem; font-weight: 600; color: #78350f; margin: 0 0 0.75rem 0;">ग्रंथ एवं संत विवरण</h2>
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem; border: 1px solid #e7e5e4;">
+            <tr style="background-color: #f5f5f4;"><td style="padding: 0.75rem; border: 1px solid #e7e5e4; font-weight: 600;">पद शीर्षक (Title)</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;">${padTitle} (${romanTitle})</td></tr>
+            <tr><td style="padding: 0.75rem; border: 1px solid #e7e5e4; font-weight: 600;">रचयिता (Author)</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;"><a href="/?tab=padavali&q=${encodeURIComponent(padAuthor)}" style="color: #b45309; text-decoration: underline;">${padAuthor}</a></td></tr>
+            <tr style="background-color: #f5f5f4;"><td style="padding: 0.75rem; border: 1px solid #e7e5e4; font-weight: 600;">संग्रह (Grantha)</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;"><a href="/?tab=padavali&grantha=${encodeURIComponent(granthaId || '')}" style="color: #b45309; text-decoration: underline;">${granthaLabel}</a></td></tr>
+            <tr><td style="padding: 0.75rem; border: 1px solid #e7e5e4; font-weight: 600;">साधना धारा (Tradition)</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;">श्री वृन्दावन नित्य निकुंज रस उपासना</td></tr>
+          </table>
+        </section>
+
+        <!-- Google FAQ Rich Snippets Section -->
+        <section style="margin-top: 2rem; background-color: #fffbeb; border: 1px solid #fef3c7; border-radius: 0.75rem; padding: 1.5rem;">
+          <h2 style="font-size: 1.25rem; font-weight: 600; color: #92400e; margin: 0 0 1rem 0;">अक्सर पूछे जाने वाले प्रश्न (FAQ)</h2>
+          <details open style="margin-bottom: 0.75rem; padding: 0.75rem; background-color: #ffffff; border-radius: 0.5rem; border: 1px solid #fef3c7;">
+            <summary style="font-weight: 600; color: #78350f; cursor: pointer;">${padTitle} के रचयिता कौन हैं?</summary>
+            <p style="margin: 0.5rem 0 0 0; color: #44403c; font-size: 0.95rem;">इस पावन पद के रचयिता <strong>${padAuthor}</strong> जी हैं।</p>
+          </details>
+          <details open style="padding: 0.75rem; background-color: #ffffff; border-radius: 0.5rem; border: 1px solid #fef3c7;">
+            <summary style="font-weight: 600; color: #78350f; cursor: pointer;">यह पद किस पावन संग्रह का अंग है?</summary>
+            <p style="margin: 0.5rem 0 0 0; color: #44403c; font-size: 0.95rem;">यह पद <strong>${granthaLabel}</strong> संग्रह का पावन अंग है।</p>
+          </details>
+        </section>
+
+        <!-- Internal Cross-Linking Grid (Zero Dead Ends for Crawlers) -->
+        <section style="margin-top: 2rem; padding: 1.5rem; background-color: #fafaf9; border-radius: 0.75rem; border: 1px solid #e7e5e4;">
+          <h2 style="font-size: 1.25rem; font-weight: 600; color: #44403c; margin: 0 0 1rem 0;">संबंधित पावन पद व स्वाध्याय</h2>
+          <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem;">
+            <li><a href="/?tab=padavali&grantha=${encodeURIComponent(granthaId || '')}" style="color: #b45309; text-decoration: none; display: block; padding: 0.5rem 0.75rem; background: #fff; border: 1px solid #e7e5e4; border-radius: 0.5rem;">📖 ${granthaLabel} के समस्त पद &rarr;</a></li>
+            <li><a href="/?tab=padavali&q=${encodeURIComponent(padAuthor)}" style="color: #b45309; text-decoration: none; display: block; padding: 0.5rem 0.75rem; background: #fff; border: 1px solid #e7e5e4; border-radius: 0.5rem;">🌸 ${padAuthor} की अन्य रचनाएँ &rarr;</a></li>
+            <li><a href="/?tab=feed" style="color: #b45309; text-decoration: none; display: block; padding: 0.5rem 0.75rem; background: #fff; border: 1px solid #e7e5e4; border-radius: 0.5rem;">🛕 श्री धाम वृन्दावन मंदिर दर्शन &rarr;</a></li>
+            <li><a href="/" style="color: #b45309; text-decoration: none; display: block; padding: 0.5rem 0.75rem; background: #fff; border: 1px solid #e7e5e4; border-radius: 0.5rem;">📿 नित्य अष्टयाम सेवा व नाम जप &rarr;</a></li>
+          </ul>
+        </section>
+
+        <!-- Footer Colophon -->
+        <footer style="margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid #e7e5e4; font-size: 0.875rem; color: #a8a29e; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
           <span>वृन्दोपनिषद् 2.0 • Digital Sanctuary for Nitya Nikunj Ras</span>
           <a href="${canonicalUrl}" style="color: #b45309; text-decoration: underline;">मूल पाठ व स्वाध्याय</a>
         </footer>
@@ -640,11 +787,24 @@ export const onRequest: PagesFunction<Env> = async (context) => {
       description = `«${chOpeningVerse}» ${epic.name} का पावन अध्याय ${chName} (${chVerseCount} श्लोक)। मूल श्लोक, पाठ व पारायण। वृन्दोपनिषद् 2.0`;
       canonicalUrl = `https://path.vrindopnishad.in/?tab=granthas&grantha=${encodeURIComponent(qGrantha)}&chapter=${encodeURIComponent(targetChapter)}`;
 
+      customKeywords = [
+        epic.name,
+        chName,
+        epic.author,
+        `${epic.name} ${chName}`,
+        `${formatSlug(qGrantha)} ${formatSlug(targetChapter)} shlokas`,
+        `${chName} shloka hindi meaning`,
+        'sanatan mahagranth parayana',
+        'vrindopnisad path',
+        'vedic scriptures online',
+      ].join(', ');
+
       entitySchema = {
         '@type': 'Chapter',
         '@id': `${canonicalUrl}#chapter`,
         'name': `${epic.name} - ${chName}`,
         'numberOfPages': chVerseCount || undefined,
+        'inLanguage': ['hi', 'sa'],
         'isPartOf': {
           '@type': 'Book',
           '@id': `https://path.vrindopnishad.in/?tab=granthas&grantha=${encodeURIComponent(qGrantha)}#book`,
@@ -653,22 +813,138 @@ export const onRequest: PagesFunction<Env> = async (context) => {
         },
       };
 
+      extraSchemas.push({
+        '@type': 'BreadcrumbList',
+        '@id': `${canonicalUrl}#breadcrumb`,
+        'itemListElement': [
+          {
+            '@type': 'ListItem',
+            'position': 1,
+            'name': 'महाग्रंथ पारायण',
+            'item': 'https://path.vrindopnishad.in/',
+          },
+          {
+            '@type': 'ListItem',
+            'position': 2,
+            'name': epic.name,
+            'item': `https://path.vrindopnishad.in/?tab=granthas&grantha=${encodeURIComponent(qGrantha)}`,
+          },
+          {
+            '@type': 'ListItem',
+            'position': 3,
+            'name': chName,
+            'item': canonicalUrl,
+          },
+        ],
+      });
+
+      extraSchemas.push({
+        '@type': 'FAQPage',
+        '@id': `${canonicalUrl}#faq`,
+        'mainEntity': [
+          {
+            '@type': 'Question',
+            'name': `${epic.name} के प्रणेता कौन हैं?`,
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': `इस अमर सनातन महाकाव्य के प्रणेता ${epic.author} हैं।`,
+            },
+          },
+          {
+            '@type': 'Question',
+            'name': `${chName} में कुल कितने श्लोक हैं?`,
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': `${chName} में कुल ${chVerseCount} प्रामाणिक श्लोक व छंद संकलित हैं।`,
+            },
+          },
+        ],
+      });
+
       dynamicRootHtml = `
-        <article class="sanctuary-ssr-content" style="max-width: 820px; margin: 0 auto; padding: 2.5rem 1.25rem; font-family: 'Noto Serif Devanagari', serif;">
-          <nav style="margin-bottom: 1.5rem; font-size: 0.875rem; color: #b45309;">
-            <a href="https://path.vrindopnishad.in/" style="color: #b45309; text-decoration: none;">महाग्रंथ पारायण</a> &rsaquo; <span>${epic.name}</span>
+        <article class="sanctuary-ssr-content" style="max-width: 860px; margin: 0 auto; padding: 2.5rem 1.25rem; font-family: 'Noto Serif Devanagari', Georgia, serif; color: #1c1917; line-height: 1.8;">
+          <!-- Breadcrumb Navigation with Microdata -->
+          <nav aria-label="Breadcrumb" style="margin-bottom: 1.5rem; font-size: 0.875rem;">
+            <ol itemscope itemtype="https://schema.org/BreadcrumbList" style="display: flex; flex-wrap: wrap; list-style: none; padding: 0; margin: 0; gap: 0.5rem; color: #b45309;">
+              <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <a itemprop="item" href="https://path.vrindopnishad.in/" style="color: #b45309; text-decoration: none;"><span itemprop="name">महाग्रंथ पारायण</span></a>
+                <meta itemprop="position" content="1" />
+              </li>
+              <li style="color: #d97706;">&rsaquo;</li>
+              <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <a itemprop="item" href="https://path.vrindopnishad.in/?tab=granthas&grantha=${encodeURIComponent(qGrantha)}" style="color: #b45309; text-decoration: none;"><span itemprop="name">${epic.name}</span></a>
+                <meta itemprop="position" content="2" />
+              </li>
+              <li style="color: #d97706;">&rsaquo;</li>
+              <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <span itemprop="name" style="color: #78716c;">${chName}</span>
+                <meta itemprop="position" content="3" />
+              </li>
+            </ol>
           </nav>
-          <header style="margin-bottom: 2rem;">
-            <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; background-color: #fef3c7; color: #92400e; margin-bottom: 0.75rem;">सनातन महाग्रंथ</span>
-            <h1 style="font-size: 2rem; font-weight: 700; line-height: 1.3; color: #1c1917; margin: 0 0 0.75rem 0;">${chName}</h1>
-            <p style="font-size: 0.95rem; color: #78716c; margin: 0;">${epic.name} • प्रणेता: ${epic.author} • ${chVerseCount} पावन श्लोक</p>
+
+          <!-- Article Header -->
+          <header style="margin-bottom: 2rem; border-bottom: 2px solid #fef3c7; padding-bottom: 1.5rem;">
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.75rem;">
+              <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; background-color: #fef3c7; color: #92400e;">सनातन महाग्रंथ</span>
+              <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; background-color: #f0fdf4; color: #166534;">${epic.name}</span>
+            </div>
+            <h1 class="sanctuary-ssr-title" style="font-size: 2.25rem; font-weight: 700; line-height: 1.25; color: #1c1917; margin: 0 0 0.5rem 0;">${chName}</h1>
+            <p style="font-size: 1rem; color: #78716c; margin: 0;">महाग्रंथ: <strong style="color: #b45309;">${epic.name}</strong> • प्रणेता: <strong>${epic.author}</strong> • कुल श्लोक: <strong>${chVerseCount}</strong></p>
           </header>
-          <section class="verse-body" style="font-size: 1.25rem; line-height: 2; color: #292524; background-color: #fffbeb; padding: 1.5rem; border-radius: 1rem; border: 1px solid #fef3c7; white-space: pre-line;">
+
+          <!-- Authentic Sacred Opening Shloka -->
+          <section class="verse-body" style="font-size: 1.35rem; line-height: 2.1; color: #292524; background: linear-gradient(180deg, #fffbeb 0%, #fef9c3 100%); padding: 2rem; border-radius: 1rem; border: 1px solid #fde68a; white-space: pre-line; box-shadow: 0 4px 12px rgba(217, 119, 6, 0.06); text-align: center;">
             ${chOpeningVerse}
           </section>
-          <footer style="margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid #f5f5f4; font-size: 0.875rem; color: #a8a29e; display: flex; justify-content: space-between; align-items: center;">
+
+          <!-- Chapter Context & Importance -->
+          <section style="margin-top: 2rem; background-color: #fafaf9; border-radius: 0.75rem; border: 1px solid #f5f5f4; padding: 1.5rem;">
+            <h2 style="font-size: 1.25rem; font-weight: 600; color: #78350f; margin: 0 0 0.75rem 0;">पावन अध्याय माहात्म्य व पारायण</h2>
+            <p style="font-size: 1rem; line-height: 1.8; color: #44403c; margin: 0;">
+              ${epic.name} का यह पावन अध्याय (${chName}) सनातन धर्म संस्कृति का अनमोल रत्न है। इसमें कुल ${chVerseCount} पवित्र श्लोक संकलित हैं। वृन्दोपनिषद् 2.0 पर इस पावन अध्याय का मूल संस्कृत/अवधी पाठ, अन्वय व भावार्थ अखंड स्वाध्याय के लिए उपलब्ध है।
+            </p>
+          </section>
+
+          <!-- Structured Metadata Table -->
+          <section style="margin-top: 2rem;">
+            <h2 style="font-size: 1.25rem; font-weight: 600; color: #78350f; margin: 0 0 0.75rem 0;">महाग्रंथ एवं अध्याय विवरण</h2>
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem; border: 1px solid #e7e5e4;">
+              <tr style="background-color: #f5f5f4;"><td style="padding: 0.75rem; border: 1px solid #e7e5e4; font-weight: 600;">अध्याय नाम (Chapter)</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;">${chName}</td></tr>
+              <tr><td style="padding: 0.75rem; border: 1px solid #e7e5e4; font-weight: 600;">महाग्रंथ (Epic)</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;"><a href="https://path.vrindopnishad.in/?tab=granthas&grantha=${encodeURIComponent(qGrantha)}" style="color: #b45309; text-decoration: underline;">${epic.name}</a></td></tr>
+              <tr style="background-color: #f5f5f4;"><td style="padding: 0.75rem; border: 1px solid #e7e5e4; font-weight: 600;">प्रणेता (Sage/Author)</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;">${epic.author}</td></tr>
+              <tr><td style="padding: 0.75rem; border: 1px solid #e7e5e4; font-weight: 600;">कुल श्लोक संख्या</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;">${chVerseCount} श्लोक</td></tr>
+            </table>
+          </section>
+
+          <!-- Google FAQ Rich Snippets Section -->
+          <section style="margin-top: 2rem; background-color: #fffbeb; border: 1px solid #fef3c7; border-radius: 0.75rem; padding: 1.5rem;">
+            <h2 style="font-size: 1.25rem; font-weight: 600; color: #92400e; margin: 0 0 1rem 0;">अक्सर पूछे जाने वाले प्रश्न (FAQ)</h2>
+            <details open style="margin-bottom: 0.75rem; padding: 0.75rem; background-color: #ffffff; border-radius: 0.5rem; border: 1px solid #fef3c7;">
+              <summary style="font-weight: 600; color: #78350f; cursor: pointer;">${epic.name} के प्रणेता कौन हैं?</summary>
+              <p style="margin: 0.5rem 0 0 0; color: #44403c; font-size: 0.95rem;">इस पावन महाकाव्य के प्रणेता <strong>${epic.author}</strong> हैं।</p>
+            </details>
+            <details open style="padding: 0.75rem; background-color: #ffffff; border-radius: 0.5rem; border: 1px solid #fef3c7;">
+              <summary style="font-weight: 600; color: #78350f; cursor: pointer;">${chName} में कितने श्लोक हैं?</summary>
+              <p style="margin: 0.5rem 0 0 0; color: #44403c; font-size: 0.95rem;">${chName} में कुल <strong>${chVerseCount}</strong> पावन श्लोक हैं।</p>
+            </details>
+          </section>
+
+          <!-- Internal Cross-Linking Grid (Zero Dead Ends for Crawlers) -->
+          <section style="margin-top: 2rem; padding: 1.5rem; background-color: #fafaf9; border-radius: 0.75rem; border: 1px solid #e7e5e4;">
+            <h2 style="font-size: 1.25rem; font-weight: 600; color: #44403c; margin: 0 0 1rem 0;">महाग्रंथ पारायण नेविगेशन</h2>
+            <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem;">
+              <li><a href="https://path.vrindopnishad.in/?tab=granthas&grantha=${encodeURIComponent(qGrantha)}" style="color: #b45309; text-decoration: none; display: block; padding: 0.5rem 0.75rem; background: #fff; border: 1px solid #e7e5e4; border-radius: 0.5rem;">📜 ${epic.name} के समस्त अध्याय &rarr;</a></li>
+              <li><a href="https://path.vrindopnishad.in/" style="color: #b45309; text-decoration: none; display: block; padding: 0.5rem 0.75rem; background: #fff; border: 1px solid #e7e5e4; border-radius: 0.5rem;">🏛️ ५ अमर सनातन महाकाव्य &rarr;</a></li>
+              <li><a href="https://bhav.vrindopnishad.in/?tab=padavali" style="color: #b45309; text-decoration: none; display: block; padding: 0.5rem 0.75rem; background: #fff; border: 1px solid #e7e5e4; border-radius: 0.5rem;">🌸 ४४,०००+ रसिक वाणी संग्रह &rarr;</a></li>
+              <li><a href="https://bhav.vrindopnishad.in/" style="color: #b45309; text-decoration: none; display: block; padding: 0.5rem 0.75rem; background: #fff; border: 1px solid #e7e5e4; border-radius: 0.5rem;">📿 दैनिक स्मरण व नित्य सेवा &rarr;</a></li>
+            </ul>
+          </section>
+
+          <!-- Footer Colophon -->
+          <footer style="margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid #e7e5e4; font-size: 0.875rem; color: #a8a29e; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
             <span>वृन्दोपनिषद् 2.0 • Digital Sanctuary for Sanatan Mahagranth Parayana</span>
-            <a href="${canonicalUrl}" style="color: #b45309; text-decoration: underline;">अखंड स्वाध्याय व पाठ</a>
+            <a href="${canonicalUrl}" style="color: #b45309; text-decoration: underline;">अखंड स्वाध्याय व पारायण</a>
           </footer>
         </article>
       `;
@@ -773,6 +1049,9 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   if (entitySchema) {
     schemaGraph.push(entitySchema);
   }
+  for (const extra of extraSchemas) {
+    schemaGraph.push(extra);
+  }
 
   const jsonLdString = JSON.stringify({
     '@context': 'https://schema.org',
@@ -791,6 +1070,10 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     .on('meta[name="twitter:description"]', new ElementAttributeModifier('content', description))
     .on('link[rel="canonical"]', new ElementAttributeModifier('href', canonicalUrl))
     .on('script#vrindopnisad-schema', new ElementTextModifier(jsonLdString));
+
+  if (customKeywords) {
+    rewriter = rewriter.on('meta[name="keywords"]', new ElementAttributeModifier('content', customKeywords));
+  }
 
   // If this deep-link did not hit a pre-rendered static HTML file, inject semantic article into #root
   if (dynamicRootHtml) {
