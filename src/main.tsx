@@ -9,8 +9,28 @@ if (typeof window !== 'undefined') {
 }
 
 const rootElement = document.getElementById('root');
+const seoPrerender = document.getElementById('seo-prerender');
 
 if (rootElement) {
+  // Edge Pre-render Dismisser:
+  // If Cloudflare Edge injected semantic HTML into #seo-prerender for Googlebot/AI,
+  // gracefully fade it out once React's interactive client loads.
+  if (seoPrerender && seoPrerender.hasChildNodes()) {
+    const dismissSeoPrerender = () => {
+      seoPrerender.style.transition = 'opacity 200ms ease-out';
+      seoPrerender.style.opacity = '0';
+      setTimeout(() => {
+        seoPrerender.style.display = 'none';
+      }, 200);
+    };
+
+    if ('requestIdleCallback' in window) {
+      (window as any).requestIdleCallback(dismissSeoPrerender, { timeout: 1000 });
+    } else {
+      setTimeout(dismissSeoPrerender, 400);
+    }
+  }
+
   // Phase 2.2 Seamless Hydration & Zero-Flicker Architecture:
   // 1. If edge-injected dynamic fallback content is detected:
   //    React 19's createRoot() inherently clears rootElement.innerHTML upon first render.

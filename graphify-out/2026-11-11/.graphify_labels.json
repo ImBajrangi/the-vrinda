@@ -3,7 +3,7 @@
   "1": "cacheService.ts",
   "2": "devotionalSummaryService.ts",
   "3": "sacredDatabase.ts",
-  "4": "SacredPad",
+  "4": "StaticFileCMSProvider.ts",
   "5": "PadavaliReader.tsx",
   "6": ".cache_bundle.mjs",
   "7": "App.tsx",
@@ -213,5 +213,6 @@
   "211": "challenger-viewport-320px-measure.mjs",
   "212": "playwright.config.ts",
   "213": "postcss.config.js",
-  "214": "tailwind.config.js"
+  "214": "tailwind.config.js",
+  "215": "SacredPad"
 }

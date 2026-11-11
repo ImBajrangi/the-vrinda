@@ -2,30 +2,31 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    }
+  ],
   "redirects": [
     {
-      "source": "/sitemap.xml",
-      "destination": "https://bhav.vrindopnishad.in/sitemap.xml",
-      "permanent": true
-    },
-    {
-      "source": "/robots.txt",
-      "destination": "https://bhav.vrindopnishad.in/robots.txt",
-      "permanent": true
-    },
-    {
-      "source": "/sitemap-:path*.xml",
-      "destination": "https://bhav.vrindopnishad.in/sitemap-:path*.xml",
-      "permanent": true
-    },
-    {
       "source": "/(hi/)?(lyrics|content|verse|pada|pad)/:slug",
-      "destination": "https://bhav.vrindopnishad.in/?tab=padavali&pad=:slug",
+      "destination": "https://bhav.vrindopnishad.in/pad/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/grantha/:path*",
+      "destination": "https://path.vrindopnishad.in/grantha/:path*",
       "permanent": true
     },
     {
       "source": "/granthas/:path*",
-      "destination": "https://path.vrindopnishad.in/?tab=granthas",
+      "destination": "https://path.vrindopnishad.in/grantha/:path*",
       "permanent": true
     },
     {

@@ -85,7 +85,11 @@ async function runPhase23QualityGates() {
   const sitemapSlugs = new Set(
     sitemapUrls.map((u) => {
       const url = new URL(u);
-      return url.searchParams.get('pad');
+      const padParam = url.searchParams.get('pad');
+      if (padParam) return padParam;
+      const matchPad = url.pathname.match(/\/pad\/(.+)$/);
+      if (matchPad) return decodeURIComponent(matchPad[1]);
+      return null;
     })
   );
 
@@ -392,7 +396,7 @@ async function runPhase23QualityGates() {
     if (!padRes.seo.title.includes(author)) {
       throw new Error(`Gate 9 Failed: Sample pad ${sampleSlug} SSR title does not contain author: ${author}`);
     }
-    if (!padRes.seo.canonicalUrl.includes(`pad=${encodeURIComponent(sampleSlug)}`)) {
+    if (!padRes.seo.canonicalUrl.includes(encodeURIComponent(sampleSlug))) {
       throw new Error(`Gate 9 Failed: Sample pad ${sampleSlug} canonical URL incorrect: ${padRes.seo.canonicalUrl}`);
     }
     const creativeWork = padRes.seo.schemas.find((s) => s['@type'] === 'CreativeWork');

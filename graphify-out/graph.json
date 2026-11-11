@@ -896,8 +896,8 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "package_dependencies_react",
-      "community": 30,
-      "community_name": "SadhanaRingProgress.tsx",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "react"
     },
     {
@@ -907,8 +907,8 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "react",
-      "community": 30,
-      "community_name": "SadhanaRingProgress.tsx",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "react"
     },
     {
@@ -5237,8 +5237,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_app_getdynamicweekdays",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 18,
+      "community_name": "App",
       "norm_label": "getdynamicweekdays()"
     },
     {
@@ -5263,8 +5263,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_app_appprops",
-      "community": 15,
-      "community_name": "DynamicNotchNavbar.tsx",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "appprops"
     },
     {
@@ -5276,8 +5276,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_app_approutestate",
-      "community": 15,
-      "community_name": "DynamicNotchNavbar.tsx",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "approutestate"
     },
     {
@@ -5288,8 +5288,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_app_resolvecurrentroute",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 16,
+      "community_name": "SacredDatabase",
       "norm_label": "resolvecurrentroute()"
     },
     {
@@ -5311,8 +5311,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_common_artworkgraphicslot",
-      "community": 30,
-      "community_name": "SadhanaRingProgress.tsx",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "artworkgraphicslot.tsx"
     },
     {
@@ -5324,8 +5324,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_artworkgraphicslot_graphicaspectratio",
-      "community": 30,
-      "community_name": "SadhanaRingProgress.tsx",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "graphicaspectratio"
     },
     {
@@ -5337,8 +5337,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_artworkgraphicslot_graphicslottheme",
-      "community": 30,
-      "community_name": "SadhanaRingProgress.tsx",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "graphicslottheme"
     },
     {
@@ -5350,8 +5350,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_artworkgraphicslot_artworkgraphicslotprops",
-      "community": 30,
-      "community_name": "SadhanaRingProgress.tsx",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "artworkgraphicslotprops"
     },
     {
@@ -5362,8 +5362,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_common_artworkgraphicslot_artworkgraphicslot",
-      "community": 30,
-      "community_name": "SadhanaRingProgress.tsx",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "artworkgraphicslot()"
     },
     {
@@ -5373,7 +5373,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_common_cmseditorialbadge",
-      "community": 215,
+      "community": 4,
       "community_name": "SacredPad",
       "norm_label": "cmseditorialbadge.tsx"
     },
@@ -5386,7 +5386,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_cmseditorialbadge_cmseditorialbadgeprops",
-      "community": 215,
+      "community": 4,
       "community_name": "SacredPad",
       "norm_label": "cmseditorialbadgeprops"
     },
@@ -5398,7 +5398,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_common_cmseditorialbadge_cmseditorialbadge",
-      "community": 215,
+      "community": 4,
       "community_name": "SacredPad",
       "norm_label": "cmseditorialbadge()"
     },
@@ -5445,8 +5445,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_common_dynamicnotchnavbar",
-      "community": 15,
-      "community_name": "DynamicNotchNavbar.tsx",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "dynamicnotchnavbar.tsx"
     },
     {
@@ -5458,8 +5458,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_dynamicnotchnavbar_dynamicnotchnavbarprops",
-      "community": 93,
-      "community_name": "SadhanaPillarModal.tsx",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "dynamicnotchnavbarprops"
     },
     {
@@ -5470,8 +5470,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_common_dynamicnotchnavbar_dynamicnotchnavbar",
-      "community": 15,
-      "community_name": "DynamicNotchNavbar.tsx",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "dynamicnotchnavbar()"
     },
     {
@@ -5481,8 +5481,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_common_floatingnavbar",
-      "community": 15,
-      "community_name": "DynamicNotchNavbar.tsx",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "floatingnavbar.tsx"
     },
     {
@@ -5494,8 +5494,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_floatingnavbar_navtab",
-      "community": 15,
-      "community_name": "DynamicNotchNavbar.tsx",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "navtab"
     },
     {
@@ -5507,8 +5507,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_floatingnavbar_floatingnavbarprops",
-      "community": 15,
-      "community_name": "DynamicNotchNavbar.tsx",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "floatingnavbarprops"
     },
     {
@@ -5519,8 +5519,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_common_floatingnavbar_sacredfluteicon",
-      "community": 15,
-      "community_name": "DynamicNotchNavbar.tsx",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "sacredfluteicon()"
     },
     {
@@ -5531,8 +5531,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_common_floatingnavbar_floatingnavbar",
-      "community": 15,
-      "community_name": "DynamicNotchNavbar.tsx",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "floatingnavbar()"
     },
     {
@@ -5613,8 +5613,8 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "src_components_common_iosactivityindicator_navigationprogress",
-      "community": 32,
-      "community_name": "SacredDatabase",
+      "community": 31,
+      "community_name": "IOSActivityIndicator.tsx",
       "norm_label": "navigationprogress"
     },
     {
@@ -5694,8 +5694,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_common_sacredlogo",
-      "community": 15,
-      "community_name": "DynamicNotchNavbar.tsx",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "sacredlogo.tsx"
     },
     {
@@ -5707,8 +5707,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_sacredlogo_sacredlogoprops",
-      "community": 15,
-      "community_name": "DynamicNotchNavbar.tsx",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "sacredlogoprops"
     },
     {
@@ -5719,8 +5719,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_common_sacredlogo_sacredlogo",
-      "community": 15,
-      "community_name": "DynamicNotchNavbar.tsx",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "sacredlogo()"
     },
     {
@@ -5730,8 +5730,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_common_saintsdirectorymodal",
-      "community": 32,
-      "community_name": "SacredDatabase",
+      "community": 31,
+      "community_name": "IOSActivityIndicator.tsx",
       "norm_label": "saintsdirectorymodal.tsx"
     },
     {
@@ -5743,8 +5743,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_saintsdirectorymodal_saintsdirectorymodalprops",
-      "community": 32,
-      "community_name": "SacredDatabase",
+      "community": 31,
+      "community_name": "IOSActivityIndicator.tsx",
       "norm_label": "saintsdirectorymodalprops"
     },
     {
@@ -5755,8 +5755,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_common_saintsdirectorymodal_saintsdirectorymodal",
-      "community": 32,
-      "community_name": "SacredDatabase",
+      "community": 31,
+      "community_name": "IOSActivityIndicator.tsx",
       "norm_label": "saintsdirectorymodal()"
     },
     {
@@ -5841,8 +5841,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_spotlightsearchmodal_spotlightsearchmodalprops",
-      "community": 25,
-      "community_name": "SpotlightSearchModal.tsx",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": "spotlightsearchmodalprops"
     },
     {
@@ -5864,8 +5864,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_common_topannouncementmarquee",
-      "community": 15,
-      "community_name": "DynamicNotchNavbar.tsx",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "topannouncementmarquee.tsx"
     },
     {
@@ -5877,8 +5877,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_topannouncementmarquee_topannouncementmarqueeprops",
-      "community": 15,
-      "community_name": "DynamicNotchNavbar.tsx",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "topannouncementmarqueeprops"
     },
     {
@@ -5890,8 +5890,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_topannouncementmarquee_marqueeitemdata",
-      "community": 15,
-      "community_name": "DynamicNotchNavbar.tsx",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "marqueeitemdata"
     },
     {
@@ -5902,8 +5902,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_common_topannouncementmarquee_topannouncementmarquee",
-      "community": 15,
-      "community_name": "DynamicNotchNavbar.tsx",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "topannouncementmarquee()"
     },
     {
@@ -5913,8 +5913,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_feed_emojitray",
-      "community": 48,
-      "community_name": "formatDevanagariNumerals",
+      "community": 5,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "emojitray.tsx"
     },
     {
@@ -5926,8 +5926,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_feed_emojitray_emojitrayprops",
-      "community": 48,
-      "community_name": "formatDevanagariNumerals",
+      "community": 5,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "emojitrayprops"
     },
     {
@@ -5938,8 +5938,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_feed_emojitray_emojitray",
-      "community": 48,
-      "community_name": "formatDevanagariNumerals",
+      "community": 5,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "emojitray()"
     },
     {
@@ -5949,8 +5949,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_feed_feedcard",
-      "community": 48,
-      "community_name": "formatDevanagariNumerals",
+      "community": 5,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "feedcard.tsx"
     },
     {
@@ -5963,7 +5963,7 @@
       "_origin": "ast",
       "id": "src_components_feed_feedcard_feedcardprops",
       "community": 4,
-      "community_name": "StaticFileCMSProvider.ts",
+      "community_name": "SacredPad",
       "norm_label": "feedcardprops"
     },
     {
@@ -5974,8 +5974,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_feed_feedcard_feedcard",
-      "community": 48,
-      "community_name": "formatDevanagariNumerals",
+      "community": 5,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "feedcard()"
     },
     {
@@ -6084,8 +6084,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_milestones_milestonesview_milestonesview",
-      "community": 18,
-      "community_name": "App",
+      "community": 16,
+      "community_name": "SacredDatabase",
       "norm_label": "milestonesview()"
     },
     {
@@ -6095,7 +6095,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_player_floatingaudioplayer",
-      "community": 215,
+      "community": 4,
       "community_name": "SacredPad",
       "norm_label": "floatingaudioplayer.tsx"
     },
@@ -6108,7 +6108,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_player_floatingaudioplayer_floatingaudioplayerprops",
-      "community": 215,
+      "community": 4,
       "community_name": "SacredPad",
       "norm_label": "floatingaudioplayerprops"
     },
@@ -6120,7 +6120,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_player_floatingaudioplayer_floatingaudioplayer",
-      "community": 215,
+      "community": 4,
       "community_name": "SacredPad",
       "norm_label": "floatingaudioplayer()"
     },
@@ -6131,8 +6131,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_reader_devotionalversepresenter",
-      "community": 21,
-      "community_name": "devotionalContentParser.ts",
+      "community": 5,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "devotionalversepresenter.tsx"
     },
     {
@@ -6144,8 +6144,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_reader_devotionalversepresenter_devotionalversepresenterprops",
-      "community": 21,
-      "community_name": "devotionalContentParser.ts",
+      "community": 5,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "devotionalversepresenterprops"
     },
     {
@@ -6156,8 +6156,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_reader_devotionalversepresenter_devotionalversepresenter",
-      "community": 21,
-      "community_name": "devotionalContentParser.ts",
+      "community": 5,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "devotionalversepresenter()"
     },
     {
@@ -6167,8 +6167,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_reader_inlinepurportcard",
-      "community": 2,
-      "community_name": "devotionalSummaryService.ts",
+      "community": 5,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "inlinepurportcard.tsx"
     },
     {
@@ -6180,8 +6180,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_reader_inlinepurportcard_inlinepurportcardprops",
-      "community": 2,
-      "community_name": "devotionalSummaryService.ts",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": "inlinepurportcardprops"
     },
     {
@@ -6192,8 +6192,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_reader_inlinepurportcard_inlinepurportcard",
-      "community": 2,
-      "community_name": "devotionalSummaryService.ts",
+      "community": 5,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "inlinepurportcard()"
     },
     {
@@ -6203,8 +6203,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_reader_mahagranthreader",
-      "community": 5,
-      "community_name": "PadavaliReader.tsx",
+      "community": 16,
+      "community_name": "SacredDatabase",
       "norm_label": "mahagranthreader.tsx"
     },
     {
@@ -6216,8 +6216,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_reader_mahagranthreader_mahagranthreaderprops",
-      "community": 5,
-      "community_name": "PadavaliReader.tsx",
+      "community": 16,
+      "community_name": "SacredDatabase",
       "norm_label": "mahagranthreaderprops"
     },
     {
@@ -6227,8 +6227,8 @@
       "source_location": "L33",
       "_origin": "ast",
       "id": "src_components_reader_mahagranthreader_epics",
-      "community": 5,
-      "community_name": "PadavaliReader.tsx",
+      "community": 16,
+      "community_name": "SacredDatabase",
       "norm_label": "epics"
     },
     {
@@ -6239,8 +6239,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_reader_mahagranthreader_mahagranthreader",
-      "community": 5,
-      "community_name": "PadavaliReader.tsx",
+      "community": 16,
+      "community_name": "SacredDatabase",
       "norm_label": "mahagranthreader()"
     },
     {
@@ -6360,8 +6360,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_reader_padavalireader_padavalireaderprops",
-      "community": 5,
-      "community_name": "PadavaliReader.tsx",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": "padavalireaderprops"
     },
     {
@@ -6458,8 +6458,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_reader_padavalireader_padavalireader",
-      "community": 5,
-      "community_name": "PadavaliReader.tsx",
+      "community": 16,
+      "community_name": "SacredDatabase",
       "norm_label": "padavalireader()"
     },
     {
@@ -6469,8 +6469,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_smaran_ashtayamatimelinedeck",
-      "community": 30,
-      "community_name": "SadhanaRingProgress.tsx",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "ashtayamatimelinedeck.tsx"
     },
     {
@@ -6481,8 +6481,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_smaran_ashtayamatimelinedeck_ashtayamatimelinedeck",
-      "community": 30,
-      "community_name": "SadhanaRingProgress.tsx",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "ashtayamatimelinedeck()"
     },
     {
@@ -6783,8 +6783,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_smaran_sadhanapillarmodal",
-      "community": 93,
-      "community_name": "SadhanaPillarModal.tsx",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "sadhanapillarmodal.tsx"
     },
     {
@@ -6796,8 +6796,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_smaran_sadhanapillarmodal_pillartype",
-      "community": 93,
-      "community_name": "SadhanaPillarModal.tsx",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "pillartype"
     },
     {
@@ -6809,8 +6809,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_smaran_sadhanapillarmodal_sadhanapillarmodalprops",
-      "community": 93,
-      "community_name": "SadhanaPillarModal.tsx",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "sadhanapillarmodalprops"
     },
     {
@@ -6821,8 +6821,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_smaran_sadhanapillarmodal_sadhanapillarmodal",
-      "community": 93,
-      "community_name": "SadhanaPillarModal.tsx",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "sadhanapillarmodal()"
     },
     {
@@ -6832,8 +6832,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_smaran_sadhanaringprogress",
-      "community": 30,
-      "community_name": "SadhanaRingProgress.tsx",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "sadhanaringprogress.tsx"
     },
     {
@@ -6845,8 +6845,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_smaran_sadhanaringprogress_sadhanaringprogressprops",
-      "community": 30,
-      "community_name": "SadhanaRingProgress.tsx",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "sadhanaringprogressprops"
     },
     {
@@ -6857,8 +6857,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_smaran_sadhanaringprogress_sadhanaringprogress",
-      "community": 30,
-      "community_name": "SadhanaRingProgress.tsx",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "sadhanaringprogress()"
     },
     {
@@ -6869,7 +6869,7 @@
       "_origin": "ast",
       "id": "src_data_feed",
       "community": 4,
-      "community_name": "StaticFileCMSProvider.ts",
+      "community_name": "SacredPad",
       "norm_label": "feed.ts"
     },
     {
@@ -6880,7 +6880,7 @@
       "_origin": "ast",
       "id": "src_data_feed_sacred_feed_posts",
       "community": 4,
-      "community_name": "StaticFileCMSProvider.ts",
+      "community_name": "SacredPad",
       "norm_label": "sacred_feed_posts"
     },
     {
@@ -6913,7 +6913,7 @@
       "_origin": "ast",
       "id": "src_entry_server",
       "community": 16,
-      "community_name": "entry-server.tsx",
+      "community_name": "SacredDatabase",
       "norm_label": "entry-server.tsx"
     },
     {
@@ -6924,7 +6924,7 @@
       "_origin": "ast",
       "id": "src_entry_server_catalog_padas_map",
       "community": 16,
-      "community_name": "entry-server.tsx",
+      "community_name": "SacredDatabase",
       "norm_label": "catalog_padas_map"
     },
     {
@@ -6936,7 +6936,7 @@
       "_origin": "ast",
       "id": "src_entry_server_ensuredatabaseprewarmed",
       "community": 16,
-      "community_name": "entry-server.tsx",
+      "community_name": "SacredDatabase",
       "norm_label": "ensuredatabaseprewarmed()"
     },
     {
@@ -6949,7 +6949,7 @@
       "_origin": "ast",
       "id": "src_entry_server_renderresult",
       "community": 16,
-      "community_name": "entry-server.tsx",
+      "community_name": "SacredDatabase",
       "norm_label": "renderresult"
     },
     {
@@ -6961,7 +6961,7 @@
       "_origin": "ast",
       "id": "src_entry_server_render",
       "community": 16,
-      "community_name": "entry-server.tsx",
+      "community_name": "SacredDatabase",
       "norm_label": "render()"
     },
     {
@@ -6971,8 +6971,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_hooks_usescrolldirection",
-      "community": 5,
-      "community_name": "PadavaliReader.tsx",
+      "community": 16,
+      "community_name": "SacredDatabase",
       "norm_label": "usescrolldirection.ts"
     },
     {
@@ -6984,8 +6984,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_hooks_usescrolldirection_scrolldirection",
-      "community": 5,
-      "community_name": "PadavaliReader.tsx",
+      "community": 16,
+      "community_name": "SacredDatabase",
       "norm_label": "scrolldirection"
     },
     {
@@ -6997,8 +6997,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_hooks_usescrolldirection_usescrolldirectionoptions",
-      "community": 5,
-      "community_name": "PadavaliReader.tsx",
+      "community": 16,
+      "community_name": "SacredDatabase",
       "norm_label": "usescrolldirectionoptions"
     },
     {
@@ -7010,8 +7010,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_hooks_usescrolldirection_scrolldirectionstate",
-      "community": 5,
-      "community_name": "PadavaliReader.tsx",
+      "community": 16,
+      "community_name": "SacredDatabase",
       "norm_label": "scrolldirectionstate"
     },
     {
@@ -7022,8 +7022,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_hooks_usescrolldirection_usescrolldirection",
-      "community": 5,
-      "community_name": "PadavaliReader.tsx",
+      "community": 16,
+      "community_name": "SacredDatabase",
       "norm_label": "usescrolldirection()"
     },
     {
@@ -7034,8 +7034,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_hooks_usescrolldirection_usetaptotoggle",
-      "community": 5,
-      "community_name": "PadavaliReader.tsx",
+      "community": 16,
+      "community_name": "SacredDatabase",
       "norm_label": "usetaptotoggle()"
     },
     {
@@ -7045,8 +7045,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_main",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 18,
+      "community_name": "App",
       "norm_label": "main.tsx"
     },
     {
@@ -7056,9 +7056,20 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "src_main_rootelement",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 18,
+      "community_name": "App",
       "norm_label": "rootelement"
+    },
+    {
+      "label": "seoPrerender",
+      "file_type": "code",
+      "source_file": "src/main.tsx",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "src_main_seoprerender",
+      "community": 18,
+      "community_name": "App",
+      "norm_label": "seoprerender"
     },
     {
       "label": "cacheService.ts",
@@ -7331,8 +7342,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_getfeedinteractionssync",
-      "community": 48,
-      "community_name": "formatDevanagariNumerals",
+      "community": 18,
+      "community_name": "App",
       "norm_label": "getfeedinteractionssync()"
     },
     {
@@ -7343,8 +7354,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_getfeedinteractions",
-      "community": 48,
-      "community_name": "formatDevanagariNumerals",
+      "community": 18,
+      "community_name": "App",
       "norm_label": "getfeedinteractions()"
     },
     {
@@ -7355,8 +7366,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_savefeedinteraction",
-      "community": 48,
-      "community_name": "formatDevanagariNumerals",
+      "community": 1,
+      "community_name": "cacheService.ts",
       "norm_label": "savefeedinteraction()"
     },
     {
@@ -7439,8 +7450,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_getcachedbookmarks",
-      "community": 5,
-      "community_name": "PadavaliReader.tsx",
+      "community": 16,
+      "community_name": "SacredDatabase",
       "norm_label": "getcachedbookmarks()"
     },
     {
@@ -7486,8 +7497,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_formatdevanagarinumerals",
-      "community": 48,
-      "community_name": "formatDevanagariNumerals",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "formatdevanagarinumerals()"
     },
     {
@@ -7498,8 +7509,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_computemantracount",
-      "community": 93,
-      "community_name": "SadhanaPillarModal.tsx",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "computemantracount()"
     },
     {
@@ -7510,8 +7521,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_computeprogresspercent",
-      "community": 48,
-      "community_name": "formatDevanagariNumerals",
+      "community": 1,
+      "community_name": "cacheService.ts",
       "norm_label": "computeprogresspercent()"
     },
     {
@@ -7522,8 +7533,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_computestreakstatus",
-      "community": 48,
-      "community_name": "formatDevanagariNumerals",
+      "community": 1,
+      "community_name": "cacheService.ts",
       "norm_label": "computestreakstatus()"
     },
     {
@@ -7547,8 +7558,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_computesadhanasummary",
-      "community": 48,
-      "community_name": "formatDevanagariNumerals",
+      "community": 1,
+      "community_name": "cacheService.ts",
       "norm_label": "computesadhanasummary()"
     },
     {
@@ -7559,8 +7570,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_computeashtayamaphase",
-      "community": 15,
-      "community_name": "DynamicNotchNavbar.tsx",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "computeashtayamaphase()"
     },
     {
@@ -7710,7 +7721,7 @@
       "_origin": "ast",
       "id": "src_services_cms_cmsprovider",
       "community": 4,
-      "community_name": "StaticFileCMSProvider.ts",
+      "community_name": "SacredPad",
       "norm_label": "cmsprovider.ts"
     },
     {
@@ -7722,8 +7733,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_services_cms_cmsprovider_icmsprovider",
-      "community": 19,
-      "community_name": "ICMSProvider",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": "icmsprovider"
     },
     {
@@ -7734,8 +7745,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_cmsprovider_icmsprovider_checkconnection",
-      "community": 19,
-      "community_name": "ICMSProvider",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": ".checkconnection()"
     },
     {
@@ -7746,7 +7757,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_cmsprovider_icmsprovider_getpadas",
-      "community": 215,
+      "community": 4,
       "community_name": "SacredPad",
       "norm_label": ".getpadas()"
     },
@@ -7758,8 +7769,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_cmsprovider_icmsprovider_getpadbyid",
-      "community": 19,
-      "community_name": "ICMSProvider",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": ".getpadbyid()"
     },
     {
@@ -7770,8 +7781,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_cmsprovider_icmsprovider_getgranthas",
-      "community": 25,
-      "community_name": "SpotlightSearchModal.tsx",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": ".getgranthas()"
     },
     {
@@ -7782,8 +7793,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_cmsprovider_icmsprovider_getsaints",
-      "community": 32,
-      "community_name": "SacredDatabase",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": ".getsaints()"
     },
     {
@@ -7795,7 +7806,7 @@
       "_origin": "ast",
       "id": "src_services_cms_cmsprovider_icmsprovider_getashtayamaschedule",
       "community": 4,
-      "community_name": "StaticFileCMSProvider.ts",
+      "community_name": "SacredPad",
       "norm_label": ".getashtayamaschedule()"
     },
     {
@@ -7807,7 +7818,7 @@
       "_origin": "ast",
       "id": "src_services_cms_cmsprovider_icmsprovider_getfeedposts",
       "community": 4,
-      "community_name": "StaticFileCMSProvider.ts",
+      "community_name": "SacredPad",
       "norm_label": ".getfeedposts()"
     },
     {
@@ -7819,7 +7830,7 @@
       "_origin": "ast",
       "id": "src_services_cms_cmsprovider_icmsprovider_savedraftpad",
       "community": 4,
-      "community_name": "StaticFileCMSProvider.ts",
+      "community_name": "SacredPad",
       "norm_label": ".savedraftpad()"
     },
     {
@@ -7830,8 +7841,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_cmsprovider_icmsprovider_publishpad",
-      "community": 19,
-      "community_name": "ICMSProvider",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": ".publishpad()"
     },
     {
@@ -7842,8 +7853,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_cmsprovider_icmsprovider_deletepad",
-      "community": 19,
-      "community_name": "ICMSProvider",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": ".deletepad()"
     },
     {
@@ -7854,8 +7865,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_cmsprovider_icmsprovider_exportmanifest",
-      "community": 19,
-      "community_name": "ICMSProvider",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": ".exportmanifest()"
     },
     {
@@ -7866,8 +7877,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_cmsprovider_icmsprovider_importmanifest",
-      "community": 19,
-      "community_name": "ICMSProvider",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": ".importmanifest()"
     },
     {
@@ -7878,7 +7889,7 @@
       "_origin": "ast",
       "id": "src_services_cms_headlessapicmsprovider",
       "community": 4,
-      "community_name": "StaticFileCMSProvider.ts",
+      "community_name": "SacredPad",
       "norm_label": "headlessapicmsprovider.ts"
     },
     {
@@ -7890,8 +7901,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_services_cms_headlessapicmsprovider_headlessapicmsprovider",
-      "community": 74,
-      "community_name": "HeadlessAPICMSProvider",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": "headlessapicmsprovider"
     },
     {
@@ -7902,8 +7913,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_headlessapicmsprovider_headlessapicmsprovider_constructor",
-      "community": 74,
-      "community_name": "HeadlessAPICMSProvider",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": ".constructor()"
     },
     {
@@ -7914,8 +7925,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_headlessapicmsprovider_headlessapicmsprovider_isconfigured",
-      "community": 74,
-      "community_name": "HeadlessAPICMSProvider",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": ".isconfigured()"
     },
     {
@@ -7926,8 +7937,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_headlessapicmsprovider_headlessapicmsprovider_checkconnection",
-      "community": 74,
-      "community_name": "HeadlessAPICMSProvider",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": ".checkconnection()"
     },
     {
@@ -7938,8 +7949,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_headlessapicmsprovider_headlessapicmsprovider_getpadas",
-      "community": 74,
-      "community_name": "HeadlessAPICMSProvider",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": ".getpadas()"
     },
     {
@@ -7950,8 +7961,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_headlessapicmsprovider_headlessapicmsprovider_getpadbyid",
-      "community": 74,
-      "community_name": "HeadlessAPICMSProvider",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": ".getpadbyid()"
     },
     {
@@ -7962,8 +7973,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_headlessapicmsprovider_headlessapicmsprovider_getgranthas",
-      "community": 74,
-      "community_name": "HeadlessAPICMSProvider",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": ".getgranthas()"
     },
     {
@@ -7974,8 +7985,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_headlessapicmsprovider_headlessapicmsprovider_getsaints",
-      "community": 74,
-      "community_name": "HeadlessAPICMSProvider",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": ".getsaints()"
     },
     {
@@ -7987,7 +7998,7 @@
       "_origin": "ast",
       "id": "src_services_cms_headlessapicmsprovider_headlessapicmsprovider_getashtayamaschedule",
       "community": 4,
-      "community_name": "StaticFileCMSProvider.ts",
+      "community_name": "SacredPad",
       "norm_label": ".getashtayamaschedule()"
     },
     {
@@ -7998,8 +8009,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_headlessapicmsprovider_headlessapicmsprovider_getfeedposts",
-      "community": 74,
-      "community_name": "HeadlessAPICMSProvider",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": ".getfeedposts()"
     },
     {
@@ -8010,8 +8021,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_headlessapicmsprovider_headlessapicmsprovider_savedraftpad",
-      "community": 74,
-      "community_name": "HeadlessAPICMSProvider",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": ".savedraftpad()"
     },
     {
@@ -8022,7 +8033,7 @@
       "_origin": "ast",
       "id": "src_services_cms_staticfilecmsprovider",
       "community": 4,
-      "community_name": "StaticFileCMSProvider.ts",
+      "community_name": "SacredPad",
       "norm_label": "staticfilecmsprovider.ts"
     },
     {
@@ -8034,8 +8045,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_services_cms_staticfilecmsprovider_staticfilecmsprovider",
-      "community": 32,
-      "community_name": "SacredDatabase",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": "staticfilecmsprovider"
     },
     {
@@ -8046,8 +8057,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_staticfilecmsprovider_staticfilecmsprovider_checkconnection",
-      "community": 32,
-      "community_name": "SacredDatabase",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": ".checkconnection()"
     },
     {
@@ -8058,7 +8069,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_staticfilecmsprovider_staticfilecmsprovider_getpadas",
-      "community": 215,
+      "community": 4,
       "community_name": "SacredPad",
       "norm_label": ".getpadas()"
     },
@@ -8070,8 +8081,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_staticfilecmsprovider_staticfilecmsprovider_getpadbyid",
-      "community": 32,
-      "community_name": "SacredDatabase",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": ".getpadbyid()"
     },
     {
@@ -8082,8 +8093,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_staticfilecmsprovider_staticfilecmsprovider_getgranthas",
-      "community": 32,
-      "community_name": "SacredDatabase",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": ".getgranthas()"
     },
     {
@@ -8094,8 +8105,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_staticfilecmsprovider_staticfilecmsprovider_getsaints",
-      "community": 32,
-      "community_name": "SacredDatabase",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": ".getsaints()"
     },
     {
@@ -8106,8 +8117,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_staticfilecmsprovider_staticfilecmsprovider_getashtayamaschedule",
-      "community": 15,
-      "community_name": "DynamicNotchNavbar.tsx",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": ".getashtayamaschedule()"
     },
     {
@@ -8119,7 +8130,7 @@
       "_origin": "ast",
       "id": "src_services_cms_staticfilecmsprovider_staticfilecmsprovider_getfeedposts",
       "community": 4,
-      "community_name": "StaticFileCMSProvider.ts",
+      "community_name": "SacredPad",
       "norm_label": ".getfeedposts()"
     },
     {
@@ -8130,8 +8141,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_staticfilecmsprovider_staticfilecmsprovider_exportmanifest",
-      "community": 32,
-      "community_name": "SacredDatabase",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": ".exportmanifest()"
     },
     {
@@ -8141,7 +8152,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_services_cms_index",
-      "community": 215,
+      "community": 4,
       "community_name": "SacredPad",
       "norm_label": "index.ts"
     },
@@ -8154,8 +8165,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_services_cms_index_cmsservice",
-      "community": 19,
-      "community_name": "ICMSProvider",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": "cmsservice"
     },
     {
@@ -8166,8 +8177,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_index_cmsservice_constructor",
-      "community": 19,
-      "community_name": "ICMSProvider",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": ".constructor()"
     },
     {
@@ -8178,8 +8189,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_index_cmsservice_getinstance",
-      "community": 19,
-      "community_name": "ICMSProvider",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": ".getinstance()"
     },
     {
@@ -8190,8 +8201,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_index_cmsservice_getactiveprovider",
-      "community": 19,
-      "community_name": "ICMSProvider",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": ".getactiveprovider()"
     },
     {
@@ -8202,8 +8213,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_index_cmsservice_setprovider",
-      "community": 19,
-      "community_name": "ICMSProvider",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": ".setprovider()"
     },
     {
@@ -8214,7 +8225,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_index_cmsservice_getpadas",
-      "community": 215,
+      "community": 4,
       "community_name": "SacredPad",
       "norm_label": ".getpadas()"
     },
@@ -8226,8 +8237,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_index_cmsservice_getpadbyid",
-      "community": 19,
-      "community_name": "ICMSProvider",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": ".getpadbyid()"
     },
     {
@@ -8238,8 +8249,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_index_cmsservice_getgranthas",
-      "community": 25,
-      "community_name": "SpotlightSearchModal.tsx",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": ".getgranthas()"
     },
     {
@@ -8250,8 +8261,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_index_cmsservice_getsaints",
-      "community": 19,
-      "community_name": "ICMSProvider",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": ".getsaints()"
     },
     {
@@ -8263,7 +8274,7 @@
       "_origin": "ast",
       "id": "src_services_cms_index_cmsservice_getashtayamaschedule",
       "community": 4,
-      "community_name": "StaticFileCMSProvider.ts",
+      "community_name": "SacredPad",
       "norm_label": ".getashtayamaschedule()"
     },
     {
@@ -8275,7 +8286,7 @@
       "_origin": "ast",
       "id": "src_services_cms_index_cmsservice_getfeedposts",
       "community": 4,
-      "community_name": "StaticFileCMSProvider.ts",
+      "community_name": "SacredPad",
       "norm_label": ".getfeedposts()"
     },
     {
@@ -8286,8 +8297,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_index_cmsservice_exportfullcmsmanifest",
-      "community": 19,
-      "community_name": "ICMSProvider",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": ".exportfullcmsmanifest()"
     },
     {
@@ -8298,8 +8309,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_index_cmsservice_downloadcmsmanifestfile",
-      "community": 19,
-      "community_name": "ICMSProvider",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": ".downloadcmsmanifestfile()"
     },
     {
@@ -8309,7 +8320,7 @@
       "source_location": "L97",
       "_origin": "ast",
       "id": "src_services_cms_index_cms",
-      "community": 215,
+      "community": 4,
       "community_name": "SacredPad",
       "norm_label": "cms"
     },
@@ -8681,8 +8692,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_devotionalsummaryservice_getcacheddevotionalsummarysync",
-      "community": 2,
-      "community_name": "devotionalSummaryService.ts",
+      "community": 5,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "getcacheddevotionalsummarysync()"
     },
     {
@@ -8717,8 +8728,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_devotionalsummaryservice_getdevotionalsummary",
-      "community": 2,
-      "community_name": "devotionalSummaryService.ts",
+      "community": 5,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "getdevotionalsummary()"
     },
     {
@@ -8788,8 +8799,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_sacreddatabase_getsupabase",
-      "community": 3,
-      "community_name": "sacredDatabase.ts",
+      "community": 144,
+      "community_name": "supabaseClient.ts",
       "norm_label": "getsupabase()"
     },
     {
@@ -8801,8 +8812,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_services_sacreddatabase_canonicalgrantha",
-      "community": 25,
-      "community_name": "SpotlightSearchModal.tsx",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": "canonicalgrantha"
     },
     {
@@ -8814,8 +8825,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_services_sacreddatabase_canonicalsaint",
-      "community": 32,
-      "community_name": "SacredDatabase",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": "canonicalsaint"
     },
     {
@@ -8853,8 +8864,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_services_sacreddatabase_ashtayamaperiod",
-      "community": 30,
-      "community_name": "SadhanaRingProgress.tsx",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "ashtayamaperiod"
     },
     {
@@ -8942,8 +8953,8 @@
       "source_location": "L131",
       "_origin": "ast",
       "id": "src_services_sacreddatabase_non_ragas",
-      "community": 3,
-      "community_name": "sacredDatabase.ts",
+      "community": 25,
+      "community_name": "SpotlightSearchModal.tsx",
       "norm_label": "non_ragas"
     },
     {
@@ -8965,8 +8976,8 @@
       "source_location": "L173",
       "_origin": "ast",
       "id": "src_services_sacreddatabase_sanitizesacredtext",
-      "community": 21,
-      "community_name": "devotionalContentParser.ts",
+      "community": 5,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "sanitizesacredtext"
     },
     {
@@ -8977,8 +8988,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_sacreddatabase_normalizecanonicalpad",
-      "community": 3,
-      "community_name": "sacredDatabase.ts",
+      "community": 25,
+      "community_name": "SpotlightSearchModal.tsx",
       "norm_label": "normalizecanonicalpad()"
     },
     {
@@ -9224,8 +9235,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_sacreddatabase_getorinitauthuserid",
-      "community": 3,
-      "community_name": "sacredDatabase.ts",
+      "community": 144,
+      "community_name": "supabaseClient.ts",
       "norm_label": "getorinitauthuserid()"
     },
     {
@@ -9235,7 +9246,7 @@
       "source_location": "L430",
       "_origin": "ast",
       "id": "src_services_sacreddatabase_sacreddatabase",
-      "community": 32,
+      "community": 16,
       "community_name": "SacredDatabase",
       "norm_label": "sacreddatabase"
     },
@@ -9247,8 +9258,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_sacreddatabase_mappadtoepicchapter",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 16,
+      "community_name": "SacredDatabase",
       "norm_label": "mappadtoepicchapter()"
     },
     {
@@ -9259,7 +9270,7 @@
       "_origin": "ast",
       "id": "src_services_seoservice",
       "community": 16,
-      "community_name": "entry-server.tsx",
+      "community_name": "SacredDatabase",
       "norm_label": "seoservice.ts"
     },
     {
@@ -9272,7 +9283,7 @@
       "_origin": "ast",
       "id": "src_services_seoservice_seoconfig",
       "community": 16,
-      "community_name": "entry-server.tsx",
+      "community_name": "SacredDatabase",
       "norm_label": "seoconfig"
     },
     {
@@ -9285,7 +9296,7 @@
       "_origin": "ast",
       "id": "src_services_seoservice_seometadataresult",
       "community": 16,
-      "community_name": "entry-server.tsx",
+      "community_name": "SacredDatabase",
       "norm_label": "seometadataresult"
     },
     {
@@ -9296,7 +9307,7 @@
       "_origin": "ast",
       "id": "src_services_seoservice_default_seo",
       "community": 16,
-      "community_name": "entry-server.tsx",
+      "community_name": "SacredDatabase",
       "norm_label": "default_seo"
     },
     {
@@ -9308,7 +9319,7 @@
       "_origin": "ast",
       "id": "src_services_seoservice_escapehtml",
       "community": 16,
-      "community_name": "entry-server.tsx",
+      "community_name": "SacredDatabase",
       "norm_label": "escapehtml()"
     },
     {
@@ -9320,7 +9331,7 @@
       "_origin": "ast",
       "id": "src_services_seoservice_generateseometadata",
       "community": 16,
-      "community_name": "entry-server.tsx",
+      "community_name": "SacredDatabase",
       "norm_label": "generateseometadata()"
     },
     {
@@ -9332,8 +9343,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_services_seoservice_seoservice",
-      "community": 16,
-      "community_name": "entry-server.tsx",
+      "community": 15,
+      "community_name": "SEOService",
       "norm_label": "seoservice"
     },
     {
@@ -9344,8 +9355,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_seoservice_seoservice_constructor",
-      "community": 16,
-      "community_name": "entry-server.tsx",
+      "community": 15,
+      "community_name": "SEOService",
       "norm_label": ".constructor()"
     },
     {
@@ -9356,8 +9367,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_seoservice_seoservice_getinstance",
-      "community": 16,
-      "community_name": "entry-server.tsx",
+      "community": 15,
+      "community_name": "SEOService",
       "norm_label": ".getinstance()"
     },
     {
@@ -9368,8 +9379,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_seoservice_seoservice_updateseo",
-      "community": 16,
-      "community_name": "entry-server.tsx",
+      "community": 15,
+      "community_name": "SEOService",
       "norm_label": ".updateseo()"
     },
     {
@@ -9380,8 +9391,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_seoservice_seoservice_setmetatag",
-      "community": 16,
-      "community_name": "entry-server.tsx",
+      "community": 15,
+      "community_name": "SEOService",
       "norm_label": ".setmetatag()"
     },
     {
@@ -9392,8 +9403,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_seoservice_seoservice_setcanonicallink",
-      "community": 16,
-      "community_name": "entry-server.tsx",
+      "community": 15,
+      "community_name": "SEOService",
       "norm_label": ".setcanonicallink()"
     },
     {
@@ -9404,7 +9415,7 @@
       "_origin": "ast",
       "id": "src_services_seoservice_seo",
       "community": 16,
-      "community_name": "entry-server.tsx",
+      "community_name": "SacredDatabase",
       "norm_label": "seo"
     },
     {
@@ -9534,7 +9545,7 @@
       "_origin": "ast",
       "id": "src_types_cms",
       "community": 4,
-      "community_name": "StaticFileCMSProvider.ts",
+      "community_name": "SacredPad",
       "norm_label": "cms.ts"
     },
     {
@@ -9547,7 +9558,7 @@
       "_origin": "ast",
       "id": "src_types_cms_cmscontentstatus",
       "community": 4,
-      "community_name": "StaticFileCMSProvider.ts",
+      "community_name": "SacredPad",
       "norm_label": "cmscontentstatus"
     },
     {
@@ -9560,7 +9571,7 @@
       "_origin": "ast",
       "id": "src_types_cms_cmsmetadata",
       "community": 4,
-      "community_name": "StaticFileCMSProvider.ts",
+      "community_name": "SacredPad",
       "norm_label": "cmsmetadata"
     },
     {
@@ -9573,7 +9584,7 @@
       "_origin": "ast",
       "id": "src_types_cms_cmspadentry",
       "community": 4,
-      "community_name": "StaticFileCMSProvider.ts",
+      "community_name": "SacredPad",
       "norm_label": "cmspadentry"
     },
     {
@@ -9585,8 +9596,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_types_cms_cmsgranthaentry",
-      "community": 25,
-      "community_name": "SpotlightSearchModal.tsx",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": "cmsgranthaentry"
     },
     {
@@ -9599,7 +9610,7 @@
       "_origin": "ast",
       "id": "src_types_cms_cmssaintentry",
       "community": 4,
-      "community_name": "StaticFileCMSProvider.ts",
+      "community_name": "SacredPad",
       "norm_label": "cmssaintentry"
     },
     {
@@ -9612,7 +9623,7 @@
       "_origin": "ast",
       "id": "src_types_cms_cmsfeedpostentry",
       "community": 4,
-      "community_name": "StaticFileCMSProvider.ts",
+      "community_name": "SacredPad",
       "norm_label": "cmsfeedpostentry"
     },
     {
@@ -9625,7 +9636,7 @@
       "_origin": "ast",
       "id": "src_types_cms_cmsashtayamaentry",
       "community": 4,
-      "community_name": "StaticFileCMSProvider.ts",
+      "community_name": "SacredPad",
       "norm_label": "cmsashtayamaentry"
     },
     {
@@ -9637,8 +9648,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_types_cms_cmsmanifest",
-      "community": 19,
-      "community_name": "ICMSProvider",
+      "community": 4,
+      "community_name": "SacredPad",
       "norm_label": "cmsmanifest"
     },
     {
@@ -9650,7 +9661,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_types_cms_cmsfilter",
-      "community": 215,
+      "community": 4,
       "community_name": "SacredPad",
       "norm_label": "cmsfilter"
     },
@@ -9674,7 +9685,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_types_devotional_sacredpad",
-      "community": 215,
+      "community": 4,
       "community_name": "SacredPad",
       "norm_label": "sacredpad"
     },
@@ -9740,7 +9751,7 @@
       "_origin": "ast",
       "id": "src_types_devotional_devotionalfeedpost",
       "community": 4,
-      "community_name": "StaticFileCMSProvider.ts",
+      "community_name": "SacredPad",
       "norm_label": "devotionalfeedpost"
     },
     {
@@ -9752,8 +9763,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_types_devotional_sadhanastate",
-      "community": 93,
-      "community_name": "SadhanaPillarModal.tsx",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "sadhanastate"
     },
     {
@@ -9831,7 +9842,7 @@
       "_origin": "ast",
       "id": "src_types_devotional_ashtayamaphaseinfo",
       "community": 4,
-      "community_name": "StaticFileCMSProvider.ts",
+      "community_name": "SacredPad",
       "norm_label": "ashtayamaphaseinfo"
     },
     {
@@ -9921,8 +9932,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_types_devotional_epicindexdata",
-      "community": 5,
-      "community_name": "PadavaliReader.tsx",
+      "community": 16,
+      "community_name": "SacredDatabase",
       "norm_label": "epicindexdata"
     },
     {
@@ -10086,8 +10097,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_utils_devotionalcontentparser_parsedevotionalcontent",
-      "community": 21,
-      "community_name": "devotionalContentParser.ts",
+      "community": 5,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "parsedevotionalcontent()"
     },
     {
@@ -12852,10 +12863,21 @@
       "norm_label": "trailingslash"
     },
     {
-      "label": "redirects",
+      "label": "headers",
       "file_type": "code",
       "source_file": "vercel.json",
       "source_location": "L5",
+      "_origin": "ast",
+      "id": "vercel_headers",
+      "community": 147,
+      "community_name": "vercel.json",
+      "norm_label": "headers"
+    },
+    {
+      "label": "redirects",
+      "file_type": "code",
+      "source_file": "vercel.json",
+      "source_location": "L16",
       "_origin": "ast",
       "id": "vercel_redirects",
       "community": 147,
@@ -20904,7 +20926,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "functions/[[path]].ts",
-      "source_location": "L1314",
+      "source_location": "L1324",
       "weight": 1.0,
       "_origin": "ast",
       "source": "functions_path_onrequest",
@@ -20916,7 +20938,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "functions/[[path]].ts",
-      "source_location": "L1345",
+      "source_location": "L1357",
       "weight": 1.0,
       "_origin": "ast",
       "source": "functions_path_onrequest",
@@ -20929,7 +20951,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "functions/[[path]].ts",
-      "source_location": "L641",
+      "source_location": "L651",
       "weight": 1.0,
       "_origin": "ast",
       "source": "functions_path_onrequest",
@@ -20941,7 +20963,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "functions/[[path]].ts",
-      "source_location": "L839",
+      "source_location": "L849",
       "weight": 1.0,
       "_origin": "ast",
       "source": "functions_path_onrequest",
@@ -20952,7 +20974,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "functions/[[path]].ts",
-      "source_location": "L670",
+      "source_location": "L680",
       "weight": 1.0,
       "_origin": "ast",
       "source": "functions_path_onrequest",
@@ -20964,7 +20986,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "functions/[[path]].ts",
-      "source_location": "L890",
+      "source_location": "L900",
       "weight": 1.0,
       "_origin": "ast",
       "source": "functions_path_onrequest",
@@ -20976,7 +20998,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "functions/[[path]].ts",
-      "source_location": "L417",
+      "source_location": "L427",
       "weight": 1.0,
       "_origin": "ast",
       "source": "functions_path_onrequest",
@@ -20988,7 +21010,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "functions/[[path]].ts",
-      "source_location": "L638",
+      "source_location": "L648",
       "weight": 1.0,
       "_origin": "ast",
       "source": "functions_path_onrequest",
@@ -31515,6 +31537,17 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "src/main.tsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_main",
+      "target": "src_main_seoprerender",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "src/services/cacheService.ts",
       "source_location": "L218",
       "weight": 1.0,
@@ -41340,6 +41373,17 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "vercel",
+      "target": "vercel_headers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "vercel.json",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "vercel",
       "target": "vercel_redirects",
       "confidence_score": 1.0
     },
@@ -47879,5 +47923,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "78cd2be9d8b0ce10c26724ead2ed4885771db80c"
+  "built_at_commit": "7692494d335ba025552637a5eafa0a66b013cbc4"
 }

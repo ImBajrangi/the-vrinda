@@ -359,7 +359,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   const url = new URL(request.url);
 
   const host = url.hostname;
-  const isStaging = host.endsWith('.pages.dev');
+  const isStaging = host.endsWith('.pages.dev') || host.includes('vercel.app');
   const isPathDomain = host === 'path.vrindopnishad.in' || host.startsWith('path.');
   const isApexOrWww = host === 'vrindopnishad.in' || host === 'www.vrindopnishad.in';
   const pathname = url.pathname.replace(/\/+$/, '') || '/';
@@ -379,6 +379,17 @@ export const onRequest: PagesFunction<Env> = async (context) => {
 
   // 2. Dynamic Robots.txt routing per domain (bhav vs path vs staging)
   if (pathname === '/robots.txt') {
+    if (isStaging) {
+      return new Response('# Staging & Preview Environments - Do Not Index\nUser-agent: *\nDisallow: /\n', {
+        status: 200,
+        headers: {
+          'Content-Type': 'text/plain; charset=UTF-8',
+          'Cache-Control': 'no-store, no-cache, must-revalidate',
+          'X-Robots-Tag': 'noindex, nofollow',
+        },
+      });
+    }
+
     const sitemapUrl = isPathDomain
       ? 'https://path.vrindopnishad.in/sitemap.xml'
       : 'https://bhav.vrindopnishad.in/sitemap.xml';
@@ -399,7 +410,6 @@ export const onRequest: PagesFunction<Env> = async (context) => {
       headers: {
         'Content-Type': 'text/plain; charset=UTF-8',
         'Cache-Control': 'public, max-age=86400, s-maxage=604800, stale-while-revalidate=86400',
-        ...(isStaging ? { 'X-Robots-Tag': 'noindex, nofollow' } : {}),
       },
     });
   }
@@ -1327,9 +1337,11 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     rewriter = rewriter.on('meta[name="keywords"]', new ElementAttributeModifier('content', customKeywords));
   }
 
-  // If this deep-link did not hit a pre-rendered static HTML file, inject semantic article into #root
+  // If this deep-link did not hit a pre-rendered static HTML file, inject semantic article into #seo-prerender & #root
   if (dynamicRootHtml) {
-    rewriter = rewriter.on('#root', new ElementHtmlModifier(dynamicRootHtml));
+    rewriter = rewriter
+      .on('#seo-prerender', new ElementHtmlModifier(dynamicRootHtml))
+      .on('#root', new ElementHtmlModifier(dynamicRootHtml));
   }
 
   if (isStaging) {
