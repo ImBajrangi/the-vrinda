@@ -200,6 +200,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
   const [searchQuery, setSearchQuery] = useState(selectedSearchQuery || '');
   const [loadingGranthaId, setLoadingGranthaId] = useState<string | null>(null);
+  const [loadingAuthor, setLoadingAuthor] = useState<boolean>(false);
   const [loadingPadId, setLoadingPadId] = useState<string | null>(null);
   const [selectedGrantha, setSelectedGrantha] = useState<string>(
     selectedGranthaId || getReaderStateSync().selectedTradition || 'all'
@@ -551,14 +552,19 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
         setGranthaCategory('authors');
         setSelectedChapter('all');
         setSelectedRaga('all');
-        SacredDatabase.ensureAuthorPadasLoaded(selectedAuthorProp).then((loaded) => {
-          setAllPadas([...SacredDatabase.getAllPadas()]);
-          if (loaded && loaded.length > 0) {
-            setSelectedPad(loaded[0]);
-            setActiveScrollerVerseId(loaded[0].id);
-            if (onExternalSelectPad) onExternalSelectPad(loaded[0]);
-          }
-        });
+        setLoadingAuthor(true);
+        SacredDatabase.ensureAuthorPadasLoaded(selectedAuthorProp)
+          .then((loaded) => {
+            setAllPadas([...SacredDatabase.getAllPadas()]);
+            if (loaded && loaded.length > 0) {
+              setSelectedPad(loaded[0]);
+              setActiveScrollerVerseId(loaded[0].id);
+              if (onExternalSelectPad) onExternalSelectPad(loaded[0]);
+            }
+          })
+          .finally(() => {
+            setLoadingAuthor(false);
+          });
       }
     }
   }, [selectedAuthorProp, onExternalSelectPad]);
@@ -1206,6 +1212,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     setSelectedRaga('all');
     setVisibleCount(30);
     if (authorName) {
+      setLoadingAuthor(true);
       try {
         const loaded = await SacredDatabase.ensureAuthorPadasLoaded(authorName);
         setAllPadas([...SacredDatabase.getAllPadas()]);
@@ -1215,6 +1222,8 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
         }
       } catch (err) {
         console.warn('Failed to load author compositions:', err);
+      } finally {
+        setLoadingAuthor(false);
       }
     }
     requestAnimationFrame(() => navigationProgress.done());
@@ -1326,6 +1335,20 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
     // Step 2: Instant fast-path if no search query and no raga filter (0ms cold path)
     if (!q && selectedRaga === 'all') {
+      return baseList;
+    }
+
+    // Defensive check: If query matches author name, do not filter out the author's own padas
+    const isRedundantAuthorQuery = Boolean(
+      selectedAuthor &&
+      q &&
+      (
+        selectedAuthor.toLowerCase().includes(q) ||
+        q.includes(selectedAuthor.toLowerCase().replace(/\(.*?\)/g, '').trim())
+      )
+    );
+
+    if (isRedundantAuthorQuery && selectedRaga === 'all') {
       return baseList;
     }
 
@@ -2747,11 +2770,11 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               {/* Continuous Stream of Verses */}
               <div className="space-y-6 sm:space-y-8">
                 {filteredPads.length === 0 ? (
-                  loadingGranthaId ? (
+                  (loadingGranthaId || loadingAuthor) ? (
                     <div className="py-20 text-center space-y-3">
                       <IOSSpinner size="md" theme="amber" />
                       <p className="font-serif font-bold text-base text-neutral-700">
-                        पावन ग्रंथ पाठ संकलित हो रहा है...
+                        पावन वाणी पाठ संकलित हो रहा है...
                       </p>
                     </div>
                   ) : (
@@ -3080,7 +3103,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
               {/* Verses Stanza Block */}
               <div className="space-y-6 sm:space-y-8">
-                {loadingGranthaId || (loadingPadId && (!selectedPad?.verses || selectedPad.verses.length === 0)) || !selectedPad?.verses || selectedPad.verses.length === 0 ? (
+                {loadingGranthaId || loadingAuthor || (loadingPadId && (!selectedPad?.verses || selectedPad.verses.length === 0)) || !selectedPad?.verses || selectedPad.verses.length === 0 ? (
                   <div className="py-24 px-6 flex flex-col items-center justify-center text-center space-y-3 select-none">
                     <IOSSpinner size="lg" theme="amber" />
                     <p className="font-serif font-bold text-base sm:text-lg text-[#18181B]">

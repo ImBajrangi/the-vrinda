@@ -300,11 +300,6 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
     if (typeof window !== 'undefined') {
       try {
         const params = new URLSearchParams(window.location.search);
-        const authorParam = params.get('author');
-        if (authorParam) {
-          const saint = SacredDatabase.getSaintBySlugOrName(authorParam);
-          return saint ? saint.name : authorParam;
-        }
         const q = params.get('q');
         if (q) return q;
       } catch {}
@@ -598,7 +593,7 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
     navigationProgress.start();
     setSelectedGranthaFilter('all');
     setSelectedAuthor(authorName);
-    setReaderSearchQuery(authorName);
+    setReaderSearchQuery('');
     setActiveTab('padavali');
 
     if (typeof window !== 'undefined') {
