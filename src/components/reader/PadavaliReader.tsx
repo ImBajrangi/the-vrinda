@@ -1529,7 +1529,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   }, [drawerMode, allGranthas, hierarchyAuthors, displayedSidebarPads]);
 
   return (
-    <div className="w-full pb-44 md:pb-32 pt-0 sm:pt-4 px-1 sm:px-0">
+    <div className="w-full pb-24 sm:pb-28 md:pb-20 pt-0 sm:pt-4 px-1 sm:px-0">
       {/* Mobile-Optimized Reader Header: 1-Tap Drawer, Auto-Hiding Chrome */}
       <MobileReaderHeader
         scriptureTitle={

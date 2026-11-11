@@ -37,11 +37,17 @@ export function useScrollDirection(options: UseScrollDirectionOptions = {}): Scr
   const lastScrollY = useRef(0);
   const ticking = useRef(false);
   const lastDirection = useRef<ScrollDirection>('idle');
+  const idleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const update = useCallback(() => {
     const currentY = window.scrollY;
     const delta = currentY - lastScrollY.current;
     const isNearTop = currentY < 80;
+
+    // Check if user has reached the bottom of the page
+    const windowHeight = window.innerHeight;
+    const documentHeight = typeof document !== 'undefined' ? document.documentElement.scrollHeight : 0;
+    const isNearBottom = documentHeight > 0 && windowHeight + currentY >= documentHeight - 90;
 
     let direction: ScrollDirection = lastDirection.current;
 
@@ -51,11 +57,20 @@ export function useScrollDirection(options: UseScrollDirectionOptions = {}): Scr
       lastDirection.current = direction;
     }
 
-    // Always show chrome near top of page, or when scrolling up
-    const showChrome = !enabled || isNearTop || direction === 'up' || direction === 'idle';
+    // Always show chrome near top of page, near bottom of page, or when scrolling up
+    const showChrome = !enabled || isNearTop || isNearBottom || direction === 'up' || direction === 'idle';
 
     setState({ direction, showChrome, scrollY: currentY, isNearTop });
     ticking.current = false;
+
+    // Reset to idle / visible chrome after 2.5s of reading inactivity
+    if (idleTimer.current) clearTimeout(idleTimer.current);
+    if (!showChrome) {
+      idleTimer.current = setTimeout(() => {
+        lastDirection.current = 'idle';
+        setState((prev) => ({ ...prev, direction: 'idle', showChrome: true }));
+      }, 2500);
+    }
   }, [threshold, enabled]);
 
   useEffect(() => {
@@ -73,7 +88,10 @@ export function useScrollDirection(options: UseScrollDirectionOptions = {}): Scr
 
     // Passive listener: zero performance overhead on scroll
     window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (idleTimer.current) clearTimeout(idleTimer.current);
+    };
   }, [update, enabled]);
 
   return state;
