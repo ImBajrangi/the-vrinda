@@ -809,21 +809,34 @@ export const SacredDatabase = {
     if (!epicIndex) return [];
 
     const decChapterId = decodeURIComponent(chapterId).trim().toLowerCase();
-    const chapterMeta =
-      epicIndex.chapters.find((c) => {
-        const decCId = decodeURIComponent(c.id).toLowerCase();
-        const decCName = decodeURIComponent(c.name).toLowerCase();
-        return (
-          c.id === chapterId ||
-          decCId === decChapterId ||
-          c.name === chapterId ||
-          decCName === decChapterId ||
-          decCId.includes(decChapterId) ||
-          decChapterId.includes(decCId) ||
-          decCName.includes(decChapterId) ||
-          decChapterId.includes(decCName)
-        );
-      }) || epicIndex.chapters[0];
+    
+    // 1. Exact match by id or decoded id
+    let chapterMeta = epicIndex.chapters.find(
+      (c) => c.id === chapterId || decodeURIComponent(c.id).toLowerCase() === decChapterId
+    );
+
+    // 2. Exact match by name or decoded name
+    if (!chapterMeta) {
+      chapterMeta = epicIndex.chapters.find(
+        (c) => c.name === chapterId || decodeURIComponent(c.name).toLowerCase() === decChapterId
+      );
+    }
+
+    // 3. Exact chapter number match
+    if (!chapterMeta) {
+      const numMatch = decChapterId.match(/\d+/g);
+      if (numMatch) {
+        const targetNum = numMatch[numMatch.length - 1];
+        chapterMeta = epicIndex.chapters.find((c) => {
+          const cNums = decodeURIComponent(c.id).toLowerCase().match(/\d+/g);
+          return cNums && cNums[cNums.length - 1] === targetNum;
+        });
+      }
+    }
+
+    if (!chapterMeta) {
+      chapterMeta = epicIndex.chapters[0];
+    }
     if (!chapterMeta) return [];
 
     const inFlightKey = `${granthaId}:${chapterMeta.id}`;

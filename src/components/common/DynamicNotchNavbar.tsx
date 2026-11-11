@@ -5,7 +5,6 @@ import {
   Trophy,
   Play,
   Pause,
-  Flame,
   Search,
   Menu,
   X,
@@ -41,7 +40,7 @@ interface DynamicNotchNavbarProps {
 export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
   activeTab,
   onSelectTab,
-  streakDays = 1,
+  streakDays: _streakDays = 1,
   isPlayingAudio = false,
   currentTrackTitle = 'Hit Chaurasi Pad 01',
   onToggleAudio,
@@ -180,7 +179,6 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
       id: 'milestones',
       label: 'साधना सोपान',
       sublabel: 'Devotion • अखंड निष्ठा',
-      badge: `🔥 ${streakDays}d`,
       icon: Trophy,
     },
   ];
@@ -358,18 +356,6 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
                   {isPlayingAudio ? 'Playing' : 'Audio'}
                 </button>
               </div>
-
-              {/* Devotion Streak Badge: Visible on >= 480px so compact mobile screens never clip */}
-              <button
-                type="button"
-                onClick={() => handleSelectNav('milestones')}
-                aria-label={`Devotion Streak: ${streakDays} days`}
-                title="View Devotion Streaks & Milestones"
-                className="hidden min-[480px]:flex items-center gap-1 px-2.5 h-8 rounded-full bg-[#FFFDF9] text-xs font-bold text-amber-950 hover:bg-amber-50 transition-colors cursor-pointer shrink-0"
-              >
-                <Flame className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
-                <span className="font-mono text-xs font-bold">{streakDays}d</span>
-              </button>
 
               {/* Mobile Menu Hamburger Button (< md only): Styled in matching porcelain white with generous padding */}
               <button

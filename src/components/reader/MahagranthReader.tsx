@@ -218,19 +218,27 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
           let targetChapter = idx.chapters[0].id;
           if (initialChapterId) {
             const decInit = decodeURIComponent(initialChapterId).trim().toLowerCase();
-            const found = idx.chapters.find((c) => {
-              const decId = decodeURIComponent(c.id).toLowerCase();
-              const decName = decodeURIComponent(c.name).toLowerCase();
-              return (
-                c.id === initialChapterId ||
-                decId === decInit ||
-                c.name === initialChapterId ||
-                decName === decInit ||
-                decId.includes(decInit) ||
-                decInit.includes(decId) ||
-                decName.includes(decInit)
+            // 1. Exact match by id or decoded id
+            let found = idx.chapters.find(
+              (c) => c.id === initialChapterId || decodeURIComponent(c.id).toLowerCase() === decInit
+            );
+            // 2. Exact match by name or decoded name
+            if (!found) {
+              found = idx.chapters.find(
+                (c) => c.name === initialChapterId || decodeURIComponent(c.name).toLowerCase() === decInit
               );
-            });
+            }
+            // 3. Exact chapter number match
+            if (!found) {
+              const numMatch = decInit.match(/\d+/g);
+              if (numMatch) {
+                const targetNum = numMatch[numMatch.length - 1];
+                found = idx.chapters.find((c) => {
+                  const cNums = decodeURIComponent(c.id).toLowerCase().match(/\d+/g);
+                  return cNums && cNums[cNums.length - 1] === targetNum;
+                });
+              }
+            }
             if (found) {
               targetChapter = found.id;
             }
@@ -322,14 +330,30 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
   const currentChapter = useMemo(() => {
     if (!epicIndex) return null;
     const decSel = decodeURIComponent(selectedChapterId).trim().toLowerCase();
-    return (
-      epicIndex.chapters.find((c) => {
-        const decId = decodeURIComponent(c.id).toLowerCase();
-        return c.id === selectedChapterId || decId === decSel || decId.includes(decSel) || decSel.includes(decId);
-      }) ||
-      epicIndex.chapters[0] ||
-      null
+
+    // 1. Exact ID match (case-sensitive or lowercase decoded)
+    let matched = epicIndex.chapters.find(
+      (c) => c.id === selectedChapterId || decodeURIComponent(c.id).toLowerCase() === decSel
     );
+    // 2. Exact Name match
+    if (!matched) {
+      matched = epicIndex.chapters.find(
+        (c) => c.name === selectedChapterId || decodeURIComponent(c.name).toLowerCase() === decSel
+      );
+    }
+    // 3. Exact chapter number match
+    if (!matched) {
+      const numMatch = decSel.match(/\d+/g);
+      if (numMatch) {
+        const targetNum = numMatch[numMatch.length - 1];
+        matched = epicIndex.chapters.find((c) => {
+          const cNums = decodeURIComponent(c.id).toLowerCase().match(/\d+/g);
+          return cNums && cNums[cNums.length - 1] === targetNum;
+        });
+      }
+    }
+
+    return matched || epicIndex.chapters[0] || null;
   }, [epicIndex, selectedChapterId]);
 
   // Real-time Dynamic Epic & Chapter SEO synchronization
