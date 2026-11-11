@@ -170,13 +170,15 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
   useEffect(() => {
     if (isOpen && selectedId) {
       const activeItem = items.find((it) => it.id === selectedId);
-      if (activeItem && activeItem.section) {
+      // For epic chapters, section is the Kanda (e.g. बालकाण्ड, अयोध्याकाण्ड)
+      // For padas, do not lock the drawer to a single author unless the user explicitly filters
+      if (activeItem && activeItem.section && activeCategory !== 'padas') {
         setSelectedSection(activeItem.section);
       } else {
         setSelectedSection(null);
       }
     }
-  }, [isOpen, selectedId, items]);
+  }, [isOpen, selectedId, items, activeCategory]);
 
   // Filter items by search query AND section
   const filteredItems = useMemo(() => {

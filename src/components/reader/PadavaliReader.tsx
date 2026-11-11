@@ -1642,13 +1642,18 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
         type: 'pada' as const,
       }));
     }
-    return displayedSidebarPads.slice(0, 150).map((p, idx) => ({
+    const currentGranthaId = selectedGrantha !== 'all' ? selectedGrantha : selectedPad?.collectionId;
+    const padasToDisplay = currentGranthaId && currentGranthaId !== 'all'
+      ? SacredDatabase.getPadasByGrantha(currentGranthaId)
+      : (displayedSidebarPads.length > 0 ? displayedSidebarPads : filteredPads);
+
+    return padasToDisplay.slice(0, 400).map((p, idx) => ({
       id: p.id,
-      name: `${idx + 1}. ${p.titleDevanagari}`,
+      name: `${p.index ? p.index : idx + 1}. ${p.titleDevanagari}`,
       section: p.author,
       type: 'pada' as const,
     }));
-  }, [drawerMode, allGranthas, hierarchyAuthors, displayedSidebarPads]);
+  }, [drawerMode, allGranthas, hierarchyAuthors, displayedSidebarPads, filteredPads, selectedGrantha, selectedPad?.collectionId, allPadas]);
 
   return (
     <div className="w-full pb-20 sm:pb-24 md:pb-16 pt-0 sm:pt-4 px-1 sm:px-0">
@@ -1668,7 +1673,14 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             ? `पद ${currentIdx + 1}`
             : undefined
         }
-        onOpenSelector={() => setIsMobileDrawerOpen(true)}
+        onOpenSelector={() => {
+          const targetCol = selectedPad?.collectionId;
+          if (targetCol && selectedGrantha === 'all') {
+            setSelectedGrantha(targetCol);
+            SacredDatabase.fetchGranthaPadas(targetCol);
+          }
+          setIsMobileDrawerOpen(true);
+        }}
         onToggleAppearance={handleToggleSettings}
         isAppearanceOpen={isSettingsOpen}
         isPlayingAudio={isPlaying && activePlayingPadId === selectedPad.id}
@@ -1691,7 +1703,16 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
         }
         subtitle={`${mobileDrawerItems.length} उपलब्ध`}
         categories={[
-          { id: 'padas', label: `पद (${displayedSidebarPads.length || filteredPads.length})` },
+          {
+            id: 'padas',
+            label: `पद (${
+              (selectedGrantha !== 'all'
+                ? SacredDatabase.getPadasByGrantha(selectedGrantha).length
+                : (selectedPad?.collectionId
+                  ? SacredDatabase.getPadasByGrantha(selectedPad.collectionId).length
+                  : displayedSidebarPads.length)) || filteredPads.length
+            })`,
+          },
           { id: 'granthas', label: `ग्रंथ (${allGranthas.length})` },
           { id: 'authors', label: `संत (${hierarchyAuthors.length})` },
         ]}

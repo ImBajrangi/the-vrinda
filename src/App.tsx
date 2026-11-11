@@ -287,6 +287,7 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
   const [currentPad, setCurrentPad] = useState<SacredPad | null>(() => {
     const padIdToFind =
       initialPadId ||
+      initialRoute.pad ||
       (typeof window !== 'undefined'
         ? new URLSearchParams(window.location.search).get('pad') || undefined
         : undefined);
@@ -1511,6 +1512,7 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
                   selectedPadId={currentPad?.id}
                   initialPadId={
                     initialPadId ||
+                    initialRoute.pad ||
                     (typeof window !== 'undefined'
                       ? new URLSearchParams(window.location.search).get('pad') || undefined
                       : undefined)
