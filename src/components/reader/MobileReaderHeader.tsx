@@ -44,45 +44,38 @@ export const MobileReaderHeader: React.FC<MobileReaderHeaderProps> = ({
   onToggleAudio,
   hasAudio = true,
   onOpenSearch,
-  isVisible: _isVisible = true,
+  isVisible = true,
 }) => {
   return (
-    <div className="md:hidden sticky top-0 z-30 w-full mb-3 select-none bg-white border-b border-stone-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.03)] pt-[max(0.35rem,env(safe-area-inset-top,0.35rem))]">
-      <div className="w-full px-2.5 py-1.5 flex items-center justify-between gap-2">
-        {/* Left: Table of Contents / Back Button */}
-        <div className="flex items-center shrink-0">
-          {onBack ? (
-            <button
-              type="button"
-              onClick={onBack}
-              className="w-8 h-8 rounded-full flex items-center justify-center text-stone-600 hover:text-stone-900 active:bg-stone-100 transition-colors cursor-pointer"
-              title="पीछे जाएँ (Back)"
-              aria-label="Back"
-            >
-              <ArrowLeft className="w-4 h-4" />
-            </button>
-          ) : (
-            <button
-              type="button"
-              onClick={onOpenSelector}
-              className="h-8 px-2.5 rounded-full flex items-center gap-1.5 text-amber-900 active:bg-amber-100/60 bg-[#FAF8F5] border border-amber-900/10 transition-colors cursor-pointer text-xs font-serif font-bold shadow-2xs"
-              title="ग्रंथ व पद सूची खोलें"
-              aria-label="Table of Contents"
-            >
-              <BookOpen className="w-3.5 h-3.5 text-amber-800" />
-              <span className="hidden min-[360px]:inline">सूची</span>
-            </button>
-          )}
-        </div>
+    <div
+      className={`md:hidden sticky top-0 z-30 w-full mb-3 select-none bg-white border-b border-stone-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.03)] pt-[max(0.35rem,env(safe-area-inset-top,0.35rem))] transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] will-change-transform ${
+        isVisible ? 'translate-y-0 opacity-100 pointer-events-auto' : '-translate-y-full opacity-0 pointer-events-none'
+      }`}
+    >
+      <div className="w-full px-2.5 py-1.5 flex items-center justify-between gap-1.5">
+        {/* Left: Back button if present in nested navigation */}
+        {onBack && (
+          <button
+            type="button"
+            onClick={onBack}
+            className="w-8 h-8 rounded-full flex items-center justify-center text-stone-600 hover:text-stone-900 active:bg-stone-100 transition-colors cursor-pointer shrink-0 touch-manipulation"
+            title="पीछे जाएँ (Back)"
+            aria-label="Back"
+          >
+            <ArrowLeft className="w-4 h-4" />
+          </button>
+        )}
 
-        {/* Center: Tap to open Scripture / Chapter Bottom Sheet */}
+        {/* Center: Unified iOS Reader Pill (Book Icon + Scripture + Chapter + Chevron) */}
         <button
           type="button"
           onClick={onOpenSelector}
-          className="flex-1 min-w-0 max-w-[250px] mx-auto px-2.5 py-1.5 rounded-full bg-[#FAF8F5] border border-amber-900/10 active:bg-amber-100/60 flex items-center justify-center gap-1.5 transition-colors cursor-pointer select-none shadow-2xs overflow-hidden"
-          title="ग्रंथ व अध्याय सूची खोलें"
+          className="flex-1 min-w-0 px-3 py-1.5 rounded-full bg-[#FAF8F5] border border-amber-900/10 active:bg-amber-100/60 flex items-center justify-start min-[360px]:justify-center gap-1.5 transition-colors cursor-pointer select-none shadow-2xs overflow-hidden touch-manipulation"
+          title="ग्रंथ व पद/अध्याय सूची खोलें"
+          aria-label="Table of Contents and Chapter Selection"
         >
-          <span className="font-serif font-bold text-xs text-stone-900 truncate min-w-0">
+          <BookOpen className="w-3.5 h-3.5 text-amber-800 shrink-0" />
+          <span className="font-serif font-bold text-xs text-stone-900 truncate shrink-0 max-w-[120px] min-[360px]:max-w-[150px] min-[400px]:max-w-[180px]">
             {scriptureTitle}
           </span>
           {chapterTitle && (
@@ -93,7 +86,7 @@ export const MobileReaderHeader: React.FC<MobileReaderHeaderProps> = ({
               </span>
             </>
           )}
-          <ChevronDown className="w-3.5 h-3.5 text-amber-800 shrink-0 opacity-70" />
+          <ChevronDown className="w-3.5 h-3.5 text-amber-800 shrink-0 opacity-70 ml-auto min-[360px]:ml-0" />
         </button>
 
         {/* Right: Quick Reader Actions */}

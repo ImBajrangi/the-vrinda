@@ -1091,7 +1091,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
           </div>
 
           {/* Reading Stream */}
-          {loadingGranthaId || loadingChapter ? (
+          {loadingGranthaId || (loadingChapter && chapterPadas.length === 0) ? (
             <div className="py-24 px-6 flex flex-col items-center justify-center text-center space-y-3 select-none">
               <IOSSpinner size="md" theme="amber" />
               <p className="font-serif font-bold text-base sm:text-lg text-neutral-800">
@@ -1102,7 +1102,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
               </p>
             </div>
           ) : (
-            <div className="space-y-6">
+            <div className={`space-y-6 transition-opacity duration-200 ${loadingChapter ? 'opacity-50 pointer-events-none' : 'opacity-100'}`}>
               {chapterPadas.map((pad, idx) => {
                 const isBookmarked = bookmarkedIds.includes(pad.id);
                 const isPurportOpen = activePurportId === pad.id;

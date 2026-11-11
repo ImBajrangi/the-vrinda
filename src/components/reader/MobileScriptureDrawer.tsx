@@ -282,7 +282,7 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
       */}
       <div
         ref={backdropRef}
-        className="fixed inset-0 bg-black/40 transition-opacity duration-200"
+        className="fixed inset-0 bg-black/40 transition-opacity duration-200 animate-[nativeBackdropFade_200ms_ease-out]"
         onClick={handleDismiss}
         aria-hidden="true"
       />
@@ -494,6 +494,14 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
       </div>
 
       <style>{`
+        @keyframes nativeBackdropFade {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
         @keyframes nativeSheetUp {
           from {
             transform: translate3d(0, 100%, 0);
