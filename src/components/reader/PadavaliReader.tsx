@@ -2786,9 +2786,9 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                         }`}
                       >
                         {/* Verse Header Line */}
-                        <div className={`flex items-center justify-between pb-3 mb-4 border-b ${currentTheme.borderColor} gap-2 flex-wrap`}>
-                          <div className="flex items-center gap-2 flex-wrap">
-                            <span className={`px-2.5 py-0.5 rounded-full text-xs font-mono font-bold transition-colors ${
+                        <div className={`flex items-center justify-between pb-2.5 mb-3.5 border-b ${currentTheme.borderColor} gap-2 flex-nowrap`}>
+                          <div className="flex items-center gap-1.5 sm:gap-2 min-w-0 truncate">
+                            <span className={`px-2.5 py-0.5 rounded-full text-xs font-mono font-bold transition-colors shrink-0 ${
                               selectedPad.id === pad.id
                                 ? 'bg-[#FEF08A] text-[#78350F] border border-amber-300/60 shadow-2xs'
                                 : 'bg-amber-100/40 text-amber-900 border border-amber-200/40'
@@ -2796,15 +2796,15 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                               ॥ पद {pIdx + 1} ॥
                             </span>
                             {selectedGrantha === 'all' && (
-                              <span className="text-[11px] font-serif font-bold text-amber-900 bg-amber-100/70 px-2.5 py-0.5 rounded-full border border-amber-300/60">
+                              <span className="text-[11px] font-serif font-bold text-amber-900 bg-amber-100/70 px-2.5 py-0.5 rounded-full border border-amber-300/60 hidden sm:inline truncate">
                                 {allGranthas.find((g) => g.id === pad.collectionId)?.name || pad.collectionId}
                               </span>
                             )}
-                            <span className={`text-xs font-serif font-bold ${currentTheme.titleColor}`}>
+                            <span className={`text-xs font-serif font-bold ${currentTheme.titleColor} truncate`}>
                               {pad.author}
                             </span>
                             {pad.rag && (
-                              <span className="text-[11px] text-[#B45309] font-mono">
+                              <span className="text-[11px] text-[#B45309] font-mono hidden sm:inline shrink-0">
                                 • राग {pad.rag}
                               </span>
                             )}

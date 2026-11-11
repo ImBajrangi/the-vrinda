@@ -1118,8 +1118,8 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                     }`}
                   >
                     {/* Verse Meta Header */}
-                    <div className="flex items-center justify-between pb-3 border-b border-amber-900/10 gap-2 flex-wrap text-xs">
-                      <div className="flex items-center gap-2 flex-wrap">
+                    <div className="flex items-center justify-between pb-2.5 border-b border-amber-900/10 gap-2 flex-nowrap text-xs">
+                      <div className="flex items-center gap-2 min-w-0">
                         <span className={`px-2.5 py-0.5 rounded-[6px] font-serif font-bold text-xs transition-colors shrink-0 ${
                           isActive
                             ? 'bg-[#FEF08A] text-[#78350F] border border-amber-300/60 shadow-2xs'
@@ -1127,7 +1127,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                         }`}>
                           ॥ {currentEpicConfig.verseTerm} {formatDevanagariNumerals(idx + 1)} ॥
                         </span>
-                        <span className="font-serif font-semibold text-neutral-800 text-xs sm:text-sm">
+                        <span className="font-serif font-semibold text-neutral-800 text-xs sm:text-sm hidden sm:inline truncate max-w-xs">
                           {pad.titleDevanagari}
                         </span>
                       </div>

@@ -24,17 +24,15 @@ interface MobileScriptureDrawerProps {
 }
 
 /**
- * Native Mobile Bottom Sheet Drawer.
+ * World-Class Mobile Bottom Sheet Drawer.
  *
- * Uses React Portal to mount directly into document.body.
- *
- * Features:
- * - 0% background blur (crisp darkened overlay, zero GPU blur lag)
- * - Fluid 1:1 gesture tracking with native-grade swipe-down dismissal
- * - Works anywhere in the header/search/tabs AND overscroll pull-down from top of list
- * - Dynamic backdrop fade synchronized with drag distance
- * - Safe area padding for iOS home indicator and Android navigation bars
- * - Concentric nested border radii
+ * Implements Apple Human Interface Guidelines and Google Material 3 standards:
+ * - 0% background blur (crisp, zero GPU load, perfectly sharp background text)
+ * - 1:1 fluid touch tracking with momentum swipe-down to dismiss
+ * - Full-surface drag detection + overscroll pull-down from list top
+ * - Synchronized real-time backdrop opacity fading
+ * - Strict concentric border radius geometry (Outer 32px -> Inner 14px / 12px)
+ * - True safe-area-inset-bottom clearance for notchless gestures
  */
 export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
   isOpen,
@@ -99,7 +97,6 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
       setSearchQuery('');
       document.body.style.overflow = 'hidden';
 
-      // Reset transforms when opened
       requestAnimationFrame(() => {
         if (sheetRef.current) {
           sheetRef.current.style.transform = '';
@@ -118,13 +115,11 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
     };
   }, [isOpen, isRendered, handleDismiss]);
 
-  // Keyboard navigation (Escape to dismiss)
+  // Escape key handler
   useEffect(() => {
     if (!isOpen) return;
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        handleDismiss();
-      }
+      if (e.key === 'Escape') handleDismiss();
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
@@ -155,7 +150,7 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
       })
     : items;
 
-  // Swipe-down touch handlers with full-surface drag support
+  // Swipe-down touch handlers with full-surface drag detection
   const handleTouchStart = useCallback(
     (e: React.TouchEvent) => {
       if (isDismissing.current) return;
@@ -169,8 +164,6 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
       isListTouch.current = isInScrollList;
 
       if (!isInScrollList) {
-        // Tapping in grab handle, header, tabs, search row starts drag immediately
-        // Exception: allow typing in the search input
         if (target.tagName.toLowerCase() === 'input') {
           isDragging.current = false;
         } else {
@@ -191,14 +184,13 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
     currentY.current = touch.clientY;
     const deltaY = currentY.current - startY.current;
 
-    // Check if user is pulling down from top of scroll list
+    // Pulling down from top of scroll list initiates drag-to-dismiss
     if (isListTouch.current && !isDragging.current) {
       const scrollEl = scrollContainerRef.current;
       const isAtTop = !scrollEl || scrollEl.scrollTop <= 0;
       if (isAtTop && deltaY > 8) {
-        // Switch into drawer drag mode
         isDragging.current = true;
-        startY.current = touch.clientY; // Anchor smooth drag from 0
+        startY.current = touch.clientY;
         if (sheetRef.current) sheetRef.current.style.transition = 'none';
         if (backdropRef.current) backdropRef.current.style.transition = 'none';
       }
@@ -214,7 +206,6 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
         backdropRef.current.style.opacity = String(Math.max(0, 1 - progress));
       }
     } else {
-      // Gentle rubber-band resistance when pulling up
       const resistance = Math.max(-10, deltaY * 0.1);
       sheetRef.current.style.transform = `translate3d(0, ${resistance}px, 0)`;
     }
@@ -232,13 +223,11 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
     const elapsed = Math.max(1, Date.now() - startTime.current);
     const velocity = deltaY / elapsed;
 
-    // Dismiss if pulled down > 55px OR flicked downward (> 0.22 px/ms)
     const shouldDismiss = deltaY > 55 || (deltaY > 15 && velocity > 0.22);
 
     if (shouldDismiss) {
       handleDismiss();
     } else {
-      // Snap back smoothly with iOS spring curve
       sheetRef.current.style.transition = 'transform 220ms cubic-bezier(0.25, 1, 0.5, 1)';
       sheetRef.current.style.transform = 'translate3d(0, 0, 0)';
 
@@ -273,8 +262,7 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
   const content = (
     <div className="fixed inset-0 z-[100] pointer-events-auto flex flex-col justify-end">
       {/* 
-        Crisp Native Tint Backdrop:
-        NO backdrop-blur (zero blur, zero GPU lag, 100% sharp scripture behind).
+        Crisp Dark Scrim Backdrop (0% GPU blur, 100% sharp scripture behind)
       */}
       <div
         ref={backdropRef}
@@ -284,41 +272,41 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
       />
 
       {/* 
-        Native Bottom Sheet Canvas:
-        Stuck strictly to bottom-0 of the real viewport.
-        Concentric Radius: outer rounded-t-[28px], inner items rounded-[12px].
+        Native Bottom Sheet Canvas
+        Concentric Geometry: Outer rounded-t-[32px] -> Inner items rounded-[14px]
       */}
       <div
         ref={sheetRef}
-        className="relative z-10 w-full max-h-[85dvh] sm:max-h-[80dvh] bg-white rounded-t-[28px] shadow-[0_-12px_48px_rgba(0,0,0,0.22)] flex flex-col overflow-hidden will-change-transform animate-[nativeSheetUp_240ms_cubic-bezier(0.32,0.72,0,1)]"
+        className="relative z-10 w-full max-h-[85dvh] sm:max-h-[80dvh] bg-white rounded-t-[32px] shadow-[0_-12px_48px_rgba(0,0,0,0.18)] border-t border-stone-200/50 flex flex-col overflow-hidden will-change-transform animate-[nativeSheetUp_240ms_cubic-bezier(0.32,0.72,0,1)]"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
         onTouchCancel={handleTouchEnd}
       >
-        {/* Dedicated Grab Handle & Header Zone */}
-        <div className="select-none shrink-0 bg-white border-b border-neutral-100 touch-none">
-          {/* iOS Grab Capsule Handle (Generous touch target) */}
-          <div className="w-full flex items-center justify-center pt-2.5 pb-1 cursor-grab active:cursor-grabbing">
-            <div className="w-12 h-1.5 rounded-full bg-neutral-300" />
+        {/* Top Drag Zone (Grab Capsule + Title Bar) */}
+        <div className="select-none shrink-0 bg-white border-b border-stone-100 touch-none">
+          {/* iOS Grab Capsule Handle */}
+          <div className="w-full flex items-center justify-center pt-2.5 pb-1.5 cursor-grab active:cursor-grabbing">
+            <div className="w-10 h-1 rounded-full bg-stone-300/80" />
           </div>
 
           {/* Header Row */}
-          <div className="flex items-center justify-between px-5 pt-1 pb-3">
+          <div className="flex items-center justify-between px-5 pt-0.5 pb-3">
             <div className="min-w-0 flex-1 pr-3">
-              <h3 className="font-serif font-bold text-base text-neutral-900 leading-tight truncate">
+              <h3 className="font-serif font-bold text-[17px] text-stone-900 leading-snug truncate">
                 {title}
               </h3>
               {subtitle && (
-                <p className="text-[11px] text-neutral-500 font-serif font-medium mt-0.5 truncate">
-                  {subtitle}
+                <p className="text-[11.5px] text-amber-800 font-serif font-medium mt-0.5 truncate flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" />
+                  <span>{subtitle}</span>
                 </p>
               )}
             </div>
             <button
               type="button"
               onClick={handleDismiss}
-              className="w-7 h-7 rounded-full bg-neutral-100 active:bg-neutral-200 flex items-center justify-center text-neutral-500 hover:text-neutral-900 cursor-pointer transition-colors shrink-0"
+              className="w-7 h-7 rounded-full bg-stone-100 active:bg-stone-200 text-stone-500 hover:text-stone-900 flex items-center justify-center cursor-pointer transition-colors shrink-0"
               aria-label="Close"
             >
               <X className="w-3.5 h-3.5" />
@@ -326,23 +314,23 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
           </div>
         </div>
 
-        {/* Spotlight Search Box */}
+        {/* Search Box */}
         <div className="px-5 pt-3 pb-2 shrink-0 bg-white">
-          <div className="relative flex items-center w-full h-10 px-3.5 rounded-[12px] bg-[#F4F4F5] border border-neutral-200/60 focus-within:bg-white focus-within:border-amber-400 focus-within:ring-2 focus-within:ring-amber-500/15 transition-all duration-150">
-            <Search className="w-4 h-4 text-neutral-400 shrink-0 pointer-events-none" />
+          <div className="relative flex items-center w-full h-10 px-3.5 rounded-[14px] bg-[#F4F4F5] border border-stone-200/70 focus-within:bg-white focus-within:border-amber-400 focus-within:ring-2 focus-within:ring-amber-500/15 transition-all duration-150">
+            <Search className="w-4 h-4 text-stone-400 shrink-0 pointer-events-none" />
             <input
               ref={searchInputRef}
               type="text"
-              placeholder="खोजें... (Search)"
+              placeholder="खोजें... (Search sarga, adhyaya, saint)"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-2.5 pr-6 bg-transparent text-xs sm:text-sm text-neutral-900 placeholder:text-neutral-400 outline-none border-none focus:outline-none focus:ring-0 select-text"
+              className="w-full pl-2.5 pr-6 bg-transparent text-xs sm:text-sm text-stone-900 placeholder:text-stone-400 outline-none border-none focus:outline-none focus:ring-0 select-text"
             />
             {searchQuery && (
               <button
                 type="button"
                 onClick={() => setSearchQuery('')}
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 p-0.5 text-neutral-400 hover:text-neutral-700 rounded-full cursor-pointer"
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 p-0.5 text-stone-400 hover:text-stone-700 rounded-full cursor-pointer"
                 aria-label="Clear search"
               >
                 <X className="w-3.5 h-3.5" />
@@ -351,9 +339,9 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
           </div>
         </div>
 
-        {/* Category Horizontal Filter Strip (if available) */}
+        {/* Category Horizontal Filter Strip */}
         {categories && categories.length > 0 && (
-          <div className="px-5 pb-2.5 shrink-0 bg-white border-b border-neutral-100">
+          <div className="px-5 pb-2.5 shrink-0 bg-white border-b border-stone-100">
             <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
               {categories.map((cat) => {
                 const isActive = activeCategory === cat.id;
@@ -364,8 +352,8 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
                     onClick={() => onCategoryChange?.(cat.id)}
                     className={`h-8 px-3.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer select-none shrink-0 ${
                       isActive
-                        ? 'bg-[#FEF08A] text-[#18181B] font-bold shadow-2xs'
-                        : 'bg-neutral-100 text-neutral-600 active:bg-neutral-200'
+                        ? 'bg-[#FEF08A] text-[#78350F] font-bold shadow-xs border border-amber-300/60'
+                        : 'bg-stone-100 text-stone-600 active:bg-stone-200 border border-stone-200/40'
                     }`}
                   >
                     {cat.label}
@@ -383,8 +371,8 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
         >
           {filteredItems.length === 0 ? (
             <div className="py-14 text-center select-none">
-              <p className="text-sm font-serif font-bold text-neutral-500">कोई परिणाम नहीं मिला</p>
-              <p className="text-xs text-neutral-400 mt-1">कृपया अन्य शब्द से खोजें</p>
+              <p className="text-sm font-serif font-bold text-stone-500">कोई परिणाम नहीं मिला</p>
+              <p className="text-xs text-stone-400 mt-1">कृपया अन्य शब्द से खोजें</p>
             </div>
           ) : (
             filteredItems.map((item) => {
@@ -395,49 +383,50 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
                   type="button"
                   data-selected={isSelected}
                   onClick={() => handleSelect(item.id)}
-                  className={`w-full text-left min-h-[46px] px-3.5 py-2.5 rounded-[12px] flex items-center justify-between gap-3 transition-colors cursor-pointer select-none ${
+                  className={`w-full text-left min-h-[48px] px-3.5 py-2.5 rounded-[14px] flex items-center justify-between gap-3 transition-colors cursor-pointer select-none ${
                     isSelected
-                      ? 'bg-[#FEF9C3] border border-amber-300/80 text-neutral-900 shadow-2xs'
-                      : 'hover:bg-neutral-50 active:bg-neutral-100 border border-transparent text-neutral-800'
+                      ? 'bg-[#FEF9C3] border border-amber-300/80 text-stone-900 shadow-2xs'
+                      : 'hover:bg-stone-50 active:bg-stone-100 border border-transparent text-stone-800'
                   }`}
                 >
-                  <div className="min-w-0 flex-1">
-                    <div className="flex items-center gap-2">
+                  <div className="min-w-0 flex-1 flex items-center gap-2.5">
+                    <div
+                      className={`w-7 h-7 rounded-[9px] flex items-center justify-center shrink-0 transition-colors ${
+                        isSelected
+                          ? 'bg-[#FEF08A] text-[#78350F]'
+                          : 'bg-stone-100 text-stone-500'
+                      }`}
+                    >
                       {item.type === 'grantha' ? (
-                        <BookOpen
-                          className={`w-3.5 h-3.5 shrink-0 ${
-                            isSelected ? 'text-amber-700' : 'text-neutral-400'
-                          }`}
-                        />
+                        <BookOpen className="w-3.5 h-3.5" />
                       ) : (
-                        <Feather
-                          className={`w-3.5 h-3.5 shrink-0 ${
-                            isSelected ? 'text-amber-700' : 'text-neutral-400'
-                          }`}
-                        />
+                        <Feather className="w-3.5 h-3.5" />
                       )}
+                    </div>
+
+                    <div className="min-w-0 flex-1">
                       <span
-                        className={`font-serif text-xs sm:text-sm truncate ${
-                          isSelected ? 'font-bold text-neutral-900' : 'font-medium'
+                        className={`font-serif text-[13.5px] leading-snug block truncate ${
+                          isSelected ? 'font-bold text-[#78350F]' : 'font-medium text-stone-900'
                         }`}
                       >
                         {item.name}
                       </span>
+                      {item.section && (
+                        <span className="text-[10.5px] text-stone-500 font-sans font-medium block truncate mt-0.5">
+                          {item.section}
+                        </span>
+                      )}
                     </div>
-                    {item.section && (
-                      <span className="text-[10px] text-neutral-400 font-serif font-medium mt-0.5 pl-5.5 block truncate">
-                        {item.section}
-                      </span>
-                    )}
                   </div>
 
                   <div className="flex items-center gap-2 shrink-0">
                     {item.count !== undefined && (
                       <span
-                        className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-full ${
+                        className={`text-[10.5px] font-mono font-bold px-2 py-0.5 rounded-full ${
                           isSelected
-                            ? 'bg-amber-200/60 text-amber-900'
-                            : 'bg-neutral-100 text-neutral-500'
+                            ? 'bg-amber-200/80 text-amber-950'
+                            : 'bg-stone-100 text-stone-600'
                         }`}
                       >
                         {item.count}
@@ -445,7 +434,7 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
                     )}
                     <ChevronRight
                       className={`w-3.5 h-3.5 ${
-                        isSelected ? 'text-amber-700' : 'text-neutral-300'
+                        isSelected ? 'text-amber-800' : 'text-stone-300'
                       }`}
                     />
                   </div>
