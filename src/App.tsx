@@ -822,7 +822,7 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
           - Tablet (768px - 1024px): max-w-4xl with balanced gutters
           - Desktop (1024px+): max-w-6xl xl:max-w-7xl
       */}
-      <div className={`w-full max-w-full overflow-x-hidden md:max-w-5xl xl:max-w-7xl min-h-screen relative px-3 sm:px-6 lg:px-8 ${isReaderTab ? 'pt-2 sm:pt-28 lg:pt-32 pb-6 md:pb-16' : 'pt-20 sm:pt-28 lg:pt-32 pb-36 md:pb-24'} box-border`}>
+      <div className={`w-full max-w-full overflow-x-clip md:max-w-5xl xl:max-w-7xl min-h-screen relative px-3 sm:px-6 lg:px-8 ${isReaderTab ? 'pt-2 sm:pt-28 lg:pt-32 pb-6 md:pb-16' : 'pt-20 sm:pt-28 lg:pt-32 pb-36 md:pb-24'} box-border`}>
         {/* Dynamic Top Announcement Marquee Ticker (Smoothly slides away on mobile reader tabs) */}
         <TopAnnouncementMarquee
           isScrolled={isScrolled}
@@ -852,7 +852,7 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
         />
 
         {/* Main Tab Content with Instant Keep-Alive Architecture */}
-        <main className="w-full max-w-full overflow-x-hidden">
+        <main className="w-full max-w-full overflow-x-clip">
           {/* Tab 1: Smaran (Dashboard) - Adaptive 3-Column on Desktop (xl:), 2-Column on Tablet, 1-Column on Mobile */}
           {visitedTabs.has('smaran') && (
             <div

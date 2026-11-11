@@ -1097,7 +1097,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
         {/* ========================================================================= */}
         {/* Right Column: Dedicated Epic Commentary Desk (Desktop: hidden xl:block)   */}
         {/* ========================================================================= */}
-        <aside className="hidden xl:block xl:col-span-3 space-y-4 sticky top-24 self-start">
+        <aside className="hidden xl:block xl:col-span-3 space-y-4 sticky top-24 self-start max-h-[calc(100vh-7.5rem)] overflow-y-auto custom-scroll">
           <div className="rounded-3xl border border-amber-900/10 bg-[#FAF8F5] p-5 shadow-xs transition-colors duration-300">
             {/* Header */}
             <div className="flex items-center justify-between pb-3 mb-3 border-b border-amber-900/10">

@@ -2760,6 +2760,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                                 fontSize={fontSize}
                                 textAlignClass={textAlignClass}
                                 currentTheme={currentTheme}
+                                hideToolbar={true}
                               />
                               {pad.verses.length > 1 && (
                                 <div className="flex items-center justify-center my-3 select-none">
@@ -3046,6 +3047,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                           fontSize={fontSize}
                           textAlignClass={textAlignClass}
                           currentTheme={currentTheme}
+                          hideToolbar={true}
                         />
 
                         {/* Simple Dignified Delimiter */}
@@ -3221,7 +3223,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
         {/* Right Column: Dedicated Desktop Commentary Desk (Visible on xl:block)     */}
         {/* ========================================================================= */}
         {!isFocusReadingMode && (
-          <aside className="hidden xl:block xl:col-span-3 space-y-4 sticky top-24 self-start">
+          <aside className="hidden xl:block xl:col-span-3 space-y-4 sticky top-24 self-start max-h-[calc(100vh-7.5rem)] overflow-y-auto custom-scroll">
             <div className={`${currentTheme.commentaryBg} rounded-3xl p-5 border ${currentTheme.borderColor} shadow-xs transition-colors duration-300`}>
               <div className={`flex items-center gap-2 pb-3 mb-3 border-b ${currentTheme.borderColor}`}>
                 <div className="w-7 h-7 rounded-lg bg-[#FAF7F0] flex items-center justify-center text-[#CA8A04]">

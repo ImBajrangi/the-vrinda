@@ -29,6 +29,7 @@ export const DevotionalVersePresenter: React.FC<DevotionalVersePresenterProps> =
   lines,
   fontClass,
   fontSize,
+  textAlignClass: textAlignClassProp,
   currentTheme,
   hideToolbar = false,
 }) => {
@@ -82,7 +83,12 @@ export const DevotionalVersePresenter: React.FC<DevotionalVersePresenterProps> =
           ? 'text-[23px] sm:text-[25px] leading-[2.3]'
           : 'text-[26px] sm:text-[28px] leading-[2.4]';
 
-  const textAlignClass = alignment === 'center' ? 'text-center' : 'text-left';
+  const textAlignClass =
+    hideToolbar && textAlignClassProp
+      ? textAlignClassProp
+      : alignment === 'center'
+        ? 'text-center'
+        : 'text-left';
 
   return (
     <div className="space-y-4 py-1 select-text">
@@ -235,7 +241,7 @@ export const DevotionalVersePresenter: React.FC<DevotionalVersePresenterProps> =
                 title="टैप करके इस चरण पर एकाग्रता पाठ करें"
               >
                 {/* Floating Stanza Numeral Badge */}
-                {unit.stanzaNumber && (
+                {!hideToolbar && unit.stanzaNumber && (
                   <span
                     className={`inline-block mb-1 px-2 py-0.5 rounded-full text-[10px] font-mono font-bold transition-colors select-none ${isFocused
                         ? 'bg-[#FEF08A] text-[#78350F]'
