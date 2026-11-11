@@ -66,6 +66,7 @@ interface PadavaliReaderProps {
   onSelectAuthor?: (author: string | null) => void;
   onSelectPad?: (pad: SacredPad) => void;
   onSwitchToMahagranth?: () => void;
+  onOpenSearch?: () => void;
 }
 
 type ReaderTheme = 'ivory' | 'mint' | 'chandan';
@@ -185,6 +186,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   onSelectAuthor: onSelectAuthorProp,
   onSelectPad: onExternalSelectPad,
   onSwitchToMahagranth: _onSwitchToMahagranth,
+  onOpenSearch,
 }) => {
   const [allPadas, setAllPadas] = useState<SacredPad[]>(() => SacredDatabase.getAllPadas());
   const allGranthas = useMemo(() => SacredDatabase.getAllPadavaliGranthas(), []);
@@ -1550,7 +1552,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
         isPlayingAudio={isPlaying && activePlayingPadId === selectedPad.id}
         onToggleAudio={() => onPlayPad(selectedPad)}
         hasAudio={true}
-        onOpenSearch={() => setIsGlossaryOpen(true)}
+        onOpenSearch={onOpenSearch}
         isVisible={showChrome}
       />
 

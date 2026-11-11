@@ -1395,6 +1395,7 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
                   }
                 }}
                 onSwitchToPadavali={() => handleTabSwitch('padavali')}
+                onOpenSearch={() => setIsSpotlightOpen(true)}
               />
             </Suspense>
             </div>
@@ -1432,6 +1433,7 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
                       : undefined)
                   }
                   onSwitchToMahagranth={() => handleTabSwitch('granthas')}
+                  onOpenSearch={() => setIsSpotlightOpen(true)}
                 />
               </Suspense>
             </div>

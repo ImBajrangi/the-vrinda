@@ -116,11 +116,10 @@ export const MobileReaderHeader: React.FC<MobileReaderHeaderProps> = ({
             <button
               type="button"
               onClick={onToggleAudio}
-              className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors cursor-pointer ${
-                isPlayingAudio
+              className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors cursor-pointer ${isPlayingAudio
                   ? 'bg-[#FEF08A] text-[#78350F] shadow-2xs'
                   : 'text-stone-600 hover:text-stone-900 active:bg-stone-100'
-              }`}
+                }`}
               title={isPlayingAudio ? 'ऑडियो रोकें' : 'पाठ श्रवण करें'}
               aria-label="Toggle Audio"
             >
@@ -137,11 +136,10 @@ export const MobileReaderHeader: React.FC<MobileReaderHeaderProps> = ({
             <button
               type="button"
               onClick={onToggleAppearance}
-              className={`h-8 px-2.5 rounded-full flex items-center justify-center text-xs font-serif font-bold transition-colors cursor-pointer select-none border ${
-                isAppearanceOpen
+              className={`h-8 px-2.5 rounded-full flex items-center justify-center text-xs font-serif font-bold transition-colors cursor-pointer select-none border ${isAppearanceOpen
                   ? 'bg-[#FEF08A] text-[#78350F] border-amber-300 shadow-2xs'
                   : 'bg-[#FAF8F5] text-stone-700 hover:text-stone-900 active:bg-stone-100 border-stone-200/80'
-              }`}
+                }`}
               title="अक्षर व परिवेश (Typography & Themes)"
               aria-label="Typography and Themes"
             >

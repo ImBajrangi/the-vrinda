@@ -31,6 +31,7 @@ interface MahagranthReaderProps {
   initialVerseId?: string;
   onSelectGrantha?: (granthaId: string) => void;
   onSwitchToPadavali?: () => void;
+  onOpenSearch?: () => void;
 }
 
 const EPICS = [
@@ -122,6 +123,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
   initialVerseId,
   onSelectGrantha,
   onSwitchToPadavali: _onSwitchToPadavali,
+  onOpenSearch,
 }) => {
   const [selectedGranthaId, setSelectedGranthaId] = useState<string>(initialGranthaId);
   const [loadingGranthaId, setLoadingGranthaId] = useState<string | null>(null);
@@ -610,6 +612,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
         onToggleAppearance={() =>
           setFontSize((prev) => (prev === 'sm' ? 'md' : prev === 'md' ? 'lg' : 'sm'))
         }
+        onOpenSearch={onOpenSearch}
         isVisible={showChrome}
         hasAudio={false}
       />
