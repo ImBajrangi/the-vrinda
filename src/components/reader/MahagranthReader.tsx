@@ -1206,7 +1206,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
           )}
 
           {/* Sequential Chapter Transition Footer */}
-          <div className="mt-10 pt-6 border-t border-neutral-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="mt-12 pt-6 border-t border-stone-200/60 grid grid-cols-1 sm:grid-cols-2 gap-3 select-none">
             {prevChapter ? (
               <a
                 href={`/?tab=granthas&grantha=${encodeURIComponent(selectedGranthaId)}&chapter=${encodeURIComponent(prevChapter.id)}`}
@@ -1216,12 +1216,15 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                     handleSelectChapter(prevChapter.id);
                   }
                 }}
-                className="px-4 py-2.5 rounded-[8px] bg-neutral-100 hover:bg-neutral-200 text-xs font-bold text-neutral-800 flex items-center gap-2 cursor-pointer transition-colors shadow-2xs no-underline"
+                className="p-3.5 rounded-[14px] bg-stone-100 hover:bg-stone-200/80 active:bg-stone-200 text-xs font-serif font-bold text-stone-800 flex items-center gap-2.5 cursor-pointer transition-colors shadow-2xs no-underline"
               >
-                <ChevronLeft className="w-4 h-4" />
-                <span>पिछला: {prevChapter.name}</span>
+                <ChevronLeft className="w-4 h-4 text-stone-500 shrink-0" />
+                <div className="min-w-0 text-left">
+                  <span className="text-[10px] text-stone-500 font-sans block">पिछला {currentEpicConfig.chapterTerm}</span>
+                  <span className="truncate block">{prevChapter.name}</span>
+                </div>
               </a>
-            ) : <div />}
+            ) : <div className="hidden sm:block" />}
 
             {nextChapter && (
               <a
@@ -1232,10 +1235,13 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                     handleSelectChapter(nextChapter.id);
                   }
                 }}
-                className="px-5 py-2.5 rounded-[8px] bg-[#FEF08A] hover:bg-amber-300 text-xs font-bold text-[#78350F] flex items-center gap-2 cursor-pointer transition-colors shadow-2xs self-end sm:self-auto no-underline"
+                className="p-3.5 rounded-[14px] bg-[#FEF08A] hover:bg-amber-300 active:bg-amber-300/90 text-xs font-serif font-bold text-[#78350F] flex items-center justify-between gap-2.5 cursor-pointer transition-colors shadow-2xs no-underline"
               >
-                <span>अगला {currentEpicConfig.chapterTerm}: {nextChapter.name}</span>
-                <ChevronRight className="w-4 h-4" />
+                <div className="min-w-0 text-left">
+                  <span className="text-[10px] text-[#92400E] font-sans block">अगला {currentEpicConfig.chapterTerm}</span>
+                  <span className="truncate block">{nextChapter.name}</span>
+                </div>
+                <ChevronRight className="w-4 h-4 text-[#78350F] shrink-0" />
               </a>
             )}
           </div>

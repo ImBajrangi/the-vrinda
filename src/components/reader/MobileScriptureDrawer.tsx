@@ -1,6 +1,6 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { createPortal } from 'react-dom';
-import { X, Search, BookOpen, Feather, ChevronRight } from 'lucide-react';
+import { X, Search, BookOpen, Feather, ChevronRight, Check } from 'lucide-react';
 
 export interface ScriptureItem {
   id: string;
@@ -23,16 +23,29 @@ interface MobileScriptureDrawerProps {
   onCategoryChange?: (catId: string) => void;
 }
 
+/** Micro-haptic tactile feedback for iOS & Android */
+const triggerHaptic = (ms: number = 8) => {
+  if (typeof window !== 'undefined' && 'vibrate' in navigator) {
+    try {
+      navigator.vibrate(ms);
+    } catch {}
+  }
+};
+
 /**
- * World-Class Mobile Bottom Sheet Drawer.
+ * World-Class Mobile Bottom Sheet Drawer (Sacred Scripture Index).
  *
- * Implements Apple Human Interface Guidelines and Google Material 3 standards:
- * - 0% background blur (crisp, zero GPU load, perfectly sharp background text)
- * - 1:1 fluid touch tracking with momentum swipe-down to dismiss
- * - Full-surface drag detection + overscroll pull-down from list top
- * - Synchronized real-time backdrop opacity fading
- * - Strict concentric border radius geometry (Outer 32px -> Inner 14px / 12px)
- * - True safe-area-inset-bottom clearance for notchless gestures
+ * Implements Apple Human Interface & Material 3 Design:
+ * - 0% background blur (ultra-fast, zero GPU load, perfectly sharp background scripture)
+ * - 1:1 true physics drag with momentum swipe-down to dismiss
+ * - Full-surface drag detection (grab handle, title bar, search header, category strip)
+ * - Intelligent overscroll pull-down to dismiss when at top of list
+ * - Synchronized live backdrop opacity fading
+ * - Section header grouping (e.g. बालकाण्ड, अयोध्याकाण्ड, स्कन्ध) for structured reading
+ * - Real-time search query matching with instant results counter
+ * - Micro-haptic tactile feedback on tap
+ * - Strict concentric border radius geometry (Outer 32px -> Inner 14px -> Inner 10px)
+ * - Safe area padding for notchless iPhone home indicators & Android gesture bars
  */
 export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
   isOpen,
@@ -139,16 +152,17 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
   }, [isOpen, selectedId, activeCategory]);
 
   // Filter items
-  const filteredItems = searchQuery.trim()
-    ? items.filter((item) => {
-        const q = searchQuery.trim().toLowerCase();
-        return (
-          item.name.toLowerCase().includes(q) ||
-          item.id.toLowerCase().includes(q) ||
-          (item.section && item.section.toLowerCase().includes(q))
-        );
-      })
-    : items;
+  const filteredItems = useMemo(() => {
+    if (!searchQuery.trim()) return items;
+    const q = searchQuery.trim().toLowerCase();
+    return items.filter((item) => {
+      return (
+        item.name.toLowerCase().includes(q) ||
+        item.id.toLowerCase().includes(q) ||
+        (item.section && item.section.toLowerCase().includes(q))
+      );
+    });
+  }, [items, searchQuery]);
 
   // Swipe-down touch handlers with full-surface drag detection
   const handleTouchStart = useCallback(
@@ -226,6 +240,7 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
     const shouldDismiss = deltaY > 55 || (deltaY > 15 && velocity > 0.22);
 
     if (shouldDismiss) {
+      triggerHaptic(12);
       handleDismiss();
     } else {
       sheetRef.current.style.transition = 'transform 220ms cubic-bezier(0.25, 1, 0.5, 1)';
@@ -251,6 +266,7 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
 
   const handleSelect = useCallback(
     (id: string) => {
+      triggerHaptic(10);
       onSelect(id);
       handleDismiss();
     },
@@ -262,7 +278,7 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
   const content = (
     <div className="fixed inset-0 z-[100] pointer-events-auto flex flex-col justify-end">
       {/* 
-        Crisp Dark Scrim Backdrop (0% GPU blur, 100% sharp scripture behind)
+        Crisp Dark Scrim Backdrop (0% GPU blur, 100% sharp background text)
       */}
       <div
         ref={backdropRef}
@@ -287,7 +303,7 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
         <div className="select-none shrink-0 bg-white border-b border-stone-100 touch-none">
           {/* iOS Grab Capsule Handle */}
           <div className="w-full flex items-center justify-center pt-2.5 pb-1.5 cursor-grab active:cursor-grabbing">
-            <div className="w-10 h-1 rounded-full bg-stone-300/80" />
+            <div className="w-10 h-1 rounded-full bg-stone-300/80 transition-colors" />
           </div>
 
           {/* Header Row */}
@@ -314,7 +330,7 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
           </div>
         </div>
 
-        {/* Search Box */}
+        {/* Search Box & Query Status */}
         <div className="px-5 pt-3 pb-2 shrink-0 bg-white">
           <div className="relative flex items-center w-full h-10 px-3.5 rounded-[14px] bg-[#F4F4F5] border border-stone-200/70 focus-within:bg-white focus-within:border-amber-400 focus-within:ring-2 focus-within:ring-amber-500/15 transition-all duration-150">
             <Search className="w-4 h-4 text-stone-400 shrink-0 pointer-events-none" />
@@ -337,6 +353,19 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
               </button>
             )}
           </div>
+
+          {searchQuery && (
+            <div className="mt-1.5 px-1 flex items-center justify-between text-[11px] text-stone-500 font-serif">
+              <span>{filteredItems.length} परिणाम मिले</span>
+              <button
+                type="button"
+                onClick={() => setSearchQuery('')}
+                className="text-amber-800 font-semibold cursor-pointer"
+              >
+                सभी दिखाएँ
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Category Horizontal Filter Strip */}
@@ -349,7 +378,10 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
                   <button
                     key={cat.id}
                     type="button"
-                    onClick={() => onCategoryChange?.(cat.id)}
+                    onClick={() => {
+                      triggerHaptic(8);
+                      onCategoryChange?.(cat.id);
+                    }}
                     className={`h-8 px-3.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer select-none shrink-0 ${
                       isActive
                         ? 'bg-[#FEF08A] text-[#78350F] font-bold shadow-xs border border-amber-300/60'
@@ -364,7 +396,7 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
           </div>
         )}
 
-        {/* Scrollable Items List */}
+        {/* Scrollable Items List with Intelligent Section Grouping */}
         <div
           ref={scrollContainerRef}
           className="flex-1 overflow-y-auto overscroll-contain px-4 py-2 space-y-1 drawer-scrollable pb-[max(1.75rem,env(safe-area-inset-bottom,1.75rem))]"
@@ -375,70 +407,86 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
               <p className="text-xs text-stone-400 mt-1">कृपया अन्य शब्द से खोजें</p>
             </div>
           ) : (
-            filteredItems.map((item) => {
+            filteredItems.map((item, idx) => {
               const isSelected = selectedId === item.id;
-              return (
-                <button
-                  key={item.id}
-                  type="button"
-                  data-selected={isSelected}
-                  onClick={() => handleSelect(item.id)}
-                  className={`w-full text-left min-h-[48px] px-3.5 py-2.5 rounded-[14px] flex items-center justify-between gap-3 transition-colors cursor-pointer select-none ${
-                    isSelected
-                      ? 'bg-[#FEF9C3] border border-amber-300/80 text-stone-900 shadow-2xs'
-                      : 'hover:bg-stone-50 active:bg-stone-100 border border-transparent text-stone-800'
-                  }`}
-                >
-                  <div className="min-w-0 flex-1 flex items-center gap-2.5">
-                    <div
-                      className={`w-7 h-7 rounded-[9px] flex items-center justify-center shrink-0 transition-colors ${
-                        isSelected
-                          ? 'bg-[#FEF08A] text-[#78350F]'
-                          : 'bg-stone-100 text-stone-500'
-                      }`}
-                    >
-                      {item.type === 'grantha' ? (
-                        <BookOpen className="w-3.5 h-3.5" />
-                      ) : (
-                        <Feather className="w-3.5 h-3.5" />
-                      )}
-                    </div>
+              // Check if we should render a section header banner
+              const prevItem = idx > 0 ? filteredItems[idx - 1] : null;
+              const isNewSection = item.section && (!prevItem || prevItem.section !== item.section);
 
-                    <div className="min-w-0 flex-1">
-                      <span
-                        className={`font-serif text-[13.5px] leading-snug block truncate ${
-                          isSelected ? 'font-bold text-[#78350F]' : 'font-medium text-stone-900'
-                        }`}
-                      >
-                        {item.name}
-                      </span>
-                      {item.section && (
-                        <span className="text-[10.5px] text-stone-500 font-sans font-medium block truncate mt-0.5">
+              return (
+                <React.Fragment key={item.id}>
+                  {isNewSection && (
+                    <div className="pt-3 pb-1 px-2 select-none">
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-800 bg-amber-100/70 px-2 py-0.5 rounded-[6px] border border-amber-300/40">
                           {item.section}
                         </span>
-                      )}
+                        <div className="h-px flex-1 bg-stone-100" />
+                      </div>
                     </div>
-                  </div>
+                  )}
 
-                  <div className="flex items-center gap-2 shrink-0">
-                    {item.count !== undefined && (
-                      <span
-                        className={`text-[10.5px] font-mono font-bold px-2 py-0.5 rounded-full ${
+                  <button
+                    type="button"
+                    data-selected={isSelected}
+                    onClick={() => handleSelect(item.id)}
+                    className={`w-full text-left min-h-[48px] px-3.5 py-2.5 rounded-[14px] flex items-center justify-between gap-3 transition-colors cursor-pointer select-none ${
+                      isSelected
+                        ? 'bg-[#FEF9C3] border border-amber-300/80 text-stone-900 shadow-2xs'
+                        : 'hover:bg-stone-50 active:bg-stone-100 border border-transparent text-stone-800'
+                    }`}
+                  >
+                    <div className="min-w-0 flex-1 flex items-center gap-2.5">
+                      <div
+                        className={`w-7 h-7 rounded-[9px] flex items-center justify-center shrink-0 transition-colors ${
                           isSelected
-                            ? 'bg-amber-200/80 text-amber-950'
-                            : 'bg-stone-100 text-stone-600'
+                            ? 'bg-[#FEF08A] text-[#78350F]'
+                            : 'bg-stone-100 text-stone-500'
                         }`}
                       >
-                        {item.count}
-                      </span>
-                    )}
-                    <ChevronRight
-                      className={`w-3.5 h-3.5 ${
-                        isSelected ? 'text-amber-800' : 'text-stone-300'
-                      }`}
-                    />
-                  </div>
-                </button>
+                        {item.type === 'grantha' ? (
+                          <BookOpen className="w-3.5 h-3.5" />
+                        ) : (
+                          <Feather className="w-3.5 h-3.5" />
+                        )}
+                      </div>
+
+                      <div className="min-w-0 flex-1">
+                        <span
+                          className={`font-serif text-[13.5px] leading-snug block truncate ${
+                            isSelected ? 'font-bold text-[#78350F]' : 'font-medium text-stone-900'
+                          }`}
+                        >
+                          {item.name}
+                        </span>
+                        {item.section && !isNewSection && (
+                          <span className="text-[10.5px] text-stone-500 font-sans font-medium block truncate mt-0.5">
+                            {item.section}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-2 shrink-0">
+                      {item.count !== undefined && (
+                        <span
+                          className={`text-[10.5px] font-mono font-bold px-2 py-0.5 rounded-full ${
+                            isSelected
+                              ? 'bg-amber-200/80 text-amber-950'
+                              : 'bg-stone-100 text-stone-600'
+                          }`}
+                        >
+                          {item.count}
+                        </span>
+                      )}
+                      {isSelected ? (
+                        <Check className="w-3.5 h-3.5 text-[#78350F] stroke-[2.5]" />
+                      ) : (
+                        <ChevronRight className="w-3.5 h-3.5 text-stone-300" />
+                      )}
+                    </div>
+                  </button>
+                </React.Fragment>
               );
             })
           )}
