@@ -445,23 +445,6 @@ class SEOService {
       document.head.appendChild(script);
     }
     script.textContent = JSON.stringify(metadata.schemas, null, 2);
-
-    // 7. Update URL search query cleanly for shareable permalinks
-    if (typeof window !== 'undefined' && config.tab) {
-      try {
-        const url = new URL(window.location.href);
-        url.searchParams.set('tab', config.tab);
-        if (config.pad) {
-          const padSlug = config.pad.slug || config.pad.id;
-          url.searchParams.set('pad', padSlug);
-        } else {
-          url.searchParams.delete('pad');
-        }
-        window.history.replaceState({}, '', url.toString());
-      } catch {
-        // Ignore URL mutation errors
-      }
-    }
   }
 
   private setMetaTag(attrName: 'name' | 'property', attrValue: string, content: string): void {

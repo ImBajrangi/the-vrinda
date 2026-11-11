@@ -2556,8 +2556,8 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
         <article
           id="reading-canvas-top"
           className={`scroll-mt-24 sm:scroll-mt-28 flex-1 min-w-0 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${isFocusReadingMode
-              ? `w-full dhyana-reader-canvas p-4 sm:p-10 ${currentTheme.canvasBg} ${currentTheme.canvasText}`
-              : `w-full rounded-2xl sm:rounded-3xl p-3 sm:p-9 ${currentTheme.canvasBg} ${currentTheme.canvasText} ${isLeftSidebarCollapsed && isRightSidebarCollapsed ? 'max-w-4xl mx-auto' : ''
+              ? `w-full dhyana-reader-canvas p-4 sm:p-10 min-h-[calc(100vh-8rem)] ${currentTheme.canvasBg} ${currentTheme.canvasText}`
+              : `w-full rounded-2xl sm:rounded-3xl p-3 sm:p-9 min-h-[calc(100vh-8rem)] ${currentTheme.canvasBg} ${currentTheme.canvasText} ${isLeftSidebarCollapsed && isRightSidebarCollapsed ? 'max-w-4xl mx-auto' : ''
               }`
             }`}
         >
@@ -3307,6 +3307,36 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               </div>
             </div>
           )}
+
+          {/* Sacred Colophon / End-of-Pad Dedication Flourish */}
+          <div className="mt-12 pt-8 pb-4 text-center select-none flex flex-col items-center justify-center space-y-2.5 border-t border-amber-900/10">
+            <div className="flex items-center gap-2 text-amber-800/60 text-xs font-serif">
+              <span className="w-8 h-px bg-amber-900/20" />
+              <span>॥ श्रीराधा ॥</span>
+              <span className="w-8 h-px bg-amber-900/20" />
+            </div>
+            <p className="text-[11px] font-serif text-neutral-400">
+              श्री वृन्दावन रसिक वाणी • अखंड नित्य निकुंज रस
+            </p>
+            <div className="pt-2 flex items-center gap-3">
+              <button
+                type="button"
+                onClick={() => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="px-3.5 py-1.5 rounded-full text-xs font-serif bg-amber-50 hover:bg-amber-100/80 text-amber-900 border border-amber-200/60 cursor-pointer transition-colors"
+              >
+                ↑ शीर्ष पर जाएँ (Back to Top)
+              </button>
+              <button
+                type="button"
+                onClick={() => setIsMobileDrawerOpen(true)}
+                className="sm:hidden px-3.5 py-1.5 rounded-full text-xs font-serif bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] font-bold border border-amber-300/80 cursor-pointer transition-colors shadow-2xs"
+              >
+                अन्य पद चुनें (Select Verse)
+              </button>
+            </div>
+          </div>
         </article>
 
         {/* ========================================================================= */}

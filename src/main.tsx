@@ -49,13 +49,32 @@ if (rootElement) {
       setTimeout(dismissPreview, 500);
     }
   } else if (rootElement.hasChildNodes()) {
-    // 2. Full SSG pre-rendered complete component tree: hydrate cleanly with hydrateRoot
-    hydrateRoot(
-      rootElement,
-      <StrictMode>
-        <App />
-      </StrictMode>
-    );
+    // 2. Full SSG pre-rendered complete component tree:
+    // Determine whether server-rendered shell matches the client initial route
+    const host = typeof window !== 'undefined' ? window.location.hostname : '';
+    const isPathDomain = host === 'path.vrindopnishad.in' || host.startsWith('path.');
+    const qTab = typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get('tab') : null;
+
+    // index.html is statically generated for bhav/smaran tab.
+    // If the client loads on path.vrindopnishad.in without ?tab=smaran,
+    // the client's initial tab will be granthas.
+    // In that case, mount cleanly with createRoot to prevent React 19 hydration mismatch (#418).
+    const isMismatchedShell = isPathDomain && qTab !== 'smaran';
+
+    if (isMismatchedShell) {
+      createRoot(rootElement).render(
+        <StrictMode>
+          <App />
+        </StrictMode>
+      );
+    } else {
+      hydrateRoot(
+        rootElement,
+        <StrictMode>
+          <App />
+        </StrictMode>
+      );
+    }
   } else {
     // 3. Clean client mount
     createRoot(rootElement).render(

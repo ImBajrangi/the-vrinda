@@ -10,6 +10,11 @@
     "build:sitemap": "node scripts/generate-sitemap.js",
     "build:ssg": "node scripts/generate-sitemap.js && node scripts/split-epic-chunks.mjs && node scripts/generate-chapter-snippets.mjs && node scripts/generate-preambles-manifest.mjs && node scripts/generate-static-granthas.js && tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-server && node scripts/prerender.js",
     "test": "node scripts/test-seo-ssr.js && node tests/benchmark-traffic.mjs",
+    "test:e2e": "playwright test",
+    "test:bhav": "playwright test tests/e2e/bhav* tests/e2e/domain* tests/e2e/smoke*",
+    "test:path": "playwright test tests/e2e/path*",
+    "test:perf": "playwright test tests/e2e/performance*",
+    "test:mobile": "playwright test tests/e2e/mobile*",
     "backup": "node scripts/backup-db.js",
     "db:sync": "node scripts/sync-to-supabase.js",
     "serve:ssr": "node server.js",
@@ -26,6 +31,7 @@
     "tailwind-merge": "^3.0.2"
   },
   "devDependencies": {
+    "@playwright/test": "^1.65.0",
     "@types/node": "^22.13.4",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",

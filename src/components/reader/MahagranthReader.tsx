@@ -1026,7 +1026,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
         {/* ========================================================================= */}
         <article
           id="epic-canvas-top"
-          className="flex-1 min-w-0 w-full bg-white rounded-2xl sm:rounded-[28px] p-3 sm:p-8 border border-neutral-200/60 sm:border-neutral-200/80 shadow-2xs transition-all duration-300"
+          className="flex-1 min-w-0 w-full bg-white rounded-2xl sm:rounded-[28px] p-3 sm:p-8 min-h-[calc(100vh-8rem)] border border-neutral-200/60 sm:border-neutral-200/80 shadow-2xs transition-all duration-300"
         >
           {/* Chapter Header Bar (Desktop Only - on mobile, MobileReaderHeader provides the top chrome) */}
           <div className="hidden sm:flex pb-5 mb-6 border-b border-neutral-100 flex-col sm:flex-row sm:items-center justify-between gap-3">
@@ -1247,6 +1247,27 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                 <ChevronRight className="w-4 h-4 text-[#78350F] shrink-0" />
               </a>
             )}
+          </div>
+
+          {/* Sacred Colophon / Chapter Dedication */}
+          <div className="mt-12 pt-6 pb-2 text-center select-none flex flex-col items-center justify-center space-y-2 border-t border-amber-900/10">
+            <div className="flex items-center gap-2 text-amber-800/60 text-xs font-serif">
+              <span className="w-8 h-px bg-amber-900/20" />
+              <span>॥ ॐ तत्सत् ॥</span>
+              <span className="w-8 h-px bg-amber-900/20" />
+            </div>
+            <p className="text-[11px] font-serif text-neutral-400">
+              {currentEpicConfig.name} • सनातन महाग्रंथ पारायण
+            </p>
+            <button
+              type="button"
+              onClick={() => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="mt-1 px-3.5 py-1.5 rounded-full text-xs font-serif bg-amber-50 hover:bg-amber-100/80 text-amber-900 border border-amber-200/60 cursor-pointer transition-colors"
+            >
+              ↑ शीर्ष पर जाएँ (Back to Top)
+            </button>
           </div>
         </article>
 

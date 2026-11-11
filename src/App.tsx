@@ -509,11 +509,42 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
     };
   }, []);
 
+  // Listen to browser back/forward buttons (popstate) for seamless navigation
+  useEffect(() => {
+    const handlePopState = () => {
+      const nextRoute = resolveCurrentRoute();
+      setVisitedTabs((prev) => (prev.has(nextRoute.tab) ? prev : new Set(prev).add(nextRoute.tab)));
+      setActiveTab(nextRoute.tab);
+      if (nextRoute.grantha && nextRoute.grantha !== 'all') {
+        setSelectedGranthaFilter(nextRoute.grantha);
+      }
+      if (nextRoute.pad) {
+        const p = SacredDatabase.getPadById(nextRoute.pad);
+        if (p) setCurrentPad(p);
+      }
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
   const handleTabSwitch = (tab: NavTab) => {
     if (tab === activeTab) return;
     // Synchronously ensure target tab is in visitedTabs so it renders in Frame 1
     setVisitedTabs((prev) => (prev.has(tab) ? prev : new Set(prev).add(tab)));
     setActiveTab(tab);
+    if (typeof window !== 'undefined') {
+      try {
+        const url = new URL(window.location.href);
+        const host = window.location.hostname;
+        const isPath = host === 'path.vrindopnishad.in' || host.startsWith('path.');
+        if ((isPath && tab === 'granthas') || (!isPath && tab === 'smaran')) {
+          url.searchParams.delete('tab');
+        } else {
+          url.searchParams.set('tab', tab);
+        }
+        window.history.pushState({}, '', url.toString());
+      } catch {}
+    }
   };
 
   const handlePlayPad = (pad: SacredPad) => {
