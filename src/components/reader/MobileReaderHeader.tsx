@@ -47,7 +47,7 @@ export const MobileReaderHeader: React.FC<MobileReaderHeaderProps> = ({
   isVisible: _isVisible = true,
 }) => {
   return (
-    <div className="md:hidden sticky top-0 z-30 w-full mb-3 select-none bg-white/98 border-b border-stone-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.03)] pt-[max(0.35rem,env(safe-area-inset-top,0.35rem))]">
+    <div className="md:hidden sticky top-0 z-30 w-full mb-3 select-none bg-white border-b border-stone-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.03)] pt-[max(0.35rem,env(safe-area-inset-top,0.35rem))]">
       <div className="w-full px-2.5 py-1.5 flex items-center justify-between gap-2">
         {/* Left: Table of Contents / Back Button */}
         <div className="flex items-center shrink-0">

@@ -114,7 +114,7 @@ export const FloatingNavbar: React.FC<FloatingNavbarProps> = ({
       {/* Fluid responsive floating nav pill */}
       <nav
         aria-label="Mobile Navigation"
-        className="relative pointer-events-auto flex-1 min-w-0 max-w-[340px] h-[54px] rounded-[28px] bg-white/98 border border-neutral-900/[0.08] shadow-[0_8px_24px_-4px_rgba(24,24,27,0.10),0_2px_6px_-1px_rgba(24,24,27,0.04)] flex items-center justify-between p-1 box-border transform-gpu will-change-transform touch-manipulation select-none"
+        className="relative pointer-events-auto flex-1 min-w-0 max-w-[340px] h-[54px] rounded-[28px] bg-white border border-neutral-900/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.12),0_2px_8px_rgba(0,0,0,0.04)] flex items-center justify-between p-1 box-border transform-gpu will-change-transform touch-manipulation select-none"
       >
         {/* Dynamic Elastic Sliding Indicator Bar (Instant 0ms Shift) */}
         <span
