@@ -820,9 +820,9 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
       {/* Outer Adaptive Wrapper:
           - Mobile & Small Windows (< 768px): Fluid w-full with unified rock-solid padding (ZERO layout flicker/jump across tabs)
           - Tablet (768px - 1024px): max-w-4xl with balanced gutters
-          - Desktop (1024px+): max-w-6xl xl:max-w-7xl
+          - Desktop (1024px+): max-w-6xl xl:max-w-[1440px] 2xl:max-w-[1680px] for serene widescreen desktop balance
       */}
-      <div className={`w-full max-w-full overflow-x-clip md:max-w-5xl xl:max-w-7xl min-h-screen relative px-3 sm:px-6 lg:px-8 ${isReaderTab ? 'pt-2 sm:pt-28 lg:pt-32 pb-6 md:pb-16' : 'pt-20 sm:pt-28 lg:pt-32 pb-36 md:pb-24'} box-border`}>
+      <div className={`w-full max-w-full overflow-x-clip md:max-w-6xl xl:max-w-[1440px] 2xl:max-w-[1680px] min-h-screen relative px-3 sm:px-6 lg:px-8 2xl:px-12 ${isReaderTab ? 'pt-2 sm:pt-28 lg:pt-32 pb-6 md:pb-16' : 'pt-20 sm:pt-28 lg:pt-32 pb-36 md:pb-24'} box-border`}>
         {/* Dynamic Top Announcement Marquee Ticker (Smoothly slides away on mobile reader tabs) */}
         <TopAnnouncementMarquee
           isScrolled={isScrolled}

@@ -2278,7 +2278,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       {/* ========================================================================= */}
       {/* 3. Main Responsive Devotional Desk / Distraction-Free Sanctuary            */}
       {/* ========================================================================= */}
-      <div className={isFocusReadingMode ? 'w-full max-w-3xl mx-auto' : 'w-full grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6 items-start'}>
+      <div className={isFocusReadingMode ? 'w-full max-w-3xl mx-auto' : 'w-full grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6 lg:gap-6 2xl:gap-8 items-start'}>
 
         {/* ========================================================================= */}
         {/* Left Column: Pada Index Catalog (Pinned on desktop md:block)              */}
@@ -2466,7 +2466,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
           className={`scroll-mt-24 sm:scroll-mt-28 min-w-0 ${
             isFocusReadingMode
               ? `w-full dhyana-reader-canvas p-4 sm:p-10 min-h-[calc(100vh-8rem)] ${currentTheme.canvasBg} ${currentTheme.canvasText}`
-              : `md:col-span-8 xl:col-span-6 rounded-2xl sm:rounded-3xl p-3 sm:p-9 min-h-[calc(100vh-8rem)] ${currentTheme.canvasBg} ${currentTheme.canvasText}`
+              : `md:col-span-8 xl:col-span-6 rounded-2xl sm:rounded-3xl p-3 sm:p-8 xl:p-9 2xl:p-10 min-h-[calc(100vh-8rem)] ${currentTheme.canvasBg} ${currentTheme.canvasText}`
           }`}
         >
           {/* Chapter Hierarchy & Continuous Reading Mode Bar (Desktop only, mobile uses MobileReaderHeader) */}

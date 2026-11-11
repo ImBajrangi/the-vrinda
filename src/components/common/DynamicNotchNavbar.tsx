@@ -240,10 +240,10 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
             : 'translate-y-0 opacity-100'
         }`}
       >
-      <div className="max-w-6xl mx-auto flex flex-col items-center">
+      <div className="w-full max-w-6xl xl:max-w-7xl 2xl:max-w-[1536px] mx-auto flex flex-col items-center">
         
         {/* Main Floating Glass & Paper Header Bar */}
-        <div className="pointer-events-auto rounded-full w-full max-w-[96vw] md:max-w-6xl bg-white/95 backdrop-blur-md border border-neutral-900/[0.07] shadow-[0_4px_16px_-2px_rgba(24,24,27,0.05)] px-3.5 sm:px-4 py-1.5 transition-all transform-gpu will-change-transform">
+        <div className="pointer-events-auto rounded-full w-full max-w-[96vw] md:max-w-6xl xl:max-w-7xl 2xl:max-w-[1536px] bg-white/95 backdrop-blur-md border border-neutral-900/[0.07] shadow-[0_4px_16px_-2px_rgba(24,24,27,0.05)] px-3.5 sm:px-5 py-1.5 transition-all transform-gpu will-change-transform">
           <div className="flex items-center justify-between gap-2 h-10 sm:h-11">
             
             {/* 1. Left: Brand Identity & Sacred Logo */}

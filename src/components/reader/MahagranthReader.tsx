@@ -528,7 +528,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
   };
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-1.5 sm:px-4 lg:px-6 pt-0 sm:pt-6 pb-20 sm:pb-24 md:pb-16">
+    <div className="w-full pb-20 sm:pb-24 md:pb-16 pt-0 sm:pt-4 px-1 sm:px-0">
       {/* Mobile-Optimized Reader Header: 1-Tap Chapter Drawer, Auto-Hiding Chrome */}
       <MobileReaderHeader
         scriptureTitle={currentEpicConfig.shortName || currentEpicConfig.name}
@@ -688,7 +688,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
       {/* 3-Column Desk Architecture (Identical to Padavali & Chhand Sanctuary)      */}
       {/* Left Column: Sarga/Chapter Rail | Center: Main Canvas | Right: Commentary */}
       {/* ========================================================================= */}
-      <div className="w-full grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6 items-start">
+      <div className="w-full grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6 lg:gap-6 2xl:gap-8 items-start">
 
         {/* ========================================================================= */}
         {/* Left Column: Sarga/Chapter Catalog Desk (Desktop: hidden md:block)         */}
@@ -849,7 +849,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
         {/* ========================================================================= */}
         <article
           id="epic-canvas-top"
-          className="min-w-0 w-full md:col-span-8 xl:col-span-6 bg-white rounded-2xl sm:rounded-3xl p-3 sm:p-8 min-h-[calc(100vh-8rem)] border border-neutral-200/70 shadow-2xs"
+          className="min-w-0 w-full md:col-span-8 xl:col-span-6 bg-white rounded-2xl sm:rounded-3xl p-3 sm:p-8 xl:p-9 2xl:p-10 min-h-[calc(100vh-8rem)] border border-neutral-200/70 shadow-2xs"
         >
           {/* Chapter Header Bar (Desktop Only - on mobile, MobileReaderHeader provides the top chrome) */}
           <div className="hidden sm:flex pb-5 mb-6 border-b border-neutral-100 flex-col sm:flex-row sm:items-center justify-between gap-3">
