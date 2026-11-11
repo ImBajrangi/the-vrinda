@@ -4267,7 +4267,7 @@
       "label": "generateAllSitemaps()",
       "file_type": "code",
       "source_file": "scripts/generate-sitemap.js",
-      "source_location": "L401",
+      "source_location": "L405",
       "_callable": true,
       "_origin": "ast",
       "id": "scripts_generate_sitemap_generateallsitemaps",
@@ -5296,7 +5296,7 @@
       "label": "App()",
       "file_type": "code",
       "source_file": "src/App.tsx",
-      "source_location": "L214",
+      "source_location": "L245",
       "_callable": true,
       "_origin": "ast",
       "id": "src_app_app",
@@ -5373,7 +5373,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_common_cmseditorialbadge",
-      "community": 4,
+      "community": 215,
       "community_name": "SacredPad",
       "norm_label": "cmseditorialbadge.tsx"
     },
@@ -5386,7 +5386,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_cmseditorialbadge_cmseditorialbadgeprops",
-      "community": 4,
+      "community": 215,
       "community_name": "SacredPad",
       "norm_label": "cmseditorialbadgeprops"
     },
@@ -5398,7 +5398,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_common_cmseditorialbadge_cmseditorialbadge",
-      "community": 4,
+      "community": 215,
       "community_name": "SacredPad",
       "norm_label": "cmseditorialbadge()"
     },
@@ -5963,7 +5963,7 @@
       "_origin": "ast",
       "id": "src_components_feed_feedcard_feedcardprops",
       "community": 4,
-      "community_name": "SacredPad",
+      "community_name": "StaticFileCMSProvider.ts",
       "norm_label": "feedcardprops"
     },
     {
@@ -6095,7 +6095,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_player_floatingaudioplayer",
-      "community": 4,
+      "community": 215,
       "community_name": "SacredPad",
       "norm_label": "floatingaudioplayer.tsx"
     },
@@ -6108,7 +6108,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_player_floatingaudioplayer_floatingaudioplayerprops",
-      "community": 4,
+      "community": 215,
       "community_name": "SacredPad",
       "norm_label": "floatingaudioplayerprops"
     },
@@ -6120,7 +6120,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_player_floatingaudioplayer_floatingaudioplayer",
-      "community": 4,
+      "community": 215,
       "community_name": "SacredPad",
       "norm_label": "floatingaudioplayer()"
     },
@@ -6869,7 +6869,7 @@
       "_origin": "ast",
       "id": "src_data_feed",
       "community": 4,
-      "community_name": "SacredPad",
+      "community_name": "StaticFileCMSProvider.ts",
       "norm_label": "feed.ts"
     },
     {
@@ -6880,7 +6880,7 @@
       "_origin": "ast",
       "id": "src_data_feed_sacred_feed_posts",
       "community": 4,
-      "community_name": "SacredPad",
+      "community_name": "StaticFileCMSProvider.ts",
       "norm_label": "sacred_feed_posts"
     },
     {
@@ -7710,7 +7710,7 @@
       "_origin": "ast",
       "id": "src_services_cms_cmsprovider",
       "community": 4,
-      "community_name": "SacredPad",
+      "community_name": "StaticFileCMSProvider.ts",
       "norm_label": "cmsprovider.ts"
     },
     {
@@ -7746,7 +7746,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_cmsprovider_icmsprovider_getpadas",
-      "community": 4,
+      "community": 215,
       "community_name": "SacredPad",
       "norm_label": ".getpadas()"
     },
@@ -7795,7 +7795,7 @@
       "_origin": "ast",
       "id": "src_services_cms_cmsprovider_icmsprovider_getashtayamaschedule",
       "community": 4,
-      "community_name": "SacredPad",
+      "community_name": "StaticFileCMSProvider.ts",
       "norm_label": ".getashtayamaschedule()"
     },
     {
@@ -7807,7 +7807,7 @@
       "_origin": "ast",
       "id": "src_services_cms_cmsprovider_icmsprovider_getfeedposts",
       "community": 4,
-      "community_name": "SacredPad",
+      "community_name": "StaticFileCMSProvider.ts",
       "norm_label": ".getfeedposts()"
     },
     {
@@ -7819,7 +7819,7 @@
       "_origin": "ast",
       "id": "src_services_cms_cmsprovider_icmsprovider_savedraftpad",
       "community": 4,
-      "community_name": "SacredPad",
+      "community_name": "StaticFileCMSProvider.ts",
       "norm_label": ".savedraftpad()"
     },
     {
@@ -7878,7 +7878,7 @@
       "_origin": "ast",
       "id": "src_services_cms_headlessapicmsprovider",
       "community": 4,
-      "community_name": "SacredPad",
+      "community_name": "StaticFileCMSProvider.ts",
       "norm_label": "headlessapicmsprovider.ts"
     },
     {
@@ -7987,7 +7987,7 @@
       "_origin": "ast",
       "id": "src_services_cms_headlessapicmsprovider_headlessapicmsprovider_getashtayamaschedule",
       "community": 4,
-      "community_name": "SacredPad",
+      "community_name": "StaticFileCMSProvider.ts",
       "norm_label": ".getashtayamaschedule()"
     },
     {
@@ -8022,7 +8022,7 @@
       "_origin": "ast",
       "id": "src_services_cms_staticfilecmsprovider",
       "community": 4,
-      "community_name": "SacredPad",
+      "community_name": "StaticFileCMSProvider.ts",
       "norm_label": "staticfilecmsprovider.ts"
     },
     {
@@ -8058,7 +8058,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_staticfilecmsprovider_staticfilecmsprovider_getpadas",
-      "community": 4,
+      "community": 215,
       "community_name": "SacredPad",
       "norm_label": ".getpadas()"
     },
@@ -8119,7 +8119,7 @@
       "_origin": "ast",
       "id": "src_services_cms_staticfilecmsprovider_staticfilecmsprovider_getfeedposts",
       "community": 4,
-      "community_name": "SacredPad",
+      "community_name": "StaticFileCMSProvider.ts",
       "norm_label": ".getfeedposts()"
     },
     {
@@ -8141,7 +8141,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_services_cms_index",
-      "community": 4,
+      "community": 215,
       "community_name": "SacredPad",
       "norm_label": "index.ts"
     },
@@ -8214,7 +8214,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_index_cmsservice_getpadas",
-      "community": 4,
+      "community": 215,
       "community_name": "SacredPad",
       "norm_label": ".getpadas()"
     },
@@ -8263,7 +8263,7 @@
       "_origin": "ast",
       "id": "src_services_cms_index_cmsservice_getashtayamaschedule",
       "community": 4,
-      "community_name": "SacredPad",
+      "community_name": "StaticFileCMSProvider.ts",
       "norm_label": ".getashtayamaschedule()"
     },
     {
@@ -8275,7 +8275,7 @@
       "_origin": "ast",
       "id": "src_services_cms_index_cmsservice_getfeedposts",
       "community": 4,
-      "community_name": "SacredPad",
+      "community_name": "StaticFileCMSProvider.ts",
       "norm_label": ".getfeedposts()"
     },
     {
@@ -8309,7 +8309,7 @@
       "source_location": "L97",
       "_origin": "ast",
       "id": "src_services_cms_index_cms",
-      "community": 4,
+      "community": 215,
       "community_name": "SacredPad",
       "norm_label": "cms"
     },
@@ -9534,7 +9534,7 @@
       "_origin": "ast",
       "id": "src_types_cms",
       "community": 4,
-      "community_name": "SacredPad",
+      "community_name": "StaticFileCMSProvider.ts",
       "norm_label": "cms.ts"
     },
     {
@@ -9547,7 +9547,7 @@
       "_origin": "ast",
       "id": "src_types_cms_cmscontentstatus",
       "community": 4,
-      "community_name": "SacredPad",
+      "community_name": "StaticFileCMSProvider.ts",
       "norm_label": "cmscontentstatus"
     },
     {
@@ -9560,7 +9560,7 @@
       "_origin": "ast",
       "id": "src_types_cms_cmsmetadata",
       "community": 4,
-      "community_name": "SacredPad",
+      "community_name": "StaticFileCMSProvider.ts",
       "norm_label": "cmsmetadata"
     },
     {
@@ -9573,7 +9573,7 @@
       "_origin": "ast",
       "id": "src_types_cms_cmspadentry",
       "community": 4,
-      "community_name": "SacredPad",
+      "community_name": "StaticFileCMSProvider.ts",
       "norm_label": "cmspadentry"
     },
     {
@@ -9599,7 +9599,7 @@
       "_origin": "ast",
       "id": "src_types_cms_cmssaintentry",
       "community": 4,
-      "community_name": "SacredPad",
+      "community_name": "StaticFileCMSProvider.ts",
       "norm_label": "cmssaintentry"
     },
     {
@@ -9612,7 +9612,7 @@
       "_origin": "ast",
       "id": "src_types_cms_cmsfeedpostentry",
       "community": 4,
-      "community_name": "SacredPad",
+      "community_name": "StaticFileCMSProvider.ts",
       "norm_label": "cmsfeedpostentry"
     },
     {
@@ -9625,7 +9625,7 @@
       "_origin": "ast",
       "id": "src_types_cms_cmsashtayamaentry",
       "community": 4,
-      "community_name": "SacredPad",
+      "community_name": "StaticFileCMSProvider.ts",
       "norm_label": "cmsashtayamaentry"
     },
     {
@@ -9650,7 +9650,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_types_cms_cmsfilter",
-      "community": 4,
+      "community": 215,
       "community_name": "SacredPad",
       "norm_label": "cmsfilter"
     },
@@ -9674,7 +9674,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_types_devotional_sacredpad",
-      "community": 4,
+      "community": 215,
       "community_name": "SacredPad",
       "norm_label": "sacredpad"
     },
@@ -9740,7 +9740,7 @@
       "_origin": "ast",
       "id": "src_types_devotional_devotionalfeedpost",
       "community": 4,
-      "community_name": "SacredPad",
+      "community_name": "StaticFileCMSProvider.ts",
       "norm_label": "devotionalfeedpost"
     },
     {
@@ -9831,7 +9831,7 @@
       "_origin": "ast",
       "id": "src_types_devotional_ashtayamaphaseinfo",
       "community": 4,
-      "community_name": "SacredPad",
+      "community_name": "StaticFileCMSProvider.ts",
       "norm_label": "ashtayamaphaseinfo"
     },
     {
@@ -20904,7 +20904,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "functions/[[path]].ts",
-      "source_location": "L1155",
+      "source_location": "L1314",
       "weight": 1.0,
       "_origin": "ast",
       "source": "functions_path_onrequest",
@@ -20916,7 +20916,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "functions/[[path]].ts",
-      "source_location": "L1186",
+      "source_location": "L1345",
       "weight": 1.0,
       "_origin": "ast",
       "source": "functions_path_onrequest",
@@ -20929,7 +20929,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "functions/[[path]].ts",
-      "source_location": "L619",
+      "source_location": "L641",
       "weight": 1.0,
       "_origin": "ast",
       "source": "functions_path_onrequest",
@@ -20941,7 +20941,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "functions/[[path]].ts",
-      "source_location": "L817",
+      "source_location": "L839",
       "weight": 1.0,
       "_origin": "ast",
       "source": "functions_path_onrequest",
@@ -20952,7 +20952,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "functions/[[path]].ts",
-      "source_location": "L648",
+      "source_location": "L670",
       "weight": 1.0,
       "_origin": "ast",
       "source": "functions_path_onrequest",
@@ -20964,7 +20964,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "functions/[[path]].ts",
-      "source_location": "L868",
+      "source_location": "L890",
       "weight": 1.0,
       "_origin": "ast",
       "source": "functions_path_onrequest",
@@ -20988,7 +20988,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "functions/[[path]].ts",
-      "source_location": "L616",
+      "source_location": "L638",
       "weight": 1.0,
       "_origin": "ast",
       "source": "functions_path_onrequest",
@@ -24837,7 +24837,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "scripts/generate-sitemap.js",
-      "source_location": "L401",
+      "source_location": "L405",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_generate_sitemap",
@@ -24919,7 +24919,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "scripts/generate-sitemap.js",
-      "source_location": "L371",
+      "source_location": "L375",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_generate_sitemap_createsitemapsuite",
@@ -24931,7 +24931,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "scripts/generate-sitemap.js",
-      "source_location": "L405",
+      "source_location": "L409",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_generate_sitemap_generateallsitemaps",
@@ -25476,7 +25476,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "scripts/prerender.js",
-      "source_location": "L111",
+      "source_location": "L115",
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_prerender_prerender",
@@ -25842,7 +25842,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/App.tsx",
-      "source_location": "L214",
+      "source_location": "L245",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app",
@@ -26702,7 +26702,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/App.tsx",
-      "source_location": "L312",
+      "source_location": "L343",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -26738,7 +26738,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/App.tsx",
-      "source_location": "L218",
+      "source_location": "L249",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -26750,7 +26750,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/App.tsx",
-      "source_location": "L169",
+      "source_location": "L187",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_resolvecurrentroute",
@@ -26763,7 +26763,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L191",
+      "source_location": "L220",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_resolvecurrentroute",
@@ -26775,7 +26775,7 @@
       "deferred": true,
       "confidence": "EXTRACTED",
       "source_file": "src/App.tsx",
-      "source_location": "L242",
+      "source_location": "L273",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -26788,7 +26788,7 @@
       "deferred": true,
       "confidence": "EXTRACTED",
       "source_file": "src/App.tsx",
-      "source_location": "L241",
+      "source_location": "L272",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -26801,7 +26801,7 @@
       "deferred": true,
       "confidence": "EXTRACTED",
       "source_file": "src/App.tsx",
-      "source_location": "L240",
+      "source_location": "L271",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -26814,7 +26814,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L252",
+      "source_location": "L283",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -26826,7 +26826,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L771",
+      "source_location": "L802",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -26838,7 +26838,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L773",
+      "source_location": "L804",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -26850,7 +26850,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L778",
+      "source_location": "L809",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -26862,7 +26862,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L469",
+      "source_location": "L500",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -26874,7 +26874,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L456",
+      "source_location": "L487",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -26886,7 +26886,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L254",
+      "source_location": "L285",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -26898,7 +26898,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L462",
+      "source_location": "L493",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -26910,7 +26910,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L273",
+      "source_location": "L304",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -26922,7 +26922,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L699",
+      "source_location": "L730",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -26934,7 +26934,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L1728",
+      "source_location": "L1759",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -26946,7 +26946,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L224",
+      "source_location": "L255",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -29105,7 +29105,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "src/entry-server.tsx",
-      "source_location": "L283",
+      "source_location": "L338",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_entry_server_render",
@@ -29852,7 +29852,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "src/entry-server.tsx",
-      "source_location": "L283",
+      "source_location": "L338",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_entry_server_render",
@@ -30497,7 +30497,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "src/entry-server.tsx",
-      "source_location": "L283",
+      "source_location": "L338",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_entry_server_render",
@@ -31259,7 +31259,7 @@
       "context": "export",
       "confidence": "EXTRACTED",
       "source_file": "src/entry-server.tsx",
-      "source_location": "L299",
+      "source_location": "L354",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_entry_server",
@@ -31271,7 +31271,7 @@
       "context": "re-export",
       "confidence": "EXTRACTED",
       "source_file": "src/entry-server.tsx",
-      "source_location": "L299",
+      "source_location": "L354",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_entry_server",
@@ -31368,7 +31368,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/entry-server.tsx",
-      "source_location": "L110",
+      "source_location": "L137",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_entry_server_render",
@@ -31428,7 +31428,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/entry-server.tsx",
-      "source_location": "L108",
+      "source_location": "L135",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_entry_server_render",
@@ -31440,7 +31440,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/entry-server.tsx",
-      "source_location": "L276",
+      "source_location": "L331",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_entry_server_render",
@@ -47879,5 +47879,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "6a57834e5aa7050c8601342bd2dc72d5570d81f5"
+  "built_at_commit": "78cd2be9d8b0ce10c26724ead2ed4885771db80c"
 }

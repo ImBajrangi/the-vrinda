@@ -1,16 +1,16 @@
 # Graph Report - vrindopnisad  (2026-11-11)
 
 ## Corpus Check
-- 1070 files · ~8,448,847 words
+- 1070 files · ~8,450,971 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1806 nodes · 2410 edges · 215 communities (158 shown, 57 thin omitted)
+- 1806 nodes · 2410 edges · 216 communities (159 shown, 57 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 5 edges (avg confidence: 0.68)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `6a57834e`
+- Built from commit: `78cd2be9`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -19,7 +19,7 @@
 - cacheService.ts
 - devotionalSummaryService.ts
 - sacredDatabase.ts
-- SacredPad
+- StaticFileCMSProvider.ts
 - PadavaliReader.tsx
 - .cache_bundle.mjs
 - App.tsx
@@ -223,6 +223,7 @@
 - victory_auditor_gen2/DISPATCH.md
 - victory_auditor/progress.md
 - DEAD_ENDS.md
+- SacredPad
 
 ## God Nodes (most connected - your core abstractions)
 1. `SacredPad` - 37 edges
@@ -251,7 +252,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (215 total, 57 thin omitted)
+## Communities (216 total, 57 thin omitted)
 
 ### Community 0 - "[[path]].ts"
 Cohesion: 0.07
@@ -269,9 +270,9 @@ Nodes (35): InlinePurportCard(), InlinePurportCardProps, broadcastSummaryCached(
 Cohesion: 0.06
 Nodes (32): SACRED_PADS, allGranthas, allPadas, allSaints, authorCache, BrajGlossaryTerm, CatalogIndexItem, categoryCache (+24 more)
 
-### Community 4 - "SacredPad"
-Cohesion: 0.12
-Nodes (16): CMSEditorialBadgeProps, FeedCardProps, FloatingAudioPlayer(), FloatingAudioPlayerProps, SACRED_FEED_POSTS, cms, CMSAshtayamaEntry, CMSContentStatus (+8 more)
+### Community 4 - "StaticFileCMSProvider.ts"
+Cohesion: 0.16
+Nodes (10): FeedCardProps, SACRED_FEED_POSTS, CMSAshtayamaEntry, CMSContentStatus, CMSFeedPostEntry, CMSMetadata, CMSPadEntry, CMSSaintEntry (+2 more)
 
 ### Community 5 - "PadavaliReader.tsx"
 Cohesion: 0.10
@@ -857,6 +858,10 @@ Nodes (3): Features, Quick Start, the-vrinda (वृन्दोपनिषद�
 Cohesion: 0.67
 Nodes (3): DOMAINS, fetchUrl(), runDomainAudit()
 
+### Community 215 - "SacredPad"
+Cohesion: 0.24
+Nodes (6): CMSEditorialBadgeProps, FloatingAudioPlayer(), FloatingAudioPlayerProps, cms, CMSFilter, SacredPad
+
 ## Knowledge Gaps
 - **975 isolated node(s):** `Env`, `PagesFunction`, `EPICS_META`, `CHAPTER_SNIPPETS`, `SAINT_KNOWLEDGE_GRAPH` (+970 more)
   These have ≤1 connection - possible missing edges or undocumented components.
@@ -867,7 +872,7 @@ _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `dependencies` connect `dependencies` to `SadhanaRingProgress.tsx`, `package.json`?**
   _High betweenness centrality (0.022) - this node is a cross-community bridge._
-- **Why does `react` connect `SadhanaRingProgress.tsx` to `SacredPad`, `dependencies`?**
+- **Why does `react` connect `SadhanaRingProgress.tsx` to `dependencies`, `SacredPad`?**
   _High betweenness centrality (0.021) - this node is a cross-community bridge._
 - **Why does `SadhanaRingProgress()` connect `SadhanaRingProgress.tsx` to `formatDevanagariNumerals`, `App.tsx`?**
   _High betweenness centrality (0.020) - this node is a cross-community bridge._
