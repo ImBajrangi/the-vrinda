@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { createPortal } from 'react-dom';
-import { X, Search, BookOpen, Feather, ChevronRight, Check } from 'lucide-react';
+import { X, Search, BookOpen, Feather, ChevronRight, Check, LayoutGrid, List } from 'lucide-react';
 
 export interface ScriptureItem {
   id: string;
@@ -60,6 +60,8 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
   onCategoryChange,
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedSection, setSelectedSection] = useState<string | null>(null);
+  const [viewMode, setViewMode] = useState<'list' | 'grid'>('list');
   const [isRendered, setIsRendered] = useState(isOpen);
   const [isMounted, setIsMounted] = useState(false);
 
@@ -151,18 +153,47 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
     }
   }, [isOpen, selectedId, activeCategory]);
 
-  // Filter items
+  // Available unique sections (e.g. बालकाण्ड, अयोध्याकाण्ड)
+  const availableSections = useMemo(() => {
+    const sects: string[] = [];
+    const seen = new Set<string>();
+    for (const item of items) {
+      if (item.section && !seen.has(item.section)) {
+        seen.add(item.section);
+        sects.push(item.section);
+      }
+    }
+    return sects;
+  }, [items]);
+
+  // Sync selected section with active item when opened
+  useEffect(() => {
+    if (isOpen && selectedId) {
+      const activeItem = items.find((it) => it.id === selectedId);
+      if (activeItem && activeItem.section) {
+        setSelectedSection(activeItem.section);
+      } else {
+        setSelectedSection(null);
+      }
+    }
+  }, [isOpen, selectedId, items]);
+
+  // Filter items by search query AND section
   const filteredItems = useMemo(() => {
-    if (!searchQuery.trim()) return items;
+    let result = items;
+    if (selectedSection) {
+      result = result.filter((item) => item.section === selectedSection);
+    }
+    if (!searchQuery.trim()) return result;
     const q = searchQuery.trim().toLowerCase();
-    return items.filter((item) => {
+    return result.filter((item) => {
       return (
         item.name.toLowerCase().includes(q) ||
         item.id.toLowerCase().includes(q) ||
         (item.section && item.section.toLowerCase().includes(q))
       );
     });
-  }, [items, searchQuery]);
+  }, [items, selectedSection, searchQuery]);
 
   // Swipe-down touch handlers with full-surface drag detection
   const handleTouchStart = useCallback(
@@ -396,7 +427,81 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
           </div>
         )}
 
-        {/* Scrollable Items List with Intelligent Section Grouping */}
+        {/* Section / Kanda Two-Step Direct Dial Strip & View Mode Toggle */}
+        {availableSections.length > 1 && (
+          <div className="px-4 py-2 shrink-0 bg-[#FAF8F5] border-b border-stone-200/60 flex items-center justify-between gap-2">
+            {/* Horizontal Scrollable Kanda/Section Pills */}
+            <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5 min-w-0 flex-1">
+              <button
+                type="button"
+                onClick={() => {
+                  triggerHaptic(6);
+                  setSelectedSection(null);
+                }}
+                className={`h-7 px-3 rounded-full text-[11px] font-serif whitespace-nowrap transition-colors cursor-pointer select-none shrink-0 ${
+                  selectedSection === null
+                    ? 'bg-[#FEF08A] text-[#78350F] font-bold shadow-2xs border border-amber-300/80'
+                    : 'bg-white text-stone-600 border border-stone-200/60 hover:text-stone-900 active:bg-stone-100'
+                }`}
+              >
+                सभी ({items.length})
+              </button>
+              {availableSections.map((sect) => {
+                const isSelected = selectedSection === sect;
+                const sectCount = items.filter((it) => it.section === sect).length;
+                return (
+                  <button
+                    key={sect}
+                    type="button"
+                    onClick={() => {
+                      triggerHaptic(6);
+                      setSelectedSection(sect);
+                    }}
+                    className={`h-7 px-3 rounded-full text-[11px] font-serif whitespace-nowrap transition-colors cursor-pointer select-none shrink-0 ${
+                      isSelected
+                        ? 'bg-[#FEF08A] text-[#78350F] font-bold shadow-2xs border border-amber-300/80'
+                        : 'bg-white text-stone-600 border border-stone-200/60 hover:text-stone-900 active:bg-stone-100'
+                    }`}
+                  >
+                    {sect} {sectCount > 0 && <span className="opacity-70 text-[9.5px]">({sectCount})</span>}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* View Mode Toggle: List vs Compact Grid */}
+            <div className="flex items-center bg-stone-200/70 p-0.5 rounded-lg shrink-0">
+              <button
+                type="button"
+                onClick={() => {
+                  triggerHaptic(6);
+                  setViewMode('list');
+                }}
+                className={`w-6 h-6 rounded-[6px] flex items-center justify-center transition-colors cursor-pointer ${
+                  viewMode === 'list' ? 'bg-white text-stone-900 shadow-2xs' : 'text-stone-500 hover:text-stone-800'
+                }`}
+                title="विस्तृत सूची (List View)"
+              >
+                <List className="w-3.5 h-3.5" />
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  triggerHaptic(6);
+                  setViewMode('grid');
+                }}
+                className={`w-6 h-6 rounded-[6px] flex items-center justify-center transition-colors cursor-pointer ${
+                  viewMode === 'grid' ? 'bg-white text-stone-900 shadow-2xs' : 'text-stone-500 hover:text-stone-800'
+                }`}
+                title="त्वरित संख्या ग्रिड (Grid View)"
+              >
+                <LayoutGrid className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Scrollable Items List with Intelligent Section Grouping & Grid View */}
         <div
           ref={scrollContainerRef}
           className="flex-1 overflow-y-auto overscroll-contain px-4 py-2 space-y-1 drawer-scrollable pb-[max(1.75rem,env(safe-area-inset-bottom,1.75rem))]"
@@ -405,6 +510,33 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
             <div className="py-14 text-center select-none">
               <p className="text-sm font-serif font-bold text-stone-500">कोई परिणाम नहीं मिला</p>
               <p className="text-xs text-stone-400 mt-1">कृपया अन्य शब्द से खोजें</p>
+            </div>
+          ) : viewMode === 'grid' ? (
+            /* Compact High-Density Touch Grid */
+            <div className="grid grid-cols-4 sm:grid-cols-6 gap-2 py-1">
+              {filteredItems.map((item, idx) => {
+                const isSelected = selectedId === item.id;
+                const numMatch = item.name.match(/\d+/);
+                const displayNum = numMatch ? numMatch[0] : `${idx + 1}`;
+                return (
+                  <button
+                    key={item.id}
+                    type="button"
+                    data-selected={isSelected}
+                    onClick={() => handleSelect(item.id)}
+                    className={`h-12 rounded-[14px] flex flex-col items-center justify-center p-1 transition-all cursor-pointer select-none active:scale-95 ${
+                      isSelected
+                        ? 'bg-[#FEF08A] text-[#78350F] font-bold shadow-xs border border-amber-400'
+                        : 'bg-[#FAF8F5] hover:bg-stone-100 text-stone-800 border border-stone-200/60'
+                    }`}
+                  >
+                    <span className="font-mono text-xs font-bold leading-none">#{displayNum}</span>
+                    <span className="text-[9.5px] text-stone-500 truncate max-w-[95%] font-serif leading-none mt-1">
+                      {item.name.replace(/^[^a-zA-Z0-9\u0900-\u097F]+/, '').slice(0, 9)}
+                    </span>
+                  </button>
+                );
+              })}
             </div>
           ) : (
             filteredItems.map((item, idx) => {

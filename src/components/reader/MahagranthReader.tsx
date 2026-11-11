@@ -603,7 +603,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
   };
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-1.5 sm:px-4 lg:px-6 pt-0 sm:pt-6 pb-24 sm:pb-28 md:pb-20">
+    <div className="w-full max-w-7xl mx-auto px-1.5 sm:px-4 lg:px-6 pt-0 sm:pt-6 pb-20 sm:pb-24 md:pb-16">
       {/* Mobile-Optimized Reader Header: 1-Tap Chapter Drawer, Auto-Hiding Chrome */}
       <MobileReaderHeader
         scriptureTitle={currentEpicConfig.shortName || currentEpicConfig.name}

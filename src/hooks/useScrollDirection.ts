@@ -44,10 +44,10 @@ export function useScrollDirection(options: UseScrollDirectionOptions = {}): Scr
     const delta = currentY - lastScrollY.current;
     const isNearTop = currentY < 80;
 
-    // Check if user has reached the bottom of the page
+    // Check if user has reached or is near the bottom of the page (within 240px)
     const windowHeight = window.innerHeight;
     const documentHeight = typeof document !== 'undefined' ? document.documentElement.scrollHeight : 0;
-    const isNearBottom = documentHeight > 0 && windowHeight + currentY >= documentHeight - 90;
+    const isNearBottom = documentHeight > 0 && windowHeight + currentY >= documentHeight - 240;
 
     let direction: ScrollDirection = lastDirection.current;
 
@@ -63,13 +63,13 @@ export function useScrollDirection(options: UseScrollDirectionOptions = {}): Scr
     setState({ direction, showChrome, scrollY: currentY, isNearTop });
     ticking.current = false;
 
-    // Reset to idle / visible chrome after 2.5s of reading inactivity
+    // Reset to idle / visible chrome after 1.5s of reading inactivity
     if (idleTimer.current) clearTimeout(idleTimer.current);
     if (!showChrome) {
       idleTimer.current = setTimeout(() => {
         lastDirection.current = 'idle';
         setState((prev) => ({ ...prev, direction: 'idle', showChrome: true }));
-      }, 2500);
+      }, 1500);
     }
   }, [threshold, enabled]);
 

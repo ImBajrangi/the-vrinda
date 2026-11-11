@@ -488,6 +488,32 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
     };
   }, []);
 
+  // Proactive Background Tab Pre-warming for Instantaneous 0ms Tab Switching
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const scheduleIdle = 'requestIdleCallback' in window
+      ? (cb: () => void) => (window as any).requestIdleCallback(cb, { timeout: 2500 })
+      : (cb: () => void) => setTimeout(cb, 1000);
+
+    const timer = scheduleIdle(() => {
+      // Warm both reader tabs into visitedTabs so their components are pre-hydrated in memory
+      setVisitedTabs((prev) => {
+        const next = new Set(prev);
+        next.add('granthas');
+        next.add('padavali');
+        return next;
+      });
+    });
+
+    return () => {
+      if (typeof window !== 'undefined' && 'cancelIdleCallback' in window) {
+        (window as any).cancelIdleCallback(timer);
+      } else {
+        clearTimeout(timer);
+      }
+    };
+  }, []);
+
   const handleTabSwitch = (tab: NavTab) => {
     if (tab === activeTab) return;
     // Synchronously ensure target tab is in visitedTabs so it renders in Frame 1
@@ -770,7 +796,7 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
           - Tablet (768px - 1024px): max-w-4xl with balanced gutters
           - Desktop (1024px+): max-w-6xl xl:max-w-7xl
       */}
-      <div className={`w-full max-w-full overflow-x-hidden md:max-w-5xl xl:max-w-7xl min-h-screen relative px-3 sm:px-6 lg:px-8 ${isReaderTab ? 'pt-2 sm:pt-28 lg:pt-32' : 'pt-20 sm:pt-28 lg:pt-32'} pb-36 md:pb-24 box-border`}>
+      <div className={`w-full max-w-full overflow-x-hidden md:max-w-5xl xl:max-w-7xl min-h-screen relative px-3 sm:px-6 lg:px-8 ${isReaderTab ? 'pt-2 sm:pt-28 lg:pt-32 pb-6 md:pb-16' : 'pt-20 sm:pt-28 lg:pt-32 pb-36 md:pb-24'} box-border`}>
         {/* Dynamic Top Announcement Marquee Ticker (Smoothly slides away on mobile reader tabs) */}
         <TopAnnouncementMarquee
           isScrolled={isScrolled}

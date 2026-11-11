@@ -656,12 +656,46 @@ export const SacredDatabase = {
 
         // Step 4: Restore Cloud Bookmarks in Background (non-blocking)
         this.syncCloudBookmarks().catch(() => {});
+
+        // Step 5: Idle Pre-warming of Monumental Epics (0ms switch, zero latency)
+        if (typeof window !== 'undefined') {
+          const scheduleIdle = 'requestIdleCallback' in window
+            ? (cb: () => void) => (window as any).requestIdleCallback(cb, { timeout: 3000 })
+            : (cb: () => void) => setTimeout(cb, 1200);
+
+          scheduleIdle(() => {
+            this.primeOpeningEpicChunks().catch(() => {});
+          });
+        }
       } catch (err) {
         console.warn('SacredDatabase initialization deferred:', err);
       }
     })();
 
     return initPromise;
+  },
+
+  /**
+   * Proactive 0ms Tab-Switch Pre-warming for Sanatan Epics.
+   * Runs strictly in browser idle time via requestIdleCallback.
+   * Pre-loads Valmiki Ramayana (default epic) index and opening Balakanda Sarga 1
+   * directly into memory and IndexedDB L2 cache so the first tab switch is instantaneous.
+   */
+  async primeOpeningEpicChunks(): Promise<void> {
+    if (typeof window === 'undefined') return;
+    try {
+      // 1. Pre-warm Valmiki Ramayana (the default epic tab)
+      const vrIndex = await this.getEpicIndex('valmiki-ramayana');
+      if (vrIndex && vrIndex.chapters.length > 0) {
+        await this.fetchEpicChapter('valmiki-ramayana', vrIndex.chapters[0].id);
+      }
+      // 2. Pre-warm Shrimad Bhagavatam index
+      await this.getEpicIndex('shrimad-bhagavatam').catch(() => {});
+      // 3. Pre-warm Bhagavad Gita index
+      await this.getEpicIndex('bhagavad-gita').catch(() => {});
+    } catch (err) {
+      console.warn('[SacredDatabase] Idle epic pre-warming non-critical error:', err);
+    }
   },
 
   getManifest(): any {

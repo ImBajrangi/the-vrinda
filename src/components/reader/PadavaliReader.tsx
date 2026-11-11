@@ -1529,7 +1529,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   }, [drawerMode, allGranthas, hierarchyAuthors, displayedSidebarPads]);
 
   return (
-    <div className="w-full pb-24 sm:pb-28 md:pb-20 pt-0 sm:pt-4 px-1 sm:px-0">
+    <div className="w-full pb-20 sm:pb-24 md:pb-16 pt-0 sm:pt-4 px-1 sm:px-0">
       {/* Mobile-Optimized Reader Header: 1-Tap Drawer, Auto-Hiding Chrome */}
       <MobileReaderHeader
         scriptureTitle={
@@ -3450,10 +3450,13 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
           onClick={handleCloseCommentary}
         >
           <div
-            className={`${currentTheme.commentaryBg} ${currentTheme.canvasText} rounded-t-[28px] sm:rounded-[28px] max-h-[85vh] w-full max-w-lg overflow-y-auto p-5 sm:p-6 space-y-4 relative ${isCommentaryClosing ? 'sheet-exit' : 'sheet-enter'
+            className={`${currentTheme.commentaryBg} ${currentTheme.canvasText} rounded-t-[28px] sm:rounded-[28px] max-h-[85vh] w-full max-w-lg overflow-y-auto p-5 sm:p-6 space-y-4 relative pb-[max(1.75rem,env(safe-area-inset-bottom,1.75rem))] ${isCommentaryClosing ? 'sheet-exit' : 'sheet-enter'
               }`}
             onClick={(e) => e.stopPropagation()}
           >
+            {/* iOS Pull Handle on Mobile */}
+            <div className="w-10 h-1 bg-neutral-300/60 rounded-full mx-auto -mt-1 mb-2 sm:hidden shrink-0" />
+
             <div className={`flex items-center justify-between pb-3 border-b ${currentTheme.borderColor}`}>
               <div className="flex items-center gap-2">
                 <Feather className={`w-4 h-4 ${currentTheme.translitColor}`} />
@@ -3524,18 +3527,24 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
           onClick={handleCloseGlossary}
         >
           <div
-            className={`bg-white rounded-t-[28px] sm:rounded-[28px] max-h-[85vh] w-full max-w-lg overflow-y-auto p-5 sm:p-6 space-y-4 relative text-[#18181B] ${isGlossaryClosing ? 'sheet-exit' : 'sheet-enter'
+            className={`bg-white rounded-t-[28px] sm:rounded-[28px] max-h-[85vh] w-full max-w-lg flex flex-col relative text-[#18181B] shadow-2xl overflow-hidden ${isGlossaryClosing ? 'sheet-exit' : 'sheet-enter'
               }`}
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between pb-3 border-b border-neutral-100">
-              <div className="flex items-center gap-2">
-                <BookOpenCheck className="w-5 h-5 text-neutral-800" />
-                <div>
-                  <h3 className="font-semibold text-sm sm:text-base text-[#18181B]">
+            {/* iOS Pull Handle on Mobile */}
+            <div className="w-10 h-1 bg-neutral-300 rounded-full mx-auto mt-2.5 mb-1 sm:hidden shrink-0" />
+
+            {/* Fixed Header */}
+            <div className="flex items-center justify-between px-5 sm:px-6 py-3 border-b border-neutral-100 shrink-0">
+              <div className="flex items-center gap-2.5 min-w-0">
+                <div className="w-8 h-8 rounded-full bg-amber-50 border border-amber-200/60 flex items-center justify-center text-amber-800 shrink-0">
+                  <BookOpenCheck className="w-4 h-4" />
+                </div>
+                <div className="min-w-0">
+                  <h3 className="font-serif font-bold text-sm sm:text-base text-[#18181B] truncate">
                     Rasik Braj Lexicon • Sacred Vocabulary
                   </h3>
-                  <p className="text-[11px] text-[#71717A]">
+                  <p className="text-[11px] text-[#71717A] truncate">
                     Essential devotional vocabulary of eternal Nikunj & Braj ras
                   </p>
                 </div>
@@ -3544,17 +3553,18 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 type="button"
                 onClick={handleCloseGlossary}
                 aria-label="Close glossary modal"
-                className="w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center text-[#18181B] hover:bg-neutral-200 cursor-pointer"
+                className="w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center text-[#18181B] hover:bg-neutral-200 active:bg-neutral-300 cursor-pointer shrink-0 ml-2"
               >
                 <X className="w-4 h-4" />
               </button>
             </div>
 
-            <div className="space-y-3 max-h-[58vh] overflow-y-auto pr-1 no-scrollbar">
+            {/* Scrollable Content (Single scroll container with zero overlapping) */}
+            <div className="flex-1 overflow-y-auto overscroll-contain px-5 sm:px-6 py-3.5 space-y-3">
               {SacredDatabase.getBrajGlossary().map((item, idx) => (
                 <div
                   key={idx}
-                  className="p-3.5 rounded-2xl bg-neutral-50"
+                  className="p-3.5 rounded-2xl bg-stone-50/80 border border-stone-200/50 shadow-2xs"
                 >
                   <div className="flex items-baseline justify-between gap-2">
                     <span className="font-serif font-bold text-sm text-[#18181B]">
@@ -3564,23 +3574,26 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                       {item.transliteration}
                     </span>
                   </div>
-                  <p className="text-xs text-[#18181B] mt-1 leading-relaxed">
+                  <p className="text-xs text-[#18181B] mt-1.5 leading-relaxed font-serif">
                     {item.meaningDevanagari}
                   </p>
-                  <div className="text-[10px] text-neutral-400 mt-1.5 pt-1.5 border-t border-neutral-200/60 font-serif italic">
+                  <div className="text-[10.5px] text-neutral-500 mt-2 pt-1.5 border-t border-neutral-200/60 font-serif italic">
                     Context: {item.context}
                   </div>
                 </div>
               ))}
             </div>
 
-            <button
-              type="button"
-              onClick={handleCloseGlossary}
-              className="w-full mt-2 py-3 rounded-2xl bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] text-xs font-bold uppercase tracking-wider cursor-pointer"
-            >
-              Close
-            </button>
+            {/* Clean iOS Padded Footer Button */}
+            <div className="px-5 sm:px-6 py-3 border-t border-neutral-100 bg-white/95 shrink-0 pb-[max(0.75rem,env(safe-area-inset-bottom,0.75rem))]">
+              <button
+                type="button"
+                onClick={handleCloseGlossary}
+                className="w-full py-2.5 rounded-xl bg-[#FAF8F5] hover:bg-stone-100 border border-amber-900/10 text-stone-800 text-xs font-serif font-bold cursor-pointer transition-colors"
+              >
+                बन्द करें (Close)
+              </button>
+            </div>
           </div>
         </div>,
         document.body

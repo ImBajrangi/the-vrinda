@@ -135,6 +135,12 @@ export const FloatingNavbar: React.FC<FloatingNavbarProps> = ({
             <button
               key={tab.id}
               type="button"
+              onPointerDown={() => {
+                // Pre-warm / instant switch on touch contact (150ms before click)
+                if (activeTab !== tab.id) {
+                  onSelectTab(tab.id);
+                }
+              }}
               onClick={(e) => {
                 e.stopPropagation();
                 if (activeTab !== tab.id) {
