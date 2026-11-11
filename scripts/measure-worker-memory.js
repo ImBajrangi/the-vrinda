@@ -16,22 +16,23 @@ const projectRoot = path.resolve(__dirname, '..');
 export function measureWorkerMemory() {
   const initial = process.memoryUsage().heapUsed;
 
-  const catalogPath = path.resolve(projectRoot, 'public/data/catalog.json');
+  const padaSnippetsPath = path.resolve(projectRoot, 'src/data/padaSnippets.json');
   const snippetsPath = path.resolve(projectRoot, 'public/data/epics/chapter-snippets.json');
   const granthasPath = path.resolve(projectRoot, 'src/data/canonicalGranthas.json');
   const saintsPath = path.resolve(projectRoot, 'src/data/canonicalSaints.json');
 
-  const cat = JSON.parse(fs.readFileSync(catalogPath, 'utf-8'));
+  const padaSnippets = JSON.parse(fs.readFileSync(padaSnippetsPath, 'utf-8'));
   const snippets = JSON.parse(fs.readFileSync(snippetsPath, 'utf-8'));
   const granthas = JSON.parse(fs.readFileSync(granthasPath, 'utf-8'));
   const saints = JSON.parse(fs.readFileSync(saintsPath, 'utf-8'));
 
   const PADA_MAP = new Map();
-  for (const item of cat.items) {
-    PADA_MAP.set(item[0], {
-      title: item[1],
-      author: cat.authors[item[3]] || 'रसिक संत',
-      grantha: cat.cols[item[2]] || '',
+  for (const [slug, item] of Object.entries(padaSnippets)) {
+    PADA_MAP.set(slug, {
+      title: item[0],
+      author: item[1] || 'रसिक संत',
+      grantha: item[2] || '',
+      openingVerse: item[3] || '',
     });
   }
 

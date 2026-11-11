@@ -55,9 +55,9 @@ export interface SEOMetadataResult {
 
 export const DEFAULT_SEO = {
   siteName: 'वृन्दोपनिषद् 2.0 (Vrindopnisad)',
-  title: 'वृन्दोपनिषद् 2.0 • Digital Sanctuary for Nitya Nikunj Ras & Sacred Pada Literature',
+  title: 'वृन्दोपनिषद् 2.0 • Sacred Vrindavan Ras Sanctuary & Canonical Pada Literature',
   description:
-    'Comprehensive repository of 4,200+ canonical Braj Ras verses, Hit Chaurasi, Radha Sudha Nidhi, Ashtayama timeline, daily sadhana rings, and sacred audio recitation.',
+    'Comprehensive repository of 44,000+ canonical Braj Ras verses, Hit Chaurasi, Radha Sudha Nidhi, Ashtayama timeline, daily sadhana rings, and sacred audio recitation.',
   keywords: [
     'Vrindavan',
     'Vrindopnisad',
@@ -73,7 +73,7 @@ export const DEFAULT_SEO = {
     'Braj Bhasha',
   ],
   baseUrl: 'https://bhav.vrindopnishad.in',
-  defaultImage: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=1200&q=80',
+  defaultImage: 'https://bhav.vrindopnishad.in/assets/temples/banke-bihari-v2.webp',
 };
 
 function escapeHtml(str: string): string {

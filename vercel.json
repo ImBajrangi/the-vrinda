@@ -2,100 +2,36 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "trailingSlash": false,
-  "headers": [
+  "redirects": [
     {
-      "source": "/assets/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
+      "source": "/sitemap.xml",
+      "destination": "https://bhav.vrindopnishad.in/sitemap.xml",
+      "permanent": true
     },
     {
-      "source": "/data/manifest.json",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        },
-        {
-          "key": "CDN-Cache-Control",
-          "value": "public, s-maxage=3600, stale-while-revalidate=86400"
-        }
-      ]
+      "source": "/robots.txt",
+      "destination": "https://bhav.vrindopnishad.in/robots.txt",
+      "permanent": true
     },
     {
-      "source": "/data/catalog.json",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        },
-        {
-          "key": "CDN-Cache-Control",
-          "value": "public, s-maxage=3600, stale-while-revalidate=86400"
-        }
-      ]
+      "source": "/sitemap-:path*.xml",
+      "destination": "https://bhav.vrindopnishad.in/sitemap-:path*.xml",
+      "permanent": true
     },
     {
-      "source": "/data/(.*)\\.([a-f0-9]{12})\\.json(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        },
-        {
-          "key": "CDN-Cache-Control",
-          "value": "public, s-maxage=31536000"
-        }
-      ]
+      "source": "/(hi/)?(lyrics|content|verse|pada|pad)/:slug",
+      "destination": "https://bhav.vrindopnishad.in/?tab=padavali&pad=:slug",
+      "permanent": true
     },
     {
-      "source": "/data/granthas/(.*)\\.([a-f0-9]{12})\\.json(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        },
-        {
-          "key": "CDN-Cache-Control",
-          "value": "public, s-maxage=31536000"
-        }
-      ]
-    },
-    {
-      "source": "/(.*)\\.(xml|txt|ico|svg)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=86400, s-maxage=604800, stale-while-revalidate=86400"
-        }
-      ]
+      "source": "/granthas/:path*",
+      "destination": "https://path.vrindopnishad.in/?tab=granthas",
+      "permanent": true
     },
     {
       "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        }
-      ]
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/((?!assets/|data/|.*\\..*).*)",
-      "destination": "/index.html"
+      "destination": "https://bhav.vrindopnishad.in/$1",
+      "permanent": true
     }
   ]
 }
-

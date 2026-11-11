@@ -8,7 +8,7 @@
 import chapterSnippetsData from '../src/data/chapterSnippets.json';
 import canonicalGranthasData from '../src/data/canonicalGranthas.json';
 import canonicalSaintsData from '../src/data/canonicalSaints.json';
-import catalogData from '../public/data/catalog.json';
+import padaSnippetsData from '../src/data/padaSnippets.json';
 
 interface Env {}
 
@@ -111,20 +111,8 @@ const CHAPTER_SNIPPETS = snippetsObj as Record<string, {
   openingVerse: string;
 }>;
 
-const catObj: any = (catalogData as any)?.default || catalogData || {};
-const catItems: any[] = catObj.items || [];
-const catAuthors: string[] = catObj.authors || [];
-const catCols: string[] = catObj.cols || [];
-
-const PADA_MAP = new Map<string, { title: string; author: string; grantha: string }>();
-for (const item of catItems) {
-  const [slug, titleDev, colIdx, authIdx] = item;
-  PADA_MAP.set(slug, {
-    title: titleDev,
-    author: catAuthors[authIdx] || 'रसिक संत',
-    grantha: catCols[colIdx] || '',
-  });
-}
+const padaSnippetsObj: Record<string, [string, string, string, string]> =
+  (padaSnippetsData as any)?.default || padaSnippetsData || {};
 
 function getChapterSnippet(granthaId: string, chapterId: string) {
   return CHAPTER_SNIPPETS[`${granthaId}:${chapterId}`] || null;
@@ -293,7 +281,14 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   const host = url.hostname;
   const isStaging = host.endsWith('.pages.dev');
   const isPathDomain = host === 'path.vrindopnishad.in' || host.startsWith('path.');
+  const isApexOrWww = host === 'vrindopnishad.in' || host === 'www.vrindopnishad.in';
   const pathname = url.pathname.replace(/\/+$/, '') || '/';
+
+  // 0. Apex & WWW Canonical 301 Redirection to Primary bhav.vrindopnishad.in
+  if (isApexOrWww) {
+    const cleanUrl = new URL(`https://bhav.vrindopnishad.in${pathname === '/' ? '' : pathname}${url.search}`);
+    return Response.redirect(cleanUrl.toString(), 301);
+  }
 
   // 1. Trailing slash normalization: 301 redirect /path/ to /path
   if (url.pathname.length > 1 && url.pathname.endsWith('/')) {
@@ -369,12 +364,10 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     // Path domain strictly owns only Mahagranth Parayana (Epics). Keep both domains 100% separate on Google.
     // Clean empty XML sitemap ensures GSC never gets an HTML error or cross-domain redirect.
     if (
-      pathname === '/sitemap-path-padas.xml' ||
-      pathname === '/sitemap-path-padas.xml.gz' ||
-      pathname === '/sitemap-padas.xml' ||
-      pathname === '/sitemap-path-saints.xml' ||
-      pathname === '/sitemap-path-saints.xml.gz' ||
-      pathname === '/sitemap-saints.xml'
+      pathname.startsWith('/sitemap-path-padas') ||
+      pathname.startsWith('/sitemap-padas') ||
+      pathname.startsWith('/sitemap-path-saints') ||
+      pathname.startsWith('/sitemap-saints')
     ) {
       return new Response(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n</urlset>',
@@ -534,17 +527,23 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   const padId = qPad || (pathname.startsWith('/pad/') ? decodeURIComponent(pathname.replace('/pad/', '')).trim() : null);
 
   if (padId) {
-    const known = KNOWN_PADAS_META[padId];
-    const catItem = PADA_MAP.get(padId) || PADA_MAP.get(decodeURIComponent(padId).trim());
-    const padTitle = known?.title || catItem?.title || formatSlug(padId);
-    const padAuthor = known?.author || catItem?.author || 'रसिक संत';
-    const granthaMeta = catItem?.grantha ? GRANTHAS_MAP.get(catItem.grantha) : null;
+    const cleanPadId = decodeURIComponent(padId).trim();
+    const snippet = padaSnippetsObj[cleanPadId] || padaSnippetsObj[padId];
+    const known = KNOWN_PADAS_META[cleanPadId] || KNOWN_PADAS_META[padId];
+
+    const padTitle = known?.title || snippet?.[0] || formatSlug(cleanPadId);
+    const padAuthor = known?.author || snippet?.[1] || 'रसिक संत';
+    const granthaId = snippet?.[2] || '';
+    const granthaMeta = granthaId ? GRANTHAS_MAP.get(granthaId) : null;
     const granthaLabel = granthaMeta?.name || 'रसिक वाणी संग्रह';
-    const granthaCategory = granthaMeta?.category === 'mahagranth' ? 'सनातन महाग्रंथ' : 'रसिक वाणी संग्रह';
+    const granthaCategory = 'रसिक वाणी संग्रह';
+    const openingVerse = known?.sampleVerse || snippet?.[3] || '';
 
     title = `${padTitle} (${padAuthor}) • पावन रसिक पद | वृन्दोपनिषद् 2.0`;
-    description = known ? known.desc : `${padTitle} (${granthaLabel}) के पावन पद, मूल पाठ, भावार्थ व नित्य अनुशीलन। रचयिता: ${padAuthor}। वृन्दोपनिषद् 2.0`;
-    canonicalUrl = `https://bhav.vrindopnishad.in/?tab=padavali&pad=${encodeURIComponent(padId)}`;
+    description = openingVerse
+      ? `«${openingVerse.replace(/\n+/g, ' ')}» ${padTitle} (${granthaLabel}) के पावन पद, मूल पाठ व भावार्थ। रचयिता: ${padAuthor}। वृन्दोपनिषद् 2.0`
+      : `${padTitle} (${granthaLabel}) के पावन पद, मूल पाठ, भावार्थ व नित्य अनुशीलन। रचयिता: ${padAuthor}। वृन्दोपनिषद् 2.0`;
+    canonicalUrl = `https://bhav.vrindopnishad.in/?tab=padavali&pad=${encodeURIComponent(cleanPadId)}`;
 
     entitySchema = {
       '@type': 'CreativeWork',
@@ -556,6 +555,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
         'name': padAuthor,
       },
       'inLanguage': 'hi',
+      'text': openingVerse || padTitle,
       'isPartOf': {
         '@type': 'WebSite',
         'name': 'वृन्दोपनिषद् 2.0 (Vrindopnisad)',
@@ -574,7 +574,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
           <p style="font-size: 0.95rem; color: #78716c; margin: 0;">रचयिता: ${padAuthor} • संग्रह: ${granthaLabel}</p>
         </header>
         <section class="verse-body" style="font-size: 1.25rem; line-height: 2; color: #292524; background-color: #fffbeb; padding: 1.5rem; border-radius: 1rem; border: 1px solid #fef3c7; white-space: pre-line;">
-          ${known?.sampleVerse || '«पावन वाणी का मूल पाठ लोड हो रहा है...»'}
+          ${openingVerse || `${padTitle} के पावन पद का अखंड स्वाध्याय व चिंतन।`}
         </section>
         <footer style="margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid #f5f5f4; font-size: 0.875rem; color: #a8a29e; display: flex; justify-content: space-between; align-items: center;">
           <span>वृन्दोपनिषद् 2.0 • Digital Sanctuary for Nitya Nikunj Ras</span>
