@@ -3,6 +3,11 @@ import { createRoot, hydrateRoot } from 'react-dom/client';
 import App from './App';
 import './index.css';
 
+// Enable instantaneous :active touch feedback on iOS Safari
+if (typeof window !== 'undefined') {
+  document.addEventListener('touchstart', () => {}, { passive: true });
+}
+
 const rootElement = document.getElementById('root');
 
 if (rootElement) {

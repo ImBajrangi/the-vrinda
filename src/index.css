@@ -20,6 +20,11 @@
   --ease-apple-subtle: cubic-bezier(0.25, 1, 0.5, 1);
 }
 
+html, body, #root, button, a, [role="button"], input, select, textarea {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
   font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   min-height: 100vh;

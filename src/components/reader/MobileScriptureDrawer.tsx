@@ -86,11 +86,11 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
     isDismissing.current = true;
 
     if (sheetRef.current) {
-      sheetRef.current.style.transition = 'transform 200ms cubic-bezier(0.32, 0.72, 0, 1)';
+      sheetRef.current.style.transition = 'transform 160ms cubic-bezier(0.32, 0.72, 0, 1)';
       sheetRef.current.style.transform = 'translate3d(0, 100%, 0)';
     }
     if (backdropRef.current) {
-      backdropRef.current.style.transition = 'opacity 180ms ease-out';
+      backdropRef.current.style.transition = 'opacity 150ms ease-out';
       backdropRef.current.style.opacity = '0';
     }
 
@@ -99,7 +99,7 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
       setIsRendered(false);
       isDismissing.current = false;
       document.body.style.overflow = '';
-    }, 200);
+    }, 160);
   }, [onClose]);
 
   // Sync open/close states
@@ -430,10 +430,10 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
                     type="button"
                     data-selected={isSelected}
                     onClick={() => handleSelect(item.id)}
-                    className={`w-full text-left min-h-[48px] px-3.5 py-2.5 rounded-[14px] flex items-center justify-between gap-3 transition-colors cursor-pointer select-none ${
+                    className={`w-full text-left min-h-[48px] px-3.5 py-2.5 rounded-[14px] flex items-center justify-between gap-3 transition-all cursor-pointer select-none active:scale-[0.985] ${
                       isSelected
                         ? 'bg-[#FEF9C3] border border-amber-300/80 text-stone-900 shadow-2xs'
-                        : 'hover:bg-stone-50 active:bg-stone-100 border border-transparent text-stone-800'
+                        : 'hover:bg-stone-50 active:bg-amber-100/60 border border-transparent text-stone-800'
                     }`}
                   >
                     <div className="min-w-0 flex-1 flex items-center gap-2.5">

@@ -96,12 +96,6 @@ export const FloatingNavbar: React.FC<FloatingNavbarProps> = ({
   isPlayingAudio = false,
   isVisible = true,
 }) => {
-  const [optimisticTab, setOptimisticTab] = React.useState<NavTab>(activeTab);
-
-  React.useEffect(() => {
-    setOptimisticTab(activeTab);
-  }, [activeTab]);
-
   const tabs = [
     { id: 'smaran' as NavTab, label: 'Sadhana', icon: Home },
     { id: 'granthas' as NavTab, label: 'Epics', icon: BookOpen },
@@ -110,20 +104,19 @@ export const FloatingNavbar: React.FC<FloatingNavbarProps> = ({
     { id: 'milestones' as NavTab, label: 'Streaks', icon: Award },
   ];
 
-  const currentTab = optimisticTab;
-  const activeIndex = Math.max(0, tabs.findIndex((tab) => tab.id === currentTab));
+  const activeIndex = Math.max(0, tabs.findIndex((tab) => tab.id === activeTab));
 
   return (
     // Only displayed on mobile (< md). On tablet & desktop, top header navigation takes over.
     <div className={`md:hidden fixed bottom-3.5 min-[380px]:bottom-5 left-0 right-0 z-40 flex items-center justify-center gap-2 px-2 max-w-md w-full mx-auto pointer-events-none box-border transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${
       isVisible ? 'translate-y-0' : 'translate-y-24'
     }`}>
-      {/* Fluid responsive floating nav pill: Minimalist, power-efficient frosted glass with clean whiteness */}
+      {/* Fluid responsive floating nav pill */}
       <nav
         aria-label="Mobile Navigation"
-        className="relative pointer-events-auto flex-1 min-w-0 max-w-[340px] h-[54px] rounded-[28px] bg-white/95 backdrop-blur-md border border-neutral-900/[0.08] shadow-[0_8px_24px_-4px_rgba(24,24,27,0.10),0_2px_6px_-1px_rgba(24,24,27,0.04)] flex items-center justify-between p-1 box-border transform-gpu will-change-transform touch-manipulation select-none"
+        className="relative pointer-events-auto flex-1 min-w-0 max-w-[340px] h-[54px] rounded-[28px] bg-white/98 border border-neutral-900/[0.08] shadow-[0_8px_24px_-4px_rgba(24,24,27,0.10),0_2px_6px_-1px_rgba(24,24,27,0.04)] flex items-center justify-between p-1 box-border transform-gpu will-change-transform touch-manipulation select-none"
       >
-        {/* Dynamic Elastic Sliding Indicator Bar (Instant 0ms Optimistic Shift) */}
+        {/* Dynamic Elastic Sliding Indicator Bar (Instant 0ms Shift) */}
         <span
           aria-hidden="true"
           className="absolute top-1 bottom-1 rounded-[22px] bg-[#FEF08A] shadow-2xs pointer-events-none transition-transform duration-[180ms] ease-out will-change-transform"
@@ -136,23 +129,19 @@ export const FloatingNavbar: React.FC<FloatingNavbarProps> = ({
 
         {tabs.map((tab) => {
           const Icon = tab.icon;
-          const isActive = currentTab === tab.id;
-          const handleSelect = (e: React.SyntheticEvent) => {
-            e.preventDefault();
-            e.stopPropagation();
-            if (activeTab !== tab.id) {
-              setOptimisticTab(tab.id);
-              onSelectTab(tab.id);
-            }
-          };
+          const isActive = activeTab === tab.id;
 
           return (
             <button
               key={tab.id}
               type="button"
-              onPointerDown={handleSelect}
-              onClick={handleSelect}
-              className={`relative z-10 border-0 text-[10px] font-sans flex-1 min-w-0 h-[44px] flex flex-col items-center justify-center gap-0.5 py-1 px-0.5 rounded-[22px] transition-colors duration-100 cursor-pointer touch-manipulation select-none active:opacity-75 ${
+              onClick={(e) => {
+                e.stopPropagation();
+                if (activeTab !== tab.id) {
+                  onSelectTab(tab.id);
+                }
+              }}
+              className={`relative z-10 border-0 text-[10px] font-sans flex-1 min-w-0 h-[44px] flex flex-col items-center justify-center gap-0.5 py-1 px-0.5 rounded-[22px] transition-colors duration-100 cursor-pointer touch-manipulation select-none active:scale-95 active:opacity-75 ${
                 isActive
                   ? 'text-[#18181B] font-bold'
                   : 'text-[#52525B] hover:text-[#18181B] font-semibold'

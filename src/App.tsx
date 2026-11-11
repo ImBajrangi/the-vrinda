@@ -232,26 +232,19 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
   const [selectedDate, setSelectedDate] = useState<number>(() => new Date().getDate());
   const [visitedTabs, setVisitedTabs] = useState<Set<NavTab>>(() => new Set([activeTab]));
 
-  useEffect(() => {
-    setVisitedTabs((prev) => {
-      if (prev.has(activeTab)) return prev;
-      const next = new Set(prev);
-      next.add(activeTab);
-      return next;
-    });
-  }, [activeTab]);
-
-  // Preload reader modules during browser idle time so first tap is instantaneous (0ms)
+  // Pre-warm all tabs and lazy reader modules during browser idle time so tab switching is 0ms instantaneous
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const preload = () => {
+      setVisitedTabs(new Set(['smaran', 'granthas', 'padavali', 'feed', 'milestones']));
       import('./components/reader/PadavaliReader');
       import('./components/reader/MahagranthReader');
+      import('./components/milestones/MilestonesView');
     };
     if ('requestIdleCallback' in window) {
-      (window as any).requestIdleCallback(preload, { timeout: 1200 });
+      (window as any).requestIdleCallback(preload, { timeout: 800 });
     } else {
-      setTimeout(preload, 500);
+      setTimeout(preload, 300);
     }
   }, []);
 
@@ -497,12 +490,9 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
 
   const handleTabSwitch = (tab: NavTab) => {
     if (tab === activeTab) return;
-    navigationProgress.start();
-    // Immediate synchronous panel switch (0ms) so the target page/skeleton mounts immediately
+    // Synchronously ensure target tab is in visitedTabs so it renders in Frame 1
+    setVisitedTabs((prev) => (prev.has(tab) ? prev : new Set(prev).add(tab)));
     setActiveTab(tab);
-    requestAnimationFrame(() => {
-      navigationProgress.done();
-    });
   };
 
   const handlePlayPad = (pad: SacredPad) => {
