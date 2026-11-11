@@ -45,8 +45,8 @@ export const MobileReaderHeader: React.FC<MobileReaderHeaderProps> = ({
   isVisible: _isVisible = true,
 }) => {
   return (
-    <div className="md:hidden sticky top-2 z-30 w-full mb-3 select-none">
-      <div className="w-full bg-white/95 backdrop-blur-md border border-amber-900/10 rounded-2xl px-2.5 py-1.5 flex items-center justify-between gap-1.5 shadow-2xs">
+    <div className="md:hidden sticky top-1.5 z-30 w-full mb-2.5 select-none">
+      <div className="w-full bg-white/98 border border-neutral-200/90 rounded-2xl px-2.5 py-1.5 flex items-center justify-between gap-1.5 shadow-[0_2px_10px_rgba(0,0,0,0.04)]">
         {/* Left: Table of Contents / Directory trigger */}
         <div className="flex items-center shrink-0">
           {onBack ? (
@@ -135,10 +135,10 @@ export const MobileReaderHeader: React.FC<MobileReaderHeaderProps> = ({
             <button
               type="button"
               onClick={onToggleAppearance}
-              className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-serif font-bold transition-colors cursor-pointer ${
+              className={`h-8 px-2.5 rounded-full flex items-center justify-center text-xs font-serif font-bold transition-colors cursor-pointer select-none border ${
                 isAppearanceOpen
-                  ? 'bg-[#FEF08A] text-[#78350F]'
-                  : 'text-neutral-600 hover:text-neutral-900 active:bg-neutral-100'
+                  ? 'bg-[#FEF08A] text-[#78350F] border-amber-300 shadow-2xs'
+                  : 'bg-[#FAF8F5] text-neutral-700 hover:text-neutral-900 active:bg-neutral-100 border-neutral-200/80'
               }`}
               title="अक्षर व परिवेश (Typography & Themes)"
               aria-label="Typography and Themes"

@@ -601,7 +601,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
   };
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-1.5 sm:px-4 lg:px-6 pt-0 sm:pt-6 pb-32">
+    <div className="w-full max-w-7xl mx-auto px-1.5 sm:px-4 lg:px-6 pt-0 sm:pt-6 pb-44 md:pb-28">
       {/* Mobile-Optimized Reader Header: 1-Tap Chapter Drawer, Auto-Hiding Chrome */}
       <MobileReaderHeader
         scriptureTitle={currentEpicConfig.shortName || currentEpicConfig.name}
@@ -1025,8 +1025,8 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
           id="epic-canvas-top"
           className="flex-1 min-w-0 w-full bg-white rounded-2xl sm:rounded-[28px] p-3 sm:p-8 border border-neutral-200/60 sm:border-neutral-200/80 shadow-2xs transition-all duration-300"
         >
-          {/* Chapter Header Bar */}
-          <div className="pb-5 mb-6 border-b border-neutral-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          {/* Chapter Header Bar (Desktop Only - on mobile, MobileReaderHeader provides the top chrome) */}
+          <div className="hidden sm:flex pb-5 mb-6 border-b border-neutral-100 flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
               <div className="flex items-center gap-2 text-xs font-serif font-bold text-amber-800 tracking-wider">
                 <BookOpen className="w-3.5 h-3.5" />

@@ -780,7 +780,7 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
           - Tablet (768px - 1024px): max-w-4xl with balanced gutters
           - Desktop (1024px+): max-w-6xl xl:max-w-7xl
       */}
-      <div className="w-full max-w-full overflow-x-hidden md:max-w-5xl xl:max-w-7xl min-h-screen relative px-3 sm:px-6 lg:px-8 pt-20 sm:pt-28 lg:pt-32 pb-36 md:pb-24 box-border">
+      <div className={`w-full max-w-full overflow-x-hidden md:max-w-5xl xl:max-w-7xl min-h-screen relative px-3 sm:px-6 lg:px-8 ${isReaderTab ? 'pt-2 sm:pt-28 lg:pt-32' : 'pt-20 sm:pt-28 lg:pt-32'} pb-36 md:pb-24 box-border`}>
         {/* Dynamic Top Announcement Marquee Ticker (Smoothly slides away on mobile reader tabs) */}
         <TopAnnouncementMarquee
           isScrolled={isScrolled}

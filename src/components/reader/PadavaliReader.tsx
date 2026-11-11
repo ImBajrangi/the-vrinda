@@ -2663,8 +2663,8 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
           {/* ========================================================================= */}
           {readingMode === 'continuous' ? (
             <div className="space-y-6">
-              {/* Header Title for Chapter Stream (Streamlined for Mobile Sacred Pothi scheme) */}
-              <div className={`pb-3 sm:pb-5 border-b ${currentTheme.borderColor} flex items-center justify-between gap-3 flex-wrap`}>
+              {/* Header Title for Chapter Stream (Desktop Only - MobileReaderHeader provides top chrome on mobile) */}
+              <div className={`hidden sm:flex pb-3 sm:pb-5 border-b ${currentTheme.borderColor} items-center justify-between gap-3 flex-wrap`}>
                 <div>
                   <div className={`flex items-center gap-2 ${currentTheme.metaColor} font-mono text-[10px] sm:text-[11px] font-bold tracking-wider uppercase`}>
                     <span>{granthaDisplayName}</span>
