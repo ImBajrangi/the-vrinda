@@ -35,5 +35,7 @@ tests/.build_tmp
 backups/
 *.enc
 .seo-reports/
+test-results/
+test-results.json
 
 screenshots/*
