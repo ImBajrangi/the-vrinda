@@ -122,63 +122,63 @@ function buildImageSitemap(baseUrl) {
       geo: 'Vrindavan, Mathura, Uttar Pradesh, India',
     },
     {
-      page: `${baseUrl}/?tab=padavali&author=swami-haridas`,
+      page: `${baseUrl}/sant/swami-haridas`,
       loc: `${baseUrl}/assets/saints/swami-haridas.webp`,
       title: 'संगीत शिरोमणि स्वामी हरिदास जी महाराज',
       caption: 'निधिवन राज रस प्रणेता एवं तानसेन के गुरु पूज्य स्वामी हरिदास जी महाराज।',
       geo: 'Nidhivan, Vrindavan, Uttar Pradesh, India',
     },
     {
-      page: `${baseUrl}/?tab=padavali&author=chaitanya-mahaprabhu`,
+      page: `${baseUrl}/sant/chaitanya-mahaprabhu`,
       loc: `${baseUrl}/assets/saints/chaitanya.webp`,
       title: 'श्री चैतन्य महाप्रभु (गौर हरि)',
       caption: 'संकीर्तन आंदोलन के प्रवर्तक एवं प्रेम रस अवतार श्री कृष्ण चैतन्य महाप्रभु।',
       geo: 'Mayapur, Nadia, West Bengal, India',
     },
     {
-      page: `${baseUrl}/?tab=padavali&author=nagaridas`,
+      page: `${baseUrl}/sant/nagaridas`,
       loc: `${baseUrl}/assets/saints/nagaridas.webp`,
       title: 'रसिक कवि भक्त नागरीदास जी महाराज',
       caption: 'किशनगढ़ नरेश सावंत सिंह (भक्त नागरीदास) एवं वाणी रचनाकार।',
       geo: 'Vrindavan, Mathura, Uttar Pradesh, India',
     },
     {
-      page: `${baseUrl}/?tab=padavali&author=raskhan`,
+      page: `${baseUrl}/sant/raskhan`,
       loc: `${baseUrl}/assets/saints/raskhan.webp`,
       title: 'परम कृष्ण भक्त रसखान जी',
       caption: 'मानुष हों तो वही रसखानि बसौं ब्रज गोकुल गाँव के ग्वारन।',
       geo: 'Gokul, Mathura, Uttar Pradesh, India',
     },
     {
-      page: `${baseUrl}/?tab=padavali&author=vyas-ji`,
+      page: `${baseUrl}/sant/vyas-ji`,
       loc: `${baseUrl}/assets/saints/vyas.webp`,
       title: 'श्री हरिराम व्यास जी महाराज',
       caption: 'किशोर वन वृन्दावन के अनन्य रसिक संत श्री हरिराम व्यास जी।',
       geo: 'Kishore Van, Vrindavan, Uttar Pradesh, India',
     },
     {
-      page: `${baseUrl}/?tab=padavali&author=surdas`,
+      page: `${baseUrl}/sant/surdas`,
       loc: `${baseUrl}/assets/saints/surdas.webp`,
       title: 'महाकवि सूरदास जी',
       caption: 'सूरसागर एवं अष्टछाप के महाकवि भक्त सूरदास जी महाराज।',
       geo: 'Parsauli, Mathura, Uttar Pradesh, India',
     },
     {
-      page: `${baseUrl}/?tab=padavali&author=nimbarkacharya`,
+      page: `${baseUrl}/sant/nimbarkacharya`,
       loc: `${baseUrl}/assets/saints/nimbarka.webp`,
       title: 'जगद्गुरु श्री निम्बार्काचार्य जी',
       caption: 'द्वैताद्वैत दर्शन एवं राधा-कृष्ण युगल उपासना के आदि आचार्य।',
       geo: 'Nimgaon, Mathura, Uttar Pradesh, India',
     },
     {
-      page: `${baseUrl}/?tab=padavali&author=vallabhacharya`,
+      page: `${baseUrl}/sant/vallabhacharya`,
       loc: `${baseUrl}/assets/saints/vallabha.webp`,
       title: 'जगद्गुरु श्रीमद् वल्लभाचार्य जी महाप्रभु',
       caption: 'शुद्धाद्वैत दर्शन एवं पुष्टिमार्ग भक्ति परंपरा के प्रणेता।',
       geo: 'Varanasi, Uttar Pradesh, India',
     },
     {
-      page: `${baseUrl}/?tab=padavali&author=meera-bai`,
+      page: `${baseUrl}/sant/meera-bai`,
       loc: `${baseUrl}/assets/saints/meera.webp`,
       title: 'अनन्य कृष्ण प्रेमानुरागिणी भक्त मीराबाई जी',
       caption: 'मेरो तो गिरधर गोपाल दूसरो न कोई। अनन्य प्रेम दीवानी मीराबाई।',
@@ -236,7 +236,7 @@ function createSitemapSuite(baseUrl, prefix = '') {
         const epicsManifest = JSON.parse(fs.readFileSync(epicsManifestPath, 'utf-8'));
         for (const epic of epicsManifest.epics || []) {
           granthasUrls.push({
-            loc: `${baseUrl}/?tab=granthas&grantha=${encodeURIComponent(epic.id)}`,
+            loc: `${baseUrl}/grantha/${encodeURIComponent(epic.id)}`,
             lastmod: today,
             changefreq: 'weekly',
             priority: 0.95,
@@ -247,7 +247,7 @@ function createSitemapSuite(baseUrl, prefix = '') {
             const epicData = JSON.parse(fs.readFileSync(epicIndexPath, 'utf-8'));
             for (const ch of epicData.chapters || []) {
               granthasUrls.push({
-                loc: `${baseUrl}/?tab=granthas&grantha=${encodeURIComponent(epic.id)}&chapter=${encodeURIComponent(ch.id)}`,
+                loc: `${baseUrl}/grantha/${encodeURIComponent(epic.id)}/${encodeURIComponent(ch.id)}`,
                 lastmod: today,
                 changefreq: 'monthly',
                 priority: 0.85,
@@ -316,41 +316,45 @@ function createSitemapSuite(baseUrl, prefix = '') {
     return true;
   });
 
-  // 1. Core Sanctuary Views (Clean canonical URLs, no ?tab=smaran duplicate)
+  // 1. Core Sanctuary Views (Clean canonical URLs, high-authority pillar routes)
   const mainUrls = [
     { loc: `${baseUrl}/`, lastmod: today, changefreq: 'daily', priority: 1.0 },
-    { loc: `${baseUrl}/?tab=padavali`, lastmod: today, changefreq: 'daily', priority: 0.95 },
-    { loc: `${baseUrl}/?tab=feed`, lastmod: today, changefreq: 'hourly', priority: 0.9 },
-    { loc: `${baseUrl}/?tab=milestones`, lastmod: today, changefreq: 'weekly', priority: 0.85 },
+    { loc: `${baseUrl}/rasik-saints-of-vrindavan`, lastmod: today, changefreq: 'weekly', priority: 0.95 },
+    { loc: `${baseUrl}/vrindavan-ashtayama-seva-darshan-timings`, lastmod: today, changefreq: 'weekly', priority: 0.95 },
+    { loc: `${baseUrl}/rasik-vani-granthas-list`, lastmod: today, changefreq: 'weekly', priority: 0.95 },
+    { loc: `${baseUrl}/online-tulsi-mala-naam-jap`, lastmod: today, changefreq: 'weekly', priority: 0.95 },
+    { loc: `${baseUrl}/padavali`, lastmod: today, changefreq: 'daily', priority: 0.9 },
+    { loc: `${baseUrl}/feed`, lastmod: today, changefreq: 'hourly', priority: 0.85 },
+    { loc: `${baseUrl}/milestones`, lastmod: today, changefreq: 'weekly', priority: 0.85 },
   ];
   const mainXml = buildUrlset(mainUrls);
 
-  // 2. Granthas (24 Ras Collections)
+  // 2. Granthas (24 Ras Collections - Clean URLs)
   const granthasUrls = granthas
     .filter((g) => !EPIC_IDS.has(g.id))
     .map((g) => ({
-      loc: `${baseUrl}/?tab=padavali&grantha=${encodeURIComponent(g.id)}`,
+      loc: `${baseUrl}/grantha/${encodeURIComponent(g.id)}`,
       lastmod: today,
       changefreq: 'weekly',
       priority: 0.9,
     }));
   const granthasXml = buildUrlset(granthasUrls);
 
-  // 3. Saints (131 Canonical Saints)
+  // 3. Saints (131 Canonical Saints - Clean URLs)
   const saintsUrls = saints.map((s) => ({
-    loc: `${baseUrl}/?tab=padavali&author=${s.slug || s.id || encodeURIComponent(s.name)}`,
+    loc: `${baseUrl}/sant/${encodeURIComponent(s.slug || s.id || s.name)}`,
     lastmod: today,
     changefreq: 'monthly',
     priority: 0.85,
   }));
   const saintsXml = buildUrlset(saintsUrls);
 
-  // 4. Padas (11,909 Ras Verses - split into clean sub-sitemaps for fastest crawling)
+  // 4. Padas (11,909 Ras Verses - Clean URLs)
   const padasUrls = rasPadas.map((p) => {
     const isCelebrated = ['hit-chaurasi', 'radha-sudha-nidhi', 'kelimal'].includes(p.collectionId);
     const slug = p.slug || p.id;
     return {
-      loc: `${baseUrl}/?tab=padavali&pad=${encodeURIComponent(slug)}`,
+      loc: `${baseUrl}/pad/${encodeURIComponent(slug)}`,
       lastmod: today,
       changefreq: 'monthly',
       priority: isCelebrated ? 0.9 : 0.8,

@@ -54,13 +54,13 @@ export interface SEOMetadataResult {
 }
 
 export const DEFAULT_SEO = {
-  siteName: 'वृन्दोपनिषद् 2.0 (Vrindopnisad)',
+  siteName: 'वृन्दोपनिषद् 2.0 (Vrindopnishad)',
   title: 'वृन्दोपनिषद् 2.0 • Sacred Vrindavan Ras Sanctuary & Canonical Pada Literature',
   description:
     'Comprehensive repository of 44,000+ canonical Braj Ras verses, Hit Chaurasi, Radha Sudha Nidhi, Ashtayama timeline, daily sadhana rings, and sacred audio recitation.',
   keywords: [
     'Vrindavan',
-    'Vrindopnisad',
+    'Vrindopnishad',
     'Braj Ras',
     'Hit Chaurasi',
     'Radha Sudha Nidhi',

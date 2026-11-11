@@ -159,20 +159,49 @@ function resolveCurrentRoute(): AppRouteState {
     const qChapter = params.get('chapter');
     const qVerse = params.get('verse');
 
-    // Legacy paths like /lyrics/:id, /hi/lyrics/:id, /content/:id, /verse/:id, /pada/:id, /pad/:id
+    // Legacy and clean verse paths like /lyrics/:id, /hi/lyrics/:id, /content/:id, /verse/:id, /pada/:id, /pad/:id
     const pathMatch = window.location.pathname.match(
       /^(?:\/(?:hi|en))?\/(?:lyrics|content|verse|pada|pad)\/([^/?#]+)/i
     );
     const pathPad = pathMatch ? decodeURIComponent(pathMatch[1]).trim() : null;
     const targetPad = qPad || pathPad;
 
+    // Clean paths: /sant/:id, /author/:id, /grantha/:id, /grantha/:id/:ch
+    const rawPath = window.location.pathname.replace(/\/+$/, '');
+    let pathGrantha: string | null = null;
+    let pathChapter: string | null = null;
+    let pathAuthor: string | null = null;
+
+    if (rawPath.startsWith('/sant/') || rawPath.startsWith('/author/')) {
+      pathAuthor = decodeURIComponent(rawPath.replace(/^\/(?:sant|author)\//, '')).trim();
+    } else if (rawPath.startsWith('/grantha/')) {
+      const parts = rawPath.slice(9).split('/').map((p) => decodeURIComponent(p).trim()).filter(Boolean);
+      if (parts.length >= 2) {
+        pathGrantha = parts[0];
+        pathChapter = parts.slice(1).join('/');
+      } else if (parts.length === 1) {
+        pathGrantha = parts[0];
+      }
+    }
+
     const mappedEpic = targetPad ? mapPadToEpicChapter(targetPad) : null;
     const host = window.location.hostname;
     const isPathDomain = host === 'path.vrindopnishad.in' || host.startsWith('path.');
 
-    let resolvedGrantha = qGrantha || (mappedEpic ? mappedEpic.grantha : 'all');
-    let resolvedChapter = qChapter || (mappedEpic ? mappedEpic.chapter : undefined);
+    let resolvedGrantha = qGrantha || pathGrantha || (mappedEpic ? mappedEpic.grantha : 'all');
+    let resolvedChapter = qChapter || pathChapter || (mappedEpic ? mappedEpic.chapter : undefined);
     let resolvedVerse = qVerse || (mappedEpic ? mappedEpic.verseId : undefined);
+    const resolvedAuthor = params.get('author') || pathAuthor;
+
+    // Pillar route detection
+    let pillarTab: NavTab | null = null;
+    if (rawPath === '/rasik-saints-of-vrindavan' || rawPath === '/rasik-vani-granthas-list') {
+      pillarTab = 'padavali';
+    } else if (rawPath === '/vrindavan-ashtayama-seva-darshan-timings') {
+      pillarTab = 'smaran';
+    } else if (rawPath === '/online-tulsi-mala-naam-jap') {
+      pillarTab = 'milestones';
+    }
 
     // If chapter query is present without grantha, detect grantha
     if ((!qGrantha || qGrantha === 'all') && resolvedChapter) {
@@ -191,11 +220,13 @@ function resolveCurrentRoute(): AppRouteState {
     const isEpic = (resolvedGrantha !== 'all' && SacredDatabase.isEpicGrantha(resolvedGrantha)) || !!resolvedChapter;
 
     let determinedTab: NavTab = 'smaran';
-    if (qTab && ['smaran', 'granthas', 'padavali', 'feed', 'milestones'].includes(qTab)) {
+    if (pillarTab) {
+      determinedTab = pillarTab;
+    } else if (qTab && ['smaran', 'granthas', 'padavali', 'feed', 'milestones'].includes(qTab)) {
       determinedTab = qTab;
     } else if (isPathDomain || isEpic) {
       determinedTab = 'granthas';
-    } else if (targetPad || params.get('author') || (resolvedGrantha !== 'all')) {
+    } else if (targetPad || resolvedAuthor || (resolvedGrantha !== 'all')) {
       determinedTab = 'padavali';
     }
 

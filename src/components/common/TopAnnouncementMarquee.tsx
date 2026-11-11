@@ -64,8 +64,13 @@ export const TopAnnouncementMarquee: React.FC<TopAnnouncementMarqueeProps> = ({
     },
   ];
 
-  const renderItemSet = (setKey: string) => (
-    <div key={setKey} className="inline-flex items-center pointer-events-none select-none">
+  const renderItemSet = (setKey: string, isClone = false) => (
+    <div
+      key={setKey}
+      aria-hidden={isClone ? 'true' : undefined}
+      data-nosnippet={isClone ? 'true' : undefined}
+      className="inline-flex items-center pointer-events-none select-none"
+    >
       {marqueeItems.map((item) => (
         <div
           key={`${setKey}-${item.id}`}
@@ -105,8 +110,8 @@ export const TopAnnouncementMarquee: React.FC<TopAnnouncementMarqueeProps> = ({
       <div className="w-full h-8 sm:h-9 flex items-center top-marquee-mask pointer-events-none">
         {/* Infinite Track with 2 identical sets for seamless -50% loop */}
         <div className="top-marquee-track pointer-events-none">
-          {renderItemSet('set-a')}
-          {renderItemSet('set-b')}
+          {renderItemSet('set-a', false)}
+          {renderItemSet('set-b', true)}
         </div>
       </div>
     </aside>

@@ -417,14 +417,17 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     const mappedEpic = mapPadToEpicChapter(rawPad);
     if (mappedEpic) {
       return Response.redirect(
-        `https://path.vrindopnishad.in/?tab=granthas&grantha=${encodeURIComponent(mappedEpic.grantha)}&chapter=${encodeURIComponent(mappedEpic.chapter)}&verse=${encodeURIComponent(rawPad)}`,
+        `https://path.vrindopnishad.in/grantha/${encodeURIComponent(mappedEpic.grantha)}/${encodeURIComponent(mappedEpic.chapter)}`,
         301
       );
     } else {
-      return Response.redirect(
-        `https://bhav.vrindopnishad.in/?tab=padavali&pad=${encodeURIComponent(rawPad)}`,
-        301
-      );
+      const isCleanOnBhav = !isPathDomain && (pathname === `/pad/${encodeURIComponent(rawPad)}` || pathname === `/pad/${rawPad}`);
+      if (!isCleanOnBhav) {
+        return Response.redirect(
+          `https://bhav.vrindopnishad.in/pad/${encodeURIComponent(rawPad)}`,
+          301
+        );
+      }
     }
   }
 
@@ -503,39 +506,62 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     return res;
   }
 
+  // Clean static route parsing: /pad/:id, /sant/:id, /grantha/:id, /grantha/:id/:ch, pillar paths
+  let pathPad: string | null = null;
+  let pathGrantha: string | null = null;
+  let pathChapter: string | null = null;
+  let pathAuthor: string | null = null;
+
+  if (pathname.startsWith('/pad/')) {
+    pathPad = decodeURIComponent(pathname.slice(5)).trim();
+  } else if (pathname.startsWith('/sant/') || pathname.startsWith('/author/')) {
+    pathAuthor = decodeURIComponent(pathname.replace(/^\/(?:sant|author)\//, '')).trim();
+  } else if (pathname.startsWith('/grantha/')) {
+    const parts = pathname.slice(9).split('/').map((p) => decodeURIComponent(p).trim()).filter(Boolean);
+    if (parts.length >= 2) {
+      pathGrantha = parts[0];
+      pathChapter = parts.slice(1).join('/');
+    } else if (parts.length === 1) {
+      pathGrantha = parts[0];
+    }
+  }
+
   // Parse queries and determine active domain & tab
   const qTab = url.searchParams.get('tab');
-  const qPad = url.searchParams.get('pad');
-  const qGrantha = url.searchParams.get('grantha');
-  const qAuthor = url.searchParams.get('author');
-  const qChapter = url.searchParams.get('chapter');
+  const qPad = url.searchParams.get('pad') || pathPad;
+  const qGrantha = url.searchParams.get('grantha') || pathGrantha;
+  const qAuthor = url.searchParams.get('author') || pathAuthor;
+  const qChapter = url.searchParams.get('chapter') || pathChapter;
 
   // 4. Cross-Domain 301 Permanent Redirects for duplicated URLs
   const epicPad = qPad ? mapPadToEpicChapter(qPad) : null;
 
   if (isPathDomain && !isStaging) {
     // path.vrindopnishad.in owns ONLY Mahagranth Parayana (epics & chapters)
+    if (pathname === '/rasik-saints-of-vrindavan' || pathname === '/vrindavan-ashtayama-seva-darshan-timings' || pathname === '/rasik-vani-granthas-list' || pathname === '/online-tulsi-mala-naam-jap') {
+      return Response.redirect(`https://bhav.vrindopnishad.in${pathname}`, 301);
+    }
     if (qGrantha && EPICS_META[qGrantha]) {
-      // Epics belong strictly to path.vrindopnishad.in. Ensure tab=granthas without ping-ponging!
+      // Epics belong strictly to path.vrindopnishad.in.
       if (qTab && qTab !== 'granthas') {
         const target = new URL(url.toString());
         target.searchParams.set('tab', 'granthas');
         return Response.redirect(target.toString(), 301);
       }
     } else if (epicPad) {
-      // Epic verse query on path.vrindopnishad.in -> normalize to tab=granthas
-      const target = new URL('https://path.vrindopnishad.in/');
-      target.searchParams.set('tab', 'granthas');
-      target.searchParams.set('grantha', epicPad.grantha);
-      target.searchParams.set('chapter', epicPad.chapter);
-      target.searchParams.set('verse', epicPad.verseId);
-      return Response.redirect(target.toString(), 301);
+      return Response.redirect(
+        `https://path.vrindopnishad.in/grantha/${encodeURIComponent(epicPad.grantha)}/${encodeURIComponent(epicPad.chapter)}`,
+        301
+      );
     } else {
       if (qTab && qTab !== 'granthas') {
         return Response.redirect(`https://bhav.vrindopnishad.in${url.search}`, 301);
       }
-      if (qPad || qAuthor) {
-        return Response.redirect(`https://bhav.vrindopnishad.in${url.search}`, 301);
+      if (qPad) {
+        return Response.redirect(`https://bhav.vrindopnishad.in/pad/${encodeURIComponent(qPad)}`, 301);
+      }
+      if (qAuthor) {
+        return Response.redirect(`https://bhav.vrindopnishad.in/sant/${encodeURIComponent(qAuthor)}`, 301);
       }
       if (pathname === '/padavali' || pathname.startsWith('/pad/')) {
         return Response.redirect(`https://bhav.vrindopnishad.in${url.pathname}${url.search}`, 301);
@@ -547,21 +573,17 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   } else if (!isPathDomain && !isStaging) {
     // bhav.vrindopnishad.in redirects direct deep epic requests to path.vrindopnishad.in
     if (pathname === '/granthas') {
-      return Response.redirect('https://path.vrindopnishad.in/?tab=granthas', 301);
+      return Response.redirect('https://path.vrindopnishad.in/', 301);
     }
     if (qGrantha && EPICS_META[qGrantha]) {
-      const target = new URL(url.toString());
-      target.hostname = 'path.vrindopnishad.in';
-      target.searchParams.set('tab', 'granthas');
-      return Response.redirect(target.toString(), 301);
+      const targetChapter = qChapter ? `/${encodeURIComponent(qChapter)}` : '';
+      return Response.redirect(`https://path.vrindopnishad.in/grantha/${encodeURIComponent(qGrantha)}${targetChapter}`, 301);
     }
     if (epicPad) {
-      const target = new URL('https://path.vrindopnishad.in/');
-      target.searchParams.set('tab', 'granthas');
-      target.searchParams.set('grantha', epicPad.grantha);
-      target.searchParams.set('chapter', epicPad.chapter);
-      target.searchParams.set('verse', epicPad.verseId);
-      return Response.redirect(target.toString(), 301);
+      return Response.redirect(
+        `https://path.vrindopnishad.in/grantha/${encodeURIComponent(epicPad.grantha)}/${encodeURIComponent(epicPad.chapter)}`,
+        301
+      );
     }
   }
 
@@ -606,7 +628,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   let customKeywords: string | null = null;
   let dynamicRootHtml: string | null = null;
 
-  const padId = qPad || (pathname.startsWith('/pad/') ? decodeURIComponent(pathname.replace('/pad/', '')).trim() : null);
+  const padId = qPad || pathPad;
 
   if (padId) {
     const cleanPadId = decodeURIComponent(padId).trim();
@@ -622,11 +644,11 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     const openingVerse = known?.sampleVerse || snippet?.[3] || '';
     const romanTitle = formatSlug(cleanPadId);
 
-    title = `${padTitle} (${padAuthor}) • पावन रसिक पद | वृन्दोपनिषद् 2.0`;
+    title = `${padTitle} (${padAuthor}) • पावन रसिक पद | वृन्दोपनिषद् 2.0 (Vrindopnishad)`;
     description = openingVerse
       ? `«${openingVerse.replace(/\n+/g, ' ')}» ${padTitle} (${granthaLabel}) के पावन पद, मूल पाठ व भावार्थ। रचयिता: ${padAuthor}। वृन्दोपनिषद् 2.0`
       : `${padTitle} (${granthaLabel}) के पावन पद, मूल पाठ, भावार्थ व नित्य अनुशीलन। रचयिता: ${padAuthor}। वृन्दोपनिषद् 2.0`;
-    canonicalUrl = `https://bhav.vrindopnishad.in/?tab=padavali&pad=${encodeURIComponent(cleanPadId)}`;
+    canonicalUrl = `https://bhav.vrindopnishad.in/pad/${encodeURIComponent(cleanPadId)}`;
 
     customKeywords = [
       padTitle,
@@ -664,7 +686,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
       'text': openingVerse || padTitle,
       'isPartOf': {
         '@type': 'WebSite',
-        'name': 'वृन्दोपनिषद् 2.0 (Vrindopnisad)',
+        'name': 'वृन्दोपनिषद् 2.0 (Vrindopnishad)',
         'url': 'https://bhav.vrindopnishad.in/',
       },
     };
@@ -870,9 +892,9 @@ export const onRequest: PagesFunction<Env> = async (context) => {
       const chOpeningVerse = chSnippet?.openingVerse || `${epic.name} का पावन अध्याय ${chName}`;
       const chVerseCount = chSnippet?.verseCount || 0;
 
-      title = `${chName} (${epic.name}) • प्रणेता: ${epic.author} | वृन्दोपनिषद् 2.0`;
+      title = `${chName} (${epic.name}) • प्रणेता: ${epic.author} | वृन्दोपनिषद् 2.0 (Vrindopnishad)`;
       description = `«${chOpeningVerse}» ${epic.name} का पावन अध्याय ${chName} (${chVerseCount} श्लोक)। मूल श्लोक, पाठ व पारायण। वृन्दोपनिषद् 2.0`;
-      canonicalUrl = `https://path.vrindopnishad.in/?tab=granthas&grantha=${encodeURIComponent(qGrantha)}&chapter=${encodeURIComponent(targetChapter)}`;
+      canonicalUrl = `https://path.vrindopnishad.in/grantha/${encodeURIComponent(qGrantha)}/${encodeURIComponent(targetChapter)}`;
 
       customKeywords = [
         epic.name,
@@ -896,7 +918,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
         'inLanguage': ['hi', 'sa'],
         'isPartOf': {
           '@type': 'Book',
-          '@id': `https://path.vrindopnishad.in/?tab=granthas&grantha=${encodeURIComponent(qGrantha)}#book`,
+          '@id': `https://path.vrindopnishad.in/grantha/${encodeURIComponent(qGrantha)}#book`,
           'name': epic.name,
           'author': {
             '@type': 'Person',
@@ -920,7 +942,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
             '@type': 'ListItem',
             'position': 2,
             'name': epic.name,
-            'item': `https://path.vrindopnishad.in/?tab=granthas&grantha=${encodeURIComponent(qGrantha)}`,
+            'item': `https://path.vrindopnishad.in/grantha/${encodeURIComponent(qGrantha)}`,
           },
           {
             '@type': 'ListItem',
@@ -1042,9 +1064,9 @@ export const onRequest: PagesFunction<Env> = async (context) => {
         </article>
       `;
     } else {
-      title = `${epic.name} (${epic.author}) • संपूर्ण मूल पाठ व पारायण | वृन्दोपनिषद् 2.0`;
+      title = `${epic.name} (${epic.author}) • संपूर्ण मूल पाठ व पारायण | वृन्दोपनिषद् 2.0 (Vrindopnishad)`;
       description = `${epic.desc}। प्रणेता: ${epic.author}। वृन्दोपनिषद् 2.0`;
-      canonicalUrl = `https://path.vrindopnishad.in/?tab=granthas&grantha=${encodeURIComponent(qGrantha)}`;
+      canonicalUrl = `https://path.vrindopnishad.in/grantha/${encodeURIComponent(qGrantha)}`;
 
       entitySchema = {
         '@type': 'Book',
@@ -1057,9 +1079,9 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   } else if (qGrantha && (GRANTHAS_MAP.has(qGrantha) || GRANTHAS_MAP.has(decodeURIComponent(qGrantha).trim()))) {
     const g = GRANTHAS_MAP.get(qGrantha) || GRANTHAS_MAP.get(decodeURIComponent(qGrantha).trim())!;
     const authorText = g.author ? ` (${g.author})` : '';
-    title = `${g.name}${authorText} • संपूर्ण वाणी संग्रह | वृन्दोपनिषद् 2.0`;
+    title = `${g.name}${authorText} • संपूर्ण वाणी संग्रह | वृन्दोपनिषद् 2.0 (Vrindopnishad)`;
     description = `${g.description || g.name} के समस्त पावन पदों व श्लोकों का संग्रह। वृन्दोपनिषद् 2.0`;
-    canonicalUrl = `https://bhav.vrindopnishad.in/?tab=padavali&grantha=${encodeURIComponent(g.id || qGrantha)}`;
+    canonicalUrl = `https://bhav.vrindopnishad.in/grantha/${encodeURIComponent(g.id || qGrantha)}`;
 
     entitySchema = {
       '@type': 'Book',
@@ -1084,33 +1106,168 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     `;
   } else if (qGrantha) {
     const formatted = formatSlug(qGrantha);
-    title = `${formatted} • संपूर्ण ग्रंथ संग्रह | वृन्दोपनिषद् 2.0`;
+    title = `${formatted} • संपूर्ण ग्रंथ संग्रह | वृन्दोपनिषद् 2.0 (Vrindopnishad)`;
     description = `${formatted} के समस्त पावन पदों व श्लोकों का संग्रह। वृन्दोपनिषद् 2.0`;
-    canonicalUrl = `https://bhav.vrindopnishad.in/?tab=padavali&grantha=${encodeURIComponent(qGrantha)}`;
+    canonicalUrl = `https://bhav.vrindopnishad.in/grantha/${encodeURIComponent(qGrantha)}`;
+  } else if (pathname === '/rasik-saints-of-vrindavan') {
+    title = 'श्री धाम वृन्दावन के प्रमुख रसिक संत मंडल एवं वाणी परंपरा | वृन्दोपनिषद् 2.0 (Vrindopnishad)';
+    description = 'श्री स्वामी हरिदास, श्री हित हरिवंश महाप्रभु, श्री व्यास जी, रसखान, मीराबाई सहित १३१ प्रामाणिक रसिक संतों का पावन जीवन चरित्र, संप्रदाय एवं अमृत वाणी संग्रह।';
+    canonicalUrl = 'https://bhav.vrindopnishad.in/rasik-saints-of-vrindavan';
+    entitySchema = {
+      '@type': 'ItemList',
+      '@id': `${canonicalUrl}#itemlist`,
+      'name': 'श्री धाम वृन्दावन के प्रमुख रसिक संत',
+      'description': description,
+      'itemListElement': saintsList.slice(0, 20).map((s, idx) => ({
+        '@type': 'ListItem',
+        'position': idx + 1,
+        'name': s.name,
+        'url': `https://bhav.vrindopnishad.in/sant/${s.slug || s.id}`,
+      })),
+    };
+    dynamicRootHtml = `
+      <article class="sanctuary-ssr-content" style="max-width: 860px; margin: 0 auto; padding: 2.5rem 1.25rem; font-family: 'Noto Serif Devanagari', serif; line-height: 1.8;">
+        <header style="margin-bottom: 2rem; border-bottom: 2px solid #fef3c7; padding-bottom: 1.5rem;">
+          <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; background-color: #fef3c7; color: #92400e; margin-bottom: 0.75rem;">रसिक संत परंपरा</span>
+          <h1 style="font-size: 2.25rem; font-weight: 700; color: #1c1917; margin: 0 0 0.5rem 0;">श्री धाम वृन्दावन के प्रमुख रसिक संत मंडल</h1>
+          <p style="font-size: 1.05rem; color: #78716c; margin: 0;">१३१ प्रामाणिक रसिक संतों की जीवन गाथा, निकुंज उपासना एवं पावन वाणी संग्रह</p>
+        </header>
+        <section style="margin-bottom: 2rem;">
+          <p style="font-size: 1.1rem; line-height: 1.9; color: #44403c;">
+            श्री धाम वृन्दावन की पावन भूमि अनादि काल से रसिक संतों की साधना स्थली रही है। स्वामी हरिदास जी, श्री हित हरिवंश महाप्रभु, श्री व्यास जी, भक्त नागरीदास, रसखान, सूरदास एवं मीराबाई जैसे परम भगवदीयों ने प्रिया-प्रियतम के अनन्य निकुंज रस का जो गान किया है, वही वृन्दोपनिषद् की आत्मा है।
+          </p>
+        </section>
+        <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem;">
+          ${saintsList.slice(0, 15).map(s => `
+            <div style="padding: 1.25rem; background: #fff; border: 1px solid #fde68a; border-radius: 0.75rem; box-shadow: 0 2px 8px rgba(217, 119, 6, 0.05);">
+              <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; color: #78350f;"><a href="/sant/${s.slug || s.id}" style="color: #b45309; text-decoration: none;">${s.name}</a></h3>
+              <p style="margin: 0; font-size: 0.9rem; color: #78716c;">${s.tradition ? `संप्रदाय: ${s.tradition}` : 'रसिक वाणी संत'}</p>
+            </div>
+          `).join('')}
+        </section>
+      </article>
+    `;
+  } else if (pathname === '/vrindavan-ashtayama-seva-darshan-timings') {
+    title = 'श्री धाम वृन्दावन अष्टयाम सेवा व दर्शन समय-सारिणी (Ashtayama Seva Timings) | वृन्दोपनिषद् 2.0 (Vrindopnishad)';
+    description = 'श्री धाम वृन्दावन के समस्त आठों प्रहर (मंगला, श्रृंगार, ग्वाल, राजभोग, उत्थापन, भोग, संध्या, शयन) की नित्य अष्टयाम सेवा, मंदिर दर्शन समय व लीला चिंतन।';
+    canonicalUrl = 'https://bhav.vrindopnishad.in/vrindavan-ashtayama-seva-darshan-timings';
+    dynamicRootHtml = `
+      <article class="sanctuary-ssr-content" style="max-width: 860px; margin: 0 auto; padding: 2.5rem 1.25rem; font-family: 'Noto Serif Devanagari', serif; line-height: 1.8;">
+        <header style="margin-bottom: 2rem; border-bottom: 2px solid #fef3c7; padding-bottom: 1.5rem;">
+          <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; background-color: #fef3c7; color: #92400e; margin-bottom: 0.75rem;">नित्य अष्टयाम सेवा चक्र</span>
+          <h1 style="font-size: 2.25rem; font-weight: 700; color: #1c1917; margin: 0 0 0.5rem 0;">श्री धाम वृन्दावन अष्टयाम सेवा व दर्शन समय-सारिणी</h1>
+          <p style="font-size: 1.05rem; color: #78716c; margin: 0;">आठों प्रहर की दिव्य निकुंज लीला, राग-सेवा एवं बांके बिहारी व राधावल्लभ लाल दर्शन समय</p>
+        </header>
+        <section style="margin-bottom: 2rem;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem; border: 1px solid #e7e5e4;">
+            <tr style="background: #fef3c7; color: #92400e;"><th style="padding: 0.75rem; border: 1px solid #e7e5e4;">प्रहर (Phase)</th><th style="padding: 0.75rem; border: 1px solid #e7e5e4;">समय (Timings)</th><th style="padding: 0.75rem; border: 1px solid #e7e5e4;">सेवा व भाव</th></tr>
+            <tr><td style="padding: 0.75rem; border: 1px solid #e7e5e4; font-weight: 600;">मंगला (Mangala)</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;">०३:३० - ०६:०० AM</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;">जागरण, मंगला आरती व मधुर राग गान</td></tr>
+            <tr style="background: #fafaf9;"><td style="padding: 0.75rem; border: 1px solid #e7e5e4; font-weight: 600;">श्रृंगार (Shringar)</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;">०६:०० - ०८:३० AM</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;">दंतधावन, स्नान व दिव्य आभूषण श्रृंगार</td></tr>
+            <tr><td style="padding: 0.75rem; border: 1px solid #e7e5e4; font-weight: 600;">ग्वाल (Gwal)</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;">०८:३० - १०:३० AM</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;">गौचारण लीला व सखा भाव विनोद</td></tr>
+            <tr style="background: #fafaf9;"><td style="padding: 0.75rem; border: 1px solid #e7e5e4; font-weight: 600;">राजभोग (Rajbhog)</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;">१०:३० AM - ०३:३० PM</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;">छप्पन भोग अर्पण, राजभोग आरती व निकुंज विश्राम</td></tr>
+            <tr><td style="padding: 0.75rem; border: 1px solid #e7e5e4; font-weight: 600;">उत्थापन (Utthapan)</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;">०३:३० - ०५:०० PM</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;">विश्रामोपरांत जागरण व शीतल भोग</td></tr>
+            <tr style="background: #fafaf9;"><td style="padding: 0.75rem; border: 1px solid #e7e5e4; font-weight: 600;">भोग (Bhog)</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;">०५:०० - ०७:०० PM</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;">सायंकालीन मिष्ठान्न व फल भोग</td></tr>
+            <tr><td style="padding: 0.75rem; border: 1px solid #e7e5e4; font-weight: 600;">संध्या आरती (Sandhya)</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;">०७:०० - ०८:३० PM</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;">दीपदान, संध्या आरती व युगल वंदना</td></tr>
+            <tr style="background: #fafaf9;"><td style="padding: 0.75rem; border: 1px solid #e7e5e4; font-weight: 600;">शयन (Shayan)</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;">०८:३० - ११:०० PM</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;">शयन आरती, पान बीड़ा सेवा व रास विलास</td></tr>
+          </table>
+        </section>
+      </article>
+    `;
+  } else if (pathname === '/rasik-vani-granthas-list') {
+    title = 'श्री वृन्दावन रसिक वाणी ग्रंथ सूची (Hit Chaurasi, Kelimal, Radha Sudha Nidhi) | वृन्दोपनिषद् 2.0 (Vrindopnishad)';
+    description = 'श्री हित चौरासी, श्री केलिमाल, श्री राधा सुधा निधि, सूरसागर, बयालीस लीला सहित समस्त २५ प्रामाणिक रसिक वाणी ग्रंथों की सम्पूर्ण सूची एवं मूल पाठ।';
+    canonicalUrl = 'https://bhav.vrindopnishad.in/rasik-vani-granthas-list';
+    entitySchema = {
+      '@type': 'ItemList',
+      '@id': `${canonicalUrl}#itemlist`,
+      'name': 'श्री वृन्दावन रसिक वाणी ग्रंथ',
+      'description': description,
+      'itemListElement': granthasList.filter(g => !EPICS_META[g.id]).map((g, idx) => ({
+        '@type': 'ListItem',
+        'position': idx + 1,
+        'name': g.name,
+        'url': `https://bhav.vrindopnishad.in/grantha/${g.id}`,
+      })),
+    };
+    dynamicRootHtml = `
+      <article class="sanctuary-ssr-content" style="max-width: 860px; margin: 0 auto; padding: 2.5rem 1.25rem; font-family: 'Noto Serif Devanagari', serif; line-height: 1.8;">
+        <header style="margin-bottom: 2rem; border-bottom: 2px solid #fef3c7; padding-bottom: 1.5rem;">
+          <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; background-color: #fef3c7; color: #92400e; margin-bottom: 0.75rem;">पावन साहित्य भंडार</span>
+          <h1 style="font-size: 2.25rem; font-weight: 700; color: #1c1917; margin: 0 0 0.5rem 0;">श्री वृन्दावन रसिक वाणी प्रामाणिक ग्रंथ सूची</h1>
+          <p style="font-size: 1.05rem; color: #78716c; margin: 0;">२५ मूल प्रामाणिक वाणी ग्रंथ, ४,२०४ निकुंज रस पद एवं शास्त्रीय भावार्थ</p>
+        </header>
+        <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem;">
+          ${granthasList.filter(g => !EPICS_META[g.id]).map(g => `
+            <div style="padding: 1.25rem; background: #fff; border: 1px solid #fde68a; border-radius: 0.75rem; box-shadow: 0 2px 8px rgba(217, 119, 6, 0.05);">
+              <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; color: #78350f;"><a href="/grantha/${g.id}" style="color: #b45309; text-decoration: none;">${g.name}</a></h3>
+              <p style="margin: 0; font-size: 0.9rem; color: #78716c;">रचयिता: ${g.author || 'रसिक संत'}</p>
+            </div>
+          `).join('')}
+        </section>
+      </article>
+    `;
+  } else if (pathname === '/online-tulsi-mala-naam-jap') {
+    title = 'ऑनलाइन तुलसी माला जप एवं नित्य नाम साधना (Online Tulsi Mala & Japa Counter) | वृन्दोपनिषद् 2.0 (Vrindopnishad)';
+    description = '१०८ मनकों की पावन तुलसी माला द्वारा श्री राधा नाम, महामंत्र जप, दैनिक जप चक्र एवं अखंड साधना संकल्प काउंटर।';
+    canonicalUrl = 'https://bhav.vrindopnishad.in/online-tulsi-mala-naam-jap';
+    dynamicRootHtml = `
+      <article class="sanctuary-ssr-content" style="max-width: 860px; margin: 0 auto; padding: 2.5rem 1.25rem; font-family: 'Noto Serif Devanagari', serif; line-height: 1.8;">
+        <header style="margin-bottom: 2rem; border-bottom: 2px solid #fef3c7; padding-bottom: 1.5rem;">
+          <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; background-color: #fef3c7; color: #92400e; margin-bottom: 0.75rem;">डिजिटल नाम साधन</span>
+          <h1 style="font-size: 2.25rem; font-weight: 700; color: #1c1917; margin: 0 0 0.5rem 0;">ऑनलाइन तुलसी माला जप एवं नित्य नाम साधना</h1>
+          <p style="font-size: 1.05rem; color: #78716c; margin: 0;">१०८ मनकों का पावन चक्र, स्पर्श जप, ध्वनि तरंग एवं दैनिक साधना संकल्प</p>
+        </header>
+        <section style="margin-bottom: 2rem; background: #fffbeb; padding: 1.5rem; border-radius: 0.75rem; border: 1px solid #fde68a;">
+          <h2 style="font-size: 1.3rem; color: #78350f; margin: 0 0 0.75rem 0;">नाम जप का माहात्म्य</h2>
+          <p style="font-size: 1.05rem; line-height: 1.8; color: #44403c; margin: 0;">
+            कलयुग केवल नाम अधारा, सुमिरि सुमिरि नर उतरहिं पारा। श्री धाम वृन्दावन के रसिकों ने श्री राधा नाम को समस्त वेदों और उपनिषदों का सार तत्व माना है। वृन्दोपनिषद् 2.0 का डिजिटल माला काउंटर आपको १०८ मनकों की अखंड जप साधना में लीन रहने की पावन सुविधा प्रदान करता है।
+          </p>
+        </section>
+      </article>
+    `;
   } else {
     switch (activeTab) {
       case 'granthas':
-        title = 'Sanatan Mahagranth Parayana • ५ अमर महाकाव्य एवं अखंड शास्त्र स्वाध्याय | वृन्दोपनिषद् 2.0';
-        description = 'श्रीमद् वाल्मीकि रामायण, श्रीमद्भागवत महापुराण, श्री रामचरितमानस, श्रीमद्भगवद्गीता व श्री दुर्गा सप्तशती का संपूर्ण मूल पाठ व ऑन-डिमांड त्वरित पारायण।';
-        canonicalUrl = 'https://path.vrindopnishad.in/?tab=granthas';
+        title = 'Sanatan Epics & Mahagranth Parayan • संपूर्ण वाल्मीकि रामायण, भागवत, गीता | वृन्दोपनिषद् 2.0 (Vrindopnishad)';
+        description = 'सनातन महाग्रंथ एवं अखंड पारायण पीठ। महर्षि वाल्मीकि रामायण, श्रीमद्भागवत महापुराण, श्री रामचरितमानस, श्रीमद्भगवद्गीता एवं श्री दुर्गा सप्तशती का प्रामाणिक संस्कृत श्लोक एवं भावार्थ पाठ।';
+        canonicalUrl = 'https://path.vrindopnishad.in/';
+        dynamicRootHtml = `
+          <article class="sanctuary-ssr-content" style="max-width: 860px; margin: 0 auto; padding: 2.5rem 1.25rem; font-family: 'Noto Serif Devanagari', serif; line-height: 1.8;">
+            <header style="margin-bottom: 2rem; border-bottom: 2px solid #fef3c7; padding-bottom: 1.5rem;">
+              <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; background-color: #fef3c7; color: #92400e; margin-bottom: 0.75rem;">सनातन महाग्रंथ पारायण पीठ</span>
+              <h1 style="font-size: 2.25rem; font-weight: 700; color: #1c1917; margin: 0 0 0.5rem 0;">५ अमर सनातन महाकाव्य एवं अखंड शास्त्र स्वाध्याय</h1>
+              <p style="font-size: 1.05rem; color: #78716c; margin: 0;">श्रीमद् वाल्मीकि रामायण, श्रीमद्भागवत महापुराण, श्री रामचरितमानस, श्रीमद्भगवद्गीता एवं श्री दुर्गा सप्तशती</p>
+            </header>
+            <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
+              ${Object.entries(EPICS_META).map(([id, meta]) => `
+                <div style="padding: 1.5rem; background: #fff; border: 1px solid #fde68a; border-radius: 0.75rem; box-shadow: 0 4px 12px rgba(217, 119, 6, 0.05);">
+                  <h2 style="font-size: 1.35rem; font-weight: 700; color: #78350f; margin: 0 0 0.5rem 0;"><a href="/grantha/${id}" style="color: #b45309; text-decoration: none;">${meta.name}</a></h2>
+                  <p style="font-size: 0.95rem; color: #78716c; margin: 0 0 0.75rem 0;">प्रणेता: <strong>${meta.author}</strong></p>
+                  <p style="font-size: 0.9rem; line-height: 1.6; color: #44403c; margin: 0 0 1rem 0;">${meta.desc}</p>
+                  <a href="/grantha/${id}" style="display: inline-block; padding: 0.4rem 0.85rem; background: #fef3c7; color: #92400e; border-radius: 9999px; font-size: 0.85rem; font-weight: 600; text-decoration: none;">संपूर्ण अध्याय एवं पारायण &rarr;</a>
+                </div>
+              `).join('')}
+            </section>
+          </article>
+        `;
         break;
       case 'padavali':
-        title = 'Scriptures Repository • ४४,०००+ पावन महाग्रंथ व रसिक वाणी संग्रह | वृन्दोपनिषद् 2.0';
+        title = 'Scriptures Repository • ४४,०००+ पावन महाग्रंथ व रसिक वाणी संग्रह | वृन्दोपनिषद् 2.0 (Vrindopnishad)';
         description = 'वाल्मीकि रामायण, श्रीमद् भागवत, रामचरितमानस, भगवद्गीता, हित चौरासी, केलिमाल, सूरसागर सहित सनातन महाग्रंथ व समस्त रसिक वाणी का अगाध संग्रह।';
-        canonicalUrl = 'https://bhav.vrindopnishad.in/?tab=padavali';
+        canonicalUrl = 'https://bhav.vrindopnishad.in/padavali';
         break;
       case 'feed':
-        title = 'Darshan Feed • नित्य वृन्दावन धाम दर्शन | वृन्दोपनिषद् 2.0';
+        title = 'Darshan Feed • नित्य वृन्दावन धाम दर्शन | वृन्दोपनिषद् 2.0 (Vrindopnishad)';
         description = 'श्री वृन्दावन धाम के प्रमुख मंदिरों के प्रत्यक्ष दर्शन, उत्सव, आरती व नित्य विलास।';
-        canonicalUrl = 'https://bhav.vrindopnishad.in/?tab=feed';
+        canonicalUrl = 'https://bhav.vrindopnishad.in/feed';
         break;
       case 'milestones':
-        title = 'Devotion Milestones • अखंड निष्ठा व साधना सोपान | वृन्दोपनिषद् 2.0';
+        title = 'Devotion Milestones • अखंड निष्ठा व साधना सोपान | वृन्दोपनिषद् 2.0 (Vrindopnishad)';
         description = 'अखंड साधना स्ट्रीक, अंतरंग ध्यान सिद्धि एवं श्रीजी कृपा के पावन सोपान।';
-        canonicalUrl = 'https://bhav.vrindopnishad.in/?tab=milestones';
+        canonicalUrl = 'https://bhav.vrindopnishad.in/milestones';
         break;
       default:
-        title = 'Home Sanctuary • दैनिक स्मरण व नित्य सेवा | वृन्दोपनिषद् 2.0';
+        title = 'Home Sanctuary • दैनिक स्मरण व नित्य सेवा | वृन्दोपनिषद् 2.0 (Vrindopnishad)';
         description = 'दैनिक अष्टयाम लीला, नाम जप, वाणी श्रवण और स्वाध्याय का पावन साधना स्थल।';
         canonicalUrl = 'https://bhav.vrindopnishad.in/';
         break;
@@ -1121,13 +1278,15 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   const schemaGraph: Record<string, unknown>[] = [
     {
       '@type': 'WebSite',
-      'name': 'वृन्दोपनिषद् 2.0 (Vrindopnisad)',
-      'url': 'https://bhav.vrindopnishad.in/',
-      'description': 'Digital sanctuary for Nitya Nikunj Ras & Canonical Braj Pada Literature',
+      'name': isPathDomain ? 'वृन्दोपनिषद् 2.0 (Vrindopnishad) - सनातन महाग्रंथ' : 'वृन्दोपनिषद् 2.0 (Vrindopnishad)',
+      'url': isPathDomain ? 'https://path.vrindopnishad.in/' : 'https://bhav.vrindopnishad.in/',
+      'description': isPathDomain
+        ? 'Digital sanctuary for Sanatan Mahagranth Parayana (Valmiki Ramayana, Shrimad Bhagavatam, Ramcharitmanas, Bhagavad Gita)'
+        : 'Digital sanctuary for Nitya Nikunj Ras & Canonical Braj Pada Literature',
       'inLanguage': ['hi', 'sa', 'en'],
       'potentialAction': {
         '@type': 'SearchAction',
-        'target': 'https://bhav.vrindopnishad.in/?tab=padavali&q={search_term_string}',
+        'target': isPathDomain ? 'https://path.vrindopnishad.in/?tab=granthas&q={search_term_string}' : 'https://bhav.vrindopnishad.in/?tab=padavali&q={search_term_string}',
         'query-input': 'required name=search_term_string',
       },
     },

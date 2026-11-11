@@ -117,7 +117,7 @@ export const AshtayamaTimelineDeck: React.FC = () => {
           <div className="space-y-1 min-w-0 flex-1">
             <div className="flex items-center gap-2">
               <span className="text-[11px] font-bold text-amber-800 uppercase tracking-wider font-mono">
-                {selectedPeriod.bhava} • {selectedPeriod.timeRange}
+                {selectedPeriod.bhava} • {selectedPeriod.timeRange}{' '}
               </span>
               <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold text-amber-800 bg-amber-50">
                 Nikunja Bhava

@@ -300,7 +300,7 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
                     }`}
                   >
                     <Icon className={`w-3.5 h-3.5 shrink-0 stroke-[2.2] transition-colors duration-200 ${isActive ? 'text-[#B45309]' : 'text-[#71717A]'}`} />
-                    <span className="inline lg:hidden">{item.shortLabel}</span>
+                    <span aria-hidden="true" className="inline lg:hidden">{item.shortLabel}</span>
                     <span className="hidden lg:inline">{item.label}</span>
                   </button>
                 );

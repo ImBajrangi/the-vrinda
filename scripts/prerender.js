@@ -53,14 +53,18 @@ async function prerender() {
   const template = fs.readFileSync(templatePath, 'utf-8');
   const { render } = await import(`file://${serverEntryPath}`);
 
-  // 1. Core Sanctuary Tabs
+  // 1. Core Sanctuary Tabs & Authority Pillar Guides
   const routes = [
     { url: '/', file: 'index.html' },
-    { url: '/?tab=smaran', file: 'smaran.html' },
-    { url: '/?tab=padavali', file: 'padavali.html' },
-    { url: '/?tab=granthas', file: 'granthas.html' },
-    { url: '/?tab=feed', file: 'feed.html' },
-    { url: '/?tab=milestones', file: 'milestones.html' },
+    { url: '/rasik-saints-of-vrindavan', file: 'rasik-saints-of-vrindavan.html' },
+    { url: '/vrindavan-ashtayama-seva-darshan-timings', file: 'vrindavan-ashtayama-seva-darshan-timings.html' },
+    { url: '/rasik-vani-granthas-list', file: 'rasik-vani-granthas-list.html' },
+    { url: '/online-tulsi-mala-naam-jap', file: 'online-tulsi-mala-naam-jap.html' },
+    { url: '/padavali', file: 'padavali.html' },
+    { url: '/granthas', file: 'granthas.html' },
+    { url: '/feed', file: 'feed.html' },
+    { url: '/milestones', file: 'milestones.html' },
+    { url: '/smaran', file: 'smaran.html' },
   ];
 
   // 2. Pre-render ALL 29 Scripture Collections (5 Epics + 24 Rasik Granthas)
@@ -68,9 +72,7 @@ async function prerender() {
   if (fs.existsSync(granthasPath)) {
     const granthasData = JSON.parse(fs.readFileSync(granthasPath, 'utf-8'));
     for (const g of granthasData) {
-      const isEpic = g.category === 'mahagranth' || ['valmiki-ramayana', 'shrimad-bhagavatam', 'ramcharitmanas', 'bhagavad-gita', 'durga-saptashati'].includes(g.id);
-      const tabName = isEpic ? 'granthas' : 'padavali';
-      const routeUrl = `/?tab=${tabName}&grantha=${encodeURIComponent(g.id)}`;
+      const routeUrl = `/grantha/${encodeURIComponent(g.id)}`;
       const routeFile = `grantha-${g.id}.html`;
       if (!routes.some((r) => r.file === routeFile)) {
         routes.push({ url: routeUrl, file: routeFile });
@@ -84,7 +86,7 @@ async function prerender() {
     const saintsData = JSON.parse(fs.readFileSync(saintsPath, 'utf-8'));
     for (const s of saintsData.slice(0, 10)) {
       const slug = s.slug || s.id;
-      const routeUrl = `/?tab=padavali&author=${encodeURIComponent(slug)}`;
+      const routeUrl = `/sant/${encodeURIComponent(slug)}`;
       const routeFile = `saint-${slug}.html`;
       if (!routes.some((r) => r.file === routeFile)) {
         routes.push({ url: routeUrl, file: routeFile });
@@ -92,15 +94,17 @@ async function prerender() {
     }
   }
 
-  // 4. Pre-render Authentic Epic Chapter Samples
+  // 4. Pre-render Authentic Epic Chapter & Celebrated Pad Samples
   routes.push(
-    { url: '/?tab=granthas&grantha=bhagavad-gita&chapter=adhyay-1', file: 'grantha-bhagavad-gita-adhyay-1.html' },
-    { url: '/?tab=granthas&grantha=bhagavad-gita&chapter=adhyay-2', file: 'grantha-bhagavad-gita-adhyay-2.html' },
-    { url: '/?tab=granthas&grantha=ramcharitmanas&chapter=kand-%E0%A4%AC%E0%A4%BE%E0%A4%B2%E0%A4%95%E0%A4%BE%E0%A4%A3%E0%A4%A1', file: 'grantha-ramcharitmanas-kand-1.html' },
-    { url: '/?tab=granthas&grantha=durga-saptashati&chapter=adhyay-1', file: 'grantha-durga-saptashati-adhyay-1.html' },
-    { url: '/?tab=padavali&pad=radheju-merau-janam-sudharau', file: 'pad-radheju-merau-janam-sudharau.html' },
-    { url: '/?tab=padavali&pad=shri-radha-kripa-kataksha-stotram', file: 'pad-shri-radha-kripa-kataksha-stotram.html' },
-    { url: '/?tab=padavali&pad=bainu-maai-baajai-bansivat-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-64', file: 'pad-bainu-mai-baje-bansivat.html' }
+    { url: '/grantha/bhagavad-gita/adhyay-1', file: 'grantha-bhagavad-gita-adhyay-1.html' },
+    { url: '/grantha/bhagavad-gita/adhyay-2', file: 'grantha-bhagavad-gita-adhyay-2.html' },
+    { url: '/grantha/ramcharitmanas/kand-%E0%A4%AC%E0%A4%BE%E0%A4%B2%E0%A4%95%E0%A4%BE%E0%A4%A3%E0%A4%A1', file: 'grantha-ramcharitmanas-kand-1.html' },
+    { url: '/grantha/durga-saptashati/adhyay-1', file: 'grantha-durga-saptashati-adhyay-1.html' },
+    { url: '/pad/radheju-merau-janam-sudharau', file: 'pad-radheju-merau-janam-sudharau.html' },
+    { url: '/pad/shri-radha-kripa-kataksha-stotram', file: 'pad-shri-radha-kripa-kataksha-stotram.html' },
+    { url: '/pad/bainu-maai-baajai-bansivat-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-64', file: 'pad-bainu-mai-baje-bansivat.html' },
+    { url: '/pad/main-to-govardhan-ko-jaun-meri-veer-shri-chandrasakhi-ji', file: 'pad-main-to-govardhan-ko-jaun-meri-veer-shri-chandrasakhi-ji.html' },
+    { url: '/pad/radhika-ravan-ki-murlika-shravan-suni-shri-chaturbhujdas-ji', file: 'pad-radhika-ravan-ki-murlika-shravan-suni-shri-chaturbhujdas-ji.html' }
   );
 
   console.log('🌸 Pre-rendering Vrindopnisad routes for SEO & SSR...');

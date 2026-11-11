@@ -164,7 +164,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
                 <div className="absolute inset-2 rounded-full border border-amber-200/60 pointer-events-none" />
 
                 <span className="text-[10px] font-laila font-semibold uppercase tracking-wider text-amber-800/80 mb-1 leading-none">
-                  नित्य युगल स्मरण
+                  नित्य युगल स्मरण{' '}
                 </span>
                 <span className={`font-rozha text-3xl sm:text-4xl text-amber-900 leading-none transition-transform duration-150 ${counterTick ? 'scale-110' : ''}`}>
                   राधे
@@ -204,7 +204,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
                 </span>
                 <div className="flex flex-col">
                   <span className="font-laila text-sm font-bold text-amber-900">
-                    मंत्र जप पूर्ण
+                    मंत्र जप पूर्ण{' '}
                   </span>
                   <span className="text-[11px] font-laila text-neutral-400">
                     आज का पावन संकल्प

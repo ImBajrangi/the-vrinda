@@ -300,7 +300,7 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
                   }`}
                 />
                 <span className="truncate">
-                  <span className="sm:hidden">{tab.mobileLabel}</span>
+                  <span aria-hidden="true" className="sm:hidden">{tab.mobileLabel}</span>
                   <span className="hidden sm:inline">{tab.label}</span>
                 </span>
                 <span
