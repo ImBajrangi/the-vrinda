@@ -409,9 +409,9 @@ async function getOrInitAuthUserId(): Promise<string | null> {
       if (session?.user?.id) {
         return session.user.id;
       }
-      const { data, error } = await sb.auth.signInAnonymously();
-      if (error) return null;
-      return data?.user?.id || null;
+      // Zero-waste architecture: Do not create anonymous auth rows in Supabase.
+      // Guest bookmarks remain 100% persistent in local IndexedDB & LocalStorage.
+      return null;
     } catch {
       return null;
     }
