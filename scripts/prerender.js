@@ -98,7 +98,10 @@ async function prerender() {
   routes.push(
     { url: '/grantha/bhagavad-gita/adhyay-1', file: 'grantha-bhagavad-gita-adhyay-1.html' },
     { url: '/grantha/bhagavad-gita/adhyay-2', file: 'grantha-bhagavad-gita-adhyay-2.html' },
-    { url: '/grantha/ramcharitmanas/kand-%E0%A4%AC%E0%A4%BE%E0%A4%B2%E0%A4%95%E0%A4%BE%E0%A4%A3%E0%A4%A1', file: 'grantha-ramcharitmanas-kand-1.html' },
+    { url: '/grantha/ramcharitmanas/bal-kand', file: 'grantha-ramcharitmanas-bal-kand.html' },
+    { url: '/grantha/ramcharitmanas/sundar-kand', file: 'grantha-ramcharitmanas-sundar-kand.html' },
+    { url: '/grantha/valmiki-ramayana/bal-kand-sarga-1', file: 'grantha-valmiki-ramayana-bal-kand-sarga-1.html' },
+    { url: '/grantha/valmiki-ramayana/sundar-kand-sarga-1', file: 'grantha-valmiki-ramayana-sundar-kand-sarga-1.html' },
     { url: '/grantha/durga-saptashati/adhyay-1', file: 'grantha-durga-saptashati-adhyay-1.html' },
     { url: '/pad/radheju-merau-janam-sudharau', file: 'pad-radheju-merau-janam-sudharau.html' },
     { url: '/pad/shri-radha-kripa-kataksha-stotram', file: 'pad-shri-radha-kripa-kataksha-stotram.html' },

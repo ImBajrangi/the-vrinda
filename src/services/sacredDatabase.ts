@@ -18,6 +18,7 @@ import sacredTopicsData from '../data/sacredTopics.json';
 import sadhanaBadgesData from '../data/sadhanaBadges.json';
 import feedTabsData from '../data/feedTabs.json';
 import { SacredPad, ScriptureHierarchyData, ChapterInfo, AuthorHierarchyInfo, EpicIndexData } from '../types/devotional';
+import { normalizeEpicChapterSlug } from '../utils/epicSlugs';
 
 export interface CanonicalGrantha {
   id: string;
@@ -815,14 +816,20 @@ export const SacredDatabase = {
       (c) => c.id === chapterId || decodeURIComponent(c.id).toLowerCase() === decChapterId
     );
 
-    // 2. Exact match by name or decoded name
+    // 2. Normalized / Transliterated match
+    if (!chapterMeta) {
+      const normId = normalizeEpicChapterSlug(granthaId, chapterId);
+      chapterMeta = epicIndex.chapters.find((c) => c.id === normId || c.id === normId.toLowerCase());
+    }
+
+    // 3. Exact match by name or decoded name
     if (!chapterMeta) {
       chapterMeta = epicIndex.chapters.find(
         (c) => c.name === chapterId || decodeURIComponent(c.name).toLowerCase() === decChapterId
       );
     }
 
-    // 3. Exact chapter number match
+    // 4. Exact chapter number match
     if (!chapterMeta) {
       const numMatch = decChapterId.match(/\d+/g);
       if (numMatch) {
@@ -1857,29 +1864,29 @@ export function mapPadToEpicChapter(padId: string): { grantha: string; chapter: 
   // 1. Ramcharitmanas (e.g. ramcharitmanas-kand-5-doha-14)
   const rcMatch = clean.match(/^ramcharitmanas(?:-kand)?[-_](\d+|[a-zA-Z]+)(?:[-_](?:doha|chaupai)[-_](\d+.*))?$/i);
   if (rcMatch || clean.startsWith('ramcharitmanas')) {
-    const kands = ['', 'बालकाण्ड', 'अयोध्याकाण्ड', 'अरण्यकाण्ड', 'किष्किन्धाकाण्ड', 'सुन्दरकाण्ड', 'लंकाकाण्ड', 'उत्तरकाण्ड'];
+    const kands = ['', 'bal-kand', 'ayodhya-kand', 'aranya-kand', 'kishkindha-kand', 'sundar-kand', 'lanka-kand', 'uttar-kand'];
     const kNum = rcMatch ? parseInt(rcMatch[1], 10) : 0;
-    let kandName = '';
+    let kandSlug = '';
     if (kNum >= 1 && kNum <= 7) {
-      kandName = kands[kNum];
+      kandSlug = kands[kNum];
     } else if (/sundar|सुन्दर/i.test(clean)) {
-      kandName = 'सुन्दरकाण्ड';
+      kandSlug = 'sundar-kand';
     } else if (/bal|बाल/i.test(clean)) {
-      kandName = 'बालकाण्ड';
+      kandSlug = 'bal-kand';
     } else if (/ayodhya|अयोध्या/i.test(clean)) {
-      kandName = 'अयोध्याकाण्ड';
+      kandSlug = 'ayodhya-kand';
     } else if (/aranya|अरण्य/i.test(clean)) {
-      kandName = 'अरण्यकाण्ड';
+      kandSlug = 'aranya-kand';
     } else if (/kishkindha|किष्किन्धा/i.test(clean)) {
-      kandName = 'किष्किन्धाकाण्ड';
+      kandSlug = 'kishkindha-kand';
     } else if (/lanka|लंका/i.test(clean)) {
-      kandName = 'लंकाकाण्ड';
+      kandSlug = 'lanka-kand';
     } else if (/uttar|उत्तर/i.test(clean)) {
-      kandName = 'उत्तरकाण्ड';
+      kandSlug = 'uttar-kand';
     }
     return {
       grantha: 'ramcharitmanas',
-      chapter: kandName ? `kand-${kandName}` : 'kand-सुन्दरकाण्ड',
+      chapter: kandSlug || 'sundar-kand',
       verseId: clean,
     };
   }
@@ -1887,13 +1894,13 @@ export function mapPadToEpicChapter(padId: string): { grantha: string; chapter: 
   // 2. Valmiki Ramayana (e.g. valmiki-ramayana-5-sarga-4-shlok-12)
   const vrMatch = clean.match(/^valmiki-ramayana(?:-kand)?[-_](\d+)[-_]sarga[-_](\d+)/i);
   if (vrMatch || clean.startsWith('valmiki-ramayana')) {
-    const kands = ['', 'बालकाण्ड', 'अयोध्याकाण्ड', 'अरण्यकाण्ड', 'किष्किन्धाकाण्ड', 'सुन्दरकाण्ड', 'युद्धकाण्ड', 'उत्तरकाण्ड'];
+    const kands = ['', 'bal-kand', 'ayodhya-kand', 'aranya-kand', 'kishkindha-kand', 'sundar-kand', 'yuddha-kand', 'uttar-kand'];
     const kNum = vrMatch ? parseInt(vrMatch[1], 10) : (/sundar|सुन्दर/i.test(clean) ? 5 : 1);
     const sNum = vrMatch ? parseInt(vrMatch[2], 10) : 1;
-    const kandName = kands[kNum] || 'बालकाण्ड';
+    const kandSlug = kands[kNum] || 'bal-kand';
     return {
       grantha: 'valmiki-ramayana',
-      chapter: `${kandName}-sarga-${sNum}`,
+      chapter: `${kandSlug}-sarga-${sNum}`,
       verseId: clean,
     };
   }

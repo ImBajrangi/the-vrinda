@@ -53,9 +53,11 @@ Allow: /
 User-agent: cohere-ai
 Allow: /
 
-# Sitemaps
+# Sitemaps & High-Frequency RSS Stream
 Sitemap: https://bhav.vrindopnishad.in/sitemap.xml
 Sitemap: https://bhav.vrindopnishad.in/sitemap-images.xml
+Sitemap: https://bhav.vrindopnishad.in/feed.xml
 Sitemap: https://path.vrindopnishad.in/sitemap-path.xml
+Sitemap: https://path.vrindopnishad.in/feed.xml
 
 Host: https://bhav.vrindopnishad.in

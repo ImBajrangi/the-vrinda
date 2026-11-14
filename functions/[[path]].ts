@@ -194,8 +194,66 @@ function getSaintSameAs(authorName: string): string[] | undefined {
   return undefined;
 }
 
+const KAND_SLUG_MAP: Record<string, string> = {
+  'बालकाण्ड': 'bal-kand',
+  'अयोध्याकाण्ड': 'ayodhya-kand',
+  'अरण्यकाण्ड': 'aranya-kand',
+  'किष्किन्धाकाण्ड': 'kishkindha-kand',
+  'सुन्दरकाण्ड': 'sundar-kand',
+  'युद्धकाण्ड': 'yuddha-kand',
+  'उत्तरकाण्ड': 'uttar-kand',
+  'लंकाकाण्ड': 'lanka-kand',
+};
+
+function normalizeEpicChapterSlug(granthaId: string, chapterId: string): string {
+  if (!chapterId) return chapterId;
+  let ch = decodeURIComponent(chapterId).trim();
+
+  if (granthaId === 'valmiki-ramayana') {
+    for (const [kand, slug] of Object.entries(KAND_SLUG_MAP)) {
+      if (ch.startsWith(kand)) {
+        ch = ch.replace(kand, slug);
+        break;
+      }
+    }
+    return ch.toLowerCase().replace(/_/g, '-');
+  }
+
+  if (granthaId === 'ramcharitmanas') {
+    for (const [kand, slug] of Object.entries(KAND_SLUG_MAP)) {
+      if (ch.includes(kand)) {
+        return slug;
+      }
+    }
+    if (ch.startsWith('kand-')) {
+      const rest = ch.replace(/^kand-/, '').toLowerCase();
+      for (const slug of Object.values(KAND_SLUG_MAP)) {
+        if (rest === slug || rest.replace(/-/g, '') === slug.replace(/-/g, '')) {
+          return slug;
+        }
+      }
+      const numMatch = rest.match(/\d+/);
+      if (numMatch) {
+        const order = ['', 'bal-kand', 'ayodhya-kand', 'aranya-kand', 'kishkindha-kand', 'sundar-kand', 'lanka-kand', 'uttar-kand'];
+        const n = parseInt(numMatch[0], 10);
+        if (n >= 1 && n <= 7) return order[n];
+      }
+    }
+    const cleanLower = ch.toLowerCase().replace(/[^a-z0-9]/g, '');
+    for (const slug of Object.values(KAND_SLUG_MAP)) {
+      if (cleanLower === slug.replace(/-/g, '')) {
+        return slug;
+      }
+    }
+    return ch.toLowerCase();
+  }
+
+  return ch;
+}
+
 function getChapterSnippet(granthaId: string, chapterId: string) {
-  return CHAPTER_SNIPPETS[`${granthaId}:${chapterId}`] || null;
+  const norm = normalizeEpicChapterSlug(granthaId, chapterId);
+  return CHAPTER_SNIPPETS[`${granthaId}:${norm}`] || CHAPTER_SNIPPETS[`${granthaId}:${chapterId}`] || null;
 }
 
 function mapPadToEpicChapter(padId: string): { grantha: string; chapter: string; verseId: string } | null {
@@ -205,29 +263,29 @@ function mapPadToEpicChapter(padId: string): { grantha: string; chapter: string;
   // 1. Ramcharitmanas (e.g. ramcharitmanas-kand-5-doha-14)
   const rcMatch = clean.match(/^ramcharitmanas(?:-kand)?[-_](\d+|[a-zA-Z]+)(?:[-_](?:doha|chaupai)[-_](\d+.*))?$/i);
   if (rcMatch || clean.startsWith('ramcharitmanas')) {
-    const kands = ['', 'बालकाण्ड', 'अयोध्याकाण्ड', 'अरण्यकाण्ड', 'किष्किन्धाकाण्ड', 'सुन्दरकाण्ड', 'लंकाकाण्ड', 'उत्तरकाण्ड'];
+    const kands = ['', 'bal-kand', 'ayodhya-kand', 'aranya-kand', 'kishkindha-kand', 'sundar-kand', 'lanka-kand', 'uttar-kand'];
     const kNum = rcMatch ? parseInt(rcMatch[1], 10) : 0;
-    let kandName = '';
+    let kandSlug = '';
     if (kNum >= 1 && kNum <= 7) {
-      kandName = kands[kNum];
+      kandSlug = kands[kNum];
     } else if (/sundar|सुन्दर/i.test(clean)) {
-      kandName = 'सुन्दरकाण्ड';
+      kandSlug = 'sundar-kand';
     } else if (/bal|बाल/i.test(clean)) {
-      kandName = 'बालकाण्ड';
+      kandSlug = 'bal-kand';
     } else if (/ayodhya|अयोध्या/i.test(clean)) {
-      kandName = 'अयोध्याकाण्ड';
+      kandSlug = 'ayodhya-kand';
     } else if (/aranya|अरण्य/i.test(clean)) {
-      kandName = 'अरण्यकाण्ड';
+      kandSlug = 'aranya-kand';
     } else if (/kishkindha|किष्किन्धा/i.test(clean)) {
-      kandName = 'किष्किन्धाकाण्ड';
+      kandSlug = 'kishkindha-kand';
     } else if (/lanka|लंका/i.test(clean)) {
-      kandName = 'लंकाकाण्ड';
+      kandSlug = 'lanka-kand';
     } else if (/uttar|उत्तर/i.test(clean)) {
-      kandName = 'उत्तरकाण्ड';
+      kandSlug = 'uttar-kand';
     }
     return {
       grantha: 'ramcharitmanas',
-      chapter: kandName ? `kand-${kandName}` : 'kand-सुन्दरकाण्ड',
+      chapter: kandSlug || 'sundar-kand',
       verseId: clean,
     };
   }
@@ -235,13 +293,13 @@ function mapPadToEpicChapter(padId: string): { grantha: string; chapter: string;
   // 2. Valmiki Ramayana (e.g. valmiki-ramayana-5-sarga-4-shlok-12)
   const vrMatch = clean.match(/^valmiki-ramayana(?:-kand)?[-_](\d+)[-_]sarga[-_](\d+)/i);
   if (vrMatch || clean.startsWith('valmiki-ramayana')) {
-    const kands = ['', 'बालकाण्ड', 'अयोध्याकाण्ड', 'अरण्यकाण्ड', 'किष्किन्धाकाण्ड', 'सुन्दरकाण्ड', 'युद्धकाण्ड', 'उत्तरकाण्ड'];
+    const kands = ['', 'bal-kand', 'ayodhya-kand', 'aranya-kand', 'kishkindha-kand', 'sundar-kand', 'yuddha-kand', 'uttar-kand'];
     const kNum = vrMatch ? parseInt(vrMatch[1], 10) : (/sundar|सुन्दर/i.test(clean) ? 5 : 1);
     const sNum = vrMatch ? parseInt(vrMatch[2], 10) : 1;
-    const kandName = kands[kNum] || 'बालकाण्ड';
+    const kandSlug = kands[kNum] || 'bal-kand';
     return {
       grantha: 'valmiki-ramayana',
-      chapter: `${kandName}-sarga-${sNum}`,
+      chapter: `${kandSlug}-sarga-${sNum}`,
       verseId: clean,
     };
   }
@@ -454,6 +512,10 @@ export const onRequest: PagesFunction<Env> = async (context) => {
       const redirectedUrl = new URL('/sitemap-path-granthas.xml', request.url);
       return next(new Request(redirectedUrl.toString(), request));
     }
+    if (pathname === '/feed.xml' || pathname === '/rss.xml') {
+      const redirectedUrl = new URL('/feed-path.xml', request.url);
+      return next(new Request(redirectedUrl.toString(), request));
+    }
     // Path domain strictly owns only Mahagranth Parayana (Epics). Keep both domains 100% separate on Google.
     // Clean empty XML sitemap ensures GSC never gets an HTML error or cross-domain redirect.
     if (
@@ -527,10 +589,19 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   } else if (pathname.startsWith('/sant/') || pathname.startsWith('/author/')) {
     pathAuthor = decodeURIComponent(pathname.replace(/^\/(?:sant|author)\//, '')).trim();
   } else if (pathname.startsWith('/grantha/')) {
+    const rawParts = pathname.slice(9).split('/').filter(Boolean);
     const parts = pathname.slice(9).split('/').map((p) => decodeURIComponent(p).trim()).filter(Boolean);
     if (parts.length >= 2) {
       pathGrantha = parts[0];
       pathChapter = parts.slice(1).join('/');
+      // If chapter contains percent-encoding or non-ASCII Devanagari or non-canonical format, 301 redirect to clean Hinglish!
+      if (pathGrantha === 'valmiki-ramayana' || pathGrantha === 'ramcharitmanas') {
+        const cleanCh = normalizeEpicChapterSlug(pathGrantha, pathChapter);
+        const rawCh = rawParts.slice(1).join('/');
+        if (cleanCh && (rawCh !== cleanCh || rawCh.includes('%') || /[^\x00-\x7F]/.test(rawCh))) {
+          return Response.redirect(`https://path.vrindopnishad.in/grantha/${encodeURIComponent(pathGrantha)}/${encodeURIComponent(cleanCh)}`, 301);
+        }
+      }
     } else if (parts.length === 1) {
       pathGrantha = parts[0];
     }
@@ -586,7 +657,8 @@ export const onRequest: PagesFunction<Env> = async (context) => {
       return Response.redirect('https://path.vrindopnishad.in/', 301);
     }
     if (qGrantha && EPICS_META[qGrantha]) {
-      const targetChapter = qChapter ? `/${encodeURIComponent(qChapter)}` : '';
+      const cleanCh = qChapter ? normalizeEpicChapterSlug(qGrantha, qChapter) : '';
+      const targetChapter = cleanCh ? `/${encodeURIComponent(cleanCh)}` : '';
       return Response.redirect(`https://path.vrindopnishad.in/grantha/${encodeURIComponent(qGrantha)}${targetChapter}`, 301);
     }
     if (epicPad) {
@@ -701,6 +773,10 @@ export const onRequest: PagesFunction<Env> = async (context) => {
       },
     };
 
+    const authorSaint = SAINTS_MAP.get(padAuthor) || SAINTS_MAP.get(padAuthor.toLowerCase());
+    const saintLink = authorSaint?.slug ? `/sant/${encodeURIComponent(authorSaint.slug)}` : '/rasik-saints-of-vrindavan';
+    const granthaLink = granthaId ? `/grantha/${encodeURIComponent(granthaId)}` : '/rasik-vani-granthas-list';
+
     extraSchemas.push({
       '@type': 'BreadcrumbList',
       '@id': `${canonicalUrl}#breadcrumb`,
@@ -715,7 +791,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
           '@type': 'ListItem',
           'position': 2,
           'name': granthaLabel,
-          'item': `https://bhav.vrindopnishad.in/?tab=padavali&grantha=${encodeURIComponent(granthaId || '')}`,
+          'item': granthaId ? `https://bhav.vrindopnishad.in/grantha/${encodeURIComponent(granthaId)}` : 'https://bhav.vrindopnishad.in/rasik-vani-granthas-list',
         },
         {
           '@type': 'ListItem',
@@ -768,7 +844,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
             </li>
             <li style="color: #d97706;">&rsaquo;</li>
             <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-              <a itemprop="item" href="/?tab=padavali&grantha=${encodeURIComponent(granthaId || '')}" style="color: #b45309; text-decoration: none;"><span itemprop="name">${granthaLabel}</span></a>
+              <a itemprop="item" href="${granthaLink}" style="color: #b45309; text-decoration: none;"><span itemprop="name">${granthaLabel}</span></a>
               <meta itemprop="position" content="2" />
             </li>
             <li style="color: #d97706;">&rsaquo;</li>
@@ -808,8 +884,8 @@ export const onRequest: PagesFunction<Env> = async (context) => {
           <h2 style="font-size: 1.25rem; font-weight: 600; color: #78350f; margin: 0 0 0.75rem 0;">ग्रंथ एवं संत विवरण</h2>
           <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem; border: 1px solid #e7e5e4;">
             <tr style="background-color: #f5f5f4;"><td style="padding: 0.75rem; border: 1px solid #e7e5e4; font-weight: 600;">पद शीर्षक (Title)</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;">${padTitle} (${romanTitle})</td></tr>
-            <tr><td style="padding: 0.75rem; border: 1px solid #e7e5e4; font-weight: 600;">रचयिता (Author)</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;"><a href="/?tab=padavali&q=${encodeURIComponent(padAuthor)}" style="color: #b45309; text-decoration: underline;">${padAuthor}</a></td></tr>
-            <tr style="background-color: #f5f5f4;"><td style="padding: 0.75rem; border: 1px solid #e7e5e4; font-weight: 600;">संग्रह (Grantha)</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;"><a href="/?tab=padavali&grantha=${encodeURIComponent(granthaId || '')}" style="color: #b45309; text-decoration: underline;">${granthaLabel}</a></td></tr>
+            <tr><td style="padding: 0.75rem; border: 1px solid #e7e5e4; font-weight: 600;">रचयिता (Author)</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;"><a href="${saintLink}" style="color: #b45309; text-decoration: underline;">${padAuthor}</a></td></tr>
+            <tr style="background-color: #f5f5f4;"><td style="padding: 0.75rem; border: 1px solid #e7e5e4; font-weight: 600;">संग्रह (Grantha)</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;"><a href="${granthaLink}" style="color: #b45309; text-decoration: underline;">${granthaLabel}</a></td></tr>
             <tr><td style="padding: 0.75rem; border: 1px solid #e7e5e4; font-weight: 600;">साधना धारा (Tradition)</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;">श्री वृन्दावन नित्य निकुंज रस उपासना</td></tr>
           </table>
         </section>
@@ -831,9 +907,9 @@ export const onRequest: PagesFunction<Env> = async (context) => {
         <section style="margin-top: 2rem; padding: 1.5rem; background-color: #fafaf9; border-radius: 0.75rem; border: 1px solid #e7e5e4;">
           <h2 style="font-size: 1.25rem; font-weight: 600; color: #44403c; margin: 0 0 1rem 0;">संबंधित पावन पद व स्वाध्याय</h2>
           <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem;">
-            <li><a href="/?tab=padavali&grantha=${encodeURIComponent(granthaId || '')}" style="color: #b45309; text-decoration: none; display: block; padding: 0.5rem 0.75rem; background: #fff; border: 1px solid #e7e5e4; border-radius: 0.5rem;">📖 ${granthaLabel} के समस्त पद &rarr;</a></li>
-            <li><a href="/?tab=padavali&q=${encodeURIComponent(padAuthor)}" style="color: #b45309; text-decoration: none; display: block; padding: 0.5rem 0.75rem; background: #fff; border: 1px solid #e7e5e4; border-radius: 0.5rem;">🌸 ${padAuthor} की अन्य रचनाएँ &rarr;</a></li>
-            <li><a href="/?tab=feed" style="color: #b45309; text-decoration: none; display: block; padding: 0.5rem 0.75rem; background: #fff; border: 1px solid #e7e5e4; border-radius: 0.5rem;">🛕 श्री धाम वृन्दावन मंदिर दर्शन &rarr;</a></li>
+            <li><a href="${granthaLink}" style="color: #b45309; text-decoration: none; display: block; padding: 0.5rem 0.75rem; background: #fff; border: 1px solid #e7e5e4; border-radius: 0.5rem;">📖 ${granthaLabel} के समस्त पद &rarr;</a></li>
+            <li><a href="${saintLink}" style="color: #b45309; text-decoration: none; display: block; padding: 0.5rem 0.75rem; background: #fff; border: 1px solid #e7e5e4; border-radius: 0.5rem;">🌸 ${padAuthor} की समस्त पावन रचनाएँ &rarr;</a></li>
+            <li><a href="/feed" style="color: #b45309; text-decoration: none; display: block; padding: 0.5rem 0.75rem; background: #fff; border: 1px solid #e7e5e4; border-radius: 0.5rem;">🛕 श्री धाम वृन्दावन मंदिर दर्शन &rarr;</a></li>
             <li><a href="/" style="color: #b45309; text-decoration: none; display: block; padding: 0.5rem 0.75rem; background: #fff; border: 1px solid #e7e5e4; border-radius: 0.5rem;">📿 नित्य अष्टयाम सेवा व नाम जप &rarr;</a></li>
           </ul>
         </section>
@@ -853,7 +929,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
 
     title = `${saintName}${tradition} • रसिक संत पदावली व जीवन चरित | वृन्दोपनिषद् 2.0`;
     description = `${bio}${saintName} की समस्त पावन पदों व वाणियों का प्रामाणिक संग्रह। वृन्दोपनिषद् 2.0`;
-    canonicalUrl = `https://bhav.vrindopnishad.in/?tab=padavali&author=${encodeURIComponent(saint?.slug || qAuthor)}`;
+    canonicalUrl = `https://bhav.vrindopnishad.in/sant/${encodeURIComponent(saint?.slug || qAuthor)}`;
 
     const saintSameAs = getSaintSameAs(saintName);
 
@@ -886,15 +962,16 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     const epic = EPICS_META[qGrantha];
     if (qChapter || epicPad?.chapter) {
       let targetChapter = qChapter || epicPad!.chapter;
+      targetChapter = normalizeEpicChapterSlug(qGrantha, targetChapter);
       if (qGrantha === 'ramcharitmanas') {
         const decCh = decodeURIComponent(targetChapter).toLowerCase();
-        if (/sundar|सुन्दर|kand-5/i.test(decCh)) {
-          targetChapter = 'kand-सुन्दरकाण्ड';
+        if (/sundar|सुन्दर/i.test(decCh)) {
+          targetChapter = 'sundar-kand';
         }
       } else if (qGrantha === 'valmiki-ramayana') {
         const decCh = decodeURIComponent(targetChapter).toLowerCase();
         if (/sundar|सुन्दर/i.test(decCh) && !decCh.includes('-sarga-')) {
-          targetChapter = 'सुन्दरकाण्ड-sarga-1';
+          targetChapter = 'sundar-kand-sarga-1';
         }
       }
       const chSnippet = getChapterSnippet(qGrantha, targetChapter);
@@ -997,7 +1074,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
               </li>
               <li style="color: #d97706;">&rsaquo;</li>
               <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                <a itemprop="item" href="https://path.vrindopnishad.in/?tab=granthas&grantha=${encodeURIComponent(qGrantha)}" style="color: #b45309; text-decoration: none;"><span itemprop="name">${epic.name}</span></a>
+                <a itemprop="item" href="https://path.vrindopnishad.in/grantha/${encodeURIComponent(qGrantha)}" style="color: #b45309; text-decoration: none;"><span itemprop="name">${epic.name}</span></a>
                 <meta itemprop="position" content="2" />
               </li>
               <li style="color: #d97706;">&rsaquo;</li>
@@ -1036,7 +1113,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
             <h2 style="font-size: 1.25rem; font-weight: 600; color: #78350f; margin: 0 0 0.75rem 0;">महाग्रंथ एवं अध्याय विवरण</h2>
             <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem; border: 1px solid #e7e5e4;">
               <tr style="background-color: #f5f5f4;"><td style="padding: 0.75rem; border: 1px solid #e7e5e4; font-weight: 600;">अध्याय नाम (Chapter)</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;">${chName}</td></tr>
-              <tr><td style="padding: 0.75rem; border: 1px solid #e7e5e4; font-weight: 600;">महाग्रंथ (Epic)</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;"><a href="https://path.vrindopnishad.in/?tab=granthas&grantha=${encodeURIComponent(qGrantha)}" style="color: #b45309; text-decoration: underline;">${epic.name}</a></td></tr>
+              <tr><td style="padding: 0.75rem; border: 1px solid #e7e5e4; font-weight: 600;">महाग्रंथ (Epic)</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;"><a href="https://path.vrindopnishad.in/grantha/${encodeURIComponent(qGrantha)}" style="color: #b45309; text-decoration: underline;">${epic.name}</a></td></tr>
               <tr style="background-color: #f5f5f4;"><td style="padding: 0.75rem; border: 1px solid #e7e5e4; font-weight: 600;">प्रणेता (Sage/Author)</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;">${epic.author}</td></tr>
               <tr><td style="padding: 0.75rem; border: 1px solid #e7e5e4; font-weight: 600;">कुल श्लोक संख्या</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;">${chVerseCount} श्लोक</td></tr>
             </table>
@@ -1059,9 +1136,9 @@ export const onRequest: PagesFunction<Env> = async (context) => {
           <section style="margin-top: 2rem; padding: 1.5rem; background-color: #fafaf9; border-radius: 0.75rem; border: 1px solid #e7e5e4;">
             <h2 style="font-size: 1.25rem; font-weight: 600; color: #44403c; margin: 0 0 1rem 0;">महाग्रंथ पारायण नेविगेशन</h2>
             <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem;">
-              <li><a href="https://path.vrindopnishad.in/?tab=granthas&grantha=${encodeURIComponent(qGrantha)}" style="color: #b45309; text-decoration: none; display: block; padding: 0.5rem 0.75rem; background: #fff; border: 1px solid #e7e5e4; border-radius: 0.5rem;">📜 ${epic.name} के समस्त अध्याय &rarr;</a></li>
+              <li><a href="https://path.vrindopnishad.in/grantha/${encodeURIComponent(qGrantha)}" style="color: #b45309; text-decoration: none; display: block; padding: 0.5rem 0.75rem; background: #fff; border: 1px solid #e7e5e4; border-radius: 0.5rem;">📜 ${epic.name} के समस्त अध्याय &rarr;</a></li>
               <li><a href="https://path.vrindopnishad.in/" style="color: #b45309; text-decoration: none; display: block; padding: 0.5rem 0.75rem; background: #fff; border: 1px solid #e7e5e4; border-radius: 0.5rem;">🏛️ ५ अमर सनातन महाकाव्य &rarr;</a></li>
-              <li><a href="https://bhav.vrindopnishad.in/?tab=padavali" style="color: #b45309; text-decoration: none; display: block; padding: 0.5rem 0.75rem; background: #fff; border: 1px solid #e7e5e4; border-radius: 0.5rem;">🌸 ४४,०००+ रसिक वाणी संग्रह &rarr;</a></li>
+              <li><a href="https://bhav.vrindopnishad.in/padavali" style="color: #b45309; text-decoration: none; display: block; padding: 0.5rem 0.75rem; background: #fff; border: 1px solid #e7e5e4; border-radius: 0.5rem;">🌸 ४४,०००+ रसिक वाणी संग्रह &rarr;</a></li>
               <li><a href="https://bhav.vrindopnishad.in/" style="color: #b45309; text-decoration: none; display: block; padding: 0.5rem 0.75rem; background: #fff; border: 1px solid #e7e5e4; border-radius: 0.5rem;">📿 दैनिक स्मरण व नित्य सेवा &rarr;</a></li>
             </ul>
           </section>

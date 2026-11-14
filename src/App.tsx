@@ -15,6 +15,7 @@ import { IOSTopProgressBar, navigationProgress } from './components/common/IOSAc
 import { SACRED_FEED_POSTS } from './data/feed';
 import { SacredPad, SadhanaState, DhyanaImpactState, DhyanaSessionRecord } from './types/devotional';
 import { SacredDatabase, CanonicalSaint, CanonicalGrantha, mapPadToEpicChapter } from './services/sacredDatabase';
+import { normalizeEpicChapterSlug } from './utils/epicSlugs';
 import { seo } from './services/seoService';
 import { useScrollDirection } from './hooks/useScrollDirection';
 
@@ -178,7 +179,7 @@ function resolveCurrentRoute(): AppRouteState {
       const parts = rawPath.slice(9).split('/').map((p) => decodeURIComponent(p).trim()).filter(Boolean);
       if (parts.length >= 2) {
         pathGrantha = parts[0];
-        pathChapter = parts.slice(1).join('/');
+        pathChapter = normalizeEpicChapterSlug(parts[0], parts.slice(1).join('/'));
       } else if (parts.length === 1) {
         pathGrantha = parts[0];
       }
@@ -189,7 +190,9 @@ function resolveCurrentRoute(): AppRouteState {
     const isPathDomain = host === 'path.vrindopnishad.in' || host.startsWith('path.');
 
     let resolvedGrantha = qGrantha || pathGrantha || (mappedEpic ? mappedEpic.grantha : 'all');
-    let resolvedChapter = qChapter || pathChapter || (mappedEpic ? mappedEpic.chapter : undefined);
+    let resolvedChapter = qChapter
+      ? normalizeEpicChapterSlug(resolvedGrantha, qChapter)
+      : (pathChapter || (mappedEpic ? mappedEpic.chapter : undefined));
     let resolvedVerse = qVerse || (mappedEpic ? mappedEpic.verseId : undefined);
     const resolvedAuthor = params.get('author') || pathAuthor;
 

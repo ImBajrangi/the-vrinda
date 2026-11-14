@@ -20,6 +20,7 @@ import { seo } from '../../services/seoService';
 import { MobileReaderHeader } from './MobileReaderHeader';
 import { MobileScriptureDrawer } from './MobileScriptureDrawer';
 import { useScrollDirection } from '../../hooks/useScrollDirection';
+import { normalizeEpicChapterSlug } from '../../utils/epicSlugs';
 
 interface MahagranthReaderProps {
   initialGranthaId?: string;
@@ -222,13 +223,18 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
             let found = idx.chapters.find(
               (c) => c.id === initialChapterId || decodeURIComponent(c.id).toLowerCase() === decInit
             );
-            // 2. Exact match by name or decoded name
+            // 2. Transliterated / normalized match
+            if (!found) {
+              const normId = normalizeEpicChapterSlug(selectedGranthaId, initialChapterId);
+              found = idx.chapters.find((c) => c.id === normId || c.id === normId.toLowerCase());
+            }
+            // 3. Exact match by name or decoded name
             if (!found) {
               found = idx.chapters.find(
                 (c) => c.name === initialChapterId || decodeURIComponent(c.name).toLowerCase() === decInit
               );
             }
-            // 3. Exact chapter number match
+            // 4. Exact chapter number match
             if (!found) {
               const numMatch = decInit.match(/\d+/g);
               if (numMatch) {
@@ -578,6 +584,21 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
   const handleSelectChapter = (chId: string) => {
     navigationProgress.start();
     setSelectedChapterId(chId);
+    if (typeof window !== 'undefined') {
+      try {
+        const isPath = window.location.hostname.includes('path.');
+        if (isPath || window.location.pathname.startsWith('/grantha/')) {
+          const newPath = `/grantha/${encodeURIComponent(selectedGranthaId)}/${encodeURIComponent(chId)}`;
+          window.history.replaceState({}, '', newPath);
+        } else {
+          const url = new URL(window.location.href);
+          url.searchParams.set('tab', 'granthas');
+          url.searchParams.set('grantha', selectedGranthaId);
+          url.searchParams.set('chapter', chId);
+          window.history.replaceState({}, '', url.toString());
+        }
+      } catch {}
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
     requestAnimationFrame(() => navigationProgress.done());
   };

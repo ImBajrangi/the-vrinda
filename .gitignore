@@ -16,6 +16,9 @@ dist-server
 .env.test.local
 .env.production.local
 *.local
+*service-account*.json
+*service_account*.json
+.google-indexing-state.json
 
 # Logs
 npm-debug.log*

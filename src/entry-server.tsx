@@ -6,6 +6,7 @@ import { SacredDatabase } from './services/sacredDatabase';
 import { generateSEOMetadata, SEOMetadataResult, SEOConfig } from './services/seoService';
 import canonicalPadasData from './data/canonicalPadas.json';
 import chapterSnippetsData from './data/chapterSnippets.json';
+import { normalizeEpicChapterSlug } from './utils/epicSlugs';
 import catalogData from '../public/data/catalog.json';
 import { SacredPad } from './types/devotional';
 
@@ -210,7 +211,8 @@ export function render(url: string = '/'): RenderResult {
   } else if (granthaQuery && epicsMeta[granthaQuery]) {
     const e = epicsMeta[granthaQuery];
     if (chapterQuery) {
-      const snippetKey = `${granthaQuery}:${chapterQuery}`;
+      const normalizedCh = normalizeEpicChapterSlug(granthaQuery, chapterQuery);
+      const snippetKey = `${granthaQuery}:${normalizedCh}`;
       const snippet = (chapterSnippetsData as Record<string, any>)[snippetKey];
       const chName = snippet ? snippet.chapterName : chapterQuery;
       const snippetVerse = snippet?.openingVerse ? `«${snippet.openingVerse}» ` : '';
@@ -220,7 +222,7 @@ export function render(url: string = '/'): RenderResult {
         tab: 'granthas',
         title: `${chName} (${e.name}) • प्रणेता: ${e.author} | वृन्दोपनिषद् 2.0`,
         description: `${snippetVerse}${e.name} का पावन अध्याय ${chName}${verseCountText}। प्रणेता: ${e.author}। वृन्दोपनिषद् 2.0`,
-        canonicalUrl: `https://path.vrindopnishad.in/grantha/${encodeURIComponent(granthaQuery)}/${encodeURIComponent(chapterQuery)}`,
+        canonicalUrl: `https://path.vrindopnishad.in/grantha/${encodeURIComponent(granthaQuery)}/${encodeURIComponent(normalizedCh)}`,
         grantha: {
           id: granthaQuery,
           name: e.name,
@@ -229,7 +231,7 @@ export function render(url: string = '/'): RenderResult {
           category: 'Sanatan Mahagranth',
         },
         chapter: {
-          id: chapterQuery,
+          id: normalizedCh,
           name: chName,
           verseCount: snippet?.verseCount || undefined,
           granthaId: granthaQuery,

@@ -3,11 +3,14 @@
  * Segregates monumental Sanatan epics (Valmiki Ramayana, Bhagavatam, Ramcharitmanas, Gita, Durga Saptashati)
  * into lightweight, on-demand chapter/sarga chunks (~15 KB to 35 KB) to eliminate delivery lag
  * and bandwidth overhead on low-end and high-end mobile devices.
+ *
+ * All sarga and chapter URLs are generated using clean, SEO-optimized Hinglish slugs (no %E0%A4 encoding).
  */
 
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { normalizeEpicChapterSlug } from './epic-slugs.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -41,6 +44,18 @@ export function splitEpicChunks() {
     const targetEpicDir = path.resolve(targetEpicsBaseDir, epic.id);
     fs.mkdirSync(targetEpicDir, { recursive: true });
 
+    // Clean existing chunk files first so old Devanagari-encoded chunks don't linger
+    try {
+      const existingFiles = fs.readdirSync(targetEpicDir);
+      for (const f of existingFiles) {
+        if (f.startsWith('ch-') && f.endsWith('.json')) {
+          fs.unlinkSync(path.resolve(targetEpicDir, f));
+        }
+      }
+    } catch (e) {
+      console.warn(`  ⚠ Note cleaning old chunks for ${epic.id}:`, e.message);
+    }
+
     // Filter out mismatched non-epic verses if any (e.g. scraped brajrasik articles with keyword 'भागवत')
     const validData = epicData.filter((pad) => {
       if (epic.id === 'shrimad-bhagavatam') {
@@ -56,8 +71,11 @@ export function splitEpicChunks() {
     // Group padas by chapterId (or chapterName)
     const chapterMap = new Map();
     validData.forEach((pad, idx) => {
-      const chId = pad.chapterId || `chapter-${idx + 1}`;
+      let rawChId = pad.chapterId || `chapter-${idx + 1}`;
       const chName = pad.chapterName || `अध्याय ${idx + 1}`;
+      const chId = normalizeEpicChapterSlug(epic.id, rawChId);
+      pad.chapterId = chId;
+
       if (!chapterMap.has(chId)) {
         chapterMap.set(chId, {
           id: chId,
@@ -73,9 +91,9 @@ export function splitEpicChunks() {
 
     for (const [chId, chObj] of chapterMap.entries()) {
       fileCounter++;
-      // Clean safe filename using index and sanitized slug
+      // Clean safe ASCII filename using index and sanitized slug
       const safeId = chId
-        .replace(/[^a-zA-Z0-9_\-\u0900-\u097F]/g, '_')
+        .replace(/[^a-zA-Z0-9_\-]/g, '_')
         .replace(/_+/g, '_')
         .substring(0, 45);
       const fileName = `ch-${String(fileCounter).padStart(3, '0')}-${safeId}.json`;
@@ -145,4 +163,3 @@ export function splitEpicChunks() {
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   splitEpicChunks();
 }
-
