@@ -1,7 +1,16 @@
 import React from 'react';
 import { Home, BookOpen, Users, Award, Feather } from 'lucide-react';
 
-export type NavTab = 'smaran' | 'granthas' | 'padavali' | 'feed' | 'milestones';
+export type NavTab =
+  | 'smaran'
+  | 'granthas'
+  | 'padavali'
+  | 'feed'
+  | 'milestones'
+  | 'stories'
+  | 'biographies'
+  | 'places'
+  | 'rituals';
 
 interface FloatingNavbarProps {
   activeTab: NavTab;

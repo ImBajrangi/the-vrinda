@@ -1,0 +1,53 @@
+{
+  "id": "kashi-vishwanath",
+  "slug": "kashi-vishwanath",
+  "name": "Kashi Vishwanath Jyotirlinga",
+  "nameDevanagari": "काशी विश्वनाथ ज्योतिर्लिंग धाम",
+  "dhamRegion": "kashi",
+  "regionNameHindi": "वाराणसी, उत्तर प्रदेश",
+  "briefSignificance": "त्रिशूल पर टिकी अविमुक्त काशी, द्वादश ज्योतिर्लिंगों में सर्वोच्च विश्वेश्वर धाम जहाँ साक्षात् शिव तारक मन्त्र प्रदान करते हैं।",
+  "deity": "Lord Shiva (Vishwanatha / Vishveshwara)",
+  "deityDevanagari": "देवाधिदेव काशी विश्वनाथ",
+  "darshanTimings": {
+    "morning": {
+      "open": "03:00",
+      "close": "11:00",
+      "aartiName": "मंगला आरती व भोग"
+    },
+    "evening": {
+      "open": "12:00",
+      "close": "23:00",
+      "aartiName": "सप्तऋषि एवं शयन आरती"
+    }
+  },
+  "parikramaKm": null,
+  "associatedLeelas": [
+    {
+      "title": "तारक मन्त्र का उपदेश",
+      "description": "काशी में देहत्याग करने वाले जीव के कान में स्वयं महादेव राम नाम रूपी तारक मन्त्र फूंकते हैं।"
+    },
+    {
+      "title": "अन्नपूर्णा भिक्षाटन",
+      "description": "समस्त विश्व का भरण-पोषण करने वाली माता अन्नपूर्णा से महादेव का भिक्षा ग्रहण करना।"
+    }
+  ],
+  "nearbyKundsOrShilats": [
+    "दशाश्वमेध घाट",
+    "मणिकर्णिका घाट",
+    "अस्सी घाट",
+    "काल भैरव मन्दिर"
+  ],
+  "samadhisNearby": [],
+  "imageWebp": "/assets/temples/aarti-lamp.webp",
+  "rulesAndEtiquette": [
+    "गंगाजल व बिल्वपत्र से अभिषेक करें",
+    "मंगला आरती हेतु पूर्व-बुकिंग रखें"
+  ],
+  "tags": [
+    "काशी",
+    "विश्वनाथ",
+    "ज्योतिर्लिंग",
+    "गंगा-आरती",
+    "मणिकर्णिका"
+  ]
+}

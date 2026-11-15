@@ -1,0 +1,48 @@
+{
+  "id": "rameshwaram-jyotirlinga",
+  "slug": "rameshwaram-jyotirlinga",
+  "name": "Rameshwaram Jyotirlinga Dham",
+  "nameDevanagari": "श्री रामेश्वरम ज्योतिर्लिंग धाम",
+  "dhamRegion": "char-dham",
+  "regionNameHindi": "रामनाथपुरम, तमिलनाडु",
+  "briefSignificance": "प्रभु श्री राम द्वारा लंका विजय पूर्व प्रतिष्ठित पावन सेतुबन्ध ज्योतिर्लिंग धाम।",
+  "deity": "Lord Ramanathaswamy (Shiva)",
+  "deityDevanagari": "श्री रामनाथस्वामी महादेव",
+  "darshanTimings": {
+    "morning": {
+      "open": "05:00",
+      "close": "13:00",
+      "aartiName": "मणिलिंग दर्शन"
+    },
+    "evening": {
+      "open": "15:30",
+      "close": "21:00",
+      "aartiName": "शयन आरती"
+    }
+  },
+  "parikramaKm": null,
+  "associatedLeelas": [
+    {
+      "title": "श्रीराम द्वारा शिवलिंग प्रतिष्ठा",
+      "description": "रावण वध से पूर्व ब्रह्महत्या दोष निवारण हेतु सीता जी द्वारा बालू से निर्मित लिंग की पूजा।"
+    }
+  ],
+  "nearbyKundsOrShilats": [
+    "अग्नि तीर्थम्",
+    "धनुषकोडि",
+    "२२ पवित्र कुण्ड"
+  ],
+  "samadhisNearby": [],
+  "imageWebp": "/assets/temples/aarti-lamp.webp",
+  "rulesAndEtiquette": [
+    "२२ कुण्डों में क्रमबद्ध स्नान करें",
+    "अग्नि तीर्थ में समुद्र स्नान का विशेष महात्म्य है"
+  ],
+  "tags": [
+    "रामेश्वरम",
+    "ज्योतिर्लिंग",
+    "सेतुबन्ध",
+    "चार-धाम",
+    "तमिलनाडु"
+  ]
+}

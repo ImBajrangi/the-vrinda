@@ -1,0 +1,58 @@
+{
+  "id": "giriraj-govardhan",
+  "slug": "giriraj-govardhan",
+  "name": "Sri Giriraj Govardhan",
+  "nameDevanagari": "श्री गिरिराज गोवर्धन",
+  "dhamRegion": "govardhan",
+  "regionNameHindi": "मथुरा, ब्रज मण्डल",
+  "briefSignificance": "साक्षात् हरिरूप पावन पर्वत, जिसे कन्हैया ने सात दिवस तक कनिष्ठिका पर धारण कर ब्रज की रक्षा की थी।",
+  "deity": "Giriraj Maharaj / Haridev",
+  "deityDevanagari": "श्री गिरिराज जी / श्री हरिदेव जी",
+  "darshanTimings": {
+    "morning": {
+      "open": "05:00",
+      "close": "12:30",
+      "aartiName": "दुग्धधार व मंगला आरती"
+    },
+    "evening": {
+      "open": "15:30",
+      "close": "22:00",
+      "aartiName": "शयन आरती"
+    }
+  },
+  "parikramaKm": 21,
+  "associatedLeelas": [
+    {
+      "title": "इन्द्र-मान-मर्दन",
+      "description": "इन्द्र के अभिमान को चूर कर ब्रजवासियों को अखंड शरणागति प्रदान करना।"
+    },
+    {
+      "title": "अन्नकूट महोत्सव",
+      "description": "समस्त ब्रजवासियों द्वारा छप्पन भोग का पावन अर्पण।"
+    }
+  ],
+  "nearbyKundsOrShilats": [
+    "राधा कुण्ड",
+    "श्याम कुण्ड",
+    "मानसी गंगा",
+    "कुसुम सरोवर",
+    "दानघाटी"
+  ],
+  "samadhisNearby": [
+    "रघुनाथ दास गोस्वामी समाधि",
+    "कृष्णदास कविराज समाधि"
+  ],
+  "imageWebp": "/assets/temples/keshi-ghat.webp",
+  "rulesAndEtiquette": [
+    "परिक्रमा सदैव दक्षिणावर्त (Clockwise) करें",
+    "शिलाओं पर पैर न रखें",
+    "दुग्ध अर्पित कर शीश नवाएं"
+  ],
+  "tags": [
+    "गोवर्धन",
+    "परिक्रमा",
+    "राधाकुण्ड",
+    "मानसी-गंगा",
+    "अन्नकूट"
+  ]
+}

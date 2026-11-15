@@ -1,0 +1,52 @@
+{
+  "id": "pandharpur-vitthal-mandir",
+  "slug": "pandharpur-vitthal-mandir",
+  "name": "Sri Vitthal Rukmini Mandir Pandharpur",
+  "nameDevanagari": "श्री विट्ठल-रुक्मिणी मन्दिर पंढरपुर",
+  "dhamRegion": "all",
+  "regionNameHindi": "सोलापुर, महाराष्ट्र",
+  "briefSignificance": "वारकरी सम्प्रदाय का हृदय धाम, जहाँ भक्त पुण्डलीक के प्रेमवश ईंट पर कमर पर हाथ धरे भगवान पाण्डुरंग खड़े हैं।",
+  "deity": "Lord Vithoba (Panduranga) & Mother Rukmini",
+  "deityDevanagari": "श्री विट्ठल (पाण्डुरंग) एवं रुक्मिणी माता",
+  "darshanTimings": {
+    "morning": {
+      "open": "04:00",
+      "close": "11:00",
+      "aartiName": "काकड़ आरती व पदस्पर्श दर्शन"
+    },
+    "evening": {
+      "open": "13:30",
+      "close": "23:00",
+      "aartiName": "धूप व शेज आरती"
+    }
+  },
+  "parikramaKm": null,
+  "associatedLeelas": [
+    {
+      "title": "पुण्डलीक की पितृभक्ति",
+      "description": "माता-पिता की सेवा में मग्न पुण्डलीक द्वारा प्रभु को प्रतीक्षा हेतु ईंट फेंकना और प्रभु का युगों से उसी पर खड़े रहना।"
+    },
+    {
+      "title": "आषाढ़ी व कार्तिकी एकादशी वारी",
+      "description": "लाखों वारकरियों का पदयात्रा करते हुए \"ज्ञानोबा-तुकाराम\" के जयघोष के साथ पंढरपुर पहुँचना।"
+    }
+  ],
+  "nearbyKundsOrShilats": [
+    "चन्द्रभागा (भीमा) नदी",
+    "पुण्डलीक मन्दिर",
+    "गोपालपुर"
+  ],
+  "samadhisNearby": [],
+  "imageWebp": "/assets/temples/keshi-ghat.webp",
+  "rulesAndEtiquette": [
+    "चन्द्रभागा में स्नान कर पदस्पर्श दर्शन करें",
+    "वारी काल में अत्यधिक भीड़ का ध्यान रखें"
+  ],
+  "tags": [
+    "पंढरपुर",
+    "विट्ठल",
+    "पाण्डुरंग",
+    "चन्द्रभागा",
+    "वारी-वारी"
+  ]
+}

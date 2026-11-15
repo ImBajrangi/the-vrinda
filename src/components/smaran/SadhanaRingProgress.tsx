@@ -63,7 +63,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
   }, [totalMalaMarkers]);
 
   return (
-    <div className="w-full bg-white rounded-[32px] p-6 sm:p-8 space-y-6">
+    <div className="w-full bg-white rounded-[32px] p-4 sm:p-6 space-y-6">
       {/* 1. Serene Sanctuary Header in Classical Editorial Typography */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-neutral-100">
         <div className="space-y-1">
@@ -107,7 +107,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
       </div>
 
       {/* 2. Artisanal Tulsi Japamala Sanctuary (Concept A: Circular Rosary Ring) */}
-      <div className="p-6 sm:p-8 rounded-[32px] bg-[#FAF8F3] border border-amber-200/80 shadow-[inset_0_1px_3px_rgba(255,255,255,0.9),0_12px_36px_rgba(217,119,6,0.04)]">
+      <div className="p-5 sm:p-6 rounded-[16px] sm:rounded-[8px] bg-[#FAF8F3] border border-amber-200/80 shadow-[inset_0_1px_3px_rgba(255,255,255,0.9),0_12px_36px_rgba(217,119,6,0.04)]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           {/* Left / Center: The Circular Chanting Rosary Ring */}

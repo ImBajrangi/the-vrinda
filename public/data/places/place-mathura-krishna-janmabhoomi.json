@@ -1,0 +1,52 @@
+{
+  "id": "mathura-krishna-janmabhoomi",
+  "slug": "mathura-krishna-janmabhoomi",
+  "name": "Sri Krishna Janmabhoomi Mathura",
+  "nameDevanagari": "श्री कृष्ण जन्मभूमि मथुरा",
+  "dhamRegion": "mathura",
+  "regionNameHindi": "मथुरा, उत्तर प्रदेश",
+  "briefSignificance": "कंस के कारागार में योगेश्वर भगवान श्रीकृष्ण का भाद्रपद कृष्ण अष्टमी को चतुर्भुज रूप में प्राकट्य स्थल।",
+  "deity": "Lord Krishna (Dwarkadhish / Keshav Dev)",
+  "deityDevanagari": "भगवान श्री कृष्ण (केशवदेव जी)",
+  "darshanTimings": {
+    "morning": {
+      "open": "05:00",
+      "close": "12:00",
+      "aartiName": "मंगला आरती"
+    },
+    "evening": {
+      "open": "16:00",
+      "close": "21:30",
+      "aartiName": "संध्या आरती"
+    }
+  },
+  "parikramaKm": null,
+  "associatedLeelas": [
+    {
+      "title": "श्रीकृष्ण प्राकट्य",
+      "description": "अष्टमी की मध्यरात्रि कारागार की बेड़ियां टूटना और वसुदेव जी द्वारा गोकुल गमन।"
+    },
+    {
+      "title": "कंस वध",
+      "description": "मल्ल युद्ध में कुवलयापीड हाथी और कंस का संहार कर उग्रसेन को राज्य सौंपना।"
+    }
+  ],
+  "nearbyKundsOrShilats": [
+    "विश्राम घाट",
+    "पोतरा कुण्ड",
+    "ध्रुव टीला"
+  ],
+  "samadhisNearby": [],
+  "imageWebp": "/assets/temples/radha-raman.webp",
+  "rulesAndEtiquette": [
+    "सुरक्षा नियमों का पालन करें",
+    "मोबाइल व इलेक्ट्रॉनिक उपकरण बाहर लॉकर में रखें"
+  ],
+  "tags": [
+    "मथुरा",
+    "जन्मभूमि",
+    "केशवदेव",
+    "विश्राम-घाट",
+    "कंस-वध"
+  ]
+}

@@ -29,14 +29,16 @@ export const getSaintPortrait = (saint: {
   if (slug.includes('nimbark') || name.includes('निम्बार्क')) return '/assets/saints/nimbarka.webp';
 
   // 2. Specific Braj & Sampradayic Saints
+  if (slug.includes('hit-harivansh') || name.includes('हरिवंश')) return '/assets/saints/hit-harivansh.webp';
+  if (slug.includes('sevak') || name.includes('सेवक')) return '/assets/saints/sevak-ji.webp';
+  if (slug.includes('dhruvdas') || name.includes('ध्रुवदास')) return '/assets/saints/dhruvdas.webp';
+  if (slug.includes('vitthal-vipul') || name.includes('विट्ठल विपुल')) return '/assets/saints/vitthal-vipul.webp';
+  if (slug.includes('biharin-dev') || name.includes('बिहारिन देव')) return '/assets/saints/biharin-dev.webp';
+  if (slug.includes('lalit-kishori') || name.includes('ललित किशोरी')) return '/assets/saints/lalit-kishori.webp';
   if (slug.includes('kishori-ali') || name.includes('किशोरी अलि')) return '/assets/temples/radha-vallabh.webp';
-  if (slug.includes('vitthal-vipul') || name.includes('विट्ठल विपुल')) return '/assets/saints/swami-haridas.webp';
   if (slug.includes('giridhar-lal') || name.includes('गिरिधर लाल')) return '/assets/temples/radha-raman.webp';
   if (slug.includes('bhori-sakhi') || name.includes('भोरी सखी')) return '/assets/temples/barsana-radharani.webp';
-  if (slug.includes('hit-harivansh') || name.includes('हरिवंश')) return '/assets/temples/radha-vallabh.webp';
-  if (slug.includes('biharin-dev') || name.includes('बिहारिन देव')) return '/assets/temples/banke-bihari-v2.webp';
   if (slug.includes('narayan-swami') || name.includes('नारायण स्वामी')) return '/assets/temples/aarti-lamp.webp';
-  if (slug.includes('lalit-kishori') || name.includes('ललित किशोरी')) return '/assets/temples/banke-bihari-v2.webp';
 
   // 3. Tradition-based defaults
   if (tradition.includes('राधावल्लभ')) return '/assets/temples/radha-vallabh.webp';

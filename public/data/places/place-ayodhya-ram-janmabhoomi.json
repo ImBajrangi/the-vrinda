@@ -1,0 +1,54 @@
+{
+  "id": "ayodhya-ram-janmabhoomi",
+  "slug": "ayodhya-ram-janmabhoomi",
+  "name": "Sri Ram Janmabhoomi Ayodhya",
+  "nameDevanagari": "श्री राम जन्मभूमि अयोध्या धाम",
+  "dhamRegion": "ayodhya",
+  "regionNameHindi": "अयोध्या, उत्तर प्रदेश",
+  "briefSignificance": "मर्यादा पुरुषोत्तम भगवान श्री राम का पावन प्राकट्य स्थल एवं सरयू तीर पर स्थित मोक्षदायिनी सप्तपुरियों में प्रथम पुरी।",
+  "deity": "Balak Ram / Shri Sita Ram",
+  "deityDevanagari": "प्रभु श्री रामलला सरकार",
+  "darshanTimings": {
+    "morning": {
+      "open": "06:30",
+      "close": "12:00",
+      "aartiName": "शृंगार आरती"
+    },
+    "evening": {
+      "open": "14:00",
+      "close": "21:30",
+      "aartiName": "संध्या व शयन आरती"
+    }
+  },
+  "parikramaKm": 14,
+  "associatedLeelas": [
+    {
+      "title": "रामलला प्राकट्य",
+      "description": "चैत्र शुक्ल नवमी को कौशल्या के नयनतारे श्री राम का दिव्य प्राकट्य।"
+    },
+    {
+      "title": "राम राज्याभिषेक",
+      "description": "चौदह वर्ष वनवास उपरान्त धर्म-संस्थापन एवं आदर्श रामराज्य की स्थापना।"
+    }
+  ],
+  "nearbyKundsOrShilats": [
+    "सरयू घाट",
+    "हनुमान गढ़ी",
+    "कनक भवन",
+    "दशरथ महल",
+    "गुफ्तार घाट"
+  ],
+  "samadhisNearby": [],
+  "imageWebp": "/assets/temples/diya-pujan.webp",
+  "rulesAndEtiquette": [
+    "सरयू स्नान कर हनुमान गढ़ी का दर्शन पहले करें",
+    "परिसर में स्वच्छता व मर्यादा का ध्यान रखें"
+  ],
+  "tags": [
+    "अयोध्या",
+    "राम-जन्मभूमि",
+    "रामलला",
+    "सरयू",
+    "हनुमान-गढ़ी"
+  ]
+}

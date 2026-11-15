@@ -1,0 +1,259 @@
+{
+  "category": "biographies",
+  "categoryHindi": "संत एवं ऋषि चरित्र दर्शन",
+  "count": 12,
+  "updatedAt": "2026-11-15T09:00:00Z",
+  "items": [
+    {
+      "id": "sant-eknath-maharaj",
+      "slug": "sant-eknath-maharaj",
+      "name": "Sant Eknath Maharaj",
+      "nameDevanagari": "संत एकनाथ महाराज",
+      "titleHonorific": "शांति ब्रह्म, भागवत भूषण",
+      "period": "१६वीं शताब्दी (१५३३ - १५९९ ई.)",
+      "tradition": "वारकरी सम्प्रदाय एवं दत्त परम्परा",
+      "samadhiPlace": "श्री एकनाथ मन्दिर (समाधि स्थल)",
+      "worksCount": 4,
+      "lifeSummary": "महाराष्ट्र के महान संत जिन्होंने प्राकृत भाषा में वेदान्त व भागवत धर्म को जन-जन तक पहुँचाया। उन्होंने छुआछूत का विरोध कर प्राणिमात्र में वासुदेव के दर्शन किए और संत ज्ञानेश्वरी ग्रन्थ का ऐतिहासिक शुद्धिकरण किया।",
+      "avatarWebp": "/assets/saints/eknath.webp",
+      "tags": [
+        "एकनाथ",
+        "वारकरी-सम्प्रदाय",
+        "पैठण",
+        "भागवत",
+        "दत्तात्रेय"
+      ],
+      "chunkFile": "bio-sant-eknath-maharaj.json"
+    },
+    {
+      "id": "sant-tukaram-maharaj",
+      "slug": "sant-tukaram-maharaj",
+      "name": "Sant Tukaram Maharaj",
+      "nameDevanagari": "संत तुकाराम महाराज",
+      "titleHonorific": "जगद्गुरु, तुकाराम बोवा",
+      "period": "१७वीं शताब्दी (१६०८ - १६५० ई.)",
+      "tradition": "वारकरी सम्प्रदाय (विट्ठल भक्ति)",
+      "samadhiPlace": "वैकुण्ठ गमन मन्दिर (देहू धाम)",
+      "worksCount": 1,
+      "lifeSummary": "वारकरी सम्प्रदाय के कलश संत, जिनकी अभंग वाणी आज भी करोड़ों भक्तों के कंठ का हार है। उन्होंने इन्द्रायणी के तट पर विट्ठल-भक्ति की रसधारा बहाई और सशरीर वैकुण्ठ प्रयाण किया।",
+      "avatarWebp": "/assets/saints/tukaram.webp",
+      "tags": [
+        "तुकाराम",
+        "विट्ठल",
+        "अभंग",
+        "देहू",
+        "वारकरी"
+      ],
+      "chunkFile": "bio-sant-tukaram-maharaj.json"
+    },
+    {
+      "id": "sant-dnyaneshwar",
+      "slug": "sant-dnyaneshwar",
+      "name": "Sant Dnyaneshwar Maharaj",
+      "nameDevanagari": "संत ज्ञानेश्वर महाराज",
+      "titleHonorific": "माउली, ज्ञानोबाराव",
+      "period": "१३वीं शताब्दी (१२७५ - १२९६ ई.)",
+      "tradition": "नाथ परम्परा एवं वारकरी सम्प्रदाय",
+      "samadhiPlace": "संजीवन समाधि मन्दिर (आळन्दी)",
+      "worksCount": 3,
+      "lifeSummary": "वारकरी सम्प्रदाय की नींव रखने वाले बाल-योगी व महाज्ञानी संत, जिन्होंने मात्र १५ वर्ष की आयु में गीता का अमृत प्राकृत में उड़ेल दिया और २१ वर्ष की आयु में आळन्दी में संजीवन समाधि ली।",
+      "avatarWebp": "/assets/saints/chaitanya.webp",
+      "tags": [
+        "ज्ञानेश्वर",
+        "माउली",
+        "ज्ञानेश्वरी",
+        "आळन्दी",
+        "अद्वैत"
+      ],
+      "chunkFile": "bio-sant-dnyaneshwar.json"
+    },
+    {
+      "id": "goswami-tulsidas",
+      "slug": "goswami-tulsidas",
+      "name": "Goswami Tulsidas",
+      "nameDevanagari": "गोस्वामी तुलसीदास जी",
+      "titleHonorific": "महर्षि वाल्मीकि के कलियुगी अवतार",
+      "period": "१६वीं शताब्दी (१५३२ - १६२३ ई.)",
+      "tradition": "श्री रामानन्दी सम्प्रदाय",
+      "samadhiPlace": "तुलसी घाट (असी संगम)",
+      "worksCount": 4,
+      "lifeSummary": "हिन्दू भक्ति साहित्य के सूर्य, जिन्होंने श्रीराम के पावन चरित्र को राजप्रासादों से निकालकर घर-घर और जन-जन के हृदय का हार बना दिया।",
+      "avatarWebp": "/assets/saints/ramanandacharya.webp",
+      "tags": [
+        "तुलसीदास",
+        "रामचरितमानस",
+        "हनुमान-चालीसा",
+        "काशी",
+        "चित्रकूट"
+      ],
+      "chunkFile": "bio-goswami-tulsidas.json"
+    },
+    {
+      "id": "sri-hit-harivansh-mahaprabhu",
+      "slug": "sri-hit-harivansh-mahaprabhu",
+      "name": "Sri Hit Harivansh Mahaprabhu",
+      "nameDevanagari": "श्री हित हरिवंश महाप्रभु",
+      "titleHonorific": "श्री राधा वंशी अवतार",
+      "period": "१६वीं शताब्दी (१५०२ - १५५२ ई.)",
+      "tradition": "श्री राधावल्लभ सम्प्रदाय",
+      "samadhiPlace": "मानसरोवर / सेवाकुंज",
+      "worksCount": 2,
+      "lifeSummary": "वृन्दावन निकुंज रस के प्रवर्तक, जिन्होंने श्री राधा को ही आराध्य और एकमात्र सर्वस्व मानकर अनन्य नित्य-विहार की रसोपासना प्रतिष्ठित की।",
+      "avatarWebp": "/assets/saints/hit-harivansh.webp",
+      "tags": [
+        "हित-हरिवंश",
+        "राधावल्लभ",
+        "वृन्दावन",
+        "हित-चौरासी",
+        "निकुंज-रस"
+      ],
+      "chunkFile": "bio-sri-hit-harivansh-mahaprabhu.json"
+    },
+    {
+      "id": "swami-haridas",
+      "slug": "swami-haridas",
+      "name": "Swami Haridas",
+      "nameDevanagari": "स्वामी हरिदास जी",
+      "titleHonorific": "ललिता सखी अवतार, संगीत शिरोमणि",
+      "period": "१६वीं शताब्दी (१४७८ - १५७३ ई.)",
+      "tradition": "स्वामी हरिदास",
+      "samadhiPlace": "निधिवन समाधि",
+      "worksCount": 2,
+      "lifeSummary": "संगीत और साधना के महान मर्मज्ञ, तानसेन के गुरु, जिन्होंने वृन्दावन के निधिवन में नित्य निकुंज विहार की अनन्य उपासना प्रतिष्ठित की।",
+      "avatarWebp": "/assets/saints/swami-haridas.webp",
+      "tags": [
+        "स्वामी-हरिदास",
+        "बांके-बिहारी",
+        "निधिवन",
+        "केलिमाल",
+        "सखी-भाव"
+      ],
+      "chunkFile": "bio-swami-haridas.json"
+    },
+    {
+      "id": "mirabai",
+      "slug": "mirabai",
+      "name": "Mirabai",
+      "nameDevanagari": "भक्त शिरोमणि मीराबाई",
+      "titleHonorific": "प्रेम दीवानी, कृष्ण प्रिया",
+      "period": "१६वीं शताब्दी (१४९८ - १५४६ ई.)",
+      "tradition": "अनन्य कृष्ण भक्ति परम्परा",
+      "samadhiPlace": "रणछोड़ राय मन्दिर (द्वारका)",
+      "worksCount": 1,
+      "lifeSummary": "राजमहलों के समस्त सुखों और विष के प्याले को हंसकर ठुकराकर केवल गिरधर गोपाल को अपना पति मानने वाली प्रेम-साधना की सर्वोच्च प्रतिमूर्ति।",
+      "avatarWebp": "/assets/saints/meera.webp",
+      "tags": [
+        "मीराबाई",
+        "गिरधर-गोपाल",
+        "प्रेम-भक्ति",
+        "मेड़ता",
+        "द्वारका"
+      ],
+      "chunkFile": "bio-mirabai.json"
+    },
+    {
+      "id": "maharshi-valmiki",
+      "slug": "maharshi-valmiki",
+      "name": "Maharshi Valmiki",
+      "nameDevanagari": "महर्षि वाल्मीकि",
+      "titleHonorific": "आदिकवि, रामायण प्रणेता",
+      "period": "त्रेतायुग / वैदिक काल",
+      "tradition": "आर्ष वैदिक परम्परा",
+      "samadhiPlace": "वाल्मीकि आश्रम",
+      "worksCount": 2,
+      "lifeSummary": "संस्कृत के आदिकवि जिन्होंने नारद जी के उपदेश से रामचरित्र का दर्शन कर प्रथम महाकाव्य रामायण की रचना की और माता जानकी को संरक्षण दिया।",
+      "avatarWebp": "/assets/saints/vyas.webp",
+      "tags": [
+        "वाल्मीकि",
+        "आदिकवि",
+        "रामायण",
+        "संस्कृत",
+        "तमसा-तट"
+      ],
+      "chunkFile": "bio-maharshi-valmiki.json"
+    },
+    {
+      "id": "maharshi-vedavyas",
+      "slug": "maharshi-vedavyas",
+      "name": "Maharshi Vedavyas",
+      "nameDevanagari": "महर्षि वेदव्यास",
+      "titleHonorific": "कृष्ण द्वैपायन, बादरायण",
+      "period": "द्वापरयुग / कलिकाल संधि",
+      "tradition": "गुरु परम्परा के मूल प्रवर्तक",
+      "samadhiPlace": "व्यास गुफा (माणा ग्राम)",
+      "worksCount": 3,
+      "lifeSummary": "सनातन धर्म के ज्ञान-सूर्य, वेदों के विभाजक, १८ पुराणों व महाभारत के रचयिता, जिनके जन्मदिवस पर गुरु पूर्णिमा मनाई जाती है।",
+      "avatarWebp": "/assets/saints/vyas.webp",
+      "tags": [
+        "वेदव्यास",
+        "महाभारत",
+        "भागवत",
+        "बद्रीनाथ",
+        "गुरु-पूर्णिमा"
+      ],
+      "chunkFile": "bio-maharshi-vedavyas.json"
+    },
+    {
+      "id": "maharshi-agastya",
+      "slug": "maharshi-agastya",
+      "name": "Maharshi Agastya",
+      "nameDevanagari": "महर्षि अगस्त्य",
+      "titleHonorific": "कुम्भज, दक्षिण भारत के प्रथम सिद्धर",
+      "period": "वैदिक काल / त्रेतायुग",
+      "tradition": "ऋग्वैदिक ऋषि एवं तमिल सिद्ध परम्परा",
+      "samadhiPlace": "अगस्त्यमलाई",
+      "worksCount": 2,
+      "lifeSummary": "सप्तर्षियों में प्रतिष्ठित महर्षि, जिन्होंने वैदिक ज्ञान को दक्षिण भारत तक पहुँचाया और श्रीराम को अमोघ आदित्य हृदय स्तोत्र प्रदान किया।",
+      "avatarWebp": "/assets/saints/ramanandacharya.webp",
+      "tags": [
+        "अगस्त्य",
+        "आदित्य-हृदय",
+        "विन्ध्याचल",
+        "सप्तर्षि",
+        "सिद्ध-परम्परा"
+      ],
+      "chunkFile": "bio-maharshi-agastya.json"
+    },
+    {
+      "id": "maharshi-angira",
+      "slug": "maharshi-angira",
+      "name": "Maharshi Angira",
+      "nameDevanagari": "महर्षि अंगिरा",
+      "titleHonorific": "ब्रह्मपुत्र, आंगिरस कुल पुरुष",
+      "period": "वैदिक काल",
+      "tradition": "सप्तर्षि एवं आंगिरस परम्परा",
+      "samadhiPlace": "तपोभूमि",
+      "worksCount": 1,
+      "lifeSummary": "ब्रह्मा जी के मानस पुत्र, अग्नि से प्राकट्य और देवगुरु बृहस्पति के पिता, जिन्होंने ऋग्वेद के अनेक सूक्तों का साक्षात् दर्शन किया।",
+      "avatarWebp": "/assets/saints/vyas.webp",
+      "tags": [
+        "अंगिरा",
+        "सप्तर्षि",
+        "ऋग्वेद",
+        "बृहस्पति-पिता"
+      ],
+      "chunkFile": "bio-maharshi-angira.json"
+    },
+    {
+      "id": "maharshi-atri",
+      "slug": "maharshi-atri",
+      "name": "Maharshi Atri",
+      "nameDevanagari": "महर्षि अत्रि",
+      "titleHonorific": "सती अनसूया पति, ऋग्वेद पंचम मण्डल द्रष्टा",
+      "period": "वैदिक काल / त्रेतायुग",
+      "tradition": "सप्तर्षि एवं दत्त परम्परा",
+      "samadhiPlace": "अत्रि आश्रम",
+      "worksCount": 1,
+      "lifeSummary": "सप्तर्षियों में प्रतिष्ठित परम तपस्वी, सती अनसूया के पति और भगवान दत्तात्रेय के पिता, जिनके चित्रकूट आश्रम में श्रीराम-जानकी ने वनवास में आश्रय लिया था।",
+      "avatarWebp": "/assets/saints/vyas.webp",
+      "tags": [
+        "अत्रि",
+        "अनसूया",
+        "दत्तात्रेय",
+        "चित्रकूट",
+        "सप्तर्षि"
+      ],
+      "chunkFile": "bio-maharshi-atri.json"
+    }
+  ]
+}

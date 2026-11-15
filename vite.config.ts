@@ -101,7 +101,8 @@ export default defineConfig(({ isSsrBuild }) => ({
                 id.includes('src/data/brajGlossary.json') ||
                 id.includes('src/data/ashtayamaPeriods.json') ||
                 id.includes('src/data/sacredTopics.json') ||
-                id.includes('src/data/rasikAphorisms.json')
+                id.includes('src/data/rasikAphorisms.json') ||
+                id.includes('src/data/feed')
               ) {
                 return 'data-canonical';
               }

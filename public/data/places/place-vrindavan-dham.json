@@ -1,0 +1,60 @@
+{
+  "id": "vrindavan-dham",
+  "slug": "vrindavan-dham",
+  "name": "Sri Vrindavan Dham",
+  "nameDevanagari": "श्री वृन्दावन धाम",
+  "dhamRegion": "vrindavan",
+  "regionNameHindi": "ब्रज मण्डल, उत्तर प्रदेश",
+  "briefSignificance": "श्री राधा-कृष्ण की नित्य रास लीला भूमि, ५००० से अधिक देवालयों और निकुंजों का पावन धाम।",
+  "deity": "Shri Radha Krishna / Banke Bihari Ji",
+  "deityDevanagari": "श्री राधा-कृष्ण / ठाकुर श्री बांके बिहारी जी",
+  "darshanTimings": {
+    "morning": {
+      "open": "07:45",
+      "close": "12:00",
+      "aartiName": "शृंगार व राजभोग आरती"
+    },
+    "evening": {
+      "open": "16:30",
+      "close": "21:30",
+      "aartiName": "शयन आरती"
+    },
+    "specialNotes": "ऋतु परिवर्तन के अनुसार मंगला व शयन आरती का समय परिवर्तित होता है।"
+  },
+  "parikramaKm": 11,
+  "associatedLeelas": [
+    {
+      "title": "रासलीला",
+      "description": "शरद पूर्णिमा की रात्रि यमुना तट पर वंशीवट के नीचे महारास का अलौकिक आयोजन।"
+    },
+    {
+      "title": "चीर हरण एवं कालिया दमन",
+      "description": "यमुना के पावन घाटों पर कन्हैया द्वारा भक्तों को निर्भयता प्रदान करना।"
+    }
+  ],
+  "nearbyKundsOrShilats": [
+    "केशी घाट",
+    "कालीदह",
+    "सेवाकुंज",
+    "निधिवन",
+    "वंशीवट"
+  ],
+  "samadhisNearby": [
+    "स्वामी हरिदास समाधि",
+    "जीव गोस्वामी समाधि",
+    "रूप गोस्वामी समाधि"
+  ],
+  "imageWebp": "/assets/temples/banke-bihari.webp",
+  "rulesAndEtiquette": [
+    "यमुना जी में जूते-चप्पल पहनकर न जाएँ",
+    "वृन्दावन रज को मस्तक पर धारण करें",
+    "बंदरों से चश्मा व खाद्य सामग्री सुरक्षित रखें"
+  ],
+  "tags": [
+    "वृन्दावन",
+    "बांके-बिहारी",
+    "राधा-वल्लभ",
+    "निधिवन",
+    "ब्रज"
+  ]
+}

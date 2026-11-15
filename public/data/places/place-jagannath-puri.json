@@ -1,0 +1,52 @@
+{
+  "id": "jagannath-puri",
+  "slug": "jagannath-puri",
+  "name": "Sri Jagannath Dham Puri",
+  "nameDevanagari": "श्री जगन्नाथ धाम पुरी",
+  "dhamRegion": "puri",
+  "regionNameHindi": "पुरी, ओडिशा",
+  "briefSignificance": "चार धामों में प्रधान, दारुब्रह्म भगवान जगन्नाथ, बलभद्र और सुभद्रा जी का महातीर्थ जहाँ महाप्रसाद का अलौकिक महात्म्य है।",
+  "deity": "Lord Jagannath (Daru Brahma)",
+  "deityDevanagari": "महाप्रभु श्री जगन्नाथ जी",
+  "darshanTimings": {
+    "morning": {
+      "open": "05:30",
+      "close": "12:30",
+      "aartiName": "मंगला आरती व गोपाल वल्लभ भोग"
+    },
+    "evening": {
+      "open": "16:00",
+      "close": "22:30",
+      "aartiName": "संध्या व बड़शृंगार भोग"
+    }
+  },
+  "parikramaKm": null,
+  "associatedLeelas": [
+    {
+      "title": "विश्वप्रसिद्ध रथयात्रा",
+      "description": "आषाढ़ शुक्ल द्वितीया को महाप्रभु का भाई-बहन सहित गुंडिचा मन्दिर प्रस्थान।"
+    },
+    {
+      "title": "महाप्रसाद महात्म्य",
+      "description": "माता विमला को अर्पित होने के उपरान्त महाप्रसाद बन जाना, जहाँ कोई जाति भेद नहीं रहता।"
+    }
+  ],
+  "nearbyKundsOrShilats": [
+    "महोदधि (समुद्र तट)",
+    "इन्द्रद्युम्न सरोवर",
+    "नरेन्द्र सरोवर"
+  ],
+  "samadhisNearby": [],
+  "imageWebp": "/assets/temples/banke-bihari-gate.webp",
+  "rulesAndEtiquette": [
+    "मन्दिर में केवल सनातन धर्मावलम्बियों का प्रवेश मान्य है",
+    "महाप्रसाद का कभी तिरस्कार न करें"
+  ],
+  "tags": [
+    "जगन्नाथ-पुरी",
+    "रथयात्रा",
+    "दारुब्रह्म",
+    "महाप्रसाद",
+    "चार-धाम"
+  ]
+}

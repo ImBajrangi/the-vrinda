@@ -6,6 +6,7 @@
  */
 
 import { SacredPad } from '../types/devotional';
+import { NavTab } from '../components/common/FloatingNavbar';
 
 export interface SEOConfig {
   title?: string;
@@ -15,7 +16,7 @@ export interface SEOConfig {
   ogType?: 'website' | 'article' | 'book';
   ogImage?: string;
   pad?: SacredPad;
-  tab?: 'smaran' | 'granthas' | 'padavali' | 'feed' | 'milestones';
+  tab?: NavTab;
   grantha?: {
     id: string;
     name: string;

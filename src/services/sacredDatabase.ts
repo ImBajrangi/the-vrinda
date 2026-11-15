@@ -353,6 +353,7 @@ export const EPIC_GRANTHA_IDS = new Set<string>([
 
 const epicIndices = new Map<string, EpicIndexData>();
 const inFlightEpicPromises = new Map<string, Promise<SacredPad[]>>();
+const inFlightIndexPromises = new Map<string, Promise<EpicIndexData | null>>();
 
 function clearDerivedCaches() {
   categoryCache.clear();
@@ -808,45 +809,59 @@ export const SacredDatabase = {
     if (epicIndices.has(granthaId)) {
       return epicIndices.get(granthaId)!;
     }
-
-    const cacheKey = `vrind_epic_index_${granthaId}`;
-    try {
-      const cached = await get<EpicIndexData>(cacheKey);
-      if (cached && cached.chapters) {
-        epicIndices.set(granthaId, cached);
-        return cached;
-      }
-    } catch {}
-
-    try {
-      const res = await fetch(`/data/epics/${granthaId}/index.json`);
-      if (res.ok) {
-        const data: EpicIndexData = await res.json();
-        epicIndices.set(granthaId, data);
-        set(cacheKey, data).catch(() => {});
-        return data;
-      }
-    } catch (err) {
-      console.warn(`Failed to fetch epic index for ${granthaId}:`, err);
+    if (inFlightIndexPromises.has(granthaId)) {
+      return inFlightIndexPromises.get(granthaId)!;
     }
-    return null;
+
+    const promise = (async () => {
+      const cacheKey = `vrind_epic_index_${granthaId}`;
+      try {
+        const cached = await get<EpicIndexData>(cacheKey);
+        if (cached && cached.chapters && cached.chapters.length > 0) {
+          epicIndices.set(granthaId, cached);
+          return cached;
+        }
+      } catch {}
+
+      try {
+        const res = await fetch(`/data/epics/${granthaId}/index.json`);
+        if (res.ok) {
+          const data: EpicIndexData = await res.json();
+          epicIndices.set(granthaId, data);
+          set(cacheKey, data).catch(() => {});
+          return data;
+        }
+      } catch (err) {
+        console.warn(`Failed to fetch epic index for ${granthaId}:`, err);
+      }
+      return null;
+    })();
+
+    inFlightIndexPromises.set(granthaId, promise);
+    try {
+      return await promise;
+    } finally {
+      inFlightIndexPromises.delete(granthaId);
+    }
   },
 
   async fetchEpicChapter(granthaId: string, chapterId: string): Promise<SacredPad[]> {
     const epicIndex = await this.getEpicIndex(granthaId);
-    if (!epicIndex) return [];
+    if (!epicIndex || !epicIndex.chapters || epicIndex.chapters.length === 0) return [];
 
+    const normId = normalizeEpicChapterSlug(granthaId, chapterId);
     const decChapterId = decodeURIComponent(chapterId).trim().toLowerCase();
     
-    // 1. Exact match by id or decoded id
+    // 1. Normalized match (fastest and most accurate)
     let chapterMeta = epicIndex.chapters.find(
-      (c) => c.id === chapterId || decodeURIComponent(c.id).toLowerCase() === decChapterId
+      (c) => c.id === normId || c.id === normId.toLowerCase()
     );
 
-    // 2. Normalized / Transliterated match
+    // 2. Exact match by raw id or decoded id
     if (!chapterMeta) {
-      const normId = normalizeEpicChapterSlug(granthaId, chapterId);
-      chapterMeta = epicIndex.chapters.find((c) => c.id === normId || c.id === normId.toLowerCase());
+      chapterMeta = epicIndex.chapters.find(
+        (c) => c.id === chapterId || decodeURIComponent(c.id).toLowerCase() === decChapterId
+      );
     }
 
     // 3. Exact match by name or decoded name
@@ -856,12 +871,13 @@ export const SacredDatabase = {
       );
     }
 
-    // 4. Exact chapter number match
+    // 4. Scoped chapter number match (only within the same kand if specified)
     if (!chapterMeta) {
-      const numMatch = decChapterId.match(/\d+/g);
-      if (numMatch) {
-        const targetNum = numMatch[numMatch.length - 1];
+      const targetNumMatch = decChapterId.match(/\d+/g);
+      if (targetNumMatch) {
+        const targetNum = targetNumMatch[targetNumMatch.length - 1];
         chapterMeta = epicIndex.chapters.find((c) => {
+          if (normId.includes('-') && !c.id.includes(normId.split('-')[0])) return false;
           const cNums = decodeURIComponent(c.id).toLowerCase().match(/\d+/g);
           return cNums && cNums[cNums.length - 1] === targetNum;
         });
@@ -883,7 +899,7 @@ export const SacredDatabase = {
       const existing = (padasByGrantha.get(granthaId) || []).filter(
         (p) => p.chapterId === chapterMeta.id && !p.isStub && (p.verses?.[0]?.linesDevanagari?.length || 0) > 0
       );
-      if (existing.length >= chapterMeta.verseCount && existing.length > 0) {
+      if (existing.length > 0 && existing.length >= Math.min(chapterMeta.verseCount, 1)) {
         return existing;
       }
 
@@ -1171,6 +1187,35 @@ export const SacredDatabase = {
     return undefined;
   },
 
+  /**
+   * Synchronous fallback sacred pad to guarantee zero undefined crashes during cold load / hydration
+   */
+  getFallbackPad(): SacredPad {
+    return (
+      padasById.get('hit-chaurasi-01') ||
+      SACRED_PADS[0] || {
+        id: 'hit-chaurasi-01',
+        collectionId: 'hit-chaurasi',
+        index: 1,
+        titleDevanagari: 'जोई जोई प्यारो करे सोई मोहि भावै',
+        titleEnglish: 'Joi Joi Pyaro Kare Soi Mohi Bhaave',
+        author: 'श्री हित हरिवंश महाप्रभु',
+        rag: 'विभास',
+        chapterId: 'hit-chaurasi',
+        chapterName: 'श्री हित चौरासी (८४ पद)',
+        verses: [
+          {
+            stanzaNumber: 1,
+            linesDevanagari: [
+              'जोई जोई प्यारो करे सोई मोहि भावै,',
+              'भावै मोहि जोई सोई सोई करे प्यारे।'
+            ]
+          }
+        ]
+      }
+    );
+  },
+
   getPadSlug(pad: SacredPad): string {
     return pad.slug || pad.id;
   },
@@ -1178,6 +1223,40 @@ export const SacredDatabase = {
   getPadasByGrantha(granthaId: string): SacredPad[] {
     if (granthaId === 'all') return allPadas;
     return padasByGrantha.get(granthaId) || [];
+  },
+
+  async loadCanonicalAsset<T>(assetName: string): Promise<T | null> {
+    try {
+      const res = await fetch(`/data/canonical/${assetName}.json`);
+      if (!res.ok) return null;
+      return (await res.json()) as T;
+    } catch {
+      return null;
+    }
+  },
+
+  async getSevakVani(): Promise<SacredPad[]> {
+    return (await this.loadCanonicalAsset<SacredPad[]>('sevak-vani')) || [];
+  },
+
+  async getPremKiPeer(): Promise<SacredPad[]> {
+    return (await this.loadCanonicalAsset<SacredPad[]>('prem-ki-peer')) || [];
+  },
+
+  async getUtsavBadhai(): Promise<SacredPad[]> {
+    return (await this.loadCanonicalAsset<SacredPad[]>('utsav-badhai')) || [];
+  },
+
+  async getRadhaSudhaNidhi270(): Promise<SacredPad[]> {
+    return (await this.loadCanonicalAsset<SacredPad[]>('radha-sudha-nidhi-270')) || [];
+  },
+
+  async getAshtayama25Phases(): Promise<any> {
+    return await this.loadCanonicalAsset<any>('ashtayama-25-phases');
+  },
+
+  async getMaharajJiQnA(): Promise<any> {
+    return await this.loadCanonicalAsset<any>('maharajji-qna-763');
   },
 
   getPadasByRaga(raga: string): SacredPad[] {

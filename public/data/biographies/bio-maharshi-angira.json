@@ -1,0 +1,42 @@
+{
+  "id": "maharshi-angira",
+  "slug": "maharshi-angira",
+  "name": "Maharshi Angira",
+  "nameDevanagari": "महर्षि अंगिरा",
+  "titleHonorific": "ब्रह्मपुत्र, आंगिरस कुल पुरुष",
+  "period": "वैदिक काल",
+  "tradition": "सप्तर्षि एवं आंगिरस परम्परा",
+  "guru": "साक्षात् ब्रह्मा जी",
+  "lineage": {
+    "sampradaya": "ऋग्वैदिक आंगिरस मण्डल",
+    "seatOrPeetham": "अग्नि वेदी / ब्रह्मावर्त"
+  },
+  "birthPlace": "अग्नि से प्राकट्य",
+  "samadhiLocation": {
+    "place": "तपोभूमि",
+    "dhamOrRegion": "उत्तराखण्ड / भारतवर्ष",
+    "darshanSignificance": "देवगुरु बृहस्पति के पिता"
+  },
+  "literaryWorks": [
+    {
+      "title": "अंगिरस स्मृति",
+      "titleDevanagari": "अंगिरस स्मृति",
+      "description": "सदाचार एवं धर्मशास्त्र ग्रन्थ",
+      "versesCount": 1200
+    }
+  ],
+  "keyLeelas": [
+    {
+      "title": "अग्नि देव का सान्निध्य",
+      "description": "कठोर तप से अग्नि के सदृश तेज धारण कर आंगिरस मण्डल के द्रष्टा बने।"
+    }
+  ],
+  "lifeSummary": "ब्रह्मा जी के मानस पुत्र, अग्नि से प्राकट्य और देवगुरु बृहस्पति के पिता, जिन्होंने ऋग्वेद के अनेक सूक्तों का साक्षात् दर्शन किया।",
+  "avatarWebp": "/assets/saints/vyas.webp",
+  "tags": [
+    "अंगिरा",
+    "सप्तर्षि",
+    "ऋग्वेद",
+    "बृहस्पति-पिता"
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "id": "badrinath-dham",
+  "slug": "badrinath-dham",
+  "name": "Sri Badrinath Dham",
+  "nameDevanagari": "श्री बद्रीनाथ धाम",
+  "dhamRegion": "char-dham",
+  "regionNameHindi": "चमोली, उत्तराखण्ड",
+  "briefSignificance": "हिमालय की गोद में नर-नारायण पर्वत के मध्य स्थित बदरीविशाल, जहाँ भगवान विष्णु पद्मासन में अखण्ड तपस्यारत हैं।",
+  "deity": "Lord Badrinarayan (Shaligram Murti)",
+  "deityDevanagari": "भगवान श्री बदरीविशाल",
+  "darshanTimings": {
+    "morning": {
+      "open": "04:30",
+      "close": "13:00",
+      "aartiName": "महाभिषेक व प्रातः दर्शन"
+    },
+    "evening": {
+      "open": "16:00",
+      "close": "21:00",
+      "aartiName": "शयन आरती"
+    }
+  },
+  "parikramaKm": null,
+  "associatedLeelas": [
+    {
+      "title": "नर-नारायण तपस्या",
+      "description": "लोक कल्याण हेतु भगवान के नर और नारायण अवतारों द्वारा युगों-युगों तक तपस्या।"
+    },
+    {
+      "title": "लक्ष्मी जी का बदरी वृक्ष बनना",
+      "description": "कठोर हिमपात से प्रभु को बचाने हेतु माता लक्ष्मी द्वारा बेर (बदरी) का वृक्ष बनकर छाया करना।"
+    }
+  ],
+  "nearbyKundsOrShilats": [
+    "तप्त कुण्ड",
+    "ब्रह्म कपाल",
+    "माणा ग्राम (प्रथम भारतीय ग्राम)",
+    "व्यास गुफा"
+  ],
+  "samadhisNearby": [],
+  "imageWebp": "/assets/temples/diya-pujan.webp",
+  "rulesAndEtiquette": [
+    "तप्त कुण्ड में स्नान कर पवित्र वस्त्रों में दर्शन करें",
+    "कपाट वैशाख में खुलते हैं और कार्तिक में शीतकाल हेतु बंद होते हैं"
+  ],
+  "tags": [
+    "बद्रीनाथ",
+    "चार-धाम",
+    "नर-नारायण",
+    "तप्त-कुण्ड",
+    "उत्तराखण्ड"
+  ]
+}

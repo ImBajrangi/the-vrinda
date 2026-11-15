@@ -52,6 +52,22 @@ const LazyBeginnerGuideModal = lazy(() =>
   import('./components/smaran/BeginnerGuideModal').then((m) => ({ default: m.BeginnerGuideModal }))
 );
 
+const LazyKathaSanctuary = lazy(() =>
+  import('./components/sections/KathaSanctuary').then((m) => ({ default: m.KathaSanctuary }))
+);
+const LazyCharitraDarshan = lazy(() =>
+  import('./components/sections/CharitraDarshan').then((m) => ({ default: m.CharitraDarshan }))
+);
+const LazyDhamTirthaSection = lazy(() =>
+  import('./components/sections/DhamTirthaSection').then((m) => ({ default: m.DhamTirthaSection }))
+);
+const LazyNityaUpasanaReader = lazy(() =>
+  import('./components/sections/NityaUpasanaReader').then((m) => ({ default: m.NityaUpasanaReader }))
+);
+const LazySacredSectionsBanner = lazy(() =>
+  import('./components/smaran/SacredSectionsBanner').then((m) => ({ default: m.SacredSectionsBanner }))
+);
+
 function ReaderLoadingSkeleton() {
   return (
     <div className="w-full max-w-4xl mx-auto py-4 sm:py-8 px-2 select-none">
@@ -222,10 +238,30 @@ function resolveCurrentRoute(): AppRouteState {
 
     const isEpic = (resolvedGrantha !== 'all' && SacredDatabase.isEpicGrantha(resolvedGrantha)) || !!resolvedChapter;
 
+    const validTabs: NavTab[] = [
+      'smaran',
+      'granthas',
+      'padavali',
+      'feed',
+      'milestones',
+      'stories',
+      'biographies',
+      'places',
+      'rituals',
+    ];
+
     let determinedTab: NavTab = 'smaran';
     if (pillarTab) {
       determinedTab = pillarTab;
-    } else if (qTab && ['smaran', 'granthas', 'padavali', 'feed', 'milestones'].includes(qTab)) {
+    } else if (rawPath === '/katha' || rawPath.startsWith('/stories') || rawPath.startsWith('/katha/')) {
+      determinedTab = 'stories';
+    } else if (rawPath === '/charitra' || rawPath.startsWith('/biographies') || rawPath.startsWith('/saints-charitra')) {
+      determinedTab = 'biographies';
+    } else if (rawPath === '/tirtha' || rawPath.startsWith('/places') || rawPath.startsWith('/dham')) {
+      determinedTab = 'places';
+    } else if (rawPath === '/aarti' || rawPath.startsWith('/rituals') || rawPath.startsWith('/chalisa')) {
+      determinedTab = 'rituals';
+    } else if (qTab && validTabs.includes(qTab)) {
       determinedTab = qTab;
     } else if (targetPad || resolvedAuthor || (resolvedGrantha !== 'all' && !SacredDatabase.isEpicGrantha(resolvedGrantha))) {
       determinedTab = 'padavali';
@@ -251,7 +287,20 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
   const MilestonesViewComp = components?.MilestonesView || LazyMilestonesView;
   const [initialRoute] = useState<AppRouteState>(() => resolveCurrentRoute());
   const [activeTab, setActiveTab] = useState<NavTab>(() => {
-    if (initialTab && ['smaran', 'granthas', 'padavali', 'feed', 'milestones'].includes(initialTab)) {
+    if (
+      initialTab &&
+      [
+        'smaran',
+        'granthas',
+        'padavali',
+        'feed',
+        'milestones',
+        'stories',
+        'biographies',
+        'places',
+        'rituals',
+      ].includes(initialTab)
+    ) {
       return initialTab;
     }
     if (initialPadId) {
@@ -720,7 +769,10 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
   };
 
   const handleTogglePlay = () => {
-    setIsPlayingAudio(!isPlayingAudio);
+    if (!showPlayer) {
+      setShowPlayer(true);
+    }
+    setIsPlayingAudio(prev => !prev);
   };
 
   const handleFabClick = () => {
@@ -848,7 +900,13 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
     }
   });
 
-  const isReaderTab = activeTab === 'padavali' || activeTab === 'granthas';
+  const isReaderTab =
+    activeTab === 'padavali' ||
+    activeTab === 'granthas' ||
+    activeTab === 'stories' ||
+    activeTab === 'rituals' ||
+    activeTab === 'biographies' ||
+    activeTab === 'places';
 
   return (
     <div
@@ -1220,6 +1278,11 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
                 onSelectRelation={handleSelectRelation}
                 onOpenSaintsDirectory={() => setIsSaintsModalOpen(true)}
               />
+
+              {/* Section 2.5: Sacred Sanatan Portals (Rituals, Stories, Biographies, Tirthas) */}
+              <Suspense fallback={null}>
+                <LazySacredSectionsBanner onSelectTab={handleTabSwitch} />
+              </Suspense>
 
               {/* Section 3: Sacred Contemplation & Sanctuary Streams Deck (Pure White & Off-White) */}
               <div id="sanctuary-streams-section" className="w-full bg-white rounded-[32px] p-6 sm:p-7 space-y-4 mb-6">
@@ -1683,6 +1746,58 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
             >
               <Suspense fallback={<ReaderLoadingSkeleton />}>
                 <MilestonesViewComp onBack={() => handleTabSwitch('smaran')} />
+              </Suspense>
+            </div>
+          )}
+
+          {/* Tab 6: Nitya Upasana (Ritual Aartis, Chalisas, Stotras) */}
+          {visitedTabs.has('rituals') && (
+            <div
+              className={`w-full pb-48 md:pb-28 ${activeTab === 'rituals' ? 'block' : 'hidden'}`}
+              style={{ display: activeTab === 'rituals' ? 'block' : 'none' }}
+              aria-hidden={activeTab !== 'rituals'}
+            >
+              <Suspense fallback={<ReaderLoadingSkeleton />}>
+                <LazyNityaUpasanaReader />
+              </Suspense>
+            </div>
+          )}
+
+          {/* Tab 7: Katha Sanctuary (Sacred Stories & Leelas) */}
+          {visitedTabs.has('stories') && (
+            <div
+              className={`w-full pb-48 md:pb-28 ${activeTab === 'stories' ? 'block' : 'hidden'}`}
+              style={{ display: activeTab === 'stories' ? 'block' : 'none' }}
+              aria-hidden={activeTab !== 'stories'}
+            >
+              <Suspense fallback={<ReaderLoadingSkeleton />}>
+                <LazyKathaSanctuary onNavigateToPadavali={() => handleTabSwitch('padavali')} />
+              </Suspense>
+            </div>
+          )}
+
+          {/* Tab 8: Charitra Darshan (Saint & Rishi Biographies) */}
+          {visitedTabs.has('biographies') && (
+            <div
+              className={`w-full pb-48 md:pb-28 ${activeTab === 'biographies' ? 'block' : 'hidden'}`}
+              style={{ display: activeTab === 'biographies' ? 'block' : 'none' }}
+              aria-hidden={activeTab !== 'biographies'}
+            >
+              <Suspense fallback={<ReaderLoadingSkeleton />}>
+                <LazyCharitraDarshan onNavigateToPadavali={() => handleTabSwitch('padavali')} />
+              </Suspense>
+            </div>
+          )}
+
+          {/* Tab 9: Dham & Tirtha Section (Sacred Places) */}
+          {visitedTabs.has('places') && (
+            <div
+              className={`w-full pb-48 md:pb-28 ${activeTab === 'places' ? 'block' : 'hidden'}`}
+              style={{ display: activeTab === 'places' ? 'block' : 'none' }}
+              aria-hidden={activeTab !== 'places'}
+            >
+              <Suspense fallback={<ReaderLoadingSkeleton />}>
+                <LazyDhamTirthaSection />
               </Suspense>
             </div>
           )}

@@ -1,0 +1,52 @@
+{
+  "id": "pratishthan-paithan",
+  "slug": "pratishthan-paithan",
+  "name": "Pratishthan Paithan: Sant Eknath Samadhi Dham",
+  "nameDevanagari": "प्रतिष्ठान पैठण: संत एकनाथ समाधि धाम",
+  "dhamRegion": "all",
+  "regionNameHindi": "छत्रपति संभाजीनगर, महाराष्ट्र",
+  "briefSignificance": "दक्षिण काशी के नाम से विख्यात, गोदावरी तट पर स्थित प्राचीन पावन पीठ जहाँ संत एकनाथ महाराज ने भागवत धर्म की पताका फहराई।",
+  "deity": "Sant Eknath Maharaj / Shri Krishna (Shrikhandya)",
+  "deityDevanagari": "संत एकनाथ महाराज एवं श्रीखण्ड्या रूपी श्रीकृष्ण",
+  "darshanTimings": {
+    "morning": {
+      "open": "05:00",
+      "close": "12:00",
+      "aartiName": "काकड़ आरती"
+    },
+    "evening": {
+      "open": "16:00",
+      "close": "21:30",
+      "aartiName": "संध्या आरती व कीर्तन"
+    }
+  },
+  "parikramaKm": null,
+  "associatedLeelas": [
+    {
+      "title": "श्रीकृष्ण द्वारा जल भरना",
+      "description": "एकनाथ जी की निश्छल भक्ति से रीझकर स्वयं द्वारकाधीश ने १२ वर्ष तक \"श्रीखण्ड्या\" बनकर उनके घर चन्दन घिसा और जल भरा।"
+    },
+    {
+      "title": "एकनाथ षष्ठी महोत्सव",
+      "description": "फाल्गुन कृष्ण षष्ठी को गोदावरी तट पर विशाल वारकरी कीर्तन मेला।"
+    }
+  ],
+  "nearbyKundsOrShilats": [
+    "गोदावरी घाट",
+    "नाथ मन्दिर",
+    "नागेश्वर मन्दिर"
+  ],
+  "samadhisNearby": [],
+  "imageWebp": "/assets/temples/radha-vallabh.webp",
+  "rulesAndEtiquette": [
+    "गोदावरी में स्नान कर एकनाथ जी की समाधि पर नतमस्तक हों",
+    "एकनाथी भागवत का श्रवण करें"
+  ],
+  "tags": [
+    "पैठण",
+    "एकनाथ",
+    "गोदावरी",
+    "वारकरी",
+    "दक्षिण-काशी"
+  ]
+}

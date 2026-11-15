@@ -11,8 +11,13 @@ import {
   Sun,
   Moon,
   ChevronRight,
+  ChevronDown,
   ScrollText,
   Feather,
+  Bell,
+  BookMarked,
+  Users,
+  MapPin,
 } from 'lucide-react';
 import { NavTab } from './FloatingNavbar';
 import { SacredLogo } from './SacredLogo';
@@ -100,27 +105,42 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
   const tabRefs = useRef<{ [key in NavTab]?: HTMLButtonElement | null }>({});
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const mobileToggleRef = useRef<HTMLButtonElement>(null);
+  const [isSangrahaOpen, setIsSangrahaOpen] = useState(false);
+  const sangrahaRef = useRef<HTMLDivElement>(null);
 
-  // Platform-wide consistent dismissal: close mobile menu on outside tap or Escape (pointerdown only to prevent dual firing)
+  const isSangrahaActive =
+    activeTab === 'rituals' ||
+    activeTab === 'stories' ||
+    activeTab === 'biographies' ||
+    activeTab === 'places';
+
+  // Platform-wide consistent dismissal: close mobile menu & desktop sangraha dropdown on outside tap or Escape
   useEffect(() => {
-    if (!isMobileMenuOpen) return;
+    if (!isMobileMenuOpen && !isSangrahaOpen) return;
 
     const handleOutsideClick = (e: MouseEvent | TouchEvent) => {
-      if (isMenuClosing) return;
       const target = e.target as Node;
-      if (
-        mobileMenuRef.current &&
-        !mobileMenuRef.current.contains(target) &&
-        mobileToggleRef.current &&
-        !mobileToggleRef.current.contains(target)
-      ) {
-        setIsMobileMenuOpen(false);
+      if (isMobileMenuOpen && !isMenuClosing) {
+        if (
+          mobileMenuRef.current &&
+          !mobileMenuRef.current.contains(target) &&
+          mobileToggleRef.current &&
+          !mobileToggleRef.current.contains(target)
+        ) {
+          setIsMobileMenuOpen(false);
+        }
+      }
+      if (isSangrahaOpen) {
+        if (sangrahaRef.current && !sangrahaRef.current.contains(target)) {
+          setIsSangrahaOpen(false);
+        }
       }
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setIsMobileMenuOpen(false);
+        setIsSangrahaOpen(false);
       }
     };
 
@@ -131,7 +151,7 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
       document.removeEventListener('pointerdown', handleOutsideClick);
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isMobileMenuOpen, isMenuClosing]);
+  }, [isMobileMenuOpen, isMenuClosing, isSangrahaOpen]);
 
   const navItems: { id: NavTab; label: string; shortLabel: string; icon: React.ComponentType<{ className?: string }> }[] = [
     { id: 'smaran', label: 'Home Sanctuary', shortLabel: 'Home', icon: Compass },
@@ -180,6 +200,34 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
       label: 'साधना सोपान',
       sublabel: 'Devotion • अखंड निष्ठा',
       icon: Trophy,
+    },
+    {
+      id: 'rituals',
+      label: 'नित्य आरती व चालीसा',
+      sublabel: 'Aarti • आरती, चालीसा, स्तोत्र',
+      badge: 'उपासना',
+      icon: Bell,
+    },
+    {
+      id: 'stories',
+      label: 'दिव्य कथा व लीला',
+      sublabel: 'Stories • पावन प्रसंग व शिक्षा',
+      badge: 'कथा',
+      icon: BookMarked,
+    },
+    {
+      id: 'biographies',
+      label: 'संत व ऋषि चरित्र',
+      sublabel: 'Charitra • पावन जीवन व परंपरा',
+      badge: 'चरित्र',
+      icon: Users,
+    },
+    {
+      id: 'places',
+      label: 'पावन तीर्थ व धाम',
+      sublabel: 'Tirtha • मंदिर, परिक्रमा, महिमा',
+      badge: 'तीर्थ',
+      icon: MapPin,
     },
   ];
 
@@ -305,6 +353,74 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
                   </button>
                 );
               })}
+
+              {/* Sangraha Dropdown Menu for Desktop */}
+              <div ref={sangrahaRef} className="relative z-10">
+                <button
+                  type="button"
+                  ref={(el) => {
+                    tabRefs.current['rituals'] = el;
+                    tabRefs.current['stories'] = el;
+                    tabRefs.current['biographies'] = el;
+                    tabRefs.current['places'] = el;
+                  }}
+                  onClick={() => setIsSangrahaOpen((prev) => !prev)}
+                  className={`flex items-center gap-1 px-2.5 lg:px-3 py-1.5 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer ${
+                    isSangrahaActive
+                      ? 'text-[#18181B] font-bold'
+                      : 'text-[#71717A] hover:text-[#18181B]'
+                  }`}
+                  aria-expanded={isSangrahaOpen}
+                  aria-haspopup="true"
+                >
+                  <BookMarked className={`w-3.5 h-3.5 shrink-0 stroke-[2.2] transition-colors duration-200 ${isSangrahaActive ? 'text-[#B45309]' : 'text-[#71717A]'}`} />
+                  <span>संग्रह</span>
+                  <ChevronDown className={`w-3 h-3 text-neutral-500 transition-transform duration-200 ${isSangrahaOpen ? 'rotate-180' : ''}`} />
+                </button>
+
+                {isSangrahaOpen && (
+                  <div
+                    className="absolute top-full right-0 mt-2 w-64 bg-white rounded-[20px] p-2 border border-neutral-200/90 shadow-xl space-y-1 transform-gpu z-50 text-[#18181B]"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <div className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-neutral-400 font-mono">
+                      पावन संकलन
+                    </div>
+                    {[
+                      { id: 'rituals' as NavTab, label: 'नित्य आरती व चालीसा', sublabel: 'आरती, चालीसा, स्तोत्र', icon: Bell },
+                      { id: 'stories' as NavTab, label: 'दिव्य कथा व लीला', sublabel: 'पौराणिक प्रसंग व शिक्षा', icon: BookMarked },
+                      { id: 'biographies' as NavTab, label: 'संत व ऋषि चरित्र', sublabel: 'पावन जीवन दर्शन', icon: Users },
+                      { id: 'places' as NavTab, label: 'पावन तीर्थ व धाम', sublabel: 'तीर्थ, मंदिर व परिक्रमा', icon: MapPin },
+                    ].map((item) => {
+                      const ItemIcon = item.icon;
+                      const isItemActive = activeTab === item.id;
+                      return (
+                        <button
+                          key={item.id}
+                          type="button"
+                          onClick={() => {
+                            handleSelectNav(item.id);
+                            setIsSangrahaOpen(false);
+                          }}
+                          className={`w-full text-left flex items-center gap-2.5 p-2 rounded-[12px] transition-colors duration-150 cursor-pointer ${
+                            isItemActive
+                              ? 'bg-amber-100/90 text-amber-950 font-bold'
+                              : 'hover:bg-amber-50/80 text-neutral-800'
+                          }`}
+                        >
+                          <div className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 ${isItemActive ? 'bg-amber-200/80 text-amber-900' : 'bg-neutral-100 text-neutral-600'}`}>
+                            <ItemIcon className="w-3.5 h-3.5" />
+                          </div>
+                          <div className="min-w-0 flex-1">
+                            <div className="text-xs leading-tight font-serif truncate">{item.label}</div>
+                            <div className="text-[10px] text-neutral-500 truncate">{item.sublabel}</div>
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
             </nav>
 
             {/* 3. Right: Contemplation Actions & Tools Deck */}

@@ -72,6 +72,13 @@ export function generateStaticGranthas(outputDirs = ['public', 'dist']) {
       fs.cpSync(sourceEpicsDir, targetEpicsDir, { recursive: true });
     }
 
+    // Sync canonical directory recursively
+    const sourceCanonicalDir = path.resolve(sourceDataDir, 'canonical');
+    if (fs.existsSync(sourceCanonicalDir)) {
+      const targetCanonicalDir = path.resolve(targetDataDir, 'canonical');
+      fs.cpSync(sourceCanonicalDir, targetCanonicalDir, { recursive: true });
+    }
+
     // Sync all grantha chunks
     for (const file of chunkFiles) {
       fs.copyFileSync(

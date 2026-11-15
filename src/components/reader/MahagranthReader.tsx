@@ -219,29 +219,31 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
 
         if (idx && idx.chapters.length > 0) {
           let targetChapter = idx.chapters[0].id;
-          if (initialChapterId) {
-            const decInit = decodeURIComponent(initialChapterId).trim().toLowerCase();
-            // 1. Exact match by id or decoded id
-            let found = idx.chapters.find(
-              (c) => c.id === initialChapterId || decodeURIComponent(c.id).toLowerCase() === decInit
-            );
-            // 2. Transliterated / normalized match
+          const candidateChapter = initialChapterId || selectedChapterId;
+          if (candidateChapter) {
+            const normCandidate = normalizeEpicChapterSlug(selectedGranthaId, candidateChapter);
+            const decInit = decodeURIComponent(candidateChapter).trim().toLowerCase();
+            // 1. Normalized match
+            let found = idx.chapters.find((c) => c.id === normCandidate || c.id === normCandidate.toLowerCase());
+            // 2. Exact match by id or decoded id
             if (!found) {
-              const normId = normalizeEpicChapterSlug(selectedGranthaId, initialChapterId);
-              found = idx.chapters.find((c) => c.id === normId || c.id === normId.toLowerCase());
+              found = idx.chapters.find(
+                (c) => c.id === candidateChapter || decodeURIComponent(c.id).toLowerCase() === decInit
+              );
             }
             // 3. Exact match by name or decoded name
             if (!found) {
               found = idx.chapters.find(
-                (c) => c.name === initialChapterId || decodeURIComponent(c.name).toLowerCase() === decInit
+                (c) => c.name === candidateChapter || decodeURIComponent(c.name).toLowerCase() === decInit
               );
             }
-            // 4. Exact chapter number match
+            // 4. Scoped chapter number match
             if (!found) {
               const numMatch = decInit.match(/\d+/g);
               if (numMatch) {
                 const targetNum = numMatch[numMatch.length - 1];
                 found = idx.chapters.find((c) => {
+                  if (normCandidate.includes('-') && !c.id.includes(normCandidate.split('-')[0])) return false;
                   const cNums = decodeURIComponent(c.id).toLowerCase().match(/\d+/g);
                   return cNums && cNums[cNums.length - 1] === targetNum;
                 });
@@ -308,7 +310,6 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
   // Load target chapter chunk on-demand (when switching chapters within the same grantha)
   useEffect(() => {
     if (!selectedGranthaId || !selectedChapterId) return;
-    if (loadingGranthaId) return; // Already handled by the grantha switch effect!
 
     let cancelled = false;
     setLoadingChapter(true);
@@ -333,36 +334,62 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
     return () => {
       cancelled = true;
     };
-  }, [selectedChapterId]);
+  }, [selectedChapterId, selectedGranthaId]);
+
+  // Synchronize browser history popstate navigation
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const handlePopState = () => {
+      const url = new URL(window.location.href);
+      const qG = url.searchParams.get('grantha');
+      const qC = url.searchParams.get('chapter');
+      if (qG && qG !== selectedGranthaId && SacredDatabase.isEpicGrantha(qG)) {
+        setSelectedGranthaId(qG);
+      }
+      if (qC) {
+        const norm = normalizeEpicChapterSlug(qG || selectedGranthaId, qC);
+        setSelectedChapterId(norm);
+      }
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [selectedGranthaId]);
 
   const currentChapter = useMemo(() => {
     if (!epicIndex) return null;
+    const normSel = normalizeEpicChapterSlug(selectedGranthaId, selectedChapterId);
     const decSel = decodeURIComponent(selectedChapterId).trim().toLowerCase();
 
-    // 1. Exact ID match (case-sensitive or lowercase decoded)
+    // 1. Normalized match
     let matched = epicIndex.chapters.find(
-      (c) => c.id === selectedChapterId || decodeURIComponent(c.id).toLowerCase() === decSel
+      (c) => c.id === normSel || c.id === normSel.toLowerCase()
     );
-    // 2. Exact Name match
+    // 2. Exact ID match (case-sensitive or lowercase decoded)
+    if (!matched) {
+      matched = epicIndex.chapters.find(
+        (c) => c.id === selectedChapterId || decodeURIComponent(c.id).toLowerCase() === decSel
+      );
+    }
+    // 3. Exact Name match
     if (!matched) {
       matched = epicIndex.chapters.find(
         (c) => c.name === selectedChapterId || decodeURIComponent(c.name).toLowerCase() === decSel
       );
     }
-    // 3. Exact chapter number match
+    // 4. Scoped chapter number match
     if (!matched) {
       const numMatch = decSel.match(/\d+/g);
       if (numMatch) {
         const targetNum = numMatch[numMatch.length - 1];
         matched = epicIndex.chapters.find((c) => {
+          if (normSel.includes('-') && !c.id.includes(normSel.split('-')[0])) return false;
           const cNums = decodeURIComponent(c.id).toLowerCase().match(/\d+/g);
           return cNums && cNums[cNums.length - 1] === targetNum;
         });
       }
     }
-
     return matched || epicIndex.chapters[0] || null;
-  }, [epicIndex, selectedChapterId]);
+  }, [epicIndex, selectedChapterId, selectedGranthaId]);
 
   // Real-time Dynamic Epic & Chapter SEO synchronization
   useEffect(() => {
@@ -585,19 +612,33 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
   };
 
   const handleSelectChapter = (chId: string) => {
+    const normChId = normalizeEpicChapterSlug(selectedGranthaId, chId);
     navigationProgress.start();
-    setSelectedChapterId(chId);
+    setSelectedChapterId(normChId);
+
+    // If already on the chapter but padas are empty, re-fetch immediately
+    if (normChId === selectedChapterId && chapterPadas.length === 0) {
+      setLoadingChapter(true);
+      SacredDatabase.fetchEpicChapter(selectedGranthaId, normChId)
+        .then((padas) => {
+          setChapterPadas(padas);
+          setLoadingChapter(false);
+          if (padas.length > 0) setActiveVerseId(padas[0].id);
+        })
+        .catch(() => setLoadingChapter(false));
+    }
+
     if (typeof window !== 'undefined') {
       try {
         const isPath = window.location.hostname.includes('path.');
         if (isPath || window.location.pathname.startsWith('/grantha/')) {
-          const newPath = `/grantha/${encodeURIComponent(selectedGranthaId)}/${encodeURIComponent(chId)}`;
+          const newPath = `/grantha/${encodeURIComponent(selectedGranthaId)}/${encodeURIComponent(normChId)}`;
           window.history.replaceState({}, '', newPath);
         } else {
           const url = new URL(window.location.href);
           url.searchParams.set('tab', 'granthas');
           url.searchParams.set('grantha', selectedGranthaId);
-          url.searchParams.set('chapter', chId);
+          url.searchParams.set('chapter', normChId);
           window.history.replaceState({}, '', url.toString());
         }
       } catch {}

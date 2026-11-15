@@ -517,7 +517,8 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   const initialPad =
     (initialPadId && SacredDatabase.getPadById(initialPadId)) ||
     (initialReader.lastPadId && SacredDatabase.getPadById(initialReader.lastPadId)) ||
-    allPadas[0];
+    allPadas[0] ||
+    SacredDatabase.getFallbackPad();
 
   const [selectedPad, setSelectedPad] = useState<SacredPad>(initialPad);
 
@@ -894,6 +895,9 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
   // Defensive parsing for clean title, accurate author attribution, and grantha pill
   const { cleanTitle, authorName, granthaRef } = useMemo(() => {
+    if (!selectedPad) {
+      return { cleanTitle: '', authorName: '', granthaRef: '' };
+    }
     let clean = sanitizeSacredText(selectedPad.titleDevanagari || '');
     let author = sanitizeSacredText(selectedPad.author || '');
     let grantha = sanitizeSacredText((selectedPad as { grantha?: string }).grantha || '');
@@ -922,6 +926,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   }, [selectedPad]);
 
   const granthaDisplayName = useMemo(() => {
+    if (!selectedPad) return 'पावन वाणी संग्रह';
     const g = allGranthas.find((item) => item.id === selectedPad.collectionId);
     const mainName = g
       ? `${g.name} (${g.author})`
@@ -936,6 +941,19 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   }, [allGranthas, selectedPad, granthaRef]);
 
   const summaryReq: DevotionalSummaryRequest = useMemo(() => {
+    if (!selectedPad) {
+      return {
+        id: 'fallback',
+        text: '',
+        source: '',
+        author: '',
+        type: 'pad',
+        fallbackText: 'श्री युगल रस का यह पावन पद अंतःकरण में असीम शांति और दिव्य प्रेम का संचार करता है।',
+        collectionId: '',
+        padId: '',
+        stanzaNumber: 1,
+      };
+    }
     const canonicalId =
       selectedPad.id === 'shri-radha-kripa-kataksha-stotram' || selectedPad.id === 'radha-kripa-kataksha'
         ? 'shri-radha-kripa-kataksha-stotram-1'
@@ -1048,9 +1066,10 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     };
   }, []);
 
-  const isBookmarked = bookmarkedPadIds.includes(selectedPad.id);
+  const isBookmarked = selectedPad ? bookmarkedPadIds.includes(selectedPad.id) : false;
 
   const handleToggleBookmark = async () => {
+    if (!selectedPad) return;
     const exists = bookmarkedPadIds.includes(selectedPad.id);
     const updated = exists
       ? bookmarkedPadIds.filter((id) => id !== selectedPad.id)
@@ -1121,7 +1140,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       scrollToPadView(pad.id);
     }
 
-    if (selectedPad.id === pad.id && selectedPad.verses && selectedPad.verses.length > 0) return;
+    if (selectedPad?.id === pad.id && selectedPad?.verses && selectedPad.verses.length > 0) return;
     navigationProgress.start();
     userInteractedPadRef.current = true;
     setLoadingPadId(pad.id);

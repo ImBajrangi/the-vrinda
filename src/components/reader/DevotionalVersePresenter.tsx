@@ -241,11 +241,11 @@ export const DevotionalVersePresenter: React.FC<DevotionalVersePresenterProps> =
                 title="टैप करके इस चरण पर एकाग्रता पाठ करें"
               >
                 {/* Floating Stanza Numeral Badge */}
-                {!hideToolbar && unit.stanzaNumber && (
+                {unit.stanzaNumber && (parsed.units.filter((u) => u.type === 'stanza').length > 1 || !hideToolbar) && (
                   <span
-                    className={`inline-block mb-1 px-2 py-0.5 rounded-full text-[10px] font-mono font-bold transition-colors select-none ${isFocused
+                    className={`inline-block mb-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold transition-colors select-none ${isFocused
                         ? 'bg-[#FEF08A] text-[#78350F]'
-                        : 'bg-neutral-100 text-neutral-400 group-hover/stanza:text-amber-800 group-hover/stanza:bg-amber-100/60'
+                        : 'bg-amber-100/70 text-amber-800 border border-amber-900/10'
                       }`}
                   >
                     ॥ {formatDevanagariNumerals(unit.stanzaNumber)} ॥
@@ -265,11 +265,9 @@ export const DevotionalVersePresenter: React.FC<DevotionalVersePresenterProps> =
                   ))}
                 </div>
 
-                {/* Subtle Stanza Flourish Separator */}
+                {/* Clean Sacred Spacing between Stanzas */}
                 {idx < parsed.units.length - 1 && (
-                  <div className="flex items-center justify-center pt-3 select-none text-amber-300/60 text-xs">
-                    ❀
-                  </div>
+                  <div className="my-3 border-b border-amber-900/5" aria-hidden="true" />
                 )}
               </div>
             );

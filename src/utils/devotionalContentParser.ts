@@ -98,6 +98,25 @@ export function parseDevotionalContent(rawLines: string[]): ParsedSacredPadaCont
     // Discard empty scraper tags like "भावार्थ:-", "भावार्थ :"
     if (/^भावार्थ\s*[:：\-—]*\s*$/.test(line)) continue;
 
+    // Discard stray isolated header/footer artifacts like single words 'अयोध्या', 'बालकाण्ड'
+    if (/^(अयोध्या|बालकाण्ड|उत्तरकाण्ड|किष्किन्धाकाण्ड|किष्किंधाकाण्ड|अरण्यकाण्ड|सुन्दरकाण्ड|युद्धकाण्ड)$/.test(line)) {
+      continue;
+    }
+
+    // Discard stray Gita Press colophons / scrape header artifacts
+    if (
+      /^(॥\s*श्रीसीतारामचन्द्राभ्यां नमः\s*॥|श्रीमद्वाल्मीकीय\s*रामायण|उत्तरकाण्डम्|किष्किन्धाकाण्डम्|(?:प्रथमः|द्वितीयः|तृतीयः)\s*सर्गः.*|इत्यार्षे.*|इत्याचे.*)$/.test(
+        line
+      )
+    ) {
+      continue;
+    }
+
+    // Discard stray scraped Hindi translation lines that mistakenly start with quotes like "‘पिताजी!..."
+    if (/^[‘“]पिताजी!/.test(line)) {
+      continue;
+    }
+
     // Match meter header like "दोहा | Dohā :", "दोहा | DOHAS : :", "चौपाई | CHAUPAIS :", "दोहा :"
     const meterMatch = line.match(meterHeaderRegex);
     if (meterMatch) {

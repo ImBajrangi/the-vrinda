@@ -1,0 +1,54 @@
+{
+  "id": "barsana-dham",
+  "slug": "barsana-dham",
+  "name": "Sri Barsana Dham",
+  "nameDevanagari": "श्री बरसाना धाम",
+  "dhamRegion": "barsana",
+  "regionNameHindi": "मथुरा, ब्रज मण्डल",
+  "briefSignificance": "आह्लादिनी शक्ति श्री वृषभानु नंदिनी लाड़िली जी का नित्य निवास धाम एवं ब्रह्माचल पर्वत।",
+  "deity": "Shri Radha Rani / Ladili Ji",
+  "deityDevanagari": "श्री राधारानी (श्री लाड़िली जी)",
+  "darshanTimings": {
+    "morning": {
+      "open": "05:30",
+      "close": "12:00",
+      "aartiName": "शृंगार आरती"
+    },
+    "evening": {
+      "open": "17:00",
+      "close": "21:00",
+      "aartiName": "शयन आरती"
+    }
+  },
+  "parikramaKm": 7,
+  "associatedLeelas": [
+    {
+      "title": "लट्ठमार होली",
+      "description": "फाल्गुन मास में नन्दगांव और बरसाना के मध्य विश्वप्रसिद्ध प्रेममयी होली।"
+    },
+    {
+      "title": "मानलीला",
+      "description": "मान मन्दिर पर श्रीजी का मान और कन्हैया द्वारा मान-मंजन।"
+    }
+  ],
+  "nearbyKundsOrShilats": [
+    "पीली पोखर",
+    "प्रेम सरोवर",
+    "भानुखार",
+    "मान मन्दिर",
+    "विहार वन"
+  ],
+  "samadhisNearby": [],
+  "imageWebp": "/assets/temples/barsana-radharani.webp",
+  "rulesAndEtiquette": [
+    "श्रीजी के मन्दिर की सीढ़ियाँ श्रद्धा से चढ़ें",
+    "\"राधे राधे\" का संकीर्तन करते हुए परिक्रमा करें"
+  ],
+  "tags": [
+    "बरसाना",
+    "राधारानी",
+    "लाड़िली-जी",
+    "लट्ठमार-होली",
+    "ब्रह्माचल"
+  ]
+}

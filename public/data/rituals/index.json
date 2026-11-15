@@ -1,0 +1,226 @@
+{
+  "category": "rituals",
+  "categoryHindi": "नित्य उपासना, आरती एवं चालीसा",
+  "count": 11,
+  "updatedAt": "2026-11-15T09:00:00Z",
+  "items": [
+    {
+      "id": "aarti-kunj-bihari-ki",
+      "slug": "aarti-kunj-bihari-ki",
+      "title": "Aarti Kunj Bihari Ki",
+      "titleDevanagari": "आरती कुंजबिहारी की: श्री गिरिधर कृष्णमुरारी की",
+      "category": "aarti",
+      "categoryHindi": "आरती संग्रह",
+      "deity": "Lord Krishna",
+      "deityDevanagari": "ठाकुर श्री कुंजबिहारी जी",
+      "totalVerses": 6,
+      "durationMinutes": 5,
+      "tags": [
+        "आरती",
+        "कुंजबिहारी",
+        "श्रीकृष्ण",
+        "वृन्दावन",
+        "नित्य-उपासना"
+      ],
+      "chunkFile": "ritual-aarti-kunj-bihari-ki.json"
+    },
+    {
+      "id": "aarti-kije-hanuman-lala-ki",
+      "slug": "aarti-kije-hanuman-lala-ki",
+      "title": "Aarti Kije Hanuman Lala Ki",
+      "titleDevanagari": "आरती कीजै हनुमान लला की: दुष्ट दलन रघुनाथ कला की",
+      "category": "aarti",
+      "categoryHindi": "आरती संग्रह",
+      "deity": "Lord Hanuman",
+      "deityDevanagari": "पवनसुत श्री हनुमान जी महाराज",
+      "totalVerses": 8,
+      "durationMinutes": 6,
+      "tags": [
+        "आरती",
+        "हनुमान-जी",
+        "संकटमोचन",
+        "मंगलवार-आरती",
+        "कपूर-आरती"
+      ],
+      "chunkFile": "ritual-aarti-kije-hanuman-lala-ki.json"
+    },
+    {
+      "id": "om-jai-jagdish-hare",
+      "slug": "om-jai-jagdish-hare",
+      "title": "Om Jai Jagdish Hare",
+      "titleDevanagari": "ॐ जय जगदीश हरे: सर्व मनोरथ पूर्ण करने वाली महाआरती",
+      "category": "aarti",
+      "categoryHindi": "आरती संग्रह",
+      "deity": "Lord Vishnu (Jagannath)",
+      "deityDevanagari": "जगदीश भगवान श्रीहरि विष्णु",
+      "totalVerses": 7,
+      "durationMinutes": 5,
+      "tags": [
+        "आरती",
+        "जगदीश-हरे",
+        "भगवान-विष्णु",
+        "नित्य-आरती",
+        "सर्वकल्याण"
+      ],
+      "chunkFile": "ritual-om-jai-jagdish-hare.json"
+    },
+    {
+      "id": "hanuman-chalisa",
+      "slug": "hanuman-chalisa",
+      "title": "Shri Hanuman Chalisa",
+      "titleDevanagari": "श्री हनुमान चालीसा: सर्व संकट निवारक अमोघ स्तुति",
+      "category": "chalisa",
+      "categoryHindi": "चालीसा संग्रह",
+      "deity": "Lord Hanuman",
+      "deityDevanagari": "पवनपुत्र श्री हनुमान",
+      "totalVerses": 43,
+      "durationMinutes": 7,
+      "tags": [
+        "हनुमान-चालीसा",
+        "तुलसीदास",
+        "रोगनाशक",
+        "संकटमोचन",
+        "अमोघ-पाठ"
+      ],
+      "chunkFile": "ritual-hanuman-chalisa.json"
+    },
+    {
+      "id": "durga-chalisa",
+      "slug": "durga-chalisa",
+      "title": "Shri Durga Chalisa",
+      "titleDevanagari": "श्री दुर्गा चालीसा: नमो नमो दुर्गे सुख करनी",
+      "category": "chalisa",
+      "categoryHindi": "चालीसा संग्रह",
+      "deity": "Goddess Durga",
+      "deityDevanagari": "आदिशक्ति माँ दुर्गा",
+      "totalVerses": 40,
+      "durationMinutes": 7,
+      "tags": [
+        "दुर्गा-चालीसा",
+        "नवरात्रि",
+        "माँ-अम्बे",
+        "शक्ति-उपासना",
+        "अभय-वरदान"
+      ],
+      "chunkFile": "ritual-durga-chalisa.json"
+    },
+    {
+      "id": "shiv-chalisa",
+      "slug": "shiv-chalisa",
+      "title": "Shri Shiva Chalisa",
+      "titleDevanagari": "श्री शिव चालीसा: जय गणेश गिरिजा सुवन",
+      "category": "chalisa",
+      "categoryHindi": "चालीसा संग्रह",
+      "deity": "Lord Shiva",
+      "deityDevanagari": "देवाधिदेव महादेव शिव",
+      "totalVerses": 40,
+      "durationMinutes": 7,
+      "tags": [
+        "शिव-चालीसा",
+        "महादेव",
+        "सोमवार-पूजा",
+        "बिल्वपत्र",
+        "भोलेनाथ"
+      ],
+      "chunkFile": "ritual-shiv-chalisa.json"
+    },
+    {
+      "id": "shiva-tandava-stotram",
+      "slug": "shiva-tandava-stotram",
+      "title": "Shri Shiva Tandava Stotram",
+      "titleDevanagari": "श्री शिव ताण्डव स्तोत्रम्: जटाटवीगलज्जलप्रवाहपावितस्थले",
+      "category": "stotra",
+      "categoryHindi": "स्तोत्र संग्रह",
+      "deity": "Lord Shiva (Nataraja)",
+      "deityDevanagari": "नटराज भगवान शिव",
+      "totalVerses": 15,
+      "durationMinutes": 6,
+      "tags": [
+        "शिव-ताण्डव",
+        "रावण-कृत",
+        "नटराज",
+        "ओजस्वी-स्तोत्र",
+        "संस्कृत"
+      ],
+      "chunkFile": "ritual-shiva-tandava-stotram.json"
+    },
+    {
+      "id": "aditya-hridaya-stotra",
+      "slug": "aditya-hridaya-stotra",
+      "title": "Shri Aditya Hridaya Stotram",
+      "titleDevanagari": "श्री आदित्य हृदय स्तोत्रम्: सर्व शत्रु विजय प्रदायक",
+      "category": "stotra",
+      "categoryHindi": "स्तोत्र संग्रह",
+      "deity": "Lord Surya",
+      "deityDevanagari": "प्रत्यक्ष देवता भगवान सूर्य नारायण",
+      "totalVerses": 31,
+      "durationMinutes": 6,
+      "tags": [
+        "आदित्य-हृदय",
+        "सूर्य-उपासना",
+        "अगस्त्य-मुनि",
+        "विजय-स्तोत्र",
+        "आरोग्य"
+      ],
+      "chunkFile": "ritual-aditya-hridaya-stotra.json"
+    },
+    {
+      "id": "madhurashtakam",
+      "slug": "madhurashtakam",
+      "title": "Shri Madhurashtakam",
+      "titleDevanagari": "श्री मधुराष्टकम्: अधरं मधुरं वदनं मधुरम्",
+      "category": "ashtakam",
+      "categoryHindi": "अष्टकम संग्रह",
+      "deity": "Lord Krishna",
+      "deityDevanagari": "मधुराधिपति श्रीकृष्ण",
+      "totalVerses": 8,
+      "durationMinutes": 4,
+      "tags": [
+        "मधुराष्टकम्",
+        "वल्लभाचार्य",
+        "माधुर्य-भक्ति",
+        "कृष्ण-प्रेम",
+        "अष्टकम"
+      ],
+      "chunkFile": "ritual-madhurashtakam.json"
+    },
+    {
+      "id": "achyutashtakam",
+      "slug": "achyutashtakam",
+      "title": "Shri Achyutashtakam",
+      "titleDevanagari": "श्री अच्युताष्टकम्: अच्युतं केशवं रामनारायणम्",
+      "category": "ashtakam",
+      "categoryHindi": "अष्टकम संग्रह",
+      "deity": "Lord Krishna / Vishnu",
+      "deityDevanagari": "अच्युत भगवान श्रीहरि",
+      "totalVerses": 8,
+      "durationMinutes": 4,
+      "tags": [
+        "अच्युताष्टकम्",
+        "शंकराचार्य",
+        "अष्टकम",
+        "विष्णु-भक्ति"
+      ],
+      "chunkFile": "ritual-achyutashtakam.json"
+    },
+    {
+      "id": "rudrashtakam",
+      "slug": "rudrashtakam",
+      "title": "Shri Rudrashtakam",
+      "titleDevanagari": "श्री रुद्राष्टकम्: नमामीशमीशान निर्वाणरूपं",
+      "category": "ashtakam",
+      "categoryHindi": "अष्टकम संग्रह",
+      "deity": "Lord Shiva (Rudra)",
+      "deityDevanagari": "परमब्रह्म रुद्र",
+      "totalVerses": 8,
+      "durationMinutes": 5,
+      "tags": [
+        "रुद्राष्टकम्",
+        "तुलसीदास",
+        "रामचरितमानस",
+        "शिव-स्तुति"
+      ],
+      "chunkFile": "ritual-rudrashtakam.json"
+    }
+  ]
+}

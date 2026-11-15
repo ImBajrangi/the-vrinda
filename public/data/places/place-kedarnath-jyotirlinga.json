@@ -1,0 +1,48 @@
+{
+  "id": "kedarnath-jyotirlinga",
+  "slug": "kedarnath-jyotirlinga",
+  "name": "Kedarnath Jyotirlinga Dham",
+  "nameDevanagari": "श्री केदारनाथ ज्योतिर्लिंग धाम",
+  "dhamRegion": "char-dham",
+  "regionNameHindi": "रुद्रप्रयाग, उत्तराखण्ड",
+  "briefSignificance": "मन्दाकिनी नदी के तट पर स्थित पंच केदारों में प्रधान, द्वादश ज्योतिर्लिंगों में सर्वोच्च हिमशिखर धाम।",
+  "deity": "Lord Shiva (Kedareshwara)",
+  "deityDevanagari": "देवाधिदेव केदारनाथ जी",
+  "darshanTimings": {
+    "morning": {
+      "open": "05:00",
+      "close": "13:30",
+      "aartiName": "महाभिषेक आरती"
+    },
+    "evening": {
+      "open": "17:30",
+      "close": "21:00",
+      "aartiName": "शृंगार आरती"
+    }
+  },
+  "parikramaKm": null,
+  "associatedLeelas": [
+    {
+      "title": "पाण्डवों को मुक्ति",
+      "description": "महाभारत युद्ध के उपरान्त पाण्डवों को गो-रूप में दर्शन देकर पापमुक्त करना।"
+    }
+  ],
+  "nearbyKundsOrShilats": [
+    "मन्दाकिनी नदी",
+    "भैरवनाथ मन्दिर",
+    "शंकराचार्य समाधि"
+  ],
+  "samadhisNearby": [],
+  "imageWebp": "/assets/temples/diya-pujan.webp",
+  "rulesAndEtiquette": [
+    "शीतकालीन मौसम का ध्यान रखें",
+    "कपाट अक्षय तृतीया से भाई दूज तक खुलते हैं"
+  ],
+  "tags": [
+    "केदारनाथ",
+    "ज्योतिर्लिंग",
+    "मन्दाकिनी",
+    "पंच-केदार",
+    "चार-धाम"
+  ]
+}
