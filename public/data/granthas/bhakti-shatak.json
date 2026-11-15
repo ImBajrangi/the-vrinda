@@ -2959,7 +2959,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग बिभास-ताल तिताला)",
           "हमपर कब कृपालु हरि हुइहौ॥",
           "मैं अधमिन तुम अधम-उधारन, कैसे प्रन न निबइहौ।",
           "कोटिन खल प्रभु तुमने तारे, दीन जान का मोहि लजइहौ॥ [1]",
@@ -2971,7 +2970,8 @@
     ],
     "chapterId": "ch-रूप कुँवरि जी",
     "chapterName": "रूप कुँवरि जी",
-    "verseNumber": 314
+    "verseNumber": 314,
+    "rag": "बिभास-ताल तिताला"
   },
   {
     "id": "hamaari-swamini-radhe-rani-jagadguru-shri-kripaluji-maharaj-premras-madira-dainymadhuri-99",
@@ -6478,12 +6478,12 @@
     "verseNumber": 38
   },
   {
-    "id": "मर-मन-गर-चरण-अनरगय",
+    "id": "mero-mn-gaur-chrn-anuragyo",
     "collectionId": "bhakti-shatak",
     "index": 282,
     "titleDevanagari": "मेरो मन गौर चरण अनुराग्यो",
     "author": "जगद्गुरु श्री कृपालु जी महाराज",
-    "slug": "मर-मन-गर-चरण-अनरगय",
+    "slug": "mero-mn-gaur-chrn-anuragyo",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6542,12 +6542,12 @@
     "verseNumber": 59
   },
   {
-    "id": "वनदवन-रसकन-रजधन",
+    "id": "vrindavn-rsikn-rjdhani",
     "collectionId": "bhakti-shatak",
     "index": 285,
     "titleDevanagari": "वृन्दावन, रसिकन रजधानी",
     "author": "जगद्गुरु श्री कृपालु जी महाराज",
-    "slug": "वनदवन-रसकन-रजधन",
+    "slug": "vrindavn-rsikn-rjdhani",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6688,12 +6688,12 @@
     "verseNumber": 94
   },
   {
-    "id": "वदवन-धम-मच-हर",
+    "id": "vrindavn-dhum-mchi-hori",
     "collectionId": "bhakti-shatak",
     "index": 292,
     "titleDevanagari": "वृंदावन, धूम मची होरी",
     "author": "जगद्गुरु श्री कृपालु जी महाराज",
-    "slug": "वदवन-धम-मच-हर",
+    "slug": "vrindavn-dhum-mchi-hori",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6737,12 +6737,12 @@
     "verseNumber": 103
   },
   {
-    "id": "कषण-कपल-कपकण-गर",
+    "id": "krishn-kripalu-kripakn-gero",
     "collectionId": "bhakti-shatak",
     "index": 294,
     "titleDevanagari": "कृष्ण कृपालु कृपाकण गेरो",
     "author": "जगद्गुरु श्री कृपालु जी महाराज",
-    "slug": "कषण-कपल-कपकण-गर",
+    "slug": "krishn-kripalu-kripakn-gero",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -7654,12 +7654,12 @@
     "verseNumber": 222
   },
   {
-    "id": "रह-र-मन-गर-चरन-लव-लई-1",
+    "id": "rho-re-mn-gaur-chrn-lv-laee",
     "collectionId": "bhakti-shatak",
     "index": 336,
     "titleDevanagari": "रहो रे मन गौर चरन लव लाई ।",
     "author": "जगद्गुरु श्री कृपालु जी महाराज",
-    "slug": "रह-र-मन-गर-चरन-लव-लई-1",
+    "slug": "rho-re-mn-gaur-chrn-lv-laee",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -7943,12 +7943,12 @@
     "verseNumber": 243
   },
   {
-    "id": "जक-अगनत-गनन-क-गवत-वद-ऋचन",
+    "id": "jake-agnit-gunn-ko-gavt-ved-richan",
     "collectionId": "bhakti-shatak",
     "index": 349,
     "titleDevanagari": "जाके अगनित गुनन को गावत वेद ऋचान",
     "author": "जगद्गुरु श्री कृपालु जी महाराज",
-    "slug": "जक-अगनत-गनन-क-गवत-वद-ऋचन",
+    "slug": "jake-agnit-gunn-ko-gavt-ved-richan",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -8003,12 +8003,12 @@
     "verseNumber": 247
   },
   {
-    "id": "हमर-पय-परनन-पयर",
+    "id": "hmaro-piy-prann-pyaro",
     "collectionId": "bhakti-shatak",
     "index": 352,
     "titleDevanagari": "हमारो पिय प्रानन प्यारो",
     "author": "जगद्गुरु श्री कृपालु जी महाराज",
-    "slug": "हमर-पय-परनन-पयर",
+    "slug": "hmaro-piy-prann-pyaro",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -8150,12 +8150,12 @@
     "verseNumber": 262
   },
   {
-    "id": "हमर-दउ-पयर-पयर",
+    "id": "hmaro-dou-pyari-pyaro",
     "collectionId": "bhakti-shatak",
     "index": 359,
     "titleDevanagari": "हमारो, दोउ प्यारी प्यारो।",
     "author": "जगद्गुरु श्री कृपालु जी महाराज",
-    "slug": "हमर-दउ-पयर-पयर",
+    "slug": "hmaro-dou-pyari-pyaro",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -8194,12 +8194,12 @@
     "verseNumber": 265
   },
   {
-    "id": "रह-र-मन-गर-चरन-लव-लई",
+    "id": "rho-re-mn-gaur-chrn-lv-laee-2",
     "collectionId": "bhakti-shatak",
     "index": 361,
     "titleDevanagari": "रहो रे मन गौर चरन लव लाई",
     "author": "जगद्गुरु श्री कृपालु जी महाराज",
-    "slug": "रह-र-मन-गर-चरन-लव-लई",
+    "slug": "rho-re-mn-gaur-chrn-lv-laee-2",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -8494,12 +8494,12 @@
     "verseNumber": 287
   },
   {
-    "id": "हमर-नध-शर-वषभन-दलर",
+    "id": "hmari-nidhi-shri-vrishbhanu-dular",
     "collectionId": "bhakti-shatak",
     "index": 375,
     "titleDevanagari": "हमारी निधि, श्री वृषभानु दुलार।",
     "author": "जगद्गुरु श्री कृपालु जी महाराज",
-    "slug": "हमर-नध-शर-वषभन-दलर",
+    "slug": "hmari-nidhi-shri-vrishbhanu-dular",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -8659,12 +8659,12 @@
     "verseNumber": 303
   },
   {
-    "id": "धर-उन-सवमन-क-धयन-र",
+    "id": "dhru-un-svamini-ko-dhyan-re",
     "collectionId": "bhakti-shatak",
     "index": 383,
     "titleDevanagari": "धरु उन स्वामिनी को ध्यान रे",
     "author": "जगद्गुरु श्री कृपालु जी महाराज",
-    "slug": "धर-उन-सवमन-क-धयन-र",
+    "slug": "dhru-un-svamini-ko-dhyan-re",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -8704,12 +8704,12 @@
     "verseNumber": 307
   },
   {
-    "id": "वषभन-ललह-उर-आनय",
+    "id": "vrishbhanu-llihin-ur-aaniye",
     "collectionId": "bhakti-shatak",
     "index": 385,
     "titleDevanagari": "वृषभानु ललिहिं उर आनिये",
     "author": "जगद्गुरु श्री कृपालु जी महाराज",
-    "slug": "वषभन-ललह-उर-आनय",
+    "slug": "vrishbhanu-llihin-ur-aaniye",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -8749,12 +8749,12 @@
     "verseNumber": 312
   },
   {
-    "id": "हम-त-अल-लल-स-कम",
+    "id": "hmen-to-ali-lli-saun-kam",
     "collectionId": "bhakti-shatak",
     "index": 387,
     "titleDevanagari": "हमें तो अली लली सौं काम।",
     "author": "जगद्गुरु श्री कृपालु जी महाराज",
-    "slug": "हम-त-अल-लल-स-कम",
+    "slug": "hmen-to-ali-lli-saun-kam",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -8814,12 +8814,12 @@
     "verseNumber": 316
   },
   {
-    "id": "मर-बरसन-वर-पयर-पयर-पयर",
+    "id": "meri-brsane-vari-pyari-pyari-pyari",
     "collectionId": "bhakti-shatak",
     "index": 390,
     "titleDevanagari": "मेरी बरसाने वारी प्यारी प्यारी प्यारी",
     "author": "जगद्गुरु श्री कृपालु जी महाराज",
-    "slug": "मर-बरसन-वर-पयर-पयर-पयर",
+    "slug": "meri-brsane-vari-pyari-pyari-pyari",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -9042,12 +9042,12 @@
     "verseNumber": 335
   },
   {
-    "id": "सत-जन-बरह-मस-बसत",
+    "id": "snt-jn-barh-mas-bsnt",
     "collectionId": "bhakti-shatak",
     "index": 401,
     "titleDevanagari": "संत जन बारह मास बसंत",
     "author": "जगद्गुरु श्री कृपालु जी महाराज",
-    "slug": "सत-जन-बरह-मस-बसत",
+    "slug": "snt-jn-barh-mas-bsnt",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -9094,12 +9094,12 @@
     "verseNumber": 339
   },
   {
-    "id": "यगलवर-झलन-क-बलहर",
+    "id": "yuglvr-jhulni-ki-blihar",
     "collectionId": "bhakti-shatak",
     "index": 403,
     "titleDevanagari": "युगलवर, झूलनि की बलिहार |",
     "author": "जगद्गुरु श्री कृपालु जी महाराज",
-    "slug": "यगलवर-झलन-क-बलहर",
+    "slug": "yuglvr-jhulni-ki-blihar",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -9245,12 +9245,12 @@
     "verseNumber": 351
   },
   {
-    "id": "रह-शर-बरसन-गम-र",
+    "id": "rhu-shri-brsane-gam-re",
     "collectionId": "bhakti-shatak",
     "index": 410,
     "titleDevanagari": "रहु श्री बरसाने गाम रे",
     "author": "जगद्गुरु श्री कृपालु जी महाराज",
-    "slug": "रह-शर-बरसन-गम-र",
+    "slug": "rhu-shri-brsane-gam-re",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -9269,12 +9269,12 @@
     "verseNumber": 352
   },
   {
-    "id": "हम-भख-बरज-क-गर-क",
+    "id": "hm-bhukhe-brj-ki-gari-ke",
     "collectionId": "bhakti-shatak",
     "index": 411,
     "titleDevanagari": "हम भूखे ब्रज की गारी के",
     "author": "जगद्गुरु श्री कृपालु जी महाराज",
-    "slug": "हम-भख-बरज-क-गर-क",
+    "slug": "hm-bhukhe-brj-ki-gari-ke",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -9354,12 +9354,12 @@
     "verseNumber": 358
   },
   {
-    "id": "नद-महर-घर-बजत-बधई",
+    "id": "nnd-mhr-ghr-bjt-bdhaee",
     "collectionId": "bhakti-shatak",
     "index": 415,
     "titleDevanagari": "नंद-महर-घर बजत बधाई",
     "author": "जगद्गुरु श्री कृपालु जी महाराज",
-    "slug": "नद-महर-घर-बजत-बधई",
+    "slug": "nnd-mhr-ghr-bjt-bdhaee",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -9499,12 +9499,12 @@
     "verseNumber": 370
   },
   {
-    "id": "शर-शयम-ज-क-शयम-पलटत-पम",
+    "id": "shri-shyama-ju-ko-shyam-plott-pam",
     "collectionId": "bhakti-shatak",
     "index": 421,
     "titleDevanagari": "श्री श्यामा जू को श्याम पलोटत पाम",
     "author": "जगद्गुरु श्री कृपालु जी महाराज",
-    "slug": "शर-शयम-ज-क-शयम-पलटत-पम",
+    "slug": "shri-shyama-ju-ko-shyam-plott-pam",
     "verses": [
       {
         "stanzaNumber": 1,

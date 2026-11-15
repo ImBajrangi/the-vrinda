@@ -33,7 +33,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कल्याण)",
           "तेरो मुख नीको कि मेरो स्यामा प्यारी ?",
           "दर्पन हाथ लिये नंदनंदन सांचि कहो वृषभानुदुलारी॥ [1]",
           "हम का कहें तुमहिं किन देखो मैं गोरी तुम श्याम बिहारी।",
@@ -46,7 +45,8 @@
     ],
     "chapterId": "ch-चंद्रसखी पदावाली",
     "chapterName": "चंद्रसखी पदावाली",
-    "verseNumber": 13
+    "verseNumber": 13,
+    "rag": "कल्याण"
   },
   {
     "id": "shri-radherani-de-daro-na-vansuri-mori-shri-chandrasakhi-ji-chandrasakhi-padavalli-33",
@@ -149,12 +149,12 @@
     "verseNumber": 3
   },
   {
-    "id": "बवर-बन-आई-तय-हर-कन-खलई",
+    "id": "bavri-bn-aaee-toy-hori-kaun-khilaee",
     "collectionId": "chandrasakhi-padavali",
     "index": 7,
     "titleDevanagari": "बावरी बन आई तोय होरी कौन खिलाई ।।",
     "author": "चन्द्रसखी जी",
-    "slug": "बवर-बन-आई-तय-हर-कन-खलई",
+    "slug": "bavri-bn-aaee-toy-hori-kaun-khilaee",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -227,12 +227,12 @@
     "verseNumber": 6
   },
   {
-    "id": "छड़-डगर-मर-चतर-शयम-बध-जवग-ननन-म",
+    "id": "chhano-dgr-meri-chtur-shyam-bindh-javoge-nainn-men",
     "collectionId": "chandrasakhi-padavali",
     "index": 10,
     "titleDevanagari": "छाँड़ो डगर मेरी चतुर श्याम बिंध जावोगे नैनन में ।।",
     "author": "चन्द्रसखी जी",
-    "slug": "छड़-डगर-मर-चतर-शयम-बध-जवग-ननन-म",
+    "slug": "chhano-dgr-meri-chtur-shyam-bindh-javoge-nainn-men",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -327,12 +327,12 @@
     "verseNumber": 11
   },
   {
-    "id": "दरसन-द-ननद-दलर",
+    "id": "drsn-dai-nnd-dulare",
     "collectionId": "chandrasakhi-padavali",
     "index": 14,
     "titleDevanagari": "दरसन दै नन्द दुलारे ।।",
     "author": "चन्द्रसखी जी",
-    "slug": "दरसन-द-ननद-दलर",
+    "slug": "drsn-dai-nnd-dulare",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -375,12 +375,12 @@
     "verseNumber": 13
   },
   {
-    "id": "मर-ननन-म-डरय-ह-गलल-सजन",
+    "id": "mere-nainn-men-daryo-hai-gulal-sjni",
     "collectionId": "chandrasakhi-padavali",
     "index": 16,
     "titleDevanagari": "मेरे नैनन में डारयो है गुलाल सजनी,",
     "author": "चन्द्रसखी जी",
-    "slug": "मर-ननन-म-डरय-ह-गलल-सजन",
+    "slug": "mere-nainn-men-daryo-hai-gulal-sjni",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -400,12 +400,12 @@
     "verseNumber": 14
   },
   {
-    "id": "तर-हर-खलन-म-टन-म-त-नई-आई-शयम-सलन-1",
+    "id": "teri-hori-kheln-men-tona-main-to-nee-aaee-shyam-slona",
     "collectionId": "chandrasakhi-padavali",
     "index": 17,
     "titleDevanagari": "तेरी होरी खेलन में टोना मैं तो नई आई श्याम सलोना ।",
     "author": "चन्द्रसखी जी",
-    "slug": "तर-हर-खलन-म-टन-म-त-नई-आई-शयम-सलन-1",
+    "slug": "teri-hori-kheln-men-tona-main-to-nee-aaee-shyam-slona",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -648,12 +648,12 @@
     "verseNumber": 25
   },
   {
-    "id": "छल-मर-जट-मलय-लज",
+    "id": "chhaila-meri-jot-milay-lijo",
     "collectionId": "chandrasakhi-padavali",
     "index": 27,
     "titleDevanagari": "छैला मेरी जोट मिलाय लीजो ।।",
     "author": "चन्द्रसखी जी",
-    "slug": "छल-मर-जट-मलय-लज",
+    "slug": "chhaila-meri-jot-milay-lijo",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -754,12 +754,12 @@
     "verseNumber": 29
   },
   {
-    "id": "हर-खलन-आय-शयम-आज-यह-रग-म-बर-र",
+    "id": "hori-kheln-aayo-shyam-aaj-yahe-rng-men-boro-ri",
     "collectionId": "chandrasakhi-padavali",
     "index": 31,
     "titleDevanagari": "होरी खेलन आयो श्याम आज याहे रंग में बोरो री ।।",
     "author": "चन्द्रसखी जी",
-    "slug": "हर-खलन-आय-शयम-आज-यह-रग-म-बर-र",
+    "slug": "hori-kheln-aayo-shyam-aaj-yahe-rng-men-boro-ri",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -781,12 +781,12 @@
     "verseNumber": 30
   },
   {
-    "id": "चहदस-नदय-रग-स-भर-ह-डगर-नकसन-क-नय-रह",
+    "id": "chhundisi-ndiyan-rng-son-bhrin-ho-dgr-niksn-ko-nay-rhi",
     "collectionId": "chandrasakhi-padavali",
     "index": 32,
     "titleDevanagari": "चहुँदिसि नदियाँ रंग सों भरीं हो, डगर निकसन को नाय रही ।।",
     "author": "चन्द्रसखी जी",
-    "slug": "चहदस-नदय-रग-स-भर-ह-डगर-नकसन-क-नय-रह",
+    "slug": "chhundisi-ndiyan-rng-son-bhrin-ho-dgr-niksn-ko-nay-rhi",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1343,12 +1343,12 @@
     "verseNumber": 53
   },
   {
-    "id": "तप-लल-तप-पळ-तप-कसरय-रग-डरग",
+    "id": "tope-lilo-tope-pio-tope-kesriyae-rng-darugi",
     "collectionId": "chandrasakhi-padavali",
     "index": 54,
     "titleDevanagari": "तोपे लीलो तोपे पीळो तोपे केसरियाे रंग डारूगी",
     "author": "चन्द्रसखी जी",
-    "slug": "तप-लल-तप-पळ-तप-कसरय-रग-डरग",
+    "slug": "tope-lilo-tope-pio-tope-kesriyae-rng-darugi",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1456,12 +1456,12 @@
     "verseNumber": 57
   },
   {
-    "id": "तर-हर-खलन-म-टन-म-त-नई-आई-शयम-सलन",
+    "id": "teri-hori-kheln-men-tona-main-to-nee-aaee-shyam-slona-2",
     "collectionId": "chandrasakhi-padavali",
     "index": 58,
     "titleDevanagari": "तेरी होरी खेलन में टोना मैं तो नई आई श्याम सलोना ।।",
     "author": "चन्द्रसखी जी",
-    "slug": "तर-हर-खलन-म-टन-म-त-नई-आई-शयम-सलन",
+    "slug": "teri-hori-kheln-men-tona-main-to-nee-aaee-shyam-slona-2",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1505,12 +1505,12 @@
     "verseNumber": 59
   },
   {
-    "id": "महर-हर-क-तयहर-ननदल-बर-पर",
+    "id": "mhare-hori-ko-tyauhar-nndul-bair-pri",
     "collectionId": "chandrasakhi-padavali",
     "index": 60,
     "titleDevanagari": "म्हारे होरी को त्यौहार ननदुल बैर परी ।।",
     "author": "चन्द्रसखी जी",
-    "slug": "महर-हर-क-तयहर-ननदल-बर-पर",
+    "slug": "mhare-hori-ko-tyauhar-nndul-bair-pri",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1874,12 +1874,12 @@
     "verseNumber": 74
   },
   {
-    "id": "तर-मख-नक-क-मर-रध-पयर-चदरसख",
+    "id": "tero-mukh-niko-ki-mero-radha-pyari",
     "collectionId": "chandrasakhi-padavali",
     "index": 75,
     "titleDevanagari": "तेरो मुख नीको कि मेरो राधा प्यारी ।(चंद्रसखी)",
     "author": "चन्द्रसखी जी",
-    "slug": "तर-मख-नक-क-मर-रध-पयर-चदरसख",
+    "slug": "tero-mukh-niko-ki-mero-radha-pyari",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1898,12 +1898,12 @@
     "verseNumber": 75
   },
   {
-    "id": "सवरय-तर-बज-नगर-कस-आऊ-र",
+    "id": "sanvriya-teri-brij-ngri-kaise-aaoon-re",
     "collectionId": "chandrasakhi-padavali",
     "index": 76,
     "titleDevanagari": "साँवरिया तेरी बृज नगरी, कैसे आऊँ रे ॥",
     "author": "चन्द्रसखी जी",
-    "slug": "सवरय-तर-बज-नगर-कस-आऊ-र",
+    "slug": "sanvriya-teri-brij-ngri-kaise-aaoon-re",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2251,12 +2251,12 @@
     "verseNumber": 89
   },
   {
-    "id": "पड-कर-गय-रज-धरम-क",
+    "id": "pando-kr-gye-raj-dhrm-ko",
     "collectionId": "chandrasakhi-padavali",
     "index": 90,
     "titleDevanagari": "पांडो कर गये राज धरम को ।।",
     "author": "चन्द्रसखी जी",
-    "slug": "पड-कर-गय-रज-धरम-क",
+    "slug": "pando-kr-gye-raj-dhrm-ko",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2441,12 +2441,12 @@
     "verseNumber": 97
   },
   {
-    "id": "चल-सख-वनदवन-चलय-महन-बल-बजव-र",
+    "id": "chlo-skhi-vrindavn-chliye-mohn-belu-bjave-ri",
     "collectionId": "chandrasakhi-padavali",
     "index": 98,
     "titleDevanagari": "चलो सखी वृन्दावन चलिये, मोहन बेलु बजावे री ॥",
     "author": "चन्द्रसखी जी",
-    "slug": "चल-सख-वनदवन-चलय-महन-बल-बजव-र",
+    "slug": "chlo-skhi-vrindavn-chliye-mohn-belu-bjave-ri",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2657,12 +2657,12 @@
     "verseNumber": 105
   },
   {
-    "id": "कय-कर-अनख-बन-रसय-हर-म",
+    "id": "kya-krai-anokhe-ban-rsiya-hori-men",
     "collectionId": "chandrasakhi-padavali",
     "index": 106,
     "titleDevanagari": "क्या करै अनोखे बान रसिया होरी में ।।",
     "author": "चन्द्रसखी जी",
-    "slug": "कय-कर-अनख-बन-रसय-हर-म",
+    "slug": "kya-krai-anokhe-ban-rsiya-hori-men",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -3204,12 +3204,12 @@
     "verseNumber": 126
   },
   {
-    "id": "इक-चचल-नर-अट-चढ़क-मर-मर-दबर-धर-क",
+    "id": "ik-chnchl-nari-ata-chke-mere-mari-dubara-dhr-ke",
     "collectionId": "chandrasakhi-padavali",
     "index": 127,
     "titleDevanagari": "इक चंचल नारी अटा चढ़के मेरे मारी दुबारा धर के ।।",
     "author": "चन्द्रसखी जी",
-    "slug": "इक-चचल-नर-अट-चढ़क-मर-मर-दबर-धर-क",
+    "slug": "ik-chnchl-nari-ata-chke-mere-mari-dubara-dhr-ke",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -3228,12 +3228,12 @@
     "verseNumber": 127
   },
   {
-    "id": "लल-रसमत-खल-हर",
+    "id": "lal-rsmato-khelai-hori",
     "collectionId": "chandrasakhi-padavali",
     "index": 128,
     "titleDevanagari": "लाल रसमातो खेलै होरी ।।",
     "author": "चन्द्रसखी जी",
-    "slug": "लल-रसमत-खल-हर",
+    "slug": "lal-rsmato-khelai-hori",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -3255,12 +3255,12 @@
     "verseNumber": 128
   },
   {
-    "id": "आज-बरज-म-हर-र-रसय-चनदरसख",
+    "id": "aaj-birj-men-hori-re-rsiya",
     "collectionId": "chandrasakhi-padavali",
     "index": 129,
     "titleDevanagari": "आज बिरज में होरी रे रसिया (चन्द्रसखी )",
     "author": "चन्द्रसखी जी",
-    "slug": "आज-बरज-म-हर-र-रसय-चनदरसख",
+    "slug": "aaj-birj-men-hori-re-rsiya",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -3954,12 +3954,12 @@
     "verseNumber": 156
   },
   {
-    "id": "नच-नदलल-नचव-वक-मय-चनदरसख",
+    "id": "nache-nndlal-nchave-vaki-maiya",
     "collectionId": "chandrasakhi-padavali",
     "index": 157,
     "titleDevanagari": "नाचे नंदलाल नचावे वाकी मैया । (चन्द्रसखी)",
     "author": "चन्द्रसखी जी",
-    "slug": "नच-नदलल-नचव-वक-मय-चनदरसख",
+    "slug": "nache-nndlal-nchave-vaki-maiya",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -4456,12 +4456,12 @@
     "verseNumber": 176
   },
   {
-    "id": "नर-गर-द-गई-व-मई-ह-ह-हर-आई",
+    "id": "nari-gari-de-gee-ve-maee-ho-ho-hori-aaee",
     "collectionId": "chandrasakhi-padavali",
     "index": 177,
     "titleDevanagari": "नारी गारी दे गई वे माई हो हो होरी आई ।।",
     "author": "चन्द्रसखी जी",
-    "slug": "नर-गर-द-गई-व-मई-ह-ह-हर-आई",
+    "slug": "nari-gari-de-gee-ve-maee-ho-ho-hori-aaee",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -4512,12 +4512,12 @@
     "verseNumber": 178
   },
   {
-    "id": "छल-य-आज-रग-म-बर-र-एर-सख-लगय-हमर-दव-चनदरसख",
+    "id": "chhaila-ye-aaj-rng-men-boro-ri-eri-skhi-lagyau-hmaro-danv",
     "collectionId": "chandrasakhi-padavali",
     "index": 179,
     "titleDevanagari": "छैला ये आज रंग में बोरो री एरी सखी लाग्यौ हमारो दाँव ।।(चन्द्रसखी)",
     "author": "चन्द्रसखी जी",
-    "slug": "छल-य-आज-रग-म-बर-र-एर-सख-लगय-हमर-दव-चनदरसख",
+    "slug": "chhaila-ye-aaj-rng-men-boro-ri-eri-skhi-lagyau-hmaro-danv",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -5124,12 +5124,12 @@
     "verseNumber": 202
   },
   {
-    "id": "य-छव-क-उपम-क-दज",
+    "id": "ya-chhvi-ki-upma-ko-dijai",
     "collectionId": "chandrasakhi-padavali",
     "index": 203,
     "titleDevanagari": "या छवि की उपमा को दीजै",
     "author": "चन्द्रसखी जी",
-    "slug": "य-छव-क-उपम-क-दज",
+    "slug": "ya-chhvi-ki-upma-ko-dijai",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -5601,12 +5601,12 @@
     "verseNumber": 220
   },
   {
-    "id": "म-दध-बचन-जत-वनदवन-चख-लत-गपल-गलन-म-दह",
+    "id": "main-ddhi-bechn-jat-vrindavn-chkhi-let-gupal-glin-men-dhi",
     "collectionId": "chandrasakhi-padavali",
     "index": 221,
     "titleDevanagari": "मैं दधि बेचन जात वृन्दावन चखी लेत गुपाल गलिन में दही ।।",
     "author": "चन्द्रसखी जी",
-    "slug": "म-दध-बचन-जत-वनदवन-चख-लत-गपल-गलन-म-दह",
+    "slug": "main-ddhi-bechn-jat-vrindavn-chkhi-let-gupal-glin-men-dhi",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -5652,12 +5652,12 @@
     "verseNumber": 222
   },
   {
-    "id": "बरजमडल-दस-दखय-रसय-बरजमडल-चनदरसख",
+    "id": "brjmndl-des-dikhay-rsiya-brjmndl",
     "collectionId": "chandrasakhi-padavali",
     "index": 223,
     "titleDevanagari": "ब्रजमंडल देस दिखाय रसिया ब्रजमंडल ( चन्द्रसखी)",
     "author": "चन्द्रसखी जी",
-    "slug": "बरजमडल-दस-दखय-रसय-बरजमडल-चनदरसख",
+    "slug": "brjmndl-des-dikhay-rsiya-brjmndl",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -5676,12 +5676,12 @@
     "verseNumber": 223
   },
   {
-    "id": "मनमहन-क-रझवर-पयर-तर-नन-सलन",
+    "id": "mnmohn-ki-rijhvar-pyari-tere-nain-slone",
     "collectionId": "chandrasakhi-padavali",
     "index": 224,
     "titleDevanagari": "मनमोहन की रिझवार प्यारी तेरे नैन सलोने ।।",
     "author": "चन्द्रसखी जी",
-    "slug": "मनमहन-क-रझवर-पयर-तर-नन-सलन",
+    "slug": "mnmohn-ki-rijhvar-pyari-tere-nain-slone",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6028,12 +6028,12 @@
     "verseNumber": 237
   },
   {
-    "id": "अर-सख-चल-वनदवन-धम",
+    "id": "are-skhi-chl-vrindavn-dham",
     "collectionId": "chandrasakhi-padavali",
     "index": 238,
     "titleDevanagari": "अरे सखी चल वृन्दावन धाम",
     "author": "चन्द्रसखी जी",
-    "slug": "अर-सख-चल-वनदवन-धम",
+    "slug": "are-skhi-chl-vrindavn-dham",
     "verses": [
       {
         "stanzaNumber": 1,

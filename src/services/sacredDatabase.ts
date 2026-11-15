@@ -20,6 +20,19 @@ import feedTabsData from '../data/feedTabs.json';
 import { SacredPad, ScriptureHierarchyData, ChapterInfo, AuthorHierarchyInfo, EpicIndexData } from '../types/devotional';
 import { normalizeEpicChapterSlug } from '../utils/epicSlugs';
 
+let legacySlugRedirectsCache: Record<string, string> | null = null;
+async function resolveLegacySlug(slugOrId: string): Promise<string> {
+  if (!legacySlugRedirectsCache) {
+    try {
+      const mod = await import('../data/legacySlugRedirects.json');
+      legacySlugRedirectsCache = (mod.default || mod) as Record<string, string>;
+    } catch {
+      legacySlugRedirectsCache = {};
+    }
+  }
+  return legacySlugRedirectsCache[slugOrId] || slugOrId;
+}
+
 export interface CanonicalGrantha {
   id: string;
   name: string;
@@ -621,6 +634,20 @@ export const SacredDatabase = {
             requestedGrantha = urlParams.get('grantha');
             requestedPad = urlParams.get('pad');
             requestedAuthor = urlParams.get('author');
+
+            const pathname = window.location.pathname;
+            if (!requestedGrantha && pathname.startsWith('/grantha/')) {
+              const segs = pathname.slice('/grantha/'.length).split('/').filter(Boolean);
+              if (segs.length > 0) requestedGrantha = decodeURIComponent(segs[0]);
+            }
+            if (!requestedPad && pathname.startsWith('/pad/')) {
+              const segs = pathname.slice('/pad/'.length).split('/').filter(Boolean);
+              if (segs.length > 0) requestedPad = decodeURIComponent(segs[0]);
+            }
+            if (!requestedAuthor && pathname.startsWith('/sant/')) {
+              const segs = pathname.slice('/sant/'.length).split('/').filter(Boolean);
+              if (segs.length > 0) requestedAuthor = decodeURIComponent(segs[0]);
+            }
           } catch {}
         }
 
@@ -636,7 +663,7 @@ export const SacredDatabase = {
         } else {
           // Sanctuary home default: only hydrate seed collection if no specific target requested
           const hitPadas = padasByGrantha.get('hit-chaurasi');
-          if (!hitPadas || hitPadas.length < 300 || !hitPadas[0]?.chapterId) {
+          if (!hitPadas || hitPadas.length < 80 || !hitPadas[0]?.chapterId) {
             const currentHitMeta = activeManifest?.granthas?.['hit-chaurasi'];
             const targetFile = currentHitMeta?.file || 'hit-chaurasi.json';
             const cacheKey = currentHitMeta?.hash ? `vrind_grantha_hit-chaurasi_${currentHitMeta.hash}` : 'vrind_grantha_hit-chaurasi';
@@ -1006,8 +1033,23 @@ export const SacredDatabase = {
    * Single Pada On-Demand Fetcher (0.65 KB / 650 bytes per read)
    * Level 1: Memory -> Level 2: IndexedDB -> Level 3: Supabase targeted 1-row select
    */
-  async fetchPadBySlug(slug: string): Promise<SacredPad | undefined> {
-    if (!slug) return undefined;
+  async fetchPadBySlug(rawSlug: string): Promise<SacredPad | undefined> {
+    if (!rawSlug) return undefined;
+    const cleanDecoded = (() => {
+      try {
+        return decodeURIComponent(rawSlug).trim().toLowerCase();
+      } catch {
+        return rawSlug.trim().toLowerCase();
+      }
+    })();
+    let slug = rawSlug;
+    if (!padasBySlug.has(slug) && !padasById.has(slug) && !padasBySlug.has(cleanDecoded)) {
+      const redirected = await resolveLegacySlug(cleanDecoded);
+      if (redirected !== cleanDecoded) {
+        slug = redirected;
+      }
+    }
+
     const existing = this.getPadById(slug);
     const hasFullVerses =
       existing &&
@@ -1084,6 +1126,16 @@ export const SacredDatabase = {
 
       const byDecodedId = padasById.get(decoded);
       if (byDecodedId) return byDecodedId;
+
+      if (legacySlugRedirectsCache) {
+        const redirectedSlug =
+          legacySlugRedirectsCache[identifier] ||
+          legacySlugRedirectsCache[decoded];
+        if (redirectedSlug) {
+          const byRedirect = padasBySlug.get(redirectedSlug) || padasById.get(redirectedSlug);
+          if (byRedirect) return byRedirect;
+        }
+      }
     } catch {}
 
     // 4. Case-insensitive / slug match fallback

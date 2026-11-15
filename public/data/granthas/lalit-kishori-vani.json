@@ -115,7 +115,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग गौरी)",
           "जै जै श्रीबनराज हमारे। [1]",
           "जिनकी कृपा बिहार बिलोकयौ श्रीहरिदास सम्हारे॥ [2]",
           "छिन छिन नई नई प्रीति प्रिया की प्राननि हूँ तें प्यारे। [3]",
@@ -126,7 +125,8 @@
     ],
     "chapterId": "ch-सिद्धान्त के पद",
     "chapterName": "सिद्धान्त के पद",
-    "verseNumber": 114
+    "verseNumber": 114,
+    "rag": "गौरी"
   },
   {
     "id": "shesha-o-suresha-tyon-ganesha-shri-lalit-kishori-abhilash-madhuri-shiksha-patrika-28",
@@ -648,7 +648,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग झँझोटी)",
           "श्रीराधारानी श्रीवन दृग दरसावौ।",
           "अंकित पग मग धूरि विपिनकी, मम अंगन परसावौ॥ [1]",
           "ललित किशोरी रसिक लाल संग, सुरतिरंग बरसावौ।",
@@ -659,7 +658,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 15
+    "verseNumber": 15,
+    "rag": "झँझोटी"
   },
   {
     "id": "shri-vrindavanraj-darsavai-soi-shri-lalit-kishori-abhilash-madhuri",
@@ -672,7 +672,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग जिला)",
           "श्री वृंदावनरज दरसावै सोई हितू हमारा है।",
           "राधा मोहन छवी छकावै सोई प्रीतम प्यारा है॥ [1]",
           "कालिंदी जल पान करावै सो उपकारी सारा है।",
@@ -683,7 +682,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 21
+    "verseNumber": 21,
+    "rag": "जिला"
   },
   {
     "id": "shri-vrindavan-vaas-dijiye-ab-yehi-humari-asha-hai-pad-by-shri-lalit-kishori",
@@ -696,7 +696,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग जिला)",
           "श्री वृन्दावन वास दीजिये, अब यही हमारी आशा है।",
           "यमुना तीर सुछाय माधुरी, जहँ रसिकों का वासा है॥ [1]",
           "सेवाकुञ्ज मनोहर निधि वन, जहाँ इक रस बारो मासा है।",
@@ -707,7 +706,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 22
+    "verseNumber": 22,
+    "rag": "जिला"
   },
   {
     "id": "kaun-chuk-chit-dhari-swamini-jo-mam-surati-visari-shri-lalit-kishori-abhilash-madhuri-vinay-25",
@@ -720,7 +720,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग देस उतरी)",
           "कौन चूक चित धरी स्वामिनी जो मम सुरति विसारी। [1]",
           "निज सेवा तें छेंकि दई हा श्रीवनतें करी न्यारी॥ [2]",
           "जद्यपि नहिं उचित कछु कहिवो दुख नहिं जात सहारी। [3]",
@@ -731,7 +730,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 25
+    "verseNumber": 25,
+    "rag": "देस उतरी"
   },
   {
     "id": "aba-vilamba-jina-karahu-ladili-shri-lalit-kishori-abhilash-madhuri",
@@ -744,7 +744,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग देस उतरी)",
           "अब विलम्ब जिन करहुँ लाड़िली कृपा दृष्टि टुक हेरो।",
           "यमुना पुलिन गलिन गहवर की बिचरू साँज सवेरो॥",
           "निसि दिन निरखूँ युगल माधुरी रसिकनते भव भेरो।",
@@ -755,7 +754,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 26
+    "verseNumber": 26,
+    "rag": "देस उतरी"
   },
   {
     "id": "radhe-bahut-bhai-ab-maaf-karo-shri-lalit-kishori-abhilash-madhuri-vinay-27",
@@ -768,7 +768,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सोरठि)",
           "राधे बहुत भई अब माफ़ करो।",
           "श्री वृंदावन सुख दरसावहु ऊक चूक उरमें न धरो॥ [1]",
           "अपनो करि जन नाहिं निवारो ता प्रणतें अवहू न टरो।",
@@ -779,7 +778,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 27
+    "verseNumber": 27,
+    "rag": "सोरठि"
   },
   {
     "id": "krishnradhika-kund-ko-hvai-hon-kabhun-neer-shri-lalit-kishori-abhilash-madhuri-vinay-54",
@@ -938,7 +938,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग भैरवी)",
           "प्यारीजू कौन तिहारी खोट।",
           "मोसों वनी न कछु वै स्वामिनि, हों औगुनकी मोट॥ [1]",
           "श्रीवन दरस दिखायके राधे, मेटो जियकी चोट।",
@@ -949,7 +948,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 68
+    "verseNumber": 68,
+    "rag": "भैरवी"
   },
   {
     "id": "pyari-ju-kaun-tihari-khot-shri-lalit-kishori-abhilash-madhuri-vinay-68",
@@ -962,7 +962,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग भैरवी)",
           "प्यारी जू कौन तिहारी खोट।",
           "मोसों बनी न कछु वै स्वामिनी हौं औगुन की मोट॥ [1]",
           "श्रीवन दरस दिखायके राधे मेटो जियकी चोट।",
@@ -973,7 +972,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 68
+    "verseNumber": 68,
+    "rag": "भैरवी"
   },
   {
     "id": "bolau-ban-radhe-sukharasi-shri-lalit-kishori-abhilash-madhuri-vinay-69",
@@ -986,7 +986,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग भैरवी)",
           "बोलौ बन राधे सुखरासी।",
           "मेरे औगुन कितक लाडिली, तुम अपार करुना की रासी॥ [1]",
           "ललितकिशोरी तजौ न मोकों, चहूँ ओर ह्वैहै तुव हांसी।",
@@ -997,7 +996,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 69
+    "verseNumber": 69,
+    "rag": "भैरवी"
   },
   {
     "id": "bhramari-hvai-kab-dolihaun-shri-vrindavan-gail-shri-lalit-kishori-abhilash-madhuri-vinay-70",
@@ -1031,7 +1031,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग मालकौस)",
           "मोसों नाहिं कछुक बनिआई।",
           "हों सदैव औगुनकी भाजन, कूटि कूटि करि भरी बुराई॥ [1]",
           "हाहा कृपाकरौं स्वामिनि अब, तुव पदपंकज में शिर नाई।",
@@ -1042,7 +1041,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 73
+    "verseNumber": 73,
+    "rag": "मालकौस"
   },
   {
     "id": "mili-hai-angadhaar-hvai-shri-ban-bithin-dhoor-braj-ke-sevaiya",
@@ -1117,7 +1117,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग मालकोश)",
           "मोकों आस स्वामिनी तेरी।",
           "करे पान विन जुगुलमाधुरी तलफत अंखियां मीनसी मेरी॥ [1]",
           "परवस प्राण परो नहिं निकसत श्रीवन दरस हिये उरझेरी।",
@@ -1128,7 +1127,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 75
+    "verseNumber": 75,
+    "rag": "मालकोश"
   },
   {
     "id": "suman-vatikavipin-mein-hvaihaun-kabahoon-phool-shri-lalit-kishori-abhilash-madhuri-vinay-78",
@@ -1162,7 +1162,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग जंगला)",
           "स्वामिनि हौं पतितन शिरताज।",
           "तेरी जगत कहाय बिमुख ज्यों, डोलत लगत न लाज॥ [1]",
           "श्रीवन बेगि बसाय उबारो, नाहिंन परम अकाज।",
@@ -1173,7 +1172,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 81
+    "verseNumber": 81,
+    "rag": "जंगला"
   },
   {
     "id": "aho-viharini-lalit-ladaiti-mama-apradh-na-mana-mein-dhaaro-pada-written-by-shri-lalit-kishori",
@@ -1186,7 +1186,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग परज)",
           "अहो विहारनि ललित लड़ैती, मम अपराध न मन में धारो।",
           "अपनी जानी मानी दासी वलि, कृपा विलोकनि नेक निहारो॥ [1]",
           "श्रीवन कुञ्ज कुटीर कोन में, ललित किशोरी मौकों डारो।",
@@ -1197,7 +1196,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 82
+    "verseNumber": 82,
+    "rag": "परज"
   },
   {
     "id": "aho-ladaiti-pranpiyari-shrivan-shri-lalit-kishori-abhilash-madhuri-vinay-83",
@@ -1210,7 +1210,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग परज)",
           "अहो लडैति प्राणपियारी, श्रीवन कवै बसावोगी।",
           "रसिकराय प्रीतम संग राधे, मधुरी तान सुनावोगी॥ [1]",
           "दोना ललित कदम के माहीं, दधि मेरे कर पावोगी।",
@@ -1221,7 +1220,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 83
+    "verseNumber": 83,
+    "rag": "परज"
   },
   {
     "id": "aho-ladaiti-praan-piyari-shrivan-kabai-basavogi-shri-lalit-kishori-abhilash-madhuri",
@@ -1255,7 +1255,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग परज)",
           "येहो स्वामिनि गजगामिनि मनभामिनि, रसिया लाल तिहारो। [1]",
           "करुनादीठ नीठ अवलोको, दीनदसा मेरी निरवारो॥ [2]",
           "ललितकिशोरी श्रीवनवीथिन, रेनु बनाय सीस पग धारो। [3]",
@@ -1266,7 +1265,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 84
+    "verseNumber": 84,
+    "rag": "परज"
   },
   {
     "id": "vrindavan-dham-niko-vrajako-vishram-niko-shri-lalit-kishori-abhilash-madhuri-vinay-85",
@@ -1279,7 +1279,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग खम्माच चौताला)",
           "वृन्दावनधाम नीको व्रजको विश्राम नीको।",
           "श्यामाश्याम नाम नीको मन्दिर आनंदको॥ [1]",
           "कालीदह न्हान नीको रेनुकाको खान नीको।",
@@ -1289,13 +1288,14 @@
           "नील पीत पट नीको वंशीवट तट नीको।",
           "ललितकिशोरी नीकी नटनी को नंद को॥ [4]",
           "- श्री ललित किशोरी, अभिलाष माधुरी, विनय (85)",
-          "(राग खम्माच चौताल) वृन्दावनधाम निको व्रजको विश्राम निको। श्यामाश्याम नाम निको मंदिर अन्नदाको.. [1] कालीदह नाहन निको रेनुकाको खान निको। यमुना का स्वाद अच्छा नहीं, मुझे नंदको प्रिय है। [2] राधाकृष्ण कुंड मेरे बच्चों के लिए अच्छा नहीं है। गौरश्याम रंग निको अंग जुगछंद को.. [3] निल पित पट निको वंशीवत तत् निको। ललित किशोरी से निक्की नटाणी.. [4] - श्री ललित किशोरी, अभिलाष माधुरी, विनय (85)"
+          "वृन्दावनधाम निको व्रजको विश्राम निको। श्यामाश्याम नाम निको मंदिर अन्नदाको.. [1] कालीदह नाहन निको रेनुकाको खान निको। यमुना का स्वाद अच्छा नहीं, मुझे नंदको प्रिय है। [2] राधाकृष्ण कुंड मेरे बच्चों के लिए अच्छा नहीं है। गौरश्याम रंग निको अंग जुगछंद को.. [3] निल पित पट निको वंशीवत तत् निको। ललित किशोरी से निक्की नटाणी.. [4] - श्री ललित किशोरी, अभिलाष माधुरी, विनय (85)"
         ]
       }
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 85
+    "verseNumber": 85,
+    "rag": "खम्माच चौताल"
   },
   {
     "id": "vrindavan-dham-neeko-braj-ko-vishram-neeko-lalit-kishori-neeko-nat-neeko-nand-ko-shri-lalit-kishori",
@@ -1330,7 +1330,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग खमांच चौताला)",
           "वृन्दावन धाम नीकौ बृज कौ विश्राम नीकौ,",
           "श्यामा श्याम नाम नीकौ मन्दिर अनंद कौ।",
           "कालीदह न्हन नीकौ यमुना पयपान नीकौ,",
@@ -1340,13 +1339,14 @@
           "नील पीतपट नीकौ बंसीवट तट नीकौ,",
           "ललित किशोरी नीकी नट नीकौ नंद कौ॥",
           "- श्री ललित किशोरी, अभिलाष माधुरी, विनय (85)",
-          "(राग खमांच चौताल) वृन्दावन धाम निकौ बृज कौ विश्राम निकौ, श्यामा श्याम नाम निकौ मंदिर आनंद कौ। कालीदह नहं निकौ यमुना पयपन निकौ, रेणुका कौ खान निकौ स्वाद मनौ कुंड निकौ.. राधाकृष्ण कुंड निकौ, संतान कौ संग निकौ, गौरश्याम रंग निकौ अंग जुग चंद निकौ। नील पितापत निकौ बंसीवत तत् निकौ, ललित किशोरी निकी नट निकौ नंद कौ.. - श्री ललित किशोरी, अभिलाष माधुरी, विनय (85)"
+          "वृन्दावन धाम निकौ बृज कौ विश्राम निकौ, श्यामा श्याम नाम निकौ मंदिर आनंद कौ। कालीदह नहं निकौ यमुना पयपन निकौ, रेणुका कौ खान निकौ स्वाद मनौ कुंड निकौ.. राधाकृष्ण कुंड निकौ, संतान कौ संग निकौ, गौरश्याम रंग निकौ अंग जुग चंद निकौ। नील पितापत निकौ बंसीवत तत् निकौ, ललित किशोरी निकी नट निकौ नंद कौ.. - श्री ललित किशोरी, अभिलाष माधुरी, विनय (85)"
         ]
       }
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 85
+    "verseNumber": 85,
+    "rag": "खमांच चौताल"
   },
   {
     "id": "jugal-roop-ras-chatak-nain-radha-nandkishor-mile-bin-lalit-kishori-parat-na-chain-shri-lalit-kishori-abhilash-madhuri",
@@ -1380,7 +1380,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग लावनी)",
           "अष्टसिद्धि नवनिधि के सुखको वेपरवाहि लुटावेंगे।",
           "चौदोभवन त्रिलोकी संपति वायें हाथ वहावेंगे॥ [1]",
           "ललितकिशोरी जब श्रीवनमें कुंज वसेरो पावेंगे।",
@@ -1391,7 +1390,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 119
+    "verseNumber": 119,
+    "rag": "लावनी"
   },
   {
     "id": "tanman-hamaro-so-to-sabahi-ladaitiju-ko-shri-lalit-kishori-abhilash-madhuri-vinay-123",
@@ -1404,7 +1404,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग जैजैवंती)",
           "तनमन हमारो सो तो सबही लडैतीजू को,",
           "जीवन हमारो वृषभानुजा दुलारी हैं। [1]",
           "अधर अमृत पान रसना ललचाई,",
@@ -1419,7 +1418,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 123
+    "verseNumber": 123,
+    "rag": "जैजैवंती"
   },
   {
     "id": "kavadhau-kripa-ladili-hvahi-hai-shri-lalit-kishori-abhilash-madhuri-vinay-124",
@@ -1432,7 +1432,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग खम्माच)",
           "कवधौं कृपा लाड़िली ह्वै है, श्रीवन माहिं वसौंरी।",
           "श्यामाश्याम महाछवि अनुपम, इन नैनन निरखौंरी॥ [1]",
           "दै गलवांह जुगुलवर राजैं, हों यह सुखै लहौंरी।",
@@ -1443,7 +1442,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 124
+    "verseNumber": 124,
+    "rag": "खम्माच"
   },
   {
     "id": "jota-nainan-mein-yugal-yugal-jag-dikhe-shri-lalit-kishori-abhilash-madhuri",
@@ -1563,7 +1563,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग पूर्वी)",
           "यह अभिलाष लडैती मोरी,",
           "तुम लालन संग मुदित विराजौ, मोहिं करौ मुखचंद चकोरी॥ [1]",
           "देहु कृपा करि बेगी छबीली, ललित किशोरी मान निहोरी।",
@@ -1574,7 +1573,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 179
+    "verseNumber": 179,
+    "rag": "पूर्वी"
   },
   {
     "id": "ye-abhilaash-ladaitee-moree-tum-laalan-sang-mudit-viraajau-mohin-karau-mukhachand-chakoree-shri-lalit-kishori",
@@ -1711,7 +1711,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग देस)",
           "राधा नाम ही सों काम।",
           "राधा नाम परम धन मेरे कल्पद्रुम अभिराम ॥",
           "राधा नाम लिए सुख दरसे श्री वृन्दावन धाम।",
@@ -1722,7 +1721,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 201
+    "verseNumber": 201,
+    "rag": "देस"
   },
   {
     "id": "radha-naam-son-chit-raanch-shri-lalit-kishori-abhilash-madhuri-vinay-202",
@@ -1735,7 +1735,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग देस)",
           "राधा नाम सों चित रांच।",
           "राधा नाम रेख सुचि रुचिसों, अंतस कागद खांच। [1]",
           "राधा नाम अंक आभूषन भूषित कर अँग नाच।",
@@ -1746,7 +1745,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 202
+    "verseNumber": 202,
+    "rag": "देस"
   },
   {
     "id": "radha-namahi-son-nato-shri-lalit-kishori-abhilash-madhuri-vinay-203",
@@ -1759,7 +1759,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग देस)",
           "राधा नामही सों नातो।",
           "जाके नाम लेत प्रीतम सों परत प्रीत को खातो॥ [1]",
           "जो विश्वासै ललितकिशोरी पहिले तं मन लातो।",
@@ -1770,7 +1769,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 203
+    "verseNumber": 203,
+    "rag": "देस"
   },
   {
     "id": "radha-naam-ko-ur-dhar-pada-written-by-shri-lalit-kishori-abhilash-madhuri",
@@ -1783,7 +1783,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग देस)",
           "राधा नाम को उर धार,",
           "मिलहिं रसिक मुकुटमणि मोहन आपहिं कुंजन द्वार,",
           "आठों जाम छकेंगी अँखियाँ छवि निकुंज विहार,",
@@ -1794,7 +1793,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 204
+    "verseNumber": 204,
+    "rag": "देस"
   },
   {
     "id": "radha-naam-ko-aadhar",
@@ -1848,7 +1848,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग देस)",
           "राधा नाम को आराध ।",
           "साधन अन्य त्यागिके मनुवां याही को दृढ़ साध॥",
           "मिलिहैं ललित किशोरी नागर शोभा सिंधु अगाध ।",
@@ -1859,7 +1858,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 207
+    "verseNumber": 207,
+    "rag": "देस"
   },
   {
     "id": "radha-nam-adabhut-chand-shri-lalit-kishori-abhilash-madhuri-vinay-216",
@@ -1872,7 +1872,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग देस)",
           "राधा नाम अदभुत चंद।",
           "वरसत नित शृंगार सुधारस",
           "सरसत अमित अनंद॥ [1]",
@@ -1886,7 +1885,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 216
+    "verseNumber": 216,
+    "rag": "देस"
   },
   {
     "id": "pad-raj-taj-kimi-shri-lalit-kishori-abhilash-madhuri",
@@ -1899,7 +1899,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग तोड़ी जौनपुरी / राग काफ़ी)",
           "पद रज तज किमि आस करत हो, जोग जग्य तप साधा की। [1]",
           "सुमिरत होय मुख आनन्द अति, जरन हरन दुःख बाधा की॥ [2]",
           "ललित किशोरी शरण सदा रहु, सोभा सिन्धु अगाधा की। [3]",
@@ -1910,7 +1909,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 219
+    "verseNumber": 219,
+    "rag": "तोड़ी जौनपुरी / राग काफ़ी"
   },
   {
     "id": "gail-shrivrindavanki-gahiye-shri-lalit-kishori-abhilash-madhuri-vinay-228",
@@ -1923,7 +1923,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग देस)",
           "गैल श्रीवृन्दावनकी गहिये।",
           "सेवाकुंज कौनमें बैठे जुगुललाल छवि लहिये॥ [1]",
           "रसिकनके पग चांपि हुलसिये श्यामगौर मुख कहिये।",
@@ -1934,7 +1933,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 228
+    "verseNumber": 228,
+    "rag": "देस"
   },
   {
     "id": "jab-shrivan-vas-milo-sajanee-shri-lalit-kishori-abhilash-madhuri-233",
@@ -1947,7 +1947,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग जिला झिंझोटी)",
           "जब श्रीवनवास मिलो सजनी, तब तीरथ आन गए न गए।",
           "जब लाड़लीलाल को नाम लयो, तव नाम न आन लये न लये॥ [1]",
           "पदकंज किशोरीहि चित्त पग्यो, तव पायन आन नए न नए।",
@@ -1958,7 +1957,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 233
+    "verseNumber": 233,
+    "rag": "जिला झिंझोटी"
   },
   {
     "id": "jugal-lal-chavi-ati-kathin-sapne-hu-na-dikhay-nischay-mile-su-tasu-jo-shri-vrindavan-jaaye-shri-lalit-kishori-abhilash-madhuri",
@@ -1992,7 +1992,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग जंगला)",
           "कर सखि वृंदावन सों हेत।",
           "तजि परपंच अरुन हरियारे कारे पीरे सेत॥ [1]",
           "ललितकिशोरी लालरुप लख वननिकुंज संकेत।",
@@ -2003,7 +2002,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 240
+    "verseNumber": 240,
+    "rag": "जंगला"
   },
   {
     "id": "vrindavanson-neh-lagaiye-shri-lalit-kishori-shri-lalit-kishori-dev-ju-ki-vani",
@@ -2016,7 +2016,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग जंगला)",
           "वृन्दावनसों नेह लगैये ।",
           "काम क्रोध आदिक जमदूतन मुख विदुकाय परमपद पैये॥",
           "रटिरटि राधारमन ध्यानधरि तुरत पाप तनताप नसैये ।",
@@ -2027,7 +2026,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 241
+    "verseNumber": 241,
+    "rag": "जंगला"
   },
   {
     "id": "vrindavan-ki-chah-karo-shri-lalit-kishori-abhilash-madhuri",
@@ -2061,7 +2061,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग षत)",
           "मनुवां शीख हमारी है ।",
           "चूर चूर ह्वै ब्रजरज मिलिये येही शोभा सारी है॥",
           "सोता है बेहोस पड़ा क्या चलने की तैयारी है ।",
@@ -2072,7 +2071,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 246
+    "verseNumber": 246,
+    "rag": "षत"
   },
   {
     "id": "soye-soye-sabkaam-bigara-shri-lalit-kishori-abhilas-madhuri",
@@ -2085,7 +2085,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग खिमटासिंधुका)",
           "सोय सोय सबकाम विगारा ।",
           "गौरशयामरसरूप न चाखा जुगुललाल अस नाम विसारा॥",
           "ललितकिशोरी श्रीवृन्दावन सो धनहूँ ना चित्त सम्हारा ।",
@@ -2096,7 +2095,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 250
+    "verseNumber": 250,
+    "rag": "खिमटासिंधुका"
   },
   {
     "id": "vrindavan-chal-jayie-chadhi-sakal-jag-vyadhi-radhey-radhey-gayie-shri-radhey-pal-aaadhi-shri-lalit-kishori-abhilash-madhuri",
@@ -2151,7 +2151,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग जैजैवंती)",
           "मेरे मनहिं हुलास स्वामिनी, श्रीवन सुरख लहोंगी। [1]",
           "कोर कटाक्ष विहारिनि तेरे, निधुवन कोन गहोंगी॥ [2]",
           "कवहुँक सेवाकुंज कदमतर, राधा नाम कहोंगी। [3]",
@@ -2162,7 +2161,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 282
+    "verseNumber": 282,
+    "rag": "जैजैवंती"
   },
   {
     "id": "vrindavan-ko-jana-hai-le-vrindavan-ko-jana-hai-lalit-kishori-ne-drid-kar-ab-yeh-hi-mann-mein-thana-hai-shri-lalit-kishori",
@@ -2196,7 +2196,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग जिला)",
           "वृदावनको जाना हेली वृदावन को जाना है।",
           "रसिक रँगीले राधामोहन तिनसों दिल लहिराना है॥ [1]",
           "ललितकिशोरी ने दृढकर अब येही मनमें ठाना है।",
@@ -2207,7 +2206,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 288
+    "verseNumber": 288,
+    "rag": "जिला"
   },
   {
     "id": "ek-nahin-maneinge-ab-hum-vrindavan-shri-lalit-kishori-abhilash-madhuri-vinay-289",
@@ -2241,7 +2241,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग जैजैवंती)",
           "मैं दासी अपनी राधा की",
           "करत खवासी जो रुचि पावत। [1]",
           "सूधे वचन न बोलत सपनेहु",
@@ -2256,7 +2255,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 291
+    "verseNumber": 291,
+    "rag": "जैजैवंती"
   },
   {
     "id": "aisi-ko-karihai-shri-radha-shri-lalit-kishori-abhilash-madhuri-vinay-292",
@@ -2269,7 +2269,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग ईमन)",
           "ऐसी को करिहै श्रीराधा।",
           "मेट्यो तिमिर हिये दासी को, कहत नाम निज आधा॥ [1]",
           "‘ललितकिशोरी’ चरन उपासन, जो काहू दृढ़ साधा।",
@@ -2280,7 +2279,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 292
+    "verseNumber": 292,
+    "rag": "ईमन"
   },
   {
     "id": "shri-nidhiban-ras-ki-khaanni-hain-shri-lalit-kishori-dev-shri-lalit-kishori-dev-ju-ki-vani-siddhant-ki-saakhi-47",
@@ -3140,7 +3140,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग बसंत)",
           "आजु बधाई श्रीवृन्दावन।",
           "कुंजमहल श्रीबिहारी बिहारिनि केलि करत छिनही छिन॥ [1]",
           "श्रीहरिदासी जू लाड़ लड़ावति इनही कौ ये हैं धन।",
@@ -3151,7 +3150,8 @@
     ],
     "chapterId": "ch-रस के पद",
     "chapterName": "रस के पद",
-    "verseNumber": 63
+    "verseNumber": 63,
+    "rag": "बसंत"
   },
   {
     "id": "humari-ladaiti-sahibini-shri-lalit-kishori-abhilash-madhuri",
@@ -3742,7 +3742,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग गौरी)",
           "हमारो महल सदा सुखदाई।",
           "प्रिया लाल कों रंग बढ़ावत छिन छिन प्रीति सवाई॥",
           "छलकत छींट परी आनंद की ब्रज में नाँहि समाई।",
@@ -3753,7 +3752,8 @@
     ],
     "chapterId": "ch-सिद्धांत के पद",
     "chapterName": "सिद्धांत के पद",
-    "verseNumber": 39
+    "verseNumber": 39,
+    "rag": "गौरी"
   },
   {
     "id": "ladaiti-ju-suniye-baat-hamaari-shri-lalit-kishori-dev-shri-lalit-kishori-dev-ju-ki-vani-41",
@@ -3833,7 +3833,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग गौरी)",
           "जय जय श्री वृन्दावन चन्द।",
           "महारूप सुखरासि छवीले, नित ही विहरत आनंद-कंद॥",
           "जामें वसि जे अनंत देत चित, तेई हैं मति-मंद।",
@@ -3844,7 +3843,8 @@
     ],
     "chapterId": "ch-सिद्धांत के पद",
     "chapterName": "सिद्धांत के पद",
-    "verseNumber": 50
+    "verseNumber": 50,
+    "rag": "गौरी"
   },
   {
     "id": "mahal-hamare-gudi-parayau-hai-shri-lalit-kishori-dev-ju-ki-vani-siddhant-ke-pad",
@@ -3949,7 +3949,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग गौरी)",
           "परसाद विहारिनि रानी कौ।",
           "अति आनंद बढै छिन ही छिन महा प्रेम सुखदानी कौ॥ [1]",
           "जाकी सोभा कहत न आवै अद्भुत रूप निमानी कौ।",
@@ -3960,7 +3959,8 @@
     ],
     "chapterId": "ch-सिद्धांत के पद",
     "chapterName": "सिद्धांत के पद",
-    "verseNumber": 63
+    "verseNumber": 63,
+    "rag": "गौरी"
   },
   {
     "id": "humari-nitya-nadaiti-pyari-shri-lalit-kishori-dev-shri-lalit-kishori-dev-ju-ki-vani",
@@ -4317,7 +4317,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग जयजयवन्ती)",
           "मेरी गति तुही है लडैती प्रानप्यारीजू। [1]",
           "भई है प्रसन्न राधे हित हू को हित जानै",
           "सकल गुन निधान परम उदारी जू॥ [2]",
@@ -4331,7 +4330,8 @@
     ],
     "chapterId": "ch-सिद्धांत के पद",
     "chapterName": "सिद्धांत के पद",
-    "verseNumber": 120
+    "verseNumber": 120,
+    "rag": "जयजयवन्ती"
   },
   {
     "id": "priya-ju-ki-chitavani-prem-ki-sudhari-hai-shri-lalit-kishori-siddhant-ke-pad-121",
@@ -4485,7 +4485,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग गौरी)",
           "हमारे धन वृन्दावन प्यारी।",
           "खरचत खात घटै नहिं कबहूँ बाढत छिन छिन अति अधिकारी॥ [1]",
           "ताही कौ अभिमान सदाई ताही बल बस कुंज बिहारी।",
@@ -4496,7 +4495,8 @@
     ],
     "chapterId": "ch-सिद्धांत के पद",
     "chapterName": "सिद्धांत के पद",
-    "verseNumber": 159
+    "verseNumber": 159,
+    "rag": "गौरी"
   },
   {
     "id": "hamarau-mel-milaap-hai-to-son-pyari-shri-lalit-kishori-dev-ju-ki-vani-siddhant-ke-pad-160",
@@ -4574,7 +4574,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग दीपचंदी)",
           "नन्द को लाल गोपाल माल उर, भ्रमत रहत नवबाल के चायन।",
           "खंजन नैन बैन मन रंजन, अंजन नैन मैन सकुचायन॥ [1]",
           "ललित किशोरी हेरि इतै कित, जाहि उतै निज सहज सुभायन।",
@@ -4585,7 +4584,8 @@
     ],
     "chapterId": "ch-फुटकर पद",
     "chapterName": "फुटकर पद",
-    "verseNumber": 49
+    "verseNumber": 49,
+    "rag": "दीपचंदी"
   },
   {
     "id": "nainan-radhey-bainan-radhey-pad-written-by-shri-lalit-kishori",
@@ -4598,7 +4598,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग काफी)",
           "नैनन राधे बैनन राधे सैनन राधे कृतानित राधे ।",
           "कानन राधे तानन राधे भानन राधे हितवित राधे॥",
           "दुःख में राधे, सुख में राधे, मुख में राधे, उर चित राधे ।",
@@ -4609,7 +4608,8 @@
     ],
     "chapterId": "ch-फुटकर पद",
     "chapterName": "फुटकर पद",
-    "verseNumber": 60
+    "verseNumber": 60,
+    "rag": "काफी"
   },
   {
     "id": "lalit-kishori-itt-utt-radhey-jita-dekhun-main-tita-tita-radhey-abhilash-madhuri-shri-lalit-kishori",
@@ -4663,7 +4663,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग झिंझोटी)",
           "जो कोउ वृंदावन रस चाखै।",
           "भवन चतुर्दश तिहूं लोक को, सपनिहुँ नहिं अभिलाखै॥ [1]",
           "ललितकिशोरी पड़यौ कोन में श्याम राधिका भाखै।",
@@ -4674,7 +4673,8 @@
     ],
     "chapterId": "ch-फुटकर पद",
     "chapterName": "फुटकर पद",
-    "verseNumber": 71
+    "verseNumber": 71,
+    "rag": "झिंझोटी"
   },
   {
     "id": "yugal-chhavi-aaj-anoop-bani-shri-lalit-kishori-abhilash-madhuri",
@@ -4687,7 +4687,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग नारायणी, तीनताल - मध्यलय)",
           "युगल छवि आज अनूप बनी।",
           "गोरे श्याम साँवरी राधा, नख शिखद्युति कमनी॥ [1]",
           "खंजन नयन मैन मद गंजन, अंजन रेख अनी।",
@@ -4698,7 +4697,8 @@
     ],
     "chapterId": "ch-अभिलाष माधुरी",
     "chapterName": "अभिलाष माधुरी",
-    "verseNumber": 166
+    "verseNumber": 166,
+    "rag": "नारायणी, तीनताल - मध्यलय"
   },
   {
     "id": "radha-naam-pe-main-vaari-shri-lalit-kishori-abhilash-madhuri",
@@ -4801,7 +4801,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग भैरवी)",
           "प्यारी जू अपनी ओर चितैयै।",
           "नित्य निकुंज विलास आपनो इन नैनन दरसये॥",
           "ललित किशोरी अगुननगीना हाहा मत परशैये।",
@@ -4812,7 +4811,8 @@
     ],
     "chapterId": "ch-अभिलाष माधुरी",
     "chapterName": "अभिलाष माधुरी",
-    "verseNumber": 263
+    "verseNumber": 263,
+    "rag": "भैरवी"
   },
   {
     "id": "aisi-kripa-kachhu-karo-kishori-shri-lalit-kishori",
@@ -4975,7 +4975,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग बसंत)",
           "खेलत आजु प्रिया नव रंगी।",
           "चमकत रमकत लगी स्याम उर ललित मोहिनी संगी॥ [1]",
           "जोवन झलक ललक सुंदर की बाढ्यौ रंग अनंगी।",
@@ -4986,7 +4985,8 @@
     ],
     "chapterId": "ch-श्री ललित मोहिनी देव जू की वाणी",
     "chapterName": "श्री ललित मोहिनी देव जू की वाणी",
-    "verseNumber": 45
+    "verseNumber": 45,
+    "rag": "बसंत"
   },
   {
     "id": "ladaiti-kahe-ladaiti-kahave-shri-lalit-kishori-shri-lalit-kishori-dev-ju-ki-vani-siddhant-ki-saakhi-147",
@@ -5375,12 +5375,12 @@
     "verseNumber": 28
   },
   {
-    "id": "कई-कह-बकठ-कई-कह-बरहम-ह",
+    "id": "koee-khai-baikunth-koee-khai-brhm-hai",
     "collectionId": "lalit-kishori-vani",
     "index": 242,
     "titleDevanagari": "कोई कहै बैकुंठ, कोई कहै ब्रह्म है",
     "author": "श्री ललित किशोरी देव जी",
-    "slug": "कई-कह-बकठ-कई-कह-बरहम-ह",
+    "slug": "koee-khai-baikunth-koee-khai-brhm-hai",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -5420,12 +5420,12 @@
     "verseNumber": 30
   },
   {
-    "id": "वनरज-हमर-पयर-ह",
+    "id": "vnraj-hmare-pyare-hain",
     "collectionId": "lalit-kishori-vani",
     "index": 244,
     "titleDevanagari": "वनराज हमारे प्यारे हैं",
     "author": "श्री ललित किशोरी देव जी",
-    "slug": "वनरज-हमर-पयर-ह",
+    "slug": "vnraj-hmare-pyare-hain",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -5513,12 +5513,12 @@
     "verseNumber": 44
   },
   {
-    "id": "सख-रस-हमर-पयर-ज",
+    "id": "sukh-rasi-hmari-pyari-ju",
     "collectionId": "lalit-kishori-vani",
     "index": 248,
     "titleDevanagari": "सुख रासि हमारी प्यारी जू",
     "author": "श्री ललित किशोरी देव जी",
-    "slug": "सख-रस-हमर-पयर-ज",
+    "slug": "sukh-rasi-hmari-pyari-ju",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -5558,12 +5558,12 @@
     "verseNumber": 51
   },
   {
-    "id": "खत-पयत-चतवत-चलत-ठल-करत-कम",
+    "id": "khat-piyt-chitvt-chlt-thalen-krten-kam",
     "collectionId": "lalit-kishori-vani",
     "index": 250,
     "titleDevanagari": "खात पियत चितवत चलत ठालें करतें काम",
     "author": "श्री ललित किशोरी देव जी",
-    "slug": "खत-पयत-चतवत-चलत-ठल-करत-कम",
+    "slug": "khat-piyt-chitvt-chlt-thalen-krten-kam",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -5601,12 +5601,12 @@
     "verseNumber": 55
   },
   {
-    "id": "आज-सख-आय-मह-सहय",
+    "id": "aaju-skhi-aaye-meh-suhaye",
     "collectionId": "lalit-kishori-vani",
     "index": 252,
     "titleDevanagari": "आजु सखी आये मेह सुहाये",
     "author": "श्री ललित किशोरी देव जी",
-    "slug": "आज-सख-आय-मह-सहय",
+    "slug": "aaju-skhi-aaye-meh-suhaye",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -5646,12 +5646,12 @@
     "verseNumber": 67
   },
   {
-    "id": "छल-रग-डर-गय-मर-बर",
+    "id": "chhail-rng-dar-gyo-meri-bir",
     "collectionId": "lalit-kishori-vani",
     "index": 254,
     "titleDevanagari": "छैल रंग डार गयो मेरी बीर ।।",
     "author": "श्री ललित किशोरी देव जी",
-    "slug": "छल-रग-डर-गय-मर-बर",
+    "slug": "chhail-rng-dar-gyo-meri-bir",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -5789,12 +5789,12 @@
     "verseNumber": 98
   },
   {
-    "id": "सख-सनदर-सयम-सलन",
+    "id": "skhi-sundr-syam-slauna",
     "collectionId": "lalit-kishori-vani",
     "index": 260,
     "titleDevanagari": "सखि सुन्दर स्याम सलौना",
     "author": "श्री ललित किशोरी देव जी",
-    "slug": "सख-सनदर-सयम-सलन",
+    "slug": "skhi-sundr-syam-slauna",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -5857,12 +5857,12 @@
     "verseNumber": 115
   },
   {
-    "id": "मर-मन-सब-भत-बगर",
+    "id": "mere-mn-sb-bhanti-bigari",
     "collectionId": "lalit-kishori-vani",
     "index": 263,
     "titleDevanagari": "मेरे मन सब भाँति बिगारी",
     "author": "श्री ललित किशोरी देव जी",
-    "slug": "मर-मन-सब-भत-बगर",
+    "slug": "mere-mn-sb-bhanti-bigari",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -5923,12 +5923,12 @@
     "verseNumber": 123
   },
   {
-    "id": "नक-लग-रधवर-पयर",
+    "id": "niko-lge-radhavr-pyaro",
     "collectionId": "lalit-kishori-vani",
     "index": 266,
     "titleDevanagari": "नीको लगे राधावर प्यारो ।",
     "author": "श्री ललित किशोरी देव जी",
-    "slug": "नक-लग-रधवर-पयर",
+    "slug": "niko-lge-radhavr-pyaro",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -5945,12 +5945,12 @@
     "verseNumber": 125
   },
   {
-    "id": "हर-खल-त-कजन-चल-गर",
+    "id": "hori-khelo-to-kunjn-chlo-gori",
     "collectionId": "lalit-kishori-vani",
     "index": 267,
     "titleDevanagari": "होरी खेलो तो कुँजन चलो गोरी ।।",
     "author": "श्री ललित किशोरी देव जी",
-    "slug": "हर-खल-त-कजन-चल-गर",
+    "slug": "hori-khelo-to-kunjn-chlo-gori",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -5990,12 +5990,12 @@
     "verseNumber": 144
   },
   {
-    "id": "लडत-ज-क-सहब-अटल-बन",
+    "id": "ldaiti-ju-ki-sahibi-atl-bni",
     "collectionId": "lalit-kishori-vani",
     "index": 269,
     "titleDevanagari": "लड़ैती जू की साहिबी अटल बनी",
     "author": "श्री ललित किशोरी देव जी",
-    "slug": "लडत-ज-क-सहब-अटल-बन",
+    "slug": "ldaiti-ju-ki-sahibi-atl-bni",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6056,12 +6056,12 @@
     "verseNumber": 154
   },
   {
-    "id": "झट-दज-समहर-क-मर-सर-न-अटक",
+    "id": "jhota-dijo-smhar-ke-meri-sari-n-atke",
     "collectionId": "lalit-kishori-vani",
     "index": 272,
     "titleDevanagari": "झोटा दीजो सम्हार के, मेरी सारी न अटके",
     "author": "श्री ललित किशोरी देव जी",
-    "slug": "झट-दज-समहर-क-मर-सर-न-अटक",
+    "slug": "jhota-dijo-smhar-ke-meri-sari-n-atke",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6174,12 +6174,12 @@
     "verseNumber": 169
   },
   {
-    "id": "बहरन-तरई-रग-रग",
+    "id": "biharini-tereee-rng-rngi",
     "collectionId": "lalit-kishori-vani",
     "index": 277,
     "titleDevanagari": "बिहारिनि तेरेई रंग रंगी",
     "author": "श्री ललित किशोरी देव जी",
-    "slug": "बहरन-तरई-रग-रग",
+    "slug": "biharini-tereee-rng-rngi",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6267,12 +6267,12 @@
     "verseNumber": 183
   },
   {
-    "id": "बहरन-लडल-रस-मत",
+    "id": "biharini-ladili-rs-mati",
     "collectionId": "lalit-kishori-vani",
     "index": 281,
     "titleDevanagari": "बिहारिनि लाडिली रस माती",
     "author": "श्री ललित किशोरी देव जी",
-    "slug": "बहरन-लडल-रस-मत",
+    "slug": "biharini-ladili-rs-mati",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6385,12 +6385,12 @@
     "verseNumber": 210
   },
   {
-    "id": "सद-बस-वनदबपन-तज-न-कबह-खत",
+    "id": "sda-bsai-vrindabipin-tje-n-kbhun-khet",
     "collectionId": "lalit-kishori-vani",
     "index": 286,
     "titleDevanagari": "सदा बसै वृन्दाबिपिन तजे न कबहूँ खेत",
     "author": "श्री ललित किशोरी देव जी",
-    "slug": "सद-बस-वनदबपन-तज-न-कबह-खत",
+    "slug": "sda-bsai-vrindabipin-tje-n-kbhun-khet",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6428,12 +6428,12 @@
     "verseNumber": 216
   },
   {
-    "id": "जगल-अग-रग-रग-मर-अखय",
+    "id": "jugl-ang-rng-rngi-meri-ankhiyan",
     "collectionId": "lalit-kishori-vani",
     "index": 288,
     "titleDevanagari": "जुगल अंग रंग रंगी मेरी अँखियाँ।",
     "author": "श्री ललित किशोरी देव जी",
-    "slug": "जगल-अग-रग-रग-मर-अखय",
+    "slug": "jugl-ang-rng-rngi-meri-ankhiyan",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6493,12 +6493,12 @@
     "verseNumber": 223
   },
   {
-    "id": "लडत-ज-तर-रङग-भर-मसकयन",
+    "id": "ldaiti-ju-teri-rngg-bhri-musikyani",
     "collectionId": "lalit-kishori-vani",
     "index": 291,
     "titleDevanagari": "लडैती जू तेरी रङ्ग भरी मुसिक्यानि",
     "author": "श्री ललित किशोरी देव जी",
-    "slug": "लडत-ज-तर-रङग-भर-मसकयन",
+    "slug": "ldaiti-ju-teri-rngg-bhri-musikyani",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6584,12 +6584,12 @@
     "verseNumber": 238
   },
   {
-    "id": "मर-परन-जवन-धन-रध",
+    "id": "mere-pran-jivn-dhn-radhe",
     "collectionId": "lalit-kishori-vani",
     "index": 295,
     "titleDevanagari": "मेरे प्रान जीवन धन राधे",
     "author": "श्री ललित किशोरी देव जी",
-    "slug": "मर-परन-जवन-धन-रध",
+    "slug": "mere-pran-jivn-dhn-radhe",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6629,12 +6629,12 @@
     "verseNumber": 247
   },
   {
-    "id": "बहर-कढ़-द-मर-बदरद-करकत-आख-गलल",
+    "id": "bihari-kai-dai-meri-krkt-aankh-gulal",
     "collectionId": "lalit-kishori-vani",
     "index": 297,
     "titleDevanagari": "बिहारी काढ़ि दै मेरी (बेदरदी) करकत आँख गुलाल ।।",
     "author": "श्री ललित किशोरी देव जी",
-    "slug": "बहर-कढ़-द-मर-बदरद-करकत-आख-गलल",
+    "slug": "bihari-kai-dai-meri-krkt-aankh-gulal",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6674,12 +6674,12 @@
     "verseNumber": 251
   },
   {
-    "id": "मर-बहरन-मर-मर",
+    "id": "meri-biharini-meri-meri",
     "collectionId": "lalit-kishori-vani",
     "index": 299,
     "titleDevanagari": "मेरी बिहारिनि मेरी मेरी",
     "author": "श्री ललित किशोरी देव जी",
-    "slug": "मर-बहरन-मर-मर",
+    "slug": "meri-biharini-meri-meri",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6742,12 +6742,12 @@
     "verseNumber": 260
   },
   {
-    "id": "जगल-रसक-क-दरस-कनन-अत-अतरत",
+    "id": "jugul-rsik-ke-drs-ko-naina-ati-aturat",
     "collectionId": "lalit-kishori-vani",
     "index": 302,
     "titleDevanagari": "जुगुल रसिक के दरस को,नैना अति अतुरात",
     "author": "श्री ललित किशोरी देव जी",
-    "slug": "जगल-रसक-क-दरस-कनन-अत-अतरत",
+    "slug": "jugul-rsik-ke-drs-ko-naina-ati-aturat",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6791,12 +6791,12 @@
     "verseNumber": 264
   },
   {
-    "id": "गर-तर-नन-बड़-रसल",
+    "id": "gori-tere-naina-be-rsile",
     "collectionId": "lalit-kishori-vani",
     "index": 304,
     "titleDevanagari": "गोरी तेरे नैना बड़े रसीले ।।",
     "author": "श्री ललित किशोरी देव जी",
-    "slug": "गर-तर-नन-बड़-रसल",
+    "slug": "gori-tere-naina-be-rsile",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6836,12 +6836,12 @@
     "verseNumber": 273
   },
   {
-    "id": "कव-कलद-कल-क",
+    "id": "kv-kalindi-kul-ki",
     "collectionId": "lalit-kishori-vani",
     "index": 306,
     "titleDevanagari": "कव कालिंदी कूल की",
     "author": "श्री ललित किशोरी देव जी",
-    "slug": "कव-कलद-कल-क",
+    "slug": "kv-kalindi-kul-ki",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6856,12 +6856,12 @@
     "verseNumber": 280
   },
   {
-    "id": "तन-मन-वचनन-लडल-मर-जवन-परन",
+    "id": "tn-mn-vchnni-ladili-meri-jivn-pran",
     "collectionId": "lalit-kishori-vani",
     "index": 307,
     "titleDevanagari": "तन मन वचननि लाड़िली मेरी जीवन प्रान",
     "author": "श्री ललित किशोरी देव जी",
-    "slug": "तन-मन-वचनन-लडल-मर-जवन-परन",
+    "slug": "tn-mn-vchnni-ladili-meri-jivn-pran",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6899,12 +6899,12 @@
     "verseNumber": 286
   },
   {
-    "id": "दख-र-यह-ननद-क-छर-बरछ-मर-जत-ह",
+    "id": "dekho-ri-yh-nnd-ka-chhora-brchhi-mare-jata-hai",
     "collectionId": "lalit-kishori-vani",
     "index": 309,
     "titleDevanagari": "देखो री यह नन्द का छोरा बरछी मारे जाता है ।",
     "author": "श्री ललित किशोरी देव जी",
-    "slug": "दख-र-यह-ननद-क-छर-बरछ-मर-जत-ह",
+    "slug": "dekho-ri-yh-nnd-ka-chhora-brchhi-mare-jata-hai",
     "verses": [
       {
         "stanzaNumber": 1,

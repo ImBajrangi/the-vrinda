@@ -401,7 +401,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कल्यान)",
           "प्रेम-समुद्र रूप-रस गहरे, कैसैं लागैं घाट। [1]",
           "बेकारयौं दै जान कहावत, जानिपन्यौं की कहा परी बाट? [2]",
           "काहू कौ सर सूधौ न परै, मारत गाल गली-गली हाट। [3]",
@@ -412,7 +411,8 @@
     ],
     "chapterId": "ch-अष्टादश पद",
     "chapterName": "अष्टादश पद",
-    "verseNumber": 18
+    "verseNumber": 18,
+    "rag": "कल्यान"
   },
   {
     "id": "radha-rasik-bihari-kahat-ju-shri-swami-haridas-ji-kelimal-25",
@@ -425,7 +425,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कान्हरो)",
           "राधा रसिक कुंजबिहारी कहत जु हौं",
           "न कहूँ गयौ सुनि सुनि राधे तेरी सौं॥ [1]",
           "मोहिं न पत्याहु तौ संग हरिदासी हुती",
@@ -440,7 +439,8 @@
     ],
     "chapterId": "ch-केलीमाल",
     "chapterName": "केलीमाल",
-    "verseNumber": 25
+    "verseNumber": 25,
+    "rag": "कान्हरो"
   },
   {
     "id": "neel-lal-gaur-ke-dhyan-baithe-kunjabihari-swami-haridas-ji-kelimal-28",
@@ -453,7 +453,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कान्हरौ)",
           "नील लाल गौर के ध्यान बैठे कुंजबिहारी।",
           "ज्यौं ज्यौं सुख पावत नाहीं त्यौं त्यौं दुख भयौ भारी॥ [1]",
           "अरबराइ प्रगट भई जु सुख भयौ बहुत हिया री।",
@@ -464,7 +463,8 @@
     ],
     "chapterId": "ch-केलीमाल",
     "chapterName": "केलीमाल",
-    "verseNumber": 28
+    "verseNumber": 28,
+    "rag": "कान्हरौ"
   },
   {
     "id": "kunjbihari-naachat-neeke-ladili-nachaavati-neeke-lalita-avtar-shri-haridas-ji-kelimal-60",
@@ -477,7 +477,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कल्यान)",
           "कुंजबिहारी नाचत नीके; लाड़िली नचावति नीके।",
           "औघर ताल धरै श्रीस्यामा ताताथेई",
           "ताताथेई गावति संग पी के॥ [1]",
@@ -490,7 +489,8 @@
     ],
     "chapterId": "ch-केलीमाल",
     "chapterName": "केलीमाल",
-    "verseNumber": 60
+    "verseNumber": 60,
+    "rag": "कल्यान"
   },
   {
     "id": "kunjbihari-ko-basant-sakhi-shri-swami-haridas-ji-kelimal-99",
@@ -503,7 +503,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग गौड़)",
           "कुंजबिहारी कौ बसन्त सखि,",
           "चलहू न देखन जाँहिं।",
           "नव बन नव निकुंज नव पल्लव,",
@@ -518,7 +517,8 @@
     ],
     "chapterId": "ch-केलीमाल",
     "chapterName": "केलीमाल",
-    "verseNumber": 99
+    "verseNumber": 99,
+    "rag": "गौड़"
   },
   {
     "id": "dekhau-mai-sundar-kunj-bani-shri-hita-kamal-nain-ji-ki-vani-ashtayami-padavali-20",
@@ -554,7 +554,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग बसंत)",
           "सजनी नव निकुंज सु केलि।",
           "गौर-श्याम तमाल लपटी, सरस आनन्द बेलि॥ [1]",
           "निरखि हरषित रसिक मोहन, पान कृत रस झेलि।",
@@ -565,7 +564,8 @@
     ],
     "chapterId": "ch-अष्टायामी पदावली",
     "chapterName": "अष्टायामी पदावली",
-    "verseNumber": 180
+    "verseNumber": 180,
+    "rag": "बसंत"
   },
   {
     "id": "shri-radha-kund-holiest-place-on-earth",
@@ -727,7 +727,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कलिंगडा)",
           "मन मेरे भज ले श्री कुंजबिहारी।",
           "सब सुख सागर रूप उजागर अंग संग प्रीतम प्यारी।",
           "श्री वृन्दावन घन नव निकुंज में करत केली भुजचारी।",
@@ -738,7 +737,8 @@
     ],
     "chapterId": "ch-सिद्धान्त के पद",
     "chapterName": "सिद्धान्त के पद",
-    "verseNumber": 184
+    "verseNumber": 184,
+    "rag": "कलिंगडा"
   },
   {
     "id": "chalo-man-gahavar-kunj-lataan-jagadguru-shri-kripalu-ji-maharaj-prem-ras-madira-siddhant-madhuri-41",
@@ -799,7 +799,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग मल्हार व किन्नरी)",
           "झूलत ये दोऊ रूप अपार।",
           "भानु किशोरी गोरी भोरी, छवि निधि नन्द कुमार॥ [1]",
           "घन दामिनि दीनें गलबाहीं, छिन-छिन बाढ़त प्यार।",
@@ -810,7 +809,8 @@
     ],
     "chapterId": "ch-वन कुंजन झूलन लीला",
     "chapterName": "वन कुंजन झूलन लीला",
-    "verseNumber": 25
+    "verseNumber": 25,
+    "rag": "मल्हार व किन्नरी"
   },
   {
     "id": "pahne-yah-kundal-yonhi-raho-braj-ke-sawaiya",
@@ -1231,7 +1231,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग शुद्ध कल्याण त्रिताल)",
           "जयति जयति वृषभानु दुलारी।",
           "जय वृन्दावन परम मनोहर, लता फूल फुलवारी॥ [1]",
           "जय वंशीवट जय श्रीयमुना, सेवाकुञ्ज तिहारी।",
@@ -1244,7 +1243,8 @@
     ],
     "chapterId": "ch-निकुंज रस वल्लरी",
     "chapterName": "निकुंज रस वल्लरी",
-    "verseNumber": 6
+    "verseNumber": 6,
+    "rag": "शुद्ध कल्याण त्रिताल"
   },
   {
     "id": "vrajadham-mein-milengi-ladali-pyari-tohe-shri-hita-gopal-das-of-sewa-kunj-nikunj-ras-vallari-12",
@@ -1285,7 +1285,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विभास · त्रिताल)",
           "श्यामा, सूझत नहीं कछु मोहे।",
           "तुम जानत सब मेरे मन कीं, कहा जनाऊँ तोहे॥ [1]",
           "तेरी शरण लई अब श्यामा, तुम बिन मेरा कोहै।",
@@ -1296,7 +1295,8 @@
     ],
     "chapterId": "ch-निकुंज रस वल्लरी",
     "chapterName": "निकुंज रस वल्लरी",
-    "verseNumber": 17
+    "verseNumber": 17,
+    "rag": "विभास · त्रिताल"
   },
   {
     "id": "kishori-mohe-sohani-den-sikhaavo-shri-hita-gopal-das-nikunj-ras-vallari-22",
@@ -1309,7 +1309,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग पूरिया, त्रिताल)",
           "किशोरी मोहे सोहनी देन सिखावो।",
           "हे, मंद मुस्काये लाड़ली, नव नव कृपा कोर बरसाओ॥ [1]",
           "कोटि किरण छिड़कत अंगन में, बेगि कृपा करी धावो।",
@@ -1322,7 +1321,8 @@
     ],
     "chapterId": "ch-निकुंज रस वल्लरी",
     "chapterName": "निकुंज रस वल्लरी",
-    "verseNumber": 22
+    "verseNumber": 22,
+    "rag": "पूरिया, त्रिताल"
   },
   {
     "id": "radhe-tumko-meri-laaj-shri-hita-gopal-das-of-sewa-kunj-nikunj-ras-vallari-29",
@@ -1335,7 +1335,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कामोद त्रिताल)",
           "राधे तुमको मेरी लाज।",
           "तुम बिन मेरा कोइ न जग में, करुणामयी सिरताज॥ [1]",
           "तेरो नाम रटौं निशिवासर, तेरो ही अब नाज।",
@@ -1348,7 +1347,8 @@
     ],
     "chapterId": "ch-निकुंज रस वल्लरी",
     "chapterName": "निकुंज रस वल्लरी",
-    "verseNumber": 29
+    "verseNumber": 29,
+    "rag": "कामोद त्रिताल"
   },
   {
     "id": "shyama-charan-kamala-ki-aas-shri-hita-gopal-das-of-sewa-kunj-nikunj-ras-vallari-32",
@@ -1361,7 +1361,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग खम्माज त्रिताल)",
           "श्यामा चरण कमल की आस॥",
           "श्रीवृन्दावन रानी राधे, रखिये अपने पास।",
           "यमुना पुलिन प्यारो सोहे, सेवाकुञ्ज निज खास॥ [1]",
@@ -1373,7 +1372,8 @@
     ],
     "chapterId": "ch-निकुंज रस वल्लरी",
     "chapterName": "निकुंज रस वल्लरी",
-    "verseNumber": 32
+    "verseNumber": 32,
+    "rag": "खम्माज त्रिताल"
   },
   {
     "id": "radhe-aan-pado-tere-dwaar-shri-hita-gopal-das-of-sewa-kunj-nikunj-ras-vallari-33",
@@ -1386,7 +1386,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग दुर्गा त्रिताल)",
           "राधे आन पड़ो तेरे द्वार।",
           "तुम्हें छोड़ वृषभान दुलारी, कासौं करूँ पुकार॥ [1]",
           "भवसागर में डूब रही हूँ, वेग लगाबो पार।",
@@ -1399,7 +1398,8 @@
     ],
     "chapterId": "ch-निकुंज रस वल्लरी",
     "chapterName": "निकुंज रस वल्लरी",
-    "verseNumber": 33
+    "verseNumber": 33,
+    "rag": "दुर्गा त्रिताल"
   },
   {
     "id": "kripa-karo-ab-naval-naveli-shri-hita-gopal-das-of-sewa-kunj-nikunj-ras-vallari-34",
@@ -1412,7 +1412,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग दुर्गा त्रिताल)",
           "कृपा करो अब नवल नवेली।",
           "सेवाकुंज-निकुंज भवन की, लता फूल बनूं वेली॥ [1]",
           "छकी रहौं रस माती नित ही, छोड़ो नांही अकेली।",
@@ -1423,7 +1422,8 @@
     ],
     "chapterId": "ch-निकुंज रस वल्लरी",
     "chapterName": "निकुंज रस वल्लरी",
-    "verseNumber": 34
+    "verseNumber": 34,
+    "rag": "दुर्गा त्रिताल"
   },
   {
     "id": "japau-man-radha-radha-nam-shri-hita-gopal-das-of-sewa-kunj-nikunj-ras-vallari-36",
@@ -1436,7 +1436,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कल्याण त्रिताल)",
           "जपौ मन राधा राधा नाम।",
           "जीवन अब तो वृथा जात है, करलो ये इक काम॥ [1]",
           "राघा नाम जपत हैं जो जन, संग रहे घनश्याम।",
@@ -1449,7 +1448,8 @@
     ],
     "chapterId": "ch-निकुंज रस वल्लरी",
     "chapterName": "निकुंज रस वल्लरी",
-    "verseNumber": 36
+    "verseNumber": 36,
+    "rag": "कल्याण त्रिताल"
   },
   {
     "id": "kalindi-pai-ghoom-ghoom-priya-charan-choom-choom-shri-hita-gopal-das-nikunj-ras-vallari-40",
@@ -1516,7 +1516,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग झंझोटी, त्रिताल)",
           "राधे कौन भयो अपराध हमारो।",
           "श्री वृन्दावन वास छुड़ायो, जो है प्राणन प्यारो॥ [1]",
           "वेगि बुलाओ मोहि स्वामिनी, अवगुन उर न धारो।",
@@ -1527,7 +1526,8 @@
     ],
     "chapterId": "ch-निकुंज रस वल्लरी",
     "chapterName": "निकुंज रस वल्लरी",
-    "verseNumber": 49
+    "verseNumber": 49,
+    "rag": "झंझोटी, त्रिताल"
   },
   {
     "id": "shyama-ab-to-rahyau-na-jaay-shri-hita-gopal-das-of-sewa-kunj-nikunj-ras-vallari-50",
@@ -1540,7 +1540,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग पीलू त्रिताल)",
           "श्यामा अब तो रह्यौ न जाय।",
           "पल-पल याद सताये तिहारी, सेवाकुञ्ज मन भाय॥ [1]",
           "वृन्दाविपिन निकुञ्जन मांही, चरणन रज मिल जाय।",
@@ -1551,7 +1550,8 @@
     ],
     "chapterId": "ch-निकुंज रस वल्लरी",
     "chapterName": "निकुंज रस वल्लरी",
-    "verseNumber": 50
+    "verseNumber": 50,
+    "rag": "पीलू त्रिताल"
   },
   {
     "id": "re-man-shrivrindavan-chal-shri-hita-gopal-das-of-sewa-kunj-nikunj-ras-vallari-52",
@@ -1564,7 +1564,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग तिलंग त्रिताल)",
           "रे मन श्रीवृन्दावन चल।",
           "यमुना सरस सुखद अति सोहे, नीर बहै कल-कल॥ [1]",
           "जहाँ विराजत राधारानी, लिये सहचरी दल।",
@@ -1575,7 +1574,8 @@
     ],
     "chapterId": "ch-निकुंज रस वल्लरी",
     "chapterName": "निकुंज रस वल्लरी",
-    "verseNumber": 52
+    "verseNumber": 52,
+    "rag": "तिलंग त्रिताल"
   },
   {
     "id": "rasik-rasesh-raseshvari-hrdayeshvari-shri-hita-gopal-das-of-sewa-kunj-nikunj-ras-vallari-56",
@@ -1643,7 +1643,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग हमीर त्रिताल)",
           "वृन्दावन छाँड़ि कहूँ सुख नाहीं।",
           "सुन्दर यमुना प्रीतम प्यारी, प्यारी कदमन छाँहीं॥ [1]",
           "वंशीवट सेबाकुञ्ज प्यारो, प्यारी चरण दवाँहीं।",
@@ -1656,7 +1655,8 @@
     ],
     "chapterId": "ch-निकुंज रस वल्लरी",
     "chapterName": "निकुंज रस वल्लरी",
-    "verseNumber": 67
+    "verseNumber": 67,
+    "rag": "हमीर त्रिताल"
   },
   {
     "id": "radha-naam-japau-din-raina-shri-hita-gopal-das-of-sewa-kunj-nikunj-ras-vallari-72",
@@ -1669,7 +1669,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग मालकोश, त्रिताल)",
           "राधा नाम जपौ दिन रैना।",
           "जो कोई राधा नाम सुनावे, तबहि परै हिय चैना॥ [1]",
           "श्रीराधा गाऊँ राधा लड़ाऊँ, राधा सुने ये बैना।",
@@ -1682,7 +1681,8 @@
     ],
     "chapterId": "ch-निकुंज रस वल्लरी",
     "chapterName": "निकुंज रस वल्लरी",
-    "verseNumber": 72
+    "verseNumber": 72,
+    "rag": "मालकोश, त्रिताल"
   },
   {
     "id": "radha-naam-param-sukhadayi-shri-hita-gopal-das-of-sewa-kunj-nikunj-ras-vallari-74",
@@ -1695,7 +1695,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग भैरवी त्रिताल)",
           "राधा नाम परम सुखदायी।",
           "जाके सुमरित उर में आवत, सुन्दर कुँवर कन्हाई॥ [1]",
           "दिव्य केलि श्रीवृंदावन की, मन में रही समाई।",
@@ -1708,7 +1707,8 @@
     ],
     "chapterId": "ch-निकुंज रस वल्लरी",
     "chapterName": "निकुंज रस वल्लरी",
-    "verseNumber": 74
+    "verseNumber": 74,
+    "rag": "भैरवी त्रिताल"
   },
   {
     "id": "dhan-dhan-pyarau-radha-naam-braj-ke-sewaiyan",
@@ -1721,7 +1721,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग आसावरी, तीन ताल)",
           "धन-धन प्यारौ राधा नाम।",
           "आठों याम हृदय धरि देखो,",
           "उर आवे घनश्याम॥ [1]",
@@ -1735,7 +1734,8 @@
     ],
     "chapterId": "ch-निकुंज रस वल्लरी",
     "chapterName": "निकुंज रस वल्लरी",
-    "verseNumber": 75
+    "verseNumber": 75,
+    "rag": "आसावरी, तीन ताल"
   },
   {
     "id": "man-shri-radharadha-kahi-re-shri-hita-gopal-das-of-sewa-kunj-nikunj-ras-vallari-76",
@@ -1748,7 +1748,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग आसावरी त्रिताल)",
           "मन श्री राधा-राधा कहि रे।",
           "नाम निरन्तर रसना पीवे, दृढ़कर याको गहि रे॥ [1]",
           "यह जग सपनो अपनो नाही, नाम सुधा-रस बहि रे।",
@@ -1759,7 +1758,8 @@
     ],
     "chapterId": "ch-निकुंज रस वल्लरी",
     "chapterName": "निकुंज रस वल्लरी",
-    "verseNumber": 76
+    "verseNumber": 76,
+    "rag": "आसावरी त्रिताल"
   },
   {
     "id": "hamaro-dhan-radharadha-naam-shri-hita-gopal-das-of-sewa-kunj-nikunj-ras-vallari-77",
@@ -1772,7 +1772,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विहाग त्रिताल)",
           "हमारो धन राधा-राधा नाम।",
           "नामहिं जीवन धन हैं अब तो, और ठौर नहिं ठाम॥ [1]",
           "रसना नाम सुधा जब पीवै, उर नाँचै श्रीधाम।",
@@ -1785,7 +1784,8 @@
     ],
     "chapterId": "ch-निकुंज रस वल्लरी",
     "chapterName": "निकुंज रस वल्लरी",
-    "verseNumber": 77
+    "verseNumber": 77,
+    "rag": "विहाग त्रिताल"
   },
   {
     "id": "aho-kripamayi-swamini-sharan-tihari-aagayi-shri-hita-gopal-das-nikunj-ras-vallari",
@@ -1819,7 +1819,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग आसावरी, त्रिताल)",
           "मन तू राधा-राधा भज ले।",
           "याहि रटत निरन्तर शुक मुनि,",
           "शिव नारद सनकादिक अज ले॥ [1]",
@@ -1833,7 +1832,8 @@
     ],
     "chapterId": "ch-निकुंज रस वल्लरी",
     "chapterName": "निकुंज रस वल्लरी",
-    "verseNumber": 83
+    "verseNumber": 83,
+    "rag": "आसावरी, त्रिताल"
   },
   {
     "id": "radharadha-jap-tu-mana-re-shri-hita-gopal-das-of-sewa-kunj-nikunj-ras-vallari-86",
@@ -1846,7 +1846,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग परज, त्रिताल)",
           "राधा-राधा जप तू मना रे।",
           "नाम सुधा लीला दरसावे, राख भरोस प्रिया चरणा रे॥ [1]",
           "रसिक रास-रस मिलि हैं तोहे, जो हो जा नाम शरणा रे।",
@@ -1857,7 +1856,8 @@
     ],
     "chapterId": "ch-निकुंज रस वल्लरी",
     "chapterName": "निकुंज रस वल्लरी",
-    "verseNumber": 86
+    "verseNumber": 86,
+    "rag": "परज, त्रिताल"
   },
   {
     "id": "priya-chhavi-bar-bar-kalindi-ki-dhar-dhar-shri-hita-gopal-das-of-sewa-kunj-nikunj-ras-vallari-91",
@@ -1926,7 +1926,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग मालकोश, त्रिताल)",
           "हमारी प्रिया छबीली राधा।",
           "जाकी छवि सुमिरत अरु निरखत, दूर होय सब बाधा॥ [1]",
           "वनरानी सुंदर अति प्यारी, ब्रज रसिकन सब साधा।",
@@ -1937,7 +1936,8 @@
     ],
     "chapterId": "ch-निकुंज रस वल्लरी",
     "chapterName": "निकुंज रस वल्लरी",
-    "verseNumber": 99
+    "verseNumber": 99,
+    "rag": "मालकोश, त्रिताल"
   },
   {
     "id": "naval-priya-kripalu-aisi-shri-hita-gopal-das-of-sewa-kunj-nikunj-ras-vallari-103",
@@ -1950,7 +1950,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग खमाज, त्रिताल)",
           "नवल प्रिया कृपालू ऐसी।",
           "कैसेहुँ चरण शरण में आवें, बाधा मिट जाय जैसी॥ [1]",
           "प्रिया स्वभाव मृदुलता नीकी, संग सहचरी वैसी।",
@@ -1961,7 +1960,8 @@
     ],
     "chapterId": "ch-निकुंज रस वल्लरी",
     "chapterName": "निकुंज रस वल्लरी",
-    "verseNumber": 103
+    "verseNumber": 103,
+    "rag": "खमाज, त्रिताल"
   },
   {
     "id": "pyari-kripa-lal-ur-jaani-shri-hita-gopal-das-of-sewa-kunj-nikunj-ras-vallari-104",
@@ -1974,7 +1974,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग पूर्वी, त्रिताल)",
           "प्यारी कृपा लाल उर जानी।",
           "बिके रहत नित इन्हीं चरण में, सदा करत अगवानी॥ [1]",
           "ठाढ़े रहत निकुञ्ज दुआरे, कब आबे महारानी।",
@@ -1985,7 +1984,8 @@
     ],
     "chapterId": "ch-निकुंज रस वल्लरी",
     "chapterName": "निकुंज रस वल्लरी",
-    "verseNumber": 104
+    "verseNumber": 104,
+    "rag": "पूर्वी, त्रिताल"
   },
   {
     "id": "hamaari-ladli-ati-hi-bhori-shri-hita-gopal-das-of-sewa-kunj-nikunj-ras-vallari-114",
@@ -1998,7 +1998,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विभास, त्रिताल)",
           "हमारी लाड़ली अति ही भोरी।",
           "अवगुन जन के गिनत न कबहूँ, कृपामयी वृषभान किशोरी॥ [1]",
           "कैसेहु चरन-शरन में आवे, वेगहि कृपा करें करोरी।",
@@ -2009,7 +2008,8 @@
     ],
     "chapterId": "ch-निकुंज रस वल्लरी",
     "chapterName": "निकुंज रस वल्लरी",
-    "verseNumber": 114
+    "verseNumber": 114,
+    "rag": "विभास, त्रिताल"
   },
   {
     "id": "radhe-albeli-sarkar-shri-hita-gopal-das-of-sewa-kunj-nikunj-ras-vallari-115",
@@ -2022,7 +2022,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग भुपाली, त्रिताल)",
           "राधे अलबेली सरकार।",
           "वनरानी रसिकन की प्यारी, अति उदार सुकमार॥ [1]",
           "जाके पग नूपुर रव सों ही, कोटि ब्रह्म अवतार।",
@@ -2035,7 +2034,8 @@
     ],
     "chapterId": "ch-निकुंज रस वल्लरी",
     "chapterName": "निकुंज रस वल्लरी",
-    "verseNumber": 115
+    "verseNumber": 115,
+    "rag": "भुपाली, त्रिताल"
   },
   {
     "id": "ab-ham-priya-kripa-dhan-payo-shri-hita-gopal-das-nikunj-ras-vallari-116",
@@ -2048,7 +2048,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग हमीर, त्रिताल)",
           "अब हम प्रिया कृपा धन पायो।",
           "श्रीवृन्दावन घूमंत डोलूँ, कहौ काह नहीं पायो॥ [1]",
           "दासी निज महलन की कीनी, हरषि-हरष जस गायो।",
@@ -2059,7 +2058,8 @@
     ],
     "chapterId": "ch-निकुंज रस वल्लरी",
     "chapterName": "निकुंज रस वल्लरी",
-    "verseNumber": 116
+    "verseNumber": 116,
+    "rag": "हमीर, त्रिताल"
   },
   {
     "id": "sakhi-haun-radha-charan-upasi-shri-hita-gopal-das-of-sewa-kunj-nikunj-ras-vallari-117",
@@ -2072,7 +2072,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग त्रिलंग, त्रिताल)",
           "सखी हों राधा चरण उपासी।",
           "नित रहूँ गरवीली मन में, करती नित्त खवासी॥ [1]",
           "सेवाकुञ्ज की सघन लता में, सदा बनी सुखरासी।",
@@ -2083,7 +2082,8 @@
     ],
     "chapterId": "ch-निकुंज रस वल्लरी",
     "chapterName": "निकुंज रस वल्लरी",
-    "verseNumber": 117
+    "verseNumber": 117,
+    "rag": "त्रिलंग, त्रिताल"
   },
   {
     "id": "hamari-sarvas-radharani-shri-hita-gopal-das-of-sewa-kunj-nikunj-ras-vallari-119",
@@ -2096,7 +2096,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग भीमपलासी, त्रिताल)",
           "हमारी सर्वस राधारानी।",
           "जिनकी कृपा सों ही पायी वृंदावन रजधानी॥ [1]",
           "मो निर्धन को धन श्रीश्यामा,  सेवाकुंज महारानी।",
@@ -2107,7 +2106,8 @@
     ],
     "chapterId": "ch-निकुंज रस वल्लरी",
     "chapterName": "निकुंज रस वल्लरी",
-    "verseNumber": 119
+    "verseNumber": 119,
+    "rag": "भीमपलासी, त्रिताल"
   },
   {
     "id": "ab-ham-radhe-charan-ali-shri-hita-gopal-das-of-sewa-kunj-nikunj-ras-vallari-120",
@@ -2120,7 +2120,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग अहीर भैरव, त्रिताल)",
           "अब हम राधे चरण अली।",
           "जित ले जावे उत ही जाऊँ, अब तो गई छली॥ [1]",
           "रहूँ फूल बन सदा सेज पे, मानो कुसुम कली।",
@@ -2131,7 +2130,8 @@
     ],
     "chapterId": "ch-निकुंज रस वल्लरी",
     "chapterName": "निकुंज रस वल्लरी",
-    "verseNumber": 120
+    "verseNumber": 120,
+    "rag": "अहीर भैरव, त्रिताल"
   },
   {
     "id": "shriradha-kripa-pai-bali-jaiye-shri-hita-gopal-das-nikunj-ras-vallari-125",
@@ -2144,7 +2144,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग मुल्तानी, त्रिताल)",
           "श्रीराधा कृपा पै बलि जईये।",
           "श्रीवृन्दावन जाय के, राधा-राधा कहिये॥ [1]",
           "नित-नित डोलो श्रीयमुना तट, नैनन नीर बहइये।",
@@ -2155,7 +2154,8 @@
     ],
     "chapterId": "ch-निकुंज रस वल्लरी",
     "chapterName": "निकुंज रस वल्लरी",
-    "verseNumber": 125
+    "verseNumber": 125,
+    "rag": "मुल्तानी, त्रिताल"
   },
   {
     "id": "bhanunandani-sada-vandani-chand-chandani-shri-gopal-das-nikunj-ras-vallari-129",
@@ -2195,7 +2195,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कामोद, त्रिताल)",
           "अब तो भई राधा चरण गुलाम।",
           "सदा बिकी अब इन चरनन में, दासी हूँ बेदाम॥ [1]",
           "वृन्दावन में निशिदिन डोलूँ, जप्यौ करूँ श्रीराधा नाम।",
@@ -2208,7 +2207,8 @@
     ],
     "chapterId": "ch-निकुंज रस वल्लरी",
     "chapterName": "निकुंज रस वल्लरी",
-    "verseNumber": 130
+    "verseNumber": 130,
+    "rag": "कामोद, त्रिताल"
   },
   {
     "id": "anany-rasik-vrindavan-pyare-shri-hita-gopal-das-of-sewa-kunj-nikunj-ras-vallari",
@@ -2287,7 +2287,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग केदारो)",
           "बेठे दोउ कुंज मंडप पिय प्यारी।",
           "दूल्है हो नवललाल गिरिधारी, दुलही संग श्रीवृषभान दुलारी॥ [1]",
           "लाल पाग लालन सिर सोभित, नवल सेहरो छवि लागत भारी।",
@@ -2298,7 +2297,8 @@
     ],
     "chapterId": "ch-श्री गोविन्द स्वामी जी की वाणी",
     "chapterName": "श्री गोविन्द स्वामी जी की वाणी",
-    "verseNumber": 401
+    "verseNumber": 401,
+    "rag": "केदारो"
   },
   {
     "id": "rajat-dampati-kunjmahal-mein-shri-govind-swami",
@@ -2311,7 +2311,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग बिहागरो)",
           "राजत दंपति कुंजमहल में।",
           "बनि ठनि बैठे एक सेज पर डारे भुजा परस्पर गल में॥ [1]",
           "करत बिनोद महा रँगभीने आनंद सहित पिय प्यारी।",
@@ -2322,7 +2321,8 @@
     ],
     "chapterId": "ch-श्री गोविन्द स्वामी जी की वाणी",
     "chapterName": "श्री गोविन्द स्वामी जी की वाणी",
-    "verseNumber": 519
+    "verseNumber": 519,
+    "rag": "बिहागरो"
   },
   {
     "id": "paramarasarahasyanandanihsyandivrndavanavipinanikunje-divyadivyair-vilasaih-niravadhi-rasamanau-radhikakrishnacandrau-bhaja-sakalam-upeksya-tavakah-sastrayuktih-shri-roop-goswami",
@@ -2358,7 +2358,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग परज)",
           "राजति नव निकुंज नव जोरी। [1]",
           "सुंदर स्याम रसीले अंग अंग नवल कुंवर तन गोरी॥ [2]",
           "वदन माधुरी मदन सदन सुख सागर नागरि कुंवरि किसोरी। [3]",
@@ -2369,7 +2368,8 @@
     ],
     "chapterId": "ch-श्री सरस देव जू की बानी",
     "chapterName": "श्री सरस देव जू की बानी",
-    "verseNumber": 29
+    "verseNumber": 29,
+    "rag": "परज"
   },
   {
     "id": "nav-nikunj-man-kaun-agam-shri-nagridas-ji-shri-nagridas-ji-ki-vani-shri-yugal-ras-madhuri-2",
@@ -2867,7 +2867,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग जैजैवन्ती)",
           "आज विराज रहे मणि मंदिर,",
           "नंदनँदन वृषभानुकिशोरी। [1]",
           "केलि करत युग याम गई निशि,",
@@ -2882,7 +2881,8 @@
     ],
     "chapterId": "ch-शयन लीला",
     "chapterName": "शयन लीला",
-    "verseNumber": 4
+    "verseNumber": 4,
+    "rag": "जैजैवन्ती"
   },
   {
     "id": "shribanraaj-nikunj-mein-shri-lal-balbir-braj-binod-hori-ke-kavitta-11",
@@ -2999,7 +2999,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग भैरवी वा पीलू /जिला)",
           "देहु निकुंज निवास स्वामिनी, भूल-चूक तजि लखि निज ओरी।",
           "सुनी न देखी त्रिभुवन में कहुँ, तुम सम ललित मनोहर जोरी॥ [1]",
           "युगल चन्दमुख निरखन के हित, प्यासे मरत हैं नयन चकोरी।",
@@ -3010,7 +3009,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 6
+    "verseNumber": 6,
+    "rag": "भैरवी वा पीलू /जिला"
   },
   {
     "id": "kalidah-kool-kunjake-mahin-shri-lalit-kishori-abhilash-madhuri-vinay-28",
@@ -3023,7 +3023,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग जैजैवंती)",
           "कालीदह कूल कुंजके माहीं, भ्रमरी है दुमडारि रहौं।",
           "कीर कोकिला ह्वै निधुवन में, मधुरे राधानाम कहौं॥ [1]",
           "गुल्म लता गहिवर की ह्वैकै, वृंदावन को वास चहौं ।",
@@ -3034,7 +3033,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 28
+    "verseNumber": 28,
+    "rag": "जैजैवंती"
   },
   {
     "id": "kadam-kunj-hvai-ho-kabai-shri-lalit-kishori-dev-shri-lalit-kishori-dev-ju-ki-vani",
@@ -3068,7 +3068,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग चैती गौरी)",
           "जमुनापुलिन कुंज गहिवरकी कोकिल ह्वै द्रुम कूक मचावौं। [1]",
           "पदपंकज प्रिय लाल मधुप ह्वै मधुरी मधुरी गुँज सुनावौं॥ [2]",
           "कूकरि ह्वै वनवीथिन डोलौं बचे सीथ रसिकनके पावौं। [3]",
@@ -3079,7 +3078,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 65
+    "verseNumber": 65,
+    "rag": "चैती गौरी"
   },
   {
     "id": "jamunapulin-kunj-gahbar-ki-shri-lalit-kishori-abhilash-madhuri-vinay-65",
@@ -3092,7 +3092,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग चैती गौरी)",
           "जमुना-पुलिन कुंज गहबर की, कोकिल ह्वै द्रुम कूक मचाऊँ।",
           "पद-पंकज प्रिय लाल-मधुप ह्वै, मधुरे-मधुरे गुंज सुनाऊँ॥ [1]",
           "कूकर ह्वै बन-वीथिनि डोलौं, बचे सीथ रसिकन के खाऊँ।",
@@ -3103,7 +3102,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 65
+    "verseNumber": 65,
+    "rag": "चैती गौरी"
   },
   {
     "id": "he-swamini-shri-kunj-viharini-shri-lalit-kishori-abhilash-madhuri-vinay-122",
@@ -3116,7 +3116,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग खम्माच)",
           "हेस्वामिनि श्रीकुंजविहारिनि, वेगि खवरि मेरी लीजै।",
           "सेवा रीति कछू नहिं जानौं, चूक छिमा करि दीजै॥ [1]",
           "अति आधीन दीन रटि टेरों, चित्तदै यह सुनि लीजै।",
@@ -3127,7 +3126,8 @@
     ],
     "chapterId": "ch-विनय",
     "chapterName": "विनय",
-    "verseNumber": 122
+    "verseNumber": 122,
+    "rag": "खम्माच"
   },
   {
     "id": "manuan-karo-nikunj-ki-baat-jugul-laal-gun-gaan-karo-kin-jaat-raseeli-raat-shri-lalit-kishori-abhilash-madhuri",
@@ -3203,7 +3203,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग गौरी)",
           "कुंज महल रंग हो हो होरी,",
           "खेलत नवल किशोर किशोरी।",
           "बाजत ताल मृदंग झांझ ढप",
@@ -3218,7 +3217,8 @@
     ],
     "chapterId": "ch-बसंत के पद",
     "chapterName": "बसंत के पद",
-    "verseNumber": 15
+    "verseNumber": 15,
+    "rag": "गौरी"
   },
   {
     "id": "chintaharan-mahadev-gokul-mahavan",
@@ -3528,7 +3528,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कान्हरौ)",
           "कुंजबिहारी हौं तेरी बलाइ",
           "लेऊँ नीके हौ गावत।",
           "राग रागिनीन के जूथ उपजावत॥",
@@ -3542,7 +3541,8 @@
     ],
     "chapterId": "ch-श्री हरिदास",
     "chapterName": "श्री हरिदास",
-    "verseNumber": 12
+    "verseNumber": 12,
+    "rag": "कान्हरौ"
   },
   {
     "id": "saghan-kunj-chaya-sukhad-seetal-shri-bihari-lal-bihari-satsai-5",
@@ -3566,12 +3566,12 @@
     "verseNumber": 5
   },
   {
-    "id": "उर-कमल-कज-म-रजत-नवल-यगल-कशर",
+    "id": "ur-kml-kunj-men-rajt-nvl-yugl-kishor",
     "collectionId": "braj-dham-mahatmya",
     "index": 153,
     "titleDevanagari": "उर - कमल  कुंज  में  राजत  नवल  युगल  किशोर",
     "author": "श्री ब्रज धाम",
-    "slug": "उर-कमल-कज-म-रजत-नवल-यगल-कशर",
+    "slug": "ur-kml-kunj-men-rajt-nvl-yugl-kishor",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -3728,7 +3728,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विहागरौ)",
           "रंगीले दोउ कुंज महल में राजैं।",
           "करत केलि रस झेली निरंतर किंकिनी नूपुर बाजैं॥ [1]",
           "परिरंभन आलिंगन चुंबन अंग अंग सरस समाजैं।",
@@ -3739,7 +3738,8 @@
     ],
     "chapterId": "ch-श्रृंगार रस के पद",
     "chapterName": "श्रृंगार रस के पद",
-    "verseNumber": 458
+    "verseNumber": 458,
+    "rag": "विहागरौ"
   },
   {
     "id": "meri-kunjbiharin-rani-shri-roop-sakhi-ji-ki-vani-shringar-ras-ke-pad-578",
@@ -3752,7 +3752,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विहागरौ)",
           "मेरी कुंजबिहारिन रानी।",
           "कुंजबिहारी हरषि लडावत, अंग - अंग छबि बानी॥ [1]",
           "आनंद कोक कला गुन गूढनि, छोरि ग्रंथ रस सानी।",
@@ -3763,7 +3762,8 @@
     ],
     "chapterId": "ch-श्रृंगार रस के पद",
     "chapterName": "श्रृंगार रस के पद",
-    "verseNumber": 578
+    "verseNumber": 578,
+    "rag": "विहागरौ"
   },
   {
     "id": "aaju-kachhu-kunjanimen-varshaasi-shri-hariram-vyas-vyas-vani-uttarardh-292",
@@ -3776,7 +3776,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग मल्हार)",
           "आजु कछु कुंजनिमें वरषासी।",
           "बादल दल में देखि सखीरी, चमकति है चपलासी॥ [1]",
           "नाँन्हीं नाँन्हीं बूँदनि कछू धुरवा से, पवन बहै सुखरासी।",
@@ -3790,7 +3789,8 @@
     ],
     "chapterId": "ch-उत्तरार्ध",
     "chapterName": "उत्तरार्ध",
-    "verseNumber": 292
+    "verseNumber": 292,
+    "rag": "मल्हार"
   },
   {
     "id": "kalindi-ke-teer-neernikat-kadamb-kunj-taj-begam",
@@ -3831,7 +3831,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग मलार)",
           "झूलत फूलत कुंजविहारी।",
           "दूसरी ओर किसोरवल्लभा श्रीवृषभान दुलारी॥ [1]",
           "कुलकत हँसत खसत कुसुमावलि सुंदर झूमक सारी।",
@@ -3843,7 +3842,8 @@
     ],
     "chapterId": "ch-उत्तरार्ध",
     "chapterName": "उत्तरार्ध",
-    "verseNumber": 321
+    "verseNumber": 321,
+    "rag": "मलार"
   },
   {
     "id": "antariyag-suratanamandpe-shri-prabodhanand-saraswati-vrindavan-mahimamrit-53",
@@ -3942,7 +3942,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विभास)",
           "आजु प्रभात लता मंदिर में,",
           "सुख वरषत अति हरषि जुगल वर। [1]",
           "गौर स्याम अभिराम रंग भरे,",
@@ -3961,7 +3960,8 @@
     ],
     "chapterId": "ch-श्री हित चौरासी",
     "chapterName": "श्री हित चौरासी",
-    "verseNumber": 5
+    "verseNumber": 5,
+    "rag": "विभास"
   },
   {
     "id": "baithe-laal-nikunj-bhavan-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-40",
@@ -3974,7 +3974,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "बैठे लाल निकुंज भवन।",
           "रजनी रुचिर मल्लिका मुकुलित त्रिविध पवन॥ [1]",
           "तूँ सखी काम केलि मन मोहन मदन दवन।",
@@ -3987,7 +3986,8 @@
     ],
     "chapterId": "ch-श्री हित चौरासी",
     "chapterName": "श्री हित चौरासी",
-    "verseNumber": 40
+    "verseNumber": 40,
+    "rag": "सारंग"
   },
   {
     "id": "shrimadh-vrindatavi-kunjpunje-shri-prabodhananda-sarasvati-vrindavan-mahimamrit-548",
@@ -4522,7 +4522,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विभास)",
           "रुनकि-झुनकि आवति कुंजनि तैं, ठटकि-ठटकि पद धरति नवेली । [1]",
           "झुकि-झुकि चलत सघन बीथिन पिय, निरुवारत कल कुसुमन बेली॥[2]",
           "लटकि-लटकि नव नीलाम्बर बर, जाति सँमारति संग सहेली। [3]",
@@ -4533,7 +4532,8 @@
     ],
     "chapterId": "ch-समय प्रबन्ध",
     "chapterName": "समय प्रबन्ध",
-    "verseNumber": 82
+    "verseNumber": 82,
+    "rag": "विभास"
   },
   {
     "id": "rang-bhari-rajat-alakladi-ri-shri-albeli-ali-samay-prabandh-padavali-83",
@@ -4546,7 +4546,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विभास)",
           "आवति कुंजन तें गरबहियाँ।",
           "मदमाते अरसाते दम्पत्ति,",
           "डगमग अवनि धरत हैं पैंयाँ॥ [1]",
@@ -4560,7 +4559,8 @@
     ],
     "chapterId": "ch-समय प्रबन्ध",
     "chapterName": "समय प्रबन्ध",
-    "verseNumber": 83
+    "verseNumber": 83,
+    "rag": "विभास"
   },
   {
     "id": "jah-nag-khag-mrig-lata-shri-nanddas-ras-panchadhyayi-shri-vrindavan-varnan-18",
@@ -4594,7 +4594,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग केदार)",
           "बैठी है झरोखे प्यारी कुंज भवन मों",
           "महलु न पावे पीय ठाढे दरसन कों। [1]",
           "उजारी तें उजारी माथे माँग सोहे गंगा जैसे",
@@ -4609,7 +4608,8 @@
     ],
     "chapterId": "ch-रास मान के पद",
     "chapterName": "रास मान के पद",
-    "verseNumber": 100
+    "verseNumber": 100,
+    "rag": "केदार"
   },
   {
     "id": "pyar-hi-ki-kunj-aur-pyar-hi-ki-sej-rachi-shri-dhruvdas-byalees-leela-anand-dasha-vinod",
@@ -4677,7 +4677,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग भैरवी)",
           "जय जय विपन विहारनि रानी।",
           "जिनकी दया दृष्टि पल माहों कर्म भर्म सब खोय निसानी॥ [1]",
           "तब पद महिमा सुनी अलौकिक तोरी लोकवेद कुलकानी।",
@@ -4690,7 +4689,8 @@
     ],
     "chapterId": "ch-मंगल",
     "chapterName": "मंगल",
-    "verseNumber": 11
+    "verseNumber": 11,
+    "rag": "भैरवी"
   },
   {
     "id": "meri-sarabas-jivan-pyari-shri-ali-madhuri-ji-shri-nikunj-keli-madhuri",
@@ -4703,7 +4703,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग भैरवी)",
           "मेरी सरबस जीवन प्यारी।",
           "पल्कान्तर ही ओट होय तब",
           "विह्वल अति ही होत विहारी॥ [1]",
@@ -4717,7 +4716,8 @@
     ],
     "chapterId": "ch-मंगल",
     "chapterName": "मंगल",
-    "verseNumber": 12
+    "verseNumber": 12,
+    "rag": "भैरवी"
   },
   {
     "id": "shyama-pyari-jay-jay-shriradha-shri-ali-madhuri-ji-shri-nikunj-keli-madhuri",
@@ -4730,7 +4730,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग मारू)",
           "श्यामा प्यारी जय जय श्रीराधा।",
           "करुणा सागर शील उजागर सुंदर रूप अगाधा॥  [1]",
           "श्याम सुंदर की प्रेम पियारी प्रानन की सुख साधा।",
@@ -4741,7 +4740,8 @@
     ],
     "chapterId": "ch-मंगल",
     "chapterName": "मंगल",
-    "verseNumber": 14
+    "verseNumber": 14,
+    "rag": "मारू"
   },
   {
     "id": "main-kahan-janun-kunjbihari-shri-narayan-swami-braj-vihar-sambhrammanalila-10",
@@ -4754,7 +4754,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कालिंगड़ा)",
           "मैं कहा जानूँ कुंजबिहारी।",
           "किहि कारण रूठी है तुम सों, चंद्रमुखी वृषभानकुमारी॥ [1]",
           "जब ते उठी प्रिया सोवत तें, तबही सों मन में रिस भारी।",
@@ -4767,7 +4766,8 @@
     ],
     "chapterId": "ch-सम्भ्रम-मानलीला",
     "chapterName": "सम्भ्रम-मानलीला",
-    "verseNumber": 10
+    "verseNumber": 10,
+    "rag": "कालिंगड़ा"
   },
   {
     "id": "aaju-nikunj-manju-mein-khelat-naval-kishor-naveel-kisori-shri-hita-harivansh-mahaprabhu-hit-chaturasi-7",
@@ -4780,7 +4780,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विभास)",
           "आजु निकुंज मंजु में खेलत, नवल किसोर नवीन किसोरी ।  अति अनुपम अनुराग परसपर, सुनि अभूत भूतल पर जोरी॥",
           "विद्रुम फटिक विविध निर्मित धर, नव कर्पूर पराग न थोरी ।  कौंमल किसलय सैंन सुपेसल, तापर स्याम निवेसित गोरी॥",
           "मिथुन हास परिहास परायन, पीक कपोल कमल पर झोरी ।  गौर स्याम भुज कलह मनोहर, नीवी बंधन मोचत डोरी॥",
@@ -4792,7 +4791,8 @@
     ],
     "chapterId": "ch-हित चौरासी",
     "chapterName": "हित चौरासी",
-    "verseNumber": 7
+    "verseNumber": 7,
+    "rag": "विभास"
   },
   {
     "id": "baithi-kunj-manhi-maharani-brajaraj-ju-ki-shri-lal-balbir-braj-binod-shri-radha-shatak-21",
@@ -4922,7 +4922,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग गौरी)",
           "नव निकुंज ग्रह नवल आगैं",
           "नवल बीना मध्य राग गौरी ठटी। [1]",
           "मनौं दस इंदु पीयूज़ बरषत सुखद",
@@ -4937,7 +4936,8 @@
     ],
     "chapterId": "ch-केलिमाल",
     "chapterName": "केलिमाल",
-    "verseNumber": 106
+    "verseNumber": 106,
+    "rag": "गौरी"
   },
   {
     "id": "jhulat-dol-shrikunjbihari-shri-swami-haridas-ji-kelimal-108",
@@ -4950,7 +4950,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग गौरी)",
           "झूलत डोल श्रीकुंजबिहारी।",
           "दूसरी ओर रसिक राधावर नागरि नवल दुलारी॥ [1]",
           "राखे न रहत हँसत कहि कहि प्रिया",
@@ -4963,7 +4962,8 @@
     ],
     "chapterId": "ch-केलिमाल",
     "chapterName": "केलिमाल",
-    "verseNumber": 108
+    "verseNumber": 108,
+    "rag": "गौरी"
   },
   {
     "id": "yugal-naam-saun-nem-japat-nit-kunjbihari-shri-nabhadas-bhaktamala-91",
@@ -5327,7 +5327,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग झिंझोटी)",
           "प्यारे प्रेम भूमि श्री वृंदावन॥",
           "यहां के जड़ चेतन सब प्रेमी इनके भाव भरे रस मय तन।",
           "साधन साध्य यहां नहीं कोई केवल कृपापत्र सबही जन॥ [1]",
@@ -5339,7 +5338,8 @@
     ],
     "chapterId": "ch-श्री प्यारी जी की गेंद लीला",
     "chapterName": "श्री प्यारी जी की गेंद लीला",
-    "verseNumber": 23
+    "verseNumber": 23,
+    "rag": "झिंझोटी"
   },
   {
     "id": "gaur-shyam-nit-ek-ras-shri-nagridas-shri-nagridas-ji-ki-vani-nikunj-vilas-3",
@@ -5480,7 +5480,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग भैरों)",
           "प्रातहीं किसोर जोरि कुंज-केलिनी। [1]",
           "अंग-अंग गुन-तरंग गौर-स्याम रूप-रासि,",
           "मदन-केलि सुरत-सिंधु पुलकि-झेलिनी॥ [2]",
@@ -5494,7 +5493,8 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 7
+    "verseNumber": 7,
+    "rag": "भैरों"
   },
   {
     "id": "kunj-mahal-mein-baithak-rakhein-shri-lalitmohini-dev-ju-ki-vani-10",
@@ -5548,7 +5548,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग बसंत)",
           "जुगल किसोर मेरे कुंजबिहारी प्यारी,",
           "बन बिहार बिहरत नव रंगा। [1]",
           "अरुन हरित मुकलित द्रुम पल्लव,",
@@ -5563,7 +5562,8 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 15
+    "verseNumber": 15,
+    "rag": "बसंत"
   },
   {
     "id": "rajat-nikuj-dham-thakurani",
@@ -5650,7 +5650,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कल्यान)",
           "नव निकुंज मंदिर में प्यारी,",
           "पियहिं सिखावति बीना। [1]",
           "ताँन बंधान कल्यान मनोहर,",
@@ -5665,7 +5664,8 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 30
+    "verseNumber": 30,
+    "rag": "कल्यान"
   },
   {
     "id": "bilasata-pyari-laal-kunja-rajani-shri-vitthal-vipul-dev-ju-ki-vani-32",
@@ -5678,7 +5678,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग केदारौ)",
           "बिलसत प्यारी-लाल कुंज रजनी।",
           "बदन-बदन जोरें मदन लडावत, नूपुर के सूर मिलि बलया की बजनी॥ [1]",
           "पुलकि-पुलकि तन आनन्द मगन मन, मधुरे बचन स्रवन सुनि सजनी ।",
@@ -5689,15 +5688,16 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 32
+    "verseNumber": 32,
+    "rag": "केदारौ"
   },
   {
-    "id": "चरजव-मर-दउ-कजबहर",
+    "id": "chirjivo-mere-dou-kunjbihari",
     "collectionId": "braj-dham-mahatmya",
     "index": 242,
     "titleDevanagari": "चिरजीवो मेरे दोउ कुंजबिहारी",
     "author": "श्री ब्रज धाम",
-    "slug": "चरजव-मर-दउ-कजबहर",
+    "slug": "chirjivo-mere-dou-kunjbihari",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -5725,7 +5725,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग केदारौ)",
           "नव बन नव निकुंज नव बाला।",
           "नव रंग रसिक रसिलौ मोहन बिलसत कुंजबिहारी लाला॥ [1]",
           "नव मराल जित अवनि धरत पग कूजित नूपुर किंकिनि जाला।",
@@ -5736,7 +5735,8 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 35
+    "verseNumber": 35,
+    "rag": "केदारौ"
   },
   {
     "id": "nav-nikunj-nav-bhumi-ragamagi-shri-vitthal-vipul-dev-ju-ki-vani-36",
@@ -5749,7 +5749,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग केदारौ)",
           "नव निकुंज नव भूमि रगमगी।",
           "नवल बिहारीलाल लाडिलौ नवल सरद की जोन्ह जगमगी॥ [1]",
           "नव सत साजि सकल अंग सुंदरि नवल बदन पर अलक सगबगी।",
@@ -5760,7 +5759,8 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 36
+    "verseNumber": 36,
+    "rag": "केदारौ"
   },
   {
     "id": "srighosthendrasakha-javirachita-kridha-shri-govardhan-bhatt-shri-radhakund-stava-39",
@@ -5890,7 +5890,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग बसंत)",
           "देखोऊ प्यारी कुंजबिहारी मूरति बंत बसंत।",
           "मोरी तरुण तरुलता तनमै मनसिज रस वरसंत॥ [1]",
           "अरुण अधर नव पल्लव शोभा विहसनि कुसुम विकाश।",
@@ -5905,7 +5904,8 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 57
+    "verseNumber": 57,
+    "rag": "बसंत"
   },
   {
     "id": "dampati-dou-rajat-kunj-bhavan-1",
@@ -6092,12 +6092,12 @@
     "verseNumber": 95
   },
   {
-    "id": "नपत-नकज-वहरन-रन",
+    "id": "nripti-nikunj-viharni-rani",
     "collectionId": "braj-dham-mahatmya",
     "index": 259,
     "titleDevanagari": "नृपति निकुंज विहारनि रानी",
     "author": "श्री ब्रज धाम",
-    "slug": "नपत-नकज-वहरन-रन",
+    "slug": "nripti-nikunj-viharni-rani",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6141,12 +6141,12 @@
     "verseNumber": 106
   },
   {
-    "id": "रध-कणड-तट-कज-कटर",
+    "id": "radha-kund-tt-kunj-kutir",
     "collectionId": "braj-dham-mahatmya",
     "index": 261,
     "titleDevanagari": "राधा कुण्ड तट कुंज कुटीर",
     "author": "श्री ब्रज धाम",
-    "slug": "रध-कणड-तट-कज-कटर",
+    "slug": "radha-kund-tt-kunj-kutir",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6161,12 +6161,12 @@
     "verseNumber": 109
   },
   {
-    "id": "शर-कजबहर-बहरन-दऊ-डल-झल",
+    "id": "shri-kunjbihari-biharin-dooo-dol-jhule",
     "collectionId": "braj-dham-mahatmya",
     "index": 262,
     "titleDevanagari": "श्री कुंजबिहारी बिहारिन दोऊ डोल झूले।",
     "author": "श्री ब्रज धाम",
-    "slug": "शर-कजबहर-बहरन-दऊ-डल-झल",
+    "slug": "shri-kunjbihari-biharin-dooo-dol-jhule",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6195,7 +6195,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सठिना)",
           "ते मोहै प्रिया कुंजबिहारी।",
           "महा चतुर वृषभान नन्दनी, राधा रूप उजारी॥ [1]",
           "शशिबदनी सुन्दर कुण्डल दुति, अलकैं घूँघरवारी।",
@@ -6210,7 +6209,8 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 117
+    "verseNumber": 117,
+    "rag": "सठिना"
   },
   {
     "id": "shri-vrinda-devi-temple",
@@ -6305,12 +6305,12 @@
     "verseNumber": 129
   },
   {
-    "id": "ह-वदवन-ह-वशवट-ह-ह-यमन-कज",
+    "id": "ha-vrindavn-ha-vnshivt-ha-ha-ymuna-kunj",
     "collectionId": "braj-dham-mahatmya",
     "index": 268,
     "titleDevanagari": "हा वृंदावन हा वंशीवट हा हा यमुना कुंज",
     "author": "श्री ब्रज धाम",
-    "slug": "ह-वदवन-ह-वशवट-ह-ह-यमन-कज",
+    "slug": "ha-vrindavn-ha-vnshivt-ha-ha-ymuna-kunj",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6371,12 +6371,12 @@
     "verseNumber": 136
   },
   {
-    "id": "कज-पधर-पयर-भई-ह-अबर",
+    "id": "kunj-pdharo-pyari-bhee-hai-abar",
     "collectionId": "braj-dham-mahatmya",
     "index": 271,
     "titleDevanagari": "कुंज पधारो प्यारी भई है अबार",
     "author": "श्री ब्रज धाम",
-    "slug": "कज-पधर-पयर-भई-ह-अबर",
+    "slug": "kunj-pdharo-pyari-bhee-hai-abar",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6516,12 +6516,12 @@
     "verseNumber": 160
   },
   {
-    "id": "जयत-नकज-वहरण-वषभन-कशर",
+    "id": "jyti-nikunj-viharini-vrishbhan-kishori",
     "collectionId": "braj-dham-mahatmya",
     "index": 277,
     "titleDevanagari": "जयति निकुंज विहारिणी वृषभान किशोरी",
     "author": "श्री ब्रज धाम",
-    "slug": "जयत-नकज-वहरण-वषभन-कशर",
+    "slug": "jyti-nikunj-viharini-vrishbhan-kishori",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6646,12 +6646,12 @@
     "verseNumber": 169
   },
   {
-    "id": "कज-बहर-ह-लल-दरसन-दज-सवर",
+    "id": "kunj-bihari-ho-lal-drsn-dijau-sanvre",
     "collectionId": "braj-dham-mahatmya",
     "index": 282,
     "titleDevanagari": "कुंज बिहारी हो लाल दरसन दीजौ साँवरे",
     "author": "श्री ब्रज धाम",
-    "slug": "कज-बहर-ह-लल-दरसन-दज-सवर",
+    "slug": "kunj-bihari-ho-lal-drsn-dijau-sanvre",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6678,7 +6678,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग केदारो)",
           "लालन गिरिधारी नवल कुंजबिहारी।",
           "अंग अंग पर मनमथ कोटिक वार डारी॥ [1]",
           "संग नवल नारी वृषभानु की दुलारी।",
@@ -6693,15 +6692,16 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 173
+    "verseNumber": 173,
+    "rag": "केदारो"
   },
   {
-    "id": "भर-भए-नवकज-सदन-त-आवत-लल-गवरधनधर",
+    "id": "bhor-bhe-nvkunj-sdn-ten-aavt-lal-govrdhndhari",
     "collectionId": "braj-dham-mahatmya",
     "index": 284,
     "titleDevanagari": "भोर भए नवकुंज सदन तें, आवत लाल गोवर्धनधारी",
     "author": "श्री ब्रज धाम",
-    "slug": "भर-भए-नवकज-सदन-त-आवत-लल-गवरधनधर",
+    "slug": "bhor-bhe-nvkunj-sdn-ten-aavt-lal-govrdhndhari",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6718,12 +6718,12 @@
     "verseNumber": 180
   },
   {
-    "id": "बन-क-कजन-कजन-डलन",
+    "id": "bn-ki-kunjni-kunjni-dolni",
     "collectionId": "braj-dham-mahatmya",
     "index": 285,
     "titleDevanagari": "बन की कुंजनि कुंजनि डोलनि",
     "author": "श्री ब्रज धाम",
-    "slug": "बन-क-कजन-कजन-डलन",
+    "slug": "bn-ki-kunjni-kunjni-dolni",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6746,12 +6746,12 @@
     "verseNumber": 185
   },
   {
-    "id": "आज-बन-कजन-जयनर-पयर-पयर",
+    "id": "aaju-bni-kunjni-jyaunar",
     "collectionId": "braj-dham-mahatmya",
     "index": 286,
     "titleDevanagari": "आजु बनी कुंजनि ज्यौनार ।  ( प्यारी-प्यारी )",
     "author": "श्री ब्रज धाम",
-    "slug": "आज-बन-कजन-जयनर-पयर-पयर",
+    "slug": "aaju-bni-kunjni-jyaunar",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6828,12 +6828,12 @@
     "verseNumber": 193
   },
   {
-    "id": "सख-इत-फलन-कज-गलब-वरज-शभ-सकल-भई",
+    "id": "skhi-it-phulni-kunj-gulab-virajain-shobha-skl-bhee",
     "collectionId": "braj-dham-mahatmya",
     "index": 289,
     "titleDevanagari": "सखी ! इत फूलनि कुंज गुलाब विराजैं शोभा सकल भई",
     "author": "श्री ब्रज धाम",
-    "slug": "सख-इत-फलन-कज-गलब-वरज-शभ-सकल-भई",
+    "slug": "skhi-it-phulni-kunj-gulab-virajain-shobha-skl-bhee",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6850,12 +6850,12 @@
     "verseNumber": 194
   },
   {
-    "id": "वदवन-कजन-म-मधय-खसखन-रचय",
+    "id": "vrindavn-kunjn-men-mdhy-khskhano-rchyo",
     "collectionId": "braj-dham-mahatmya",
     "index": 290,
     "titleDevanagari": "वृंदावन कुंजन में मध्य खसखानो रच्यो",
     "author": "श्री ब्रज धाम",
-    "slug": "वदवन-कजन-म-मधय-खसखन-रचय",
+    "slug": "vrindavn-kunjn-men-mdhy-khskhano-rchyo",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6883,7 +6883,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग गौरी)",
           "राधा रसिक कुंजबिहारी खेलत फाग",
           "सब जुवती जन कहत हो हो होरी। [1]",
           "भरत परस्पर काहू की काहू न सुधि",
@@ -6898,7 +6897,8 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 197
+    "verseNumber": 197,
+    "rag": "गौरी"
   },
   {
     "id": "munger-raj-mandir",
@@ -6998,12 +6998,12 @@
     "verseNumber": 211
   },
   {
-    "id": "शर-कजबहर-क-जस-नक",
+    "id": "shri-kunjbihari-kau-js-nikau",
     "collectionId": "braj-dham-mahatmya",
     "index": 296,
     "titleDevanagari": "श्री कुंजबिहारी कौ जस नीकौ",
     "author": "श्री ब्रज धाम",
-    "slug": "शर-कजबहर-क-जस-नक",
+    "slug": "shri-kunjbihari-kau-js-nikau",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -7251,12 +7251,12 @@
     "verseNumber": 233
   },
   {
-    "id": "आज-नकज-मज-म-खलत-नवल-कसर-नवन-कसर",
+    "id": "aaju-nikunj-mnju-men-khelt-nvl-kisor-nvin-kisori",
     "collectionId": "braj-dham-mahatmya",
     "index": 307,
     "titleDevanagari": "आजु निकुंज मंजु में खेलत, नवल किसोर नवीन किसोरी",
     "author": "श्री ब्रज धाम",
-    "slug": "आज-नकज-मज-म-खलत-नवल-कसर-नवन-कसर",
+    "slug": "aaju-nikunj-mnju-men-khelt-nvl-kisor-nvin-kisori",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -7301,12 +7301,12 @@
     "verseNumber": 237
   },
   {
-    "id": "ह-सख-कसमन-बनत-कजन",
+    "id": "he-skhi-kusumn-bint-kunjn",
     "collectionId": "braj-dham-mahatmya",
     "index": 309,
     "titleDevanagari": "हे सखि कुसुमन बिनत कुंजन",
     "author": "श्री ब्रज धाम",
-    "slug": "ह-सख-कसमन-बनत-कजन",
+    "slug": "he-skhi-kusumn-bint-kunjn",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -7373,12 +7373,12 @@
     "verseNumber": 247
   },
   {
-    "id": "शयम-शयम-नकज-भवन-म",
+    "id": "shyama-shyam-nikunj-bhvn-men",
     "collectionId": "braj-dham-mahatmya",
     "index": 312,
     "titleDevanagari": "श्यामा श्याम निकुंज भवन में",
     "author": "श्री ब्रज धाम",
-    "slug": "शयम-शयम-नकज-भवन-म",
+    "slug": "shyama-shyam-nikunj-bhvn-men",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -7547,12 +7547,12 @@
     "verseNumber": 255
   },
   {
-    "id": "मदन-मथन-धन-नकज-खलत-हर",
+    "id": "mdn-mthn-dhn-nikunj-khelt-hri",
     "collectionId": "braj-dham-mahatmya",
     "index": 319,
     "titleDevanagari": "मदन मथन धन निकुंज खेलत हरि",
     "author": "श्री ब्रज धाम",
-    "slug": "मदन-मथन-धन-नकज-खलत-हर",
+    "slug": "mdn-mthn-dhn-nikunj-khelt-hri",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -7627,12 +7627,12 @@
     "verseNumber": 258
   },
   {
-    "id": "कज-भवन-क-आगन-डलत",
+    "id": "kunj-bhvn-ke-aangn-dolt",
     "collectionId": "braj-dham-mahatmya",
     "index": 322,
     "titleDevanagari": "कुंज भवन के आंगन डोलत",
     "author": "श्री ब्रज धाम",
-    "slug": "कज-भवन-क-आगन-डलत",
+    "slug": "kunj-bhvn-ke-aangn-dolt",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -7852,12 +7852,12 @@
     "verseNumber": 274
   },
   {
-    "id": "इन-कजन-वहरत-नत-ह-नत",
+    "id": "in-kunjn-vihrt-nit-hi-nit",
     "collectionId": "braj-dham-mahatmya",
     "index": 332,
     "titleDevanagari": "इन कुंजन विहरत नित ही नित",
     "author": "श्री ब्रज धाम",
-    "slug": "इन-कजन-वहरत-नत-ह-नत",
+    "slug": "in-kunjn-vihrt-nit-hi-nit",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -8077,12 +8077,12 @@
     "verseNumber": 283
   },
   {
-    "id": "फलन-कज-गलब-क-बनक-बन-अत-सह",
+    "id": "phuln-kunj-gulab-ki-bnk-bni-ati-sohe",
     "collectionId": "braj-dham-mahatmya",
     "index": 341,
     "titleDevanagari": "फूलन कुंज गुलाब की बनक बनी अति सोहे",
     "author": "श्री ब्रज धाम",
-    "slug": "फलन-कज-गलब-क-बनक-बन-अत-सह",
+    "slug": "phuln-kunj-gulab-ki-bnk-bni-ati-sohe",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -8207,7 +8207,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विभास)",
           "प्रात में निकुंज द्वार ह्वै ललिता ललित बजाई बीना।",
           "पोढ़े सुनत श्याम श्री श्यामा दंपति चतुर नवीन नवीना॥ 1॥",
           "अति अनुराग सुहाग भरै दोऊ कोक कला जो प्रवीन प्रवीना।",
@@ -8218,7 +8217,8 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 293
+    "verseNumber": 293,
+    "rag": "विभास"
   },
   {
     "id": "he-swamini-shri-kunj-viharini",
@@ -8287,12 +8287,12 @@
     "verseNumber": 297
   },
   {
-    "id": "वनदवन-कजन-म-हर",
+    "id": "vrindavn-kunjn-men-hori",
     "collectionId": "braj-dham-mahatmya",
     "index": 350,
     "titleDevanagari": "वृन्दावन कुंजन में होरी।",
     "author": "श्री ब्रज धाम",
-    "slug": "वनदवन-कजन-म-हर",
+    "slug": "vrindavn-kunjn-men-hori",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -8338,12 +8338,12 @@
     "verseNumber": 300
   },
   {
-    "id": "चलह-कन-मनन-कज-कटर",
+    "id": "chlhi-kin-manini-kunj-kutir",
     "collectionId": "braj-dham-mahatmya",
     "index": 352,
     "titleDevanagari": "चलहि किन मानिनि कुंज कुटीर",
     "author": "श्री ब्रज धाम",
-    "slug": "चलह-कन-मनन-कज-कटर",
+    "slug": "chlhi-kin-manini-kunj-kutir",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -8540,12 +8540,12 @@
     "verseNumber": 309
   },
   {
-    "id": "ठड़-कज-दवर-पय-पयर-करत-परसपर-हस-हस-बतय",
+    "id": "thae-kunj-dvar-piy-pyari-krt-prspr-hns-hns-btiya",
     "collectionId": "braj-dham-mahatmya",
     "index": 360,
     "titleDevanagari": "ठाड़े कुंज द्वार पीय प्यारी करत परस्पर  हँस हँस बतिया",
     "author": "श्री ब्रज धाम",
-    "slug": "ठड़-कज-दवर-पय-पयर-करत-परसपर-हस-हस-बतय",
+    "slug": "thae-kunj-dvar-piy-pyari-krt-prspr-hns-hns-btiya",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -8562,12 +8562,12 @@
     "verseNumber": 310
   },
   {
-    "id": "भर-नकजन-आगन-बच-लस",
+    "id": "bhor-nikunjni-aangn-bich-lsain",
     "collectionId": "braj-dham-mahatmya",
     "index": 361,
     "titleDevanagari": "भोर निकुंजनि-आँगन-बीच लसैं",
     "author": "श्री ब्रज धाम",
-    "slug": "भर-नकजन-आगन-बच-लस",
+    "slug": "bhor-nikunjni-aangn-bich-lsain",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -8626,12 +8626,12 @@
     "verseNumber": 315
   },
   {
-    "id": "वहरत-दऊ-परतम-कज",
+    "id": "vihrt-dooo-pritm-kunj",
     "collectionId": "braj-dham-mahatmya",
     "index": 364,
     "titleDevanagari": "विहरत दोऊ प्रीतम कुंज",
     "author": "श्री ब्रज धाम",
-    "slug": "वहरत-दऊ-परतम-कज",
+    "slug": "vihrt-dooo-pritm-kunj",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -8664,12 +8664,12 @@
     "verseNumber": 317
   },
   {
-    "id": "गर-कजन-म-आज-हर-मच-नरयण-सवम",
+    "id": "gori-kunjn-men-aaj-hori-mchi",
     "collectionId": "braj-dham-mahatmya",
     "index": 365,
     "titleDevanagari": "गोरी कुंजन में आज होरी मची (नारायण स्वामी )",
     "author": "श्री ब्रज धाम",
-    "slug": "गर-कजन-म-आज-हर-मच-नरयण-सवम",
+    "slug": "gori-kunjn-men-aaj-hori-mchi",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -8738,12 +8738,12 @@
     "verseNumber": 324
   },
   {
-    "id": "नन-लखय-जब-कजन-त-बन-क-नकसय-मटकय-र",
+    "id": "nain-lkhyo-jb-kunjn-tain-bni-kai-niksyo-mtkyo-ri",
     "collectionId": "braj-dham-mahatmya",
     "index": 368,
     "titleDevanagari": "नैन लख्यो जब कुंजन तैं, बनि कै निकस्यो मटक्यो री",
     "author": "श्री ब्रज धाम",
-    "slug": "नन-लखय-जब-कजन-त-बन-क-नकसय-मटकय-र",
+    "slug": "nain-lkhyo-jb-kunjn-tain-bni-kai-niksyo-mtkyo-ri",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -8760,12 +8760,12 @@
     "verseNumber": 325
   },
   {
-    "id": "कचन-मदर-ऊच-बनई-क-मनक-लइ-सद-झलकयत",
+    "id": "knchn-mndir-oonche-bnaee-ke-manik-lai-sda-jhlkeyt",
     "collectionId": "braj-dham-mahatmya",
     "index": 369,
     "titleDevanagari": "कंचन मंदिर ऊँचे बनाई के मानिक लाइ सदा झलकेयत",
     "author": "श्री ब्रज धाम",
-    "slug": "कचन-मदर-ऊच-बनई-क-मनक-लइ-सद-झलकयत",
+    "slug": "knchn-mndir-oonche-bnaee-ke-manik-lai-sda-jhlkeyt",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -8831,12 +8831,12 @@
     "verseNumber": 330
   },
   {
-    "id": "शरकजबहरन-ललत-लडल",
+    "id": "shrikunjbiharini-llit-ladili",
     "collectionId": "braj-dham-mahatmya",
     "index": 372,
     "titleDevanagari": "श्रीकुंजबिहारिनि ललित लाडिली",
     "author": "श्री ब्रज धाम",
-    "slug": "शरकजबहरन-ललत-लडल",
+    "slug": "shrikunjbiharini-llit-ladili",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -8853,12 +8853,12 @@
     "verseNumber": 332
   },
   {
-    "id": "आज-नकज-महल-म-गवत",
+    "id": "aaju-nikunj-mhl-men-gavt",
     "collectionId": "braj-dham-mahatmya",
     "index": 373,
     "titleDevanagari": "आजु निकुंज महल में गावत",
     "author": "श्री ब्रज धाम",
-    "slug": "आज-नकज-महल-म-गवत",
+    "slug": "aaju-nikunj-mhl-men-gavt",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -8908,7 +8908,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग तोड़ी - रूपक ताल)",
           "झूलत कुंज बिहारी लाल।",
           "रतन जटित कौ बनो है हिडोला",
           "अति ही सुखद विशाल॥ [1]",
@@ -8922,7 +8921,8 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 335
+    "verseNumber": 335,
+    "rag": "तोड़ी - रूपक ताल"
   },
   {
     "id": "kunj-kunj-chhai-te-ju-dhai-utsah-bhari",
@@ -9206,12 +9206,12 @@
     "verseNumber": 350
   },
   {
-    "id": "खलत-दऊ-कजन-हर",
+    "id": "khelt-dooo-kunjn-hori",
     "collectionId": "braj-dham-mahatmya",
     "index": 388,
     "titleDevanagari": "खेलत दोऊ कुंजन होरी",
     "author": "श्री ब्रज धाम",
-    "slug": "खलत-दऊ-कजन-हर",
+    "slug": "khelt-dooo-kunjn-hori",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -9278,12 +9278,12 @@
     "verseNumber": 354
   },
   {
-    "id": "आज-नव-कजन-क-अत-शभ",
+    "id": "aaj-nv-kunjn-ki-ati-shobha",
     "collectionId": "braj-dham-mahatmya",
     "index": 391,
     "titleDevanagari": "आज नव कुंजन की अति शोभा",
     "author": "श्री ब्रज धाम",
-    "slug": "आज-नव-कजन-क-अत-शभ",
+    "slug": "aaj-nv-kunjn-ki-ati-shobha",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -9300,12 +9300,12 @@
     "verseNumber": 356
   },
   {
-    "id": "बठ-हर-रध-सग-कज-भवन-अपन-रग",
+    "id": "baithe-hri-radha-sng-kunj-bhvn-apne-rng",
     "collectionId": "braj-dham-mahatmya",
     "index": 392,
     "titleDevanagari": "बैठे हरि राधा संग कुंज भवन अपने रंग",
     "author": "श्री ब्रज धाम",
-    "slug": "बठ-हर-रध-सग-कज-भवन-अपन-रग",
+    "slug": "baithe-hri-radha-sng-kunj-bhvn-apne-rng",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -9344,12 +9344,12 @@
     "verseNumber": 359
   },
   {
-    "id": "नवल-नकज-महल-मदर-म-जवन-बठ-कवर-कनहई",
+    "id": "nvl-nikunj-mhel-mndir-men-jenvn-baithe-kunvr-knhaee",
     "collectionId": "braj-dham-mahatmya",
     "index": 394,
     "titleDevanagari": "नवल निकुंज महेल मंदिर में जेंवन बैठे कुंवर कन्हाई",
     "author": "श्री ब्रज धाम",
-    "slug": "नवल-नकज-महल-मदर-म-जवन-बठ-कवर-कनहई",
+    "slug": "nvl-nikunj-mhel-mndir-men-jenvn-baithe-kunvr-knhaee",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -9366,12 +9366,12 @@
     "verseNumber": 360
   },
   {
-    "id": "सघन-कज-भवन-आज-फलन-क-मडल",
+    "id": "sghn-kunj-bhvn-aaj-phuln-ki-mndli",
     "collectionId": "braj-dham-mahatmya",
     "index": 395,
     "titleDevanagari": "सघन कुंज भवन आज फूलन की मंडली",
     "author": "श्री ब्रज धाम",
-    "slug": "सघन-कज-भवन-आज-फलन-क-मडल",
+    "slug": "sghn-kunj-bhvn-aaj-phuln-ki-mndli",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -9441,12 +9441,12 @@
     "verseNumber": 363
   },
   {
-    "id": "हडर-कज-वन-डल-र",
+    "id": "hindora-kunj-vn-dalo-re",
     "collectionId": "braj-dham-mahatmya",
     "index": 398,
     "titleDevanagari": "हिंडोरा कुंज वन डालो रे",
     "author": "श्री ब्रज धाम",
-    "slug": "हडर-कज-वन-डल-र",
+    "slug": "hindora-kunj-vn-dalo-re",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -9623,12 +9623,12 @@
     "verseNumber": 375
   },
   {
-    "id": "चदन-खर-प-बद-लगय-क-कजन-त-नकसय-मसकत",
+    "id": "chndn-khor-pai-bindu-lgay-kai-kunjn-ten-niksyau-muskato",
     "collectionId": "braj-dham-mahatmya",
     "index": 405,
     "titleDevanagari": "चंदन खोर पै बिंदु लगाय कै कुंजन तें निकस्यौ मुसकातो",
     "author": "श्री ब्रज धाम",
-    "slug": "चदन-खर-प-बद-लगय-क-कजन-त-नकसय-मसकत",
+    "slug": "chndn-khor-pai-bindu-lgay-kai-kunjn-ten-niksyau-muskato",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -9720,12 +9720,12 @@
     "verseNumber": 379
   },
   {
-    "id": "अह-नकज-वहरन-रन",
+    "id": "aho-nikunj-viharini-rani",
     "collectionId": "braj-dham-mahatmya",
     "index": 409,
     "titleDevanagari": "अहो निकुंज विहारिनि रानि",
     "author": "श्री ब्रज धाम",
-    "slug": "अह-नकज-वहरन-रन",
+    "slug": "aho-nikunj-viharini-rani",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -9795,12 +9795,12 @@
     "verseNumber": 383
   },
   {
-    "id": "कजभवन-त-नकस-मध-रधप-चल-मल-गल-बह",
+    "id": "kunjbhvn-ten-nikse-madho-radhape-chle-meli-gle-banh",
     "collectionId": "braj-dham-mahatmya",
     "index": 412,
     "titleDevanagari": "कुंजभवन तें निकसे माधो राधापे चले मेलि गले बांह",
     "author": "श्री ब्रज धाम",
-    "slug": "कजभवन-त-नकस-मध-रधप-चल-मल-गल-बह",
+    "slug": "kunjbhvn-ten-nikse-madho-radhape-chle-meli-gle-banh",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -9827,7 +9827,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग हमीर)",
           "दम्पति दोउ राजत कुंज-भवन।",
           "पीत कुल्है सिर, कटि पियरौ पट, कुंडल ललित श्रवन॥ [1]",
           "विजना-बियार ढोरति सखी नियरें, सीतल लागत पवन।",
@@ -9838,7 +9837,8 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 385
+    "verseNumber": 385,
+    "rag": "हमीर"
   },
   {
     "id": "kunj-janaki-raman-mein-badho-saras-ran-ror",
@@ -9895,12 +9895,12 @@
     "verseNumber": 387
   },
   {
-    "id": "कजबहर-नचत-नक",
+    "id": "kunjbihari-nacht-nike",
     "collectionId": "braj-dham-mahatmya",
     "index": 416,
     "titleDevanagari": "कुंजबिहारी नाचत नीके",
     "author": "श्री ब्रज धाम",
-    "slug": "कजबहर-नचत-नक",
+    "slug": "kunjbihari-nacht-nike",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -9965,12 +9965,12 @@
     "verseNumber": 390
   },
   {
-    "id": "रजत-कजबहर-पयर",
+    "id": "rajt-kunjbihari-pyari",
     "collectionId": "braj-dham-mahatmya",
     "index": 419,
     "titleDevanagari": "राजत कुंजबिहारी प्यारी।",
     "author": "श्री ब्रज धाम",
-    "slug": "रजत-कजबहर-पयर",
+    "slug": "rajt-kunjbihari-pyari",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -10048,12 +10048,12 @@
     "verseNumber": 393
   },
   {
-    "id": "खल-सयम-सयम-र-आज-कजन-म-हर",
+    "id": "khelen-syama-syam-ri-aaj-kunjn-men-hori",
     "collectionId": "braj-dham-mahatmya",
     "index": 422,
     "titleDevanagari": "खेलें स्यामा-स्याम री आज कुंजन में होरी ।",
     "author": "श्री ब्रज धाम",
-    "slug": "खल-सयम-सयम-र-आज-कजन-म-हर",
+    "slug": "khelen-syama-syam-ri-aaj-kunjn-men-hori",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -10195,12 +10195,12 @@
     "verseNumber": 401
   },
   {
-    "id": "कज-जनक-रमन-म-बढ-सरस-रन-रर",
+    "id": "kunj-janki-rmn-men-bdho-srs-rn-ror",
     "collectionId": "braj-dham-mahatmya",
     "index": 428,
     "titleDevanagari": "कुंज जानकी रमन में, बढो़ सरस रन रोर।",
     "author": "श्री ब्रज धाम",
-    "slug": "कज-जनक-रमन-म-बढ-सरस-रन-रर",
+    "slug": "kunj-janki-rmn-men-bdho-srs-rn-ror",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -10271,12 +10271,12 @@
     "verseNumber": 407
   },
   {
-    "id": "नगर-नकज-ऐन-कसलय-दल-रचत-सन",
+    "id": "nagrin-nikunj-ainn-kisly-dl-rchit-sainn",
     "collectionId": "braj-dham-mahatmya",
     "index": 431,
     "titleDevanagari": "नागरीं निकुंज ऐंन किसलय दल रचित सैंन",
     "author": "श्री ब्रज धाम",
-    "slug": "नगर-नकज-ऐन-कसलय-दल-रचत-सन",
+    "slug": "nagrin-nikunj-ainn-kisly-dl-rchit-sainn",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -10337,12 +10337,12 @@
     "verseNumber": 410
   },
   {
-    "id": "बन-गपल-बरन-भई-कज",
+    "id": "binu-gopal-bairin-bhee-kunje",
     "collectionId": "braj-dham-mahatmya",
     "index": 434,
     "titleDevanagari": "बिनु गोपाल बैरिन भई कुंजे",
     "author": "श्री ब्रज धाम",
-    "slug": "बन-गपल-बरन-भई-कज",
+    "slug": "binu-gopal-bairin-bhee-kunje",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -10361,12 +10361,12 @@
     "verseNumber": 411
   },
   {
-    "id": "दख-सख-नव-कज-रध-लल-बन-र",
+    "id": "dekhi-skhi-nv-kunj-radha-lal-bne-ri",
     "collectionId": "braj-dham-mahatmya",
     "index": 435,
     "titleDevanagari": "देखि सखी नव कुंज राधा लाल बने री",
     "author": "श्री ब्रज धाम",
-    "slug": "दख-सख-नव-कज-रध-लल-बन-र",
+    "slug": "dekhi-skhi-nv-kunj-radha-lal-bne-ri",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -10501,12 +10501,12 @@
     "verseNumber": 415
   },
   {
-    "id": "बठ-लल-नकज-भवन",
+    "id": "baithe-lal-nikunj-bhvn",
     "collectionId": "braj-dham-mahatmya",
     "index": 440,
     "titleDevanagari": "बैठे लाल निकुंज भवन",
     "author": "श्री ब्रज धाम",
-    "slug": "बठ-लल-नकज-भवन",
+    "slug": "baithe-lal-nikunj-bhvn",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -10525,12 +10525,12 @@
     "verseNumber": 416
   },
   {
-    "id": "दखत-नव-नकज-सन-सजन-लगत-ह-अत-चर",
+    "id": "dekht-nv-nikunj-sunu-sjni-lagt-hai-ati-charu",
     "collectionId": "braj-dham-mahatmya",
     "index": 441,
     "titleDevanagari": "देखत नव निकुंज सुनु सजनी लागत है अति चारु",
     "author": "श्री ब्रज धाम",
-    "slug": "दखत-नव-नकज-सन-सजन-लगत-ह-अत-चर",
+    "slug": "dekht-nv-nikunj-sunu-sjni-lagt-hai-ati-charu",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -10561,12 +10561,12 @@
     "verseNumber": 417
   },
   {
-    "id": "भज-ल-कज-बहरन-बल",
+    "id": "bhji-lai-kunj-biharini-bal",
     "collectionId": "braj-dham-mahatmya",
     "index": 442,
     "titleDevanagari": "भजि लै कुंज बिहारिनि बाल",
     "author": "श्री ब्रज धाम",
-    "slug": "भज-ल-कज-बहरन-बल",
+    "slug": "bhji-lai-kunj-biharini-bal",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -10707,12 +10707,12 @@
     "verseNumber": 426
   },
   {
-    "id": "कह-रध-बग-रचय-गहवर-नकज-वन-झम-रह-लत-लन-भम-परसवन",
+    "id": "khun-radha-bag-rchyauai-ghvr-nikunj-vn-jhum-rhi-lta-launi-bhumi-prsavni",
     "collectionId": "braj-dham-mahatmya",
     "index": 448,
     "titleDevanagari": "कहूॅं राधा बाग रच्यौै गहवर निकुंज वन झूम रही लता लौनी भूमि परसावनी ।",
     "author": "श्री ब्रज धाम",
-    "slug": "कह-रध-बग-रचय-गहवर-नकज-वन-झम-रह-लत-लन-भम-परसवन",
+    "slug": "khun-radha-bag-rchyauai-ghvr-nikunj-vn-jhum-rhi-lta-launi-bhumi-prsavni",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -10841,12 +10841,12 @@
     "verseNumber": 431
   },
   {
-    "id": "ललत-नव-कज-म-हर-पय-सग-खलत-गर",
+    "id": "llit-nv-kunj-men-hori-piya-sng-khelti-gori",
     "collectionId": "braj-dham-mahatmya",
     "index": 453,
     "titleDevanagari": "ललित नव कुंज में होरी; पिया संग खेलती गोरी",
     "author": "श्री ब्रज धाम",
-    "slug": "ललत-नव-कज-म-हर-पय-सग-खलत-गर",
+    "slug": "llit-nv-kunj-men-hori-piya-sng-khelti-gori",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -10933,12 +10933,12 @@
     "verseNumber": 438
   },
   {
-    "id": "कजन-मझ-बरजत-महन",
+    "id": "kunjn-manjh-birajt-mohn",
     "collectionId": "braj-dham-mahatmya",
     "index": 457,
     "titleDevanagari": "कुंजन माँझ बिराजत मोहन",
     "author": "श्री ब्रज धाम",
-    "slug": "कजन-मझ-बरजत-महन",
+    "slug": "kunjn-manjh-birajt-mohn",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -10959,12 +10959,12 @@
     "verseNumber": 439
   },
   {
-    "id": "ह-न-भई-रज-कज-ललत-वन",
+    "id": "hon-n-bhee-rj-kunj-llit-vn",
     "collectionId": "braj-dham-mahatmya",
     "index": 458,
     "titleDevanagari": "हों न भई रज कुंज ललित वन",
     "author": "श्री ब्रज धाम",
-    "slug": "ह-न-भई-रज-कज-ललत-वन",
+    "slug": "hon-n-bhee-rj-kunj-llit-vn",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -11161,12 +11161,12 @@
     "verseNumber": 448
   },
   {
-    "id": "शर-कजबहरन-सब-सखकर",
+    "id": "shri-kunjbiharini-sb-sukhkari",
     "collectionId": "braj-dham-mahatmya",
     "index": 467,
     "titleDevanagari": "श्री कुंजबिहारिनी सब सुखकारी",
     "author": "श्री ब्रज धाम",
-    "slug": "शर-कजबहरन-सब-सखकर",
+    "slug": "shri-kunjbiharini-sb-sukhkari",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -11238,7 +11238,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "वृंदावन सघन कुंज, माधुरी द्रुम भँवर गुंज,",
           "नित बिहार प्रिया प्रीतम, देखिवौई कीजै। [1]",
           "गौर स्याम नंद किसोर, सुंदर अति चित्त चोर,",
@@ -11253,7 +11252,8 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 453
+    "verseNumber": 453,
+    "rag": "सारंग"
   },
   {
     "id": "kunjbihari-ko-basant-sakhi",
@@ -11354,12 +11354,12 @@
     "verseNumber": 457
   },
   {
-    "id": "बज-बज-मदरल-शर-वषभन-नपत-दरबर",
+    "id": "bajai-bajai-mndirla-shri-vrishbhan-nripti-drbar",
     "collectionId": "braj-dham-mahatmya",
     "index": 475,
     "titleDevanagari": "बाजै बाजै मंदिरला श्री वृषभान नृपति दरबार।",
     "author": "श्री ब्रज धाम",
-    "slug": "बज-बज-मदरल-शर-वषभन-नपत-दरबर",
+    "slug": "bajai-bajai-mndirla-shri-vrishbhan-nripti-drbar",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -11423,12 +11423,12 @@
     "verseNumber": 461
   },
   {
-    "id": "आज-परभत-लत-मदर-म-सख-वरषत-अत-हरष-जगल-वर",
+    "id": "aaju-prbhat-lta-mndir-men-sukh-vrsht-ati-hrshi-jugl-vr",
     "collectionId": "braj-dham-mahatmya",
     "index": 478,
     "titleDevanagari": "आजु प्रभात लता मंदिर में, सुख वरषत अति हरषि जुगल वर",
     "author": "श्री ब्रज धाम",
-    "slug": "आज-परभत-लत-मदर-म-सख-वरषत-अत-हरष-जगल-वर",
+    "slug": "aaju-prbhat-lta-mndir-men-sukh-vrsht-ati-hrshi-jugl-vr",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -11719,7 +11719,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग गौरी)",
           "चलौ सखी कुंजबिहारी सौं चित दै",
           "मिलि देखै उनकी भाँवती।",
           "सुंदर सौं सुंदरि मिलि खेलत कैसैं धौं गाँवती॥ [1]",
@@ -11732,7 +11731,8 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 478
+    "verseNumber": 478,
+    "rag": "गौरी"
   },
   {
     "id": "baithe-hari-radha-sang-kunjabhavan-apane-rang-shri-vallabh-das",
@@ -11745,7 +11745,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "बैठे हरि राधा संग, कुंजभवन अपने रंग,",
           "कर मुरली अधर धरै सारंग मुख गाई। [1]",
           "मोहन अतिही सुजान परम चतुर गुण निधान,",
@@ -11760,7 +11759,8 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 479
+    "verseNumber": 479,
+    "rag": "सारंग"
   },
   {
     "id": "tamal-kunj",
@@ -11924,12 +11924,12 @@
     "verseNumber": 489
   },
   {
-    "id": "कज-महल-क-भतत-सहचर-अदभत-सझ-सजई",
+    "id": "kunj-mhl-ki-bhitti-shchri-adbhut-sanjhi-sjaee",
     "collectionId": "braj-dham-mahatmya",
     "index": 499,
     "titleDevanagari": "कुंज महल की भित्ति सहचरी अद्भुत साँझी सजाई ।",
     "author": "श्री ब्रज धाम",
-    "slug": "कज-महल-क-भतत-सहचर-अदभत-सझ-सजई",
+    "slug": "kunj-mhl-ki-bhitti-shchri-adbhut-sanjhi-sjaee",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -11950,12 +11950,12 @@
     "verseNumber": 491
   },
   {
-    "id": "वपन-घन-कज-रत-कल-भज-मल-रच",
+    "id": "vipin-ghn-kunj-rti-keli-bhuj-meli-ruchi",
     "collectionId": "braj-dham-mahatmya",
     "index": 500,
     "titleDevanagari": "विपिन घन कुंज रति केलि भुज मेलि रूचि",
     "author": "श्री ब्रज धाम",
-    "slug": "वपन-घन-कज-रत-कल-भज-मल-रच",
+    "slug": "vipin-ghn-kunj-rti-keli-bhuj-meli-ruchi",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -11999,12 +11999,12 @@
     "verseNumber": 494
   },
   {
-    "id": "मजल-कल-कज-दस-रध-हर-वसद-वस",
+    "id": "mnjul-kl-kunj-des-radha-hri-visd-ves",
     "collectionId": "braj-dham-mahatmya",
     "index": 502,
     "titleDevanagari": "मंजुल कल कुंज देस, राधा हरि विसद वेस",
     "author": "श्री ब्रज धाम",
-    "slug": "मजल-कल-कज-दस-रध-हर-वसद-वस",
+    "slug": "mnjul-kl-kunj-des-radha-hri-visd-ves",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -12088,7 +12088,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग मल्हार)",
           "निकुंज में ठाढ़े जुगल किसोर।",
           "गरबाहीं दियै दोऊ प्रीतम, आरस रंजित जागे भोर॥ [1]",
           "छाय रहीं घनघोर घटा अति, बिच बिच बोलत सुन्दर मोर।",
@@ -12099,7 +12098,8 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 500
+    "verseNumber": 500,
+    "rag": "मल्हार"
   },
   {
     "id": "hama-chakar-kunja-biharini-ke-jagadguru-shri-kripaluji-maharaj-prem-ras-madira-shri-radha-madhuri-52",

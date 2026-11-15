@@ -60,7 +60,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कलिंगडा)",
           "बसीवो श्री वृन्दावन को नीकौ,",
           "छिन्न छिन्न प्रति अनुराग बढ़त दिन, दरस बिहारीजी कौ॥ [1]",
           "नैंन श्रवण रसना रस अँचवत, अंग संग प्यारी पी कौ ।",
@@ -71,7 +70,8 @@
     ],
     "chapterId": "ch-सिद्धान्त के पद",
     "chapterName": "सिद्धान्त के पद",
-    "verseNumber": 185
+    "verseNumber": 185,
+    "rag": "कलिंगडा"
   },
   {
     "id": "pyari-ju-mokon-kripa-karo-shri-biharin-dev-biharin-dev-ki-vaani",
@@ -84,7 +84,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग गौरी)",
           "प्यारी जू मोकों कृपा करो,",
           "ऐसी रूचि उपजै जिए मेरे तुम्हीं न छिन्न बिसरो॥ [1]",
           "आपुन अपनी करि प्रेम बढ़ावहु, निज रस रीति सौं हियौ भरो।",
@@ -95,7 +94,8 @@
     ],
     "chapterId": "ch-सिद्धान्त के पद",
     "chapterName": "सिद्धान्त के पद",
-    "verseNumber": 186
+    "verseNumber": 186,
+    "rag": "गौरी"
   },
   {
     "id": "chasma-nitya-vihar-kou-diyo-biharini-mohi",
@@ -1508,7 +1508,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग बसंत)",
           "नवल वृन्दावन नवल बसन्त। [1]",
           "नव द्रुम बेलि केलि नव कुंजनि नवल कामिनी कंत। [2]",
           "नव अलि अलक झलक नव कोकिल नव सुर मिलि बिलसंत। [3]",
@@ -1519,7 +1518,8 @@
     ],
     "chapterId": "ch-रस के पद",
     "chapterName": "रस के पद",
-    "verseNumber": 122
+    "verseNumber": 122,
+    "rag": "बसंत"
   },
   {
     "id": "naaval-vrindavan-naval-basant-nav-ras-rasik-biharini-dasi-ke-nav-aanand-hi-na-ant-his-holiness-shri-biharin-dev-ji",
@@ -1553,7 +1553,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग केदारौ)",
           "जोरी अद्भुत आज बनी। [1]",
           "बारौं कोटि काम नख छबि पर उज्ज्वल उपमा नील मनी॥[2]",
           "उपमा देत सकुचि निरउपमित घन दामिनि लजनी। [3]",
@@ -1566,7 +1565,8 @@
     ],
     "chapterId": "ch-रस के पद",
     "chapterName": "रस के पद",
-    "verseNumber": 123
+    "verseNumber": 123,
+    "rag": "केदारौ"
   },
   {
     "id": "tahan-nahin-kachu-shram-shri-biharin-dev-ji-shri-biharin-dev-ju-ki-vani-ras-ke-pada-160",
@@ -1665,7 +1665,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "प्यारी जू सुंदर वदन तिहारौ।",
           "निरखि निरखि प्रीतम सचुपावत निमुषहु होत न न्यारौ॥ [1]",
           "मंद हासि परिहासि परस्पर नव नव नेह निहारौ।",
@@ -1676,7 +1675,8 @@
     ],
     "chapterId": "ch-रस के पद",
     "chapterName": "रस के पद",
-    "verseNumber": 180
+    "verseNumber": 180,
+    "rag": "सारंग"
   },
   {
     "id": "pyari-tere-tan-ki-sobha-barni-na-jaai-pada-by-shri-biharin-dev-ji",
@@ -1689,7 +1689,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "प्यारी तेरे तन की सोभा बरनी न जाइ।",
           "जा जा अंग निरखत ए नैना तहीं तहीं रहत लुभाइ॥ [1]",
           "नवल रूप अनूप माधुरी पान करत न अघाई।",
@@ -1700,7 +1699,8 @@
     ],
     "chapterId": "ch-रस के पद",
     "chapterName": "रस के पद",
-    "verseNumber": 181
+    "verseNumber": 181,
+    "rag": "सारंग"
   },
   {
     "id": "kahon-ri-jo-kahibe-ki-hoi-shri-biharin-dev-ju-ki-vani-ras-ke-pada-182",
@@ -1713,7 +1713,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "कहों री जो कहिबे की होइ।",
           "श्रीबिहारी बिहारनि कौ सुख सखी री, जानत नाहिने कोइ॥ [1]",
           "प्रेम मगन रस मत्त रहत नित, तन मन प्रान समोइ।",
@@ -1724,7 +1723,8 @@
     ],
     "chapterId": "ch-रस के पद",
     "chapterName": "रस के पद",
-    "verseNumber": 182
+    "verseNumber": 182,
+    "rag": "सारंग"
   },
   {
     "id": "seven-stages-of-divine-love-consciousness-by-shri-bhagwad-rasik",
@@ -2505,12 +2505,12 @@
     "verseNumber": 294
   },
   {
-    "id": "मछ-मछ-मगन",
+    "id": "manchhi-manchh-mangne",
     "collectionId": "biharin-dev-vani",
     "index": 114,
     "titleDevanagari": "माँछी, माँछ माँगने",
     "author": "श्री बिहारिन देव जी",
-    "slug": "मछ-मछ-मगन",
+    "slug": "manchhi-manchh-mangne",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2529,12 +2529,12 @@
     "verseNumber": 2
   },
   {
-    "id": "यह-दवय-परसद-परय-पय-क",
+    "id": "yh-divy-prsad-priya-piy-ko",
     "collectionId": "biharin-dev-vani",
     "index": 115,
     "titleDevanagari": "यह दिव्य प्रसाद प्रिया पिय को",
     "author": "श्री बिहारिन देव जी",
-    "slug": "यह-दवय-परसद-परय-पय-क",
+    "slug": "yh-divy-prsad-priya-piy-ko",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2574,12 +2574,12 @@
     "verseNumber": 6
   },
   {
-    "id": "मर-सवमन-परसनन-बदन-सवर-सखरस",
+    "id": "meri-svamini-prsnn-bdn-sanvrau-sukhrasi",
     "collectionId": "biharin-dev-vani",
     "index": 117,
     "titleDevanagari": "मेरी स्वामिनी प्रसन्न बदन साँवरौ सुखरासि",
     "author": "श्री बिहारिन देव जी",
-    "slug": "मर-सवमन-परसनन-बदन-सवर-सखरस",
+    "slug": "meri-svamini-prsnn-bdn-sanvrau-sukhrasi",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2705,12 +2705,12 @@
     "verseNumber": 15
   },
   {
-    "id": "शरबहरदस-बरज-म-बसत",
+    "id": "shribiharidas-brj-men-bst",
     "collectionId": "biharin-dev-vani",
     "index": 123,
     "titleDevanagari": "श्रीबिहारीदास ब्रज में बसत",
     "author": "श्री बिहारिन देव जी",
-    "slug": "शरबहरदस-बरज-म-बसत",
+    "slug": "shribiharidas-brj-men-bst",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2771,12 +2771,12 @@
     "verseNumber": 26
   },
   {
-    "id": "तव-मख-चद-चकर-य-नन",
+    "id": "tuv-mukh-chnd-chkor-ye-naina",
     "collectionId": "biharin-dev-vani",
     "index": 126,
     "titleDevanagari": "तुव मुख चंद चकोर ये नैना|",
     "author": "श्री बिहारिन देव जी",
-    "slug": "तव-मख-चद-चकर-य-नन",
+    "slug": "tuv-mukh-chnd-chkor-ye-naina",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2793,12 +2793,12 @@
     "verseNumber": 33
   },
   {
-    "id": "शरबहरनदस-लडवत-तय-तय",
+    "id": "shribiharnidas-ldavt-tyaun-tyaun",
     "collectionId": "biharin-dev-vani",
     "index": 127,
     "titleDevanagari": "श्रीबिहारनिदास लडावत त्यौं त्यौं",
     "author": "श्री बिहारिन देव जी",
-    "slug": "शरबहरनदस-लडवत-तय-तय",
+    "slug": "shribiharnidas-ldavt-tyaun-tyaun",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2815,12 +2815,12 @@
     "verseNumber": 34
   },
   {
-    "id": "आस-जक-जह-बस-तह-तह-क-बस",
+    "id": "aasa-jaki-jhn-bsi-thn-tahi-kau-bas",
     "collectionId": "biharin-dev-vani",
     "index": 128,
     "titleDevanagari": "आसा जाकी जहँ बसी तहँ ताही कौ बास",
     "author": "श्री बिहारिन देव जी",
-    "slug": "आस-जक-जह-बस-तह-तह-क-बस",
+    "slug": "aasa-jaki-jhn-bsi-thn-tahi-kau-bas",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2859,12 +2859,12 @@
     "verseNumber": 36
   },
   {
-    "id": "नई-कञज-नकजन-म-आज-रगल-हर",
+    "id": "nee-kunyj-nikunjn-men-aaju-rngili-hori",
     "collectionId": "biharin-dev-vani",
     "index": 130,
     "titleDevanagari": "नई कुञ्ज निकुँजन में आजु रंगीली होरी ।",
     "author": "श्री बिहारिन देव जी",
-    "slug": "नई-कञज-नकजन-म-आज-रगल-हर",
+    "slug": "nee-kunyj-nikunjn-men-aaju-rngili-hori",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2885,12 +2885,12 @@
     "verseNumber": 37
   },
   {
-    "id": "अपरब-परय-गरहण-क-जग",
+    "id": "apurb-pryau-grhn-ko-jog",
     "collectionId": "biharin-dev-vani",
     "index": 131,
     "titleDevanagari": "अपूरब परयौ ग्रहण को जोग।",
     "author": "श्री बिहारिन देव जी",
-    "slug": "अपरब-परय-गरहण-क-जग",
+    "slug": "apurb-pryau-grhn-ko-jog",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2907,12 +2907,12 @@
     "verseNumber": 38
   },
   {
-    "id": "रच-मह-बरजबसन-क-टक",
+    "id": "ruche-mohin-brjbasin-ke-tuk",
     "collectionId": "biharin-dev-vani",
     "index": 132,
     "titleDevanagari": "रुचे मोहिं ब्रजबासिन के टूक",
     "author": "श्री बिहारिन देव जी",
-    "slug": "रच-मह-बरजबसन-क-टक",
+    "slug": "ruche-mohin-brjbasin-ke-tuk",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2972,12 +2972,12 @@
     "verseNumber": 44
   },
   {
-    "id": "सयम-सब-ह-क-जय-क-जनत-ह",
+    "id": "syam-sb-hi-ke-jiy-ki-jant-hain",
     "collectionId": "biharin-dev-vani",
     "index": 135,
     "titleDevanagari": "स्याम सब ही के जिय की जानत हैं",
     "author": "श्री बिहारिन देव जी",
-    "slug": "सयम-सब-ह-क-जय-क-जनत-ह",
+    "slug": "syam-sb-hi-ke-jiy-ki-jant-hain",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2994,12 +2994,12 @@
     "verseNumber": 45
   },
   {
-    "id": "तरथ-सकल-लक-बकणठ-त",
+    "id": "tirth-skl-lok-bnkunth-tain",
     "collectionId": "biharin-dev-vani",
     "index": 136,
     "titleDevanagari": "तीरथ सकल लोक बंकुण्ठ तैं",
     "author": "श्री बिहारिन देव जी",
-    "slug": "तरथ-सकल-लक-बकणठ-त",
+    "slug": "tirth-skl-lok-bnkunth-tain",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -3016,12 +3016,12 @@
     "verseNumber": 47
   },
   {
-    "id": "सग-न-अब-कह-क-कज",
+    "id": "sng-n-ab-kahu-kau-kijai",
     "collectionId": "biharin-dev-vani",
     "index": 137,
     "titleDevanagari": "संग न अब काहू कौ कीजै",
     "author": "श्री बिहारिन देव जी",
-    "slug": "सग-न-अब-कह-क-कज",
+    "slug": "sng-n-ab-kahu-kau-kijai",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -3152,12 +3152,12 @@
     "verseNumber": 57
   },
   {
-    "id": "इत-सयम-उत-सयम-मनहर-खलत-उमग-न-थर-१",
+    "id": "it-syama-ut-syam-mnohr-khelt-umng-n-thori",
     "collectionId": "biharin-dev-vani",
     "index": 143,
     "titleDevanagari": "इत स्यामा उत स्याम मनोहर खेलत उमंग न थोरी ।।१।।",
     "author": "श्री बिहारिन देव जी",
-    "slug": "इत-सयम-उत-सयम-मनहर-खलत-उमग-न-थर-१",
+    "slug": "it-syama-ut-syam-mnohr-khelt-umng-n-thori",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -3202,12 +3202,12 @@
     "verseNumber": 60
   },
   {
-    "id": "सब-सख-सदन-बदन-तव-रध",
+    "id": "sb-sukh-sdn-bdn-tuv-radhe",
     "collectionId": "biharin-dev-vani",
     "index": 145,
     "titleDevanagari": "सब सुख सदन बदन तुव राधे।",
     "author": "श्री बिहारिन देव जी",
-    "slug": "सब-सख-सदन-बदन-तव-रध",
+    "slug": "sb-sukh-sdn-bdn-tuv-radhe",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -3224,12 +3224,12 @@
     "verseNumber": 61
   },
   {
-    "id": "सन-अहकर-भल-न-भय",
+    "id": "suni-ahnkar-bhlau-n-bhiya",
     "collectionId": "biharin-dev-vani",
     "index": 146,
     "titleDevanagari": "सुनि अहंकार भलौ न भिया",
     "author": "श्री बिहारिन देव जी",
-    "slug": "सन-अहकर-भल-न-भय",
+    "slug": "suni-ahnkar-bhlau-n-bhiya",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -3360,12 +3360,12 @@
     "verseNumber": 80
   },
   {
-    "id": "यह-रस",
+    "id": "yh-rs",
     "collectionId": "biharin-dev-vani",
     "index": 152,
     "titleDevanagari": "यह रस",
     "author": "श्री बिहारिन देव जी",
-    "slug": "यह-रस",
+    "slug": "yh-rs",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -3588,12 +3588,12 @@
     "verseNumber": 111
   },
   {
-    "id": "लख-जन-लल-क-मसकयन",
+    "id": "lkhi-jin-lal-ki-muskyan",
     "collectionId": "biharin-dev-vani",
     "index": 162,
     "titleDevanagari": "लखी जिन लाल की मुसक्यान",
     "author": "श्री बिहारिन देव जी",
-    "slug": "लख-जन-लल-क-मसकयन",
+    "slug": "lkhi-jin-lal-ki-muskyan",
     "verses": [
       {
         "stanzaNumber": 1,

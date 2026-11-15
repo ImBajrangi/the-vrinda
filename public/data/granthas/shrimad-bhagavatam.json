@@ -187,7 +187,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "जगत में पैसन ही की माँड।",
           "पैसन बिना गुरू को चेला, खसमै छांड़ै राँड़॥ [1]",
           "जप, तप, जोग, बिराग, ज्ञान कौं पैसन राखी चाँड़।",
@@ -200,7 +199,8 @@
     ],
     "chapterId": "skandh-1-adhyay-1",
     "chapterName": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 1",
-    "verseNumber": 3
+    "verseNumber": 3,
+    "rag": "सारंग"
   },
   {
     "id": "rasikabar-rasik-raseelau-rasiya-shri-bhagwat-rasik-ji-ananyarasikabharan-granth-6-3",
@@ -213,7 +213,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग पूर्वी)",
           "रसिकबर रसिक रसीलौ रसिया। [1]",
           "अंजन दै, मन रंजन कीनौं, खंजन दृग फसिया॥ [2]",
           "करि मनुहारि भुजन भरि भेंटी, बदन चूमि हसिया। [3]",
@@ -224,7 +223,8 @@
     ],
     "chapterId": "skandh-1-adhyay-1",
     "chapterName": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 1",
-    "verseNumber": 3
+    "verseNumber": 3,
+    "rag": "पूर्वी"
   },
   {
     "id": "hum-gavein-soi-karein-sahaj-laadli-laal-shri-bhagwat-rasik-bhagwat-rasik-ki-vaani",
@@ -325,7 +325,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग हल्हैया)",
           "जमुना जल विमलत जुगल किशोर।",
           "उबटि न्हाइ पहिरि पट भूषन सजि सिंगार दुहुं ओर॥",
           "रस भोगी रस भोगत रुचि सों हिल मिल हियो हिलोर।",
@@ -336,7 +335,8 @@
     ],
     "chapterId": "skandh-1-adhyay-1",
     "chapterName": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 1",
-    "verseNumber": 4
+    "verseNumber": 4,
+    "rag": "हल्हैया"
   },
   {
     "id": "veshdhaari-hari-ke-ur-saalai-shri-bhagwat-rasik-shri-bhagwat-rasik-ki-vani-ananya-nishchayatmak-granth-purvardh-4",
@@ -665,7 +665,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सोरठ)",
           "वन्दत प्रिया पाद जल जात।",
           "कामरस वश श्यामसुन्दर धरि हृदय जल जात॥ [1]",
           "करत अति आधीनता परसत दृगन जल जात।",
@@ -676,7 +675,8 @@
     ],
     "chapterId": "skandh-1-adhyay-1",
     "chapterName": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 1",
-    "verseNumber": 6
+    "verseNumber": 6,
+    "rag": "सोरठ"
   },
   {
     "id": "nitya-kishor-upasana-jugal-mantra-ko-jaap-veda-rasikan-ki-baani-shri-vrindavan-ishta-shyama-maharani-swami-shri-bhagwat-rasik-bhagwat-rasik-ki-vani",
@@ -2029,7 +2029,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग काफी)",
           "बलि जैहौं श्रीरसिकचारज।",
           "नित्य बिहार उद्धार कियौ जिन, मथि निज हृदय सिन्धु बारज॥",
           "भ्रम, तम, स्रम सब हरे हमारे, कर गहि सकल संभारे कारज।",
@@ -2040,7 +2039,8 @@
     ],
     "chapterId": "skandh-1-adhyay-1",
     "chapterName": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 1",
-    "verseNumber": 32
+    "verseNumber": 32,
+    "rag": "काफी"
   },
   {
     "id": "avakjuta-jug-charan-lali-ke-shri-bhagwat-rasik-shri-bhagwat-rasik-ki-vani-33",
@@ -2100,7 +2100,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग गौर)",
           "नमो नमो श्री बृंदावनचंद।",
           "नित्य अनंत अनादि एकरस पिय प्यारी बिहरत स्वच्छंद॥ [1]",
           "सत्त चित्त आनंद रूपमय खग, द्रुम, बेली बृंद।",
@@ -2111,7 +2110,8 @@
     ],
     "chapterId": "skandh-1-adhyay-1",
     "chapterName": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 1",
-    "verseNumber": 34
+    "verseNumber": 34,
+    "rag": "गौर"
   },
   {
     "id": "jai-jai-rasik-ravani-ravan-shri-bhagwat-rasik-bhagwat-rasik-ji-ki-vani-35",
@@ -2124,7 +2124,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग ईमन व कल्याण)",
           "जै जै रसिक रवनी रवन।",
           "रूप गुन लवन्य प्रभुता प्रेम पूरन भवन॥",
           "विपति जन की भानबे कौं तुम बिन कहु कवन।",
@@ -2139,7 +2138,8 @@
     ],
     "chapterId": "skandh-1-adhyay-1",
     "chapterName": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 1",
-    "verseNumber": 35
+    "verseNumber": 35,
+    "rag": "ईमन व कल्याण"
   },
   {
     "id": "jai-jai-rasik-ravani-ravan-shri-bhagwat-rasik-bhagwat-rasik-ki-vani-35",
@@ -2259,7 +2259,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग आसावरी)",
           "\" जयति नव नागरी, रूप गुन आगरी,",
           "सर्व सुख सागरी, कुंवरी राधा ।",
           "जयति हरि भामिनि, स्याम-घनदामिनी,",
@@ -2274,7 +2273,8 @@
     ],
     "chapterId": "skandh-1-adhyay-1",
     "chapterName": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 1",
-    "verseNumber": 37
+    "verseNumber": 37,
+    "rag": "आसावरी"
   },
   {
     "id": "bhagwat-rasik-sahayak-sab-din-sarvopari-sukhdani",
@@ -2749,7 +2749,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग मलहार)",
           "मेरी अलक लडी अलबेली।",
           "झूलति रति बिपरीत हिंडोरै, नाहु अंस भुज मेली॥",
           "मचकत जोबन जोर परस्पर, परिरंभन पग पेली।",
@@ -2760,7 +2759,8 @@
     ],
     "chapterId": "skandh-1-adhyay-1",
     "chapterName": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 1",
-    "verseNumber": 583
+    "verseNumber": 583,
+    "rag": "मलहार"
   },
   {
     "id": "bhagwat-syama-syam-kau-shri-bhagwat-rasik-ji-bhagwat-rasik-ki-vani-11",
@@ -2798,7 +2798,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विभास)",
           "नित मेरौ लालन नित ही लली।",
           "नित्य बिहार, नित्य वृन्दावन, नित नये कौतुक करहिं अली॥ [1]",
           "नित नयौ नेह, नित्य नयौ जोबन, नित नयौ तौल नवल नवली।",
@@ -2813,7 +2812,8 @@
     ],
     "chapterId": "skandh-1-adhyay-1",
     "chapterName": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 1",
-    "verseNumber": 585
+    "verseNumber": 585,
+    "rag": "विभास"
   },
   {
     "id": "mere-praanadhan-swamini-syam-radhe-shri-bhagwat-rasik-bhagwat-rasik-ki-vani-ananyarasikabharan-granth-27",
@@ -3252,7 +3252,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग टोड़ी)",
           "तुब मुख नैन कमल अली मेरे।",
           "पलक न लगत पलक बिनु देखै, अरबरात अति, फिरत न फेरे॥",
           "पान करत मकरंद रूप रस, भूल नहीं फिर इत उत हेरे।",
@@ -3263,7 +3262,8 @@
     ],
     "chapterId": "skandh-1-adhyay-1",
     "chapterName": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 1",
-    "verseNumber": 605
+    "verseNumber": 605,
+    "rag": "टोड़ी"
   },
   {
     "id": "nihn-hindu-nahin-turak-hum-shri-bhagwat-rasik-bhagwat-rasik-ki-vani",
@@ -3297,7 +3297,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग भैरव)",
           "सब ऐश्वर्य छिपाइ पाइँ परि दीन भयौ अभिमानी।",
           "प्रगट कियौ माधुर्य मधुररस रसिक - नरेस निसानी॥ [1]",
           "नेति नेति निगमामग गावत, पावत नहीं बुधि-बानी।",
@@ -3308,7 +3307,8 @@
     ],
     "chapterId": "skandh-1-adhyay-1",
     "chapterName": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 1",
-    "verseNumber": 607
+    "verseNumber": 607,
+    "rag": "भैरव"
   },
   {
     "id": "bani-beejak-vastu-ko-bijak-vastu-na-hoi-shri-bhagwat-rasik-bhagwat-rasik-ki-vaani",
@@ -3367,7 +3367,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग धनाश्री)",
           "तुब मुख चंद चकोर ये नैना।",
           "अति आरत अनुरागी लंपट भूल गई गति पलहु लगैना॥",
           "अरबरात मिलिबे कौं निसिदिन मिलेइ रहत मनु कबहुँ मिले ना।",
@@ -3378,7 +3377,8 @@
     ],
     "chapterId": "skandh-1-adhyay-1",
     "chapterName": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 1",
-    "verseNumber": 610
+    "verseNumber": 610,
+    "rag": "धनाश्री"
   },
   {
     "id": "ity-uktas-tam-parikramya-pranamya-shrimad-bhagwatam-4862",
@@ -3550,7 +3550,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "पौढे ललित लतानि तरै।",
           "सुमन-सेज सुखरासि सनेही, अधरनि अधर धरें॥",
           "उरजनि उरज जोरि कटि सौं कटि, लपटि भुजानि भरें।",
@@ -3561,7 +3560,8 @@
     ],
     "chapterId": "skandh-1-adhyay-1",
     "chapterName": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 1",
-    "verseNumber": 618
+    "verseNumber": 618,
+    "rag": "सारंग"
   },
   {
     "id": "vak-gada-gada-dravate-yasya-chitam-shrimad-bhagwatam-111424",
@@ -3643,7 +3643,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग टोडी)",
           "सब सुख सदन बदन तुव राधे।",
           "उपमा कमल ससी नहिं पावत, मीत मान अपराधे॥",
           "मृदु मुसक्यानि हरत मन नैनन, बंक बिलोकन ही दृग आधे।",
@@ -3654,7 +3653,8 @@
     ],
     "chapterId": "skandh-1-adhyay-1",
     "chapterName": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 1",
-    "verseNumber": 622
+    "verseNumber": 622,
+    "rag": "टोडी"
   },
   {
     "id": "salokyasarstisamipya-sarupyaikatvam-shrimad-bhagwatam-32913",
@@ -3708,7 +3708,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग गौरी)",
           "रसभरे राजत रसिकबहारी ।",
           "गौर स्याम अभिराम रूप दोऊ नव नेह विहारी  ।",
           "यह सुख निरखि सखी नित प्रमुदित, प्रान करै बलिहारी ।",
@@ -3719,7 +3718,8 @@
     ],
     "chapterId": "skandh-1-adhyay-1",
     "chapterName": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 1",
-    "verseNumber": 625
+    "verseNumber": 625,
+    "rag": "गौरी"
   },
   {
     "id": "namaste-parameshani-devi-bhagwat-95046",
@@ -3840,7 +3840,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग जैजैवन्ती)",
           "आज तो छबीली राधे रसभरी डोलहीं।",
           "साँवरे पिया के संग, भीजी है मदन रंग,",
           "मोद की उमंग अंग गुन ग्रंथ खोलहीं॥ [1]",
@@ -3854,7 +3853,8 @@
     ],
     "chapterId": "skandh-1-adhyay-1",
     "chapterName": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 1",
-    "verseNumber": 631
+    "verseNumber": 631,
+    "rag": "जैजैवन्ती"
   },
   {
     "id": "mangal-murti-ladili-mangal-murti-laal-shri-bhagwat-rasik-bhagwat-rasik-ki-vani-03",
@@ -3933,7 +3933,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग भैरो)",
           "सुरतरु कामधेनु, चिंतामणि बारि दिये देव दानी।",
           "अष्टसिद्धि नव निद्धि बापुरी कौर करै सनमानी॥ [1]",
           "षड रितु बारह मास, रैन दिन, रहत एक रस सानी।",
@@ -3944,7 +3943,8 @@
     ],
     "chapterId": "skandh-1-adhyay-1",
     "chapterName": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 1",
-    "verseNumber": 635
+    "verseNumber": 635,
+    "rag": "भैरो"
   },
   {
     "id": "kok-kala-sangeet-lal-kaun-shri-bhagwat-rasik-ananyarasikabharan-granth-1202",
@@ -3957,7 +3957,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग भैरो)",
           "कोक कला संगीत लाल कौं,",
           "सिखबति गति रस सानी। [1]",
           "रूप बयस गुन की मरजादा,",
@@ -3972,7 +3971,8 @@
     ],
     "chapterId": "skandh-1-adhyay-1",
     "chapterName": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 1",
-    "verseNumber": 636
+    "verseNumber": 636,
+    "rag": "भैरो"
   },
   {
     "id": "puna-puna-smaryanti-nandgopasutam-shrimad-bhagwatam-104750",
@@ -4027,7 +4027,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग केदारौ)",
           "नाचत दोउ रहस में रँग-भीनैं।",
           "हाव-भाव उपजत अँग-अंगन, कोक-कला मन दीनैं॥ [1]",
           "बाजत मधुर मृदंग किंकिनी, नूपुर ताल नबीनैं।",
@@ -4040,7 +4039,8 @@
     ],
     "chapterId": "skandh-1-adhyay-1",
     "chapterName": "प्रथम स्कन्ध (सृष्टि लीला), अध्याय 1",
-    "verseNumber": 639
+    "verseNumber": 639,
+    "rag": "केदारौ"
   },
   {
     "id": "dhanya-vrindavanam-tena-bhakti-nrityachayit-yata-cha-padama-purana-bhagwata-mahatma-161",

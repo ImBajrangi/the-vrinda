@@ -179,12 +179,13 @@ export function render(url: string = '/'): RenderResult {
     const firstLines = pad.verses?.[0]?.linesDevanagari?.slice(0, 2).join(' • ') || '';
     const snippet = firstLines ? `«${firstLines}» ` : '';
     const ragaText = pad.rag ? `राग ${pad.rag} में निबद्ध पावन पद। ` : '';
-    const granthaText = pad.collectionId ? ` (${pad.collectionId})` : '';
+    const granthaMeta = pad.collectionId ? SacredDatabase.getGranthaById(pad.collectionId) : null;
+    const granthaText = granthaMeta ? ` - ${granthaMeta.name}` : (pad.collectionId ? ` (${pad.collectionId})` : '');
 
     seoConfig = {
       tab: 'padavali',
       pad,
-      title: `${pad.titleDevanagari} (${pad.author})${granthaText} • पावन रसिक पद`,
+      title: `${pad.titleDevanagari} (${pad.author})${granthaText} • संपूर्ण पद, भावार्थ व व्याख्या | ${slug} Lyrics - वृन्दोपनिषद् 2.0`,
       description: `${snippet}${ragaText}रचयिता: ${pad.author}। नित्य स्वाध्याय व पारायण। वृन्दोपनिषद् 2.0`,
       canonicalUrl: `https://bhav.vrindopnishad.in/pad/${encodeURIComponent(slug)}`,
       audioUrl: pad.audioUrl || undefined,
@@ -259,9 +260,10 @@ export function render(url: string = '/'): RenderResult {
     const gName = grantha ? grantha.name : granthaQuery;
     const gAuthor = grantha ? ` (${grantha.author})` : '';
     const gDesc = grantha?.description ? `${grantha.description} ` : '';
+    const romanTitle = grantha?.id || granthaQuery;
     seoConfig = {
       tab: 'padavali',
-      title: `${gName}${gAuthor} • संपूर्ण वाणी संग्रह | वृन्दोपनिषद् 2.0`,
+      title: `${gName}${gAuthor} • संपूर्ण मूल पाठ, पद संग्रह, भावार्थ व व्याख्या | ${romanTitle} Lyrics & Meaning - वृन्दोपनिषद् 2.0`,
       description: `${gDesc}${gName} के समस्त पावन श्लोकों व पदों का नित्य स्वाध्याय व अनुशीलन। वृन्दोपनिषद् 2.0`,
       canonicalUrl: `https://bhav.vrindopnishad.in/grantha/${grantha?.id || encodeURIComponent(granthaQuery)}`,
       grantha: {

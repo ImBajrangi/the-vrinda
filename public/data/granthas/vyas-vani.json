@@ -493,7 +493,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "(श्री)वृंदावन के रुख हमारे मात पिता सुत बंध। [1]",
           "गुरु गोविंद साधु गति मति सुख फल फूलनिकौ गंध॥ [2]",
           "इनहि पीठि दै अनत डीठि करै सौ अंधनिमें अंध। [3]",
@@ -504,7 +503,8 @@
     ],
     "chapterId": "ch-साखी",
     "chapterName": "साखी",
-    "verseNumber": 119
+    "verseNumber": 119,
+    "rag": "सारंग"
   },
   {
     "id": "vair-karai-haribhaktsau-mitra-karai-sansar-shri-hariram-vyas-vishakha-avtaar-vyas-vani-saakhi140",
@@ -580,7 +580,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग नट)",
           "प्यारी तेरे वदन-कमल-रस अटक्यौ लालन अलि।",
           "तनसौं तन मनसौं मन अरुझ्यौ न सकतु चलि॥ [1]",
           "तुव वृंदावन कनक बेलिसी रही उरजनि फलि।",
@@ -591,7 +590,8 @@
     ],
     "chapterId": "ch-उत्तरार्द्ध",
     "chapterName": "उत्तरार्द्ध",
-    "verseNumber": 53
+    "verseNumber": 53,
+    "rag": "नट"
   },
   {
     "id": "subhag-suhaag-ko-chinaun-pyari-tere-charanani-sohai-shri-hariram-vyas-vyas-vani-uttarardh-81",
@@ -604,7 +604,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग गौरी)",
           "सुभग सुहाग को चिनौं प्यारी तेरे चरननि सोहै।",
           "जिनकी रज राजत वृन्दावन, देखत ही मोहन मनमोहै॥ [1]",
           "गौर अङ्ग छबि श्यामहि फबि गई, सकल लोक चूड़ामनि जोहै।",
@@ -615,7 +614,8 @@
     ],
     "chapterId": "ch-उत्तरार्द्ध",
     "chapterName": "उत्तरार्द्ध",
-    "verseNumber": 81
+    "verseNumber": 81,
+    "rag": "गौरी"
   },
   {
     "id": "aarti-kije-yugalkisor-ki-shri-hariram-vyas-vyas-vani-uttarardh-97",
@@ -628,7 +628,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग धनाश्री)",
           "आरती कीजै जुगलकिसोर की।",
           "नखसिख अंग बलैया लीजै, साँझ दुपहरी भोर की॥ [1]",
           "भूषण पट नागरि नट अद्भुत, चितवनि चंचल कोरकी।",
@@ -639,7 +638,8 @@
     ],
     "chapterId": "ch-उत्तरार्द्ध",
     "chapterName": "उत्तरार्द्ध",
-    "verseNumber": 97
+    "verseNumber": 97,
+    "rag": "धनाश्री"
   },
   {
     "id": "roop-terauri-mopai-baranyaun-na-jai-shri-hariram-vyas-vyas-vani-uttarardh-123",
@@ -652,7 +652,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग गन्धार)",
           "रूप तेरौरी मोपै बरन्यौं न जाइ।",
           "रोम रोम जो रसना पावौं तौ गाऊँ तेरौ गुन अघाइ॥ [1]",
           "कोटि जतन जौ कीजै कैसैं हूँ सरवा सिंधु न माइ।",
@@ -663,7 +662,8 @@
     ],
     "chapterId": "ch-उत्तरार्द्ध",
     "chapterName": "उत्तरार्द्ध",
-    "verseNumber": 123
+    "verseNumber": 123,
+    "rag": "गन्धार"
   },
   {
     "id": "man-na-keejain-maanini-varsha-ritu-aayi-shri-hariram-vyas-vyas-vani-uttarardh188",
@@ -676,7 +676,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग मलार)",
           "मान न कीजै मानिनि वरषा ऋतु आई।",
           "अंग संग मिलि गाउ राधिका, राग-मलार सुहाई॥ [1]",
           "बिनु अपराधहि रूसनौं छाँड़िदै श्रीवृषभान दुहाई।",
@@ -687,7 +686,8 @@
     ],
     "chapterId": "ch-उत्तरार्द्ध",
     "chapterName": "उत्तरार्द्ध",
-    "verseNumber": 188
+    "verseNumber": 188,
+    "rag": "मलार"
   },
   {
     "id": "pyari-shrivrindavan-ki-rainu-shri-hariram-vyas-vyas-vani-purvardh-9",
@@ -700,7 +700,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "प्यारी श्रीवृंदावन की रैनु।",
           "जाहि निरख मोहन सुख पावत हरषि बजावत वैनु॥ [1]",
           "जहां तहां राधा चरननिं के अंक विराजत अैनु।",
@@ -715,7 +714,8 @@
     ],
     "chapterId": "ch-पूर्वार्द्ध",
     "chapterName": "पूर्वार्द्ध",
-    "verseNumber": 9
+    "verseNumber": 9,
+    "rag": "सारंग"
   },
   {
     "id": "shriradha-pyari-ke-charanaravind-seetal-sukhdaai-shri-hariram-vyas-vyas-vani-purvardh-57",
@@ -728,7 +728,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विलावल व सारंग)",
           "श्रीराधा प्यारी के चरनारविंद सीतल सुखदाई।",
           "कोटिचंद मंद करत, नखविधु जुन्हाई॥ [1]",
           "ताप, शाप,  रोग, सोग दारुन दुखहारी।",
@@ -743,7 +742,8 @@
     ],
     "chapterId": "ch-पूर्वार्द्ध",
     "chapterName": "पूर्वार्द्ध",
-    "verseNumber": 57
+    "verseNumber": 57,
+    "rag": "विलावल व सारंग"
   },
   {
     "id": "tei-rasik-anany-jaanivai-shri-hariram-vyas-vyas-vani-purvardh-178",
@@ -756,7 +756,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग रामकली)",
           "तेई रसिक अनन्य जानिवै।",
           "जिनकौ विषय-विकार न, हरिसौं रति, तेई साधु मानिवै॥ [1]",
           "तिनकी संगति पतित सु उध्दरै, जौ वारक घर आनिवे।",
@@ -771,7 +770,8 @@
     ],
     "chapterId": "ch-पूर्वार्द्ध",
     "chapterName": "पूर्वार्द्ध",
-    "verseNumber": 178
+    "verseNumber": 178,
+    "rag": "रामकली"
   },
   {
     "id": "shri-radhavallabh-vyas-ke-shri-hariram-vyas-vyas-vani-siddhant-ki-saakhi-1",
@@ -973,7 +973,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विलावल)",
           "यह तनु वृन्दावन जो पावै।",
           "तौ स्वारथ परमारथ मेरौ रसिक अनन्यनि भावै॥",
           "दासिनी की दासी करि हरि मोहि राधा-रवन दिखावै।",
@@ -986,7 +985,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध्द",
     "chapterName": "पूर्वार्ध्द",
-    "verseNumber": 103
+    "verseNumber": 103,
+    "rag": "विलावल"
   },
   {
     "id": "radhamohan-sahaj-sanehi-shri-hariram-vyas-vyas-vani",
@@ -999,19 +999,19 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग गौरी)",
           "राधामोहन सहज सनेही।",
           "सहज रूप गुन सहज लाड़िले, एक प्राण द्वै देही॥ [1]",
           "सहज माधुरी अंग अंग प्रति, सहज रची (है) वन गेही।",
           "व्यास सहज जोरी सौं मन मेरे, सहज प्रीति कर लेही॥ [2]",
           "- श्री हरिराम व्यास (विशाखा अवतार) - व्यास वाणी, उत्तरार्ध (5)",
-          "(राग गौरी) राधामोहन सहज स्नेही हैं। सहज रूप गुण, सहज संग्राम, एक प्राण द्वै देहि.. [1] सहज मधुर शरीर अंग, सहज रचि (है) वन गेही। व्यास सहज जोरी सौन मन मेरे, सहज प्रीति लेहि.. [2] - श्री हरिराम व्यास (विशाखा अवतार) - व्यास वाणी, स्वर्गीय (5)"
+          "राधामोहन सहज स्नेही हैं। सहज रूप गुण, सहज संग्राम, एक प्राण द्वै देहि.. [1] सहज मधुर शरीर अंग, सहज रचि (है) वन गेही। व्यास सहज जोरी सौन मन मेरे, सहज प्रीति लेहि.. [2] - श्री हरिराम व्यास (विशाखा अवतार) - व्यास वाणी, स्वर्गीय (5)"
         ]
       }
     ],
     "chapterId": "ch-उत्तरार्ध",
     "chapterName": "उत्तरार्ध",
-    "verseNumber": 5
+    "verseNumber": 5,
+    "rag": "गौरी"
   },
   {
     "id": "pyare-vrindavan-ke-rukh",
@@ -1024,7 +1024,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "प्यारे वृन्दावन के रूख।",
           "जिनितर राधा-मोहन विहरत देखत भाजत भूख॥ [1]",
           "माया काल न व्यापै जिनितर सींचे प्रेम-पियूख।",
@@ -1041,7 +1040,8 @@
     ],
     "chapterId": "ch-उत्तरार्ध",
     "chapterName": "उत्तरार्ध",
-    "verseNumber": 10
+    "verseNumber": 10,
+    "rag": "सारंग"
   },
   {
     "id": "pachhain-baithe-mohan-mrignaininki-baini-guhat-shri-hariram-vyas-vyas-vani-uttarardh-44",
@@ -1054,7 +1054,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "पाछैं बैठे मोहन मृगनैंनींकी बैंनी गुहत,",
           "सोभा न कही परै देखत नैंन सिरात। [1]",
           "नखछबि रवि जानि पानि-कमल फूले,",
@@ -1069,7 +1068,8 @@
     ],
     "chapterId": "ch-उत्तरार्ध",
     "chapterName": "उत्तरार्ध",
-    "verseNumber": 44
+    "verseNumber": 44,
+    "rag": "सारंग"
   },
   {
     "id": "take-val-garvabhare-rasikvyasase-na-dare",
@@ -1103,7 +1103,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "राधिका सम नागरी नवीन को प्रवीन सखी,",
           "रूप गुन सुहाग भाग आगरी न नारि। [1]",
           "वरुन नागओक भूमि देवलोककी कुमारि,",
@@ -1118,7 +1117,8 @@
     ],
     "chapterId": "ch-उत्तरार्ध",
     "chapterName": "उत्तरार्ध",
-    "verseNumber": 72
+    "verseNumber": 72,
+    "rag": "सारंग"
   },
   {
     "id": "bane-na-kahat-radha-kou-roop-vyas-swamini-son-viharat-hi-mohan-lagat-suroop-vishakha-avtar-shri-hariram-vyas-vyas-vani",
@@ -1152,7 +1152,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "राधिका मोहन की प्यारी। [1]",
           "नखसिख रूप अनूप गुन सीमा, नागरि श्रीवृषभानदुलारी॥ [2]",
           "वृंदाविपिन निकुंजभवन तन कोटिचंद उजियारी। [3]",
@@ -1165,7 +1164,8 @@
     ],
     "chapterId": "ch-उत्तरार्ध",
     "chapterName": "उत्तरार्ध",
-    "verseNumber": 79
+    "verseNumber": 79,
+    "rag": "सारंग"
   },
   {
     "id": "kathin-hai-rang-mahalko-rijhaibo-shri-hariram-vyas-vyas-vani-uttarardh-5",
@@ -1199,7 +1199,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कल्याण एवं राग विहाग)",
           "ललनकी बतियाँ चोज सनी।",
           "परम कृपाल चितै करुनामय, लोचन कोर अनी॥ [1]",
           "उमगि ढरे दोऊ सुरत सेज पै, टूटी तरकि तनी।",
@@ -1210,7 +1209,8 @@
     ],
     "chapterId": "ch-उत्तरार्ध",
     "chapterName": "उत्तरार्ध",
-    "verseNumber": 122
+    "verseNumber": 122,
+    "rag": "कल्याण एवं राग विहाग"
   },
   {
     "id": "nainn-siraanainri-pyari-dekhat-mukh-shri-hariram-vyas-vishakha-avatar-vyas-vani-uttarardh-122",
@@ -1223,7 +1223,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कान्हरौ)",
           "नैंन सिरानैंरी प्यारी देखत मुख।",
           "सुनि राधा बाधा न रही अब, तैं कीनौं मो पर रुख॥ [1]",
           "श्रवण सीतल भये बचननि सुनि, गये दारुन दुख।",
@@ -1234,7 +1233,8 @@
     ],
     "chapterId": "ch-उत्तरार्ध",
     "chapterName": "उत्तरार्ध",
-    "verseNumber": 122
+    "verseNumber": 122,
+    "rag": "कान्हरौ"
   },
   {
     "id": "nirakhi-mukh-sukh-pawat-mere-nain-shri-vyas-swamini-ki-adbuth-chabi-kavi-pe-kahat-banain-vishaka-avtar-shri-hariram-vyas-vyas-vani",
@@ -1268,7 +1268,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग केदारो)",
           "नाँचत गोपाल वनैं नटवर वपु काछैं।",
           "गावति गति मिलवत अति, राधा के पाछैं॥ [1]",
           "किंकिनि कंकन नूपुर धुनि, ताल मृदंग सोहैं।",
@@ -1283,7 +1282,8 @@
     ],
     "chapterId": "ch-उत्तरार्ध",
     "chapterName": "उत्तरार्ध",
-    "verseNumber": 167
+    "verseNumber": 167,
+    "rag": "केदारो"
   },
   {
     "id": "gavat-pyaro-radha-tero-jasu-shri-hariram-vyas-vyas-vani-uttarardh-170",
@@ -1296,7 +1296,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "गावत प्यारौ राधा तेरौ जसु।",
           "तेरौई नाम जपत और बिलपतु है, कामकौ स्यामहिं संक सु॥ [1]",
           "कह्यौ न परै दारुन दुख प्यारी, तेरे विरह मोहन के कंठ रह्यौ असु।",
@@ -1307,7 +1306,8 @@
     ],
     "chapterId": "ch-उत्तरार्ध",
     "chapterName": "उत्तरार्ध",
-    "verseNumber": 170
+    "verseNumber": 170,
+    "rag": "सारंग"
   },
   {
     "id": "mere-tu-jiya-me-basat-shri-hariram-vyas-vishakha-avtaar-vyas-vani",
@@ -1320,7 +1320,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "[राग गौरी]",
           "मेरे तू जिय में बसत नवल प्रिय प्राण प्यारी।",
           "तेरेई दरस परस राग रंग उपजत, मान न कीजै हौ हौ री॥",
           "तू ही जीवन तू ही प्राण तू ही सकल गुण निधान।",
@@ -1345,7 +1344,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग केदारौ)",
           "पियकौ नाँचन सिखवत प्यारी।",
           "वृंदावन महँ रास रच्यौ है, सरद-चंद उजियारी॥ [1]",
           "ताल मृदंग उपंग बजावति, प्रफुलित ह्वै सखि सारी।",
@@ -1358,7 +1356,8 @@
     ],
     "chapterId": "ch-उत्तरार्ध",
     "chapterName": "उत्तरार्ध",
-    "verseNumber": 230
+    "verseNumber": 230,
+    "rag": "केदारौ"
   },
   {
     "id": "sarad-suhai-jamini-bhamini-ras-rachyau-shri-hariram-vyas-vishakha-avatar-vyas-vani-uttarardh-234",
@@ -1371,7 +1370,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग केदारो)",
           "सरद सुहाई जामिनि, भामिनि रास रच्यौ।",
           "वंसीवट जमुनातट सीतल मंद सुगंध समीर सच्यौ॥ [1]",
           "बजत मृदंग ताल राधा सँग मोहन सरस सुधंग नच्यौ।",
@@ -1384,7 +1382,8 @@
     ],
     "chapterId": "ch-उत्तरार्ध",
     "chapterName": "उत्तरार्ध",
-    "verseNumber": 234
+    "verseNumber": 234,
+    "rag": "केदारो"
   },
   {
     "id": "vanshivat-ke-nikat-hari-ras-shri-hariram-vyas-vyas-vani-uttarardh-255",
@@ -1397,7 +1396,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग अडानो)",
           "वंशीवट के निकट हरि रास रच्यौ मोर मुकट और ओढैं पीत पट।",
           "वृन्दावन नव कुँज सघन घन सुभग पुलिन अरु जमुना के तट॥ [1]",
           "आलस भरे उनीदे दोऊ जन श्री राधा प्यारी और नागर नट।",
@@ -1408,7 +1406,8 @@
     ],
     "chapterId": "ch-उत्तरार्ध",
     "chapterName": "उत्तरार्ध",
-    "verseNumber": 255
+    "verseNumber": 255,
+    "rag": "अडानो"
   },
   {
     "id": "chanpat-charan-mohanlal-shri-hariram-vyas-vyas-vani-uttarardh-272",
@@ -1421,7 +1420,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग केदारौ व विभास)",
           "चाँपत चरन मोहनलाल।",
           "पलंग पौढ़ी कुँवरि राधा नागरी नव-बाल॥ [1]",
           "लेत कर धरि परसि नैंननि, हरषि लावत भाल।",
@@ -1434,7 +1432,8 @@
     ],
     "chapterId": "ch-उत्तरार्ध",
     "chapterName": "उत्तरार्ध",
-    "verseNumber": 272
+    "verseNumber": 272,
+    "rag": "केदारौ व विभास"
   },
   {
     "id": "chali-chalihi-vrindavan-vasant-aayo-shri-hariram-vyas-vyas-vani-uttarardh-326",
@@ -1447,7 +1446,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग वसंत)",
           "चलि चलिहि वृंदावन वसंत आयौ।",
           "झूलत फूलनि के झँवरा, मारूत मकरंद उड़ायौ॥ [1]",
           "मधुकर कोकिल कीर केकी मिलि, कोलाहल उपजायौ।",
@@ -1460,7 +1458,8 @@
     ],
     "chapterId": "ch-उत्तरार्ध",
     "chapterName": "उत्तरार्ध",
-    "verseNumber": 326
+    "verseNumber": 326,
+    "rag": "वसंत"
   },
   {
     "id": "aaju-badhai-hai-barsane-shri-hariram-vyas-vyas-vani-uttarardh-355",
@@ -1473,7 +1472,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग जयतिश्री व देवगन्धार)",
           "आजु बधाई है बरसानैं।",
           "कुँवरि किसोरी जनम लयौ, सब लोक बजे सहदानैं॥ [1]",
           "कहत नंद वृषभानराय सौं, और बात को जानैं।",
@@ -1490,7 +1488,8 @@
     ],
     "chapterId": "ch-उत्तरार्ध",
     "chapterName": "उत्तरार्ध",
-    "verseNumber": 355
+    "verseNumber": 355,
+    "rag": "जयतिश्री व देवगन्धार"
   },
   {
     "id": "duvidha-tab-jaihai-ya-man-ki-shri-hariram-vyas-vyas-vani",
@@ -1607,7 +1606,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "वृंदाबन की सोभा देखे मेरे नैन सिरात।",
           "कुंज निकुंज पुंज सुख बरसत हरषत सबकौ गात॥ [1]",
           "राधा मोहनके निज मंदिर महाप्रलय नहीं जात।",
@@ -1622,7 +1620,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 6
+    "verseNumber": 6,
+    "rag": "सारंग"
   },
   {
     "id": "chabeeli-vrindavan-ki-dharni-quote-shri-hariram-vyas-vishakha-avtaar-vyas-vani",
@@ -1656,7 +1655,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "“प्यारी श्री वृन्दावन की रैनु,",
           "जाहि निरख मोहन सुख पावत, हरषि बजावत वैनु ।",
           "जहाँ तहँ राधा चरननिं के अंक विराजत ऐनु॥”",
@@ -1666,7 +1664,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 9
+    "verseNumber": 9,
+    "rag": "सारंग"
   },
   {
     "id": "shri-vrindavan-pragat-sada-sukh-chain-shri-hariram-vyas-vyas-vani-13",
@@ -1701,7 +1700,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "प्यारी लागै श्रीवृन्दावन की धूरि।",
           "राधे जू रानी मोहन राजा, राज सदा भरिपूरि॥ [1]",
           "कनक-कलस करुवा महमूँदी, खासा ब्रज-कमरिनु की चूरि।",
@@ -1712,7 +1710,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 14
+    "verseNumber": 14,
+    "rag": "सारंग"
   },
   {
     "id": "moso-patit-na-antar-samai-yahi-te-main-vrindavan-ki-saran-gahyo-hai-aaayi-shri-hariram-vyas-vishakhya-avtar",
@@ -1745,7 +1744,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "कहाँ हौं वृंदावन तजि जाउँ।",
           "मोसे नीच पोच कौं अनत न, हरि बिनु और न ठाउँ॥ [1]",
           "सुख पुंजनि कुंजनि के देखत, विषय विषै क्यों पाउँ।",
@@ -1760,7 +1758,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 18
+    "verseNumber": 18,
+    "rag": "सारंग"
   },
   {
     "id": "man-rati-vrindavan-sau-keejai-shri-hariram-vyas-vyas-vani-purvardh-24",
@@ -1861,7 +1860,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग धनाश्री)",
           "देखौ श्री वृन्दाविपिन प्रभाइ।",
           "सब तीरथ धामनि फिर आवत देखत उपजत भाई॥ [1]",
           "श्रीजमुना तट लता भवन रज, छिन-छिन बाढ़त चाइ।",
@@ -1874,7 +1872,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 30
+    "verseNumber": 30,
+    "rag": "धनाश्री"
   },
   {
     "id": "dhani-dhani-vrindavan-ki-dharni-shri-hariram-vyas-vishakha-avtaar-vyas-vani",
@@ -1887,16 +1886,16 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कामोद)",
           "“धनी धनी वृंदावन की धरनि।”",
           "वृंदावन की भूमि धन्य धन्य है।",
-          "(राग कमोदा) \"समृद्ध वृन्दावन की भूमि।\" वृन्दावन की भूमि धन्य है।"
+          "\"समृद्ध वृन्दावन की भूमि।\" वृन्दावन की भूमि धन्य है।"
         ]
       }
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 31
+    "verseNumber": 31,
+    "rag": "कमोदा"
   },
   {
     "id": "jantra-mantra-aur-veda-tantra-mein-sabhi-taar-ko-taar-param-dhan-radha-naam-aadhar-vishakha-avtar-shri-hariram-vyas-shri-vyas-vani",
@@ -1951,7 +1950,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कान्हरो)",
           "परम धन राधा नाम आधार।",
           "जाकौ श्याम मुरली में टेरत, सुमिरत बारम्बार॥ [1]",
           "जंत्र, मंत्र और वेद तंत्र में, सभी तार को तार।",
@@ -1964,7 +1962,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 38
+    "verseNumber": 38,
+    "rag": "कान्हरो"
   },
   {
     "id": "jantr-mantr-aur-ved-tantr-mein-sabhee-taar-ko-taar-param-dhan-raadha-naam-aadhaar-hariram-vyas-rasik-saint-of-vrindavan",
@@ -2030,7 +2029,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कान्हरो)",
           "लागी रट, राधा श्रीराधा नाम।",
           "ढूँढ़ फिरी वृन्दावन सगरौ, नन्द ढिठौना स्याम॥ [1]",
           "कै मोहन या खोर साँकरी, कै मोहन नँदगांम।",
@@ -2041,7 +2039,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 39
+    "verseNumber": 39,
+    "rag": "कान्हरो"
   },
   {
     "id": "lagi-rat-radha-shri-radha-naam-vyasdaas-ki-jiwan-radhe-dhan-barsano-gram-shri-hariram-vyas",
@@ -2075,7 +2074,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग व धनाश्री)",
           "वृन्दावन के राजा दोऊ स्याम राधिका रानी।",
           "चारि पदारथ करत मजूरी मुक्ति भरत जहँ पानी॥",
           "कर्म धर्म दोउ बटत जेवरी घत छाये ब्रह्मा से ज्ञानी।",
@@ -2088,7 +2086,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 45
+    "verseNumber": 45,
+    "rag": "सारंग व धनाश्री"
   },
   {
     "id": "nav-kunwar-chakra-chura-nripatimani-shri-hariram-vyas-vyas-vani-purvardh-46",
@@ -2101,7 +2100,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग, चर्चरी ताल)",
           "नव कुँवर चक्र चूड़ा नृपतिमनि साँवरौ, राधिका तरुणि मनि पट्टरानी।",
           "शेष गृह आदि बैकुंठ पर्यंत सब लोक थानैंत, बन राजधानी॥ [1]",
           "मेघ छ्यानवै कोटि बाग सींचत जहाँ, मुक्ति चारौं जहाँ भरत पानी।",
@@ -2116,7 +2114,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 46
+    "verseNumber": 46,
+    "rag": "सारंग, चर्चरी ताल"
   },
   {
     "id": "jayati-nava-nagari-krishn-sukh-sagari-by-shri-hariram-vyas-from-vyas-vani",
@@ -2129,7 +2128,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग केदारो व कामोद)",
           "जयति नव नागरी , कृष्ण-सुख-सागरी ,",
           "सकल गुन-आगरी , दीनन भोरी !",
           "जयति हरि-भामिनि , कृष्ण-घन-दामिनी ,",
@@ -2152,7 +2150,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 47
+    "verseNumber": 47,
+    "rag": "केदारो व कामोद"
   },
   {
     "id": "sabakau-bhaanvtau-radhavar-shri-hariram-vyas-vyas-vani-purvardh-49",
@@ -2165,7 +2164,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग बिलावल)",
           "सबकौ भाँवतौ राधावर।",
           "पूत यशोदाकौ नँदनंदन व्रजलाड़िलौ स्यामसुन्दर॥ [1]",
           "कुंजविहारी सदा सिंगारी, गावत नाचत सदा सुघर।",
@@ -2178,7 +2176,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 49
+    "verseNumber": 49,
+    "rag": "बिलावल"
   },
   {
     "id": "mahima-syam-ki-ham-jaani-shri-hariram-vyas-vyas-vani-54",
@@ -2191,7 +2190,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग धनाश्री)",
           "महिमा स्याम की हम जानी।",
           "जिहिं प्रताप वृंदावन सेवत",
           "मोहू से अभिमानी॥",
@@ -2205,7 +2203,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 54
+    "verseNumber": 54,
+    "rag": "धनाश्री"
   },
   {
     "id": "shri-radhavallabh-ki-navkeerati-shri-hariram-vyas-vyas-vani-purvardh-59",
@@ -2218,7 +2217,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "श्रीराधावल्लभ की नव-कीरति वरनत हू न निघात।",
           "भरतखंड की सु कविमंडली वरनत हू न अघात॥ [1]",
           "बड़े रसिक जयदेव वखानी लीला अमृत चुचात।",
@@ -2231,7 +2229,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 59
+    "verseNumber": 59,
+    "rag": "सारंग"
   },
   {
     "id": "radhika-raman-jai-shri-hariram-vyas",
@@ -2265,7 +2264,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "राधिका-रवन जय।",
           "नवलकुँवरि वृंदावनवासी निज दासिन दिखरावत सुख चय॥ [1]",
           "जाकै चरनकमल सेवत नितु रसिक अनन्य भये सब निरभय। [2]",
@@ -2278,7 +2276,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 60
+    "verseNumber": 60,
+    "rag": "सारंग"
   },
   {
     "id": "radhavallabh-merau-pyarau-shri-hariram-vyas-vyas-vani-61",
@@ -2291,7 +2290,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "राधावल्लभ मेरौ प्यारौ।",
           "सर्वोपरि सबहीकौ ठाकुर, सब सुखदानि हमारौ॥ [1]",
           "व्रज वृंदावन नाइक सेवा लाइक स्याम उज्यारौ।",
@@ -2306,7 +2304,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 61
+    "verseNumber": 61,
+    "rag": "सारंग"
   },
   {
     "id": "vrindavan-taji-je-sukh-chahat-te-rakshas-pret-shri-hariram-vyas",
@@ -2340,7 +2339,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "करि मन वृंदावनसौं हेत। [1]",
           "निसि दिन छिन छाया जिनि छाड़हि, रसिकनकौ रस-खेत॥ [2]",
           "जहँ श्रीराधा-मोहन विहरत, करि कुंजनि संकेत। [3]",
@@ -2353,7 +2351,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 91
+    "verseNumber": 91,
+    "rag": "सारंग"
   },
   {
     "id": "kari-mann-vrindavan-son-heta-nishi-din-chinn-chaya-jini-chadihi-shri-hariram-vyas",
@@ -2386,7 +2385,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग, जयति ताल)",
           "मन तू वृंदावन के मारग लागि।",
           "तेरौ न कोऊ न तू काहूकौ, माया मोह तजि भागि॥ [1]",
           "यह कलिकाल व्याल विष भोयौ, जग सोयौ तू जागि।",
@@ -2399,7 +2397,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 92
+    "verseNumber": 92,
+    "rag": "सारंग, जयति ताल"
   },
   {
     "id": "rahi-mana-vrindavan-ki-sharan-shri-hariram-vyas-vishakya-avtar-vyas-vani-93",
@@ -2434,7 +2433,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग देवगंधार)",
           "ऐसो कब करिहौ मन मेरौ।",
           "कर करुआ कामरि कांधे पै, कुंजन मांझ बसेरौ॥ [1]",
           "ब्रजवासिन के टूक भूख में, घर घर छाछ महेरौ।",
@@ -2447,7 +2445,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 102
+    "verseNumber": 102,
+    "rag": "देवगंधार"
   },
   {
     "id": "aab-na-aur-kachu-karne-rahne-hai-vrindavan-haoin-na-hoi-so-hoi-keni-din-din-aayu-ghatati-jhuthey-tan-shri-hariram-vyas",
@@ -2481,7 +2480,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "हम कब होहिंगे ब्रजवासी।",
           "ठाकुर नंदकिशोर हमारे, ठकुराइनि राधा सी॥",
           "कब मिलि हैं वे सखी सहेली, हरिवंशी हरिदासी।",
@@ -2494,7 +2492,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 104
+    "verseNumber": 104,
+    "rag": "सारंग"
   },
   {
     "id": "vrindavan-kabhi-basaiho-radha-krishn-naam-dve-akshar-rasna-rashi-rashiyho-vyas-daas-ko-neel-peeta-pat-kunjani-duri-darsaiho-shri-hariram-vyas-vishakha-avtar-vyas-vani",
@@ -2529,7 +2528,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "अब न और कछू करने, रहनै है वृन्दावन।",
           "हौनौ होइ सो होइ किनि, दिन-दिन आयु घटति झूठे तन॥",
           "मिलिहैं हित ललितादिक दासी, रास में गावत सुनि मन।",
@@ -2542,7 +2540,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 106
+    "verseNumber": 106,
+    "rag": "सारंग"
   },
   {
     "id": "hari-milee-hai-vrindavan-mein-viharat-sang-dekhi-aaliganayut-nivid-nikunj-bhavan-mein-shri-hariram-vyas-vyas-vaani",
@@ -2596,7 +2595,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग व भूपाली)",
           "तन अवही कौ कामै आयो ।",
           "साधु चरन कौ संग कियो, जिन हरिजू को नाम लिवायो॥",
           "धन्य वदन मेरौ जिनि, रसिकन को जूँठौ खायौ।",
@@ -2612,7 +2610,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 125
+    "verseNumber": 125,
+    "rag": "सारंग व भूपाली"
   },
   {
     "id": "mero-hari-nagar-saun-man-shri-hariram-vyas-vishakha-avtaar-vyas-vani-126",
@@ -2625,7 +2624,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग गौरी व राग नट)",
           "मेरौ हरि नागर सौं मन मान्यौं।",
           "अगम निगम पथ छाँड़ि दियौ है भली भई सबरे जग जान्यौं ॥ [1]",
           "मात पिताकी सीख न मांनि, और तजी कुल कान्यौं।",
@@ -2636,7 +2634,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 126
+    "verseNumber": 126,
+    "rag": "गौरी व राग नट"
   },
   {
     "id": "man-bawre-tun-hari-pad-atakyau-shri-hariram-vyas-vyas-vani-purvardh-132",
@@ -2649,7 +2648,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कान्हरौ)",
           "मन बावरे तूँ हरि पद अटक्यौ।",
           "अब, तैं साँचौ सुख पायौ तब, दुख लगि घर घर भटक्यौ॥ [1]",
           "भली करी तैं मोह तोरिकैं, वृंदावन कौं सटक्यौ।",
@@ -2662,7 +2660,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 132
+    "verseNumber": 132,
+    "rag": "कान्हरौ"
   },
   {
     "id": "shri-radhavallabhkau-hau-bhanvatau-cherau-shri-hariram-vyas-vyas-vani-purvardh-133",
@@ -2698,7 +2697,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग केदारो)",
           "मेरे भाँवते स्यामा स्याम।",
           "रास विलास करत वृंदावन, विविध विनोद ललाम॥ [1]",
           "नख सिख अंग लुभारे प्यारे, ज्यौं लोभीनिकौं दाम।",
@@ -2711,7 +2709,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 135
+    "verseNumber": 135,
+    "rag": "केदारो"
   },
   {
     "id": "ab-main-vrindavan-ras-payo-shri-hariram-vyas-vishakya-avtar-vyas-vani-saakhi-136",
@@ -2724,7 +2723,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "अब मैं (श्री) वृंदावन रस पायौ।",
           "(श्री) राधा चरण सरन मन दीनौ, मोहनलाल रिझायौ॥ [1]",
           "सूतौ हुतौ विषै मन्दिरमें (श्री), हितगुरु टेरि जगायौ।",
@@ -2735,7 +2733,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 136
+    "verseNumber": 136,
+    "rag": "सारंग"
   },
   {
     "id": "ab-main-vrindavan-ras-payo-shri-radha-charan-saran-mann-deeno-mohan-laal-rijhayo-shri-hariram-vyas",
@@ -2768,7 +2767,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कान्हरो)",
           "ऐसौ काकौ भाग जु दिन प्रति,",
           "स्यामा स्यामहि रुचिसौं गावै। [1]",
           "जाकी चरन सरन ह्वै रहियै,",
@@ -2783,7 +2781,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 172
+    "verseNumber": 172,
+    "rag": "कान्हरो"
   },
   {
     "id": "jaake-man-basai-vrindavan-shri-hariram-vyas-vishakha-avatar-vyas-vani-174",
@@ -2796,7 +2795,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग एवं रामकली)",
           "जाके मन बसै वृंदावन।",
           "सोई रसिक अनन्य धन्य, जाकैं हितराधामोहन॥",
           "ताही नित्य विहार फुरै वन, लीलाकौ अनुकरन।",
@@ -2809,7 +2807,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 174
+    "verseNumber": 174,
+    "rag": "सारंग एवं रामकली"
   },
   {
     "id": "ananya-vrat-khande-kisi-dhaar-shri-hariram-vyas-vyas-vani-purvardh-175",
@@ -2847,7 +2846,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "अनन्यनि कौनकी परवाहि।",
           "कुंज-विहारीकी आसा करि, लै कमरी करवाहि॥ [1]",
           "कोटि मुकुति सुख होत गोखरू,जबै गड़ै तरवाहि।",
@@ -2862,7 +2860,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 176
+    "verseNumber": 176,
+    "rag": "सारंग"
   },
   {
     "id": "tei-rasik-ananya-janive-shri-hariram-vyas-vyas-vani",
@@ -2896,7 +2895,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग रामकली)",
           "जाकी है उपासना, ताहीकी वासना, ताहीकौ नाम, रूपलीला गुन गाइये। [1]",
           "यहै अनन्य परम धर्म परिपाटी, वृंदावन बसि अनत न जाइये॥ [2]",
           "सोई विभिचारी आन कहै, आन करै, ताकौ मुख देखे, दारुन दुख पाइयै। [3]",
@@ -2907,7 +2905,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 179
+    "verseNumber": 179,
+    "rag": "रामकली"
   },
   {
     "id": "shri-vrindavan-mein-manjul-maribo-shri-hariram-vyas-vyas-vani",
@@ -2989,7 +2988,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग गौरी)",
           "(श्री) राधावल्लभ के गुन गाइ लेहु। [1]",
           "तजहु असाधु संग भजि साधुनि, हरिसौं हित उपजाइ लेहु॥ [2]",
           "वृंदावन निरुपाधि राधिकारवन सौं प्रीति बढ़ाइ लेहु। [3]",
@@ -3004,7 +3002,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 217
+    "verseNumber": 217,
+    "rag": "गौरी"
   },
   {
     "id": "vyas-swamini-raas-mandal-mein-chutakini-piye-nachave-jo-pe-vrindavan-dhan-bhave-shri-hariram-vyas",
@@ -3038,7 +3037,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "जौ पै (श्री) वृन्दावन धन भावै।",
           "तौ कत स्वारथ परमारथ लगि मूढ़ मनहि दौरावै॥ [1]",
           "नव निधि अष्ट सिधि वनवैभव, स्वपनैं अंत न पावै।",
@@ -3053,7 +3051,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 221
+    "verseNumber": 221,
+    "rag": "सारंग"
   },
   {
     "id": "lagai-jau-vrindavan-kau-rang-shri-hariram-vyas-vishakha-avatar-vyas-vani-purvardha-223",
@@ -3066,7 +3065,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "लगै जौ वृन्दावन कौ रंग।",
           "सब संदेह देहके जैहैं, अरु विषयनि कौ संग॥ [1]",
           "जैसैं बाजहि नाजु लगतही, करत है उदर मृदंग।",
@@ -3079,7 +3077,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 223
+    "verseNumber": 223,
+    "rag": "सारंग"
   },
   {
     "id": "duvidha-tab-jaihai-ya-manaki-shri-hariram-vyas-vyas-vani-purvardh-224",
@@ -3092,7 +3091,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "दुविधा तब जैहै या मनकी।",
           "निर्भय ह्वै कैं जब सेवहुगे, रज श्रीवृंदावन की॥ [1]",
           "कामरि लै करवा जब लैहे, शीतल छाँह कुंजन की।",
@@ -3105,7 +3103,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 224
+    "verseNumber": 224,
+    "rag": "सारंग"
   },
   {
     "id": "nainani-dekhyau-soi-bhavai-shri-hariram-vyas-vyas-vani-purvardh-172",
@@ -3118,7 +3117,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "नैननि देख्यौ, सोई भावै।",
           "जोई कपट लोभ तजिकै (श्री) राधावल्लभकै गुन गावै॥ [1]",
           "रसिक अनन्य भक्ति मंडलकी मीठी बात सुनावै।",
@@ -3130,7 +3128,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 232
+    "verseNumber": 232,
+    "rag": "सारंग"
   },
   {
     "id": "kaha-bhayo-vrindavanhi-base-shri-hariram-vyas-vyas-vani-purvardh-262",
@@ -3143,7 +3142,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग गौरी - अठताल)",
           "कहा भयौ वृंदावनहि बसै।",
           "जौलगि व्यापत माया तौलगि कह घरतें निकसै॥ [1]",
           "धन मेवा कौ मंदिर सेवत, करत कोठरी विषे रसै।",
@@ -3158,7 +3156,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 262
+    "verseNumber": 262,
+    "rag": "गौरी - अठताल"
   },
   {
     "id": "lobhini-vrindavan-na-suhaat-sahaj-madhuri-kou-ras-kaise-neeras-hridey-samat-his-holiness-shri-hariram-vyas-vishakha-avtar",
@@ -3191,7 +3190,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कान्हरो)",
           "श्रीराधावल्लभ तुम मेरे हित।",
           "और सबै स्वारथ के संगी, गुर चोपरी दै पोषत पितु॥ [1]",
           "यह मैं जानि सबनि सौं तोरी, तुमसौं जोरी दै चरनन चितु।",
@@ -3202,7 +3200,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 288
+    "verseNumber": 288,
+    "rag": "कान्हरो"
   },
   {
     "id": "jeevan-marat-shri-vrindavan-sharein-vishkaha-avtar-shri-hariram-vyas-vyas-vani-289",
@@ -3236,7 +3235,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "जीवत मरत वृन्दावन शरनैं॥",
           "सुनहुँ सुचित ह्वै (श्री) राधामोहन, यह विनती मन धरनै।",
           "यही परम पुरुषार्थ मेरौ, और कछु नहीं करनैं॥",
@@ -3247,7 +3245,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 289
+    "verseNumber": 289,
+    "rag": "सारंग"
   },
   {
     "id": "jeevat-marat-vrindavan-sharnein-shri-hariram-vyas-vishakha-avtar-vyas-vani",
@@ -3281,7 +3280,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "श्रीराधे जु आसा पुजवौ मेरी।",
           "हा हा कुँवरि किसोरी बलिजाऊँ, करहु आपनी चेरी॥ [1]",
           "मोहि स्यामकौ डर नहिं स्यामा, छुटत न आसा तेरी।",
@@ -3294,7 +3292,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 291
+    "verseNumber": 291,
+    "rag": "सारंग"
   },
   {
     "id": "kishori-tere-charnan-ki-raj-paun-shri-hariram-vyas",
@@ -3307,7 +3306,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग गौरी)",
           "किशोरी तेरे चरनन की रज पाऊँ।",
           "बैठी रहूं कुंजन के कोने, श्याम राधिका गाऊं॥ [1]",
           "जो रज शिव सनकादिक लोचत, सो रज शीश चढ़ाऊँ।",
@@ -3318,7 +3316,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 293
+    "verseNumber": 293,
+    "rag": "गौरी"
   },
   {
     "id": "jo-raj-shiv-sankadik-durlabh-so-raj-seesh-chadhaun-kishori-tore-charnan-ki-raj-paun-his-holiness-shri-hariram-vyas",
@@ -3351,7 +3350,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग गौरी)",
           "किशोरी मोहि अपनी कर लीजै।",
           "और दिये कछु भावत नाहीं, श्री वृन्दावन रज दीजै॥ [1]",
           "खग मृग पशु पंछी या बनके, चरन सरन रख लीजै।",
@@ -3362,7 +3360,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 294
+    "verseNumber": 294,
+    "rag": "गौरी"
   },
   {
     "id": "ek-pakauri-sab-jag-chhotyau-shri-hariram-vyas-vyas-vani-purvardh-300",
@@ -3375,7 +3374,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग गौरी)",
           "एक पकौरी सब जग छूट्यौ ।",
           "जप, तप, व्रत, संजम करि हारें, नैंकु नहीं मन टूट्यौ॥ [1]",
           "माया रचित प्रपंच कुटुंबी, मोह-जाल सब छूट्यौ।",
@@ -3386,7 +3384,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 300
+    "verseNumber": 300,
+    "rag": "गौरी"
   },
   {
     "id": "syama-syam-valaiya-laihaun-shri-hariram-vyas-vyas-vani-453",
@@ -3399,7 +3398,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग षट व आसावारी )",
           "स्यामा स्याम वलैया लैहौं।",
           "दुःख सुख तजि वृंदावन रहि हौं॥ [1]",
           "अति पावन जमुना जल न्हैहौं।",
@@ -3416,7 +3414,8 @@
     ],
     "chapterId": "ch-पूर्वार्ध",
     "chapterName": "पूर्वार्ध",
-    "verseNumber": 453
+    "verseNumber": 453,
+    "rag": "षट व आसावारी"
   },
   {
     "id": "radha-vallabh-dhyai-kain-aur-dhyaiyai-kaun-shri-hariram-vyas-vyas-vani-siddhant-ki-saakhi-4",
@@ -4258,12 +4257,12 @@
     "verseNumber": 3
   },
   {
-    "id": "आरत-भन-दलर-क",
+    "id": "aarti-bhanu-dulari-ki",
     "collectionId": "vyas-vani",
     "index": 186,
     "titleDevanagari": "आरती भानु दुलारी की",
     "author": "श्री हरिराम व्यास जी",
-    "slug": "आरत-भन-दलर-क",
+    "slug": "aarti-bhanu-dulari-ki",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -4297,12 +4296,12 @@
     "verseNumber": 6
   },
   {
-    "id": "आज-बधई-बजत-रवल",
+    "id": "aaju-bdhaee-bajt-ravl",
     "collectionId": "vyas-vani",
     "index": 187,
     "titleDevanagari": "आजु बधाई बाजत रावल।",
     "author": "श्री हरिराम व्यास जी",
-    "slug": "आज-बधई-बजत-रवल",
+    "slug": "aaju-bdhaee-bajt-ravl",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -4478,12 +4477,12 @@
     "verseNumber": 50
   },
   {
-    "id": "वनदबन-सच-धन-भय",
+    "id": "vrindabn-sanchau-dhn-bhaiya",
     "collectionId": "vyas-vani",
     "index": 195,
     "titleDevanagari": "वृन्दाबन साँचौ धन भैया।",
     "author": "श्री हरिराम व्यास जी",
-    "slug": "वनदबन-सच-धन-भय",
+    "slug": "vrindabn-sanchau-dhn-bhaiya",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -4578,12 +4577,12 @@
     "verseNumber": 71
   },
   {
-    "id": "ढढन-शरबरजरन-ज-क-करत-ज-प-आई-ज",
+    "id": "dhandhini-shribrjrani-ju-ki-kirti-ju-pai-aaee-ju",
     "collectionId": "vyas-vani",
     "index": 199,
     "titleDevanagari": "ढाँढिनि श्रीब्रजरानी जू की कीरति जू पै आई जू।",
     "author": "श्री हरिराम व्यास जी",
-    "slug": "ढढन-शरबरजरन-ज-क-करत-ज-प-आई-ज",
+    "slug": "dhandhini-shribrjrani-ju-ki-kirti-ju-pai-aaee-ju",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -4622,12 +4621,12 @@
     "verseNumber": 77
   },
   {
-    "id": "भय-आज-रवल-म-बजत-बधई",
+    "id": "bhaiya-aaj-ravl-men-bjt-bdhaee",
     "collectionId": "vyas-vani",
     "index": 200,
     "titleDevanagari": "भैया आज रावल में बजत बधाई",
     "author": "श्री हरिराम व्यास जी",
-    "slug": "भय-आज-रवल-म-बजत-बधई",
+    "slug": "bhaiya-aaj-ravl-men-bjt-bdhaee",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -4790,12 +4789,12 @@
     "verseNumber": 104
   },
   {
-    "id": "नन-भर-दख-अब-भन-तनय",
+    "id": "nain-bhri-dekhi-ab-bhanu-tnya",
     "collectionId": "vyas-vani",
     "index": 207,
     "titleDevanagari": "नैन भरि देखि अब भानु तनया",
     "author": "श्री हरिराम व्यास जी",
-    "slug": "नन-भर-दख-अब-भन-तनय",
+    "slug": "nain-bhri-dekhi-ab-bhanu-tnya",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -4851,12 +4850,12 @@
     "verseNumber": 114
   },
   {
-    "id": "आज-बधई-ह-बरसन",
+    "id": "aaju-bdhaee-hai-brsane",
     "collectionId": "vyas-vani",
     "index": 210,
     "titleDevanagari": "आजु बधाई है बरसाने।",
     "author": "श्री हरिराम व्यास जी",
-    "slug": "आज-बधई-ह-बरसन",
+    "slug": "aaju-bdhaee-hai-brsane",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -4904,12 +4903,12 @@
     "verseNumber": 119
   },
   {
-    "id": "पयर-शरवनदवन-क-रन",
+    "id": "pyari-shrivrindavn-ki-rain",
     "collectionId": "vyas-vani",
     "index": 212,
     "titleDevanagari": "प्यारी श्रीवृन्दावन की रैन",
     "author": "श्री हरिराम व्यास जी",
-    "slug": "पयर-शरवनदवन-क-रन",
+    "slug": "pyari-shrivrindavn-ki-rain",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -5041,12 +5040,12 @@
     "verseNumber": 143
   },
   {
-    "id": "मन-रत-वदवन-स-कज",
+    "id": "mn-rti-vrindavn-sau-kijai",
     "collectionId": "vyas-vani",
     "index": 218,
     "titleDevanagari": "मन रति वृंदावन सौ कीजै",
     "author": "श्री हरिराम व्यास जी",
-    "slug": "मन-रत-वदवन-स-कज",
+    "slug": "mn-rti-vrindavn-sau-kijai",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -5229,12 +5228,12 @@
     "verseNumber": 184
   },
   {
-    "id": "बज-आज-बधई-बरसन-म",
+    "id": "baj-aaju-bdhaee-brsane-men",
     "collectionId": "vyas-vani",
     "index": 226,
     "titleDevanagari": "बाज आजु बधाई बरसाने में।",
     "author": "श्री हरिराम व्यास जी",
-    "slug": "बज-आज-बधई-बरसन-म",
+    "slug": "baj-aaju-bdhaee-brsane-men",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -5276,12 +5275,12 @@
     "verseNumber": 189
   },
   {
-    "id": "शर-रधवललभक-ह-भवत-चर",
+    "id": "radhavllbhkau-hau-bhanvtau-cherau",
     "collectionId": "vyas-vani",
     "index": 228,
     "titleDevanagari": "(श्री) राधावल्लभकौ हौ भांवतौ चेरौ",
     "author": "श्री हरिराम व्यास जी",
-    "slug": "शर-रधवललभक-ह-भवत-चर",
+    "slug": "radhavllbhkau-hau-bhanvtau-cherau",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -5386,12 +5385,12 @@
     "verseNumber": 194
   },
   {
-    "id": "आज-वषभन-क-आननद",
+    "id": "aaju-vrishbhan-ke-aannd",
     "collectionId": "vyas-vani",
     "index": 233,
     "titleDevanagari": "आजु वृषभान के आनन्द।",
     "author": "श्री हरिराम व्यास जी",
-    "slug": "आज-वषभन-क-आननद",
+    "slug": "aaju-vrishbhan-ke-aannd",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -5697,12 +5696,12 @@
     "verseNumber": 227
   },
   {
-    "id": "धन-वषभन-धनय-बरसन-धन-रध-क-मय",
+    "id": "dhni-vrishbhanu-dhny-brsano-dhni-radha-ki-may",
     "collectionId": "vyas-vani",
     "index": 247,
     "titleDevanagari": "धनि वृषभानु धन्य बरसानो, धनि राधा की माय",
     "author": "श्री हरिराम व्यास जी",
-    "slug": "धन-वषभन-धनय-बरसन-धन-रध-क-मय",
+    "slug": "dhni-vrishbhanu-dhny-brsano-dhni-radha-ki-may",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -5796,12 +5795,12 @@
     "verseNumber": 234
   },
   {
-    "id": "जब-जब-कधत-दमन",
+    "id": "jb-jb-kaundht-damini",
     "collectionId": "vyas-vani",
     "index": 251,
     "titleDevanagari": "जब  जब  कौंधत  दामिनी",
     "author": "श्री हरिराम व्यास जी",
-    "slug": "जब-जब-कधत-दमन",
+    "slug": "jb-jb-kaundht-damini",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -5864,12 +5863,12 @@
     "verseNumber": 237
   },
   {
-    "id": "नचवन-सखवत-पयर-पय-क",
+    "id": "nchvn-sikhvt-pyari-piy-kau",
     "collectionId": "vyas-vani",
     "index": 254,
     "titleDevanagari": "नचवन सिखवत प्यारी पिय कौ",
     "author": "श्री हरिराम व्यास जी",
-    "slug": "नचवन-सखवत-पयर-पय-क",
+    "slug": "nchvn-sikhvt-pyari-piy-kau",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -5974,12 +5973,12 @@
     "verseNumber": 243
   },
   {
-    "id": "पय-क-नचन-सखबत-पयर",
+    "id": "piy-kaun-nanchn-sikhbt-pyari",
     "collectionId": "vyas-vani",
     "index": 259,
     "titleDevanagari": "पिय कौं नाँचन सिखबत प्यारी",
     "author": "श्री हरिराम व्यास जी",
-    "slug": "पय-क-नचन-सखबत-पयर",
+    "slug": "piy-kaun-nanchn-sikhbt-pyari",
     "verses": [
       {
         "stanzaNumber": 1,

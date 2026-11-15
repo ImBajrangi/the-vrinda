@@ -58,7 +58,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विहाग)",
           "नवल किशोर नवल नागरियाँ।",
           "अपनी भुजा श्याम भुज ऊपर श्याम भुजा अपने उर धरियाँ॥ [1]",
           "क्रीडा करत तमाल तरुन तर श्यामा श्याम उमॅगि रस भरियाँ।",
@@ -71,7 +70,8 @@
     ],
     "chapterId": "ch-सूर सागर",
     "chapterName": "सूर सागर",
-    "verseNumber": 21
+    "verseNumber": 21,
+    "rag": "विहाग"
   },
   {
     "id": "terau-burau-na-kou-maanai-shri-surdas-soor-sagar",
@@ -84,7 +84,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग धनाश्री)",
           "तेरौ बुरौ न कोऊ मानै।",
           "रस की बात मधुप नीरस सुनु, रसिक होत सो जानै॥ [1]",
           "दादुर बसै निकट कमलन के, जन्म न रस पहिंचानै।",
@@ -97,7 +96,8 @@
     ],
     "chapterId": "ch-सूर सागर",
     "chapterName": "सूर सागर",
-    "verseNumber": 27
+    "verseNumber": 27,
+    "rag": "धनाश्री"
   },
   {
     "id": "jab-jab-murli-kaanh-bajavat-shri-surdas-sura-sagara",
@@ -135,7 +135,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग भैरव)",
           "स्याम भये बस नागरि कैं।",
           "नैन कटाच्छ बंक अवलोकनि, रीझे घोष उजागरि कैं॥ [1]",
           "चित मधुकर, रस कमल-कोस कौ, प्यारी बदन सुधागरि कौं।",
@@ -148,7 +147,8 @@
     ],
     "chapterId": "ch-सूर सागर",
     "chapterName": "सूर सागर",
-    "verseNumber": 35
+    "verseNumber": 35,
+    "rag": "भैरव"
   },
   {
     "id": "braj-mein-hari-hori-machayi-sri-surdas-soor-sagar",
@@ -233,7 +233,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग एवं विहागरौ)",
           "बलि बलि हौं कुँवरि राधिका",
           "नन्दसुवन जासों रति मानी।",
           "वे अतिचुर तुम चतुर-सिरोमनी",
@@ -252,7 +251,8 @@
     ],
     "chapterId": "ch-सूर सागर",
     "chapterName": "सूर सागर",
-    "verseNumber": 48
+    "verseNumber": 48,
+    "rag": "सारंग एवं विहागरौ"
   },
   {
     "id": "radha-mohan-karat-viyaru-shri-surdas-sur-sagar",
@@ -265,7 +265,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कान्हरौ)",
           "राधा मोहन करत वियारू।",
           "एक कर थार सवारें सुंदरि एक वेष एक रूप उज्यारी॥ [1]",
           "मधु मेवा पकवान मिठाई दंपति अति रुचि कारी।",
@@ -276,7 +275,8 @@
     ],
     "chapterId": "ch-सूर सागर",
     "chapterName": "सूर सागर",
-    "verseNumber": 65
+    "verseNumber": 65,
+    "rag": "कान्हरौ"
   },
   {
     "id": "radhe-ju-ke-pran-govardhan-dhari-shri-surdas-ji-soor-sagar",
@@ -289,7 +289,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग बिहाग )",
           "राधे जु के प्रान गोवर्धन धारी॥",
           "तरु तमाल डिंग कनक लता सी,",
           "उर लिपटाति राधिका प्यारी॥1॥",
@@ -303,7 +302,8 @@
     ],
     "chapterId": "ch-सूर सागर",
     "chapterName": "सूर सागर",
-    "verseNumber": 80
+    "verseNumber": 80,
+    "rag": "बिहाग"
   },
   {
     "id": "piya-bin-chandra-lagyo-dukh-den-shri-surdas-ji",
@@ -316,7 +316,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग बिहाग)",
           "पिया बिन चन्द्र लग्यो दुःख दैन।",
           "तारा गिनत गिनत हूँ हारी पलक न लागे चैन॥ [1]",
           "कहाँ वे यमुना पुलिन मनोहर कहाँ वे सुख की रैन।",
@@ -327,7 +326,8 @@
     ],
     "chapterId": "ch-सूर सागर",
     "chapterName": "सूर सागर",
-    "verseNumber": 85
+    "verseNumber": 85,
+    "rag": "बिहाग"
   },
   {
     "id": "phoolyo-ri-saghan-van-tame-shri-surdas-sura-sagara",
@@ -340,7 +340,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग मालकोस)",
           "फूल्यो री सघन वन तामे करत री कोकिला गान। [1]",
           "चल री वृषभान नंदिनी छाँड़ि कठिन मन मान॥ [2]",
           "नव ऋतुराज आयौ री नैरैं मिलि कीजै मधु पान। [3]",
@@ -351,7 +350,8 @@
     ],
     "chapterId": "ch-सूर सागर",
     "chapterName": "सूर सागर",
-    "verseNumber": 91
+    "verseNumber": 91,
+    "rag": "मालकोस"
   },
   {
     "id": "kah-jaano-kahnva-muvo-sri-surdas-soor-sagar",
@@ -406,7 +406,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग बिलावल)",
           "दीप मालिका को दिन आयौ।",
           "नन्द राय सों कहत धरनि यो यह उच्छव मन भायौ॥ [1]",
           "गोपी सकल साज सजि चल के नन्दराय दरबार सुहायौ।",
@@ -419,7 +418,8 @@
     ],
     "chapterId": "ch-सूर सागर",
     "chapterName": "सूर सागर",
-    "verseNumber": 147
+    "verseNumber": 147,
+    "rag": "बिलावल"
   },
   {
     "id": "thade-manmohan-sundar-yamuna-shri-surdas-sur-sagar",
@@ -432,7 +432,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग अडानो)",
           "ठाड़े मनमोहन सुन्दर यमुना तीर री।",
           "जबते दृष्टि परि या मुख पे तबते धरत न धीर री॥ [1]",
           "मृगमद तिलक अलक घुंघरारी नासा मुक्ता कीर री।",
@@ -443,7 +442,8 @@
     ],
     "chapterId": "ch-सूर सागर",
     "chapterName": "सूर सागर",
-    "verseNumber": 155
+    "verseNumber": 155,
+    "rag": "अडानो"
   },
   {
     "id": "aaj-van-umagi-rahi-shri-surdas-sur-sagar",
@@ -456,7 +456,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग मल्हार)",
           "आज वन उमगि रही वृजनारी।",
           "फूली फिरत निशंक गुन गावत, झूलत प्रान पियारी॥ [1]",
           "एक कुसुम लाई डारत ऊपर, एक चितनत रही ठाड़ो।",
@@ -469,7 +468,8 @@
     ],
     "chapterId": "ch-सूर सागर",
     "chapterName": "सूर सागर",
-    "verseNumber": 156
+    "verseNumber": 156,
+    "rag": "मल्हार"
   },
   {
     "id": "bhavsagar-tain-budat-rakhe-deepak-hath-dhare-shri-surdas-sur-sagar",
@@ -549,7 +549,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग नट)",
           "राधे तू दधिसुत क्यों न दुरावे।",
           "सुन सुन्दर वृषभानु नंदनी काहेको मन तरसावै॥ [1]",
           "सारंग दुःखी होत सारंग बिन तोहि दया नहीं आवे।",
@@ -562,7 +561,8 @@
     ],
     "chapterId": "ch-सूर सागर",
     "chapterName": "सूर सागर",
-    "verseNumber": 176
+    "verseNumber": 176,
+    "rag": "नट"
   },
   {
     "id": "jhukarahi-neend-shyam-ke-nainan-shri-surdas-sur-sagar",
@@ -575,7 +575,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विहाग)",
           "झुकरही नींद श्याम के नैनन।",
           "चिबुक उठाय पिया मुख निरखत शोभा कही न जाय कछु बैनन॥ [1]",
           "आरस भरी अकुलाय अंक भर हियो सिचवत चैनन।",
@@ -586,7 +585,8 @@
     ],
     "chapterId": "ch-सूर सागर",
     "chapterName": "सूर सागर",
-    "verseNumber": 182
+    "verseNumber": 182,
+    "rag": "विहाग"
   },
   {
     "id": "preeti-ki-reeti-ko-paindo-hi-nyaaro-shri-surdas-sur-sagar",
@@ -623,7 +623,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग धनाश्री)",
           "कहि राधा किन हार चोरायो।",
           "व्रज युवतिनि सबहिन मैं जानति घर घर लेले नाम बतायो॥ [1]",
           "श्यामा कामा चतुरा नवला प्रमुदा सुमदा नारी।",
@@ -642,7 +641,8 @@
     ],
     "chapterId": "ch-सूर सागर",
     "chapterName": "सूर सागर",
-    "verseNumber": 188
+    "verseNumber": 188,
+    "rag": "धनाश्री"
   },
   {
     "id": "sada-sandhati-apno-jiya-ko-jivan-praan-shri-surdas-soor-sagar",
@@ -723,7 +723,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विहागरौ)",
           "खंजन नैन सुरंग रसमाते।",
           "अतिसय चारु विमल, चंचल ये, पल-पिंजरा न समाते॥ [1]",
           "बसे कहूँ सोइ, बात सखी, कहि रहैं इहाँ किहि नाते।",
@@ -736,7 +735,8 @@
     ],
     "chapterId": "ch-सूर सागर",
     "chapterName": "सूर सागर",
-    "verseNumber": 215
+    "verseNumber": 215,
+    "rag": "विहागरौ"
   },
   {
     "id": "lochan-bhaye-syam-ke-chere-shri-surdas-sura-sagara",
@@ -749,7 +749,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग रामकली)",
           "लोचन भए स्याम के चेरे।",
           "ऐते पै सुख पावत कोटिक, मोतन फेरि न हेरे॥ [1]",
           "हाहा करत परत हरि चरननि, ऐसे बस भए उन्हीं।",
@@ -762,7 +761,8 @@
     ],
     "chapterId": "ch-सूर सागर",
     "chapterName": "सूर सागर",
-    "verseNumber": 217
+    "verseNumber": 217,
+    "rag": "रामकली"
   },
   {
     "id": "khan-pan-paridhan-mein-jivan-gayau-sab-biti-shri-surdas-sura-sagara",
@@ -817,7 +817,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग मल्हार)",
           "हों इन मोरन की बलिहारी।",
           "जिनकी सुभग चन्द्रिका माथे धरत गोवर्धन धारी॥ 1॥",
           "बलिहारी या बंसकुल सजनी बंसी सी सकुमारी।",
@@ -832,7 +831,8 @@
     ],
     "chapterId": "ch-सूर सागर",
     "chapterName": "सूर सागर",
-    "verseNumber": 228
+    "verseNumber": 228,
+    "rag": "मल्हार"
   },
   {
     "id": "yah-sab-jaanon-bhakt-ke-lachchhan-shri-surdas-sur-sagar",
@@ -845,7 +845,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग नट)",
           "यह सब जानों भक्त के लच्छन।",
           "कोऊ निन्दो कोऊ बन्दो,",
           "कोऊ मरि लेहु धन गच्छन॥ [1]",
@@ -863,7 +862,8 @@
     ],
     "chapterId": "ch-सूर सागर",
     "chapterName": "सूर सागर",
-    "verseNumber": 235
+    "verseNumber": 235,
+    "rag": "नट"
   },
   {
     "id": "shyam-tan-shyam-man-shyam-hai-hamaaro-dhan-shri-surdas-sursagar",
@@ -924,7 +924,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विहाग)",
           "वृन्दावन एक पलक जो रहिये।",
           "जन्म जन्म के पाप कटत है,",
           "कृष्ण-कृष्ण मुख गइये॥ [1]",
@@ -938,7 +937,8 @@
     ],
     "chapterId": "ch-सूर सागर",
     "chapterName": "सूर सागर",
-    "verseNumber": 277
+    "verseNumber": 277,
+    "rag": "विहाग"
   },
   {
     "id": "nath-mohin-ab-ki-ber-ubaro-shri-surdas-sur-sagar",
@@ -1005,7 +1005,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सोरठ)",
           "मुरली कौन तप तें कियौ।",
           "रहत गिरधर मुखहि लागी अधरन को रस पियौ॥ [1]",
           "नंद नंदन पानि परस कै तोहि तन-मन दियौ।",
@@ -1016,7 +1015,8 @@
     ],
     "chapterId": "ch-सूर सागर",
     "chapterName": "सूर सागर",
-    "verseNumber": 293
+    "verseNumber": 293,
+    "rag": "सोरठ"
   },
   {
     "id": "jab-te-preeti-shyam-se-keenhi-shri-soordas-soorsagar",
@@ -1071,7 +1071,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग मुलतानी धनाश्री- तिताला)",
           "मेरी सुधि लीजौ हो, ब्रजराज।",
           "और नहीं जग मैं कोउ मेरौ, तुमहिं सुधारन काज॥ [1]",
           "गनिका, गीध, अजामिल तारे, सबरी औ गजराज।",
@@ -1082,7 +1081,8 @@
     ],
     "chapterId": "ch-सूर सागर",
     "chapterName": "सूर सागर",
-    "verseNumber": 302
+    "verseNumber": 302,
+    "rag": "मुलतानी धनाश्री- तिताला"
   },
   {
     "id": "shreemukh-bani-kahi-vilamb-ab-naiku-na-lavhu-sri-surdas-soor-sagar",
@@ -1248,7 +1248,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विहाग)",
           "मन रे श्याम सों कर हेत।",
           "कृष्ण नाम की वार करले तो वचे तेरो खेत॥ [1]",
           "मन सुआ तन पींजरा हो तासु बाँध्यों तेरौ हेत।",
@@ -1261,7 +1260,8 @@
     ],
     "chapterId": "ch-सूर सागर",
     "chapterName": "सूर सागर",
-    "verseNumber": 398
+    "verseNumber": 398,
+    "rag": "विहाग"
   },
   {
     "id": "tain-jo-ratan-paayo-bhalo-janyo-saadhi-na-saaj-shri-surdas-sura-sagara",
@@ -1316,7 +1316,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग मलहार)",
           "प्यारी तोहि गिरधर लाल बुलावत।",
           "राधे राधे रटत निश वासर और नहि कछु भावत॥ [1]",
           "काम कटक मिलि हरि घेरे है नेक चैन नहिं पावत।",
@@ -1327,7 +1326,8 @@
     ],
     "chapterId": "ch-सूर सागर",
     "chapterName": "सूर सागर",
-    "verseNumber": 413
+    "verseNumber": 413,
+    "rag": "मलहार"
   },
   {
     "id": "dekho-karni-kamal-ki-sri-surdas-soor-sagar",
@@ -1361,7 +1361,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग धनाश्री)",
           "वृंदावन मोकों अति भावत।",
           "सुनहु सखा तुम सुबल, श्रीदामा, ब्रज तैं बन गौ चारन आवत॥ [1]",
           "कामधेनु सुरतरु सुख जितने, रमा सहित बैकुंठ भुलावत।",
@@ -1374,7 +1373,8 @@
     ],
     "chapterId": "ch-सूर सागर",
     "chapterName": "सूर सागर",
-    "verseNumber": 437
+    "verseNumber": 437,
+    "rag": "धनाश्री"
   },
   {
     "id": "harijan-sang-chinak-jo-hoi-shri-surdas-sur-sagar",
@@ -1387,7 +1387,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कान्हरौ)",
           "हरिजन संग छिनक जो होई।",
           "कोटि स्वर्गसुख कोटि मुक्ति सुख, तासम लहे न कोई॥ [1]",
           "पूरै भाग्य पुन्य सञ्चित फल, कृष्ण कृपा है जाके।",
@@ -1398,7 +1397,8 @@
     ],
     "chapterId": "ch-सूर सागर",
     "chapterName": "सूर सागर",
-    "verseNumber": 440
+    "verseNumber": 440,
+    "rag": "कान्हरौ"
   },
   {
     "id": "ved-puraan-sumriti-sabai-sur-nar-sebat-jaahi-shri-surdas-sura-sagara",
@@ -1614,7 +1614,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग धनाश्री)",
           "राधे तेरौ बदन बिराजत नीकौ।",
           "जब तू इत-उत बंक बिलोकति, होत निसा-पति फीकौ॥ [1]",
           "भृकुटी धनुष, नैन सर, साँधे, सिर केसरि कौ टीकौ।",
@@ -1627,7 +1626,8 @@
     ],
     "chapterId": "ch-राधा-कृष्ण",
     "chapterName": "राधा-कृष्ण",
-    "verseNumber": 30
+    "verseNumber": 30,
+    "rag": "धनाश्री"
   },
   {
     "id": "radha-param-nirmal-naari-shri-surdas-sursagar-101843",
@@ -1640,7 +1640,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग बिहागरौ)",
           "राधा परम निर्मल नारि।",
           "कहति हौ मन कर्मना करि, हृदय दुविधा टारि॥ [1]",
           "स्याम कौ इक तुही जान्यौ, दुराचारिनि और।",
@@ -1655,7 +1654,8 @@
     ],
     "chapterId": "ch-सूरसागर (10.1843)",
     "chapterName": "सूरसागर (10.1843)",
-    "verseNumber": 304
+    "verseNumber": 304,
+    "rag": "बिहागरौ"
   },
   {
     "id": "taj-man-hari-vimukhan-ko-sang-shri-soordas-ji-soor-sagar",
@@ -1668,7 +1668,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग बिलावल)",
           "तज मन हरि विमुखन को संग।",
           "जिनके संग कुमति उपजत है, परत भजन में भंग॥ [1]",
           "कहा होत पय पान कराए विष, नहिं तजत भुजंग।",
@@ -1683,7 +1682,8 @@
     ],
     "chapterId": "ch-वीनय तथा भक्ति",
     "chapterName": "वीनय तथा भक्ति",
-    "verseNumber": 44
+    "verseNumber": 44,
+    "rag": "बिलावल"
   },
   {
     "id": "dhany-dhany-vrishabhanu-dulari-shri-surdas",
@@ -1696,7 +1696,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग बिलावल)",
           "धन्य धन्य वृषभानु दुलारी।",
           "धनि माता धनि पिता धन्य वृज धनि तेरी उपजाई प्यारी॥1॥",
           "धन्य दिबस धनि निसा तबहिकी धन्य घड़ी धन जाय।",
@@ -1709,7 +1708,8 @@
     ],
     "chapterId": "ch-राधा कृष्ण",
     "chapterName": "राधा कृष्ण",
-    "verseNumber": 94
+    "verseNumber": 94,
+    "rag": "बिलावल"
   },
   {
     "id": "chari-badan-main-kah-kahyo-sri-surdas-soor-sagar-dasham-sakandh",
@@ -1815,7 +1815,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग भैरवी तीन ताल)",
           "सुने री मैंने निरबल के बल राम।",
           "पिछली साख भरूँ सन्तन की, अड़े सँवारे काम॥ [1]",
           "जब लगि गज बल अपनो बरत्यो, नेक सरो नहिं काम।",
@@ -1830,7 +1829,8 @@
     ],
     "chapterId": "ch-सूरसागर",
     "chapterName": "सूरसागर",
-    "verseNumber": 76
+    "verseNumber": 76,
+    "rag": "भैरवी तीन ताल"
   },
   {
     "id": "pyari-pritam-arati-karatu-shri-surdas-sursagar",
@@ -1843,7 +1843,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग केदारौ)",
           "प्यारी, प्रीतम आरति करतु।",
           "तुम्हरे कारन कुमरि राधिका, मेरे पांयनि परतु॥ [1]",
           "वरही मुकट लुठन अवनी पर, नाहिंन निज भुज भरतु।",
@@ -1856,7 +1855,8 @@
     ],
     "chapterId": "ch-सूरसागर",
     "chapterName": "सूरसागर",
-    "verseNumber": 160
+    "verseNumber": 160,
+    "rag": "केदारौ"
   },
   {
     "id": "sab-taji-bhajiye-nand-kumar-shri-surdas-sursagar",
@@ -1869,7 +1869,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग केदारौ)",
           "सब तजि भजिऐ नंद कुमार।",
           "और भजे तैं काम सरै नहिं, मिटै न भव-जंजार॥ [1]",
           "जिहिं जिहिं जोनि जन्म धारयौ, बहु जोरयौ अघ को भार।",
@@ -1884,7 +1883,8 @@
     ],
     "chapterId": "ch-सूरसागर",
     "chapterName": "सूरसागर",
-    "verseNumber": 307
+    "verseNumber": 307,
+    "rag": "केदारौ"
   },
   {
     "id": "charan-kamal-vandau-hari-rai-shri-surdas-ji",
@@ -1945,7 +1945,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "जो सुख होत गोपालहिं गायैं।",
           "सो न होत जप-तप के कीनैं, कोटिक तीरथ नहायैं॥ [1]",
           "दिये लेत नहिं चारि पदारथ, चरन कमल चित लायैं।",
@@ -1958,7 +1957,8 @@
     ],
     "chapterId": "ch-सूरसागर",
     "chapterName": "सूरसागर",
-    "verseNumber": 340
+    "verseNumber": 340,
+    "rag": "सारंग"
   },
   {
     "id": "re-man-moorkh-janam-ganwayo-shri-surdas-sursagar",
@@ -1971,7 +1971,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग धनाश्री)",
           "रे मन मूरख जनम गँवायौ।",
           "करि अभिमान विषय को रांचौ, हरि गुण तू नहिं गायौ॥ [1]",
           "यह संसार फूल सेमर कौ, सुन्दर देखि लुभायौ।",
@@ -1984,7 +1983,8 @@
     ],
     "chapterId": "ch-सूरसागर",
     "chapterName": "सूरसागर",
-    "verseNumber": 344
+    "verseNumber": 344,
+    "rag": "धनाश्री"
   },
   {
     "id": "shyama-tu-ati-shyamahi-bhavai-shri-surdas-sursagar",
@@ -1997,7 +1997,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "स्यामा तू अति स्यामहि भावै।",
           "बैठत-उठत, चलत, गौ चरत, तेरौ लीला गावै॥ [1]",
           "पीत बरन लखि पीत बसन उर, पीत धातु अंग लावै।",
@@ -2012,7 +2011,8 @@
     ],
     "chapterId": "ch-सूरसागर",
     "chapterName": "सूरसागर",
-    "verseNumber": 354
+    "verseNumber": 354,
+    "rag": "सारंग"
   },
   {
     "id": "braj-mein-rahaun-aan-nahin-javaun-kripa-tihari-paun-shri-surdas-sursagar",
@@ -2046,7 +2046,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग धनाश्री)",
           "जौ हम भले बुरे तौ तेरे।",
           "तुम्हैं हमारी लाज-बड़ाई, बिनती सुन प्रभु मेरे॥ [1]",
           "सब तजि तुम सरनागत आयौ, दृढ़ करि चरन गहेरे।",
@@ -2059,7 +2058,8 @@
     ],
     "chapterId": "ch-सूरसागर",
     "chapterName": "सूरसागर",
-    "verseNumber": 458
+    "verseNumber": 458,
+    "rag": "धनाश्री"
   },
   {
     "id": "main-kaise-ras-raashin-gaun-shri-surdas-sursagar",
@@ -2072,7 +2072,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग धनाश्री)",
           "मैं कैसें रस रासहिं गाऊँ।",
           "श्री राधिका स्याम की प्यारी, कृपा बास ब्रज पाऊँ॥ [1]",
           "आन देव सपनैंहू न जानौ, दंपति कौं सिर नाऊँ।",
@@ -2085,7 +2084,8 @@
     ],
     "chapterId": "ch-सूरसागर",
     "chapterName": "सूरसागर",
-    "verseNumber": 471
+    "verseNumber": 471,
+    "rag": "धनाश्री"
   },
   {
     "id": "jo-sukh-braj-mein-ek-ghari-shri-surdas-sursagar-687",
@@ -2098,7 +2098,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग रामकली)",
           "जो सुख ब्रज में एक घरी।",
           "सो सुख तीनि लोक में नाहीं, धनि यह घोष-पुरी॥ [1]",
           "अष्ठ सिद्धि नवनिधि कर जोरे, द्वारैं रहतिं खरी।",
@@ -2111,7 +2110,8 @@
     ],
     "chapterId": "ch-सूरसागर",
     "chapterName": "सूरसागर",
-    "verseNumber": 687
+    "verseNumber": 687,
+    "rag": "रामकली"
   },
   {
     "id": "madho-mohi-karo-vrindavan-renu-sri-surdas-soor-sagar-1107",
@@ -2124,7 +2124,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "माधौ मोहिँ करौ वृंदावन-रेनु।",
           "जिहिँ चरननि डोलत नँद-नंदन, दिन-प्रति बन-बन चारत धेनु॥ [1]",
           "कहा भयौ यह देव-देह धरि, अरु ऊँचें पद पाएँ ऐनु।",
@@ -2137,7 +2136,8 @@
     ],
     "chapterId": "ch-सूरसागर",
     "chapterName": "सूरसागर",
-    "verseNumber": 1107
+    "verseNumber": 1107,
+    "rag": "सारंग"
   },
   {
     "id": "aise-basie-braj-ki-bithini-sri-surdas-soor-sagar-1108",
@@ -2150,7 +2150,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "ऐसैं बसिऐ ब्रज की बीथिनि ।",
           "ग्वारनि के पनवारे चुनि-चुनि, उदर भरीजै सीथिनि॥ [1]",
           "पैंड़े के सब बृच्छ बिराजत, छाया परम पुनीतनि ।",
@@ -2163,7 +2162,8 @@
     ],
     "chapterId": "ch-सूरसागर",
     "chapterName": "सूरसागर",
-    "verseNumber": 1108
+    "verseNumber": 1108,
+    "rag": "सारंग"
   },
   {
     "id": "dou-rajat-syama-syam-sri-surdas-soor-sagar-1696",
@@ -2176,7 +2176,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग देवगंधार)",
           "दोऊ राजत स्यामा स्याम।",
           "ब्रज-जुवती-मंडली बिराजति, देखतिं सुरगन-बाम॥ [1]",
           "धन्य धन्य वृंदावन कौ सुख, सुरपुर कौनैं काम।",
@@ -2189,7 +2188,8 @@
     ],
     "chapterId": "ch-सूरसागर",
     "chapterName": "सूरसागर",
-    "verseNumber": 1696
+    "verseNumber": 1696,
+    "rag": "देवगंधार"
   },
   {
     "id": "mero-man-anat-kahan-sukh-pavai-shri-surdas",
@@ -2202,7 +2202,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "मेरो मन अनत कहां सुख पावै। [1]",
           "जैसे उड़ि जहाज कौ पंछी पुनि जहाज पै आवै॥ [2]",
           "कमलनैन कौ छांड़ि महातम और देव को ध्यावै। [3]",
@@ -2215,7 +2214,8 @@
     ],
     "chapterId": "ch-विनय तथा भक्ति",
     "chapterName": "विनय तथा भक्ति",
-    "verseNumber": 25
+    "verseNumber": 25,
+    "rag": "सारंग"
   },
   {
     "id": "adhar-murli-ratan-lagi-adhar-murli-ratan-lagi",
@@ -2321,12 +2321,12 @@
     "verseNumber": 4
   },
   {
-    "id": "सख-र-सवन-दलह-आय",
+    "id": "skhi-ri-savn-dulhe-aayo",
     "collectionId": "sur-sagar",
     "index": 96,
     "titleDevanagari": "सखी री सावन दुल्हे आयो",
     "author": "महाकवि सूरदास जी",
-    "slug": "सख-र-सवन-दलह-आय",
+    "slug": "skhi-ri-savn-dulhe-aayo",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2420,12 +2420,12 @@
     "verseNumber": 9
   },
   {
-    "id": "आज-दख-रग-ह-रग-ह-रग-ह-रसकनह-कर-सग-ह",
+    "id": "aaj-dekho-rng-hai-rng-hai-rng-hai-rsiknh-kero-sng-hai",
     "collectionId": "sur-sagar",
     "index": 100,
     "titleDevanagari": "आज देखो रँग है रँग है रँग है, रसिकन्ह केरो सँग है ।।",
     "author": "महाकवि सूरदास जी",
-    "slug": "आज-दख-रग-ह-रग-ह-रग-ह-रसकनह-कर-सग-ह",
+    "slug": "aaj-dekho-rng-hai-rng-hai-rng-hai-rsiknh-kero-sng-hai",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2573,12 +2573,12 @@
     "verseNumber": 14
   },
   {
-    "id": "ननद-ज-मर-मन-आनद-भय-म-गवरधन-स-आय",
+    "id": "nnd-ji-mere-mn-aannd-bhyo-main-govrdhn-se-aayo",
     "collectionId": "sur-sagar",
     "index": 105,
     "titleDevanagari": "नन्द जी मेरे मन आनंद भयो मैं गोवरधन से आयो",
     "author": "महाकवि सूरदास जी",
-    "slug": "ननद-ज-मर-मन-आनद-भय-म-गवरधन-स-आय",
+    "slug": "nnd-ji-mere-mn-aannd-bhyo-main-govrdhn-se-aayo",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2617,7 +2617,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग धनाश्री)",
           "अब मैं नाच्यौ बहुत गुपाल।",
           "काम-क्रोध कौ पहिरि चोलना, कंठ बिषय की माल॥ [1]",
           "महामोह के नूपुर बाजत, निंदा सबद रसाल।",
@@ -2632,7 +2631,8 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 18
+    "verseNumber": 18,
+    "rag": "धनाश्री"
   },
   {
     "id": "pyari-tohe-shyam-bulave-jhamak-chal-radhe-chamak-chal-radhe",
@@ -2806,12 +2806,12 @@
     "verseNumber": 29
   },
   {
-    "id": "दख-हम-हर-नगम-नग",
+    "id": "dekhe-hm-hri-nngm-nnga",
     "collectionId": "sur-sagar",
     "index": 114,
     "titleDevanagari": "देखे हम हरि नंगम-नंगा।",
     "author": "महाकवि सूरदास जी",
-    "slug": "दख-हम-हर-नगम-नग",
+    "slug": "dekhe-hm-hri-nngm-nnga",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2853,12 +2853,12 @@
     "verseNumber": 33
   },
   {
-    "id": "ज-सख-बरज-म-एक-घर",
+    "id": "jo-sukh-brj-men-ek-ghri",
     "collectionId": "sur-sagar",
     "index": 116,
     "titleDevanagari": "जो सुख ब्रज में एक घरी",
     "author": "महाकवि सूरदास जी",
-    "slug": "ज-सख-बरज-म-एक-घर",
+    "slug": "jo-sukh-brj-men-ek-ghri",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2947,12 +2947,12 @@
     "verseNumber": 38
   },
   {
-    "id": "दख-मई-नई-बरख-ऋत-आई",
+    "id": "dekho-maee-nee-brkha-ritu-aaee",
     "collectionId": "sur-sagar",
     "index": 120,
     "titleDevanagari": "देखो माई नई बरखा ऋतु आई",
     "author": "महाकवि सूरदास जी",
-    "slug": "दख-मई-नई-बरख-ऋत-आई",
+    "slug": "dekho-maee-nee-brkha-ritu-aaee",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2971,12 +2971,12 @@
     "verseNumber": 39
   },
   {
-    "id": "खलत-खलत-सबर-भज-गई-तरक",
+    "id": "khelt-khelt-sbri-bhinj-gee-trki",
     "collectionId": "sur-sagar",
     "index": 121,
     "titleDevanagari": "खेलत- खेलत सबरी भींज गई तरकी ।।",
     "author": "महाकवि सूरदास जी",
-    "slug": "खलत-खलत-सबर-भज-गई-तरक",
+    "slug": "khelt-khelt-sbri-bhinj-gee-trki",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -3018,12 +3018,12 @@
     "verseNumber": 43
   },
   {
-    "id": "ठढ़-रह-र-गवलन-द-ज-मर-दन",
+    "id": "thai-rh-ri-gvalin-dai-ja-merau-dan",
     "collectionId": "sur-sagar",
     "index": 123,
     "titleDevanagari": "ठाढ़ी रह री ग्वालिन दै जा मेरौ दान।",
     "author": "महाकवि सूरदास जी",
-    "slug": "ठढ़-रह-र-गवलन-द-ज-मर-दन",
+    "slug": "thai-rh-ri-gvalin-dai-ja-merau-dan",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -3079,7 +3079,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग धनाश्री)",
           "दूलह मदनगोपाल, राधा नव दुलही।",
           "मानों तरु तमाल मिलि नूतन, कनक-बेलि उलही॥ [1]",
           "रूप-भूप युबराज बिराजत, बैस किसोर एक तुलही।",
@@ -3090,7 +3089,8 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 47
+    "verseNumber": 47,
+    "rag": "धनाश्री"
   },
   {
     "id": "hamari-fent-chhod-shridama",
@@ -3199,12 +3199,12 @@
     "verseNumber": 53
   },
   {
-    "id": "ज-सख-हत-गपलह-गय",
+    "id": "jo-sukh-hot-gopalhin-gayain",
     "collectionId": "sur-sagar",
     "index": 130,
     "titleDevanagari": "जो सुख होत गोपालहिं गायैं",
     "author": "महाकवि सूरदास जी",
-    "slug": "ज-सख-हत-गपलह-गय",
+    "slug": "jo-sukh-hot-gopalhin-gayain",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -3223,12 +3223,12 @@
     "verseNumber": 54
   },
   {
-    "id": "पय-बन-लगत-बद-कटर",
+    "id": "piy-bin-lagt-bund-ktari",
     "collectionId": "sur-sagar",
     "index": 131,
     "titleDevanagari": "पिय बिन लागत बूँद कटारी",
     "author": "महाकवि सूरदास जी",
-    "slug": "पय-बन-लगत-बद-कटर",
+    "slug": "piy-bin-lagt-bund-ktari",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -3509,7 +3509,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग धनाश्री)",
           "रुचिसों जेंवत जुगल किशोर।",
           "होंस विनोद करत हैं बहुविधि देत परस्पर कोर। [1]",
           "जो भावे सो लेत हैं दोऊ ललितादिक त्रन तोर।",
@@ -3520,7 +3519,8 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 68
+    "verseNumber": 68,
+    "rag": "धनाश्री"
   },
   {
     "id": "nirkhat-sakhi-char-chandra-ik-thour",
@@ -3751,12 +3751,12 @@
     "verseNumber": 78
   },
   {
-    "id": "वनदवन-महन-दध-लट",
+    "id": "vrindavn-mohn-ddhi-luti",
     "collectionId": "sur-sagar",
     "index": 152,
     "titleDevanagari": "वृन्दावन मोहन दधि लूटी ।।",
     "author": "महाकवि सूरदास जी",
-    "slug": "वनदवन-महन-दध-लट",
+    "slug": "vrindavn-mohn-ddhi-luti",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -3773,12 +3773,12 @@
     "verseNumber": 79
   },
   {
-    "id": "पवतर-पहरन-क-दन-आय-1",
+    "id": "pvitra-phern-ko-din-aayo",
     "collectionId": "sur-sagar",
     "index": 153,
     "titleDevanagari": "पवित्रा पहेरन को दिन आयो",
     "author": "महाकवि सूरदास जी",
-    "slug": "पवतर-पहरन-क-दन-आय-1",
+    "slug": "pvitra-phern-ko-din-aayo",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -3973,12 +3973,12 @@
     "verseNumber": 89
   },
   {
-    "id": "जब-महन-कर-गह-मथन",
+    "id": "jb-mohn-kr-ghi-mthani",
     "collectionId": "sur-sagar",
     "index": 161,
     "titleDevanagari": "जब मोहन कर गही मथानी",
     "author": "महाकवि सूरदास जी",
-    "slug": "जब-महन-कर-गह-मथन",
+    "slug": "jb-mohn-kr-ghi-mthani",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -3997,12 +3997,12 @@
     "verseNumber": 90
   },
   {
-    "id": "जय-जय-शर-बलमकद-म-ह-चरण-चरण-रजबद",
+    "id": "jy-jy-shri-balmukunda-main-hun-chrn-chrn-rjbnda",
     "collectionId": "sur-sagar",
     "index": 162,
     "titleDevanagari": "जय जय श्री बालमुकुंदा । मैं हूं चरण चरण रजबंदा ॥",
     "author": "महाकवि सूरदास जी",
-    "slug": "जय-जय-शर-बलमकद-म-ह-चरण-चरण-रजबद",
+    "slug": "jy-jy-shri-balmukunda-main-hun-chrn-chrn-rjbnda",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -4020,12 +4020,12 @@
     "verseNumber": 92
   },
   {
-    "id": "सयम-अचनक-आइ-गए-र",
+    "id": "syam-achank-aai-ge-ri",
     "collectionId": "sur-sagar",
     "index": 163,
     "titleDevanagari": "स्याम अचानक आइ गए री।",
     "author": "महाकवि सूरदास जी",
-    "slug": "सयम-अचनक-आइ-गए-र",
+    "slug": "syam-achank-aai-ge-ri",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -4056,7 +4056,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "प्रीति करि काहू सुख न लह्यौ।",
           "प्रीति पतंग करि पावक सौं, आपही प्रान दह्यौ॥ [1]",
           "अलि सुत प्रीति जल सुत सौं, सम्पुट माँझ गह्यौ।",
@@ -4069,7 +4068,8 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 94
+    "verseNumber": 94,
+    "rag": "सारंग"
   },
   {
     "id": "dhan-mere-bhaag-ki-shubh-ghari",
@@ -4157,7 +4157,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग टोडी)",
           "रसिक शिरमौर ढौरि लगावत गावत राधा राधा नाम। (1)",
           "कुंजभवन बैठे मनमोहन अलिगोहन सोहन बोलतं मुख तेरोई गुणग्राम॥ (2)",
           "श्रवण सुनत प्यारी पुलकित भई प्रफुलित तन मन रोम रोम सुखराशि वाम। (3)",
@@ -4168,7 +4167,8 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 99
+    "verseNumber": 99,
+    "rag": "टोडी"
   },
   {
     "id": "sakhi-mohi-hari-darshan-ko-chav",
@@ -4250,12 +4250,12 @@
     "verseNumber": 102
   },
   {
-    "id": "अचभ-इन-लगन-क-आव",
+    "id": "achnbho-in-logni-kau-aavai",
     "collectionId": "sur-sagar",
     "index": 172,
     "titleDevanagari": "अचंभो इन लोगनि कौ आवै",
     "author": "महाकवि सूरदास जी",
-    "slug": "अचभ-इन-लगन-क-आव",
+    "slug": "achnbho-in-logni-kau-aavai",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -4346,12 +4346,12 @@
     "verseNumber": 107
   },
   {
-    "id": "गद-लऐ-गपल-जसद-पजत-छठ-मदत-मन-पयर",
+    "id": "god-liain-gopal-jsoda-pujt-chhthi-mudit-mn-pyari",
     "collectionId": "sur-sagar",
     "index": 176,
     "titleDevanagari": "गोद लिऐं गोपाल जसोदा पूजत छठी मुदित मन प्यारी",
     "author": "महाकवि सूरदास जी",
-    "slug": "गद-लऐ-गपल-जसद-पजत-छठ-मदत-मन-पयर",
+    "slug": "god-liain-gopal-jsoda-pujt-chhthi-mudit-mn-pyari",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -4396,12 +4396,12 @@
     "verseNumber": 109
   },
   {
-    "id": "धनय-यशद-भग-तहर-जन-ऐस-सत-जय-ह",
+    "id": "dhny-yshoda-bhag-tiharo-jin-aiso-sut-jayo-ho",
     "collectionId": "sur-sagar",
     "index": 178,
     "titleDevanagari": "धन्य यशोदा भाग तिहारो जिन ऐसो सुत जायो हो",
     "author": "महाकवि सूरदास जी",
-    "slug": "धनय-यशद-भग-तहर-जन-ऐस-सत-जय-ह",
+    "slug": "dhny-yshoda-bhag-tiharo-jin-aiso-sut-jayo-ho",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -4472,12 +4472,12 @@
     "verseNumber": 112
   },
   {
-    "id": "ह-दय-मतवल-जग-दवर-मर-आय-ह",
+    "id": "he-daiya-mtvala-jogi-dvare-mere-aaya-hai",
     "collectionId": "sur-sagar",
     "index": 181,
     "titleDevanagari": "हे दैया मतवाला जोगी द्वारे मेरे आया है",
     "author": "महाकवि सूरदास जी",
-    "slug": "ह-दय-मतवल-जग-दवर-मर-आय-ह",
+    "slug": "he-daiya-mtvala-jogi-dvare-mere-aaya-hai",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -4526,12 +4526,12 @@
     "verseNumber": 114
   },
   {
-    "id": "जवत-नद-कनह-इक-ठर",
+    "id": "jenvt-nnd-kanh-ik-thaure",
     "collectionId": "sur-sagar",
     "index": 183,
     "titleDevanagari": "जेंवत नंद कान्ह इक ठौरे।",
     "author": "महाकवि सूरदास जी",
-    "slug": "जवत-नद-कनह-इक-ठर",
+    "slug": "jenvt-nnd-kanh-ik-thaure",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -4601,12 +4601,12 @@
     "verseNumber": 117
   },
   {
-    "id": "बसर-त-कवन-गमन-भर-1",
+    "id": "bansuri-tu-kvn-guman-bhri",
     "collectionId": "sur-sagar",
     "index": 186,
     "titleDevanagari": "बाँसुरी तू कवन गुमान भरी।",
     "author": "महाकवि सूरदास जी",
-    "slug": "बसर-त-कवन-गमन-भर-1",
+    "slug": "bansuri-tu-kvn-guman-bhri",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -4807,12 +4807,12 @@
     "verseNumber": 125
   },
   {
-    "id": "तम-बन-खल-न-रच-लगर-सदर-य-रह-तमह-सघर-खलवर",
+    "id": "tum-bin-khel-n-ruche-lgar-sundr-ya-rho-tumho-sughr-khilvar",
     "collectionId": "sur-sagar",
     "index": 194,
     "titleDevanagari": "तुम बिन खेल न रुचे लगार सुंदर या रहो तुमहो सुघर खिलवार ।।",
     "author": "महाकवि सूरदास जी",
-    "slug": "तम-बन-खल-न-रच-लगर-सदर-य-रह-तमह-सघर-खलवर",
+    "slug": "tum-bin-khel-n-ruche-lgar-sundr-ya-rho-tumho-sughr-khilvar",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -4932,12 +4932,12 @@
     "verseNumber": 130
   },
   {
-    "id": "ननद-दरवज-पर-आय-अड़-यह-हर-क-चसक",
+    "id": "nndi-drvaje-pr-aay-ao-yahe-hori-ko-chsko",
     "collectionId": "sur-sagar",
     "index": 199,
     "titleDevanagari": "ननदी दरवाजे पर आय अड़ो याहे होरी को चसको ।",
     "author": "महाकवि सूरदास जी",
-    "slug": "ननद-दरवज-पर-आय-अड़-यह-हर-क-चसक",
+    "slug": "nndi-drvaje-pr-aay-ao-yahe-hori-ko-chsko",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -4954,12 +4954,12 @@
     "verseNumber": 131
   },
   {
-    "id": "ऐस-हम-दख-नदनदन",
+    "id": "aise-hm-dekhe-nndnndn",
     "collectionId": "sur-sagar",
     "index": 200,
     "titleDevanagari": "ऐसे हम देखे नंदनंदन",
     "author": "महाकवि सूरदास जी",
-    "slug": "ऐस-हम-दख-नदनदन",
+    "slug": "aise-hm-dekhe-nndnndn",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -4978,12 +4978,12 @@
     "verseNumber": 133
   },
   {
-    "id": "गव-गव-मगलचर-वधव-नदक",
+    "id": "gavo-gavo-mnglchar-vdhavo-nndke",
     "collectionId": "sur-sagar",
     "index": 201,
     "titleDevanagari": "गावो गावो मंगलचार वधावो नंदके",
     "author": "महाकवि सूरदास जी",
-    "slug": "गव-गव-मगलचर-वधव-नदक",
+    "slug": "gavo-gavo-mnglchar-vdhavo-nndke",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -5056,12 +5056,12 @@
     "verseNumber": 136
   },
   {
-    "id": "सत-मख-दख-जसद-फल",
+    "id": "sut-mukh-dekhi-jsoda-phuli",
     "collectionId": "sur-sagar",
     "index": 204,
     "titleDevanagari": "सुत-मुख देखि जसोदा फूली",
     "author": "महाकवि सूरदास जी",
-    "slug": "सत-मख-दख-जसद-फल",
+    "slug": "sut-mukh-dekhi-jsoda-phuli",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -5149,7 +5149,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विलावल)",
           "देखोरी माई हरि नंगम नंगा।",
           "जलसुत भूषण अंग विराजत बसन हीन छबि उठत तरंगा॥ [1]",
           "अंग अंग प्रति अमित माधुरी निरख लज्जित रविकोटि अनंगा॥",
@@ -5160,7 +5159,8 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 139
+    "verseNumber": 139,
+    "rag": "विलावल"
   },
   {
     "id": "akhiyon-hari-darshan-ki-pyasi",
@@ -5452,7 +5452,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग मल्हार)",
           "देखो माई ये बड़भागी मोर।",
           "जिनके पंख को मुकुट धरत हैं नटवर नंद किशोर॥ [1]",
           "बड़भागी है नन्द यसोदा पुन्य किये झकझोर।",
@@ -5465,15 +5464,16 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 157
+    "verseNumber": 157,
+    "rag": "मल्हार"
   },
   {
-    "id": "यह-ऋत-रसवक-नह",
+    "id": "yh-ritu-rusveki-nanhi",
     "collectionId": "sur-sagar",
     "index": 220,
     "titleDevanagari": "यह ऋतू रुसवेकी नांही ।",
     "author": "महाकवि सूरदास जी",
-    "slug": "यह-ऋत-रसवक-नह",
+    "slug": "yh-ritu-rusveki-nanhi",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -5528,7 +5528,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग पूर्वी)",
           "पाछें ललिता, ता आगे स्यामा प्यारी,",
           "ता आगें पिय मारग फूल बिछावत जात। [1]",
           "कठिन कली बीनि करत न्यारी-न्यारी,",
@@ -5543,7 +5542,8 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 161
+    "verseNumber": 161,
+    "rag": "पूर्वी"
   },
   {
     "id": "maiya-bahut-buro-baldau",
@@ -5640,7 +5640,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग केदार)",
           "जाके दरश को जग तरसत है",
           "ताहि दरश तू दे मेरी प्यारी। [1]",
           "जाकी मुरली की धुनि सुर मोहे",
@@ -5655,7 +5654,8 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 166
+    "verseNumber": 166,
+    "rag": "केदार"
   },
   {
     "id": "udho-mohin-brij-bisrat-nahin",
@@ -5838,12 +5838,12 @@
     "verseNumber": 174
   },
   {
-    "id": "रध-पयर-कहय-सखन-स-सझ-धरर-मई-1",
+    "id": "radha-pyari-khyo-skhin-son-sanjhi-dhrori-maee",
     "collectionId": "sur-sagar",
     "index": 234,
     "titleDevanagari": "राधा प्यारी कह्यो सखिन सों सांझी धरोरी माई",
     "author": "महाकवि सूरदास जी",
-    "slug": "रध-पयर-कहय-सखन-स-सझ-धरर-मई-1",
+    "slug": "radha-pyari-khyo-skhin-son-sanjhi-dhrori-maee",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -5891,12 +5891,12 @@
     "verseNumber": 178
   },
   {
-    "id": "ऐस-पत-दवक-जय",
+    "id": "aiso-put-devki-jayo",
     "collectionId": "sur-sagar",
     "index": 236,
     "titleDevanagari": "ऐसो पूत देवकी जायो",
     "author": "महाकवि सूरदास जी",
-    "slug": "ऐस-पत-दवक-जय",
+    "slug": "aiso-put-devki-jayo",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -5954,12 +5954,12 @@
     "verseNumber": 180
   },
   {
-    "id": "सकट-सज-सब-गवल-चल-मल-गर-पज-क-कज",
+    "id": "skt-saji-sb-gval-chle-mili-giri-puja-kain-kaj",
     "collectionId": "sur-sagar",
     "index": 238,
     "titleDevanagari": "सकट साजि सब ग्वाल चले मिलि गिरि-पूजा कैं काज",
     "author": "महाकवि सूरदास जी",
-    "slug": "सकट-सज-सब-गवल-चल-मल-गर-पज-क-कज",
+    "slug": "skt-saji-sb-gval-chle-mili-giri-puja-kain-kaj",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -5978,12 +5978,12 @@
     "verseNumber": 181
   },
   {
-    "id": "बतय-द-सख-कन-गल-गय-शयम",
+    "id": "btay-dai-skhi-kaun-gli-gyau-shyam",
     "collectionId": "sur-sagar",
     "index": 239,
     "titleDevanagari": "बताय दै सखी, कौन गली गयौ श्याम",
     "author": "महाकवि सूरदास जी",
-    "slug": "बतय-द-सख-कन-गल-गय-शयम",
+    "slug": "btay-dai-skhi-kaun-gli-gyau-shyam",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6085,12 +6085,12 @@
     "verseNumber": 186
   },
   {
-    "id": "चतक-न-हइ-कउ-बरहन-नर",
+    "id": "chatk-n-hoi-kou-birhini-nari",
     "collectionId": "sur-sagar",
     "index": 243,
     "titleDevanagari": "चातक न होइ, कोउ बिरहिनि नारि",
     "author": "महाकवि सूरदास जी",
-    "slug": "चतक-न-हइ-कउ-बरहन-नर",
+    "slug": "chatk-n-hoi-kou-birhini-nari",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6279,12 +6279,12 @@
     "verseNumber": 196
   },
   {
-    "id": "शयम-मस-खल-न-हर",
+    "id": "shyam-moson-khelo-n-hori",
     "collectionId": "sur-sagar",
     "index": 250,
     "titleDevanagari": "श्याम मोसों खेलो न होरी ।।",
     "author": "महाकवि सूरदास जी",
-    "slug": "शयम-मस-खल-न-हर",
+    "slug": "shyam-moson-khelo-n-hori",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6406,12 +6406,12 @@
     "verseNumber": 201
   },
   {
-    "id": "डफ-धर-द-यर-गई-पर-क",
+    "id": "dph-dhr-de-yar-gee-pr-ki",
     "collectionId": "sur-sagar",
     "index": 255,
     "titleDevanagari": "डफ धर दे यार गई पर की ।।",
     "author": "महाकवि सूरदास जी",
-    "slug": "डफ-धर-द-यर-गई-पर-क",
+    "slug": "dph-dhr-de-yar-gee-pr-ki",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6498,12 +6498,12 @@
     "verseNumber": 205
   },
   {
-    "id": "पजन-छठ-कनह-कवर-क-थप-पत-लगय",
+    "id": "pujn-chhthi-kanh-kunvr-ki-thape-pit-lgaye",
     "collectionId": "sur-sagar",
     "index": 259,
     "titleDevanagari": "पूजन  छठी  कान्ह  कुँवर  की  थापे  पीत  लगाये",
     "author": "महाकवि सूरदास जी",
-    "slug": "पजन-छठ-कनह-कवर-क-थप-पत-लगय",
+    "slug": "pujn-chhthi-kanh-kunvr-ki-thape-pit-lgaye",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6593,12 +6593,12 @@
     "verseNumber": 211
   },
   {
-    "id": "जब-जब-मरल-कनह-बजवत",
+    "id": "jb-jb-murli-kanh-bjavt",
     "collectionId": "sur-sagar",
     "index": 263,
     "titleDevanagari": "जब जब मुरली कान्ह बजावत",
     "author": "महाकवि सूरदास जी",
-    "slug": "जब-जब-मरल-कनह-बजवत",
+    "slug": "jb-jb-murli-kanh-bjavt",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6669,12 +6669,12 @@
     "verseNumber": 214
   },
   {
-    "id": "म-दहह-मह-दहन-सखवह",
+    "id": "main-duhihaun-mohin-duhn-sikhavhu",
     "collectionId": "sur-sagar",
     "index": 266,
     "titleDevanagari": "मैं दुहिहौं मोहिं दुहन सिखावहु",
     "author": "महाकवि सूरदास जी",
-    "slug": "म-दहह-मह-दहन-सखवह",
+    "slug": "main-duhihaun-mohin-duhn-sikhavhu",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6693,12 +6693,12 @@
     "verseNumber": 216
   },
   {
-    "id": "जसद-हर-पलन-झलव",
+    "id": "jsoda-hri-palnain-jhulavai",
     "collectionId": "sur-sagar",
     "index": 267,
     "titleDevanagari": "जसोदा हरि पालनैं झुलावै",
     "author": "महाकवि सूरदास जी",
-    "slug": "जसद-हर-पलन-झलव",
+    "slug": "jsoda-hri-palnain-jhulavai",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -7034,7 +7034,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग गूजरी)",
           "बसों मेरे नैनन में यह जोरी।",
           "सुन्दर श्याम कमल दल लोचन,",
           "संग वृषभानु किशोरी॥ [1]",
@@ -7048,7 +7047,8 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 234
+    "verseNumber": 234,
+    "rag": "गूजरी"
   },
   {
     "id": "ur-mein-makhan-chor-gade",
@@ -7076,12 +7076,12 @@
     "verseNumber": 236
   },
   {
-    "id": "औरन-स-खल-धमर-शयम-मस-मख-ह-न-बल",
+    "id": "aurn-son-khele-dhmar-shyam-monson-mukh-hu-n-bole",
     "collectionId": "sur-sagar",
     "index": 282,
     "titleDevanagari": "औरन सों खेले धमार श्याम मोंसों मुख हू न बोले।",
     "author": "महाकवि सूरदास जी",
-    "slug": "औरन-स-खल-धमर-शयम-मस-मख-ह-न-बल",
+    "slug": "aurn-son-khele-dhmar-shyam-monson-mukh-hu-n-bole",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -7143,12 +7143,12 @@
     "verseNumber": 239
   },
   {
-    "id": "बनत-करत-सकल-अहर",
+    "id": "binti-krt-skl-ahir",
     "collectionId": "sur-sagar",
     "index": 285,
     "titleDevanagari": "बिनती करत सकल अहीर",
     "author": "महाकवि सूरदास जी",
-    "slug": "बनत-करत-सकल-अहर",
+    "slug": "binti-krt-skl-ahir",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -7649,7 +7649,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग रामकली)",
           "उधो, मन न भए दस बीस।",
           "एक हुतो सो गयौ स्याम संग, को अवराधै ईस॥ [1]",
           "सिथिल भईं सबहीं माधौ बिनु जथा देह बिनु सीस।",
@@ -7662,7 +7661,8 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 262
+    "verseNumber": 262,
+    "rag": "रामकली"
   },
   {
     "id": "mo-sam-kaun-kutil-khal-kami-shri-surdas",
@@ -7675,7 +7675,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग जंगला तिताला)",
           "मो सम कौन कुटिल खल कामी।",
           "जेहिं तनु दियौ ताहिं बिसरायौ, ऐसौ नमकहरामी॥ [1]",
           "भरि भरि उदर विषय कों धावौं, जैसे सूकर ग्रामी।",
@@ -7688,7 +7687,8 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 263
+    "verseNumber": 263,
+    "rag": "जंगला तिताला"
   },
   {
     "id": "shyam-ki-vanshi-van-pai",
@@ -7837,12 +7837,12 @@
     "verseNumber": 269
   },
   {
-    "id": "भरस-दरढ-इन-चरनन-कर",
+    "id": "bhroson-drdh-in-chrnn-kero",
     "collectionId": "sur-sagar",
     "index": 313,
     "titleDevanagari": "भरोसों द्रढ इन चरनन केरो",
     "author": "महाकवि सूरदास जी",
-    "slug": "भरस-दरढ-इन-चरनन-कर",
+    "slug": "bhroson-drdh-in-chrnn-kero",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -7879,12 +7879,12 @@
     "verseNumber": 271
   },
   {
-    "id": "दनन-दख-हरण-दव-सतन-हतकर",
+    "id": "dinn-duhkh-hrn-dev-sntn-hitkari",
     "collectionId": "sur-sagar",
     "index": 315,
     "titleDevanagari": "दीनन दुःख हरण देव संतन हितकारी",
     "author": "महाकवि सूरदास जी",
-    "slug": "दनन-दख-हरण-दव-सतन-हतकर",
+    "slug": "dinn-duhkh-hrn-dev-sntn-hitkari",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -7955,12 +7955,12 @@
     "verseNumber": 275
   },
   {
-    "id": "बल-मई-गवरधन-प-मरव",
+    "id": "bolai-maee-govrdhn-pai-murva",
     "collectionId": "sur-sagar",
     "index": 318,
     "titleDevanagari": "बोलै माई गोवर्धन पै मुरवा",
     "author": "महाकवि सूरदास जी",
-    "slug": "बल-मई-गवरधन-प-मरव",
+    "slug": "bolai-maee-govrdhn-pai-murva",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -8083,12 +8083,12 @@
     "verseNumber": 282
   },
   {
-    "id": "मनमहन-ठड-सनदर-यमन-तर",
+    "id": "mnmohn-thade-sundr-ymuna-tir",
     "collectionId": "sur-sagar",
     "index": 323,
     "titleDevanagari": "मनमोहन ठाड़े सुन्दर यमुना तीर",
     "author": "महाकवि सूरदास जी",
-    "slug": "मनमहन-ठड-सनदर-यमन-तर",
+    "slug": "mnmohn-thade-sundr-ymuna-tir",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -8132,12 +8132,12 @@
     "verseNumber": 284
   },
   {
-    "id": "शयम-शयम-स-हल-खलत-आज-नई",
+    "id": "shyama-shyam-saun-holi-khelt-aaj-nee",
     "collectionId": "sur-sagar",
     "index": 325,
     "titleDevanagari": "श्यामा-श्याम सौं होली खेलत आज नई",
     "author": "महाकवि सूरदास जी",
-    "slug": "शयम-शयम-स-हल-खलत-आज-नई",
+    "slug": "shyama-shyam-saun-holi-khelt-aaj-nee",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -8158,12 +8158,12 @@
     "verseNumber": 285
   },
   {
-    "id": "दख-र-हर-नगमनग",
+    "id": "dekhe-ri-hri-nngmnnga",
     "collectionId": "sur-sagar",
     "index": 326,
     "titleDevanagari": "देखे री हरि नंगमनंगा",
     "author": "महाकवि सूरदास जी",
-    "slug": "दख-र-हर-नगमनग",
+    "slug": "dekhe-ri-hri-nngmnnga",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -8333,12 +8333,12 @@
     "verseNumber": 294
   },
   {
-    "id": "नक-लगत-परषततम-मस-1",
+    "id": "niko-lagt-purushottm-mas",
     "collectionId": "sur-sagar",
     "index": 333,
     "titleDevanagari": "नीको लागत पुरुषोत्तम मास",
     "author": "महाकवि सूरदास जी",
-    "slug": "नक-लगत-परषततम-मस-1",
+    "slug": "niko-lagt-purushottm-mas",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -8377,12 +8377,12 @@
     "verseNumber": 296
   },
   {
-    "id": "आज-बन-गरधर-दलह",
+    "id": "aaj-bne-giridhari-dulhe",
     "collectionId": "sur-sagar",
     "index": 335,
     "titleDevanagari": "आज बने गिरिधारी दूल्हे",
     "author": "महाकवि सूरदास जी",
-    "slug": "आज-बन-गरधर-दलह",
+    "slug": "aaj-bne-giridhari-dulhe",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -8401,12 +8401,12 @@
     "verseNumber": 298
   },
   {
-    "id": "नक-लगत-परषततम-मस",
+    "id": "niko-lagt-purushottm-mas-2",
     "collectionId": "sur-sagar",
     "index": 336,
     "titleDevanagari": "नीको लागत पुरुषोत्तम मास।",
     "author": "महाकवि सूरदास जी",
-    "slug": "नक-लगत-परषततम-मस",
+    "slug": "niko-lagt-purushottm-mas-2",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -8632,12 +8632,12 @@
     "verseNumber": 312
   },
   {
-    "id": "शवत-पत-पट-झन-ओढ",
+    "id": "shvet-pit-pt-jhino-odhe",
     "collectionId": "sur-sagar",
     "index": 345,
     "titleDevanagari": "श्वेत पीत पट झीनो ओढ़े",
     "author": "महाकवि सूरदास जी",
-    "slug": "शवत-पत-पट-झन-ओढ",
+    "slug": "shvet-pit-pt-jhino-odhe",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -8707,12 +8707,12 @@
     "verseNumber": 315
   },
   {
-    "id": "करग-कपलन-लल-मर-अगय-न-छव",
+    "id": "krungi-kpoln-lal-meri-angiya-n-chhuvo",
     "collectionId": "sur-sagar",
     "index": 347,
     "titleDevanagari": "करुँगी कपोलन लाल मेरी अंगिया न छूवो ।।",
     "author": "महाकवि सूरदास जी",
-    "slug": "करग-कपलन-लल-मर-अगय-न-छव",
+    "slug": "krungi-kpoln-lal-meri-angiya-n-chhuvo",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -8895,12 +8895,12 @@
     "verseNumber": 323
   },
   {
-    "id": "कहन-लग-महन-मय-मय",
+    "id": "khn-lage-mohn-maiya-maiya",
     "collectionId": "sur-sagar",
     "index": 354,
     "titleDevanagari": "कहन लागे मोहन मैया-मैया।",
     "author": "महाकवि सूरदास जी",
-    "slug": "कहन-लग-महन-मय-मय",
+    "slug": "khn-lage-mohn-maiya-maiya",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -8914,12 +8914,12 @@
     "verseNumber": 325
   },
   {
-    "id": "बसर-त-कवन-गमन-भर",
+    "id": "bansuri-tu-kvn-guman-bhri-2",
     "collectionId": "sur-sagar",
     "index": 355,
     "titleDevanagari": "बाँसुरी तू कवन गुमान भरी",
     "author": "महाकवि सूरदास जी",
-    "slug": "बसर-त-कवन-गमन-भर",
+    "slug": "bansuri-tu-kvn-guman-bhri-2",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -9109,12 +9109,12 @@
     "verseNumber": 333
   },
   {
-    "id": "शयम-शयम-स-हर-खलत-आज-नई",
+    "id": "shyama-shyam-son-hori-khelt-aaj-nee",
     "collectionId": "sur-sagar",
     "index": 363,
     "titleDevanagari": "श्यामा श्याम सों होरी खेलत आज नई ।।",
     "author": "महाकवि सूरदास जी",
-    "slug": "शयम-शयम-स-हर-खलत-आज-नई",
+    "slug": "shyama-shyam-son-hori-khelt-aaj-nee",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -9134,12 +9134,12 @@
     "verseNumber": 334
   },
   {
-    "id": "कह-जगय-क-नजर-लग-मर-वर-कनहय-रव-र",
+    "id": "kahu-jogiya-ki-njr-lgi-merau-varo-knhaiya-rovai-ri",
     "collectionId": "sur-sagar",
     "index": 364,
     "titleDevanagari": "काहू जोगिया  की नजर लगी, मेरौ वारो कन्हैया रोवै री",
     "author": "महाकवि सूरदास जी",
-    "slug": "कह-जगय-क-नजर-लग-मर-वर-कनहय-रव-र",
+    "slug": "kahu-jogiya-ki-njr-lgi-merau-varo-knhaiya-rovai-ri",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -9163,7 +9163,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग धनाश्री)",
           "कहाँ सुख वृज को सो संसार।",
           "कहाँ सुखद वंशीवट यमुना, यह मन सदॉ विचार॥ [1]",
           "कहाँ बनधाम कहाँ राधा संग, कहाँ संग वृजबाम।",
@@ -9176,15 +9175,16 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 336
+    "verseNumber": 336,
+    "rag": "धनाश्री"
   },
   {
-    "id": "बलहर-वदवन-भमत",
+    "id": "blihari-vrindavn-bhumiti",
     "collectionId": "sur-sagar",
     "index": 366,
     "titleDevanagari": "बलिहारी वृंदावन भूमिति",
     "author": "महाकवि सूरदास जी",
-    "slug": "बलहर-वदवन-भमत",
+    "slug": "blihari-vrindavn-bhumiti",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -9236,7 +9236,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग मल्हार)",
           "यह ऋतु रूसवे की नाहीं।",
           "बरसत मेह नेह धरणी के बोलत कुँवर कन्हाई॥[1]",
           "जोवेली ग्रीष्म ऋतु दाधी ते तरुवर लपटाई।",
@@ -9249,15 +9248,16 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 339
+    "verseNumber": 339,
+    "rag": "मल्हार"
   },
   {
-    "id": "सत-बरस-क-सवर-बलत-ततरत",
+    "id": "sat-brs-ko-sanvro-bolt-tutrat",
     "collectionId": "sur-sagar",
     "index": 369,
     "titleDevanagari": "सात बरस को साँवरो बोलत तुतरात",
     "author": "महाकवि सूरदास जी",
-    "slug": "सत-बरस-क-सवर-बलत-ततरत",
+    "slug": "sat-brs-ko-sanvro-bolt-tutrat",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -9313,7 +9313,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विहाग)",
           "भरोसो दुढ़ इन चरनन केरो। [1]",
           "श्रीवल्लभ नख चन्द्र छटा बिनु सब जगमांझ अँधेरो॥ [2]",
           "साधन और नाहीं या कलिमें जासों होत निवेरो। [3]",
@@ -9324,15 +9323,16 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 343
+    "verseNumber": 343,
+    "rag": "विहाग"
   },
   {
-    "id": "लहर-ल-रह-यमन-मय़-शर-वनदवन-म",
+    "id": "lhren-le-rhi-ymuna-maia-shri-vrindavn-men",
     "collectionId": "sur-sagar",
     "index": 372,
     "titleDevanagari": "लहरें ले रही यमुना मैय़ा श्री वृन्दावन में",
     "author": "महाकवि सूरदास जी",
-    "slug": "लहर-ल-रह-यमन-मय़-शर-वनदवन-म",
+    "slug": "lhren-le-rhi-ymuna-maia-shri-vrindavn-men",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -9381,12 +9381,12 @@
     "verseNumber": 346
   },
   {
-    "id": "कह-जगय-क-लग-नजर-मर-बर-कनहय-रव-र-सरदस",
+    "id": "kahu-jogiya-ki-lagi-njr-mero-baro-knhaiya-rovai-ri",
     "collectionId": "sur-sagar",
     "index": 374,
     "titleDevanagari": "काहू जोगिया की लागी नजर मेरो बारो कन्हैया रोवै री। (सूरदास)",
     "author": "महाकवि सूरदास जी",
-    "slug": "कह-जगय-क-लग-नजर-मर-बर-कनहय-रव-र-सरदस",
+    "slug": "kahu-jogiya-ki-lagi-njr-mero-baro-knhaiya-rovai-ri",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -9413,7 +9413,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विहाग)",
           "सखी री ब्रज को बसवो नीकौ।",
           "बछड़ा गाय चरावत वन में, कानह सबन कोटी कौ॥ [1]",
           "वृन्दावन में होत कुलाहल, गरजत सुर मुरली कौ।",
@@ -9426,15 +9425,16 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 348
+    "verseNumber": 348,
+    "rag": "विहाग"
   },
   {
-    "id": "बरन-बल-बष-मरर",
+    "id": "brnaun-bal-besh-murari",
     "collectionId": "sur-sagar",
     "index": 376,
     "titleDevanagari": "बरनौं बाल-बेष मुरारि।",
     "author": "महाकवि सूरदास जी",
-    "slug": "बरन-बल-बष-मरर",
+    "slug": "brnaun-bal-besh-murari",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -9484,12 +9484,12 @@
     "verseNumber": 350
   },
   {
-    "id": "आज-म-गई-चरवन-जह",
+    "id": "aaju-main-gaee-chravn-jaihon",
     "collectionId": "sur-sagar",
     "index": 378,
     "titleDevanagari": "आजु मैं गाई चरावन जैहों",
     "author": "महाकवि सूरदास जी",
-    "slug": "आज-म-गई-चरवन-जह",
+    "slug": "aaju-main-gaee-chravn-jaihon",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -9633,12 +9633,12 @@
     "verseNumber": 357
   },
   {
-    "id": "कर-र-कमरय-कनह-दज-र-उढय",
+    "id": "kari-re-kamriya-kanha-dijo-re-udhay",
     "collectionId": "sur-sagar",
     "index": 384,
     "titleDevanagari": "कारी रे कामरिया कान्हा दीजो रे उढाय",
     "author": "महाकवि सूरदास जी",
-    "slug": "कर-र-कमरय-कनह-दज-र-उढय",
+    "slug": "kari-re-kamriya-kanha-dijo-re-udhay",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -9681,12 +9681,12 @@
     "verseNumber": 359
   },
   {
-    "id": "चल-र-जग-नद-भवन-म-जसमत-मत-बलव-ज",
+    "id": "chl-re-jogi-nnd-bhvn-men-jsumti-mat-bulavai-ji",
     "collectionId": "sur-sagar",
     "index": 386,
     "titleDevanagari": "चल रे जोगी नंद भवन में, जसुमति मात बुलावै जी ।",
     "author": "महाकवि सूरदास जी",
-    "slug": "चल-र-जग-नद-भवन-म-जसमत-मत-बलव-ज",
+    "slug": "chl-re-jogi-nnd-bhvn-men-jsumti-mat-bulavai-ji",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -9709,12 +9709,12 @@
     "verseNumber": 360
   },
   {
-    "id": "बरज-वस-पटतर-कऊ-नह",
+    "id": "brj-vasi-pttr-kooo-nahin",
     "collectionId": "sur-sagar",
     "index": 387,
     "titleDevanagari": "ब्रज वासी पटतर कोऊ नाहीं",
     "author": "महाकवि सूरदास जी",
-    "slug": "बरज-वस-पटतर-कऊ-नह",
+    "slug": "brj-vasi-pttr-kooo-nahin",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -9870,12 +9870,12 @@
     "verseNumber": 369
   },
   {
-    "id": "सनह-महवत-बत-हमर",
+    "id": "sunihi-mhavt-bat-hmari",
     "collectionId": "sur-sagar",
     "index": 394,
     "titleDevanagari": "सुनिहि महावत बात हमारी",
     "author": "महाकवि सूरदास जी",
-    "slug": "सनह-महवत-बत-हमर",
+    "slug": "sunihi-mhavt-bat-hmari",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -9917,12 +9917,12 @@
     "verseNumber": 371
   },
   {
-    "id": "आय-ह-अवधत-जग-कनहय-दखलव-ह-मई",
+    "id": "aayo-hai-avdhut-jogi-knhaiya-dikhlavai-ho-maee",
     "collectionId": "sur-sagar",
     "index": 396,
     "titleDevanagari": "आयो है अवधूत जोगी कन्हैया दिखलावै हो माई",
     "author": "महाकवि सूरदास जी",
-    "slug": "आय-ह-अवधत-जग-कनहय-दखलव-ह-मई",
+    "slug": "aayo-hai-avdhut-jogi-knhaiya-dikhlavai-ho-maee",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -10066,12 +10066,12 @@
     "verseNumber": 376
   },
   {
-    "id": "बठ-बरजरज-कवर-पयर-सग-यमन-तर",
+    "id": "baithe-brjraj-kunvr-pyari-sng-ymuna-tir",
     "collectionId": "sur-sagar",
     "index": 401,
     "titleDevanagari": "बैठे ब्रजराज कुंवर, प्यारी संग यमुना तीर",
     "author": "महाकवि सूरदास जी",
-    "slug": "बठ-बरजरज-कवर-पयर-सग-यमन-तर",
+    "slug": "baithe-brjraj-kunvr-pyari-sng-ymuna-tir",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -10092,12 +10092,12 @@
     "verseNumber": 378
   },
   {
-    "id": "नह-लगय-मर-शयमसदर-स",
+    "id": "neh-lagyo-mero-shyamsundr-son",
     "collectionId": "sur-sagar",
     "index": 402,
     "titleDevanagari": "नेह लाग्यो मेरो श्यामसुंदर सों ।।",
     "author": "महाकवि सूरदास जी",
-    "slug": "नह-लगय-मर-शयमसदर-स",
+    "slug": "neh-lagyo-mero-shyamsundr-son",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -10123,12 +10123,12 @@
     "verseNumber": 379
   },
   {
-    "id": "ह-इक-बत-नई-सन-आई",
+    "id": "haun-ik-bat-nee-suni-aaee",
     "collectionId": "sur-sagar",
     "index": 403,
     "titleDevanagari": "हौं इक बात नई सुनि आई",
     "author": "महाकवि सूरदास जी",
-    "slug": "ह-इक-बत-नई-सन-आई",
+    "slug": "haun-ik-bat-nee-suni-aaee",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -10147,12 +10147,12 @@
     "verseNumber": 380
   },
   {
-    "id": "म-जग-जस-गय-बल-म-जग-जस-गय-सरदस",
+    "id": "main-jogi-js-gaya-bala-main-jogi-js-gaya",
     "collectionId": "sur-sagar",
     "index": 404,
     "titleDevanagari": "मैं जोगी जस गाया, बाला मैं जोगी जस गाया (सूरदास)",
     "author": "महाकवि सूरदास जी",
-    "slug": "म-जग-जस-गय-बल-म-जग-जस-गय-सरदस",
+    "slug": "main-jogi-js-gaya-bala-main-jogi-js-gaya",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -10184,12 +10184,12 @@
     "verseNumber": 381
   },
   {
-    "id": "भकत-बछलत-परगट-कर",
+    "id": "bhkt-bchhlta-prgt-kri",
     "collectionId": "sur-sagar",
     "index": 405,
     "titleDevanagari": "भक्त बछलता प्रगट करी",
     "author": "महाकवि सूरदास जी",
-    "slug": "भकत-बछलत-परगट-कर",
+    "slug": "bhkt-bchhlta-prgt-kri",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -10318,12 +10318,12 @@
     "verseNumber": 386
   },
   {
-    "id": "बरसन-चल-खल-हर",
+    "id": "brsane-chl-khelain-hori",
     "collectionId": "sur-sagar",
     "index": 410,
     "titleDevanagari": "बरसाने चल खेलैं होरी ।।",
     "author": "महाकवि सूरदास जी",
-    "slug": "बरसन-चल-खल-हर",
+    "slug": "brsane-chl-khelain-hori",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -10459,12 +10459,12 @@
     "verseNumber": 393
   },
   {
-    "id": "परत-त-मरबऊ-न-वचर",
+    "id": "priti-tau-mribauoo-n-vicharai",
     "collectionId": "sur-sagar",
     "index": 416,
     "titleDevanagari": "प्रीति तौ मरिबौऊ न विचारै",
     "author": "महाकवि सूरदास जी",
-    "slug": "परत-त-मरबऊ-न-वचर",
+    "slug": "priti-tau-mribauoo-n-vicharai",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -10483,12 +10483,12 @@
     "verseNumber": 394
   },
   {
-    "id": "सब-चल-झगरइ-क",
+    "id": "sbai-chlin-jhgrai-kai",
     "collectionId": "sur-sagar",
     "index": 417,
     "titleDevanagari": "सबै चलीं झगराइ कै",
     "author": "महाकवि सूरदास जी",
-    "slug": "सब-चल-झगरइ-क",
+    "slug": "sbai-chlin-jhgrai-kai",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -10567,12 +10567,12 @@
     "verseNumber": 399
   },
   {
-    "id": "तज-मन-हर-बमखन-क-सग",
+    "id": "tjau-mn-hri-bimukhni-kau-sng",
     "collectionId": "sur-sagar",
     "index": 420,
     "titleDevanagari": "तजौ मन, हरि बिमुखनि कौ संग।",
     "author": "महाकवि सूरदास जी",
-    "slug": "तज-मन-हर-बमखन-क-सग",
+    "slug": "tjau-mn-hri-bimukhni-kau-sng",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -10603,7 +10603,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग नट)",
           "राधा तेरे नैन किधों री बान।",
           "यौं मारे ज्यौं मुरछि परै धर क्यों करि राखे प्रान॥",
           "खग पर कमल कमल पर कदली कदली पर हठ ठान।",
@@ -10618,15 +10617,16 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 403
+    "verseNumber": 403,
+    "rag": "नट"
   },
   {
-    "id": "धन-यह-वनदवन-क-रन",
+    "id": "dhni-yh-vrindavn-ki-rainu",
     "collectionId": "sur-sagar",
     "index": 422,
     "titleDevanagari": "धनि यह वृन्दावन की रैनु",
     "author": "महाकवि सूरदास जी",
-    "slug": "धन-यह-वनदवन-क-रन",
+    "slug": "dhni-yh-vrindavn-ki-rainu",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -10645,12 +10645,12 @@
     "verseNumber": 404
   },
   {
-    "id": "गवरधन-पर-मरव",
+    "id": "govrdhn-pr-murva",
     "collectionId": "sur-sagar",
     "index": 423,
     "titleDevanagari": "गोवर्धन पर मुरवा",
     "author": "महाकवि सूरदास जी",
-    "slug": "गवरधन-पर-मरव",
+    "slug": "govrdhn-pr-murva",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -10671,12 +10671,12 @@
     "verseNumber": 405
   },
   {
-    "id": "अत-आनद-बरजवस-लग",
+    "id": "ati-aannd-brjvasi-log",
     "collectionId": "sur-sagar",
     "index": 424,
     "titleDevanagari": "अति आनँद ब्रजवासी लोग",
     "author": "महाकवि सूरदास जी",
-    "slug": "अत-आनद-बरजवस-लग",
+    "slug": "ati-aannd-brjvasi-log",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -10751,12 +10751,12 @@
     "verseNumber": 408
   },
   {
-    "id": "वदवन-सख-छडक-कह-बस-ह-आइ",
+    "id": "vrindavn-sukh-chhadikai-khan-bse-ho-aai",
     "collectionId": "sur-sagar",
     "index": 427,
     "titleDevanagari": "वृंदावन सुख छाड़िकै, कहाँ बसे हो आइ",
     "author": "महाकवि सूरदास जी",
-    "slug": "वदवन-सख-छडक-कह-बस-ह-आइ",
+    "slug": "vrindavn-sukh-chhadikai-khan-bse-ho-aai",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -10771,12 +10771,12 @@
     "verseNumber": 409
   },
   {
-    "id": "चरजव-हर-क-रसय-सरदस",
+    "id": "chirjivo-hori-ke-rsiya",
     "collectionId": "sur-sagar",
     "index": 428,
     "titleDevanagari": "चिरजीवो होरी के रसिया (सूरदास)",
     "author": "महाकवि सूरदास जी",
-    "slug": "चरजव-हर-क-रसय-सरदस",
+    "slug": "chirjivo-hori-ke-rsiya",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -10793,12 +10793,12 @@
     "verseNumber": 410
   },
   {
-    "id": "बरज-यशद-ज-कनह",
+    "id": "brjo-yshoda-ji-kanha",
     "collectionId": "sur-sagar",
     "index": 429,
     "titleDevanagari": "बरजो यशोदा जी कान्हा ।।",
     "author": "महाकवि सूरदास जी",
-    "slug": "बरज-यशद-ज-कनह",
+    "slug": "brjo-yshoda-ji-kanha",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -10868,12 +10868,12 @@
     "verseNumber": 414
   },
   {
-    "id": "हर-क-खलर-भमत-यह-जन-न-दह",
+    "id": "hori-ke-khilar-bhanmte-yonhi-jan-n-daihon",
     "collectionId": "sur-sagar",
     "index": 432,
     "titleDevanagari": "होरी के खिलार भाँमते योंही जान न दैहों ।।",
     "author": "महाकवि सूरदास जी",
-    "slug": "हर-क-खलर-भमत-यह-जन-न-दह",
+    "slug": "hori-ke-khilar-bhanmte-yonhi-jan-n-daihon",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -10895,12 +10895,12 @@
     "verseNumber": 415
   },
   {
-    "id": "सख-र-आज-मर-वदवन-दध-लट",
+    "id": "skhi-ri-aaj-meri-vrindavn-ddhi-luti",
     "collectionId": "sur-sagar",
     "index": 433,
     "titleDevanagari": "सखि री आज मेरी वृंदावन दधि लूटी",
     "author": "महाकवि सूरदास जी",
-    "slug": "सख-र-आज-मर-वदवन-दध-लट",
+    "slug": "skhi-ri-aaj-meri-vrindavn-ddhi-luti",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -10979,12 +10979,12 @@
     "verseNumber": 418
   },
   {
-    "id": "ऐस-पतर-पठय-नप-वसत-तम-तजह-मन-मनन-तरत",
+    "id": "aiso-ptr-pthayo-nrip-vsnt-tum-tjhu-man-manini-turnt",
     "collectionId": "sur-sagar",
     "index": 436,
     "titleDevanagari": "ऐसो पत्र पठायो नृप वसंत, तुम तजहु मान, मानिनी तुरंत",
     "author": "महाकवि सूरदास जी",
-    "slug": "ऐस-पतर-पठय-नप-वसत-तम-तजह-मन-मनन-तरत",
+    "slug": "aiso-ptr-pthayo-nrip-vsnt-tum-tjhu-man-manini-turnt",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -11082,12 +11082,12 @@
     "verseNumber": 422
   },
   {
-    "id": "रध-पयर-कहय-सखन-स-सझ-धरर-मई",
+    "id": "radha-pyari-khyo-skhin-son-sanjhi-dhrori-maee-2",
     "collectionId": "sur-sagar",
     "index": 440,
     "titleDevanagari": "राधा प्यारी कह्यो सखिन सों सांझी धरोरी माई।",
     "author": "महाकवि सूरदास जी",
-    "slug": "रध-पयर-कहय-सखन-स-सझ-धरर-मई",
+    "slug": "radha-pyari-khyo-skhin-son-sanjhi-dhrori-maee-2",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -11162,12 +11162,12 @@
     "verseNumber": 426
   },
   {
-    "id": "सवर-मह-रग-म-बर",
+    "id": "sanvre-mohi-rng-men-bori",
     "collectionId": "sur-sagar",
     "index": 443,
     "titleDevanagari": "साँवरे मोहि रंग में बोरी ।।",
     "author": "महाकवि सूरदास जी",
-    "slug": "सवर-मह-रग-म-बर",
+    "slug": "sanvre-mohi-rng-men-bori",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -11193,12 +11193,12 @@
     "verseNumber": 427
   },
   {
-    "id": "बरज-म-हर-हर-मचई",
+    "id": "brj-men-hri-hori-mchaee",
     "collectionId": "sur-sagar",
     "index": 444,
     "titleDevanagari": "ब्रज में हरि होरी मचाई",
     "author": "महाकवि सूरदास जी",
-    "slug": "बरज-म-हर-हर-मचई",
+    "slug": "brj-men-hri-hori-mchaee",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -11362,12 +11362,12 @@
     "verseNumber": 433
   },
   {
-    "id": "बसर-बजई-आज-रग-स-मरर",
+    "id": "bansuri-bjaee-aaj-rng-so-murari",
     "collectionId": "sur-sagar",
     "index": 450,
     "titleDevanagari": "बांसुरी बजाई आज रंग सो मुरारी",
     "author": "महाकवि सूरदास जी",
-    "slug": "बसर-बजई-आज-रग-स-मरर",
+    "slug": "bansuri-bjaee-aaj-rng-so-murari",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -11658,7 +11658,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग नट)",
           "राधे तेरे नैन किधौं बटपारे।",
           "तिहि देखे बन के मृग मोहे मानुस कौन विचारे॥",
           "अंजन है पिय को मन मोह्यो खंजन मीन लजारे।",
@@ -11671,7 +11670,8 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 449
+    "verseNumber": 449,
+    "rag": "नट"
   },
   {
     "id": "baajat-maai-rohini-bhavan-badhayo",
@@ -11770,12 +11770,12 @@
     "verseNumber": 453
   },
   {
-    "id": "आज-बधई-नद-क-मई",
+    "id": "aaju-bdhaee-nnd-kain-maee",
     "collectionId": "sur-sagar",
     "index": 466,
     "titleDevanagari": "आजु बधाई नंद कैं माई।",
     "author": "महाकवि सूरदास जी",
-    "slug": "आज-बधई-नद-क-मई",
+    "slug": "aaju-bdhaee-nnd-kain-maee",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -11820,12 +11820,12 @@
     "verseNumber": 454
   },
   {
-    "id": "मय-म-त-चदखलन-लह",
+    "id": "maiya-main-tau-chndkhilauna-laihaun",
     "collectionId": "sur-sagar",
     "index": 467,
     "titleDevanagari": "मैया,  मैं  तौ चंदखिलौना लैहौं",
     "author": "महाकवि सूरदास जी",
-    "slug": "मय-म-त-चदखलन-लह",
+    "slug": "maiya-main-tau-chndkhilauna-laihaun",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -11869,12 +11869,12 @@
     "verseNumber": 457
   },
   {
-    "id": "तम-मर-रख-लज-हर",
+    "id": "tum-meri-rakho-laj-hri",
     "collectionId": "sur-sagar",
     "index": 469,
     "titleDevanagari": "तुम मेरी राखो लाज हरि",
     "author": "महाकवि सूरदास जी",
-    "slug": "तम-मर-रख-लज-हर",
+    "slug": "tum-meri-rakho-laj-hri",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -11967,12 +11967,12 @@
     "verseNumber": 463
   },
   {
-    "id": "लगत-बद-कटर-पय-बन",
+    "id": "lagt-bund-ktari-piya-bin",
     "collectionId": "sur-sagar",
     "index": 473,
     "titleDevanagari": "लागत बूंद कटारी पिया बिन!",
     "author": "महाकवि सूरदास जी",
-    "slug": "लगत-बद-कटर-पय-बन",
+    "slug": "lagt-bund-ktari-piya-bin",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -11990,12 +11990,12 @@
     "verseNumber": 464
   },
   {
-    "id": "पवतर-पहरन-क-दन-आय",
+    "id": "pvitra-pehrn-ko-din-aayo",
     "collectionId": "sur-sagar",
     "index": 474,
     "titleDevanagari": "पवित्रा पेहरन को दिन आयो",
     "author": "महाकवि सूरदास जी",
-    "slug": "पवतर-पहरन-क-दन-आय",
+    "slug": "pvitra-pehrn-ko-din-aayo",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -12120,12 +12120,12 @@
     "verseNumber": 472
   },
   {
-    "id": "सखर-सवन-दलह-आय",
+    "id": "skhiri-savn-dulhe-aayo",
     "collectionId": "sur-sagar",
     "index": 479,
     "titleDevanagari": "सखीरी सावन दूल्हे आयो",
     "author": "महाकवि सूरदास जी",
-    "slug": "सखर-सवन-दलह-आय",
+    "slug": "skhiri-savn-dulhe-aayo",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -12194,12 +12194,12 @@
     "verseNumber": 475
   },
   {
-    "id": "बरज-म-हर-हर-मचई-1",
+    "id": "brj-men-hri-hori-mchaee-2",
     "collectionId": "sur-sagar",
     "index": 482,
     "titleDevanagari": "ब्रज में हरि होरी मचाई ।।",
     "author": "महाकवि सूरदास जी",
-    "slug": "बरज-म-हर-हर-मचई-1",
+    "slug": "brj-men-hri-hori-mchaee-2",
     "verses": [
       {
         "stanzaNumber": 1,

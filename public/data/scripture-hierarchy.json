@@ -2102,26 +2102,26 @@
     },
     "hit-chaurasi": {
       "id": "hit-chaurasi",
-      "verseCount": 302,
+      "verseCount": 234,
       "chaptersCount": 4,
       "chapters": [
         {
           "id": "hit-chaurasi",
-          "name": "श्री हित चौरासी (८४ पद)",
-          "verseCount": 152,
+          "name": "श्री हित चौरासी",
+          "verseCount": 84,
           "firstPadId": "joi-joi-pyaro-kare-soi-mohi-bhaave-pada-written-by-shri-hita-harivansh-mahaprabhu",
           "firstPadSlug": "joi-joi-pyaro-kare-soi-mohi-bhaave-pada-written-by-shri-hita-harivansh-mahaprabhu"
         },
         {
           "id": "sphut-vani",
-          "name": "श्री हित स्फुट वाणी (२९ पद)",
+          "name": "श्री हित स्फुट वाणी",
           "verseCount": 29,
           "firstPadId": "dvaadash-chandr-kritasthal-mangal-hit-harivansh-mahaprabhu-hita-sphut-vani-1",
           "firstPadSlug": "dvaadash-chandr-kritasthal-mangal-hit-harivansh-mahaprabhu-hita-sphut-vani-1"
         },
         {
           "id": "radha-sudha-nidhi",
-          "name": "श्री राधा सुधा निधि (१०० श्लोक)",
+          "name": "श्री राधा सुधा निधि",
           "verseCount": 100,
           "firstPadId": "hit-harivansh-mahaprabhu-radha-sudha-nidhi",
           "firstPadSlug": "hit-harivansh-mahaprabhu-radha-sudha-nidhi"

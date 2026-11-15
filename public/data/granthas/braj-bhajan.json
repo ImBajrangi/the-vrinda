@@ -98,7 +98,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग पीलू ताल तिताला)",
           "भजन बिन है चोला बेकाम।",
           "मल अरु मूत्र भरो नर सब तन, है निष्फल यह चाम॥ [1]",
           "बिन हरि भजन पवित्र न ह्वैहै, धोवौ आठौ याम।",
@@ -111,7 +110,8 @@
     ],
     "chapterId": "ch-रूप कुँवरि जी",
     "chapterName": "रूप कुँवरि जी",
-    "verseNumber": 10
+    "verseNumber": 10,
+    "rag": "पीलू ताल तिताला"
   },
   {
     "id": "agra-bhajan-aatur-karo-shri-agradas-agragranthawali",
@@ -318,12 +318,12 @@
     "verseNumber": 1
   },
   {
-    "id": "भजत-शयम-चल-परय-भजन",
+    "id": "bhinjt-shyam-chlo-priya-bhinjn",
     "collectionId": "braj-bhajan",
     "index": 15,
     "titleDevanagari": "भींजत श्याम चलो प्रिया भींजन",
     "author": "पारंपरिक ब्रज मंडल",
-    "slug": "भजत-शयम-चल-परय-भजन",
+    "slug": "bhinjt-shyam-chlo-priya-bhinjn",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -388,12 +388,12 @@
     "verseNumber": 6
   },
   {
-    "id": "हरबयस-तज-हरभजन-बल-दव-क-दचछ-दई",
+    "id": "hribyas-tej-hribhjn-bl-devi-ko-dichchha-dee",
     "collectionId": "braj-bhajan",
     "index": 18,
     "titleDevanagari": "हरिब्यास तेज हरिभजन बल देवी को दीच्छा दई",
     "author": "पारंपरिक ब्रज मंडल",
-    "slug": "हरबयस-तज-हरभजन-बल-दव-क-दचछ-दई",
+    "slug": "hribyas-tej-hribhjn-bl-devi-ko-dichchha-dee",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -456,12 +456,12 @@
     "verseNumber": 13
   },
   {
-    "id": "दलह-दलहन-रधवललभ-भजन-करत-वरज",
+    "id": "dulh-dulhini-radhavllbh-bhojn-krt-virajain",
     "collectionId": "braj-bhajan",
     "index": 21,
     "titleDevanagari": "दूलह-दुलहिनि  राधावल्लभ  भोजन  करत  विराजैं  ।",
     "author": "पारंपरिक ब्रज मंडल",
-    "slug": "दलह-दलहन-रधवललभ-भजन-करत-वरज",
+    "slug": "dulh-dulhini-radhavllbh-bhojn-krt-virajain",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -503,12 +503,12 @@
     "verseNumber": 16
   },
   {
-    "id": "रप-सध-भजन-जनक-र",
+    "id": "rup-sudha-bhojn-jinko-ri",
     "collectionId": "braj-bhajan",
     "index": 23,
     "titleDevanagari": "रूप सुधा भोजन जिनको री",
     "author": "पारंपरिक ब्रज मंडल",
-    "slug": "रप-सध-भजन-जनक-र",
+    "slug": "rup-sudha-bhojn-jinko-ri",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -611,12 +611,12 @@
     "verseNumber": 22
   },
   {
-    "id": "दख-र-हर-भजन-खत",
+    "id": "dekho-ri-hri-bhojn-khat",
     "collectionId": "braj-bhajan",
     "index": 28,
     "titleDevanagari": "देखो री हरी भोजन खात।",
     "author": "पारंपरिक ब्रज मंडल",
-    "slug": "दख-र-हर-भजन-खत",
+    "slug": "dekho-ri-hri-bhojn-khat",
     "verses": [
       {
         "stanzaNumber": 1,

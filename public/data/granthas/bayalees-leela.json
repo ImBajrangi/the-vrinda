@@ -4638,7 +4638,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विलावल )",
           "राजति कुँवरि परम सुकुवाँरी।",
           "भोर कुंज ते निकसि खरी भई, रुचिर बाहु पिय अंसनि डारि॥ [1]",
           "कबरी सिथिल सकल अँग भूषण, लटकि रही प्रियतम उर लागि।",
@@ -4651,7 +4650,8 @@
     ],
     "chapterId": "leela-पद्यावली",
     "chapterName": "पद्यावली",
-    "verseNumber": 7
+    "verseNumber": 7,
+    "rag": "विलावल"
   },
   {
     "id": "aavat-lalpriya-bhuj-jorain-shri-hita-dhruvdas-bayalees-leela-padyavali-9",
@@ -4664,7 +4664,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विलावल )",
           "आवत लाल-प्रिया भुज जोरैं।",
           "डगमगात आरस रस भीने, अति सुरंग नैननिं की कोरैं॥[1]",
           "चितवन सहज चारु अति चंचल, मुसिकनिं मंद मिथुन-चित चोरैं।",
@@ -4675,7 +4674,8 @@
     ],
     "chapterId": "leela-पद्यावली",
     "chapterName": "पद्यावली",
-    "verseNumber": 9
+    "verseNumber": 9,
+    "rag": "विलावल"
   },
   {
     "id": "shri-radhavallabh-lal-ki-aarti-shri-hita-dhruvdas-bayalees-leela-padyavali-20",
@@ -4688,7 +4688,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "श्री राधावल्लभ लाल की आरती।",
           "रतन जटित कंचन की मनिमय, हित सौं सहचरि वारती॥ [1]",
           "अंग-अंग की आभा झलकत, अद्भुत रूप निहारती।",
@@ -4699,7 +4698,8 @@
     ],
     "chapterId": "leela-पद्यावली",
     "chapterName": "पद्यावली",
-    "verseNumber": 20
+    "verseNumber": 20,
+    "rag": "सारंग"
   },
   {
     "id": "sobhit-aaj-chhabili-jori-shri-dhruvdas-bayalees-leela-padyavali-30",
@@ -4712,7 +4712,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "सोभित आज छबीली जोरी।",
           "सुंदर नवल रसिक मन मोहन, अलबेली नव वैस किसोरी॥ [1]",
           "बेसरि उभय हँसनि में डोलत, सो छवि लेत प्रान चित चोरी।",
@@ -4723,7 +4722,8 @@
     ],
     "chapterId": "leela-पद्यावली",
     "chapterName": "पद्यावली",
-    "verseNumber": 30
+    "verseNumber": 30,
+    "rag": "सारंग"
   },
   {
     "id": "haun-nij-sakhiyani-ki-balihari-shri-dhruvdas-bayalees-leela-padyavali-34",
@@ -4736,7 +4736,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "हौं निज सखियनि की बलिहारी।",
           "जुगल-प्रीति अरु रूप जिनहिं कै, जीवन यहै सुधा री॥ [1]",
           "नैननिं मग ह्वै पान करत दिन, तिहिं रस में रहैं लीन।",
@@ -4749,7 +4748,8 @@
     ],
     "chapterId": "leela-पद्यावली",
     "chapterName": "पद्यावली",
-    "verseNumber": 34
+    "verseNumber": 34,
+    "rag": "सारंग"
   },
   {
     "id": "preetam-ke-praan-pyari-shri-hita-dhruvdas-bayalees-leela-padyavali-37",
@@ -4762,7 +4762,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग ईमन)",
           "प्रीतम के प्रान प्यारी, प्यारी जी के प्रान पिय।",
           "प्रेम रासि एक रस, दोऊ छवि देखहीं॥",
           "तृपित न होत क्यौं हूँ, बढ़त अधिक रुचि,",
@@ -4777,7 +4776,8 @@
     ],
     "chapterId": "leela-पद्यावली",
     "chapterName": "पद्यावली",
-    "verseNumber": 37
+    "verseNumber": 37,
+    "rag": "ईमन"
   },
   {
     "id": "radhikavallabh-pyari-sohai-tan-neel-sari-shri-hita-dhruvdas-bayalees-leela-padyavali-38",
@@ -4790,7 +4790,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग ईमन)",
           "राधिकावल्लभ प्यारी सोहै तन नील सारी,",
           "सौंधे भींजी अँगिया सुदेस कसि कैं तनी। [1]",
           "अंग-अंग सुमिलि सुभूषन सुदेस अति,",
@@ -4805,7 +4804,8 @@
     ],
     "chapterId": "leela-पद्यावली",
     "chapterName": "पद्यावली",
-    "verseNumber": 38
+    "verseNumber": 38,
+    "rag": "ईमन"
   },
   {
     "id": "radhika-vallabh-pyari-sahajahi-sukunvari-shri-hita-dhruvdas-bayalees-leela-padyavali-39",
@@ -4818,7 +4818,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग ईमन / कल्याण)",
           "राधिका वल्लभ प्यारी, सहजहि सुकुँवारी,",
           "अंग-अंग गुन निधि रूप रासि रस की। [1]",
           "सलज सुरंग सित असित दीरघ दृग,",
@@ -4833,7 +4832,8 @@
     ],
     "chapterId": "leela-पद्यावली",
     "chapterName": "पद्यावली",
-    "verseNumber": 39
+    "verseNumber": 39,
+    "rag": "ईमन / कल्याण"
   },
   {
     "id": "priya-mukh-nirkhat-naval-shri-dhruvdas-bayalees-leela-padavali-63",
@@ -4846,7 +4846,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग केदारौ)",
           "प्रिया मुख निरखत नवल किसोर।",
           "मनहुँ सहज राकेस अमी प्रति, चितवत चकित चकोर॥ [1]",
           "छिन - छिन नई - नई छबि उपजत, पल-पल में रूचि और।",
@@ -4857,7 +4856,8 @@
     ],
     "chapterId": "leela-पद्यावली",
     "chapterName": "पद्यावली",
-    "verseNumber": 43
+    "verseNumber": 43,
+    "rag": "केदारौ"
   },
   {
     "id": "jab-chiti-kajarare-naini-shri-dhruvdas-bayalees-leela-padyavali-45",
@@ -4870,7 +4870,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग मारू)",
           "जब चितई कजरारे नैननि।",
           "बिवस भये मनमोहन घेरे, चहूँ ओर तें प्रेम के मैंननि॥ [1]",
           "मुसिकनि मंद रहे चितवत ही, बस किये लाल मधुर मृदु बैंननि।",
@@ -4881,7 +4880,8 @@
     ],
     "chapterId": "leela-पद्यावली",
     "chapterName": "पद्यावली",
-    "verseNumber": 45
+    "verseNumber": 45,
+    "rag": "मारू"
   },
   {
     "id": "man-mohan-man-mohini-shri-hita-dhruvdas-padyavali-88",
@@ -4894,7 +4894,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विहागरौ)",
           "मन मोहन मन मोहनी।",
           "चितवनि मुसिकनि सहज रँगीली, अतिहि छबीली सोहनी॥ [1]",
           "कहा कहौं रँग प्रेम की सींवा, पिय तन प्यार की जोहनी।",
@@ -4905,7 +4904,8 @@
     ],
     "chapterId": "leela-पद्यावली",
     "chapterName": "पद्यावली",
-    "verseNumber": 46
+    "verseNumber": 46,
+    "rag": "विहागरौ"
   },
   {
     "id": "chhabili-chhabi-saun-rangile-dou-shri-dhruvdas-bayalees-leela-padyavali-57",
@@ -4918,7 +4918,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विहागरौ)",
           "छबीली छबि सौं रँगीले दोउ, राजत जमुना-तीर।",
           "अंग-अंग भूषण प्रतिबिंबित, स्यामल-गौर सरीर॥ [1]",
           "गावत मोर, मराल, भॅवर, पिक, संग सखिनु की भीर।",
@@ -4929,7 +4928,8 @@
     ],
     "chapterId": "leela-पद्यावली",
     "chapterName": "पद्यावली",
-    "verseNumber": 57
+    "verseNumber": 57,
+    "rag": "विहागरौ"
   },
   {
     "id": "dekhau-adbhut-preeti-ko-chaalahi-shri-hita-dhruvdas-bayalees-leela-padyavali-60",
@@ -4942,7 +4942,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग नट)",
           "देखौ अद्भुत प्रीति की चालहि।",
           "सुनि सखी पियहि प्यार सौं प्यारी, राखति ज्यौं उर मालहि॥[1]",
           "ह्वै-ह्वै जात विवस मनमोहन, निरखि नैंन नव-बालहि।",
@@ -4953,7 +4952,8 @@
     ],
     "chapterId": "leela-पद्यावली",
     "chapterName": "पद्यावली",
-    "verseNumber": 60
+    "verseNumber": 60,
+    "rag": "नट"
   },
   {
     "id": "ras-bhare-lal-ras-bhari-radhe-shri-hita-dhruvdas-bayalees-leela-padyavali-61",
@@ -4966,7 +4966,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विहागरौ)",
           "रस भरे लाल रस भरी राधे,",
           "रस भरी सखी अवलोकत रंगहि।",
           "मदन हुलास बाढ़यौ प्रीतम मन,",
@@ -4981,7 +4980,8 @@
     ],
     "chapterId": "leela-पद्यावली",
     "chapterName": "पद्यावली",
-    "verseNumber": 61
+    "verseNumber": 61,
+    "rag": "विहागरौ"
   },
   {
     "id": "garjani-ghan-aru-damini-shri-hita-dhruvdas-bayalees-leela-padyavali-68",
@@ -4994,7 +4994,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग मलार)",
           "गरजनि घन अरु दामिनी, चातीक पिक सुक बोलति मोरनि।",
           "स्याम घटा काजर हूँ तें कारी, उमड़ि-उमड़ि आई चहुँ ओरनि॥ [1]",
           "नान्हि-नान्हि बूँदनी बरषनि लाग्यो, तैसियै रोचक पवन झकोरनि।",
@@ -5005,7 +5004,8 @@
     ],
     "chapterId": "leela-पद्यावली",
     "chapterName": "पद्यावली",
-    "verseNumber": 68
+    "verseNumber": 68,
+    "rag": "मलार"
   },
   {
     "id": "kama-ras-bhinje-hain-dou-lal-shri-dhruvdas-bayalees-leela-padyavali-69",
@@ -5018,7 +5018,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग मलार)",
           "काम रस भींजे हैं दोउ लाल।",
           "पानिप रूप बढ़ी कछु औरे, घूमत नैंन विसाल॥ [1]",
           "छूटी अलक टूटी हारावलि, श्रम जलकन बने भाल।",
@@ -5029,7 +5028,8 @@
     ],
     "chapterId": "leela-पद्यावली",
     "chapterName": "पद्यावली",
-    "verseNumber": 69
+    "verseNumber": 69,
+    "rag": "मलार"
   },
   {
     "id": "syama-ju-ke-charanani-ki-balihaari-shri-dhruvdas-byaalees-leela-padyaavali-72",
@@ -5042,7 +5042,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग मलार)",
           "स्यामा जू के चरननि की बलिहारी।",
           "जे हैं बसत किसोर लाल के, प्राँननि मध्य सदा री॥ [1]",
           "विहरत कुसुम पराग लगत जब, पीत वसन लै झारत।",
@@ -5055,7 +5054,8 @@
     ],
     "chapterId": "leela-पद्यावली",
     "chapterName": "पद्यावली",
-    "verseNumber": 72
+    "verseNumber": 72,
+    "rag": "मलार"
   },
   {
     "id": "mohanta-ki-raasi-kisori",
@@ -5068,7 +5068,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विहागरौ)",
           "मोहनता की रासि किसोरी।",
           "जे मोहन मोहत सबकौ मन, बंधे बंक चितवन की डोरी॥ [1]",
           "अंगनि पट-भूषन बिसराये , चितै रहे सुन्दर मुख ओरी।",
@@ -5079,7 +5078,8 @@
     ],
     "chapterId": "leela-पद्यावली",
     "chapterName": "पद्यावली",
-    "verseNumber": 88
+    "verseNumber": 88,
+    "rag": "विहागरौ"
   },
   {
     "id": "meri-ladili-rajat-rang-bhari-shri-dhruvdas-bayalees-leela-padawali-89",
@@ -5092,7 +5092,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विहागरौ)",
           "मेरी लाडिली राजत रंग भरी।",
           "अधिक प्यार सौ मृदु भुज प्यारी, हँसि पिय - अंस धरी॥ [1]",
           "चित्र से ह्वै रहे नागर नागरी, कौंन भाग ते इहि रस ढरी।",
@@ -5103,7 +5102,8 @@
     ],
     "chapterId": "leela-पद्यावली",
     "chapterName": "पद्यावली",
-    "verseNumber": 89
+    "verseNumber": 89,
+    "rag": "विहागरौ"
   },
   {
     "id": "meri-akhiyan-roop-ke-rang-rangin-shri-dhruvdas-bayalees-leela-padyavali-90",
@@ -5116,7 +5116,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विहागरौ)",
           "मेरी अखियाँ रूप के रंग रँगीं।",
           "युगल चंद अरविन्द वदन छवि, तिहि रस माहिं पगीं॥ [1]",
           "नव-नव भाइ विलास माधुरी, रहिं सुख स्वाद लगीं।",
@@ -5127,7 +5126,8 @@
     ],
     "chapterId": "leela-पद्यावली",
     "chapterName": "पद्यावली",
-    "verseNumber": 90
+    "verseNumber": 90,
+    "rag": "विहागरौ"
   },
   {
     "id": "aaj-sakhi-nirakh-roop-bhari-nain-shri-hita-dhruvdas-bayalees-leela-padyavali-91",
@@ -5140,7 +5140,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विहागरौ)",
           "आज सखि निरख रूप भरि नैंन।",
           "लता ऐंन रचि सैंन मिथुन वर, बोलत अति मृदु बैंन॥ [1]",
           "हँसत जबहि दोउ लसत दसन-दुति, सोभा कहत बनैंन।",
@@ -5151,7 +5150,8 @@
     ],
     "chapterId": "leela-पद्यावली",
     "chapterName": "पद्यावली",
-    "verseNumber": 91
+    "verseNumber": 91,
+    "rag": "विहागरौ"
   },
   {
     "id": "rangeeli-karat-rangeeli-baat-shri-dhruvdas-bayalees-leela-padyavali-93",
@@ -5164,7 +5164,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विहागरौ)",
           "रंगीली करत रंगीली बात।",
           "सुनि सुनि नवल रसिक मन-मोहन, फिरि-फिरि फिरि ललचात॥ [1]",
           "चितै चितै मुख मधुर माधुरी, उरजनि सौं लपटात।",
@@ -5175,7 +5174,8 @@
     ],
     "chapterId": "leela-पद्यावली",
     "chapterName": "पद्यावली",
-    "verseNumber": 93
+    "verseNumber": 93,
+    "rag": "विहागरौ"
   },
   {
     "id": "shri-radhavar-bhaj-shri-radhavar-bhaji-shri-hita-dhruvdas-bayalees-leela-padyavali-94",
@@ -5188,7 +5188,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग भैरव)",
           "श्री राधावर भज श्री राधावर भजि।",
           "और सकल धर्मनि कौं तू तजि॥ [1]",
           "होइ अनन्य एक रस गाहौ।",
@@ -5203,7 +5202,8 @@
     ],
     "chapterId": "leela-पद्यावली",
     "chapterName": "पद्यावली",
-    "verseNumber": 94
+    "verseNumber": 94,
+    "rag": "भैरव"
   },
   {
     "id": "aiso-aura-sanehi-kaun-shri-hita-dhruvdas-bayalees-leela-padyavali-97",
@@ -5216,7 +5216,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कान्हरौ)",
           "ऐसौ और सनेही कौन।",
           "रंगे एकही रंग रँगीलौ, तजि कैं विभौ चतुरदस भौन॥ [1]",
           "छिन-छिन चरन-कमल सहरावत, कबहूँ करत पट-पीत सौं पौंन।",
@@ -5229,7 +5228,8 @@
     ],
     "chapterId": "leela-पद्यावली",
     "chapterName": "पद्यावली",
-    "verseNumber": 97
+    "verseNumber": 97,
+    "rag": "कान्हरौ"
   },
   {
     "id": "pran-diyai-yah-prem-na-paiyai-shri-hita-dhruvdas-bayalees-leela-padyavali-98",
@@ -5242,7 +5242,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कान्हरौ)",
           "प्रान दियैं यह प्रेम न पैयै।",
           "ऐसौ महँगौ आहि सखी री, कहि धौं सो कैसैं कैं लैयै॥ [1]",
           "लाल-लाड़िली कौ यह सर्वसु, तिहिं रस कौं ललचैयै।",
@@ -5253,7 +5252,8 @@
     ],
     "chapterId": "leela-पद्यावली",
     "chapterName": "पद्यावली",
-    "verseNumber": 98
+    "verseNumber": 98,
+    "rag": "कान्हरौ"
   },
   {
     "id": "sanehi-ek-vihariviharini-shri-hita-dhruvdas-bayalees-leela-padyavali-98",
@@ -5266,7 +5266,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विहागरौ)",
           "सनेही एक विहारी-विहारिनि।",
           "एक प्रेम रुचि रचे परस्पर, अद्भुत भाँति निहारिनि॥ [1]",
           "तन सौं तन, मन सौं मन, अरुझ्यौ, अरुझनि वारनि-हारनि।",
@@ -5277,7 +5276,8 @@
     ],
     "chapterId": "leela-पद्यावली",
     "chapterName": "पद्यावली",
-    "verseNumber": 98
+    "verseNumber": 98,
+    "rag": "विहागरौ"
   },
   {
     "id": "aradhahi-man-radha-dulahini-shri-hita-dhruvdas-bayalees-leela-padyavali-100",
@@ -5290,7 +5290,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विहागरौ)",
           "आराधहि मन राधा दुलहिनि, जिहिं आराधत लाल विहारी। [1]",
           "कुंज-कुंज डोलत सँग लागे, कृपा कटाक्ष करैं सुकुमारी॥ [2]",
           "रुचि लै नैननि भौंहनि जोवत, छिन-छिन नवसत करत सँभारी। [3]",
@@ -5301,7 +5300,8 @@
     ],
     "chapterId": "leela-पद्यावली",
     "chapterName": "पद्यावली",
-    "verseNumber": 100
+    "verseNumber": 100,
+    "rag": "विहागरौ"
   },
   {
     "id": "avadhi-prem-ki-dou-pyare-shri-hita-dhruvdas-bayalees-leela-padyavali-101",
@@ -5314,7 +5314,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विहागरौ)",
           "अवधि प्रेम की दोऊ प्यारे।",
           "तन-मन-नैंन रहे एकै है, कबहूँ होत न न्यारे॥ [1]",
           "रुचि-रुचि सौं रचि रहे दोउ जन, ज्यौं नैननि के तारे।",
@@ -5325,7 +5324,8 @@
     ],
     "chapterId": "leela-पद्यावली",
     "chapterName": "पद्यावली",
-    "verseNumber": 101
+    "verseNumber": 101,
+    "rag": "विहागरौ"
   },
   {
     "id": "roopbeli-pyari-bani-preetam-premtamal-shri-dhruvdas-bayalees-leela-premavali-3",
@@ -5709,12 +5709,12 @@
     "verseNumber": 21
   },
   {
-    "id": "दलहन-मन-महन-दलह-रसक-लल",
+    "id": "dulhini-mn-mohini-dulhun-rsik-lal",
     "collectionId": "bayalees-leela",
     "index": 255,
     "titleDevanagari": "दूलहिनी मन मोहिनी, दुलहूं रसिक लाल",
     "author": "श्री ध्रुवदास जी",
-    "slug": "दलहन-मन-महन-दलह-रसक-लल",
+    "slug": "dulhini-mn-mohini-dulhun-rsik-lal",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -5982,12 +5982,12 @@
     "verseNumber": 140
   },
   {
-    "id": "शर-रध-वललभ-लल-क-वमल-धज-फहरनत",
+    "id": "shri-radha-vllbh-lal-ki-viml-dhuja-phhrnt",
     "collectionId": "bayalees-leela",
     "index": 267,
     "titleDevanagari": "श्री राधा वल्लभ लाल की, विमल धुजा फहरन्त।",
     "author": "श्री ध्रुवदास जी",
-    "slug": "शर-रध-वललभ-लल-क-वमल-धज-फहरनत",
+    "slug": "shri-radha-vllbh-lal-ki-viml-dhuja-phhrnt",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6049,12 +6049,12 @@
     "verseNumber": 163
   },
   {
-    "id": "रधक-वललभ-पयर-सहजह-सकवर",
+    "id": "radhika-vllbh-pyari-shjhi-sukunvari",
     "collectionId": "bayalees-leela",
     "index": 270,
     "titleDevanagari": "राधिका वल्लभ प्यारी, सहजहि सुकुँवारी",
     "author": "श्री ध्रुवदास जी",
-    "slug": "रधक-वललभ-पयर-सहजह-सकवर",
+    "slug": "radhika-vllbh-pyari-shjhi-sukunvari",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6146,12 +6146,12 @@
     "verseNumber": 191
   },
   {
-    "id": "हमर-ननदनदन-स-यर",
+    "id": "hmari-nndnndn-so-yari",
     "collectionId": "bayalees-leela",
     "index": 274,
     "titleDevanagari": "हमारी नन्दनंदन सो यारी",
     "author": "श्री ध्रुवदास जी",
-    "slug": "हमर-ननदनदन-स-यर",
+    "slug": "hmari-nndnndn-so-yari",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6241,12 +6241,12 @@
     "verseNumber": 255
   },
   {
-    "id": "कवर-कवर-दउ-रसक-वर",
+    "id": "kunvri-kunvr-dou-rsik-vr",
     "collectionId": "bayalees-leela",
     "index": 278,
     "titleDevanagari": "कुँवरि-कुँवर दोउ रसिक वर",
     "author": "श्री ध्रुवदास जी",
-    "slug": "कवर-कवर-दउ-रसक-वर",
+    "slug": "kunvri-kunvr-dou-rsik-vr",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6261,12 +6261,12 @@
     "verseNumber": 262
   },
   {
-    "id": "परम-क-खलन-दउ-खलत-ह-परम-खल",
+    "id": "prem-ke-khilauna-dou-khelt-hain-prem-khel",
     "collectionId": "bayalees-leela",
     "index": 279,
     "titleDevanagari": "प्रेम के खिलौना दोउ खेलत हैं प्रेम खेल",
     "author": "श्री ध्रुवदास जी",
-    "slug": "परम-क-खलन-दउ-खलत-ह-परम-खल",
+    "slug": "prem-ke-khilauna-dou-khelt-hain-prem-khel",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6293,7 +6293,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग मलार)",
           "ललित लतानि तरैं नान्हीं-नान्हीं बूँदै परैं,",
           "भींजत रँगीले दोऊ प्रीतम प्यारी॥ [1]",
           "हँसि-हँसि बातैं करैं भुज-मूल अंस धरैं,",
@@ -6308,7 +6307,8 @@
     ],
     "chapterId": "leela-बयालीस लीला",
     "chapterName": "बयालीस लीला",
-    "verseNumber": 275
+    "verseNumber": 275,
+    "rag": "मलार"
   },
   {
     "id": "ya-ras-ko-tabhi-adhikari-kripa-kare-jab-radha-pyari-braj-rasik",
@@ -6500,12 +6500,12 @@
     "verseNumber": 282
   },
   {
-    "id": "अलबल-सकमर-ननन-क-आग-रह",
+    "id": "albeli-sukumari-nainni-ke-aage-rhain",
     "collectionId": "bayalees-leela",
     "index": 286,
     "titleDevanagari": "अलबेली सुकुमारी नैननि के आगे रहैं",
     "author": "श्री ध्रुवदास जी",
-    "slug": "अलबल-सकमर-ननन-क-आग-रह",
+    "slug": "albeli-sukumari-nainni-ke-aage-rhain",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6723,12 +6723,12 @@
     "verseNumber": 290
   },
   {
-    "id": "खन-पन-त-कजय-रसक-मणडल-मह",
+    "id": "khan-pan-to-kijiye-rsik-mndli-manhi",
     "collectionId": "bayalees-leela",
     "index": 293,
     "titleDevanagari": "खान  पान  तो  कीजिये  रसिक  मण्डली  मांहि",
     "author": "श्री ध्रुवदास जी",
-    "slug": "खन-पन-त-कजय-रसक-मणडल-मह",
+    "slug": "khan-pan-to-kijiye-rsik-mndli-manhi",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6815,12 +6815,12 @@
     "verseNumber": 294
   },
   {
-    "id": "छव-क-छपइब-क-रस-क-बढ़इब-क",
+    "id": "chhvi-ki-chhipaibe-ko-rs-ke-baibe-ko",
     "collectionId": "bayalees-leela",
     "index": 297,
     "titleDevanagari": "छवि की छिपाइबे को रस के बढ़ाइबे को",
     "author": "श्री ध्रुवदास जी",
-    "slug": "छव-क-छपइब-क-रस-क-बढ़इब-क",
+    "slug": "chhvi-ki-chhipaibe-ko-rs-ke-baibe-ko",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6837,12 +6837,12 @@
     "verseNumber": 295
   },
   {
-    "id": "खलत-बसत-हर-नवल-छवल-जर",
+    "id": "khelt-bsnt-hori-nvl-chhvili-jori",
     "collectionId": "bayalees-leela",
     "index": 298,
     "titleDevanagari": "खेलत बसंत होरी नवल छवीली जोरी",
     "author": "श्री ध्रुवदास जी",
-    "slug": "खलत-बसत-हर-नवल-छवल-जर",
+    "slug": "khelt-bsnt-hori-nvl-chhvili-jori",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -6949,12 +6949,12 @@
     "verseNumber": 301
   },
   {
-    "id": "शर-वनदवन-क-शभ-वरणन",
+    "id": "shri-vrindavn-ki-shobha-vrnn",
     "collectionId": "bayalees-leela",
     "index": 303,
     "titleDevanagari": "श्री वृन्दावन की शोभा-वर्णन",
     "author": "श्री ध्रुवदास जी",
-    "slug": "शर-वनदवन-क-शभ-वरणन",
+    "slug": "shri-vrindavn-ki-shobha-vrnn",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -7146,12 +7146,12 @@
     "verseNumber": 308
   },
   {
-    "id": "यह-सख-समझन-क-कछ",
+    "id": "yh-sukh-smujhn-kaun-kchhu",
     "collectionId": "bayalees-leela",
     "index": 309,
     "titleDevanagari": "यह सुख समुझन कौं कछू",
     "author": "श्री ध्रुवदास जी",
-    "slug": "यह-सख-समझन-क-कछ",
+    "slug": "yh-sukh-smujhn-kaun-kchhu",
     "verses": [
       {
         "stanzaNumber": 1,

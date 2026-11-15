@@ -10,7 +10,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग काफी और धनाश्री)",
           "या साँवरे सों मैं प्रीति लगाई।",
           "कुल कलंक ते नाहिं डरूँगी, अब तौ करूं अपने मन भाई॥ [1]",
           "बीच बजार पुकार कहूँ मैं, चाहे करौ तुम कोटि बुराई।",
@@ -23,7 +22,8 @@
     ],
     "chapterId": "leela-सखी अनुराग लीला",
     "chapterName": "सखी अनुराग लीला",
-    "verseNumber": 3
+    "verseNumber": 3,
+    "rag": "काफी और धनाश्री"
   },
   {
     "id": "viharat-baag-jhulan-ke-kaje-shri-narayan-swami-braj-vihar-vanshi-leela-4",
@@ -36,7 +36,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग मल्हार)",
           "नन्दनन्दन बन बंशी बजाई री।",
           "श्रवण करत सुधि रही न तन की, एक संग मो मति बौराई री॥ [1]",
           "नयन चकोर चहत निरखन कों, शरद चन्दमुख कुँवर कन्हाई री।",
@@ -47,7 +46,8 @@
     ],
     "chapterId": "leela-वंशी लीला",
     "chapterName": "वंशी लीला",
-    "verseNumber": 4
+    "verseNumber": 4,
+    "rag": "मल्हार"
   },
   {
     "id": "leela-yugalswaroop-ki-dukh-bhanjan-sukh-dain-shri-narayan-swami-braj-vihar-vanshi-leela-13",
@@ -81,7 +81,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग शहानौ)",
           "“धनि धनि श्रीवृन्दावन धाम”",
           "श्री वृंदावन धाम धन्य है।",
           "“जाकी महिमा बेद बखानत, सब बिधि पूरण काम”",
@@ -95,13 +94,14 @@
           "“नारायण बिन कृपा जुगलवर, छिन न मिलै विश्राम”",
           "श्री नारायण स्वामी कहते हैं कि बिना श्री श्यामा श्याम की कृपा के इस श्री वृंदावन धाम में किसी को भी प्रवेश नहीं है। इनकी कृपा के बिना किसी को भी शांति प्राप्त नहीं होगी।",
           "- श्री नारायण स्वामी, ब्रज विहार, पद सिद्धान्त (2)",
-          "(राग शहनौ) \"धनी धनि श्री वृन्दावन धाम\" धन्य है श्री वृन्दावन धाम। \"जाकी महिमा बेद बखानत, सब बिधि पुराण काम\" गाकर श्री वेद सभी मनोकामनाओं को पूर्ण करने वाले वृन्दावन धाम की महिमा का गान कर रहे हैं। \"जाकी राज राख करत, ब्रह्मादिक सुर ग्राम\" देवता और ब्रह्मा भी श्री वृन्दावन धाम के राज की कामना करते हैं। \"लाडिलीलाल जहां नीता विहार, रतिपति छबि अभिराम\" श्री श्याम श्याम श्री वृन्दावन धाम में नित्य पधारते हैं। उन्हें देखकर समस्त ब्रह्माण्ड को मोहित करने वाले कामदेव भी मोहित हो रहे हैं। \"रसिकांको जीवन धन कहियत, मंगल आठों यम\" यः श्री वृन्दावन धाम रसिकों का जीवन और जीवन धन है, जो दैनिक शुभता प्रदान करता है। \"नारायण बिन कृपा जुगलवार, छिन न मिलै विश्राम\" श्री नारायण स्वामी कहते हैं कि श्री श्याम श्याम की कृपा के बिना इस श्री वृन्दावन धाम में कोई प्रवेश नहीं कर सकता। उनकी कृपा के बिना किसी को शांति नहीं मिलेगी। - श्री नारायण स्वामी, ब्रज विहार, पद सिद्धांत (2)"
+          "\"धनी धनि श्री वृन्दावन धाम\" धन्य है श्री वृन्दावन धाम। \"जाकी महिमा बेद बखानत, सब बिधि पुराण काम\" गाकर श्री वेद सभी मनोकामनाओं को पूर्ण करने वाले वृन्दावन धाम की महिमा का गान कर रहे हैं। \"जाकी राज राख करत, ब्रह्मादिक सुर ग्राम\" देवता और ब्रह्मा भी श्री वृन्दावन धाम के राज की कामना करते हैं। \"लाडिलीलाल जहां नीता विहार, रतिपति छबि अभिराम\" श्री श्याम श्याम श्री वृन्दावन धाम में नित्य पधारते हैं। उन्हें देखकर समस्त ब्रह्माण्ड को मोहित करने वाले कामदेव भी मोहित हो रहे हैं। \"रसिकांको जीवन धन कहियत, मंगल आठों यम\" यः श्री वृन्दावन धाम रसिकों का जीवन और जीवन धन है, जो दैनिक शुभता प्रदान करता है। \"नारायण बिन कृपा जुगलवार, छिन न मिलै विश्राम\" श्री नारायण स्वामी कहते हैं कि श्री श्याम श्याम की कृपा के बिना इस श्री वृन्दावन धाम में कोई प्रवेश नहीं कर सकता। उनकी कृपा के बिना किसी को शांति नहीं मिलेगी। - श्री नारायण स्वामी, ब्रज विहार, पद सिद्धांत (2)"
         ]
       }
     ],
     "chapterId": "leela-पद सिद्धान्त",
     "chapterName": "पद सिद्धान्त",
-    "verseNumber": 2
+    "verseNumber": 2,
+    "rag": "शहनौ"
   },
   {
     "id": "vandau-shriradha-brajchand-shri-narayan-swami-braj-vihar-3",
@@ -114,7 +114,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग शहानौ)",
           "“वन्दौ श्रीराधा ब्रजचन्द।",
           "जिनके गुणगण अति अपार हैं, गावत वेद भेद बहु छन्द॥”",
           "मैं श्री श्यामा श्याम के चरण कमलों की वंदना करता हूँ जिनकी महिमा अनंत है और जिन्हें वेद भी विभिन्न छन्दों द्वारा गा रहे हैं।"
@@ -123,7 +122,8 @@
     ],
     "chapterId": "leela-पद सिद्धान्त",
     "chapterName": "पद सिद्धान्त",
-    "verseNumber": 3
+    "verseNumber": 3,
+    "rag": "शहानौ"
   },
   {
     "id": "karu-mana-yugal-charan-anurag-bahut-divas-tohin-sovat-beete-jaag-re-murakh-jaag-bimukhan-ki-sangati-son-tu-jaise-bane-tyon-bhaag-bas-vrindavan-bhaj-radhavan-bhulike-anant-na-laag-shri-narayan-swami-braj-vihaar",
@@ -136,7 +136,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कालिंगडा)",
           "\"करु मन जुगलचरण अनुराग ।",
           "बहुत दिवस तोहिं सोवत बीते, जाग रे मूरख जाग । ।",
           "बेमुखियन की संगति सों तू, जैसे बनै त्यों भाग ।",
@@ -147,7 +146,8 @@
     ],
     "chapterId": "leela-पद सिद्धान्त",
     "chapterName": "पद सिद्धान्त",
-    "verseNumber": 4
+    "verseNumber": 4,
+    "rag": "कालिंगडा"
   },
   {
     "id": "man-chetu-nahin-pachtave-go-shri-narayan-swami-braj-vihar-5",
@@ -160,7 +160,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग काफी)",
           "मन चेतु नहीं पछितावैगो।",
           "भजिलै रे श्रीनंदनँदनको, जो तोहि पार लगावैगो॥ [1]",
           "झूठ साँच को ब्योहारन सों, कहँ लगि द्रव्य कमावैगो।",
@@ -175,7 +174,8 @@
     ],
     "chapterId": "leela-पद सिद्धान्त",
     "chapterName": "पद सिद्धान्त",
-    "verseNumber": 5
+    "verseNumber": 5,
+    "rag": "काफी"
   },
   {
     "id": "govind-govind-govind-bhaj-re-shri-narayan-swami-braj-vihar-pad-siddhant-8",
@@ -188,7 +188,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कालिंगड़ा धीमाताल)",
           "गोविन्द गोविन्द गोविन्द भज रे।",
           "आदि अनन्त सार निगमागम, जाहि नवत सुरनर मुनि अज रे॥ [1]",
           "दंभ कपट कामादि मान मद, इन बैरिनको तुरतहि तज रे।",
@@ -199,7 +198,8 @@
     ],
     "chapterId": "leela-पद सिद्धान्त",
     "chapterName": "पद सिद्धान्त",
-    "verseNumber": 8
+    "verseNumber": 8,
+    "rag": "कालिंगड़ा धीमाताल"
   },
   {
     "id": "karu-man-nandnandanko-dhyaan-shri-narayan-swami-anurag-ras-333",
@@ -212,7 +212,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग बिहाग)",
           "करू मन, नंदनँदनको ध्यान। [1]",
           "यहि अवसर तोहिं फिर न मिलैगौ, मेरौ कह्यौ अब मान॥ [2]",
           "घूँघरवारी अलकैं मुखपै, कुंडल झलकत कान। [3]",
@@ -223,7 +222,8 @@
     ],
     "chapterId": "leela-पद सिद्धान्त",
     "chapterName": "पद सिद्धान्त",
-    "verseNumber": 9
+    "verseNumber": 9,
+    "rag": "बिहाग"
   },
   {
     "id": "bhaja-mana-shri-radha-gopal-shri-narayan-swami-braj-vihar-10",
@@ -285,7 +285,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सोरठ व जिला)",
           "मनमोहन जाकी दृष्टि परत, ताकी गति होत है और और।",
           "न सुहात भवन तन अशन वसन, बन ही कूँ धावत दौर दौर॥ [1]",
           "नहिं धरत धीर हिय विरह पीर, ब्याकुल भई भटकत ठौर ठौर।",
@@ -296,7 +295,8 @@
     ],
     "chapterId": "leela-युगल छदम लीला",
     "chapterName": "युगल छदम लीला",
-    "verseNumber": 5
+    "verseNumber": 5,
+    "rag": "सोरठ व जिला"
   },
   {
     "id": "jahi-lagan-lagi-ghanasyam-ki-shri-narayan-swami-braj-vihar-yugal-chhadam-leela-6",
@@ -309,7 +309,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सोरठ)",
           "जाहि लगन लगी घनस्यामकी।",
           "धरत कहूँ पग, परत हैं कितहूँ, भूल जाय सुधि धाम की॥[1]",
           "छबि निहार नहिं रहत सार कछु, घटि पल निसिदिन याम की।",
@@ -322,7 +321,8 @@
     ],
     "chapterId": "leela-युगल छदम लीला",
     "chapterName": "युगल छदम लीला",
-    "verseNumber": 6
+    "verseNumber": 6,
+    "rag": "सोरठ"
   },
   {
     "id": "saanwre-ki-jin-nirakhi-musikyaan-shri-narayan-swami-braj-vihar-yugal-chhadam-leela-07",
@@ -335,7 +335,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग देश)",
           "साँवरे की जिन निरखी मुसिक्यान।",
           "सो तौ भई घायल ताही छिन, बिन बरछी बिन बान॥",
           "कल नहिं लेति धरति नहिं धीरज, तलफति मीन समान।",
@@ -346,7 +345,8 @@
     ],
     "chapterId": "leela-युगल छदम लीला",
     "chapterName": "युगल छदम लीला",
-    "verseNumber": 7
+    "verseNumber": 7,
+    "rag": "देश"
   },
   {
     "id": "sanware-kyon-moson-ris-mani-shri-narayan-swami-braj-vihar-yugal-chhadam-leela-8",
@@ -359,7 +359,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग झंझोटी)",
           "साँवरे क्यों मोसों रिस मानी।",
           "तेरे काज घरबार त्यागि के, गलियन फिरत दिवानी। [1]",
           "लोकलाज कुलरीति प्रीति जग, इन्हूँ को दियो पानी।",
@@ -370,7 +369,8 @@
     ],
     "chapterId": "leela-युगल छदम लीला",
     "chapterName": "युगल छदम लीला",
-    "verseNumber": 8
+    "verseNumber": 8,
+    "rag": "झंझोटी"
   },
   {
     "id": "yeh-naina-rijhwar-naye-ri-shri-narayan-swami-braj-vihar-yugal-chhadam-leela-10",
@@ -383,7 +383,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग काफी)",
           "यह नैना रिझवार नये री।",
           "एक बेर लखि रूप लाल को, तजि घरबार फकीर भये री॥ [1]",
           "अब देखे बिन डारत आँसू, युग समान पल बीति गये री।",
@@ -394,7 +393,8 @@
     ],
     "chapterId": "leela-युगल छदम लीला",
     "chapterName": "युगल छदम लीला",
-    "verseNumber": 10
+    "verseNumber": 10,
+    "rag": "काफी"
   },
   {
     "id": "laal-tere-jadu-bhare-dou-nain-shri-narayan-swami-braj-vihar-yugal-chhadam-leela-6",
@@ -407,7 +407,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग काफ़ी)",
           "लाल तेरे जादु भरे दोउ नैन।",
           "चितवन में चित्त वश करि लेवेँ, मोहनी मंत्र है सैन॥ [1]",
           "अति बाँके सुन्दर मतवारे, अनियारे छबि ऐन।",
@@ -418,7 +417,8 @@
     ],
     "chapterId": "leela-युगल छदम लीला",
     "chapterName": "युगल छदम लीला",
-    "verseNumber": 26
+    "verseNumber": 26,
+    "rag": "काफ़ी"
   },
   {
     "id": "vinay-karun-kar-jor-rasik-janan-ke-charan-mein-shri-narayan-swami",
@@ -515,7 +515,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग देश)",
           "युगल छबि देखि मेरो हियरा सिरात।",
           "नींद भरे चलत झूमि के, शिथिल भये सब गात॥ [1]",
           "कह्यो चहत कछु कढ़त कछू मुख, कहत कहत रहि जात।",
@@ -526,7 +525,8 @@
     ],
     "chapterId": "leela-शयन लीला",
     "chapterName": "शयन लीला",
-    "verseNumber": 3
+    "verseNumber": 3,
+    "rag": "देश"
   },
   {
     "id": "kadamb-tare-thade-dou-batrave-shri-narayan-swami-braj-vihar-van-jhoolan-leela-6",
@@ -539,7 +539,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग मल्हार)",
           "कदम तरे ठाढ़े दोऊ बतरावें।",
           "परत फुहार पवन झकझोरत, अब कित भाजिके जावें॥ [1]",
           "भवन दूरि बन ठौर न दीखत, जहाँ निज बसन दुरावें।",
@@ -550,7 +549,8 @@
     ],
     "chapterId": "leela-वन झूलन लीला",
     "chapterName": "वन झूलन लीला",
-    "verseNumber": 6
+    "verseNumber": 6,
+    "rag": "मल्हार"
   },
   {
     "id": "viharat-bag-jhulan-ke-kaje-shri-narayan-swami-braj-vihar-van-jhoolan-leela-8",
@@ -563,7 +563,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग मल्हार)",
           "विहरत बाग झूलन के काजे।",
           "गावत गीत मधुर सुर दोऊ, बीच बीच मुरली धुनि बाजें॥ [1]",
           "ठुमकि चलन बोलन अवलोकन, कोटि मदन छबि निरखत लाजें।",
@@ -574,7 +573,8 @@
     ],
     "chapterId": "leela-वन झूलन लीला",
     "chapterName": "वन झूलन लीला",
-    "verseNumber": 8
+    "verseNumber": 8,
+    "rag": "मल्हार"
   },
   {
     "id": "aavau-ri-yeh-shobha-shri-narayan-swami-braj-vihar-van-jhoolan-leela-14",
@@ -587,7 +587,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग हिंडोरा)",
           "आवौ री यह शोभा निहारें।",
           "नन्दलाल वृषभानुनन्दिनी, झूलि रहे गरबैयां डारें॥ [1]",
           "परत फुहार विपिन हरियाली, वन पक्षी मृदु वचन उचारें।",
@@ -600,7 +599,8 @@
     ],
     "chapterId": "leela-वन झूलन लीला",
     "chapterName": "वन झूलन लीला",
-    "verseNumber": 14
+    "verseNumber": 14,
+    "rag": "हिंडोरा"
   },
   {
     "id": "aiso-anand-sakhi-aaj-lon-na-dekho-kabun-shri-narayan-swami-braj-vihar-van-jhoolan-leela-16",
@@ -613,7 +613,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग ध्रुपद)",
           "ऐसो आनन्द सखी आज लों न देखो कबूँ,",
           "आप ही झूलनिहार आप ही झुलावें। [1]",
           "वरषत घन गरजि घोर बोलत पिक नचत मोर,",
@@ -628,7 +627,8 @@
     ],
     "chapterId": "leela-वन झूलन लीला",
     "chapterName": "वन झूलन लीला",
-    "verseNumber": 16
+    "verseNumber": 16,
+    "rag": "ध्रुपद"
   },
   {
     "id": "saghan-ban-jhulein-dou-sukumaar-shri-narayan-swami-braj-vihar-van-jhoolan-leela-24",
@@ -641,7 +641,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग मल्हार)",
           "सघन बन झूलें दोऊ सुकुमार।",
           "हिय हरषत छबि निरखि परस्पर, छिन छिन बाढ़त प्यार॥ [1]",
           "कबहुँ मुदित मन तान लेत मिलि, होत सखी बलिहार।",
@@ -652,7 +651,8 @@
     ],
     "chapterId": "leela-वन झूलन लीला",
     "chapterName": "वन झूलन लीला",
-    "verseNumber": 24
+    "verseNumber": 24,
+    "rag": "मल्हार"
   },
   {
     "id": "sundar-anup-jori-ati-man-ko-bhaavati-shri-narayan-swami-braj-vihar-van-jhoolan-leela-29",
@@ -665,7 +665,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग यमन एवं जिला)",
           "सुन्दर अनूप जोरी, अति मन को भावती।",
           "देखी मैं आज मग में, कुंजन सों आवती॥ [1]",
           "अँग अँग देत शोभा, भूषण जड़ाऊ आली।",
@@ -682,7 +681,8 @@
     ],
     "chapterId": "leela-वन झूलन लीला",
     "chapterName": "वन झूलन लीला",
-    "verseNumber": 29
+    "verseNumber": 29,
+    "rag": "यमन एवं जिला"
   },
   {
     "id": "aaj-in-doun-pai-balihari-shri-narayan-swami-braj-vihar-17",
@@ -695,7 +695,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग जयजयवन्ती)",
           "आज इन दोउन पै बलिहारी।",
           "नंदलाल रतिपति विशाल छबि, चंद्रवदन वृषभानुदुलारी॥",
           "बैठे कुंजभवन बतरावत, उपजावत सुख प्रीतम प्यारी।",
@@ -706,7 +705,8 @@
     ],
     "chapterId": "leela-नवदुलहीन लीला",
     "chapterName": "नवदुलहीन लीला",
-    "verseNumber": 17
+    "verseNumber": 17,
+    "rag": "जयजयवन्ती"
   },
   {
     "id": "taji-kutark-jo-nit-sunai-yah-leela-rasapunj-shri-narayan-swami-braj-vihar-navdulahin-leela-18",
@@ -824,7 +824,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग बिलावल)",
           "आज इन दोउन पै बलि जैये।",
           "रोम रोम सों छबि बरसत है, निरखत नैन सिरैये॥",
           "रूप रास मृदु हास ललित मुख, उपमा देत लजैये।",
@@ -835,7 +834,8 @@
     ],
     "chapterId": "leela-नवपनिहारी लीला",
     "chapterName": "नवपनिहारी लीला",
-    "verseNumber": 52
+    "verseNumber": 52,
+    "rag": "बिलावल"
   },
   {
     "id": "sakhi-nandlal-na-avan-pavai-shri-narayan-swami-braj-vihar-sambhrammanalila-5",
@@ -848,7 +848,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग पीलू)",
           "सखि नँदलाल न आवन पावै।",
           "भीतर चरन धरन जिन दीजो, चाहे जिते ललचावैं॥ [1]",
           "ऐसनको बिस्वास कहा री कपट बैन बतियावैं।",
@@ -859,7 +858,8 @@
     ],
     "chapterId": "leela-सम्भ्रम-मानलीला",
     "chapterName": "सम्भ्रम-मानलीला",
-    "verseNumber": 5
+    "verseNumber": 5,
+    "rag": "पीलू"
   },
   {
     "id": "mohi-mat-rok-eri-brajnagri-braj-vihar-sambhrammanalila-11",
@@ -872,7 +872,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग झिंझोटी)",
           "मोहि मति रोकै री तू, एरी ब्रज नागरी।",
           "रूप की निधान है तू, गुणन की खान है तू,",
           "तेरी सम कौन आज, तेरो बड़ो भाग री॥ [1]",
@@ -886,7 +885,8 @@
     ],
     "chapterId": "leela-सम्भ्रम-मानलीला",
     "chapterName": "सम्भ्रम-मानलीला",
-    "verseNumber": 11
+    "verseNumber": 11,
+    "rag": "झिंझोटी"
   },
   {
     "id": "pyari-ji-tihare-bin-kal-na-parat-hai-shri-narayan-swami-braj-vihar-sambhrammanalila-16",
@@ -946,7 +946,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग ध्रुपद कान्हड़ा व सिन्दूरा)",
           "फूलन की चन्द्रकला सीस फूल फूलन कौ,",
           "फूलन के झूमका है श्रवण सुकुमारी के। [1]",
           "फूलन की बंदनी विशाल नथ फूलन की,",
@@ -961,7 +960,8 @@
     ],
     "chapterId": "leela-वसन्त लीला",
     "chapterName": "वसन्त लीला",
-    "verseNumber": 14
+    "verseNumber": 14,
+    "rag": "ध्रुपद कान्हड़ा व सिन्दूरा"
   },
   {
     "id": "chalo-lal-khelen-basant-mili-shri-narayan-swami-braj-vihar-vasant-leela-15",
@@ -974,7 +974,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग वसन्त धीमाताल)",
           "चलो लाल खेलें वसन्त मिलि श्रीयमुना के कूल।",
           "नव निकुंज वन नई ऋतु आई नये नये फूले फूल॥ [1]",
           "द्रुम डारिन बैठे नव पक्षी बोलत अति अनुकूल।",
@@ -985,7 +984,8 @@
     ],
     "chapterId": "leela-वसन्त लीला",
     "chapterName": "वसन्त लीला",
-    "verseNumber": 14
+    "verseNumber": 14,
+    "rag": "वसन्त धीमाताल"
   },
   {
     "id": "dhani-vrindavan-dham-hai-shri-narayan-swami-anurag-ras-5",
@@ -3188,7 +3188,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग मल्हार)",
           "मनमोहन सम सुन्दर को है।",
           "मैं अपने अनुमान कहूँ अब, उनकी पटतर और न सोहै॥ [1]",
           "चितवन चपल रूप उजियारो, जाकों मुख नित चन्दहु जोहै।",
@@ -3199,7 +3198,8 @@
     ],
     "chapterId": "leela-प्रेम परीक्षा लीला",
     "chapterName": "प्रेम परीक्षा लीला",
-    "verseNumber": 4
+    "verseNumber": 4,
+    "rag": "मल्हार"
   },
   {
     "id": "rasiya-ko-naari-banavo-ri-shri-narayan-swami-braj-vihar-hori-leela-10",
@@ -3212,7 +3212,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग रसिया)",
           "रसिया को नारि बनावौ री।",
           "कटि लहँगा उर माहिं कंचुकी, चुँदरी सीस उढ़ावौ री॥ [1]",
           "गाल गुलाल दृगन बिच काजर, बेंदी भाल लगावौ री।",
@@ -3223,7 +3222,8 @@
     ],
     "chapterId": "leela-प्रेम परीक्षा लीला",
     "chapterName": "प्रेम परीक्षा लीला",
-    "verseNumber": 10
+    "verseNumber": 10,
+    "rag": "सारंग रसिया"
   },
   {
     "id": "aavau-sakhi-mili-mangal-gaavau-shri-narayan-swami-braj-vihar-prem-pariksha-leela-15",
@@ -3236,7 +3236,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग जैजैवन्ती)",
           "आवौ सखी मिलि मंगल गावौ,",
           "मेरे पधारे कुँवर कन्हाई। [1]",
           "मोसम आज कौन बड़भागिनि,",
@@ -3251,7 +3250,8 @@
     ],
     "chapterId": "leela-प्रेम परीक्षा लीला",
     "chapterName": "प्रेम परीक्षा लीला",
-    "verseNumber": 15
+    "verseNumber": 15,
+    "rag": "जैजैवन्ती"
   },
   {
     "id": "pyari-nit-aise-hi-tumen-niharu-shri-narayan-swami-braj-vihar-prem-pariksha-leela-21",
@@ -3264,7 +3264,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग मल्हार)",
           "प्यारी नित ऐसे ही तुमें निहारूं।",
           "तृण तोरूं या चन्द बदन पै, राई नोन उतारूं॥ [1]",
           "निजकर करूं श्रृंगार तिहारो, मुख पै भ्रमर बिडारूं।",
@@ -3275,7 +3274,8 @@
     ],
     "chapterId": "leela-प्रेम परीक्षा लीला",
     "chapterName": "प्रेम परीक्षा लीला",
-    "verseNumber": 21
+    "verseNumber": 21,
+    "rag": "मल्हार"
   },
   {
     "id": "sanware-kyon-moson-risa-mani-shri-narayan-swami",
@@ -3511,12 +3511,12 @@
     "verseNumber": 76
   },
   {
-    "id": "नरयण-वनदवपन-नशदन-रहत-वसनत",
+    "id": "narayn-vrindavipin-nishidin-rht-vsnt",
     "collectionId": "narayan-swami-vani",
     "index": 159,
     "titleDevanagari": "नारायण वृन्दाविपिन, निशिदिन रहत वसन्त",
     "author": "श्री नारायण स्वामी जी",
-    "slug": "नरयण-वनदवपन-नशदन-रहत-वसनत",
+    "slug": "narayn-vrindavipin-nishidin-rht-vsnt",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -3880,12 +3880,12 @@
     "verseNumber": 135
   },
   {
-    "id": "हर-ह-बरजरज-दलर",
+    "id": "hori-ho-brjraj-dulare",
     "collectionId": "narayan-swami-vani",
     "index": 175,
     "titleDevanagari": "होरी हो ब्रजराज दुलारे ।।",
     "author": "श्री नारायण स्वामी जी",
-    "slug": "हर-ह-बरजरज-दलर",
+    "slug": "hori-ho-brjraj-dulare",
     "verses": [
       {
         "stanzaNumber": 1,

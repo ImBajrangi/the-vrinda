@@ -179,7 +179,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग आसावरी)",
           "राधा माधव भैंट भई।",
           "राधा माधव माधव राधा,",
           "कीट - भंग - गति होई जो गई॥ [1]",
@@ -193,15 +192,16 @@
     ],
     "chapterId": "ch-द्वारिका चरित",
     "chapterName": "द्वारिका चरित",
-    "verseNumber": 50
+    "verseNumber": 50,
+    "rag": "आसावरी"
   },
   {
-    "id": "मर-चरतर-भग-33",
+    "id": "mira-chritr-bhag-33",
     "collectionId": "rasik-charitra-katha",
     "index": 10,
     "titleDevanagari": "मीरा चरित्र भाग - 33",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-33",
+    "slug": "mira-chritr-bhag-33",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -218,12 +218,12 @@
     "verseNumber": 1
   },
   {
-    "id": "मर-चरतर-भग-59",
+    "id": "mira-chritr-bhag-59",
     "collectionId": "rasik-charitra-katha",
     "index": 11,
     "titleDevanagari": "मीरा चरित्र भाग - 59",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-59",
+    "slug": "mira-chritr-bhag-59",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -258,12 +258,12 @@
     "verseNumber": 2
   },
   {
-    "id": "मर-चरतर-भग-58",
+    "id": "mira-chritr-bhag-58",
     "collectionId": "rasik-charitra-katha",
     "index": 12,
     "titleDevanagari": "मीरा चरित्र भाग - 58",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-58",
+    "slug": "mira-chritr-bhag-58",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -288,12 +288,12 @@
     "verseNumber": 3
   },
   {
-    "id": "मर-चरतर-भग-83",
+    "id": "mira-chritr-bhag-83",
     "collectionId": "rasik-charitra-katha",
     "index": 13,
     "titleDevanagari": "मीरा चरित्र भाग - 83",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-83",
+    "slug": "mira-chritr-bhag-83",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -312,12 +312,12 @@
     "verseNumber": 4
   },
   {
-    "id": "मर-चरतर-भग-68",
+    "id": "mira-chritr-bhag-68",
     "collectionId": "rasik-charitra-katha",
     "index": 14,
     "titleDevanagari": "मीरा चरित्र भाग - 68",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-68",
+    "slug": "mira-chritr-bhag-68",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -343,12 +343,12 @@
     "verseNumber": 5
   },
   {
-    "id": "मर-चरतर-भग-3",
+    "id": "mira-chritr-bhag-3",
     "collectionId": "rasik-charitra-katha",
     "index": 15,
     "titleDevanagari": "मीरा चरित्र भाग - 3",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-3",
+    "slug": "mira-chritr-bhag-3",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -369,12 +369,12 @@
     "verseNumber": 6
   },
   {
-    "id": "मर-चरतर-भग-46",
+    "id": "mira-chritr-bhag-46",
     "collectionId": "rasik-charitra-katha",
     "index": 16,
     "titleDevanagari": "मीरा चरित्र भाग - 46",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-46",
+    "slug": "mira-chritr-bhag-46",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -393,12 +393,12 @@
     "verseNumber": 8
   },
   {
-    "id": "मर-चरतर-भग-55",
+    "id": "mira-chritr-bhag-55",
     "collectionId": "rasik-charitra-katha",
     "index": 17,
     "titleDevanagari": "मीरा चरित्र भाग - 55",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-55",
+    "slug": "mira-chritr-bhag-55",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -415,12 +415,12 @@
     "verseNumber": 9
   },
   {
-    "id": "मर-चरतर-भग-27",
+    "id": "mira-chritr-bhag-27",
     "collectionId": "rasik-charitra-katha",
     "index": 18,
     "titleDevanagari": "मीरा चरित्र भाग - 27",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-27",
+    "slug": "mira-chritr-bhag-27",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -437,12 +437,12 @@
     "verseNumber": 10
   },
   {
-    "id": "मर-चरतर-भग-11",
+    "id": "mira-chritr-bhag-11",
     "collectionId": "rasik-charitra-katha",
     "index": 19,
     "titleDevanagari": "मीरा चरित्र भाग - 11",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-11",
+    "slug": "mira-chritr-bhag-11",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -461,12 +461,12 @@
     "verseNumber": 11
   },
   {
-    "id": "मर-चरतर-भग-22",
+    "id": "mira-chritr-bhag-22",
     "collectionId": "rasik-charitra-katha",
     "index": 20,
     "titleDevanagari": "मीरा चरित्र भाग - 22",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-22",
+    "slug": "mira-chritr-bhag-22",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -485,12 +485,12 @@
     "verseNumber": 12
   },
   {
-    "id": "मर-चरतर-भग-57",
+    "id": "mira-chritr-bhag-57",
     "collectionId": "rasik-charitra-katha",
     "index": 21,
     "titleDevanagari": "मीरा चरित्र भाग - 57",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-57",
+    "slug": "mira-chritr-bhag-57",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -512,12 +512,12 @@
     "verseNumber": 13
   },
   {
-    "id": "मर-चरतर-भग-56",
+    "id": "mira-chritr-bhag-56",
     "collectionId": "rasik-charitra-katha",
     "index": 22,
     "titleDevanagari": "मीरा चरित्र भाग - 56",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-56",
+    "slug": "mira-chritr-bhag-56",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -541,12 +541,12 @@
     "verseNumber": 14
   },
   {
-    "id": "मर-चरतर-भग-18",
+    "id": "mira-chritr-bhag-18",
     "collectionId": "rasik-charitra-katha",
     "index": 23,
     "titleDevanagari": "मीरा चरित्र भाग - 18",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-18",
+    "slug": "mira-chritr-bhag-18",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -564,12 +564,12 @@
     "verseNumber": 15
   },
   {
-    "id": "मर-चरतर-भग-13",
+    "id": "mira-chritr-bhag-13",
     "collectionId": "rasik-charitra-katha",
     "index": 24,
     "titleDevanagari": "मीरा चरित्र भाग - 13",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-13",
+    "slug": "mira-chritr-bhag-13",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -586,12 +586,12 @@
     "verseNumber": 16
   },
   {
-    "id": "मर-चरतर-भग-43",
+    "id": "mira-chritr-bhag-43",
     "collectionId": "rasik-charitra-katha",
     "index": 25,
     "titleDevanagari": "मीरा चरित्र भाग - 43",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-43",
+    "slug": "mira-chritr-bhag-43",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -608,12 +608,12 @@
     "verseNumber": 17
   },
   {
-    "id": "मर-चरतर-भग-51",
+    "id": "mira-chritr-bhag-51",
     "collectionId": "rasik-charitra-katha",
     "index": 26,
     "titleDevanagari": "मीरा चरित्र भाग - 51",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-51",
+    "slug": "mira-chritr-bhag-51",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -679,12 +679,12 @@
     "verseNumber": 18
   },
   {
-    "id": "मर-चरतर-भग-89",
+    "id": "mira-chritr-bhag-89",
     "collectionId": "rasik-charitra-katha",
     "index": 27,
     "titleDevanagari": "मीरा चरित्र भाग - 89",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-89",
+    "slug": "mira-chritr-bhag-89",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -701,12 +701,12 @@
     "verseNumber": 19
   },
   {
-    "id": "मर-चरतर-भग-17",
+    "id": "mira-chritr-bhag-17",
     "collectionId": "rasik-charitra-katha",
     "index": 28,
     "titleDevanagari": "मीरा चरित्र भाग - 17",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-17",
+    "slug": "mira-chritr-bhag-17",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -775,12 +775,12 @@
     "verseNumber": 20
   },
   {
-    "id": "मर-चरतर-भग-29",
+    "id": "mira-chritr-bhag-29",
     "collectionId": "rasik-charitra-katha",
     "index": 29,
     "titleDevanagari": "मीरा चरित्र भाग - 29",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-29",
+    "slug": "mira-chritr-bhag-29",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -807,12 +807,12 @@
     "verseNumber": 21
   },
   {
-    "id": "मर-चरतर-भग-47",
+    "id": "mira-chritr-bhag-47",
     "collectionId": "rasik-charitra-katha",
     "index": 30,
     "titleDevanagari": "मीरा चरित्र भाग - 47",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-47",
+    "slug": "mira-chritr-bhag-47",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -831,12 +831,12 @@
     "verseNumber": 22
   },
   {
-    "id": "मर-चरतर-भग-19",
+    "id": "mira-chritr-bhag-19",
     "collectionId": "rasik-charitra-katha",
     "index": 31,
     "titleDevanagari": "मीरा चरित्र भाग - 19",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-19",
+    "slug": "mira-chritr-bhag-19",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -852,12 +852,12 @@
     "verseNumber": 23
   },
   {
-    "id": "मर-चरतर-भग-49",
+    "id": "mira-chritr-bhag-49",
     "collectionId": "rasik-charitra-katha",
     "index": 32,
     "titleDevanagari": "मीरा चरित्र भाग - 49",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-49",
+    "slug": "mira-chritr-bhag-49",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -874,12 +874,12 @@
     "verseNumber": 24
   },
   {
-    "id": "मर-चरतर-भग-32",
+    "id": "mira-chritr-bhag-32",
     "collectionId": "rasik-charitra-katha",
     "index": 33,
     "titleDevanagari": "मीरा चरित्र भाग - 32",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-32",
+    "slug": "mira-chritr-bhag-32",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -940,12 +940,12 @@
     "verseNumber": 26
   },
   {
-    "id": "मर-चरतर-भग-45",
+    "id": "mira-chritr-bhag-45",
     "collectionId": "rasik-charitra-katha",
     "index": 35,
     "titleDevanagari": "मीरा चरित्र भाग - 45",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-45",
+    "slug": "mira-chritr-bhag-45",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -964,12 +964,12 @@
     "verseNumber": 29
   },
   {
-    "id": "मर-चरतर-भग-74",
+    "id": "mira-chritr-bhag-74",
     "collectionId": "rasik-charitra-katha",
     "index": 36,
     "titleDevanagari": "मीरा चरित्र भाग - 74",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-74",
+    "slug": "mira-chritr-bhag-74",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -986,12 +986,12 @@
     "verseNumber": 30
   },
   {
-    "id": "मर-चरतर-भग-53",
+    "id": "mira-chritr-bhag-53",
     "collectionId": "rasik-charitra-katha",
     "index": 37,
     "titleDevanagari": "मीरा चरित्र भाग - 53",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-53",
+    "slug": "mira-chritr-bhag-53",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1036,12 +1036,12 @@
     "verseNumber": 31
   },
   {
-    "id": "मर-चरतर-भग-84",
+    "id": "mira-chritr-bhag-84",
     "collectionId": "rasik-charitra-katha",
     "index": 38,
     "titleDevanagari": "मीरा चरित्र भाग - 84",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-84",
+    "slug": "mira-chritr-bhag-84",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1061,12 +1061,12 @@
     "verseNumber": 32
   },
   {
-    "id": "मर-चरतर-भग-69",
+    "id": "mira-chritr-bhag-69",
     "collectionId": "rasik-charitra-katha",
     "index": 39,
     "titleDevanagari": "मीरा चरित्र भाग - 69",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-69",
+    "slug": "mira-chritr-bhag-69",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1087,12 +1087,12 @@
     "verseNumber": 33
   },
   {
-    "id": "मर-चरतर-भग-92",
+    "id": "mira-chritr-bhag-92",
     "collectionId": "rasik-charitra-katha",
     "index": 40,
     "titleDevanagari": "मीरा चरित्र भाग - 92",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-92",
+    "slug": "mira-chritr-bhag-92",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1109,12 +1109,12 @@
     "verseNumber": 34
   },
   {
-    "id": "मर-चरतर-भग-73",
+    "id": "mira-chritr-bhag-73",
     "collectionId": "rasik-charitra-katha",
     "index": 41,
     "titleDevanagari": "मीरा चरित्र भाग - 73",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-73",
+    "slug": "mira-chritr-bhag-73",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1134,12 +1134,12 @@
     "verseNumber": 35
   },
   {
-    "id": "मर-चरतर-भग-28",
+    "id": "mira-chritr-bhag-28",
     "collectionId": "rasik-charitra-katha",
     "index": 42,
     "titleDevanagari": "मीरा चरित्र भाग - 28",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-28",
+    "slug": "mira-chritr-bhag-28",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1156,12 +1156,12 @@
     "verseNumber": 37
   },
   {
-    "id": "मर-चरतर-भग-41",
+    "id": "mira-chritr-bhag-41",
     "collectionId": "rasik-charitra-katha",
     "index": 43,
     "titleDevanagari": "मीरा चरित्र भाग - 41",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-41",
+    "slug": "mira-chritr-bhag-41",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1190,12 +1190,12 @@
     "verseNumber": 38
   },
   {
-    "id": "मरगशरष-मस-कषण-पकष-क-उतपनन-एकदश-क-महतमय-एकदश-क-वध-उतपतत-कथ-और-महम-क-वरणन",
+    "id": "margshirsh-mas-krishn-pksh-ki-utpnna-ekadshi-ka-mahatmy",
     "collectionId": "rasik-charitra-katha",
     "index": 44,
     "titleDevanagari": "मार्गशीर्ष मास कृष्ण पक्ष की 'उत्पन्ना' एकादशी का माहात्म्य (एकादशी की विधि, उत्पत्ति-कथा और महिमा का वर्णन )",
     "author": "श्री रसिक चरित",
-    "slug": "मरगशरष-मस-कषण-पकष-क-उतपनन-एकदश-क-महतमय-एकदश-क-वध-उतपतत-कथ-और-महम-क-वरणन",
+    "slug": "margshirsh-mas-krishn-pksh-ki-utpnna-ekadshi-ka-mahatmy",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1211,12 +1211,12 @@
     "verseNumber": 39
   },
   {
-    "id": "मर-चरतर-भग-50",
+    "id": "mira-chritr-bhag-50",
     "collectionId": "rasik-charitra-katha",
     "index": 45,
     "titleDevanagari": "मीरा चरित्र भाग - 50",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-50",
+    "slug": "mira-chritr-bhag-50",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1232,12 +1232,12 @@
     "verseNumber": 40
   },
   {
-    "id": "मर-चरतर-भग-44",
+    "id": "mira-chritr-bhag-44",
     "collectionId": "rasik-charitra-katha",
     "index": 46,
     "titleDevanagari": "मीरा चरित्र भाग - 44",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-44",
+    "slug": "mira-chritr-bhag-44",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1258,12 +1258,12 @@
     "verseNumber": 41
   },
   {
-    "id": "मर-चरतर-भग-76",
+    "id": "mira-chritr-bhag-76",
     "collectionId": "rasik-charitra-katha",
     "index": 47,
     "titleDevanagari": "मीरा चरित्र भाग - 76",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-76",
+    "slug": "mira-chritr-bhag-76",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1280,12 +1280,12 @@
     "verseNumber": 42
   },
   {
-    "id": "मर-चरतर-भग-81",
+    "id": "mira-chritr-bhag-81",
     "collectionId": "rasik-charitra-katha",
     "index": 48,
     "titleDevanagari": "मीरा चरित्र भाग - 81",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-81",
+    "slug": "mira-chritr-bhag-81",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1302,12 +1302,12 @@
     "verseNumber": 43
   },
   {
-    "id": "मर-चरतर-भग-21",
+    "id": "mira-chritr-bhag-21",
     "collectionId": "rasik-charitra-katha",
     "index": 49,
     "titleDevanagari": "मीरा चरित्र भाग - 21",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-21",
+    "slug": "mira-chritr-bhag-21",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1326,12 +1326,12 @@
     "verseNumber": 44
   },
   {
-    "id": "मर-चरतर-भग-4",
+    "id": "mira-chritr-bhag-4",
     "collectionId": "rasik-charitra-katha",
     "index": 50,
     "titleDevanagari": "मीरा चरित्र भाग - 4",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-4",
+    "slug": "mira-chritr-bhag-4",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1348,12 +1348,12 @@
     "verseNumber": 45
   },
   {
-    "id": "मर-चरतर-भग-79",
+    "id": "mira-chritr-bhag-79",
     "collectionId": "rasik-charitra-katha",
     "index": 51,
     "titleDevanagari": "मीरा चरित्र भाग - 79",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-79",
+    "slug": "mira-chritr-bhag-79",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1369,12 +1369,12 @@
     "verseNumber": 47
   },
   {
-    "id": "मर-चरतर-भग-31",
+    "id": "mira-chritr-bhag-31",
     "collectionId": "rasik-charitra-katha",
     "index": 52,
     "titleDevanagari": "मीरा चरित्र भाग - 31",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-31",
+    "slug": "mira-chritr-bhag-31",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1427,12 +1427,12 @@
     "verseNumber": 49
   },
   {
-    "id": "मर-चरतर-भग-64",
+    "id": "mira-chritr-bhag-64",
     "collectionId": "rasik-charitra-katha",
     "index": 54,
     "titleDevanagari": "मीरा चरित्र भाग - 64",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-64",
+    "slug": "mira-chritr-bhag-64",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1450,12 +1450,12 @@
     "verseNumber": 50
   },
   {
-    "id": "मर-चरतर-भग-36",
+    "id": "mira-chritr-bhag-36",
     "collectionId": "rasik-charitra-katha",
     "index": 55,
     "titleDevanagari": "मीरा चरित्र भाग - 36",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-36",
+    "slug": "mira-chritr-bhag-36",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1472,12 +1472,12 @@
     "verseNumber": 51
   },
   {
-    "id": "मर-चरतर-भग-15",
+    "id": "mira-chritr-bhag-15",
     "collectionId": "rasik-charitra-katha",
     "index": 56,
     "titleDevanagari": "मीरा चरित्र भाग - 15",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-15",
+    "slug": "mira-chritr-bhag-15",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1517,12 +1517,12 @@
     "verseNumber": 52
   },
   {
-    "id": "मर-चरतर-भग-65",
+    "id": "mira-chritr-bhag-65",
     "collectionId": "rasik-charitra-katha",
     "index": 57,
     "titleDevanagari": "मीरा चरित्र भाग - 65",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-65",
+    "slug": "mira-chritr-bhag-65",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1542,12 +1542,12 @@
     "verseNumber": 53
   },
   {
-    "id": "मर-चरतर-भग-78",
+    "id": "mira-chritr-bhag-78",
     "collectionId": "rasik-charitra-katha",
     "index": 58,
     "titleDevanagari": "मीरा चरित्र भाग - 78",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-78",
+    "slug": "mira-chritr-bhag-78",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1571,12 +1571,12 @@
     "verseNumber": 55
   },
   {
-    "id": "मर-चरतर-भग-54",
+    "id": "mira-chritr-bhag-54",
     "collectionId": "rasik-charitra-katha",
     "index": 59,
     "titleDevanagari": "मीरा चरित्र भाग - 54",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-54",
+    "slug": "mira-chritr-bhag-54",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1615,12 +1615,12 @@
     "verseNumber": 57
   },
   {
-    "id": "मर-चरतर-भग-66",
+    "id": "mira-chritr-bhag-66",
     "collectionId": "rasik-charitra-katha",
     "index": 61,
     "titleDevanagari": "मीरा चरित्र भाग - 66",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-66",
+    "slug": "mira-chritr-bhag-66",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1638,12 +1638,12 @@
     "verseNumber": 59
   },
   {
-    "id": "मर-चरतर-भग-30",
+    "id": "mira-chritr-bhag-30",
     "collectionId": "rasik-charitra-katha",
     "index": 62,
     "titleDevanagari": "मीरा चरित्र भाग - 30",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-30",
+    "slug": "mira-chritr-bhag-30",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1681,12 +1681,12 @@
     "verseNumber": 61
   },
   {
-    "id": "मर-चरतर-भग-86",
+    "id": "mira-chritr-bhag-86",
     "collectionId": "rasik-charitra-katha",
     "index": 64,
     "titleDevanagari": "मीरा चरित्र भाग - 86",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-86",
+    "slug": "mira-chritr-bhag-86",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1709,12 +1709,12 @@
     "verseNumber": 62
   },
   {
-    "id": "मर-चरतर-भग-61",
+    "id": "mira-chritr-bhag-61",
     "collectionId": "rasik-charitra-katha",
     "index": 65,
     "titleDevanagari": "मीरा चरित्र भाग - 61",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-61",
+    "slug": "mira-chritr-bhag-61",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1742,12 +1742,12 @@
     "verseNumber": 63
   },
   {
-    "id": "मर-चरतर-भग-1",
+    "id": "mira-chritr-bhag-1",
     "collectionId": "rasik-charitra-katha",
     "index": 66,
     "titleDevanagari": "मीरा चरित्र भाग - 1",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-1",
+    "slug": "mira-chritr-bhag-1",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1796,12 +1796,12 @@
     "verseNumber": 64
   },
   {
-    "id": "मर-चरतर-भग-71",
+    "id": "mira-chritr-bhag-71",
     "collectionId": "rasik-charitra-katha",
     "index": 67,
     "titleDevanagari": "मीरा चरित्र भाग - 71",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-71",
+    "slug": "mira-chritr-bhag-71",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1842,12 +1842,12 @@
     "verseNumber": 65
   },
   {
-    "id": "मर-चरतर-भग-14",
+    "id": "mira-chritr-bhag-14",
     "collectionId": "rasik-charitra-katha",
     "index": 68,
     "titleDevanagari": "मीरा चरित्र भाग - 14",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-14",
+    "slug": "mira-chritr-bhag-14",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1868,12 +1868,12 @@
     "verseNumber": 66
   },
   {
-    "id": "मर-चरतर-भग-20",
+    "id": "mira-chritr-bhag-20",
     "collectionId": "rasik-charitra-katha",
     "index": 69,
     "titleDevanagari": "मीरा चरित्र भाग - 20",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-20",
+    "slug": "mira-chritr-bhag-20",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1902,12 +1902,12 @@
     "verseNumber": 67
   },
   {
-    "id": "मर-चरतर-भग-24",
+    "id": "mira-chritr-bhag-24",
     "collectionId": "rasik-charitra-katha",
     "index": 70,
     "titleDevanagari": "मीरा चरित्र भाग - 24",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-24",
+    "slug": "mira-chritr-bhag-24",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2089,12 +2089,12 @@
     "verseNumber": 70
   },
   {
-    "id": "मर-चरतर-भग-7",
+    "id": "mira-chritr-bhag-7",
     "collectionId": "rasik-charitra-katha",
     "index": 73,
     "titleDevanagari": "मीरा चरित्र भाग - 7",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-7",
+    "slug": "mira-chritr-bhag-7",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2111,12 +2111,12 @@
     "verseNumber": 71
   },
   {
-    "id": "मर-चरतर-भग-82",
+    "id": "mira-chritr-bhag-82",
     "collectionId": "rasik-charitra-katha",
     "index": 74,
     "titleDevanagari": "मीरा चरित्र भाग - 82",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-82",
+    "slug": "mira-chritr-bhag-82",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2180,12 +2180,12 @@
     "verseNumber": 74
   },
   {
-    "id": "मर-चरतर-भग-37",
+    "id": "mira-chritr-bhag-37",
     "collectionId": "rasik-charitra-katha",
     "index": 77,
     "titleDevanagari": "मीरा चरित्र भाग - 37",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-37",
+    "slug": "mira-chritr-bhag-37",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2206,12 +2206,12 @@
     "verseNumber": 75
   },
   {
-    "id": "मर-चरतर-भग-38",
+    "id": "mira-chritr-bhag-38",
     "collectionId": "rasik-charitra-katha",
     "index": 78,
     "titleDevanagari": "मीरा चरित्र भाग - 38",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-38",
+    "slug": "mira-chritr-bhag-38",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2238,12 +2238,12 @@
     "verseNumber": 76
   },
   {
-    "id": "मर-चरतर-भग-77",
+    "id": "mira-chritr-bhag-77",
     "collectionId": "rasik-charitra-katha",
     "index": 79,
     "titleDevanagari": "मीरा चरित्र भाग - 77",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-77",
+    "slug": "mira-chritr-bhag-77",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2260,12 +2260,12 @@
     "verseNumber": 77
   },
   {
-    "id": "मर-चरतर-भग-40",
+    "id": "mira-chritr-bhag-40",
     "collectionId": "rasik-charitra-katha",
     "index": 80,
     "titleDevanagari": "मीरा चरित्र भाग - 40",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-40",
+    "slug": "mira-chritr-bhag-40",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2284,12 +2284,12 @@
     "verseNumber": 78
   },
   {
-    "id": "मर-चरतर-भग-25",
+    "id": "mira-chritr-bhag-25",
     "collectionId": "rasik-charitra-katha",
     "index": 81,
     "titleDevanagari": "मीरा चरित्र भाग - 25",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-25",
+    "slug": "mira-chritr-bhag-25",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2306,12 +2306,12 @@
     "verseNumber": 80
   },
   {
-    "id": "मर-चरतर-भग-70",
+    "id": "mira-chritr-bhag-70",
     "collectionId": "rasik-charitra-katha",
     "index": 82,
     "titleDevanagari": "मीरा चरित्र भाग - 70",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-70",
+    "slug": "mira-chritr-bhag-70",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2332,12 +2332,12 @@
     "verseNumber": 81
   },
   {
-    "id": "मर-चरतर-भग-80",
+    "id": "mira-chritr-bhag-80",
     "collectionId": "rasik-charitra-katha",
     "index": 83,
     "titleDevanagari": "मीरा चरित्र भाग - 80",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-80",
+    "slug": "mira-chritr-bhag-80",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2358,12 +2358,12 @@
     "verseNumber": 82
   },
   {
-    "id": "मर-चरतर-भग-42",
+    "id": "mira-chritr-bhag-42",
     "collectionId": "rasik-charitra-katha",
     "index": 84,
     "titleDevanagari": "मीरा चरित्र भाग - 42",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-42",
+    "slug": "mira-chritr-bhag-42",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2386,12 +2386,12 @@
     "verseNumber": 83
   },
   {
-    "id": "अकथ-कथ",
+    "id": "akth-ktha",
     "collectionId": "rasik-charitra-katha",
     "index": 85,
     "titleDevanagari": "अकथ कथा",
     "author": "श्री रसिक चरित",
-    "slug": "अकथ-कथ",
+    "slug": "akth-ktha",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2409,12 +2409,12 @@
     "verseNumber": 84
   },
   {
-    "id": "मर-चरतर-भग-52",
+    "id": "mira-chritr-bhag-52",
     "collectionId": "rasik-charitra-katha",
     "index": 86,
     "titleDevanagari": "मीरा चरित्र भाग - 52",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-52",
+    "slug": "mira-chritr-bhag-52",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2435,12 +2435,12 @@
     "verseNumber": 85
   },
   {
-    "id": "मर-चरतर-भग-39",
+    "id": "mira-chritr-bhag-39",
     "collectionId": "rasik-charitra-katha",
     "index": 87,
     "titleDevanagari": "मीरा चरित्र भाग - 39",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-39",
+    "slug": "mira-chritr-bhag-39",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2462,12 +2462,12 @@
     "verseNumber": 86
   },
   {
-    "id": "मर-चरतर-भग-75",
+    "id": "mira-chritr-bhag-75",
     "collectionId": "rasik-charitra-katha",
     "index": 88,
     "titleDevanagari": "मीरा चरित्र भाग - 75",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-75",
+    "slug": "mira-chritr-bhag-75",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2502,12 +2502,12 @@
     "verseNumber": 87
   },
   {
-    "id": "मर-चरतर-भग-91",
+    "id": "mira-chritr-bhag-91",
     "collectionId": "rasik-charitra-katha",
     "index": 89,
     "titleDevanagari": "मीरा चरित्र भाग - 91",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-91",
+    "slug": "mira-chritr-bhag-91",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2526,12 +2526,12 @@
     "verseNumber": 88
   },
   {
-    "id": "मर-चरतर-भग-12",
+    "id": "mira-chritr-bhag-12",
     "collectionId": "rasik-charitra-katha",
     "index": 90,
     "titleDevanagari": "मीरा चरित्र भाग - 12",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-12",
+    "slug": "mira-chritr-bhag-12",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2548,12 +2548,12 @@
     "verseNumber": 89
   },
   {
-    "id": "मर-चरतर-भग-87",
+    "id": "mira-chritr-bhag-87",
     "collectionId": "rasik-charitra-katha",
     "index": 91,
     "titleDevanagari": "मीरा चरित्र भाग - 87",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-87",
+    "slug": "mira-chritr-bhag-87",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2570,12 +2570,12 @@
     "verseNumber": 90
   },
   {
-    "id": "मर-चरतर-भग-85",
+    "id": "mira-chritr-bhag-85",
     "collectionId": "rasik-charitra-katha",
     "index": 92,
     "titleDevanagari": "मीरा चरित्र भाग - 85",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-85",
+    "slug": "mira-chritr-bhag-85",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2593,12 +2593,12 @@
     "verseNumber": 91
   },
   {
-    "id": "मर-चरतर-भग-6",
+    "id": "mira-chritr-bhag-6",
     "collectionId": "rasik-charitra-katha",
     "index": 93,
     "titleDevanagari": "मीरा चरित्र भाग - 6",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-6",
+    "slug": "mira-chritr-bhag-6",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2615,12 +2615,12 @@
     "verseNumber": 93
   },
   {
-    "id": "मर-चरतर-भग-16",
+    "id": "mira-chritr-bhag-16",
     "collectionId": "rasik-charitra-katha",
     "index": 94,
     "titleDevanagari": "मीरा चरित्र भाग - 16",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-16",
+    "slug": "mira-chritr-bhag-16",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2650,12 +2650,12 @@
     "verseNumber": 94
   },
   {
-    "id": "मर-चरतर-भग-23",
+    "id": "mira-chritr-bhag-23",
     "collectionId": "rasik-charitra-katha",
     "index": 95,
     "titleDevanagari": "मीरा चरित्र भाग - 23",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-23",
+    "slug": "mira-chritr-bhag-23",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2706,12 +2706,12 @@
     "verseNumber": 96
   },
   {
-    "id": "मर-चरतर-भग-88",
+    "id": "mira-chritr-bhag-88",
     "collectionId": "rasik-charitra-katha",
     "index": 97,
     "titleDevanagari": "मीरा चरित्र भाग - 88",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-88",
+    "slug": "mira-chritr-bhag-88",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2727,12 +2727,12 @@
     "verseNumber": 97
   },
   {
-    "id": "मर-चरतर-भग-60",
+    "id": "mira-chritr-bhag-60",
     "collectionId": "rasik-charitra-katha",
     "index": 98,
     "titleDevanagari": "मीरा चरित्र भाग - 60",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-60",
+    "slug": "mira-chritr-bhag-60",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2753,12 +2753,12 @@
     "verseNumber": 98
   },
   {
-    "id": "मर-चरतर-भग-10",
+    "id": "mira-chritr-bhag-10",
     "collectionId": "rasik-charitra-katha",
     "index": 99,
     "titleDevanagari": "मीरा चरित्र भाग - 10",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-10",
+    "slug": "mira-chritr-bhag-10",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2777,12 +2777,12 @@
     "verseNumber": 99
   },
   {
-    "id": "मर-चरतर-भग-48",
+    "id": "mira-chritr-bhag-48",
     "collectionId": "rasik-charitra-katha",
     "index": 100,
     "titleDevanagari": "मीरा चरित्र भाग - 48",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-48",
+    "slug": "mira-chritr-bhag-48",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2822,12 +2822,12 @@
     "verseNumber": 101
   },
   {
-    "id": "मर-चरतर-भग-63",
+    "id": "mira-chritr-bhag-63",
     "collectionId": "rasik-charitra-katha",
     "index": 102,
     "titleDevanagari": "मीरा चरित्र भाग - 63",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-63",
+    "slug": "mira-chritr-bhag-63",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2848,12 +2848,12 @@
     "verseNumber": 102
   },
   {
-    "id": "मर-चरतर-भग-62",
+    "id": "mira-chritr-bhag-62",
     "collectionId": "rasik-charitra-katha",
     "index": 103,
     "titleDevanagari": "मीरा चरित्र भाग - 62",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-62",
+    "slug": "mira-chritr-bhag-62",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2874,12 +2874,12 @@
     "verseNumber": 103
   },
   {
-    "id": "मर-चरतर-भग-90",
+    "id": "mira-chritr-bhag-90",
     "collectionId": "rasik-charitra-katha",
     "index": 104,
     "titleDevanagari": "मीरा चरित्र भाग - 90",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-90",
+    "slug": "mira-chritr-bhag-90",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2902,12 +2902,12 @@
     "verseNumber": 104
   },
   {
-    "id": "मर-चरतर-भग-5",
+    "id": "mira-chritr-bhag-5",
     "collectionId": "rasik-charitra-katha",
     "index": 105,
     "titleDevanagari": "मीरा चरित्र भाग - 5",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-5",
+    "slug": "mira-chritr-bhag-5",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2926,12 +2926,12 @@
     "verseNumber": 105
   },
   {
-    "id": "मर-चरतर-भग-67",
+    "id": "mira-chritr-bhag-67",
     "collectionId": "rasik-charitra-katha",
     "index": 106,
     "titleDevanagari": "मीरा चरित्र भाग - 67",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-67",
+    "slug": "mira-chritr-bhag-67",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2948,12 +2948,12 @@
     "verseNumber": 106
   },
   {
-    "id": "मर-चरतर-भग-34",
+    "id": "mira-chritr-bhag-34",
     "collectionId": "rasik-charitra-katha",
     "index": 107,
     "titleDevanagari": "मीरा चरित्र भाग - 34",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-34",
+    "slug": "mira-chritr-bhag-34",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2999,12 +2999,12 @@
     "verseNumber": 107
   },
   {
-    "id": "मर-चरतर-भग-72",
+    "id": "mira-chritr-bhag-72",
     "collectionId": "rasik-charitra-katha",
     "index": 108,
     "titleDevanagari": "मीरा चरित्र भाग - 72",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-72",
+    "slug": "mira-chritr-bhag-72",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -3026,12 +3026,12 @@
     "verseNumber": 108
   },
   {
-    "id": "मर-चरतर-भग-8",
+    "id": "mira-chritr-bhag-8",
     "collectionId": "rasik-charitra-katha",
     "index": 109,
     "titleDevanagari": "मीरा चरित्र भाग - 8",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-8",
+    "slug": "mira-chritr-bhag-8",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -3048,12 +3048,12 @@
     "verseNumber": 109
   },
   {
-    "id": "मर-चरतर-भग-26",
+    "id": "mira-chritr-bhag-26",
     "collectionId": "rasik-charitra-katha",
     "index": 110,
     "titleDevanagari": "मीरा चरित्र भाग - 26",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-26",
+    "slug": "mira-chritr-bhag-26",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -3073,12 +3073,12 @@
     "verseNumber": 110
   },
   {
-    "id": "मर-चरतर-भग-9",
+    "id": "mira-chritr-bhag-9",
     "collectionId": "rasik-charitra-katha",
     "index": 111,
     "titleDevanagari": "मीरा चरित्र भाग - 9",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-9",
+    "slug": "mira-chritr-bhag-9",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -3099,12 +3099,12 @@
     "verseNumber": 111
   },
   {
-    "id": "मर-चरतर-भग-2",
+    "id": "mira-chritr-bhag-2",
     "collectionId": "rasik-charitra-katha",
     "index": 112,
     "titleDevanagari": "मीरा चरित्र भाग - 2",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-2",
+    "slug": "mira-chritr-bhag-2",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -3127,12 +3127,12 @@
     "verseNumber": 112
   },
   {
-    "id": "मर-चरतर-भग-35",
+    "id": "mira-chritr-bhag-35",
     "collectionId": "rasik-charitra-katha",
     "index": 113,
     "titleDevanagari": "मीरा चरित्र भाग - 35",
     "author": "श्री रसिक चरित",
-    "slug": "मर-चरतर-भग-35",
+    "slug": "mira-chritr-bhag-35",
     "verses": [
       {
         "stanzaNumber": 1,

@@ -9,6 +9,7 @@ import chapterSnippetsData from '../src/data/chapterSnippets.json';
 import canonicalGranthasData from '../src/data/canonicalGranthas.json';
 import canonicalSaintsData from '../src/data/canonicalSaints.json';
 import padaSnippetsData from '../src/data/padaSnippets.json';
+import legacySlugRedirectsData from '../src/data/legacySlugRedirects.json';
 
 interface Env {}
 
@@ -562,20 +563,36 @@ export const onRequest: PagesFunction<Env> = async (context) => {
           headers: {
             'Content-Type': 'application/xml; charset=UTF-8',
             'Cache-Control': 'public, max-age=86400, s-maxage=604800',
+            'CDN-Cache-Control': 'public, max-age=604800',
+            'Cloudflare-CDN-Cache-Control': 'public, max-age=604800',
           },
         }
       );
     }
+
+    const headers = new Headers(res.headers);
     if (isStaging) {
-      const headers = new Headers(res.headers);
       headers.set('X-Robots-Tag', 'noindex, nofollow');
-      return new Response(res.body, {
-        status: res.status,
-        statusText: res.statusText,
-        headers,
-      });
+    } else if (res.status === 200) {
+      // Maximize Cloudflare CDN Cache Hit Rate
+      if (
+        pathname.startsWith('/assets/') ||
+        (pathname.startsWith('/data/') && !pathname.endsWith('manifest.json') && !pathname.endsWith('catalog.json'))
+      ) {
+        headers.set('Cache-Control', 'public, max-age=31536000, immutable');
+        headers.set('CDN-Cache-Control', 'public, max-age=31536000');
+        headers.set('Cloudflare-CDN-Cache-Control', 'public, max-age=31536000');
+      } else if (pathname.endsWith('.xml') || pathname.endsWith('.txt')) {
+        headers.set('Cache-Control', 'public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800');
+        headers.set('CDN-Cache-Control', 'public, max-age=86400, stale-while-revalidate=604800');
+        headers.set('Cloudflare-CDN-Cache-Control', 'public, max-age=86400, stale-while-revalidate=604800');
+      }
     }
-    return res;
+    return new Response(res.body, {
+      status: res.status,
+      statusText: res.statusText,
+      headers,
+    });
   }
 
   // Clean static route parsing: /pad/:id, /sant/:id, /grantha/:id, /grantha/:id/:ch, pillar paths
@@ -614,6 +631,24 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   const qAuthor = url.searchParams.get('author') || pathAuthor;
   const qChapter = url.searchParams.get('chapter') || pathChapter;
 
+  // 3b. Legacy Slug 301 Permanent Redirects (converts non-ASCII/encoded slugs to clean Hinglish ASCII)
+  const rawPadTarget = qPad || pathPad;
+  if (rawPadTarget && !isStaging) {
+    const decodedPadTarget = (() => {
+      try {
+        return decodeURIComponent(rawPadTarget).trim().toLowerCase();
+      } catch {
+        return rawPadTarget.trim().toLowerCase();
+      }
+    })();
+    const redirectedPad =
+      (legacySlugRedirectsData as Record<string, string>)[rawPadTarget] ||
+      (legacySlugRedirectsData as Record<string, string>)[decodedPadTarget];
+    if (redirectedPad && redirectedPad !== rawPadTarget) {
+      return Response.redirect(`https://bhav.vrindopnishad.in/pad/${encodeURIComponent(redirectedPad)}`, 301);
+    }
+  }
+
   // 4. Cross-Domain 301 Permanent Redirects for duplicated URLs
   const epicPad = qPad ? mapPadToEpicChapter(qPad) : null;
 
@@ -635,6 +670,16 @@ export const onRequest: PagesFunction<Env> = async (context) => {
         301
       );
     } else {
+      if (qGrantha && !EPICS_META[qGrantha]) {
+        return Response.redirect(`https://bhav.vrindopnishad.in/grantha/${encodeURIComponent(qGrantha)}`, 301);
+      }
+      if (pathname.startsWith('/grantha/')) {
+        const segs = pathname.slice('/grantha/'.length).split('/').filter(Boolean);
+        const gName = segs[0] ? decodeURIComponent(segs[0]) : '';
+        if (gName && !EPICS_META[gName]) {
+          return Response.redirect(`https://bhav.vrindopnishad.in${url.pathname}${url.search}`, 301);
+        }
+      }
       if (qTab && qTab !== 'granthas') {
         return Response.redirect(`https://bhav.vrindopnishad.in${url.search}`, 301);
       }
@@ -726,7 +771,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     const openingVerse = known?.sampleVerse || snippet?.[3] || '';
     const romanTitle = formatSlug(cleanPadId);
 
-    title = `${padTitle} (${padAuthor}) • पावन रसिक पद | वृन्दोपनिषद् 2.0 (Vrindopnishad)`;
+    title = `${padTitle} (${padAuthor}) - ${granthaLabel} • संपूर्ण पद, भावार्थ व व्याख्या | ${romanTitle} Lyrics in Hindi & English - वृन्दोपनिषद् 2.0 (Vrindopnishad)`;
     description = openingVerse
       ? `«${openingVerse.replace(/\n+/g, ' ')}» ${padTitle} (${granthaLabel}) के पावन पद, मूल पाठ व भावार्थ। रचयिता: ${padAuthor}। वृन्दोपनिषद् 2.0`
       : `${padTitle} (${granthaLabel}) के पावन पद, मूल पाठ, भावार्थ व नित्य अनुशीलन। रचयिता: ${padAuthor}। वृन्दोपनिषद् 2.0`;
@@ -1166,8 +1211,9 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   } else if (qGrantha && (GRANTHAS_MAP.has(qGrantha) || GRANTHAS_MAP.has(decodeURIComponent(qGrantha).trim()))) {
     const g = GRANTHAS_MAP.get(qGrantha) || GRANTHAS_MAP.get(decodeURIComponent(qGrantha).trim())!;
     const authorText = g.author ? ` (${g.author})` : '';
-    title = `${g.name}${authorText} • संपूर्ण वाणी संग्रह | वृन्दोपनिषद् 2.0 (Vrindopnishad)`;
-    description = `${g.description || g.name} के समस्त पावन पदों व श्लोकों का संग्रह। वृन्दोपनिषद् 2.0`;
+    const romanTitle = formatSlug(g.id || qGrantha);
+    title = `${g.name}${authorText} • संपूर्ण मूल पाठ, पद संग्रह, भावार्थ व व्याख्या | ${romanTitle} Lyrics & Meaning - वृन्दोपनिषद् 2.0 (Vrindopnishad)`;
+    description = `${g.description || g.name} के समस्त पावन पदों व श्लोकों का प्रामाणिक संग्रह। रचयिता: ${g.author || 'रसिक संत'}। नित्य स्वाध्याय व पारायण। वृन्दोपनिषद् 2.0`;
     canonicalUrl = `https://bhav.vrindopnishad.in/grantha/${encodeURIComponent(g.id || qGrantha)}`;
 
     entitySchema = {
@@ -1429,6 +1475,11 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   resHeaders.set('Content-Type', 'text/html; charset=UTF-8');
   if (isStaging) {
     resHeaders.set('X-Robots-Tag', 'noindex, nofollow');
+  } else {
+    // 1-hour browser cache, 24-hour Cloudflare Edge cache, 7-day stale-while-revalidate
+    resHeaders.set('Cache-Control', 'public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800');
+    resHeaders.set('CDN-Cache-Control', 'public, max-age=86400, stale-while-revalidate=604800');
+    resHeaders.set('Cloudflare-CDN-Cache-Control', 'public, max-age=86400, stale-while-revalidate=604800');
   }
 
   return rewriter.transform(

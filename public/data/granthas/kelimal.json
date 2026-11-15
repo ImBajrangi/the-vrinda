@@ -10,7 +10,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विभास)",
           "ज्यौंही-ज्यौंही तुम राखत हौ, त्यौंही-त्यौंही रहियत हौं, हो हरि। [1]",
           "और तौ अचरचे पाँय धरौं सो तौ कहौ, कौन के पैंड़ भरि? [2]",
           "जद्यपि कियौ चाहौं, अपनौ मनभायौ, सो तौ क्यों करि सकौं, जो तुम राखौ पकरि। [3]",
@@ -21,7 +20,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 1
+    "verseNumber": 1,
+    "rag": "विभास"
   },
   {
     "id": "ruchi-ke-prakaas-paraspar-khelan-laage-shri-swami-haridas-ji-kelimal-2",
@@ -34,7 +34,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कान्हरौ)",
           "रुचि के प्रकास परस्पर खेलन लागे। [1]",
           "राग रागिनी अलौकिक उपजत नृत्य संगीत अलग लाग लागे॥ [2]",
           "राग ही में रंग रह्यौ रंग के समुद्र में दोऊ झागे। [3]",
@@ -46,7 +45,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 2
+    "verseNumber": 2,
+    "rag": "कान्हरौ"
   },
   {
     "id": "kahu-ko-bas-nahin-tumhari-kripa-tein-swami-shri-haridas-ji-ashtadash-pada-02",
@@ -59,7 +59,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विभास)",
           "काहू कौ बस नाहिं, तुम्हारी कृपा तैं सब होय बिहारी-बिहारिनि। [1]",
           "और मिथ्या प्रपंच, काहे कौं भाषियै, सु तौ है हारिनि॥ [2]",
           "जाहि तुमसौं हित, तासौं तुम हित करौ, सब सुख कारनि। [3]",
@@ -70,7 +69,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 2
+    "verseNumber": 2,
+    "rag": "विभास"
   },
   {
     "id": "kabhu-kabhu-mana-ita-uta-jaat-swami-shri-haridas-astadash-pada-03",
@@ -83,7 +83,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विभास)",
           "कबहूँ-कबहूँ मन इत-उत जात, यातैंब कौन अधिक सुख। [1]",
           "बहुत भाँतिन घत आनि राख्यौ, नाहिं तौ पावतौ दुख॥ [2]",
           "कोटि काम लावन्य बिहारी, ताके मुहांचुहीं सब सुख लियैं रहत रुख। [3]",
@@ -94,7 +93,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 3
+    "verseNumber": 3,
+    "rag": "विभास"
   },
   {
     "id": "aiseinyi-dekhat-rahaun-janam-suphal-kari-maanaun-shri-swami-haridas-ji-kelimal-3",
@@ -107,7 +107,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कान्हरौ)",
           "ऐसैंई देखत रहौं जनम सुफल करि मानौं। [1]",
           "प्यारे की भाँवती भाँवती के प्यारे जुगल किशोर जानौं॥ [2]",
           "छिनु न टरौ पल होहु न इत उत रहौ एक तानौं। [3]",
@@ -118,7 +117,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 3
+    "verseNumber": 3,
+    "rag": "कान्हरौ"
   },
   {
     "id": "hari-bhaj-hari-bhaj-lalita-avtar-shri-haridas-ji-ashtadash-pada-04",
@@ -153,7 +153,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कान्हरौ)",
           "जोरी विचित्र बनाई री माई काहू मन के हरन कौं। [1]",
           "चितवत दृष्टि टरत नहीं इत उत",
           "मन वच क्रम याही संग भरन कौं॥ [2]",
@@ -166,7 +165,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 4
+    "verseNumber": 4,
+    "rag": "कान्हरौ"
   },
   {
     "id": "pyaaree-jaiso-tero-aankhin-mein-swami-haridas-kelimal",
@@ -201,7 +201,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कानहरौ)",
           "प्यारी जैसो तेरो आँखिन में मैं होँ अपनपौं देखत,",
           "तैसो तुम देखति हो किधौं नाहीं॥",
           "हौं तोसौं कहौं प्यारे, आँखिन मूंदी रहौं,",
@@ -212,7 +211,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 6
+    "verseNumber": 6,
+    "rag": "कानहरौ"
   },
   {
     "id": "bande-akhatyaar-bhala-lalita-avtar-shri-swami-haridas-ji-astadash-pada-6",
@@ -225,7 +225,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "[राग आसावरी]",
           "बंदे, अखतियार भला।",
           "चित न डुलाव, आव समाधि-भीतर, न होहु अगला॥ [1]",
           "न फ़िर दर-दर पिदर-दर, न होहु अँधला।",
@@ -270,7 +269,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कान्हरौ)",
           "प्यारी तेरौ बदन अमृत की पंक तामें बींधे नैंन द्वै। [1]",
           "चित चल्यौ काढ़नि कौं बिकच संधि संपुट में रह्यौ भ्वै॥ [2]",
           "बहुत उपाइ आहि री प्यारी पै न करत स्वे। [3]",
@@ -281,7 +279,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 7
+    "verseNumber": 7,
+    "rag": "कान्हरौ"
   },
   {
     "id": "aavat-jaat-bajaavat-nupur-swami-haridas-ji-kelimal-8",
@@ -294,7 +293,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कान्हरौ)",
           "आवत जात बजावत नूपुर।",
           "मेरौ तेरौ न्याव दई के आगैं",
           "जो कुछ करौ सो हमारे सिर ऊपर॥ [1]",
@@ -307,7 +305,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 8
+    "verseNumber": 8,
+    "rag": "कान्हरौ"
   },
   {
     "id": "tinka-jyon-bayaar-ke-bas-lalita-avtar-shri-swami-haridas-ji-kelimaal-8",
@@ -320,7 +319,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग आसावरी)",
           "तिनुका ज्यौं बयार के बस।",
           "ज्यौं चाहै त्यौं उड़ाय लै डारे अपने रस॥ [1]",
           "ब्रह्म लोक सिवलोक और लोक अस।",
@@ -331,7 +329,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 8
+    "verseNumber": 8,
+    "rag": "आसावरी"
   },
   {
     "id": "drishti-chaump-bar-phanda-man-shri-swami-haridas-ji-kelimal-9",
@@ -344,7 +343,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कान्हरौ)",
           "दृष्टि चौंप बर फंदा मन राख्यौ लै पंछी बिहारी।",
           "चुनों सुभाव प्रेम जल अंग स्त्रवत",
           "पिवत न अघात रहे मुख निहारी॥ [1]",
@@ -356,7 +354,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 9
+    "verseNumber": 9,
+    "rag": "कान्हरौ"
   },
   {
     "id": "samudra-manusha-meen-nakar-shri-haridas-ji-ashtadash-pada-09",
@@ -369,7 +368,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग आसावरी)",
           "संसार समुद्र मनुष्य मीन नक्र मगर और जीब बहु बंदसि। [1]",
           "मन बयार प्रेरे स्नेह फंद फंदसि॥ [2]",
           "लोभ पिंजरा लोभी मरजिया पदारथ चारि खंद खंदसि। [3]",
@@ -380,7 +378,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 9
+    "verseNumber": 9,
+    "rag": "आसावरी"
   },
   {
     "id": "bhulainbhulain-maan-na-kari-ri-pyari-swami-haridas-ji-kelimal-10",
@@ -393,7 +392,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कान्हरौ)",
           "भूलैं-भूलैं मान न करि री प्यारी,",
           "तेरी भौंहें मैली देखति प्रान न रहततन। [1]",
           "ज्यौं न्यौछावर करौं प्यारी तो पै,",
@@ -408,7 +406,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 10
+    "verseNumber": 10,
+    "rag": "कान्हरौ"
   },
   {
     "id": "hari-ke-naam-kon-aalas-kat-karat-hai-re-shri-swami-haridas-ashtadash-pada-10",
@@ -421,7 +420,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग आसावरी)",
           "हरि के नाम कों आलस कत करत है रे काल फिरत सर सांधे। [1]",
           "बेर कुबेर कछू नहिं जानत चढ्यौ फिरत है कांधे॥ [2]",
           "हीरा बहुत जवाहर संचे कहा भयौ हस्ती दर बाँधे। [3]",
@@ -433,7 +431,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 10
+    "verseNumber": 10,
+    "rag": "आसावरी"
   },
   {
     "id": "dekhau-ini-logan-ki-laavani-lalita-avtar-shri-swami-haridas-ji-astadash-pada-11",
@@ -446,7 +445,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग आसावरी)",
           "देखौ इनि लोगन की लावनि।",
           "बूझत नाँहिं हरि चरनकमल कौं, मिथ्या जन्म गँवावनि॥ [1]",
           "जब जमदूत आइ घेरत, तब करत आप मन-भावनि।",
@@ -457,7 +455,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 11
+    "verseNumber": 11,
+    "rag": "आसावरी"
   },
   {
     "id": "baat-tau-kahat-kahi-gayi-lalita-avtar-shri-haridas-ji-kelimal-11",
@@ -470,7 +469,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कान्हरौ)",
           "बात तौ कहत कहि गई अब कठिन परी बिहारी।",
           "प्रान तौ नाहींने तन अस्तविस्त भये कहै कहा प्यारी॥",
           "भाँवते प्रकृति देखत जु स्रम भयौ बहुत हिया री।",
@@ -481,7 +479,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 11
+    "verseNumber": 11,
+    "rag": "कान्हरौ"
   },
   {
     "id": "hari-kau-aisoi-sab-khel-shri-swami-haridas-ashtadash-pada-13",
@@ -494,7 +493,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कल्याण)",
           "हरि कौ ऐसोई सब खेल।",
           "मृग तृष्णा जग ब्यापि रह्यों है कहूँ बिजौरौ न बेल॥ [1]",
           "धन-मद जोवन-मद राज-मद ज्यौं पंछिन में डेल।",
@@ -505,7 +503,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 13
+    "verseNumber": 13,
+    "rag": "कल्याण"
   },
   {
     "id": "ek-samai-ekaant-ban-mein-swami-haridas-kelimal-13",
@@ -518,7 +517,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कान्हरौ)",
           "एक समै एकांत बन में करत सिंगार परस्पर दोई।",
           "वे उनके वे उनके प्रतिबिंबनि देखत रहत परस्पर भोई॥ [1]",
           "जैसैं नीके आजु बनैं ऐसौं कबहूँ न बनैं",
@@ -530,7 +528,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 13
+    "verseNumber": 13,
+    "rag": "कान्हरौ"
   },
   {
     "id": "jhoothi-baat-saanchi-kari-dikhaavat-shri-swami-haridas-ashtadash-pad-14",
@@ -543,7 +542,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कल्याण एवं कान्हरौ)",
           "झूठी बात सांची करि दिखावत हौ हरि नागर। [1]",
           "निसि दिन बुनत उधेरत जात प्रपंच कौ सागर॥ [2]",
           "ठाट बनाय धरयौ मिहरी कौ है पुरुषतें आगर। [3]",
@@ -554,7 +552,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 14
+    "verseNumber": 14,
+    "rag": "कल्याण एवं कान्हरौ"
   },
   {
     "id": "radhe-chali-ri-hari-bolat-kokila-alaapat-shri-swami-haridas-kelimal-14",
@@ -567,7 +566,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कान्हरौ)",
           "राधे चलि री हरि बोलत कोकिला अलापत",
           "सुर देत पंछी राग बन्यो। [1]",
           "जहाँ मोर काछ बाँधे नृत्य करत",
@@ -582,7 +580,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 14
+    "verseNumber": 14,
+    "rag": "कान्हरौ"
   },
   {
     "id": "jagat-preeti-kari-dekhi-lalita-avatar-shri-swami-haridas-ji-ashtadash-pada-15",
@@ -595,7 +594,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कल्याण)",
           "जगत प्रीति करि देखी नाहिनें गटी कौ कोऊ। [1]",
           "छत्रपति रंक लौं देखे प्रकृति बिरोध बन्यों नहिं कोऊ॥ [2]",
           "दिन जो गये बहुत जनमनि के ऐसें जाउ जिनि कोऊ। [3]",
@@ -606,7 +604,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 15
+    "verseNumber": 15,
+    "rag": "कल्याण"
   },
   {
     "id": "terau-mag-jovat-laal-bihari-shri-swami-haridas-ji-kelimal-15",
@@ -619,7 +618,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कान्हरौ)",
           "तेरौ मग जोवत लाल बिहारी।",
           "तेरी समाधि अजहूँ नहीं छूटत चाहत नाहिंने नेंकु निहारी॥ [1]",
           "औचक आइ द्वै कर सौं मूँदे नैंन अरबराइ उठी चिहारी।",
@@ -630,7 +628,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 15
+    "verseNumber": 15,
+    "rag": "कान्हरौ"
   },
   {
     "id": "maani-tub-chali-ri-ek-sang-rahayau-keejai-swami-haridas-kelimal-16",
@@ -643,7 +642,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कान्हरौ)",
           "मानि तूब चलि री एक संग रह्यौ कीजै।",
           "तौ कीजै जो बिन देखे जीजै॥ [1]",
           "ये स्याम घन तुम दामिनी प्रेम पुंज बरषा रस पीजै।",
@@ -655,7 +653,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 16
+    "verseNumber": 16,
+    "rag": "कान्हरौ"
   },
   {
     "id": "log-to-bhulen-bhale-bhulen-shri-swami-haridas-ashtadash-pad-16",
@@ -668,7 +667,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कल्याण)",
           "लोग तो भूलैं भलैं भूलैं तुम जिनी भूलौ मालाधारी। [1]",
           "अपनौं पति छांडि औरनि सौं रति ज्यों दारनि में दारी॥ [2]",
           "स्याम कहत ते जीव मोते विमुख भए जिन दूसरि करि डारी। [3]",
@@ -679,7 +677,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 16
+    "verseNumber": 16,
+    "rag": "कल्याण"
   },
   {
     "id": "jaulaun-jeevai-taulaun-hari-bhaj-shri-swami-haridas-ji-ashtadash-pada-17",
@@ -692,7 +691,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कल्यान)",
           "जौलौं जीवै तौलौं हरि भज रे मन और बात सब बादि। [1]",
           "द्यौस चार के हला-भला में कहा लेइगौ लादि? [2]",
           "माया-मद, गुन-मद, जोवन-मद भूल्यौ नगर विवादि। [3]",
@@ -703,7 +701,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 17
+    "verseNumber": 17,
+    "rag": "कल्यान"
   },
   {
     "id": "tu-ris-chhaandi-ri-radhe-radhe-shri-swami-haridas-ji-kelimal-17",
@@ -716,7 +715,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कान्हरौ एवं धनाश्री)",
           "तू रिस छाँड़ि री राधे राधे। [1]",
           "ज्यौं ज्यौं तोकौं गहरु त्यौं त्यौं मोकौं बिथा री साधे साधे॥ [2]",
           "प्राननि कौ पोषत है री तेरे बचन सुनियत आधे आधे। [3]",
@@ -727,7 +725,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 17
+    "verseNumber": 17,
+    "rag": "कान्हरौ एवं धनाश्री"
   },
   {
     "id": "mai-ri-sahaj-jori-prakat-bhai-ju",
@@ -783,7 +782,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कान्हरौ)",
           "आज तृण टूटत है री, ललित त्रिभंगी पर ।",
           "चरन-चरन पर मुरली अधर धरैं, चितवनि बंक छबीली भू पर॥",
           "चलहु न बेगि राधिका पिय पै, जो भयौ चाहत हौ सर्वोपर ।",
@@ -795,7 +793,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 18
+    "verseNumber": 18,
+    "rag": "कान्हरौ"
   },
   {
     "id": "dvai-lar-motin-ki-ek-punja-shri-swami-haridas-ji-kelimal-20",
@@ -808,7 +807,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कान्हरौ)",
           "द्वै लर मोतिन की एक पुंजा पोति कौ सादा",
           "नेत्रनि दृष्टि लागै जिनि मेरी। [1]",
           "हाथनि चारि चारि चूरी पाँइनि इकसार चूरा",
@@ -823,7 +821,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 20
+    "verseNumber": 20,
+    "rag": "कान्हरौ"
   },
   {
     "id": "radhe-dulari-maan-taji-lalita-avatar-shri-swami-haridas-ji-kelimal-22",
@@ -836,7 +835,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कान्हरौ)",
           "राधे दुलारी मान तजि।",
           "प्रान पायौ जात है री मेरौ सजि॥ [1]",
           "अपनौं हाथ मेरे माथे धरि अभै दान दै अजि।",
@@ -848,7 +846,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 22
+    "verseNumber": 22,
+    "rag": "कान्हरौ"
   },
   {
     "id": "gun-ki-baat-radhe-tere-aagain-ko-jaanain-shri-swami-haridas-ji-kelimal-23",
@@ -861,7 +860,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कान्हरौ)",
           "गुन की बात राधे तेरे आगैं को जानैं",
           "जो जानैं सो कछु उनहारि। [1]",
           "नृत्य गीत ताल भेदनि के बिभेद जानैं",
@@ -876,7 +874,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 23
+    "verseNumber": 23,
+    "rag": "कान्हरौ"
   },
   {
     "id": "sughar-bhayai-hau-bihari-yahi-chhanh-tein-shri-swami-haridas-kelimal-24",
@@ -889,7 +888,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कान्हरौ)",
           "सुघर भयै हौ बिहारी याही छाँह तें।",
           "जे जे गटी सुघर सुर जानपनें की",
           "ते ते याही बाँह तें॥ [1]",
@@ -903,7 +901,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 24
+    "verseNumber": 24,
+    "rag": "कान्हरौ"
   },
   {
     "id": "pyari-teri-mahima-varni-na-jaye",
@@ -916,7 +915,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कानहारौं  )",
           "प्यारी तेरी महिमा वरनी न जाय",
           "जिहिं आलस काम बस कीन। [1]",
           "ताकौ दंड हमैं लागत है री भए आधीन। [2]",
@@ -929,7 +927,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 26
+    "verseNumber": 26,
+    "rag": "कानहारौं"
   },
   {
     "id": "aju-ki-banik-pyare-teri-pyari-tumhari-chhavi-barani-n-jai-chhabi-29",
@@ -962,7 +961,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कान्हरौं)",
           "आजु की बानिक प्यारे तेरी, प्यारी तुम्हारी बरनी न जाइ छबि। [1]",
           "इनकी स्यामता, तुम्हारी गौरता, जैसे सित-असित बैनी, रही ज्यौं भुवंगम दबी॥ [2]",
           "इनकौ पीताम्बर, तुम्हारौ नील निचोल, ज्यों ससि कुंदन जेब रबि। [3]",
@@ -973,7 +971,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 29
+    "verseNumber": 29,
+    "rag": "कान्हरौं"
   },
   {
     "id": "dekhi-dekhi-phul-bhi-lalita-avtar-shri-haridas-ji-kelimal-30",
@@ -986,7 +985,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कान्हरौं)",
           "देखि देखि फूल भई।",
           "प्रेम के प्रकास प्रीति के आगैं ह्वै जु लई॥[1]",
           "सुनि री सखी बागौ बन्यौ आजु",
@@ -999,7 +997,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 30
+    "verseNumber": 30,
+    "rag": "कान्हरौं"
   },
   {
     "id": "aisi-tau-vichitra-jori-bani-aisi-kahun-dekhi-suni-na-bani-swami-haridas-kelimal",
@@ -1032,7 +1031,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग केदारौ)",
           "ऐसी तौ बिचित्र जोरी बनी।",
           "ऐसी कहूँ देखी सुनी न भनी॥",
           "मनहुँ कनक सुदाह करि करि देह अद्भुत न ठनी।",
@@ -1043,7 +1041,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 31
+    "verseNumber": 31,
+    "rag": "केदारौ"
   },
   {
     "id": "baarak-shri-haridas-vilokat",
@@ -1079,7 +1078,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कान्हरौं)",
           "हँसत खेलत बोलत मिलत देखौ मेरी आँखिन सुख।",
           "बीरी परस्पर लेत खवावत ज्यौं घन दामिनि",
           "चमचमाप सोभा बहु भाँतिन सुख॥ [1]",
@@ -1093,7 +1091,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 32
+    "verseNumber": 32,
+    "rag": "कान्हरौं"
   },
   {
     "id": "adbhut-gati-upajati-ati-nrittat-lalita-avatar-shri-swami-haridas-ji-kelimal-33",
@@ -1106,7 +1105,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग केदारौ)",
           "अद्भुत गति उपजति अति नृत्तत",
           "दोऊ मंडल कुँवर किसोरी। [1]",
           "सकल सुधंग अंग भरि भोरी पिय नृत्तत",
@@ -1128,7 +1126,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 33
+    "verseNumber": 33,
+    "rag": "केदारौ"
   },
   {
     "id": "pyari-ju-jab-dekhon-swami-shri-hari-das-ji-kelimal",
@@ -1141,7 +1140,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग केदारौ)",
           "प्यारी जू जब जब देखौं तेरो मुख तब तब नयों नयों लागत।",
           "ऐसौ भ्रम होत मैं कहूँ देखि न री दुति कौं दुति लेखनी न कागत॥ [1]",
           "कोटि चन्द्र तैं कहाँ दुराये री नये नये रागत।",
@@ -1153,7 +1151,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 34
+    "verseNumber": 34,
+    "rag": "केदारौ"
   },
   {
     "id": "aisi-jiy-hot-jo-jiy-saun-jiy-milai-lalita-avatar-shri-swami-haridas-ji-kelimal-35",
@@ -1166,7 +1165,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग केदारौ)",
           "ऐसी जिय होत जो जिय सौं जिय मिलै",
           "तन सौं तन समाइ लैहुँ तौ देखौं कहा हो प्यारी। [1]",
           "तोही सौं हिलगि आँखैं आँखिन सौं मिली रहैं",
@@ -1181,7 +1179,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 35
+    "verseNumber": 35,
+    "rag": "केदारौ"
   },
   {
     "id": "man-lagay-priti-kijai-kar-karuva-saun-shri-haridas-astadash-pada",
@@ -1194,7 +1193,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग आसावरी)",
           "मन लगाय प्रीति कीजै, कर करवा सौं ब्रज-बीथिन दीजै सोहनी। [1]",
           "वृन्दावन सौं, बन-उपवन सौं, गुंज-माल हाथ पोहनी॥ [2]",
           "गो गो-सुतनि सौं, मृगी मृग-सुतनि सौं, और तन नैंकु न जोहनी। [3]",
@@ -1205,7 +1203,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 37
+    "verseNumber": 37,
+    "rag": "आसावरी"
   },
   {
     "id": "pyari-teri-baufin-baan-sumaar-shri-swami-haridas-ji-kelimal-37",
@@ -1218,7 +1217,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग केदारौ)",
           "प्यारी तेरी बॉफिन बान सुमार लागै भौहें ज्यों धनुष।",
           "एक ही बार यौं छूटत जैसें बादर बरषत इन्द्र अनख॥ [1]",
           "और हथियार को गनैं री चाहनि कनख।",
@@ -1230,7 +1228,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 37
+    "verseNumber": 37,
+    "rag": "केदारौ"
   },
   {
     "id": "rom-rom-rasna-jo-hoti-tau-tere-gun-na-bakhane-jaat",
@@ -1274,12 +1273,12 @@
     "verseNumber": 41
   },
   {
-    "id": "परगट-भई-ललतपरय-हरदस",
+    "id": "prgt-bhee-llitpriye-hridasi",
     "collectionId": "kelimal",
     "index": 53,
     "titleDevanagari": "प्रगट भई ललितप्रिये हरिदासी",
     "author": "स्वामी श्री हरिदास जी",
-    "slug": "परगट-भई-ललतपरय-हरदस",
+    "slug": "prgt-bhee-llitpriye-hridasi",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1306,7 +1305,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग केदारौ)",
           "फूलीं सब सखी देखि देखि। [1]",
           "जच्छ किन्नर नागलोक देव स्त्रीं",
           "रीझि रहीं भुव लेखि लेखि॥ [2]",
@@ -1320,7 +1318,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 42
+    "verseNumber": 42,
+    "rag": "केदारौ"
   },
   {
     "id": "piy-saun-tu-joee-joee-karai-soee-chhaajai-swami-haridas-kelimal-43",
@@ -1333,7 +1332,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग केदारौ)",
           "पिय सौं तू जोई जोई करै सोई छाजै ।",
           "और सेंघ करै जो तेरी सोई लाजै॥ [1]",
           "तू सुर ज्ञान सब अंग सखी री मान करत बेकाजै ।",
@@ -1345,7 +1343,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 43
+    "verseNumber": 43,
+    "rag": "केदारौ"
   },
   {
     "id": "soi-tau-bachan-mosaun-maani-shri-swami-haridas-ji-kelimal-44",
@@ -1358,7 +1357,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग केदारौ)",
           "सोई तौ बचन मोसौं मानि",
           "तैं मेरौ लाल मोह्यौ री साँवरौ।",
           "नव निकुंज सुख पुंज महल में",
@@ -1373,7 +1371,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 44
+    "verseNumber": 44,
+    "rag": "केदारौ"
   },
   {
     "id": "jo-kachu-kahat-ladilo-ladili-ju-shri-haridas-ji-kelimal-45",
@@ -1386,7 +1385,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग केदारौ)",
           "जो कछु कहत लाड़िलौ लाड़िली जू सुनियै कान दै। [1]",
           "जो जिय उपजै सो तिहारेई हित की कहत हौं आन दे॥ [2]",
           "मोहिं न पत्याहु तौ छाती टकटोरि देखौ पान दै। [3]",
@@ -1397,7 +1395,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 45
+    "verseNumber": 45,
+    "rag": "केदारौ"
   },
   {
     "id": "hari-ke-naam-ko-aalas-kyun-karat-hari-re-kaal-firat-sar-sandhey-swami-shri-haridas",
@@ -1430,7 +1429,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग केदारौ)",
           "प्यारी जू आगै चलि आगैं चलि",
           "गहवर बन भीतर जहाँ बोलै कोइल री।",
           "अति ही बिचित्र फूल पत्रनि की सेज्या रची",
@@ -1444,7 +1442,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 46
+    "verseNumber": 46,
+    "rag": "केदारौ"
   },
   {
     "id": "pyari-ab-soi-gayi-shri-swami-haridas-ji-kelimal-47",
@@ -1457,7 +1456,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग केदारौ)",
           "प्यारी अब सोइ गई।",
           "जयौं जयौं जगावत त्यौं त्यौं नहिं जागत",
           "प्रेम रस पान करि भोई गई॥ [1]",
@@ -1471,7 +1469,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 47
+    "verseNumber": 47,
+    "rag": "केदारौ"
   },
   {
     "id": "dol-jhulat-dulhani-dulahu",
@@ -1484,7 +1483,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग केदारौ)",
           "डोल झूलत दुलहिनि दूलहु। [1]",
           "उड़त अबीर कुमकुमा छिरकत",
           "खेल परस्पर सूलहु॥ [2]",
@@ -1497,7 +1495,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 48
+    "verseNumber": 48,
+    "rag": "केदारौ"
   },
   {
     "id": "pyari-pahirein-chunari-lalita-avtar-shri-haridas-ji-kelimal-49",
@@ -1510,7 +1509,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग केदारौ)",
           "प्यारी पहिरैं चुनरी।",
           "तैसोई लहँगा बन्यौ सिलसिलौ",
           "पूरनमासी की सी पूनरी॥ [1]",
@@ -1523,7 +1521,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 49
+    "verseNumber": 49,
+    "rag": "केदारौ"
   },
   {
     "id": "kahin-shri-haridas-hita-kije-shri-bihari-ju-son-aur-nibhahu-jaani-jiko-shri-haridas-ji-lalita-avtar",
@@ -1556,7 +1555,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग केदारौ)",
           "बनी री तेरे चारि चारि चूरी करनि।",
           "कंठसिरी दुलरी हीरनि की नासा मुक्ता ढरनि॥ [1]",
           "तैसौई नैननि कजरा फबि रह्यौ निरखि काम डरनि।",
@@ -1567,7 +1565,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 50
+    "verseNumber": 50,
+    "rag": "केदारौ"
   },
   {
     "id": "suni-dhuni-murali-ban-baajai-shri-swami-haridas-ji-kelimal-52",
@@ -1580,7 +1579,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग केदारौ व सारंग)",
           "सुनि धुनि मुरली बन बाजै हरि रास रच्यौ।",
           "कुंज कुंज द्रुम बेलि प्रफुल्लित",
           "मंडल कंचन मनिन खच्यौ॥ [1]",
@@ -1594,7 +1592,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 52
+    "verseNumber": 52,
+    "rag": "केदारौ व सारंग"
   },
   {
     "id": "jahan-jahan-charan-padat-pyari-ju-tere-tahan-tahan-mana-mero-karat-firat-parchai-lalita-avtar-shri-haridas-kelimal",
@@ -1627,7 +1626,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कल्याण)",
           "जहाँ जहाँ चरन परत प्यारी जू तेरे",
           "तहाँ तहाँ मन मेरौ करत फिरत परछाँहीं । [1]",
           "बहुत मूरति मेरी चॅवर ढुरावति",
@@ -1642,7 +1640,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 53
+    "verseNumber": 53,
+    "rag": "कल्याण"
   },
   {
     "id": "yeh-kaun-baat-ju-abhin-aur-abhin-aur-shri-haridas-ke-swami-shyama-kunj-bihari-ya-ras-hi-bas-bhaye-aur-ki-aur-swami-shri-haridas-ji-kelimal",
@@ -1655,7 +1654,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कल्याण)",
           "यह कौन बात जु अबही और अबही और अबही औरै।",
           "देव नारि नाग नारि और नारि ते न होइँ और की औरै॥ [1]",
           "पाछै न सुनी अब हूँ आगैं हूँ न ह्वै है",
@@ -1668,7 +1666,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 54
+    "verseNumber": 54,
+    "rag": "कल्याण"
   },
   {
     "id": "kasturi-kau-mardan-ang-mein-kiyain-murali-dharain-shri-swami-haridas-ji-kelimal-56",
@@ -1681,7 +1680,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कल्याण)",
           "कस्तूरी कौ मर्दन अंग में कियैं मुरली धरैं",
           "पीताम्बर ओढ़ें कहति राधे हौं ही स्याम।[1]",
           "किसोर कुमकुम कौ सिंगार कियैं",
@@ -1696,7 +1694,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 56
+    "verseNumber": 56,
+    "rag": "कल्याण"
   },
   {
     "id": "pyari-terau-badan-chand-dekhain-shri-swami-haridas-ji-kelimal-57",
@@ -1709,7 +1708,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कल्याण)",
           "प्यारी तेरौ बदन चंद देखैं",
           "मेरे हृदै सरोवर तें कमोदिनी फूली। [1]",
           "मन के मनोरथ तरंग अपार सुन्दर्यता",
@@ -1724,7 +1722,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 57
+    "verseNumber": 57,
+    "rag": "कल्याण"
   },
   {
     "id": "ananya-nripati-shri-swami-haridas",
@@ -1766,7 +1765,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कल्यान)",
           "बचन दै मान न करौं।",
           "मन बच क्रम तीन हूँ तें न टरौं॥ [1]",
           "तेरेई कियें मान व्यापि होत",
@@ -1779,7 +1777,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 59
+    "verseNumber": 59,
+    "rag": "कल्यान"
   },
   {
     "id": "ajahun-kaha-kahati-hai-ri-marai-nain-arani-shri-swami-haridas-ji-kelimal-64",
@@ -1792,7 +1791,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग कल्यान)",
           "अजहूँ कहा कहति है री मारै नैंन आरनि। [1]",
           "भौंहैं ज्यौं धनुष चितवनि बान बाँफिन",
           "फौंक धरैं कहत स्याम प्यारनि॥ [2]",
@@ -1805,7 +1803,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 64
+    "verseNumber": 64,
+    "rag": "कल्यान"
   },
   {
     "id": "pyari-tu-gunani-rai-sirmaur-shri-swami-haridas-ji-kelimal-65",
@@ -1818,7 +1817,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "प्यारी तू गुननि राइ सिरमौर।",
           "गति में गति उपजति नाना राग रागिनी",
           "तार मंदर सुर घोर॥ [1]",
@@ -1832,7 +1830,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 65
+    "verseNumber": 65,
+    "rag": "सारंग"
   },
   {
     "id": "pyari-taupe-kitauk-sangrah-chhabin-kau-shri-haridas-ji-kelimal-66",
@@ -1845,7 +1844,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "प्यारी तौपै कितौक संग्रह छबिन कौ",
           "अंग अंग प्रति नाना भाइ दिखावति। [1]",
           "हाथ किन्नरी मध्य सचु पाँइ सुलप",
@@ -1860,7 +1858,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 66
+    "verseNumber": 66,
+    "rag": "सारंग"
   },
   {
     "id": "chaliye-chhabili-chhabilau-bolat-swami-haridas-kelimal-69",
@@ -1873,7 +1872,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "चलिये छबीली छबीलौ बोलत।",
           "आजु की बानिक पर तृन टूटत है",
           "कही न जाय कछु स्याम तोहिं रत॥ [1]",
@@ -1886,7 +1884,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 69
+    "verseNumber": 69,
+    "rag": "सारंग"
   },
   {
     "id": "beni-gunthi-kaha-kou-jane-meri-si-shri-swami-haridas-ji-kelimal-70",
@@ -1899,7 +1898,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "बेंनी गूँथि कहा कोउ जानें मेरी सी तेरी सौं।",
           "बिच बिच फूल सेत पीत राते को करि सकै एरी सौं॥ [1]",
           "बैठे रसिक सँवारनि बारनि कोमल कर ककही सौं।",
@@ -1910,7 +1908,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 70
+    "verseNumber": 70,
+    "rag": "सारंग"
   },
   {
     "id": "sughar-bhayai-hau-bihari-yahi-chhanh-tein-shri-swami-haridas-kelimal-71",
@@ -1923,7 +1922,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "प्यारी तेरी पुतरी काजर हू तैं कारी",
           "मानौं द्वै भँवर उड़े री बराबरि।",
           "चंपे की डार बैठे कुंद अलि लागी है जेब अराअरि॥ [1]",
@@ -1935,15 +1933,16 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 71
+    "verseNumber": 71,
+    "rag": "सारंग"
   },
   {
-    "id": "ललत-हरदस-हय-म-बसय",
+    "id": "llita-hridas-hiye-men-bsyau",
     "collectionId": "kelimal",
     "index": 79,
     "titleDevanagari": "ललिता हरिदास हिये में बस्यौ",
     "author": "स्वामी श्री हरिदास जी",
-    "slug": "ललत-हरदस-हय-म-बसय",
+    "slug": "llita-hridas-hiye-men-bsyau",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1995,7 +1994,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "डोल झूलत बिहारी बिहारिनि पुहुप वृष्टि होति।",
           "सुर पुर पुर गंधर्व और पुर",
           "तिनकी नारि देखति बारति लर मोति॥ [1]",
@@ -2009,7 +2007,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 75
+    "verseNumber": 75,
+    "rag": "सारंग"
   },
   {
     "id": "pyari-ju-jab-jab-dekho-tero-mukh",
@@ -2062,7 +2061,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विभास व कान्हरौं )",
           "प्यारी जू हम तुम दोऊ",
           "एक कुंज के सखा रूसैं क्यौं बनैं।",
           "इहाँ न कोउ हितू मेरौ न तेरौ जो यह पीर जनैं॥ [1]",
@@ -2074,7 +2072,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 79
+    "verseNumber": 79,
+    "rag": "विभास व कान्हरौं"
   },
   {
     "id": "duhunni-ki-sahaj-bisaanti-lalita-avtar-shri-haridas-ji-kelimal-81",
@@ -2087,7 +2086,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग विभास)",
           "दुहुँनि की सहज बिसाँति दोऊ मिलि सतरंज खेलत। [1]",
           "उर रुख नैंन चपल अस्व चतुर बराबरि झेलत॥ [2]",
           "आतुरता फील पयादे निग्रह",
@@ -2100,15 +2098,16 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 81
+    "verseNumber": 81,
+    "rag": "विभास"
   },
   {
-    "id": "चल-र-भड़-त-नयरई",
+    "id": "chli-ri-bhi-te-nyareee",
     "collectionId": "kelimal",
     "index": 86,
     "titleDevanagari": "चली री भीड़ ते न्यारेई",
     "author": "स्वामी श्री हरिदास जी",
-    "slug": "चल-र-भड़-त-नयरई",
+    "slug": "chli-ri-bhi-te-nyareee",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2160,7 +2159,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग मलार)",
           "हिंडोरेंब झूलत लाल दिन दूलहु",
           "दुलहिनि बिहारिनि देखौ री ललना।",
           "गौर स्याम छबि अति दुति बहु भाँति री बलना॥ [1]",
@@ -2172,7 +2170,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 88
+    "verseNumber": 88,
+    "rag": "मलार"
   },
   {
     "id": "yeh-achraj-dekhyau-na-sunyau-kahun-swami-haridas-kelimal-91",
@@ -2185,7 +2184,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग मलार)",
           "यह अचरज देख्यौ न सुन्यौ कहूँ",
           "नवीन मेघ संग बिजुरी एक रस।",
           "तामें मौज उठति अधिक बहु भाँति लस॥ [1]",
@@ -2199,7 +2197,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 91
+    "verseNumber": 91,
+    "rag": "मलार"
   },
   {
     "id": "bheenjan-laage-ri-dou-jan-lalita-avataar-shri-haridas-ji-kelimaal-93",
@@ -2212,7 +2211,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग मलार)",
           "भींजन लागे री दोऊ जन।",
           "अँचरा की ओट करत दोऊ जन॥",
           "अति उन्मत्त रहत निसि बासर,",
@@ -2225,7 +2223,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 93
+    "verseNumber": 93,
+    "rag": "मलार"
   },
   {
     "id": "maee-ri-sahaj-jori-pragat-bhayi-lalita-avtar-shri-haridas-ji-kelimal-1",
@@ -2258,7 +2257,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग मलहार)",
           "दामिनि कहत मेघ सौं हमारी उपमा दैहिं",
           "ते झूठे एई मेघ एई बिजुरी साँची।",
           "जिन जिन हमारी उपमा दीनी तिन तिन की मति काँची॥ [1]",
@@ -2272,7 +2270,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 95
+    "verseNumber": 95,
+    "rag": "मलहार"
   },
   {
     "id": "nachat-morani-sang-syam-lalita-avatar-shri-swami-haridas-ji-kelimal-96",
@@ -2285,7 +2284,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग गौड़)",
           "नाचत मोरनि संग स्याम",
           "मुदित स्यामाहिं रिझावत। [1]",
           "तैसीयै कोकिला अलापत पपीहा देत सुर",
@@ -2300,7 +2298,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 96
+    "verseNumber": 96,
+    "rag": "गौड़"
   },
   {
     "id": "hari-ke-ang-kau-chandan-laptanau-shri-haridas-ji-kelimal-97",
@@ -2313,7 +2312,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग गौड़)",
           "हरि के अंग कौ चंदन लपटानौ",
           "तन तेरे देखियत जैसैं पीत चोली। [1]",
           "मरगजे अभरन बदन छिपावति",
@@ -2328,7 +2326,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 97
+    "verseNumber": 97,
+    "rag": "गौड़"
   },
   {
     "id": "hamare-dhan-vrindavan-pyari",
@@ -2365,7 +2364,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग बसंत)",
           "चलि री भीर तें न्यारेई खेलैं ।",
           "कुंज निकुंज मंजु में झेलैं ॥ [1]",
           "जहाँ पंछी न सहित सखी न संग कोऊ",
@@ -2378,7 +2376,8 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 100
+    "verseNumber": 100,
+    "rag": "बसंत"
   },
   {
     "id": "suni-dhun-murli-vain-baje-hari-ras-rachyo",
@@ -2458,7 +2457,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग गौरी)",
           "झुलत डोल दोऊ जन ठाढ़े।",
           "हाँगत जोर सहित जैसौ जाकैं डाँड़ीब गहैं गाढ़े॥",
           "बिच बिच प्रीति रहसि रस रीति की",
@@ -2471,15 +2469,16 @@
     ],
     "chapterId": "kelimal",
     "chapterName": "श्री केलिमाल (११० पद)",
-    "verseNumber": 107
+    "verseNumber": 107,
+    "rag": "गौरी"
   },
   {
-    "id": "आज-बदन-त-बरषत-फल",
+    "id": "aaju-bdn-te-brsht-phul",
     "collectionId": "kelimal",
     "index": 101,
     "titleDevanagari": "आजु बदन ते बर्षत फूल ।",
     "author": "स्वामी श्री हरिदास जी",
-    "slug": "आज-बदन-त-बरषत-फल",
+    "slug": "aaju-bdn-te-brsht-phul",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2636,12 +2635,12 @@
     "verseNumber": 126
   },
   {
-    "id": "शरबहर-वहरन-क-र-मप-यह-छब-बरन-न-जय",
+    "id": "shribihari-viharini-ki-mopai-yh-chhbi-brni-na-jay",
     "collectionId": "kelimal",
     "index": 108,
     "titleDevanagari": "श्रीबिहारी विहारिनि की (रे) मोपै यह छबि बरनी ना जाय ।।",
     "author": "स्वामी श्री हरिदास जी",
-    "slug": "शरबहर-वहरन-क-र-मप-यह-छब-बरन-न-जय",
+    "slug": "shribihari-viharini-ki-mopai-yh-chhbi-brni-na-jay",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2835,12 +2834,12 @@
     "verseNumber": 148
   },
   {
-    "id": "पयर-तर-बफन-बन-समर",
+    "id": "pyari-teri-bphin-ban-sumar",
     "collectionId": "kelimal",
     "index": 117,
     "titleDevanagari": "प्यारी तेरी बॉफिन बान सुमार",
     "author": "स्वामी श्री हरिदास जी",
-    "slug": "पयर-तर-बफन-बन-समर",
+    "slug": "pyari-teri-bphin-ban-sumar",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2858,12 +2857,12 @@
     "verseNumber": 149
   },
   {
-    "id": "भद-सकल-अषटम-भ-पर-परगट-शरहरदस",
+    "id": "bhadaun-sukl-ashtmi-bhu-pr-prgte-shrihridas",
     "collectionId": "kelimal",
     "index": 118,
     "titleDevanagari": "भादौं   सुकल   अष्टमी   भू   पर  प्रगटे  श्रीहरिदास",
     "author": "स्वामी श्री हरिदास जी",
-    "slug": "भद-सकल-अषटम-भ-पर-परगट-शरहरदस",
+    "slug": "bhadaun-sukl-ashtmi-bhu-pr-prgte-shrihridas",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2880,12 +2879,12 @@
     "verseNumber": 150
   },
   {
-    "id": "सरत-रथ-जगल-कशर-चल",
+    "id": "surti-rth-jugl-kishor-chle",
     "collectionId": "kelimal",
     "index": 119,
     "titleDevanagari": "सुरति रथ जुगल किशोर चले",
     "author": "स्वामी श्री हरिदास जी",
-    "slug": "सरत-रथ-जगल-कशर-चल",
+    "slug": "surti-rth-jugl-kishor-chle",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2927,12 +2926,12 @@
     "verseNumber": 152
   },
   {
-    "id": "तर-मख-नक-क-मर-मख-पयरहरदस",
+    "id": "tero-mukh-niko-ke-mero-mukh-pyari",
     "collectionId": "kelimal",
     "index": 121,
     "titleDevanagari": "तेरो मुख नीको के मेरो मुख प्यारी।(हरिदास)",
     "author": "स्वामी श्री हरिदास जी",
-    "slug": "तर-मख-नक-क-मर-मख-पयरहरदस",
+    "slug": "tero-mukh-niko-ke-mero-mukh-pyari",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -3177,7 +3176,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सोरठ)",
           "जै श्रीहरिदास रसिक वर की।",
           "परम अनन्य सुधरम बतायौ, करमनि की छाती धरकी॥ [1]",
           "नित्यविहार निरंतर निरखैं, जहाँ नहीं गम विधि-हरकी।",
@@ -3188,7 +3186,8 @@
     ],
     "chapterId": "siddhant-ke-pad",
     "chapterName": "सिद्धांत के पद (१८ पद)",
-    "verseNumber": 36
+    "verseNumber": 36,
+    "rag": "सोरठ"
   },
   {
     "id": "shri-swami-haridas-ki-sarivar-rasik-na-aur-shri-roop-sakhi-siddhant-ke-doha-36",
@@ -3243,7 +3242,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग गौरी)",
           "श्री हरिदास शरण जे आये।",
           "कुंजबिहारी ललित लाडिले अपने जानि निकट बैठाये॥ (1)",
           "कुंज केलि निरखें निसि बासर अति आनंद हिये में छाये।",
@@ -3254,7 +3252,8 @@
     ],
     "chapterId": "siddhant-ke-pad",
     "chapterName": "सिद्धांत के पद (१८ पद)",
-    "verseNumber": 52
+    "verseNumber": 52,
+    "rag": "गौरी"
   },
   {
     "id": "to-si-tuhi-haridas-dulari-shri-lalit-kishori-dev-shri-lalit-kishori-dev-ju-ki-vani-siddhant-ke-pad-55",
@@ -3678,7 +3677,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सारंग)",
           "अनन्य नृपति श्रीस्वामी हरिदास।",
           "कुंजबिहारी सेये बिनु जिनि, छिन न करी काहूकी आस॥ [1]",
           "सेवा सावधान अति जानि, सुघर गावत दिन रस रास।",
@@ -3695,7 +3693,8 @@
     ],
     "chapterId": "rasik-anubandh",
     "chapterName": "रसिक वाणी अनुबन्ध",
-    "verseNumber": 70
+    "verseNumber": 70,
+    "rag": "सारंग"
   },
   {
     "id": "shri-swami-haridas-ko-jo-kou-nij-kari-hoy-shri-lalit-kishori-dev",

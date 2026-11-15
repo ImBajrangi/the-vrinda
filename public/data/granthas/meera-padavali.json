@@ -24,12 +24,12 @@
     "verseNumber": 42
   },
   {
-    "id": "महर-ओलगय-घर-आय-ज",
+    "id": "mhara-olgiya-ghr-aaya-ji",
     "collectionId": "meera-padavali",
     "index": 2,
     "titleDevanagari": "म्हारा ओलगिया घर आया जी",
     "author": "भक्त शिरोमणि मीराबाई",
-    "slug": "महर-ओलगय-घर-आय-ज",
+    "slug": "mhara-olgiya-ghr-aaya-ji",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -60,7 +60,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग दरबारी कान्हरा)",
           "पिय बिन सूनो छै जी म्हारो देस॥ [1]",
           "ऐसो है कोई पिवकूँ मिलावै, तन मन करूं सब पेस।",
           "तेरे कारण बन बन डोलूं, कर जोगण को भेस॥ [2]",
@@ -72,7 +71,8 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 2
+    "verseNumber": 2,
+    "rag": "दरबारी कान्हरा"
   },
   {
     "id": "jago-banshivare-lalna-jago-more-pyare",
@@ -129,12 +129,12 @@
     "verseNumber": 4
   },
   {
-    "id": "अब-म-सरण-तहर-ज",
+    "id": "ab-main-srn-tihari-ji",
     "collectionId": "meera-padavali",
     "index": 6,
     "titleDevanagari": "अब मैं सरण तिहारी जी,",
     "author": "भक्त शिरोमणि मीराबाई",
-    "slug": "अब-म-सरण-तहर-ज",
+    "slug": "ab-main-srn-tihari-ji",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -164,7 +164,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग ललित)",
           "हमरो प्रणाम बांके बिहारी को।",
           "मोर मुकुट माथे तिलक बिराजै, कुंडल अलकाकारी को॥ [1]",
           "अधर मधुर पर बंशी बजावै, रीझ रिझावै राधाप्यारी को।",
@@ -175,15 +174,16 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 6
+    "verseNumber": 6,
+    "rag": "ललित"
   },
   {
-    "id": "कल-म-मर-नम-धरय",
+    "id": "kli-men-mira-nam-dhrayo",
     "collectionId": "meera-padavali",
     "index": 8,
     "titleDevanagari": "कलि में मीरा नाम धरायो",
     "author": "भक्त शिरोमणि मीराबाई",
-    "slug": "कल-म-मर-नम-धरय",
+    "slug": "kli-men-mira-nam-dhrayo",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -303,12 +303,12 @@
     "verseNumber": 11
   },
   {
-    "id": "य-बरज-म-कछ-दखय-र-टन",
+    "id": "ya-brj-men-kchhu-dekhyo-ri-tona",
     "collectionId": "meera-padavali",
     "index": 13,
     "titleDevanagari": "या ब्रज में कछु देख्यो री टोना",
     "author": "भक्त शिरोमणि मीराबाई",
-    "slug": "य-बरज-म-कछ-दखय-र-टन",
+    "slug": "ya-brj-men-kchhu-dekhyo-ri-tona",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -330,12 +330,12 @@
     "verseNumber": 12
   },
   {
-    "id": "म-त-सवर-क-रग-रच",
+    "id": "main-to-sanvre-ke-rng-ranchi",
     "collectionId": "meera-padavali",
     "index": 14,
     "titleDevanagari": "मैं तो सांवरे के रंग रांची",
     "author": "भक्त शिरोमणि मीराबाई",
-    "slug": "म-त-सवर-क-रग-रच",
+    "slug": "main-to-sanvre-ke-rng-ranchi",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -354,12 +354,12 @@
     "verseNumber": 13
   },
   {
-    "id": "य-महनक-म-रप-लभन",
+    "id": "ya-mohnke-main-rup-lubhani",
     "collectionId": "meera-padavali",
     "index": 15,
     "titleDevanagari": "या मोहनके मैं रूप लुभानी",
     "author": "भक्त शिरोमणि मीराबाई",
-    "slug": "य-महनक-म-रप-लभन",
+    "slug": "ya-mohnke-main-rup-lubhani",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -432,12 +432,12 @@
     "verseNumber": 16
   },
   {
-    "id": "बसवर-आजय-महर-दस",
+    "id": "bnsivara-aajyo-mhare-des",
     "collectionId": "meera-padavali",
     "index": 18,
     "titleDevanagari": "बंसीवारा आज्यो म्हारे देस",
     "author": "भक्त शिरोमणि मीराबाई",
-    "slug": "बसवर-आजय-महर-दस",
+    "slug": "bnsivara-aajyo-mhare-des",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -504,12 +504,12 @@
     "verseNumber": 19
   },
   {
-    "id": "रम-मलण-र-घण-उमव",
+    "id": "ram-miln-ro-ghno-umavo",
     "collectionId": "meera-padavali",
     "index": 21,
     "titleDevanagari": "राम मिलण रो घणो उमावो",
     "author": "भक्त शिरोमणि मीराबाई",
-    "slug": "रम-मलण-र-घण-उमव",
+    "slug": "ram-miln-ro-ghno-umavo",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -540,7 +540,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग जैजैवंती)",
           "साँवरे की दृष्टि मानो प्रेम की कटारी है॥",
           "लागत बिहाल भई तनकी की सुधि गई,",
           "मनहू में व्याप्यो प्रेम भई मतवारी है। [1]",
@@ -556,7 +555,8 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 21
+    "verseNumber": 21,
+    "rag": "जैजैवंती"
   },
   {
     "id": "sanvare-di-bhalan-mayen",
@@ -605,12 +605,12 @@
     "verseNumber": 23
   },
   {
-    "id": "बरस-बदरय-सवन-क-सवन-क-मनभवन-क",
+    "id": "brsai-bdriya-savn-ki-savn-ki-mnbhavn-ki",
     "collectionId": "meera-padavali",
     "index": 25,
     "titleDevanagari": "बरसै   बदरिया   सावन   की,  सावन  की   मनभावन की",
     "author": "भक्त शिरोमणि मीराबाई",
-    "slug": "बरस-बदरय-सवन-क-सवन-क-मनभवन-क",
+    "slug": "brsai-bdriya-savn-ki-savn-ki-mnbhavn-ki",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -683,12 +683,12 @@
     "verseNumber": 26
   },
   {
-    "id": "शररध-रन-द-डर-बश-मर",
+    "id": "shriradhe-rani-de-daro-bnshi-mori",
     "collectionId": "meera-padavali",
     "index": 28,
     "titleDevanagari": "श्रीराधे रानी दे डारो बंशी मोरी",
     "author": "भक्त शिरोमणि मीराबाई",
-    "slug": "शररध-रन-द-डर-बश-मर",
+    "slug": "shriradhe-rani-de-daro-bnshi-mori",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -717,7 +717,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग मधुमाध सारंग)",
           "या ब्रज में कछु देख्यौ री टोना॥",
           "लै मटकी सिर चली गुजरिया",
           "आगे मिले बाबा नंदजी के छोना। [1]",
@@ -733,7 +732,8 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 28
+    "verseNumber": 28,
+    "rag": "मधुमाध सारंग"
   },
   {
     "id": "aaye-aaye-ji-mahraj-apne-bhakt-ke-kaaj-sare",
@@ -893,7 +893,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग सोरठ)",
           "जाके प्रिय न राम बैदैही।",
           "तजिये ताहि कोटि बैरी सम, जद्यपि परम सनेही॥ [1]",
           "तज्यो पिता प्रहलाद, बिभीषन बंधु, भरत महतारी।",
@@ -908,7 +907,8 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 35
+    "verseNumber": 35,
+    "rag": "सोरठ"
   },
   {
     "id": "ya-brij-mein-kachhu-dekhyo-ri-tona",

@@ -23,12 +23,12 @@
     "verseNumber": 13
   },
   {
-    "id": "कन-रग-दन-र-रसय-कसर-क-बदन-म",
+    "id": "kin-rng-dinin-re-rsiya-kesr-ki-bundn-men",
     "collectionId": "braj-rasiya",
     "index": 2,
     "titleDevanagari": "किन रंग दीनीं रे रसिया केसर की बूँदन में,",
     "author": "विविध रसिक संत",
-    "slug": "कन-रग-दन-र-रसय-कसर-क-बदन-म",
+    "slug": "kin-rng-dinin-re-rsiya-kesr-ki-bundn-men",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -46,12 +46,12 @@
     "verseNumber": 1
   },
   {
-    "id": "रसय-मर-छल-अवधवस",
+    "id": "rsiya-mero-chhail-avdhvasi",
     "collectionId": "braj-rasiya",
     "index": 3,
     "titleDevanagari": "रसिया मेरो छैल अवधवासी।",
     "author": "विविध रसिक संत",
-    "slug": "रसय-मर-छल-अवधवस",
+    "slug": "rsiya-mero-chhail-avdhvasi",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -68,12 +68,12 @@
     "verseNumber": 2
   },
   {
-    "id": "रसय-मर-लहर-उतर-रस-त-ल-दन-ननन-क",
+    "id": "rsiya-meri-lhr-utar-rs-to-lai-donu-nainn-ko",
     "collectionId": "braj-rasiya",
     "index": 4,
     "titleDevanagari": "रसिया मेरी लहर उतार रस तो लै दोनू नैनन को ।।",
     "author": "विविध रसिक संत",
-    "slug": "रसय-मर-लहर-उतर-रस-त-ल-दन-ननन-क",
+    "slug": "rsiya-meri-lhr-utar-rs-to-lai-donu-nainn-ko",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -115,12 +115,12 @@
     "verseNumber": 4
   },
   {
-    "id": "मगनन-नर-नवल-रसय",
+    "id": "mrignaini-nari-nvl-rsiya",
     "collectionId": "braj-rasiya",
     "index": 6,
     "titleDevanagari": "मृगनैनी नारि नवल रसिया ।।",
     "author": "विविध रसिक संत",
-    "slug": "मगनन-नर-नवल-रसय",
+    "slug": "mrignaini-nari-nvl-rsiya",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -141,12 +141,12 @@
     "verseNumber": 5
   },
   {
-    "id": "फगन-मस-सहय-रसय",
+    "id": "phagun-mas-suhayo-rsiya",
     "collectionId": "braj-rasiya",
     "index": 7,
     "titleDevanagari": "फागुन मास सुहायो रसिया",
     "author": "विविध रसिक संत",
-    "slug": "फगन-मस-सहय-रसय",
+    "slug": "phagun-mas-suhayo-rsiya",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -163,12 +163,12 @@
     "verseNumber": 6
   },
   {
-    "id": "हर-तत-न-खल-शयम-रसय-1",
+    "id": "hori-tote-n-khelun-shyam-rsiya",
     "collectionId": "braj-rasiya",
     "index": 8,
     "titleDevanagari": "होरी तोते न खेलूं श्याम रसिया",
     "author": "विविध रसिक संत",
-    "slug": "हर-तत-न-खल-शयम-रसय-1",
+    "slug": "hori-tote-n-khelun-shyam-rsiya",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -187,12 +187,12 @@
     "verseNumber": 7
   },
   {
-    "id": "रसय-क-महलल-नयर-र-रसय-क",
+    "id": "rsiya-ko-mohlla-nyaro-ri-rsiya-ko",
     "collectionId": "braj-rasiya",
     "index": 9,
     "titleDevanagari": "रसिया को मोहल्ला न्यारो री रसिया को ।।",
     "author": "विविध रसिक संत",
-    "slug": "रसय-क-महलल-नयर-र-रसय-क",
+    "slug": "rsiya-ko-mohlla-nyaro-ri-rsiya-ko",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -220,7 +220,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग काफी - तिताला)",
           "होरी खेलन लड़ैती रसिया ललित त्रिभंगी।",
           "देखैं ही वनि आवे सजनी वानिक नव नव रंगी॥ [1]",
           "खेल मच्यौ नव नबल निकुञ्जनि निरखि भयी मति पंगी।",
@@ -231,15 +230,16 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 9
+    "verseNumber": 9,
+    "rag": "काफी - तिताला"
   },
   {
-    "id": "रसय-कसर-क-बदन-म-अगय-कन-रग-दन-र",
+    "id": "rsiya-kesr-ki-bundn-men-angiya-kin-rng-dini-re",
     "collectionId": "braj-rasiya",
     "index": 11,
     "titleDevanagari": "रसिया केसर की बूंदन में अंगिया किन रंग दीनी रे ।।",
     "author": "विविध रसिक संत",
-    "slug": "रसय-कसर-क-बदन-म-अगय-कन-रग-दन-र",
+    "slug": "rsiya-kesr-ki-bundn-men-angiya-kin-rng-dini-re",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -256,12 +256,12 @@
     "verseNumber": 10
   },
   {
-    "id": "चरजव-हर-क-रसय-हरचनद",
+    "id": "chirjivo-hori-ke-rsiya",
     "collectionId": "braj-rasiya",
     "index": 12,
     "titleDevanagari": "चिरजीवो होरी के रसिया। (हरिचन्द )",
     "author": "विविध रसिक संत",
-    "slug": "चरजव-हर-क-रसय-हरचनद",
+    "slug": "chirjivo-hori-ke-rsiya",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -304,12 +304,12 @@
     "verseNumber": 12
   },
   {
-    "id": "रसय-मह-मल-मलय-लज",
+    "id": "rsiya-mohe-mol-mulay-lijo",
     "collectionId": "braj-rasiya",
     "index": 14,
     "titleDevanagari": "रसिया मोहे मोल मुलाय लीजो",
     "author": "विविध रसिक संत",
-    "slug": "रसय-मह-मल-मलय-लज",
+    "slug": "rsiya-mohe-mol-mulay-lijo",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -352,12 +352,12 @@
     "verseNumber": 15
   },
   {
-    "id": "आज-बरज-म-हर-र-रसय-लचछरम",
+    "id": "aaj-birj-men-hori-re-rsiya",
     "collectionId": "braj-rasiya",
     "index": 16,
     "titleDevanagari": "आज बिरज में होरी रे रसिया (लच्छीराम)",
     "author": "विविध रसिक संत",
-    "slug": "आज-बरज-म-हर-र-रसय-लचछरम",
+    "slug": "aaj-birj-men-hori-re-rsiya",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -375,12 +375,12 @@
     "verseNumber": 16
   },
   {
-    "id": "रसय-क-नर-बनव-र",
+    "id": "rsiya-ko-nar-bnavo-ri",
     "collectionId": "braj-rasiya",
     "index": 17,
     "titleDevanagari": "रसिया को नार बनावो री ।।",
     "author": "विविध रसिक संत",
-    "slug": "रसय-क-नर-बनव-र",
+    "slug": "rsiya-ko-nar-bnavo-ri",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -518,12 +518,12 @@
     "verseNumber": 22
   },
   {
-    "id": "रसय-हर-म-मर-लग-जयग-मत-मर-दगन-क-चट",
+    "id": "rsiya-hori-men-mere-lg-jayegi-mt-marai-drign-ki-chot",
     "collectionId": "braj-rasiya",
     "index": 23,
     "titleDevanagari": "रसिया होरी में मेरे लग जायेगी, मत मारै दृगन की चोट ।।",
     "author": "विविध रसिक संत",
-    "slug": "रसय-हर-म-मर-लग-जयग-मत-मर-दगन-क-चट",
+    "slug": "rsiya-hori-men-mere-lg-jayegi-mt-marai-drign-ki-chot",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -550,7 +550,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग तेतालौ)",
           "देखौ ब्रज के लोग नवल रसिया।",
           "डफ लिये फिरत गावत वन वीथिन, तारी देत रहे हँसिया॥ [1]",
           "चाचरि देत करत कोलाहल, ब्रज जुवतिन सों मिलि रसिया।",
@@ -561,7 +560,8 @@
     ],
     "chapterId": "ch-सामान्य पद",
     "chapterName": "सामान्य पद",
-    "verseNumber": 24
+    "verseNumber": 24,
+    "rag": "तेतालौ"
   },
   {
     "id": "hum-braj-mandal-ke-rasiya-braj-ke-sewaiyan",
@@ -587,12 +587,12 @@
     "verseNumber": 25
   },
   {
-    "id": "चरजय-हर-क-रसय",
+    "id": "chirjiyau-hori-ke-rsiya",
     "collectionId": "braj-rasiya",
     "index": 26,
     "titleDevanagari": "चिरजीयौ होरी के रसिया ।।",
     "author": "विविध रसिक संत",
-    "slug": "चरजय-हर-क-रसय",
+    "slug": "chirjiyau-hori-ke-rsiya",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -612,12 +612,12 @@
     "verseNumber": 26
   },
   {
-    "id": "रसय-मय-मल-मलयय-लज",
+    "id": "rsiya-moy-mol-mulyay-lijo",
     "collectionId": "braj-rasiya",
     "index": 27,
     "titleDevanagari": "रसिया मोय मोल मुल्याय लीजो ।।",
     "author": "विविध रसिक संत",
-    "slug": "रसय-मय-मल-मलयय-लज",
+    "slug": "rsiya-moy-mol-mulyay-lijo",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -634,12 +634,12 @@
     "verseNumber": 27
   },
   {
-    "id": "हल-य-डफ-बज-छल-क-मनमहन-रसय-नगर-क",
+    "id": "heli-ye-dph-bajai-chhaila-ke-mnmohn-rsiya-nagr-ke",
     "collectionId": "braj-rasiya",
     "index": 28,
     "titleDevanagari": "हेली ये डफ बाजै छैला के, मनमोहन रसिया नागर के ।",
     "author": "विविध रसिक संत",
-    "slug": "हल-य-डफ-बज-छल-क-मनमहन-रसय-नगर-क",
+    "slug": "heli-ye-dph-bajai-chhaila-ke-mnmohn-rsiya-nagr-ke",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -677,12 +677,12 @@
     "verseNumber": 29
   },
   {
-    "id": "रसय-आय-दवर-खल-गर",
+    "id": "rsiya-aayo-dvar-khol-gori",
     "collectionId": "braj-rasiya",
     "index": 30,
     "titleDevanagari": "रसिया आयो द्वार खोल गोरी ।।",
     "author": "विविध रसिक संत",
-    "slug": "रसय-आय-दवर-खल-गर",
+    "slug": "rsiya-aayo-dvar-khol-gori",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -699,12 +699,12 @@
     "verseNumber": 30
   },
   {
-    "id": "मदमत-फगन-जए-तनक-गर-रसय-स-बतरय-लज",
+    "id": "mdmato-phagun-jae-tnk-gori-rsiya-son-btray-lijau",
     "collectionId": "braj-rasiya",
     "index": 31,
     "titleDevanagari": "मदमातो फागुन जाए तनक गोरी रसिया सों बतराय लीजौ ॥",
     "author": "विविध रसिक संत",
-    "slug": "मदमत-फगन-जए-तनक-गर-रसय-स-बतरय-लज",
+    "slug": "mdmato-phagun-jae-tnk-gori-rsiya-son-btray-lijau",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -778,12 +778,12 @@
     "verseNumber": 33
   },
   {
-    "id": "हर-आई-र-कनह-बरजक-रसय-हर-आई-र",
+    "id": "hori-aaee-re-kanha-brjke-rsiya-hori-aaee-re",
     "collectionId": "braj-rasiya",
     "index": 34,
     "titleDevanagari": "होरी आई रे कान्हा, ब्रजके रसिया होरी आई रे",
     "author": "विविध रसिक संत",
-    "slug": "हर-आई-र-कनह-बरजक-रसय-हर-आई-र",
+    "slug": "hori-aaee-re-kanha-brjke-rsiya-hori-aaee-re",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -813,12 +813,12 @@
     "verseNumber": 34
   },
   {
-    "id": "फगन-म-रसय-घरवर",
+    "id": "phagun-men-rsiya-ghrvari",
     "collectionId": "braj-rasiya",
     "index": 35,
     "titleDevanagari": "फागुन में रसिया घरवारी ।।",
     "author": "विविध रसिक संत",
-    "slug": "फगन-म-रसय-घरवर",
+    "slug": "phagun-men-rsiya-ghrvari",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -835,12 +835,12 @@
     "verseNumber": 35
   },
   {
-    "id": "बरजमणडल-दस-दखय-रसय-परषततम",
+    "id": "brjmndl-des-dikhay-rsiya",
     "collectionId": "braj-rasiya",
     "index": 36,
     "titleDevanagari": "ब्रजमण्डल देस दिखाय रसिया (पुरुषोत्तम )",
     "author": "विविध रसिक संत",
-    "slug": "बरजमणडल-दस-दखय-रसय-परषततम",
+    "slug": "brjmndl-des-dikhay-rsiya",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -891,12 +891,12 @@
     "verseNumber": 37
   },
   {
-    "id": "बरज-महन-छल-नवल-रसय",
+    "id": "brj-mohn-chhail-nvl-rsiya",
     "collectionId": "braj-rasiya",
     "index": 38,
     "titleDevanagari": "ब्रज मोहन छैल नवल रसिया ।।",
     "author": "विविध रसिक संत",
-    "slug": "बरज-महन-छल-नवल-रसय",
+    "slug": "brj-mohn-chhail-nvl-rsiya",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -936,12 +936,12 @@
     "verseNumber": 39
   },
   {
-    "id": "रगभर-हर-खलय-ल-ओ-हर-क-रसय",
+    "id": "rngbhri-hori-khilay-le-o-hori-ke-rsiya",
     "collectionId": "braj-rasiya",
     "index": 40,
     "titleDevanagari": "रंगभरी होरी खिलाय ले ओ होरी के रसिया ।।",
     "author": "विविध रसिक संत",
-    "slug": "रगभर-हर-खलय-ल-ओ-हर-क-रसय",
+    "slug": "rngbhri-hori-khilay-le-o-hori-ke-rsiya",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -960,12 +960,12 @@
     "verseNumber": 40
   },
   {
-    "id": "हर-क-रसय-नकसन-दत-न-बट-र",
+    "id": "hori-kau-rsiya-niksn-det-n-bat-ri",
     "collectionId": "braj-rasiya",
     "index": 41,
     "titleDevanagari": "होरी कौ रसिया निकसन देत न बाट री।",
     "author": "विविध रसिक संत",
-    "slug": "हर-क-रसय-नकसन-दत-न-बट-र",
+    "slug": "hori-kau-rsiya-niksn-det-n-bat-ri",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -982,12 +982,12 @@
     "verseNumber": 41
   },
   {
-    "id": "मर-पय-रसय-र-सन-र-सख-तर-दष-नह-र",
+    "id": "merau-piy-rsiya-ri-sun-ri-skhi-terau-dosh-nhin-ri",
     "collectionId": "braj-rasiya",
     "index": 42,
     "titleDevanagari": "मेरौ पिय रसिया री सुन री सखी तेरौ दोष नहीं री ।।",
     "author": "विविध रसिक संत",
-    "slug": "मर-पय-रसय-र-सन-र-सख-तर-दष-नह-र",
+    "slug": "merau-piy-rsiya-ri-sun-ri-skhi-terau-dosh-nhin-ri",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1033,12 +1033,12 @@
     "verseNumber": 43
   },
   {
-    "id": "हर-तत-न-खल-शयम-रसय",
+    "id": "hori-tote-n-khelun-shyam-rsiya-2",
     "collectionId": "braj-rasiya",
     "index": 44,
     "titleDevanagari": "होरी तोते न खेलूँ श्याम रसिया ।।",
     "author": "विविध रसिक संत",
-    "slug": "हर-तत-न-खल-शयम-रसय",
+    "slug": "hori-tote-n-khelun-shyam-rsiya-2",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1145,12 +1145,12 @@
     "verseNumber": 47
   },
   {
-    "id": "हर-आज-खलय-ल-ओ-रगभर-रसय",
+    "id": "hori-aaj-khilay-le-o-rngbhre-rsiya",
     "collectionId": "braj-rasiya",
     "index": 48,
     "titleDevanagari": "होरी आज  खिलाय ले ओ रंगभरे रसिया   ।।",
     "author": "विविध रसिक संत",
-    "slug": "हर-आज-खलय-ल-ओ-रगभर-रसय",
+    "slug": "hori-aaj-khilay-le-o-rngbhre-rsiya",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1170,12 +1170,12 @@
     "verseNumber": 48
   },
   {
-    "id": "एर-हर-क-रसय-रस-लभ-नकसन-दय-न-बट",
+    "id": "eri-hori-kon-rsiya-rs-lobhi-niksn-dey-n-bat",
     "collectionId": "braj-rasiya",
     "index": 49,
     "titleDevanagari": "एरी होरी कों रसिया रस लोभी निकसन देय न बाट ।।",
     "author": "विविध रसिक संत",
-    "slug": "एर-हर-क-रसय-रस-लभ-नकसन-दय-न-बट",
+    "slug": "eri-hori-kon-rsiya-rs-lobhi-niksn-dey-n-bat",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1215,12 +1215,12 @@
     "verseNumber": 50
   },
   {
-    "id": "चरजव-हर-क-रसय",
+    "id": "chirjivain-hori-ke-rsiya",
     "collectionId": "braj-rasiya",
     "index": 51,
     "titleDevanagari": "चिरजीवैं होरी के रसिया।",
     "author": "विविध रसिक संत",
-    "slug": "चरजव-हर-क-रसय",
+    "slug": "chirjivain-hori-ke-rsiya",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1246,12 +1246,12 @@
     "verseNumber": 51
   },
   {
-    "id": "डर-डरग-महल-चढ़-अईय-रसय",
+    "id": "dori-darugi-mhl-ch-aeeyo-rsiya",
     "collectionId": "braj-rasiya",
     "index": 52,
     "titleDevanagari": "डोरी डारुगी महल चढ़़ अईयो रसिया",
     "author": "विविध रसिक संत",
-    "slug": "डर-डरग-महल-चढ़-अईय-रसय",
+    "slug": "dori-darugi-mhl-ch-aeeyo-rsiya",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1269,12 +1269,12 @@
     "verseNumber": 52
   },
   {
-    "id": "पलल-पर-गई-रग-म-रग-दई-हर-खलत-रसय",
+    "id": "plle-pr-gee-rng-men-rng-dee-hori-khelt-rsiya",
     "collectionId": "braj-rasiya",
     "index": 53,
     "titleDevanagari": "पल्ले पर गई रंग में रंग दई होरी खेलत रसिया ।।",
     "author": "विविध रसिक संत",
-    "slug": "पलल-पर-गई-रग-म-रग-दई-हर-खलत-रसय",
+    "slug": "plle-pr-gee-rng-men-rng-dee-hori-khelt-rsiya",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1296,12 +1296,12 @@
     "verseNumber": 53
   },
   {
-    "id": "सन-महन-रसय-हर-क",
+    "id": "sun-mohn-rsiya-hori-ke",
     "collectionId": "braj-rasiya",
     "index": 54,
     "titleDevanagari": "सुन मोहन रसिया होरी के ।।",
     "author": "विविध रसिक संत",
-    "slug": "सन-महन-रसय-हर-क",
+    "slug": "sun-mohn-rsiya-hori-ke",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1318,12 +1318,12 @@
     "verseNumber": 54
   },
   {
-    "id": "रसय-आय-महल-खबर-कज",
+    "id": "rsiya-aayau-mhl-khbr-kijau",
     "collectionId": "braj-rasiya",
     "index": 55,
     "titleDevanagari": "रसिया आयौ महल खबर कीजौ ।",
     "author": "विविध रसिक संत",
-    "slug": "रसय-आय-महल-खबर-कज",
+    "slug": "rsiya-aayau-mhl-khbr-kijau",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1443,12 +1443,12 @@
     "verseNumber": 59
   },
   {
-    "id": "रसय-आखन-म-मर-करक-मत-डर-अबर-गलल",
+    "id": "rsiya-aankhin-men-mere-krke-mt-dare-abir-gulal",
     "collectionId": "braj-rasiya",
     "index": 60,
     "titleDevanagari": "रसिया आँखिन में मेरे करके मत डारे अबीर गुलाल ।।",
     "author": "विविध रसिक संत",
-    "slug": "रसय-आखन-म-मर-करक-मत-डर-अबर-गलल",
+    "slug": "rsiya-aankhin-men-mere-krke-mt-dare-abir-gulal",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1489,12 +1489,12 @@
     "verseNumber": 61
   },
   {
-    "id": "चरजव-हर-क-रसय-वषभनकवर",
+    "id": "chirjivo-hori-ke-rsiya-2",
     "collectionId": "braj-rasiya",
     "index": 62,
     "titleDevanagari": "चिरजीवो होरी के रसिया (वृषभानकुँवरि)",
     "author": "विविध रसिक संत",
-    "slug": "चरजव-हर-क-रसय-वषभनकवर",
+    "slug": "chirjivo-hori-ke-rsiya-2",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1538,12 +1538,12 @@
     "verseNumber": 63
   },
   {
-    "id": "मत-डर-अबर-गलल-रसय-आखन-म-मर-करकग",
+    "id": "mt-darau-abir-gulal-rsiya-aankhin-men-mere-krkego",
     "collectionId": "braj-rasiya",
     "index": 64,
     "titleDevanagari": "मत डारौ अबीर गुलाल रसिया, आँखिन में मेरे करकेगो ।",
     "author": "विविध रसिक संत",
-    "slug": "मत-डर-अबर-गलल-रसय-आखन-म-मर-करकग",
+    "slug": "mt-darau-abir-gulal-rsiya-aankhin-men-mere-krkego",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1560,12 +1560,12 @@
     "verseNumber": 64
   },
   {
-    "id": "लख-लग-नगर-बस-रसय-बन-कछ-न-सहय",
+    "id": "lakh-log-ngri-bsaun-rsiya-bin-kchhu-n-suhay",
     "collectionId": "braj-rasiya",
     "index": 65,
     "titleDevanagari": "लाख लोग नगरी बसौं रसिया बिन कछु न सुहाय ।।",
     "author": "विविध रसिक संत",
-    "slug": "लख-लग-नगर-बस-रसय-बन-कछ-न-सहय",
+    "slug": "lakh-log-ngri-bsaun-rsiya-bin-kchhu-n-suhay",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1585,12 +1585,12 @@
     "verseNumber": 65
   },
   {
-    "id": "रसय-मर-गगर-उतर-जर-जरन-लग-जहर-क",
+    "id": "rsiya-meri-gagr-utar-jor-jrn-lagi-jehr-ki",
     "collectionId": "braj-rasiya",
     "index": 66,
     "titleDevanagari": "रसिया मेरी गागर उतार जोर जरन लागी जेहर की ।",
     "author": "विविध रसिक संत",
-    "slug": "रसय-मर-गगर-उतर-जर-जरन-लग-जहर-क",
+    "slug": "rsiya-meri-gagr-utar-jor-jrn-lagi-jehr-ki",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1725,12 +1725,12 @@
     "verseNumber": 71
   },
   {
-    "id": "शर-गररज-बस-म-पऊ-बरज-तज-बकठ-न-जऊ-रसय-मनकमन",
+    "id": "shri-giriraj-bas-men-paoon-brj-tj-baikunth-n-jaoo",
     "collectionId": "braj-rasiya",
     "index": 72,
     "titleDevanagari": "श्री गिरिराज बास में पाऊॅं, ब्रज तज बैकुंठ न जाऊ ।।(रसिया मनोकामना)",
     "author": "विविध रसिक संत",
-    "slug": "शर-गररज-बस-म-पऊ-बरज-तज-बकठ-न-जऊ-रसय-मनकमन",
+    "slug": "shri-giriraj-bas-men-paoon-brj-tj-baikunth-n-jaoo",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1768,12 +1768,12 @@
     "verseNumber": 72
   },
   {
-    "id": "डर-डलग-महल-चढ़-अय-रसय",
+    "id": "dori-dalungi-mhl-ch-aaiyo-rsiya",
     "collectionId": "braj-rasiya",
     "index": 73,
     "titleDevanagari": "डोरी डालूँगी महल चढ़ अैयो रसिया ।।",
     "author": "विविध रसिक संत",
-    "slug": "डर-डलग-महल-चढ़-अय-रसय",
+    "slug": "dori-dalungi-mhl-ch-aaiyo-rsiya",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1790,12 +1790,12 @@
     "verseNumber": 73
   },
   {
-    "id": "हर-न-खल-तत-रसय",
+    "id": "hori-n-khelun-tote-rsiya",
     "collectionId": "braj-rasiya",
     "index": 74,
     "titleDevanagari": "होरी न खेलूँ तोते रसिया ।।",
     "author": "विविध रसिक संत",
-    "slug": "हर-न-खल-तत-रसय",
+    "slug": "hori-n-khelun-tote-rsiya",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1915,12 +1915,12 @@
     "verseNumber": 78
   },
   {
-    "id": "रस-ल-र-रसय-फग-क",
+    "id": "rs-lai-rai-rsiya-phag-ko",
     "collectionId": "braj-rasiya",
     "index": 79,
     "titleDevanagari": "रस लै रै रसिया फाग को ।।",
     "author": "विविध रसिक संत",
-    "slug": "रस-ल-र-रसय-फग-क",
+    "slug": "rs-lai-rai-rsiya-phag-ko",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1961,12 +1961,12 @@
     "verseNumber": 80
   },
   {
-    "id": "हर-रसय-खलत-ह-हर",
+    "id": "hri-rsiya-khelt-hain-hori",
     "collectionId": "braj-rasiya",
     "index": 81,
     "titleDevanagari": "हरि रसिया खेलत हैं होरी ।।",
     "author": "विविध रसिक संत",
-    "slug": "हर-रसय-खलत-ह-हर",
+    "slug": "hri-rsiya-khelt-hain-hori",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1985,12 +1985,12 @@
     "verseNumber": 81
   },
   {
-    "id": "रसय-भवर-बनय-बठय-रहय-र-चल-बस-मर-पयसर",
+    "id": "rsiya-bhnvr-bnyau-baithyau-rhiyo-re-chl-bs-meri-pyausar",
     "collectionId": "braj-rasiya",
     "index": 82,
     "titleDevanagari": "रसिया भँवर बन्यौ बैठ्यौ रहियो रे, चल बस मेरी प्यौसार ।।",
     "author": "विविध रसिक संत",
-    "slug": "रसय-भवर-बनय-बठय-रहय-र-चल-बस-मर-पयसर",
+    "slug": "rsiya-bhnvr-bnyau-baithyau-rhiyo-re-chl-bs-meri-pyausar",
     "verses": [
       {
         "stanzaNumber": 1,

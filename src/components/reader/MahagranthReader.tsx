@@ -23,6 +23,7 @@ import { useScrollDirection } from '../../hooks/useScrollDirection';
 import { normalizeEpicChapterSlug } from '../../utils/epicSlugs';
 
 interface MahagranthReaderProps {
+  isActiveTab?: boolean;
   initialGranthaId?: string;
   initialChapterId?: string;
   initialVerseId?: string;
@@ -115,6 +116,7 @@ const EPICS = [
 ];
 
 export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
+  isActiveTab = true,
   initialGranthaId = 'valmiki-ramayana',
   initialChapterId,
   initialVerseId,
@@ -364,6 +366,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
 
   // Real-time Dynamic Epic & Chapter SEO synchronization
   useEffect(() => {
+    if (!isActiveTab) return;
     if (currentEpicConfig) {
       const chName = currentChapter ? ` • ${currentChapter.name}` : '';
       seo.updateSEO({
@@ -372,7 +375,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
         description: `${currentEpicConfig.name}${chName}। प्रणेता: ${currentEpicConfig.author}। संपूर्ण मूल श्लोक, अवधी/संस्कृत पाठ व ऑन-डिमांड पारायण। वृन्दोपनिषद् 2.0`,
       });
     }
-  }, [selectedGranthaId, currentEpicConfig, currentChapter]);
+  }, [isActiveTab, selectedGranthaId, currentEpicConfig, currentChapter]);
 
   const currentChapterIdx = useMemo(() => {
     if (!epicIndex || !currentChapter) return -1;

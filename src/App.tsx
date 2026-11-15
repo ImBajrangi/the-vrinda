@@ -227,10 +227,10 @@ function resolveCurrentRoute(): AppRouteState {
       determinedTab = pillarTab;
     } else if (qTab && ['smaran', 'granthas', 'padavali', 'feed', 'milestones'].includes(qTab)) {
       determinedTab = qTab;
+    } else if (targetPad || resolvedAuthor || (resolvedGrantha !== 'all' && !SacredDatabase.isEpicGrantha(resolvedGrantha))) {
+      determinedTab = 'padavali';
     } else if (isPathDomain || isEpic) {
       determinedTab = 'granthas';
-    } else if (targetPad || resolvedAuthor || (resolvedGrantha !== 'all')) {
-      determinedTab = 'padavali';
     }
 
     return {
@@ -484,6 +484,12 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
         break;
     }
   }, [activeTab]);
+
+  useEffect(() => {
+    if (initialRoute.grantha && initialRoute.grantha !== 'all' && !SacredDatabase.isEpicGrantha(initialRoute.grantha)) {
+      SacredDatabase.fetchGranthaPadas(initialRoute.grantha).catch(() => {});
+    }
+  }, [initialRoute.grantha]);
 
   useEffect(() => {
     let isMounted = true;
@@ -1461,7 +1467,8 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
             >
               <Suspense fallback={<ReaderLoadingSkeleton />}>
                 <MahagranthReaderComp
-                initialGranthaId={
+                  isActiveTab={activeTab === 'granthas'}
+                  initialGranthaId={
                   selectedGranthaFilter !== 'all' && SacredDatabase.isEpicGrantha(selectedGranthaFilter)
                     ? selectedGranthaFilter
                     : initialRoute.grantha && SacredDatabase.isEpicGrantha(initialRoute.grantha)
@@ -1497,6 +1504,7 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
             >
               <Suspense fallback={<ReaderLoadingSkeleton />}>
                 <PadavaliReaderComp
+                  isActiveTab={activeTab === 'padavali'}
                   onPlayPad={handlePlayPad}
                   activePlayingPadId={currentPad?.id}
                   isPlaying={isPlayingAudio}

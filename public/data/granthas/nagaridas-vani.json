@@ -1566,7 +1566,6 @@
       {
         "stanzaNumber": 1,
         "linesDevanagari": [
-          "(राग पूर्वी एवं राग मालकौंस)",
           "रहै दोऊ बदन निहार निहार।",
           "फुलवा बीनत श्याम सखन संग इत श्यामा सुकुमार॥ [1]",
           "लता-तरुन में रह गये इक टक कौन सके निर्वार।",
@@ -1577,7 +1576,8 @@
     ],
     "chapterId": "ch-उत्सव माला",
     "chapterName": "उत्सव माला",
-    "verseNumber": 41
+    "verseNumber": 41,
+    "rag": "पूर्वी एवं राग मालकौंस"
   },
   {
     "id": "rangili-galin-bich-ho-ho-hori-shri-nagridas-ji-ki-vani-utsav-mala-143",
@@ -1759,12 +1759,12 @@
     "verseNumber": 5
   },
   {
-    "id": "नचत-रग-भर-रवल-आय",
+    "id": "nacht-rng-bhre-ravl-aaye",
     "collectionId": "nagaridas-vani",
     "index": 77,
     "titleDevanagari": "नाचत रंग भरे रावल आये।",
     "author": "श्री नागरीदास जी",
-    "slug": "नचत-रग-भर-रवल-आय",
+    "slug": "nacht-rng-bhre-ravl-aaye",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1892,12 +1892,12 @@
     "verseNumber": 20
   },
   {
-    "id": "आज-वषभन-क-दरबर-खस-बखतय",
+    "id": "aaj-vrishbhan-ke-drbar-khus-bkhtiyan",
     "collectionId": "nagaridas-vani",
     "index": 82,
     "titleDevanagari": "आज वृषभान के दरबार खुस बखतियाँ।",
     "author": "श्री नागरीदास जी",
-    "slug": "आज-वषभन-क-दरबर-खस-बखतय",
+    "slug": "aaj-vrishbhan-ke-drbar-khus-bkhtiyan",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1947,12 +1947,12 @@
     "verseNumber": 27
   },
   {
-    "id": "अर-रन-तर-चरजव-रध-सहन",
+    "id": "ari-rani-teri-chirjivau-radha-sohni",
     "collectionId": "nagaridas-vani",
     "index": 84,
     "titleDevanagari": "अरी रानी तेरी चिरजीवौ राधा सोहनी॥",
     "author": "श्री नागरीदास जी",
-    "slug": "अर-रन-तर-चरजव-रध-सहन",
+    "slug": "ari-rani-teri-chirjivau-radha-sohni",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -1990,12 +1990,12 @@
     "verseNumber": 30
   },
   {
-    "id": "हल-आज-क-घर-छन-भलय",
+    "id": "heli-aaju-ki-ghri-chhin-bhliyan",
     "collectionId": "nagaridas-vani",
     "index": 86,
     "titleDevanagari": "हेली आजु की घरी छिन भलियाँ।",
     "author": "श्री नागरीदास जी",
-    "slug": "हल-आज-क-घर-छन-भलय",
+    "slug": "heli-aaju-ki-ghri-chhin-bhliyan",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2012,12 +2012,12 @@
     "verseNumber": 32
   },
   {
-    "id": "बरसन-हमर-रजधन-र",
+    "id": "brsanon-hmari-rjdhani-re",
     "collectionId": "nagaridas-vani",
     "index": 87,
     "titleDevanagari": "बरसानों हमारी रजधानी रे।",
     "author": "श्री नागरीदास जी",
-    "slug": "बरसन-हमर-रजधन-र",
+    "slug": "brsanon-hmari-rjdhani-re",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2042,12 +2042,12 @@
     "verseNumber": 33
   },
   {
-    "id": "अब-कउ-कह-कर-कटल-यह",
+    "id": "ab-kou-kho-kur-kutil-yh",
     "collectionId": "nagaridas-vani",
     "index": 88,
     "titleDevanagari": "अब कोउ कहो कूर कुटिल यह",
     "author": "श्री नागरीदास जी",
-    "slug": "अब-कउ-कह-कर-कटल-यह",
+    "slug": "ab-kou-kho-kur-kutil-yh",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2089,12 +2089,12 @@
     "verseNumber": 38
   },
   {
-    "id": "मगल-ह-वषभन-रज-घर",
+    "id": "mngl-hai-vrishbhan-raj-ghr",
     "collectionId": "nagaridas-vani",
     "index": 90,
     "titleDevanagari": "मंगल है वृषभान राज घर।",
     "author": "श्री नागरीदास जी",
-    "slug": "मगल-ह-वषभन-रज-घर",
+    "slug": "mngl-hai-vrishbhan-raj-ghr",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2188,12 +2188,12 @@
     "verseNumber": 47
   },
   {
-    "id": "दह-धर-क-अब-फल-पय",
+    "id": "deh-dhre-ko-ab-phl-payo",
     "collectionId": "nagaridas-vani",
     "index": 94,
     "titleDevanagari": "देह धरे को अब फल पायो",
     "author": "श्री नागरीदास जी",
-    "slug": "दह-धर-क-अब-फल-पय",
+    "slug": "deh-dhre-ko-ab-phl-payo",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2258,12 +2258,12 @@
     "verseNumber": 50
   },
   {
-    "id": "बजत-बधई-वषभन-रज-घर",
+    "id": "bajt-bdhaee-vrishbhan-raj-ghr",
     "collectionId": "nagaridas-vani",
     "index": 97,
     "titleDevanagari": "बाजत बधाई वृषभान राज घर।",
     "author": "श्री नागरीदास जी",
-    "slug": "बजत-बधई-वषभन-रज-घर",
+    "slug": "bajt-bdhaee-vrishbhan-raj-ghr",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2328,12 +2328,12 @@
     "verseNumber": 54
   },
   {
-    "id": "करय-बरज-बसन-स-नह",
+    "id": "kriye-brj-basin-saun-neh",
     "collectionId": "nagaridas-vani",
     "index": 100,
     "titleDevanagari": "करिये ब्रज बासिन सौं नेह",
     "author": "श्री नागरीदास जी",
-    "slug": "करय-बरज-बसन-स-नह",
+    "slug": "kriye-brj-basin-saun-neh",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2378,12 +2378,12 @@
     "verseNumber": 58
   },
   {
-    "id": "परत-ठट-कल-कल-फ़ल",
+    "id": "prat-that-kl-keli-aili",
     "collectionId": "nagaridas-vani",
     "index": 102,
     "titleDevanagari": "प्रात ठाट कल केलि फ़ैली",
     "author": "श्री नागरीदास जी",
-    "slug": "परत-ठट-कल-कल-फ़ल",
+    "slug": "prat-that-kl-keli-aili",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2423,12 +2423,12 @@
     "verseNumber": 65
   },
   {
-    "id": "अषट-सदध-नव-नदध-जह",
+    "id": "asht-siddhi-nv-niddhi-jihin",
     "collectionId": "nagaridas-vani",
     "index": 104,
     "titleDevanagari": "अष्ट सिद्धि नव निद्धि जिहीं",
     "author": "श्री नागरीदास जी",
-    "slug": "अषट-सदध-नव-नदध-जह",
+    "slug": "asht-siddhi-nv-niddhi-jihin",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2443,12 +2443,12 @@
     "verseNumber": 67
   },
   {
-    "id": "बहर-छड़-द-हर-म-म-स-बर-हसन-क-बन",
+    "id": "bihari-chhani-dai-hori-men-mo-saun-buri-hnsn-ki-ban",
     "collectionId": "nagaridas-vani",
     "index": 105,
     "titleDevanagari": "बिहारी छाँड़ि दै होरी में मो सौं बुरी हँसन की बान ।।",
     "author": "श्री नागरीदास जी",
-    "slug": "बहर-छड़-द-हर-म-म-स-बर-हसन-क-बन",
+    "slug": "bihari-chhani-dai-hori-men-mo-saun-buri-hnsn-ki-ban",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2519,12 +2519,12 @@
     "verseNumber": 75
   },
   {
-    "id": "तलहट-बरसन-क-रहय",
+    "id": "tlhti-brsane-ki-rhiye",
     "collectionId": "nagaridas-vani",
     "index": 108,
     "titleDevanagari": "तलहटी बरसाने की रहिये",
     "author": "श्री नागरीदास जी",
-    "slug": "तलहट-बरसन-क-रहय",
+    "slug": "tlhti-brsane-ki-rhiye",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2587,12 +2587,12 @@
     "verseNumber": 82
   },
   {
-    "id": "बहरन-लडल-सख-रस",
+    "id": "biharin-ladili-sukh-rasi",
     "collectionId": "nagaridas-vani",
     "index": 111,
     "titleDevanagari": "बिहारिन लाडिली सुख रासि ।",
     "author": "श्री नागरीदास जी",
-    "slug": "बहरन-लडल-सख-रस",
+    "slug": "biharin-ladili-sukh-rasi",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2611,12 +2611,12 @@
     "verseNumber": 84
   },
   {
-    "id": "धन-दहत-महन-ठग",
+    "id": "dhenu-duht-mohn-thge",
     "collectionId": "nagaridas-vani",
     "index": 112,
     "titleDevanagari": "धेनु दुहत मोहन ठगे",
     "author": "श्री नागरीदास जी",
-    "slug": "धन-दहत-महन-ठग",
+    "slug": "dhenu-duht-mohn-thge",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2631,12 +2631,12 @@
     "verseNumber": 85
   },
   {
-    "id": "ज-हर-त-बरज-म-बसग",
+    "id": "jo-hori-tu-brj-men-bsaigi",
     "collectionId": "nagaridas-vani",
     "index": 113,
     "titleDevanagari": "जो होरी तू ब्रज में बसैगी ।।",
     "author": "श्री नागरीदास जी",
-    "slug": "ज-हर-त-बरज-म-बसग",
+    "slug": "jo-hori-tu-brj-men-bsaigi",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2661,12 +2661,12 @@
     "verseNumber": 86
   },
   {
-    "id": "बज-बधईय-व-सख-सय-भन-द-दरबर",
+    "id": "bajain-bdhaeeyan-vo-sukh-sainyo-bhanu-de-drbar",
     "collectionId": "nagaridas-vani",
     "index": 114,
     "titleDevanagari": "बाजैं बधाईयाँ वो सुख सैंयो भानु दे दरबार",
     "author": "श्री नागरीदास जी",
-    "slug": "बज-बधईय-व-सख-सय-भन-द-दरबर",
+    "slug": "bajain-bdhaeeyan-vo-sukh-sainyo-bhanu-de-drbar",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2703,12 +2703,12 @@
     "verseNumber": 88
   },
   {
-    "id": "वनदवन-बग-फल-फलवर",
+    "id": "vrindavn-bag-phuli-phulvari",
     "collectionId": "nagaridas-vani",
     "index": 115,
     "titleDevanagari": "वृन्दावन  बाग  फूली  फूलवारी",
     "author": "श्री नागरीदास जी",
-    "slug": "वनदवन-बग-फल-फलवर",
+    "slug": "vrindavn-bag-phuli-phulvari",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2748,12 +2748,12 @@
     "verseNumber": 94
   },
   {
-    "id": "आज-लल-क-सहल-कवर-मर-परगट-ह-आननद-कनद-टक",
+    "id": "aaju-lli-kau-sohilau-kunvri-meri-prgti-hai-aannd-knd-tek",
     "collectionId": "nagaridas-vani",
     "index": 117,
     "titleDevanagari": "आजु लली कौ सोहिलौ कुँवरि मेरी प्रगटी है आनन्द कन्द॥ टेक॥",
     "author": "श्री नागरीदास जी",
-    "slug": "आज-लल-क-सहल-कवर-मर-परगट-ह-आननद-कनद-टक",
+    "slug": "aaju-lli-kau-sohilau-kunvri-meri-prgti-hai-aannd-knd-tek",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2799,12 +2799,12 @@
     "verseNumber": 99
   },
   {
-    "id": "बजत-बधई-वषभनज-क-रवर",
+    "id": "bjt-bdhaee-vrishbhanju-ke-ravr",
     "collectionId": "nagaridas-vani",
     "index": 118,
     "titleDevanagari": "बजत बधाई वृषभानजू के रावर।",
     "author": "श्री नागरीदास जी",
-    "slug": "बजत-बधई-वषभनज-क-रवर",
+    "slug": "bjt-bdhaee-vrishbhanju-ke-ravr",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2896,12 +2896,12 @@
     "verseNumber": 107
   },
   {
-    "id": "छल-मन-बस-म-करग",
+    "id": "chhaila-mn-bs-men-kraigi",
     "collectionId": "nagaridas-vani",
     "index": 122,
     "titleDevanagari": "छैला मन बस में करैगी ।।",
     "author": "श्री नागरीदास जी",
-    "slug": "छल-मन-बस-म-करग",
+    "slug": "chhaila-mn-bs-men-kraigi",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2921,12 +2921,12 @@
     "verseNumber": 109
   },
   {
-    "id": "हम-त-बरसन-क-बस",
+    "id": "hm-to-brsane-ke-basi",
     "collectionId": "nagaridas-vani",
     "index": 123,
     "titleDevanagari": "हम तो बरसाने के बासी",
     "author": "श्री नागरीदास जी",
-    "slug": "हम-त-बरसन-क-बस",
+    "slug": "hm-to-brsane-ke-basi",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2945,12 +2945,12 @@
     "verseNumber": 112
   },
   {
-    "id": "हमर-बह-गह-वनदवन",
+    "id": "hmari-banh-ghi-vrindavn",
     "collectionId": "nagaridas-vani",
     "index": 124,
     "titleDevanagari": "हमारी बाँह गही वृन्दावन",
     "author": "श्री नागरीदास जी",
-    "slug": "हमर-बह-गह-वनदवन",
+    "slug": "hmari-banh-ghi-vrindavn",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2967,12 +2967,12 @@
     "verseNumber": 114
   },
   {
-    "id": "आज-सख-अदभत-भत-नहर",
+    "id": "aaju-skhi-adbhut-bhanti-nihari",
     "collectionId": "nagaridas-vani",
     "index": 125,
     "titleDevanagari": "आजु  सखी  अद्भुत  भाँति  निहारि",
     "author": "श्री नागरीदास जी",
-    "slug": "आज-सख-अदभत-भत-नहर",
+    "slug": "aaju-skhi-adbhut-bhanti-nihari",
     "verses": [
       {
         "stanzaNumber": 1,
@@ -2989,12 +2989,12 @@
     "verseNumber": 116
   },
   {
-    "id": "सख-क-पठ-स-सस-टकय-दह-करन-कध-पकर",
+    "id": "skhi-ki-pith-saun-sis-tikayau-duhun-krn-kndha-pkrain",
     "collectionId": "nagaridas-vani",
     "index": 126,
     "titleDevanagari": "सखी की पीठ सौं सीस टिकायौ, दुहूँ करन कंधा पकरैं |",
     "author": "श्री नागरीदास जी",
-    "slug": "सख-क-पठ-स-सस-टकय-दह-करन-कध-पकर",
+    "slug": "skhi-ki-pith-saun-sis-tikayau-duhun-krn-kndha-pkrain",
     "verses": [
       {
         "stanzaNumber": 1,

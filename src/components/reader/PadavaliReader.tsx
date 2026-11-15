@@ -50,6 +50,7 @@ import { MobileScriptureDrawer } from './MobileScriptureDrawer';
 import { useScrollDirection } from '../../hooks/useScrollDirection';
 
 interface PadavaliReaderProps {
+  isActiveTab?: boolean;
   onPlayPad: (pad: SacredPad) => void;
   activePlayingPadId?: string;
   isPlaying?: boolean;
@@ -170,6 +171,7 @@ const themeStyles: Record<
 };
 
 export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
+  isActiveTab = true,
   onPlayPad,
   activePlayingPadId,
   isPlaying,
@@ -519,9 +521,10 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
   const [selectedPad, setSelectedPad] = useState<SacredPad>(initialPad);
 
-  const lastExplicitGranthaIdRef = useRef<string | undefined>(selectedGranthaId);
+  const lastExplicitGranthaIdRef = useRef<string | undefined>(undefined);
   const initialAppliedRef = useRef(false);
   const lastExplicitPadIdRef = useRef<string | undefined>(selectedPadId || initialPadId);
+  const userInteractedPadRef = useRef<boolean>(false);
 
   useEffect(() => {
     if (selectedGranthaId && selectedGranthaId !== lastExplicitGranthaIdRef.current) {
@@ -544,14 +547,17 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
           setAllPadas([...SacredDatabase.getAllPadas()]);
           setLoadingGranthaId(null);
           if (loaded && loaded.length > 0) {
-            setSelectedPad(loaded[0]);
-            setActiveScrollerVerseId(loaded[0].id);
-            if (onExternalSelectPad) onExternalSelectPad(loaded[0]);
+            const targetId = selectedPadId || initialPadId;
+            const targetPad = targetId ? loaded.find((p) => p.id === targetId || p.slug === targetId) : null;
+            const chosenPad = targetPad || loaded[0];
+            setSelectedPad(chosenPad);
+            setActiveScrollerVerseId(chosenPad.id);
+            if (onExternalSelectPad) onExternalSelectPad(chosenPad);
           }
         });
       }
     }
-  }, [selectedGranthaId, onSelectAuthorProp, onExternalSelectPad]);
+  }, [selectedGranthaId, onSelectAuthorProp, onExternalSelectPad, selectedPadId, initialPadId]);
 
   useEffect(() => {
     if (selectedAuthorProp !== undefined) {
@@ -620,19 +626,39 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   }, [selectedSearchQuery]);
   // Real-time Dynamic Verse SEO, Meta tags, and Schema.org synchronization
   useEffect(() => {
-    if (selectedPad) {
+    if (!isActiveTab) return;
+
+    const isExplicitPadRequested = typeof window !== 'undefined' && (
+      window.location.pathname.startsWith('/pad/') ||
+      new URLSearchParams(window.location.search).has('pad') ||
+      userInteractedPadRef.current
+    );
+
+    if (isExplicitPadRequested && selectedPad) {
       const firstLines = selectedPad.verses?.[0]?.linesDevanagari?.slice(0, 2).map((l) => sanitizeSacredText(l)).join(' • ') || '';
       const snippet = firstLines ? `«${firstLines}» ` : '';
       const ragaText = selectedPad.rag ? `राग ${selectedPad.rag} में निबद्ध पावन पद। ` : '';
+      const granthaMeta = selectedPad.collectionId ? SacredDatabase.getGranthaById(selectedPad.collectionId) : null;
+      const granthaLabel = granthaMeta ? ` - ${granthaMeta.name}` : '';
 
       seo.updateSEO({
         tab: 'padavali',
         pad: selectedPad,
-        title: `${selectedPad.titleDevanagari} (${selectedPad.author}) • पावन रसिक पद | वृन्दोपनिषद् 2.0`,
+        title: `${selectedPad.titleDevanagari} (${selectedPad.author})${granthaLabel} • पावन रसिक पद | वृन्दोपनिषद् 2.0`,
         description: `${snippet}${ragaText}रचयिता: ${selectedPad.author}। नित्य स्वाध्याय व पारायण। वृन्दोपनिषद् 2.0`,
       });
+    } else if (selectedGrantha && selectedGrantha !== 'all') {
+      const g = SacredDatabase.getGranthaById(selectedGrantha);
+      if (g) {
+        const authorText = g.author ? ` (${g.author})` : '';
+        seo.updateSEO({
+          tab: 'padavali',
+          title: `${g.name}${authorText} • संपूर्ण मूल पाठ, पद संग्रह व भावार्थ | वृन्दोपनिषद् 2.0`,
+          description: `${g.description || g.name} के समस्त पावन पदों व श्लोकों का प्रामाणिक संग्रह। रचयिता: ${g.author || 'रसिक संत'}। वृन्दोपनिषद् 2.0`,
+        });
+      }
     }
-  }, [selectedPad]);
+  }, [isActiveTab, selectedPad, selectedGrantha]);
 
   const [showTransliteration, setShowTransliteration] = useState(
     initialReader.showTransliteration ?? true
@@ -1097,6 +1123,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
     if (selectedPad.id === pad.id && selectedPad.verses && selectedPad.verses.length > 0) return;
     navigationProgress.start();
+    userInteractedPadRef.current = true;
     setLoadingPadId(pad.id);
     setSelectedPad(pad);
     if (onExternalSelectPad) onExternalSelectPad(pad);
@@ -2643,7 +2670,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                     onClick={() => setIsChapterDropdownOpen(!isChapterDropdownOpen)}
                     className="px-3.5 py-1.5 rounded-full text-xs font-bold bg-white hover:bg-neutral-50 border border-neutral-200/80 text-amber-950 flex items-center gap-1.5 cursor-pointer transition-colors shadow-2xs"
                   >
-                    <span>{currentChapter ? currentChapter.name : 'समस्त अध्याय'}</span>
+                    <span>{currentChapter ? currentChapter.name.replace(/\s*\([^)]*पद[^)]*\)/g, '').trim() : 'समस्त अध्याय'}</span>
                     <span className="text-[10px] text-amber-800 font-serif font-bold">
                       ({currentChapter ? `${formatDevanagariNumerals(currentChapter.verseCount)} पद` : `${formatDevanagariNumerals(availableChapters.reduce((acc, c) => acc + c.verseCount, 0))} पद`})
                     </span>
@@ -2681,7 +2708,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                               : 'hover:bg-neutral-100 text-neutral-700'
                             }`}
                         >
-                          <span className="truncate pr-2">{ch.name}</span>
+                          <span className="truncate pr-2">{ch.name.replace(/\s*\([^)]*पद[^)]*\)/g, '').trim()}</span>
                           <span className="text-[10px] font-mono text-amber-800 font-bold shrink-0">
                             ({ch.verseCount} पद)
                           </span>
