@@ -12,13 +12,18 @@ import {
   CheckCircle2,
   Clock,
   Volume2,
+  X,
+  Share2,
+  Check
 } from 'lucide-react';
 import {
   SacredRitual,
   SacredRitualPreview,
 } from '../../types/sacredSections';
 import { SacredSectionService } from '../../services/sacredSectionService';
+import { formatDevanagariNumerals } from '../../services/cacheService';
 import { chimeService } from '../../services/chimeService';
+import { seo } from '../../services/seoService';
 
 interface NityaUpasanaReaderProps {
   initialRitualSlug?: string;
@@ -33,6 +38,7 @@ export const NityaUpasanaReader: React.FC<NityaUpasanaReaderProps> = ({
   const [selectedRitual, setSelectedRitual] = useState<SacredRitual | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [copiedLink, setCopiedLink] = useState<boolean>(false);
 
   // Reader state
   const [fontSize, setFontSize] = useState<'normal' | 'large' | 'huge'>('large');
@@ -70,6 +76,7 @@ export const NityaUpasanaReader: React.FC<NityaUpasanaReaderProps> = ({
     if (ritual) {
       setSelectedRitual(ritual);
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      chimeService.playChime('temple-bell');
     }
   }, []);
 
@@ -80,10 +87,56 @@ export const NityaUpasanaReader: React.FC<NityaUpasanaReaderProps> = ({
     }
   }, [initialRitualSlug, loadRitual]);
 
+  // Synchronize SEO metadata dynamically
+  useEffect(() => {
+    if (selectedRitual) {
+      seo.updateSEO({
+        tab: 'rituals',
+        title: `${selectedRitual.titleDevanagari} (${selectedRitual.categoryHindi}) • नित्य पाठ, पूजा विधि व आरती | वृन्दोपनिषद् 2.0`,
+        description: `${selectedRitual.titleDevanagari}। आराध्य: ${selectedRitual.deityDevanagari}। देवनागरी संपूर्ण पाठ, पूजा-विधि, स्वचालित स्वाध्याय एवं शुभ घण्टी नाद।`,
+      });
+    } else {
+      seo.updateSEO({
+        tab: 'rituals',
+        title: 'नित्य मंगल आरती, चालीसा एवं स्तोत्र संग्रह • दैनिक उपासना व पाठ | वृन्दोपनिषद् 2.0',
+        description: 'दैनिक पूजा, संध्या आरती और नित्य उपासना हेतु शुद्ध देवनागरी पाठ, क्रमबद्ध पूजा-विधि, स्वचालित स्वाध्याय स्क्रॉल और पावन मन्दिर घण्टी नाद।',
+      });
+    }
+  }, [selectedRitual]);
+
   const handleSelect = (slug: string) => {
     loadRitual(slug);
     if (onSelectRitual) {
       onSelectRitual(slug);
+    }
+    if (typeof window !== 'undefined') {
+      try {
+        const url = new URL(window.location.href);
+        url.searchParams.set('tab', 'rituals');
+        url.searchParams.set('ritual', slug);
+        window.history.pushState({}, '', url.toString());
+      } catch {}
+    }
+  };
+
+  const handleBackToDirectory = () => {
+    setIsAutoScrolling(false);
+    setSelectedRitual(null);
+    if (typeof window !== 'undefined') {
+      try {
+        const url = new URL(window.location.href);
+        url.searchParams.delete('ritual');
+        window.history.pushState({}, '', url.toString());
+      } catch {}
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleShare = () => {
+    if (typeof window !== 'undefined') {
+      navigator.clipboard.writeText(window.location.href);
+      setCopiedLink(true);
+      setTimeout(() => setCopiedLink(false), 2000);
     }
   };
 
@@ -124,7 +177,7 @@ export const NityaUpasanaReader: React.FC<NityaUpasanaReaderProps> = ({
   };
 
   const ringSacredBell = () => {
-    chimeService.play('temple-bell', 0.6);
+    chimeService.playChime('temple-bell');
   };
 
   const toggleChimeMute = () => {
@@ -147,7 +200,7 @@ export const NityaUpasanaReader: React.FC<NityaUpasanaReaderProps> = ({
   }, [rituals, selectedCategory, searchQuery]);
 
   const categories = [
-    { id: 'all', label: 'समस्त उपासना (All Rituals)' },
+    { id: 'all', label: 'समस्त उपासना' },
     { id: 'aarti', label: 'मंगल आरती' },
     { id: 'chalisa', label: 'चालीसा' },
     { id: 'ashtakam', label: 'अष्टकम' },
@@ -155,9 +208,9 @@ export const NityaUpasanaReader: React.FC<NityaUpasanaReaderProps> = ({
   ];
 
   const chantingFontSizeClasses = {
-    normal: 'text-lg sm:text-xl leading-relaxed sm:leading-loose',
-    large: 'text-xl sm:text-2xl leading-loose font-medium',
-    huge: 'text-2xl sm:text-3xl leading-loose sm:leading-loose font-semibold tracking-wide',
+    normal: 'text-base sm:text-lg leading-relaxed sm:leading-loose',
+    large: 'text-lg sm:text-xl leading-loose font-medium',
+    huge: 'text-xl sm:text-2xl leading-loose sm:leading-loose font-semibold tracking-wide',
   }[fontSize];
 
   // ==========================================
@@ -165,58 +218,63 @@ export const NityaUpasanaReader: React.FC<NityaUpasanaReaderProps> = ({
   // ==========================================
   if (selectedRitual) {
     return (
-      <div className="w-full max-w-4xl mx-auto px-4 py-6 sm:py-10 pb-36 text-sacred-ink dark:text-neutral-100">
+      <main
+        role="main"
+        aria-label={`${selectedRitual.titleDevanagari} पाठ`}
+        className="w-full max-w-4xl mx-auto px-4 py-6 sm:py-8 pb-36 text-[#18181B]"
+      >
         {/* Sticky Control Header */}
-        {/* Outer: rounded-[24px] p-4 -> Inner: rounded-[8px] (24 - 16 = 8) */}
-        <div className="sticky top-4 z-40 rounded-[24px] bg-white/95 dark:bg-neutral-900/95 backdrop-blur-md border border-neutral-200 dark:border-neutral-800 p-4 shadow-nav mb-6">
-          <div className="flex flex-wrap items-center justify-between gap-3">
+        {/* Outer: rounded-[28px] p-3.5 sm:p-4 -> Inner: rounded-[12px] (28 - 16 = 12) */}
+        <div className="sticky top-4 z-40 rounded-[28px] bg-white/95 backdrop-blur-md border border-neutral-200/90 p-3.5 sm:p-4 shadow-2xs mb-6">
+          <div className="flex flex-wrap items-center justify-between gap-2.5">
             <button
-              onClick={() => {
-                setIsAutoScrolling(false);
-                setSelectedRitual(null);
-              }}
-              className="inline-flex items-center gap-1.5 px-3 py-2 text-xs sm:text-sm font-semibold text-sacred-kesar hover:bg-sacred-kesar/10 rounded-[8px] transition-colors"
+              type="button"
+              onClick={handleBackToDirectory}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-serif font-bold text-[#78350F] bg-[#FEF08A] hover:bg-amber-300 rounded-[10px] transition-colors cursor-pointer shadow-2xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
             >
-              <ArrowLeft size={16} />
+              <ArrowLeft className="w-3.5 h-3.5" />
               <span>उपासना सूची</span>
             </button>
 
             {/* Chanting & Sound Tools */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
               {/* Sacred Temple Bell Ring Button */}
               <button
+                type="button"
                 onClick={ringSacredBell}
-                className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-serif font-bold rounded-[8px] bg-gradient-to-r from-amber-500 to-sacred-kesar text-white hover:from-amber-600 hover:to-orange-700 transition-colors shadow-2xs"
-                title="शुभ मन्दिर घण्टी बजाएं (Ring Temple Bell)"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-serif font-bold rounded-[8px] bg-[#FEF08A] text-[#78350F] hover:bg-amber-300 transition-colors shadow-2xs cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+                title="शुभ मन्दिर घण्टी बजाएं"
               >
-                <Bell size={15} />
-                <span className="hidden sm:inline">दिव्य घण्टी</span>
+                <Bell className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">घण्टी नाद</span>
               </button>
 
               {/* Bell Mute Toggle */}
               <button
+                type="button"
                 onClick={toggleChimeMute}
-                className={`p-2 rounded-[8px] border transition-colors ${
+                className={`p-1.5 rounded-[8px] border transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 ${
                   isChimeMuted
-                    ? 'text-neutral-400 border-neutral-200 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800'
-                    : 'text-sacred-kesar border-sacred-kesar/30 bg-sacred-kesar/10'
+                    ? 'text-neutral-400 border-neutral-200 bg-stone-100'
+                    : 'text-[#78350F] border-amber-300 bg-amber-50'
                 }`}
                 title={isChimeMuted ? 'ध्वनि चालू करें' : 'ध्वनि म्यूट करें'}
               >
-                {isChimeMuted ? <BellOff size={16} /> : <Volume2 size={16} />}
+                {isChimeMuted ? <BellOff className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
               </button>
 
               {/* Hands-Free Auto Scroll Toggle */}
               <button
+                type="button"
                 onClick={toggleAutoScroll}
-                className={`inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-[8px] border transition-colors ${
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-serif font-bold rounded-[8px] border transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 ${
                   isAutoScrolling
                     ? 'bg-emerald-600 text-white border-emerald-600'
-                    : 'bg-white dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-700'
+                    : 'bg-white text-neutral-700 border-neutral-200 hover:bg-stone-50'
                 }`}
-                title="आरती थाल पकड़े-पकड़े स्वाचालित स्क्रॉल (Hands-free Continuous Scroll)"
+                title="आरती थाल पकड़े-पकड़े स्वचालित स्वाध्याय"
               >
-                {isAutoScrolling ? <Pause size={14} /> : <Play size={14} />}
+                {isAutoScrolling ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
                 <span className="hidden xs:inline">
                   {isAutoScrolling ? 'रोकें' : 'स्वचालित पाठ'}
                 </span>
@@ -224,27 +282,30 @@ export const NityaUpasanaReader: React.FC<NityaUpasanaReaderProps> = ({
 
               {/* Auto Scroll Speed selector if active */}
               {isAutoScrolling && (
-                <div className="flex items-center bg-neutral-100 dark:bg-neutral-800 rounded-[8px] p-0.5 border border-neutral-200 dark:border-neutral-700">
+                <div className="flex items-center bg-stone-100 rounded-[8px] p-0.5 border border-neutral-200">
                   <button
+                    type="button"
                     onClick={() => setScrollSpeed(1)}
-                    className={`px-2 py-1 text-[11px] font-bold rounded-[4px] ${
-                      scrollSpeed === 1 ? 'bg-white dark:bg-neutral-900 text-sacred-kesar' : 'text-neutral-500'
+                    className={`px-2 py-0.5 text-[11px] font-mono font-bold rounded-[4px] cursor-pointer ${
+                      scrollSpeed === 1 ? 'bg-white text-[#78350F] shadow-2xs' : 'text-neutral-500'
                     }`}
                   >
                     1x
                   </button>
                   <button
+                    type="button"
                     onClick={() => setScrollSpeed(2)}
-                    className={`px-2 py-1 text-[11px] font-bold rounded-[4px] ${
-                      scrollSpeed === 2 ? 'bg-white dark:bg-neutral-900 text-sacred-kesar' : 'text-neutral-500'
+                    className={`px-2 py-0.5 text-[11px] font-mono font-bold rounded-[4px] cursor-pointer ${
+                      scrollSpeed === 2 ? 'bg-white text-[#78350F] shadow-2xs' : 'text-neutral-500'
                     }`}
                   >
                     2x
                   </button>
                   <button
+                    type="button"
                     onClick={() => setScrollSpeed(3)}
-                    className={`px-2 py-1 text-[11px] font-bold rounded-[4px] ${
-                      scrollSpeed === 3 ? 'bg-white dark:bg-neutral-900 text-sacred-kesar' : 'text-neutral-500'
+                    className={`px-2 py-0.5 text-[11px] font-mono font-bold rounded-[4px] cursor-pointer ${
+                      scrollSpeed === 3 ? 'bg-white text-[#78350F] shadow-2xs' : 'text-neutral-500'
                     }`}
                   >
                     3x
@@ -253,29 +314,32 @@ export const NityaUpasanaReader: React.FC<NityaUpasanaReaderProps> = ({
               )}
 
               {/* Font Size Selector */}
-              <div className="flex items-center bg-neutral-100 dark:bg-neutral-800 rounded-[8px] p-0.5 border border-neutral-200 dark:border-neutral-700">
+              <div className="flex items-center bg-stone-100 rounded-[8px] p-0.5 border border-neutral-200">
                 <button
+                  type="button"
                   onClick={() => setFontSize('normal')}
-                  className={`px-2 py-1 text-xs font-semibold rounded-[4px] ${
-                    fontSize === 'normal' ? 'bg-white dark:bg-neutral-900 text-sacred-kesar' : 'text-neutral-500'
+                  className={`px-2 py-0.5 text-xs font-serif font-semibold rounded-[4px] cursor-pointer ${
+                    fontSize === 'normal' ? 'bg-white text-[#78350F] shadow-2xs' : 'text-neutral-500'
                   }`}
                   title="सामान्य अक्षर"
                 >
                   अ
                 </button>
                 <button
+                  type="button"
                   onClick={() => setFontSize('large')}
-                  className={`px-2 py-1 text-xs font-semibold rounded-[4px] ${
-                    fontSize === 'large' ? 'bg-white dark:bg-neutral-900 text-sacred-kesar' : 'text-neutral-500'
+                  className={`px-2 py-0.5 text-xs font-serif font-semibold rounded-[4px] cursor-pointer ${
+                    fontSize === 'large' ? 'bg-white text-[#78350F] shadow-2xs' : 'text-neutral-500'
                   }`}
                   title="मध्यम अक्षर"
                 >
                   अ+
                 </button>
                 <button
+                  type="button"
                   onClick={() => setFontSize('huge')}
-                  className={`px-2 py-1 text-xs font-semibold rounded-[4px] ${
-                    fontSize === 'huge' ? 'bg-white dark:bg-neutral-900 text-sacred-kesar' : 'text-neutral-500'
+                  className={`px-2 py-0.5 text-xs font-serif font-semibold rounded-[4px] cursor-pointer ${
+                    fontSize === 'huge' ? 'bg-white text-[#78350F] shadow-2xs' : 'text-neutral-500'
                   }`}
                   title="विशाल पाठ अक्षर"
                 >
@@ -285,15 +349,25 @@ export const NityaUpasanaReader: React.FC<NityaUpasanaReaderProps> = ({
 
               {/* Puja Vidhi Toggle Button */}
               <button
+                type="button"
                 onClick={() => setShowVidhiDrawer((prev) => !prev)}
-                className={`inline-flex items-center gap-1.5 px-3 py-2 text-xs font-medium rounded-[8px] border transition-colors ${
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-serif font-bold rounded-[8px] border transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 ${
                   showVidhiDrawer
-                    ? 'bg-sacred-kesar text-white border-sacred-kesar'
-                    : 'bg-white dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-700'
+                    ? 'bg-[#FEF08A] text-[#78350F] border-amber-300'
+                    : 'bg-white text-neutral-700 border-neutral-200 hover:bg-stone-50'
                 }`}
               >
-                <Flame size={14} className={showVidhiDrawer ? 'text-white' : 'text-sacred-kesar'} />
+                <Flame className={`w-3.5 h-3.5 ${showVidhiDrawer ? 'text-[#78350F]' : 'text-amber-700'}`} />
                 <span>पूजा-विधि</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={handleShare}
+                aria-label="शेयर लिंक कॉपी करें"
+                className="p-1.5 rounded-[8px] bg-stone-100 hover:bg-stone-200 text-stone-700 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+              >
+                {copiedLink ? <Check className="w-4 h-4 text-emerald-600" /> : <Share2 className="w-4 h-4" />}
               </button>
             </div>
           </div>
@@ -302,27 +376,28 @@ export const NityaUpasanaReader: React.FC<NityaUpasanaReaderProps> = ({
         {/* Puja Vidhi Drawer / Modal Card */}
         {showVidhiDrawer && (
           /* Outer: rounded-[28px] p-5 -> Inner: rounded-[8px] (28 - 20 = 8) */
-          <div className="rounded-[28px] bg-gradient-to-br from-amber-50 to-orange-50/80 dark:from-neutral-900 dark:to-neutral-950 border-2 border-sacred-kesar/40 p-5 shadow-card mb-6">
-            <div className="flex items-center justify-between mb-4 pb-2 border-b border-amber-200/60 dark:border-neutral-800">
-              <div className="flex items-center gap-2 text-sacred-kesar font-serif font-bold text-base">
-                <Flame size={18} />
-                <span>पूजा-विधि, सामग्री एवं फलश्रुति (Puja Vidhi & Procedure)</span>
+          <div className="rounded-[28px] bg-[#FAF6EE] border-2 border-amber-300/80 p-5 shadow-2xs mb-6">
+            <div className="flex items-center justify-between mb-4 pb-2 border-b border-amber-200/80">
+              <div className="flex items-center gap-2 text-[#78350F] font-serif font-bold text-base">
+                <Flame className="w-4 h-4 text-amber-700" />
+                <span>पूजा-विधि, सामग्री एवं फलश्रुति</span>
               </div>
               <button
+                type="button"
                 onClick={() => setShowVidhiDrawer(false)}
-                className="text-xs text-neutral-500 hover:text-neutral-800 dark:hover:text-neutral-200 px-2 py-1 rounded-[4px]"
+                className="text-xs text-neutral-500 hover:text-neutral-800 px-2 py-1 rounded cursor-pointer"
               >
                 बन्द करें ✕
               </button>
             </div>
 
-            <div className="space-y-4 text-xs sm:text-sm">
+            <div className="space-y-4 text-xs sm:text-sm font-serif">
               {selectedRitual.pujaVidhi.timing && (
                 <div>
-                  <span className="font-serif font-bold text-neutral-900 dark:text-neutral-100 block mb-0.5">
+                  <span className="font-bold text-[#18181B] block mb-0.5">
                     शुभ समय / मुहूर्त:
                   </span>
-                  <p className="text-neutral-700 dark:text-neutral-300">
+                  <p className="text-neutral-700">
                     {selectedRitual.pujaVidhi.timing}
                   </p>
                 </div>
@@ -331,14 +406,14 @@ export const NityaUpasanaReader: React.FC<NityaUpasanaReaderProps> = ({
               {selectedRitual.pujaVidhi.requiredItems &&
                 selectedRitual.pujaVidhi.requiredItems.length > 0 && (
                   <div>
-                    <span className="font-serif font-bold text-neutral-900 dark:text-neutral-100 block mb-1">
+                    <span className="font-bold text-[#18181B] block mb-1">
                       आवश्यक पूजन सामग्री:
                     </span>
                     <div className="flex flex-wrap gap-1.5">
                       {selectedRitual.pujaVidhi.requiredItems.map((item, idx) => (
                         <span
                           key={idx}
-                          className="px-2.5 py-1 text-xs rounded-[8px] bg-white dark:bg-neutral-800 text-amber-900 dark:text-amber-200 border border-amber-200 dark:border-neutral-700"
+                          className="px-2.5 py-1 text-xs rounded-[6px] bg-white text-[#78350F] border border-amber-200"
                         >
                           {item}
                         </span>
@@ -349,10 +424,10 @@ export const NityaUpasanaReader: React.FC<NityaUpasanaReaderProps> = ({
 
               {selectedRitual.pujaVidhi.steps && selectedRitual.pujaVidhi.steps.length > 0 && (
                 <div>
-                  <span className="font-serif font-bold text-neutral-900 dark:text-neutral-100 block mb-1">
+                  <span className="font-bold text-[#18181B] block mb-1">
                     क्रमबद्ध पाठ व उपासना विधि:
                   </span>
-                  <ol className="space-y-1.5 list-decimal list-inside text-neutral-700 dark:text-neutral-300">
+                  <ol className="space-y-1.5 list-decimal list-inside text-neutral-700">
                     {selectedRitual.pujaVidhi.steps.map((step, idx) => (
                       <li key={idx} className="leading-relaxed">
                         {step}
@@ -364,11 +439,11 @@ export const NityaUpasanaReader: React.FC<NityaUpasanaReaderProps> = ({
 
               {selectedRitual.pujaVidhi.benefits && (
                 /* Outer: rounded-[28px] p-5 -> Inner: rounded-[8px] (28 - 20 = 8) */
-                <div className="rounded-[8px] bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/50 p-3">
-                  <span className="font-serif font-bold text-emerald-800 dark:text-emerald-300 block mb-0.5">
+                <div className="rounded-[8px] bg-white border border-emerald-200 p-3">
+                  <span className="font-bold text-emerald-800 block mb-0.5">
                     फलश्रुति एवं महात्म्य:
                   </span>
-                  <p className="text-emerald-900 dark:text-emerald-200 leading-relaxed">
+                  <p className="text-emerald-950 leading-relaxed">
                     {selectedRitual.pujaVidhi.benefits}
                   </p>
                 </div>
@@ -378,48 +453,48 @@ export const NityaUpasanaReader: React.FC<NityaUpasanaReaderProps> = ({
         )}
 
         {/* Ritual Title Card */}
-        {/* Outer: rounded-[32px] p-6 -> Inner: rounded-[8px] (32 - 24 = 8) */}
-        <div className="rounded-[32px] bg-gradient-to-b from-amber-50 via-white to-orange-50/20 dark:from-neutral-900 dark:via-neutral-900 dark:to-neutral-950 border border-amber-200/80 dark:border-neutral-800 p-6 sm:p-8 shadow-card text-center mb-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-[8px] bg-sacred-kesar/10 text-sacred-kesar text-xs font-bold uppercase tracking-wider mb-2">
-            <Flame size={14} />
+        {/* Outer: rounded-[28px] p-6 sm:p-7 -> Inner: rounded-[4px] (28 - 24 = 4) */}
+        <div className="rounded-[28px] bg-white border border-neutral-200/80 p-6 sm:p-7 shadow-2xs text-center mb-6">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-[6px] bg-[#FEF08A] text-[#78350F] text-xs font-serif font-bold uppercase tracking-wider mb-2">
+            <Flame className="w-3.5 h-3.5" />
             <span>{selectedRitual.categoryHindi}</span>
           </div>
 
-          <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl font-extrabold text-neutral-900 dark:text-neutral-50 leading-snug">
+          <h1 className="font-rozha text-2xl sm:text-4xl font-bold text-[#18181B] leading-snug">
             {selectedRitual.titleDevanagari}
           </h1>
 
-          <div className="text-sm font-sans text-neutral-500 mt-2">
-            आराध्य: {selectedRitual.deityDevanagari} {selectedRitual.author ? `• रचयिता: ${selectedRitual.author}` : ''}
+          <div className="text-xs sm:text-sm font-serif text-neutral-500 mt-1.5">
+            आराध्य: <span className="font-bold text-neutral-800">{selectedRitual.deityDevanagari}</span> {selectedRitual.author ? `• रचयिता: ${selectedRitual.author}` : ''}
           </div>
 
-          <div className="mt-4 flex items-center justify-center gap-4 text-xs text-neutral-500">
+          <div className="mt-3 flex items-center justify-center gap-4 text-xs font-serif text-neutral-500">
             <span className="inline-flex items-center gap-1">
-              <Clock size={13} />
-              <span>लगभग {selectedRitual.durationMinutes} मिनट</span>
+              <Clock className="w-3.5 h-3.5 text-amber-700" />
+              <span>लगभग {formatDevanagariNumerals(selectedRitual.durationMinutes)} मिनट</span>
             </span>
             <span className="inline-flex items-center gap-1">
-              <Scroll size={13} />
-              <span>{selectedRitual.totalVerses} पद / छंद</span>
+              <Scroll className="w-3.5 h-3.5 text-amber-700" />
+              <span>{formatDevanagariNumerals(selectedRitual.totalVerses)} पद / छंद</span>
             </span>
           </div>
         </div>
 
         {/* Stanzas Chanting List */}
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-5">
           {selectedRitual.stanzas.map((stanza) => (
             /* Outer: rounded-[28px] p-6 -> Inner: rounded-[4px] (28 - 24 = 4) */
-            <div
+            <article
               key={stanza.stanzaNumber}
-              className="rounded-[28px] bg-white dark:bg-neutral-900 border border-neutral-200/90 dark:border-neutral-800 p-6 sm:p-8 shadow-card text-center"
+              className="rounded-[28px] bg-white border border-neutral-200/80 p-5 sm:p-7 shadow-2xs text-center"
             >
-              <div className="w-8 h-8 rounded-[4px] bg-amber-100 dark:bg-neutral-800 text-sacred-kesar text-xs font-bold flex items-center justify-center mx-auto mb-4">
-                {stanza.stanzaNumber}
+              <div className="w-8 h-8 rounded-[4px] bg-[#FEF08A] text-[#78350F] text-xs font-serif font-bold flex items-center justify-center mx-auto mb-3">
+                {formatDevanagariNumerals(stanza.stanzaNumber)}
               </div>
 
               {/* Chanting Devanagari Verses */}
               <div
-                className={`font-serif text-neutral-900 dark:text-amber-50 space-y-1.5 ${chantingFontSizeClasses}`}
+                className={`font-serif text-[#18181B] space-y-1.5 ${chantingFontSizeClasses}`}
               >
                 {stanza.textDevanagari.map((line, lIdx) => (
                   <div key={lIdx} className="tracking-wide">
@@ -431,37 +506,38 @@ export const NityaUpasanaReader: React.FC<NityaUpasanaReaderProps> = ({
               {/* Hindi Meaning / Bhava if available */}
               {stanza.meaning && (
                 /* Outer: rounded-[16px] p-3 -> Inner: rounded-[4px] (16 - 12 = 4) */
-                <div className="mt-5 pt-3 border-t border-neutral-100 dark:border-neutral-800 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 font-sans leading-relaxed">
-                  <span className="font-semibold text-sacred-kesar">भावार्थ: </span>
+                <div className="mt-4 pt-3 border-t border-neutral-100 text-xs sm:text-sm text-neutral-600 font-serif leading-relaxed">
+                  <span className="font-bold text-[#78350F]">भावार्थ: </span>
                   {stanza.meaning}
                 </div>
               )}
-            </div>
+            </article>
           ))}
         </div>
 
         {/* Completion Card */}
         {/* Outer: rounded-[28px] p-5 -> Inner: rounded-[8px] (28 - 20 = 8) */}
-        <div className="mt-8 rounded-[28px] bg-gradient-to-r from-emerald-50 via-teal-50 to-white dark:from-neutral-900 dark:to-neutral-950 border border-emerald-200 dark:border-emerald-900/40 p-5 shadow-sm text-center">
-          <div className="flex items-center justify-center gap-2 text-emerald-800 dark:text-emerald-300 font-serif font-bold text-base mb-1">
-            <CheckCircle2 size={18} />
+        <div className="mt-8 rounded-[28px] bg-[#FAF6EE] border border-amber-200/80 p-5 shadow-2xs text-center space-y-2">
+          <div className="flex items-center justify-center gap-2 text-emerald-800 font-serif font-bold text-base">
+            <CheckCircle2 className="w-4 h-4 text-emerald-600" />
             <span>आरती एवं पाठ सम्पूर्ण</span>
           </div>
-          <p className="text-xs sm:text-sm text-emerald-900 dark:text-emerald-200 font-sans">
+          <p className="text-xs sm:text-sm text-neutral-700 font-serif">
             ॥ श्री बांके बिहारी राधा रमण लाल की जय ॥ श्री यमुना महारानी की जय ॥
           </p>
           <button
+            type="button"
             onClick={() => {
               ringSacredBell();
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className="mt-3 inline-flex items-center gap-1.5 px-4 py-2 text-xs font-serif font-bold rounded-[8px] bg-sacred-kesar text-white hover:bg-orange-700 transition-colors shadow-2xs"
+            className="mt-2 inline-flex items-center gap-1.5 px-4 py-2 text-xs font-serif font-bold rounded-[8px] bg-[#FEF08A] hover:bg-amber-300 text-[#78350F] transition-colors shadow-2xs cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
           >
-            <Bell size={14} />
+            <Bell className="w-3.5 h-3.5" />
             <span>आरती समर्पण एवं घण्टी नाद</span>
           </button>
         </div>
-      </div>
+      </main>
     );
   }
 
@@ -469,131 +545,142 @@ export const NityaUpasanaReader: React.FC<NityaUpasanaReaderProps> = ({
   // VIEW: Rituals Directory / Listing
   // ==========================================
   return (
-    <div className="w-full max-w-6xl mx-auto px-4 py-6 sm:py-10 pb-28 text-sacred-ink dark:text-neutral-100">
-      {/* Directory Hero */}
-      {/* Outer: rounded-[32px] p-6 -> Inner: rounded-[8px] (32 - 24 = 8) */}
-      <div className="rounded-[32px] bg-gradient-to-br from-amber-100/70 via-orange-50/60 to-white dark:from-neutral-900 dark:via-neutral-900 dark:to-neutral-950 border border-amber-200/80 dark:border-neutral-800 p-6 sm:p-8 shadow-card mb-8">
-        <div className="max-w-2xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-[8px] bg-sacred-kesar/10 text-sacred-kesar text-xs font-bold uppercase tracking-wider mb-3">
-            <Flame size={14} />
-            <span>नित्य उपासना एवं पाठ (Nitya Upasana & Chanting)</span>
+    <main
+      role="main"
+      aria-label="नित्य उपासना एवं पाठ संग्रह"
+      className="w-full max-w-6xl mx-auto px-4 py-6 sm:py-8 pb-28 text-[#18181B]"
+    >
+      {/* Directory Hero Deck */}
+      {/* Outer: rounded-[28px] p-6 sm:p-7 -> Inner: rounded-[8px] (28 - 20 = 8) */}
+      <div className="rounded-[28px] bg-white border border-neutral-200/80 p-6 sm:p-7 shadow-2xs mb-6">
+        <div className="max-w-3xl">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-[6px] bg-[#FEF08A] text-[#78350F] text-xs font-serif font-bold uppercase tracking-wider mb-2">
+            <Flame className="w-3.5 h-3.5" />
+            <span>॥ नित्य उपासना एवं पाठ ॥</span>
           </div>
-          <h1 className="font-serif text-3xl sm:text-4xl font-extrabold text-neutral-900 dark:text-neutral-50 tracking-tight leading-tight">
+          <h1 className="font-rozha text-2xl sm:text-4xl font-bold text-[#18181B] tracking-tight leading-tight">
             मंगल आरती, चालीसा एवं स्तोत्र
           </h1>
-          <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-300 font-sans mt-2 leading-relaxed">
-            दैनिक पूजा, संध्या आरती और नित्य उपासना हेतु विशाल अक्षरों में देवनागरी पाठ, पूजा-विधि, स्वचालित स्क्रॉल और पावन मन्दिर घण्टी नाद।
+          <p className="text-xs sm:text-sm text-neutral-600 font-serif mt-1.5 leading-relaxed">
+            दैनिक पूजा, संध्या आरती और नित्य उपासना हेतु विशाल अक्षरों में शुद्ध देवनागरी पाठ, पूजा-विधि, स्वचालित स्वाध्याय स्क्रॉल और पावन मन्दिर घण्टी नाद।
           </p>
         </div>
 
-        {/* Search & Category Filter */}
+        {/* Search & Category Filter Bar */}
         {/* Outer: rounded-[20px] p-3 -> Inner: rounded-[8px] (20 - 12 = 8) */}
-        <div className="mt-6 rounded-[20px] bg-white/95 dark:bg-neutral-800/95 border border-amber-200 dark:border-neutral-700 p-3 shadow-xs">
+        <div
+          role="search"
+          aria-label="उपासना खोजें"
+          className="mt-5 rounded-[20px] bg-[#FAF6EE] border border-amber-200/70 p-3 shadow-2xs space-y-3"
+        >
           <div className="relative w-full flex items-center">
-            <Search
-              size={18}
-              className="absolute left-3.5 text-neutral-400 pointer-events-none"
-            />
+            <Search className="absolute left-3.5 w-4 h-4 text-neutral-400 pointer-events-none" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="आरती, चालीसा, स्तोत्र अथवा आराध्य खोजें..."
-              className="w-full pl-10 pr-4 py-2.5 text-xs sm:text-sm bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 rounded-[8px] focus:outline-none focus:ring-2 focus:ring-sacred-kesar/40 text-neutral-900 dark:text-neutral-100 placeholder-neutral-400"
+              aria-label="आरती अथवा स्तोत्र खोजें"
+              className="w-full pl-10 pr-9 py-2.5 text-[16px] sm:text-sm bg-white border border-neutral-200 rounded-[8px] focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 text-[#18181B] placeholder-neutral-400 font-serif"
             />
+            {searchQuery && (
+              <button
+                type="button"
+                onClick={() => setSearchQuery('')}
+                aria-label="खोज साफ़ करें"
+                className="absolute right-3 text-neutral-400 hover:text-neutral-700 p-0.5 rounded cursor-pointer"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            )}
           </div>
 
-          <div className="flex items-center gap-2 overflow-x-auto pt-3 mt-2 border-t border-neutral-100 dark:border-neutral-700">
-            {categories.map((cat) => (
-              <button
-                key={cat.id}
-                onClick={() => setSelectedCategory(cat.id)}
-                className={`px-3 py-1.5 text-xs font-semibold whitespace-nowrap rounded-[8px] transition-colors ${
-                  selectedCategory === cat.id
-                    ? 'bg-sacred-kesar text-white shadow-xs'
-                    : 'bg-neutral-100 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700'
-                }`}
-              >
-                {cat.label}
-              </button>
-            ))}
+          <div className="flex items-center justify-between gap-2 overflow-x-auto pt-2 border-t border-amber-900/10">
+            <div className="flex items-center gap-1.5">
+              {categories.map((cat) => (
+                <button
+                  key={cat.id}
+                  type="button"
+                  onClick={() => setSelectedCategory(cat.id)}
+                  className={`px-3 py-1.5 text-xs font-serif font-semibold whitespace-nowrap rounded-[8px] transition-colors cursor-pointer select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 ${
+                    selectedCategory === cat.id
+                      ? 'bg-[#FEF08A] text-[#78350F] font-bold shadow-2xs'
+                      : 'bg-white text-neutral-600 hover:bg-neutral-50 border border-neutral-200/60'
+                  }`}
+                >
+                  {cat.label}
+                </button>
+              ))}
+            </div>
+
+            <div className="text-[11px] font-serif text-neutral-500 shrink-0 font-medium hidden sm:block">
+              {formatDevanagariNumerals(filteredRituals.length)} स्तुतियाँ उपलब्ध
+            </div>
           </div>
         </div>
       </div>
 
       {/* Rituals Grid */}
       {filteredRituals.length === 0 ? (
-        /* Outer: rounded-[24px] p-8 -> Inner: rounded-[8px] (24 - 16 = 8) */
-        <div className="rounded-[24px] bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 p-8 text-center">
-          <Scroll size={36} className="mx-auto text-neutral-300 dark:text-neutral-600 mb-3" />
-          <h3 className="font-serif text-lg font-bold text-neutral-700 dark:text-neutral-300">
+        /* Outer: rounded-[28px] p-8 -> Inner: rounded-[8px] (28 - 20 = 8) */
+        <div className="rounded-[28px] bg-white border border-neutral-200/80 p-8 text-center space-y-2">
+          <Scroll className="mx-auto w-10 h-10 text-neutral-300 mb-2" />
+          <h2 className="font-rozha text-lg font-bold text-neutral-800">
             कोई उपासना पाठ नहीं मिला
-          </h3>
-          <p className="text-xs sm:text-sm text-neutral-500 mt-1">
+          </h2>
+          <p className="text-xs text-neutral-500 font-serif">
             कृपया अन्य शब्द खोजें अथवा फ़िल्टर बदलें।
           </p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {filteredRituals.map((ritual) => (
             /* Outer: rounded-[28px] p-5 -> Inner: rounded-[8px] (28 - 20 = 8) */
-            <div
+            <article
               key={ritual.id}
-              className="rounded-[28px] bg-white dark:bg-neutral-900 border border-neutral-200/90 dark:border-neutral-800 p-5 shadow-card flex flex-col justify-between hover:border-amber-300 dark:hover:border-neutral-700 transition-colors"
+              className="rounded-[28px] bg-white border border-neutral-200/80 p-5 shadow-2xs flex flex-col justify-between hover:border-amber-300 transition-colors"
             >
               <div>
                 <div className="flex items-center justify-between gap-2 mb-3">
-                  <span className="px-2.5 py-0.5 text-[11px] font-bold rounded-[8px] bg-sacred-kesar/10 text-sacred-kesar">
+                  <span className="px-2.5 py-0.5 text-[10.5px] font-serif font-bold rounded-[6px] bg-[#FEF08A] text-[#78350F]">
                     {ritual.categoryHindi}
                   </span>
-                  <span className="text-[11px] text-neutral-500 font-medium">
-                    लगभग {ritual.durationMinutes} मि.
+                  <span className="text-[11px] text-neutral-500 font-serif font-medium">
+                    लगभग {formatDevanagariNumerals(ritual.durationMinutes)} मि.
                   </span>
                 </div>
 
-                <h3
+                <h2
                   onClick={() => handleSelect(ritual.slug || ritual.id)}
-                  className="font-serif text-lg font-bold text-neutral-900 dark:text-neutral-100 hover:text-sacred-kesar cursor-pointer transition-colors leading-snug"
+                  className="font-rozha text-base sm:text-lg font-bold text-[#18181B] hover:text-[#B45309] cursor-pointer transition-colors leading-snug"
                 >
                   {ritual.titleDevanagari}
-                </h3>
+                </h2>
 
-                <div className="text-xs text-neutral-500 mt-1">
-                  आराध्य: {ritual.deityDevanagari}
-                </div>
-
-                <div className="mt-4 flex items-center gap-2 text-xs text-neutral-500">
-                  <span className="inline-flex items-center gap-1">
-                    <Scroll size={13} className="text-sacred-kesar" />
-                    <span>{ritual.totalVerses} पद / छंद</span>
-                  </span>
-                  <span>•</span>
-                  <span>पूजा-विधि सहित</span>
+                <div className="text-xs text-neutral-500 font-serif mt-0.5">
+                  आराध्य: <span className="font-semibold text-neutral-700">{ritual.deityDevanagari}</span>
                 </div>
               </div>
 
-              <div className="mt-5 pt-3 border-t border-neutral-100 dark:border-neutral-800 flex items-center justify-between">
-                <button
-                  onClick={() => ringSacredBell()}
-                  className="p-1.5 rounded-[8px] text-amber-600 hover:bg-amber-50 dark:hover:bg-neutral-800 transition-colors"
-                  title="घण्टी बजाएं"
-                >
-                  <Bell size={16} />
-                </button>
+              <div className="mt-4 pt-3 border-t border-neutral-100 flex items-center justify-between gap-2">
+                <div className="flex items-center gap-1.5 text-[11px] text-neutral-500 font-serif">
+                  <Scroll className="w-3.5 h-3.5 text-amber-700 shrink-0" />
+                  <span>{formatDevanagariNumerals(ritual.totalVerses)} पद / छंद</span>
+                </div>
 
                 <button
+                  type="button"
                   onClick={() => handleSelect(ritual.slug || ritual.id)}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-serif font-bold rounded-[8px] bg-sacred-kesar text-white hover:bg-orange-700 transition-colors shadow-2xs"
+                  className="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-serif font-bold rounded-[8px] bg-[#FEF08A] hover:bg-amber-300 text-[#78350F] transition-colors shadow-2xs cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 shrink-0"
                 >
-                  <Flame size={13} />
-                  <span>पाठ प्रारम्भ</span>
-                  <ChevronRight size={14} />
+                  <span>पाठ करें</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
                 </button>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       )}
-    </div>
+    </main>
   );
 };

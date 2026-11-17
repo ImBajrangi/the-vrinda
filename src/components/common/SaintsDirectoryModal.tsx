@@ -152,7 +152,7 @@ export const SaintsDirectoryModal: React.FC<SaintsDirectoryModalProps> = ({
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="संत का नाम या परंपरा खोजें..."
-              className="flex-1 bg-transparent text-xs sm:text-sm font-medium text-[#18181B] placeholder-neutral-400 outline-none"
+              className="flex-1 bg-transparent text-[16px] sm:text-sm font-medium text-[#18181B] placeholder-neutral-400 outline-none"
             />
             {query && (
               <button

@@ -361,8 +361,14 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
   const [activePillarModal, setActivePillarModal] = useState<PillarType | null>(null);
   const [isGuideModalOpen, setIsGuideModalOpen] = useState(false);
   const [isAffirmedSankalpa, setIsAffirmedSankalpa] = useState(false);
-  const [selectedGranthaFilter, setSelectedGranthaFilter] = useState<string>(() => {
-    if (initialRoute.grantha && initialRoute.grantha !== 'all') {
+  const [selectedEpicGranthaId, setSelectedEpicGranthaId] = useState<string>(() => {
+    if (initialRoute.grantha && SacredDatabase.isEpicGrantha(initialRoute.grantha)) {
+      return initialRoute.grantha;
+    }
+    return 'valmiki-ramayana';
+  });
+  const [selectedPadavaliGranthaId, setSelectedPadavaliGranthaId] = useState<string>(() => {
+    if (initialRoute.grantha && !SacredDatabase.isEpicGrantha(initialRoute.grantha)) {
       return initialRoute.grantha;
     }
     return 'all';
@@ -606,7 +612,11 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
       setVisitedTabs((prev) => (prev.has(nextRoute.tab) ? prev : new Set(prev).add(nextRoute.tab)));
       setActiveTab(nextRoute.tab);
       if (nextRoute.grantha && nextRoute.grantha !== 'all') {
-        setSelectedGranthaFilter(nextRoute.grantha);
+        if (SacredDatabase.isEpicGrantha(nextRoute.grantha)) {
+          setSelectedEpicGranthaId(nextRoute.grantha);
+        } else {
+          setSelectedPadavaliGranthaId(nextRoute.grantha);
+        }
       }
       if (nextRoute.pad) {
         const p = SacredDatabase.getPadById(nextRoute.pad);
@@ -651,7 +661,11 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
     navigationProgress.start();
     setCurrentPad(pad);
     if (pad.collectionId) {
-      setSelectedGranthaFilter(pad.collectionId);
+      if (SacredDatabase.isEpicGrantha(pad.collectionId)) {
+        setSelectedEpicGranthaId(pad.collectionId);
+      } else {
+        setSelectedPadavaliGranthaId(pad.collectionId);
+      }
     }
     if (pad.collectionId && SacredDatabase.isEpicGrantha(pad.collectionId)) {
       setActiveTab('granthas');
@@ -666,11 +680,11 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
 
   const handleSelectBook = async (granthaId: string) => {
     navigationProgress.start();
-    setSelectedGranthaFilter(granthaId);
     setSelectedAuthor(null);
     setReaderSearchQuery('');
 
     if (SacredDatabase.isEpicGrantha(granthaId)) {
+      setSelectedEpicGranthaId(granthaId);
       setActiveTab('granthas');
       if (typeof window !== 'undefined') {
         try {
@@ -688,6 +702,7 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
       return;
     }
 
+    setSelectedPadavaliGranthaId(granthaId);
     setActiveTab('padavali');
     if (typeof window !== 'undefined') {
       try {
@@ -712,7 +727,7 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
 
   const handleSelectAuthor = async (authorName: string) => {
     navigationProgress.start();
-    setSelectedGranthaFilter('all');
+    setSelectedPadavaliGranthaId('all');
     setSelectedAuthor(authorName);
     setReaderSearchQuery('');
     setActiveTab('padavali');
@@ -1531,30 +1546,24 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
               <Suspense fallback={<ReaderLoadingSkeleton />}>
                 <MahagranthReaderComp
                   isActiveTab={activeTab === 'granthas'}
-                  initialGranthaId={
-                  selectedGranthaFilter !== 'all' && SacredDatabase.isEpicGrantha(selectedGranthaFilter)
-                    ? selectedGranthaFilter
-                    : initialRoute.grantha && SacredDatabase.isEpicGrantha(initialRoute.grantha)
-                    ? initialRoute.grantha
-                    : 'valmiki-ramayana'
-                }
-                initialChapterId={initialRoute.chapter}
-                initialVerseId={initialRoute.verse}
-                onSelectGrantha={(gId) => {
-                  setSelectedGranthaFilter(gId);
-                  if (typeof window !== 'undefined') {
-                    try {
-                      const url = new URL(window.location.href);
-                      url.searchParams.set('tab', 'granthas');
-                      url.searchParams.set('grantha', gId);
-                      window.history.replaceState({}, '', url.toString());
-                    } catch {}
-                  }
-                }}
-                onSwitchToPadavali={() => handleTabSwitch('padavali')}
-                onOpenSearch={() => setIsSpotlightOpen(true)}
-              />
-            </Suspense>
+                  initialGranthaId={selectedEpicGranthaId}
+                  initialChapterId={initialRoute.chapter}
+                  initialVerseId={initialRoute.verse}
+                  onSelectGrantha={(gId) => {
+                    setSelectedEpicGranthaId(gId);
+                    if (typeof window !== 'undefined') {
+                      try {
+                        const url = new URL(window.location.href);
+                        url.searchParams.set('tab', 'granthas');
+                        url.searchParams.set('grantha', gId);
+                        window.history.replaceState({}, '', url.toString());
+                      } catch {}
+                    }
+                  }}
+                  onSwitchToPadavali={() => handleTabSwitch('padavali')}
+                  onOpenSearch={() => setIsSpotlightOpen(true)}
+                />
+              </Suspense>
             </div>
           )}
 
@@ -1571,12 +1580,13 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
                   onPlayPad={handlePlayPad}
                   activePlayingPadId={currentPad?.id}
                   isPlaying={isPlayingAudio}
-                  selectedGranthaId={selectedGranthaFilter}
+                  selectedGranthaId={selectedPadavaliGranthaId}
                   onSelectGranthaId={(gId) => {
                     if (SacredDatabase.isEpicGrantha(gId)) {
-                      handleSelectBook(gId);
+                      setSelectedEpicGranthaId(gId);
+                      handleTabSwitch('granthas');
                     } else {
-                      setSelectedGranthaFilter(gId);
+                      setSelectedPadavaliGranthaId(gId);
                     }
                   }}
                   onSelectPad={(p) => setCurrentPad(p)}
@@ -1784,7 +1794,15 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
               aria-hidden={activeTab !== 'biographies'}
             >
               <Suspense fallback={<ReaderLoadingSkeleton />}>
-                <LazyCharitraDarshan onNavigateToPadavali={() => handleTabSwitch('padavali')} />
+                <LazyCharitraDarshan
+                  onNavigateToPadavali={(saintName) => {
+                    if (saintName) {
+                      handleSelectAuthor(saintName);
+                    } else {
+                      handleTabSwitch('padavali');
+                    }
+                  }}
+                />
               </Suspense>
             </div>
           )}

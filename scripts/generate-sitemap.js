@@ -326,6 +326,10 @@ function createSitemapSuite(baseUrl, prefix = '') {
     { loc: `${baseUrl}/padavali`, lastmod: today, changefreq: 'daily', priority: 0.9 },
     { loc: `${baseUrl}/feed`, lastmod: today, changefreq: 'hourly', priority: 0.85 },
     { loc: `${baseUrl}/milestones`, lastmod: today, changefreq: 'weekly', priority: 0.85 },
+    { loc: `${baseUrl}/stories`, lastmod: today, changefreq: 'weekly', priority: 0.9 },
+    { loc: `${baseUrl}/biographies`, lastmod: today, changefreq: 'weekly', priority: 0.9 },
+    { loc: `${baseUrl}/places`, lastmod: today, changefreq: 'weekly', priority: 0.9 },
+    { loc: `${baseUrl}/rituals`, lastmod: today, changefreq: 'weekly', priority: 0.9 },
   ];
   const mainXml = buildUrlset(mainUrls);
 
@@ -385,7 +389,6 @@ function createSitemapSuite(baseUrl, prefix = '') {
     `  <sitemap><loc>${baseUrl}/${filePrefix}-padas-1.xml</loc><lastmod>${today}</lastmod></sitemap>`,
     `  <sitemap><loc>${baseUrl}/${filePrefix}-padas-2.xml</loc><lastmod>${today}</lastmod></sitemap>`,
     `  <sitemap><loc>${baseUrl}/${filePrefix}-padas-3.xml</loc><lastmod>${today}</lastmod></sitemap>`,
-    `  <sitemap><loc>${baseUrl}/${filePrefix}-padas.xml</loc><lastmod>${today}</lastmod></sitemap>`,
     '</sitemapindex>',
   ].join('\n');
 

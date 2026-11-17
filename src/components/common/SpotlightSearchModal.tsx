@@ -266,7 +266,7 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="खोजें: पद, संत, ग्रन्थ, राग या भाव..."
-            className="flex-1 bg-transparent text-sm sm:text-base font-normal text-[#18181B] placeholder-neutral-400 outline-none"
+            className="flex-1 bg-transparent text-[16px] sm:text-base font-normal text-[#18181B] placeholder-neutral-400 outline-none"
           />
           {query !== debouncedQuery && (
             <IOSSpinner size="xs" theme="amber" className="shrink-0" />

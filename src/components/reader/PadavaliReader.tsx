@@ -530,6 +530,16 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   useEffect(() => {
     if (selectedGranthaId && selectedGranthaId !== lastExplicitGranthaIdRef.current) {
       lastExplicitGranthaIdRef.current = selectedGranthaId;
+
+      // Strict boundary guard: Never allow Sanatan Epics to contaminate the Rasik Padavali Sanctuary
+      if (SacredDatabase.isEpicGrantha(selectedGranthaId)) {
+        setSelectedGrantha('all');
+        setSelectedChapter('all');
+        setSelectedRaga('all');
+        setGranthaCategory('all');
+        return;
+      }
+
       setSelectedGrantha(selectedGranthaId);
       setSelectedChapter('all');
       setSelectedRaga('all');
@@ -1412,18 +1422,22 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     // Step 1: Select smallest pre-indexed slice directly from SacredDatabase
     let baseList: SacredPad[];
     if (selectedAuthor) {
-      baseList = SacredDatabase.getPadasByAuthor(selectedAuthor);
+      baseList = SacredDatabase.getPadasByAuthor(selectedAuthor).filter((p) => !SacredDatabase.isEpicGrantha(p.collectionId));
     } else if (selectedGrantha !== 'all') {
-      const chapterList = selectedChapter !== 'all'
-        ? SacredDatabase.getPadasByChapter(selectedGrantha, selectedChapter)
-        : [];
-      baseList = (chapterList && chapterList.length > 0)
-        ? chapterList
-        : SacredDatabase.getPadasByGrantha(selectedGrantha);
+      if (SacredDatabase.isEpicGrantha(selectedGrantha)) {
+        baseList = allPadas.filter((p) => !SacredDatabase.isEpicGrantha(p.collectionId));
+      } else {
+        const chapterList = selectedChapter !== 'all'
+          ? SacredDatabase.getPadasByChapter(selectedGrantha, selectedChapter)
+          : [];
+        baseList = ((chapterList && chapterList.length > 0)
+          ? chapterList
+          : SacredDatabase.getPadasByGrantha(selectedGrantha)).filter((p) => !SacredDatabase.isEpicGrantha(p.collectionId));
+      }
     } else if (granthaCategory !== 'all' && granthaCategory !== 'authors') {
-      baseList = SacredDatabase.getPadasByCategory(granthaCategory);
+      baseList = SacredDatabase.getPadasByCategory(granthaCategory).filter((p) => !SacredDatabase.isEpicGrantha(p.collectionId));
     } else {
-      baseList = allPadas;
+      baseList = allPadas.filter((p) => !SacredDatabase.isEpicGrantha(p.collectionId));
     }
 
     // Step 2: Instant fast-path if no search query and no raga filter (0ms cold path)
@@ -1820,7 +1834,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               placeholder="Search pad, stotra, saint, raga..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-2 pr-6 bg-transparent text-xs text-[#18181B] placeholder:text-neutral-400 outline-none border-none focus:outline-none focus:ring-0 focus:border-none ring-0 select-text"
+              className="w-full pl-2 pr-6 bg-transparent text-[16px] sm:text-xs text-[#18181B] placeholder:text-neutral-400 outline-none border-none focus:outline-none focus:ring-0 focus:border-none ring-0 select-text"
             />
             {searchQuery && (
               <button
@@ -2517,7 +2531,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                       value={sidebarQuery}
                       onChange={(e) => setSidebarQuery(e.target.value)}
                       placeholder="पद, टेक या संत खोजें..."
-                      className="w-full pl-2 pr-6 bg-transparent text-xs text-[#18181B] font-laila placeholder:text-neutral-400 placeholder:font-laila outline-none border-none focus:outline-none focus:ring-0 focus:border-none ring-0 select-text"
+                      className="w-full pl-2 pr-6 bg-transparent text-[16px] sm:text-xs text-[#18181B] font-laila placeholder:text-neutral-400 placeholder:font-laila outline-none border-none focus:outline-none focus:ring-0 focus:border-none ring-0 select-text"
                     />
                     {sidebarQuery && (
                       <button

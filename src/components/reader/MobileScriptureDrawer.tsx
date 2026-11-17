@@ -37,6 +37,10 @@ const triggerHaptic = (ms: number = 8) => {
  *
  * Implements Apple Human Interface & Material 3 Design:
  * - 0% background blur (ultra-fast, zero GPU load, perfectly sharp background scripture)
+ * - Dynamic visualViewport height & keyboard collision avoidance
+ * - Auto-tuck keyboard on list scroll or tap outside
+ * - One-tap tactile "Done" (पूर्ण) keyboard dismiss button
+ * - 16px minimum search input size to eliminate iOS Safari forced auto-zoom
  * - 1:1 true physics drag with momentum swipe-down to dismiss
  * - Full-surface drag detection (grab handle, title bar, search header, category strip)
  * - Intelligent overscroll pull-down to dismiss when at top of list
@@ -44,7 +48,8 @@ const triggerHaptic = (ms: number = 8) => {
  * - Section header grouping (e.g. बालकाण्ड, अयोध्याकाण्ड, स्कन्ध) for structured reading
  * - Real-time search query matching with instant results counter
  * - Micro-haptic tactile feedback on tap
- * - Strict concentric border radius geometry (Outer 32px -> Inner 14px -> Inner 10px)
+ * - Strict concentric border radius geometry (Outer 32px -> Inner 16px -> Inner 6px)
+ * - Zero unnecessary AI hover translateY animations
  * - Safe area padding for notchless iPhone home indicators & Android gesture bars
  */
 export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
@@ -64,6 +69,20 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
   const [viewMode, setViewMode] = useState<'list' | 'grid'>('list');
   const [isRendered, setIsRendered] = useState(isOpen);
   const [isMounted, setIsMounted] = useState(false);
+  const [isInputFocused, setIsInputFocused] = useState(false);
+
+  // Dynamic visual viewport & on-screen keyboard metrics
+  const [viewportMetrics, setViewportMetrics] = useState<{
+    height: number;
+    offsetTop: number;
+    keyboardHeight: number;
+    isKeyboardOpen: boolean;
+  }>({
+    height: typeof window !== 'undefined' ? window.innerHeight : 600,
+    offsetTop: 0,
+    keyboardHeight: 0,
+    isKeyboardOpen: false,
+  });
 
   const sheetRef = useRef<HTMLDivElement>(null);
   const backdropRef = useRef<HTMLDivElement>(null);
@@ -82,10 +101,65 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
     setIsMounted(true);
   }, []);
 
+  // Track dynamic visual viewport & soft keyboard geometry
+  useEffect(() => {
+    if (!isOpen || typeof window === 'undefined') return;
+
+    const updateMetrics = () => {
+      const vv = window.visualViewport;
+      if (vv) {
+        const winH = window.innerHeight;
+        const vh = Math.round(vv.height);
+        const top = Math.max(0, Math.round(vv.offsetTop));
+        const rawKb = Math.max(0, winH - vh);
+        // Soft keyboard typically consumes > 100px on mobile screens
+        const isKb = rawKb > 100 || (typeof screen !== 'undefined' && screen.height - vh > 180 && isInputFocused);
+        const kb = isKb ? rawKb : 0;
+
+        setViewportMetrics({
+          height: vh,
+          offsetTop: top,
+          keyboardHeight: kb,
+          isKeyboardOpen: isKb,
+        });
+      } else {
+        setViewportMetrics({
+          height: window.innerHeight,
+          offsetTop: 0,
+          keyboardHeight: 0,
+          isKeyboardOpen: false,
+        });
+      }
+    };
+
+    updateMetrics();
+
+    const vv = window.visualViewport;
+    if (vv) {
+      vv.addEventListener('resize', updateMetrics);
+      vv.addEventListener('scroll', updateMetrics);
+    }
+    window.addEventListener('resize', updateMetrics);
+
+    return () => {
+      if (vv) {
+        vv.removeEventListener('resize', updateMetrics);
+        vv.removeEventListener('scroll', updateMetrics);
+      }
+      window.removeEventListener('resize', updateMetrics);
+    };
+  }, [isOpen, isInputFocused]);
+
   // Programmatic dismiss with spring glide animation
   const handleDismiss = useCallback(() => {
     if (isDismissing.current) return;
     isDismissing.current = true;
+
+    // Blur search input immediately so virtual keyboard dismisses synchronously
+    if (searchInputRef.current) {
+      searchInputRef.current.blur();
+    }
+    setIsInputFocused(false);
 
     if (sheetRef.current) {
       sheetRef.current.style.transition = 'transform 160ms cubic-bezier(0.32, 0.72, 0, 1)';
@@ -214,12 +288,22 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
         if (target.tagName.toLowerCase() === 'input') {
           isDragging.current = false;
         } else {
+          // Touching anywhere on sheet chrome while keyboard is open dismisses keyboard cleanly
+          if (document.activeElement === searchInputRef.current) {
+            searchInputRef.current?.blur();
+            setIsInputFocused(false);
+          }
           isDragging.current = true;
           if (sheetRef.current) sheetRef.current.style.transition = 'none';
           if (backdropRef.current) backdropRef.current.style.transition = 'none';
         }
       } else {
         isDragging.current = false;
+        // Touching the scroll list while keyboard is up immediately tucks keyboard away
+        if (document.activeElement === searchInputRef.current) {
+          searchInputRef.current?.blur();
+          setIsInputFocused(false);
+        }
       }
     },
     []
@@ -297,6 +381,14 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
     }
   }, [handleDismiss]);
 
+  // List scroll listener: auto-dismiss keyboard on scrolling results
+  const handleListScroll = useCallback(() => {
+    if (document.activeElement === searchInputRef.current) {
+      searchInputRef.current?.blur();
+      setIsInputFocused(false);
+    }
+  }, []);
+
   const handleSelect = useCallback(
     (id: string) => {
       triggerHaptic(10);
@@ -309,7 +401,14 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
   if (!isMounted || !isRendered) return null;
 
   const content = (
-    <div className="fixed inset-0 z-[100] pointer-events-auto flex flex-col justify-end">
+    <div
+      className="fixed inset-x-0 z-[100] pointer-events-auto flex flex-col justify-end"
+      style={{
+        top: `${viewportMetrics.offsetTop}px`,
+        bottom: `${viewportMetrics.keyboardHeight}px`,
+        height: viewportMetrics.isKeyboardOpen ? `${viewportMetrics.height}px` : undefined,
+      }}
+    >
       {/* 
         Crisp Dark Scrim Backdrop (0% GPU blur, 100% sharp background text)
       */}
@@ -322,11 +421,20 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
 
       {/* 
         Native Bottom Sheet Canvas
-        Concentric Geometry: Outer rounded-t-[32px] -> Inner items rounded-[14px]
+        Concentric Geometry: Outer rounded-t-[32px] -> Inner search rounded-[14px] -> Inner items rounded-[16px] -> Inner icon rounded-[6px]
       */}
       <div
         ref={sheetRef}
-        className="relative z-10 w-full max-h-[85dvh] sm:max-h-[80dvh] bg-white rounded-t-[32px] shadow-[0_-12px_48px_rgba(0,0,0,0.18)] border-t border-stone-200/50 flex flex-col overflow-hidden will-change-transform animate-[nativeSheetUp_240ms_cubic-bezier(0.32,0.72,0,1)]"
+        className={`relative z-10 w-full bg-white rounded-t-[32px] shadow-[0_-12px_48px_rgba(0,0,0,0.18)] border-t border-stone-200/50 flex flex-col overflow-hidden will-change-transform animate-[nativeSheetUp_240ms_cubic-bezier(0.32,0.72,0,1)] ${
+          viewportMetrics.isKeyboardOpen
+            ? 'h-full max-h-full'
+            : 'max-h-[85dvh] sm:max-h-[80dvh]'
+        }`}
+        style={
+          viewportMetrics.isKeyboardOpen
+            ? { maxHeight: `${Math.max(280, viewportMetrics.height - 8)}px` }
+            : undefined
+        }
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
@@ -363,26 +471,62 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
           </div>
         </div>
 
-        {/* Search Box & Query Status */}
+        {/* Search Box & Query Status with Dynamic Keyboard Dismiss */}
         <div className="px-5 pt-3 pb-2 shrink-0 bg-white">
-          <div className="relative flex items-center w-full h-10 px-3.5 rounded-[14px] bg-[#F4F4F5] border border-stone-200/70 focus-within:bg-white focus-within:border-amber-400 focus-within:ring-2 focus-within:ring-amber-500/15 transition-all duration-150">
-            <Search className="w-4 h-4 text-stone-400 shrink-0 pointer-events-none" />
-            <input
-              ref={searchInputRef}
-              type="text"
-              placeholder="खोजें... (Search sarga, adhyaya, saint)"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-2.5 pr-6 bg-transparent text-xs sm:text-sm text-stone-900 placeholder:text-stone-400 outline-none border-none focus:outline-none focus:ring-0 select-text"
-            />
-            {searchQuery && (
+          <div className="flex items-center gap-2">
+            <div className="relative flex items-center flex-1 h-10 px-3.5 rounded-[14px] bg-[#F4F4F5] border border-stone-200/70 focus-within:bg-white focus-within:border-amber-400 focus-within:ring-2 focus-within:ring-amber-500/15 transition-all duration-150">
+              <Search className="w-4 h-4 text-stone-400 shrink-0 pointer-events-none" />
+              <input
+                ref={searchInputRef}
+                type="search"
+                inputMode="search"
+                autoComplete="off"
+                autoCorrect="off"
+                autoCapitalize="none"
+                spellCheck="false"
+                placeholder="खोजें... (Search sarga, adhyaya, saint)"
+                value={searchQuery}
+                onFocus={() => setIsInputFocused(true)}
+                onBlur={() => setIsInputFocused(false)}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    searchInputRef.current?.blur();
+                    setIsInputFocused(false);
+                  }
+                }}
+                className="w-full pl-2.5 pr-6 bg-transparent text-[16px] sm:text-sm text-stone-900 placeholder:text-stone-400 outline-none border-none focus:outline-none focus:ring-0 select-text"
+              />
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSearchQuery('');
+                    searchInputRef.current?.focus();
+                  }}
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 text-stone-400 hover:text-stone-700 active:text-stone-900 rounded-full cursor-pointer touch-manipulation"
+                  aria-label="Clear search"
+                >
+                  <X className="w-3.5 h-3.5" />
+                </button>
+              )}
+            </div>
+
+            {/* Tactile Keyboard Dismiss / Done Button when keyboard is active */}
+            {(isInputFocused || viewportMetrics.isKeyboardOpen) && (
               <button
                 type="button"
-                onClick={() => setSearchQuery('')}
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 p-0.5 text-stone-400 hover:text-stone-700 rounded-full cursor-pointer"
-                aria-label="Clear search"
+                onClick={() => {
+                  triggerHaptic(6);
+                  searchInputRef.current?.blur();
+                  setIsInputFocused(false);
+                }}
+                className="h-10 px-3.5 rounded-[14px] bg-amber-50 hover:bg-amber-100/80 active:bg-amber-200/70 text-amber-900 text-xs font-serif font-bold whitespace-nowrap border border-amber-300/70 transition-colors cursor-pointer select-none shrink-0 flex items-center gap-1.5 touch-manipulation shadow-2xs"
+                title="कीबोर्ड बन्द करें (Hide Keyboard)"
+                aria-label="Done typing"
               >
-                <X className="w-3.5 h-3.5" />
+                <span>पूर्ण</span>
+                <Check className="w-3.5 h-3.5 text-amber-800 stroke-[2.5]" />
               </button>
             )}
           </div>
@@ -413,6 +557,10 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
                     type="button"
                     onClick={() => {
                       triggerHaptic(8);
+                      if (document.activeElement === searchInputRef.current) {
+                        searchInputRef.current?.blur();
+                        setIsInputFocused(false);
+                      }
                       onCategoryChange?.(cat.id);
                     }}
                     className={`h-8 px-3.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer select-none shrink-0 ${
@@ -438,6 +586,10 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
                 type="button"
                 onClick={() => {
                   triggerHaptic(6);
+                  if (document.activeElement === searchInputRef.current) {
+                    searchInputRef.current?.blur();
+                    setIsInputFocused(false);
+                  }
                   setSelectedSection(null);
                 }}
                 className={`h-7 px-3 rounded-full text-[11px] font-serif whitespace-nowrap transition-colors cursor-pointer select-none shrink-0 ${
@@ -457,6 +609,10 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
                     type="button"
                     onClick={() => {
                       triggerHaptic(6);
+                      if (document.activeElement === searchInputRef.current) {
+                        searchInputRef.current?.blur();
+                        setIsInputFocused(false);
+                      }
                       setSelectedSection(sect);
                     }}
                     className={`h-7 px-3 rounded-full text-[11px] font-serif whitespace-nowrap transition-colors cursor-pointer select-none shrink-0 ${
@@ -472,14 +628,14 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
             </div>
 
             {/* View Mode Toggle: List vs Compact Grid */}
-            <div className="flex items-center bg-stone-200/70 p-0.5 rounded-lg shrink-0">
+            <div className="flex items-center bg-stone-200/70 p-0.5 rounded-[10px] shrink-0">
               <button
                 type="button"
                 onClick={() => {
                   triggerHaptic(6);
                   setViewMode('list');
                 }}
-                className={`w-6 h-6 rounded-[6px] flex items-center justify-center transition-colors cursor-pointer ${
+                className={`w-6 h-6 rounded-[8px] flex items-center justify-center transition-colors cursor-pointer ${
                   viewMode === 'list' ? 'bg-white text-stone-900 shadow-2xs' : 'text-stone-500 hover:text-stone-800'
                 }`}
                 title="विस्तृत सूची (List View)"
@@ -492,7 +648,7 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
                   triggerHaptic(6);
                   setViewMode('grid');
                 }}
-                className={`w-6 h-6 rounded-[6px] flex items-center justify-center transition-colors cursor-pointer ${
+                className={`w-6 h-6 rounded-[8px] flex items-center justify-center transition-colors cursor-pointer ${
                   viewMode === 'grid' ? 'bg-white text-stone-900 shadow-2xs' : 'text-stone-500 hover:text-stone-800'
                 }`}
                 title="त्वरित संख्या ग्रिड (Grid View)"
@@ -506,6 +662,7 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
         {/* Scrollable Items List with Intelligent Section Grouping & Grid View */}
         <div
           ref={scrollContainerRef}
+          onScroll={handleListScroll}
           className="flex-1 overflow-y-auto overscroll-contain px-4 py-2 space-y-1 drawer-scrollable pb-[max(1.75rem,env(safe-area-inset-bottom,1.75rem))]"
         >
           {filteredItems.length === 0 ? (
@@ -526,10 +683,10 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
                     type="button"
                     data-selected={isSelected}
                     onClick={() => handleSelect(item.id)}
-                    className={`h-12 rounded-[14px] flex flex-col items-center justify-center p-1 transition-all cursor-pointer select-none active:scale-95 ${
+                    className={`h-12 rounded-[16px] flex flex-col items-center justify-center p-1 transition-colors cursor-pointer select-none ${
                       isSelected
                         ? 'bg-[#FEF08A] text-[#78350F] font-bold shadow-xs border border-amber-400'
-                        : 'bg-[#FAF8F5] hover:bg-stone-100 text-stone-800 border border-stone-200/60'
+                        : 'bg-[#FAF8F5] hover:bg-stone-100 active:bg-amber-100 text-stone-800 border border-stone-200/60'
                     }`}
                   >
                     <span className="font-mono text-xs font-bold leading-none">#{displayNum}</span>
@@ -564,7 +721,7 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
                     type="button"
                     data-selected={isSelected}
                     onClick={() => handleSelect(item.id)}
-                    className={`w-full text-left min-h-[48px] px-3.5 py-2.5 rounded-[14px] flex items-center justify-between gap-3 transition-all cursor-pointer select-none active:scale-[0.985] ${
+                    className={`w-full text-left min-h-[48px] px-3.5 py-2.5 rounded-[16px] flex items-center justify-between gap-3 transition-colors cursor-pointer select-none ${
                       isSelected
                         ? 'bg-[#FEF9C3] border border-amber-300/80 text-stone-900 shadow-2xs'
                         : 'hover:bg-stone-50 active:bg-amber-100/60 border border-transparent text-stone-800'
@@ -572,7 +729,7 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
                   >
                     <div className="min-w-0 flex-1 flex items-center gap-2.5">
                       <div
-                        className={`w-7 h-7 rounded-[9px] flex items-center justify-center shrink-0 transition-colors ${
+                        className={`w-7 h-7 rounded-[6px] flex items-center justify-center shrink-0 transition-colors ${
                           isSelected
                             ? 'bg-[#FEF08A] text-[#78350F]'
                             : 'bg-stone-100 text-stone-500'

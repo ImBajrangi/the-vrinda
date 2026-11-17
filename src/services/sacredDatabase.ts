@@ -18,7 +18,7 @@ import sacredTopicsData from '../data/sacredTopics.json';
 import sadhanaBadgesData from '../data/sadhanaBadges.json';
 import feedTabsData from '../data/feedTabs.json';
 import { SacredPad, ScriptureHierarchyData, ChapterInfo, AuthorHierarchyInfo, EpicIndexData } from '../types/devotional';
-import { normalizeEpicChapterSlug } from '../utils/epicSlugs';
+import { normalizeEpicChapterSlug, REVERSE_KAND_MAP } from '../utils/epicSlugs';
 
 let legacySlugRedirectsCache: Record<string, string> | null = null;
 async function resolveLegacySlug(slugOrId: string): Promise<string> {
@@ -814,12 +814,18 @@ export const SacredDatabase = {
     }
 
     const promise = (async () => {
-      const cacheKey = `vrind_epic_index_${granthaId}`;
+      // Versioned L2 IndexedDB cache key (v5 enforces clean slug schema)
+      const cacheKey = `vrind_epic_index_v5_${granthaId}`;
       try {
         const cached = await get<EpicIndexData>(cacheKey);
         if (cached && cached.chapters && cached.chapters.length > 0) {
-          epicIndices.set(granthaId, cached);
-          return cached;
+          // Guard against legacy stale cached index with 'kand-' slugs or incomplete sargas
+          const isStaleManas = granthaId === 'ramcharitmanas' && cached.chapters.some((c) => c.id.startsWith('kand-'));
+          const isStaleValmiki = granthaId === 'valmiki-ramayana' && cached.chapters.length < 400;
+          if (!isStaleManas && !isStaleValmiki) {
+            epicIndices.set(granthaId, cached);
+            return cached;
+          }
         }
       } catch {}
 
@@ -854,7 +860,7 @@ export const SacredDatabase = {
     
     // 1. Normalized match (fastest and most accurate)
     let chapterMeta = epicIndex.chapters.find(
-      (c) => c.id === normId || c.id === normId.toLowerCase()
+      (c) => c.id === normId || c.id.toLowerCase() === normId.toLowerCase()
     );
 
     // 2. Exact match by raw id or decoded id
@@ -871,7 +877,22 @@ export const SacredDatabase = {
       );
     }
 
-    // 4. Scoped chapter number match (only within the same kand if specified)
+    // 4. Substring or scoped chapter match
+    if (!chapterMeta && normId) {
+      chapterMeta = epicIndex.chapters.find(
+        (c) => c.id.includes(normId) || normId.includes(c.id)
+      );
+    }
+
+    // 4b. Reverse Kand map match (Devanagari name lookup)
+    if (!chapterMeta && normId && REVERSE_KAND_MAP[normId]) {
+      const devName = REVERSE_KAND_MAP[normId];
+      chapterMeta = epicIndex.chapters.find(
+        (c) => c.name.includes(devName) || c.id.includes(devName)
+      );
+    }
+
+    // 5. Scoped chapter number match (only within the same kand if specified)
     if (!chapterMeta) {
       const targetNumMatch = decChapterId.match(/\d+/g);
       if (targetNumMatch) {
@@ -897,14 +918,14 @@ export const SacredDatabase = {
     const promise = (async () => {
       // Check existing in memory
       const existing = (padasByGrantha.get(granthaId) || []).filter(
-        (p) => p.chapterId === chapterMeta.id && !p.isStub && (p.verses?.[0]?.linesDevanagari?.length || 0) > 0
+        (p) => (p.chapterId === chapterMeta.id || p.chapterId === normId) && !p.isStub && (p.verses?.[0]?.linesDevanagari?.length || 0) > 0
       );
       if (existing.length > 0 && existing.length >= Math.min(chapterMeta.verseCount, 1)) {
         return existing;
       }
 
-      // Check IndexedDB
-      const cacheKey = `vrind_epic_ch_${granthaId}_${chapterMeta.id}`;
+      // Check IndexedDB with versioned key
+      const cacheKey = `vrind_epic_ch_v5_${granthaId}_${chapterMeta.id}`;
       try {
         const cached = await get<SacredPad[]>(cacheKey);
         if (cached && Array.isArray(cached) && cached.length > 0) {
@@ -917,7 +938,12 @@ export const SacredDatabase = {
       try {
         const res = await fetch(`/data/epics/${granthaId}/${chapterMeta.file}`);
         if (res.ok) {
-          const chunkData: SacredPad[] = await res.json();
+          const rawChunk: any[] = await res.json();
+          const chunkData: SacredPad[] = rawChunk.map((p) => ({
+            ...p,
+            chapterId: p.chapterId || chapterMeta.id,
+            chapterName: p.chapterName || chapterMeta.name,
+          }));
           this.appendPadas(chunkData);
           set(cacheKey, chunkData).catch(() => {});
           return chunkData;

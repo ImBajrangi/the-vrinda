@@ -20,7 +20,7 @@ import { seo } from '../../services/seoService';
 import { MobileReaderHeader } from './MobileReaderHeader';
 import { MobileScriptureDrawer } from './MobileScriptureDrawer';
 import { useScrollDirection } from '../../hooks/useScrollDirection';
-import { normalizeEpicChapterSlug } from '../../utils/epicSlugs';
+import { normalizeEpicChapterSlug, REVERSE_KAND_MAP } from '../../utils/epicSlugs';
 
 interface MahagranthReaderProps {
   isActiveTab?: boolean;
@@ -144,6 +144,21 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
   const [activePurportId, setActivePurportId] = useState<string | null>(null);
   const [bookmarkedIds, setBookmarkedIds] = useState<string[]>([]);
   const [fontSize, setFontSize] = useState<'sm' | 'md' | 'lg' | 'xl'>('md');
+
+  // Synchronize initialGranthaId prop changes from parent
+  useEffect(() => {
+    if (initialGranthaId && initialGranthaId !== selectedGranthaId && SacredDatabase.isEpicGrantha(initialGranthaId)) {
+      setSelectedGranthaId(initialGranthaId);
+    }
+  }, [initialGranthaId]);
+
+  // Synchronize initialChapterId prop changes from parent
+  useEffect(() => {
+    if (initialChapterId && initialChapterId !== selectedChapterId) {
+      const norm = normalizeEpicChapterSlug(selectedGranthaId, initialChapterId);
+      setSelectedChapterId(norm);
+    }
+  }, [initialChapterId, selectedGranthaId]);
 
   // Section (Kanda) Filter Pills Elastic Sliding Indicator
   const sectionRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
@@ -311,6 +326,11 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
   useEffect(() => {
     if (!selectedGranthaId || !selectedChapterId) return;
 
+    // Skip if chapterPadas already loaded for this chapter
+    if (chapterPadas.length > 0 && chapterPadas[0]?.chapterId === selectedChapterId) {
+      return;
+    }
+
     let cancelled = false;
     setLoadingChapter(true);
     SacredDatabase.fetchEpicChapter(selectedGranthaId, selectedChapterId)
@@ -334,7 +354,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
     return () => {
       cancelled = true;
     };
-  }, [selectedChapterId, selectedGranthaId]);
+  }, [selectedChapterId, selectedGranthaId, chapterPadas]);
 
   // Synchronize browser history popstate navigation
   useEffect(() => {
@@ -356,7 +376,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
   }, [selectedGranthaId]);
 
   const currentChapter = useMemo(() => {
-    if (!epicIndex) return null;
+    if (!epicIndex || !epicIndex.chapters || epicIndex.chapters.length === 0) return null;
     const normSel = normalizeEpicChapterSlug(selectedGranthaId, selectedChapterId);
     const decSel = decodeURIComponent(selectedChapterId).trim().toLowerCase();
 
@@ -376,7 +396,20 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
         (c) => c.name === selectedChapterId || decodeURIComponent(c.name).toLowerCase() === decSel
       );
     }
-    // 4. Scoped chapter number match
+    // 4. Substring / kand-prefix match
+    if (!matched && normSel) {
+      matched = epicIndex.chapters.find(
+        (c) => c.id.includes(normSel) || normSel.includes(c.id)
+      );
+    }
+    // 4b. Reverse Kand map match (Devanagari name lookup)
+    if (!matched && normSel && REVERSE_KAND_MAP[normSel]) {
+      const devName = REVERSE_KAND_MAP[normSel];
+      matched = epicIndex.chapters.find(
+        (c) => c.name.includes(devName) || c.id.includes(devName)
+      );
+    }
+    // 5. Scoped chapter number match
     if (!matched) {
       const numMatch = decSel.match(/\d+/g);
       if (numMatch) {
@@ -615,18 +648,23 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
     const normChId = normalizeEpicChapterSlug(selectedGranthaId, chId);
     navigationProgress.start();
     setSelectedChapterId(normChId);
+    setLoadingChapter(true);
 
-    // If already on the chapter but padas are empty, re-fetch immediately
-    if (normChId === selectedChapterId && chapterPadas.length === 0) {
-      setLoadingChapter(true);
-      SacredDatabase.fetchEpicChapter(selectedGranthaId, normChId)
-        .then((padas) => {
-          setChapterPadas(padas);
-          setLoadingChapter(false);
-          if (padas.length > 0) setActiveVerseId(padas[0].id);
-        })
-        .catch(() => setLoadingChapter(false));
-    }
+    // Atomically fetch the target chapter immediately
+    SacredDatabase.fetchEpicChapter(selectedGranthaId, normChId)
+      .then((padas) => {
+        setChapterPadas(padas);
+        setLoadingChapter(false);
+        navigationProgress.done();
+        if (padas.length > 0) {
+          setActiveVerseId(padas[0].id);
+        }
+      })
+      .catch((err) => {
+        console.error('[MahagranthReader] Failed to fetch chapter:', err);
+        setLoadingChapter(false);
+        navigationProgress.done();
+      });
 
     if (typeof window !== 'undefined') {
       try {
@@ -644,7 +682,6 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
       } catch {}
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    requestAnimationFrame(() => navigationProgress.done());
   };
 
   const handleCopyPad = (pad: SacredPad) => {
@@ -851,7 +888,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                     value={chapterSearchQuery}
                     onChange={(e) => setChapterSearchQuery(e.target.value)}
                     placeholder={`${currentEpicConfig.chapterTerm} खोजें...`}
-                    className="w-full pl-8 pr-3 py-1.5 text-xs rounded-[8px] bg-white border border-neutral-200/80 focus:border-amber-400 focus:outline-none text-neutral-800 placeholder-neutral-400"
+                    className="w-full pl-8 pr-3 py-1.5 text-[16px] sm:text-xs rounded-[8px] bg-white border border-neutral-200/80 focus:border-amber-400 focus:outline-none text-neutral-800 placeholder-neutral-400"
                   />
                   {chapterSearchQuery && (
                     <button

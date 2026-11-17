@@ -266,6 +266,13 @@ class SacredChimeEngine {
       this.play('temple-bell', 0.6);
     }, 350);
   }
+
+  /**
+   * Alias for play() for clean developer ergonomics
+   */
+  public playChime(type: ChimeType, volume = 0.5): Promise<void> {
+    return this.play(type, volume);
+  }
 }
 
 // Singleton export

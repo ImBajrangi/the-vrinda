@@ -11,6 +11,10 @@ import {
   Search,
   CheckCircle2,
   ArrowLeft,
+  X,
+  Volume2,
+  Share2,
+  Check
 } from 'lucide-react';
 import {
   SacredStory,
@@ -18,6 +22,9 @@ import {
   StoryChapter,
 } from '../../types/sacredSections';
 import { SacredSectionService } from '../../services/sacredSectionService';
+import { formatDevanagariNumerals } from '../../services/cacheService';
+import { seo } from '../../services/seoService';
+import { chimeService } from '../../services/chimeService';
 
 interface KathaSanctuaryProps {
   initialStorySlug?: string;
@@ -28,6 +35,7 @@ interface KathaSanctuaryProps {
 export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
   initialStorySlug,
   onSelectStory,
+  onNavigateToPadavali: _onNavigateToPadavali,
 }) => {
   const [stories, setStories] = useState<SacredStoryPreview[]>([]);
   const [selectedStory, setSelectedStory] = useState<SacredStory | null>(null);
@@ -44,8 +52,9 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
   });
   const [fontSizeLevel, setFontSizeLevel] = useState<'normal' | 'large' | 'huge'>('large');
   const [showCharactersDrawer, setShowCharactersDrawer] = useState<boolean>(false);
+  const [copiedLink, setCopiedLink] = useState<boolean>(false);
 
-  // Load index
+  // Load story index on mount
   useEffect(() => {
     let isMounted = true;
     SacredSectionService.getStoriesIndex()
@@ -66,6 +75,8 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
       setSelectedStory(story);
       setCurrentChapterIndex(0);
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Play soft sacred bell chime on story entrance
+      chimeService.playChime('temple-bell');
     }
   }, []);
 
@@ -75,6 +86,23 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
       loadStory(initialStorySlug);
     }
   }, [initialStorySlug, loadStory]);
+
+  // SEO synchronization
+  useEffect(() => {
+    if (selectedStory) {
+      seo.updateSEO({
+        tab: 'stories',
+        title: `${selectedStory.titleDevanagari} • पावन पौराणिक कथा व लीला | वृन्दोपनिषद् 2.0`,
+        description: `${selectedStory.summary} • सम्पूर्ण कथा, चरित्र परिचय व दार्शनिक मर्म। वृन्दोपनिषद् 2.0`,
+      });
+    } else {
+      seo.updateSEO({
+        tab: 'stories',
+        title: 'दिव्य कथा व लीला अमृत • पौराणिक प्रसंग व शिक्षाएँ | वृन्दोपनिषद् 2.0',
+        description: 'श्रीमद्भागवत, श्री रामायण और पुराणों की पावन सनातन कथाएँ, चरित्र परिचय और भक्तिरस से परिपूर्ण अमृत आख्यान।',
+      });
+    }
+  }, [selectedStory]);
 
   const handleSelectStory = (slug: string) => {
     loadStory(slug);
@@ -93,22 +121,30 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
       }
       try {
         localStorage.setItem('vrindopnisad_bookmarked_kathas', JSON.stringify(Array.from(next)));
-      } catch {
-        // ignore
-      }
+      } catch {}
       return next;
     });
+  };
+
+  const handleCopyShareLink = (story: SacredStory) => {
+    try {
+      const url = `${window.location.origin}/?tab=stories&story=${encodeURIComponent(story.slug || story.id)}`;
+      navigator.clipboard?.writeText(url);
+      setCopiedLink(true);
+      setTimeout(() => setCopiedLink(false), 2000);
+    } catch {}
   };
 
   const filteredStories = useMemo(() => {
     return stories.filter((s) => {
       const matchesCategory = selectedCategory === 'all' || s.category === selectedCategory;
+      const q = searchQuery.trim().toLowerCase();
       const matchesSearch =
-        searchQuery.trim() === '' ||
-        s.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        s.titleDevanagari.includes(searchQuery) ||
-        s.summary.includes(searchQuery) ||
-        s.tags.some((t) => t.includes(searchQuery));
+        q === '' ||
+        s.title.toLowerCase().includes(q) ||
+        s.titleDevanagari.includes(q) ||
+        s.summary.toLowerCase().includes(q) ||
+        s.tags.some((t) => t.toLowerCase().includes(q));
       return matchesCategory && matchesSearch;
     });
   }, [stories, selectedCategory, searchQuery]);
@@ -143,234 +179,271 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
     const isBookmarked = bookmarkedStories.has(selectedStory.id);
 
     return (
-      <div className="w-full max-w-4xl mx-auto px-4 py-6 sm:py-10 pb-28 text-sacred-ink dark:text-neutral-100">
-        {/* Top Control Bar */}
-        {/* Outer: rounded-[24px] p-4 -> Inner: rounded-[8px] (24 - 16 = 8) */}
-        <div className="rounded-[24px] bg-white/90 dark:bg-neutral-900/90 backdrop-blur-md border border-neutral-200 dark:border-neutral-800 p-4 shadow-sm mb-6">
-          <div className="flex items-center justify-between gap-3">
+      <main
+        role="main"
+        aria-label={selectedStory.titleDevanagari}
+        className="w-full max-w-4xl mx-auto px-3 sm:px-6 py-4 sm:py-8 pb-28 text-[#18181B]"
+      >
+        {/* Top Control Bar - Strictly Concentric: R_outer = 24px, P = 16px => R_inner = 8px */}
+        <div className="rounded-[24px] bg-white border border-neutral-200/80 p-3 sm:p-4 shadow-2xs mb-6">
+          <div className="flex items-center justify-between gap-2 flex-wrap">
             <button
+              type="button"
               onClick={() => setSelectedStory(null)}
-              className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-sacred-kesar hover:bg-sacred-kesar/10 rounded-[8px] transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm font-serif font-bold text-amber-900 bg-amber-50/80 hover:bg-amber-100/90 rounded-[8px] transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+              aria-label="कथा सूची पर वापस जाएँ"
             >
-              <ArrowLeft size={18} />
-              <span>कथा सूची (All Stories)</span>
+              <ArrowLeft className="w-4 h-4 text-amber-800" />
+              <span>कथा सूची</span>
             </button>
 
             <div className="flex items-center gap-2">
-              {/* Font size toggles */}
-              <div className="flex items-center bg-neutral-100 dark:bg-neutral-800 rounded-[8px] p-1 border border-neutral-200 dark:border-neutral-700">
+              {/* Sizing Control Pill */}
+              <div className="flex items-center bg-neutral-100 p-1 rounded-full border border-neutral-200/80 text-xs">
                 <button
+                  type="button"
                   onClick={() => setFontSizeLevel('normal')}
-                  className={`px-2 py-1 text-xs font-semibold rounded-[4px] transition-colors ${
+                  className={`px-2.5 py-0.5 rounded-full transition-colors cursor-pointer ${
                     fontSizeLevel === 'normal'
-                      ? 'bg-white dark:bg-neutral-900 text-sacred-kesar shadow-xs'
-                      : 'text-neutral-600 dark:text-neutral-400'
+                      ? 'bg-white text-neutral-900 font-bold shadow-2xs'
+                      : 'text-neutral-500 hover:text-neutral-900'
                   }`}
-                  title="सामान्य अक्षर (Normal text)"
+                  title="सामान्य आकार"
+                  aria-label="सामान्य अक्षर आकार"
                 >
                   अ
                 </button>
                 <button
+                  type="button"
                   onClick={() => setFontSizeLevel('large')}
-                  className={`px-2 py-1 text-xs font-semibold rounded-[4px] transition-colors ${
+                  className={`px-2.5 py-0.5 rounded-full transition-colors cursor-pointer ${
                     fontSizeLevel === 'large'
-                      ? 'bg-white dark:bg-neutral-900 text-sacred-kesar shadow-xs'
-                      : 'text-neutral-600 dark:text-neutral-400'
+                      ? 'bg-white text-neutral-900 font-bold shadow-2xs'
+                      : 'text-neutral-500 hover:text-neutral-900'
                   }`}
-                  title="मध्यम अक्षर (Large text)"
+                  title="मध्यम आकार"
+                  aria-label="मध्यम अक्षर आकार"
                 >
-                  अ+
+                  आ
                 </button>
                 <button
+                  type="button"
                   onClick={() => setFontSizeLevel('huge')}
-                  className={`px-2 py-1 text-xs font-semibold rounded-[4px] transition-colors ${
+                  className={`px-2.5 py-0.5 rounded-full transition-colors cursor-pointer ${
                     fontSizeLevel === 'huge'
-                      ? 'bg-white dark:bg-neutral-900 text-sacred-kesar shadow-xs'
-                      : 'text-neutral-600 dark:text-neutral-400'
+                      ? 'bg-white text-neutral-900 font-bold shadow-2xs'
+                      : 'text-neutral-500 hover:text-neutral-900'
                   }`}
-                  title="विशाल अक्षर (Huge text)"
+                  title="विशाल आकार"
+                  aria-label="विशाल अक्षर आकार"
                 >
-                  अ++
+                  बड़ा
                 </button>
               </div>
 
-              {/* Character Drawer Toggle */}
+              {/* Character List Drawer Toggle */}
               {selectedStory.characters.length > 0 && (
                 <button
+                  type="button"
                   onClick={() => setShowCharactersDrawer((v) => !v)}
-                  className={`inline-flex items-center gap-1.5 px-3 py-2 text-xs font-medium rounded-[8px] border transition-colors ${
+                  className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-serif font-bold rounded-[8px] border transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 ${
                     showCharactersDrawer
-                      ? 'bg-sacred-kesar text-white border-sacred-kesar'
-                      : 'bg-white dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-700'
+                      ? 'bg-[#FEF08A] text-[#78350F] border-amber-300 shadow-2xs'
+                      : 'bg-white text-neutral-700 border-neutral-200 hover:bg-neutral-50'
                   }`}
+                  aria-expanded={showCharactersDrawer}
+                  aria-label={`कथा पात्र सूची (${selectedStory.characters.length} पात्र)`}
                 >
-                  <Users size={14} />
-                  <span>पात्र ({selectedStory.characters.length})</span>
+                  <Users className="w-3.5 h-3.5 text-amber-800" />
+                  <span>पात्र ({formatDevanagariNumerals(selectedStory.characters.length)})</span>
                 </button>
               )}
 
+              {/* Share Link */}
+              <button
+                type="button"
+                onClick={() => handleCopyShareLink(selectedStory)}
+                className="p-2 rounded-[8px] border border-neutral-200 text-neutral-600 hover:text-amber-900 hover:bg-amber-50 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+                title="कथा लिंक कॉपी करें"
+                aria-label="कथा लिंक कॉपी करें"
+              >
+                {copiedLink ? <Check className="w-4 h-4 text-emerald-600" /> : <Share2 className="w-4 h-4" />}
+              </button>
+
               {/* Bookmark */}
               <button
+                type="button"
                 onClick={() => toggleBookmark(selectedStory.id)}
-                className={`p-2 rounded-[8px] border transition-colors ${
+                className={`p-2 rounded-[8px] border transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 ${
                   isBookmarked
-                    ? 'text-sacred-kesar bg-sacred-kesar/10 border-sacred-kesar/30'
-                    : 'text-neutral-500 hover:text-sacred-kesar border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800'
+                    ? 'text-[#78350F] bg-[#FEF08A] border-amber-300 shadow-2xs'
+                    : 'text-neutral-500 hover:text-amber-900 border-neutral-200 hover:bg-amber-50'
                 }`}
-                title="कथा संग्रह करें"
+                title={isBookmarked ? 'संग्रह से हटाएं' : 'कथा संग्रह करें'}
+                aria-label={isBookmarked ? 'संग्रह से हटाएं' : 'कथा संग्रह करें'}
               >
-                {isBookmarked ? <BookmarkCheck size={18} /> : <Bookmark size={18} />}
+                {isBookmarked ? <BookmarkCheck className="w-4 h-4" /> : <Bookmark className="w-4 h-4" />}
               </button>
             </div>
           </div>
         </div>
 
-        {/* Characters Drawer */}
+        {/* Characters Drawer - Concentric: R_outer = 24px, P = 16px => R_inner = 8px */}
         {showCharactersDrawer && selectedStory.characters.length > 0 && (
-          /* Outer: rounded-[28px] p-5 -> Inner: rounded-[8px] (28 - 20 = 8) */
-          <div className="rounded-[28px] bg-gradient-to-br from-amber-50 to-orange-50 dark:from-neutral-900 dark:to-neutral-950 border border-amber-200 dark:border-amber-900/40 p-5 shadow-sm mb-6">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="font-serif font-bold text-base text-sacred-kesar flex items-center gap-2">
-                <Sparkles size={16} />
-                <span>कथा पात्र परिचय (Characters of the Katha)</span>
+          <aside
+            aria-label="कथा पात्र परिचय"
+            className="rounded-[24px] bg-[#FFFDF9] border border-amber-200/80 p-4 sm:p-5 shadow-2xs mb-6"
+          >
+            <div className="flex items-center justify-between mb-3 pb-2 border-b border-amber-900/10">
+              <h3 className="font-serif font-bold text-sm sm:text-base text-amber-950 flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-amber-600" />
+                <span>कथा पात्र परिचय</span>
               </h3>
               <button
+                type="button"
                 onClick={() => setShowCharactersDrawer(false)}
-                className="text-xs text-neutral-500 hover:text-neutral-800 dark:hover:text-neutral-200 px-2 py-1 rounded-[4px]"
+                className="text-xs text-neutral-500 hover:text-neutral-900 p-1 rounded-full cursor-pointer"
+                aria-label="पात्र सूची बंद करें"
               >
-                बन्द करें ✕
+                <X className="w-4 h-4" />
               </button>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5">
               {selectedStory.characters.map((char, idx) => (
-                /* Card: rounded-[8px] p-3 -> Inner avatar: rounded-[4px] */
                 <div
                   key={idx}
-                  className="rounded-[8px] bg-white/90 dark:bg-neutral-800/90 border border-amber-100 dark:border-neutral-700 p-3 shadow-2xs"
+                  className="rounded-[8px] bg-white border border-amber-100 p-3 shadow-2xs flex items-start gap-2.5"
                 >
-                  <div className="flex items-start gap-2.5">
-                    <div className="w-9 h-9 rounded-[4px] bg-amber-100 dark:bg-neutral-700 flex items-center justify-center text-sacred-kesar font-serif font-bold text-sm shrink-0">
-                      {char.name.charAt(0)}
+                  <div className="w-8 h-8 rounded-full bg-[#FEF08A] text-[#78350F] flex items-center justify-center font-serif font-bold text-xs shrink-0 shadow-2xs">
+                    {char.nameDevanagari ? char.nameDevanagari.charAt(0) : char.name.charAt(0)}
+                  </div>
+                  <div className="min-w-0">
+                    <div className="font-serif font-bold text-xs text-neutral-900 truncate">
+                      {char.nameDevanagari || char.name}
                     </div>
-                    <div className="min-w-0">
-                      <div className="font-serif font-bold text-sm text-neutral-900 dark:text-neutral-100 truncate">
-                        {char.nameDevanagari || char.name}
-                      </div>
-                      <div className="text-xs text-sacred-kesar font-medium">
-                        {char.role}
-                      </div>
-                      {char.bioSnippet && (
-                        <p className="text-xs text-neutral-600 dark:text-neutral-300 mt-1 line-clamp-2">
-                          {char.bioSnippet}
-                        </p>
-                      )}
+                    <div className="text-[10px] text-amber-800 font-medium">
+                      {char.role}
                     </div>
+                    {char.bioSnippet && (
+                      <p className="text-[11px] text-neutral-600 font-serif mt-1 line-clamp-2">
+                        {char.bioSnippet}
+                      </p>
+                    )}
                   </div>
                 </div>
               ))}
             </div>
-          </div>
+          </aside>
         )}
 
-        {/* Story Title & Meta Card */}
-        {/* Outer: rounded-[32px] p-6 -> Inner: rounded-[8px] (32 - 24 = 8) */}
-        <div className="rounded-[32px] bg-gradient-to-b from-white via-white to-amber-50/40 dark:from-neutral-900 dark:via-neutral-900 dark:to-neutral-950 border border-neutral-200 dark:border-neutral-800 p-6 shadow-card mb-8">
+        {/* Story Title & Meta Card - Concentric: R_outer = 32px, P = 24px => R_inner = 8px */}
+        <header className="rounded-[32px] bg-white border border-neutral-200/80 p-5 sm:p-7 shadow-2xs mb-6">
           <div className="flex flex-wrap items-center gap-2 mb-3">
-            <span className="px-3 py-1 text-xs font-semibold uppercase tracking-wider rounded-[8px] bg-sacred-kesar/10 text-sacred-kesar border border-sacred-kesar/20">
+            <span className="px-2.5 py-0.5 text-xs font-serif font-bold uppercase rounded-[6px] bg-[#FEF08A] text-[#78350F]">
               {selectedStory.categoryHindi}
             </span>
-            <span className="px-3 py-1 text-xs font-medium rounded-[8px] bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300">
+            <span className="px-2.5 py-0.5 text-xs font-serif font-medium rounded-[6px] bg-neutral-100 text-neutral-700">
               {selectedStory.tradition}
             </span>
-            <span className="inline-flex items-center gap-1 text-xs text-neutral-500 ml-auto">
-              <Clock size={13} />
-              <span>{selectedStory.readingTimeMinutes} मिनट पठन</span>
+            <span className="inline-flex items-center gap-1 text-xs text-neutral-500 font-mono ml-auto">
+              <Clock className="w-3.5 h-3.5 text-amber-600" />
+              <span>{formatDevanagariNumerals(selectedStory.readingTimeMinutes)} मिनट पठन</span>
             </span>
           </div>
 
-          <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl font-extrabold text-neutral-900 dark:text-neutral-50 leading-snug tracking-tight mb-4">
+          <h1 className="font-rozha text-2xl sm:text-3xl md:text-4xl font-bold text-neutral-900 leading-snug tracking-tight mb-3">
             {selectedStory.titleDevanagari}
           </h1>
 
-          <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-300 font-sans leading-relaxed border-l-2 border-sacred-kesar pl-3 italic mb-6">
+          <p className="text-xs sm:text-sm text-neutral-600 font-serif leading-relaxed border-l-2 border-amber-500 pl-3 italic mb-5">
             {selectedStory.summary}
           </p>
 
           {/* Chapter Progression Tracker */}
-          <div className="mt-4 pt-4 border-t border-neutral-100 dark:border-neutral-800">
-            <div className="flex items-center justify-between text-xs font-medium text-neutral-500 mb-2">
+          <div className="pt-3 border-t border-neutral-100">
+            <div className="flex items-center justify-between text-xs font-serif text-neutral-500 mb-1.5">
               <span>
-                अध्याय {currentChapterIndex + 1} / {totalChapters}
+                अध्याय {formatDevanagariNumerals(currentChapterIndex + 1)} / {formatDevanagariNumerals(totalChapters)}
               </span>
-              <span>{progressPercent}% सम्पूर्ण</span>
+              <span className="font-mono">{formatDevanagariNumerals(progressPercent)}% सम्पूर्ण</span>
             </div>
 
-            <div className="w-full h-2 bg-neutral-100 dark:bg-neutral-800 rounded-[8px] overflow-hidden">
+            <div className="w-full h-1.5 bg-neutral-100 rounded-full overflow-hidden">
               <div
-                className="h-full bg-gradient-to-r from-sacred-kesar to-sacred-gold rounded-[8px] transition-all duration-300"
+                className="h-full bg-gradient-to-r from-amber-500 to-amber-600 rounded-full transition-all duration-300"
                 style={{ width: `${progressPercent}%` }}
               />
             </div>
 
             {/* Chapter Stepper Buttons */}
-            {/* Outer: rounded-[20px] p-3 -> Inner: rounded-[8px] (20 - 12 = 8) */}
-            <div className="flex items-center gap-2 overflow-x-auto py-3 mt-2 rounded-[20px] p-3 bg-neutral-50 dark:bg-neutral-800/50">
+            <div className="flex items-center gap-1.5 overflow-x-auto py-2.5 mt-2">
               {selectedStory.chapters.map((chap, idx) => (
                 <button
                   key={chap.id}
+                  type="button"
                   onClick={() => {
                     setCurrentChapterIndex(idx);
-                    window.scrollTo({ top: 120, behavior: 'smooth' });
+                    window.scrollTo({ top: 140, behavior: 'smooth' });
                   }}
-                  className={`px-3 py-1.5 text-xs font-serif font-semibold whitespace-nowrap rounded-[8px] transition-colors ${
+                  className={`px-3 py-1 text-xs font-serif font-bold whitespace-nowrap rounded-[8px] transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 ${
                     currentChapterIndex === idx
-                      ? 'bg-sacred-kesar text-white shadow-xs'
+                      ? 'bg-[#FEF08A] text-[#78350F] shadow-2xs'
                       : idx < currentChapterIndex
-                      ? 'bg-amber-100 dark:bg-neutral-700 text-amber-900 dark:text-amber-200 hover:bg-amber-200 dark:hover:bg-neutral-600'
-                      : 'bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-700'
+                      ? 'bg-amber-50 text-amber-900 hover:bg-amber-100'
+                      : 'bg-neutral-50 text-neutral-600 border border-neutral-200/80 hover:bg-neutral-100'
                   }`}
+                  aria-current={currentChapterIndex === idx ? 'page' : undefined}
                 >
-                  अध्याय {idx + 1}
+                  अध्याय {formatDevanagariNumerals(idx + 1)}
                 </button>
               ))}
             </div>
           </div>
-        </div>
+        </header>
 
-        {/* Current Chapter Narrative */}
+        {/* Current Chapter Narrative - Concentric: R_outer = 32px, P = 24px => R_inner = 8px */}
         {currentChapter && (
           <div className="space-y-6">
-            {/* Outer: rounded-[32px] p-6 -> Inner: rounded-[8px] (32 - 24 = 8) */}
-            <article className="rounded-[32px] bg-white dark:bg-neutral-900 border border-neutral-200/80 dark:border-neutral-800 p-6 sm:p-8 shadow-card">
-              <div className="mb-6 pb-4 border-b border-neutral-100 dark:border-neutral-800">
-                <span className="text-xs font-semibold text-sacred-kesar tracking-widest uppercase">
-                  अध्याय {currentChapter.chapterNumber}
-                </span>
-                <h2 className="font-serif text-xl sm:text-2xl font-bold text-neutral-900 dark:text-neutral-50 mt-1">
-                  {currentChapter.titleDevanagari || currentChapter.title}
-                </h2>
+            <article className="rounded-[32px] bg-white border border-neutral-200/80 p-5 sm:p-8 shadow-2xs">
+              <div className="mb-6 pb-4 border-b border-neutral-100 flex items-center justify-between">
+                <div>
+                  <span className="text-[11px] font-serif font-bold text-amber-800 tracking-wider uppercase">
+                    अध्याय {formatDevanagariNumerals(currentChapter.chapterNumber)}
+                  </span>
+                  <h2 className="font-rozha text-xl sm:text-2xl font-bold text-neutral-900 mt-0.5">
+                    {currentChapter.titleDevanagari || currentChapter.title}
+                  </h2>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => chimeService.playChime('temple-bell')}
+                  className="p-2 rounded-full bg-amber-50 text-amber-800 hover:bg-amber-100 transition-colors cursor-pointer"
+                  title="पावन घण्टा नाद"
+                  aria-label="पावन घण्टा नाद बजाएं"
+                >
+                  <Volume2 className="w-4 h-4" />
+                </button>
               </div>
 
-              {/* Shlokas Callout if available */}
+              {/* Shlokas Callout */}
               {currentChapter.shlokas && currentChapter.shlokas.length > 0 && (
-                <div className="space-y-4 mb-8">
+                <div className="space-y-3 mb-6">
                   {currentChapter.shlokas.map((shloka, sIdx) => (
-                    /* Outer: rounded-[32px] p-6 -> Inner: rounded-[8px] (32 - 24 = 8) */
                     <div
                       key={sIdx}
-                      className="rounded-[8px] bg-gradient-to-r from-amber-50/70 to-orange-50/70 dark:from-neutral-800/80 dark:to-neutral-850/80 border-l-4 border-sacred-kesar p-4 text-center"
+                      className="rounded-[8px] bg-[#FFFDF9] border-l-4 border-amber-600 p-4 text-center border border-amber-200/60 shadow-2xs"
                     >
-                      <p className="font-serif font-bold text-base sm:text-lg text-neutral-900 dark:text-amber-100 tracking-wide leading-relaxed">
+                      <p className="font-serif font-bold text-base sm:text-lg text-neutral-900 tracking-wide leading-relaxed">
                         {shloka.devanagari}
                       </p>
                       {shloka.meaning && (
-                        <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 font-sans mt-2 pt-2 border-t border-amber-200/50 dark:border-neutral-700">
+                        <p className="text-xs sm:text-sm text-neutral-700 font-serif mt-2 pt-2 border-t border-amber-200/60">
                           भावार्थ: {shloka.meaning}
                         </p>
                       )}
                       {shloka.reference && (
-                        <div className="text-[11px] font-medium text-sacred-kesar mt-1">
+                        <div className="text-[11px] font-medium text-amber-800 font-serif mt-1">
                           — {shloka.reference}
                         </div>
                       )}
@@ -379,12 +452,12 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
                 </div>
               )}
 
-              {/* Prose narrative */}
+              {/* Prose Narrative */}
               <div
-                className={`font-serif text-neutral-800 dark:text-neutral-200 space-y-4 ${contentFontSizeClass}`}
+                className={`font-serif text-neutral-800 space-y-4 ${contentFontSizeClass}`}
               >
                 {currentChapter.content.split('\n\n').map((paragraph, pIdx) => (
-                  <p key={pIdx} className="indent-4 sm:indent-6">
+                  <p key={pIdx} className="leading-relaxed">
                     {paragraph.trim()}
                   </p>
                 ))}
@@ -392,88 +465,95 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
 
               {/* Chapter Purport (शिक्षा / तत्व) */}
               {currentChapter.purport && (
-                /* Outer: rounded-[32px] p-6 -> Inner: rounded-[8px] (32 - 24 = 8) */
-                <div className="mt-8 rounded-[8px] bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/50 p-4">
-                  <div className="flex items-center gap-2 text-emerald-800 dark:text-emerald-300 font-serif font-bold text-sm mb-1">
-                    <Sparkles size={16} />
-                    <span>अध्याय सार एवं साधना सूत्र (Chapter Purport)</span>
+                <div className="mt-8 rounded-[8px] bg-amber-50/70 border border-amber-200 p-4 text-neutral-900">
+                  <div className="flex items-center gap-2 text-amber-900 font-serif font-bold text-xs sm:text-sm mb-1">
+                    <Sparkles className="w-4 h-4 text-amber-600" />
+                    <span>अध्याय सार एवं साधना सूत्र</span>
                   </div>
-                  <p className="text-xs sm:text-sm text-emerald-900 dark:text-emerald-200 font-sans leading-relaxed">
+                  <p className="text-xs sm:text-sm text-neutral-700 font-serif leading-relaxed">
                     {currentChapter.purport}
                   </p>
                 </div>
               )}
             </article>
 
-            {/* Overall Moral / Purport Callout Card (Always Visible on Last Chapter or in reader) */}
+            {/* Overall Moral on Last Chapter */}
             {currentChapterIndex === totalChapters - 1 && selectedStory.purport && (
-              /* Outer: rounded-[28px] p-5 -> Inner: rounded-[8px] (28 - 20 = 8) */
-              <div className="rounded-[28px] bg-gradient-to-br from-sacred-kesar/10 via-amber-100/40 to-yellow-50/60 dark:from-neutral-900 dark:via-neutral-850 dark:to-neutral-900 border-2 border-sacred-kesar/40 p-5 shadow-sm">
-                <div className="flex items-center gap-2 text-sacred-kesar font-serif font-extrabold text-base mb-2">
-                  <Sparkles size={18} />
-                  <span>कथा का परम तत्व एवं भक्ति सिद्धान्त (Supreme Moral & Purport)</span>
+              <div className="rounded-[24px] bg-[#FFFDF9] border-2 border-amber-400 p-5 shadow-2xs">
+                <div className="flex items-center gap-2 text-amber-900 font-rozha text-base sm:text-lg mb-2">
+                  <Sparkles className="w-4 h-4 text-amber-600" />
+                  <span>कथा का परम तत्व एवं भक्ति सिद्धान्त</span>
                 </div>
-                <p className="text-sm sm:text-base text-neutral-800 dark:text-neutral-200 font-serif leading-relaxed">
+                <p className="text-xs sm:text-sm text-neutral-800 font-serif leading-relaxed">
                   {selectedStory.purport}
                 </p>
-                <div className="mt-3 flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-emerald-600 dark:text-emerald-400" />
-                  <span className="text-xs font-medium text-emerald-700 dark:text-emerald-300">
+                <div className="mt-3 flex items-center gap-2 pt-2 border-t border-amber-200">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  <span className="text-xs font-serif font-bold text-emerald-800">
                     कथा पारायण पूर्ण हुआ। श्री राधेश्याम की कृपा आप पर बनी रहे।
                   </span>
                 </div>
               </div>
             )}
 
-            {/* Chapter Navigation Controls */}
-            {/* Outer: rounded-[24px] p-4 -> Inner: rounded-[8px] (24 - 16 = 8) */}
-            <div className="rounded-[24px] bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 p-4 shadow-sm flex items-center justify-between gap-4">
+            {/* Chapter Navigation Controls - Concentric: R_outer = 20px, P = 12px => R_inner = 8px */}
+            <div className="rounded-[20px] bg-white border border-neutral-200/80 p-3 sm:p-4 shadow-2xs flex items-center justify-between gap-3">
               <button
+                type="button"
                 disabled={currentChapterIndex === 0}
                 onClick={() => {
                   if (currentChapterIndex > 0) {
                     setCurrentChapterIndex((prev) => prev - 1);
-                    window.scrollTo({ top: 120, behavior: 'smooth' });
+                    window.scrollTo({ top: 140, behavior: 'smooth' });
                   }
                 }}
-                className={`inline-flex items-center gap-1.5 px-4 py-2.5 text-xs sm:text-sm font-semibold rounded-[8px] border transition-colors ${
+                className={`inline-flex items-center gap-1.5 px-3.5 py-2 text-xs sm:text-sm font-serif font-bold rounded-[8px] border transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 ${
                   currentChapterIndex === 0
-                    ? 'opacity-40 cursor-not-allowed bg-neutral-100 dark:bg-neutral-800 text-neutral-400 border-neutral-200 dark:border-neutral-700'
-                    : 'bg-white dark:bg-neutral-800 text-neutral-700 dark:text-neutral-200 border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-700'
+                    ? 'opacity-40 cursor-not-allowed bg-neutral-50 text-neutral-400 border-neutral-200'
+                    : 'bg-white text-neutral-700 border-neutral-200 hover:bg-neutral-50'
                 }`}
+                aria-label="पिछला अध्याय"
               >
-                <ChevronLeft size={16} />
+                <ChevronLeft className="w-4 h-4" />
                 <span>पिछला अध्याय</span>
               </button>
 
-              <span className="text-xs text-neutral-500 font-medium">
-                {currentChapterIndex + 1} of {totalChapters}
+              <span className="text-xs text-neutral-500 font-serif font-medium">
+                अध्याय {formatDevanagariNumerals(currentChapterIndex + 1)} / {formatDevanagariNumerals(totalChapters)}
               </span>
 
               {currentChapterIndex < totalChapters - 1 ? (
                 <button
+                  type="button"
                   onClick={() => {
                     setCurrentChapterIndex((prev) => prev + 1);
-                    window.scrollTo({ top: 120, behavior: 'smooth' });
+                    window.scrollTo({ top: 140, behavior: 'smooth' });
+                    chimeService.playChime('temple-bell');
                   }}
-                  className="inline-flex items-center gap-1.5 px-4 py-2.5 text-xs sm:text-sm font-semibold rounded-[8px] bg-sacred-kesar text-white hover:bg-orange-700 transition-colors shadow-xs"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 text-xs sm:text-sm font-serif font-bold rounded-[8px] bg-[#FEF08A] text-[#78350F] hover:bg-amber-300 transition-colors shadow-2xs cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+                  aria-label="अगला अध्याय"
                 >
                   <span>अगला अध्याय</span>
-                  <ChevronRight size={16} />
+                  <ChevronRight className="w-4 h-4 text-[#78350F]" />
                 </button>
               ) : (
                 <button
-                  onClick={() => setSelectedStory(null)}
-                  className="inline-flex items-center gap-1.5 px-4 py-2.5 text-xs sm:text-sm font-semibold rounded-[8px] bg-emerald-600 text-white hover:bg-emerald-700 transition-colors shadow-xs"
+                  type="button"
+                  onClick={() => {
+                    setSelectedStory(null);
+                    chimeService.playChime('temple-bell');
+                  }}
+                  className="inline-flex items-center gap-1.5 px-4 py-2 text-xs sm:text-sm font-serif font-bold rounded-[8px] bg-emerald-600 text-white hover:bg-emerald-700 transition-colors shadow-2xs cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+                  aria-label="समाप्त / कथा सूची"
                 >
-                  <CheckCircle2 size={16} />
-                  <span>समाप्त / कथा सूची</span>
+                  <CheckCircle2 className="w-4 h-4" />
+                  <span>समाप्त / सूची</span>
                 </button>
               )}
             </div>
           </div>
         )}
-      </div>
+      </main>
     );
   }
 
@@ -481,61 +561,68 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
   // VIEW: Stories Catalog / List
   // ==========================================
   return (
-    <div className="w-full max-w-6xl mx-auto px-4 py-6 sm:py-10 pb-28 text-sacred-ink dark:text-neutral-100">
-      {/* Header Banner */}
-      {/* Outer: rounded-[32px] p-6 -> Inner: rounded-[8px] (32 - 24 = 8) */}
-      <div className="rounded-[32px] bg-gradient-to-br from-amber-100/70 via-orange-50/60 to-white dark:from-neutral-900 dark:via-neutral-900 dark:to-neutral-950 border border-amber-200/80 dark:border-neutral-800 p-6 sm:p-8 shadow-card mb-8">
+    <main
+      role="main"
+      aria-label="दिव्य कथा व लीला अमृत सूची"
+      className="w-full max-w-6xl mx-auto px-3 sm:px-6 py-4 sm:py-8 pb-28 text-[#18181B]"
+    >
+      {/* Header Banner - Concentric: R_outer = 32px, P = 24px => R_inner = 8px */}
+      <section className="rounded-[32px] bg-white border border-neutral-200/80 p-5 sm:p-8 shadow-2xs mb-6 space-y-4">
         <div className="max-w-2xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-[8px] bg-sacred-kesar/10 text-sacred-kesar text-xs font-bold uppercase tracking-wider mb-3">
-            <BookOpen size={14} />
-            <span>कथा अभयारण्य (Katha Sanctuary)</span>
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-[6px] bg-[#FEF08A] text-[#78350F] text-xs font-serif font-bold uppercase tracking-wider mb-2">
+            <BookOpen className="w-3.5 h-3.5" />
+            <span>कथा अभयारण्य</span>
           </div>
-          <h1 className="font-serif text-3xl sm:text-4xl font-extrabold text-neutral-900 dark:text-neutral-50 tracking-tight leading-tight">
+          <h1 className="font-rozha text-2xl sm:text-3xl md:text-4xl font-bold text-neutral-900 leading-tight">
             पवित्र पुराण एवं लीला आख्यान
           </h1>
-          <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-300 font-sans mt-2 leading-relaxed">
+          <p className="text-xs sm:text-sm text-neutral-600 font-serif mt-1.5 leading-relaxed">
             श्रीमद्भागवत, श्री रामायण और ब्रजधाम के सनातन आख्यानों का सस्वर पाठ। शुद्ध देवनागरी लिपि, चरित्र परिचय और भक्तिरस से परिपूर्ण अमृत कथाएं।
           </p>
         </div>
 
-        {/* Search & Filter Bar */}
-        {/* Outer: rounded-[20px] p-3 -> Inner: rounded-[8px] (20 - 12 = 8) */}
-        <div className="mt-6 rounded-[20px] bg-white/95 dark:bg-neutral-800/95 border border-amber-200 dark:border-neutral-700 p-3 shadow-xs">
-          <div className="flex flex-col sm:flex-row items-center gap-3">
+        {/* Search & Filter Bar - Concentric: R_outer = 20px, P = 12px => R_inner = 8px */}
+        <div className="rounded-[20px] bg-[#FFFDF9] border border-amber-200/80 p-3 shadow-2xs">
+          <div className="flex items-center gap-2">
             <div className="relative w-full flex items-center">
-              <Search
-                size={18}
-                className="absolute left-3.5 text-neutral-400 pointer-events-none"
-              />
+              <Search className="w-4 h-4 text-neutral-400 absolute left-3 pointer-events-none" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="कथा, प्रसंग, पात्र या विषय खोजें (Search stories)..."
-                className="w-full pl-10 pr-4 py-2.5 text-xs sm:text-sm bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 rounded-[8px] focus:outline-none focus:ring-2 focus:ring-sacred-kesar/40 text-neutral-900 dark:text-neutral-100 placeholder-neutral-400"
+                placeholder="कथा, प्रसंग, पात्र या विषय खोजें..."
+                className="w-full pl-9 pr-9 py-2 text-[16px] sm:text-sm bg-white border border-neutral-200 rounded-[8px] focus:outline-none focus:ring-2 focus:ring-amber-500 text-neutral-900 placeholder-neutral-400"
+                aria-label="कथा खोजें"
               />
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={() => setSearchQuery('')}
+                  className="absolute right-2.5 p-1 text-neutral-400 hover:text-neutral-700 cursor-pointer"
+                  aria-label="खोज साफ़ करें"
+                >
+                  <X className="w-3.5 h-3.5" />
+                </button>
+              )}
             </div>
-
             {searchQuery && (
-              <button
-                onClick={() => setSearchQuery('')}
-                className="text-xs text-neutral-500 hover:text-neutral-800 dark:hover:text-neutral-200 px-3 py-1 shrink-0"
-              >
-                साफ़ करें ✕
-              </button>
+              <span className="text-[10px] font-mono text-amber-900 bg-amber-100 px-2 py-1 rounded-[6px] shrink-0">
+                {formatDevanagariNumerals(filteredStories.length)} परिणाम
+              </span>
             )}
           </div>
 
           {/* Category Chips */}
-          <div className="flex items-center gap-2 overflow-x-auto pt-3 mt-2 border-t border-neutral-100 dark:border-neutral-700">
+          <div className="flex items-center gap-1.5 overflow-x-auto pt-2.5 mt-2 border-t border-amber-900/10">
             {categories.map((cat) => (
               <button
                 key={cat.id}
+                type="button"
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`px-3 py-1.5 text-xs font-semibold whitespace-nowrap rounded-[8px] transition-colors ${
+                className={`px-3 py-1 text-xs font-serif font-bold whitespace-nowrap rounded-[8px] transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 ${
                   selectedCategory === cat.id
-                    ? 'bg-sacred-kesar text-white shadow-xs'
-                    : 'bg-neutral-100 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700'
+                    ? 'bg-[#FEF08A] text-[#78350F] shadow-2xs'
+                    : 'bg-white text-neutral-700 border border-neutral-200/80 hover:bg-neutral-50'
                 }`}
               >
                 {cat.label}
@@ -543,96 +630,102 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
             ))}
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Stories Grid */}
       {filteredStories.length === 0 ? (
-        /* Outer: rounded-[24px] p-8 -> Inner: rounded-[8px] (24 - 16 = 8) */
-        <div className="rounded-[24px] bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 p-8 text-center">
-          <BookOpen size={36} className="mx-auto text-neutral-300 dark:text-neutral-600 mb-3" />
-          <h3 className="font-serif text-lg font-bold text-neutral-700 dark:text-neutral-300">
+        <div className="rounded-[24px] bg-white border border-neutral-200/80 p-8 text-center shadow-2xs">
+          <BookOpen className="w-9 h-9 mx-auto text-neutral-300 mb-2" />
+          <h3 className="font-serif text-base font-bold text-neutral-800">
             कोई कथा नहीं मिली
           </h3>
-          <p className="text-xs sm:text-sm text-neutral-500 mt-1">
+          <p className="text-xs text-neutral-500 mt-1">
             कृपया कोई भिन्न शब्द खोजें अथवा फ़िल्टर बदलें।
           </p>
           <button
+            type="button"
             onClick={() => {
               setSearchQuery('');
               setSelectedCategory('all');
             }}
-            className="mt-4 px-4 py-2 text-xs font-semibold text-sacred-kesar bg-sacred-kesar/10 rounded-[8px] hover:bg-sacred-kesar/20 transition-colors"
+            className="mt-3 px-3.5 py-1.5 text-xs font-serif font-bold text-amber-900 bg-amber-50 hover:bg-amber-100 rounded-[8px] transition-colors cursor-pointer"
           >
             सभी कथाएं देखें
           </button>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {filteredStories.map((story) => {
             const isBookmarked = bookmarkedStories.has(story.id);
             return (
-              /* Outer: rounded-[28px] p-5 -> Inner: rounded-[8px] (28 - 20 = 8) */
-              <div
+              /* Concentric: R_outer = 24px, P = 16px => R_inner = 8px */
+              <article
                 key={story.id}
-                className="rounded-[28px] bg-white dark:bg-neutral-900 border border-neutral-200/90 dark:border-neutral-800 p-5 shadow-card flex flex-col justify-between hover:border-amber-300 dark:hover:border-neutral-700 transition-colors"
+                tabIndex={0}
+                role="button"
+                onClick={() => handleSelectStory(story.slug || story.id)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    handleSelectStory(story.slug || story.id);
+                  }
+                }}
+                className="rounded-[24px] bg-white border border-neutral-200/80 p-4 sm:p-5 shadow-2xs flex flex-col justify-between hover:border-amber-300 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+                aria-label={story.titleDevanagari}
               >
                 <div>
-                  <div className="flex items-center justify-between gap-2 mb-2.5">
-                    <span className="px-2.5 py-0.5 text-[11px] font-bold rounded-[8px] bg-sacred-kesar/10 text-sacred-kesar">
+                  <div className="flex items-center justify-between gap-2 mb-2">
+                    <span className="px-2 py-0.5 text-[10.5px] font-serif font-bold rounded-[6px] bg-[#FEF08A] text-[#78350F]">
                       {story.categoryHindi}
                     </span>
                     <button
+                      type="button"
                       onClick={(e) => {
                         e.stopPropagation();
                         toggleBookmark(story.id);
                       }}
-                      className={`p-1.5 rounded-[8px] transition-colors ${
+                      className={`p-1.5 rounded-[6px] transition-colors cursor-pointer ${
                         isBookmarked
-                          ? 'text-sacred-kesar bg-sacred-kesar/10'
-                          : 'text-neutral-400 hover:text-sacred-kesar'
+                          ? 'text-[#78350F] bg-amber-100'
+                          : 'text-neutral-400 hover:text-amber-800'
                       }`}
+                      aria-label={isBookmarked ? 'संग्रह से हटाएं' : 'संग्रह करें'}
                     >
-                      {isBookmarked ? <BookmarkCheck size={16} /> : <Bookmark size={16} />}
+                      {isBookmarked ? <BookmarkCheck className="w-4 h-4 text-amber-700" /> : <Bookmark className="w-4 h-4" />}
                     </button>
                   </div>
 
-                  <h3
-                    onClick={() => handleSelectStory(story.slug || story.id)}
-                    className="font-serif text-lg sm:text-xl font-bold text-neutral-900 dark:text-neutral-100 hover:text-sacred-kesar cursor-pointer transition-colors leading-snug line-clamp-2"
-                  >
+                  <h2 className="font-rozha text-lg sm:text-xl font-bold text-neutral-900 leading-snug line-clamp-2">
                     {story.titleDevanagari}
-                  </h3>
+                  </h2>
 
-                  <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 font-sans mt-2 line-clamp-3 leading-relaxed">
+                  <p className="text-xs text-neutral-600 font-serif mt-1.5 line-clamp-3 leading-relaxed">
                     {story.summary}
                   </p>
                 </div>
 
-                <div className="mt-5 pt-3 border-t border-neutral-100 dark:border-neutral-800 flex items-center justify-between">
-                  <div className="flex items-center gap-3 text-xs text-neutral-500">
-                    <span className="inline-flex items-center gap-1">
-                      <Clock size={12} />
-                      <span>{story.readingTimeMinutes} मि.</span>
+                <div className="mt-4 pt-3 border-t border-neutral-100 flex items-center justify-between">
+                  <div className="flex items-center gap-3 text-xs text-neutral-500 font-serif">
+                    <span className="inline-flex items-center gap-1 font-mono">
+                      <Clock className="w-3 h-3 text-amber-600" />
+                      <span>{formatDevanagariNumerals(story.readingTimeMinutes)} मि.</span>
                     </span>
                     <span className="inline-flex items-center gap-1">
-                      <BookOpen size={12} />
-                      <span>{story.chapterCount} अध्याय</span>
+                      <BookOpen className="w-3 h-3 text-amber-600" />
+                      <span>{formatDevanagariNumerals(story.chapterCount)} अध्याय</span>
                     </span>
                   </div>
 
-                  <button
-                    onClick={() => handleSelectStory(story.slug || story.id)}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-serif font-bold rounded-[8px] bg-sacred-kesar text-white hover:bg-orange-700 transition-colors shadow-2xs"
-                  >
+                  <span className="inline-flex items-center gap-1 px-3 py-1 text-xs font-serif font-bold rounded-[8px] bg-[#FEF08A] text-[#78350F] shadow-2xs">
                     <span>कथा पढ़ें</span>
-                    <ChevronRight size={14} />
-                  </button>
+                    <ChevronRight className="w-3.5 h-3.5 text-[#78350F]" />
+                  </span>
                 </div>
-              </div>
+              </article>
             );
           })}
         </div>
       )}
-    </div>
+    </main>
   );
 };
