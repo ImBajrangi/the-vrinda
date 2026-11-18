@@ -1,0 +1,37 @@
+{
+  "id": "mahakaleshwar-jyotirlinga",
+  "slug": "mahakaleshwar-jyotirlinga",
+  "name": "Shri Mahakaleshwar Jyotirlinga Ujjain",
+  "nameDevanagari": "श्री महाकालेश्वर ज्योतिर्लिंग (उज्जैन)",
+  "dhamRegion": "malwa",
+  "regionNameHindi": "शिप्रा तट, उज्जयिनी, मध्य प्रदेश",
+  "briefSignificance": "द्वादश ज्योतिर्लिंगों में एकमात्र दक्षिणमुखी ज्योतिर्लिंग, काल के भी महाकाल भगवान शिव का मोक्षधाम।",
+  "deity": "Lord Mahakal",
+  "deityDevanagari": "स्वयंभू दक्षिणमुखी महाकालेश्वर",
+  "darshanTimings": {
+    "morning": {
+      "open": "04:00",
+      "close": "13:00",
+      "aartiName": "विश्वप्रसिद्ध भस्म आरती"
+    },
+    "evening": {
+      "open": "16:00",
+      "close": "23:00",
+      "aartiName": "संध्या व शयन आरती"
+    },
+    "specialNotes": "ब्रह्ममुहूर्त में तड़के ४ बजे होने वाली भस्म आरती अद्वितीय है।"
+  },
+  "parikramaKm": "महाकाल लोक परिक्रमा",
+  "scripturalReferences": "शिव पुराण, मेघदूत (कालिदास)",
+  "historyAndGlory": "उज्जैन नाभि देश और पृथ्वी का केंद्र माना जाता है। यहाँ काल गणना का आदि केंद्र है। महाकाल के दर्शन मात्र से अकाल मृत्यु का भय समाप्त हो जाता है और प्राणी को मोक्ष प्राप्त होता है।",
+  "tags": [
+    "महाकालेश्वर",
+    "उज्जैन",
+    "भस्म आरती",
+    "दक्षिणमुखी"
+  ],
+  "coordinates": {
+    "latitude": 23.1827,
+    "longitude": 75.7682
+  }
+}

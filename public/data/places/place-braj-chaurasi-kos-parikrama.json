@@ -1,0 +1,37 @@
+{
+  "id": "braj-chaurasi-kos-parikrama",
+  "slug": "braj-chaurasi-kos-parikrama",
+  "name": "Braj Chaurasi Kos Parikrama",
+  "nameDevanagari": "ब्रज चौरासी कोस परिक्रमा",
+  "dhamRegion": "braj-mandal",
+  "regionNameHindi": "सम्पूर्ण ब्रज मण्डल (मथुरा, राजस्थान, हरियाणा सीमा)",
+  "briefSignificance": "भगवान श्रीकृष्ण की समस्त बाल्य व किशोर लीलाओं की पावन भूमि की २५२ किमी (८४ कोस) की महापरिक्रमा।",
+  "deity": "Braj Raj Shri Krishna & Shri Radha",
+  "deityDevanagari": "सम्पूर्ण ब्रज मण्डल अधिष्ठाता युगल सरकार",
+  "darshanTimings": {
+    "morning": {
+      "open": "निरंतर",
+      "close": "सुलभ",
+      "aartiName": "पड़ाव आरती"
+    },
+    "evening": {
+      "open": "निरंतर",
+      "close": "सुलभ",
+      "aartiName": "संध्या संकीर्तन"
+    },
+    "specialNotes": "पारम्परिक रूप से भाद्रपद व आश्विन मास में पैदल यात्रा होती है।"
+  },
+  "parikramaKm": "२५२ किमी (८४ कोस)",
+  "scripturalReferences": "स्कन्द पुराण, वराह पुराण, भक्ति रत्नाकर",
+  "historyAndGlory": "८४ कोस की यह परिक्रमा चौरासी लाख योनियों के आवागमन से मुक्ति और गोलोक धाम में नित्य वास प्रदान करने वाली मानी जाती है। इसमें १२ वन, २४ उपवन, असंख्य सरोवर, कुण्ड और शिलाएं सम्मिलित हैं।",
+  "tags": [
+    "चौरासी कोस",
+    "ब्रज यात्रा",
+    "१२ वन",
+    "महापरिक्रमा"
+  ],
+  "coordinates": {
+    "latitude": 27.5,
+    "longitude": 77.68
+  }
+}

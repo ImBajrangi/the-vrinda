@@ -1,0 +1,37 @@
+{
+  "id": "seva-kunj-vrindavan",
+  "slug": "seva-kunj-vrindavan",
+  "name": "Shri Seva Kunj Vrindavan",
+  "nameDevanagari": "श्री सेवा कुंज (निकुंज वन)",
+  "dhamRegion": "vrindavan",
+  "regionNameHindi": "वृन्दावन धाम, मथुरा, उत्तर प्रदेश",
+  "briefSignificance": "श्री हित हरिवंश महाप्रभु की लीला स्थली, जहाँ श्यामसुंदर स्वयं श्री राधारानी के चरणों का महावर सजाते हैं और नित्य रास रचाते हैं।",
+  "deity": "Shri Radha Krishna (Rasik Yugal)",
+  "deityDevanagari": "श्री युगल सरकार (राधा-कृष्ण)",
+  "darshanTimings": {
+    "morning": {
+      "open": "06:00",
+      "close": "11:00",
+      "aartiName": "मंगला व राजभोग"
+    },
+    "evening": {
+      "open": "16:30",
+      "close": "20:00",
+      "aartiName": "संध्या आरती"
+    },
+    "specialNotes": "रात्रि काल में सेवा कुंज के कपाट बंद रहते हैं।"
+  },
+  "parikramaKm": "१ किमी",
+  "scripturalReferences": "श्री हित चौरासी, श्री राधा सुधा निधि",
+  "historyAndGlory": "सेवा कुंज वृन्दावन का वह अंतरंग निकुंज है जहाँ भगवान श्रीकृष्ण अपनी आराधिका श्री राधारानी की दासी बनकर सेवा करते हैं। यहाँ ललिता कुण्ड स्थित है जिसे श्रीकृष्ण ने अपनी बंशी से सखियों की तृषा शांत करने हेतु प्रकट किया था।",
+  "tags": [
+    "सेवा कुंज",
+    "हित हरिवंश",
+    "महावर लीला",
+    "ललिता कुण्ड"
+  ],
+  "coordinates": {
+    "latitude": 27.5835,
+    "longitude": 77.7042
+  }
+}

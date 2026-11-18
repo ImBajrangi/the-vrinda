@@ -1,48 +1,42 @@
 {
   "category": "stories",
-  "categoryHindi": "पवित्र कथाएं एवं लीलाएं",
-  "count": 12,
-  "updatedAt": "2026-11-15T09:00:00Z",
+  "categoryHindi": "दिव्य पौराणिक कथाएं एवं लीला प्रसंग",
+  "count": 22,
+  "updatedAt": "2026-11-18T08:00:00Z",
   "items": [
     {
-      "id": "govardhan-dharan-leela",
-      "slug": "govardhan-dharan-leela",
-      "title": "Govardhan Dharan Leela: The Supreme Refuge",
-      "titleDevanagari": "श्री गिरिराज गोवर्धन धारण लीला: शरणागति का परमोत्कर्ष",
-      "category": "shrimad-bhagavatam",
-      "categoryHindi": "श्रीमद्भागवत महापुराण",
-      "summary": "इन्द्र के अभिमान का मर्दन और ब्रजवासियों की अटूट भक्ति की रक्षा हेतु कन्हैया द्वारा सात दिवस पर्यन्त गिरिराज गोवर्धन को कनिष्ठिका अंगुली पर धारण करने का दिव्य आख्यान।",
-      "readingTimeMinutes": 8,
-      "chapterCount": 3,
-      "characterCount": 3,
-      "tradition": "श्रीमद्भागवत एवं ब्रज रस परम्परा",
+      "id": "markandeya-charitra",
+      "slug": "markandeya-charitra",
+      "title": "Markandeya Charitra: Conquering Death Through Shiva's Grace",
+      "titleDevanagari": "मार्कण्डेय चरित्र: महामृत्युंजय तप एवं काल पर विजय",
+      "category": "purana",
+      "categoryHindi": "शिव पुराण एवं लिंग पुराण",
+      "summary": "सोलह वर्ष की अल्पायु वाले बालक मार्कण्डेय की शिवलिंग से लिपटकर अटूट आराधना और कालर...",
+      "readingTimeMinutes": 6,
       "tags": [
-        "गोवर्धन",
-        "इन्द्र-मान-मर्दन",
-        "शरणागति",
-        "ब्रज लीला"
+        "मार्कण्डेय",
+        "महामृत्युंजय",
+        "कालजयी"
       ],
-      "chunkFile": "ch-govardhan-dharan-leela.json"
+      "totalChapters": 2,
+      "chunkFile": "ch-markandeya-charitra.json"
     },
     {
-      "id": "gajendra-moksha",
-      "slug": "gajendra-moksha",
-      "title": "Gajendra Moksha: The Unconditional Surrender",
-      "titleDevanagari": "गजेन्द्र मोक्ष: आर्तनाद और परम शरणागति",
-      "category": "shrimad-bhagavatam",
-      "categoryHindi": "श्रीमद्भागवत महापुराण",
-      "summary": "त्रिकूट पर्वत के सरोवर में ग्राह द्वारा पकड़े गए गजराज का एक सहस्र वर्षों का संघर्ष और अन्त में भगवान विष्णु द्वारा तत्काल उद्धार की परम पावन कथा।",
-      "readingTimeMinutes": 7,
-      "chapterCount": 2,
-      "characterCount": 3,
-      "tradition": "श्रीमद्भागवत महापुराण (स्कन्ध ८)",
+      "id": "sant-namdev-katha",
+      "slug": "sant-namdev-katha",
+      "title": "Sant Namdev: Offering Milk to Lord Vitthal",
+      "titleDevanagari": "संत नामदेव: पाषाण विट्ठल को साक्षात दूध पिलाना",
+      "category": "sant-charitra",
+      "categoryHindi": "वारकरी संत चरित",
+      "summary": "पाँच वर्ष के बालक नामदेव का निष्कपट बाल-हठ जिससे विवश होकर पंढरपुर के भगवान विट्ठल...",
+      "readingTimeMinutes": 6,
       "tags": [
-        "गजेन्द्र-मोक्ष",
-        "शरणागति",
-        "भगवान-विष्णु",
-        "भागवत-कथा"
+        "संत नामदेव",
+        "विट्ठल",
+        "पंढरपुर"
       ],
-      "chunkFile": "ch-gajendra-moksha.json"
+      "totalChapters": 1,
+      "chunkFile": "ch-sant-namdev-katha.json"
     },
     {
       "id": "dhruva-charitra",
@@ -51,38 +45,49 @@
       "titleDevanagari": "ध्रुव चरित्र: पाँच वर्षीय बालक का अटल संकल्प",
       "category": "shrimad-bhagavatam",
       "categoryHindi": "श्रीमद्भागवत महापुराण",
-      "summary": "विमाता सुरुचि के कटु वचनों से आहत होकर पाँच वर्ष के बालक ध्रुव का मधुवन में कठोर तप और देवर्षि नारद के मार्गदर्शन में श्रीहरि का साक्षात् दर्शन प्राप्त करना।",
+      "summary": "विमाता सुरुचि के कटु वचनों से आहत होकर पाँच वर्ष के बालक ध्रुव का मधुवन में कठोर त...",
       "readingTimeMinutes": 6,
-      "chapterCount": 2,
-      "characterCount": 3,
-      "tradition": "श्रीमद्भागवत महापुराण (स्कन्ध ४)",
       "tags": [
         "ध्रुव",
         "तपस्या",
-        "अटल-भक्ति",
-        "नारद-मुनि"
+        "अटल-भक्ति"
       ],
+      "totalChapters": 2,
       "chunkFile": "ch-dhruva-charitra.json"
     },
     {
-      "id": "prahlada-charitra",
-      "slug": "prahlada-charitra",
-      "title": "Prahlada Charitra & Narasimha Avatar",
-      "titleDevanagari": "भक्त प्रह्लाद चरित्र एवं भगवान नृसिंह प्राकट्य",
-      "category": "shrimad-bhagavatam",
-      "categoryHindi": "श्रीमद्भागवत महापुराण",
-      "summary": "हिरण्यकशिपु के भीषण अत्याचारों के मध्य बालक प्रह्लाद की अटूट नारायण भक्ति और भक्त के वचन की सत्यता सिद्ध करने हेतु खंभ फाड़कर भगवान नृसिंह का प्राकट्य।",
+      "id": "shabari-prem-bhakti",
+      "slug": "shabari-prem-bhakti",
+      "title": "Shabari Prem Bhakti: The Ber of Pure Devotion",
+      "titleDevanagari": "भक्त शबरी की साधना एवं जूठे बेर",
+      "category": "ramcharitmanas",
+      "categoryHindi": "श्री रामचरितमानस एवं वाल्मीकि रामायण",
+      "summary": "मतंग ऋषि की शिष्या शबरी का वर्षों का अटूट विश्वास और प्रभु श्रीराम द्वारा जाति-कुल...",
       "readingTimeMinutes": 8,
-      "chapterCount": 2,
-      "characterCount": 3,
-      "tradition": "श्रीमद्भागवत महापुराण (स्कन्ध ७)",
       "tags": [
-        "प्रह्लाद",
-        "नृसिंह-अवतार",
-        "भक्ति-शक्ति",
-        "सत्य-प्रतिज्ञा"
+        "शबरी",
+        "जूठे बेर",
+        "नवधा भक्ति"
       ],
-      "chunkFile": "ch-prahlada-charitra.json"
+      "totalChapters": 2,
+      "chunkFile": "ch-shabari-prem-bhakti.json"
+    },
+    {
+      "id": "surdas-shriji-bhakti",
+      "slug": "surdas-shriji-bhakti",
+      "title": "Surdas Ji Divine Vision: Beyond Physical Sight",
+      "titleDevanagari": "सूरदास जी की दिव्य दृष्टि: पारसौली में मदनमोहन दर्शन",
+      "category": "bhaktamal",
+      "categoryHindi": "पुष्टिमार्ग चौरासी वैष्णवन की वार्ता",
+      "summary": "जन्मांध महाकवि सूरदास जी द्वारा श्रीनाथजी के शृंगार का नेत्रहीनों जैसी स्थिति में ...",
+      "readingTimeMinutes": 7,
+      "tags": [
+        "सूरदास",
+        "श्रीनाथजी",
+        "पारसौली"
+      ],
+      "totalChapters": 1,
+      "chunkFile": "ch-surdas-shriji-bhakti.json"
     },
     {
       "id": "sudama-charitra",
@@ -91,98 +96,15 @@
       "titleDevanagari": "सुदामा चरित्र: निष्काम मित्रता एवं दीनबन्धु की कृपा",
       "category": "shrimad-bhagavatam",
       "categoryHindi": "श्रीमद्भागवत महापुराण",
-      "summary": "दरिद्र ब्राह्मण सुदामा की द्वारका यात्रा, कन्हैया द्वारा अश्रुओं से चरण प्रक्षालन और चार मुट्ठी तण्डुल (चिउड़े) के बदले तीनों लोकों का ऐश्वर्य समर्पित करने की भावपूर्ण कथा।",
+      "summary": "दरिद्र ब्राह्मण सुदामा की द्वारका यात्रा, कन्हैया द्वारा अश्रुओं से चरण प्रक्षालन ...",
       "readingTimeMinutes": 6,
-      "chapterCount": 2,
-      "characterCount": 3,
-      "tradition": "श्रीमद्भागवत महापुराण (स्कन्ध १०)",
       "tags": [
         "सुदामा",
         "श्रीकृष्ण-मैत्री",
-        "दीनबन्धु",
-        "प्रेम-भक्ति"
+        "दीनबन्धु"
       ],
+      "totalChapters": 2,
       "chunkFile": "ch-sudama-charitra.json"
-    },
-    {
-      "id": "samudra-manthan",
-      "slug": "samudra-manthan",
-      "title": "Samudra Manthan: Churning of the Ocean of Milk",
-      "titleDevanagari": "समुद्र मंथन: हलाहल, चौदह रत्न और अमृत प्राकट्य",
-      "category": "shrimad-bhagavatam",
-      "categoryHindi": "श्रीमद्भागवत महापुराण",
-      "summary": "देवताओं और दैत्यों द्वारा क्षीरसागर का मंथन, महादेव द्वारा कालकूट विषपान कर नीलकंठ बनना, महालक्ष्मी प्राकट्य और भगवान धन्वन्तरि द्वारा अमृत कलश का अवतरण।",
-      "readingTimeMinutes": 8,
-      "chapterCount": 2,
-      "characterCount": 3,
-      "tradition": "श्रीमद्भागवत एवं विष्णु पुराण",
-      "tags": [
-        "समुद्र-मंथन",
-        "नीलकंठ",
-        "महालक्ष्मी",
-        "अमृत"
-      ],
-      "chunkFile": "ch-samudra-manthan.json"
-    },
-    {
-      "id": "sita-swayamvara",
-      "slug": "sita-swayamvara",
-      "title": "Sita Swayamvara: Breaking of Lord Shiva's Bow",
-      "titleDevanagari": "सीता स्वयंवर: शिवधनुष भंजन एवं सियाराम मिलन",
-      "category": "ramayana",
-      "categoryHindi": "श्री रामचरितमानस एवं रामायण",
-      "summary": "जनकपुर में विश्वामित्र के साथ पधारे प्रभु श्री राम द्वारा भगवान शिव के पिनाक धनुष का भंजन और जानकी जी द्वारा मर्यादा पुरुषोत्तम के गले में जयमाला अर्पण।",
-      "readingTimeMinutes": 7,
-      "chapterCount": 2,
-      "characterCount": 3,
-      "tradition": "महर्षि वाल्मीकि",
-      "tags": [
-        "सीता-स्वयंवर",
-        "धनुष-भंजन",
-        "श्रीराम",
-        "जनकपुर"
-      ],
-      "chunkFile": "ch-sita-swayamvara.json"
-    },
-    {
-      "id": "markandeya-charitra",
-      "slug": "markandeya-charitra",
-      "title": "Markandeya Charitra: Conquering Death Through Shiva's Grace",
-      "titleDevanagari": "मार्कण्डेय चरित्र: महामृत्युंजय तप एवं काल पर विजय",
-      "category": "purana",
-      "categoryHindi": "शिव पुराण एवं लिंग पुराण",
-      "summary": "सोलह वर्ष की अल्पायु वाले बालक मार्कण्डेय की शिवलिंग से लिपटकर अटूट आराधना और कालराज यमदूतों के सम्मुख साक्षात् महाकाल द्वारा प्रकट होकर अमरत्व वरदान।",
-      "readingTimeMinutes": 6,
-      "chapterCount": 2,
-      "characterCount": 3,
-      "tradition": "शिव पुराण एवं वैदिक महात्म्य",
-      "tags": [
-        "मार्कण्डेय",
-        "महामृत्युंजय",
-        "कालजयी",
-        "शिव-कृपा"
-      ],
-      "chunkFile": "ch-markandeya-charitra.json"
-    },
-    {
-      "id": "tulsi-vivah-vrinda",
-      "slug": "tulsi-vivah-vrinda",
-      "title": "Tulsi Vivah & Sati Vrinda: The Origin of Sacred Shaligram",
-      "titleDevanagari": "तुलसी विवाह एवं सती वृन्दा: शालिग्राम प्राकट्य की पावन कथा",
-      "category": "purana",
-      "categoryHindi": "पद्म पुराण एवं श्रीमद्देवीभागवत",
-      "summary": "सती वृन्दा का पातिव्रत्य धर्म, जालंधर असुर का संहार और श्रीहरि का शालिग्राम शिला रूप धारण कर तुलसी जी के साथ नित्य विवाह का दिव्य शास्त्रीय आख्यान।",
-      "readingTimeMinutes": 7,
-      "chapterCount": 2,
-      "characterCount": 3,
-      "tradition": "पद्म पुराण एवं कार्तिक महात्म्य",
-      "tags": [
-        "तुलसी-विवाह",
-        "शालिग्राम",
-        "सती-वृन्दा",
-        "कार्तिक-मास"
-      ],
-      "chunkFile": "ch-tulsi-vivah-vrinda.json"
     },
     {
       "id": "nachiketa-katha",
@@ -191,18 +113,134 @@
       "titleDevanagari": "नचिकेता और यमराज: कठ उपनिषद का अमर संवाद",
       "category": "purana",
       "categoryHindi": "कठ उपनिषद एवं पौराणिक आख्यान",
-      "summary": "बालक नचिकेता का यमलोक गमन, तीन दिनों का अनशन और यमराज से आत्मा के रहस्य तथा अमरत्व का परम ज्ञान प्राप्त करना।",
+      "summary": "बालक नचिकेता का यमलोक गमन, तीन दिनों का अनशन और यमराज से आत्मा के रहस्य तथा अमरत्व...",
       "readingTimeMinutes": 7,
-      "chapterCount": 2,
-      "characterCount": 2,
-      "tradition": "कठोपनिषद एवं वैदिक परम्परा",
       "tags": [
         "नचिकेता",
         "यमराज",
-        "कठोपनिषद",
-        "आत्मज्ञान"
+        "कठोपनिषद"
       ],
+      "totalChapters": 2,
       "chunkFile": "ch-nachiketa-katha.json"
+    },
+    {
+      "id": "sita-swayamvara",
+      "slug": "sita-swayamvara",
+      "title": "Sita Swayamvara: Breaking of Lord Shiva's Bow",
+      "titleDevanagari": "सीता स्वयंवर: शिवधनुष भंजन एवं सियाराम मिलन",
+      "category": "ramayana",
+      "categoryHindi": "श्री रामचरितमानस एवं रामायण",
+      "summary": "जनकपुर में विश्वामित्र के साथ पधारे प्रभु श्री राम द्वारा भगवान शिव के पिनाक धनुष ...",
+      "readingTimeMinutes": 7,
+      "tags": [
+        "सीता-स्वयंवर",
+        "धनुष-भंजन",
+        "श्रीराम"
+      ],
+      "totalChapters": 2,
+      "chunkFile": "ch-sita-swayamvara.json"
+    },
+    {
+      "id": "eknath-samadarshana",
+      "slug": "eknath-samadarshana",
+      "title": "Sant Eknath Samadarshana: Ganga Water to the Donkey",
+      "titleDevanagari": "संत एकनाथ जी का समदर्शन: गदहे को गंगाजल",
+      "category": "sant-charitra",
+      "categoryHindi": "वारकरी संत चरित",
+      "summary": "काशी से रामेश्वरम ले जाया जा रहा पावन गंगाजल प्यास से तड़पते गदहे के मुख में डालकर...",
+      "readingTimeMinutes": 6,
+      "tags": [
+        "संत एकनाथ",
+        "समदर्शन",
+        "गंगाजल"
+      ],
+      "totalChapters": 1,
+      "chunkFile": "ch-eknath-samadarshana.json"
+    },
+    {
+      "id": "gajendra-moksha",
+      "slug": "gajendra-moksha",
+      "title": "Gajendra Moksha: The Unconditional Surrender",
+      "titleDevanagari": "गजेन्द्र मोक्ष: आर्तनाद और परम शरणागति",
+      "category": "shrimad-bhagavatam",
+      "categoryHindi": "श्रीमद्भागवत महापुराण",
+      "summary": "त्रिकूट पर्वत के सरोवर में ग्राह द्वारा पकड़े गए गजराज का एक सहस्र वर्षों का संघर्...",
+      "readingTimeMinutes": 7,
+      "tags": [
+        "गजेन्द्र-मोक्ष",
+        "शरणागति",
+        "भगवान-विष्णु"
+      ],
+      "totalChapters": 2,
+      "chunkFile": "ch-gajendra-moksha.json"
+    },
+    {
+      "id": "prahlada-charitra",
+      "slug": "prahlada-charitra",
+      "title": "Prahlada Charitra & Narasimha Avatar",
+      "titleDevanagari": "भक्त प्रह्लाद चरित्र एवं भगवान नृसिंह प्राकट्य",
+      "category": "shrimad-bhagavatam",
+      "categoryHindi": "श्रीमद्भागवत महापुराण",
+      "summary": "हिरण्यकशिपु के भीषण अत्याचारों के मध्य बालक प्रह्लाद की अटूट नारायण भक्ति और भक्त ...",
+      "readingTimeMinutes": 8,
+      "tags": [
+        "प्रह्लाद",
+        "नृसिंह-अवतार",
+        "भक्ति-शक्ति"
+      ],
+      "totalChapters": 2,
+      "chunkFile": "ch-prahlada-charitra.json"
+    },
+    {
+      "id": "samudra-manthan",
+      "slug": "samudra-manthan",
+      "title": "Samudra Manthan: Churning of the Ocean of Milk",
+      "titleDevanagari": "समुद्र मंथन: हलाहल, चौदह रत्न और अमृत प्राकट्य",
+      "category": "shrimad-bhagavatam",
+      "categoryHindi": "श्रीमद्भागवत महापुराण",
+      "summary": "देवताओं और दैत्यों द्वारा क्षीरसागर का मंथन, महादेव द्वारा कालकूट विषपान कर नीलकंठ...",
+      "readingTimeMinutes": 8,
+      "tags": [
+        "समुद्र-मंथन",
+        "नीलकंठ",
+        "महालक्ष्मी"
+      ],
+      "totalChapters": 2,
+      "chunkFile": "ch-samudra-manthan.json"
+    },
+    {
+      "id": "govardhan-dharan-leela",
+      "slug": "govardhan-dharan-leela",
+      "title": "Govardhan Dharan Leela: The Supreme Refuge",
+      "titleDevanagari": "श्री गिरिराज गोवर्धन धारण लीला: शरणागति का परमोत्कर्ष",
+      "category": "shrimad-bhagavatam",
+      "categoryHindi": "श्रीमद्भागवत महापुराण",
+      "summary": "इन्द्र के अभिमान का मर्दन और ब्रजवासियों की अटूट भक्ति की रक्षा हेतु कन्हैया द्वार...",
+      "readingTimeMinutes": 8,
+      "tags": [
+        "गोवर्धन",
+        "इन्द्र-मान-मर्दन",
+        "शरणागति"
+      ],
+      "totalChapters": 3,
+      "chunkFile": "ch-govardhan-dharan-leela.json"
+    },
+    {
+      "id": "shri-maharas-leela",
+      "slug": "shri-maharas-leela",
+      "title": "Shri Maharas Leela: The Pinnacle of Divine Love",
+      "titleDevanagari": "श्री महारास लीला: गोपी प्रेम का सर्वोच्च रसावतार",
+      "category": "shrimad-bhagavatam",
+      "categoryHindi": "श्रीमद्भागवत महापुराण (रास पंचाध्यायी)",
+      "summary": "शरद पूर्णिमा की चांदनी रात में यमुना के पावन पुलिन पर भगवान श्रीकृष्ण द्वारा गोपिय...",
+      "readingTimeMinutes": 10,
+      "tags": [
+        "महारास",
+        "शरद पूर्णिमा",
+        "रास पंचाध्यायी"
+      ],
+      "totalChapters": 2,
+      "chunkFile": "ch-shri-maharas-leela.json"
     },
     {
       "id": "satyanarayan-vrat-katha",
@@ -211,18 +249,32 @@
       "titleDevanagari": "श्री सत्यनारायण व्रत कथा: सत्य की महिमा",
       "category": "purana",
       "categoryHindi": "स्कन्द पुराण (रेवा खण्ड)",
-      "summary": "सत्यनारायण भगवान की पूजा, शतानन्द विप्र का दारिद्र्य नाश, काष्ठ विक्रेता भील और साधु वैश्य की भक्ति व परीक्षा का पावन इतिहास।",
+      "summary": "सत्यनारायण भगवान की पूजा, शतानन्द विप्र का दारिद्र्य नाश, काष्ठ विक्रेता भील और सा...",
       "readingTimeMinutes": 8,
-      "chapterCount": 1,
-      "characterCount": 3,
-      "tradition": "स्कन्द पुराण",
       "tags": [
         "सत्यनारायण",
         "व्रत-कथा",
-        "सत्य-महिमा",
-        "प्रसाद"
+        "सत्य-महिमा"
       ],
+      "totalChapters": 1,
       "chunkFile": "ch-satyanarayan-vrat-katha.json"
+    },
+    {
+      "id": "swami-haridas-bihari-prakatya",
+      "slug": "swami-haridas-bihari-prakatya",
+      "title": "Swami Haridas Ji: Manifestation of Banke Bihari",
+      "titleDevanagari": "स्वामी हरिदास जी: निधिवन में बांके बिहारी जी का प्राकट्य",
+      "category": "rasik-charitra",
+      "categoryHindi": "श्री वृन्दावन रसिक परंपरा",
+      "summary": "संगीत शिरोमणि स्वामी हरिदास जी के अलौकिक तानपूरे के नाद से प्रसन्न होकर निधिवन के ...",
+      "readingTimeMinutes": 8,
+      "tags": [
+        "स्वामी हरिदास",
+        "बांके बिहारी प्राकट्य",
+        "निधिवन"
+      ],
+      "totalChapters": 1,
+      "chunkFile": "ch-swami-haridas-bihari-prakatya.json"
     },
     {
       "id": "vat-savitri-vrat-katha",
@@ -231,18 +283,100 @@
       "titleDevanagari": "वट सावित्री व्रत कथा: यमराज से पति के प्राण लौटाना",
       "category": "purana",
       "categoryHindi": "महाभारत एवं भविष्य पुराण",
-      "summary": "राजकुमारी सावित्री का तपोनिष्ठ पातिव्रत्य, वटवृक्ष के नीचे सत्यवान की देह से यमराज द्वारा प्राण हरण और धर्मपूर्ण वाकपटुता से पति को पुनर्जीवित कराना।",
+      "summary": "राजकुमारी सावित्री का तपोनिष्ठ पातिव्रत्य, वटवृक्ष के नीचे सत्यवान की देह से यमराज...",
       "readingTimeMinutes": 7,
-      "chapterCount": 1,
-      "characterCount": 3,
-      "tradition": "महाभारत (वनपर्व)",
       "tags": [
         "वट-सावित्री",
         "सत्यवान-सावित्री",
-        "पतिव्रत",
-        "यमराज"
+        "पतिव्रत"
       ],
+      "totalChapters": 1,
       "chunkFile": "ch-vat-savitri-vrat-katha.json"
+    },
+    {
+      "id": "karmabai-khichdi",
+      "slug": "karmabai-khichdi",
+      "title": "Karmabai Khichdi: The Pure Vatsalya of Jagannath",
+      "titleDevanagari": "करमाबाई की खिचड़ी: जगन्नाथ जी का बाल भोग",
+      "category": "bhaktamal",
+      "categoryHindi": "श्री जगन्नाथ पुरी लीला प्रसंग",
+      "summary": "राजस्थान की अनन्य भक्त करमाबाई के वात्सल्य भाव से रीझकर पुरी के जगन्नाथ जी द्वारा ...",
+      "readingTimeMinutes": 7,
+      "tags": [
+        "करमाबाई",
+        "जगन्नाथ जी",
+        "खिचड़ी भोग"
+      ],
+      "totalChapters": 2,
+      "chunkFile": "ch-karmabai-khichdi.json"
+    },
+    {
+      "id": "hit-harivansh-radhavallabh-prakatya",
+      "slug": "hit-harivansh-radhavallabh-prakatya",
+      "title": "Hit Harivansh Mahaprabhu: Manifestation of Radha Vallabh",
+      "titleDevanagari": "श्री हित हरिवंश महाप्रभु: श्री राधावल्लभ लाल प्राकट्य",
+      "category": "rasik-charitra",
+      "categoryHindi": "श्री राधावल्लभ संप्रदाय",
+      "summary": "श्री राधारानी के वंशी अवतार श्री हित हरिवंश महाप्रभु द्वारा चरथावल में आत्मदेव ब्र...",
+      "readingTimeMinutes": 8,
+      "tags": [
+        "हित हरिवंश",
+        "राधावल्लभ प्राकट्य",
+        "वंशी अवतार"
+      ],
+      "totalChapters": 1,
+      "chunkFile": "ch-hit-harivansh-radhavallabh-prakatya.json"
+    },
+    {
+      "id": "dhanna-jat-bhakti",
+      "slug": "dhanna-jat-bhakti",
+      "title": "Dhanna Jat Bhakti: Manifesting God from Stone",
+      "titleDevanagari": "भक्त धन्ना जाट: पाषाण से साक्षात ठाकुर प्राकट्य",
+      "category": "bhaktamal",
+      "categoryHindi": "श्री भक्तमाल एवं संत परंपरा",
+      "summary": "सरल हृदय भक्त धन्ना जाट का भोला विश्वास, जिन्होंने शालिग्राम शिला को भोजन न करने त...",
+      "readingTimeMinutes": 6,
+      "tags": [
+        "धन्ना जाट",
+        "शालिग्राम",
+        "भोला भाव"
+      ],
+      "totalChapters": 2,
+      "chunkFile": "ch-dhanna-jat-bhakti.json"
+    },
+    {
+      "id": "tulsi-vivah-vrinda",
+      "slug": "tulsi-vivah-vrinda",
+      "title": "Tulsi Vivah & Sati Vrinda: The Origin of Sacred Shaligram",
+      "titleDevanagari": "तुलसी विवाह एवं सती वृन्दा: शालिग्राम प्राकट्य की पावन कथा",
+      "category": "purana",
+      "categoryHindi": "पद्म पुराण एवं श्रीमद्देवीभागवत",
+      "summary": "सती वृन्दा का पातिव्रत्य धर्म, जालंधर असुर का संहार और श्रीहरि का शालिग्राम शिला र...",
+      "readingTimeMinutes": 7,
+      "tags": [
+        "तुलसी-विवाह",
+        "शालिग्राम",
+        "सती-वृन्दा"
+      ],
+      "totalChapters": 2,
+      "chunkFile": "ch-tulsi-vivah-vrinda.json"
+    },
+    {
+      "id": "narsi-mehta-hundi",
+      "slug": "narsi-mehta-hundi",
+      "title": "Narsi Mehta Hundi: The Lord as Banker Sanwariya",
+      "titleDevanagari": "नरसी मेहता की हुंडी: सांवरिया सेठ बने कन्हैया",
+      "category": "bhaktamal",
+      "categoryHindi": "श्री भक्तमाल कथा प्रसंग",
+      "summary": "जूनागढ़ के अनन्य कृष्णभक्त नरसी मेहता की लाज रखने हेतु स्वयं भगवान श्रीकृष्ण द्वार...",
+      "readingTimeMinutes": 7,
+      "tags": [
+        "नरसी मेहता",
+        "हुंडी",
+        "सांवरिया सेठ"
+      ],
+      "totalChapters": 2,
+      "chunkFile": "ch-narsi-mehta-hundi.json"
     }
   ]
 }

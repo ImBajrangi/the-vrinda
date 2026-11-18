@@ -1,0 +1,37 @@
+{
+  "id": "om-jai-lakshmi-mata",
+  "slug": "om-jai-lakshmi-mata",
+  "title": "Maa Lakshmi Aarti (Om Jai Lakshmi Mata)",
+  "titleDevanagari": "माँ लक्ष्मी जी की आरती: ॐ जय लक्ष्मी माता",
+  "category": "aarti",
+  "categoryHindi": "आरती संग्रह",
+  "deity": "Goddess Lakshmi",
+  "deityDevanagari": "माँ महालक्ष्मी",
+  "author": "सनातन परम्परा",
+  "totalVerses": 4,
+  "durationMinutes": 5,
+  "tags": [
+    "लक्ष्मी आरती",
+    "दीपावली",
+    "वैभव"
+  ],
+  "pujaVidhi": "दीपावली एवं शुक्रवार को घी के दीपक से कमल पुष्प अर्पित कर आरती करें।",
+  "stanzas": [
+    {
+      "stanzaNumber": 1,
+      "textDevanagari": [
+        "ॐ जय लक्ष्मी माता, मैया जय लक्ष्मी माता।",
+        "तुमको निसदिन सेवत, हर विष्णु विधाता॥"
+      ],
+      "meaning": "हे माँ लक्ष्मी! त्रिदेव भी आपका नित्य सत्कार करते हैं, आपकी कृपा से संसार में सुख-समृद्धि का वास होता है।"
+    },
+    {
+      "stanzaNumber": 2,
+      "textDevanagari": [
+        "उमा रमा ब्रह्माणी, तुम ही जग-माता।",
+        "सूर्य-चन्द्रमा ध्यावत, नारद ऋषि गाता॥"
+      ],
+      "meaning": "आप ही महामाया, जगज्जननी हैं, जिनका ध्यान ऋषि-मुनि और देवगण निरंतर करते हैं।"
+    }
+  ]
+}

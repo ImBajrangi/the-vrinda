@@ -1,0 +1,37 @@
+{
+  "id": "barsana-shriji-mandir",
+  "slug": "barsana-shriji-mandir",
+  "name": "Shriji Mandir Barsana (Radha Rani Temple)",
+  "nameDevanagari": "श्री लाड़ली जी महल (बरसाना)",
+  "dhamRegion": "barsana",
+  "regionNameHindi": "भानुपुरा शिखर, बरसाना, मथुरा",
+  "briefSignificance": "श्री वृषभानु नन्दिनी राधिका जी का पैतृक महल, जहाँ की लठामार होली विश्वविख्यात है।",
+  "deity": "Shri Radha Rani (Laadli Ji)",
+  "deityDevanagari": "श्री लाड़िली जी महाराज",
+  "darshanTimings": {
+    "morning": {
+      "open": "05:30",
+      "close": "12:00",
+      "aartiName": "मंगला व शृंगार आरती"
+    },
+    "evening": {
+      "open": "17:00",
+      "close": "21:00",
+      "aartiName": "संध्या व शयन आरती"
+    },
+    "specialNotes": "ब्रह्मांचल पर्वत पर २५० सीढ़ियां चढ़कर दर्शन होते हैं।"
+  },
+  "parikramaKm": "बरसाना परिक्रमा ४ किमी",
+  "scripturalReferences": "पद्म पुराण, ब्रह्मवैवर्त पुराण",
+  "historyAndGlory": "बरसाना का भानुपुरा शिखर वह अलौकिक धाम है जहाँ राजा वृषभानु और कीरति मैया ने श्री राधा रानी का लालन-पालन किया। मंदिर से सम्पूर्ण ब्रज मण्डल का विहंगम दृश्य दिखाई देता है। यहाँ का \"राधे-राधे\" का जयघोष साधक के हृदय को भाव-विभोर कर देता है।",
+  "tags": [
+    "बरसाना",
+    "लाड़ली जी",
+    "राधा रानी मंदिर",
+    "लठामार होली"
+  ],
+  "coordinates": {
+    "latitude": 27.6469,
+    "longitude": 77.3739
+  }
+}

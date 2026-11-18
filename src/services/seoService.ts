@@ -40,6 +40,37 @@ export interface SEOConfig {
     biography?: string;
     tradition?: string;
   };
+  ritual?: {
+    id: string;
+    title: string;
+    titleDevanagari: string;
+    category: string;
+    deity: string;
+    description?: string;
+  };
+  place?: {
+    id: string;
+    name: string;
+    nameDevanagari: string;
+    region: string;
+    significance: string;
+    deity?: string;
+  };
+  story?: {
+    id: string;
+    title: string;
+    titleDevanagari: string;
+    summary: string;
+    tradition?: string;
+  };
+  biography?: {
+    id: string;
+    name: string;
+    nameDevanagari: string;
+    tradition: string;
+    titleHonorific?: string;
+    period?: string;
+  };
   audioUrl?: string;
 }
 
@@ -346,6 +377,177 @@ export function generateSEOMetadata(config: SEOConfig = {}): SEOMetadataResult {
           '@type': 'ListItem',
           position: 3,
           name: a.name,
+          item: canonicalUrl,
+        },
+      ],
+    });
+  } else if (config.ritual) {
+    // 7. Ritual Schema (Article / HowTo) for Aartis, Chalisas, and Stotras
+    const r = config.ritual;
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      '@id': `${canonicalUrl}#ritual`,
+      headline: r.titleDevanagari,
+      name: r.titleDevanagari,
+      description: r.description || `${r.titleDevanagari} • प्रामाणिक मूल पाठ, भावार्थ व नित्य स्तुति।`,
+      inLanguage: ['hi', 'sa'],
+      genre: 'Sacred Ritual Hymn',
+      publisher: {
+        '@id': `${DEFAULT_SEO.baseUrl}/#organization`,
+      },
+      isPartOf: {
+        '@id': `${DEFAULT_SEO.baseUrl}/#website`,
+      },
+      url: canonicalUrl,
+      image: ogImage,
+    });
+
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home Sanctuary',
+          item: DEFAULT_SEO.baseUrl,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Nitya Upasana',
+          item: `${DEFAULT_SEO.baseUrl}/rituals`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: r.titleDevanagari,
+          item: canonicalUrl,
+        },
+      ],
+    });
+  } else if (config.place) {
+    // 8. Place Schema for Sacred Dhams and Tirthas
+    const p = config.place;
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'Place',
+      '@id': `${canonicalUrl}#place`,
+      name: p.nameDevanagari,
+      description: p.significance,
+      address: {
+        '@type': 'PostalAddress',
+        addressRegion: p.region,
+        addressCountry: 'IN',
+      },
+      url: canonicalUrl,
+      image: ogImage,
+    });
+
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home Sanctuary',
+          item: DEFAULT_SEO.baseUrl,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Sacred Places & Dhams',
+          item: `${DEFAULT_SEO.baseUrl}/places`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: p.nameDevanagari,
+          item: canonicalUrl,
+        },
+      ],
+    });
+  } else if (config.story) {
+    // 9. Story Schema for Sacred Kathas & Leelas
+    const s = config.story;
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      '@id': `${canonicalUrl}#story`,
+      headline: s.titleDevanagari,
+      name: s.titleDevanagari,
+      description: s.summary,
+      inLanguage: 'hi',
+      genre: 'Sacred Puranic Leela',
+      publisher: {
+        '@id': `${DEFAULT_SEO.baseUrl}/#organization`,
+      },
+      url: canonicalUrl,
+      image: ogImage,
+    });
+
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home Sanctuary',
+          item: DEFAULT_SEO.baseUrl,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Katha Sanctuary',
+          item: `${DEFAULT_SEO.baseUrl}/stories`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: s.titleDevanagari,
+          item: canonicalUrl,
+        },
+      ],
+    });
+  } else if (config.biography) {
+    // 10. Biography Schema for Saint and Rishi Profiles
+    const b = config.biography;
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'ProfilePage',
+      '@id': `${canonicalUrl}#profile`,
+      mainEntity: {
+        '@type': 'Person',
+        name: b.nameDevanagari,
+        honorificPrefix: b.titleHonorific,
+        memberOf: b.tradition ? { '@type': 'Organization', name: b.tradition } : undefined,
+      },
+      url: canonicalUrl,
+    });
+
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home Sanctuary',
+          item: DEFAULT_SEO.baseUrl,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Charitra Darshan',
+          item: `${DEFAULT_SEO.baseUrl}/biographies`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: b.nameDevanagari,
           item: canonicalUrl,
         },
       ],

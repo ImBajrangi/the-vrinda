@@ -1,0 +1,37 @@
+{
+  "id": "mansarovar-vrindavan",
+  "slug": "mansarovar-vrindavan",
+  "name": "Shri Mansarovar Vrindavan",
+  "nameDevanagari": "श्री मान सरोवर (यमुना पार)",
+  "dhamRegion": "vrindavan",
+  "regionNameHindi": "वृन्दावन यमुना पार, मांट क्षेत्र",
+  "briefSignificance": "रासलीला के मध्य श्री राधा रानी का मान धारण करने और श्रीकृष्ण द्वारा मान-भंजन हेतु चरण वंदना करने का परम रहस्यमय सरोवर।",
+  "deity": "Maanini Shri Radha Rani",
+  "deityDevanagari": "मानिनी श्री राधा रानी",
+  "darshanTimings": {
+    "morning": {
+      "open": "07:00",
+      "close": "12:00",
+      "aartiName": "प्रातः दर्शन"
+    },
+    "evening": {
+      "open": "16:00",
+      "close": "19:00",
+      "aartiName": "संध्या दर्शन"
+    },
+    "specialNotes": "यहाँ का वातावरण अत्यंत निर्जन, एकांत और साधनाप्रद है।"
+  },
+  "parikramaKm": "सरोवर परिक्रमा १.२ किमी",
+  "scripturalReferences": "श्रीमद्भागवत एवं ब्रज विलास",
+  "historyAndGlory": "महारास के समय जब कन्हैया ने अन्य गोपियों संग विलास किया, तो प्रेम की अनन्य गरिमा की रक्षा हेतु श्रीजी मान करके यहाँ यमुना पार सरोवर तट पर पधार गईं। तब श्यामसुन्दर ने यहाँ आकर श्रीजी के चरणों में अपनी मुरली और मुकुट रखकर उनका मान दूर किया था।",
+  "tags": [
+    "मान सरोवर",
+    "मान लीला",
+    "यमुना पार",
+    "राधा रानी"
+  ],
+  "coordinates": {
+    "latitude": 27.5925,
+    "longitude": 77.7145
+  }
+}

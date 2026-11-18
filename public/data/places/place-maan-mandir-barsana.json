@@ -1,0 +1,38 @@
+{
+  "id": "maan-mandir-barsana",
+  "slug": "maan-mandir-barsana",
+  "name": "Maan Mandir Maan Garh Barsana",
+  "nameDevanagari": "मान मंदिर (मान गढ़, बरसाना)",
+  "dhamRegion": "barsana",
+  "regionNameHindi": "मानपुर पर्वत शिखर, बरसाना",
+  "briefSignificance": "श्री राधारानी की मान लीला स्थली, जहाँ पूज्य संत श्री रमेश बाबा जी महाराज की तपोभूमि एवं विशाल गौ-सेवा धाम स्थित है।",
+  "deity": "Maanini Radha Rani & Priyatam",
+  "deityDevanagari": "मानिनी श्रीजी एवं अनुनय करते श्यामसुन्दर",
+  "darshanTimings": {
+    "morning": {
+      "open": "06:00",
+      "close": "12:00",
+      "aartiName": "प्रातः सेवा"
+    },
+    "evening": {
+      "open": "16:00",
+      "close": "20:30",
+      "aartiName": "संध्या सत्संग व आरती"
+    },
+    "specialNotes": "यहाँ माताजी गौशाला में ५०,००० से अधिक गौवंश की निःस्वार्थ सेवा होती है।"
+  },
+  "parikramaKm": "२ किमी पर्वत परिक्रमा",
+  "scripturalReferences": "ब्रज विलास, राधा सुधा निधि",
+  "historyAndGlory": "मान गढ़ वह शिखर है जहाँ श्रीजी ने मान किया था और श्रीकृष्ण ने मोर बनकर, कभी मनिहारी बनकर, कभी सखी बनकर उनका मान तोड़ा था। यहीं मोर कुटी भी स्थित है जहाँ युगल सरकार ने मयूर नृत्य किया था।",
+  "tags": [
+    "मान मंदिर",
+    "रमेश बाबा",
+    "गौ सेवा",
+    "मोर कुटी",
+    "बरसाना"
+  ],
+  "coordinates": {
+    "latitude": 27.6422,
+    "longitude": 77.3686
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "kusum-sarovar-govardhan",
+  "slug": "kusum-sarovar-govardhan",
+  "name": "Kusum Sarovar Govardhan",
+  "nameDevanagari": "कुसुम सरोवर (गोवर्धन)",
+  "dhamRegion": "govardhan",
+  "regionNameHindi": "गोवर्धन-राधाकुण्ड मार्ग, मथुरा",
+  "briefSignificance": "श्री राधारानी की पुष्प चयन लीला स्थली, भव्य छतरियों और पाषाण सोपानों से युक्त ऐतिहासिक सरोवर।",
+  "deity": "Kusum Bihari Shri Krishna",
+  "deityDevanagari": "कुसुमबिहारी श्रीकृष्ण एवं सखी मंडल",
+  "darshanTimings": {
+    "morning": {
+      "open": "06:00",
+      "close": "12:00",
+      "aartiName": "प्रातः दर्शन"
+    },
+    "evening": {
+      "open": "16:00",
+      "close": "19:30",
+      "aartiName": "सूर्यास्त संध्या आरती"
+    },
+    "specialNotes": "सरोवर तट पर राजा सूरजमल की भव्य छतरियाँ दर्शनीय हैं।"
+  },
+  "parikramaKm": "सरोवर परिक्रमा १ किमी",
+  "scripturalReferences": "भक्तिरत्नाकर, गर्ग संहिता",
+  "historyAndGlory": "यहाँ श्री राधारानी अपनी सखियों संग बेला, चमेली और गुलाब के पुष्प चुनने पधारती थीं, जहाँ कन्हैया पुष्प-माली बनकर प्रकट होते थे और मधुर हास-परिहास होता था। उद्धव जी ने भी यहाँ गुल्म-लता रूप में रहकर गोपियों की चरणधूलि की प्रार्थना की थी।",
+  "tags": [
+    "कुसुम सरोवर",
+    "उद्धव बैठकी",
+    "पुष्प चयन लीला",
+    "छतरियाँ"
+  ],
+  "coordinates": {
+    "latitude": 27.5133,
+    "longitude": 77.4892
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "gokul-raman-reti",
+  "slug": "gokul-raman-reti",
+  "name": "Raman Reti Gokul",
+  "nameDevanagari": "रमण रेती (गोकुल महावन)",
+  "dhamRegion": "gokul",
+  "regionNameHindi": "गोकुल महावन, मथुरा, उत्तर प्रदेश",
+  "briefSignificance": "कन्हैया और दाऊ भैया की पावन बाल्यकालीन धूलि-क्रीड़ा स्थली जहाँ भक्तगण रज में लोटपोट होकर आनंद पाते हैं।",
+  "deity": "Bala Krishna (Raman Bihari)",
+  "deityDevanagari": "बालगोपाल रमणबिहारी जी",
+  "darshanTimings": {
+    "morning": {
+      "open": "06:00",
+      "close": "12:00",
+      "aartiName": "प्रातः दर्शन"
+    },
+    "evening": {
+      "open": "16:00",
+      "close": "20:00",
+      "aartiName": "संध्या आरती"
+    },
+    "specialNotes": "यहाँ श्रद्धालु पावन रज में बैठकर ध्यान और संकीर्तन करते हैं।"
+  },
+  "parikramaKm": "रेती परिसर भ्रमण १ किमी",
+  "scripturalReferences": "सूरसागर, गर्ग संहिता",
+  "historyAndGlory": "कन्हैया अपने सखा श्रीदामा, सुदामा के साथ इसी बालू रेत में घुटनों के बल चलते और खेलते थे। संत ज्ञानानन्द जी और कार्ष्णि गुरु शरणानन्द जी महाराज की यह प्रमुख तपोस्थली है।",
+  "tags": [
+    "रमण रेती",
+    "गोकुल",
+    "बाललीला",
+    "कार्ष्णि आश्रम"
+  ],
+  "coordinates": {
+    "latitude": 27.4389,
+    "longitude": 77.7214
+  }
+}

@@ -240,9 +240,20 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
     return sects;
   }, [items]);
 
+  // Only activate section filters if sections actually group multiple items
+  // (e.g. Kandas in Ramayana with 70+ chapters, Skandhas in Bhagavatam with 18+ chapters).
+  // If every section has only 1 item (1:1 chapter numbering) or there's only 1 total section (e.g. मूल पाठ),
+  // section filtering is unnecessary.
+  const hasMultipleMultiItemSections = useMemo(() => {
+    if (availableSections.length <= 1) return false;
+    return availableSections.some((sect) => {
+      return items.filter((it) => it.section === sect).length > 1;
+    });
+  }, [availableSections, items]);
+
   // Sync selected section with active item when opened
   useEffect(() => {
-    if (isOpen && selectedId) {
+    if (isOpen && selectedId && hasMultipleMultiItemSections) {
       const activeItem = items.find((it) => it.id === selectedId);
       // For epic chapters, section is the Kanda (e.g. बालकाण्ड, अयोध्याकाण्ड)
       // For padas, do not lock the drawer to a single author unless the user explicitly filters
@@ -251,8 +262,10 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
       } else {
         setSelectedSection(null);
       }
+    } else {
+      setSelectedSection(null);
     }
-  }, [isOpen, selectedId, items, activeCategory]);
+  }, [isOpen, selectedId, items, activeCategory, hasMultipleMultiItemSections]);
 
   // Filter items by search query AND section
   const filteredItems = useMemo(() => {
@@ -428,7 +441,7 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
         className={`relative z-10 w-full bg-white rounded-t-[32px] shadow-[0_-12px_48px_rgba(0,0,0,0.18)] border-t border-stone-200/50 flex flex-col overflow-hidden will-change-transform animate-[nativeSheetUp_240ms_cubic-bezier(0.32,0.72,0,1)] ${
           viewportMetrics.isKeyboardOpen
             ? 'h-full max-h-full'
-            : 'max-h-[85dvh] sm:max-h-[80dvh]'
+            : 'h-[82dvh] max-h-[82dvh] sm:h-[80dvh] sm:max-h-[80dvh]'
         }`}
         style={
           viewportMetrics.isKeyboardOpen
@@ -578,9 +591,9 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
         )}
 
         {/* Section / Kanda Two-Step Direct Dial Strip & View Mode Toggle */}
-        {availableSections.length > 1 && (
-          <div className="px-4 py-2 shrink-0 bg-[#FAF8F5] border-b border-stone-200/60 flex items-center justify-between gap-2">
-            {/* Horizontal Scrollable Kanda/Section Pills */}
+        <div className="px-4 py-2 shrink-0 bg-[#FAF8F5] border-b border-stone-200/60 flex items-center justify-between gap-2 min-h-[44px]">
+          {hasMultipleMultiItemSections ? (
+            /* Horizontal Scrollable Kanda/Section Pills */
             <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5 min-w-0 flex-1">
               <button
                 type="button"
@@ -626,38 +639,45 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
                 );
               })}
             </div>
-
-            {/* View Mode Toggle: List vs Compact Grid */}
-            <div className="flex items-center bg-stone-200/70 p-0.5 rounded-[10px] shrink-0">
-              <button
-                type="button"
-                onClick={() => {
-                  triggerHaptic(6);
-                  setViewMode('list');
-                }}
-                className={`w-6 h-6 rounded-[8px] flex items-center justify-center transition-colors cursor-pointer ${
-                  viewMode === 'list' ? 'bg-white text-stone-900 shadow-2xs' : 'text-stone-500 hover:text-stone-800'
-                }`}
-                title="विस्तृत सूची (List View)"
-              >
-                <List className="w-3.5 h-3.5" />
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  triggerHaptic(6);
-                  setViewMode('grid');
-                }}
-                className={`w-6 h-6 rounded-[8px] flex items-center justify-center transition-colors cursor-pointer ${
-                  viewMode === 'grid' ? 'bg-white text-stone-900 shadow-2xs' : 'text-stone-500 hover:text-stone-800'
-                }`}
-                title="त्वरित संख्या ग्रिड (Grid View)"
-              >
-                <LayoutGrid className="w-3.5 h-3.5" />
-              </button>
+          ) : (
+            /* Clean single-section counter when all items are displayed together */
+            <div className="flex items-center gap-2 min-w-0 flex-1 py-0.5">
+              <span className="text-[11px] font-serif font-semibold text-stone-600 truncate">
+                कुल {items.length} {title.includes('पद') ? 'पद' : 'अध्याय / सर्ग'} उपलब्ध
+              </span>
             </div>
+          )}
+
+          {/* View Mode Toggle: List vs Compact Grid */}
+          <div className="flex items-center bg-stone-200/70 p-0.5 rounded-[10px] shrink-0">
+            <button
+              type="button"
+              onClick={() => {
+                triggerHaptic(6);
+                setViewMode('list');
+              }}
+              className={`w-6 h-6 rounded-[8px] flex items-center justify-center transition-colors cursor-pointer ${
+                viewMode === 'list' ? 'bg-white text-stone-900 shadow-2xs' : 'text-stone-500 hover:text-stone-800'
+              }`}
+              title="विस्तृत सूची (List View)"
+            >
+              <List className="w-3.5 h-3.5" />
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                triggerHaptic(6);
+                setViewMode('grid');
+              }}
+              className={`w-6 h-6 rounded-[8px] flex items-center justify-center transition-colors cursor-pointer ${
+                viewMode === 'grid' ? 'bg-white text-stone-900 shadow-2xs' : 'text-stone-500 hover:text-stone-800'
+              }`}
+              title="त्वरित संख्या ग्रिड (Grid View)"
+            >
+              <LayoutGrid className="w-3.5 h-3.5" />
+            </button>
           </div>
-        )}
+        </div>
 
         {/* Scrollable Items List with Intelligent Section Grouping & Grid View */}
         <div
@@ -706,7 +726,7 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
 
               return (
                 <React.Fragment key={item.id}>
-                  {isNewSection && (
+                  {isNewSection && hasMultipleMultiItemSections && selectedSection === null && (
                     <div className="pt-3 pb-1 px-2 select-none">
                       <div className="flex items-center gap-2">
                         <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-800 bg-amber-100/70 px-2 py-0.5 rounded-[6px] border border-amber-300/40">
@@ -750,11 +770,13 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
                         >
                           {item.name}
                         </span>
-                        {item.section && !isNewSection && (
-                          <span className="text-[10.5px] text-stone-500 font-sans font-medium block truncate mt-0.5">
-                            {item.section}
-                          </span>
-                        )}
+                        {item.section &&
+                          hasMultipleMultiItemSections &&
+                          !item.name.toLowerCase().includes(item.section.toLowerCase()) && (
+                            <span className="text-[10.5px] text-stone-500 font-sans font-medium block truncate mt-0.5">
+                              {item.section}
+                            </span>
+                          )}
                       </div>
                     </div>
 

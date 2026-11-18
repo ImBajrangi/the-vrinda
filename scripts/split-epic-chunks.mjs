@@ -101,9 +101,14 @@ export function splitEpicChunks() {
 
       fs.writeFileSync(filePath, JSON.stringify(chObj.padas, null, 2), 'utf-8');
 
-      // Extract section (Kanda or Skandha) from chapter name if present
-      const nameParts = chObj.name.split(/[,:]/);
-      const sectionName = nameParts.length > 1 ? nameParts[0].trim() : 'मूल पाठ';
+      // Extract section (Kanda or Skandha) from chapter name if present.
+      // Note: Only Ramayana (Kanda, Sarga) and Bhagavatam (Skandha, Adhyaya) have nested multi-chapter sections.
+      // Bhagavad Gita (18 Adhyayas), Ramcharitmanas (7 Kandas), and Durga Saptashati (14 Adhyayas) are flat lists.
+      let sectionName = 'मूल पाठ';
+      if (epic.id === 'valmiki-ramayana' || epic.id === 'shrimad-bhagavatam') {
+        const nameParts = chObj.name.split(/[,:]/);
+        sectionName = nameParts.length > 1 ? nameParts[0].trim() : 'मूल पाठ';
+      }
 
       chaptersIndex.push({
         id: chObj.id,

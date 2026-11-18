@@ -699,7 +699,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
   };
 
   return (
-    <div className="w-full pb-20 sm:pb-24 md:pb-16 pt-0 sm:pt-4 px-1 sm:px-0">
+    <div className="w-full pb-20 sm:pb-24 md:pb-16 pt-0 sm:pt-4 px-0 sm:px-0">
       {/* Mobile-Optimized Reader Header: 1-Tap Chapter Drawer, Auto-Hiding Chrome */}
       <MobileReaderHeader
         scriptureTitle={currentEpicConfig.shortName || currentEpicConfig.name}
@@ -1020,7 +1020,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
         {/* ========================================================================= */}
         <article
           id="epic-canvas-top"
-          className="min-w-0 w-full md:col-span-8 xl:col-span-6 bg-white rounded-2xl sm:rounded-3xl p-3 sm:p-8 xl:p-9 2xl:p-10 min-h-[calc(100vh-8rem)] border border-neutral-200/70 shadow-2xs"
+          className="min-w-0 w-full md:col-span-8 xl:col-span-6 bg-transparent sm:bg-white rounded-none sm:rounded-3xl p-0 sm:p-8 xl:p-9 2xl:p-10 min-h-[calc(100vh-8rem)] border-0 sm:border sm:border-neutral-200/70 shadow-none sm:shadow-2xs"
         >
           {/* Chapter Header Bar (Desktop Only - on mobile, MobileReaderHeader provides the top chrome) */}
           <div className="hidden sm:flex pb-5 mb-6 border-b border-neutral-100 flex-col sm:flex-row sm:items-center justify-between gap-3">
@@ -1108,10 +1108,10 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                     key={pad.id}
                     id={`shloka-${pad.id}`}
                     onClick={() => setActiveVerseId(pad.id)}
-                    className={`scroll-mt-28 p-3.5 sm:p-6 rounded-[12px] sm:rounded-[16px] border transition-colors duration-200 space-y-4 cursor-pointer select-text ${
+                    className={`scroll-mt-28 p-3.5 sm:p-6 rounded-[14px] sm:rounded-[16px] border transition-colors duration-200 space-y-4 cursor-pointer select-text ${
                       isActive
                         ? 'bg-[#FFFDF9] border-amber-300/70 shadow-[0_2px_10px_rgba(251,191,36,0.06)]'
-                        : 'bg-[#FAF8F5]/60 hover:bg-[#FAF8F5] border-amber-900/10'
+                        : 'bg-white sm:bg-[#FAF8F5]/60 hover:bg-[#FAF8F5] border-amber-900/10 shadow-2xs sm:shadow-none'
                     }`}
                   >
                     {/* Verse Meta Header */}

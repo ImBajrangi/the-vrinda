@@ -1,0 +1,37 @@
+{
+  "id": "bansi-vat-vrindavan",
+  "slug": "bansi-vat-vrindavan",
+  "name": "Shri Bansi Vat Vrindavan",
+  "nameDevanagari": "श्री बंशीवट (महातीर्थ)",
+  "dhamRegion": "vrindavan",
+  "regionNameHindi": "वृन्दावन धाम, यमुना तट",
+  "briefSignificance": "शरद पूर्णिमा की रात्रि में कन्हैया द्वारा वेणुनाद कर गोपियों को आकर्षित करने एवं महारास का आह्वान करने वाला पावन वटवृक्ष।",
+  "deity": "Venu Gopal & Shri Radha",
+  "deityDevanagari": "वेणुगोपाल एवं श्री राधिका जी",
+  "darshanTimings": {
+    "morning": {
+      "open": "06:00",
+      "close": "12:00",
+      "aartiName": "मंगला व शृंगार"
+    },
+    "evening": {
+      "open": "16:00",
+      "close": "20:30",
+      "aartiName": "संध्या आरती"
+    },
+    "specialNotes": "यमुना तट पर स्थित अत्यंत शांत व ध्यान-साधना योग्य स्थल।"
+  },
+  "parikramaKm": "१ किमी",
+  "scripturalReferences": "श्रीमद्भागवत दशम स्कंध (रास पंचाध्यायी)",
+  "historyAndGlory": "बंशीवट वह स्थान है जहाँ कन्हैया ने अपनी बंशी से कामबीज \"क्लीं\" का नाद किया था, जिसे सुनकर गोपियों ने अपने समस्त लौकिक बंधनों को त्यागकर महारास में प्रवेश किया था। यह वटवृक्ष साक्षात् कल्पवृक्ष माना जाता है।",
+  "tags": [
+    "बंशीवट",
+    "वेणुनाद",
+    "महारास",
+    "शरद पूर्णिमा"
+  ],
+  "coordinates": {
+    "latitude": 27.5861,
+    "longitude": 77.7072
+  }
+}

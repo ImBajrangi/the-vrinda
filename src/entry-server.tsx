@@ -28,6 +28,12 @@ for (const item of catItems) {
 import { PadavaliReader } from './components/reader/PadavaliReader';
 import { MahagranthReader } from './components/reader/MahagranthReader';
 import { MilestonesView } from './components/milestones/MilestonesView';
+import { NityaUpasanaReader } from './components/sections/NityaUpasanaReader';
+import { KathaSanctuary } from './components/sections/KathaSanctuary';
+import { CharitraDarshan } from './components/sections/CharitraDarshan';
+import { DhamTirthaSection } from './components/sections/DhamTirthaSection';
+import fs from 'node:fs';
+import path from 'node:path';
 
 // Ensure SSR server pre-warms with full 4,204 canonical padas for instant bot rendering and SEO extraction
 function ensureDatabasePrewarmed(): void {
@@ -53,6 +59,10 @@ export function render(url: string = '/'): RenderResult {
   let authorQuery: string | undefined;
   let granthaQuery: string | undefined;
   let chapterQuery: string | undefined;
+  let ritualQuery: string | undefined;
+  let placeQuery: string | undefined;
+  let storyQuery: string | undefined;
+  let bioQuery: string | undefined;
   let parsedPathname = '';
 
   try {
@@ -63,6 +73,10 @@ export function render(url: string = '/'): RenderResult {
     const qAuthor = parsed.searchParams.get('author');
     const qGrantha = parsed.searchParams.get('grantha');
     const qChapter = parsed.searchParams.get('chapter');
+    const qRitual = parsed.searchParams.get('ritual');
+    const qPlace = parsed.searchParams.get('place');
+    const qStory = parsed.searchParams.get('story');
+    const qBio = parsed.searchParams.get('bio');
 
     if (qAuthor) authorQuery = qAuthor;
     if (qGrantha) granthaQuery = qGrantha;
@@ -70,8 +84,12 @@ export function render(url: string = '/'): RenderResult {
       chapterQuery = qChapter;
       tab = 'granthas';
     }
+    if (qRitual) ritualQuery = qRitual;
+    if (qPlace) placeQuery = qPlace;
+    if (qStory) storyQuery = qStory;
+    if (qBio) bioQuery = qBio;
 
-    if (qTab && ['smaran', 'granthas', 'padavali', 'feed', 'milestones'].includes(qTab)) {
+    if (qTab && ['smaran', 'granthas', 'padavali', 'feed', 'milestones', 'stories', 'biographies', 'places', 'rituals'].includes(qTab)) {
       tab = qTab;
     }
     if (qPad || qAuthor) {
@@ -109,6 +127,22 @@ export function render(url: string = '/'): RenderResult {
           tab = 'padavali';
         }
       }
+    } else if (pathname === '/rituals' || pathname.startsWith('/rituals/') || pathname.startsWith('/ritual/') || pathname.startsWith('/aarti/') || pathname.startsWith('/chalisa/') || pathname.startsWith('/stotra/')) {
+      tab = 'rituals';
+      const sub = pathname.replace(/^\/(?:rituals|ritual|aarti|chalisa|stotra)\/?/, '').trim();
+      if (sub) ritualQuery = decodeURIComponent(sub);
+    } else if (pathname === '/places' || pathname.startsWith('/places/') || pathname.startsWith('/place/') || pathname.startsWith('/tirtha/') || pathname.startsWith('/dham/')) {
+      tab = 'places';
+      const sub = pathname.replace(/^\/(?:places|place|tirtha|dham)\/?/, '').trim();
+      if (sub) placeQuery = decodeURIComponent(sub);
+    } else if (pathname === '/stories' || pathname.startsWith('/stories/') || pathname.startsWith('/story/') || pathname.startsWith('/katha/')) {
+      tab = 'stories';
+      const sub = pathname.replace(/^\/(?:stories|story|katha)\/?/, '').trim();
+      if (sub) storyQuery = decodeURIComponent(sub);
+    } else if (pathname === '/biographies' || pathname.startsWith('/biographies/') || pathname.startsWith('/bio/') || pathname.startsWith('/charitra/')) {
+      tab = 'biographies';
+      const sub = pathname.replace(/^\/(?:biographies|bio|charitra)\/?/, '').trim();
+      if (sub) bioQuery = decodeURIComponent(sub);
     } else if (pathname === '/rasik-saints-of-vrindavan') {
       tab = 'padavali';
     } else if (pathname === '/vrindavan-ashtayama-seva-darshan-timings') {
@@ -302,6 +336,89 @@ export function render(url: string = '/'): RenderResult {
       description: '१०८ मनकों की पावन तुलसी माला द्वारा श्री राधा नाम, महामंत्र जप, दैनिक जप चक्र एवं अखंड साधना संकल्प काउंटर।',
       canonicalUrl: 'https://bhav.vrindopnishad.in/online-tulsi-mala-naam-jap',
     };
+  } else if (ritualQuery) {
+    try {
+      const p = path.resolve(process.cwd(), `public/data/rituals/ritual-${ritualQuery}.json`);
+      if (fs.existsSync(p)) {
+        const r = JSON.parse(fs.readFileSync(p, 'utf-8'));
+        seoConfig = {
+          tab: 'rituals',
+          title: `${r.titleDevanagari} • संपूर्ण पाठ, भावार्थ व नित्य स्तुति | वृन्दोपनिषद् 2.0`,
+          description: `${r.titleDevanagari} का प्रामाणिक मूल पाठ, विधि एवं भावार्थ। नित्य उपासना संग्रह।`,
+          canonicalUrl: `https://bhav.vrindopnishad.in/ritual/${r.slug}`,
+          ritual: {
+            id: r.id,
+            title: r.title,
+            titleDevanagari: r.titleDevanagari,
+            category: r.category,
+            deity: r.deityDevanagari || r.deity,
+            description: r.pujaVidhi,
+          },
+        };
+      }
+    } catch {}
+  } else if (placeQuery) {
+    try {
+      const p = path.resolve(process.cwd(), `public/data/places/place-${placeQuery}.json`);
+      if (fs.existsSync(p)) {
+        const pl = JSON.parse(fs.readFileSync(p, 'utf-8'));
+        seoConfig = {
+          tab: 'places',
+          title: `${pl.nameDevanagari} (${pl.regionNameHindi}) • दर्शन, इतिहास व महात्म्य | वृन्दोपनिषद् 2.0`,
+          description: `${pl.briefSignificance}। श्री धाम दर्शन, समय-सारणी एवं इतिहास।`,
+          canonicalUrl: `https://bhav.vrindopnishad.in/place/${pl.slug}`,
+          place: {
+            id: pl.id,
+            name: pl.name,
+            nameDevanagari: pl.nameDevanagari,
+            region: pl.regionNameHindi,
+            significance: pl.briefSignificance,
+            deity: pl.deityDevanagari,
+          },
+        };
+      }
+    } catch {}
+  } else if (storyQuery) {
+    try {
+      const p = path.resolve(process.cwd(), `public/data/stories/ch-${storyQuery}.json`);
+      if (fs.existsSync(p)) {
+        const st = JSON.parse(fs.readFileSync(p, 'utf-8'));
+        seoConfig = {
+          tab: 'stories',
+          title: `${st.titleDevanagari} • संपूर्ण दिव्य कथा व आध्यात्मिक मर्म | वृन्दोपनिषद् 2.0`,
+          description: `${st.summary}। पावन पौराणिक आख्यान एवं ब्रज लीला।`,
+          canonicalUrl: `https://bhav.vrindopnishad.in/story/${st.slug}`,
+          story: {
+            id: st.id,
+            title: st.title,
+            titleDevanagari: st.titleDevanagari,
+            summary: st.summary,
+            tradition: st.tradition,
+          },
+        };
+      }
+    } catch {}
+  } else if (bioQuery) {
+    try {
+      const p = path.resolve(process.cwd(), `public/data/biographies/bio-${bioQuery}.json`);
+      if (fs.existsSync(p)) {
+        const b = JSON.parse(fs.readFileSync(p, 'utf-8'));
+        seoConfig = {
+          tab: 'biographies',
+          title: `${b.nameDevanagari} (${b.titleHonorific}) • जीवन चरित्र, दर्शन व वाणी | वृन्दोपनिषद् 2.0`,
+          description: `${b.nameDevanagari} का पावन जीवन चरित, गुरु परंपरा, संप्रदाय एवं अमृत शिक्षाएं।`,
+          canonicalUrl: `https://bhav.vrindopnishad.in/bio/${b.slug}`,
+          biography: {
+            id: b.id,
+            name: b.name,
+            nameDevanagari: b.nameDevanagari,
+            tradition: b.tradition,
+            titleHonorific: b.titleHonorific,
+            period: b.period,
+          },
+        };
+      }
+    } catch {}
   } else {
     switch (tab) {
       case 'smaran':
@@ -329,6 +446,26 @@ export function render(url: string = '/'): RenderResult {
         seoConfig.description = 'अखंड साधना स्ट्रीक, अंतरंग ध्यान सिद्धि एवं श्रीजी कृपा के पावन सोपान।';
         seoConfig.canonicalUrl = 'https://bhav.vrindopnishad.in/milestones';
         break;
+      case 'rituals':
+        seoConfig.title = 'Nitya Upasana • ३१+ नित्य आरती, चालीसा, स्तोत्र व अष्टक संग्रह | वृन्दोपनिषद् 2.0';
+        seoConfig.description = 'श्री राधा चालीसा, कुंजबिहारी आरती, हनुमान चालीसा, शिव तांडव स्तोत्र, यमुनाष्टकम् सहित सम्पूर्ण सनातन नित्य उपासना संग्रह।';
+        seoConfig.canonicalUrl = 'https://bhav.vrindopnishad.in/rituals';
+        break;
+      case 'places':
+        seoConfig.title = 'Sacred Places & Dham Darshan • ३३+ पवित्र धाम, तीर्थ व दिव्य लीला स्थल | वृन्दोपनिषद् 2.0';
+        seoConfig.description = 'श्री निधिवन राज, सेवा कुंज, राधावल्लभ मंदिर, गोवर्धन, राधा कुण्ड, बरसाना, अयोध्या, काशी, केदारनाथ सहित पावन तीर्थ दर्शन व इतिहास।';
+        seoConfig.canonicalUrl = 'https://bhav.vrindopnishad.in/places';
+        break;
+      case 'stories':
+        seoConfig.title = 'Katha Sanctuary • २२+ दिव्य पौराणिक कथाएं एवं ब्रज लीला प्रसंग | वृन्दोपनिषद् 2.0';
+        seoConfig.description = 'श्री महारास लीला, शबरी भक्ति, गोवर्धन धारण, नरसी मेहता हुंडी, करमाबाई खिचड़ी, गजेन्द्र मोक्ष सहित प्रेरणादायक भक्ति कथाएं।';
+        seoConfig.canonicalUrl = 'https://bhav.vrindopnishad.in/stories';
+        break;
+      case 'biographies':
+        seoConfig.title = 'Charitra Darshan • २५+ पूज्य रसिक संत, महर्षि व आचार्य चरित्र | वृन्दोपनिषद् 2.0';
+        seoConfig.description = 'श्री चैतन्य महाप्रभु, वल्लभाचार्य, निम्बार्काचार्य, स्वामी हरिदास, हित हरिवंश, सूरदास, तुलसीदास, मीराबाई, एकनाथ, तुकाराम के पावन जीवन चरित।';
+        seoConfig.canonicalUrl = 'https://bhav.vrindopnishad.in/biographies';
+        break;
     }
   }
 
@@ -339,7 +476,15 @@ export function render(url: string = '/'): RenderResult {
       <App
         initialTab={tab}
         initialPadId={padId}
-        components={{ PadavaliReader, MahagranthReader, MilestonesView }}
+        components={{
+          PadavaliReader,
+          MahagranthReader,
+          MilestonesView,
+          NityaUpasanaReader,
+          KathaSanctuary,
+          CharitraDarshan,
+          DhamTirthaSection,
+        }}
       />
     </StrictMode>
   );

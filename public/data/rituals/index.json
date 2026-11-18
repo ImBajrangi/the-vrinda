@@ -1,8 +1,8 @@
 {
   "category": "rituals",
   "categoryHindi": "नित्य उपासना, आरती एवं चालीसा",
-  "count": 11,
-  "updatedAt": "2026-11-15T09:00:00Z",
+  "count": 31,
+  "updatedAt": "2026-11-18T08:00:00Z",
   "items": [
     {
       "id": "aarti-kunj-bihari-ki",
@@ -221,6 +221,381 @@
         "शिव-स्तुति"
       ],
       "chunkFile": "ritual-rudrashtakam.json"
+    },
+    {
+      "id": "shri-radha-chalisa",
+      "slug": "shri-radha-chalisa",
+      "title": "Shri Radha Chalisa",
+      "titleDevanagari": "श्री राधा चालीसा: कीरति कुमारी लाड़िली",
+      "category": "chalisa",
+      "categoryHindi": "चालीसा संग्रह",
+      "deity": "Shri Radha Rani",
+      "deityDevanagari": "श्री राधा रानी जी",
+      "totalVerses": 40,
+      "durationMinutes": 6,
+      "tags": [
+        "राधा चालीसा",
+        "बरसाना",
+        "श्रीजी",
+        "नित्य पाठ"
+      ],
+      "chunkFile": "ritual-shri-radha-chalisa.json"
+    },
+    {
+      "id": "krishna-chalisa",
+      "slug": "krishna-chalisa",
+      "title": "Shri Krishna Chalisa",
+      "titleDevanagari": "श्री कृष्ण चालीसा: बंशी शोभित कर मधुर",
+      "category": "chalisa",
+      "categoryHindi": "चालीसा संग्रह",
+      "deity": "Lord Krishna",
+      "deityDevanagari": "योगेश्वर श्रीकृष्ण",
+      "totalVerses": 40,
+      "durationMinutes": 6,
+      "tags": [
+        "कृष्ण चालीसा",
+        "माखनचोर",
+        "द्वारकाधीश",
+        "गोपाल"
+      ],
+      "chunkFile": "ritual-krishna-chalisa.json"
+    },
+    {
+      "id": "lakshmi-chalisa",
+      "slug": "lakshmi-chalisa",
+      "title": "Shri Lakshmi Chalisa",
+      "titleDevanagari": "श्री लक्ष्मी चालीसा: मातु लक्ष्मी करि कृपा",
+      "category": "chalisa",
+      "categoryHindi": "चालीसा संग्रह",
+      "deity": "Goddess Lakshmi",
+      "deityDevanagari": "माँ महालक्ष्मी",
+      "totalVerses": 40,
+      "durationMinutes": 6,
+      "tags": [
+        "लक्ष्मी चालीसा",
+        "वैभव",
+        "अष्टलक्ष्मी",
+        "धनदा"
+      ],
+      "chunkFile": "ritual-lakshmi-chalisa.json"
+    },
+    {
+      "id": "ganesh-chalisa",
+      "slug": "ganesh-chalisa",
+      "title": "Shri Ganesh Chalisa",
+      "titleDevanagari": "श्री गणेश चालीसा: जय गणपति सदगुण सदन",
+      "category": "chalisa",
+      "categoryHindi": "चालीसा संग्रह",
+      "deity": "Lord Ganesha",
+      "deityDevanagari": "प्रथम पूज्य श्री गणेश जी",
+      "totalVerses": 40,
+      "durationMinutes": 5,
+      "tags": [
+        "गणेश चालीसा",
+        "विघ्नहर्ता",
+        "सिद्धि विनायक"
+      ],
+      "chunkFile": "ritual-ganesh-chalisa.json"
+    },
+    {
+      "id": "saraswati-chalisa",
+      "slug": "saraswati-chalisa",
+      "title": "Shri Saraswati Chalisa",
+      "titleDevanagari": "श्री सरस्वती चालीसा: जय श्री सकल बुद्धि बलरासी",
+      "category": "chalisa",
+      "categoryHindi": "चालीसा संग्रह",
+      "deity": "Goddess Saraswati",
+      "deityDevanagari": "माँ सरस्वती",
+      "totalVerses": 40,
+      "durationMinutes": 5,
+      "tags": [
+        "सरस्वती चालीसा",
+        "विद्या",
+        "ज्ञान",
+        "वीणावादिनी"
+      ],
+      "chunkFile": "ritual-saraswati-chalisa.json"
+    },
+    {
+      "id": "shri-banke-bihari-aarti",
+      "slug": "shri-banke-bihari-aarti",
+      "title": "Shri Banke Bihari Ji Ki Aarti",
+      "titleDevanagari": "श्री बांके बिहारी जी की आरती: श्री बांके बिहारी तेरी आरती गाऊं",
+      "category": "aarti",
+      "categoryHindi": "आरती संग्रह",
+      "deity": "Shri Banke Bihari Ji",
+      "deityDevanagari": "ठाकुर श्री बांके बिहारी जी महाराज",
+      "totalVerses": 5,
+      "durationMinutes": 5,
+      "tags": [
+        "बांके बिहारी",
+        "वृन्दावन आरती",
+        "हरिदास",
+        "निधिवन"
+      ],
+      "chunkFile": "ritual-shri-banke-bihari-aarti.json"
+    },
+    {
+      "id": "aarti-shri-vrishbhanu-lali-ki",
+      "slug": "aarti-shri-vrishbhanu-lali-ki",
+      "title": "Aarti Shri Vrishbhanu Lali Ki",
+      "titleDevanagari": "आरती श्री वृषभानु लली की: कीरति कुमारी राधिका प्यारी की",
+      "category": "aarti",
+      "categoryHindi": "आरती संग्रह",
+      "deity": "Shri Radha Rani",
+      "deityDevanagari": "लाड़िली श्री राधा रानी",
+      "totalVerses": 4,
+      "durationMinutes": 5,
+      "tags": [
+        "राधा आरती",
+        "बरसाना",
+        "वृषभानु लली",
+        "राधाष्टमी"
+      ],
+      "chunkFile": "ritual-aarti-shri-vrishbhanu-lali-ki.json"
+    },
+    {
+      "id": "aarti-yamuna-ji-ki",
+      "slug": "aarti-yamuna-ji-ki",
+      "title": "Shri Yamuna Ji Ki Aarti",
+      "titleDevanagari": "श्री यमुना जी की आरती: ॐ जय यमुना माता",
+      "category": "aarti",
+      "categoryHindi": "आरती संग्रह",
+      "deity": "Goddess Yamuna",
+      "deityDevanagari": "श्री कालिन्दी यमुना महारानी",
+      "totalVerses": 5,
+      "durationMinutes": 5,
+      "tags": [
+        "यमुना आरती",
+        "विश्राम घाट",
+        "कालिन्दी",
+        "दीपदान"
+      ],
+      "chunkFile": "ritual-aarti-yamuna-ji-ki.json"
+    },
+    {
+      "id": "shri-ramchandra-kripalu",
+      "slug": "shri-ramchandra-kripalu",
+      "title": "Shri Ramchandra Kripalu Bhajuman",
+      "titleDevanagari": "श्रीरामचन्द्र कृपालु भजु मन: विनय पत्रिका स्तुति",
+      "category": "stotra",
+      "categoryHindi": "स्तोत्र व स्तुति संग्रह",
+      "deity": "Lord Rama",
+      "deityDevanagari": "मर्यादा पुरुषोत्तम प्रभु श्रीराम",
+      "totalVerses": 5,
+      "durationMinutes": 6,
+      "tags": [
+        "राम स्तुति",
+        "विनय पत्रिका",
+        "तुलसीदास",
+        "नित्य पाठ"
+      ],
+      "chunkFile": "ritual-shri-ramchandra-kripalu.json"
+    },
+    {
+      "id": "aarti-shri-ramayan-ji-ki",
+      "slug": "aarti-shri-ramayan-ji-ki",
+      "title": "Aarti Shri Ramayan Ji Ki",
+      "titleDevanagari": "आरती श्री रामायण जी की: कीरति कलित ललित सिय पी की",
+      "category": "aarti",
+      "categoryHindi": "आरती संग्रह",
+      "deity": "Shri Ramcharitmanas",
+      "deityDevanagari": "पावन श्री रामचरितमानस ग्रन्थ",
+      "totalVerses": 5,
+      "durationMinutes": 5,
+      "tags": [
+        "रामायण आरती",
+        "रामचरितमानस",
+        "नित्य परायण"
+      ],
+      "chunkFile": "ritual-aarti-shri-ramayan-ji-ki.json"
+    },
+    {
+      "id": "jai-ganesh-deva",
+      "slug": "jai-ganesh-deva",
+      "title": "Shri Ganesh Aarti (Jai Ganesh Deva)",
+      "titleDevanagari": "श्री गणेश जी की आरती: जय गणेश जय गणेश देवा",
+      "category": "aarti",
+      "categoryHindi": "आरती संग्रह",
+      "deity": "Lord Ganesha",
+      "deityDevanagari": "श्री गणेश जी",
+      "totalVerses": 4,
+      "durationMinutes": 4,
+      "tags": [
+        "गणेश आरती",
+        "जय गणेश देवा",
+        "आरती संग्रह"
+      ],
+      "chunkFile": "ritual-jai-ganesh-deva.json"
+    },
+    {
+      "id": "om-jai-shiv-omkara",
+      "slug": "om-jai-shiv-omkara",
+      "title": "Shri Shiv Aarti (Om Jai Shiv Omkara)",
+      "titleDevanagari": "शिव जी की आरती: ॐ जय शिव ओंकारा",
+      "category": "aarti",
+      "categoryHindi": "आरती संग्रह",
+      "deity": "Lord Shiva",
+      "deityDevanagari": "देवाधिदेव महादेव",
+      "totalVerses": 5,
+      "durationMinutes": 5,
+      "tags": [
+        "शिव आरती",
+        "महादेव",
+        "भोलेनाथ",
+        "प्रदोष"
+      ],
+      "chunkFile": "ritual-om-jai-shiv-omkara.json"
+    },
+    {
+      "id": "ambe-tu-hai-jagdamba-kali",
+      "slug": "ambe-tu-hai-jagdamba-kali",
+      "title": "Maa Durga Aarti (Ambe Tu Hai Jagdamba Kali)",
+      "titleDevanagari": "माँ दुर्गा जी की आरती: अम्बे तू है जगदम्बा काली",
+      "category": "aarti",
+      "categoryHindi": "आरती संग्रह",
+      "deity": "Goddess Durga",
+      "deityDevanagari": "माँ जगदम्बा भवानी",
+      "totalVerses": 4,
+      "durationMinutes": 5,
+      "tags": [
+        "दुर्गा आरती",
+        "अम्बे तू है जगदम्बा",
+        "नवरात्रि"
+      ],
+      "chunkFile": "ritual-ambe-tu-hai-jagdamba-kali.json"
+    },
+    {
+      "id": "om-jai-lakshmi-mata",
+      "slug": "om-jai-lakshmi-mata",
+      "title": "Maa Lakshmi Aarti (Om Jai Lakshmi Mata)",
+      "titleDevanagari": "माँ लक्ष्मी जी की आरती: ॐ जय लक्ष्मी माता",
+      "category": "aarti",
+      "categoryHindi": "आरती संग्रह",
+      "deity": "Goddess Lakshmi",
+      "deityDevanagari": "माँ महालक्ष्मी",
+      "totalVerses": 4,
+      "durationMinutes": 5,
+      "tags": [
+        "लक्ष्मी आरती",
+        "दीपावली",
+        "वैभव"
+      ],
+      "chunkFile": "ritual-om-jai-lakshmi-mata.json"
+    },
+    {
+      "id": "shri-radha-kripa-kataksha-stotram",
+      "slug": "shri-radha-kripa-kataksha-stotram",
+      "title": "Shri Radha Kripa Kataksha Stotram",
+      "titleDevanagari": "श्री राधा कृपा कटाक्ष स्तोत्रम्: मुनीन्द्रवृन्दवन्दिते",
+      "category": "stotra",
+      "categoryHindi": "स्तोत्र व अष्टक संग्रह",
+      "deity": "Shri Radha Rani",
+      "deityDevanagari": "श्री राधिका रानी",
+      "totalVerses": 12,
+      "durationMinutes": 8,
+      "tags": [
+        "राधा कृपा कटाक्ष",
+        "बरसाना",
+        "स्तोत्र",
+        "नित्य पाठ"
+      ],
+      "chunkFile": "ritual-shri-radha-kripa-kataksha-stotram.json"
+    },
+    {
+      "id": "shri-yamunashtakam",
+      "slug": "shri-yamunashtakam",
+      "title": "Shri Yamunashtakam",
+      "titleDevanagari": "श्री यमुनाष्टकम्: नमामि यमुनामहं सकलसिद्धिहेतुं",
+      "category": "stotra",
+      "categoryHindi": "स्तोत्र व अष्टक संग्रह",
+      "deity": "Goddess Yamuna",
+      "deityDevanagari": "श्री कालिन्दी यमुना महारानी",
+      "totalVerses": 8,
+      "durationMinutes": 6,
+      "tags": [
+        "यमुनाष्टकम",
+        "वल्लभाचार्य",
+        "पुष्टिमार्ग",
+        "अष्टक"
+      ],
+      "chunkFile": "ritual-shri-yamunashtakam.json"
+    },
+    {
+      "id": "shri-ramraksha-stotram",
+      "slug": "shri-ramraksha-stotram",
+      "title": "Shri Ramraksha Stotram",
+      "titleDevanagari": "श्री रामरक्षा स्तोत्रम्: चरितं रघुनाथस्य",
+      "category": "stotra",
+      "categoryHindi": "स्तोत्र व अष्टक संग्रह",
+      "deity": "Lord Rama",
+      "deityDevanagari": "भगवान श्रीराम",
+      "totalVerses": 38,
+      "durationMinutes": 10,
+      "tags": [
+        "रामरक्षा",
+        "रक्षा कवच",
+        "बुधकौशिक",
+        "अमोघ स्तोत्र"
+      ],
+      "chunkFile": "ritual-shri-ramraksha-stotram.json"
+    },
+    {
+      "id": "sankat-mochan-hanumanashtak",
+      "slug": "sankat-mochan-hanumanashtak",
+      "title": "Sankat Mochan Hanumanashtak",
+      "titleDevanagari": "संकटमोचन हनुमानाष्टक: बाल समय रवि भक्षि लियो",
+      "category": "stotra",
+      "categoryHindi": "स्तोत्र व अष्टक संग्रह",
+      "deity": "Lord Hanuman",
+      "deityDevanagari": "श्री संकटमोचन हनुमान जी",
+      "totalVerses": 8,
+      "durationMinutes": 6,
+      "tags": [
+        "संकटमोचन",
+        "हनुमानाष्टक",
+        "तुलसीदास",
+        "कष्ट निवारण"
+      ],
+      "chunkFile": "ritual-sankat-mochan-hanumanashtak.json"
+    },
+    {
+      "id": "mahalakshmi-ashtakam",
+      "slug": "mahalakshmi-ashtakam",
+      "title": "Shri Mahalakshmi Ashtakam",
+      "titleDevanagari": "श्रीमहालक्ष्म्यष्टकम्: नमस्तेऽस्तु महामाये श्रीपीठे",
+      "category": "stotra",
+      "categoryHindi": "स्तोत्र व अष्टक संग्रह",
+      "deity": "Goddess Lakshmi",
+      "deityDevanagari": "माँ महालक्ष्मी",
+      "totalVerses": 8,
+      "durationMinutes": 5,
+      "tags": [
+        "महालक्ष्म्यष्टकम",
+        "इन्द्र रचित",
+        "अष्टक",
+        "वैभव"
+      ],
+      "chunkFile": "ritual-mahalakshmi-ashtakam.json"
+    },
+    {
+      "id": "damodarashtakam",
+      "slug": "damodarashtakam",
+      "title": "Shri Damodarashtakam",
+      "titleDevanagari": "श्री दामादराष्टकम्: नमामीश्वरं सच्चिदानन्दरूपं",
+      "category": "stotra",
+      "categoryHindi": "स्तोत्र व अष्टक संग्रह",
+      "deity": "Lord Damodara",
+      "deityDevanagari": "दामोदर श्रीकृष्ण",
+      "totalVerses": 8,
+      "durationMinutes": 7,
+      "tags": [
+        "दामोदराष्टकम",
+        "कार्तिक मास",
+        "दीपदान",
+        "उलूखल लीला"
+      ],
+      "chunkFile": "ritual-damodarashtakam.json"
     }
   ]
 }

@@ -148,6 +148,10 @@ export interface AppComponents {
   PadavaliReader?: React.ComponentType<any>;
   MahagranthReader?: React.ComponentType<any>;
   MilestonesView?: React.ComponentType<any>;
+  NityaUpasanaReader?: React.ComponentType<any>;
+  KathaSanctuary?: React.ComponentType<any>;
+  CharitraDarshan?: React.ComponentType<any>;
+  DhamTirthaSection?: React.ComponentType<any>;
 }
 
 export interface AppProps {
@@ -285,6 +289,10 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
   const PadavaliReaderComp = components?.PadavaliReader || LazyPadavaliReader;
   const MahagranthReaderComp = components?.MahagranthReader || LazyMahagranthReader;
   const MilestonesViewComp = components?.MilestonesView || LazyMilestonesView;
+  const NityaUpasanaReaderComp = components?.NityaUpasanaReader || LazyNityaUpasanaReader;
+  const KathaSanctuaryComp = components?.KathaSanctuary || LazyKathaSanctuary;
+  const CharitraDarshanComp = components?.CharitraDarshan || LazyCharitraDarshan;
+  const DhamTirthaSectionComp = components?.DhamTirthaSection || LazyDhamTirthaSection;
   const [initialRoute] = useState<AppRouteState>(() => resolveCurrentRoute());
   const [activeTab, setActiveTab] = useState<NavTab>(() => {
     if (
@@ -1768,7 +1776,7 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
               aria-hidden={activeTab !== 'rituals'}
             >
               <Suspense fallback={<ReaderLoadingSkeleton />}>
-                <LazyNityaUpasanaReader />
+                <NityaUpasanaReaderComp />
               </Suspense>
             </div>
           )}
@@ -1781,7 +1789,7 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
               aria-hidden={activeTab !== 'stories'}
             >
               <Suspense fallback={<ReaderLoadingSkeleton />}>
-                <LazyKathaSanctuary onNavigateToPadavali={() => handleTabSwitch('padavali')} />
+                <KathaSanctuaryComp onNavigateToPadavali={() => handleTabSwitch('padavali')} />
               </Suspense>
             </div>
           )}
@@ -1794,8 +1802,8 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
               aria-hidden={activeTab !== 'biographies'}
             >
               <Suspense fallback={<ReaderLoadingSkeleton />}>
-                <LazyCharitraDarshan
-                  onNavigateToPadavali={(saintName) => {
+                <CharitraDarshanComp
+                  onNavigateToPadavali={(saintName?: string) => {
                     if (saintName) {
                       handleSelectAuthor(saintName);
                     } else {
@@ -1815,7 +1823,7 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
               aria-hidden={activeTab !== 'places'}
             >
               <Suspense fallback={<ReaderLoadingSkeleton />}>
-                <LazyDhamTirthaSection />
+                <DhamTirthaSectionComp />
               </Suspense>
             </div>
           )}

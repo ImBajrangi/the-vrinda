@@ -1,50 +1,88 @@
 {
   "category": "places",
-  "categoryHindi": "पावन धाम एवं तीर्थ महात्म्य",
-  "count": 12,
-  "updatedAt": "2026-11-15T09:00:00Z",
+  "categoryHindi": "श्री धाम, पवित्र तीर्थ एवं लीला स्थल",
+  "count": 33,
+  "updatedAt": "2026-11-18T08:00:00Z",
   "items": [
     {
-      "id": "vrindavan-dham",
-      "slug": "vrindavan-dham",
-      "name": "Sri Vrindavan Dham",
-      "nameDevanagari": "श्री वृन्दावन धाम",
-      "dhamRegion": "vrindavan",
-      "regionNameHindi": "ब्रज मण्डल, उत्तर प्रदेश",
-      "briefSignificance": "श्री राधा-कृष्ण की नित्य रास लीला भूमि, ५००० से अधिक देवालयों और निकुंजों का पावन धाम।",
-      "deity": "Shri Radha Krishna / Banke Bihari Ji",
-      "deityDevanagari": "श्री राधा-कृष्ण / ठाकुर श्री बांके बिहारी जी",
-      "parikramaKm": 11,
-      "imageWebp": "/assets/temples/banke-bihari.webp",
+      "id": "gokul-raman-reti",
+      "slug": "gokul-raman-reti",
+      "name": "Raman Reti Gokul",
+      "nameDevanagari": "रमण रेती (गोकुल महावन)",
+      "dhamRegion": "gokul",
+      "regionNameHindi": "गोकुल महावन, मथुरा, उत्तर प्रदेश",
+      "briefSignificance": "कन्हैया और दाऊ भैया की पावन बाल्यकालीन धूलि-क्रीड़ा स्थली जहाँ भक्तगण रज...",
+      "deity": "बालगोपाल रमणबिहारी जी",
       "tags": [
-        "वृन्दावन",
-        "बांके-बिहारी",
-        "राधा-वल्लभ",
-        "निधिवन",
-        "ब्रज"
+        "रमण रेती",
+        "गोकुल",
+        "बाललीला"
       ],
-      "chunkFile": "place-vrindavan-dham.json"
+      "chunkFile": "place-gokul-raman-reti.json"
     },
     {
-      "id": "giriraj-govardhan",
-      "slug": "giriraj-govardhan",
-      "name": "Sri Giriraj Govardhan",
-      "nameDevanagari": "श्री गिरिराज गोवर्धन",
-      "dhamRegion": "govardhan",
-      "regionNameHindi": "मथुरा, ब्रज मण्डल",
-      "briefSignificance": "साक्षात् हरिरूप पावन पर्वत, जिसे कन्हैया ने सात दिवस तक कनिष्ठिका पर धारण कर ब्रज की रक्षा की थी।",
-      "deity": "Giriraj Maharaj / Haridev",
-      "deityDevanagari": "श्री गिरिराज जी / श्री हरिदेव जी",
-      "parikramaKm": 21,
-      "imageWebp": "/assets/temples/keshi-ghat.webp",
+      "id": "shri-radha-damodar-mandir",
+      "slug": "shri-radha-damodar-mandir",
+      "name": "Shri Radha Damodar Mandir",
+      "nameDevanagari": "श्री राधा दामोदर मंदिर",
+      "dhamRegion": "vrindavan",
+      "regionNameHindi": "वृन्दावन धाम, मथुरा, उत्तर प्रदेश",
+      "briefSignificance": "श्रील रूप गोस्वामी, जीव गोस्वामी की भजन कुटी तथा सनातन गोस्वामी जी द्वार...",
+      "deity": "श्री राधा दामोदर जी एवं चार परिक्रमा फलदायी गोवर्धन शिला",
       "tags": [
-        "गोवर्धन",
-        "परिक्रमा",
-        "राधाकुण्ड",
-        "मानसी-गंगा",
-        "अन्नकूट"
+        "राधा दामोदर",
+        "जीव गोस्वामी",
+        "गोवर्धन शिला"
       ],
-      "chunkFile": "place-giriraj-govardhan.json"
+      "chunkFile": "place-shri-radha-damodar-mandir.json"
+    },
+    {
+      "id": "yamunotri-dham",
+      "slug": "yamunotri-dham",
+      "name": "Shri Yamunotri Dham",
+      "nameDevanagari": "श्री यमुनोत्री धाम (उत्तराखंड)",
+      "dhamRegion": "himalayas",
+      "regionNameHindi": "उत्तरकाशी, गढ़वाल हिमालय, उत्तराखंड",
+      "briefSignificance": "छोटा चार धाम में प्रथम तीर्थ, पावन सूर्यपुत्री कालिन्दी यमुना जी का उद्ग...",
+      "deity": "माँ यमुना जी एवं सूर्य देव",
+      "tags": [
+        "यमुनोत्री",
+        "छोटा चार धाम",
+        "सूर्यकुण्ड"
+      ],
+      "chunkFile": "place-yamunotri-dham.json"
+    },
+    {
+      "id": "seva-kunj-vrindavan",
+      "slug": "seva-kunj-vrindavan",
+      "name": "Shri Seva Kunj Vrindavan",
+      "nameDevanagari": "श्री सेवा कुंज (निकुंज वन)",
+      "dhamRegion": "vrindavan",
+      "regionNameHindi": "वृन्दावन धाम, मथुरा, उत्तर प्रदेश",
+      "briefSignificance": "श्री हित हरिवंश महाप्रभु की लीला स्थली, जहाँ श्यामसुंदर स्वयं श्री राधार...",
+      "deity": "श्री युगल सरकार (राधा-कृष्ण)",
+      "tags": [
+        "सेवा कुंज",
+        "हित हरिवंश",
+        "महावर लीला"
+      ],
+      "chunkFile": "place-seva-kunj-vrindavan.json"
+    },
+    {
+      "id": "kusum-sarovar-govardhan",
+      "slug": "kusum-sarovar-govardhan",
+      "name": "Kusum Sarovar Govardhan",
+      "nameDevanagari": "कुसुम सरोवर (गोवर्धन)",
+      "dhamRegion": "govardhan",
+      "regionNameHindi": "गोवर्धन-राधाकुण्ड मार्ग, मथुरा",
+      "briefSignificance": "श्री राधारानी की पुष्प चयन लीला स्थली, भव्य छतरियों और पाषाण सोपानों से ...",
+      "deity": "कुसुमबिहारी श्रीकृष्ण एवं सखी मंडल",
+      "tags": [
+        "कुसुम सरोवर",
+        "उद्धव बैठकी",
+        "पुष्प चयन लीला"
+      ],
+      "chunkFile": "place-kusum-sarovar-govardhan.json"
     },
     {
       "id": "barsana-dham",
@@ -53,187 +91,62 @@
       "nameDevanagari": "श्री बरसाना धाम",
       "dhamRegion": "barsana",
       "regionNameHindi": "मथुरा, ब्रज मण्डल",
-      "briefSignificance": "आह्लादिनी शक्ति श्री वृषभानु नंदिनी लाड़िली जी का नित्य निवास धाम एवं ब्रह्माचल पर्वत।",
-      "deity": "Shri Radha Rani / Ladili Ji",
-      "deityDevanagari": "श्री राधारानी (श्री लाड़िली जी)",
-      "parikramaKm": 7,
-      "imageWebp": "/assets/temples/barsana-radharani.webp",
+      "briefSignificance": "आह्लादिनी शक्ति श्री वृषभानु नंदिनी लाड़िली जी का नित्य निवास धाम एवं ब्...",
+      "deity": "श्री राधारानी (श्री लाड़िली जी)",
       "tags": [
         "बरसाना",
         "राधारानी",
-        "लाड़िली-जी",
-        "लट्ठमार-होली",
-        "ब्रह्माचल"
+        "लाड़िली-जी"
       ],
       "chunkFile": "place-barsana-dham.json"
     },
     {
-      "id": "mathura-krishna-janmabhoomi",
-      "slug": "mathura-krishna-janmabhoomi",
-      "name": "Sri Krishna Janmabhoomi Mathura",
-      "nameDevanagari": "श्री कृष्ण जन्मभूमि मथुरा",
-      "dhamRegion": "mathura",
-      "regionNameHindi": "मथुरा, उत्तर प्रदेश",
-      "briefSignificance": "कंस के कारागार में योगेश्वर भगवान श्रीकृष्ण का भाद्रपद कृष्ण अष्टमी को चतुर्भुज रूप में प्राकट्य स्थल।",
-      "deity": "Lord Krishna (Dwarkadhish / Keshav Dev)",
-      "deityDevanagari": "भगवान श्री कृष्ण (केशवदेव जी)",
-      "parikramaKm": null,
-      "imageWebp": "/assets/temples/radha-raman.webp",
+      "id": "tirupati-balaji",
+      "slug": "tirupati-balaji",
+      "name": "Tirumala Tirupati Balaji",
+      "nameDevanagari": "तिरुमाला तिरुपति श्री वेंकटेश्वर स्वामी",
+      "dhamRegion": "south-india",
+      "regionNameHindi": "शेषाचलम पर्वत, तिरुपति, आन्ध्र प्रदेश",
+      "briefSignificance": "कलियुग के प्रत्यक्ष उद्धारक देव, सप्तगिरि पर्वत पर विराजमान श्री वेंकटेश...",
+      "deity": "श्रीनिवास वेंकटेश्वर स्वामी",
       "tags": [
-        "मथुरा",
-        "जन्मभूमि",
-        "केशवदेव",
-        "विश्राम-घाट",
-        "कंस-वध"
+        "तिरुपति",
+        "बालाजी",
+        "वेंकटेश्वर"
       ],
-      "chunkFile": "place-mathura-krishna-janmabhoomi.json"
+      "chunkFile": "place-tirupati-balaji.json"
     },
     {
-      "id": "ayodhya-ram-janmabhoomi",
-      "slug": "ayodhya-ram-janmabhoomi",
-      "name": "Sri Ram Janmabhoomi Ayodhya",
-      "nameDevanagari": "श्री राम जन्मभूमि अयोध्या धाम",
-      "dhamRegion": "ayodhya",
-      "regionNameHindi": "अयोध्या, उत्तर प्रदेश",
-      "briefSignificance": "मर्यादा पुरुषोत्तम भगवान श्री राम का पावन प्राकट्य स्थल एवं सरयू तीर पर स्थित मोक्षदायिनी सप्तपुरियों में प्रथम पुरी।",
-      "deity": "Balak Ram / Shri Sita Ram",
-      "deityDevanagari": "प्रभु श्री रामलला सरकार",
-      "parikramaKm": 14,
-      "imageWebp": "/assets/temples/diya-pujan.webp",
+      "id": "giriraj-govardhan",
+      "slug": "giriraj-govardhan",
+      "name": "Sri Giriraj Govardhan",
+      "nameDevanagari": "श्री गिरिराज गोवर्धन",
+      "dhamRegion": "govardhan",
+      "regionNameHindi": "मथुरा, ब्रज मण्डल",
+      "briefSignificance": "साक्षात् हरिरूप पावन पर्वत, जिसे कन्हैया ने सात दिवस तक कनिष्ठिका पर धार...",
+      "deity": "श्री गिरिराज जी / श्री हरिदेव जी",
       "tags": [
-        "अयोध्या",
-        "राम-जन्मभूमि",
-        "रामलला",
-        "सरयू",
-        "हनुमान-गढ़ी"
+        "गोवर्धन",
+        "परिक्रमा",
+        "राधाकुण्ड"
       ],
-      "chunkFile": "place-ayodhya-ram-janmabhoomi.json"
+      "chunkFile": "place-giriraj-govardhan.json"
     },
     {
-      "id": "kashi-vishwanath",
-      "slug": "kashi-vishwanath",
-      "name": "Kashi Vishwanath Jyotirlinga",
-      "nameDevanagari": "काशी विश्वनाथ ज्योतिर्लिंग धाम",
-      "dhamRegion": "kashi",
-      "regionNameHindi": "वाराणसी, उत्तर प्रदेश",
-      "briefSignificance": "त्रिशूल पर टिकी अविमुक्त काशी, द्वादश ज्योतिर्लिंगों में सर्वोच्च विश्वेश्वर धाम जहाँ साक्षात् शिव तारक मन्त्र प्रदान करते हैं।",
-      "deity": "Lord Shiva (Vishwanatha / Vishveshwara)",
-      "deityDevanagari": "देवाधिदेव काशी विश्वनाथ",
-      "parikramaKm": null,
-      "imageWebp": "/assets/temples/aarti-lamp.webp",
+      "id": "barsana-shriji-mandir",
+      "slug": "barsana-shriji-mandir",
+      "name": "Shriji Mandir Barsana (Radha Rani Temple)",
+      "nameDevanagari": "श्री लाड़ली जी महल (बरसाना)",
+      "dhamRegion": "barsana",
+      "regionNameHindi": "भानुपुरा शिखर, बरसाना, मथुरा",
+      "briefSignificance": "श्री वृषभानु नन्दिनी राधिका जी का पैतृक महल, जहाँ की लठामार होली विश्ववि...",
+      "deity": "श्री लाड़िली जी महाराज",
       "tags": [
-        "काशी",
-        "विश्वनाथ",
-        "ज्योतिर्लिंग",
-        "गंगा-आरती",
-        "मणिकर्णिका"
+        "बरसाना",
+        "लाड़ली जी",
+        "राधा रानी मंदिर"
       ],
-      "chunkFile": "place-kashi-vishwanath.json"
-    },
-    {
-      "id": "jagannath-puri",
-      "slug": "jagannath-puri",
-      "name": "Sri Jagannath Dham Puri",
-      "nameDevanagari": "श्री जगन्नाथ धाम पुरी",
-      "dhamRegion": "puri",
-      "regionNameHindi": "पुरी, ओडिशा",
-      "briefSignificance": "चार धामों में प्रधान, दारुब्रह्म भगवान जगन्नाथ, बलभद्र और सुभद्रा जी का महातीर्थ जहाँ महाप्रसाद का अलौकिक महात्म्य है।",
-      "deity": "Lord Jagannath (Daru Brahma)",
-      "deityDevanagari": "महाप्रभु श्री जगन्नाथ जी",
-      "parikramaKm": null,
-      "imageWebp": "/assets/temples/banke-bihari-gate.webp",
-      "tags": [
-        "जगन्नाथ-पुरी",
-        "रथयात्रा",
-        "दारुब्रह्म",
-        "महाप्रसाद",
-        "चार-धाम"
-      ],
-      "chunkFile": "place-jagannath-puri.json"
-    },
-    {
-      "id": "badrinath-dham",
-      "slug": "badrinath-dham",
-      "name": "Sri Badrinath Dham",
-      "nameDevanagari": "श्री बद्रीनाथ धाम",
-      "dhamRegion": "char-dham",
-      "regionNameHindi": "चमोली, उत्तराखण्ड",
-      "briefSignificance": "हिमालय की गोद में नर-नारायण पर्वत के मध्य स्थित बदरीविशाल, जहाँ भगवान विष्णु पद्मासन में अखण्ड तपस्यारत हैं।",
-      "deity": "Lord Badrinarayan (Shaligram Murti)",
-      "deityDevanagari": "भगवान श्री बदरीविशाल",
-      "parikramaKm": null,
-      "imageWebp": "/assets/temples/diya-pujan.webp",
-      "tags": [
-        "बद्रीनाथ",
-        "चार-धाम",
-        "नर-नारायण",
-        "तप्त-कुण्ड",
-        "उत्तराखण्ड"
-      ],
-      "chunkFile": "place-badrinath-dham.json"
-    },
-    {
-      "id": "pandharpur-vitthal-mandir",
-      "slug": "pandharpur-vitthal-mandir",
-      "name": "Sri Vitthal Rukmini Mandir Pandharpur",
-      "nameDevanagari": "श्री विट्ठल-रुक्मिणी मन्दिर पंढरपुर",
-      "dhamRegion": "all",
-      "regionNameHindi": "सोलापुर, महाराष्ट्र",
-      "briefSignificance": "वारकरी सम्प्रदाय का हृदय धाम, जहाँ भक्त पुण्डलीक के प्रेमवश ईंट पर कमर पर हाथ धरे भगवान पाण्डुरंग खड़े हैं।",
-      "deity": "Lord Vithoba (Panduranga) & Mother Rukmini",
-      "deityDevanagari": "श्री विट्ठल (पाण्डुरंग) एवं रुक्मिणी माता",
-      "parikramaKm": null,
-      "imageWebp": "/assets/temples/keshi-ghat.webp",
-      "tags": [
-        "पंढरपुर",
-        "विट्ठल",
-        "पाण्डुरंग",
-        "चन्द्रभागा",
-        "वारी-वारी"
-      ],
-      "chunkFile": "place-pandharpur-vitthal-mandir.json"
-    },
-    {
-      "id": "pratishthan-paithan",
-      "slug": "pratishthan-paithan",
-      "name": "Pratishthan Paithan: Sant Eknath Samadhi Dham",
-      "nameDevanagari": "प्रतिष्ठान पैठण: संत एकनाथ समाधि धाम",
-      "dhamRegion": "all",
-      "regionNameHindi": "छत्रपति संभाजीनगर, महाराष्ट्र",
-      "briefSignificance": "दक्षिण काशी के नाम से विख्यात, गोदावरी तट पर स्थित प्राचीन पावन पीठ जहाँ संत एकनाथ महाराज ने भागवत धर्म की पताका फहराई।",
-      "deity": "Sant Eknath Maharaj / Shri Krishna (Shrikhandya)",
-      "deityDevanagari": "संत एकनाथ महाराज एवं श्रीखण्ड्या रूपी श्रीकृष्ण",
-      "parikramaKm": null,
-      "imageWebp": "/assets/temples/radha-vallabh.webp",
-      "tags": [
-        "पैठण",
-        "एकनाथ",
-        "गोदावरी",
-        "वारकरी",
-        "दक्षिण-काशी"
-      ],
-      "chunkFile": "place-pratishthan-paithan.json"
-    },
-    {
-      "id": "kedarnath-jyotirlinga",
-      "slug": "kedarnath-jyotirlinga",
-      "name": "Kedarnath Jyotirlinga Dham",
-      "nameDevanagari": "श्री केदारनाथ ज्योतिर्लिंग धाम",
-      "dhamRegion": "char-dham",
-      "regionNameHindi": "रुद्रप्रयाग, उत्तराखण्ड",
-      "briefSignificance": "मन्दाकिनी नदी के तट पर स्थित पंच केदारों में प्रधान, द्वादश ज्योतिर्लिंगों में सर्वोच्च हिमशिखर धाम।",
-      "deity": "Lord Shiva (Kedareshwara)",
-      "deityDevanagari": "देवाधिदेव केदारनाथ जी",
-      "parikramaKm": null,
-      "imageWebp": "/assets/temples/diya-pujan.webp",
-      "tags": [
-        "केदारनाथ",
-        "ज्योतिर्लिंग",
-        "मन्दाकिनी",
-        "पंच-केदार",
-        "चार-धाम"
-      ],
-      "chunkFile": "place-kedarnath-jyotirlinga.json"
+      "chunkFile": "place-barsana-shriji-mandir.json"
     },
     {
       "id": "rameshwaram-jyotirlinga",
@@ -242,19 +155,382 @@
       "nameDevanagari": "श्री रामेश्वरम ज्योतिर्लिंग धाम",
       "dhamRegion": "char-dham",
       "regionNameHindi": "रामनाथपुरम, तमिलनाडु",
-      "briefSignificance": "प्रभु श्री राम द्वारा लंका विजय पूर्व प्रतिष्ठित पावन सेतुबन्ध ज्योतिर्लिंग धाम।",
-      "deity": "Lord Ramanathaswamy (Shiva)",
-      "deityDevanagari": "श्री रामनाथस्वामी महादेव",
-      "parikramaKm": null,
-      "imageWebp": "/assets/temples/aarti-lamp.webp",
+      "briefSignificance": "प्रभु श्री राम द्वारा लंका विजय पूर्व प्रतिष्ठित पावन सेतुबन्ध ज्योतिर्ल...",
+      "deity": "श्री रामनाथस्वामी महादेव",
       "tags": [
         "रामेश्वरम",
         "ज्योतिर्लिंग",
-        "सेतुबन्ध",
-        "चार-धाम",
-        "तमिलनाडु"
+        "सेतुबन्ध"
       ],
       "chunkFile": "place-rameshwaram-jyotirlinga.json"
+    },
+    {
+      "id": "dwarka-dham",
+      "slug": "dwarka-dham",
+      "name": "Shri Dwarkadhish Dham",
+      "nameDevanagari": "श्री द्वारकाधीश धाम (गुजरात)",
+      "dhamRegion": "dwarka",
+      "regionNameHindi": "गोमती संगम, सौराष्ट्र, गुजरात",
+      "briefSignificance": "भारत के चार धामों व सप्त मोक्षपुरियों में प्रधान, भगवान श्रीकृष्ण की स्व...",
+      "deity": "राजाधिराज श्री द्वारकाधीश जी",
+      "tags": [
+        "द्वारका",
+        "चार धाम",
+        "गोमती संगम"
+      ],
+      "chunkFile": "place-dwarka-dham.json"
+    },
+    {
+      "id": "vrindavan-dham",
+      "slug": "vrindavan-dham",
+      "name": "Sri Vrindavan Dham",
+      "nameDevanagari": "श्री वृन्दावन धाम",
+      "dhamRegion": "vrindavan",
+      "regionNameHindi": "ब्रज मण्डल, उत्तर प्रदेश",
+      "briefSignificance": "श्री राधा-कृष्ण की नित्य रास लीला भूमि, ५००० से अधिक देवालयों और निकुंजो...",
+      "deity": "श्री राधा-कृष्ण / ठाकुर श्री बांके बिहारी जी",
+      "tags": [
+        "वृन्दावन",
+        "बांके-बिहारी",
+        "राधा-वल्लभ"
+      ],
+      "chunkFile": "place-vrindavan-dham.json"
+    },
+    {
+      "id": "radha-kund-shyam-kund",
+      "slug": "radha-kund-shyam-kund",
+      "name": "Shri Radha Kund & Shyam Kund",
+      "nameDevanagari": "श्री राधा कुण्ड एवं श्याम कुण्ड",
+      "dhamRegion": "govardhan",
+      "regionNameHindi": "गोवर्धन तलहटी, मथुरा, उत्तर प्रदेश",
+      "briefSignificance": "सम्पूर्ण ब्रह्माण्ड में प्रेम भक्ति का सर्वोच्च तीर्थ, अरिष्टासुर वध के ...",
+      "deity": "श्री राधा-कृष्ण प्रेमामृत स्वरूप",
+      "tags": [
+        "राधा कुण्ड",
+        "श्याम कुण्ड",
+        "गोवर्धन"
+      ],
+      "chunkFile": "place-radha-kund-shyam-kund.json"
+    },
+    {
+      "id": "dan-ghati-govardhan",
+      "slug": "dan-ghati-govardhan",
+      "name": "Shri Dan Ghati Mandir Govardhan",
+      "nameDevanagari": "श्री दान घाटी मंदिर (गोवर्धन)",
+      "dhamRegion": "govardhan",
+      "regionNameHindi": "गोवर्धन धाम, मथुरा, उत्तर प्रदेश",
+      "briefSignificance": "गिरिराज परिक्रमा का प्रमुख प्रस्थान बिंदु, जहाँ कन्हैया ने गोपियों से दध...",
+      "deity": "साक्षात् गिरिराज धरण शिला",
+      "tags": [
+        "दान घाटी",
+        "गोवर्धन परिक्रमा",
+        "दुग्ध अभिषेक"
+      ],
+      "chunkFile": "place-dan-ghati-govardhan.json"
+    },
+    {
+      "id": "mathura-krishna-janmabhoomi",
+      "slug": "mathura-krishna-janmabhoomi",
+      "name": "Sri Krishna Janmabhoomi Mathura",
+      "nameDevanagari": "श्री कृष्ण जन्मभूमि मथुरा",
+      "dhamRegion": "mathura",
+      "regionNameHindi": "मथुरा, उत्तर प्रदेश",
+      "briefSignificance": "कंस के कारागार में योगेश्वर भगवान श्रीकृष्ण का भाद्रपद कृष्ण अष्टमी को च...",
+      "deity": "भगवान श्री कृष्ण (केशवदेव जी)",
+      "tags": [
+        "मथुरा",
+        "जन्मभूमि",
+        "केशवदेव"
+      ],
+      "chunkFile": "place-mathura-krishna-janmabhoomi.json"
+    },
+    {
+      "id": "nandgaon-nand-bhavan",
+      "slug": "nandgaon-nand-bhavan",
+      "name": "Nand Bhavan Nandgaon",
+      "nameDevanagari": "नन्द भवन (नन्दगाँव)",
+      "dhamRegion": "nandgaon",
+      "regionNameHindi": "नन्दीश्वर पर्वत, नन्दगाँव, मथुरा",
+      "briefSignificance": "भगवान श्रीकृष्ण का बाल्यकालीन निवास, नन्दबाबा, यशोदा मैया और बलदाऊ जी का...",
+      "deity": "नन्दबाबा, माता यशोदा, कन्हैया व दाऊ भैया",
+      "tags": [
+        "नन्दगाँव",
+        "नन्द भवन",
+        "यशोदा मैया"
+      ],
+      "chunkFile": "place-nandgaon-nand-bhavan.json"
+    },
+    {
+      "id": "braj-chaurasi-kos-parikrama",
+      "slug": "braj-chaurasi-kos-parikrama",
+      "name": "Braj Chaurasi Kos Parikrama",
+      "nameDevanagari": "ब्रज चौरासी कोस परिक्रमा",
+      "dhamRegion": "braj-mandal",
+      "regionNameHindi": "सम्पूर्ण ब्रज मण्डल (मथुरा, राजस्थान, हरियाणा सीमा)",
+      "briefSignificance": "भगवान श्रीकृष्ण की समस्त बाल्य व किशोर लीलाओं की पावन भूमि की २५२ किमी (...",
+      "deity": "सम्पूर्ण ब्रज मण्डल अधिष्ठाता युगल सरकार",
+      "tags": [
+        "चौरासी कोस",
+        "ब्रज यात्रा",
+        "१२ वन"
+      ],
+      "chunkFile": "place-braj-chaurasi-kos-parikrama.json"
+    },
+    {
+      "id": "pratishthan-paithan",
+      "slug": "pratishthan-paithan",
+      "name": "Pratishthan Paithan: Sant Eknath Samadhi Dham",
+      "nameDevanagari": "प्रतिष्ठान पैठण: संत एकनाथ समाधि धाम",
+      "dhamRegion": "all",
+      "regionNameHindi": "छत्रपति संभाजीनगर, महाराष्ट्र",
+      "briefSignificance": "दक्षिण काशी के नाम से विख्यात, गोदावरी तट पर स्थित प्राचीन पावन पीठ जहाँ...",
+      "deity": "संत एकनाथ महाराज एवं श्रीखण्ड्या रूपी श्रीकृष्ण",
+      "tags": [
+        "पैठण",
+        "एकनाथ",
+        "गोदावरी"
+      ],
+      "chunkFile": "place-pratishthan-paithan.json"
+    },
+    {
+      "id": "badrinath-dham",
+      "slug": "badrinath-dham",
+      "name": "Sri Badrinath Dham",
+      "nameDevanagari": "श्री बद्रीनाथ धाम",
+      "dhamRegion": "char-dham",
+      "regionNameHindi": "चमोली, उत्तराखण्ड",
+      "briefSignificance": "हिमालय की गोद में नर-नारायण पर्वत के मध्य स्थित बदरीविशाल, जहाँ भगवान वि...",
+      "deity": "भगवान श्री बदरीविशाल",
+      "tags": [
+        "बद्रीनाथ",
+        "चार-धाम",
+        "नर-नारायण"
+      ],
+      "chunkFile": "place-badrinath-dham.json"
+    },
+    {
+      "id": "kashi-vishwanath",
+      "slug": "kashi-vishwanath",
+      "name": "Kashi Vishwanath Jyotirlinga",
+      "nameDevanagari": "काशी विश्वनाथ ज्योतिर्लिंग धाम",
+      "dhamRegion": "kashi",
+      "regionNameHindi": "वाराणसी, उत्तर प्रदेश",
+      "briefSignificance": "त्रिशूल पर टिकी अविमुक्त काशी, द्वादश ज्योतिर्लिंगों में सर्वोच्च विश्वे...",
+      "deity": "देवाधिदेव काशी विश्वनाथ",
+      "tags": [
+        "काशी",
+        "विश्वनाथ",
+        "ज्योतिर्लिंग"
+      ],
+      "chunkFile": "place-kashi-vishwanath.json"
+    },
+    {
+      "id": "somnath-jyotirlinga",
+      "slug": "somnath-jyotirlinga",
+      "name": "Shri Somnath Jyotirlinga",
+      "nameDevanagari": "श्री सोमनाथ ज्योतिर्लिंग (प्रभास पाटन)",
+      "dhamRegion": "saurashtra",
+      "regionNameHindi": "प्रभास पाटन, वेरावल, गुजरात",
+      "briefSignificance": "द्वादश ज्योतिर्लिंगों में प्रथम व आदि ज्योतिर्लिंग, चन्द्रदेव (सोम) द्वा...",
+      "deity": "आदि ज्योतिर्लिंग सोमनाथ महादेव",
+      "tags": [
+        "सोमनाथ",
+        "प्रथम ज्योतिर्लिंग",
+        "प्रभास पाटन"
+      ],
+      "chunkFile": "place-somnath-jyotirlinga.json"
+    },
+    {
+      "id": "bansi-vat-vrindavan",
+      "slug": "bansi-vat-vrindavan",
+      "name": "Shri Bansi Vat Vrindavan",
+      "nameDevanagari": "श्री बंशीवट (महातीर्थ)",
+      "dhamRegion": "vrindavan",
+      "regionNameHindi": "वृन्दावन धाम, यमुना तट",
+      "briefSignificance": "शरद पूर्णिमा की रात्रि में कन्हैया द्वारा वेणुनाद कर गोपियों को आकर्षित ...",
+      "deity": "वेणुगोपाल एवं श्री राधिका जी",
+      "tags": [
+        "बंशीवट",
+        "वेणुनाद",
+        "महारास"
+      ],
+      "chunkFile": "place-bansi-vat-vrindavan.json"
+    },
+    {
+      "id": "shri-radha-raman-mandir",
+      "slug": "shri-radha-raman-mandir",
+      "name": "Shri Radha Raman Mandir",
+      "nameDevanagari": "श्री राधा रमण जी मंदिर",
+      "dhamRegion": "vrindavan",
+      "regionNameHindi": "वृन्दावन धाम, मथुरा, उत्तर प्रदेश",
+      "briefSignificance": "श्रील गोपाल भट्ट गोस्वामी जी की भक्ति से शालिग्राम शिला से स्वयं-प्रकट ह...",
+      "deity": "स्वयं-प्रकट श्री राधा रमण देव",
+      "tags": [
+        "राधा रमण",
+        "गोपाल भट्ट",
+        "स्वयं-प्रकट"
+      ],
+      "chunkFile": "place-shri-radha-raman-mandir.json"
+    },
+    {
+      "id": "mansarovar-vrindavan",
+      "slug": "mansarovar-vrindavan",
+      "name": "Shri Mansarovar Vrindavan",
+      "nameDevanagari": "श्री मान सरोवर (यमुना पार)",
+      "dhamRegion": "vrindavan",
+      "regionNameHindi": "वृन्दावन यमुना पार, मांट क्षेत्र",
+      "briefSignificance": "रासलीला के मध्य श्री राधा रानी का मान धारण करने और श्रीकृष्ण द्वारा मान-...",
+      "deity": "मानिनी श्री राधा रानी",
+      "tags": [
+        "मान सरोवर",
+        "मान लीला",
+        "यमुना पार"
+      ],
+      "chunkFile": "place-mansarovar-vrindavan.json"
+    },
+    {
+      "id": "mahakaleshwar-jyotirlinga",
+      "slug": "mahakaleshwar-jyotirlinga",
+      "name": "Shri Mahakaleshwar Jyotirlinga Ujjain",
+      "nameDevanagari": "श्री महाकालेश्वर ज्योतिर्लिंग (उज्जैन)",
+      "dhamRegion": "malwa",
+      "regionNameHindi": "शिप्रा तट, उज्जयिनी, मध्य प्रदेश",
+      "briefSignificance": "द्वादश ज्योतिर्लिंगों में एकमात्र दक्षिणमुखी ज्योतिर्लिंग, काल के भी महा...",
+      "deity": "स्वयंभू दक्षिणमुखी महाकालेश्वर",
+      "tags": [
+        "महाकालेश्वर",
+        "उज्जैन",
+        "भस्म आरती"
+      ],
+      "chunkFile": "place-mahakaleshwar-jyotirlinga.json"
+    },
+    {
+      "id": "jagannath-puri",
+      "slug": "jagannath-puri",
+      "name": "Sri Jagannath Dham Puri",
+      "nameDevanagari": "श्री जगन्नाथ धाम पुरी",
+      "dhamRegion": "puri",
+      "regionNameHindi": "पुरी, ओडिशा",
+      "briefSignificance": "चार धामों में प्रधान, दारुब्रह्म भगवान जगन्नाथ, बलभद्र और सुभद्रा जी का ...",
+      "deity": "महाप्रभु श्री जगन्नाथ जी",
+      "tags": [
+        "जगन्नाथ-पुरी",
+        "रथयात्रा",
+        "दारुब्रह्म"
+      ],
+      "chunkFile": "place-jagannath-puri.json"
+    },
+    {
+      "id": "nidhivan-raj-vrindavan",
+      "slug": "nidhivan-raj-vrindavan",
+      "name": "Shri Nidhivan Raj Vrindavan",
+      "nameDevanagari": "श्री निधिवन राज (वृन्दावन)",
+      "dhamRegion": "vrindavan",
+      "regionNameHindi": "वृन्दावन धाम, मथुरा, उत्तर प्रदेश",
+      "briefSignificance": "स्वामी हरिदास जी की अनन्य साधना स्थली, जहाँ श्री बांके बिहारी जी का प्रा...",
+      "deity": "ठाकुर श्री बांके बिहारी जी एवं संगीत शिरोमणि स्वामी हरिदास जी",
+      "tags": [
+        "निधिवन",
+        "स्वामी हरिदास",
+        "बांके बिहारी प्राकट्य"
+      ],
+      "chunkFile": "place-nidhivan-raj-vrindavan.json"
+    },
+    {
+      "id": "shri-radha-vallabh-mandir",
+      "slug": "shri-radha-vallabh-mandir",
+      "name": "Shri Radha Vallabh Mandir",
+      "nameDevanagari": "श्री राधावल्लभ लाल मंदिर",
+      "dhamRegion": "vrindavan",
+      "regionNameHindi": "वृन्दावन धाम, मथुरा, उत्तर प्रदेश",
+      "briefSignificance": "श्री राधावल्लभ संप्रदाय का प्रधान देवालय जहाँ श्री राधावल्लभ लाल के साथ ...",
+      "deity": "श्री राधावल्लभ लाल जी महाराज",
+      "tags": [
+        "राधावल्लभ",
+        "हित हरिवंश",
+        "समाज गायन"
+      ],
+      "chunkFile": "place-shri-radha-vallabh-mandir.json"
+    },
+    {
+      "id": "ayodhya-ram-janmabhoomi",
+      "slug": "ayodhya-ram-janmabhoomi",
+      "name": "Sri Ram Janmabhoomi Ayodhya",
+      "nameDevanagari": "श्री राम जन्मभूमि अयोध्या धाम",
+      "dhamRegion": "ayodhya",
+      "regionNameHindi": "अयोध्या, उत्तर प्रदेश",
+      "briefSignificance": "मर्यादा पुरुषोत्तम भगवान श्री राम का पावन प्राकट्य स्थल एवं सरयू तीर पर ...",
+      "deity": "प्रभु श्री रामलला सरकार",
+      "tags": [
+        "अयोध्या",
+        "राम-जन्मभूमि",
+        "रामलला"
+      ],
+      "chunkFile": "place-ayodhya-ram-janmabhoomi.json"
+    },
+    {
+      "id": "gangotri-dham",
+      "slug": "gangotri-dham",
+      "name": "Shri Gangotri Dham",
+      "nameDevanagari": "श्री गंगोत्री धाम (उत्तराखंड)",
+      "dhamRegion": "himalayas",
+      "regionNameHindi": "उत्तरकाशी, गढ़वाल हिमालय, उत्तराखंड",
+      "briefSignificance": "राजा भगीरथ की कठोर तपस्या से स्वर्ग से धरा पर अवतरित पतित-पावनी माँ गंगा...",
+      "deity": "माँ भगीरथी गंगा",
+      "tags": [
+        "गंगोत्री",
+        "भागीरथी",
+        "गोमुख"
+      ],
+      "chunkFile": "place-gangotri-dham.json"
+    },
+    {
+      "id": "maan-mandir-barsana",
+      "slug": "maan-mandir-barsana",
+      "name": "Maan Mandir Maan Garh Barsana",
+      "nameDevanagari": "मान मंदिर (मान गढ़, बरसाना)",
+      "dhamRegion": "barsana",
+      "regionNameHindi": "मानपुर पर्वत शिखर, बरसाना",
+      "briefSignificance": "श्री राधारानी की मान लीला स्थली, जहाँ पूज्य संत श्री रमेश बाबा जी महाराज...",
+      "deity": "मानिनी श्रीजी एवं अनुनय करते श्यामसुन्दर",
+      "tags": [
+        "मान मंदिर",
+        "रमेश बाबा",
+        "गौ सेवा"
+      ],
+      "chunkFile": "place-maan-mandir-barsana.json"
+    },
+    {
+      "id": "pandharpur-vitthal-mandir",
+      "slug": "pandharpur-vitthal-mandir",
+      "name": "Sri Vitthal Rukmini Mandir Pandharpur",
+      "nameDevanagari": "श्री विट्ठल-रुक्मिणी मन्दिर पंढरपुर",
+      "dhamRegion": "all",
+      "regionNameHindi": "सोलापुर, महाराष्ट्र",
+      "briefSignificance": "वारकरी सम्प्रदाय का हृदय धाम, जहाँ भक्त पुण्डलीक के प्रेमवश ईंट पर कमर प...",
+      "deity": "श्री विट्ठल (पाण्डुरंग) एवं रुक्मिणी माता",
+      "tags": [
+        "पंढरपुर",
+        "विट्ठल",
+        "पाण्डुरंग"
+      ],
+      "chunkFile": "place-pandharpur-vitthal-mandir.json"
+    },
+    {
+      "id": "kedarnath-jyotirlinga",
+      "slug": "kedarnath-jyotirlinga",
+      "name": "Kedarnath Jyotirlinga Dham",
+      "nameDevanagari": "श्री केदारनाथ ज्योतिर्लिंग धाम",
+      "dhamRegion": "char-dham",
+      "regionNameHindi": "रुद्रप्रयाग, उत्तराखण्ड",
+      "briefSignificance": "मन्दाकिनी नदी के तट पर स्थित पंच केदारों में प्रधान, द्वादश ज्योतिर्लिंग...",
+      "deity": "देवाधिदेव केदारनाथ जी",
+      "tags": [
+        "केदारनाथ",
+        "ज्योतिर्लिंग",
+        "मन्दाकिनी"
+      ],
+      "chunkFile": "place-kedarnath-jyotirlinga.json"
     }
   ]
 }

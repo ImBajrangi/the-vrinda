@@ -1,0 +1,38 @@
+{
+  "id": "om-jai-shiv-omkara",
+  "slug": "om-jai-shiv-omkara",
+  "title": "Shri Shiv Aarti (Om Jai Shiv Omkara)",
+  "titleDevanagari": "शिव जी की आरती: ॐ जय शिव ओंकारा",
+  "category": "aarti",
+  "categoryHindi": "आरती संग्रह",
+  "deity": "Lord Shiva",
+  "deityDevanagari": "देवाधिदेव महादेव",
+  "author": "सनातन परम्परा",
+  "totalVerses": 5,
+  "durationMinutes": 5,
+  "tags": [
+    "शिव आरती",
+    "महादेव",
+    "भोलेनाथ",
+    "प्रदोष"
+  ],
+  "pujaVidhi": "बेलपत्र, भस्म व गंगाजल अर्पित कर कपूर के दीपक से आरती करें।",
+  "stanzas": [
+    {
+      "stanzaNumber": 1,
+      "textDevanagari": [
+        "ॐ जय शिव ओंकारा, हर ॐ जय शिव ओंकारा।",
+        "ब्रह्मा विष्णु सदाशिव अर्द्धाङ्गी धारा॥"
+      ],
+      "meaning": "ॐकार स्वरूप देवाधिदेव शिवजी की आरती उतारते हैं, जो ब्रह्मा, विष्णु और सदाशिव के मूल स्रोत हैं।"
+    },
+    {
+      "stanzaNumber": 2,
+      "textDevanagari": [
+        "एकानन चतुरानन पञ्चानन राजे।",
+        "हंसासन गरुड़ासन वृषवाहन साजे॥"
+      ],
+      "meaning": "पंचमुख, वृषभवाहन पर आरूढ़ त्रिपुरारी शिवजी भक्तों के समस्त क्लेशों का हरण करते हैं।"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "id": "shri-radha-vallabh-mandir",
+  "slug": "shri-radha-vallabh-mandir",
+  "name": "Shri Radha Vallabh Mandir",
+  "nameDevanagari": "श्री राधावल्लभ लाल मंदिर",
+  "dhamRegion": "vrindavan",
+  "regionNameHindi": "वृन्दावन धाम, मथुरा, उत्तर प्रदेश",
+  "briefSignificance": "श्री राधावल्लभ संप्रदाय का प्रधान देवालय जहाँ श्री राधावल्लभ लाल के साथ श्रीजी की गद्दी सेवा विराजित है।",
+  "deity": "Shri Radha Vallabh Lal Ji",
+  "deityDevanagari": "श्री राधावल्लभ लाल जी महाराज",
+  "darshanTimings": {
+    "morning": {
+      "open": "07:00",
+      "close": "12:00",
+      "aartiName": "शृंगार व राजभोग आरती"
+    },
+    "evening": {
+      "open": "18:30",
+      "close": "21:00",
+      "aartiName": "शयन आरती"
+    },
+    "specialNotes": "उत्सवों में समाज गायन की विशेष परंपरा है।"
+  },
+  "parikramaKm": "२ किमी नगर परिक्रमा",
+  "scripturalReferences": "श्री हित चौरासी, स्फुट वाणी",
+  "historyAndGlory": "श्री हित हरिवंश महाप्रभु ने देवबंद से वृन्दावन आगमन पर श्री राधावल्लभ लाल के पावन विग्रह को मदन टेर (ऊँची ठौर) पर पधराया। इस मंदिर में श्री राधा रानी की पृथक मूर्ति नहीं है, अपितु श्रीजी स्वयं ठाकुरजी के वाम भाग में मुकुट व गद्दी के रूप में नित्य विराजमान हैं।",
+  "tags": [
+    "राधावल्लभ",
+    "हित हरिवंश",
+    "समाज गायन",
+    "मदन टेर"
+  ],
+  "coordinates": {
+    "latitude": 27.5842,
+    "longitude": 77.7011
+  }
+}

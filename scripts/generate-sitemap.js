@@ -331,6 +331,67 @@ function createSitemapSuite(baseUrl, prefix = '') {
     { loc: `${baseUrl}/places`, lastmod: today, changefreq: 'weekly', priority: 0.9 },
     { loc: `${baseUrl}/rituals`, lastmod: today, changefreq: 'weekly', priority: 0.9 },
   ];
+
+  // Ingest all Sacred Sections (Rituals, Places, Stories, Biographies) with clean ASCII URLs
+  const ritualsIndexPath = path.resolve(projectRoot, 'public/data/rituals/index.json');
+  if (fs.existsSync(ritualsIndexPath)) {
+    try {
+      const data = JSON.parse(fs.readFileSync(ritualsIndexPath, 'utf-8'));
+      for (const item of data.items || []) {
+        mainUrls.push({
+          loc: `${baseUrl}/ritual/${item.slug}`,
+          lastmod: today,
+          changefreq: 'monthly',
+          priority: 0.9,
+        });
+      }
+    } catch {}
+  }
+
+  const placesIndexPath = path.resolve(projectRoot, 'public/data/places/index.json');
+  if (fs.existsSync(placesIndexPath)) {
+    try {
+      const data = JSON.parse(fs.readFileSync(placesIndexPath, 'utf-8'));
+      for (const item of data.items || []) {
+        mainUrls.push({
+          loc: `${baseUrl}/place/${item.slug}`,
+          lastmod: today,
+          changefreq: 'monthly',
+          priority: 0.9,
+        });
+      }
+    } catch {}
+  }
+
+  const storiesIndexPath = path.resolve(projectRoot, 'public/data/stories/index.json');
+  if (fs.existsSync(storiesIndexPath)) {
+    try {
+      const data = JSON.parse(fs.readFileSync(storiesIndexPath, 'utf-8'));
+      for (const item of data.items || []) {
+        mainUrls.push({
+          loc: `${baseUrl}/story/${item.slug}`,
+          lastmod: today,
+          changefreq: 'monthly',
+          priority: 0.9,
+        });
+      }
+    } catch {}
+  }
+
+  const biosIndexPath = path.resolve(projectRoot, 'public/data/biographies/index.json');
+  if (fs.existsSync(biosIndexPath)) {
+    try {
+      const data = JSON.parse(fs.readFileSync(biosIndexPath, 'utf-8'));
+      for (const item of data.items || []) {
+        mainUrls.push({
+          loc: `${baseUrl}/bio/${item.slug}`,
+          lastmod: today,
+          changefreq: 'monthly',
+          priority: 0.9,
+        });
+      }
+    } catch {}
+  }
   const mainXml = buildUrlset(mainUrls);
 
   // 2. Granthas (24 Ras Collections - Clean URLs)
@@ -353,12 +414,26 @@ function createSitemapSuite(baseUrl, prefix = '') {
   }));
   const saintsXml = buildUrlset(saintsUrls);
 
-  // 4. Padas (11,909 Ras Verses - Clean URLs)
+  // Load legacy slug redirects to resolve any legacy Devanagari slugs into clean Roman canonical URLs
+  let legacyRedirects = {};
+  const legacyPath = path.resolve(projectRoot, 'src/data/legacySlugRedirects.json');
+  if (fs.existsSync(legacyPath)) {
+    try {
+      legacyRedirects = JSON.parse(fs.readFileSync(legacyPath, 'utf-8'));
+    } catch {}
+  }
+
+  // 4. Padas (11,909 Ras Verses - 100% Clean Canonical Roman URLs)
   const padasUrls = rasPadas.map((p) => {
     const isCelebrated = ['hit-chaurasi', 'radha-sudha-nidhi', 'kelimal'].includes(p.collectionId);
-    const slug = p.slug || p.id;
+    let rawSlug = (p.slug || p.id || '').trim();
+    if (legacyRedirects[rawSlug]) {
+      rawSlug = legacyRedirects[rawSlug];
+    }
+    // Clean ASCII slug with zero percent encoding
+    const cleanSlug = rawSlug.replace(/[^a-zA-Z0-9\-_]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
     return {
-      loc: `${baseUrl}/pad/${encodeURIComponent(slug)}`,
+      loc: `${baseUrl}/pad/${cleanSlug}`,
       lastmod: today,
       changefreq: 'monthly',
       priority: isCelebrated ? 0.9 : 0.8,

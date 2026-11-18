@@ -65,6 +65,10 @@ async function prerender() {
     { url: '/feed', file: 'feed.html' },
     { url: '/milestones', file: 'milestones.html' },
     { url: '/smaran', file: 'smaran.html' },
+    { url: '/rituals', file: 'rituals.html' },
+    { url: '/places', file: 'places.html' },
+    { url: '/stories', file: 'stories.html' },
+    { url: '/biographies', file: 'biographies.html' },
   ];
 
   // 2. Pre-render ALL 29 Scripture Collections (5 Epics + 24 Rasik Granthas)
@@ -109,6 +113,50 @@ async function prerender() {
     { url: '/pad/main-to-govardhan-ko-jaun-meri-veer-shri-chandrasakhi-ji', file: 'pad-main-to-govardhan-ko-jaun-meri-veer-shri-chandrasakhi-ji.html' },
     { url: '/pad/radhika-ravan-ki-murlika-shravan-suni-shri-chaturbhujdas-ji', file: 'pad-radhika-ravan-ki-murlika-shravan-suni-shri-chaturbhujdas-ji.html' }
   );
+
+  // 5. Pre-render All Sacred Rituals (Aartis, Chalisas, Stotras)
+  const ritualsIndexPath = path.resolve(projectRoot, 'public/data/rituals/index.json');
+  if (fs.existsSync(ritualsIndexPath)) {
+    try {
+      const data = JSON.parse(fs.readFileSync(ritualsIndexPath, 'utf-8'));
+      for (const item of data.items || []) {
+        routes.push({ url: `/ritual/${item.slug}`, file: `ritual-${item.slug}.html` });
+      }
+    } catch {}
+  }
+
+  // 6. Pre-render All Sacred Places & Dhams
+  const placesIndexPath = path.resolve(projectRoot, 'public/data/places/index.json');
+  if (fs.existsSync(placesIndexPath)) {
+    try {
+      const data = JSON.parse(fs.readFileSync(placesIndexPath, 'utf-8'));
+      for (const item of data.items || []) {
+        routes.push({ url: `/place/${item.slug}`, file: `place-${item.slug}.html` });
+      }
+    } catch {}
+  }
+
+  // 7. Pre-render All Sacred Stories & Leelas
+  const storiesIndexPath = path.resolve(projectRoot, 'public/data/stories/index.json');
+  if (fs.existsSync(storiesIndexPath)) {
+    try {
+      const data = JSON.parse(fs.readFileSync(storiesIndexPath, 'utf-8'));
+      for (const item of data.items || []) {
+        routes.push({ url: `/story/${item.slug}`, file: `story-${item.slug}.html` });
+      }
+    } catch {}
+  }
+
+  // 8. Pre-render All Saint Biographies
+  const biosIndexPath = path.resolve(projectRoot, 'public/data/biographies/index.json');
+  if (fs.existsSync(biosIndexPath)) {
+    try {
+      const data = JSON.parse(fs.readFileSync(biosIndexPath, 'utf-8'));
+      for (const item of data.items || []) {
+        routes.push({ url: `/bio/${item.slug}`, file: `bio-${item.slug}.html` });
+      }
+    } catch {}
+  }
 
   console.log('🌸 Pre-rendering Vrindopnisad routes for SEO & SSR...');
 

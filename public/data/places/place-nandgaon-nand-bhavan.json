@@ -1,0 +1,37 @@
+{
+  "id": "nandgaon-nand-bhavan",
+  "slug": "nandgaon-nand-bhavan",
+  "name": "Nand Bhavan Nandgaon",
+  "nameDevanagari": "नन्द भवन (नन्दगाँव)",
+  "dhamRegion": "nandgaon",
+  "regionNameHindi": "नन्दीश्वर पर्वत, नन्दगाँव, मथुरा",
+  "briefSignificance": "भगवान श्रीकृष्ण का बाल्यकालीन निवास, नन्दबाबा, यशोदा मैया और बलदाऊ जी का पावन देवालय।",
+  "deity": "Nand Baba, Yashoda Maiya, Krishna & Balaram",
+  "deityDevanagari": "नन्दबाबा, माता यशोदा, कन्हैया व दाऊ भैया",
+  "darshanTimings": {
+    "morning": {
+      "open": "05:00",
+      "close": "12:00",
+      "aartiName": "मंगला व शृंगार"
+    },
+    "evening": {
+      "open": "16:30",
+      "close": "21:00",
+      "aartiName": "शयन आरती"
+    },
+    "specialNotes": "नन्दीश्वर पर्वत साक्षात् भगवान शिव का स्वरूप माना जाता है।"
+  },
+  "parikramaKm": "नन्दगाँव परिक्रमा ३ किमी",
+  "scripturalReferences": "श्रीमद्भागवत, गर्ग संहिता",
+  "historyAndGlory": "कंस के उपद्रवों से गोकुल छोड़ने के पश्चात नन्दबाबा समस्त गोपों सहित नन्दगाँव आकर बसे थे। यहाँ पावन सरोवर है जिसे पावन सरोवर कहा जाता है जहाँ यशोदा मैया कन्हैया को स्नान कराती थीं।",
+  "tags": [
+    "नन्दगाँव",
+    "नन्द भवन",
+    "यशोदा मैया",
+    "पावन सरोवर"
+  ],
+  "coordinates": {
+    "latitude": 27.7125,
+    "longitude": 77.3878
+  }
+}
