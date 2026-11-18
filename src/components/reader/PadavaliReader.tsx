@@ -2928,18 +2928,18 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                       <div
                         key={pad.id}
                         id={`verse-stream-${pad.id}`}
-                        className={`scroll-mt-24 sm:scroll-mt-28 p-3.5 sm:p-7 rounded-[14px] sm:rounded-2xl border transition-colors duration-200 ${
+                        className={`scroll-mt-24 sm:scroll-mt-28 p-3.5 sm:p-7 rounded-[18px] sm:rounded-2xl border-0 sm:border transition-colors duration-200 ${
                           selectedPad.id === pad.id
-                            ? 'bg-[#FFFDF9] border-amber-300/70 shadow-[0_2px_10px_rgba(251,191,36,0.06)]'
-                            : `${currentTheme.cardHoverBg} ${currentTheme.borderColor}`
+                            ? 'bg-[#FFFDF9] sm:border-amber-300/70 shadow-[0_2px_12px_rgba(251,191,36,0.07)]'
+                            : `${currentTheme.cardHoverBg} sm:${currentTheme.borderColor}`
                         }`}
                       >
                         {/* Verse Header Line */}
                         <div className={`flex items-center justify-between pb-2.5 mb-3.5 border-b ${currentTheme.borderColor} gap-2 flex-nowrap`}>
                           <div className="flex items-center gap-1.5 sm:gap-2 min-w-0 truncate">
-                            <span className={`px-2.5 py-0.5 rounded-full text-xs font-mono font-bold transition-colors shrink-0 ${
+                            <span className={`px-2.5 py-0.5 rounded-[6px] text-xs font-serif font-bold transition-colors shrink-0 ${
                               selectedPad.id === pad.id
-                                ? 'bg-[#FEF08A] text-[#78350F] border border-amber-300/60 shadow-2xs'
+                                ? 'bg-amber-100 text-amber-950 border border-amber-300/60 shadow-2xs'
                                 : 'bg-amber-100/40 text-amber-900 border border-amber-200/40'
                             }`}>
                               ॥ पद {pIdx + 1} ॥

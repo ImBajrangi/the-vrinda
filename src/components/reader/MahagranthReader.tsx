@@ -1109,10 +1109,10 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                     key={pad.id}
                     id={`shloka-${pad.id}`}
                     onClick={() => setActiveVerseId(pad.id)}
-                    className={`scroll-mt-28 p-3.5 sm:p-6 rounded-[14px] sm:rounded-[16px] border transition-colors duration-200 space-y-4 cursor-pointer select-text ${
+                    className={`scroll-mt-28 p-3.5 sm:p-6 rounded-[18px] sm:rounded-[20px] border-0 sm:border transition-colors duration-200 space-y-4 cursor-pointer select-text ${
                       isActive
-                        ? 'bg-[#FFFDF9] border-amber-300/70 shadow-[0_2px_10px_rgba(251,191,36,0.06)]'
-                        : 'bg-white sm:bg-[#FAF8F5]/60 hover:bg-[#FAF8F5] border-amber-900/10 shadow-2xs sm:shadow-none'
+                        ? 'bg-[#FFFDF9] sm:border-amber-300/70 shadow-[0_2px_12px_rgba(251,191,36,0.07)]'
+                        : 'bg-white sm:bg-[#FAF8F5]/60 hover:bg-[#FAF8F5] sm:border-amber-900/10 shadow-2xs sm:shadow-none'
                     }`}
                   >
                     {/* Verse Meta Header */}
@@ -1120,7 +1120,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                       <div className="flex items-center gap-2 min-w-0">
                         <span className={`px-2.5 py-0.5 rounded-[6px] font-serif font-bold text-xs transition-colors shrink-0 ${
                           isActive
-                            ? 'bg-[#FEF08A] text-[#78350F] border border-amber-300/60 shadow-2xs'
+                            ? 'bg-amber-100 text-amber-950 border border-amber-300/60 shadow-2xs'
                             : 'bg-amber-100/40 text-amber-900 border border-amber-200/40'
                         }`}>
                           ॥ {currentEpicConfig.verseTerm} {formatDevanagariNumerals(idx + 1)} ॥

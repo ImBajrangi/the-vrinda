@@ -1,17 +1,42 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { createPortal } from 'react-dom';
-import { Search, X, Music } from 'lucide-react';
-import { SacredDatabase, CanonicalSaint, CanonicalGrantha, cleanSacredString } from '../../services/sacredDatabase';
+import {
+  Search,
+  X,
+  BookOpen,
+  Compass,
+  Flame,
+  MapPin,
+  CornerDownLeft,
+  ChevronRight,
+  TrendingUp,
+  Sparkles,
+} from 'lucide-react';
+import {
+  SacredDatabase,
+  CanonicalSaint,
+  CanonicalGrantha,
+  cleanSacredString,
+} from '../../services/sacredDatabase';
 import { SacredPad } from '../../types/devotional';
 import { getSaintPortrait, getBookCoverConfig } from '../../services/devotionalVisuals';
 import { IOSSpinner, navigationProgress } from './IOSActivityIndicator';
+import { CorrelationService } from '../../services/correlationService';
+import {
+  SEED_STORIES,
+  SEED_PLACES,
+  SEED_RITUALS,
+} from '../../services/sacredSectionService';
 
 export type SearchFilterType = 'all' | 'padas' | 'saints' | 'granthas';
 
 type CombinedItem =
   | { type: 'grantha'; data: CanonicalGrantha }
   | { type: 'saint'; data: CanonicalSaint }
-  | { type: 'pad'; data: SacredPad };
+  | { type: 'pad'; data: SacredPad }
+  | { type: 'place'; data: typeof SEED_PLACES[0] }
+  | { type: 'ritual'; data: typeof SEED_RITUALS[0] }
+  | { type: 'story'; data: typeof SEED_STORIES[0] };
 
 interface SpotlightSearchModalProps {
   isOpen: boolean;
@@ -20,6 +45,65 @@ interface SpotlightSearchModalProps {
   onSelectSaint?: (saint: CanonicalSaint) => void;
   onSelectGrantha?: (grantha: CanonicalGrantha) => void;
 }
+
+/**
+ * Intelligent devotional title sanitizer:
+ * Strips redundant metadata (e.g. "- श्री हित हरिवंश महाप्रभु, श्री हित चौरासी (पद 1) (विभास)")
+ * and separates pure sacred mukhda from pad number and grantha hints.
+ */
+function extractPurePadaTitle(rawTitle: string): {
+  title: string;
+  padHint?: string;
+  granthaHint?: string;
+} {
+  if (!rawTitle) return { title: '' };
+  const cleaned = cleanSacredString(rawTitle);
+
+  // Split only on dashes surrounded by spaces or starting after a space
+  const parts = cleaned.split(/\s+[-–—]\s+|\s*[-–—]\s+/);
+  let pureTitle = parts[0].trim();
+  const trailingMeta = parts.length > 1 ? parts.slice(1).join(' - ').trim() : '';
+
+  // Extract pad number if present
+  let padHint: string | undefined;
+  const padMatch = (trailingMeta + ' ' + cleaned).match(/पद\s*(\d+|[०-९]+)/);
+  if (padMatch) {
+    padHint = `पद ${padMatch[1]}`;
+  }
+
+  // Remove trailing parenthetical metadata (e.g. '(पद 1)' or '(विभास)') from pureTitle
+  pureTitle = pureTitle.replace(/\s*\((?:पद\s*[\d०-९]+|राग\s*[^)]+|[^)]+)\)\s*$/g, '').trim();
+
+  // Extract canonical grantha name if recognized
+  let granthaHint: string | undefined;
+  const combined = trailingMeta + ' ' + cleaned;
+  if (combined.includes('हित चौरासी')) granthaHint = 'श्री हित चौरासी';
+  else if (combined.includes('राधा सुधा निधि')) granthaHint = 'श्री राधा सुधा निधि';
+  else if (combined.includes('केलिमाल')) granthaHint = 'श्री केलिमाल';
+  else if (combined.includes('व्यास वाणी')) granthaHint = 'श्री व्यास वाणी';
+  else if (combined.includes('स्फुट वाणी')) granthaHint = 'श्री स्फुट वाणी';
+  else if (combined.includes('बयालीस लीला')) granthaHint = 'बयालीस लीला';
+  else if (combined.includes('सूरसागर')) granthaHint = 'सूरसागर';
+  else if (combined.includes('विनय पत्रिका')) granthaHint = 'विनय पत्रिका';
+
+  return {
+    title: pureTitle || cleaned,
+    padHint,
+    granthaHint,
+  };
+}
+
+// Curated Trending Devotional Search Pills for instant emotional connection
+const TRENDING_SEARCH_PROMPTS = [
+  { label: 'श्री राधा कृपा कटाक्ष', query: 'राधा कृपा कटाक्ष', icon: '✨' },
+  { label: 'श्री हनुमान चालीसा', query: 'हनुमान चालीसा', icon: '🪔' },
+  { label: 'आरती कुंजबिहारी की', query: 'आरती कुंजबिहारी की', icon: '🌸' },
+  { label: 'मधुराष्टकम', query: 'मधुराष्टकम', icon: '🍯' },
+  { label: 'हित चौरासी (पद १)', query: 'जोई जोई प्यारो करे', icon: '🎶' },
+  { label: 'गिरिराज गोवर्धन', query: 'गोवर्धन', icon: '⛰️' },
+  { label: 'स्वामी हरिदास केलिमाल', query: 'केलिमाल', icon: '🪷' },
+  { label: 'शिव ताण्डव स्तोत्रम्', query: 'शिव ताण्डव', icon: '🔱' },
+];
 
 export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
   isOpen,
@@ -34,11 +118,16 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
   const [selectedIdx, setSelectedIdx] = useState<number>(0);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // 300ms Debounce to prevent unnecessary filtering operations
+  // Real-time Ashtayama Prahar context for divine relatability
+  const prahar = useMemo(() => {
+    return CorrelationService.getCurrentPrahar();
+  }, []);
+
+  // 250ms Debounce to prevent unnecessary filtering operations
   useEffect(() => {
     const handler = setTimeout(() => {
       setDebouncedQuery(query);
-    }, 300);
+    }, 250);
     return () => clearTimeout(handler);
   }, [query]);
 
@@ -49,7 +138,7 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
     }
   }, [debouncedQuery]);
 
-  // Lazy-load complete search catalog on first modal open using immutable content-hashed URL
+  // Lazy-load complete search catalog on first modal open
   useEffect(() => {
     if (isOpen) {
       SacredDatabase.getManifestAsync()
@@ -80,7 +169,7 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
       setIsRendered(true);
       setIsClosing(false);
       setSelectedIdx(0);
-      setTimeout(() => inputRef.current?.focus(), 50);
+      setTimeout(() => inputRef.current?.focus(), 60);
     } else if (isRendered) {
       setIsClosing(true);
       if (closeTimerRef.current) {
@@ -90,7 +179,7 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
         setIsRendered(false);
         setIsClosing(false);
         closeTimerRef.current = null;
-      }, 240);
+      }, 220);
     }
   }, [isOpen]);
 
@@ -124,30 +213,77 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
     });
   }, []);
 
-  // Stable Query-Level Search Results (Facet counts depend ONLY on query & DB, NEVER on activeFilter)
+  // 1. Searched Padas with Intelligent Deduplication
   const searchedPadas = useMemo(() => {
-    return SacredDatabase.search(debouncedQuery, debouncedQuery.trim() ? 50 : 24);
+    const raw = SacredDatabase.search(debouncedQuery, debouncedQuery.trim() ? 50 : 28);
+    const seenTitles = new Set<string>();
+    const deduped: SacredPad[] = [];
+
+    for (const p of raw) {
+      const { title } = extractPurePadaTitle(p.titleDevanagari);
+      const normalized = title.replace(/\s+/g, '').replace(/[-–—]/g, '');
+      if (seenTitles.has(normalized)) continue;
+      seenTitles.add(normalized);
+      deduped.push(p);
+    }
+    return deduped;
   }, [debouncedQuery, dbVersion]);
 
+  // 2. Searched Saints
   const searchedSaints = useMemo(() => {
     const allSaints = SacredDatabase.getAllSaints();
     const q = debouncedQuery.trim().toLowerCase();
-    if (!q) return allSaints.slice(0, 24);
+    if (!q) return allSaints.slice(0, 8);
     return allSaints.filter(
       (s) => s.name.toLowerCase().includes(q) || (s.nameEng && s.nameEng.toLowerCase().includes(q))
     );
   }, [debouncedQuery]);
 
+  // 3. Searched Granthas
   const searchedGranthas = useMemo(() => {
     const allGranthas = SacredDatabase.getAllGranthas();
     const q = debouncedQuery.trim().toLowerCase();
-    if (!q) return allGranthas;
+    if (!q) return allGranthas.slice(0, 6);
     return allGranthas.filter(
       (g) => g.name.toLowerCase().includes(q) || (g.author && g.author.toLowerCase().includes(q))
     );
   }, [debouncedQuery]);
 
-  const totalResults = searchedGranthas.length + searchedSaints.length + searchedPadas.length;
+  // 4. Searched Sacred Sections (Places, Rituals, Stories)
+  const searchedSacredSections = useMemo(() => {
+    const q = debouncedQuery.trim().toLowerCase();
+    if (!q) return [];
+
+    const matchedPlaces = SEED_PLACES.filter(
+      (p) =>
+        p.nameDevanagari.toLowerCase().includes(q) ||
+        p.regionNameHindi.toLowerCase().includes(q) ||
+        (p.tags && p.tags.some((t) => t.toLowerCase().includes(q)))
+    ).slice(0, 2);
+
+    const matchedRituals = SEED_RITUALS.filter(
+      (r) =>
+        r.titleDevanagari.toLowerCase().includes(q) ||
+        r.categoryHindi.toLowerCase().includes(q) ||
+        r.deityDevanagari.toLowerCase().includes(q)
+    ).slice(0, 2);
+
+    const matchedStories = SEED_STORIES.filter(
+      (s) =>
+        s.titleDevanagari.toLowerCase().includes(q) ||
+        s.categoryHindi.toLowerCase().includes(q) ||
+        (s.tags && s.tags.some((t) => t.toLowerCase().includes(q)))
+    ).slice(0, 2);
+
+    return [
+      ...matchedPlaces.map((p) => ({ type: 'place' as const, data: p })),
+      ...matchedRituals.map((r) => ({ type: 'ritual' as const, data: r })),
+      ...matchedStories.map((s) => ({ type: 'story' as const, data: s })),
+    ];
+  }, [debouncedQuery]);
+
+  const totalResults =
+    searchedGranthas.length + searchedSaints.length + searchedPadas.length + searchedSacredSections.length;
 
   // Displayed items strictly filtered by the selected tab
   const displayedGranthas = useMemo(() => {
@@ -165,22 +301,30 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
     return activeFilter === 'all' ? searchedPadas.slice(0, 12) : searchedPadas;
   }, [activeFilter, searchedPadas]);
 
-  // Flattened items list for index-based keyboard navigation matching visual order:
-  // Visual order: Saints -> Granthas -> Padas
+  // Combined items list for keyboard navigation
   const combinedResults = useMemo<CombinedItem[]>(() => {
-    return [
-      ...displayedSaints.map((s) => ({ type: 'saint' as const, data: s })),
-      ...displayedGranthas.map((g) => ({ type: 'grantha' as const, data: g })),
-      ...displayedPadas.map((p) => ({ type: 'pad' as const, data: p })),
-    ];
-  }, [displayedSaints, displayedGranthas, displayedPadas]);
+    const list: CombinedItem[] = [];
+    if (activeFilter === 'all') {
+      for (const sec of searchedSacredSections) list.push(sec);
+      for (const s of displayedSaints) list.push({ type: 'saint', data: s });
+      for (const g of displayedGranthas) list.push({ type: 'grantha', data: g });
+      for (const p of displayedPadas) list.push({ type: 'pad', data: p });
+    } else if (activeFilter === 'padas') {
+      for (const p of displayedPadas) list.push({ type: 'pad', data: p });
+    } else if (activeFilter === 'saints') {
+      for (const s of displayedSaints) list.push({ type: 'saint', data: s });
+    } else if (activeFilter === 'granthas') {
+      for (const g of displayedGranthas) list.push({ type: 'grantha', data: g });
+    }
+    return list;
+  }, [displayedSaints, displayedGranthas, displayedPadas, searchedSacredSections, activeFilter]);
 
   // Reset keyboard index on query/filter change
   useEffect(() => {
     setSelectedIdx(0);
   }, [query, activeFilter]);
 
-  // Keyboard Shortcuts (Esc, ArrowDown, ArrowUp, Enter, Tab)
+  // Keyboard Navigation
   useEffect(() => {
     if (!isOpen) return;
 
@@ -206,12 +350,20 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
             navigationProgress.start();
             if (target.type === 'grantha') {
               onSelectGrantha?.(target.data);
+              onClose();
             } else if (target.type === 'saint') {
               onSelectSaint?.(target.data);
+              onClose();
             } else if (target.type === 'pad') {
               onSelectPad(target.data);
+              onClose();
+            } else if (target.type === 'place') {
+              window.location.href = `/place/${target.data.slug}`;
+            } else if (target.type === 'ritual') {
+              window.location.href = `/ritual/${target.data.slug}`;
+            } else if (target.type === 'story') {
+              window.location.href = `/story/${target.data.slug}`;
             }
-            onClose();
             requestAnimationFrame(() => navigationProgress.done());
           }
         }
@@ -233,40 +385,47 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
   const filterOrder: SearchFilterType[] = ['all', 'padas', 'saints', 'granthas'];
   const activeFilterIdx = Math.max(0, filterOrder.indexOf(activeFilter));
 
-  const filterTabs: { id: SearchFilterType; label: string; mobileLabel: string; count: number }[] = [
-    { id: 'all', label: 'सभी', mobileLabel: 'सभी', count: totalResults },
-    { id: 'padas', label: 'पदावली', mobileLabel: 'पद', count: searchedPadas.length },
-    { id: 'saints', label: 'रसिक संत', mobileLabel: 'संत', count: searchedSaints.length },
-    { id: 'granthas', label: 'पावन ग्रन्थ', mobileLabel: 'ग्रन्थ', count: searchedGranthas.length },
+  const filterTabs: { id: SearchFilterType; label: string; count: number }[] = [
+    { id: 'all', label: 'समस्त नेक्सस', count: totalResults },
+    { id: 'padas', label: 'पदावली', count: searchedPadas.length },
+    { id: 'saints', label: 'रसिक संत', count: searchedSaints.length },
+    { id: 'granthas', label: 'पावन ग्रन्थ', count: searchedGranthas.length },
   ];
 
-  const hasVisibleResults = displayedSaints.length > 0 || displayedGranthas.length > 0 || displayedPadas.length > 0;
+  const isQueryEmpty = !query.trim();
 
   return createPortal(
     <div
       role="dialog"
       aria-modal="true"
       onClick={handleDismiss}
-      className={`fixed inset-0 z-[100] flex items-start justify-center pt-10 sm:pt-16 px-3 sm:px-4 bg-black/40 transition-opacity select-none ${
+      className={`fixed inset-0 z-[100] flex items-end sm:items-start justify-center p-0 sm:pt-10 sm:px-4 bg-black/55 backdrop-blur-[5px] transition-opacity select-none ${
         isClosing ? 'modal-backdrop-exit' : 'modal-backdrop-enter'
       }`}
     >
+      {/* 
+        Majestic, Spacious Spotlight Discovery Hub
+        Expanded from narrow max-w-3xl (768px) to broad, comfortable max-w-4xl lg:max-w-5xl (1000px+)
+      */}
       <div
-        className={`w-full max-w-3xl bg-white rounded-[28px] overflow-hidden flex flex-col max-h-[85vh] shadow-[0_24px_70px_-15px_rgba(0,0,0,0.28)] ${
+        className={`w-full max-w-4xl lg:max-w-5xl xl:max-w-[1020px] bg-white dark:bg-[#1A1816] rounded-t-[32px] sm:rounded-[28px] overflow-hidden flex flex-col max-h-[92vh] sm:max-h-[88vh] border-t sm:border border-stone-200/90 dark:border-stone-800 shadow-[0_32px_80px_-16px_rgba(0,0,0,0.30)] ${
           isClosing ? 'modal-dialog-exit' : 'modal-dialog-enter'
         }`}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* 1. Minimalist Search Input Bar */}
-        <div className="flex items-center gap-3 px-4 sm:px-6 pt-4 pb-2 bg-white">
-          <Search className="w-5 h-5 text-amber-700/80 shrink-0" />
+        {/* Mobile Tactile Grab Handle */}
+        <div className="w-12 h-1.5 rounded-full bg-stone-300 dark:bg-stone-700 mx-auto mt-3 mb-1 sm:hidden shrink-0" />
+
+        {/* 1. Command-K Search Input Header (Spacious & Prominent) */}
+        <div className="flex items-center gap-3 sm:gap-4 px-5 sm:px-8 py-4 sm:py-4.5 bg-white dark:bg-[#1A1816] border-b border-stone-100 dark:border-stone-800/80 min-h-[56px] sm:min-h-[64px] shrink-0">
+          <Search className="w-5 h-5 text-amber-700 dark:text-amber-400 shrink-0" />
           <input
             ref={inputRef}
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="खोजें: पद, संत, ग्रन्थ, राग या भाव..."
-            className="flex-1 bg-transparent text-[16px] sm:text-base font-normal text-[#18181B] placeholder-neutral-400 outline-none"
+            placeholder="खोजें: पावन पद, रसिक संत, महाग्रन्थ, तीर्थ, राग या भाव..."
+            className="flex-1 bg-transparent text-[16px] sm:text-[18px] font-sans font-normal text-stone-850 dark:text-stone-100 placeholder:text-stone-400 placeholder:font-normal outline-none"
           />
           {query !== debouncedQuery && (
             <IOSSpinner size="xs" theme="amber" className="shrink-0" />
@@ -275,33 +434,44 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
             <button
               type="button"
               onClick={() => setQuery('')}
-              className="w-6 h-6 rounded-full bg-neutral-100 hover:bg-neutral-200 flex items-center justify-center text-neutral-500 hover:text-neutral-800 transition-colors cursor-pointer"
+              className="w-6 h-6 rounded-full bg-stone-100 hover:bg-stone-200 dark:bg-stone-800 dark:hover:bg-stone-700 flex items-center justify-center text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 transition-colors cursor-pointer shrink-0"
               title="साफ़ करें"
             >
               <X className="w-3.5 h-3.5" />
             </button>
           )}
-          <kbd className="hidden sm:inline-block text-[10px] font-mono font-semibold text-neutral-400 bg-neutral-100 px-2 py-0.5 rounded">
+          <kbd className="hidden sm:inline-block text-[11px] font-mono font-medium text-stone-400 dark:text-stone-500 bg-stone-100 dark:bg-stone-800 px-2 py-1 rounded-[5px] border border-stone-200/60 dark:border-stone-700 shrink-0">
             ESC
           </kbd>
         </div>
 
-        {/* 2. Full-Width Segmented Scope Bar (Clean, Outline-Free) */}
-        <div className="px-4 sm:px-6 pt-1 pb-3 bg-white">
-          <div className="relative w-full grid grid-cols-4 p-1 bg-[#F5F2EB] rounded-full">
-            {/* Dynamic Elastic Sliding Pill */}
+        {/* 2. Apple / macOS Style Segmented Scope Filter Bar (Generous Height) */}
+        {/* Outer 14px -> Padding 4px -> Inner 10px (Concentric Radius: 14 - 4 = 10px) */}
+        <div className="px-4 sm:px-8 pt-2.5 pb-3 bg-stone-50/60 dark:bg-[#161412] border-b border-stone-100 dark:border-stone-800/60 shrink-0">
+          <div className="relative w-full grid grid-cols-4 p-1.5 bg-stone-200/70 dark:bg-stone-800/80 rounded-[14px] border border-stone-200/40">
+            {/* Smooth Elastic Pill */}
             <span
               aria-hidden="true"
-              className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] shadow-xs pointer-events-none transition-transform duration-[340ms] ease-[cubic-bezier(0.32,0.72,0,1)] will-change-transform"
+              className="absolute top-1.5 bottom-1.5 rounded-[10px] bg-white dark:bg-stone-900 shadow-[0_1.5px_4px_rgba(0,0,0,0.08)] border border-stone-200/50 dark:border-stone-700/60 pointer-events-none transition-transform duration-[240ms] ease-[cubic-bezier(0.32,0.72,0,1)] will-change-transform"
               style={{
-                width: 'calc((100% - 8px) / 4)',
-                left: '4px',
+                width: 'calc((100% - 12px) / 4)',
+                left: '6px',
                 transform: `translate3d(${activeFilterIdx * 100}%, 0, 0)`,
               }}
             />
 
             {filterTabs.map((f) => {
               const isActive = activeFilter === f.id;
+              const shortLabel =
+                f.id === 'all'
+                  ? 'सभी'
+                  : f.id === 'padas'
+                  ? 'पद'
+                  : f.id === 'saints'
+                  ? 'संत'
+                  : 'ग्रन्थ';
+              const fullLabel = f.label;
+
               return (
                 <button
                   key={f.id}
@@ -310,13 +480,21 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
                     setActiveFilter(f.id);
                     setSelectedIdx(0);
                   }}
-                  className={`relative z-10 py-1.5 px-1.5 sm:px-2 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer flex items-center justify-center gap-1 select-none ${
-                    isActive ? 'text-[#18181B] font-bold' : 'text-[#71717A] hover:text-[#18181B]'
+                  className={`relative z-10 py-2 sm:py-1.5 px-1.5 sm:px-3 rounded-[10px] text-[12.5px] sm:text-[14px] transition-colors duration-150 cursor-pointer flex items-center justify-center gap-1.5 select-none min-h-[38px] sm:min-h-[36px] ${
+                    isActive
+                      ? 'text-stone-900 dark:text-stone-100 font-semibold'
+                      : 'text-stone-500 dark:text-stone-400 hover:text-stone-800 dark:hover:text-stone-200 font-normal'
                   }`}
                 >
-                  <span className="hidden sm:inline truncate">{f.label}</span>
-                  <span className="sm:hidden truncate">{f.mobileLabel}</span>
-                  <span className="text-[11px] font-mono opacity-55">
+                  <span className="sm:hidden truncate">{shortLabel}</span>
+                  <span className="hidden sm:inline truncate">{fullLabel}</span>
+                  <span
+                    className={`text-[10px] sm:text-[11px] font-mono ${
+                      isActive
+                        ? 'text-amber-800 dark:text-amber-300 font-bold'
+                        : 'text-stone-400 dark:text-stone-500'
+                    }`}
+                  >
                     ({f.count})
                   </span>
                 </button>
@@ -325,43 +503,346 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
           </div>
         </div>
 
-        {/* 3. Picture-Focused Scrollable Results Grid (Outline-Free & Tag-Free) */}
-        <div className="flex-1 overflow-y-auto p-3.5 sm:p-5 space-y-6 custom-scroll bg-white">
-          {!hasVisibleResults ? (
-            <div className="text-center py-14 text-neutral-400">
-              <p className="text-base font-serif font-semibold text-neutral-700">कोई परिणाम नहीं मिला</p>
-              <p className="text-xs text-neutral-400 mt-1">कृपया कोई अन्य शब्द, संत या ग्रन्थ का नाम खोजें</p>
+        {/* 3. Main Body: Spacious Discovery Sanctuary OR Scope-Filtered Results */}
+        <div className="flex-1 overflow-y-auto px-4 sm:px-8 py-4 sm:py-5 space-y-6 custom-scroll bg-white dark:bg-[#1A1816] pb-[max(1.75rem,env(safe-area-inset-bottom,1.75rem))]">
+          {isQueryEmpty && activeFilter === 'all' ? (
+            /* ========================================================================= */
+            /* WELCOME SANCTUARY: Majestic, Spacious, Deeply Engaging Discovery Hub     */
+            /* ========================================================================= */
+            <div className="space-y-6">
+              {/* A. Real-Time Ashtayama Prahar Hero Card (Generously Sized) */}
+              {/* Outer 20px -> Padding 14px -> Inner 6px */}
+              <div className="p-4 sm:p-5 rounded-[20px] bg-gradient-to-r from-amber-500/[0.08] via-amber-500/[0.04] to-transparent dark:from-amber-400/[0.10] border border-amber-300/50 dark:border-amber-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="flex items-start gap-3 sm:gap-3.5">
+                  <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-[8px] bg-amber-500/15 text-amber-800 dark:text-amber-300 flex items-center justify-center shrink-0">
+                    <Compass className="w-5 h-5 sm:w-6 sm:h-6" />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 text-[11px] sm:text-xs font-mono font-medium uppercase tracking-wider text-amber-900/90 dark:text-amber-300">
+                      <span>वृन्दावन अष्टयाम सेवा चक्र</span>
+                      <span className="opacity-40">•</span>
+                      <span>प्रहर {prahar.praharIndex}/८</span>
+                    </div>
+                    <h3 className="text-[15px] sm:text-[17px] font-serif font-bold text-stone-850 dark:text-stone-100 mt-0.5">
+                      {prahar.nameHindi} ({prahar.timeRange})
+                    </h3>
+                    <p className="text-xs sm:text-[13.5px] text-stone-600 dark:text-stone-400 font-sans mt-0.5 line-clamp-1">
+                      {prahar.bhava} • मुख्य राग:{' '}
+                      <span className="font-semibold text-amber-850 dark:text-amber-300">
+                        {prahar.ragaText}
+                      </span>
+                    </p>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setQuery(prahar.activeRagas[0] || 'विभास')}
+                  className="w-full sm:w-auto text-center justify-center px-4 py-2.5 sm:py-2 rounded-[8px] text-[13px] sm:text-xs font-serif font-semibold bg-white dark:bg-stone-800 text-amber-900 dark:text-amber-200 border border-amber-300/60 dark:border-amber-700 shadow-2xs hover:bg-amber-50/90 cursor-pointer transition-colors shrink-0"
+                >
+                  इस प्रहर के पद देखें →
+                </button>
+              </div>
+
+              {/* B. Trending & Most Revered Sacred Quick Pills (Spacious Chips) */}
+              <div>
+                <div className="flex items-center gap-2 px-1 mb-2.5 text-xs sm:text-[13px] font-mono font-medium uppercase tracking-wider text-amber-900/80 dark:text-amber-400/80">
+                  <TrendingUp className="w-4 h-4" />
+                  <span>भक्तों द्वारा सर्वाधिक खोजे गए पावन प्रसंग</span>
+                </div>
+
+                <div className="flex flex-wrap gap-2 sm:gap-2.5">
+                  {TRENDING_SEARCH_PROMPTS.map((p, pIdx) => (
+                    <button
+                      key={pIdx}
+                      type="button"
+                      onClick={() => setQuery(p.query)}
+                      className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 sm:py-1.5 rounded-[9px] bg-stone-100/90 dark:bg-stone-800/80 hover:bg-amber-50 dark:hover:bg-amber-950/40 text-stone-750 dark:text-stone-300 hover:text-amber-900 dark:hover:text-amber-200 border border-stone-200/60 dark:border-stone-700/70 text-xs sm:text-[13px] font-serif transition-colors cursor-pointer"
+                    >
+                      <span className="text-sm sm:text-base">{p.icon}</span>
+                      <span>{p.label}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* C. Revered Saints Cards (Prominent Portraits & Lineage) */}
+              <div>
+                <div className="flex items-center justify-between px-1 mb-2.5">
+                  <span className="text-xs sm:text-[13px] font-mono font-medium uppercase tracking-wider text-amber-900/80 dark:text-amber-400/80">
+                    रसिक संत व आचार्य
+                  </span>
+                  <span className="text-xs text-stone-400 font-sans">वाणी व चरित्र दर्शन</span>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                  {searchedSaints.slice(0, 6).map((s) => (
+                    <div
+                      key={s.id}
+                      onClick={() => {
+                        navigationProgress.start();
+                        onSelectSaint?.(s);
+                        onClose();
+                        requestAnimationFrame(() => navigationProgress.done());
+                      }}
+                      className="group flex items-center justify-between gap-3 p-3 sm:p-3.5 rounded-[14px] bg-stone-50/70 dark:bg-stone-850/60 hover:bg-amber-500/[0.06] border border-stone-200/60 dark:border-stone-800 transition-all duration-150 cursor-pointer select-none"
+                    >
+                      <div className="flex items-center gap-3 min-w-0 flex-1">
+                        <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full overflow-hidden shrink-0 border border-amber-200/60 shadow-xs">
+                          <img
+                            src={getSaintPortrait(s)}
+                            alt={s.name}
+                            className="w-full h-full object-cover object-top"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <div className="font-serif font-medium text-[14.5px] sm:text-[15.5px] text-stone-850 dark:text-stone-100 truncate group-hover:text-amber-900 transition-colors leading-snug">
+                            {s.name}
+                          </div>
+                          <div className="text-xs sm:text-[12.5px] text-stone-500 truncate font-sans mt-0.5">
+                            {s.tradition}
+                          </div>
+                        </div>
+                      </div>
+                      <span className="text-[11px] sm:text-xs font-serif text-stone-400 group-hover:text-amber-800 transition-colors shrink-0 flex items-center gap-0.5">
+                        <span>दर्शन</span>
+                        <ChevronRight className="w-3.5 h-3.5 opacity-60" />
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* D. Principal Scriptures (Rich Leather Pothi Covers) */}
+              <div>
+                <div className="flex items-center justify-between px-1 mb-2.5">
+                  <span className="text-xs sm:text-[13px] font-mono font-medium uppercase tracking-wider text-amber-900/80 dark:text-amber-400/80">
+                    अमर पावन ग्रन्थ
+                  </span>
+                  <span className="text-xs text-stone-400 font-sans">मूल पाठ संग्रह</span>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {searchedGranthas.slice(0, 4).map((g) => {
+                    const cover = getBookCoverConfig(g.id, g.name);
+                    return (
+                      <div
+                        key={g.id}
+                        onClick={() => {
+                          navigationProgress.start();
+                          onSelectGrantha?.(g);
+                          onClose();
+                          requestAnimationFrame(() => navigationProgress.done());
+                        }}
+                        className="group flex items-center justify-between gap-3.5 p-3.5 sm:p-4 rounded-[14px] bg-stone-50/70 dark:bg-stone-850/60 hover:bg-amber-500/[0.06] border border-stone-200/60 dark:border-stone-800 transition-all duration-150 cursor-pointer select-none"
+                      >
+                        <div className="flex items-center gap-3.5 min-w-0 flex-1">
+                          <div
+                            className="w-9 h-12 sm:w-10 sm:h-13 rounded-[4px] text-white flex items-center justify-center shrink-0 shadow-xs"
+                            style={{ background: cover.bg }}
+                          >
+                            <BookOpen className="w-4 h-4 sm:w-5 sm:h-5 text-amber-200/90" />
+                          </div>
+                          <div className="min-w-0 flex-1">
+                            <div className="font-serif font-medium text-[15px] sm:text-[16px] text-stone-850 dark:text-stone-100 truncate group-hover:text-amber-900 transition-colors leading-snug">
+                              {g.name}
+                            </div>
+                            <div className="text-xs sm:text-[12.5px] text-stone-500 truncate font-sans mt-0.5">
+                              {g.author} • {g.count} पद
+                            </div>
+                          </div>
+                        </div>
+                        <span className="text-[11px] sm:text-xs font-serif text-stone-400 group-hover:text-amber-800 transition-colors shrink-0 flex items-center gap-0.5">
+                          <span>पठन</span>
+                          <ChevronRight className="w-3.5 h-3.5 opacity-60" />
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* E. Curated Divine Padas of the Day */}
+              <div>
+                <div className="flex items-center justify-between px-1 mb-2.5">
+                  <span className="text-xs sm:text-[13px] font-mono font-medium uppercase tracking-wider text-amber-900/80 dark:text-amber-400/80">
+                    पावन पदावली दर्शन
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => setActiveFilter('padas')}
+                    className="text-xs sm:text-[13px] text-amber-800 hover:text-amber-950 dark:text-amber-300 font-serif font-medium cursor-pointer transition-colors"
+                  >
+                    सभी पद देखें →
+                  </button>
+                </div>
+
+                <div className="space-y-1.5">
+                  {searchedPadas.slice(0, 5).map((pad) => {
+                    const { title: cleanTitle, padHint, granthaHint } = extractPurePadaTitle(pad.titleDevanagari);
+                    const portrait = getSaintPortrait({ name: pad.author });
+
+                    return (
+                      <div
+                        key={pad.id}
+                        onClick={() => {
+                          navigationProgress.start();
+                          onSelectPad(pad);
+                          onClose();
+                          requestAnimationFrame(() => navigationProgress.done());
+                        }}
+                        className="group flex items-center justify-between gap-3.5 px-4 py-3 rounded-[12px] bg-stone-50/60 dark:bg-stone-850/40 hover:bg-amber-500/[0.06] border border-stone-200/50 dark:border-stone-800 transition-all duration-120 cursor-pointer select-none min-h-[56px]"
+                      >
+                        <div className="flex items-center gap-3 min-w-0 flex-1">
+                          <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden shrink-0 border border-amber-200/60 shadow-2xs">
+                            <img
+                              src={portrait}
+                              alt={pad.author}
+                              className="w-full h-full object-cover object-top"
+                              loading="lazy"
+                            />
+                          </div>
+                          <div className="min-w-0 flex-1">
+                            <h4 className="font-serif font-medium text-[14.5px] sm:text-[16px] text-stone-850 dark:text-stone-100 truncate leading-snug group-hover:text-amber-900 transition-colors">
+                              {cleanTitle}
+                            </h4>
+                            <div className="flex items-center gap-2 text-xs sm:text-[12.5px] text-stone-500 font-sans leading-none mt-1 truncate">
+                              <span className="font-medium text-stone-600 dark:text-stone-300">
+                                {cleanSacredString(pad.author)}
+                              </span>
+                              {(granthaHint || padHint) && (
+                                <>
+                                  <span className="text-stone-300 dark:text-stone-600">•</span>
+                                  <span className="text-stone-500 dark:text-stone-400">
+                                    {[granthaHint, padHint].filter(Boolean).join(' ')}
+                                  </span>
+                                </>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-2.5 shrink-0">
+                          {pad.rag && (
+                            <span className="text-xs font-serif text-amber-850 dark:text-amber-300 px-2.5 py-0.5 rounded-full bg-amber-50 dark:bg-amber-950/40 border border-amber-200/50 dark:border-amber-800/40">
+                              राग {cleanSacredString(pad.rag)}
+                            </span>
+                          )}
+                          <span className="text-xs font-serif text-stone-400 group-hover:text-amber-800 transition-colors flex items-center gap-0.5">
+                            <span>पठन</span>
+                            <ChevronRight className="w-3.5 h-3.5 opacity-60" />
+                          </span>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
           ) : (
+            /* ========================================================================= */
+            /* SEARCH RESULTS / TAB VIEW: Spacious, High-Resonance Card Architecture     */
+            /* ========================================================================= */
             <>
-              {/* SECTION: Saints (रसिक संत) - Elevated Circular Medallion Portraits */}
+              {totalResults === 0 && (
+                <div className="text-center py-16 px-4 space-y-3">
+                  <div className="w-12 h-12 rounded-full bg-amber-500/10 text-amber-800 dark:text-amber-300 flex items-center justify-center mx-auto">
+                    <Search className="w-6 h-6 opacity-60" />
+                  </div>
+                  <h3 className="font-serif font-medium text-base text-stone-850 dark:text-stone-200">
+                    कोई पावन प्रसंग नहीं मिला
+                  </h3>
+                  <p className="text-[13px] text-stone-500 dark:text-stone-400 font-sans max-w-sm mx-auto">
+                    कृपया अन्य शब्द, संत का नाम (उदा. 'हरिदास', 'तुलसी', 'सूर') या राग खोजें।
+                  </p>
+                </div>
+              )}
+
+              {/* 1. Cross-Domain Sacred Sections (Dhams, Rituals, Stories) */}
+              {activeFilter === 'all' && searchedSacredSections.length > 0 && (
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2 px-1 pb-0.5">
+                    <Sparkles className="w-4 h-4 text-amber-700 dark:text-amber-400" />
+                    <span className="text-xs sm:text-[13px] font-mono font-medium tracking-wider text-amber-900/80 dark:text-amber-400/80 uppercase">
+                      पावन तीर्थ, उपासना व लीला कथाएँ
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
+                    {searchedSacredSections.map((sec, secIdx) => {
+                      const isPlace = sec.type === 'place';
+                      const isRitual = sec.type === 'ritual';
+                      const targetUrl = isPlace
+                        ? `/place/${sec.data.slug}`
+                        : isRitual
+                        ? `/ritual/${sec.data.slug}`
+                        : `/story/${sec.data.slug}`;
+
+                      return (
+                        <a
+                          key={secIdx}
+                          href={targetUrl}
+                          className="group flex items-center justify-between gap-3 p-3 sm:p-3.5 rounded-[14px] bg-stone-50/70 dark:bg-stone-850/60 hover:bg-amber-500/[0.06] border border-stone-200/60 dark:border-stone-800 transition-colors"
+                        >
+                          <div className="flex items-center gap-3 min-w-0 flex-1">
+                            <div className="w-9 h-9 rounded-[8px] bg-amber-500/10 text-amber-800 dark:text-amber-300 flex items-center justify-center shrink-0">
+                              {isPlace ? (
+                                <MapPin className="w-4 h-4 text-emerald-600" />
+                              ) : isRitual ? (
+                                <Flame className="w-4 h-4 text-amber-600" />
+                              ) : (
+                                <BookOpen className="w-4 h-4 text-rose-600" />
+                              )}
+                            </div>
+                            <div className="min-w-0 flex-1">
+                              <h4 className="font-serif font-medium text-[14.5px] sm:text-[15.5px] text-stone-850 dark:text-stone-100 group-hover:text-amber-900 truncate leading-snug">
+                                {isPlace ? sec.data.nameDevanagari : sec.data.titleDevanagari}
+                              </h4>
+                              <p className="text-xs text-stone-500 font-sans truncate mt-0.5">
+                                {isPlace
+                                  ? `${sec.data.regionNameHindi} • पावन तीर्थ`
+                                  : isRitual
+                                  ? `${sec.data.categoryHindi} • ${sec.data.deityDevanagari}`
+                                  : `${sec.data.categoryHindi} • दिव्य लीला कथा`}
+                              </p>
+                            </div>
+                          </div>
+                          <span className="text-[11px] font-mono text-stone-400 group-hover:text-amber-700 shrink-0 flex items-center gap-0.5">
+                            <span>दर्शन</span>
+                            <ChevronRight className="w-3.5 h-3.5 opacity-60" />
+                          </span>
+                        </a>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {/* 2. Saints Section (Spacious Grid) */}
               {displayedSaints.length > 0 && (
-                <div className="space-y-2.5">
-                  <div className="flex items-center justify-between px-1">
-                    <span className="text-xs font-mono font-bold tracking-wider text-amber-900 uppercase">
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between px-1 pb-0.5">
+                    <span className="text-xs sm:text-[13px] font-mono font-medium tracking-wider text-amber-900/80 dark:text-amber-400/80 uppercase">
                       रसिक संत ({activeFilter === 'all' ? displayedSaints.length : searchedSaints.length})
                     </span>
-                    {activeFilter === 'all' && searchedSaints.length > displayedSaints.length ? (
+                    {activeFilter === 'all' && searchedSaints.length > displayedSaints.length && (
                       <button
                         type="button"
                         onClick={() => {
                           setActiveFilter('saints');
                           setSelectedIdx(0);
                         }}
-                        className="text-[11px] text-amber-800 hover:text-amber-950 font-medium cursor-pointer transition-colors"
+                        className="text-xs sm:text-[13px] text-amber-800 hover:text-amber-950 dark:text-amber-400 font-medium cursor-pointer transition-colors"
                       >
                         सभी {searchedSaints.length} संत देखें →
                       </button>
-                    ) : (
-                      <span className="text-[11px] text-neutral-400 font-serif hidden sm:inline">
-                        श्री वृन्दावन रसिक परंपरा
-                      </span>
                     )}
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-3">
                     {displayedSaints.map((s, idx) => {
-                      const globalIdx = idx;
+                      const globalIdx = searchedSacredSections.length + idx;
                       const isSelected = selectedIdx === globalIdx;
                       const portrait = getSaintPortrait(s);
 
@@ -375,36 +856,34 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
                             requestAnimationFrame(() => navigationProgress.done());
                           }}
                           onMouseEnter={() => setSelectedIdx(globalIdx)}
-                          className={`group flex items-center gap-3.5 p-3 rounded-[20px] transition-colors duration-150 cursor-pointer select-none ${
+                          className={`group flex items-center justify-between gap-3 p-3 sm:p-3.5 rounded-[14px] transition-all duration-120 cursor-pointer select-none border ${
                             isSelected
-                              ? 'bg-[#EFEAE0] text-[#18181B]'
-                              : 'bg-[#F8F6F1] hover:bg-[#EFEAE0] text-[#18181B]'
+                              ? 'bg-amber-500/[0.08] dark:bg-amber-400/[0.10] border-amber-400/80 dark:border-amber-500/70 text-stone-900 dark:text-stone-100 shadow-2xs'
+                              : 'bg-stone-50/70 dark:bg-stone-850/60 border-stone-200/50 dark:border-stone-800 hover:bg-stone-100/80 dark:hover:bg-stone-800/70 text-stone-700 dark:text-stone-300'
                           }`}
                         >
-                          {/* Elevated Circular Portrait Medallion (Unobstructed & Revered) */}
-                          <div className="relative w-14 h-14 sm:w-16 sm:h-16 shrink-0 rounded-full overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.08)] bg-amber-100/50">
-                            <img
-                              src={portrait}
-                              alt={s.name}
-                              className="w-full h-full object-cover object-top"
-                              loading="lazy"
-                            />
-                          </div>
-
-                          {/* Clean, Direct Typography Stack (No Pill Tags) */}
-                          <div className="min-w-0 flex-1">
-                            <div className="text-[11px] text-amber-800 font-medium leading-none mb-1">
-                              {s.tradition} • {s.articleCount} पद
+                          <div className="flex items-center gap-3 min-w-0 flex-1">
+                            <div className="relative w-11 h-11 sm:w-12 sm:h-12 shrink-0 rounded-full overflow-hidden shadow-2xs bg-amber-100/50 border border-amber-200/50">
+                              <img
+                                src={portrait}
+                                alt={s.name}
+                                className="w-full h-full object-cover object-top"
+                                loading="lazy"
+                              />
                             </div>
-                            <h4 className="font-serif font-bold text-sm sm:text-[15px] text-[#18181B] group-hover:text-amber-950 transition-colors truncate leading-tight">
-                              {s.name}
-                            </h4>
-                            {s.nameEng && (
-                              <p className="text-[11px] text-neutral-400 font-sans truncate mt-0.5 capitalize">
-                                {s.nameEng}
-                              </p>
-                            )}
+                            <div className="min-w-0 flex-1">
+                              <h4 className="font-serif font-medium text-[14.5px] sm:text-[15.5px] text-stone-850 dark:text-stone-100 group-hover:text-amber-900 dark:group-hover:text-amber-300 transition-colors truncate leading-tight">
+                                {s.name}
+                              </h4>
+                              <div className="text-xs sm:text-[12.5px] text-stone-500 dark:text-stone-400 font-sans leading-none mt-1 truncate">
+                                {s.tradition} • {s.articleCount} पद
+                              </div>
+                            </div>
                           </div>
+                          <span className="text-[11px] sm:text-xs font-serif text-stone-400 dark:text-stone-500 group-hover:text-amber-800 dark:group-hover:text-amber-300 shrink-0 flex items-center gap-0.5">
+                            <span>दर्शन</span>
+                            <ChevronRight className="w-3.5 h-3.5 opacity-60" />
+                          </span>
                         </div>
                       );
                     })}
@@ -412,41 +891,32 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
                 </div>
               )}
 
-              {/* SECTION: Granthas (पावन ग्रन्थ) - Proportional 3D Pothi Book Covers */}
+              {/* 3. Granthas Section (Spacious Grid) */}
               {displayedGranthas.length > 0 && (
-                <div className="space-y-2.5">
-                  <div className="flex items-center justify-between px-1">
-                    <span className="text-xs font-mono font-bold tracking-wider text-amber-900 uppercase">
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between px-1 pb-0.5">
+                    <span className="text-xs sm:text-[13px] font-mono font-medium tracking-wider text-amber-900/80 dark:text-amber-400/80 uppercase">
                       पावन ग्रन्थ ({activeFilter === 'all' ? displayedGranthas.length : searchedGranthas.length})
                     </span>
-                    {activeFilter === 'all' && searchedGranthas.length > displayedGranthas.length ? (
+                    {activeFilter === 'all' && searchedGranthas.length > displayedGranthas.length && (
                       <button
                         type="button"
                         onClick={() => {
                           setActiveFilter('granthas');
                           setSelectedIdx(0);
                         }}
-                        className="text-[11px] text-amber-800 hover:text-amber-950 font-medium cursor-pointer transition-colors"
+                        className="text-xs sm:text-[13px] text-amber-800 hover:text-amber-950 dark:text-amber-400 font-medium cursor-pointer transition-colors"
                       >
                         सभी {searchedGranthas.length} ग्रन्थ देखें →
                       </button>
-                    ) : (
-                      <span className="text-[11px] text-neutral-400 font-serif hidden sm:inline">
-                        मूल वाणी संग्रह
-                      </span>
                     )}
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3.5">
                     {displayedGranthas.map((g, idx) => {
-                      const globalIdx = displayedSaints.length + idx;
+                      const globalIdx = searchedSacredSections.length + displayedSaints.length + idx;
                       const isSelected = selectedIdx === globalIdx;
                       const cover = getBookCoverConfig(g.id, g.name);
-                      const shortTitle = g.name
-                        .replace(/जी की वाणी/g, '')
-                        .replace(/वाणी/g, '')
-                        .replace(/ग्रन्थ/g, '')
-                        .trim();
 
                       return (
                         <div
@@ -458,81 +928,32 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
                             requestAnimationFrame(() => navigationProgress.done());
                           }}
                           onMouseEnter={() => setSelectedIdx(globalIdx)}
-                          className={`group flex items-center justify-between gap-3.5 p-3 sm:p-3.5 rounded-[22px] transition-colors duration-150 cursor-pointer select-none ${
+                          className={`group flex items-center justify-between gap-3.5 p-3.5 sm:p-4 rounded-[14px] transition-all duration-120 cursor-pointer select-none border ${
                             isSelected
-                              ? 'bg-[#EFEAE0] text-[#18181B]'
-                              : 'bg-[#F8F6F1] hover:bg-[#EFEAE0] text-[#18181B]'
+                              ? 'bg-amber-500/[0.08] dark:bg-amber-400/[0.10] border-amber-400/80 dark:border-amber-500/70 text-stone-900 dark:text-stone-100 shadow-2xs'
+                              : 'bg-stone-50/70 dark:bg-stone-850/60 border-stone-200/50 dark:border-stone-800 hover:bg-stone-100/80 dark:hover:bg-stone-800/70 text-stone-700 dark:text-stone-300'
                           }`}
                         >
                           <div className="flex items-center gap-3.5 min-w-0 flex-1">
-                            {/* Proportional 3D Sacred Pothi Book Cover */}
-                            <div className="shrink-0 select-none">
-                              <div
-                                className="sacred-book-pothi w-[60px] h-[86px] text-white"
-                                style={{ background: cover.bg, borderRadius: '4px 9px 9px 4px' }}
-                              >
-                                <div className="spine-groove" />
-
-                                {cover.style === 'pure-leather' ? (
-                                  <div className="book-pure-leather-inner">
-                                    <div className="text-[7.5px] text-amber-300/70 font-bold leading-none tracking-widest flex items-center gap-1 shrink-0">
-                                      <span className="w-1.5 h-px bg-amber-300/30" />
-                                      <span>ॐ</span>
-                                      <span className="w-1.5 h-px bg-amber-300/30" />
-                                    </div>
-                                    <div className="flex-1 flex items-center justify-center w-full my-0.5 min-h-0">
-                                      <span className="font-rozha text-[10px] sm:text-[10.5px] font-bold line-clamp-3 text-center leading-[1.15] tracking-wide px-0.5 gold-foil-title">
-                                        {shortTitle}
-                                      </span>
-                                    </div>
-                                    <div className="px-1.5 py-0.5 rounded-full bg-black/40 text-[7px] font-mono font-bold text-amber-200 tracking-wider whitespace-nowrap leading-none shrink-0 inline-flex items-center justify-center">
-                                      {g.count} पद
-                                    </div>
-                                  </div>
-                                ) : (
-                                  <div className="book-gold-filigree" style={{ borderRadius: '2px 4px 4px 2px' }}>
-                                    <div className="text-[7.5px] text-amber-200/70 font-bold leading-none tracking-widest flex items-center gap-1 shrink-0">
-                                      <span className="w-1.5 h-px bg-amber-200/30" />
-                                      <span>ॐ</span>
-                                      <span className="w-1.5 h-px bg-amber-200/30" />
-                                    </div>
-                                    <div className="flex-1 flex items-center justify-center w-full my-0.5 min-h-0">
-                                      <span className="font-rozha text-[10px] sm:text-[10.5px] font-bold line-clamp-3 text-center leading-[1.15] tracking-wide px-0.5 gold-foil-title">
-                                        {shortTitle}
-                                      </span>
-                                    </div>
-                                    <span className="text-[7.5px] font-mono font-bold text-amber-300/90 tracking-wider whitespace-nowrap leading-none shrink-0">
-                                      {g.count} पद
-                                    </span>
-                                  </div>
-                                )}
-                              </div>
+                            <div
+                              className="w-9 h-12 sm:w-10 sm:h-13 rounded-[4px] text-white flex items-center justify-center shrink-0 shadow-xs"
+                              style={{ background: cover.bg }}
+                            >
+                              <BookOpen className="w-4 h-4 sm:w-5 sm:h-5 text-amber-200/90" />
                             </div>
-
-                            {/* Grantha Info (Direct Typography with Spiritual Essence) */}
                             <div className="min-w-0 flex-1">
-                              <div className="text-[11px] text-amber-800 font-medium leading-none mb-1 truncate">
-                                {g.author}
-                              </div>
-                              <h4 className="font-serif font-bold text-sm sm:text-base text-[#18181B] group-hover:text-amber-950 transition-colors truncate leading-tight">
+                              <h4 className="font-serif font-medium text-[15px] sm:text-[16px] text-stone-850 dark:text-stone-100 group-hover:text-amber-900 dark:group-hover:text-amber-300 transition-colors truncate leading-tight">
                                 {g.name}
                               </h4>
-                              {g.description && (
-                                <p className="text-[11px] text-neutral-500 font-sans line-clamp-1 mt-1 leading-snug">
-                                  {g.description}
-                                </p>
-                              )}
-                              <div className="text-[10.5px] font-mono text-neutral-400 mt-1">
-                                {g.count} पद संकलित • मूल वाणी
+                              <div className="text-xs sm:text-[12.5px] text-stone-500 dark:text-stone-400 font-sans leading-none mt-1 truncate">
+                                {g.author} • {g.count} पद
                               </div>
                             </div>
                           </div>
-
-                          {/* Right Affordance */}
-                          <div className="hidden sm:flex items-center gap-1 text-xs font-semibold text-amber-800/80 group-hover:text-amber-950 transition-colors shrink-0 pl-1">
-                            <span>वाणी पाठ</span>
-                            <span className="text-sm leading-none">→</span>
-                          </div>
+                          <span className="text-[11px] sm:text-xs font-serif text-stone-400 dark:text-stone-500 group-hover:text-amber-800 dark:group-hover:text-amber-300 shrink-0 flex items-center gap-0.5">
+                            <span>पठन</span>
+                            <ChevronRight className="w-3.5 h-3.5 opacity-60" />
+                          </span>
                         </div>
                       );
                     })}
@@ -540,35 +961,37 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
                 </div>
               )}
 
-              {/* SECTION: Sacred Verses (पदावली व स्तोत्र) - Outline-Free */}
+              {/* 4. Sacred Verses (पदावली व स्तोत्र - Spacious Rows) */}
               {displayedPadas.length > 0 && (
-                <div className="space-y-2.5">
-                  <div className="flex items-center justify-between px-1">
-                    <span className="text-xs font-mono font-bold tracking-wider text-amber-900 uppercase">
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between px-1 pb-0.5">
+                    <span className="text-xs sm:text-[13px] font-mono font-medium tracking-wider text-amber-900/80 dark:text-amber-400/80 uppercase">
                       पदावली व स्तोत्र ({activeFilter === 'all' ? displayedPadas.length : searchedPadas.length})
                     </span>
-                    {activeFilter === 'all' && searchedPadas.length > displayedPadas.length ? (
+                    {activeFilter === 'all' && searchedPadas.length > displayedPadas.length && (
                       <button
                         type="button"
                         onClick={() => {
                           setActiveFilter('padas');
                           setSelectedIdx(0);
                         }}
-                        className="text-[11px] text-amber-800 hover:text-amber-950 font-medium cursor-pointer transition-colors"
+                        className="text-xs sm:text-[13px] text-amber-800 hover:text-amber-950 dark:text-amber-400 font-medium cursor-pointer transition-colors"
                       >
                         सभी {searchedPadas.length} पद देखें →
                       </button>
-                    ) : (
-                      <span className="text-[11px] text-neutral-400 font-serif hidden sm:inline">
-                        राग एवं भाव संगीत
-                      </span>
                     )}
                   </div>
 
-                  <div className="space-y-2">
+                  <div className="space-y-1.5">
                     {displayedPadas.map((pad, idx) => {
-                      const globalIdx = displayedSaints.length + displayedGranthas.length + idx;
+                      const globalIdx =
+                        searchedSacredSections.length +
+                        displayedSaints.length +
+                        displayedGranthas.length +
+                        idx;
                       const isSelected = selectedIdx === globalIdx;
+                      const { title: cleanTitle, padHint, granthaHint } = extractPurePadaTitle(pad.titleDevanagari);
+                      const portrait = getSaintPortrait({ name: pad.author });
 
                       return (
                         <div
@@ -580,42 +1003,57 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
                             requestAnimationFrame(() => navigationProgress.done());
                           }}
                           onMouseEnter={() => setSelectedIdx(globalIdx)}
-                          className={`group flex items-center justify-between gap-3 p-3 rounded-[18px] transition-colors duration-150 cursor-pointer select-none ${
+                          className={`group flex items-center justify-between gap-3.5 px-4 py-3 rounded-[12px] transition-all duration-120 cursor-pointer select-none border min-h-[58px] sm:min-h-[62px] ${
                             isSelected
-                              ? 'bg-[#EFEAE0] text-[#18181B]'
-                              : 'bg-[#F8F6F1] hover:bg-[#EFEAE0] text-[#18181B]'
+                              ? 'bg-amber-500/[0.08] dark:bg-amber-400/[0.10] border-amber-400/80 dark:border-amber-500/70 text-stone-900 dark:text-stone-100 shadow-2xs'
+                              : 'bg-transparent border-transparent hover:bg-stone-50 dark:hover:bg-stone-850/60 text-stone-700 dark:text-stone-300'
                           }`}
                         >
-                          <div className="flex items-center gap-3 min-w-0 flex-1">
-                            <div className="w-10 h-10 rounded-full bg-amber-200/60 flex items-center justify-center text-amber-900 shrink-0">
-                              <Music className="w-4 h-4 text-amber-900" />
+                          <div className="flex items-center gap-3.5 min-w-0 flex-1">
+                            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden shrink-0 border border-amber-200/50 shadow-2xs bg-amber-50 flex items-center justify-center">
+                              <img
+                                src={portrait}
+                                alt={pad.author}
+                                className="w-full h-full object-cover object-top"
+                                loading="lazy"
+                                onError={(e) => {
+                                  e.currentTarget.style.display = 'none';
+                                }}
+                              />
                             </div>
 
                             <div className="min-w-0 flex-1">
-                              <div className="flex items-baseline justify-between gap-2">
-                                <h4 className="font-serif font-bold text-sm text-[#18181B] truncate leading-tight group-hover:text-amber-950">
-                                  {cleanSacredString(pad.titleDevanagari)}
-                                </h4>
-                                {pad.rag && (
-                                  <span className="text-[11px] font-serif font-medium text-amber-800 shrink-0">
-                                    राग {cleanSacredString(pad.rag)}
-                                  </span>
+                              <h4 className="font-serif font-medium text-[15px] sm:text-[16.5px] text-stone-850 dark:text-stone-100 truncate leading-snug group-hover:text-amber-900 dark:group-hover:text-amber-200 transition-colors">
+                                {cleanTitle}
+                              </h4>
+                              <div className="flex items-center gap-2 text-xs sm:text-[13px] text-stone-500 dark:text-stone-400 font-sans leading-none mt-1 truncate">
+                                <span className="font-medium text-stone-600 dark:text-stone-300">
+                                  {cleanSacredString(pad.author)}
+                                </span>
+                                {(granthaHint || padHint) && (
+                                  <>
+                                    <span className="text-stone-300 dark:text-stone-600">•</span>
+                                    <span className="text-stone-500 dark:text-stone-400 font-serif">
+                                      {[granthaHint, padHint].filter(Boolean).join(' ')}
+                                    </span>
+                                  </>
                                 )}
                               </div>
-                              <p className="text-[11.5px] text-neutral-500 truncate mt-0.5 leading-snug">
-                                <span className="font-medium text-neutral-700">{cleanSacredString(pad.author)}</span>
-                                {pad.verses[0]?.linesDevanagari[0] && (
-                                  <span className="italic text-neutral-400 ml-1.5">
-                                    — "{cleanSacredString(pad.verses[0].linesDevanagari[0])}"
-                                  </span>
-                                )}
-                              </p>
                             </div>
                           </div>
 
-                          <span className="text-[11.5px] font-semibold text-amber-900 bg-amber-200/70 group-hover:bg-amber-300/80 px-3 py-1 rounded-full shrink-0 hidden sm:inline-flex items-center gap-1 transition-colors">
-                            पढ़ें ↵
-                          </span>
+                          <div className="flex items-center gap-2.5 shrink-0">
+                            {pad.rag && (
+                              <span className="text-xs sm:text-[12.5px] font-serif text-amber-850 dark:text-amber-300 px-3 py-0.5 rounded-full bg-amber-50 dark:bg-amber-950/40 border border-amber-200/40 dark:border-amber-800/40">
+                                राग {cleanSacredString(pad.rag)}
+                              </span>
+                            )}
+
+                            <span className="hidden sm:inline-flex items-center gap-1 text-xs font-serif text-stone-400 dark:text-stone-500 group-hover:text-amber-800 dark:group-hover:text-amber-300 px-2.5 py-1 rounded-[6px] bg-stone-50 dark:bg-stone-800/60 border border-stone-200/40 dark:border-stone-700 transition-colors">
+                              <span>पठन</span>
+                              <CornerDownLeft className="w-3 h-3 opacity-60" />
+                            </span>
+                          </div>
                         </div>
                       );
                     })}
@@ -626,25 +1064,30 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
           )}
         </div>
 
-        {/* 4. Modal Footer (Outline-Free) */}
-        <div className="px-4 sm:px-6 py-2.5 bg-white flex items-center justify-between text-[11px] text-neutral-400">
-          <div className="hidden sm:flex items-center gap-3">
-            <span>
-              <kbd className="font-mono bg-neutral-100 px-1 py-0.5 rounded text-[10px] text-neutral-500 mr-1">↑</kbd>
-              <kbd className="font-mono bg-neutral-100 px-1 py-0.5 rounded text-[10px] text-neutral-500 mr-1">↓</kbd>
+        {/* 4. Minimalist Command-K Footer (Spacious & Refined) */}
+        <div className="px-5 sm:px-8 py-3 sm:py-3.5 bg-stone-50/80 dark:bg-[#161412] border-t border-stone-100 dark:border-stone-800/80 flex items-center justify-between text-xs sm:text-[12.5px] text-stone-400 dark:text-stone-500 pb-[max(0.75rem,env(safe-area-inset-bottom,0.75rem))] shrink-0">
+          <div className="hidden sm:flex items-center gap-4">
+            <span className="flex items-center gap-1.5">
+              <kbd className="font-mono bg-white dark:bg-stone-800 border border-stone-200/60 dark:border-stone-700 px-1.5 py-0.5 rounded text-[11px] text-stone-600 dark:text-stone-400">↑↓</kbd>
               नेविगेट
             </span>
-            <span>
-              <kbd className="font-mono bg-neutral-100 px-1 py-0.5 rounded text-[10px] text-neutral-500 mr-1">↵</kbd>
-              चुनें
+            <span className="flex items-center gap-1.5">
+              <kbd className="font-mono bg-white dark:bg-stone-800 border border-stone-200/60 dark:border-stone-700 px-2 py-0.5 rounded text-[11px] text-stone-600 dark:text-stone-400">↵</kbd>
+              चयन
             </span>
-            <span>
-              <kbd className="font-mono bg-neutral-100 px-1 py-0.5 rounded text-[10px] text-neutral-500 mr-1">Tab</kbd>
-              फ़िल्टर
+            <span className="flex items-center gap-1.5">
+              <kbd className="font-mono bg-white dark:bg-stone-800 border border-stone-200/60 dark:border-stone-700 px-2 py-0.5 rounded text-[11px] text-stone-600 dark:text-stone-400">Tab</kbd>
+              दायरा बदलें
             </span>
           </div>
-          <span className="sm:hidden text-[11px] text-amber-800/80 font-medium">टैप कर वाणी पाठ करें</span>
-          <span className="font-serif text-amber-900 font-semibold ml-auto">श्री राधा • श्री हरिवंश</span>
+
+          <span className="sm:hidden text-xs text-stone-400 dark:text-stone-500">
+            टैप कर पद पढ़ें
+          </span>
+
+          <div className="flex items-center gap-2 font-serif text-xs sm:text-[13px] text-amber-900/70 dark:text-amber-400/70 ml-auto font-medium">
+            <span>श्री राधा • श्री हरिवंश</span>
+          </div>
         </div>
       </div>
     </div>,
