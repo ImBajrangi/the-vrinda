@@ -25,6 +25,7 @@ import { SacredSectionService } from '../../services/sacredSectionService';
 import { formatDevanagariNumerals } from '../../services/cacheService';
 import { seo } from '../../services/seoService';
 import { chimeService } from '../../services/chimeService';
+import { SacredDiscoveryShelf } from '../common/SacredDiscoveryShelf';
 
 interface KathaSanctuaryProps {
   initialStorySlug?: string;
@@ -551,6 +552,13 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
                 </button>
               )}
             </div>
+
+            {/* Sacred Correlated Discovery Nexus */}
+            <SacredDiscoveryShelf
+              entityType="story"
+              entitySlug={selectedStory.slug}
+              title={`${selectedStory.titleDevanagari} • सम्बन्धित पावन नेक्सस`}
+            />
           </div>
         )}
       </main>

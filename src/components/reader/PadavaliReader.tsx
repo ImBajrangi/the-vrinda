@@ -48,6 +48,7 @@ import {
 import { MobileReaderHeader } from './MobileReaderHeader';
 import { MobileScriptureDrawer } from './MobileScriptureDrawer';
 import { useScrollDirection } from '../../hooks/useScrollDirection';
+import { SacredDiscoveryShelf } from '../common/SacredDiscoveryShelf';
 
 interface PadavaliReaderProps {
   isActiveTab?: boolean;
@@ -1382,10 +1383,6 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     }
     return null;
   }, [availableChapters, currentChapter]);
-
-  const relatedPadas = useMemo(() => {
-    return SacredDatabase.getRelatedPadas(selectedPad, 3);
-  }, [selectedPad, allPadas]);
 
   // Auto-heal selectedChapter if it doesn't exist in current grantha
   useEffect(() => {
@@ -3392,60 +3389,13 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
           )}
 
           {/* ========================================================================= */}
-          {/* Related Sacred Verses Shelf (सम्बन्धित पावन पद)                           */}
+          {/* Multi-Dimensional Sacred Correlated Discovery Nexus                       */}
           {/* ========================================================================= */}
-          {relatedPadas && relatedPadas.length > 0 && (
-            <div className="mt-10 pt-6 border-t border-amber-900/10 select-none">
-              <div className="flex items-center justify-between mb-3.5 px-1">
-                <div className="flex items-center gap-2">
-                  <Sparkles className="w-3.5 h-3.5 text-amber-700" />
-                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-amber-900">
-                    सम्बन्धित पावन पद • Related Sacred Verses
-                  </span>
-                </div>
-                <span className="text-[10px] text-neutral-400 font-sans hidden sm:inline">
-                  {selectedPad?.author || 'श्री वृन्दावन रसिक परंपरा'}
-                </span>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                {relatedPadas.map(({ pad: rPad, reason, badge }, rIdx) => {
-                  const firstLine = rPad.verses?.[0]?.linesDevanagari?.[0] || rPad.titleDevanagari;
-                  return (
-                    <a
-                      key={rPad.id || rIdx}
-                      href={`/?tab=padavali&pad=${encodeURIComponent(rPad.slug || rPad.id)}`}
-                      onClick={(e) => {
-                        if (!e.metaKey && !e.ctrlKey) {
-                          e.preventDefault();
-                          handleSelectPad(rPad);
-                        }
-                      }}
-                      title={reason}
-                      className="p-3.5 rounded-2xl bg-[#FAF8F5] hover:bg-[#F3EFE6] border border-amber-900/10 cursor-pointer select-none transition-colors duration-150 flex flex-col justify-between no-underline"
-                    >
-                      <div>
-                        <div className="flex items-center justify-between gap-1 mb-2">
-                          <span className="px-2 py-0.5 rounded-[10px] text-[10px] font-mono font-bold bg-[#FEF08A] text-[#78350F]">
-                            {badge}
-                          </span>
-                          <span className="text-[10px] text-amber-800 font-mono">
-                            पद {rPad.index || rIdx + 1}
-                          </span>
-                        </div>
-                        <h5 className="font-serif font-bold text-xs sm:text-sm text-neutral-900 line-clamp-2 leading-snug">
-                          {firstLine}
-                        </h5>
-                      </div>
-                      <div className="mt-3 pt-2 border-t border-amber-900/5 flex items-center justify-between text-[11px] text-neutral-500">
-                        <span className="truncate">{rPad.author || 'रसिक संत'}</span>
-                        <ChevronRight className="w-3.5 h-3.5 text-amber-700 shrink-0 ml-1" />
-                      </div>
-                    </a>
-                  );
-                })}
-              </div>
-            </div>
+          {selectedPad && (
+            <SacredDiscoveryShelf
+              currentPad={selectedPad}
+              onSelectPad={handleSelectPad}
+            />
           )}
 
           {/* Sacred Colophon / End-of-Pad Dedication Flourish */}

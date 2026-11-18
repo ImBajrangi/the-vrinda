@@ -21,6 +21,7 @@ import { MobileReaderHeader } from './MobileReaderHeader';
 import { MobileScriptureDrawer } from './MobileScriptureDrawer';
 import { useScrollDirection } from '../../hooks/useScrollDirection';
 import { normalizeEpicChapterSlug, REVERSE_KAND_MAP } from '../../utils/epicSlugs';
+import { SacredDiscoveryShelf } from '../common/SacredDiscoveryShelf';
 
 interface MahagranthReaderProps {
   isActiveTab?: boolean;
@@ -1242,6 +1243,13 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
               </a>
             )}
           </div>
+
+          {/* Sacred Correlated Discovery Nexus */}
+          <SacredDiscoveryShelf
+            entityType="story"
+            entitySlug={currentEpicConfig.id}
+            title={`${currentEpicConfig.name} • सम्बन्धित पावन नेक्सस`}
+          />
 
           {/* Sacred Colophon / Chapter Dedication */}
           <div className="mt-12 pt-6 pb-2 text-center select-none flex flex-col items-center justify-center space-y-2 border-t border-amber-900/10">

@@ -22,6 +22,7 @@ import { SacredSectionService } from '../../services/sacredSectionService';
 import { formatDevanagariNumerals } from '../../services/cacheService';
 import { seo } from '../../services/seoService';
 import { chimeService } from '../../services/chimeService';
+import { SacredDiscoveryShelf } from '../common/SacredDiscoveryShelf';
 
 interface DhamTirthaSectionProps {
   initialPlaceSlug?: string;
@@ -345,6 +346,13 @@ export const DhamTirthaSection: React.FC<DhamTirthaSectionProps> = ({
             </div>
           </section>
         )}
+
+        {/* Sacred Correlated Discovery Nexus */}
+        <SacredDiscoveryShelf
+          entityType="place"
+          entitySlug={selectedPlace.slug}
+          title={`${selectedPlace.nameDevanagari} • सम्बन्धित पावन नेक्सस`}
+        />
       </main>
     );
   }

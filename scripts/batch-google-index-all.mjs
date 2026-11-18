@@ -116,9 +116,32 @@ function compileMasterCatalog() {
     `${bhavBase}/feed`,
     `${bhavBase}/milestones`,
     `${bhavBase}/smaran`,
+    `${bhavBase}/rituals`,
+    `${bhavBase}/places`,
+    `${bhavBase}/stories`,
+    `${bhavBase}/biographies`,
     `${pathBase}/`,
   ];
   for (const u of pillars) urls.push(u);
+
+  // 1.5 Ingest all Sacred Sections (Rituals, Places, Stories, Biographies)
+  const sacredSections = [
+    { file: 'public/data/rituals/index.json', prefix: 'ritual' },
+    { file: 'public/data/places/index.json', prefix: 'place' },
+    { file: 'public/data/stories/index.json', prefix: 'story' },
+    { file: 'public/data/biographies/index.json', prefix: 'bio' },
+  ];
+  for (const sec of sacredSections) {
+    const secPath = path.resolve(projectRoot, sec.file);
+    if (fs.existsSync(secPath)) {
+      try {
+        const data = JSON.parse(fs.readFileSync(secPath, 'utf-8'));
+        for (const item of data.items || []) {
+          urls.push(`${bhavBase}/${sec.prefix}/${item.slug}`);
+        }
+      } catch (e) {}
+    }
+  }
 
   // 2. All 29 Scripture Collections & 5 Epics
   const granthasPath = path.resolve(projectRoot, 'src/data/canonicalGranthas.json');

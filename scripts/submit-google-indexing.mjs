@@ -213,9 +213,9 @@ async function main() {
     }
 
     // Add Ramcharitmanas 7 Kands
-    const kands = ['बालकाण्ड', 'अयोध्याकाण्ड', 'अरण्यकाण्ड', 'किष्किन्धाकाण्ड', 'सुन्दरकाण्ड', 'लंकाकाण्ड', 'उत्तरकाण्ड'];
+    const kands = ['bal-kand', 'ayodhya-kand', 'aranya-kand', 'kishkindha-kand', 'sundar-kand', 'lanka-kand', 'uttar-kand'];
     for (const k of kands) {
-      targetSet.add(`https://path.vrindopnishad.in/grantha/ramcharitmanas/kand-${encodeURIComponent(k)}`);
+      targetSet.add(`https://path.vrindopnishad.in/grantha/ramcharitmanas/${k}`);
     }
 
     // Add Celebrated Padas from searchCatalog

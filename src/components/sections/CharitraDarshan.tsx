@@ -21,6 +21,7 @@ import { SacredSectionService } from '../../services/sacredSectionService';
 import { formatDevanagariNumerals } from '../../services/cacheService';
 import { seo } from '../../services/seoService';
 import { chimeService } from '../../services/chimeService';
+import { SacredDiscoveryShelf } from '../common/SacredDiscoveryShelf';
 
 interface CharitraDarshanProps {
   initialSaintSlug?: string;
@@ -414,6 +415,13 @@ export const CharitraDarshan: React.FC<CharitraDarshanProps> = ({
             </div>
           </section>
         )}
+
+        {/* Sacred Correlated Discovery Nexus */}
+        <SacredDiscoveryShelf
+          entityType="bio"
+          entitySlug={selectedBio.slug}
+          title={`${selectedBio.nameDevanagari} • सम्बन्धित पावन नेक्सस`}
+        />
       </main>
     );
   }

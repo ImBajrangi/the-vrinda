@@ -24,6 +24,7 @@ import { SacredSectionService } from '../../services/sacredSectionService';
 import { formatDevanagariNumerals } from '../../services/cacheService';
 import { chimeService } from '../../services/chimeService';
 import { seo } from '../../services/seoService';
+import { SacredDiscoveryShelf } from '../common/SacredDiscoveryShelf';
 
 interface NityaUpasanaReaderProps {
   initialRitualSlug?: string;
@@ -537,6 +538,13 @@ export const NityaUpasanaReader: React.FC<NityaUpasanaReaderProps> = ({
             <span>आरती समर्पण एवं घण्टी नाद</span>
           </button>
         </div>
+
+        {/* Sacred Correlated Discovery Nexus */}
+        <SacredDiscoveryShelf
+          entityType="ritual"
+          entitySlug={selectedRitual.slug}
+          title={`${selectedRitual.titleDevanagari} • सम्बन्धित पावन नेक्सस`}
+        />
       </main>
     );
   }
