@@ -281,40 +281,39 @@ function createSitemapSuite(baseUrl, prefix = '') {
 
   // -------------------------------------------------------------
   // bhav.vrindopnishad.in - Primary Ras & Padavali Sanctuary Domain
-  // Dedicated to 11,909 Authentic Ras Padas, 24 Ras Collections, 131 Saints, Daily Seva
-  // ZERO EPIC REDIRECTS!
+  // Dedicated to 11,832 Authentic Ras Padas, 24 Ras Collections, 131 Saints, Daily Seva
+  // ZERO EPIC REDIRECTS & 100% CANONICAL MATCH WITH PADA SNIPPETS!
   // -------------------------------------------------------------
   let rawPadas = [];
-  const catalogPath = path.resolve(projectRoot, 'public/data/catalog.json');
-  if (fs.existsSync(catalogPath)) {
-    const rawCatalog = JSON.parse(fs.readFileSync(catalogPath, 'utf-8'));
-    if (rawCatalog.items && Array.isArray(rawCatalog.items)) {
-      const cols = rawCatalog.cols || [];
-      rawPadas = rawCatalog.items.map((row) => ({
-        slug: row[0],
-        titleDevanagari: row[1],
-        collectionId: cols[row[2]] || '',
-      }));
-    } else if (Array.isArray(rawCatalog)) {
-      rawPadas = rawCatalog;
+  const granthasDir = path.resolve(projectRoot, 'public/data/granthas');
+  if (fs.existsSync(granthasDir)) {
+    const chunkFiles = fs.readdirSync(granthasDir).filter(
+      (f) => f.endsWith('.json') && !EPIC_IDS.has(f.replace('.json', ''))
+    );
+    const seenSlugs = new Set();
+    for (const f of chunkFiles) {
+      const colId = f.replace('.json', '');
+      try {
+        const items = JSON.parse(fs.readFileSync(path.join(granthasDir, f), 'utf-8'));
+        for (const item of items) {
+          const s = (item.slug || item.id || '').trim().replace(/\.+$/, '');
+          if (s && !seenSlugs.has(s)) {
+            seenSlugs.add(s);
+            rawPadas.push({
+              slug: s,
+              titleDevanagari: item.titleDevanagari,
+              collectionId: colId,
+            });
+          }
+        }
+      } catch (err) {
+        console.warn(`  ⚠ Warning reading grantha file ${f}:`, err.message);
+      }
     }
   }
 
   // Filter strictly to non-epic authentic Ras padas (prevents 31,689 301 redirects!)
-  const rasPadas = rawPadas.filter((p) => {
-    if (EPIC_IDS.has(p.collectionId)) return false;
-    const slug = (p.slug || p.id || '').toLowerCase();
-    if (
-      slug.startsWith('valmiki-') ||
-      slug.startsWith('ramcharitmanas') ||
-      slug.startsWith('shrimad-') ||
-      slug.startsWith('bhagavad-') ||
-      slug.startsWith('durga-')
-    ) {
-      return false;
-    }
-    return true;
-  });
+  const rasPadas = rawPadas;
 
   // 1. Core Sanctuary Views (Clean canonical URLs, high-authority pillar routes)
   const mainUrls = [

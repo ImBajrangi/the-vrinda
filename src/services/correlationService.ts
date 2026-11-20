@@ -386,7 +386,7 @@ export const CorrelationService = {
     // Look for next sequential verse in grantha first
     if (currentIdx >= 0 && currentIdx + 1 < granthaPadas.length) {
       const nextPad = granthaPadas[currentIdx + 1];
-      const url = `/?tab=padavali&pad=${encodeURIComponent(nextPad.slug || nextPad.id)}`;
+      const url = `/pad/${encodeURIComponent(nextPad.slug || nextPad.id)}`;
       if (!seenUrls.has(url)) {
         seenUrls.add(url);
         results.push({
@@ -407,7 +407,7 @@ export const CorrelationService = {
       const matchingRagaPadas = SacredDatabase.getPadasByRaga(prahar.activeRagas[0] || targetPad.rag || 'बिलावल');
       const harmonicCandidate = matchingRagaPadas.find((p) => p.id !== targetPad.id);
       if (harmonicCandidate) {
-        const url = `/?tab=padavali&pad=${encodeURIComponent(harmonicCandidate.slug || harmonicCandidate.id)}`;
+        const url = `/pad/${encodeURIComponent(harmonicCandidate.slug || harmonicCandidate.id)}`;
         if (!seenUrls.has(url)) {
           seenUrls.add(url);
           results.push({
@@ -478,7 +478,7 @@ export const CorrelationService = {
     const granthaPadas = SacredDatabase.getPadasByGrantha(granthaId);
     if (granthaPadas.length > 0) {
       const pad = granthaPadas[0];
-      const url = `/?tab=padavali&pad=${encodeURIComponent(pad.slug || pad.id)}`;
+      const url = `/pad/${encodeURIComponent(pad.slug || pad.id)}`;
       if (!seenUrls.has(url)) {
         seenUrls.add(url);
         results.push({

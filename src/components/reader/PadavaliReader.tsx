@@ -25,6 +25,7 @@ import {
   AlignJustify,
   Gauge,
   Palette,
+  Share2,
 } from 'lucide-react';
 import { SacredDatabase } from '../../services/sacredDatabase';
 import { SacredPad, AuthorHierarchyInfo } from '../../types/devotional';
@@ -650,14 +651,15 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       const firstLines = selectedPad.verses?.[0]?.linesDevanagari?.slice(0, 2).map((l) => sanitizeSacredText(l)).join(' • ') || '';
       const snippet = firstLines ? `«${firstLines}» ` : '';
       const ragaText = selectedPad.rag ? `राग ${selectedPad.rag} में निबद्ध पावन पद। ` : '';
+      const titleClean = selectedPad.titleDevanagari.split(' - ')[0].trim();
       const granthaMeta = selectedPad.collectionId ? SacredDatabase.getGranthaById(selectedPad.collectionId) : null;
-      const granthaLabel = granthaMeta ? ` - ${granthaMeta.name}` : '';
+      const granthaLabel = granthaMeta ? granthaMeta.name : (selectedPad.collectionId || 'रसिक वाणी');
 
       seo.updateSEO({
         tab: 'padavali',
         pad: selectedPad,
-        title: `${selectedPad.titleDevanagari} (${selectedPad.author})${granthaLabel} • पावन रसिक पद | वृन्दोपनिषद् 2.0`,
-        description: `${snippet}${ragaText}रचयिता: ${selectedPad.author}। नित्य स्वाध्याय व पारायण। वृन्दोपनिषद् 2.0`,
+        title: `${titleClean} - ${selectedPad.author} | लिरिक्स व भावार्थ सहित • ${granthaLabel} - वृन्दोपनिषद्`,
+        description: `${snippet}पढ़िए ${titleClean} का प्रामाणिक मूल पाठ, भावार्थ व अर्थ। ${ragaText}रचयिता: ${selectedPad.author} (${granthaLabel})। नित्य निकुंज रस।`,
       });
     } else if (selectedGrantha && selectedGrantha !== 'all') {
       const g = SacredDatabase.getGranthaById(selectedGrantha);
@@ -1042,6 +1044,14 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       }
     }
   };
+
+  const handleWhatsAppShare = useCallback(() => {
+    if (!selectedPad) return;
+    const firstLine = selectedPad.verses?.[0]?.linesDevanagari?.[0] || selectedPad.titleDevanagari;
+    const text = `🌸 *${cleanTitle || selectedPad.titleDevanagari}*\n«${firstLine}»\n\n— रचयिता: ${authorName || selectedPad.author} (${granthaRef || selectedPad.collectionId || 'रसिक वाणी'})\n📖 संपूर्ण पद पाठ, भावार्थ व स्वर-राग यहाँ देखें:\nhttps://bhav.vrindopnishad.in/pad/${encodeURIComponent(selectedPad.slug || selectedPad.id)}`;
+    const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
+  }, [selectedPad, cleanTitle, authorName, granthaRef]);
 
   useEffect(() => {
     let isMounted = true;
@@ -2986,6 +2996,20 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                             </button>
                             <button
                               type="button"
+                              onClick={() => {
+                                const firstLine = pad.verses?.[0]?.linesDevanagari?.[0] || pad.titleDevanagari;
+                                const cleanPadTitle = pad.titleDevanagari.split(' - ')[0].trim();
+                                const grantha = allGranthas.find((g) => g.id === pad.collectionId)?.name || pad.collectionId || 'रसिक वाणी';
+                                const text = `🌸 *${cleanPadTitle}*\n«${firstLine}»\n\n— रचयिता: ${pad.author} (${grantha})\n📖 संपूर्ण पद पाठ, भावार्थ व स्वर-राग यहाँ देखें:\nhttps://bhav.vrindopnishad.in/pad/${encodeURIComponent(pad.slug || pad.id)}`;
+                                window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+                              }}
+                              className="w-7 h-7 rounded-full bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200/60 flex items-center justify-center cursor-pointer transition-colors"
+                              title="व्हाट्सएप पर पद साझा करें"
+                            >
+                              <Share2 className="w-3.5 h-3.5 text-emerald-600" />
+                            </button>
+                            <button
+                              type="button"
                               onClick={() => toggleInlinePurport(pad.id)}
                               className={`px-2.5 py-1 rounded-full text-xs font-medium flex items-center gap-1 cursor-pointer transition-colors ${isPurportOpen ? 'bg-amber-200 text-amber-950 font-bold' : 'bg-neutral-100 hover:bg-neutral-200 text-neutral-700'
                                 }`}
@@ -3174,6 +3198,16 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   </div>
 
                   <div className="flex items-center gap-2 shrink-0">
+                    <button
+                      type="button"
+                      onClick={handleWhatsAppShare}
+                      className="h-8 px-3 rounded-full bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+                      title="व्हाट्सएप पर साझा करें"
+                    >
+                      <Share2 className="w-3.5 h-3.5 text-emerald-600" />
+                      <span className="hidden sm:inline">साझा करें</span>
+                    </button>
+
                     <button
                       type="button"
                       onClick={handleToggleSummary}

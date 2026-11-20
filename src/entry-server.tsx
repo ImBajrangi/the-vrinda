@@ -216,11 +216,14 @@ export function render(url: string = '/'): RenderResult {
     const granthaMeta = pad.collectionId ? SacredDatabase.getGranthaById(pad.collectionId) : null;
     const granthaText = granthaMeta ? ` - ${granthaMeta.name}` : (pad.collectionId ? ` (${pad.collectionId})` : '');
 
+    const titleClean = pad.titleDevanagari.split(' - ')[0].trim();
+    const granthaLabel = granthaMeta ? granthaMeta.name : (pad.collectionId || 'रसिक वाणी');
+
     seoConfig = {
       tab: 'padavali',
       pad,
-      title: `${pad.titleDevanagari} (${pad.author})${granthaText} • संपूर्ण पद, भावार्थ व व्याख्या | ${slug} Lyrics - वृन्दोपनिषद् 2.0`,
-      description: `${snippet}${ragaText}रचयिता: ${pad.author}। नित्य स्वाध्याय व पारायण। वृन्दोपनिषद् 2.0`,
+      title: `${titleClean} - ${pad.author} | लिरिक्स व भावार्थ सहित • ${granthaLabel} - वृन्दोपनिषद्`,
+      description: `${snippet}पढ़िए ${titleClean} का प्रामाणिक मूल पाठ, भावार्थ व अर्थ। ${ragaText}रचयिता: ${pad.author} (${granthaLabel})। नित्य निकुंज रस।`,
       canonicalUrl: `https://bhav.vrindopnishad.in/pad/${encodeURIComponent(slug)}`,
       audioUrl: pad.audioUrl || undefined,
     };

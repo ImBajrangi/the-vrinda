@@ -73,7 +73,7 @@ export const SitemapService = {
     const granthas = SacredDatabase.getAllGranthas();
 
     const urls = granthas.map((g) => ({
-      loc: `${baseUrl}/?tab=padavali&grantha=${encodeURIComponent(g.id)}`,
+      loc: `${baseUrl}/grantha/${encodeURIComponent(g.id)}`,
       lastmod: today,
       changefreq: 'weekly',
       priority: 0.9,
@@ -90,7 +90,7 @@ export const SitemapService = {
     const saints = SacredDatabase.getAllSaints();
 
     const urls = saints.map((s) => ({
-      loc: `${baseUrl}/?tab=padavali&author=${s.slug || s.id || encodeURIComponent(s.name)}`,
+      loc: `${baseUrl}/sant/${encodeURIComponent(s.slug || s.id || s.name)}`,
       lastmod: today,
       changefreq: 'monthly',
       priority: 0.85,
@@ -111,7 +111,7 @@ export const SitemapService = {
       const isCelebrated = ['hit-chaurasi', 'radha-sudha-nidhi', 'kelimal'].includes(p.collectionId);
       const slug = p.slug || p.id;
       return {
-        loc: `${baseUrl}/?tab=padavali&pad=${encodeURIComponent(slug)}`,
+        loc: `${baseUrl}/pad/${encodeURIComponent(slug)}`,
         lastmod: today,
         changefreq: 'monthly',
         priority: isCelebrated ? 0.9 : 0.8,
@@ -141,7 +141,7 @@ export const SitemapService = {
     const granthas = SacredDatabase.getAllGranthas();
     for (const g of granthas) {
       urls.push({
-        loc: `${baseUrl}/?tab=padavali&grantha=${encodeURIComponent(g.id)}`,
+        loc: `${baseUrl}/grantha/${encodeURIComponent(g.id)}`,
         lastmod: today,
         changefreq: 'weekly',
         priority: 0.9,
@@ -152,7 +152,7 @@ export const SitemapService = {
     const saints = SacredDatabase.getAllSaints();
     for (const s of saints) {
       urls.push({
-        loc: `${baseUrl}/?tab=padavali&author=${s.slug || s.id || encodeURIComponent(s.name)}`,
+        loc: `${baseUrl}/sant/${encodeURIComponent(s.slug || s.id || s.name)}`,
         lastmod: today,
         changefreq: 'monthly',
         priority: 0.85,
@@ -165,7 +165,7 @@ export const SitemapService = {
       const isCelebrated = ['hit-chaurasi', 'radha-sudha-nidhi', 'kelimal'].includes(p.collectionId);
       const slug = p.slug || p.id;
       urls.push({
-        loc: `${baseUrl}/?tab=padavali&pad=${encodeURIComponent(slug)}`,
+        loc: `${baseUrl}/pad/${encodeURIComponent(slug)}`,
         lastmod: today,
         changefreq: 'monthly',
         priority: isCelebrated ? 0.9 : 0.8,

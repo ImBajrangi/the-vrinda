@@ -9,6 +9,7 @@ import chapterSnippetsData from '../src/data/chapterSnippets.json';
 import canonicalGranthasData from '../src/data/canonicalGranthas.json';
 import canonicalSaintsData from '../src/data/canonicalSaints.json';
 import padaSnippetsData from '../src/data/padaSnippets.json';
+import padaAliasesData from '../src/data/padaAliases.json';
 import legacySlugRedirectsData from '../src/data/legacySlugRedirects.json';
 
 interface Env {}
@@ -112,8 +113,37 @@ const CHAPTER_SNIPPETS = snippetsObj as Record<string, {
   openingVerse: string;
 }>;
 
-const padaSnippetsObj: Record<string, [string, string, string, string]> =
+const padaSnippetsObj: Record<string, [string, string, string, string, string?, string?, string?]> =
   (padaSnippetsData as any)?.default || padaSnippetsData || {};
+
+const padaAliasesObj: Record<string, string> =
+  (padaAliasesData as any)?.default || padaAliasesData || {};
+
+const granthaCrawlMap: Record<string, [string, string][]> = {};
+const saintCrawlMap: Record<string, [string, string][]> = {};
+let isCrawlIndexed = false;
+
+function ensureCrawlIndex() {
+  if (isCrawlIndexed) return;
+  for (const [slug, item] of Object.entries(padaSnippetsObj)) {
+    const title = item[0];
+    const author = item[1];
+    const granthaId = item[2];
+    if (granthaId) {
+      if (!granthaCrawlMap[granthaId]) granthaCrawlMap[granthaId] = [];
+      if (granthaCrawlMap[granthaId].length < 80) {
+        granthaCrawlMap[granthaId].push([slug, title]);
+      }
+    }
+    if (author) {
+      if (!saintCrawlMap[author]) saintCrawlMap[author] = [];
+      if (saintCrawlMap[author].length < 40) {
+        saintCrawlMap[author].push([slug, title]);
+      }
+    }
+  }
+  isCrawlIndexed = true;
+}
 
 const SAINT_KNOWLEDGE_GRAPH: Record<string, string[]> = {
   'swami-haridas': [
@@ -759,8 +789,9 @@ export const onRequest: PagesFunction<Env> = async (context) => {
 
   if (padId) {
     const cleanPadId = decodeURIComponent(padId).trim();
-    const snippet = padaSnippetsObj[cleanPadId] || padaSnippetsObj[padId];
-    const known = KNOWN_PADAS_META[cleanPadId] || KNOWN_PADAS_META[padId];
+    const effectiveSlug = padaAliasesObj[cleanPadId] || padaAliasesObj[padId] || cleanPadId;
+    const snippet = padaSnippetsObj[effectiveSlug] || padaSnippetsObj[cleanPadId] || padaSnippetsObj[padId];
+    const known = KNOWN_PADAS_META[cleanPadId] || KNOWN_PADAS_META[padId] || KNOWN_PADAS_META[effectiveSlug];
 
     const padTitle = known?.title || snippet?.[0] || formatSlug(cleanPadId);
     const padAuthor = known?.author || snippet?.[1] || 'रसिक संत';
@@ -769,12 +800,25 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     const granthaLabel = granthaMeta?.name || 'रसिक वाणी संग्रह';
     const granthaCategory = 'रसिक वाणी संग्रह';
     const openingVerse = known?.sampleVerse || snippet?.[3] || '';
+    const prevSlug = snippet?.[4] || '';
+    const nextSlug = snippet?.[5] || '';
+    const ragName = snippet?.[6] || '';
+    const prevEffective = (prevSlug && padaAliasesObj[prevSlug]) || prevSlug;
+    const nextEffective = (nextSlug && padaAliasesObj[nextSlug]) || nextSlug;
+    const prevTitle = prevSlug && padaSnippetsObj[prevEffective] ? padaSnippetsObj[prevEffective][0] : '';
+    const nextTitle = nextSlug && padaSnippetsObj[nextEffective] ? padaSnippetsObj[nextEffective][0] : '';
     const romanTitle = formatSlug(cleanPadId);
 
-    title = `${padTitle} (${padAuthor}) - ${granthaLabel} • संपूर्ण पद, भावार्थ व व्याख्या | ${romanTitle} Lyrics in Hindi & English - वृन्दोपनिषद् 2.0 (Vrindopnishad)`;
+    ensureCrawlIndex();
+    const granthaPadasForRelated = (granthaId && granthaCrawlMap[granthaId]) ? granthaCrawlMap[granthaId] : [];
+    const relatedPadas = granthaPadasForRelated.filter(([s]) => s !== cleanPadId && s !== padId && s !== effectiveSlug).slice(0, 6);
+
+    const titleClean = padTitle.split(' - ')[0].trim();
+    title = `${titleClean} - ${padAuthor} | लिरिक्स व भावार्थ सहित • ${granthaLabel} - वृन्दोपनिषद्`;
+    const firstLinePreview = openingVerse ? openingVerse.split('\n')[0].trim() : titleClean;
     description = openingVerse
-      ? `«${openingVerse.replace(/\n+/g, ' ')}» ${padTitle} (${granthaLabel}) के पावन पद, मूल पाठ व भावार्थ। रचयिता: ${padAuthor}। वृन्दोपनिषद् 2.0`
-      : `${padTitle} (${granthaLabel}) के पावन पद, मूल पाठ, भावार्थ व नित्य अनुशीलन। रचयिता: ${padAuthor}। वृन्दोपनिषद् 2.0`;
+      ? `«${firstLinePreview.slice(0, 90)}» पढ़िए ${titleClean} का प्रामाणिक मूल पाठ, भावार्थ व अर्थ सहित। रचयिता: ${padAuthor} (${granthaLabel})। नित्य निकुंज रस व दिव्य स्वाध्याय।`
+      : `पढ़िए ${titleClean} (${granthaLabel}) का प्रामाणिक मूल पाठ, भावार्थ व नित्य अनुशीलन। रचयिता: ${padAuthor}। वृन्दोपनिषद् 2.0`;
     canonicalUrl = `https://bhav.vrindopnishad.in/pad/${encodeURIComponent(cleanPadId)}`;
 
     customKeywords = [
@@ -811,12 +855,32 @@ export const onRequest: PagesFunction<Env> = async (context) => {
       'genre': 'Sacred Braj Ras Literature',
       'inLanguage': ['hi', 'sa', 'en'],
       'text': openingVerse || padTitle,
+      'speakable': {
+        '@type': 'SpeakableSpecification',
+        'cssSelector': ['.verse-body', '.sanctuary-ssr-title'],
+      },
       'isPartOf': {
         '@type': 'WebSite',
         'name': 'वृन्दोपनिषद् 2.0 (Vrindopnishad)',
         'url': 'https://bhav.vrindopnishad.in/',
       },
     };
+
+    if (ragName) {
+      extraSchemas.push({
+        '@type': 'MusicComposition',
+        '@id': `${canonicalUrl}#composition`,
+        'name': padTitle,
+        'composer': {
+          '@type': 'Person',
+          'name': padAuthor,
+          ...(authorSameAs ? { 'sameAs': authorSameAs } : {}),
+        },
+        'inLanguage': 'hi',
+        'musicalKey': `राग ${ragName}`,
+        'text': openingVerse || padTitle,
+      });
+    }
 
     const authorSaint = SAINTS_MAP.get(padAuthor) || SAINTS_MAP.get(padAuthor.toLowerCase());
     const saintLink = authorSaint?.slug ? `/sant/${encodeURIComponent(authorSaint.slug)}` : '/rasik-saints-of-vrindavan';
@@ -853,26 +917,34 @@ export const onRequest: PagesFunction<Env> = async (context) => {
       'mainEntity': [
         {
           '@type': 'Question',
-          'name': `${padTitle} के रचयिता कौन हैं?`,
+          'name': `${titleClean} के रचयिता कौन हैं और यह किस परंपरा का अंग है?`,
           'acceptedAnswer': {
             '@type': 'Answer',
-            'text': `इस पावन पद के रचयिता ${padAuthor} जी हैं, जो श्री धाम वृन्दावन की पावन रसिक वाणी परंपरा के प्रमुख संत हैं।`,
+            'text': `इस पावन पद के रचयिता परम पूज्य ${padAuthor} जी हैं। यह पद श्री धाम वृन्दावन की नित्य निकुंज रस उपासना परंपरा का पावन अंग है।`,
           },
         },
         {
           '@type': 'Question',
-          'name': `यह पद किस पावन संग्रह में संकलित है?`,
+          'name': `यह पद किस राग व पावन संग्रह में संकलित है?`,
           'acceptedAnswer': {
             '@type': 'Answer',
-            'text': `यह पद '${granthaLabel}' संग्रह में संकलित है।`,
+            'text': `यह पद '${granthaLabel}' संग्रह में संकलित है${ragName ? ` और शास्त्रीय राग ${ragName} में निबद्ध है` : ''}। रसिक संतों द्वारा इसका गायन अत्यंत प्रेम व भावपूर्ण रीति से किया जाता है।`,
           },
         },
         {
           '@type': 'Question',
-          'name': `इस पद का मुख्य आध्यात्मिक भाव क्या है?`,
+          'name': `${titleClean} का आध्यात्मिक भावार्थ क्या है?`,
           'acceptedAnswer': {
             '@type': 'Answer',
-            'text': `${padTitle} में श्री प्रिया-प्रियतम के नित्य निकुंज विलास, अनन्य प्रेम व युगल चरण शरणागति का पावन गान है।`,
+            'text': `${titleClean} में श्री प्रिया-प्रियतम (श्रीराधा-कृष्ण) के नित्य निकुंज विलास, अनन्य प्रेम, रूप-माधुरी एवं युगल चरण शरणागति का अनुपम निरूपण है।`,
+          },
+        },
+        {
+          '@type': 'Question',
+          'name': `क्या वृन्दोपनिषद् पर इस पद का शुद्ध मूल पाठ उपलब्ध है?`,
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': `हाँ, वृन्दोपनिषद् 2.0 पर ${titleClean} का संपूर्ण प्रामाणिक पाठ, शुद्ध देवनागरी लिपि, रचयिता परिचय, संबंधित पद व भावार्थ नित्य स्वाध्याय हेतु उपलब्ध है।`,
           },
         },
       ],
@@ -911,16 +983,52 @@ export const onRequest: PagesFunction<Env> = async (context) => {
           <p style="font-size: 0.85rem; color: #a8a29e; margin-top: 0.25rem;">Hinglish / Roman: <em>${romanTitle}</em> • भाषा: ब्रजभाषा / संस्कृत</p>
         </header>
 
+        <!-- Sequential Crawl Navigation (Bidirectional Mesh) -->
+        ${(prevSlug || nextSlug) ? `
+        <nav class="pad-navigation" aria-label="पद क्रम नेविगेशन" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin: 1.5rem 0; padding: 1rem 1.25rem; background: #fffbeb; border: 1px solid #fde68a; border-radius: 0.75rem;">
+          ${prevSlug ? `<a href="/pad/${encodeURIComponent(prevSlug)}" style="color: #b45309; text-decoration: none; font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 0.5rem;"><span>&larr;</span> <span>पिछला पद: ${prevTitle || 'पूर्व पद'}</span></a>` : '<span></span>'}
+          ${nextSlug ? `<a href="/pad/${encodeURIComponent(nextSlug)}" style="color: #b45309; text-decoration: none; font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 0.5rem;"><span>अगला पद: ${nextTitle || 'अग्रिम पद'}</span> <span>&rarr;</span></a>` : '<span></span>'}
+        </nav>
+        ` : ''}
+
         <!-- Authentic Sacred Verse Body -->
         <section class="verse-body" style="font-size: 1.35rem; line-height: 2.1; color: #292524; background: linear-gradient(180deg, #fffbeb 0%, #fef9c3 100%); padding: 2rem; border-radius: 1rem; border: 1px solid #fde68a; white-space: pre-line; box-shadow: 0 4px 12px rgba(217, 119, 6, 0.06); text-align: center;">
           ${openingVerse || `${padTitle} के पावन पद का अखंड स्वाध्याय व चिंतन।`}
         </section>
 
+        <!-- Devotional Engagement Action Bar (WhatsApp Share, Jap, Bhavarth) -->
+        <div class="devotional-action-bar" style="margin-top: 1rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem;">
+          <a href="https://api.whatsapp.com/send?text=${encodeURIComponent(`🌸 ${padTitle} (${padAuthor})\n«${openingVerse.split('\n')[0] || ''}»\n📖 पूरा पद, भावार्थ व व्याख्या यहाँ पढ़ें:\nhttps://bhav.vrindopnishad.in/pad/${encodeURIComponent(cleanPadId)}`)}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: #25d366; color: #ffffff; border-radius: 9999px; text-decoration: none; font-size: 0.85rem; font-weight: 600;">
+            <span>💬 व्हाट्सएप पर साझा करें</span>
+          </a>
+          <a href="/online-tulsi-mala-naam-jap" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: #fff; border: 1px solid #fde68a; color: #78350f; border-radius: 9999px; text-decoration: none; font-size: 0.85rem; font-weight: 600;">
+            <span>📿 नित्य नाम जप माला</span>
+          </a>
+          <a href="#pad-bhavarth" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: #fff; border: 1px solid #fde68a; color: #78350f; border-radius: 9999px; text-decoration: none; font-size: 0.85rem; font-weight: 600;">
+            <span>📖 भावार्थ व साधना</span>
+          </a>
+        </div>
+
+        <!-- Spiritual Essence Card (Core Devotional Takeaway) -->
+        <section style="margin-top: 1.5rem; background: #fffdf5; border: 1px solid #fed7aa; border-radius: 0.75rem; padding: 1.25rem;">
+          <h2 style="font-size: 1.15rem; font-weight: 700; color: #9a3412; margin: 0 0 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+            <span>💎 पद का मुख्य आध्यात्मिक भाव (Spiritual Essence)</span>
+          </h2>
+          <div style="font-size: 0.95rem; line-height: 1.8; color: #431407;">
+            <p style="margin: 0 0 0.5rem 0;">
+              <strong>रस निष्पत्ति:</strong> श्री वृन्दावन नित्य निकुंज रस • <strong>भाव धारा:</strong> अनन्य शरणागति एवं युगल चरणानुराग
+            </p>
+            <p style="margin: 0; color: #7c2d12;">
+              ${padAuthor} जी कृत यह वाणी साधक के चित्त से लौकिक वासनाओं का शमन कर श्रीराधा-माधव के अलौकिक प्रेम-राज्य में प्रवेश कराती है। नित्य पाठ व मनन से अंतःकरण में वृन्दावन रज व नाम-स्मरण के प्रति अनन्य निष्ठा जाग्रत होती है।
+            </p>
+          </div>
+        </section>
+
         <!-- Sacred Meaning / Spiritual Context -->
-        <section style="margin-top: 2rem; background-color: #fafaf9; border-radius: 0.75rem; border: 1px solid #f5f5f4; padding: 1.5rem;">
+        <section id="pad-bhavarth" style="margin-top: 1.5rem; background-color: #fafaf9; border-radius: 0.75rem; border: 1px solid #f5f5f4; padding: 1.5rem;">
           <h2 style="font-size: 1.25rem; font-weight: 600; color: #78350f; margin: 0 0 0.75rem 0;">पावन भाव व अनुशीलन</h2>
           <p style="font-size: 1rem; line-height: 1.8; color: #44403c; margin: 0;">
-            ${padTitle} श्री धाम वृन्दावन की पावन रसिक वाणी परंपरा का अनुपम पद है। इस पावन पद में श्री प्रिया-प्रियतम (श्रीराधा-कृष्ण) के नित्य निकुंज रस, परम विलास एवं अनन्य शरणागति का दिव्य वर्णन मिलता है। रसिक संतों के अनुसार इस वाणी का नित्य अनुशीलन हृदय में अहैतुकी प्रीति व शांति का संचार करता है।
+            <strong>«${padTitle}»</strong> श्री धाम वृन्दावन की पावन <em>${granthaLabel}</em> परंपरा का अनुपम दिव्य पद है। इस पावन पद की रचना परम रसिक संत <strong>${padAuthor}</strong> जी द्वारा ${ragName ? `राग <strong>${ragName}</strong> में निबद्ध कर ` : ''}की गई है। इसमें श्री प्रिया-प्रियतम (श्रीराधा-कृष्ण) के नित्य निकुंज रस, परम विलास, अहैतुकी प्रीति एवं युगल चरण शरणागति का पावन गान है। नित्य अनुशीलन व चिंतन से यह वाणी चित्त को निर्मल कर भगवद्भाव में लीन करती है।
           </p>
         </section>
 
@@ -931,20 +1039,43 @@ export const onRequest: PagesFunction<Env> = async (context) => {
             <tr style="background-color: #f5f5f4;"><td style="padding: 0.75rem; border: 1px solid #e7e5e4; font-weight: 600;">पद शीर्षक (Title)</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;">${padTitle} (${romanTitle})</td></tr>
             <tr><td style="padding: 0.75rem; border: 1px solid #e7e5e4; font-weight: 600;">रचयिता (Author)</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;"><a href="${saintLink}" style="color: #b45309; text-decoration: underline;">${padAuthor}</a></td></tr>
             <tr style="background-color: #f5f5f4;"><td style="padding: 0.75rem; border: 1px solid #e7e5e4; font-weight: 600;">संग्रह (Grantha)</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;"><a href="${granthaLink}" style="color: #b45309; text-decoration: underline;">${granthaLabel}</a></td></tr>
-            <tr><td style="padding: 0.75rem; border: 1px solid #e7e5e4; font-weight: 600;">साधना धारा (Tradition)</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;">श्री वृन्दावन नित्य निकुंज रस उपासना</td></tr>
+            ${ragName ? `<tr><td style="padding: 0.75rem; border: 1px solid #e7e5e4; font-weight: 600;">राग (Raga)</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;">राग ${ragName}</td></tr>` : ''}
+            <tr style="background-color: #f5f5f4;"><td style="padding: 0.75rem; border: 1px solid #e7e5e4; font-weight: 600;">साधना धारा (Tradition)</td><td style="padding: 0.75rem; border: 1px solid #e7e5e4;">श्री वृन्दावन नित्य निकुंज रस उपासना</td></tr>
           </table>
         </section>
+
+        <!-- Related Padas in Same Grantha (Exponential Spidering Mesh) -->
+        ${relatedPadas.length > 0 ? `
+        <section style="margin-top: 2rem; background: #ffffff; padding: 1.5rem; border: 1px solid #fde68a; border-radius: 0.75rem; box-shadow: 0 2px 8px rgba(217, 119, 6, 0.05);">
+          <h2 style="font-size: 1.25rem; font-weight: 600; color: #78350f; margin: 0 0 1rem 0;">📖 ${granthaLabel} के अन्य पावन पद</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0.75rem;">
+            ${relatedPadas.map(([rSlug, rTitle]) => `
+              <a href="/pad/${encodeURIComponent(rSlug)}" style="display: block; padding: 0.75rem 1rem; background: #fffbeb; border: 1px solid #fef3c7; border-radius: 0.5rem; color: #1c1917; text-decoration: none; font-size: 0.95rem; font-weight: 500;">
+                ${rTitle} &rarr;
+              </a>
+            `).join('')}
+          </div>
+        </section>
+        ` : ''}
 
         <!-- Google FAQ Rich Snippets Section -->
         <section style="margin-top: 2rem; background-color: #fffbeb; border: 1px solid #fef3c7; border-radius: 0.75rem; padding: 1.5rem;">
           <h2 style="font-size: 1.25rem; font-weight: 600; color: #92400e; margin: 0 0 1rem 0;">अक्सर पूछे जाने वाले प्रश्न (FAQ)</h2>
           <details open style="margin-bottom: 0.75rem; padding: 0.75rem; background-color: #ffffff; border-radius: 0.5rem; border: 1px solid #fef3c7;">
-            <summary style="font-weight: 600; color: #78350f; cursor: pointer;">${padTitle} के रचयिता कौन हैं?</summary>
-            <p style="margin: 0.5rem 0 0 0; color: #44403c; font-size: 0.95rem;">इस पावन पद के रचयिता <strong>${padAuthor}</strong> जी हैं।</p>
+            <summary style="font-weight: 600; color: #78350f; cursor: pointer;">${padTitle} के रचयिता कौन हैं और यह किस परंपरा का अंग है?</summary>
+            <p style="margin: 0.5rem 0 0 0; color: #44403c; font-size: 0.95rem;">इस पावन पद के रचयिता <strong>${padAuthor}</strong> जी हैं। यह पद श्री धाम वृन्दावन की नित्य निकुंज रस उपासना परंपरा का पावन अंग है।</p>
+          </details>
+          <details open style="margin-bottom: 0.75rem; padding: 0.75rem; background-color: #ffffff; border-radius: 0.5rem; border: 1px solid #fef3c7;">
+            <summary style="font-weight: 600; color: #78350f; cursor: pointer;">यह पद किस राग व पावन संग्रह में संकलित है?</summary>
+            <p style="margin: 0.5rem 0 0 0; color: #44403c; font-size: 0.95rem;">यह पद <strong>${granthaLabel}</strong> संग्रह का पावन अंग है${ragName ? ` और शास्त्रीय राग <strong>${ragName}</strong> में निबद्ध है` : ''}।</p>
+          </details>
+          <details open style="margin-bottom: 0.75rem; padding: 0.75rem; background-color: #ffffff; border-radius: 0.5rem; border: 1px solid #fef3c7;">
+            <summary style="font-weight: 600; color: #78350f; cursor: pointer;">इस पद का मुख्य आध्यात्मिक भाव क्या है?</summary>
+            <p style="margin: 0.5rem 0 0 0; color: #44403c; font-size: 0.95rem;">इस पद में श्री प्रिया-प्रियतम (श्रीराधा-कृष्ण) के नित्य निकुंज विलास, अनन्य प्रेम, रूप-माधुरी एवं युगल चरण शरणागति का अनुपम निरूपण है।</p>
           </details>
           <details open style="padding: 0.75rem; background-color: #ffffff; border-radius: 0.5rem; border: 1px solid #fef3c7;">
-            <summary style="font-weight: 600; color: #78350f; cursor: pointer;">यह पद किस पावन संग्रह का अंग है?</summary>
-            <p style="margin: 0.5rem 0 0 0; color: #44403c; font-size: 0.95rem;">यह पद <strong>${granthaLabel}</strong> संग्रह का पावन अंग है।</p>
+            <summary style="font-weight: 600; color: #78350f; cursor: pointer;">क्या वृन्दोपनिषद् पर इस पद का शुद्ध मूल पाठ उपलब्ध है?</summary>
+            <p style="margin: 0.5rem 0 0 0; color: #44403c; font-size: 0.95rem;">हाँ, वृन्दोपनिषद् 2.0 पर <strong>${padTitle}</strong> का संपूर्ण प्रामाणिक पाठ, शुद्ध देवनागरी लिपि, रचयिता परिचय, संबंधित पद व भावार्थ नित्य स्वाध्याय हेतु उपलब्ध है।</p>
           </details>
         </section>
 
@@ -972,8 +1103,8 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     const tradition = saint?.tradition ? ` (${saint.tradition})` : '';
     const bio = saint?.biography ? `${saint.biography} ` : '';
 
-    title = `${saintName}${tradition} • रसिक संत पदावली व जीवन चरित | वृन्दोपनिषद् 2.0`;
-    description = `${bio}${saintName} की समस्त पावन पदों व वाणियों का प्रामाणिक संग्रह। वृन्दोपनिषद् 2.0`;
+    title = `${saintName} | रसिक जीवन चरित्र, वाणियाँ व समस्त पद • वृन्दोपनिषद्`;
+    description = `परम पूज्य ${saintName} जी का प्रामाणिक जीवन चरित्र, निकुंज उपासना, संप्रदाय${saint?.tradition ? ` (${saint.tradition})` : ''} एवं समस्त पावन पदों का संग्रह। वृन्दोपनिषद् 2.0`;
     canonicalUrl = `https://bhav.vrindopnishad.in/sant/${encodeURIComponent(saint?.slug || qAuthor)}`;
 
     const saintSameAs = getSaintSameAs(saintName);
@@ -990,10 +1121,26 @@ export const onRequest: PagesFunction<Env> = async (context) => {
       },
     };
 
+    ensureCrawlIndex();
+    let saintPadas: [string, string][] = saintCrawlMap[saintName] || [];
+    if (saintPadas.length === 0 && saint?.name) {
+      saintPadas = saintCrawlMap[saint.name] || [];
+    }
+    if (saintPadas.length === 0) {
+      const targetClean = (saintName || '').replace(/^(श्री|जगद्गुरु|स्वामी|संत|गोस्वामी)\s*/g, '').trim().toLowerCase();
+      for (const [key, padas] of Object.entries(saintCrawlMap)) {
+        const keyClean = key.replace(/^(श्री|जगद्गुरु|स्वामी|संत|गोस्वामी)\s*/g, '').trim().toLowerCase();
+        if (keyClean && (keyClean.includes(targetClean) || targetClean.includes(keyClean))) {
+          saintPadas = padas;
+          break;
+        }
+      }
+    }
+
     dynamicRootHtml = `
       <article class="sanctuary-ssr-content" style="max-width: 820px; margin: 0 auto; padding: 2.5rem 1.25rem; font-family: 'Noto Serif Devanagari', serif;">
         <nav style="margin-bottom: 1.5rem; font-size: 0.875rem; color: #b45309;">
-          <a href="/" style="color: #b45309; text-decoration: none;">वृन्दोपनिषद् 2.0</a> &rsaquo; <span>संत परंपरा</span>
+          <a href="/" style="color: #b45309; text-decoration: none;">वृन्दोपनिषद् 2.0</a> &rsaquo; <a href="/rasik-saints-of-vrindavan" style="color: #b45309; text-decoration: none;">संत परंपरा</a> &rsaquo; <span>${saintName}</span>
         </nav>
         <header style="margin-bottom: 2rem;">
           <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; background-color: #fef3c7; color: #92400e; margin-bottom: 0.75rem;">रसिक संत परंपरा</span>
@@ -1001,6 +1148,50 @@ export const onRequest: PagesFunction<Env> = async (context) => {
           <p style="font-size: 0.95rem; color: #78716c; margin: 0;">${saint?.tradition ? `संप्रदाय: ${saint.tradition} • ` : ''}पावन वाणी व रसिक पद संग्रह</p>
         </header>
         <p style="font-size: 1.1rem; line-height: 1.8; color: #44403c;">${description}</p>
+
+        <!-- Saint Pada Directory (Spidering Discovery Mesh) -->
+        ${saintPadas.length > 0 ? `
+        <section style="margin-top: 2rem; background: #ffffff; padding: 1.25rem; border: 1px solid #fde68a; border-radius: 0.75rem; box-shadow: 0 2px 8px rgba(217, 119, 6, 0.05);">
+          <h2 style="font-size: 1.25rem; font-weight: 600; color: #78350f; margin: 0 0 1rem 0;">🌸 ${saintName} के पावन पद एवं अमृत वाणियाँ (${saintPadas.length} पद)</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.75rem;">
+            ${saintPadas.map(([pSlug, pTitle]) => `
+              <a href="/pad/${encodeURIComponent(pSlug)}" style="display: block; padding: 0.75rem 1rem; background: #fffbeb; border: 1px solid #fef3c7; border-radius: 0.5rem; color: #1c1917; text-decoration: none; font-size: 0.95rem; font-weight: 500;">
+                ${pTitle} &rarr;
+              </a>
+            `).join('')}
+          </div>
+        </section>
+        ` : ''}
+
+        <!-- FAQ Rich Snippets -->
+        <section style="margin-top: 2rem; background-color: #fffbeb; border: 1px solid #fef3c7; border-radius: 0.75rem; padding: 1.25rem;">
+          <h2 style="font-size: 1.25rem; font-weight: 600; color: #92400e; margin: 0 0 1rem 0;">अक्सर पूछे जाने वाले प्रश्न (FAQ)</h2>
+          <details open style="margin-bottom: 0.75rem; padding: 0.75rem; background-color: #ffffff; border-radius: 0.5rem; border: 1px solid #fef3c7;">
+            <summary style="font-weight: 600; color: #78350f; cursor: pointer;">${saintName} किस परंपरा/संप्रदाय से संबद्ध हैं?</summary>
+            <p style="margin: 0.5rem 0 0 0; color: #44403c; font-size: 0.95rem;">${saintName} जी ${saint?.tradition ? `<strong>${saint.tradition}</strong>` : 'श्री वृन्दावन नित्य निकुंज रस परंपरा'} के परम पूज्य संत हैं।</p>
+          </details>
+          <details open style="padding: 0.75rem; background-color: #ffffff; border-radius: 0.5rem; border: 1px solid #fef3c7;">
+            <summary style="font-weight: 600; color: #78350f; cursor: pointer;">वृन्दोपनिषद् में ${saintName} के कितने पद उपलब्ध हैं?</summary>
+            <p style="margin: 0.5rem 0 0 0; color: #44403c; font-size: 0.95rem;">वृन्दोपनिषद् डिजिटल आर्काइव में ${saintName} जी के <strong>${saintPadas.length || 'अनेक'}</strong> प्रामाणिक पद एवं वाणियाँ मूल पाठ, भावार्थ व स्वर-राग सहित उपलब्ध हैं।</p>
+          </details>
+        </section>
+
+        <!-- Cross-Linking Navigation -->
+        <section style="margin-top: 2rem; padding: 1.25rem; background-color: #fafaf9; border-radius: 0.75rem; border: 1px solid #e7e5e4;">
+          <h2 style="font-size: 1.25rem; font-weight: 600; color: #44403c; margin: 0 0 1rem 0;">संत मंडल एवं अन्य पावन संग्रह</h2>
+          <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem;">
+            <li><a href="/rasik-saints-of-vrindavan" style="color: #b45309; text-decoration: none; display: block; padding: 0.5rem 0.75rem; background: #fff; border: 1px solid #e7e5e4; border-radius: 0.5rem;">🌸 १३१ रसिक संतों का जीवन चरित &rarr;</a></li>
+            <li><a href="/rasik-vani-granthas-list" style="color: #b45309; text-decoration: none; display: block; padding: 0.5rem 0.75rem; background: #fff; border: 1px solid #e7e5e4; border-radius: 0.5rem;">📖 प्रमुख रसिक वाणी ग्रंथ &rarr;</a></li>
+            <li><a href="/padavali" style="color: #b45309; text-decoration: none; display: block; padding: 0.5rem 0.75rem; background: #fff; border: 1px solid #e7e5e4; border-radius: 0.5rem;">📜 ४४,०००+ समस्त पावन पद &rarr;</a></li>
+            <li><a href="/" style="color: #b45309; text-decoration: none; display: block; padding: 0.5rem 0.75rem; background: #fff; border: 1px solid #e7e5e4; border-radius: 0.5rem;">📿 नित्य सेवा व अष्टयाम स्मरण &rarr;</a></li>
+          </ul>
+        </section>
+
+        <!-- Footer Colophon -->
+        <footer style="margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid #e7e5e4; font-size: 0.875rem; color: #a8a29e; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <span>वृन्दोपनिषद् 2.0 • Digital Sanctuary for Rasik Saints</span>
+          <a href="${canonicalUrl}" style="color: #b45309; text-decoration: underline;">संत वाणी स्वाध्याय</a>
+        </footer>
       </article>
     `;
   } else if (qGrantha && EPICS_META[qGrantha]) {
@@ -1212,8 +1403,8 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     const g = GRANTHAS_MAP.get(qGrantha) || GRANTHAS_MAP.get(decodeURIComponent(qGrantha).trim())!;
     const authorText = g.author ? ` (${g.author})` : '';
     const romanTitle = formatSlug(g.id || qGrantha);
-    title = `${g.name}${authorText} • संपूर्ण मूल पाठ, पद संग्रह, भावार्थ व व्याख्या | ${romanTitle} Lyrics & Meaning - वृन्दोपनिषद् 2.0 (Vrindopnishad)`;
-    description = `${g.description || g.name} के समस्त पावन पदों व श्लोकों का प्रामाणिक संग्रह। रचयिता: ${g.author || 'रसिक संत'}। नित्य स्वाध्याय व पारायण। वृन्दोपनिषद् 2.0`;
+    title = `${g.name} (${g.author || 'रसिक संत'}) | संपूर्ण मूल पाठ, पद संग्रह व व्याख्या • वृन्दोपनिषद्`;
+    description = `पावन वाणी ग्रंथ ${g.name} का संपूर्ण मूल पाठ, श्लोक व पद संग्रह। रचयिता: ${g.author || 'रसिक संत'}। नित्य स्वाध्याय, भावार्थ व अर्थ सहित।`;
     canonicalUrl = `https://bhav.vrindopnishad.in/grantha/${encodeURIComponent(g.id || qGrantha)}`;
 
     entitySchema = {
@@ -1224,10 +1415,14 @@ export const onRequest: PagesFunction<Env> = async (context) => {
       'description': g.description || description,
     };
 
+    ensureCrawlIndex();
+    const granthaId = g.id || qGrantha;
+    const granthaPadas: [string, string][] = granthaCrawlMap[granthaId] || [];
+
     dynamicRootHtml = `
       <article class="sanctuary-ssr-content" style="max-width: 820px; margin: 0 auto; padding: 2.5rem 1.25rem; font-family: 'Noto Serif Devanagari', serif;">
         <nav style="margin-bottom: 1.5rem; font-size: 0.875rem; color: #b45309;">
-          <a href="/" style="color: #b45309; text-decoration: none;">वृन्दोपनिषद् 2.0</a> &rsaquo; <span>पावन ग्रंथ संग्रह</span>
+          <a href="/" style="color: #b45309; text-decoration: none;">वृन्दोपनिषद् 2.0</a> &rsaquo; <a href="/rasik-vani-granthas-list" style="color: #b45309; text-decoration: none;">पावन ग्रंथ संग्रह</a> &rsaquo; <span>${g.name}</span>
         </nav>
         <header style="margin-bottom: 2rem;">
           <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; background-color: #fef3c7; color: #92400e; margin-bottom: 0.75rem;">पावन वाणी ग्रंथ</span>
@@ -1235,13 +1430,82 @@ export const onRequest: PagesFunction<Env> = async (context) => {
           <p style="font-size: 0.95rem; color: #78716c; margin: 0;">रचयिता: ${g.author || 'रसिक संत'} • नित्य स्वाध्याय व अनुशीलन</p>
         </header>
         <p style="font-size: 1.1rem; line-height: 1.8; color: #44403c;">${description}</p>
+
+        <!-- Grantha Pada Directory (Spidering Discovery Mesh) -->
+        ${granthaPadas.length > 0 ? `
+        <section style="margin-top: 2rem; background: #ffffff; padding: 1.25rem; border: 1px solid #fde68a; border-radius: 0.75rem; box-shadow: 0 2px 8px rgba(217, 119, 6, 0.05);">
+          <h2 style="font-size: 1.25rem; font-weight: 600; color: #78350f; margin: 0 0 1rem 0;">📖 ${g.name} के समस्त पावन पद (${granthaPadas.length} पद)</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.75rem;">
+            ${granthaPadas.map(([pSlug, pTitle]) => `
+              <a href="/pad/${encodeURIComponent(pSlug)}" style="display: block; padding: 0.75rem 1rem; background: #fffbeb; border: 1px solid #fef3c7; border-radius: 0.5rem; color: #1c1917; text-decoration: none; font-size: 0.95rem; font-weight: 500;">
+                ${pTitle} &rarr;
+              </a>
+            `).join('')}
+          </div>
+        </section>
+        ` : ''}
+
+        <!-- FAQ Rich Snippets -->
+        <section style="margin-top: 2rem; background-color: #fffbeb; border: 1px solid #fef3c7; border-radius: 0.75rem; padding: 1.25rem;">
+          <h2 style="font-size: 1.25rem; font-weight: 600; color: #92400e; margin: 0 0 1rem 0;">अक्सर पूछे जाने वाले प्रश्न (FAQ)</h2>
+          <details open style="margin-bottom: 0.75rem; padding: 0.75rem; background-color: #ffffff; border-radius: 0.5rem; border: 1px solid #fef3c7;">
+            <summary style="font-weight: 600; color: #78350f; cursor: pointer;">${g.name} के रचयिता कौन हैं?</summary>
+            <p style="margin: 0.5rem 0 0 0; color: #44403c; font-size: 0.95rem;">${g.name} के रचयिता <strong>${g.author || 'रसिक संत'}</strong> जी हैं।</p>
+          </details>
+          <details open style="padding: 0.75rem; background-color: #ffffff; border-radius: 0.5rem; border: 1px solid #fef3c7;">
+            <summary style="font-weight: 600; color: #78350f; cursor: pointer;">${g.name} में कुल कितने पद हैं?</summary>
+            <p style="margin: 0.5rem 0 0 0; color: #44403c; font-size: 0.95rem;">इस पावन ग्रंथ में कुल <strong>${granthaPadas.length || 'अनेक'}</strong> पद संकलित हैं।</p>
+          </details>
+        </section>
+
+        <!-- Cross-Linking Navigation -->
+        <section style="margin-top: 2rem; padding: 1.25rem; background-color: #fafaf9; border-radius: 0.75rem; border: 1px solid #e7e5e4;">
+          <h2 style="font-size: 1.25rem; font-weight: 600; color: #44403c; margin: 0 0 1rem 0;">संबंधित पावन ग्रंथ एवं स्वाध्याय</h2>
+          <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem;">
+            <li><a href="/rasik-vani-granthas-list" style="color: #b45309; text-decoration: none; display: block; padding: 0.5rem 0.75rem; background: #fff; border: 1px solid #e7e5e4; border-radius: 0.5rem;">📖 प्रमुख रसिक वाणी ग्रंथ &rarr;</a></li>
+            <li><a href="/rasik-saints-of-vrindavan" style="color: #b45309; text-decoration: none; display: block; padding: 0.5rem 0.75rem; background: #fff; border: 1px solid #e7e5e4; border-radius: 0.5rem;">🌸 १३१ रसिक संत परंपरा &rarr;</a></li>
+            <li><a href="/padavali" style="color: #b45309; text-decoration: none; display: block; padding: 0.5rem 0.75rem; background: #fff; border: 1px solid #e7e5e4; border-radius: 0.5rem;">📜 ४४,०००+ समस्त पावन पद &rarr;</a></li>
+            <li><a href="/" style="color: #b45309; text-decoration: none; display: block; padding: 0.5rem 0.75rem; background: #fff; border: 1px solid #e7e5e4; border-radius: 0.5rem;">📿 नित्य सेवा व अष्टयाम स्मरण &rarr;</a></li>
+          </ul>
+        </section>
+
+        <!-- Footer Colophon -->
+        <footer style="margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid #e7e5e4; font-size: 0.875rem; color: #a8a29e; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <span>वृन्दोपनिषद् 2.0 • Digital Sanctuary for Sacred Grantha</span>
+          <a href="${canonicalUrl}" style="color: #b45309; text-decoration: underline;">ग्रंथ मूल पाठ</a>
+        </footer>
       </article>
     `;
   } else if (qGrantha) {
+    ensureCrawlIndex();
     const formatted = formatSlug(qGrantha);
+    const granthaPadas: [string, string][] = granthaCrawlMap[qGrantha] || [];
     title = `${formatted} • संपूर्ण ग्रंथ संग्रह | वृन्दोपनिषद् 2.0 (Vrindopnishad)`;
     description = `${formatted} के समस्त पावन पदों व श्लोकों का संग्रह। वृन्दोपनिषद् 2.0`;
     canonicalUrl = `https://bhav.vrindopnishad.in/grantha/${encodeURIComponent(qGrantha)}`;
+    if (granthaPadas.length > 0) {
+      dynamicRootHtml = `
+      <article class="sanctuary-ssr-content" style="max-width: 820px; margin: 0 auto; padding: 2.5rem 1.25rem; font-family: 'Noto Serif Devanagari', serif;">
+        <nav style="margin-bottom: 1.5rem; font-size: 0.875rem; color: #b45309;">
+          <a href="/" style="color: #b45309; text-decoration: none;">वृन्दोपनिषद् 2.0</a> &rsaquo; <span>${formatted}</span>
+        </nav>
+        <header style="margin-bottom: 2rem;">
+          <h1 style="font-size: 2rem; font-weight: 700; color: #1c1917;">${formatted}</h1>
+          <p style="font-size: 0.95rem; color: #78716c;">${description}</p>
+        </header>
+        <section style="margin-top: 2rem; background: #ffffff; padding: 1.25rem; border: 1px solid #fde68a; border-radius: 0.75rem;">
+          <h2 style="font-size: 1.25rem; font-weight: 600; color: #78350f; margin: 0 0 1rem 0;">📖 ${formatted} के पद (${granthaPadas.length} पद)</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.75rem;">
+            ${granthaPadas.map(([pSlug, pTitle]) => `
+              <a href="/pad/${encodeURIComponent(pSlug)}" style="display: block; padding: 0.75rem 1rem; background: #fffbeb; border: 1px solid #fef3c7; border-radius: 0.5rem; color: #1c1917; text-decoration: none; font-size: 0.95rem; font-weight: 500;">
+                ${pTitle} &rarr;
+              </a>
+            `).join('')}
+          </div>
+        </section>
+      </article>
+      `;
+    }
   } else if (pathname === '/rasik-saints-of-vrindavan') {
     title = 'श्री धाम वृन्दावन के प्रमुख रसिक संत मंडल एवं वाणी परंपरा | वृन्दोपनिषद् 2.0 (Vrindopnishad)';
     description = 'श्री स्वामी हरिदास, श्री हित हरिवंश महाप्रभु, श्री व्यास जी, रसखान, मीराबाई सहित १३१ प्रामाणिक रसिक संतों का पावन जीवन चरित्र, संप्रदाय एवं अमृत वाणी संग्रह।';

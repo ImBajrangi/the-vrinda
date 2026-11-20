@@ -122,16 +122,35 @@ function escapeHtml(str: string): string {
  * Safe to execute on both Node.js (SSR) and browser environments.
  */
 export function generateSEOMetadata(config: SEOConfig = {}): SEOMetadataResult {
-  const title = config.title
-    ? `${config.title} | ${DEFAULT_SEO.siteName}`
-    : DEFAULT_SEO.title;
-
-  const description = config.description || DEFAULT_SEO.description;
   const padSlug = config.pad ? (config.pad.slug || config.pad.id) : undefined;
+  let title = config.title;
+  let description = config.description;
+
+  if (config.pad && !title) {
+    const pad = config.pad;
+    const titleClean = pad.titleDevanagari.split(' - ')[0].trim();
+    const granthaLabel = (config.grantha?.name) || pad.collectionId || 'रसिक वाणी संग्रह';
+    title = `${titleClean} - ${pad.author || 'रसिक संत'} | लिरिक्स व भावार्थ सहित • ${granthaLabel} - ${DEFAULT_SEO.siteName}`;
+  } else if (title) {
+    title = `${title} | ${DEFAULT_SEO.siteName}`;
+  } else {
+    title = DEFAULT_SEO.title;
+  }
+
+  if (config.pad && !description) {
+    const pad = config.pad;
+    const titleClean = pad.titleDevanagari.split(' - ')[0].trim();
+    const firstLine = pad.verses?.[0]?.linesDevanagari?.[0] || titleClean;
+    const granthaLabel = (config.grantha?.name) || pad.collectionId || 'रसिक वाणी संग्रह';
+    description = `«${firstLine.slice(0, 85)}...» पढ़िए ${titleClean} का प्रामाणिक मूल पाठ व सरल भावार्थ। रचयिता: ${pad.author || 'रसिक संत'} (${granthaLabel})। नित्य निकुंज रस व स्वाध्याय।`;
+  } else if (!description) {
+    description = DEFAULT_SEO.description;
+  }
+
   const canonicalUrl =
     config.canonicalUrl ||
     (padSlug
-      ? `${DEFAULT_SEO.baseUrl}/?tab=padavali&pad=${encodeURIComponent(padSlug)}`
+      ? `${DEFAULT_SEO.baseUrl}/pad/${encodeURIComponent(padSlug)}`
       : typeof window !== 'undefined'
       ? window.location.href
       : DEFAULT_SEO.baseUrl);
@@ -190,6 +209,10 @@ export function generateSEOMetadata(config: SEOConfig = {}): SEOMetadataResult {
       inLanguage: 'hi',
       text: stanzaSample,
       musicalKey: pad.rag,
+      speakable: {
+        '@type': 'SpeakableSpecification',
+        cssSelector: ['.verse-body', '.sanctuary-ssr-title', 'h1'],
+      },
       publisher: {
         '@id': `${DEFAULT_SEO.baseUrl}/#organization`,
       },
@@ -199,6 +222,22 @@ export function generateSEOMetadata(config: SEOConfig = {}): SEOMetadataResult {
       url: canonicalUrl,
       image: ogImage,
     };
+
+    if (pad.rag) {
+      schemas.push({
+        '@context': 'https://schema.org',
+        '@type': 'MusicComposition',
+        '@id': `${canonicalUrl}#composition`,
+        name: pad.titleDevanagari,
+        composer: {
+          '@type': 'Person',
+          name: pad.author || 'श्री ब्रज रसिक परंपरा',
+        },
+        inLanguage: 'hi',
+        musicalKey: `राग ${pad.rag}`,
+        text: stanzaSample,
+      });
+    }
 
     if (config.audioUrl || pad.audioUrl) {
       padSchema.audio = {
@@ -227,19 +266,62 @@ export function generateSEOMetadata(config: SEOConfig = {}): SEOMetadataResult {
           '@type': 'ListItem',
           position: 2,
           name: 'Scriptures Repository',
-          item: `${DEFAULT_SEO.baseUrl}/?tab=padavali`,
+          item: `${DEFAULT_SEO.baseUrl}/padavali`,
         },
         {
           '@type': 'ListItem',
           position: 3,
           name: pad.collectionId || 'Braj Ras Vani',
-          item: `${DEFAULT_SEO.baseUrl}/?tab=padavali&grantha=${encodeURIComponent(pad.collectionId || '')}`,
+          item: `${DEFAULT_SEO.baseUrl}/grantha/${encodeURIComponent(pad.collectionId || '')}`,
         },
         {
           '@type': 'ListItem',
           position: 4,
           name: pad.titleDevanagari,
           item: canonicalUrl,
+        },
+      ],
+    });
+
+    // 3b. FAQPage Schema for Google FAQ Rich Snippets
+    const titleClean = pad.titleDevanagari.split(' - ')[0].trim();
+    const granthaLabel = pad.collectionId || 'रसिक वाणी संग्रह';
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      '@id': `${canonicalUrl}#faq`,
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: `${titleClean} के रचयिता कौन हैं और यह किस परंपरा का अंग है?`,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: `इस पावन पद के रचयिता परम पूज्य ${pad.author || 'रसिक संत'} जी हैं। यह पद श्री धाम वृन्दावन की नित्य निकुंज रस उपासना परंपरा का पावन अंग है।`,
+          },
+        },
+        {
+          '@type': 'Question',
+          name: `यह पद किस राग व पावन संग्रह में संकलित है?`,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: `यह पद '${granthaLabel}' संग्रह में संकलित है${pad.rag ? ` और शास्त्रीय राग ${pad.rag} में निबद्ध है` : ''}। रसिक संतों द्वारा इसका गायन अत्यंत प्रेम व भावपूर्ण रीति से किया जाता है।`,
+          },
+        },
+        {
+          '@type': 'Question',
+          name: `${titleClean} का आध्यात्मिक भावार्थ क्या है?`,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: `${titleClean} में श्री प्रिया-प्रियतम (श्रीराधा-कृष्ण) के नित्य निकुंज विलास, अनन्य प्रेम, रूप-माधुरी एवं युगल चरण शरणागति का अनुपम निरूपण है।`,
+          },
+        },
+        {
+          '@type': 'Question',
+          name: `क्या वृन्दोपनिषद् पर इस पद का शुद्ध मूल पाठ उपलब्ध है?`,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: `हाँ, वृन्दोपनिषद् 2.0 पर ${titleClean} का संपूर्ण प्रामाणिक पाठ, शुद्ध देवनागरी लिपि, रचयिता परिचय, संबंधित पद व भावार्थ नित्य स्वाध्याय हेतु उपलब्ध है।`,
+          },
         },
       ],
     });
