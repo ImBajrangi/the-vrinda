@@ -214,8 +214,6 @@ export function render(url: string = '/'): RenderResult {
     const snippet = firstLines ? `«${firstLines}» ` : '';
     const ragaText = pad.rag ? `राग ${pad.rag} में निबद्ध पावन पद। ` : '';
     const granthaMeta = pad.collectionId ? SacredDatabase.getGranthaById(pad.collectionId) : null;
-    const granthaText = granthaMeta ? ` - ${granthaMeta.name}` : (pad.collectionId ? ` (${pad.collectionId})` : '');
-
     const titleClean = pad.titleDevanagari.split(' - ')[0].trim();
     const granthaLabel = granthaMeta ? granthaMeta.name : (pad.collectionId || 'रसिक वाणी');
 

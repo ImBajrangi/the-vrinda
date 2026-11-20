@@ -1,16 +1,16 @@
 # Graph Report - vrindopnisad  (2026-11-20)
 
 ## Corpus Check
-- 1218 files · ~9,580,188 words
+- 1220 files · ~9,070,924 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2019 nodes · 2801 edges · 234 communities (174 shown, 60 thin omitted)
+- 2022 nodes · 2805 edges · 238 communities (179 shown, 59 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 9 edges (avg confidence: 0.73)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `5cfd9102`
+- Built from commit: `ca9ad466`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -28,12 +28,12 @@
 - brajrasik-scraper.mjs
 - route-inventory.ts
 - devDependencies
-- seoService.ts
+- KathaSanctuary.tsx
 - Handoff Report — Explorer 2 (TS6133 Investigation: `PadavaliReader.tsx`)
 - NavTab
 - IOSActivityIndicator.tsx
 - test-framework.mjs
-- SEOService
+- seoService.ts
 - ICMSProvider
 - 1. Observation
 - reconcile-catalog.mjs
@@ -108,7 +108,7 @@
 - Independent Victory Audit Report (Iteration 2) — Vrindopanishad 2.0
 - ⚡ Vrindopnisad 2.0 — Empirical Performance Baseline Report
 - canonical_sort_all_granthas.py
-- App
+- MilestonesView.tsx
 - adversarial-challenger-stress.mjs
 - challenger-r2-empirical.mjs
 - bayalees-leela
@@ -229,17 +229,21 @@
 - export_sacred_corpus_to_obsidian.py
 - SacredPad
 - sacredSectionService.ts
-- formatDevanagariNumerals
+- SadhanaPillarModal.tsx
 - SpotlightSearchModal.tsx
 - segregate_and_clean_all_epics.py
 - clean_and_dedup_all_epics.py
-- devotional.ts
-- correlationService.ts
-- DhamTirthaSection.tsx
-- KathaSanctuary.tsx
+- devotionalContentParser.ts
+- DynamicNotchNavbar.tsx
+- SacredSectionService
+- DhyanaFocusModal.tsx
 - HeadlessAPICMSProvider
-- NityaUpasanaReader
-- AshtayamaPhaseInfo
+- AshtayamaTimelineDeck.tsx
+- SacredDatabase
+- FeedCard.tsx
+- safeLocalStorageSet
+- useScrollDirection.ts
+- main.tsx
 
 ## God Nodes (most connected - your core abstractions)
 1. `SacredPad` - 40 edges
@@ -254,53 +258,53 @@
 10. `compilerOptions` - 17 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `SadhanaRingProgress()` --references--> `react`  [EXTRACTED]
-  src/components/smaran/SadhanaRingProgress.tsx → package.json
 - `FloatingAudioPlayer()` --references--> `react`  [EXTRACTED]
   src/components/player/FloatingAudioPlayer.tsx → package.json
-- `SaintsDirectoryModalProps` --references--> `CanonicalSaint`  [EXTRACTED]
-  src/components/common/SaintsDirectoryModal.tsx → src/services/sacredDatabase.ts
-- `SaintsDirectoryModal()` --references--> `SacredDatabase`  [EXTRACTED]
-  src/components/common/SaintsDirectoryModal.tsx → src/services/sacredDatabase.ts
+- `SadhanaRingProgress()` --references--> `react`  [EXTRACTED]
+  src/components/smaran/SadhanaRingProgress.tsx → package.json
 - `FeedCardProps` --references--> `DevotionalFeedPost`  [EXTRACTED]
   src/components/feed/FeedCard.tsx → src/types/devotional.ts
+- `render()` --indirect_call--> `MilestonesView()`  [INFERRED]
+  src/entry-server.tsx → src/components/milestones/MilestonesView.tsx
+- `InlinePurportCardProps` --references--> `SacredPad`  [EXTRACTED]
+  src/components/reader/InlinePurportCard.tsx → src/types/devotional.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (234 total, 60 thin omitted)
+## Communities (238 total, 59 thin omitted)
 
 ### Community 0 - "[[path]].ts"
 Cohesion: 0.06
-Nodes (20): CFElement, CFHTMLRewriter, CHAPTER_SNIPPETS, ElementAttributeModifier, ElementHtmlModifier, ElementTextModifier, Env, EPICS_META (+12 more)
+Nodes (23): CFElement, CFHTMLRewriter, CHAPTER_SNIPPETS, ElementAttributeModifier, ElementHtmlModifier, ElementTextModifier, ensureCrawlIndex(), Env (+15 more)
 
 ### Community 1 - "cacheService.ts"
-Cohesion: 0.09
-Nodes (35): DhyanaFocusModal(), broadcastSync(), CACHED_PADS_KEY, computeChittaShantiScore(), computeDhyanaFlowStage(), defaultDhyanaImpactState, defaultReaderState, defaultSadhanaState (+27 more)
+Cohesion: 0.06
+Nodes (35): CACHED_PADS_KEY, computeProgressPercent(), computeSadhanaSummary(), computeStreakStatus(), defaultDhyanaImpactState, defaultReaderState, defaultSadhanaState, defaultUserPreferences (+27 more)
 
 ### Community 2 - "devotionalSummaryService.ts"
-Cohesion: 0.06
-Nodes (56): EmojiTray(), EmojiTrayProps, FeedCard(), FeedCardProps, BreathPhase, DhyanaFocusModalProps, InlinePurportCard(), InlinePurportCardProps (+48 more)
+Cohesion: 0.10
+Nodes (36): InlinePurportCard(), InlinePurportCardProps, broadcastSummaryCached(), CANONICAL_DEVOTIONAL_SUMMARIES, CANONICAL_TEXT_MAPPINGS, computeDevotionalCacheKey(), computeQuoteCacheKey(), computeTextHash() (+28 more)
 
 ### Community 3 - "sacredDatabase.ts"
 Cohesion: 0.06
 Nodes (33): SACRED_PADS, allGranthas, allPadas, allSaints, authorCache, BrajGlossaryTerm, CatalogIndexItem, categoryCache (+25 more)
 
 ### Community 4 - "StaticFileCMSProvider.ts"
-Cohesion: 0.20
-Nodes (12): SpotlightSearchModalProps, SACRED_FEED_POSTS, CanonicalGrantha, CanonicalSaint, CMSContentStatus, CMSFeedPostEntry, CMSFilter, CMSGranthaEntry (+4 more)
+Cohesion: 0.21
+Nodes (12): SpotlightSearchModalProps, SACRED_FEED_POSTS, CanonicalGrantha, CMSAshtayamaEntry, CMSContentStatus, CMSFeedPostEntry, CMSFilter, CMSGranthaEntry (+4 more)
 
 ### Community 5 - "PadavaliReader.tsx"
-Cohesion: 0.11
-Nodes (23): MobileReaderHeader(), MobileReaderHeaderProps, MobileScriptureDrawer(), MobileScriptureDrawerProps, ScriptureItem, triggerHaptic(), ENTITY_REGEX_MAP, PadavaliReader() (+15 more)
+Cohesion: 0.12
+Nodes (21): MobileReaderHeader(), MobileReaderHeaderProps, MobileScriptureDrawer(), MobileScriptureDrawerProps, ScriptureItem, triggerHaptic(), ENTITY_REGEX_MAP, PadavaliReader() (+13 more)
 
 ### Community 6 - ".cache_bundle.mjs"
 Cohesion: 0.19
 Nodes (26): broadcastSync(), computeMantraCount(), computeProgressPercent(), computeSadhanaSummary(), computeStreakStatus(), formatDevanagariNumerals(), getCachedBookmarks(), getFeedInteractions() (+18 more)
 
 ### Community 7 - "App.tsx"
-Cohesion: 0.08
-Nodes (24): AppComponents, FeedTabType, getDynamicWeekDays(), LazyBeginnerGuideModal, LazyCharitraDarshan, LazyDhamTirthaSection, LazyDhyanaFocusModal, LazyFloatingAudioPlayer (+16 more)
+Cohesion: 0.09
+Nodes (22): AppComponents, FeedTabType, getDynamicWeekDays(), LazyBeginnerGuideModal, LazyCharitraDarshan, LazyDhamTirthaSection, LazyDhyanaFocusModal, LazyFloatingAudioPlayer (+14 more)
 
 ### Community 8 - "scripts"
 Cohesion: 0.07
@@ -322,25 +326,29 @@ Nodes (7): restoreNetwork(), simulateOffline(), BHAV_ROUTES, CANONICAL_EPICS, DE
 Cohesion: 0.10
 Nodes (21): autoprefixer, devDependencies, autoprefixer, @playwright/test, postcss, tailwindcss, @types/node, @types/react (+13 more)
 
-### Community 13 - "seoService.ts"
-Cohesion: 0.22
-Nodes (9): CharitraDarshanProps, NityaUpasanaReaderProps, CHIME_PATHS, chimeService, ChimeType, DEFAULT_SEO, escapeHtml(), generateSEOMetadata() (+1 more)
+### Community 13 - "KathaSanctuary.tsx"
+Cohesion: 0.20
+Nodes (11): SacredDiscoveryShelf(), CharitraDarshanProps, DhamTirthaSectionProps, KathaSanctuaryProps, NityaUpasanaReaderProps, CHIME_PATHS, chimeService, ChimeType (+3 more)
 
 ### Community 14 - "Handoff Report — Explorer 2 (TS6133 Investigation: `PadavaliReader.tsx`)"
 Cohesion: 0.11
 Nodes (17): 1.1 Targeted Identifiers in `src/components/reader/PadavaliReader.tsx`, 1.2 Dead Ends Log & TSConfig Direct Evidence, 1.3 Tool Command Execution Results, 1. `BRAJ_GLOSSARY`, 1. Observation, 2. `isGlossaryOpen` and `setIsGlossaryOpen`, 2. Logic Chain, 3. Caveats (+9 more)
 
 ### Community 15 - "NavTab"
-Cohesion: 0.12
-Nodes (17): AppProps, AppRouteState, DynamicNotchNavbar(), DynamicNotchNavbarProps, FloatingNavbar(), FloatingNavbarProps, NavTab, SacredLogo() (+9 more)
+Cohesion: 0.18
+Nodes (10): AppProps, AppRouteState, FloatingNavbar(), FloatingNavbarProps, NavTab, MarqueeItemData, TopAnnouncementMarquee(), TopAnnouncementMarqueeProps (+2 more)
 
 ### Community 16 - "IOSActivityIndicator.tsx"
-Cohesion: 0.11
-Nodes (18): ArtworkGraphicSlot(), ArtworkGraphicSlotProps, GraphicAspectRatio, GraphicSlotTheme, IOSSpinner(), IOSSpinnerProps, IOSTopProgressBar(), navigationProgress (+10 more)
+Cohesion: 0.17
+Nodes (11): IOSSpinner(), IOSSpinnerProps, IOSTopProgressBar(), ProgressListener, progressListeners, SIZE_MAP, SPOKE_COLORS, SPOKES (+3 more)
 
 ### Community 17 - "test-framework.mjs"
 Cohesion: 0.31
 Nodes (12): assert, describe(), __dirname, __filename, findJSXAttributeValues(), getAllSourceFiles(), loadTSModule(), parseTS() (+4 more)
+
+### Community 18 - "seoService.ts"
+Cohesion: 0.25
+Nodes (5): DEFAULT_SEO, escapeHtml(), generateSEOMetadata(), SEOConfig, SEOService
 
 ### Community 19 - "ICMSProvider"
 Cohesion: 0.11
@@ -383,12 +391,12 @@ Cohesion: 0.15
 Nodes (12): 1.1 Direct Source Code Inspection: `src/components/reader/PadavaliReader.tsx`, 1.2 Facade & Stub Detection, 1.3 User Rule & Constraint Verification, 1.4 Test Suite Integrity Audit, 1.5 Independent Command Execution Results, 1. Observation, 2. Logic Chain, 3. Caveats (+4 more)
 
 ### Community 29 - "dependencies"
-Cohesion: 0.12
-Nodes (16): clsx, idb-keyval, lucide-react, dependencies, clsx, idb-keyval, lucide-react, react (+8 more)
+Cohesion: 0.15
+Nodes (13): clsx, idb-keyval, lucide-react, dependencies, clsx, idb-keyval, lucide-react, react-dom (+5 more)
 
 ### Community 30 - "MahagranthReader.tsx"
-Cohesion: 0.21
-Nodes (16): resolveCurrentRoute(), EPICS, MahagranthReader(), MahagranthReaderProps, CATALOG_PADAS_MAP, ensureDatabasePrewarmed(), render(), RenderResult (+8 more)
+Cohesion: 0.16
+Nodes (23): App(), resolveCurrentRoute(), EPICS, MahagranthReader(), MahagranthReaderProps, CharitraDarshan(), DhamTirthaSection(), KathaSanctuary() (+15 more)
 
 ### Community 31 - "submit-google-indexing.mjs"
 Cohesion: 0.33
@@ -630,9 +638,9 @@ Nodes (6): 1. Measured Performance Targets vs Reality, 2. JavaScript Bundle & As
 Cohesion: 0.43
 Nodes (4): clean_text(), process_all(), sanitize_pad(), sort_grantha_pads()
 
-### Community 93 - "App"
-Cohesion: 0.24
-Nodes (16): App(), ScallopedBadge(), ScallopedBadgeProps, BadgeItem, getDevotionalStage(), MilestonesView(), MilestonesViewProps, getFeedInteractionsSync() (+8 more)
+### Community 93 - "MilestonesView.tsx"
+Cohesion: 0.20
+Nodes (16): ScallopedBadge(), ScallopedBadgeProps, BadgeItem, getDevotionalStage(), MilestonesView(), MilestonesViewProps, initMultiTabSync(), loadCachedSadhana() (+8 more)
 
 ### Community 94 - "adversarial-challenger-stress.mjs"
 Cohesion: 0.29
@@ -887,20 +895,20 @@ Cohesion: 0.48
 Nodes (5): clean_filename(), export_biographies(), export_places(), export_rituals(), export_stories()
 
 ### Community 220 - "SacredPad"
-Cohesion: 0.18
-Nodes (7): CMSEditorialBadgeProps, SacredDiscoveryShelfProps, FloatingAudioPlayerProps, PadavaliReaderProps, cms, StaticFileCMSProvider, SacredPad
+Cohesion: 0.24
+Nodes (6): CMSEditorialBadgeProps, SacredDiscoveryShelfProps, FloatingAudioPlayer(), FloatingAudioPlayerProps, cms, SacredPad
 
 ### Community 221 - "sacredSectionService.ts"
-Cohesion: 0.18
-Nodes (9): CharitraDarshan(), memoryBios, memoryPlaces, memoryRituals, memoryStories, SEED_BIOGRAPHIES, CorpusIndexManifest, SacredBiography (+1 more)
+Cohesion: 0.11
+Nodes (18): correlationCache, CurrentPraharInfo, NEXUS_CLUSTERS, NexusCluster, AshtayamaPeriod, memoryBios, memoryPlaces, memoryRituals (+10 more)
 
-### Community 222 - "formatDevanagariNumerals"
-Cohesion: 0.20
-Nodes (13): DevotionalVersePresenter(), DevotionalVersePresenterProps, PillarType, SadhanaPillarModal(), SadhanaPillarModalProps, SadhanaRingProgress(), SadhanaRingProgressProps, computeMantraCount() (+5 more)
+### Community 222 - "SadhanaPillarModal.tsx"
+Cohesion: 0.50
+Nodes (4): PillarType, SadhanaPillarModal(), SadhanaPillarModalProps, computeMantraCount()
 
 ### Community 223 - "SpotlightSearchModal.tsx"
-Cohesion: 0.31
-Nodes (9): CombinedItem, extractPurePadaTitle(), SearchFilterType, SpotlightSearchModal(), TRENDING_SEARCH_PROMPTS, BookCoverConfig, getBookCoverConfig(), getSaintPortrait() (+1 more)
+Cohesion: 0.29
+Nodes (10): CombinedItem, extractPurePadaTitle(), SearchFilterType, SpotlightSearchModal(), TRENDING_SEARCH_PROMPTS, CorrelationService, BookCoverConfig, getBookCoverConfig() (+2 more)
 
 ### Community 224 - "segregate_and_clean_all_epics.py"
 Cohesion: 0.46
@@ -910,45 +918,61 @@ Nodes (7): clean_all_epic_files(), clean_all_grantha_files(), clean_stray_line()
 Cohesion: 0.70
 Nodes (4): clean_all_epics(), clean_line(), deduplicate_ch001(), is_stray_hindi_line()
 
-### Community 226 - "devotional.ts"
-Cohesion: 0.13
-Nodes (14): AuthorHierarchyInfo, ChapterInfo, ContemplativeMetrics, EpicChapterItem, EpicIndexData, EpicManifestEntry, FeedInteractionData, FlowStage (+6 more)
+### Community 226 - "devotionalContentParser.ts"
+Cohesion: 0.16
+Nodes (13): DevotionalVersePresenter(), DevotionalVersePresenterProps, DevotionalUnit, FloralGarlandUnit, isStanzaTerminal(), MeterBadgeUnit, parseDevotionalContent(), ParsedSacredPadaContent (+5 more)
 
-### Community 227 - "correlationService.ts"
-Cohesion: 0.27
-Nodes (8): SacredDiscoveryShelf(), CorrelatedDiscovery, correlationCache, CorrelationService, CurrentPraharInfo, NEXUS_CLUSTERS, NexusCluster, AshtayamaPeriod
-
-### Community 228 - "DhamTirthaSection.tsx"
-Cohesion: 0.31
-Nodes (6): DhamTirthaSection(), DhamTirthaSectionProps, SacredSectionService, SEED_PLACES, SacredPlace, SacredPlacePreview
-
-### Community 229 - "KathaSanctuary.tsx"
+### Community 227 - "DynamicNotchNavbar.tsx"
 Cohesion: 0.24
-Nodes (6): KathaSanctuary(), KathaSanctuaryProps, SEED_STORIES, SacredStory, SacredStoryPreview, StoryChapter
+Nodes (8): react, react, DynamicNotchNavbarProps, SacredLogo(), SacredLogoProps, SadhanaRingProgress(), SadhanaRingProgressProps, SadhanaState
 
-### Community 231 - "NityaUpasanaReader"
+### Community 228 - "SacredSectionService"
+Cohesion: 0.23
+Nodes (4): SacredSectionService, SacredBiographyPreview, SacredPlacePreview, SacredStoryPreview
+
+### Community 229 - "DhyanaFocusModal.tsx"
 Cohesion: 0.29
-Nodes (4): NityaUpasanaReader(), SEED_RITUALS, SacredRitual, SacredRitualPreview
+Nodes (9): BreathPhase, DhyanaFocusModal(), DhyanaFocusModalProps, computeChittaShantiScore(), computeDhyanaFlowStage(), recordDhyanaSession(), DevotionalSummaryRequest, DhyanaSessionRecord (+1 more)
+
+### Community 231 - "AshtayamaTimelineDeck.tsx"
+Cohesion: 0.28
+Nodes (7): ArtworkGraphicSlot(), ArtworkGraphicSlotProps, GraphicAspectRatio, GraphicSlotTheme, DynamicNotchNavbar(), AshtayamaTimelineDeck(), computeAshtayamaPhase()
+
+### Community 232 - "SacredDatabase"
+Cohesion: 0.18
+Nodes (7): navigationProgress, SaintsDirectoryModal(), SaintsDirectoryModalProps, StaticFileCMSProvider, CanonicalSaint, SacredDatabase, CMSSaintEntry
+
+### Community 234 - "FeedCard.tsx"
+Cohesion: 0.33
+Nodes (7): EmojiTray(), EmojiTrayProps, FeedCard(), FeedCardProps, getFeedInteractions(), getFeedInteractionsSync(), saveFeedInteraction()
+
+### Community 235 - "safeLocalStorageSet"
+Cohesion: 0.46
+Nodes (8): broadcastSync(), getUserPreferences(), getUserPreferencesSync(), persistSadhana(), reconcileUserPreferences(), safeLocalStorageSet(), saveCachedBookmarks(), saveUserPreferences()
+
+### Community 236 - "useScrollDirection.ts"
+Cohesion: 0.40
+Nodes (3): ScrollDirection, ScrollDirectionState, UseScrollDirectionOptions
 
 ## Knowledge Gaps
-- **1050 isolated node(s):** `Env`, `PagesFunction`, `EPICS_META`, `CHAPTER_SNIPPETS`, `SAINT_KNOWLEDGE_GRAPH` (+1045 more)
+- **1052 isolated node(s):** `Env`, `PagesFunction`, `EPICS_META`, `CHAPTER_SNIPPETS`, `granthaCrawlMap` (+1047 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **60 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **59 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `dependencies` connect `dependencies` to `package.json`?**
+- **Why does `dependencies` connect `dependencies` to `DynamicNotchNavbar.tsx`, `package.json`?**
   _High betweenness centrality (0.022) - this node is a cross-community bridge._
-- **Why does `react` connect `dependencies` to `formatDevanagariNumerals`?**
+- **Why does `react` connect `DynamicNotchNavbar.tsx` to `SacredPad`, `dependencies`?**
   _High betweenness centrality (0.022) - this node is a cross-community bridge._
-- **Why does `SadhanaRingProgress()` connect `formatDevanagariNumerals` to `dependencies`, `App.tsx`?**
+- **Why does `SadhanaRingProgress()` connect `DynamicNotchNavbar.tsx` to `MahagranthReader.tsx`, `App.tsx`?**
   _High betweenness centrality (0.021) - this node is a cross-community bridge._
 - **What connects `Env`, `PagesFunction`, `EPICS_META` to the rest of the system?**
-  _1050 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _1052 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `[[path]].ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.06463414634146342 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06025369978858351 - nodes in this community are weakly interconnected._
 - **Should `cacheService.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.09009009009009009 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06401137980085349 - nodes in this community are weakly interconnected._
 - **Should `devotionalSummaryService.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.05658381808566896 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.10099573257467995 - nodes in this community are weakly interconnected._

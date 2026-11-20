@@ -91,6 +91,9 @@ export default defineConfig(({ isSsrBuild }) => ({
               if (id.includes('node_modules/idb-keyval')) {
                 return 'vendor-idb';
               }
+              if (id.includes('src/services/seoService.ts')) {
+                return 'service-seo';
+              }
               if (id.includes('src/data/legacySlugRedirects.json')) {
                 return 'legacy-slugs';
               }

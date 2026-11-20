@@ -1,7 +1,7 @@
 {
   "functions/[[path]].ts": {
-    "mtime": 1795182654.8329203,
-    "ast_hash": "a494f57b5af5d3de3dbcd3ffa4d327fd",
+    "mtime": 1795184951.0988533,
+    "ast_hash": "e3452fc5be2f8bbb942c2a15f605297c",
     "semantic_hash": ""
   },
   "package.json": {
@@ -2080,8 +2080,8 @@
     "semantic_hash": ""
   },
   "public/data/pada-snippets.json": {
-    "mtime": 1795182959.2749655,
-    "ast_hash": "e7f2de8eff79b364a4afcd17dd94182f",
+    "mtime": 1795183498.9969952,
+    "ast_hash": "c03dc6d15b494b08629d28bd47b1e93f",
     "semantic_hash": ""
   },
   "public/data/scripture-hierarchy.json": {
@@ -2130,8 +2130,8 @@
     "semantic_hash": ""
   },
   "scripts/generate-pada-snippets.mjs": {
-    "mtime": 1795182298.151681,
-    "ast_hash": "7107544dfa7f1aba5618666745fa16ff",
+    "mtime": 1795183494.7079172,
+    "ast_hash": "3c0f08841679ae6755a08d0a3481ba65",
     "semantic_hash": ""
   },
   "scripts/generate-preambles-manifest.mjs": {
@@ -2325,8 +2325,8 @@
     "semantic_hash": ""
   },
   "src/components/reader/PadavaliReader.tsx": {
-    "mtime": 1795182671.2703757,
-    "ast_hash": "4f7af1f2ca196c866d51d13272044a4d",
+    "mtime": 1795184689.708287,
+    "ast_hash": "0882f29a4b336b5113b5f074accf901b",
     "semantic_hash": ""
   },
   "src/components/smaran/AshtayamaTimelineDeck.tsx": {
@@ -2420,8 +2420,8 @@
     "semantic_hash": ""
   },
   "src/data/padaSnippets.json": {
-    "mtime": 1795182959.260558,
-    "ast_hash": "e7f2de8eff79b364a4afcd17dd94182f",
+    "mtime": 1795183498.9844818,
+    "ast_hash": "c03dc6d15b494b08629d28bd47b1e93f",
     "semantic_hash": ""
   },
   "src/data/padas.ts": {
@@ -2465,8 +2465,8 @@
     "semantic_hash": ""
   },
   "src/entry-server.tsx": {
-    "mtime": 1794973060.817792,
-    "ast_hash": "dce4c01a0c917631fd1fa20b32c5a638",
+    "mtime": 1795184518.449085,
+    "ast_hash": "37e3fece3542ae0f71c7b33272d65e34",
     "semantic_hash": ""
   },
   "src/hooks/useScrollDirection.ts": {
@@ -2520,8 +2520,8 @@
     "semantic_hash": ""
   },
   "src/services/seoService.ts": {
-    "mtime": 1795182699.8889875,
-    "ast_hash": "8149b9a103ae299c46f78b1667bb0ce5",
+    "mtime": 1795184960.2136092,
+    "ast_hash": "72dc7ce9400998f8899f994b431e7ab2",
     "semantic_hash": ""
   },
   "src/services/sitemapService.ts": {
@@ -6932,6 +6932,16 @@
   "src/data/granthaCrawlData.json": {
     "mtime": 1795182959.2830226,
     "ast_hash": "3164436a8ce63a530413e03ee570fc21",
+    "semantic_hash": ""
+  },
+  "public/data/pada-aliases.json": {
+    "mtime": 1795183498.9988484,
+    "ast_hash": "9f3bab8d4cadf7786d845ce309c76615",
+    "semantic_hash": ""
+  },
+  "src/data/padaAliases.json": {
+    "mtime": 1795183498.9854207,
+    "ast_hash": "9f3bab8d4cadf7786d845ce309c76615",
     "semantic_hash": ""
   }
 }
