@@ -1,4 +1,4 @@
-import { get, set, del } from 'idb-keyval';
+import { get, set, del, keys } from 'idb-keyval';
 // Lazy on-demand Supabase client loader: eliminates 229 kB vendor-data chunk from initial cold load
 let supabaseInstance: typeof import('./supabaseClient').supabase | null = null;
 async function getSupabase() {
@@ -586,6 +586,20 @@ export const SacredDatabase = {
         del('vrind_canonical_padas_v2').catch(() => {});
         del('vrind_manifest_v2').catch(() => {});
 
+        // Purge legacy/corrupted epic cache keys from IndexedDB (v1-v5)
+        try {
+          const allKeys = await keys();
+          for (const k of allKeys) {
+            if (typeof k === 'string') {
+              if (k.startsWith('vrind_epic_ch_v') && !k.startsWith('vrind_epic_ch_v6_')) {
+                del(k).catch(() => {});
+              } else if (k.startsWith('vrind_epic_index_v') && !k.startsWith('vrind_epic_index_v6_')) {
+                del(k).catch(() => {});
+              }
+            }
+          }
+        } catch {}
+
         const cachedManifest = await get<any>('vrind_manifest_v3');
         if (cachedManifest) activeManifest = cachedManifest;
 
@@ -814,8 +828,8 @@ export const SacredDatabase = {
     }
 
     const promise = (async () => {
-      // Versioned L2 IndexedDB cache key (v5 enforces clean slug schema)
-      const cacheKey = `vrind_epic_index_v5_${granthaId}`;
+      // Versioned L2 IndexedDB cache key (v6 enforces clean slug schema and fresh index)
+      const cacheKey = `vrind_epic_index_v6_${granthaId}`;
       try {
         const cached = await get<EpicIndexData>(cacheKey);
         if (cached && cached.chapters && cached.chapters.length > 0) {
@@ -916,34 +930,58 @@ export const SacredDatabase = {
     }
 
     const promise = (async () => {
-      // Check existing in memory
-      const existing = (padasByGrantha.get(granthaId) || []).filter(
-        (p) => (p.chapterId === chapterMeta.id || p.chapterId === normId) && !p.isStub && (p.verses?.[0]?.linesDevanagari?.length || 0) > 0
+      // 1. Check existing in memory (dense, clean, matching requested chapter)
+      const memoryList = (padasByGrantha.get(granthaId) || []).filter(
+        (p): p is SacredPad => Boolean(
+          p &&
+          p.id &&
+          (p.chapterId === chapterMeta.id || p.chapterId === normId) &&
+          !p.isStub &&
+          (p.verses?.[0]?.linesDevanagari?.length || 0) > 0
+        )
       );
-      if (existing.length > 0 && existing.length >= Math.min(chapterMeta.verseCount, 1)) {
-        return existing;
+      if (
+        memoryList.length > 0 &&
+        memoryList.length >= Math.min(chapterMeta.verseCount, 1) &&
+        memoryList.every((p) => p.chapterId === chapterMeta.id || p.chapterId === normId)
+      ) {
+        memoryList.sort((a, b) => (a.verseNumber || a.index || 0) - (b.verseNumber || b.index || 0));
+        return memoryList;
       }
 
-      // Check IndexedDB with versioned key
-      const cacheKey = `vrind_epic_ch_v5_${granthaId}_${chapterMeta.id}`;
+      // 2. Check IndexedDB with versioned key (v6 enforces verified chapter payload)
+      const cacheKey = `vrind_epic_ch_v6_${granthaId}_${chapterMeta.id}`;
       try {
         const cached = await get<SacredPad[]>(cacheKey);
-        if (cached && Array.isArray(cached) && cached.length > 0) {
-          this.appendPadas(cached);
-          return cached;
+        if (
+          cached &&
+          Array.isArray(cached) &&
+          cached.length > 0 &&
+          cached.every((p) => Boolean(p && p.id && (!p.chapterId || p.chapterId === chapterMeta.id || p.chapterId === normId) && p.verses && p.verses.length > 0))
+        ) {
+          const dense = cached.filter(Boolean);
+          dense.sort((a, b) => (a.verseNumber || a.index || 0) - (b.verseNumber || b.index || 0));
+          this.appendPadas(dense);
+          return dense;
+        } else if (cached) {
+          del(cacheKey).catch(() => {});
         }
       } catch {}
 
-      // Fetch chunk file from CDN
+      // 3. Fetch verified chunk file from CDN
       try {
         const res = await fetch(`/data/epics/${granthaId}/${chapterMeta.file}`);
         if (res.ok) {
           const rawChunk: any[] = await res.json();
-          const chunkData: SacredPad[] = rawChunk.map((p) => ({
-            ...p,
-            chapterId: p.chapterId || chapterMeta.id,
-            chapterName: p.chapterName || chapterMeta.name,
-          }));
+          const chunkData: SacredPad[] = (Array.isArray(rawChunk) ? rawChunk : [])
+            .filter(Boolean)
+            .map((p, idx) => ({
+              ...p,
+              chapterId: chapterMeta.id,
+              chapterName: chapterMeta.name,
+              verseNumber: p.verseNumber || idx + 1,
+            }));
+          chunkData.sort((a, b) => (a.verseNumber || 0) - (b.verseNumber || 0));
           this.appendPadas(chunkData);
           set(cacheKey, chunkData).catch(() => {});
           return chunkData;

@@ -273,15 +273,17 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
 
           const padas = await SacredDatabase.fetchEpicChapter(selectedGranthaId, targetChapter);
           if (cancelled) return;
-          setChapterPadas(padas);
+          const cleanPadas = Array.isArray(padas) ? padas.filter(Boolean) : [];
+          cleanPadas.sort((a, b) => (a.verseNumber || a.index || 0) - (b.verseNumber || b.index || 0));
+          setChapterPadas(cleanPadas);
           setLoadingChapter(false);
           setLoadingGranthaId(null);
           navigationProgress.done();
-          if (padas.length > 0) {
-            let targetVerseId = padas[0].id;
+          if (cleanPadas.length > 0) {
+            let targetVerseId = cleanPadas[0].id;
             if (initialVerseId) {
               const cleanV = decodeURIComponent(initialVerseId).trim().toLowerCase();
-              const vFound = padas.find(
+              const vFound = cleanPadas.find(
                 (p) =>
                   p.id.toLowerCase() === cleanV ||
                   (p.slug && p.slug.toLowerCase() === cleanV) ||
@@ -337,11 +339,13 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
     SacredDatabase.fetchEpicChapter(selectedGranthaId, selectedChapterId)
       .then((padas) => {
         if (cancelled) return;
-        setChapterPadas(padas);
+        const cleanPadas = Array.isArray(padas) ? padas.filter(Boolean) : [];
+        cleanPadas.sort((a, b) => (a.verseNumber || a.index || 0) - (b.verseNumber || b.index || 0));
+        setChapterPadas(cleanPadas);
         setLoadingChapter(false);
         navigationProgress.done();
-        if (padas.length > 0) {
-          setActiveVerseId(padas[0].id);
+        if (cleanPadas.length > 0) {
+          setActiveVerseId(cleanPadas[0].id);
         }
       })
       .catch((err) => {
@@ -649,16 +653,20 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
     const normChId = normalizeEpicChapterSlug(selectedGranthaId, chId);
     navigationProgress.start();
     setSelectedChapterId(normChId);
+    // Crucial: reset chapter padas immediately so previous chapter verses never linger
+    setChapterPadas([]);
     setLoadingChapter(true);
 
     // Atomically fetch the target chapter immediately
     SacredDatabase.fetchEpicChapter(selectedGranthaId, normChId)
       .then((padas) => {
-        setChapterPadas(padas);
+        const cleanPadas = Array.isArray(padas) ? padas.filter(Boolean) : [];
+        cleanPadas.sort((a, b) => (a.verseNumber || a.index || 0) - (b.verseNumber || b.index || 0));
+        setChapterPadas(cleanPadas);
         setLoadingChapter(false);
         navigationProgress.done();
-        if (padas.length > 0) {
-          setActiveVerseId(padas[0].id);
+        if (cleanPadas.length > 0) {
+          setActiveVerseId(cleanPadas[0].id);
         }
       })
       .catch((err) => {
@@ -1024,7 +1032,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
           className="min-w-0 w-full md:col-span-8 xl:col-span-6 bg-transparent sm:bg-white rounded-none sm:rounded-3xl p-0 sm:p-8 xl:p-9 2xl:p-10 min-h-[calc(100vh-8rem)] border-0 sm:border sm:border-neutral-200/70 shadow-none sm:shadow-2xs"
         >
           {/* Chapter Header Bar (Desktop Only - on mobile, MobileReaderHeader provides the top chrome) */}
-          <div className="hidden sm:flex pb-5 mb-6 border-b border-neutral-100 flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="hidden sm:flex pb-4 mb-6 border-b border-neutral-100 flex-col sm:flex-row sm:items-center justify-between gap-3 sticky top-24 z-20 bg-white/95 backdrop-blur-md -mx-4 sm:-mx-8 xl:-mx-9 2xl:-mx-10 px-4 sm:px-8 xl:px-9 2xl:px-10 pt-3 rounded-t-3xl shadow-[0_4px_12px_-4px_rgba(0,0,0,0.03)]">
             <div>
               <div className="flex items-center gap-2 text-xs font-serif font-bold text-amber-800 tracking-wider">
                 <BookOpen className="w-3.5 h-3.5" />
@@ -1036,7 +1044,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                 {!loadingGranthaId && currentChapter ? currentChapter.name : 'पावन पाठ'}
               </h1>
               <p className="text-xs text-neutral-500 font-serif mt-0.5">
-                {loadingGranthaId
+                {loadingGranthaId || loadingChapter
                   ? 'पावन महाग्रंथ संकलित हो रहा है...'
                   : `कुल ${formatDevanagariNumerals(chapterPadas.length)} ${currentEpicConfig.verseTerm} संकलित • ऑन-डिमांड त्वरित पाठ`}
               </p>
@@ -1086,7 +1094,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
           </div>
 
           {/* Reading Stream */}
-          {loadingGranthaId || (loadingChapter && chapterPadas.length === 0) ? (
+          {loadingGranthaId || loadingChapter || chapterPadas.length === 0 ? (
             <div className="py-24 px-6 flex flex-col items-center justify-center text-center space-y-3 select-none">
               <IOSSpinner size="md" theme="amber" />
               <p className="font-serif font-bold text-base sm:text-lg text-neutral-800">
@@ -1123,7 +1131,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                             ? 'bg-amber-100 text-amber-950 border border-amber-300/60 shadow-2xs'
                             : 'bg-amber-100/40 text-amber-900 border border-amber-200/40'
                         }`}>
-                          ॥ {currentEpicConfig.verseTerm} {formatDevanagariNumerals(idx + 1)} ॥
+                          ॥ {currentEpicConfig.verseTerm} {formatDevanagariNumerals(pad.verseNumber || idx + 1)} ॥
                         </span>
                         <span className="font-serif font-semibold text-neutral-800 text-xs sm:text-sm hidden sm:inline truncate max-w-xs">
                           {pad.titleDevanagari}
@@ -1300,7 +1308,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
               <div className="bg-white rounded-2xl p-3 border border-amber-900/10 shadow-2xs space-y-1.5 mb-3">
                 <div className="flex items-center justify-between text-[11px]">
                   <span className="font-mono font-bold text-[#78350F] bg-[#FEF08A] px-2 py-0.5 rounded-md">
-                    {currentEpicConfig.verseTerm} {formatDevanagariNumerals(activeVerseIndex >= 0 ? activeVerseIndex + 1 : 1)}
+                    {currentEpicConfig.verseTerm} {formatDevanagariNumerals(activePad?.verseNumber || (activeVerseIndex >= 0 ? activeVerseIndex + 1 : 1))}
                   </span>
                   <span className="font-serif text-neutral-500 truncate max-w-[150px]">
                     {currentChapter?.name}
@@ -1372,7 +1380,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                           : 'bg-white/80 hover:bg-white text-neutral-600 border border-neutral-200/60'
                       }`}
                     >
-                      {idx + 1}
+                      {pad.verseNumber || idx + 1}
                     </button>
                   );
                 })}
