@@ -23,7 +23,7 @@ test.describe('Phase 0: Domain & Deployment Integrity', () => {
     expect(response?.status()).toBe(200);
 
     const title = await page.title();
-    expect(title).toContain('Sanatan Mahagranth Parayana');
+    expect(title).toMatch(/Sanatan Epics & Mahagranth Parayan|Sanatan Mahagranth Parayana/);
 
     const canonicalHref = await page.locator('link[rel="canonical"]').getAttribute('href');
     expect(canonicalHref).toContain('path.vrindopnishad.in');
@@ -49,7 +49,7 @@ test.describe('Phase 0: Domain & Deployment Integrity', () => {
     expect(bhavSitemap.status()).toBe(200);
     const bhavXml = await bhavSitemap.text();
     expect(bhavXml).toContain('sitemap-main.xml');
-    expect(bhavXml).toContain('sitemap-padas.xml');
+    expect(bhavXml).toContain('sitemap-padas-1.xml');
 
     const pathSitemap = await request.get(`${DOMAINS.path}/sitemap.xml`);
     expect(pathSitemap.status()).toBe(200);

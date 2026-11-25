@@ -168,6 +168,7 @@ export interface AppComponents {
   CharitraDarshan?: React.ComponentType<any>;
   DhamTirthaSection?: React.ComponentType<any>;
   TopicalGuideView?: React.ComponentType<any>;
+  SacredSectionsBanner?: React.ComponentType<any>;
 }
 
 export interface AppProps {
@@ -358,6 +359,7 @@ export function App({
   const CharitraDarshanComp = components?.CharitraDarshan || LazyCharitraDarshan;
   const DhamTirthaSectionComp = components?.DhamTirthaSection || LazyDhamTirthaSection;
   const TopicalGuideViewComp = components?.TopicalGuideView || LazyTopicalGuideView;
+  const SacredSectionsBannerComp = components?.SacredSectionsBanner || LazySacredSectionsBanner;
   const [initialRoute] = useState<AppRouteState>(() => resolveCurrentRoute());
   const [activeGuideSlug, setActiveGuideSlug] = useState<string | null>(
     () => initialGuideSlug || initialRoute.guideSlug || null
@@ -391,11 +393,10 @@ export function App({
   const [selectedDate, setSelectedDate] = useState<number>(() => new Date().getDate());
   const [visitedTabs, setVisitedTabs] = useState<Set<NavTab>>(() => new Set([activeTab]));
 
-  // Pre-warm all tabs and lazy reader modules during browser idle time so tab switching is 0ms instantaneous
+  // Pre-warm lazy reader JS chunks during browser idle time without mounting hidden DOM subtrees
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const preload = () => {
-      setVisitedTabs((prev) => new Set([...prev, 'smaran', 'granthas', 'padavali', 'feed', 'milestones']));
       import('./components/reader/PadavaliReader');
       import('./components/reader/MahagranthReader');
       import('./components/milestones/MilestonesView');
@@ -1413,7 +1414,7 @@ export function App({
 
               {/* Section 2.5: Sacred Sanatan Portals (Rituals, Stories, Biographies, Tirthas) */}
               <Suspense fallback={null}>
-                <LazySacredSectionsBanner onSelectTab={handleTabSwitch} />
+                <SacredSectionsBannerComp onSelectTab={handleTabSwitch} />
               </Suspense>
 
               {/* Section 3: Sacred Contemplation & Sanctuary Streams Deck (Pure White & Off-White) */}

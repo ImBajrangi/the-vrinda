@@ -6812,7 +6812,7 @@
       "label": "AppProps",
       "file_type": "code",
       "source_file": "src/App.tsx",
-      "source_location": "L173",
+      "source_location": "L174",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
@@ -6825,7 +6825,7 @@
       "label": "AppRouteState",
       "file_type": "code",
       "source_file": "src/App.tsx",
-      "source_location": "L188",
+      "source_location": "L189",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
@@ -6838,7 +6838,7 @@
       "label": "resolveCurrentRoute()",
       "file_type": "code",
       "source_file": "src/App.tsx",
-      "source_location": "L201",
+      "source_location": "L202",
       "_callable": true,
       "_origin": "ast",
       "id": "src_app_resolvecurrentroute",
@@ -6850,7 +6850,7 @@
       "label": "App()",
       "file_type": "code",
       "source_file": "src/App.tsx",
-      "source_location": "L339",
+      "source_location": "L340",
       "_callable": true,
       "_origin": "ast",
       "id": "src_app_app",
@@ -6865,8 +6865,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_common_artworkgraphicslot",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 228,
+      "community_name": "SacredDatabase",
       "norm_label": "artworkgraphicslot.tsx"
     },
     {
@@ -6878,8 +6878,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_artworkgraphicslot_graphicaspectratio",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 228,
+      "community_name": "SacredDatabase",
       "norm_label": "graphicaspectratio"
     },
     {
@@ -6891,8 +6891,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_artworkgraphicslot_graphicslottheme",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 228,
+      "community_name": "SacredDatabase",
       "norm_label": "graphicslottheme"
     },
     {
@@ -6904,8 +6904,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_artworkgraphicslot_artworkgraphicslotprops",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 228,
+      "community_name": "SacredDatabase",
       "norm_label": "artworkgraphicslotprops"
     },
     {
@@ -6916,8 +6916,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_common_artworkgraphicslot_artworkgraphicslot",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 228,
+      "community_name": "SacredDatabase",
       "norm_label": "artworkgraphicslot()"
     },
     {
@@ -6927,7 +6927,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_common_cmseditorialbadge",
-      "community": 220,
+      "community": 19,
       "community_name": "SacredPad",
       "norm_label": "cmseditorialbadge.tsx"
     },
@@ -6940,7 +6940,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_cmseditorialbadge_cmseditorialbadgeprops",
-      "community": 220,
+      "community": 19,
       "community_name": "SacredPad",
       "norm_label": "cmseditorialbadgeprops"
     },
@@ -6952,7 +6952,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_common_cmseditorialbadge_cmseditorialbadge",
-      "community": 220,
+      "community": 19,
       "community_name": "SacredPad",
       "norm_label": "cmseditorialbadge()"
     },
@@ -6999,8 +6999,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_common_dynamicnotchnavbar",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 15,
+      "community_name": "DynamicNotchNavbar.tsx",
       "norm_label": "dynamicnotchnavbar.tsx"
     },
     {
@@ -7012,8 +7012,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_dynamicnotchnavbar_dynamicnotchnavbarprops",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 15,
+      "community_name": "DynamicNotchNavbar.tsx",
       "norm_label": "dynamicnotchnavbarprops"
     },
     {
@@ -7024,8 +7024,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_common_dynamicnotchnavbar_dynamicnotchnavbar",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 15,
+      "community_name": "DynamicNotchNavbar.tsx",
       "norm_label": "dynamicnotchnavbar()"
     },
     {
@@ -7035,8 +7035,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_common_floatingnavbar",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 18,
+      "community_name": "seoService.ts",
       "norm_label": "floatingnavbar.tsx"
     },
     {
@@ -7048,8 +7048,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_floatingnavbar_navtab",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 18,
+      "community_name": "seoService.ts",
       "norm_label": "navtab"
     },
     {
@@ -7061,8 +7061,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_floatingnavbar_floatingnavbarprops",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 18,
+      "community_name": "seoService.ts",
       "norm_label": "floatingnavbarprops"
     },
     {
@@ -7073,8 +7073,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_common_floatingnavbar_sacredfluteicon",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 18,
+      "community_name": "seoService.ts",
       "norm_label": "sacredfluteicon()"
     },
     {
@@ -7167,8 +7167,8 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "src_components_common_iosactivityindicator_navigationprogress",
-      "community": 16,
-      "community_name": "IOSActivityIndicator.tsx",
+      "community": 228,
+      "community_name": "SacredDatabase",
       "norm_label": "navigationprogress"
     },
     {
@@ -7248,8 +7248,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_common_sacreddiscoveryshelf",
-      "community": 30,
-      "community_name": "entry-server.tsx",
+      "community": 13,
+      "community_name": "CharitraDarshan.tsx",
       "norm_label": "sacreddiscoveryshelf.tsx"
     },
     {
@@ -7261,7 +7261,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_sacreddiscoveryshelf_sacreddiscoveryshelfprops",
-      "community": 220,
+      "community": 19,
       "community_name": "SacredPad",
       "norm_label": "sacreddiscoveryshelfprops"
     },
@@ -7273,8 +7273,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_common_sacreddiscoveryshelf_sacreddiscoveryshelf",
-      "community": 30,
-      "community_name": "entry-server.tsx",
+      "community": 13,
+      "community_name": "CharitraDarshan.tsx",
       "norm_label": "sacreddiscoveryshelf()"
     },
     {
@@ -7284,8 +7284,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_common_sacredlogo",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 15,
+      "community_name": "DynamicNotchNavbar.tsx",
       "norm_label": "sacredlogo.tsx"
     },
     {
@@ -7297,8 +7297,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_sacredlogo_sacredlogoprops",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 15,
+      "community_name": "DynamicNotchNavbar.tsx",
       "norm_label": "sacredlogoprops"
     },
     {
@@ -7309,8 +7309,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_common_sacredlogo_sacredlogo",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 15,
+      "community_name": "DynamicNotchNavbar.tsx",
       "norm_label": "sacredlogo()"
     },
     {
@@ -7321,7 +7321,7 @@
       "_origin": "ast",
       "id": "src_components_common_saintsdirectorymodal",
       "community": 228,
-      "community_name": "CanonicalSaint",
+      "community_name": "SacredDatabase",
       "norm_label": "saintsdirectorymodal.tsx"
     },
     {
@@ -7334,7 +7334,7 @@
       "_origin": "ast",
       "id": "src_components_common_saintsdirectorymodal_saintsdirectorymodalprops",
       "community": 228,
-      "community_name": "CanonicalSaint",
+      "community_name": "SacredDatabase",
       "norm_label": "saintsdirectorymodalprops"
     },
     {
@@ -7346,7 +7346,7 @@
       "_origin": "ast",
       "id": "src_components_common_saintsdirectorymodal_saintsdirectorymodal",
       "community": 228,
-      "community_name": "CanonicalSaint",
+      "community_name": "SacredDatabase",
       "norm_label": "saintsdirectorymodal()"
     },
     {
@@ -7466,8 +7466,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_spotlightsearchmodal_spotlightsearchmodalprops",
-      "community": 4,
-      "community_name": "cms.ts",
+      "community": 19,
+      "community_name": "SacredPad",
       "norm_label": "spotlightsearchmodalprops"
     },
     {
@@ -7512,8 +7512,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_common_topannouncementmarquee",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 228,
+      "community_name": "SacredDatabase",
       "norm_label": "topannouncementmarquee.tsx"
     },
     {
@@ -7525,8 +7525,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_topannouncementmarquee_topannouncementmarqueeprops",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 228,
+      "community_name": "SacredDatabase",
       "norm_label": "topannouncementmarqueeprops"
     },
     {
@@ -7538,8 +7538,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_topannouncementmarquee_marqueeitemdata",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 228,
+      "community_name": "SacredDatabase",
       "norm_label": "marqueeitemdata"
     },
     {
@@ -7550,8 +7550,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_common_topannouncementmarquee_topannouncementmarquee",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 228,
+      "community_name": "SacredDatabase",
       "norm_label": "topannouncementmarquee()"
     },
     {
@@ -7561,7 +7561,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_feed_emojitray",
-      "community": 234,
+      "community": 222,
       "community_name": "FeedCard.tsx",
       "norm_label": "emojitray.tsx"
     },
@@ -7574,7 +7574,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_feed_emojitray_emojitrayprops",
-      "community": 234,
+      "community": 222,
       "community_name": "FeedCard.tsx",
       "norm_label": "emojitrayprops"
     },
@@ -7586,7 +7586,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_feed_emojitray_emojitray",
-      "community": 234,
+      "community": 222,
       "community_name": "FeedCard.tsx",
       "norm_label": "emojitray()"
     },
@@ -7597,7 +7597,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_feed_feedcard",
-      "community": 234,
+      "community": 222,
       "community_name": "FeedCard.tsx",
       "norm_label": "feedcard.tsx"
     },
@@ -7611,7 +7611,7 @@
       "_origin": "ast",
       "id": "src_components_feed_feedcard_feedcardprops",
       "community": 222,
-      "community_name": "DevotionalFeedPost",
+      "community_name": "FeedCard.tsx",
       "norm_label": "feedcardprops"
     },
     {
@@ -7622,7 +7622,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_feed_feedcard_feedcard",
-      "community": 234,
+      "community": 222,
       "community_name": "FeedCard.tsx",
       "norm_label": "feedcard()"
     },
@@ -7633,8 +7633,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_focus_dhyanafocusmodal",
-      "community": 1,
-      "community_name": "cacheService.ts",
+      "community": 220,
+      "community_name": "DhyanaFocusModal.tsx",
       "norm_label": "dhyanafocusmodal.tsx"
     },
     {
@@ -7646,8 +7646,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_focus_dhyanafocusmodal_dhyanafocusmodalprops",
-      "community": 1,
-      "community_name": "cacheService.ts",
+      "community": 220,
+      "community_name": "DhyanaFocusModal.tsx",
       "norm_label": "dhyanafocusmodalprops"
     },
     {
@@ -7659,8 +7659,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_focus_dhyanafocusmodal_breathphase",
-      "community": 1,
-      "community_name": "cacheService.ts",
+      "community": 220,
+      "community_name": "DhyanaFocusModal.tsx",
       "norm_label": "breathphase"
     },
     {
@@ -7671,8 +7671,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_focus_dhyanafocusmodal_dhyanafocusmodal",
-      "community": 1,
-      "community_name": "cacheService.ts",
+      "community": 220,
+      "community_name": "DhyanaFocusModal.tsx",
       "norm_label": "dhyanafocusmodal()"
     },
     {
@@ -7743,8 +7743,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_player_floatingaudioplayer",
-      "community": 15,
-      "community_name": "FloatingAudioPlayer.tsx",
+      "community": 19,
+      "community_name": "SacredPad",
       "norm_label": "floatingaudioplayer.tsx"
     },
     {
@@ -7756,8 +7756,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_player_floatingaudioplayer_floatingaudioplayerprops",
-      "community": 15,
-      "community_name": "FloatingAudioPlayer.tsx",
+      "community": 19,
+      "community_name": "SacredPad",
       "norm_label": "floatingaudioplayerprops"
     },
     {
@@ -7768,8 +7768,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_player_floatingaudioplayer_resolvepadaudiosrc",
-      "community": 15,
-      "community_name": "FloatingAudioPlayer.tsx",
+      "community": 19,
+      "community_name": "SacredPad",
       "norm_label": "resolvepadaudiosrc()"
     },
     {
@@ -7780,8 +7780,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_player_floatingaudioplayer_floatingaudioplayer",
-      "community": 15,
-      "community_name": "FloatingAudioPlayer.tsx",
+      "community": 19,
+      "community_name": "SacredPad",
       "norm_label": "floatingaudioplayer()"
     },
     {
@@ -7791,8 +7791,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_reader_devotionalversepresenter",
-      "community": 2,
-      "community_name": "devotionalSummaryService.ts",
+      "community": 4,
+      "community_name": "devotionalContentParser.ts",
       "norm_label": "devotionalversepresenter.tsx"
     },
     {
@@ -7804,8 +7804,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_reader_devotionalversepresenter_devotionalversepresenterprops",
-      "community": 2,
-      "community_name": "devotionalSummaryService.ts",
+      "community": 4,
+      "community_name": "devotionalContentParser.ts",
       "norm_label": "devotionalversepresenterprops"
     },
     {
@@ -7816,8 +7816,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_reader_devotionalversepresenter_devotionalversepresenter",
-      "community": 2,
-      "community_name": "devotionalSummaryService.ts",
+      "community": 4,
+      "community_name": "devotionalContentParser.ts",
       "norm_label": "devotionalversepresenter()"
     },
     {
@@ -7827,8 +7827,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_reader_inlinepurportcard",
-      "community": 2,
-      "community_name": "devotionalSummaryService.ts",
+      "community": 16,
+      "community_name": "IOSActivityIndicator.tsx",
       "norm_label": "inlinepurportcard.tsx"
     },
     {
@@ -7840,8 +7840,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_reader_inlinepurportcard_inlinepurportcardprops",
-      "community": 2,
-      "community_name": "devotionalSummaryService.ts",
+      "community": 16,
+      "community_name": "IOSActivityIndicator.tsx",
       "norm_label": "inlinepurportcardprops"
     },
     {
@@ -7852,8 +7852,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_reader_inlinepurportcard_inlinepurportcard",
-      "community": 2,
-      "community_name": "devotionalSummaryService.ts",
+      "community": 16,
+      "community_name": "IOSActivityIndicator.tsx",
       "norm_label": "inlinepurportcard()"
     },
     {
@@ -8118,8 +8118,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_reader_padavalireader_padavalireader",
-      "community": 30,
-      "community_name": "entry-server.tsx",
+      "community": 234,
+      "community_name": "PadavaliReader",
       "norm_label": "padavalireader()"
     },
     {
@@ -8129,8 +8129,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_sections_charitradarshan",
-      "community": 30,
-      "community_name": "entry-server.tsx",
+      "community": 13,
+      "community_name": "CharitraDarshan.tsx",
       "norm_label": "charitradarshan.tsx"
     },
     {
@@ -8143,7 +8143,7 @@
       "_origin": "ast",
       "id": "src_components_sections_charitradarshan_charitradarshanprops",
       "community": 13,
-      "community_name": "sacredSectionService.ts",
+      "community_name": "CharitraDarshan.tsx",
       "norm_label": "charitradarshanprops"
     },
     {
@@ -8165,8 +8165,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_sections_dhamtirthasection",
-      "community": 30,
-      "community_name": "entry-server.tsx",
+      "community": 13,
+      "community_name": "CharitraDarshan.tsx",
       "norm_label": "dhamtirthasection.tsx"
     },
     {
@@ -8178,8 +8178,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_sections_dhamtirthasection_dhamtirthasectionprops",
-      "community": 227,
-      "community_name": "SacredPlace",
+      "community": 13,
+      "community_name": "CharitraDarshan.tsx",
       "norm_label": "dhamtirthasectionprops"
     },
     {
@@ -8201,8 +8201,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_sections_kathasanctuary",
-      "community": 30,
-      "community_name": "entry-server.tsx",
+      "community": 25,
+      "community_name": "sacredSections.ts",
       "norm_label": "kathasanctuary.tsx"
     },
     {
@@ -8214,8 +8214,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_sections_kathasanctuary_kathasanctuaryprops",
-      "community": 232,
-      "community_name": "correlationService.ts",
+      "community": 25,
+      "community_name": "sacredSections.ts",
       "norm_label": "kathasanctuaryprops"
     },
     {
@@ -8237,8 +8237,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_sections_nityaupasanareader",
-      "community": 30,
-      "community_name": "entry-server.tsx",
+      "community": 13,
+      "community_name": "CharitraDarshan.tsx",
       "norm_label": "nityaupasanareader.tsx"
     },
     {
@@ -8251,7 +8251,7 @@
       "_origin": "ast",
       "id": "src_components_sections_nityaupasanareader_nityaupasanareaderprops",
       "community": 13,
-      "community_name": "sacredSectionService.ts",
+      "community_name": "CharitraDarshan.tsx",
       "norm_label": "nityaupasanareaderprops"
     },
     {
@@ -8357,8 +8357,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_sections_index",
-      "community": 30,
-      "community_name": "entry-server.tsx",
+      "community": 13,
+      "community_name": "CharitraDarshan.tsx",
       "norm_label": "sections/index.ts"
     },
     {
@@ -8368,8 +8368,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_smaran_ashtayamatimelinedeck",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 228,
+      "community_name": "SacredDatabase",
       "norm_label": "ashtayamatimelinedeck.tsx"
     },
     {
@@ -8380,8 +8380,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_smaran_ashtayamatimelinedeck_ashtayamatimelinedeck",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 228,
+      "community_name": "SacredDatabase",
       "norm_label": "ashtayamatimelinedeck()"
     },
     {
@@ -8427,8 +8427,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_smaran_categoriesrow",
-      "community": 16,
-      "community_name": "IOSActivityIndicator.tsx",
+      "community": 228,
+      "community_name": "SacredDatabase",
       "norm_label": "categoriesrow.tsx"
     },
     {
@@ -8440,8 +8440,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_smaran_categoriesrow_contentbartab",
-      "community": 16,
-      "community_name": "IOSActivityIndicator.tsx",
+      "community": 228,
+      "community_name": "SacredDatabase",
       "norm_label": "contentbartab"
     },
     {
@@ -8453,8 +8453,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_smaran_categoriesrow_categoriesrowprops",
-      "community": 16,
-      "community_name": "IOSActivityIndicator.tsx",
+      "community": 228,
+      "community_name": "SacredDatabase",
       "norm_label": "categoriesrowprops"
     },
     {
@@ -8465,8 +8465,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_smaran_categoriesrow_categoriesrow",
-      "community": 16,
-      "community_name": "IOSActivityIndicator.tsx",
+      "community": 228,
+      "community_name": "SacredDatabase",
       "norm_label": "categoriesrow()"
     },
     {
@@ -8682,8 +8682,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_smaran_sacredsectionsbanner",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 18,
+      "community_name": "seoService.ts",
       "norm_label": "sacredsectionsbanner.tsx"
     },
     {
@@ -8695,8 +8695,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_smaran_sacredsectionsbanner_sacredsectionsbannerprops",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 18,
+      "community_name": "seoService.ts",
       "norm_label": "sacredsectionsbannerprops"
     },
     {
@@ -8708,8 +8708,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_smaran_sacredsectionsbanner_sectioncarditem",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 18,
+      "community_name": "seoService.ts",
       "norm_label": "sectioncarditem"
     },
     {
@@ -8720,8 +8720,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_smaran_sacredsectionsbanner_sacredsectionsbanner",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 30,
+      "community_name": "entry-server.tsx",
       "norm_label": "sacredsectionsbanner()"
     },
     {
@@ -8731,8 +8731,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_smaran_sadhanapillarmodal",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 15,
+      "community_name": "DynamicNotchNavbar.tsx",
       "norm_label": "sadhanapillarmodal.tsx"
     },
     {
@@ -8744,8 +8744,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_smaran_sadhanapillarmodal_pillartype",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 15,
+      "community_name": "DynamicNotchNavbar.tsx",
       "norm_label": "pillartype"
     },
     {
@@ -8757,8 +8757,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_smaran_sadhanapillarmodal_sadhanapillarmodalprops",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 15,
+      "community_name": "DynamicNotchNavbar.tsx",
       "norm_label": "sadhanapillarmodalprops"
     },
     {
@@ -8769,8 +8769,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_smaran_sadhanapillarmodal_sadhanapillarmodal",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 15,
+      "community_name": "DynamicNotchNavbar.tsx",
       "norm_label": "sadhanapillarmodal()"
     },
     {
@@ -8780,8 +8780,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_smaran_sadhanaringprogress",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 228,
+      "community_name": "SacredDatabase",
       "norm_label": "sadhanaringprogress.tsx"
     },
     {
@@ -8793,8 +8793,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_smaran_sadhanaringprogress_sadhanaringprogressprops",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 228,
+      "community_name": "SacredDatabase",
       "norm_label": "sadhanaringprogressprops"
     },
     {
@@ -8805,8 +8805,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_smaran_sadhanaringprogress_sadhanaringprogress",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 228,
+      "community_name": "SacredDatabase",
       "norm_label": "sadhanaringprogress()"
     },
     {
@@ -8816,7 +8816,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_data_feed",
-      "community": 220,
+      "community": 19,
       "community_name": "SacredPad",
       "norm_label": "feed.ts"
     },
@@ -8827,7 +8827,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_data_feed_sacred_feed_posts",
-      "community": 220,
+      "community": 19,
       "community_name": "SacredPad",
       "norm_label": "sacred_feed_posts"
     },
@@ -8879,7 +8879,7 @@
       "label": "TOPICAL_GUIDES_META",
       "file_type": "code",
       "source_file": "src/entry-server.tsx",
-      "source_location": "L41",
+      "source_location": "L42",
       "_origin": "ast",
       "id": "src_entry_server_topical_guides_meta",
       "community": 30,
@@ -8890,7 +8890,7 @@
       "label": "ensureDatabasePrewarmed()",
       "file_type": "code",
       "source_file": "src/entry-server.tsx",
-      "source_location": "L47",
+      "source_location": "L48",
       "_callable": true,
       "_origin": "ast",
       "id": "src_entry_server_ensuredatabaseprewarmed",
@@ -8902,20 +8902,20 @@
       "label": "RenderResult",
       "file_type": "code",
       "source_file": "src/entry-server.tsx",
-      "source_location": "L53",
+      "source_location": "L54",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_entry_server_renderresult",
-      "community": 30,
-      "community_name": "entry-server.tsx",
+      "community": 18,
+      "community_name": "seoService.ts",
       "norm_label": "renderresult"
     },
     {
       "label": "render()",
       "file_type": "code",
       "source_file": "src/entry-server.tsx",
-      "source_location": "L63",
+      "source_location": "L64",
       "_callable": true,
       "_origin": "ast",
       "id": "src_entry_server_render",
@@ -8930,8 +8930,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_hooks_usescrolldirection",
-      "community": 5,
-      "community_name": "PadavaliReader.tsx",
+      "community": 227,
+      "community_name": "useScrollDirection.ts",
       "norm_label": "usescrolldirection.ts"
     },
     {
@@ -8943,8 +8943,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_hooks_usescrolldirection_scrolldirection",
-      "community": 5,
-      "community_name": "PadavaliReader.tsx",
+      "community": 227,
+      "community_name": "useScrollDirection.ts",
       "norm_label": "scrolldirection"
     },
     {
@@ -8956,8 +8956,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_hooks_usescrolldirection_usescrolldirectionoptions",
-      "community": 5,
-      "community_name": "PadavaliReader.tsx",
+      "community": 227,
+      "community_name": "useScrollDirection.ts",
       "norm_label": "usescrolldirectionoptions"
     },
     {
@@ -8969,8 +8969,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_hooks_usescrolldirection_scrolldirectionstate",
-      "community": 5,
-      "community_name": "PadavaliReader.tsx",
+      "community": 227,
+      "community_name": "useScrollDirection.ts",
       "norm_label": "scrolldirectionstate"
     },
     {
@@ -8981,8 +8981,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_hooks_usescrolldirection_usescrolldirection",
-      "community": 30,
-      "community_name": "entry-server.tsx",
+      "community": 234,
+      "community_name": "PadavaliReader",
       "norm_label": "usescrolldirection()"
     },
     {
@@ -8993,8 +8993,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_hooks_usescrolldirection_usetaptotoggle",
-      "community": 5,
-      "community_name": "PadavaliReader.tsx",
+      "community": 227,
+      "community_name": "useScrollDirection.ts",
       "norm_label": "usetaptotoggle()"
     },
     {
@@ -9206,7 +9206,7 @@
       "_origin": "ast",
       "id": "src_services_cacheservice_reconcilereaderstate",
       "community": 234,
-      "community_name": "FeedCard.tsx",
+      "community_name": "PadavaliReader",
       "norm_label": "reconcilereaderstate()"
     },
     {
@@ -9218,7 +9218,7 @@
       "_origin": "ast",
       "id": "src_services_cacheservice_reconcileuserpreferences",
       "community": 234,
-      "community_name": "FeedCard.tsx",
+      "community_name": "PadavaliReader",
       "norm_label": "reconcileuserpreferences()"
     },
     {
@@ -9242,7 +9242,7 @@
       "_origin": "ast",
       "id": "src_services_cacheservice_safelocalstorageset",
       "community": 234,
-      "community_name": "FeedCard.tsx",
+      "community_name": "PadavaliReader",
       "norm_label": "safelocalstorageset()"
     },
     {
@@ -9254,7 +9254,7 @@
       "_origin": "ast",
       "id": "src_services_cacheservice_broadcastsync",
       "community": 234,
-      "community_name": "FeedCard.tsx",
+      "community_name": "PadavaliReader",
       "norm_label": "broadcastsync()"
     },
     {
@@ -9290,7 +9290,7 @@
       "_origin": "ast",
       "id": "src_services_cacheservice_persistsadhana",
       "community": 234,
-      "community_name": "FeedCard.tsx",
+      "community_name": "PadavaliReader",
       "norm_label": "persistsadhana()"
     },
     {
@@ -9301,7 +9301,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_getfeedinteractionssync",
-      "community": 234,
+      "community": 222,
       "community_name": "FeedCard.tsx",
       "norm_label": "getfeedinteractionssync()"
     },
@@ -9313,7 +9313,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_getfeedinteractions",
-      "community": 234,
+      "community": 222,
       "community_name": "FeedCard.tsx",
       "norm_label": "getfeedinteractions()"
     },
@@ -9325,7 +9325,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_savefeedinteraction",
-      "community": 234,
+      "community": 222,
       "community_name": "FeedCard.tsx",
       "norm_label": "savefeedinteraction()"
     },
@@ -9338,7 +9338,7 @@
       "_origin": "ast",
       "id": "src_services_cacheservice_getreaderstatesync",
       "community": 234,
-      "community_name": "FeedCard.tsx",
+      "community_name": "PadavaliReader",
       "norm_label": "getreaderstatesync()"
     },
     {
@@ -9350,7 +9350,7 @@
       "_origin": "ast",
       "id": "src_services_cacheservice_getreaderstate",
       "community": 234,
-      "community_name": "FeedCard.tsx",
+      "community_name": "PadavaliReader",
       "norm_label": "getreaderstate()"
     },
     {
@@ -9362,7 +9362,7 @@
       "_origin": "ast",
       "id": "src_services_cacheservice_savereaderstate",
       "community": 234,
-      "community_name": "FeedCard.tsx",
+      "community_name": "PadavaliReader",
       "norm_label": "savereaderstate()"
     },
     {
@@ -9374,7 +9374,7 @@
       "_origin": "ast",
       "id": "src_services_cacheservice_getuserpreferencessync",
       "community": 234,
-      "community_name": "FeedCard.tsx",
+      "community_name": "PadavaliReader",
       "norm_label": "getuserpreferencessync()"
     },
     {
@@ -9386,7 +9386,7 @@
       "_origin": "ast",
       "id": "src_services_cacheservice_getuserpreferences",
       "community": 234,
-      "community_name": "FeedCard.tsx",
+      "community_name": "PadavaliReader",
       "norm_label": "getuserpreferences()"
     },
     {
@@ -9398,7 +9398,7 @@
       "_origin": "ast",
       "id": "src_services_cacheservice_saveuserpreferences",
       "community": 234,
-      "community_name": "FeedCard.tsx",
+      "community_name": "PadavaliReader",
       "norm_label": "saveuserpreferences()"
     },
     {
@@ -9422,7 +9422,7 @@
       "_origin": "ast",
       "id": "src_services_cacheservice_savecachedbookmarks",
       "community": 234,
-      "community_name": "FeedCard.tsx",
+      "community_name": "PadavaliReader",
       "norm_label": "savecachedbookmarks()"
     },
     {
@@ -9468,8 +9468,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_computemantracount",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 15,
+      "community_name": "DynamicNotchNavbar.tsx",
       "norm_label": "computemantracount()"
     },
     {
@@ -9529,8 +9529,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_computeashtayamaphase",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 228,
+      "community_name": "SacredDatabase",
       "norm_label": "computeashtayamaphase()"
     },
     {
@@ -9598,8 +9598,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_computedhyanaflowstage",
-      "community": 1,
-      "community_name": "cacheService.ts",
+      "community": 220,
+      "community_name": "DhyanaFocusModal.tsx",
       "norm_label": "computedhyanaflowstage()"
     },
     {
@@ -9610,8 +9610,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_computechittashantiscore",
-      "community": 1,
-      "community_name": "cacheService.ts",
+      "community": 220,
+      "community_name": "DhyanaFocusModal.tsx",
       "norm_label": "computechittashantiscore()"
     },
     {
@@ -9634,8 +9634,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_recorddhyanasession",
-      "community": 1,
-      "community_name": "cacheService.ts",
+      "community": 220,
+      "community_name": "DhyanaFocusModal.tsx",
       "norm_label": "recorddhyanasession()"
     },
     {
@@ -9657,8 +9657,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_savesacredreflection",
-      "community": 1,
-      "community_name": "cacheService.ts",
+      "community": 234,
+      "community_name": "PadavaliReader",
       "norm_label": "savesacredreflection()"
     },
     {
@@ -9679,8 +9679,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_services_chimeservice",
-      "community": 30,
-      "community_name": "entry-server.tsx",
+      "community": 13,
+      "community_name": "CharitraDarshan.tsx",
       "norm_label": "chimeservice.ts"
     },
     {
@@ -9692,8 +9692,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_services_chimeservice_chimetype",
-      "community": 30,
-      "community_name": "entry-server.tsx",
+      "community": 13,
+      "community_name": "CharitraDarshan.tsx",
       "norm_label": "chimetype"
     },
     {
@@ -9703,8 +9703,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "src_services_chimeservice_chime_paths",
-      "community": 30,
-      "community_name": "entry-server.tsx",
+      "community": 13,
+      "community_name": "CharitraDarshan.tsx",
       "norm_label": "chime_paths"
     },
     {
@@ -9871,8 +9871,8 @@
       "source_location": "L279",
       "_origin": "ast",
       "id": "src_services_chimeservice_chimeservice",
-      "community": 30,
-      "community_name": "entry-server.tsx",
+      "community": 13,
+      "community_name": "CharitraDarshan.tsx",
       "norm_label": "chimeservice"
     },
     {
@@ -9882,7 +9882,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_services_cms_cmsprovider",
-      "community": 220,
+      "community": 19,
       "community_name": "SacredPad",
       "norm_label": "cmsprovider.ts"
     },
@@ -9896,7 +9896,7 @@
       "_origin": "ast",
       "id": "src_services_cms_cmsprovider_icmsprovider",
       "community": 19,
-      "community_name": "ICMSProvider",
+      "community_name": "SacredPad",
       "norm_label": "icmsprovider"
     },
     {
@@ -9908,7 +9908,7 @@
       "_origin": "ast",
       "id": "src_services_cms_cmsprovider_icmsprovider_checkconnection",
       "community": 19,
-      "community_name": "ICMSProvider",
+      "community_name": "SacredPad",
       "norm_label": ".checkconnection()"
     },
     {
@@ -9919,7 +9919,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_cmsprovider_icmsprovider_getpadas",
-      "community": 220,
+      "community": 19,
       "community_name": "SacredPad",
       "norm_label": ".getpadas()"
     },
@@ -9932,7 +9932,7 @@
       "_origin": "ast",
       "id": "src_services_cms_cmsprovider_icmsprovider_getpadbyid",
       "community": 19,
-      "community_name": "ICMSProvider",
+      "community_name": "SacredPad",
       "norm_label": ".getpadbyid()"
     },
     {
@@ -9943,8 +9943,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_cmsprovider_icmsprovider_getgranthas",
-      "community": 4,
-      "community_name": "cms.ts",
+      "community": 19,
+      "community_name": "SacredPad",
       "norm_label": ".getgranthas()"
     },
     {
@@ -9955,8 +9955,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_cmsprovider_icmsprovider_getsaints",
-      "community": 228,
-      "community_name": "CanonicalSaint",
+      "community": 19,
+      "community_name": "SacredPad",
       "norm_label": ".getsaints()"
     },
     {
@@ -9967,8 +9967,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_cmsprovider_icmsprovider_getashtayamaschedule",
-      "community": 4,
-      "community_name": "cms.ts",
+      "community": 19,
+      "community_name": "SacredPad",
       "norm_label": ".getashtayamaschedule()"
     },
     {
@@ -9979,8 +9979,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_cmsprovider_icmsprovider_getfeedposts",
-      "community": 222,
-      "community_name": "DevotionalFeedPost",
+      "community": 19,
+      "community_name": "SacredPad",
       "norm_label": ".getfeedposts()"
     },
     {
@@ -9992,7 +9992,7 @@
       "_origin": "ast",
       "id": "src_services_cms_cmsprovider_icmsprovider_savedraftpad",
       "community": 19,
-      "community_name": "ICMSProvider",
+      "community_name": "SacredPad",
       "norm_label": ".savedraftpad()"
     },
     {
@@ -10004,7 +10004,7 @@
       "_origin": "ast",
       "id": "src_services_cms_cmsprovider_icmsprovider_publishpad",
       "community": 19,
-      "community_name": "ICMSProvider",
+      "community_name": "SacredPad",
       "norm_label": ".publishpad()"
     },
     {
@@ -10016,7 +10016,7 @@
       "_origin": "ast",
       "id": "src_services_cms_cmsprovider_icmsprovider_deletepad",
       "community": 19,
-      "community_name": "ICMSProvider",
+      "community_name": "SacredPad",
       "norm_label": ".deletepad()"
     },
     {
@@ -10028,7 +10028,7 @@
       "_origin": "ast",
       "id": "src_services_cms_cmsprovider_icmsprovider_exportmanifest",
       "community": 19,
-      "community_name": "ICMSProvider",
+      "community_name": "SacredPad",
       "norm_label": ".exportmanifest()"
     },
     {
@@ -10040,7 +10040,7 @@
       "_origin": "ast",
       "id": "src_services_cms_cmsprovider_icmsprovider_importmanifest",
       "community": 19,
-      "community_name": "ICMSProvider",
+      "community_name": "SacredPad",
       "norm_label": ".importmanifest()"
     },
     {
@@ -10050,7 +10050,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_services_cms_headlessapicmsprovider",
-      "community": 220,
+      "community": 19,
       "community_name": "SacredPad",
       "norm_label": "headlessapicmsprovider.ts"
     },
@@ -10063,8 +10063,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_services_cms_headlessapicmsprovider_headlessapicmsprovider",
-      "community": 230,
-      "community_name": "HeadlessAPICMSProvider",
+      "community": 19,
+      "community_name": "SacredPad",
       "norm_label": "headlessapicmsprovider"
     },
     {
@@ -10075,8 +10075,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_headlessapicmsprovider_headlessapicmsprovider_constructor",
-      "community": 230,
-      "community_name": "HeadlessAPICMSProvider",
+      "community": 19,
+      "community_name": "SacredPad",
       "norm_label": ".constructor()"
     },
     {
@@ -10087,8 +10087,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_headlessapicmsprovider_headlessapicmsprovider_isconfigured",
-      "community": 230,
-      "community_name": "HeadlessAPICMSProvider",
+      "community": 19,
+      "community_name": "SacredPad",
       "norm_label": ".isconfigured()"
     },
     {
@@ -10099,8 +10099,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_headlessapicmsprovider_headlessapicmsprovider_checkconnection",
-      "community": 230,
-      "community_name": "HeadlessAPICMSProvider",
+      "community": 19,
+      "community_name": "SacredPad",
       "norm_label": ".checkconnection()"
     },
     {
@@ -10111,8 +10111,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_headlessapicmsprovider_headlessapicmsprovider_getpadas",
-      "community": 230,
-      "community_name": "HeadlessAPICMSProvider",
+      "community": 19,
+      "community_name": "SacredPad",
       "norm_label": ".getpadas()"
     },
     {
@@ -10123,8 +10123,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_headlessapicmsprovider_headlessapicmsprovider_getpadbyid",
-      "community": 230,
-      "community_name": "HeadlessAPICMSProvider",
+      "community": 19,
+      "community_name": "SacredPad",
       "norm_label": ".getpadbyid()"
     },
     {
@@ -10135,8 +10135,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_headlessapicmsprovider_headlessapicmsprovider_getgranthas",
-      "community": 230,
-      "community_name": "HeadlessAPICMSProvider",
+      "community": 19,
+      "community_name": "SacredPad",
       "norm_label": ".getgranthas()"
     },
     {
@@ -10147,8 +10147,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_headlessapicmsprovider_headlessapicmsprovider_getsaints",
-      "community": 230,
-      "community_name": "HeadlessAPICMSProvider",
+      "community": 19,
+      "community_name": "SacredPad",
       "norm_label": ".getsaints()"
     },
     {
@@ -10159,8 +10159,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_headlessapicmsprovider_headlessapicmsprovider_getashtayamaschedule",
-      "community": 4,
-      "community_name": "cms.ts",
+      "community": 19,
+      "community_name": "SacredPad",
       "norm_label": ".getashtayamaschedule()"
     },
     {
@@ -10171,8 +10171,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_headlessapicmsprovider_headlessapicmsprovider_getfeedposts",
-      "community": 230,
-      "community_name": "HeadlessAPICMSProvider",
+      "community": 19,
+      "community_name": "SacredPad",
       "norm_label": ".getfeedposts()"
     },
     {
@@ -10183,8 +10183,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_headlessapicmsprovider_headlessapicmsprovider_savedraftpad",
-      "community": 230,
-      "community_name": "HeadlessAPICMSProvider",
+      "community": 19,
+      "community_name": "SacredPad",
       "norm_label": ".savedraftpad()"
     },
     {
@@ -10194,7 +10194,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_services_cms_staticfilecmsprovider",
-      "community": 220,
+      "community": 19,
       "community_name": "SacredPad",
       "norm_label": "staticfilecmsprovider.ts"
     },
@@ -10208,7 +10208,7 @@
       "_origin": "ast",
       "id": "src_services_cms_staticfilecmsprovider_staticfilecmsprovider",
       "community": 19,
-      "community_name": "ICMSProvider",
+      "community_name": "SacredPad",
       "norm_label": "staticfilecmsprovider"
     },
     {
@@ -10220,7 +10220,7 @@
       "_origin": "ast",
       "id": "src_services_cms_staticfilecmsprovider_staticfilecmsprovider_checkconnection",
       "community": 19,
-      "community_name": "ICMSProvider",
+      "community_name": "SacredPad",
       "norm_label": ".checkconnection()"
     },
     {
@@ -10231,7 +10231,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_staticfilecmsprovider_staticfilecmsprovider_getpadas",
-      "community": 220,
+      "community": 19,
       "community_name": "SacredPad",
       "norm_label": ".getpadas()"
     },
@@ -10244,7 +10244,7 @@
       "_origin": "ast",
       "id": "src_services_cms_staticfilecmsprovider_staticfilecmsprovider_getpadbyid",
       "community": 19,
-      "community_name": "ICMSProvider",
+      "community_name": "SacredPad",
       "norm_label": ".getpadbyid()"
     },
     {
@@ -10256,7 +10256,7 @@
       "_origin": "ast",
       "id": "src_services_cms_staticfilecmsprovider_staticfilecmsprovider_getgranthas",
       "community": 19,
-      "community_name": "ICMSProvider",
+      "community_name": "SacredPad",
       "norm_label": ".getgranthas()"
     },
     {
@@ -10268,7 +10268,7 @@
       "_origin": "ast",
       "id": "src_services_cms_staticfilecmsprovider_staticfilecmsprovider_getsaints",
       "community": 19,
-      "community_name": "ICMSProvider",
+      "community_name": "SacredPad",
       "norm_label": ".getsaints()"
     },
     {
@@ -10279,8 +10279,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_staticfilecmsprovider_staticfilecmsprovider_getashtayamaschedule",
-      "community": 4,
-      "community_name": "cms.ts",
+      "community": 228,
+      "community_name": "SacredDatabase",
       "norm_label": ".getashtayamaschedule()"
     },
     {
@@ -10291,8 +10291,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_staticfilecmsprovider_staticfilecmsprovider_getfeedposts",
-      "community": 222,
-      "community_name": "DevotionalFeedPost",
+      "community": 19,
+      "community_name": "SacredPad",
       "norm_label": ".getfeedposts()"
     },
     {
@@ -10304,7 +10304,7 @@
       "_origin": "ast",
       "id": "src_services_cms_staticfilecmsprovider_staticfilecmsprovider_exportmanifest",
       "community": 19,
-      "community_name": "ICMSProvider",
+      "community_name": "SacredPad",
       "norm_label": ".exportmanifest()"
     },
     {
@@ -10314,7 +10314,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_services_cms_index",
-      "community": 220,
+      "community": 19,
       "community_name": "SacredPad",
       "norm_label": "cms/index.ts"
     },
@@ -10328,7 +10328,7 @@
       "_origin": "ast",
       "id": "src_services_cms_index_cmsservice",
       "community": 19,
-      "community_name": "ICMSProvider",
+      "community_name": "SacredPad",
       "norm_label": "cmsservice"
     },
     {
@@ -10340,7 +10340,7 @@
       "_origin": "ast",
       "id": "src_services_cms_index_cmsservice_constructor",
       "community": 19,
-      "community_name": "ICMSProvider",
+      "community_name": "SacredPad",
       "norm_label": ".constructor()"
     },
     {
@@ -10352,7 +10352,7 @@
       "_origin": "ast",
       "id": "src_services_cms_index_cmsservice_getinstance",
       "community": 19,
-      "community_name": "ICMSProvider",
+      "community_name": "SacredPad",
       "norm_label": ".getinstance()"
     },
     {
@@ -10364,7 +10364,7 @@
       "_origin": "ast",
       "id": "src_services_cms_index_cmsservice_getactiveprovider",
       "community": 19,
-      "community_name": "ICMSProvider",
+      "community_name": "SacredPad",
       "norm_label": ".getactiveprovider()"
     },
     {
@@ -10376,7 +10376,7 @@
       "_origin": "ast",
       "id": "src_services_cms_index_cmsservice_setprovider",
       "community": 19,
-      "community_name": "ICMSProvider",
+      "community_name": "SacredPad",
       "norm_label": ".setprovider()"
     },
     {
@@ -10387,7 +10387,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_index_cmsservice_getpadas",
-      "community": 220,
+      "community": 19,
       "community_name": "SacredPad",
       "norm_label": ".getpadas()"
     },
@@ -10400,7 +10400,7 @@
       "_origin": "ast",
       "id": "src_services_cms_index_cmsservice_getpadbyid",
       "community": 19,
-      "community_name": "ICMSProvider",
+      "community_name": "SacredPad",
       "norm_label": ".getpadbyid()"
     },
     {
@@ -10411,8 +10411,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_index_cmsservice_getgranthas",
-      "community": 4,
-      "community_name": "cms.ts",
+      "community": 19,
+      "community_name": "SacredPad",
       "norm_label": ".getgranthas()"
     },
     {
@@ -10423,8 +10423,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_index_cmsservice_getsaints",
-      "community": 228,
-      "community_name": "CanonicalSaint",
+      "community": 19,
+      "community_name": "SacredPad",
       "norm_label": ".getsaints()"
     },
     {
@@ -10435,8 +10435,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_index_cmsservice_getashtayamaschedule",
-      "community": 4,
-      "community_name": "cms.ts",
+      "community": 19,
+      "community_name": "SacredPad",
       "norm_label": ".getashtayamaschedule()"
     },
     {
@@ -10447,8 +10447,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_index_cmsservice_getfeedposts",
-      "community": 222,
-      "community_name": "DevotionalFeedPost",
+      "community": 19,
+      "community_name": "SacredPad",
       "norm_label": ".getfeedposts()"
     },
     {
@@ -10460,7 +10460,7 @@
       "_origin": "ast",
       "id": "src_services_cms_index_cmsservice_exportfullcmsmanifest",
       "community": 19,
-      "community_name": "ICMSProvider",
+      "community_name": "SacredPad",
       "norm_label": ".exportfullcmsmanifest()"
     },
     {
@@ -10472,7 +10472,7 @@
       "_origin": "ast",
       "id": "src_services_cms_index_cmsservice_downloadcmsmanifestfile",
       "community": 19,
-      "community_name": "ICMSProvider",
+      "community_name": "SacredPad",
       "norm_label": ".downloadcmsmanifestfile()"
     },
     {
@@ -10482,7 +10482,7 @@
       "source_location": "L97",
       "_origin": "ast",
       "id": "src_services_cms_index_cms",
-      "community": 220,
+      "community": 19,
       "community_name": "SacredPad",
       "norm_label": "cms"
     },
@@ -10493,8 +10493,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_services_correlationservice",
-      "community": 232,
-      "community_name": "correlationService.ts",
+      "community": 221,
+      "community_name": "sacredSectionService.ts",
       "norm_label": "correlationservice.ts"
     },
     {
@@ -10506,8 +10506,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_services_correlationservice_correlateddiscovery",
-      "community": 232,
-      "community_name": "correlationService.ts",
+      "community": 13,
+      "community_name": "CharitraDarshan.tsx",
       "norm_label": "correlateddiscovery"
     },
     {
@@ -10519,8 +10519,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_services_correlationservice_currentpraharinfo",
-      "community": 232,
-      "community_name": "correlationService.ts",
+      "community": 221,
+      "community_name": "sacredSectionService.ts",
       "norm_label": "currentpraharinfo"
     },
     {
@@ -10530,8 +10530,8 @@
       "source_location": "L57",
       "_origin": "ast",
       "id": "src_services_correlationservice_correlationcache",
-      "community": 232,
-      "community_name": "correlationService.ts",
+      "community": 221,
+      "community_name": "sacredSectionService.ts",
       "norm_label": "correlationcache"
     },
     {
@@ -10543,8 +10543,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_services_correlationservice_nexuscluster",
-      "community": 232,
-      "community_name": "correlationService.ts",
+      "community": 221,
+      "community_name": "sacredSectionService.ts",
       "norm_label": "nexuscluster"
     },
     {
@@ -10554,8 +10554,8 @@
       "source_location": "L72",
       "_origin": "ast",
       "id": "src_services_correlationservice_nexus_clusters",
-      "community": 232,
-      "community_name": "correlationService.ts",
+      "community": 221,
+      "community_name": "sacredSectionService.ts",
       "norm_label": "nexus_clusters"
     },
     {
@@ -10699,8 +10699,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_services_devotionalsummaryservice_devotionalsummaryrequest",
-      "community": 2,
-      "community_name": "devotionalSummaryService.ts",
+      "community": 220,
+      "community_name": "DhyanaFocusModal.tsx",
       "norm_label": "devotionalsummaryrequest"
     },
     {
@@ -10877,8 +10877,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_devotionalsummaryservice_computetexthash",
-      "community": 2,
-      "community_name": "devotionalSummaryService.ts",
+      "community": 229,
+      "community_name": "computeDevotionalCacheKey",
       "norm_label": "computetexthash()"
     },
     {
@@ -10889,8 +10889,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_devotionalsummaryservice_computeversecachekey",
-      "community": 2,
-      "community_name": "devotionalSummaryService.ts",
+      "community": 229,
+      "community_name": "computeDevotionalCacheKey",
       "norm_label": "computeversecachekey()"
     },
     {
@@ -10901,8 +10901,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_devotionalsummaryservice_computequotecachekey",
-      "community": 2,
-      "community_name": "devotionalSummaryService.ts",
+      "community": 229,
+      "community_name": "computeDevotionalCacheKey",
       "norm_label": "computequotecachekey()"
     },
     {
@@ -10913,8 +10913,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_devotionalsummaryservice_computedevotionalcachekey",
-      "community": 2,
-      "community_name": "devotionalSummaryService.ts",
+      "community": 229,
+      "community_name": "computeDevotionalCacheKey",
       "norm_label": "computedevotionalcachekey()"
     },
     {
@@ -11044,8 +11044,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_sacreddatabase_getsupabase",
-      "community": 3,
-      "community_name": "sacredDatabase.ts",
+      "community": 144,
+      "community_name": "supabaseClient.ts",
       "norm_label": "getsupabase()"
     },
     {
@@ -11069,8 +11069,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_services_sacreddatabase_canonicalgrantha",
-      "community": 4,
-      "community_name": "cms.ts",
+      "community": 19,
+      "community_name": "SacredPad",
       "norm_label": "canonicalgrantha"
     },
     {
@@ -11082,8 +11082,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_services_sacreddatabase_canonicalsaint",
-      "community": 228,
-      "community_name": "CanonicalSaint",
+      "community": 19,
+      "community_name": "SacredPad",
       "norm_label": "canonicalsaint"
     },
     {
@@ -11121,8 +11121,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_services_sacreddatabase_ashtayamaperiod",
-      "community": 232,
-      "community_name": "correlationService.ts",
+      "community": 221,
+      "community_name": "sacredSectionService.ts",
       "norm_label": "ashtayamaperiod"
     },
     {
@@ -11210,8 +11210,8 @@
       "source_location": "L145",
       "_origin": "ast",
       "id": "src_services_sacreddatabase_non_ragas",
-      "community": 3,
-      "community_name": "sacredDatabase.ts",
+      "community": 230,
+      "community_name": "normalizeCanonicalPad",
       "norm_label": "non_ragas"
     },
     {
@@ -11233,8 +11233,8 @@
       "source_location": "L187",
       "_origin": "ast",
       "id": "src_services_sacreddatabase_sanitizesacredtext",
-      "community": 2,
-      "community_name": "devotionalSummaryService.ts",
+      "community": 16,
+      "community_name": "IOSActivityIndicator.tsx",
       "norm_label": "sanitizesacredtext"
     },
     {
@@ -11245,8 +11245,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_sacreddatabase_normalizecanonicalpad",
-      "community": 3,
-      "community_name": "sacredDatabase.ts",
+      "community": 230,
+      "community_name": "normalizeCanonicalPad",
       "norm_label": "normalizecanonicalpad()"
     },
     {
@@ -11503,8 +11503,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_sacreddatabase_getorinitauthuserid",
-      "community": 3,
-      "community_name": "sacredDatabase.ts",
+      "community": 144,
+      "community_name": "supabaseClient.ts",
       "norm_label": "getorinitauthuserid()"
     },
     {
@@ -11514,8 +11514,8 @@
       "source_location": "L445",
       "_origin": "ast",
       "id": "src_services_sacreddatabase_sacreddatabase",
-      "community": 30,
-      "community_name": "entry-server.tsx",
+      "community": 228,
+      "community_name": "SacredDatabase",
       "norm_label": "sacreddatabase"
     },
     {
@@ -11537,7 +11537,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_services_sacredsectionservice",
-      "community": 13,
+      "community": 221,
       "community_name": "sacredSectionService.ts",
       "norm_label": "sacredsectionservice.ts"
     },
@@ -11548,7 +11548,7 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "src_services_sacredsectionservice_memorystories",
-      "community": 13,
+      "community": 221,
       "community_name": "sacredSectionService.ts",
       "norm_label": "memorystories"
     },
@@ -11559,7 +11559,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "src_services_sacredsectionservice_memorybios",
-      "community": 13,
+      "community": 221,
       "community_name": "sacredSectionService.ts",
       "norm_label": "memorybios"
     },
@@ -11570,7 +11570,7 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "src_services_sacredsectionservice_memoryplaces",
-      "community": 13,
+      "community": 221,
       "community_name": "sacredSectionService.ts",
       "norm_label": "memoryplaces"
     },
@@ -11581,7 +11581,7 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "src_services_sacredsectionservice_memoryrituals",
-      "community": 13,
+      "community": 221,
       "community_name": "sacredSectionService.ts",
       "norm_label": "memoryrituals"
     },
@@ -11592,8 +11592,8 @@
       "source_location": "L50",
       "_origin": "ast",
       "id": "src_services_sacredsectionservice_seed_stories",
-      "community": 232,
-      "community_name": "correlationService.ts",
+      "community": 221,
+      "community_name": "sacredSectionService.ts",
       "norm_label": "seed_stories"
     },
     {
@@ -11603,7 +11603,7 @@
       "source_location": "L178",
       "_origin": "ast",
       "id": "src_services_sacredsectionservice_seed_biographies",
-      "community": 13,
+      "community": 221,
       "community_name": "sacredSectionService.ts",
       "norm_label": "seed_biographies"
     },
@@ -11614,8 +11614,8 @@
       "source_location": "L357",
       "_origin": "ast",
       "id": "src_services_sacredsectionservice_seed_places",
-      "community": 227,
-      "community_name": "SacredPlace",
+      "community": 221,
+      "community_name": "sacredSectionService.ts",
       "norm_label": "seed_places"
     },
     {
@@ -11625,7 +11625,7 @@
       "source_location": "L464",
       "_origin": "ast",
       "id": "src_services_sacredsectionservice_seed_rituals",
-      "community": 13,
+      "community": 221,
       "community_name": "sacredSectionService.ts",
       "norm_label": "seed_rituals"
     },
@@ -11639,7 +11639,7 @@
       "_origin": "ast",
       "id": "src_services_sacredsectionservice_sacredsectionservice",
       "community": 221,
-      "community_name": "SacredSectionService",
+      "community_name": "sacredSectionService.ts",
       "norm_label": "sacredsectionservice"
     },
     {
@@ -11651,7 +11651,7 @@
       "_origin": "ast",
       "id": "src_services_sacredsectionservice_sacredsectionservice_getstoriesindex",
       "community": 221,
-      "community_name": "SacredSectionService",
+      "community_name": "sacredSectionService.ts",
       "norm_label": ".getstoriesindex()"
     },
     {
@@ -11663,7 +11663,7 @@
       "_origin": "ast",
       "id": "src_services_sacredsectionservice_sacredsectionservice_syncstoriesindexfromnetwork",
       "community": 221,
-      "community_name": "SacredSectionService",
+      "community_name": "sacredSectionService.ts",
       "norm_label": ".syncstoriesindexfromnetwork()"
     },
     {
@@ -11674,8 +11674,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_sacredsectionservice_sacredsectionservice_getstorybyid",
-      "community": 232,
-      "community_name": "correlationService.ts",
+      "community": 221,
+      "community_name": "sacredSectionService.ts",
       "norm_label": ".getstorybyid()"
     },
     {
@@ -11687,7 +11687,7 @@
       "_origin": "ast",
       "id": "src_services_sacredsectionservice_sacredsectionservice_getbiographiesindex",
       "community": 221,
-      "community_name": "SacredSectionService",
+      "community_name": "sacredSectionService.ts",
       "norm_label": ".getbiographiesindex()"
     },
     {
@@ -11699,7 +11699,7 @@
       "_origin": "ast",
       "id": "src_services_sacredsectionservice_sacredsectionservice_syncbiosindexfromnetwork",
       "community": 221,
-      "community_name": "SacredSectionService",
+      "community_name": "sacredSectionService.ts",
       "norm_label": ".syncbiosindexfromnetwork()"
     },
     {
@@ -11710,7 +11710,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_sacredsectionservice_sacredsectionservice_getbiographybyid",
-      "community": 13,
+      "community": 221,
       "community_name": "sacredSectionService.ts",
       "norm_label": ".getbiographybyid()"
     },
@@ -11723,7 +11723,7 @@
       "_origin": "ast",
       "id": "src_services_sacredsectionservice_sacredsectionservice_getplacesindex",
       "community": 221,
-      "community_name": "SacredSectionService",
+      "community_name": "sacredSectionService.ts",
       "norm_label": ".getplacesindex()"
     },
     {
@@ -11735,7 +11735,7 @@
       "_origin": "ast",
       "id": "src_services_sacredsectionservice_sacredsectionservice_syncplacesindexfromnetwork",
       "community": 221,
-      "community_name": "SacredSectionService",
+      "community_name": "sacredSectionService.ts",
       "norm_label": ".syncplacesindexfromnetwork()"
     },
     {
@@ -11746,8 +11746,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_sacredsectionservice_sacredsectionservice_getplacebyid",
-      "community": 227,
-      "community_name": "SacredPlace",
+      "community": 221,
+      "community_name": "sacredSectionService.ts",
       "norm_label": ".getplacebyid()"
     },
     {
@@ -11759,7 +11759,7 @@
       "_origin": "ast",
       "id": "src_services_sacredsectionservice_sacredsectionservice_getritualsindex",
       "community": 221,
-      "community_name": "SacredSectionService",
+      "community_name": "sacredSectionService.ts",
       "norm_label": ".getritualsindex()"
     },
     {
@@ -11771,7 +11771,7 @@
       "_origin": "ast",
       "id": "src_services_sacredsectionservice_sacredsectionservice_syncritualsindexfromnetwork",
       "community": 221,
-      "community_name": "SacredSectionService",
+      "community_name": "sacredSectionService.ts",
       "norm_label": ".syncritualsindexfromnetwork()"
     },
     {
@@ -11782,7 +11782,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_sacredsectionservice_sacredsectionservice_getritualbyid",
-      "community": 13,
+      "community": 221,
       "community_name": "sacredSectionService.ts",
       "norm_label": ".getritualbyid()"
     },
@@ -11793,8 +11793,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_services_seoservice",
-      "community": 30,
-      "community_name": "entry-server.tsx",
+      "community": 18,
+      "community_name": "seoService.ts",
       "norm_label": "seoservice.ts"
     },
     {
@@ -11806,8 +11806,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_services_seoservice_seoconfig",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 18,
+      "community_name": "seoService.ts",
       "norm_label": "seoconfig"
     },
     {
@@ -11819,8 +11819,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_services_seoservice_seometadataresult",
-      "community": 30,
-      "community_name": "entry-server.tsx",
+      "community": 18,
+      "community_name": "seoService.ts",
       "norm_label": "seometadataresult"
     },
     {
@@ -11830,8 +11830,8 @@
       "source_location": "L94",
       "_origin": "ast",
       "id": "src_services_seoservice_default_seo",
-      "community": 30,
-      "community_name": "entry-server.tsx",
+      "community": 18,
+      "community_name": "seoService.ts",
       "norm_label": "default_seo"
     },
     {
@@ -11842,8 +11842,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_seoservice_escapehtml",
-      "community": 30,
-      "community_name": "entry-server.tsx",
+      "community": 18,
+      "community_name": "seoService.ts",
       "norm_label": "escapehtml()"
     },
     {
@@ -11854,8 +11854,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_seoservice_generateseometadata",
-      "community": 30,
-      "community_name": "entry-server.tsx",
+      "community": 18,
+      "community_name": "seoService.ts",
       "norm_label": "generateseometadata()"
     },
     {
@@ -11868,7 +11868,7 @@
       "_origin": "ast",
       "id": "src_services_seoservice_seoservice",
       "community": 18,
-      "community_name": "SEOService",
+      "community_name": "seoService.ts",
       "norm_label": "seoservice"
     },
     {
@@ -11880,7 +11880,7 @@
       "_origin": "ast",
       "id": "src_services_seoservice_seoservice_constructor",
       "community": 18,
-      "community_name": "SEOService",
+      "community_name": "seoService.ts",
       "norm_label": ".constructor()"
     },
     {
@@ -11892,7 +11892,7 @@
       "_origin": "ast",
       "id": "src_services_seoservice_seoservice_getinstance",
       "community": 18,
-      "community_name": "SEOService",
+      "community_name": "seoService.ts",
       "norm_label": ".getinstance()"
     },
     {
@@ -11904,7 +11904,7 @@
       "_origin": "ast",
       "id": "src_services_seoservice_seoservice_updateseo",
       "community": 18,
-      "community_name": "SEOService",
+      "community_name": "seoService.ts",
       "norm_label": ".updateseo()"
     },
     {
@@ -11916,7 +11916,7 @@
       "_origin": "ast",
       "id": "src_services_seoservice_seoservice_setmetatag",
       "community": 18,
-      "community_name": "SEOService",
+      "community_name": "seoService.ts",
       "norm_label": ".setmetatag()"
     },
     {
@@ -11928,7 +11928,7 @@
       "_origin": "ast",
       "id": "src_services_seoservice_seoservice_setcanonicallink",
       "community": 18,
-      "community_name": "SEOService",
+      "community_name": "seoService.ts",
       "norm_label": ".setcanonicallink()"
     },
     {
@@ -12068,8 +12068,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_types_cms",
-      "community": 4,
-      "community_name": "cms.ts",
+      "community": 19,
+      "community_name": "SacredPad",
       "norm_label": "cms.ts"
     },
     {
@@ -12081,8 +12081,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_types_cms_cmscontentstatus",
-      "community": 4,
-      "community_name": "cms.ts",
+      "community": 19,
+      "community_name": "SacredPad",
       "norm_label": "cmscontentstatus"
     },
     {
@@ -12094,8 +12094,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_types_cms_cmsmetadata",
-      "community": 4,
-      "community_name": "cms.ts",
+      "community": 19,
+      "community_name": "SacredPad",
       "norm_label": "cmsmetadata"
     },
     {
@@ -12107,7 +12107,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_types_cms_cmspadentry",
-      "community": 220,
+      "community": 19,
       "community_name": "SacredPad",
       "norm_label": "cmspadentry"
     },
@@ -12120,8 +12120,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_types_cms_cmsgranthaentry",
-      "community": 4,
-      "community_name": "cms.ts",
+      "community": 19,
+      "community_name": "SacredPad",
       "norm_label": "cmsgranthaentry"
     },
     {
@@ -12133,8 +12133,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_types_cms_cmssaintentry",
-      "community": 228,
-      "community_name": "CanonicalSaint",
+      "community": 19,
+      "community_name": "SacredPad",
       "norm_label": "cmssaintentry"
     },
     {
@@ -12146,8 +12146,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_types_cms_cmsfeedpostentry",
-      "community": 222,
-      "community_name": "DevotionalFeedPost",
+      "community": 19,
+      "community_name": "SacredPad",
       "norm_label": "cmsfeedpostentry"
     },
     {
@@ -12159,8 +12159,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_types_cms_cmsashtayamaentry",
-      "community": 4,
-      "community_name": "cms.ts",
+      "community": 19,
+      "community_name": "SacredPad",
       "norm_label": "cmsashtayamaentry"
     },
     {
@@ -12173,7 +12173,7 @@
       "_origin": "ast",
       "id": "src_types_cms_cmsmanifest",
       "community": 19,
-      "community_name": "ICMSProvider",
+      "community_name": "SacredPad",
       "norm_label": "cmsmanifest"
     },
     {
@@ -12185,7 +12185,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_types_cms_cmsfilter",
-      "community": 220,
+      "community": 19,
       "community_name": "SacredPad",
       "norm_label": "cmsfilter"
     },
@@ -12209,7 +12209,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_types_devotional_sacredpad",
-      "community": 220,
+      "community": 19,
       "community_name": "SacredPad",
       "norm_label": "sacredpad"
     },
@@ -12274,8 +12274,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_types_devotional_devotionalfeedpost",
-      "community": 222,
-      "community_name": "DevotionalFeedPost",
+      "community": 19,
+      "community_name": "SacredPad",
       "norm_label": "devotionalfeedpost"
     },
     {
@@ -12287,8 +12287,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_types_devotional_sadhanastate",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 15,
+      "community_name": "DynamicNotchNavbar.tsx",
       "norm_label": "sadhanastate"
     },
     {
@@ -12365,8 +12365,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_types_devotional_ashtayamaphaseinfo",
-      "community": 4,
-      "community_name": "cms.ts",
+      "community": 19,
+      "community_name": "SacredPad",
       "norm_label": "ashtayamaphaseinfo"
     },
     {
@@ -12391,8 +12391,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_types_devotional_dhyanasessionrecord",
-      "community": 1,
-      "community_name": "cacheService.ts",
+      "community": 220,
+      "community_name": "DhyanaFocusModal.tsx",
       "norm_label": "dhyanasessionrecord"
     },
     {
@@ -12417,8 +12417,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_types_devotional_sacredreflectionentry",
-      "community": 1,
-      "community_name": "cacheService.ts",
+      "community": 220,
+      "community_name": "DhyanaFocusModal.tsx",
       "norm_label": "sacredreflectionentry"
     },
     {
@@ -12532,8 +12532,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_types_sacredsections_sacredstory",
-      "community": 232,
-      "community_name": "correlationService.ts",
+      "community": 25,
+      "community_name": "sacredSections.ts",
       "norm_label": "sacredstory"
     },
     {
@@ -12545,8 +12545,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_types_sacredsections_sacredstorypreview",
-      "community": 221,
-      "community_name": "SacredSectionService",
+      "community": 25,
+      "community_name": "sacredSections.ts",
       "norm_label": "sacredstorypreview"
     },
     {
@@ -12611,7 +12611,7 @@
       "_origin": "ast",
       "id": "src_types_sacredsections_sacredbiography",
       "community": 13,
-      "community_name": "sacredSectionService.ts",
+      "community_name": "CharitraDarshan.tsx",
       "norm_label": "sacredbiography"
     },
     {
@@ -12624,7 +12624,7 @@
       "_origin": "ast",
       "id": "src_types_sacredsections_sacredbiographypreview",
       "community": 221,
-      "community_name": "SacredSectionService",
+      "community_name": "sacredSectionService.ts",
       "norm_label": "sacredbiographypreview"
     },
     {
@@ -12688,8 +12688,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_types_sacredsections_sacredplace",
-      "community": 227,
-      "community_name": "SacredPlace",
+      "community": 13,
+      "community_name": "CharitraDarshan.tsx",
       "norm_label": "sacredplace"
     },
     {
@@ -12702,7 +12702,7 @@
       "_origin": "ast",
       "id": "src_types_sacredsections_sacredplacepreview",
       "community": 221,
-      "community_name": "SacredSectionService",
+      "community_name": "sacredSectionService.ts",
       "norm_label": "sacredplacepreview"
     },
     {
@@ -12754,7 +12754,7 @@
       "_origin": "ast",
       "id": "src_types_sacredsections_sacredritual",
       "community": 13,
-      "community_name": "sacredSectionService.ts",
+      "community_name": "CharitraDarshan.tsx",
       "norm_label": "sacredritual"
     },
     {
@@ -12767,7 +12767,7 @@
       "_origin": "ast",
       "id": "src_types_sacredsections_sacredritualpreview",
       "community": 221,
-      "community_name": "SacredSectionService",
+      "community_name": "sacredSectionService.ts",
       "norm_label": "sacredritualpreview"
     },
     {
@@ -12779,7 +12779,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_types_sacredsections_corpusindexmanifest",
-      "community": 13,
+      "community": 221,
       "community_name": "sacredSectionService.ts",
       "norm_label": "corpusindexmanifest"
     },
@@ -12790,8 +12790,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_utils_devotionalcontentparser",
-      "community": 2,
-      "community_name": "devotionalSummaryService.ts",
+      "community": 4,
+      "community_name": "devotionalContentParser.ts",
       "norm_label": "devotionalcontentparser.ts"
     },
     {
@@ -12803,8 +12803,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_utils_devotionalcontentparser_versemeaningunit",
-      "community": 2,
-      "community_name": "devotionalSummaryService.ts",
+      "community": 4,
+      "community_name": "devotionalContentParser.ts",
       "norm_label": "versemeaningunit"
     },
     {
@@ -12816,8 +12816,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_utils_devotionalcontentparser_stanzaunit",
-      "community": 2,
-      "community_name": "devotionalSummaryService.ts",
+      "community": 4,
+      "community_name": "devotionalContentParser.ts",
       "norm_label": "stanzaunit"
     },
     {
@@ -12829,8 +12829,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_utils_devotionalcontentparser_sectionheaderunit",
-      "community": 2,
-      "community_name": "devotionalSummaryService.ts",
+      "community": 4,
+      "community_name": "devotionalContentParser.ts",
       "norm_label": "sectionheaderunit"
     },
     {
@@ -12842,8 +12842,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_utils_devotionalcontentparser_floralgarlandunit",
-      "community": 2,
-      "community_name": "devotionalSummaryService.ts",
+      "community": 4,
+      "community_name": "devotionalContentParser.ts",
       "norm_label": "floralgarlandunit"
     },
     {
@@ -12855,8 +12855,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_utils_devotionalcontentparser_poemtitleunit",
-      "community": 2,
-      "community_name": "devotionalSummaryService.ts",
+      "community": 4,
+      "community_name": "devotionalContentParser.ts",
       "norm_label": "poemtitleunit"
     },
     {
@@ -12868,8 +12868,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_utils_devotionalcontentparser_proseunit",
-      "community": 2,
-      "community_name": "devotionalSummaryService.ts",
+      "community": 4,
+      "community_name": "devotionalContentParser.ts",
       "norm_label": "proseunit"
     },
     {
@@ -12881,8 +12881,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_utils_devotionalcontentparser_meterbadgeunit",
-      "community": 2,
-      "community_name": "devotionalSummaryService.ts",
+      "community": 4,
+      "community_name": "devotionalContentParser.ts",
       "norm_label": "meterbadgeunit"
     },
     {
@@ -12894,8 +12894,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_utils_devotionalcontentparser_devotionalunit",
-      "community": 2,
-      "community_name": "devotionalSummaryService.ts",
+      "community": 4,
+      "community_name": "devotionalContentParser.ts",
       "norm_label": "devotionalunit"
     },
     {
@@ -12907,8 +12907,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_utils_devotionalcontentparser_parsedsacredpadacontent",
-      "community": 2,
-      "community_name": "devotionalSummaryService.ts",
+      "community": 4,
+      "community_name": "devotionalContentParser.ts",
       "norm_label": "parsedsacredpadacontent"
     },
     {
@@ -12919,8 +12919,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_utils_devotionalcontentparser_isstanzaterminal",
-      "community": 2,
-      "community_name": "devotionalSummaryService.ts",
+      "community": 4,
+      "community_name": "devotionalContentParser.ts",
       "norm_label": "isstanzaterminal()"
     },
     {
@@ -12931,8 +12931,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_utils_devotionalcontentparser_parsedevotionalcontent",
-      "community": 2,
-      "community_name": "devotionalSummaryService.ts",
+      "community": 4,
+      "community_name": "devotionalContentParser.ts",
       "norm_label": "parsedevotionalcontent()"
     },
     {
@@ -30618,7 +30618,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/App.tsx",
-      "source_location": "L339",
+      "source_location": "L340",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app",
@@ -30640,7 +30640,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/App.tsx",
-      "source_location": "L173",
+      "source_location": "L174",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app",
@@ -30651,7 +30651,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/App.tsx",
-      "source_location": "L188",
+      "source_location": "L189",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app",
@@ -30860,7 +30860,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/App.tsx",
-      "source_location": "L201",
+      "source_location": "L202",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app",
@@ -31580,7 +31580,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L289",
+      "source_location": "L290",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_resolvecurrentroute",
@@ -31591,7 +31591,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/App.tsx",
-      "source_location": "L478",
+      "source_location": "L479",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -31603,7 +31603,7 @@
       "context": "field",
       "confidence": "EXTRACTED",
       "source_file": "src/App.tsx",
-      "source_location": "L174",
+      "source_location": "L175",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_appprops",
@@ -31615,7 +31615,7 @@
       "context": "field",
       "confidence": "EXTRACTED",
       "source_file": "src/App.tsx",
-      "source_location": "L189",
+      "source_location": "L190",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_approutestate",
@@ -31627,7 +31627,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/App.tsx",
-      "source_location": "L361",
+      "source_location": "L363",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -31639,7 +31639,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/App.tsx",
-      "source_location": "L238",
+      "source_location": "L239",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_resolvecurrentroute",
@@ -31652,7 +31652,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L273",
+      "source_location": "L274",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_resolvecurrentroute",
@@ -31663,7 +31663,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/App.tsx",
-      "source_location": "L232",
+      "source_location": "L233",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_resolvecurrentroute",
@@ -31676,7 +31676,7 @@
       "deferred": true,
       "confidence": "EXTRACTED",
       "source_file": "src/App.tsx",
-      "source_location": "L401",
+      "source_location": "L402",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -31689,7 +31689,7 @@
       "deferred": true,
       "confidence": "EXTRACTED",
       "source_file": "src/App.tsx",
-      "source_location": "L400",
+      "source_location": "L401",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -31702,7 +31702,7 @@
       "deferred": true,
       "confidence": "EXTRACTED",
       "source_file": "src/App.tsx",
-      "source_location": "L399",
+      "source_location": "L400",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -31715,7 +31715,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L411",
+      "source_location": "L412",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -31727,7 +31727,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L972",
+      "source_location": "L973",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -31739,7 +31739,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L974",
+      "source_location": "L975",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -31751,7 +31751,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L979",
+      "source_location": "L980",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -31763,7 +31763,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L655",
+      "source_location": "L656",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -31775,7 +31775,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L642",
+      "source_location": "L643",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -31787,7 +31787,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L413",
+      "source_location": "L414",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -31799,7 +31799,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L648",
+      "source_location": "L649",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -31811,7 +31811,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L433",
+      "source_location": "L434",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -31823,7 +31823,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L900",
+      "source_location": "L901",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -31835,7 +31835,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L2034",
+      "source_location": "L2035",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -31847,7 +31847,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L383",
+      "source_location": "L385",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -32444,7 +32444,7 @@
       "context": "field",
       "confidence": "EXTRACTED",
       "source_file": "src/entry-server.tsx",
-      "source_location": "L56",
+      "source_location": "L57",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_entry_server_renderresult",
@@ -34527,7 +34527,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "src/entry-server.tsx",
-      "source_location": "L534",
+      "source_location": "L535",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_entry_server_render",
@@ -35345,7 +35345,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "src/entry-server.tsx",
-      "source_location": "L533",
+      "source_location": "L534",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_entry_server_render",
@@ -35990,7 +35990,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "src/entry-server.tsx",
-      "source_location": "L532",
+      "source_location": "L533",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_entry_server_render",
@@ -36240,7 +36240,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "src/entry-server.tsx",
-      "source_location": "L537",
+      "source_location": "L538",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_entry_server_render",
@@ -36490,7 +36490,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "src/entry-server.tsx",
-      "source_location": "L538",
+      "source_location": "L539",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_entry_server_render",
@@ -36752,7 +36752,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "src/entry-server.tsx",
-      "source_location": "L536",
+      "source_location": "L537",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_entry_server_render",
@@ -37002,7 +37002,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "src/entry-server.tsx",
-      "source_location": "L535",
+      "source_location": "L536",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_entry_server_render",
@@ -37104,7 +37104,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "src/entry-server.tsx",
-      "source_location": "L539",
+      "source_location": "L540",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_entry_server_render",
@@ -37460,6 +37460,42 @@
       "source": "src_components_smaran_sacredsectionsbanner",
       "target": "src_components_smaran_sacredsectionsbanner_sectioncarditem",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/entry-server.tsx",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_entry_server",
+      "target": "src_components_smaran_sacredsectionsbanner",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/entry-server.tsx",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_entry_server",
+      "target": "src_components_smaran_sacredsectionsbanner_sacredsectionsbanner",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "indirect_call",
+      "context": "collection",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src/entry-server.tsx",
+      "source_location": "L541",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_entry_server_render",
+      "target": "src_components_smaran_sacredsectionsbanner_sacredsectionsbanner"
     },
     {
       "relation": "contains",
@@ -37865,7 +37901,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/entry-server.tsx",
-      "source_location": "L47",
+      "source_location": "L48",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_entry_server",
@@ -37876,7 +37912,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/entry-server.tsx",
-      "source_location": "L63",
+      "source_location": "L64",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_entry_server",
@@ -37887,7 +37923,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/entry-server.tsx",
-      "source_location": "L53",
+      "source_location": "L54",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_entry_server",
@@ -37898,7 +37934,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/entry-server.tsx",
-      "source_location": "L41",
+      "source_location": "L42",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_entry_server",
@@ -37910,7 +37946,7 @@
       "context": "export",
       "confidence": "EXTRACTED",
       "source_file": "src/entry-server.tsx",
-      "source_location": "L556",
+      "source_location": "L558",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_entry_server",
@@ -37922,7 +37958,7 @@
       "context": "re-export",
       "confidence": "EXTRACTED",
       "source_file": "src/entry-server.tsx",
-      "source_location": "L556",
+      "source_location": "L558",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_entry_server",
@@ -38043,7 +38079,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/entry-server.tsx",
-      "source_location": "L190",
+      "source_location": "L191",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_entry_server_render",
@@ -38055,7 +38091,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/entry-server.tsx",
-      "source_location": "L48",
+      "source_location": "L49",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_entry_server_ensuredatabaseprewarmed",
@@ -38066,7 +38102,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/entry-server.tsx",
-      "source_location": "L64",
+      "source_location": "L65",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_entry_server_render",
@@ -38078,7 +38114,7 @@
       "context": "field",
       "confidence": "EXTRACTED",
       "source_file": "src/entry-server.tsx",
-      "source_location": "L55",
+      "source_location": "L56",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_entry_server_renderresult",
@@ -38090,7 +38126,7 @@
       "context": "field",
       "confidence": "EXTRACTED",
       "source_file": "src/entry-server.tsx",
-      "source_location": "L56",
+      "source_location": "L57",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_entry_server_renderresult",
@@ -38103,7 +38139,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/entry-server.tsx",
-      "source_location": "L188",
+      "source_location": "L189",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_entry_server_render",
@@ -38115,7 +38151,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/entry-server.tsx",
-      "source_location": "L515",
+      "source_location": "L516",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_entry_server_render",
@@ -38127,7 +38163,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/entry-server.tsx",
-      "source_location": "L273",
+      "source_location": "L274",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_entry_server_render",
@@ -55991,5 +56027,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "277514b3b61275db79668c5399251d7b36254b69"
+  "built_at_commit": "1a8bcdaf4d679caf031627c5cc440ff18324f3a7"
 }

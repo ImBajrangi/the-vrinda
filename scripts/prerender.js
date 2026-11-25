@@ -81,7 +81,7 @@ async function prerender() {
       if (!routes.some((r) => r.file === routeFile)) {
         routes.push({ url: routeUrl, file: routeFile });
       }
-      routes.push({ url: routeUrl, file: `grantha/${g.id}/index.html` });
+      routes.push({ url: routeUrl, file: `grantha/${g.id}.html` });
     }
   }
 
@@ -92,7 +92,7 @@ async function prerender() {
     for (const s of saintsData.slice(0, 10)) {
       const slug = s.slug || s.id;
       const routeUrl = `/sant/${encodeURIComponent(slug)}`;
-      routes.push({ url: routeUrl, file: `sant/${slug}/index.html` });
+      routes.push({ url: routeUrl, file: `sant/${slug}.html` });
     }
   }
 
@@ -118,7 +118,7 @@ async function prerender() {
     try {
       const data = JSON.parse(fs.readFileSync(ritualsIndexPath, 'utf-8'));
       for (const item of data.items || []) {
-        routes.push({ url: `/ritual/${item.slug}`, file: `ritual/${item.slug}/index.html` });
+        routes.push({ url: `/ritual/${item.slug}`, file: `ritual/${item.slug}.html` });
       }
     } catch {}
   }
@@ -129,7 +129,7 @@ async function prerender() {
     try {
       const data = JSON.parse(fs.readFileSync(placesIndexPath, 'utf-8'));
       for (const item of data.items || []) {
-        routes.push({ url: `/place/${item.slug}`, file: `place/${item.slug}/index.html` });
+        routes.push({ url: `/place/${item.slug}`, file: `place/${item.slug}.html` });
       }
     } catch {}
   }
@@ -140,7 +140,7 @@ async function prerender() {
     try {
       const data = JSON.parse(fs.readFileSync(storiesIndexPath, 'utf-8'));
       for (const item of data.items || []) {
-        routes.push({ url: `/story/${item.slug}`, file: `story/${item.slug}/index.html` });
+        routes.push({ url: `/story/${item.slug}`, file: `story/${item.slug}.html` });
       }
     } catch {}
   }
@@ -151,7 +151,7 @@ async function prerender() {
     try {
       const data = JSON.parse(fs.readFileSync(biosIndexPath, 'utf-8'));
       for (const item of data.items || []) {
-        routes.push({ url: `/bio/${item.slug}`, file: `bio/${item.slug}/index.html` });
+        routes.push({ url: `/bio/${item.slug}`, file: `bio/${item.slug}.html` });
       }
     } catch {}
   }
@@ -162,7 +162,7 @@ async function prerender() {
     try {
       const guidesMeta = JSON.parse(fs.readFileSync(guidesMetaPath, 'utf-8'));
       for (const slug of Object.keys(guidesMeta)) {
-        routes.push({ url: `/${slug}`, file: `${slug}/index.html` });
+        routes.push({ url: `/${slug}`, file: `${slug}.html` });
       }
     } catch {}
   }

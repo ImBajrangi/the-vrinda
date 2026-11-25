@@ -683,7 +683,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   }
 
   // 3.0b Plural & Legacy Sant-Vaani Route 301 Redirects
-  const legacySaintMatch = pathname.match(/^(?:\/(?:hi|en))?\/(?:saints|saint)\/([^/?#]+)/i) ||
+  const legacySaintMatch = pathname.match(/^(?:\/(?:hi|en))?\/(?:saints|saint|sants)\/([^/?#]+)/i) ||
     pathname.match(/^\/(?:hi|en)\/sant\/([^/?#]+)/i);
   if (legacySaintMatch) {
     const slug = safeDecodeURIComponent(legacySaintMatch[1]).trim();

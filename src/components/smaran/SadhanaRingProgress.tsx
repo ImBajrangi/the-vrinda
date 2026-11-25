@@ -67,9 +67,9 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
       {/* 1. Serene Sanctuary Header in Classical Editorial Typography */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-neutral-100">
         <div className="space-y-1">
-          <div className="text-xs font-laila font-semibold text-amber-800 tracking-wide flex items-center gap-2">
-            <span>श्री धाम वृन्दावन नित्य साधना</span>
-            <span className="text-neutral-300 font-normal">—</span>
+          <div className="text-xs font-laila font-semibold text-amber-800 tracking-wide flex items-center gap-2 flex-wrap">
+            <span>दैनिक स्मरण व नित्य सेवा</span>
+            <span className="text-neutral-300 font-normal">•</span>
             <span className="text-amber-900 font-medium">
               {currentStreakDays}-दिवसीय अखंड स्मरण
             </span>

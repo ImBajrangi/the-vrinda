@@ -14,21 +14,14 @@ const seoPrerender = document.getElementById('seo-prerender');
 if (rootElement) {
   // Edge Pre-render Dismisser:
   // If Cloudflare Edge injected semantic HTML into #seo-prerender for Googlebot/AI,
-  // gracefully fade it out once React's interactive client loads.
-  if (seoPrerender && seoPrerender.hasChildNodes()) {
-    const dismissSeoPrerender = () => {
-      seoPrerender.style.transition = 'opacity 200ms ease-out';
-      seoPrerender.style.opacity = '0';
-      setTimeout(() => {
-        seoPrerender.style.display = 'none';
-      }, 200);
+  // cleanly remove it on the next animation frame once React mounts into #root.
+  if (seoPrerender) {
+    const removeSeoPrerender = () => {
+      if (seoPrerender.parentNode) {
+        seoPrerender.remove();
+      }
     };
-
-    if ('requestIdleCallback' in window) {
-      (window as any).requestIdleCallback(dismissSeoPrerender, { timeout: 1000 });
-    } else {
-      setTimeout(dismissSeoPrerender, 400);
-    }
+    requestAnimationFrame(() => requestAnimationFrame(removeSeoPrerender));
   }
 
   // Phase 2.2 Seamless Hydration & Zero-Flicker Architecture:
@@ -80,18 +73,33 @@ if (rootElement) {
     // 2. Full SSG pre-rendered complete component tree:
     // Determine whether server-rendered shell matches the client initial route
     const host = typeof window !== 'undefined' ? window.location.hostname : '';
+    const pathname = typeof window !== 'undefined' ? window.location.pathname.replace(/\/+$/, '') : '';
+    const params = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : null;
     const isPathDomain = host === 'path.vrindopnishad.in' || host.startsWith('path.');
-    const qTab = typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get('tab') : null;
+    const qTab = params ? params.get('tab') : null;
 
-    const isDeepSectionEntity = typeof window !== 'undefined' && /^\/(?:ritual|place|story|bio)\//.test(window.location.pathname);
+    const hasNonHomeQuery = Boolean(
+      params &&
+        ((qTab && qTab !== 'smaran') ||
+          params.get('pad') ||
+          params.get('author') ||
+          params.get('grantha') ||
+          params.get('chapter') ||
+          params.get('ritual') ||
+          params.get('place') ||
+          params.get('story') ||
+          params.get('bio'))
+    );
 
-    // index.html is statically generated for bhav/smaran tab.
-    // If the client loads on path.vrindopnishad.in without ?tab=smaran,
-    // or on a deep-linked lazy section entity route,
-    // mount cleanly with createRoot to prevent React 19 hydration mismatch (#418).
-    const isMismatchedShell = (isPathDomain && qTab !== 'smaran') || isDeepSectionEntity;
+    const isStaticSmaranRoute =
+      !isPathDomain &&
+      !hasNonHomeQuery &&
+      (pathname === '' || pathname === '/smaran' || pathname === '/vrindavan-ashtayama-seva-darshan-timings');
 
-    if (isMismatchedShell) {
+    // Static index.html is pre-rendered for the synchronous Home Sanctuary (smaran) shell.
+    // On any other domain, query-routed tab, or lazy-loaded deep route, mount cleanly with createRoot
+    // to prevent React 19 hydration mismatches (#418).
+    if (!isStaticSmaranRoute) {
       createRoot(rootElement).render(
         <StrictMode>
           <App />

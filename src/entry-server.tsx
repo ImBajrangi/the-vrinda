@@ -34,6 +34,7 @@ import { KathaSanctuary } from './components/sections/KathaSanctuary';
 import { CharitraDarshan } from './components/sections/CharitraDarshan';
 import { DhamTirthaSection } from './components/sections/DhamTirthaSection';
 import { TopicalGuideView } from './components/sections/TopicalGuideView';
+import { SacredSectionsBanner } from './components/smaran/SacredSectionsBanner';
 import topicalGuidesMetaData from './data/topicalGuidesMeta.json';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -537,6 +538,7 @@ export function render(url: string = '/'): RenderResult {
           CharitraDarshan,
           DhamTirthaSection,
           TopicalGuideView,
+          SacredSectionsBanner,
         }}
       />
     </StrictMode>

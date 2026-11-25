@@ -746,32 +746,32 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
         }}
       />
 
-      {/* Master Workstation Header: Unified Sacred Parayan Gateway & Compact 5-Epic Shelf (Desktop Only) */}
-      <div className="hidden md:block mb-6 p-4 sm:p-5 rounded-[28px] bg-white border border-neutral-200/80 shadow-2xs space-y-4">
+      {/* Master Workstation Header: Unified Sacred Parayan Gateway & Compact 5-Epic Shelf */}
+      <div className="mb-4 md:mb-6 p-3.5 sm:p-5 rounded-[22px] sm:rounded-[28px] bg-white border border-neutral-200/80 shadow-2xs space-y-3 sm:space-y-4">
         {/* Top Title & Quick Routing Row */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-3 border-b border-neutral-100">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 sm:gap-3 pb-2.5 sm:pb-3 border-b border-neutral-100">
           <div>
             <div className="flex items-center gap-2 flex-wrap">
               <span className="px-2.5 py-0.5 rounded-[6px] text-[10.5px] font-serif font-bold tracking-wider uppercase bg-[#FEF08A] text-[#78350F]">
                 सनातन महाग्रंथ पारायण
               </span>
-              <span className="text-xs font-serif text-neutral-400">
+              <span className="text-xs font-serif text-neutral-400 hidden sm:inline">
                 अखण्ड मूल शास्त्र एवं ऑन-डिमांड त्वरित पाठ
               </span>
             </div>
-            <h1 className="font-rozha font-bold text-2xl sm:text-3xl text-neutral-900 mt-1 flex items-center gap-2">
-              <BookOpen className="w-5 h-5 text-amber-600 shrink-0" />
+            <h1 className="font-rozha font-bold text-xl sm:text-3xl text-neutral-900 mt-1 flex items-center gap-2">
+              <BookOpen className="w-4 h-4 sm:w-5 sm:h-5 text-amber-600 shrink-0" />
               <span>{currentEpicConfig.name}</span>
             </h1>
-            <p className="text-xs sm:text-sm text-neutral-500 mt-0.5 max-w-2xl">
+            <p className="hidden sm:block text-xs sm:text-sm text-neutral-500 mt-0.5 max-w-2xl">
               {currentEpicConfig.description} • प्रणेता: <strong className="text-neutral-800">{currentEpicConfig.author}</strong>
             </p>
           </div>
         </div>
 
         {/* 5 Monumental Epics Segmented Pothi Grid */}
-        <div className="relative p-1 sm:p-1.5 rounded-[20px] bg-[#FAF8F5] border border-amber-900/10 shadow-2xs">
-          <div className="relative grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-1.5 sm:gap-2">
+        <div className="relative p-1 sm:p-1.5 rounded-[14px] sm:rounded-[20px] bg-[#FAF8F5] border border-amber-900/10 shadow-2xs">
+          <div className="relative flex overflow-x-auto no-scrollbar md:grid md:grid-cols-3 lg:grid-cols-5 gap-1.5 sm:gap-2">
             {/* Dynamic 2D Elastic Sliding Indicator for Active Epic */}
             {epicPillStyle.ready && (
               <span
@@ -802,7 +802,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                       handleSelectGrantha(epic.id);
                     }
                   }}
-                  className={`relative z-10 flex items-center gap-2.5 p-2 sm:p-2.5 rounded-[14px] cursor-pointer select-none transition-colors duration-150 text-left border-0 no-underline ${
+                  className={`relative z-10 shrink-0 md:shrink flex items-center gap-2.5 p-2 sm:p-2.5 rounded-[14px] cursor-pointer select-none transition-colors duration-150 text-left border-0 no-underline ${
                     isSelected
                       ? epicPillStyle.ready
                         ? 'text-[#18181B]'
