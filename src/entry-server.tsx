@@ -6,6 +6,7 @@ import { SacredDatabase } from './services/sacredDatabase';
 import { generateSEOMetadata, SEOMetadataResult, SEOConfig } from './services/seoService';
 import canonicalPadasData from './data/canonicalPadas.json';
 import chapterSnippetsData from './data/chapterSnippets.json';
+import padaSnippetsData from './data/padaSnippets.json';
 import { normalizeEpicChapterSlug } from './utils/epicSlugs';
 import catalogData from '../public/data/catalog.json';
 import { SacredPad } from './types/devotional';
@@ -32,8 +33,15 @@ import { NityaUpasanaReader } from './components/sections/NityaUpasanaReader';
 import { KathaSanctuary } from './components/sections/KathaSanctuary';
 import { CharitraDarshan } from './components/sections/CharitraDarshan';
 import { DhamTirthaSection } from './components/sections/DhamTirthaSection';
+import { TopicalGuideView } from './components/sections/TopicalGuideView';
+import topicalGuidesMetaData from './data/topicalGuidesMeta.json';
 import fs from 'node:fs';
 import path from 'node:path';
+
+const TOPICAL_GUIDES_META = topicalGuidesMetaData as Record<
+  string,
+  { title: string; description: string; faqs?: { q: string; a: string }[] }
+>;
 
 // Ensure SSR server pre-warms with full 4,204 canonical padas for instant bot rendering and SEO extraction
 function ensureDatabasePrewarmed(): void {
@@ -63,7 +71,12 @@ export function render(url: string = '/'): RenderResult {
   let placeQuery: string | undefined;
   let storyQuery: string | undefined;
   let bioQuery: string | undefined;
+  let guideSlug: string | undefined;
   let parsedPathname = '';
+  let ritualData: any;
+  let placeData: any;
+  let storyData: any;
+  let bioData: any;
 
   try {
     const parsed = new URL(url, 'https://bhav.vrindopnishad.in');
@@ -161,6 +174,11 @@ export function render(url: string = '/'): RenderResult {
       tab = 'milestones';
     } else if (pathname === '/smaran') {
       tab = 'smaran';
+    } else {
+      const cleanSlug = pathname.replace(/^\/+/, '');
+      if (TOPICAL_GUIDES_META[cleanSlug]) {
+        guideSlug = cleanSlug;
+      }
     }
   } catch {
     tab = 'smaran';
@@ -216,6 +234,11 @@ export function render(url: string = '/'): RenderResult {
     const granthaMeta = pad.collectionId ? SacredDatabase.getGranthaById(pad.collectionId) : null;
     const titleClean = pad.titleDevanagari.split(' - ')[0].trim();
     const granthaLabel = granthaMeta ? granthaMeta.name : (pad.collectionId || 'रसिक वाणी');
+    const snippetTuple = (padaSnippetsData as Record<string, any[]>)[slug] || (padaSnippetsData as Record<string, any[]>)[pad.id];
+    const resolvedAudioPath = pad.audioUrl || (snippetTuple && snippetTuple[7]) || undefined;
+    const resolvedAudioUrl = resolvedAudioPath
+      ? (resolvedAudioPath.startsWith('http') ? resolvedAudioPath : `https://bhav.vrindopnishad.in${resolvedAudioPath}`)
+      : undefined;
 
     seoConfig = {
       tab: 'padavali',
@@ -223,7 +246,7 @@ export function render(url: string = '/'): RenderResult {
       title: `${titleClean} - ${pad.author} | लिरिक्स व भावार्थ सहित • ${granthaLabel} - वृन्दोपनिषद्`,
       description: `${snippet}पढ़िए ${titleClean} का प्रामाणिक मूल पाठ, भावार्थ व अर्थ। ${ragaText}रचयिता: ${pad.author} (${granthaLabel})। नित्य निकुंज रस।`,
       canonicalUrl: `https://bhav.vrindopnishad.in/pad/${encodeURIComponent(slug)}`,
-      audioUrl: pad.audioUrl || undefined,
+      audioUrl: resolvedAudioUrl,
     };
   } else if (authorQuery) {
     const saint = SacredDatabase.getSaintBySlugOrName(authorQuery);
@@ -342,6 +365,7 @@ export function render(url: string = '/'): RenderResult {
       const p = path.resolve(process.cwd(), `public/data/rituals/ritual-${ritualQuery}.json`);
       if (fs.existsSync(p)) {
         const r = JSON.parse(fs.readFileSync(p, 'utf-8'));
+        ritualData = r;
         seoConfig = {
           tab: 'rituals',
           title: `${r.titleDevanagari} • संपूर्ण पाठ, भावार्थ व नित्य स्तुति | वृन्दोपनिषद् 2.0`,
@@ -363,6 +387,7 @@ export function render(url: string = '/'): RenderResult {
       const p = path.resolve(process.cwd(), `public/data/places/place-${placeQuery}.json`);
       if (fs.existsSync(p)) {
         const pl = JSON.parse(fs.readFileSync(p, 'utf-8'));
+        placeData = pl;
         seoConfig = {
           tab: 'places',
           title: `${pl.nameDevanagari} (${pl.regionNameHindi}) • दर्शन, इतिहास व महात्म्य | वृन्दोपनिषद् 2.0`,
@@ -384,6 +409,7 @@ export function render(url: string = '/'): RenderResult {
       const p = path.resolve(process.cwd(), `public/data/stories/ch-${storyQuery}.json`);
       if (fs.existsSync(p)) {
         const st = JSON.parse(fs.readFileSync(p, 'utf-8'));
+        storyData = st;
         seoConfig = {
           tab: 'stories',
           title: `${st.titleDevanagari} • संपूर्ण दिव्य कथा व आध्यात्मिक मर्म | वृन्दोपनिषद् 2.0`,
@@ -404,6 +430,7 @@ export function render(url: string = '/'): RenderResult {
       const p = path.resolve(process.cwd(), `public/data/biographies/bio-${bioQuery}.json`);
       if (fs.existsSync(p)) {
         const b = JSON.parse(fs.readFileSync(p, 'utf-8'));
+        bioData = b;
         seoConfig = {
           tab: 'biographies',
           title: `${b.nameDevanagari} (${b.titleHonorific}) • जीवन चरित्र, दर्शन व वाणी | वृन्दोपनिषद् 2.0`,
@@ -420,6 +447,21 @@ export function render(url: string = '/'): RenderResult {
         };
       }
     } catch {}
+  } else if (guideSlug && TOPICAL_GUIDES_META[guideSlug]) {
+    const gMeta = TOPICAL_GUIDES_META[guideSlug];
+    seoConfig = {
+      tab: 'smaran',
+      ogType: 'article',
+      title: gMeta.title,
+      description: gMeta.description,
+      canonicalUrl: `https://bhav.vrindopnishad.in/${guideSlug}`,
+      guide: {
+        slug: guideSlug,
+        title: gMeta.title,
+        description: gMeta.description,
+        faqs: gMeta.faqs,
+      },
+    };
   } else {
     switch (tab) {
       case 'smaran':
@@ -477,6 +519,15 @@ export function render(url: string = '/'): RenderResult {
       <App
         initialTab={tab}
         initialPadId={padId}
+        initialGuideSlug={guideSlug}
+        initialRitualSlug={ritualQuery}
+        initialPlaceSlug={placeQuery}
+        initialStorySlug={storyQuery}
+        initialSaintSlug={bioQuery}
+        initialRitualData={ritualData}
+        initialPlaceData={placeData}
+        initialStoryData={storyData}
+        initialSaintData={bioData}
         components={{
           PadavaliReader,
           MahagranthReader,
@@ -485,6 +536,7 @@ export function render(url: string = '/'): RenderResult {
           KathaSanctuary,
           CharitraDarshan,
           DhamTirthaSection,
+          TopicalGuideView,
         }}
       />
     </StrictMode>

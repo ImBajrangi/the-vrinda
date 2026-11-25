@@ -29,17 +29,19 @@ import { SacredDiscoveryShelf } from '../common/SacredDiscoveryShelf';
 
 interface KathaSanctuaryProps {
   initialStorySlug?: string;
+  initialStory?: SacredStory | null;
   onSelectStory?: (slug: string) => void;
   onNavigateToPadavali?: () => void;
 }
 
 export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
   initialStorySlug,
+  initialStory = null,
   onSelectStory,
   onNavigateToPadavali: _onNavigateToPadavali,
 }) => {
   const [stories, setStories] = useState<SacredStoryPreview[]>([]);
-  const [selectedStory, setSelectedStory] = useState<SacredStory | null>(null);
+  const [selectedStory, setSelectedStory] = useState<SacredStory | null>(() => initialStory || null);
   const [currentChapterIndex, setCurrentChapterIndex] = useState<number>(0);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -110,6 +112,21 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
     if (onSelectStory) {
       onSelectStory(slug);
     }
+    if (typeof window !== 'undefined') {
+      try {
+        window.history.pushState({}, '', `/story/${encodeURIComponent(slug)}`);
+      } catch {}
+    }
+  };
+
+  const handleBackToStories = () => {
+    setSelectedStory(null);
+    if (typeof window !== 'undefined') {
+      try {
+        window.history.pushState({}, '', '/stories');
+      } catch {}
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const toggleBookmark = (storyId: string) => {
@@ -129,7 +146,7 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
 
   const handleCopyShareLink = (story: SacredStory) => {
     try {
-      const url = `${window.location.origin}/?tab=stories&story=${encodeURIComponent(story.slug || story.id)}`;
+      const url = `${window.location.origin}/story/${encodeURIComponent(story.slug || story.id)}`;
       navigator.clipboard?.writeText(url);
       setCopiedLink(true);
       setTimeout(() => setCopiedLink(false), 2000);
@@ -190,7 +207,7 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
           <div className="flex items-center justify-between gap-2 flex-wrap">
             <button
               type="button"
-              onClick={() => setSelectedStory(null)}
+              onClick={handleBackToStories}
               className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm font-serif font-bold text-amber-900 bg-amber-50/80 hover:bg-amber-100/90 rounded-[8px] transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
               aria-label="कथा सूची पर वापस जाएँ"
             >
@@ -541,7 +558,7 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
                 <button
                   type="button"
                   onClick={() => {
-                    setSelectedStory(null);
+                    handleBackToStories();
                     chimeService.playChime('temple-bell');
                   }}
                   className="inline-flex items-center gap-1.5 px-4 py-2 text-xs sm:text-sm font-serif font-bold rounded-[8px] bg-emerald-600 text-white hover:bg-emerald-700 transition-colors shadow-2xs cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"

@@ -24,6 +24,57 @@ const projectRoot = path.resolve(__dirname, '..');
 const STATE_FILE = path.resolve(projectRoot, '.google-indexing-state.json');
 const KEY_FILE = path.resolve(projectRoot, 'google-service-account.json');
 
+const KAND_SLUG_MAP = {
+  'बालकाण्ड': 'bal-kand',
+  'अयोध्याकाण्ड': 'ayodhya-kand',
+  'अरण्यकाण्ड': 'aranya-kand',
+  'किष्किन्धाकाण्ड': 'kishkindha-kand',
+  'सुन्दरकाण्ड': 'sundar-kand',
+  'युद्धकाण्ड': 'yuddha-kand',
+  'उत्तरकाण्ड': 'uttar-kand',
+  'लंकाकाण्ड': 'lanka-kand',
+};
+
+function normalizeEpicChapterSlug(granthaId, chapterId) {
+  if (!chapterId) return chapterId;
+  let ch = decodeURIComponent(chapterId).trim();
+
+  if (granthaId === 'valmiki-ramayana') {
+    for (const [kand, slug] of Object.entries(KAND_SLUG_MAP)) {
+      if (ch.startsWith(kand)) {
+        ch = ch.replace(kand, slug);
+        break;
+      }
+    }
+    return ch.toLowerCase().replace(/_/g, '-');
+  }
+
+  if (granthaId === 'ramcharitmanas') {
+    for (const [kand, slug] of Object.entries(KAND_SLUG_MAP)) {
+      if (ch.includes(kand)) return slug;
+    }
+    if (ch.startsWith('kand-')) {
+      const rest = ch.replace(/^kand-/, '').toLowerCase();
+      for (const slug of Object.values(KAND_SLUG_MAP)) {
+        if (rest === slug || rest.replace(/-/g, '') === slug.replace(/-/g, '')) return slug;
+      }
+      const numMatch = rest.match(/\d+/);
+      if (numMatch) {
+        const order = ['', 'bal-kand', 'ayodhya-kand', 'aranya-kand', 'kishkindha-kand', 'sundar-kand', 'lanka-kand', 'uttar-kand'];
+        const n = parseInt(numMatch[0], 10);
+        if (n >= 1 && n <= 7) return order[n];
+      }
+    }
+    const cleanLower = ch.toLowerCase().replace(/[^a-z0-9]/g, '');
+    for (const slug of Object.values(KAND_SLUG_MAP)) {
+      if (cleanLower === slug.replace(/-/g, '')) return slug;
+    }
+    return ch.toLowerCase();
+  }
+
+  return ch;
+}
+
 /**
  * Helper to generate a Google OAuth2 JWT token from service account JSON
  */
@@ -112,7 +163,6 @@ function compileMasterCatalog() {
     `${bhavBase}/rasik-vani-granthas-list`,
     `${bhavBase}/online-tulsi-mala-naam-jap`,
     `${bhavBase}/padavali`,
-    `${bhavBase}/granthas`,
     `${bhavBase}/feed`,
     `${bhavBase}/milestones`,
     `${bhavBase}/smaran`,
@@ -123,6 +173,17 @@ function compileMasterCatalog() {
     `${pathBase}/`,
   ];
   for (const u of pillars) urls.push(u);
+
+  // 1.25 Topical Pillar Guides (34 high-authority SEO guides)
+  const guidesMetaPath = path.resolve(projectRoot, 'src/data/topicalGuidesMeta.json');
+  if (fs.existsSync(guidesMetaPath)) {
+    try {
+      const guidesMeta = JSON.parse(fs.readFileSync(guidesMetaPath, 'utf-8'));
+      for (const slug of Object.keys(guidesMeta)) {
+        urls.push(`${bhavBase}/${slug}`);
+      }
+    } catch (e) {}
+  }
 
   // 1.5 Ingest all Sacred Sections (Rituals, Places, Stories, Biographies)
   const sacredSections = [
@@ -165,7 +226,8 @@ function compileMasterCatalog() {
     try {
       const chapters = JSON.parse(fs.readFileSync(chaptersPath, 'utf-8'));
       for (const ch of Object.values(chapters)) {
-        urls.push(`${pathBase}/grantha/${ch.granthaId}/${encodeURIComponent(ch.chapterId)}`);
+        const cleanChapterId = normalizeEpicChapterSlug(ch.granthaId, ch.chapterId);
+        urls.push(`${pathBase}/grantha/${encodeURIComponent(ch.granthaId)}/${encodeURIComponent(cleanChapterId)}`);
       }
     } catch (e) {}
   }
@@ -181,15 +243,27 @@ function compileMasterCatalog() {
     } catch (e) {}
   }
 
-  // 5. All 11,909 Rasik Padas
-  const catalogPath = path.resolve(projectRoot, 'src/data/searchCatalog.json');
+  // 5. All 11,909 Rasik Padas (using exact canonical ASCII slugs)
+  let legacyRedirects = {};
+  const legacyPath = path.resolve(projectRoot, 'src/data/legacySlugRedirects.json');
+  if (fs.existsSync(legacyPath)) {
+    try {
+      legacyRedirects = JSON.parse(fs.readFileSync(legacyPath, 'utf-8'));
+    } catch (e) {}
+  }
   const padaSnippetsPath = path.resolve(projectRoot, 'src/data/padaSnippets.json');
   if (fs.existsSync(padaSnippetsPath)) {
     try {
       const snippets = JSON.parse(fs.readFileSync(padaSnippetsPath, 'utf-8'));
       for (const key of Object.keys(snippets)) {
-        // Pada slugs
-        urls.push(`${bhavBase}/pad/${encodeURIComponent(key)}`);
+        let rawSlug = key.trim();
+        if (legacyRedirects[rawSlug]) {
+          rawSlug = legacyRedirects[rawSlug];
+        }
+        const cleanSlug = rawSlug.replace(/[^a-zA-Z0-9\-_]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+        if (cleanSlug) {
+          urls.push(`${bhavBase}/pad/${cleanSlug}`);
+        }
       }
     } catch (e) {}
   }

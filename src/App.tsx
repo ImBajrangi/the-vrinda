@@ -67,6 +67,21 @@ const LazyNityaUpasanaReader = lazy(() =>
 const LazySacredSectionsBanner = lazy(() =>
   import('./components/smaran/SacredSectionsBanner').then((m) => ({ default: m.SacredSectionsBanner }))
 );
+const LazyTopicalGuideView = lazy(() =>
+  import('./components/sections/TopicalGuideView').then((m) => ({ default: m.TopicalGuideView }))
+);
+
+const TOPICAL_GUIDE_SLUGS = new Set([
+  'what-is-vrindopnishad', 'meaning', 'origin', 'philosophy', 'teachings',
+  'importance', 'devotion', 'faq', 'nitya-vihar-vs-nikunj-vihar', 'glossary',
+  'braj-dham-places-guide', 'comparison-with-upanishads', 'guide',
+  'vrindavan-devotional-heritage', 'what-is-radha-snata', 'who-is-harirae-ji',
+  'what-is-madhurya-and-sakhi-bhava', 'radhavallabh-vs-gaudiya-sampradaya',
+  'vrindavan-parikrama-guide', 'history-of-radhavallabh-sampradaya',
+  'major-rasik-saints-of-braj', 'about', 'editorial-policy', 'sources',
+  'contact', 'shri-hit-harivansh-mahaprabhu', 'shri-harirae-ji', 'vrindavan',
+  'barsana', 'hit-chaurasi', 'author', 'privacy', 'terms', 'references',
+]);
 
 function ReaderLoadingSkeleton() {
   return (
@@ -152,11 +167,21 @@ export interface AppComponents {
   KathaSanctuary?: React.ComponentType<any>;
   CharitraDarshan?: React.ComponentType<any>;
   DhamTirthaSection?: React.ComponentType<any>;
+  TopicalGuideView?: React.ComponentType<any>;
 }
 
 export interface AppProps {
   initialTab?: NavTab;
   initialPadId?: string;
+  initialGuideSlug?: string;
+  initialRitualSlug?: string;
+  initialPlaceSlug?: string;
+  initialStorySlug?: string;
+  initialSaintSlug?: string;
+  initialRitualData?: any;
+  initialPlaceData?: any;
+  initialStoryData?: any;
+  initialSaintData?: any;
   components?: AppComponents;
 }
 
@@ -166,6 +191,11 @@ interface AppRouteState {
   chapter?: string;
   verse?: string;
   pad?: string;
+  guideSlug?: string;
+  ritualSlug?: string;
+  placeSlug?: string;
+  storySlug?: string;
+  bioSlug?: string;
 }
 
 function resolveCurrentRoute(): AppRouteState {
@@ -255,16 +285,32 @@ function resolveCurrentRoute(): AppRouteState {
     ];
 
     let determinedTab: NavTab = 'smaran';
+    const cleanSlug = rawPath.replace(/^\/+/, '');
+    const guideSlug = TOPICAL_GUIDE_SLUGS.has(cleanSlug) ? cleanSlug : undefined;
+
+    let ritualSlug: string | undefined = params.get('ritual') || undefined;
+    let placeSlug: string | undefined = params.get('place') || undefined;
+    let storySlug: string | undefined = params.get('story') || undefined;
+    let bioSlug: string | undefined = params.get('bio') || params.get('saint') || undefined;
+
     if (pillarTab) {
       determinedTab = pillarTab;
-    } else if (rawPath === '/katha' || rawPath.startsWith('/stories') || rawPath.startsWith('/katha/')) {
+    } else if (rawPath === '/katha' || rawPath.startsWith('/stories') || rawPath.startsWith('/story/') || rawPath.startsWith('/katha/')) {
       determinedTab = 'stories';
-    } else if (rawPath === '/charitra' || rawPath.startsWith('/biographies') || rawPath.startsWith('/saints-charitra')) {
+      const sub = rawPath.replace(/^\/(?:stories|story|katha)\/?/, '').trim();
+      if (sub) storySlug = decodeURIComponent(sub);
+    } else if (rawPath === '/charitra' || rawPath.startsWith('/biographies') || rawPath.startsWith('/bio/') || rawPath.startsWith('/charitra/') || rawPath.startsWith('/saints-charitra')) {
       determinedTab = 'biographies';
-    } else if (rawPath === '/tirtha' || rawPath.startsWith('/places') || rawPath.startsWith('/dham')) {
+      const sub = rawPath.replace(/^\/(?:biographies|bio|charitra)\/?/, '').trim();
+      if (sub && !rawPath.startsWith('/saints-charitra')) bioSlug = decodeURIComponent(sub);
+    } else if (rawPath === '/tirtha' || rawPath.startsWith('/places') || rawPath.startsWith('/place/') || rawPath.startsWith('/tirtha/') || rawPath.startsWith('/dham')) {
       determinedTab = 'places';
-    } else if (rawPath === '/aarti' || rawPath.startsWith('/rituals') || rawPath.startsWith('/chalisa')) {
+      const sub = rawPath.replace(/^\/(?:places|place|tirtha|dham)\/?/, '').trim();
+      if (sub) placeSlug = decodeURIComponent(sub);
+    } else if (rawPath === '/aarti' || rawPath.startsWith('/rituals') || rawPath.startsWith('/ritual/') || rawPath.startsWith('/aarti/') || rawPath.startsWith('/chalisa') || rawPath.startsWith('/stotra/')) {
       determinedTab = 'rituals';
+      const sub = rawPath.replace(/^\/(?:rituals|ritual|aarti|chalisa|stotra)\/?/, '').trim();
+      if (sub) ritualSlug = decodeURIComponent(sub);
     } else if (qTab && validTabs.includes(qTab)) {
       determinedTab = qTab;
     } else if (targetPad || resolvedAuthor || (resolvedGrantha !== 'all' && !SacredDatabase.isEpicGrantha(resolvedGrantha))) {
@@ -279,13 +325,31 @@ function resolveCurrentRoute(): AppRouteState {
       chapter: resolvedChapter,
       verse: resolvedVerse,
       pad: targetPad || undefined,
+      guideSlug,
+      ritualSlug,
+      placeSlug,
+      storySlug,
+      bioSlug,
     };
   } catch {
     return { tab: 'smaran', grantha: 'all' };
   }
 }
 
-export function App({ initialTab, initialPadId, components }: AppProps = {}) {
+export function App({
+  initialTab,
+  initialPadId,
+  initialGuideSlug,
+  initialRitualSlug,
+  initialPlaceSlug,
+  initialStorySlug,
+  initialSaintSlug,
+  initialRitualData,
+  initialPlaceData,
+  initialStoryData,
+  initialSaintData,
+  components,
+}: AppProps = {}) {
   const PadavaliReaderComp = components?.PadavaliReader || LazyPadavaliReader;
   const MahagranthReaderComp = components?.MahagranthReader || LazyMahagranthReader;
   const MilestonesViewComp = components?.MilestonesView || LazyMilestonesView;
@@ -293,7 +357,11 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
   const KathaSanctuaryComp = components?.KathaSanctuary || LazyKathaSanctuary;
   const CharitraDarshanComp = components?.CharitraDarshan || LazyCharitraDarshan;
   const DhamTirthaSectionComp = components?.DhamTirthaSection || LazyDhamTirthaSection;
+  const TopicalGuideViewComp = components?.TopicalGuideView || LazyTopicalGuideView;
   const [initialRoute] = useState<AppRouteState>(() => resolveCurrentRoute());
+  const [activeGuideSlug, setActiveGuideSlug] = useState<string | null>(
+    () => initialGuideSlug || initialRoute.guideSlug || null
+  );
   const [activeTab, setActiveTab] = useState<NavTab>(() => {
     if (
       initialTab &&
@@ -327,7 +395,7 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const preload = () => {
-      setVisitedTabs(new Set(['smaran', 'granthas', 'padavali', 'feed', 'milestones']));
+      setVisitedTabs((prev) => new Set([...prev, 'smaran', 'granthas', 'padavali', 'feed', 'milestones']));
       import('./components/reader/PadavaliReader');
       import('./components/reader/MahagranthReader');
       import('./components/milestones/MilestonesView');
@@ -438,14 +506,28 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
   useEffect(() => {
     const padIdToFind =
       initialPadId ||
+      initialRoute.pad ||
       (typeof window !== 'undefined'
         ? new URLSearchParams(window.location.search).get('pad') || undefined
         : undefined);
+    let foundPad: ReturnType<typeof SacredDatabase.getPadById>;
     if (padIdToFind) {
-      const found = SacredDatabase.getPadById(padIdToFind);
-      if (found) setCurrentPad(found);
+      foundPad = SacredDatabase.getPadById(padIdToFind);
+      if (foundPad) setCurrentPad(foundPad);
     }
-  }, [initialPadId, dbVersion]);
+    if (typeof window !== 'undefined') {
+      const targetReady =
+        !padIdToFind ||
+        Boolean(foundPad) ||
+        (currentPad && (currentPad.id === padIdToFind || currentPad.slug === padIdToFind));
+      if (targetReady) {
+        requestAnimationFrame(() => {
+          (window as any).__VRINDOPNISAD_HYDRATED__ = true;
+          window.dispatchEvent(new Event('vrindopnisad:hydrated'));
+        });
+      }
+    }
+  }, [initialPadId, initialRoute.pad, dbVersion]);
 
   const featuredPad = SacredDatabase.getAllPadas()[0];
 
@@ -636,7 +718,10 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
   }, []);
 
   const handleTabSwitch = (tab: NavTab) => {
-    if (tab === activeTab) return;
+    if (activeGuideSlug) {
+      setActiveGuideSlug(null);
+    }
+    if (tab === activeTab && !activeGuideSlug) return;
     // Synchronously ensure target tab is in visitedTabs so it renders in Frame 1
     setVisitedTabs((prev) => (prev.has(tab) ? prev : new Set(prev).add(tab)));
     setActiveTab(tab);
@@ -975,8 +1060,32 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
 
         {/* Main Tab Content with Instant Keep-Alive Architecture */}
         <main className="w-full max-w-full overflow-x-clip">
+          {activeGuideSlug ? (
+            <div className="w-full pb-44 md:pb-28">
+              <Suspense fallback={<ReaderLoadingSkeleton />}>
+                <TopicalGuideViewComp
+                  slug={activeGuideSlug}
+                  onNavigateHome={() => {
+                    setActiveGuideSlug(null);
+                    setActiveTab('smaran');
+                    if (typeof window !== 'undefined') {
+                      window.history.pushState({}, '', '/');
+                    }
+                  }}
+                  onSelectGuide={(nextSlug: string) => {
+                    setActiveGuideSlug(nextSlug);
+                    if (typeof window !== 'undefined') {
+                      window.history.pushState({}, '', `/${nextSlug}`);
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                  }}
+                />
+              </Suspense>
+            </div>
+          ) : null}
+
           {/* Tab 1: Smaran (Dashboard) - Adaptive 3-Column on Desktop (xl:), 2-Column on Tablet, 1-Column on Mobile */}
-          {visitedTabs.has('smaran') && (
+          {!activeGuideSlug && visitedTabs.has('smaran') && (
             <div
               className={`w-full pb-44 md:pb-28 ${activeTab === 'smaran' ? 'block' : 'hidden'}`}
               style={{ display: activeTab === 'smaran' ? 'block' : 'none' }}
@@ -1776,7 +1885,10 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
               aria-hidden={activeTab !== 'rituals'}
             >
               <Suspense fallback={<ReaderLoadingSkeleton />}>
-                <NityaUpasanaReaderComp />
+                <NityaUpasanaReaderComp
+                  initialRitualSlug={initialRitualSlug || initialRoute.ritualSlug}
+                  initialRitual={initialRitualData}
+                />
               </Suspense>
             </div>
           )}
@@ -1789,7 +1901,11 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
               aria-hidden={activeTab !== 'stories'}
             >
               <Suspense fallback={<ReaderLoadingSkeleton />}>
-                <KathaSanctuaryComp onNavigateToPadavali={() => handleTabSwitch('padavali')} />
+                <KathaSanctuaryComp
+                  initialStorySlug={initialStorySlug || initialRoute.storySlug}
+                  initialStory={initialStoryData}
+                  onNavigateToPadavali={() => handleTabSwitch('padavali')}
+                />
               </Suspense>
             </div>
           )}
@@ -1803,6 +1919,8 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
             >
               <Suspense fallback={<ReaderLoadingSkeleton />}>
                 <CharitraDarshanComp
+                  initialSaintSlug={initialSaintSlug || initialRoute.bioSlug}
+                  initialBio={initialSaintData}
                   onNavigateToPadavali={(saintName?: string) => {
                     if (saintName) {
                       handleSelectAuthor(saintName);
@@ -1823,7 +1941,10 @@ export function App({ initialTab, initialPadId, components }: AppProps = {}) {
               aria-hidden={activeTab !== 'places'}
             >
               <Suspense fallback={<ReaderLoadingSkeleton />}>
-                <DhamTirthaSectionComp />
+                <DhamTirthaSectionComp
+                  initialPlaceSlug={initialPlaceSlug || initialRoute.placeSlug}
+                  initialPlace={initialPlaceData}
+                />
               </Suspense>
             </div>
           )}

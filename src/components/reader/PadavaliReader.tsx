@@ -2472,7 +2472,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 ref={(el) => {
                   mobilePadRefs.current[pad.id] = el;
                 }}
-                href={`/?tab=padavali&pad=${encodeURIComponent(pad.slug || pad.id)}`}
+                href={`/pad/${encodeURIComponent(pad.slug || pad.id)}`}
                 onClick={(e) => {
                   if (!e.metaKey && !e.ctrlKey) {
                     e.preventDefault();
@@ -2598,7 +2598,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                           ref={(el) => {
                             sidebarItemRefs.current[pad.id] = el;
                           }}
-                          href={`/?tab=padavali&pad=${encodeURIComponent(pad.slug || pad.id)}`}
+                          href={`/pad/${encodeURIComponent(pad.slug || pad.id)}`}
                           onClick={(e) => {
                             if (!e.metaKey && !e.ctrlKey) {
                               e.preventDefault();
@@ -3375,7 +3375,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               <div className={`flex items-center justify-between pt-6 mt-8 border-t ${currentTheme.borderColor}`}>
                 {hasPrev ? (
                   <a
-                    href={`/?tab=padavali&pad=${encodeURIComponent(filteredPads[currentIdx - 1]?.slug || filteredPads[currentIdx - 1]?.id)}`}
+                    href={`/pad/${encodeURIComponent(filteredPads[currentIdx - 1]?.slug || filteredPads[currentIdx - 1]?.id)}`}
                     onClick={(e) => {
                       if (!e.metaKey && !e.ctrlKey) {
                         e.preventDefault();
@@ -3400,7 +3400,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
                 {hasNext ? (
                   <a
-                    href={`/?tab=padavali&pad=${encodeURIComponent(filteredPads[currentIdx + 1]?.slug || filteredPads[currentIdx + 1]?.id)}`}
+                    href={`/pad/${encodeURIComponent(filteredPads[currentIdx + 1]?.slug || filteredPads[currentIdx + 1]?.id)}`}
                     onClick={(e) => {
                       if (!e.metaKey && !e.ctrlKey) {
                         e.preventDefault();

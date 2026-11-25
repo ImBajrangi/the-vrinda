@@ -81,6 +81,7 @@ async function prerender() {
       if (!routes.some((r) => r.file === routeFile)) {
         routes.push({ url: routeUrl, file: routeFile });
       }
+      routes.push({ url: routeUrl, file: `grantha/${g.id}/index.html` });
     }
   }
 
@@ -91,10 +92,7 @@ async function prerender() {
     for (const s of saintsData.slice(0, 10)) {
       const slug = s.slug || s.id;
       const routeUrl = `/sant/${encodeURIComponent(slug)}`;
-      const routeFile = `saint-${slug}.html`;
-      if (!routes.some((r) => r.file === routeFile)) {
-        routes.push({ url: routeUrl, file: routeFile });
-      }
+      routes.push({ url: routeUrl, file: `sant/${slug}/index.html` });
     }
   }
 
@@ -120,7 +118,7 @@ async function prerender() {
     try {
       const data = JSON.parse(fs.readFileSync(ritualsIndexPath, 'utf-8'));
       for (const item of data.items || []) {
-        routes.push({ url: `/ritual/${item.slug}`, file: `ritual-${item.slug}.html` });
+        routes.push({ url: `/ritual/${item.slug}`, file: `ritual/${item.slug}/index.html` });
       }
     } catch {}
   }
@@ -131,7 +129,7 @@ async function prerender() {
     try {
       const data = JSON.parse(fs.readFileSync(placesIndexPath, 'utf-8'));
       for (const item of data.items || []) {
-        routes.push({ url: `/place/${item.slug}`, file: `place-${item.slug}.html` });
+        routes.push({ url: `/place/${item.slug}`, file: `place/${item.slug}/index.html` });
       }
     } catch {}
   }
@@ -142,7 +140,7 @@ async function prerender() {
     try {
       const data = JSON.parse(fs.readFileSync(storiesIndexPath, 'utf-8'));
       for (const item of data.items || []) {
-        routes.push({ url: `/story/${item.slug}`, file: `story-${item.slug}.html` });
+        routes.push({ url: `/story/${item.slug}`, file: `story/${item.slug}/index.html` });
       }
     } catch {}
   }
@@ -153,7 +151,18 @@ async function prerender() {
     try {
       const data = JSON.parse(fs.readFileSync(biosIndexPath, 'utf-8'));
       for (const item of data.items || []) {
-        routes.push({ url: `/bio/${item.slug}`, file: `bio-${item.slug}.html` });
+        routes.push({ url: `/bio/${item.slug}`, file: `bio/${item.slug}/index.html` });
+      }
+    } catch {}
+  }
+
+  // 9. Pre-render All 34 High-Authority Topical Pillar Guides
+  const guidesMetaPath = path.resolve(projectRoot, 'src/data/topicalGuidesMeta.json');
+  if (fs.existsSync(guidesMetaPath)) {
+    try {
+      const guidesMeta = JSON.parse(fs.readFileSync(guidesMetaPath, 'utf-8'));
+      for (const slug of Object.keys(guidesMeta)) {
+        routes.push({ url: `/${slug}`, file: `${slug}/index.html` });
       }
     } catch {}
   }
@@ -165,6 +174,7 @@ async function prerender() {
       const { html, seo } = render(route.url);
       const appHtml = injectSSRContent(template, html, seo?.htmlHead);
       const targetFile = path.resolve(distPath, route.file);
+      fs.mkdirSync(path.dirname(targetFile), { recursive: true });
       fs.writeFileSync(targetFile, appHtml, 'utf-8');
       console.log(`  ✓ Pre-rendered: ${route.file} (${Math.round(html.length / 1024)} KB markup)`);
     } catch (err) {

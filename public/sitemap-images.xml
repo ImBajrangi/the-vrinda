@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://bhav.vrindopnishad.in/?tab=feed</loc>
+    <loc>https://bhav.vrindopnishad.in/feed</loc>
     <image:image>
       <image:loc>https://bhav.vrindopnishad.in/assets/temples/banke-bihari-v2.webp</image:loc>
       <image:title>श्री बांके बिहारी जी महाराज दर्शन (वृन्दावन)</image:title>
@@ -11,7 +11,7 @@
     </image:image>
   </url>
   <url>
-    <loc>https://bhav.vrindopnishad.in/?tab=feed</loc>
+    <loc>https://bhav.vrindopnishad.in/feed</loc>
     <image:image>
       <image:loc>https://bhav.vrindopnishad.in/assets/temples/banke-bihari-gate.webp</image:loc>
       <image:title>श्री बांके बिहारी मंदिर प्रवेश द्वार</image:title>
@@ -20,7 +20,7 @@
     </image:image>
   </url>
   <url>
-    <loc>https://bhav.vrindopnishad.in/?tab=feed</loc>
+    <loc>https://bhav.vrindopnishad.in/feed</loc>
     <image:image>
       <image:loc>https://bhav.vrindopnishad.in/assets/temples/banke-bihari.webp</image:loc>
       <image:title>ठाकुर श्री बांके बिहारी जी छवि</image:title>
@@ -29,7 +29,7 @@
     </image:image>
   </url>
   <url>
-    <loc>https://bhav.vrindopnishad.in/?tab=feed</loc>
+    <loc>https://bhav.vrindopnishad.in/place/barsana-shriji-mandir</loc>
     <image:image>
       <image:loc>https://bhav.vrindopnishad.in/assets/temples/barsana-radharani.webp</image:loc>
       <image:title>श्री लाड़ली जी महल (बरसाना)</image:title>
@@ -38,7 +38,7 @@
     </image:image>
   </url>
   <url>
-    <loc>https://bhav.vrindopnishad.in/?tab=feed</loc>
+    <loc>https://bhav.vrindopnishad.in/place/shri-radha-raman-mandir</loc>
     <image:image>
       <image:loc>https://bhav.vrindopnishad.in/assets/temples/radha-raman.webp</image:loc>
       <image:title>श्री राधा रमण जी महाराज मंदिर</image:title>
@@ -47,7 +47,7 @@
     </image:image>
   </url>
   <url>
-    <loc>https://bhav.vrindopnishad.in/?tab=feed</loc>
+    <loc>https://bhav.vrindopnishad.in/place/shri-radha-vallabh-mandir</loc>
     <image:image>
       <image:loc>https://bhav.vrindopnishad.in/assets/temples/radha-vallabh.webp</image:loc>
       <image:title>श्री राधा वल्लभ जी महाराज मंदिर</image:title>
@@ -56,7 +56,7 @@
     </image:image>
   </url>
   <url>
-    <loc>https://bhav.vrindopnishad.in/?tab=feed</loc>
+    <loc>https://bhav.vrindopnishad.in/place/vrindavan-dham</loc>
     <image:image>
       <image:loc>https://bhav.vrindopnishad.in/assets/temples/keshi-ghat.webp</image:loc>
       <image:title>पावन केशी घाट एवं यमुना जी तट</image:title>
@@ -65,7 +65,7 @@
     </image:image>
   </url>
   <url>
-    <loc>https://bhav.vrindopnishad.in/?tab=feed</loc>
+    <loc>https://bhav.vrindopnishad.in/feed</loc>
     <image:image>
       <image:loc>https://bhav.vrindopnishad.in/assets/temples/diya-pujan.webp</image:loc>
       <image:title>संध्या आरती दीप पूजन</image:title>
@@ -74,7 +74,7 @@
     </image:image>
   </url>
   <url>
-    <loc>https://bhav.vrindopnishad.in/?tab=feed</loc>
+    <loc>https://bhav.vrindopnishad.in/feed</loc>
     <image:image>
       <image:loc>https://bhav.vrindopnishad.in/assets/temples/aarti-lamp.webp</image:loc>
       <image:title>मंगला व शयन आरती दीप ज्योति</image:title>
@@ -160,6 +160,96 @@
       <image:loc>https://bhav.vrindopnishad.in/assets/saints/meera.webp</image:loc>
       <image:title>अनन्य कृष्ण प्रेमानुरागिणी भक्त मीराबाई जी</image:title>
       <image:caption>मेरो तो गिरधर गोपाल दूसरो न कोई। अनन्य प्रेम दीवानी मीराबाई।</image:caption>
+      <image:geo_location>Vrindavan, Mathura, Uttar Pradesh, India</image:geo_location>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bhav.vrindopnishad.in/sant/shri-hita-harivansh-mahaprabhu</loc>
+    <image:image>
+      <image:loc>https://bhav.vrindopnishad.in/assets/saints/hit-harivansh.webp</image:loc>
+      <image:title>श्री हित हरिवंश महाप्रभु जी</image:title>
+      <image:caption>राधावल्लभ संप्रदाय के प्रवर्तक एवं श्री हित चौरासी के रचयिता श्री हित हरिवंश महाप्रभु।</image:caption>
+      <image:geo_location>Vrindavan, Mathura, Uttar Pradesh, India</image:geo_location>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bhav.vrindopnishad.in/sant/dhruvdas</loc>
+    <image:image>
+      <image:loc>https://bhav.vrindopnishad.in/assets/saints/dhruvdas.webp</image:loc>
+      <image:title>श्री ध्रुवदास जी महाराज</image:title>
+      <image:caption>बयालीस लीला के रचयिता राधावल्लभ संप्रदाय के महान रसिक संत श्री ध्रुवदास जी।</image:caption>
+      <image:geo_location>Vrindavan, Mathura, Uttar Pradesh, India</image:geo_location>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bhav.vrindopnishad.in/sant/biharin-dev</loc>
+    <image:image>
+      <image:loc>https://bhav.vrindopnishad.in/assets/saints/biharin-dev.webp</image:loc>
+      <image:title>श्री बिहारिन देव जी महाराज</image:title>
+      <image:caption>स्वामी हरिदास जी की परंपरा के अनन्य रसिक आचार्य श्री बिहारिन देव जी।</image:caption>
+      <image:geo_location>Vrindavan, Mathura, Uttar Pradesh, India</image:geo_location>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bhav.vrindopnishad.in/sant/vitthal-vipul</loc>
+    <image:image>
+      <image:loc>https://bhav.vrindopnishad.in/assets/saints/vitthal-vipul.webp</image:loc>
+      <image:title>श्री विट्ठल विपुल देव जी महाराज</image:title>
+      <image:caption>सखी संप्रदाय के प्रमुख रसिक संत श्री विट्ठल विपुल देव जी।</image:caption>
+      <image:geo_location>Vrindavan, Mathura, Uttar Pradesh, India</image:geo_location>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bhav.vrindopnishad.in/sant/lalit-kishori</loc>
+    <image:image>
+      <image:loc>https://bhav.vrindopnishad.in/assets/saints/lalit-kishori.webp</image:loc>
+      <image:title>श्री ललित किशोरी देव जी महाराज</image:title>
+      <image:caption>टट्टी स्थान वृन्दावन के परम रसिक आचार्य श्री ललित किशोरी देव जी।</image:caption>
+      <image:geo_location>Vrindavan, Mathura, Uttar Pradesh, India</image:geo_location>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bhav.vrindopnishad.in/sant/sevak-ji</loc>
+    <image:image>
+      <image:loc>https://bhav.vrindopnishad.in/assets/saints/sevak-ji.webp</image:loc>
+      <image:title>श्री सेवक जी महाराज (दामोदरदास)</image:title>
+      <image:caption>श्री हरिवंश चरित्र एवं सेवक वाणी के रचयिता परम रसिक श्री सेवक जी।</image:caption>
+      <image:geo_location>Vrindavan, Mathura, Uttar Pradesh, India</image:geo_location>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bhav.vrindopnishad.in/sant/nabhaji</loc>
+    <image:image>
+      <image:loc>https://bhav.vrindopnishad.in/assets/saints/nabhaji.webp</image:loc>
+      <image:title>भक्तमाल प्रणेता श्री नाभादास जी</image:title>
+      <image:caption>प्रसिद्ध भक्तमाल ग्रंथ के रचयिता पूज्य श्री नाभादास जी महाराज।</image:caption>
+      <image:geo_location>Galta, Jaipur, Rajasthan, India</image:geo_location>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bhav.vrindopnishad.in/sant/malookdas</loc>
+    <image:image>
+      <image:loc>https://bhav.vrindopnishad.in/assets/saints/malookdas.webp</image:loc>
+      <image:title>परम संत श्री मलूकदास जी महाराज</image:title>
+      <image:caption>भक्तिकाल के महान संत श्री मलूकदास जी महाराज।</image:caption>
+      <image:geo_location>Kara, Kaushambi, Uttar Pradesh, India</image:geo_location>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bhav.vrindopnishad.in/sant/ramanandacharya</loc>
+    <image:image>
+      <image:loc>https://bhav.vrindopnishad.in/assets/saints/ramanandacharya.webp</image:loc>
+      <image:title>जगद्गुरु श्री रामानन्दाचार्य जी</image:title>
+      <image:caption>भक्ति आंदोलन के आदि प्रवर्तक जगद्गुरु श्री रामानन्दाचार्य जी महाराज।</image:caption>
+      <image:geo_location>Varanasi, Uttar Pradesh, India</image:geo_location>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bhav.vrindopnishad.in/sant/rajendradasji</loc>
+    <image:image>
+      <image:loc>https://bhav.vrindopnishad.in/assets/saints/rajendradasji.webp</image:loc>
+      <image:title>परम पूज्य श्री राजेन्द्रदास देवाचार्य जी महाराज</image:title>
+      <image:caption>श्री मलूकपीठ वृन्दावन के वर्तमान पीठाधीश्वर परम पूज्य श्री राजेन्द्रदास जी महाराज।</image:caption>
       <image:geo_location>Vrindavan, Mathura, Uttar Pradesh, India</image:geo_location>
     </image:image>
   </url>

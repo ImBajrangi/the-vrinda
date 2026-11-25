@@ -12,6 +12,21 @@ interface FloatingAudioPlayerProps {
   onOpenLyrics?: () => void;
 }
 
+function resolvePadAudioSrc(pad: SacredPad | null): string | undefined {
+  if (!pad) return undefined;
+  if (pad.audioUrl) return pad.audioUrl;
+  if (pad.collectionId === 'hit-chaurasi') {
+    const match = (pad.titleDevanagari || '').match(/पद\s*(\d+)/);
+    if (match) {
+      const num = parseInt(match[1], 10);
+      if (num >= 1 && num <= 84) {
+        return `/audio/hit-chaurasi/SHCJ${num}.mp3`;
+      }
+    }
+  }
+  return undefined;
+}
+
 export const FloatingAudioPlayer: React.FC<FloatingAudioPlayerProps> = ({
   currentPad,
   isPlaying,
@@ -22,6 +37,18 @@ export const FloatingAudioPlayer: React.FC<FloatingAudioPlayerProps> = ({
   onOpenLyrics,
 }) => {
   const [isClosing, setIsClosing] = React.useState(false);
+  const audioRef = React.useRef<HTMLAudioElement | null>(null);
+  const audioSrc = React.useMemo(() => resolvePadAudioSrc(currentPad), [currentPad]);
+
+  React.useEffect(() => {
+    const el = audioRef.current;
+    if (!el) return;
+    if (isPlaying && audioSrc) {
+      el.play().catch(() => {});
+    } else {
+      el.pause();
+    }
+  }, [isPlaying, audioSrc]);
 
   const handleClose = () => {
     if (isClosing) return;
@@ -41,6 +68,17 @@ export const FloatingAudioPlayer: React.FC<FloatingAudioPlayerProps> = ({
         isClosing ? 'apple-view-exit' : 'apple-view-enter'
       }`}
     >
+      {audioSrc && (
+        <audio
+          ref={audioRef}
+          src={audioSrc}
+          preload="none"
+          onEnded={() => {
+            if (onNext) onNext();
+            else if (isPlaying) onTogglePlay();
+          }}
+        />
+      )}
       <div className="bg-white/95 backdrop-blur-md border border-neutral-900/[0.08] shadow-[0_8px_28px_-6px_rgba(24,24,27,0.12),0_2px_8px_-2px_rgba(24,24,27,0.04)] text-[#18181B] rounded-full p-2.5 sm:p-3 flex items-center justify-between gap-3 transition-all duration-300 transform-gpu will-change-transform">
         {/* Animated Visualizer Icon with Apple Fluid Waves */}
         <div

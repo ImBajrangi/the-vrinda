@@ -26,15 +26,17 @@ import { SacredDiscoveryShelf } from '../common/SacredDiscoveryShelf';
 
 interface DhamTirthaSectionProps {
   initialPlaceSlug?: string;
+  initialPlace?: SacredPlace | null;
   onSelectPlace?: (slug: string) => void;
 }
 
 export const DhamTirthaSection: React.FC<DhamTirthaSectionProps> = ({
   initialPlaceSlug,
+  initialPlace = null,
   onSelectPlace,
 }) => {
   const [places, setPlaces] = useState<SacredPlacePreview[]>([]);
-  const [selectedPlace, setSelectedPlace] = useState<SacredPlace | null>(null);
+  const [selectedPlace, setSelectedPlace] = useState<SacredPlace | null>(() => initialPlace || null);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedRegion, setSelectedRegion] = useState<string>('all');
   const [copiedLink, setCopiedLink] = useState<boolean>(false);
@@ -94,10 +96,7 @@ export const DhamTirthaSection: React.FC<DhamTirthaSectionProps> = ({
     }
     if (typeof window !== 'undefined') {
       try {
-        const url = new URL(window.location.href);
-        url.searchParams.set('tab', 'places');
-        url.searchParams.set('place', slug);
-        window.history.pushState({}, '', url.toString());
+        window.history.pushState({}, '', `/place/${encodeURIComponent(slug)}`);
       } catch {}
     }
   };
@@ -106,9 +105,7 @@ export const DhamTirthaSection: React.FC<DhamTirthaSectionProps> = ({
     setSelectedPlace(null);
     if (typeof window !== 'undefined') {
       try {
-        const url = new URL(window.location.href);
-        url.searchParams.delete('place');
-        window.history.pushState({}, '', url.toString());
+        window.history.pushState({}, '', '/places');
       } catch {}
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -116,7 +113,10 @@ export const DhamTirthaSection: React.FC<DhamTirthaSectionProps> = ({
 
   const handleShare = () => {
     if (typeof window !== 'undefined') {
-      navigator.clipboard.writeText(window.location.href);
+      const shareUrl = selectedPlace
+        ? `${window.location.origin}/place/${encodeURIComponent(selectedPlace.slug || selectedPlace.id)}`
+        : window.location.href;
+      navigator.clipboard?.writeText(shareUrl);
       setCopiedLink(true);
       setTimeout(() => setCopiedLink(false), 2000);
     }

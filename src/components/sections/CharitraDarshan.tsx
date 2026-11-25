@@ -25,17 +25,19 @@ import { SacredDiscoveryShelf } from '../common/SacredDiscoveryShelf';
 
 interface CharitraDarshanProps {
   initialSaintSlug?: string;
+  initialBio?: SacredBiography | null;
   onSelectSaint?: (slug: string) => void;
   onNavigateToPadavali?: (saintName?: string) => void;
 }
 
 export const CharitraDarshan: React.FC<CharitraDarshanProps> = ({
   initialSaintSlug,
+  initialBio = null,
   onSelectSaint,
   onNavigateToPadavali,
 }) => {
   const [bios, setBios] = useState<SacredBiographyPreview[]>([]);
-  const [selectedBio, setSelectedBio] = useState<SacredBiography | null>(null);
+  const [selectedBio, setSelectedBio] = useState<SacredBiography | null>(() => initialBio || null);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedTradition, setSelectedTradition] = useState<string>('all');
   const [copiedLink, setCopiedLink] = useState<boolean>(false);
@@ -95,10 +97,7 @@ export const CharitraDarshan: React.FC<CharitraDarshanProps> = ({
     }
     if (typeof window !== 'undefined') {
       try {
-        const url = new URL(window.location.href);
-        url.searchParams.set('tab', 'biographies');
-        url.searchParams.set('saint', slug);
-        window.history.pushState({}, '', url.toString());
+        window.history.pushState({}, '', `/bio/${encodeURIComponent(slug)}`);
       } catch {}
     }
   };
@@ -107,9 +106,7 @@ export const CharitraDarshan: React.FC<CharitraDarshanProps> = ({
     setSelectedBio(null);
     if (typeof window !== 'undefined') {
       try {
-        const url = new URL(window.location.href);
-        url.searchParams.delete('saint');
-        window.history.pushState({}, '', url.toString());
+        window.history.pushState({}, '', '/biographies');
       } catch {}
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -117,7 +114,10 @@ export const CharitraDarshan: React.FC<CharitraDarshanProps> = ({
 
   const handleShare = () => {
     if (typeof window !== 'undefined') {
-      navigator.clipboard.writeText(window.location.href);
+      const shareUrl = selectedBio
+        ? `${window.location.origin}/bio/${encodeURIComponent(selectedBio.slug || selectedBio.id)}`
+        : window.location.href;
+      navigator.clipboard?.writeText(shareUrl);
       setCopiedLink(true);
       setTimeout(() => setCopiedLink(false), 2000);
     }

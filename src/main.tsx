@@ -53,7 +53,10 @@ if (rootElement) {
       </StrictMode>
     );
 
+    let dismissed = false;
     const dismissPreview = () => {
+      if (dismissed) return;
+      dismissed = true;
       previewWrapper.style.transition = 'opacity 240ms ease-out';
       previewWrapper.style.opacity = '0';
       setTimeout(() => {
@@ -63,10 +66,15 @@ if (rootElement) {
       }, 250);
     };
 
-    if ('requestIdleCallback' in window) {
-      (window as any).requestIdleCallback(dismissPreview, { timeout: 1200 });
+    if ((window as any).__VRINDOPNISAD_HYDRATED__) {
+      requestAnimationFrame(dismissPreview);
     } else {
-      setTimeout(dismissPreview, 500);
+      window.addEventListener(
+        'vrindopnisad:hydrated',
+        () => requestAnimationFrame(dismissPreview),
+        { once: true }
+      );
+      setTimeout(dismissPreview, 4000);
     }
   } else if (rootElement.hasChildNodes()) {
     // 2. Full SSG pre-rendered complete component tree:
@@ -75,11 +83,13 @@ if (rootElement) {
     const isPathDomain = host === 'path.vrindopnishad.in' || host.startsWith('path.');
     const qTab = typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get('tab') : null;
 
+    const isDeepSectionEntity = typeof window !== 'undefined' && /^\/(?:ritual|place|story|bio)\//.test(window.location.pathname);
+
     // index.html is statically generated for bhav/smaran tab.
     // If the client loads on path.vrindopnishad.in without ?tab=smaran,
-    // the client's initial tab will be granthas.
-    // In that case, mount cleanly with createRoot to prevent React 19 hydration mismatch (#418).
-    const isMismatchedShell = isPathDomain && qTab !== 'smaran';
+    // or on a deep-linked lazy section entity route,
+    // mount cleanly with createRoot to prevent React 19 hydration mismatch (#418).
+    const isMismatchedShell = (isPathDomain && qTab !== 'smaran') || isDeepSectionEntity;
 
     if (isMismatchedShell) {
       createRoot(rootElement).render(

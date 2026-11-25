@@ -795,7 +795,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                   ref={(el) => {
                     epicCardRefs.current[epic.id] = el;
                   }}
-                  href={`/?tab=granthas&grantha=${encodeURIComponent(epic.id)}`}
+                  href={`/grantha/${encodeURIComponent(epic.id)}`}
                   onClick={(e) => {
                     if (!e.metaKey && !e.ctrlKey) {
                       e.preventDefault();
@@ -992,7 +992,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                         ref={(el) => {
                           chapterItemRefs.current[ch.id] = el;
                         }}
-                        href={`/?tab=granthas&grantha=${encodeURIComponent(selectedGranthaId)}&chapter=${encodeURIComponent(ch.id)}`}
+                        href={`/grantha/${encodeURIComponent(selectedGranthaId)}/${encodeURIComponent(ch.id)}`}
                         onClick={(e) => {
                           if (!e.metaKey && !e.ctrlKey) {
                             e.preventDefault();
@@ -1215,7 +1215,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
           <div className="mt-12 pt-6 border-t border-stone-200/60 grid grid-cols-1 sm:grid-cols-2 gap-3 select-none">
             {prevChapter ? (
               <a
-                href={`/?tab=granthas&grantha=${encodeURIComponent(selectedGranthaId)}&chapter=${encodeURIComponent(prevChapter.id)}`}
+                href={`/grantha/${encodeURIComponent(selectedGranthaId)}/${encodeURIComponent(prevChapter.id)}`}
                 onClick={(e) => {
                   if (!e.metaKey && !e.ctrlKey) {
                     e.preventDefault();
@@ -1234,7 +1234,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
 
             {nextChapter && (
               <a
-                href={`/?tab=granthas&grantha=${encodeURIComponent(selectedGranthaId)}&chapter=${encodeURIComponent(nextChapter.id)}`}
+                href={`/grantha/${encodeURIComponent(selectedGranthaId)}/${encodeURIComponent(nextChapter.id)}`}
                 onClick={(e) => {
                   if (!e.metaKey && !e.ctrlKey) {
                     e.preventDefault();

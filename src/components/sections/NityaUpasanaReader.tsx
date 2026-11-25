@@ -28,15 +28,17 @@ import { SacredDiscoveryShelf } from '../common/SacredDiscoveryShelf';
 
 interface NityaUpasanaReaderProps {
   initialRitualSlug?: string;
+  initialRitual?: SacredRitual | null;
   onSelectRitual?: (slug: string) => void;
 }
 
 export const NityaUpasanaReader: React.FC<NityaUpasanaReaderProps> = ({
   initialRitualSlug,
+  initialRitual = null,
   onSelectRitual,
 }) => {
   const [rituals, setRituals] = useState<SacredRitualPreview[]>([]);
-  const [selectedRitual, setSelectedRitual] = useState<SacredRitual | null>(null);
+  const [selectedRitual, setSelectedRitual] = useState<SacredRitual | null>(() => initialRitual || null);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [copiedLink, setCopiedLink] = useState<boolean>(false);
@@ -112,10 +114,7 @@ export const NityaUpasanaReader: React.FC<NityaUpasanaReaderProps> = ({
     }
     if (typeof window !== 'undefined') {
       try {
-        const url = new URL(window.location.href);
-        url.searchParams.set('tab', 'rituals');
-        url.searchParams.set('ritual', slug);
-        window.history.pushState({}, '', url.toString());
+        window.history.pushState({}, '', `/ritual/${encodeURIComponent(slug)}`);
       } catch {}
     }
   };
@@ -125,9 +124,7 @@ export const NityaUpasanaReader: React.FC<NityaUpasanaReaderProps> = ({
     setSelectedRitual(null);
     if (typeof window !== 'undefined') {
       try {
-        const url = new URL(window.location.href);
-        url.searchParams.delete('ritual');
-        window.history.pushState({}, '', url.toString());
+        window.history.pushState({}, '', '/rituals');
       } catch {}
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -135,7 +132,10 @@ export const NityaUpasanaReader: React.FC<NityaUpasanaReaderProps> = ({
 
   const handleShare = () => {
     if (typeof window !== 'undefined') {
-      navigator.clipboard.writeText(window.location.href);
+      const shareUrl = selectedRitual
+        ? `${window.location.origin}/ritual/${encodeURIComponent(selectedRitual.slug || selectedRitual.id)}`
+        : window.location.href;
+      navigator.clipboard?.writeText(shareUrl);
       setCopiedLink(true);
       setTimeout(() => setCopiedLink(false), 2000);
     }

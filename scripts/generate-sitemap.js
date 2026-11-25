@@ -59,63 +59,63 @@ function buildUrlset(urls) {
 function buildImageSitemap(baseUrl) {
   const images = [
     {
-      page: `${baseUrl}/?tab=feed`,
+      page: `${baseUrl}/feed`,
       loc: `${baseUrl}/assets/temples/banke-bihari-v2.webp`,
       title: 'श्री बांके बिहारी जी महाराज दर्शन (वृन्दावन)',
       caption: 'श्री ठाकुर बांके बिहारी जी महाराज के पावन दर्शन एवं वृन्दावन धाम की अनुपम आभा।',
       geo: 'Vrindavan, Mathura, Uttar Pradesh, India',
     },
     {
-      page: `${baseUrl}/?tab=feed`,
+      page: `${baseUrl}/feed`,
       loc: `${baseUrl}/assets/temples/banke-bihari-gate.webp`,
       title: 'श्री बांके बिहारी मंदिर प्रवेश द्वार',
       caption: 'वृन्दावन धाम स्थित श्री बांके बिहारी मंदिर का भव्य एवं पावन प्रवेश द्वार।',
       geo: 'Vrindavan, Mathura, Uttar Pradesh, India',
     },
     {
-      page: `${baseUrl}/?tab=feed`,
+      page: `${baseUrl}/feed`,
       loc: `${baseUrl}/assets/temples/banke-bihari.webp`,
       title: 'ठाकुर श्री बांके बिहारी जी छवि',
       caption: 'स्वामी हरिदास जी द्वारा सेवित लाड़िले ठाकुर बांके बिहारी जी की अलौकिक छवि।',
       geo: 'Vrindavan, Mathura, Uttar Pradesh, India',
     },
     {
-      page: `${baseUrl}/?tab=feed`,
+      page: `${baseUrl}/place/barsana-shriji-mandir`,
       loc: `${baseUrl}/assets/temples/barsana-radharani.webp`,
       title: 'श्री लाड़ली जी महल (बरसाना)',
       caption: 'भानुपुरा शिखर पर स्थित श्री राधा रानी मंदिर (लाड़ली जी महल) बरसाना धाम।',
       geo: 'Barsana, Mathura, Uttar Pradesh, India',
     },
     {
-      page: `${baseUrl}/?tab=feed`,
+      page: `${baseUrl}/place/shri-radha-raman-mandir`,
       loc: `${baseUrl}/assets/temples/radha-raman.webp`,
       title: 'श्री राधा रमण जी महाराज मंदिर',
       caption: 'श्रीयुत गोपाल भट्ट गोस्वामी जी द्वारा शालिग्राम शिला से प्रकट स्वयं-प्रकट श्री राधा रमण देव।',
       geo: 'Vrindavan, Mathura, Uttar Pradesh, India',
     },
     {
-      page: `${baseUrl}/?tab=feed`,
+      page: `${baseUrl}/place/shri-radha-vallabh-mandir`,
       loc: `${baseUrl}/assets/temples/radha-vallabh.webp`,
       title: 'श्री राधा वल्लभ जी महाराज मंदिर',
       caption: 'श्री हित हरिवंश महाप्रभु प्राकट्य एवं राधावल्लभ संप्रदाय का प्रधान देवालय।',
       geo: 'Vrindavan, Mathura, Uttar Pradesh, India',
     },
     {
-      page: `${baseUrl}/?tab=feed`,
+      page: `${baseUrl}/place/vrindavan-dham`,
       loc: `${baseUrl}/assets/temples/keshi-ghat.webp`,
       title: 'पावन केशी घाट एवं यमुना जी तट',
       caption: 'श्री यमुना जी के पावन तट पर स्थित ऐतिहासिक केशी घाट, वृन्दावन।',
       geo: 'Vrindavan, Mathura, Uttar Pradesh, India',
     },
     {
-      page: `${baseUrl}/?tab=feed`,
+      page: `${baseUrl}/feed`,
       loc: `${baseUrl}/assets/temples/diya-pujan.webp`,
       title: 'संध्या आरती दीप पूजन',
       caption: 'पावन यमुना तट एवं वृन्दावन देवालयों में नित्य दीपदान व संध्या आरती।',
       geo: 'Vrindavan, Mathura, Uttar Pradesh, India',
     },
     {
-      page: `${baseUrl}/?tab=feed`,
+      page: `${baseUrl}/feed`,
       loc: `${baseUrl}/assets/temples/aarti-lamp.webp`,
       title: 'मंगला व शयन आरती दीप ज्योति',
       caption: 'वृन्दावन रसिक संतों द्वारा सेवित युगल सरकार की मंगला व शयन आरती दीप।',
@@ -182,6 +182,76 @@ function buildImageSitemap(baseUrl) {
       loc: `${baseUrl}/assets/saints/meera.webp`,
       title: 'अनन्य कृष्ण प्रेमानुरागिणी भक्त मीराबाई जी',
       caption: 'मेरो तो गिरधर गोपाल दूसरो न कोई। अनन्य प्रेम दीवानी मीराबाई।',
+      geo: 'Vrindavan, Mathura, Uttar Pradesh, India',
+    },
+    {
+      page: `${baseUrl}/sant/shri-hita-harivansh-mahaprabhu`,
+      loc: `${baseUrl}/assets/saints/hit-harivansh.webp`,
+      title: 'श्री हित हरिवंश महाप्रभु जी',
+      caption: 'राधावल्लभ संप्रदाय के प्रवर्तक एवं श्री हित चौरासी के रचयिता श्री हित हरिवंश महाप्रभु।',
+      geo: 'Vrindavan, Mathura, Uttar Pradesh, India',
+    },
+    {
+      page: `${baseUrl}/sant/dhruvdas`,
+      loc: `${baseUrl}/assets/saints/dhruvdas.webp`,
+      title: 'श्री ध्रुवदास जी महाराज',
+      caption: 'बयालीस लीला के रचयिता राधावल्लभ संप्रदाय के महान रसिक संत श्री ध्रुवदास जी।',
+      geo: 'Vrindavan, Mathura, Uttar Pradesh, India',
+    },
+    {
+      page: `${baseUrl}/sant/biharin-dev`,
+      loc: `${baseUrl}/assets/saints/biharin-dev.webp`,
+      title: 'श्री बिहारिन देव जी महाराज',
+      caption: 'स्वामी हरिदास जी की परंपरा के अनन्य रसिक आचार्य श्री बिहारिन देव जी।',
+      geo: 'Vrindavan, Mathura, Uttar Pradesh, India',
+    },
+    {
+      page: `${baseUrl}/sant/vitthal-vipul`,
+      loc: `${baseUrl}/assets/saints/vitthal-vipul.webp`,
+      title: 'श्री विट्ठल विपुल देव जी महाराज',
+      caption: 'सखी संप्रदाय के प्रमुख रसिक संत श्री विट्ठल विपुल देव जी।',
+      geo: 'Vrindavan, Mathura, Uttar Pradesh, India',
+    },
+    {
+      page: `${baseUrl}/sant/lalit-kishori`,
+      loc: `${baseUrl}/assets/saints/lalit-kishori.webp`,
+      title: 'श्री ललित किशोरी देव जी महाराज',
+      caption: 'टट्टी स्थान वृन्दावन के परम रसिक आचार्य श्री ललित किशोरी देव जी।',
+      geo: 'Vrindavan, Mathura, Uttar Pradesh, India',
+    },
+    {
+      page: `${baseUrl}/sant/sevak-ji`,
+      loc: `${baseUrl}/assets/saints/sevak-ji.webp`,
+      title: 'श्री सेवक जी महाराज (दामोदरदास)',
+      caption: 'श्री हरिवंश चरित्र एवं सेवक वाणी के रचयिता परम रसिक श्री सेवक जी।',
+      geo: 'Vrindavan, Mathura, Uttar Pradesh, India',
+    },
+    {
+      page: `${baseUrl}/sant/nabhaji`,
+      loc: `${baseUrl}/assets/saints/nabhaji.webp`,
+      title: 'भक्तमाल प्रणेता श्री नाभादास जी',
+      caption: 'प्रसिद्ध भक्तमाल ग्रंथ के रचयिता पूज्य श्री नाभादास जी महाराज।',
+      geo: 'Galta, Jaipur, Rajasthan, India',
+    },
+    {
+      page: `${baseUrl}/sant/malookdas`,
+      loc: `${baseUrl}/assets/saints/malookdas.webp`,
+      title: 'परम संत श्री मलूकदास जी महाराज',
+      caption: 'भक्तिकाल के महान संत श्री मलूकदास जी महाराज।',
+      geo: 'Kara, Kaushambi, Uttar Pradesh, India',
+    },
+    {
+      page: `${baseUrl}/sant/ramanandacharya`,
+      loc: `${baseUrl}/assets/saints/ramanandacharya.webp`,
+      title: 'जगद्गुरु श्री रामानन्दाचार्य जी',
+      caption: 'भक्ति आंदोलन के आदि प्रवर्तक जगद्गुरु श्री रामानन्दाचार्य जी महाराज।',
+      geo: 'Varanasi, Uttar Pradesh, India',
+    },
+    {
+      page: `${baseUrl}/sant/rajendradasji`,
+      loc: `${baseUrl}/assets/saints/rajendradasji.webp`,
+      title: 'परम पूज्य श्री राजेन्द्रदास देवाचार्य जी महाराज',
+      caption: 'श्री मलूकपीठ वृन्दावन के वर्तमान पीठाधीश्वर परम पूज्य श्री राजेन्द्रदास जी महाराज।',
       geo: 'Vrindavan, Mathura, Uttar Pradesh, India',
     },
   ];
@@ -391,26 +461,138 @@ function createSitemapSuite(baseUrl, prefix = '') {
       }
     } catch {}
   }
+
+  // Ingest all 34 High-Authority Topical Pillar Guides
+  const guidesMetaPath = path.resolve(projectRoot, 'src/data/topicalGuidesMeta.json');
+  if (fs.existsSync(guidesMetaPath)) {
+    try {
+      const guidesMeta = JSON.parse(fs.readFileSync(guidesMetaPath, 'utf-8'));
+      for (const slug of Object.keys(guidesMeta)) {
+        mainUrls.push({
+          loc: `${baseUrl}/${slug}`,
+          lastmod: today,
+          changefreq: 'monthly',
+          priority: 0.9,
+        });
+      }
+    } catch {}
+  }
+
+  // Ingest Programmatic SEO Hubs: Ragas, Themes & Braj Glossary
+  mainUrls.push(
+    { loc: `${baseUrl}/ragas`, lastmod: today, changefreq: 'weekly', priority: 0.9 },
+    { loc: `${baseUrl}/themes`, lastmod: today, changefreq: 'weekly', priority: 0.9 },
+    { loc: `${baseUrl}/glossary`, lastmod: today, changefreq: 'weekly', priority: 0.9 }
+  );
+
+  const ragaIndexPath = path.resolve(projectRoot, 'src/data/ragaIndex.json');
+  if (fs.existsSync(ragaIndexPath)) {
+    try {
+      const ragaIndex = JSON.parse(fs.readFileSync(ragaIndexPath, 'utf-8'));
+      for (const rSlug of Object.keys(ragaIndex)) {
+        mainUrls.push({
+          loc: `${baseUrl}/raga/${encodeURIComponent(rSlug)}`,
+          lastmod: today,
+          changefreq: 'monthly',
+          priority: 0.8,
+        });
+      }
+    } catch {}
+  }
+
+  const themeHubsPath = path.resolve(projectRoot, 'src/data/themeHubs.json');
+  if (fs.existsSync(themeHubsPath)) {
+    try {
+      const themeHubs = JSON.parse(fs.readFileSync(themeHubsPath, 'utf-8'));
+      for (const tSlug of Object.keys(themeHubs)) {
+        mainUrls.push({
+          loc: `${baseUrl}/theme/${encodeURIComponent(tSlug)}`,
+          lastmod: today,
+          changefreq: 'weekly',
+          priority: 0.85,
+        });
+      }
+    } catch {}
+  }
+
+  const glossaryPath = path.resolve(projectRoot, 'src/data/brajGlossary.json');
+  if (fs.existsSync(glossaryPath)) {
+    try {
+      const glossary = JSON.parse(fs.readFileSync(glossaryPath, 'utf-8'));
+      for (const term of glossary) {
+        if (term.id) {
+          mainUrls.push({
+            loc: `${baseUrl}/glossary/${encodeURIComponent(term.id)}`,
+            lastmod: today,
+            changefreq: 'monthly',
+            priority: 0.8,
+          });
+        }
+      }
+    } catch {}
+  }
   const mainXml = buildUrlset(mainUrls);
 
-  // 2. Granthas (24 Ras Collections - Clean URLs)
-  const granthasUrls = granthas
-    .filter((g) => !EPIC_IDS.has(g.id))
-    .map((g) => ({
+  // Compute exact pada counts per grantha & saint for paginated sub-hubs (100 padas/page)
+  const PAGE_SIZE = 100;
+  const granthaCounts = new Map();
+  const saintCounts = new Map();
+  const padaSnippetsPath = path.resolve(projectRoot, 'src/data/padaSnippets.json');
+  if (fs.existsSync(padaSnippetsPath)) {
+    try {
+      const snippets = JSON.parse(fs.readFileSync(padaSnippetsPath, 'utf-8'));
+      for (const tuple of Object.values(snippets)) {
+        const auth = tuple[1];
+        const gId = tuple[2];
+        if (gId) granthaCounts.set(gId, (granthaCounts.get(gId) || 0) + 1);
+        if (auth) saintCounts.set(auth, (saintCounts.get(auth) || 0) + 1);
+      }
+    } catch {}
+  }
+
+  // 2. Granthas (24 Ras Collections + Paginated Sub-Hubs)
+  const granthasUrls = [];
+  for (const g of granthas.filter((gr) => !EPIC_IDS.has(gr.id))) {
+    granthasUrls.push({
       loc: `${baseUrl}/grantha/${encodeURIComponent(g.id)}`,
       lastmod: today,
       changefreq: 'weekly',
       priority: 0.9,
-    }));
+    });
+    const total = granthaCounts.get(g.id) || 0;
+    const totalPages = Math.ceil(total / PAGE_SIZE);
+    for (let p = 2; p <= totalPages; p++) {
+      granthasUrls.push({
+        loc: `${baseUrl}/grantha/${encodeURIComponent(g.id)}/page/${p}`,
+        lastmod: today,
+        changefreq: 'monthly',
+        priority: 0.75,
+      });
+    }
+  }
   const granthasXml = buildUrlset(granthasUrls);
 
-  // 3. Saints (131 Canonical Saints - Clean URLs)
-  const saintsUrls = saints.map((s) => ({
-    loc: `${baseUrl}/sant/${encodeURIComponent(s.slug || s.id || s.name)}`,
-    lastmod: today,
-    changefreq: 'monthly',
-    priority: 0.85,
-  }));
+  // 3. Saints (131 Canonical Saints + Paginated Sub-Hubs)
+  const saintsUrls = [];
+  for (const s of saints) {
+    const slug = s.slug || s.id || s.name;
+    saintsUrls.push({
+      loc: `${baseUrl}/sant/${encodeURIComponent(slug)}`,
+      lastmod: today,
+      changefreq: 'monthly',
+      priority: 0.85,
+    });
+    const total = saintCounts.get(s.name) || 0;
+    const totalPages = Math.ceil(total / PAGE_SIZE);
+    for (let p = 2; p <= totalPages; p++) {
+      saintsUrls.push({
+        loc: `${baseUrl}/sant/${encodeURIComponent(slug)}/page/${p}`,
+        lastmod: today,
+        changefreq: 'monthly',
+        priority: 0.75,
+      });
+    }
+  }
   const saintsXml = buildUrlset(saintsUrls);
 
   // Load legacy slug redirects to resolve any legacy Devanagari slugs into clean Roman canonical URLs

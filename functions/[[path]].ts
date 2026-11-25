@@ -11,6 +11,16 @@ import canonicalSaintsData from '../src/data/canonicalSaints.json';
 import padaSnippetsData from '../src/data/padaSnippets.json';
 import padaAliasesData from '../src/data/padaAliases.json';
 import legacySlugRedirectsData from '../src/data/legacySlugRedirects.json';
+import topicalGuidesMetaData from '../src/data/topicalGuidesMeta.json';
+import ritualsIndexData from '../public/data/rituals/index.json';
+import placesIndexData from '../public/data/places/index.json';
+import storiesIndexData from '../public/data/stories/index.json';
+import biosIndexData from '../public/data/biographies/index.json';
+import ragaIndexData from '../src/data/ragaIndex.json';
+import themeHubsData from '../src/data/themeHubs.json';
+import brajGlossaryData from '../src/data/brajGlossary.json';
+import ritualMetaData from '../src/data/ritualMeta.json';
+import placeMetaData from '../src/data/placeMeta.json';
 
 interface Env {}
 
@@ -113,11 +123,83 @@ const CHAPTER_SNIPPETS = snippetsObj as Record<string, {
   openingVerse: string;
 }>;
 
-const padaSnippetsObj: Record<string, [string, string, string, string, string?, string?, string?]> =
+const padaSnippetsObj: Record<string, [string, string, string, string, string?, string?, string?, string?]> =
   (padaSnippetsData as any)?.default || padaSnippetsData || {};
 
 const padaAliasesObj: Record<string, string> =
   (padaAliasesData as any)?.default || padaAliasesData || {};
+
+const ragaIndexObj: Record<string, { name: string; padas: string[] }> =
+  (ragaIndexData as any)?.default || ragaIndexData || {};
+
+const themeHubsObj: Record<string, { slug: string; nameDevanagari: string; nameEnglish: string; description: string; padas: string[] }> =
+  (themeHubsData as any)?.default || themeHubsData || {};
+
+const brajGlossaryList: { id: string; term: string; transliteration: string; meaningDevanagari: string; context?: string }[] =
+  Array.isArray(brajGlossaryData) ? brajGlossaryData : (brajGlossaryData as any)?.default || [];
+const GLOSSARY_MAP = new Map(brajGlossaryList.map((g) => [g.id, g]));
+
+const ritualMetaObj: Record<string, { durationMinutes?: number; pujaVidhi?: { timing?: string; requiredItems?: string[]; steps?: string[]; benefits?: string } }> =
+  (ritualMetaData as any)?.default || ritualMetaData || {};
+
+const placeMetaObj: Record<string, { darshanTimings?: { morning?: { open: string; close: string; aartiName?: string }; evening?: { open: string; close: string; aartiName?: string }; specialNotes?: string }; coordinates?: { lat: number; lng: number } }> =
+  (placeMetaData as any)?.default || placeMetaData || {};
+
+const PRERENDERED_GRANTHA_IDS = new Set(granthasList.map((g: any) => g.id).filter(Boolean));
+const PRERENDERED_SAINT_SLUGS = new Set(saintsList.slice(0, 10).map((s: any) => s.slug || s.id).filter(Boolean));
+const PRERENDERED_PAD_SLUGS = new Set([
+  'radheju-merau-janam-sudharau',
+  'shri-radha-kripa-kataksha-stotram',
+  'bainu-maai-baajai-bansivat-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-64',
+  'main-to-govardhan-ko-jaun-meri-veer-shri-chandrasakhi-ji',
+  'radhika-ravan-ki-murlika-shravan-suni-shri-chaturbhujdas-ji',
+]);
+
+const TOPICAL_GUIDES_META = (
+  (topicalGuidesMetaData as any)?.default || topicalGuidesMetaData || {}
+) as Record<string, { title: string; description: string; faqs?: { q: string; a: string }[] }>;
+
+const RITUALS_MAP = new Map<string, any>();
+for (const item of ((ritualsIndexData as any)?.items || [])) {
+  if (item.slug) RITUALS_MAP.set(item.slug, item);
+}
+
+const PLACES_MAP = new Map<string, any>();
+for (const item of ((placesIndexData as any)?.items || [])) {
+  if (item.slug) PLACES_MAP.set(item.slug, item);
+}
+
+const STORIES_MAP = new Map<string, any>();
+for (const item of ((storiesIndexData as any)?.items || [])) {
+  if (item.slug) STORIES_MAP.set(item.slug, item);
+}
+
+const BIOS_MAP = new Map<string, any>();
+for (const item of ((biosIndexData as any)?.items || [])) {
+  if (item.slug) BIOS_MAP.set(item.slug, item);
+}
+
+function safeDecodeURIComponent(value: string): string {
+  try {
+    return decodeURIComponent(value);
+  } catch {
+    return value;
+  }
+}
+
+function notFoundResponse(message = 'Not Found'): Response {
+  return new Response(
+    `<!doctype html><html lang="hi"><head><meta charset="utf-8"><meta name="robots" content="noindex, nofollow"><title>404 • पृष्ठ उपलब्ध नहीं | वृन्दोपनिषद् 2.0</title></head><body style="font-family:sans-serif;text-align:center;padding:4rem 1rem;background:#FAF8F5;color:#1c1917;"><h1>404 — ${message}</h1><p><a href="https://bhav.vrindopnishad.in/" style="color:#b45309;">वृन्दोपनिषद् 2.0 मुख्य पृष्ठ पर लौटें</a></p></body></html>`,
+    {
+      status: 404,
+      headers: {
+        'Content-Type': 'text/html; charset=UTF-8',
+        'X-Robots-Tag': 'noindex, nofollow',
+        'Cache-Control': 'public, max-age=300',
+      },
+    }
+  );
+}
 
 const granthaCrawlMap: Record<string, [string, string][]> = {};
 const saintCrawlMap: Record<string, [string, string][]> = {};
@@ -131,15 +213,11 @@ function ensureCrawlIndex() {
     const granthaId = item[2];
     if (granthaId) {
       if (!granthaCrawlMap[granthaId]) granthaCrawlMap[granthaId] = [];
-      if (granthaCrawlMap[granthaId].length < 80) {
-        granthaCrawlMap[granthaId].push([slug, title]);
-      }
+      granthaCrawlMap[granthaId].push([slug, title]);
     }
     if (author) {
       if (!saintCrawlMap[author]) saintCrawlMap[author] = [];
-      if (saintCrawlMap[author].length < 40) {
-        saintCrawlMap[author].push([slug, title]);
-      }
+      saintCrawlMap[author].push([slug, title]);
     }
   }
   isCrawlIndexed = true;
@@ -479,18 +557,79 @@ export const onRequest: PagesFunction<Env> = async (context) => {
       });
     }
 
-    const sitemapUrl = isPathDomain
-      ? 'https://path.vrindopnishad.in/sitemap.xml'
-      : 'https://bhav.vrindopnishad.in/sitemap.xml';
-
     const robotsBody = [
       '# https://www.robotstxt.org/robotstxt.html',
+      '# Vrindopnisad 2.0 - Universal Search & AI Retrieval Directives',
+      '',
       'User-agent: *',
       'Allow: /',
       'Disallow: /api/',
       'Disallow: /admin/',
       '',
-      `Sitemap: ${sitemapUrl}`,
+      '# Explicit permissions for Primary Search Engines',
+      'User-agent: Googlebot',
+      'Allow: /',
+      '',
+      'User-agent: Bingbot',
+      'Allow: /',
+      '',
+      'User-agent: YandexBot',
+      'Allow: /',
+      '',
+      'User-agent: DuckDuckBot',
+      'Allow: /',
+      '',
+      'User-agent: Baiduspider',
+      'Allow: /',
+      '',
+      'User-agent: Applebot',
+      'Allow: /',
+      '',
+      '# Generative Engine Optimization (GEO) & AI Retrieval Crawlers',
+      'User-agent: GPTBot',
+      'Allow: /',
+      '',
+      'User-agent: ChatGPT-User',
+      'Allow: /',
+      '',
+      'User-agent: PerplexityBot',
+      'Allow: /',
+      '',
+      'User-agent: ClaudeBot',
+      'Allow: /',
+      '',
+      'User-agent: Claude-Web',
+      'Allow: /',
+      '',
+      'User-agent: Google-Extended',
+      'Allow: /',
+      '',
+      'User-agent: Amazonbot',
+      'Allow: /',
+      '',
+      'User-agent: OAI-SearchBot',
+      'Allow: /',
+      '',
+      'User-agent: cohere-ai',
+      'Allow: /',
+      '',
+      '# Sitemaps & High-Frequency RSS Stream',
+      ...(isPathDomain
+        ? [
+            'Sitemap: https://path.vrindopnishad.in/sitemap.xml',
+            'Sitemap: https://path.vrindopnishad.in/feed.xml',
+            '',
+            'Host: https://path.vrindopnishad.in',
+          ]
+        : [
+            'Sitemap: https://bhav.vrindopnishad.in/sitemap.xml',
+            'Sitemap: https://bhav.vrindopnishad.in/sitemap-images.xml',
+            'Sitemap: https://bhav.vrindopnishad.in/feed.xml',
+            'Sitemap: https://path.vrindopnishad.in/sitemap-path.xml',
+            'Sitemap: https://path.vrindopnishad.in/feed.xml',
+            '',
+            'Host: https://bhav.vrindopnishad.in',
+          ]),
       '',
     ].join('\n');
 
@@ -509,10 +648,72 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     return Response.redirect('https://bhav.vrindopnishad.in/sitemap-padas.xml', 301);
   }
 
+  // 3.0 Legacy /sitemaps/* 301 Permanent Redirects
+  if (pathname.startsWith('/sitemaps/')) {
+    const file = pathname.slice('/sitemaps/'.length).toLowerCase();
+    const baseDomain = isPathDomain ? 'https://path.vrindopnishad.in' : 'https://bhav.vrindopnishad.in';
+    if (file.includes('saint')) {
+      return Response.redirect('https://bhav.vrindopnishad.in/sitemap-saints.xml', 301);
+    }
+    if (file.includes('grantha')) {
+      return Response.redirect(
+        isPathDomain
+          ? 'https://path.vrindopnishad.in/sitemap-path-granthas.xml'
+          : 'https://bhav.vrindopnishad.in/sitemap-granthas.xml',
+        301
+      );
+    }
+    if (file.includes('pada')) {
+      const partMatch = file.match(/padas?-(\d+)/);
+      const part = partMatch ? partMatch[1] : '1';
+      return Response.redirect(`https://bhav.vrindopnishad.in/sitemap-padas-${part}.xml`, 301);
+    }
+    if (file.includes('image')) {
+      return Response.redirect('https://bhav.vrindopnishad.in/sitemap-images.xml', 301);
+    }
+    if (file.includes('main')) {
+      return Response.redirect(
+        isPathDomain
+          ? 'https://path.vrindopnishad.in/sitemap-path-main.xml'
+          : 'https://bhav.vrindopnishad.in/sitemap-main.xml',
+        301
+      );
+    }
+    return Response.redirect(`${baseDomain}/sitemap.xml`, 301);
+  }
+
+  // 3.0b Plural & Legacy Sant-Vaani Route 301 Redirects
+  const legacySaintMatch = pathname.match(/^(?:\/(?:hi|en))?\/(?:saints|saint)\/([^/?#]+)/i) ||
+    pathname.match(/^\/(?:hi|en)\/sant\/([^/?#]+)/i);
+  if (legacySaintMatch) {
+    const slug = safeDecodeURIComponent(legacySaintMatch[1]).trim();
+    return Response.redirect(`https://bhav.vrindopnishad.in/sant/${encodeURIComponent(slug)}`, 301);
+  }
+
+  const legacyGranthaMatch = pathname.match(/^(?:\/(?:hi|en))?\/granthas\/([^/?#]+)/i) ||
+    pathname.match(/^\/(?:hi|en)\/grantha\/([^/?#]+)/i);
+  if (legacyGranthaMatch) {
+    const slug = safeDecodeURIComponent(legacyGranthaMatch[1]).trim();
+    const targetHost = EPICS_META[slug] ? 'https://path.vrindopnishad.in' : 'https://bhav.vrindopnishad.in';
+    return Response.redirect(`${targetHost}/grantha/${encodeURIComponent(slug)}`, 301);
+  }
+
+  const legacyRagaMatch = pathname.match(/^(?:\/(?:hi|en))?\/ragas\/([^/?#]+)/i);
+  if (legacyRagaMatch) {
+    const slug = safeDecodeURIComponent(legacyRagaMatch[1]).trim();
+    return Response.redirect(`https://bhav.vrindopnishad.in/raga/${encodeURIComponent(slug)}`, 301);
+  }
+
+  const langGlossaryMatch = pathname.match(/^\/(?:hi|en)\/glossary(\/[^/?#]+)?/i);
+  if (langGlossaryMatch) {
+    const sub = langGlossaryMatch[1] || '';
+    return Response.redirect(`https://bhav.vrindopnishad.in/glossary${sub}`, 301);
+  }
+
   // 3.1 Legacy & indexed verse URL 301 redirects (/lyrics/:id, /hi/lyrics/:id, /content/:id, /verse/:id, /pada/:id, /pad/:id)
   const legacyMatch = pathname.match(/^(?:\/(?:hi|en))?\/(?:lyrics|content|verse|pada|pad)\/([^/?#]+)/i);
   if (legacyMatch) {
-    const rawPad = decodeURIComponent(legacyMatch[1]).trim();
+    const rawPad = safeDecodeURIComponent(legacyMatch[1]).trim();
     const mappedEpic = mapPadToEpicChapter(rawPad);
     if (mappedEpic) {
       return Response.redirect(
@@ -571,7 +772,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   // Fast-path for non-HTML static assets
   const staticExtensions = [
     '.js', '.css', '.png', '.webp', '.jpg', '.jpeg', '.gif', '.svg',
-    '.ico', '.xml', '.gz', '.json', '.webmanifest', '.woff', '.woff2', '.ttf',
+    '.ico', '.xml', '.gz', '.json', '.webmanifest', '.woff', '.woff2', '.ttf', '.mp3',
   ];
   if (
     pathname.startsWith('/assets/') ||
@@ -581,23 +782,28 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     const res = await next();
 
     // Guard: Prevent Cloudflare Pages SPA fallback from returning index.html with 200 OK for missing XML/sitemap files
-    // Clean empty XML sitemap ensures Google Search Console NEVER encounters an HTML error or failed status
-    if (
-      (pathname.endsWith('.xml') || pathname.endsWith('.xml.gz')) &&
-      res.headers.get('content-type')?.includes('text/html')
-    ) {
-      return new Response(
-        '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n</urlset>',
-        {
-          status: 200,
+    // Inspect response body prefix (not just content-type, since _headers forces application/xml on /*.xml)
+    if (pathname.endsWith('.xml') || pathname.endsWith('.xml.gz')) {
+      const contentTypeHeader = res.headers.get('content-type') || '';
+      let isHtmlFallback = contentTypeHeader.includes('text/html');
+      if (!isHtmlFallback && pathname.endsWith('.xml')) {
+        try {
+          const bodyPrefix = (await res.clone().text()).slice(0, 200).trimStart().toLowerCase();
+          if (bodyPrefix.startsWith('<!doctype') || bodyPrefix.startsWith('<html')) {
+            isHtmlFallback = true;
+          }
+        } catch {}
+      }
+      if (isHtmlFallback) {
+        return new Response('404 Not Found: XML resource does not exist.', {
+          status: 404,
           headers: {
-            'Content-Type': 'application/xml; charset=UTF-8',
-            'Cache-Control': 'public, max-age=86400, s-maxage=604800',
-            'CDN-Cache-Control': 'public, max-age=604800',
-            'Cloudflare-CDN-Cache-Control': 'public, max-age=604800',
+            'Content-Type': 'text/plain; charset=UTF-8',
+            'X-Robots-Tag': 'noindex, nofollow',
+            'Cache-Control': 'public, max-age=300',
           },
-        }
-      );
+        });
+      }
     }
 
     const headers = new Headers(res.headers);
@@ -625,20 +831,36 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     });
   }
 
-  // Clean static route parsing: /pad/:id, /sant/:id, /grantha/:id, /grantha/:id/:ch, pillar paths
+  // Clean static route parsing: /pad/:id, /sant/:id(/page/:n), /grantha/:id(/page/:n), /grantha/:id/:ch, pillar paths
   let pathPad: string | null = null;
   let pathGrantha: string | null = null;
   let pathChapter: string | null = null;
   let pathAuthor: string | null = null;
+  let granthaPageNum = 1;
+  let saintPageNum = 1;
+  let isPaginatedGrantha = false;
+  let isPaginatedSaint = false;
 
   if (pathname.startsWith('/pad/')) {
     pathPad = decodeURIComponent(pathname.slice(5)).trim();
   } else if (pathname.startsWith('/sant/') || pathname.startsWith('/author/')) {
-    pathAuthor = decodeURIComponent(pathname.replace(/^\/(?:sant|author)\//, '')).trim();
+    const sub = pathname.replace(/^\/(?:sant|author)\//, '');
+    const parts = sub.split('/').map((p) => decodeURIComponent(p).trim()).filter(Boolean);
+    if (parts.length === 3 && parts[1] === 'page' && /^\d+$/.test(parts[2])) {
+      pathAuthor = parts[0];
+      saintPageNum = Math.max(1, parseInt(parts[2], 10));
+      isPaginatedSaint = true;
+    } else {
+      pathAuthor = decodeURIComponent(sub).trim();
+    }
   } else if (pathname.startsWith('/grantha/')) {
     const rawParts = pathname.slice(9).split('/').filter(Boolean);
     const parts = pathname.slice(9).split('/').map((p) => decodeURIComponent(p).trim()).filter(Boolean);
-    if (parts.length >= 2) {
+    if (parts.length === 3 && parts[1] === 'page' && /^\d+$/.test(parts[2])) {
+      pathGrantha = parts[0];
+      granthaPageNum = Math.max(1, parseInt(parts[2], 10));
+      isPaginatedGrantha = true;
+    } else if (parts.length >= 2) {
       pathGrantha = parts[0];
       pathChapter = parts.slice(1).join('/');
       // If chapter contains percent-encoding or non-ASCII Devanagari or non-canonical format, 301 redirect to clean Hinglish!
@@ -684,8 +906,29 @@ export const onRequest: PagesFunction<Env> = async (context) => {
 
   if (isPathDomain && !isStaging) {
     // path.vrindopnishad.in owns ONLY Mahagranth Parayana (epics & chapters)
-    if (pathname === '/rasik-saints-of-vrindavan' || pathname === '/vrindavan-ashtayama-seva-darshan-timings' || pathname === '/rasik-vani-granthas-list' || pathname === '/online-tulsi-mala-naam-jap') {
-      return Response.redirect(`https://bhav.vrindopnishad.in${pathname}`, 301);
+    const guideSlugOnPath = pathname.replace(/^\/+/, '');
+    if (
+      pathname === '/rasik-saints-of-vrindavan' ||
+      pathname === '/vrindavan-ashtayama-seva-darshan-timings' ||
+      pathname === '/rasik-vani-granthas-list' ||
+      pathname === '/online-tulsi-mala-naam-jap' ||
+      pathname === '/rituals' ||
+      pathname === '/places' ||
+      pathname === '/stories' ||
+      pathname === '/biographies' ||
+      pathname.startsWith('/ritual/') ||
+      pathname.startsWith('/place/') ||
+      pathname.startsWith('/story/') ||
+      pathname.startsWith('/bio/') ||
+      pathname === '/ragas' ||
+      pathname.startsWith('/raga/') ||
+      pathname === '/themes' ||
+      pathname.startsWith('/theme/') ||
+      pathname === '/glossary' ||
+      pathname.startsWith('/glossary/') ||
+      Boolean(TOPICAL_GUIDES_META[guideSlugOnPath])
+    ) {
+      return Response.redirect(`https://bhav.vrindopnishad.in${pathname}${url.search}`, 301);
     }
     if (qGrantha && EPICS_META[qGrantha]) {
       // Epics belong strictly to path.vrindopnishad.in.
@@ -779,11 +1022,21 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   // Build entity SEO metadata and Schema.org graph
   let title = 'वृन्दोपनिषद् 2.0 • Sacred Vrindavan Ras Sanctuary & Canonical Pada Literature';
   let description = 'Digital sanctuary for Nitya Nikunj Ras. Explore 44,000+ canonical Braj Ras verses, Hit Chaurasi, Radha Sudha Nidhi, Kelimal, Ashtayama daily seva schedule, and contemplative dhyana sadhana.';
-  let canonicalUrl = `${canonicalBaseDomain}${url.search ? url.search : (pathname === '/' ? '/' : pathname)}`;
+  const cleanSearchParams = new URLSearchParams(url.searchParams);
+  for (const key of Array.from(cleanSearchParams.keys())) {
+    if (/^(?:utm_|fbclid$|gclid$|_gl$|mc_)/i.test(key)) {
+      cleanSearchParams.delete(key);
+    }
+  }
+  const cleanSearch = cleanSearchParams.toString();
+  let canonicalUrl = `${canonicalBaseDomain}${pathname === '/' ? '/' : pathname}${cleanSearch ? `?${cleanSearch}` : ''}`;
   let entitySchema: Record<string, unknown> | null = null;
   const extraSchemas: Record<string, unknown>[] = [];
   let customKeywords: string | null = null;
   let dynamicRootHtml: string | null = null;
+  let hasPrerenderedStaticRoot = false;
+  let prevLinkUrl: string | null = null;
+  let nextLinkUrl: string | null = null;
 
   const padId = qPad || pathPad;
 
@@ -792,6 +1045,10 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     const effectiveSlug = padaAliasesObj[cleanPadId] || padaAliasesObj[padId] || cleanPadId;
     const snippet = padaSnippetsObj[effectiveSlug] || padaSnippetsObj[cleanPadId] || padaSnippetsObj[padId];
     const known = KNOWN_PADAS_META[cleanPadId] || KNOWN_PADAS_META[padId] || KNOWN_PADAS_META[effectiveSlug];
+
+    if (!snippet && !known) {
+      return notFoundResponse('यह पावन पद उपलब्ध नहीं है (Pad Not Found)');
+    }
 
     const padTitle = known?.title || snippet?.[0] || formatSlug(cleanPadId);
     const padAuthor = known?.author || snippet?.[1] || 'रसिक संत';
@@ -839,6 +1096,13 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     ].join(', ');
 
     const authorSameAs = getSaintSameAs(padAuthor);
+    const padAudioPath = snippet?.[7] || undefined;
+    const padAudioUrl = padAudioPath
+      ? (padAudioPath.startsWith('http') ? padAudioPath : `https://bhav.vrindopnishad.in${padAudioPath}`)
+      : undefined;
+    if (PRERENDERED_PAD_SLUGS.has(cleanPadId) || PRERENDERED_PAD_SLUGS.has(effectiveSlug)) {
+      hasPrerenderedStaticRoot = true;
+    }
 
     entitySchema = {
       '@type': 'CreativeWork',
@@ -864,7 +1128,23 @@ export const onRequest: PagesFunction<Env> = async (context) => {
         'name': 'वृन्दोपनिषद् 2.0 (Vrindopnishad)',
         'url': 'https://bhav.vrindopnishad.in/',
       },
+      ...(padAudioUrl ? {
+        'audio': {
+          '@id': `${canonicalUrl}#audio`,
+        },
+      } : {}),
     };
+
+    if (padAudioUrl) {
+      extraSchemas.push({
+        '@type': 'AudioObject',
+        '@id': `${canonicalUrl}#audio`,
+        'name': `${padTitle} • Sacred Audio Recitation`,
+        'contentUrl': padAudioUrl,
+        'encodingFormat': 'audio/mpeg',
+        'inLanguage': 'hi',
+      });
+    }
 
     if (ragName) {
       extraSchemas.push({
@@ -1100,26 +1380,9 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   } else if (qAuthor) {
     const saint = SAINTS_MAP.get(qAuthor) || SAINTS_MAP.get(decodeURIComponent(qAuthor).trim()) || SAINTS_MAP.get(qAuthor.toLowerCase());
     const saintName = saint ? saint.name : formatSlug(qAuthor);
+    const saintCanonicalSlug = saint?.slug || qAuthor;
     const tradition = saint?.tradition ? ` (${saint.tradition})` : '';
     const bio = saint?.biography ? `${saint.biography} ` : '';
-
-    title = `${saintName} | रसिक जीवन चरित्र, वाणियाँ व समस्त पद • वृन्दोपनिषद्`;
-    description = `परम पूज्य ${saintName} जी का प्रामाणिक जीवन चरित्र, निकुंज उपासना, संप्रदाय${saint?.tradition ? ` (${saint.tradition})` : ''} एवं समस्त पावन पदों का संग्रह। वृन्दोपनिषद् 2.0`;
-    canonicalUrl = `https://bhav.vrindopnishad.in/sant/${encodeURIComponent(saint?.slug || qAuthor)}`;
-
-    const saintSameAs = getSaintSameAs(saintName);
-
-    entitySchema = {
-      '@type': 'ProfilePage',
-      'headline': `${saintName} - रसिक संत परंपरा`,
-      'mainEntity': {
-        '@type': 'Person',
-        'name': saintName,
-        'description': saint?.biography || `${saintName} - ब्रज निकुंज रस व पावन वाणी के प्रणेता।`,
-        ...(saint?.tradition ? { 'knowsAbout': saint.tradition } : {}),
-        ...(saintSameAs ? { 'sameAs': saintSameAs } : {}),
-      },
-    };
 
     ensureCrawlIndex();
     let saintPadas: [string, string][] = saintCrawlMap[saintName] || [];
@@ -1137,6 +1400,55 @@ export const onRequest: PagesFunction<Env> = async (context) => {
       }
     }
 
+    if (!saint && saintPadas.length === 0) {
+      return notFoundResponse('यह रसिक संत पृष्ठ उपलब्ध नहीं है (Saint Not Found)');
+    }
+
+    const PAGE_SIZE = 100;
+    const totalSaintPadas = saintPadas.length;
+    const totalSaintPages = Math.max(1, Math.ceil(totalSaintPadas / PAGE_SIZE));
+    if (isPaginatedSaint && saintPageNum > totalSaintPages) {
+      return notFoundResponse('संत पदावली पृष्ठ उपलब्ध नहीं है (Page Not Found)');
+    }
+    const currentSaintPage = isPaginatedSaint ? saintPageNum : 1;
+    const pagedSaintPadas = saintPadas.slice((currentSaintPage - 1) * PAGE_SIZE, currentSaintPage * PAGE_SIZE);
+    const saintBaseUrl = `https://bhav.vrindopnishad.in/sant/${encodeURIComponent(saintCanonicalSlug)}`;
+    if (currentSaintPage > 1) {
+      prevLinkUrl = currentSaintPage === 2 ? saintBaseUrl : `${saintBaseUrl}/page/${currentSaintPage - 1}`;
+    }
+    if (currentSaintPage < totalSaintPages) {
+      nextLinkUrl = `${saintBaseUrl}/page/${currentSaintPage + 1}`;
+    }
+    if (!isPaginatedSaint && PRERENDERED_SAINT_SLUGS.has(saintCanonicalSlug)) {
+      hasPrerenderedStaticRoot = true;
+    }
+
+    title = `${saintName}${currentSaintPage > 1 ? ` (पृष्ठ ${currentSaintPage})` : ''} | रसिक जीवन चरित्र, वाणियाँ व समस्त पद • वृन्दोपनिषद्`;
+    description = `परम पूज्य ${saintName} जी का प्रामाणिक जीवन चरित्र, निकुंज उपासना, संप्रदाय${saint?.tradition ? ` (${saint.tradition})` : ''} एवं समस्त ${totalSaintPadas} पावन पदों का संग्रह। वृन्दोपनिषद् 2.0`;
+    canonicalUrl = currentSaintPage > 1 ? `${saintBaseUrl}/page/${currentSaintPage}` : saintBaseUrl;
+
+    const saintSameAs = getSaintSameAs(saintName);
+
+    entitySchema = {
+      '@type': 'ProfilePage',
+      'headline': `${saintName} - रसिक संत परंपरा`,
+      'mainEntity': {
+        '@type': 'Person',
+        'name': saintName,
+        'description': saint?.biography || `${saintName} - ब्रज निकुंज रस व पावन वाणी के प्रणेता।`,
+        ...(saint?.tradition ? { 'knowsAbout': saint.tradition } : {}),
+        ...(saintSameAs ? { 'sameAs': saintSameAs } : {}),
+      },
+    };
+
+    const saintPaginationHtml = totalSaintPages > 1 ? `
+      <nav aria-label="Pagination" style="margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;">
+        ${prevLinkUrl ? `<a href="${prevLinkUrl}" style="padding: 0.4rem 0.85rem; background: #fef3c7; color: #92400e; border-radius: 0.5rem; text-decoration: none; font-weight: 600;">&larr; पिछला पृष्ठ</a>` : ''}
+        <span style="font-size: 0.9rem; color: #78716c;">पृष्ठ ${currentSaintPage} / ${totalSaintPages} (कुल ${totalSaintPadas} पद)</span>
+        ${nextLinkUrl ? `<a href="${nextLinkUrl}" style="padding: 0.4rem 0.85rem; background: #fef3c7; color: #92400e; border-radius: 0.5rem; text-decoration: none; font-weight: 600;">अगला पृष्ठ &rarr;</a>` : ''}
+      </nav>
+    ` : '';
+
     dynamicRootHtml = `
       <article class="sanctuary-ssr-content" style="max-width: 820px; margin: 0 auto; padding: 2.5rem 1.25rem; font-family: 'Noto Serif Devanagari', serif;">
         <nav style="margin-bottom: 1.5rem; font-size: 0.875rem; color: #b45309;">
@@ -1150,16 +1462,17 @@ export const onRequest: PagesFunction<Env> = async (context) => {
         <p style="font-size: 1.1rem; line-height: 1.8; color: #44403c;">${description}</p>
 
         <!-- Saint Pada Directory (Spidering Discovery Mesh) -->
-        ${saintPadas.length > 0 ? `
+        ${pagedSaintPadas.length > 0 ? `
         <section style="margin-top: 2rem; background: #ffffff; padding: 1.25rem; border: 1px solid #fde68a; border-radius: 0.75rem; box-shadow: 0 2px 8px rgba(217, 119, 6, 0.05);">
-          <h2 style="font-size: 1.25rem; font-weight: 600; color: #78350f; margin: 0 0 1rem 0;">🌸 ${saintName} के पावन पद एवं अमृत वाणियाँ (${saintPadas.length} पद)</h2>
+          <h2 style="font-size: 1.25rem; font-weight: 600; color: #78350f; margin: 0 0 1rem 0;">🌸 ${saintName} के पावन पद एवं अमृत वाणियाँ (कुल ${totalSaintPadas} पद)</h2>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.75rem;">
-            ${saintPadas.map(([pSlug, pTitle]) => `
+            ${pagedSaintPadas.map(([pSlug, pTitle]) => `
               <a href="/pad/${encodeURIComponent(pSlug)}" style="display: block; padding: 0.75rem 1rem; background: #fffbeb; border: 1px solid #fef3c7; border-radius: 0.5rem; color: #1c1917; text-decoration: none; font-size: 0.95rem; font-weight: 500;">
                 ${pTitle} &rarr;
               </a>
             `).join('')}
           </div>
+          ${saintPaginationHtml}
         </section>
         ` : ''}
 
@@ -1172,7 +1485,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
           </details>
           <details open style="padding: 0.75rem; background-color: #ffffff; border-radius: 0.5rem; border: 1px solid #fef3c7;">
             <summary style="font-weight: 600; color: #78350f; cursor: pointer;">वृन्दोपनिषद् में ${saintName} के कितने पद उपलब्ध हैं?</summary>
-            <p style="margin: 0.5rem 0 0 0; color: #44403c; font-size: 0.95rem;">वृन्दोपनिषद् डिजिटल आर्काइव में ${saintName} जी के <strong>${saintPadas.length || 'अनेक'}</strong> प्रामाणिक पद एवं वाणियाँ मूल पाठ, भावार्थ व स्वर-राग सहित उपलब्ध हैं।</p>
+            <p style="margin: 0.5rem 0 0 0; color: #44403c; font-size: 0.95rem;">वृन्दोपनिषद् डिजिटल आर्काइव में ${saintName} जी के <strong>${totalSaintPadas || 'अनेक'}</strong> प्रामाणिक पद एवं वाणियाँ मूल पाठ, भावार्थ व स्वर-राग सहित उपलब्ध हैं।</p>
           </details>
         </section>
 
@@ -1404,8 +1717,31 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     const authorText = g.author ? ` (${g.author})` : '';
     const romanTitle = formatSlug(g.id || qGrantha);
     title = `${g.name} (${g.author || 'रसिक संत'}) | संपूर्ण मूल पाठ, पद संग्रह व व्याख्या • वृन्दोपनिषद्`;
-    description = `पावन वाणी ग्रंथ ${g.name} का संपूर्ण मूल पाठ, श्लोक व पद संग्रह। रचयिता: ${g.author || 'रसिक संत'}। नित्य स्वाध्याय, भावार्थ व अर्थ सहित।`;
-    canonicalUrl = `https://bhav.vrindopnishad.in/grantha/${encodeURIComponent(g.id || qGrantha)}`;
+    const granthaId = g.id || qGrantha;
+    ensureCrawlIndex();
+    const granthaPadas: [string, string][] = granthaCrawlMap[granthaId] || [];
+    const PAGE_SIZE = 100;
+    const totalGranthaPadas = granthaPadas.length;
+    const totalGranthaPages = Math.max(1, Math.ceil(totalGranthaPadas / PAGE_SIZE));
+    if (isPaginatedGrantha && granthaPageNum > totalGranthaPages) {
+      return notFoundResponse('ग्रंथ पृष्ठ उपलब्ध नहीं है (Page Not Found)');
+    }
+    const currentGranthaPage = isPaginatedGrantha ? granthaPageNum : 1;
+    const pagedGranthaPadas = granthaPadas.slice((currentGranthaPage - 1) * PAGE_SIZE, currentGranthaPage * PAGE_SIZE);
+    const granthaBaseUrl = `https://bhav.vrindopnishad.in/grantha/${encodeURIComponent(granthaId)}`;
+    if (currentGranthaPage > 1) {
+      prevLinkUrl = currentGranthaPage === 2 ? granthaBaseUrl : `${granthaBaseUrl}/page/${currentGranthaPage - 1}`;
+    }
+    if (currentGranthaPage < totalGranthaPages) {
+      nextLinkUrl = `${granthaBaseUrl}/page/${currentGranthaPage + 1}`;
+    }
+    if (!isPaginatedGrantha && PRERENDERED_GRANTHA_IDS.has(granthaId)) {
+      hasPrerenderedStaticRoot = true;
+    }
+
+    title = `${g.name}${currentGranthaPage > 1 ? ` (पृष्ठ ${currentGranthaPage})` : ''}${g.author ? ` (${g.author})` : ''} | संपूर्ण मूल पाठ व पद संग्रह • वृन्दोपनिषद्`;
+    description = `पावन वाणी ग्रंथ ${g.name} का संपूर्ण मूल पाठ, श्लोक व ${totalGranthaPadas} पद संग्रह। रचयिता: ${g.author || 'रसिक संत'}। नित्य स्वाध्याय, भावार्थ व अर्थ सहित।`;
+    canonicalUrl = currentGranthaPage > 1 ? `${granthaBaseUrl}/page/${currentGranthaPage}` : granthaBaseUrl;
 
     entitySchema = {
       '@type': 'Book',
@@ -1413,11 +1749,33 @@ export const onRequest: PagesFunction<Env> = async (context) => {
       'name': g.name,
       ...(g.author ? { 'author': { '@type': 'Person', 'name': g.author } } : {}),
       'description': g.description || description,
+      ...(granthaId === 'hit-chaurasi' ? {
+        'audio': [
+          {
+            '@type': 'AudioObject',
+            'name': 'श्री हित चौरासी मंगलाचरण एवं परिचय (Intro)',
+            'contentUrl': 'https://bhav.vrindopnishad.in/audio/hit-chaurasi/SHCJ0.mp3',
+            'encodingFormat': 'audio/mpeg',
+            'inLanguage': 'hi',
+          },
+          {
+            '@type': 'AudioObject',
+            'name': 'श्री हित चौरासी फलश्रुति एवं समापन (Outro)',
+            'contentUrl': 'https://bhav.vrindopnishad.in/audio/hit-chaurasi/SHCJ85.mp3',
+            'encodingFormat': 'audio/mpeg',
+            'inLanguage': 'hi',
+          },
+        ],
+      } : {}),
     };
 
-    ensureCrawlIndex();
-    const granthaId = g.id || qGrantha;
-    const granthaPadas: [string, string][] = granthaCrawlMap[granthaId] || [];
+    const granthaPaginationHtml = totalGranthaPages > 1 ? `
+      <nav aria-label="Pagination" style="margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;">
+        ${prevLinkUrl ? `<a href="${prevLinkUrl}" style="padding: 0.4rem 0.85rem; background: #fef3c7; color: #92400e; border-radius: 0.5rem; text-decoration: none; font-weight: 600;">&larr; पिछला पृष्ठ</a>` : ''}
+        <span style="font-size: 0.9rem; color: #78716c;">पृष्ठ ${currentGranthaPage} / ${totalGranthaPages} (कुल ${totalGranthaPadas} पद)</span>
+        ${nextLinkUrl ? `<a href="${nextLinkUrl}" style="padding: 0.4rem 0.85rem; background: #fef3c7; color: #92400e; border-radius: 0.5rem; text-decoration: none; font-weight: 600;">अगला पृष्ठ &rarr;</a>` : ''}
+      </nav>
+    ` : '';
 
     dynamicRootHtml = `
       <article class="sanctuary-ssr-content" style="max-width: 820px; margin: 0 auto; padding: 2.5rem 1.25rem; font-family: 'Noto Serif Devanagari', serif;">
@@ -1432,16 +1790,17 @@ export const onRequest: PagesFunction<Env> = async (context) => {
         <p style="font-size: 1.1rem; line-height: 1.8; color: #44403c;">${description}</p>
 
         <!-- Grantha Pada Directory (Spidering Discovery Mesh) -->
-        ${granthaPadas.length > 0 ? `
+        ${pagedGranthaPadas.length > 0 ? `
         <section style="margin-top: 2rem; background: #ffffff; padding: 1.25rem; border: 1px solid #fde68a; border-radius: 0.75rem; box-shadow: 0 2px 8px rgba(217, 119, 6, 0.05);">
-          <h2 style="font-size: 1.25rem; font-weight: 600; color: #78350f; margin: 0 0 1rem 0;">📖 ${g.name} के समस्त पावन पद (${granthaPadas.length} पद)</h2>
+          <h2 style="font-size: 1.25rem; font-weight: 600; color: #78350f; margin: 0 0 1rem 0;">📖 ${g.name} के समस्त पावन पद (कुल ${totalGranthaPadas} पद)</h2>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.75rem;">
-            ${granthaPadas.map(([pSlug, pTitle]) => `
+            ${pagedGranthaPadas.map(([pSlug, pTitle]) => `
               <a href="/pad/${encodeURIComponent(pSlug)}" style="display: block; padding: 0.75rem 1rem; background: #fffbeb; border: 1px solid #fef3c7; border-radius: 0.5rem; color: #1c1917; text-decoration: none; font-size: 0.95rem; font-weight: 500;">
                 ${pTitle} &rarr;
               </a>
             `).join('')}
           </div>
+          ${granthaPaginationHtml}
         </section>
         ` : ''}
 
@@ -1454,7 +1813,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
           </details>
           <details open style="padding: 0.75rem; background-color: #ffffff; border-radius: 0.5rem; border: 1px solid #fef3c7;">
             <summary style="font-weight: 600; color: #78350f; cursor: pointer;">${g.name} में कुल कितने पद हैं?</summary>
-            <p style="margin: 0.5rem 0 0 0; color: #44403c; font-size: 0.95rem;">इस पावन ग्रंथ में कुल <strong>${granthaPadas.length || 'अनेक'}</strong> पद संकलित हैं।</p>
+            <p style="margin: 0.5rem 0 0 0; color: #44403c; font-size: 0.95rem;">इस पावन ग्रंथ में कुल <strong>${totalGranthaPadas || 'अनेक'}</strong> पद संकलित हैं।</p>
           </details>
         </section>
 
@@ -1480,6 +1839,9 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     ensureCrawlIndex();
     const formatted = formatSlug(qGrantha);
     const granthaPadas: [string, string][] = granthaCrawlMap[qGrantha] || [];
+    if (granthaPadas.length === 0) {
+      return notFoundResponse('यह पावन ग्रंथ उपलब्ध नहीं है (Grantha Not Found)');
+    }
     title = `${formatted} • संपूर्ण ग्रंथ संग्रह | वृन्दोपनिषद् 2.0 (Vrindopnishad)`;
     description = `${formatted} के समस्त पावन पदों व श्लोकों का संग्रह। वृन्दोपनिषद् 2.0`;
     canonicalUrl = `https://bhav.vrindopnishad.in/grantha/${encodeURIComponent(qGrantha)}`;
@@ -1622,6 +1984,446 @@ export const onRequest: PagesFunction<Env> = async (context) => {
         </section>
       </article>
     `;
+  } else if (pathname === '/rituals') {
+    title = 'Nitya Upasana • ३१+ नित्य आरती, चालीसा, स्तोत्र व अष्टक संग्रह | वृन्दोपनिषद् 2.0';
+    description = 'श्री राधा चालीसा, कुंजबिहारी आरती, हनुमान चालीसा, शिव तांडव स्तोत्र, यमुनाष्टकम् सहित सम्पूर्ण सनातन नित्य उपासना संग्रह।';
+    canonicalUrl = 'https://bhav.vrindopnishad.in/rituals';
+    hasPrerenderedStaticRoot = true;
+  } else if (pathname.startsWith('/ritual/')) {
+    const slug = decodeURIComponent(pathname.slice('/ritual/'.length)).trim();
+    const r = RITUALS_MAP.get(slug);
+    if (!r) return notFoundResponse('यह आरती/चालीसा उपलब्ध नहीं है (Ritual Not Found)');
+    hasPrerenderedStaticRoot = true;
+    const rMeta = ritualMetaObj[r.slug] || {};
+    const pujaVidhi = rMeta.pujaVidhi;
+    const durationMin = r.durationMinutes || rMeta.durationMinutes;
+    title = `${r.titleDevanagari} • संपूर्ण पाठ, भावार्थ व नित्य स्तुति | वृन्दोपनिषद् 2.0`;
+    description = `${r.titleDevanagari} का प्रामाणिक मूल पाठ, विधि एवं भावार्थ। नित्य उपासना संग्रह।`;
+    canonicalUrl = `https://bhav.vrindopnishad.in/ritual/${encodeURIComponent(r.slug)}`;
+    entitySchema = {
+      '@type': 'Article',
+      '@id': `${canonicalUrl}#ritual`,
+      'headline': r.titleDevanagari,
+      'name': r.titleDevanagari,
+      'description': pujaVidhi?.benefits || description,
+      'inLanguage': ['hi', 'sa'],
+      'genre': r.category || 'Nitya Upasana',
+      'image': 'https://bhav.vrindopnishad.in/assets/temples/banke-bihari-v2.webp',
+      'publisher': {
+        '@type': 'ReligiousOrganization',
+        'name': 'वृन्दोपनिषद् 2.0',
+        'url': 'https://bhav.vrindopnishad.in/',
+      },
+      'url': canonicalUrl,
+    };
+    if (pujaVidhi && Array.isArray(pujaVidhi.steps) && pujaVidhi.steps.length > 0) {
+      extraSchemas.push({
+        '@type': 'HowTo',
+        '@id': `${canonicalUrl}#howto`,
+        'name': `${r.titleDevanagari} — पूजा एवं पाठ विधि`,
+        'description': pujaVidhi.benefits || description,
+        ...(durationMin ? { 'totalTime': `PT${durationMin}M` } : {}),
+        ...(Array.isArray(pujaVidhi.requiredItems) && pujaVidhi.requiredItems.length > 0 ? {
+          'supply': pujaVidhi.requiredItems.map((item) => ({
+            '@type': 'HowToSupply',
+            'name': item,
+          })),
+        } : {}),
+        'step': pujaVidhi.steps.map((stepText, idx) => ({
+          '@type': 'HowToStep',
+          'position': idx + 1,
+          'text': stepText,
+        })),
+      });
+    }
+    extraSchemas.push({
+      '@type': 'BreadcrumbList',
+      '@id': `${canonicalUrl}#breadcrumb`,
+      'itemListElement': [
+        { '@type': 'ListItem', 'position': 1, 'name': 'वृन्दोपनिषद् 2.0', 'item': 'https://bhav.vrindopnishad.in/' },
+        { '@type': 'ListItem', 'position': 2, 'name': 'नित्य उपासना', 'item': 'https://bhav.vrindopnishad.in/rituals' },
+        { '@type': 'ListItem', 'position': 3, 'name': r.titleDevanagari, 'item': canonicalUrl },
+      ],
+    });
+  } else if (pathname === '/places') {
+    title = 'Sacred Places & Dham Darshan • ३३+ पवित्र धाम, तीर्थ व दिव्य लीला स्थल | वृन्दोपनिषद् 2.0';
+    description = 'श्री निधिवन राज, सेवा कुंज, राधावल्लभ मंदिर, गोवर्धन, राधा कुण्ड, बरसाना, अयोध्या, काशी, केदारनाथ सहित पावन तीर्थ दर्शन व इतिहास।';
+    canonicalUrl = 'https://bhav.vrindopnishad.in/places';
+    hasPrerenderedStaticRoot = true;
+  } else if (pathname.startsWith('/place/')) {
+    const slug = decodeURIComponent(pathname.slice('/place/'.length)).trim();
+    const pl = PLACES_MAP.get(slug);
+    if (!pl) return notFoundResponse('यह पावन धाम पृष्ठ उपलब्ध नहीं है (Place Not Found)');
+    hasPrerenderedStaticRoot = true;
+    const pMeta = placeMetaObj[pl.slug] || {};
+    const timings = pMeta.darshanTimings;
+    const openingHours: Record<string, unknown>[] = [];
+    const allDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    if (timings?.morning?.open && timings?.morning?.close) {
+      openingHours.push({
+        '@type': 'OpeningHoursSpecification',
+        'dayOfWeek': allDays,
+        'opens': timings.morning.open,
+        'closes': timings.morning.close,
+      });
+    }
+    if (timings?.evening?.open && timings?.evening?.close) {
+      openingHours.push({
+        '@type': 'OpeningHoursSpecification',
+        'dayOfWeek': allDays,
+        'opens': timings.evening.open,
+        'closes': timings.evening.close,
+      });
+    }
+    title = `${pl.nameDevanagari} (${pl.regionNameHindi || 'ब्रज धाम'}) • दर्शन, इतिहास व महात्म्य | वृन्दोपनिषद् 2.0`;
+    description = `${pl.briefSignificance || pl.nameDevanagari}। श्री धाम दर्शन, समय-सारणी एवं इतिहास।`;
+    canonicalUrl = `https://bhav.vrindopnishad.in/place/${encodeURIComponent(pl.slug)}`;
+    entitySchema = {
+      '@type': ['Place', 'TouristAttraction', 'HinduTemple'],
+      '@id': `${canonicalUrl}#place`,
+      'name': pl.nameDevanagari,
+      'description': pl.briefSignificance || description,
+      'image': 'https://bhav.vrindopnishad.in/assets/temples/banke-bihari-v2.webp',
+      'address': {
+        '@type': 'PostalAddress',
+        'addressRegion': pl.regionNameHindi || 'Vrindavan',
+        'addressCountry': 'IN',
+      },
+      ...(pMeta.coordinates?.lat && pMeta.coordinates?.lng ? {
+        'geo': {
+          '@type': 'GeoCoordinates',
+          'latitude': pMeta.coordinates.lat,
+          'longitude': pMeta.coordinates.lng,
+        },
+      } : {}),
+      ...(openingHours.length > 0 ? { 'openingHoursSpecification': openingHours } : {}),
+      'url': canonicalUrl,
+    };
+    extraSchemas.push({
+      '@type': 'BreadcrumbList',
+      '@id': `${canonicalUrl}#breadcrumb`,
+      'itemListElement': [
+        { '@type': 'ListItem', 'position': 1, 'name': 'वृन्दोपनिषद् 2.0', 'item': 'https://bhav.vrindopnishad.in/' },
+        { '@type': 'ListItem', 'position': 2, 'name': 'श्री धाम तीर्थ दर्शन', 'item': 'https://bhav.vrindopnishad.in/places' },
+        { '@type': 'ListItem', 'position': 3, 'name': pl.nameDevanagari, 'item': canonicalUrl },
+      ],
+    });
+  } else if (pathname === '/stories') {
+    title = 'Katha Sanctuary • २२+ दिव्य पौराणिक कथाएं एवं ब्रज लीला प्रसंग | वृन्दोपनिषद् 2.0';
+    description = 'श्री महारास लीला, शबरी भक्ति, गोवर्धन धारण, नरसी मेहता हुंडी, करमाबाई खिचड़ी, गजेन्द्र मोक्ष सहित प्रेरणादायक भक्ति कथाएं।';
+    canonicalUrl = 'https://bhav.vrindopnishad.in/stories';
+    hasPrerenderedStaticRoot = true;
+  } else if (pathname.startsWith('/story/')) {
+    const slug = decodeURIComponent(pathname.slice('/story/'.length)).trim();
+    const st = STORIES_MAP.get(slug);
+    if (!st) return notFoundResponse('यह दिव्य कथा उपलब्ध नहीं है (Story Not Found)');
+    hasPrerenderedStaticRoot = true;
+    title = `${st.titleDevanagari} • संपूर्ण दिव्य कथा व आध्यात्मिक मर्म | वृन्दोपनिषद् 2.0`;
+    description = `${st.summary || st.titleDevanagari}। पावन पौराणिक आख्यान एवं ब्रज लीला।`;
+    canonicalUrl = `https://bhav.vrindopnishad.in/story/${encodeURIComponent(st.slug)}`;
+    entitySchema = {
+      '@type': 'Article',
+      '@id': `${canonicalUrl}#story`,
+      'headline': st.titleDevanagari,
+      'name': st.titleDevanagari,
+      'description': st.summary || description,
+      'inLanguage': 'hi',
+      'genre': 'Sacred Puranic Leela',
+      'image': 'https://bhav.vrindopnishad.in/assets/temples/banke-bihari-v2.webp',
+      'publisher': {
+        '@type': 'ReligiousOrganization',
+        'name': 'वृन्दोपनिषद् 2.0',
+        'url': 'https://bhav.vrindopnishad.in/',
+      },
+      'url': canonicalUrl,
+    };
+    extraSchemas.push({
+      '@type': 'BreadcrumbList',
+      '@id': `${canonicalUrl}#breadcrumb`,
+      'itemListElement': [
+        { '@type': 'ListItem', 'position': 1, 'name': 'वृन्दोपनिषद् 2.0', 'item': 'https://bhav.vrindopnishad.in/' },
+        { '@type': 'ListItem', 'position': 2, 'name': 'कथा संकुल', 'item': 'https://bhav.vrindopnishad.in/stories' },
+        { '@type': 'ListItem', 'position': 3, 'name': st.titleDevanagari, 'item': canonicalUrl },
+      ],
+    });
+  } else if (pathname === '/biographies') {
+    title = 'Charitra Darshan • २५+ पूज्य रसिक संत, महर्षि व आचार्य चरित्र | वृन्दोपनिषद् 2.0';
+    description = 'श्री चैतन्य महाप्रभु, वल्लभाचार्य, निम्बार्काचार्य, स्वामी हरिदास, हित हरिवंश, सूरदास, तुलसीदास, मीराबाई, एकनाथ, तुकाराम के पावन जीवन चरित।';
+    canonicalUrl = 'https://bhav.vrindopnishad.in/biographies';
+    hasPrerenderedStaticRoot = true;
+  } else if (pathname.startsWith('/bio/')) {
+    const slug = decodeURIComponent(pathname.slice('/bio/'.length)).trim();
+    const b = BIOS_MAP.get(slug);
+    if (!b) return notFoundResponse('यह संत चरित्र उपलब्ध नहीं है (Biography Not Found)');
+    hasPrerenderedStaticRoot = true;
+    const bioSameAs = getSaintSameAs(b.name || b.nameDevanagari);
+    title = `${b.nameDevanagari}${b.titleHonorific ? ` (${b.titleHonorific})` : ''} • जीवन चरित्र, दर्शन व वाणी | वृन्दोपनिषद् 2.0`;
+    description = `${b.nameDevanagari} का पावन जीवन चरित, गुरु परंपरा, संप्रदाय एवं अमृत शिक्षाएं।`;
+    canonicalUrl = `https://bhav.vrindopnishad.in/bio/${encodeURIComponent(b.slug)}`;
+    entitySchema = {
+      '@type': 'ProfilePage',
+      '@id': `${canonicalUrl}#profile`,
+      'mainEntity': {
+        '@type': 'Person',
+        'name': b.nameDevanagari,
+        ...(b.titleHonorific ? { 'honorificPrefix': b.titleHonorific } : {}),
+        ...(b.tradition ? { 'knowsAbout': b.tradition } : {}),
+        ...(bioSameAs ? { 'sameAs': bioSameAs } : {}),
+      },
+      'url': canonicalUrl,
+    };
+    extraSchemas.push({
+      '@type': 'BreadcrumbList',
+      '@id': `${canonicalUrl}#breadcrumb`,
+      'itemListElement': [
+        { '@type': 'ListItem', 'position': 1, 'name': 'वृन्दोपनिषद् 2.0', 'item': 'https://bhav.vrindopnishad.in/' },
+        { '@type': 'ListItem', 'position': 2, 'name': 'चरित्र दर्शन', 'item': 'https://bhav.vrindopnishad.in/biographies' },
+        { '@type': 'ListItem', 'position': 3, 'name': b.nameDevanagari, 'item': canonicalUrl },
+      ],
+    });
+  } else if (pathname === '/ragas') {
+    const ragaEntries = Object.entries(ragaIndexObj);
+    title = `शास्त्रीय राग कोष (${ragaEntries.length} राग) • ब्रज रस पदावली | वृन्दोपनिषद् 2.0`;
+    description = `श्री वृन्दावन रसिक वाणी में निबद्ध ${ragaEntries.length} शास्त्रीय एवं ब्रज लोक रागों (विभास, कल्याण, केदार, बिलावल, सारंग, मलार) के समस्त पावन पदों का संग्रह।`;
+    canonicalUrl = 'https://bhav.vrindopnishad.in/ragas';
+    entitySchema = {
+      '@type': 'CollectionPage',
+      '@id': `${canonicalUrl}#collection`,
+      'name': title,
+      'description': description,
+      'url': canonicalUrl,
+    };
+    dynamicRootHtml = `
+      <article class="sanctuary-ssr-content" style="max-width: 860px; margin: 0 auto; padding: 2.5rem 1.25rem; font-family: 'Noto Serif Devanagari', serif;">
+        <h1 style="font-size: 2rem; font-weight: 700; color: #1c1917; margin-bottom: 0.75rem;">🎶 शास्त्रीय राग एवं ब्रज संगीत कोष (${ragaEntries.length} राग)</h1>
+        <p style="font-size: 1.05rem; color: #44403c; margin-bottom: 1.5rem;">${description}</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem;">
+          ${ragaEntries.map(([rSlug, info]) => `
+            <a href="/raga/${encodeURIComponent(rSlug)}" style="display: block; padding: 0.75rem 1rem; background: #fffbeb; border: 1px solid #fde68a; border-radius: 0.5rem; color: #78350f; text-decoration: none; font-weight: 600;">
+              राग ${info.name} (${info.padas.length} पद) &rarr;
+            </a>
+          `).join('')}
+        </div>
+      </article>
+    `;
+  } else if (pathname.startsWith('/raga/')) {
+    const rSlug = decodeURIComponent(pathname.slice('/raga/'.length)).trim();
+    const rInfo = ragaIndexObj[rSlug];
+    if (!rInfo) return notFoundResponse('यह राग पृष्ठ उपलब्ध नहीं है (Raga Not Found)');
+    title = `राग ${rInfo.name} के पावन पद (${rInfo.padas.length} पद) • ब्रज रसिक संगीत | वृन्दोपनिषद् 2.0`;
+    description = `शास्त्रीय राग ${rInfo.name} में निबद्ध ${rInfo.padas.length} प्रामाणिक ब्रज रसिक पदों का मूल पाठ, रचयिता एवं भावार्थ संग्रह।`;
+    canonicalUrl = `https://bhav.vrindopnishad.in/raga/${encodeURIComponent(rSlug)}`;
+    entitySchema = {
+      '@type': 'CollectionPage',
+      '@id': `${canonicalUrl}#collection`,
+      'name': `राग ${rInfo.name} पद संग्रह`,
+      'description': description,
+      'url': canonicalUrl,
+    };
+    extraSchemas.push({
+      '@type': 'MusicComposition',
+      '@id': `${canonicalUrl}#composition`,
+      'name': `राग ${rInfo.name}`,
+      'musicalKey': `राग ${rInfo.name}`,
+      'inLanguage': 'hi',
+    });
+    extraSchemas.push({
+      '@type': 'BreadcrumbList',
+      '@id': `${canonicalUrl}#breadcrumb`,
+      'itemListElement': [
+        { '@type': 'ListItem', 'position': 1, 'name': 'वृन्दोपनिषद् 2.0', 'item': 'https://bhav.vrindopnishad.in/' },
+        { '@type': 'ListItem', 'position': 2, 'name': 'राग कोष', 'item': 'https://bhav.vrindopnishad.in/ragas' },
+        { '@type': 'ListItem', 'position': 3, 'name': `राग ${rInfo.name}`, 'item': canonicalUrl },
+      ],
+    });
+    const ragaPadasSlice = rInfo.padas.slice(0, 120);
+    dynamicRootHtml = `
+      <article class="sanctuary-ssr-content" style="max-width: 860px; margin: 0 auto; padding: 2.5rem 1.25rem; font-family: 'Noto Serif Devanagari', serif;">
+        <nav style="margin-bottom: 1.5rem; font-size: 0.875rem; color: #b45309;">
+          <a href="/" style="color: #b45309; text-decoration: none;">वृन्दोपनिषद् 2.0</a> &rsaquo; <a href="/ragas" style="color: #b45309; text-decoration: none;">राग कोष</a> &rsaquo; <span>राग ${rInfo.name}</span>
+        </nav>
+        <h1 style="font-size: 2rem; font-weight: 700; color: #1c1917; margin-bottom: 0.75rem;">🎶 राग ${rInfo.name} — पावन पद संग्रह (${rInfo.padas.length} पद)</h1>
+        <p style="font-size: 1.05rem; color: #44403c; margin-bottom: 1.5rem;">${description}</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.75rem;">
+          ${ragaPadasSlice.map((pSlug) => {
+            const sn = padaSnippetsObj[pSlug];
+            const pTitle = sn ? sn[0] : pSlug;
+            return `<a href="/pad/${encodeURIComponent(pSlug)}" style="display: block; padding: 0.75rem 1rem; background: #fffbeb; border: 1px solid #fef3c7; border-radius: 0.5rem; color: #1c1917; text-decoration: none; font-size: 0.95rem;">${pTitle} &rarr;</a>`;
+          }).join('')}
+        </div>
+      </article>
+    `;
+  } else if (pathname === '/themes') {
+    const themes = Object.values(themeHubsObj);
+    title = 'ब्रज उत्सव एवं लीला प्रसंग संग्रह (Themes & Festivals) | वृन्दोपनिषद् 2.0';
+    description = 'होली-फाग, श्री राधाष्टमी, झूलन महोत्सव, शरद पूर्णिमा महारास, अष्टयाम सेवा एवं एकादशी व्रत के पावन पदों का विषयवार संग्रह।';
+    canonicalUrl = 'https://bhav.vrindopnishad.in/themes';
+    entitySchema = {
+      '@type': 'CollectionPage',
+      '@id': `${canonicalUrl}#collection`,
+      'name': title,
+      'description': description,
+      'url': canonicalUrl,
+    };
+    dynamicRootHtml = `
+      <article class="sanctuary-ssr-content" style="max-width: 860px; margin: 0 auto; padding: 2.5rem 1.25rem; font-family: 'Noto Serif Devanagari', serif;">
+        <h1 style="font-size: 2rem; font-weight: 700; color: #1c1917; margin-bottom: 0.75rem;">🌸 ब्रज उत्सव एवं दिव्य लीला प्रसंग</h1>
+        <p style="font-size: 1.05rem; color: #44403c; margin-bottom: 1.5rem;">${description}</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem;">
+          ${themes.map((t) => `
+            <a href="/theme/${encodeURIComponent(t.slug)}" style="display: block; padding: 1.25rem; background: #fffbeb; border: 1px solid #fde68a; border-radius: 0.75rem; color: #1c1917; text-decoration: none;">
+              <h2 style="font-size: 1.2rem; font-weight: 700; color: #78350f; margin: 0 0 0.5rem 0;">${t.nameDevanagari} (${t.padas.length} पद)</h2>
+              <p style="font-size: 0.9rem; color: #44403c; margin: 0;">${t.description}</p>
+            </a>
+          `).join('')}
+        </div>
+      </article>
+    `;
+  } else if (pathname.startsWith('/theme/')) {
+    const tSlug = decodeURIComponent(pathname.slice('/theme/'.length)).trim();
+    const tInfo = themeHubsObj[tSlug];
+    if (!tInfo) return notFoundResponse('यह उत्सव/विषय पृष्ठ उपलब्ध नहीं है (Theme Not Found)');
+    title = `${tInfo.nameDevanagari} (${tInfo.padas.length} पावन पद) • ${tInfo.nameEnglish} | वृन्दोपनिषद् 2.0`;
+    description = tInfo.description;
+    canonicalUrl = `https://bhav.vrindopnishad.in/theme/${encodeURIComponent(tInfo.slug)}`;
+    entitySchema = {
+      '@type': 'CollectionPage',
+      '@id': `${canonicalUrl}#collection`,
+      'name': tInfo.nameDevanagari,
+      'description': tInfo.description,
+      'url': canonicalUrl,
+    };
+    extraSchemas.push({
+      '@type': 'BreadcrumbList',
+      '@id': `${canonicalUrl}#breadcrumb`,
+      'itemListElement': [
+        { '@type': 'ListItem', 'position': 1, 'name': 'वृन्दोपनिषद् 2.0', 'item': 'https://bhav.vrindopnishad.in/' },
+        { '@type': 'ListItem', 'position': 2, 'name': 'उत्सव एवं प्रसंग', 'item': 'https://bhav.vrindopnishad.in/themes' },
+        { '@type': 'ListItem', 'position': 3, 'name': tInfo.nameDevanagari, 'item': canonicalUrl },
+      ],
+    });
+    const themePadasSlice = tInfo.padas.slice(0, 120);
+    dynamicRootHtml = `
+      <article class="sanctuary-ssr-content" style="max-width: 860px; margin: 0 auto; padding: 2.5rem 1.25rem; font-family: 'Noto Serif Devanagari', serif;">
+        <nav style="margin-bottom: 1.5rem; font-size: 0.875rem; color: #b45309;">
+          <a href="/" style="color: #b45309; text-decoration: none;">वृन्दोपनिषद् 2.0</a> &rsaquo; <a href="/themes" style="color: #b45309; text-decoration: none;">उत्सव प्रसंग</a> &rsaquo; <span>${tInfo.nameDevanagari}</span>
+        </nav>
+        <h1 style="font-size: 2rem; font-weight: 700; color: #1c1917; margin-bottom: 0.75rem;">${tInfo.nameDevanagari} (${tInfo.padas.length} पद)</h1>
+        <p style="font-size: 1.05rem; color: #44403c; margin-bottom: 1.5rem;">${tInfo.description}</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.75rem;">
+          ${themePadasSlice.map((pSlug) => {
+            const sn = padaSnippetsObj[pSlug];
+            const pTitle = sn ? sn[0] : pSlug;
+            return `<a href="/pad/${encodeURIComponent(pSlug)}" style="display: block; padding: 0.75rem 1rem; background: #fffbeb; border: 1px solid #fef3c7; border-radius: 0.5rem; color: #1c1917; text-decoration: none; font-size: 0.95rem;">${pTitle} &rarr;</a>`;
+          }).join('')}
+        </div>
+      </article>
+    `;
+  } else if (pathname === '/glossary') {
+    title = `ब्रज रस शब्दकोश (${brajGlossaryList.length} पारिभाषिक शब्द) • Braj Glossary | वृन्दोपनिषद् 2.0`;
+    description = 'नित्य निकुंज, केलि विलास, सहज जोरी, अनन्य धर्म, सखी भाव, रस उपासना सहित ब्रज भक्ति साहित्य के प्रामाणिक पारिभाषिक शब्दों का अर्थ व संदर्भ।';
+    canonicalUrl = 'https://bhav.vrindopnishad.in/glossary';
+    entitySchema = {
+      '@type': 'DefinedTermSet',
+      '@id': `${canonicalUrl}#termset`,
+      'name': 'ब्रज रस एवं निकुंज उपासना शब्दकोश',
+      'description': description,
+      'url': canonicalUrl,
+      'hasDefinedTerm': brajGlossaryList.map((g) => ({
+        '@type': 'DefinedTerm',
+        'name': g.term,
+        'description': g.meaningDevanagari,
+        'url': `https://bhav.vrindopnishad.in/glossary/${encodeURIComponent(g.id)}`,
+      })),
+    };
+    dynamicRootHtml = `
+      <article class="sanctuary-ssr-content" style="max-width: 860px; margin: 0 auto; padding: 2.5rem 1.25rem; font-family: 'Noto Serif Devanagari', serif;">
+        <h1 style="font-size: 2rem; font-weight: 700; color: #1c1917; margin-bottom: 0.75rem;">📖 ब्रज रस शब्दकोश (${brajGlossaryList.length} पारिभाषिक पद)</h1>
+        <p style="font-size: 1.05rem; color: #44403c; margin-bottom: 1.5rem;">${description}</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem;">
+          ${brajGlossaryList.map((g) => `
+            <a href="/glossary/${encodeURIComponent(g.id)}" style="display: block; padding: 1.25rem; background: #fffbeb; border: 1px solid #fde68a; border-radius: 0.75rem; color: #1c1917; text-decoration: none;">
+              <h2 style="font-size: 1.15rem; font-weight: 700; color: #78350f; margin: 0 0 0.35rem 0;">${g.term}</h2>
+              <p style="font-size: 0.85rem; color: #b45309; margin: 0 0 0.5rem 0;">${g.transliteration}</p>
+              <p style="font-size: 0.9rem; color: #44403c; margin: 0;">${g.meaningDevanagari}</p>
+            </a>
+          `).join('')}
+        </div>
+      </article>
+    `;
+  } else if (pathname.startsWith('/glossary/')) {
+    const termSlug = decodeURIComponent(pathname.slice('/glossary/'.length)).trim();
+    const g = GLOSSARY_MAP.get(termSlug);
+    if (!g) return notFoundResponse('यह शब्दकोश प्रविष्टि उपलब्ध नहीं है (Glossary Term Not Found)');
+    title = `${g.term} (${g.transliteration}) — अर्थ एवं ब्रज रस संदर्भ | वृन्दोपनिषद् 2.0`;
+    description = `${g.meaningDevanagari}${g.context ? ` संदर्भ: ${g.context}` : ''}`;
+    canonicalUrl = `https://bhav.vrindopnishad.in/glossary/${encodeURIComponent(g.id)}`;
+    entitySchema = {
+      '@type': 'DefinedTerm',
+      '@id': `${canonicalUrl}#term`,
+      'name': g.term,
+      'alternateName': g.transliteration,
+      'description': g.meaningDevanagari,
+      'inDefinedTermSet': {
+        '@type': 'DefinedTermSet',
+        'name': 'ब्रज रस एवं निकुंज उपासना शब्दकोश',
+        'url': 'https://bhav.vrindopnishad.in/glossary',
+      },
+      'url': canonicalUrl,
+    };
+    extraSchemas.push({
+      '@type': 'BreadcrumbList',
+      '@id': `${canonicalUrl}#breadcrumb`,
+      'itemListElement': [
+        { '@type': 'ListItem', 'position': 1, 'name': 'वृन्दोपनिषद् 2.0', 'item': 'https://bhav.vrindopnishad.in/' },
+        { '@type': 'ListItem', 'position': 2, 'name': 'ब्रज शब्दकोश', 'item': 'https://bhav.vrindopnishad.in/glossary' },
+        { '@type': 'ListItem', 'position': 3, 'name': g.term, 'item': canonicalUrl },
+      ],
+    });
+    dynamicRootHtml = `
+      <article class="sanctuary-ssr-content" style="max-width: 780px; margin: 0 auto; padding: 2.5rem 1.25rem; font-family: 'Noto Serif Devanagari', serif;">
+        <nav style="margin-bottom: 1.5rem; font-size: 0.875rem; color: #b45309;">
+          <a href="/" style="color: #b45309; text-decoration: none;">वृन्दोपनिषद् 2.0</a> &rsaquo; <a href="/glossary" style="color: #b45309; text-decoration: none;">ब्रज शब्दकोश</a> &rsaquo; <span>${g.term}</span>
+        </nav>
+        <h1 style="font-size: 2rem; font-weight: 700; color: #1c1917; margin-bottom: 0.5rem;">${g.term}</h1>
+        <p style="font-size: 1rem; color: #b45309; margin-bottom: 1.25rem;">${g.transliteration}</p>
+        <p style="font-size: 1.15rem; line-height: 1.8; color: #1c1917; margin-bottom: 1rem;">${g.meaningDevanagari}</p>
+        ${g.context ? `<blockquote style="padding: 1rem; background: #fffbeb; border-left: 4px solid #d97706; border-radius: 0.5rem; color: #78350f;">${g.context}</blockquote>` : ''}
+      </article>
+    `;
+  } else if (TOPICAL_GUIDES_META[pathname.replace(/^\/+/, '')]) {
+    hasPrerenderedStaticRoot = true;
+    const guideSlug = pathname.replace(/^\/+/, '');
+    const gMeta = TOPICAL_GUIDES_META[guideSlug];
+    title = gMeta.title;
+    description = gMeta.description;
+    canonicalUrl = `https://bhav.vrindopnishad.in/${guideSlug}`;
+    entitySchema = {
+      '@type': 'Article',
+      '@id': `${canonicalUrl}#article`,
+      'headline': gMeta.title,
+      'description': gMeta.description,
+      'inLanguage': ['hi', 'en'],
+      'mainEntityOfPage': {
+        '@type': 'WebPage',
+        '@id': canonicalUrl,
+      },
+      'url': canonicalUrl,
+    };
+    if (gMeta.faqs && gMeta.faqs.length > 0) {
+      extraSchemas.push({
+        '@type': 'FAQPage',
+        '@id': `${canonicalUrl}#faq`,
+        'mainEntity': gMeta.faqs.map((item) => ({
+          '@type': 'Question',
+          'name': item.q,
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': item.a,
+          },
+        })),
+      });
+    }
   } else {
     switch (activeTab) {
       case 'granthas':
@@ -1724,11 +2526,25 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     rewriter = rewriter.on('meta[name="keywords"]', new ElementAttributeModifier('content', customKeywords));
   }
 
-  // If this deep-link did not hit a pre-rendered static HTML file, inject semantic article into #seo-prerender & #root
+  // If this deep-link did not hit a pre-rendered static HTML file, inject semantic article into #seo-prerender & #root.
+  // When serving pre-rendered static entity HTML, only inject into #seo-prerender so #root is preserved intact.
   if (dynamicRootHtml) {
-    rewriter = rewriter
-      .on('#seo-prerender', new ElementHtmlModifier(dynamicRootHtml))
-      .on('#root', new ElementHtmlModifier(dynamicRootHtml));
+    rewriter = rewriter.on('#seo-prerender', new ElementHtmlModifier(dynamicRootHtml));
+    if (!hasPrerenderedStaticRoot) {
+      rewriter = rewriter.on('#root', new ElementHtmlModifier(dynamicRootHtml));
+    }
+  }
+
+  if (prevLinkUrl || nextLinkUrl) {
+    const linkTags = [
+      prevLinkUrl ? `<link rel="prev" href="${prevLinkUrl}" />` : '',
+      nextLinkUrl ? `<link rel="next" href="${nextLinkUrl}" />` : '',
+    ].filter(Boolean).join('');
+    rewriter = rewriter.on('head', {
+      element(el: CFElement) {
+        el.append(linkTags, { html: true });
+      },
+    });
   }
 
   if (isStaging) {

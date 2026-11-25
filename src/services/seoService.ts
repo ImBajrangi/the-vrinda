@@ -71,6 +71,12 @@ export interface SEOConfig {
     titleHonorific?: string;
     period?: string;
   };
+  guide?: {
+    slug: string;
+    title: string;
+    description: string;
+    faqs?: { q: string; a: string }[];
+  };
   audioUrl?: string;
 }
 
@@ -245,6 +251,7 @@ export function generateSEOMetadata(config: SEOConfig = {}): SEOMetadataResult {
         '@id': `${canonicalUrl}#audio`,
         name: `${pad.titleDevanagari} • Sacred Audio Recitation`,
         contentUrl: config.audioUrl || pad.audioUrl,
+        encodingFormat: 'audio/mpeg',
         inLanguage: 'hi',
       };
     }
@@ -630,6 +637,65 @@ export function generateSEOMetadata(config: SEOConfig = {}): SEOMetadataResult {
           '@type': 'ListItem',
           position: 3,
           name: b.nameDevanagari,
+          item: canonicalUrl,
+        },
+      ],
+    });
+  } else if (config.guide) {
+    const g = config.guide;
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      '@id': `${canonicalUrl}#article`,
+      headline: g.title,
+      description: g.description,
+      inLanguage: ['hi', 'en'],
+      author: {
+        '@type': 'Organization',
+        name: 'वृन्दोपनिषद् 2.0 Sansthan',
+        url: DEFAULT_SEO.baseUrl,
+      },
+      publisher: {
+        '@id': `${DEFAULT_SEO.baseUrl}/#organization`,
+      },
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': canonicalUrl,
+      },
+      url: canonicalUrl,
+      image: ogImage,
+    });
+
+    if (g.faqs && g.faqs.length > 0) {
+      schemas.push({
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        '@id': `${canonicalUrl}#faq`,
+        mainEntity: g.faqs.map((item) => ({
+          '@type': 'Question',
+          name: item.q,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: item.a,
+          },
+        })),
+      });
+    }
+
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home Sanctuary',
+          item: DEFAULT_SEO.baseUrl,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: g.title,
           item: canonicalUrl,
         },
       ],

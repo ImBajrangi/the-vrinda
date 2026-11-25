@@ -30,6 +30,76 @@ import {
 
 export type SearchFilterType = 'all' | 'padas' | 'saints' | 'granthas';
 
+// Lightweight Devanagari <-> Hinglish/ITRANS phonetic normalizer for bilingual search
+const PHONETIC_DEV_MAP: Record<string, string> = {
+  'अ': 'a', 'आ': 'a', 'इ': 'i', 'ई': 'i', 'उ': 'u', 'ऊ': 'u', 'ऋ': 'ri', 'ए': 'e', 'ऐ': 'e', 'ओ': 'o', 'औ': 'o',
+  'ा': 'a', 'ि': 'i', 'ी': 'i', 'ु': 'u', 'ू': 'u', 'ृ': 'ri', 'े': 'e', 'ै': 'e', 'ो': 'o', 'ौ': 'o',
+  'ं': 'n', 'ँ': 'n', 'ः': 'h', '्': '', '़': '',
+  'क': 'k', 'ख': 'kh', 'ग': 'g', 'घ': 'gh', 'ङ': 'n',
+  'च': 'ch', 'छ': 'chh', 'ज': 'j', 'झ': 'jh', 'ञ': 'n',
+  'ट': 't', 'ठ': 'th', 'ड': 'd', 'ढ': 'dh', 'ण': 'n',
+  'त': 't', 'थ': 'th', 'द': 'd', 'ध': 'dh', 'न': 'n',
+  'प': 'p', 'फ': 'ph', 'ब': 'b', 'भ': 'bh', 'म': 'm',
+  'य': 'y', 'र': 'r', 'ल': 'l', 'व': 'v', 'श': 'sh', 'ष': 'sh', 'स': 's', 'ह': 'h',
+  'क़': 'k', 'ख़': 'kh', 'ग़': 'g', 'ज़': 'j', 'ड़': 'r', 'ढ़': 'rh', 'फ़': 'ph',
+};
+
+function toPhoneticLatin(input: string): string {
+  if (!input) return '';
+  let out = '';
+  const chars = Array.from(input.toLowerCase());
+  for (let i = 0; i < chars.length; i++) {
+    const ch = chars[i];
+    const mapped = PHONETIC_DEV_MAP[ch];
+    if (mapped !== undefined) {
+      out += mapped;
+      // Inherent schwa 'a' after Devanagari consonant when followed by another consonant or anusvara/visarga
+      const isConsonant = ch >= 'क' && ch <= 'ह';
+      const next = chars[i + 1];
+      const nextTakesInherentA = next && ((next >= 'क' && next <= 'ह') || next === 'ं' || next === 'ँ' || next === 'ः');
+      if (isConsonant && nextTakesInherentA) {
+        out += 'a';
+      }
+    } else if (/[a-z0-9\s]/.test(ch)) {
+      out += ch;
+    } else {
+      out += ' ';
+    }
+  }
+  return out
+    .replace(/aa+/g, 'a')
+    .replace(/ee+|ii+/g, 'i')
+    .replace(/oo+|uu+/g, 'u')
+    .replace(/au/g, 'o')
+    .replace(/ai/g, 'e')
+    .replace(/w/g, 'v')
+    .replace(/f/g, 'ph')
+    .replace(/z/g, 'j')
+    .replace(/ksh|x/g, 'ksh')
+    .replace(/\b([a-z]{3,})a\b/g, '$1')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function matchesBilingual(query: string, ...fields: (string | undefined)[]): boolean {
+  const qRaw = query.trim().toLowerCase();
+  if (!qRaw) return true;
+  const qPhonetic = toPhoneticLatin(qRaw);
+  const qTokens = qPhonetic ? qPhonetic.split(' ').filter(Boolean) : [];
+
+  for (const field of fields) {
+    if (!field) continue;
+    const fLower = field.toLowerCase();
+    if (fLower.includes(qRaw)) return true;
+    if (qPhonetic.length >= 2) {
+      const fPhonetic = toPhoneticLatin(fLower);
+      if (fPhonetic.includes(qPhonetic)) return true;
+      if (qTokens.length > 1 && qTokens.every((tok) => fPhonetic.includes(tok))) return true;
+    }
+  }
+  return false;
+}
+
 type CombinedItem =
   | { type: 'grantha'; data: CanonicalGrantha }
   | { type: 'saint'; data: CanonicalSaint }
@@ -213,13 +283,30 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
     });
   }, []);
 
-  // 1. Searched Padas with Intelligent Deduplication
+  // 1. Searched Padas with Intelligent Deduplication + Bilingual Hinglish/Phonetic Matching
   const searchedPadas = useMemo(() => {
-    const raw = SacredDatabase.search(debouncedQuery, debouncedQuery.trim() ? 50 : 28);
+    const q = debouncedQuery.trim();
+    const raw = SacredDatabase.search(debouncedQuery, q ? 50 : 28);
+    const seenIds = new Set(raw.map((p) => p.id));
+    const combinedRaw = [...raw];
+
+    if (q && /[a-zA-Z]/.test(q) && combinedRaw.length < 30) {
+      const allPadas = SacredDatabase.getAllPadas();
+      for (const p of allPadas) {
+        if (seenIds.has(p.id)) continue;
+        const firstVerse = p.verses?.[0]?.linesDevanagari?.slice(0, 2).join(' ') || '';
+        if (matchesBilingual(q, p.titleDevanagari, p.titleEnglish, p.author, firstVerse)) {
+          combinedRaw.push(p);
+          seenIds.add(p.id);
+          if (combinedRaw.length >= 40) break;
+        }
+      }
+    }
+
     const seenTitles = new Set<string>();
     const deduped: SacredPad[] = [];
 
-    for (const p of raw) {
+    for (const p of combinedRaw) {
       const { title } = extractPurePadaTitle(p.titleDevanagari);
       const normalized = title.replace(/\s+/g, '').replace(/[-–—]/g, '');
       if (seenTitles.has(normalized)) continue;
@@ -232,47 +319,34 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
   // 2. Searched Saints
   const searchedSaints = useMemo(() => {
     const allSaints = SacredDatabase.getAllSaints();
-    const q = debouncedQuery.trim().toLowerCase();
+    const q = debouncedQuery.trim();
     if (!q) return allSaints.slice(0, 8);
-    return allSaints.filter(
-      (s) => s.name.toLowerCase().includes(q) || (s.nameEng && s.nameEng.toLowerCase().includes(q))
-    );
+    return allSaints.filter((s) => matchesBilingual(q, s.name, s.nameEng, s.tradition));
   }, [debouncedQuery]);
 
   // 3. Searched Granthas
   const searchedGranthas = useMemo(() => {
     const allGranthas = SacredDatabase.getAllGranthas();
-    const q = debouncedQuery.trim().toLowerCase();
+    const q = debouncedQuery.trim();
     if (!q) return allGranthas.slice(0, 6);
-    return allGranthas.filter(
-      (g) => g.name.toLowerCase().includes(q) || (g.author && g.author.toLowerCase().includes(q))
-    );
+    return allGranthas.filter((g) => matchesBilingual(q, g.name, g.id, g.author));
   }, [debouncedQuery]);
 
   // 4. Searched Sacred Sections (Places, Rituals, Stories)
   const searchedSacredSections = useMemo(() => {
-    const q = debouncedQuery.trim().toLowerCase();
+    const q = debouncedQuery.trim();
     if (!q) return [];
 
-    const matchedPlaces = SEED_PLACES.filter(
-      (p) =>
-        p.nameDevanagari.toLowerCase().includes(q) ||
-        p.regionNameHindi.toLowerCase().includes(q) ||
-        (p.tags && p.tags.some((t) => t.toLowerCase().includes(q)))
+    const matchedPlaces = SEED_PLACES.filter((p) =>
+      matchesBilingual(q, p.nameDevanagari, p.name, p.regionNameHindi, ...(p.tags || []))
     ).slice(0, 2);
 
-    const matchedRituals = SEED_RITUALS.filter(
-      (r) =>
-        r.titleDevanagari.toLowerCase().includes(q) ||
-        r.categoryHindi.toLowerCase().includes(q) ||
-        r.deityDevanagari.toLowerCase().includes(q)
+    const matchedRituals = SEED_RITUALS.filter((r) =>
+      matchesBilingual(q, r.titleDevanagari, r.title, r.categoryHindi, r.deityDevanagari)
     ).slice(0, 2);
 
-    const matchedStories = SEED_STORIES.filter(
-      (s) =>
-        s.titleDevanagari.toLowerCase().includes(q) ||
-        s.categoryHindi.toLowerCase().includes(q) ||
-        (s.tags && s.tags.some((t) => t.toLowerCase().includes(q)))
+    const matchedStories = SEED_STORIES.filter((s) =>
+      matchesBilingual(q, s.titleDevanagari, s.title, s.categoryHindi, ...(s.tags || []))
     ).slice(0, 2);
 
     return [

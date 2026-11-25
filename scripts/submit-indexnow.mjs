@@ -66,11 +66,10 @@ export async function runIndexNowSubmission() {
     ...extractUrls(path.resolve(projectRoot, 'public/sitemap-main.xml')),
     ...extractUrls(path.resolve(projectRoot, 'public/sitemap-granthas.xml')),
     ...extractUrls(path.resolve(projectRoot, 'public/sitemap-saints.xml')),
+    ...extractUrls(path.resolve(projectRoot, 'public/sitemap-padas-1.xml')),
+    ...extractUrls(path.resolve(projectRoot, 'public/sitemap-padas-2.xml')),
+    ...extractUrls(path.resolve(projectRoot, 'public/sitemap-padas-3.xml')),
   ];
-
-  // Pick top 200 high-priority padas from sitemap-padas-1.xml
-  const pada1Urls = extractUrls(path.resolve(projectRoot, 'public/sitemap-padas-1.xml')).slice(0, 500);
-  bhavUrls.push(...pada1Urls);
 
   // 2. Gather URLs for path domain
   const pathUrls = [
@@ -78,8 +77,16 @@ export async function runIndexNowSubmission() {
     ...extractUrls(path.resolve(projectRoot, 'public/sitemap-path-granthas.xml')),
   ];
 
-  await submitIndexNowBatch('bhav.vrindopnishad.in', Array.from(new Set(bhavUrls)));
-  await submitIndexNowBatch('path.vrindopnishad.in', Array.from(new Set(pathUrls)));
+  const MAX_BATCH = 10000;
+  const submitInChunks = async (host, urls) => {
+    const unique = Array.from(new Set(urls));
+    for (let i = 0; i < unique.length; i += MAX_BATCH) {
+      await submitIndexNowBatch(host, unique.slice(i, i + MAX_BATCH));
+    }
+  };
+
+  await submitInChunks('bhav.vrindopnishad.in', bhavUrls);
+  await submitInChunks('path.vrindopnishad.in', pathUrls);
 
   console.log('✨ IndexNow submission routine complete!');
 }

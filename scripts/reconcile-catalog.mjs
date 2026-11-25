@@ -35,7 +35,20 @@ const EPIC_IDS = new Set([
   'durga-saptashati',
 ]);
 
-// 1. Preserve all 31,691 epic items
+// 1. Preserve all 31,691 epic items (syncing author if canonicalPadas overrides a misclassified Rasik pad)
+const canonicalAuthorBySlug = new Map();
+const canonicalPath = path.resolve(projectRoot, 'src/data/canonicalPadas.json');
+if (fs.existsSync(canonicalPath)) {
+  try {
+    const cp = JSON.parse(fs.readFileSync(canonicalPath, 'utf-8'));
+    for (const p of cp) {
+      if (p.author && (p.slug || p.id)) {
+        canonicalAuthorBySlug.set(p.slug || p.id, p.author.trim());
+      }
+    }
+  } catch {}
+}
+
 const epicItems = catalog.items.filter((it) => {
   const col = cols[it[2]];
   if (EPIC_IDS.has(col)) return true;
@@ -47,6 +60,20 @@ const epicItems = catalog.items.filter((it) => {
     slug.startsWith('bhagavad-') ||
     slug.startsWith('durga-')
   );
+}).map((it) => {
+  const cpAuthor = canonicalAuthorBySlug.get(it[0]);
+  if (cpAuthor && authors[it[3]] !== cpAuthor) {
+    let authIdx = authorMap.get(cpAuthor);
+    if (authIdx === undefined) {
+      authIdx = authors.length;
+      authors.push(cpAuthor);
+      authorMap.set(cpAuthor, authIdx);
+    }
+    const copy = [...it];
+    copy[3] = authIdx;
+    return copy;
+  }
+  return it;
 });
 
 // Load legacy slug redirects to resolve any legacy Devanagari slugs into clean Roman canonical URLs
