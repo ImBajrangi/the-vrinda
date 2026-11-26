@@ -3,6 +3,7 @@ import { SacredPad } from '../types/devotional';
 export const SACRED_PADS: SacredPad[] = [
   {
     id: 'hit-chaurasi-01',
+    slug: 'joi-joi-pyaro-kare-soi-mohi-bhaave-pada-written-by-shri-hita-harivansh-mahaprabhu',
     collectionId: 'hit-chaurasi',
     index: 1,
     titleDevanagari: 'जोई जोई प्यारो करे सोई मोहि भावै',
@@ -49,6 +50,7 @@ export const SACRED_PADS: SacredPad[] = [
   },
   {
     id: 'radha-kripa-kataksha',
+    slug: 'shri-radha-kripa-kataksha-stotram',
     collectionId: 'stotras',
     index: 2,
     titleDevanagari: 'श्री राधा कृपा कटाक्ष स्तोत्र',
@@ -90,6 +92,7 @@ export const SACRED_PADS: SacredPad[] = [
   },
   {
     id: 'kelimal-01',
+    slug: 'jyonhijyonhi-tum-raakhat-ho',
     collectionId: 'kelimal',
     index: 3,
     titleDevanagari: 'माई री सहज जोरी प्रगट भई',

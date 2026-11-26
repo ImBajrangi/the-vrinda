@@ -225,10 +225,18 @@ function resolveCurrentRoute(): AppRouteState {
     let pathAuthor: string | null = null;
 
     if (rawPath.startsWith('/sant/') || rawPath.startsWith('/author/')) {
-      pathAuthor = decodeURIComponent(rawPath.replace(/^\/(?:sant|author)\//, '')).trim();
+      const sub = rawPath.replace(/^\/(?:sant|author)\//, '');
+      const parts = sub.split('/').map((p) => decodeURIComponent(p).trim()).filter(Boolean);
+      if (parts.length === 3 && parts[1] === 'page' && /^\d+$/.test(parts[2])) {
+        pathAuthor = parts[0];
+      } else {
+        pathAuthor = decodeURIComponent(sub).trim();
+      }
     } else if (rawPath.startsWith('/grantha/')) {
       const parts = rawPath.slice(9).split('/').map((p) => decodeURIComponent(p).trim()).filter(Boolean);
-      if (parts.length >= 2) {
+      if (parts.length === 3 && parts[1] === 'page' && /^\d+$/.test(parts[2])) {
+        pathGrantha = parts[0];
+      } else if (parts.length >= 2) {
         pathGrantha = parts[0];
         pathChapter = normalizeEpicChapterSlug(parts[0], parts.slice(1).join('/'));
       } else if (parts.length === 1) {
@@ -287,7 +295,11 @@ function resolveCurrentRoute(): AppRouteState {
 
     let determinedTab: NavTab = 'smaran';
     const cleanSlug = rawPath.replace(/^\/+/, '');
-    const guideSlug = TOPICAL_GUIDE_SLUGS.has(cleanSlug) ? cleanSlug : undefined;
+    const guideSlug = TOPICAL_GUIDE_SLUGS.has(cleanSlug)
+      ? cleanSlug
+      : rawPath.startsWith('/glossary')
+        ? 'glossary'
+        : undefined;
 
     let ritualSlug: string | undefined = params.get('ritual') || undefined;
     let placeSlug: string | undefined = params.get('place') || undefined;
@@ -296,6 +308,8 @@ function resolveCurrentRoute(): AppRouteState {
 
     if (pillarTab) {
       determinedTab = pillarTab;
+    } else if (rawPath === '/ragas' || rawPath.startsWith('/raga/') || rawPath === '/themes' || rawPath.startsWith('/theme/')) {
+      determinedTab = 'padavali';
     } else if (rawPath === '/katha' || rawPath.startsWith('/stories') || rawPath.startsWith('/story/') || rawPath.startsWith('/katha/')) {
       determinedTab = 'stories';
       const sub = rawPath.replace(/^\/(?:stories|story|katha)\/?/, '').trim();

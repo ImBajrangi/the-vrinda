@@ -1,13 +1,19 @@
 # Vrindopnisad 2.0 - High Performance Edge Caching Headers
-# Designed to maximize Cloudflare CDN Cache Hit Rate from 0.03% to 90%+
+# Combined with _routes.json (direct CDN serving for static assets) & Worker caches.default for dynamic SSR HTML
 
-# 1. Hashed Static Assets (Vite chunks, CSS, Icons)
+# 1. Hashed Static Assets (Vite chunks, CSS, WebP, Icons)
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
   CDN-Cache-Control: public, max-age=31536000
   Cloudflare-CDN-Cache-Control: public, max-age=31536000
 
-# 2. Canonical Scripture Chunks (44,368+ Verses & 781 Chapters)
+# 2. Audio Recordings (Immutable MP3 assets)
+/audio/*
+  Cache-Control: public, max-age=31536000, immutable
+  CDN-Cache-Control: public, max-age=31536000
+  Cloudflare-CDN-Cache-Control: public, max-age=31536000
+
+# 3. Canonical Scripture Chunks (44,368+ Verses & 781 Chapters)
 /data/epics/*
   Cache-Control: public, max-age=31536000, immutable
   CDN-Cache-Control: public, max-age=31536000
@@ -18,23 +24,28 @@
   CDN-Cache-Control: public, max-age=31536000
   Cloudflare-CDN-Cache-Control: public, max-age=31536000
 
-# 3. Dynamic Manifest & Catalog (1-hour CDN cache with background revalidation)
+# 4. Manifest, Catalog & Scripture Hierarchy (Edge + Browser SWR caching; eliminates 6.6MB re-fetches)
 /data/manifest.json
-  Cache-Control: public, max-age=0, must-revalidate
+  Cache-Control: public, max-age=300, s-maxage=3600, stale-while-revalidate=86400
   CDN-Cache-Control: public, s-maxage=3600, stale-while-revalidate=86400
   Cloudflare-CDN-Cache-Control: public, max-age=3600, stale-while-revalidate=86400
 
 /data/catalog.json
-  Cache-Control: public, max-age=0, must-revalidate
-  CDN-Cache-Control: public, s-maxage=3600, stale-while-revalidate=86400
-  Cloudflare-CDN-Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+  Cache-Control: public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800
+  CDN-Cache-Control: public, s-maxage=86400, stale-while-revalidate=604800
+  Cloudflare-CDN-Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+/data/scripture-hierarchy.json
+  Cache-Control: public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800
+  CDN-Cache-Control: public, s-maxage=86400, stale-while-revalidate=604800
+  Cloudflare-CDN-Cache-Control: public, max-age=86400, stale-while-revalidate=604800
 
 /data/*
-  Cache-Control: public, max-age=31536000, immutable
-  CDN-Cache-Control: public, max-age=31536000
-  Cloudflare-CDN-Cache-Control: public, max-age=31536000
+  Cache-Control: public, max-age=86400, s-maxage=604800, stale-while-revalidate=604800
+  CDN-Cache-Control: public, max-age=604800, stale-while-revalidate=604800
+  Cloudflare-CDN-Cache-Control: public, max-age=604800, stale-while-revalidate=604800
 
-# 4. XML Sitemaps & RSS Feeds (24-hour Edge Cache, 7-day stale-while-revalidate)
+# 5. XML Sitemaps & RSS Feeds (24-hour Edge Cache, 7-day stale-while-revalidate)
 /*.xml
   Content-Type: application/xml; charset=UTF-8
   Cache-Control: public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800
@@ -46,23 +57,38 @@
   CDN-Cache-Control: public, s-maxage=86400, stale-while-revalidate=604800
   Cloudflare-CDN-Cache-Control: public, max-age=86400, stale-while-revalidate=604800
 
-# 5. Metadata, LLMs.txt & Robots.txt
+# 6. Metadata, LLMs.txt, Icons & Logos
 /*.txt
   Cache-Control: public, max-age=86400, s-maxage=604800, stale-while-revalidate=86400
   CDN-Cache-Control: public, max-age=604800, stale-while-revalidate=86400
-  Cloudflare-CDN-Cache-Control: public, max-age=604800, stale-while-revalidate=604800
+  Cloudflare-CDN-Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+/*.svg
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+  CDN-Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+  Cloudflare-CDN-Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+/*.png
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+  CDN-Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+  Cloudflare-CDN-Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+/*.webp
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+  CDN-Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+  Cloudflare-CDN-Cache-Control: public, max-age=604800, stale-while-revalidate=86400
 
 /*.ico
   Cache-Control: public, max-age=604800, stale-while-revalidate=86400
   CDN-Cache-Control: public, max-age=604800, stale-while-revalidate=86400
-  Cloudflare-CDN-Cache-Control: public, max-age=604800, stale-while-revalidate=604800
+  Cloudflare-CDN-Cache-Control: public, max-age=604800, stale-while-revalidate=86400
 
 /*.webmanifest
   Cache-Control: public, max-age=86400, stale-while-revalidate=86400
   CDN-Cache-Control: public, max-age=86400, stale-while-revalidate=86400
   Cloudflare-CDN-Cache-Control: public, max-age=86400, stale-while-revalidate=86400
 
-# 6. Global Security Headers
+# 7. Global Security Headers
 /*
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY

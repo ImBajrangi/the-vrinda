@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "include": ["/*"],
+  "exclude": [
+    "/assets/*",
+    "/data/*",
+    "/audio/*",
+    "/favicon*",
+    "/android-chrome-*",
+    "/apple-touch-icon*",
+    "/icon-*",
+    "/official-logo*",
+    "/lotus.svg",
+    "/manifest.json",
+    "/site*.webmanifest",
+    "/opensearch.xml",
+    "/llms*.txt",
+    "/e3d4891bca7f4a0889c2510b14798e94.txt"
+  ]
+}

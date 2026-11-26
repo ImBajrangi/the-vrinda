@@ -103,7 +103,7 @@ const NEXUS_CLUSTERS: Record<string, NexusCluster> = {
   rambhakti: {
     traditionId: 'rambhakti',
     traditionHindi: 'श्री रामानन्दी एवं सनातन रामभक्ति परम्परा',
-    granthas: ['ramcharitmanas', 'valmiki-ramayana', 'vinay-patrika'],
+    granthas: ['ramcharitmanas', 'valmiki-ramayana', 'rasik-vani-sangrah'],
     saints: ['goswami-tulsidas', 'maharshi-valmiki', 'maharshi-vedavyas', 'sant-eknath-maharaj'],
     places: ['ayodhya-ram-janmabhoomi', 'kashi-vishwanath', 'rameshwaram-jyotirlinga'],
     stories: ['sita-swayamvara', 'shabari-prem-bhakti', 'dhruva-charitra'],
@@ -123,7 +123,7 @@ const NEXUS_CLUSTERS: Record<string, NexusCluster> = {
   varkari: {
     traditionId: 'varkari',
     traditionHindi: 'वारकरी भक्ति परम्परा',
-    granthas: ['abhangavani'],
+    granthas: ['rasik-vani-sangrah'],
     saints: ['sant-dnyaneshwar', 'sant-namdev', 'sant-tukaram-maharaj', 'sant-eknath-maharaj'],
     places: ['pandharpur-vitthal-mandir', 'pratishthan-paithan'],
     stories: ['sant-namdev-katha', 'eknath-samadarshana'],

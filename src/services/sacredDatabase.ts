@@ -666,6 +666,10 @@ export const SacredDatabase = {
           } catch {}
         }
 
+        const isPathHost =
+          typeof window !== 'undefined' &&
+          (window.location.hostname === 'path.vrindopnishad.in' || window.location.hostname.startsWith('path.'));
+
         if (requestedPad) {
           // Deep link: fetch target pad fast-path
           await this.fetchPadBySlug(requestedPad).catch(() => {});
@@ -675,8 +679,8 @@ export const SacredDatabase = {
         } else if (requestedAuthor) {
           // Saint scoped link: hydrate only target author
           await this.ensureAuthorPadasLoaded(requestedAuthor).catch(() => {});
-        } else {
-          // Sanctuary home default: only hydrate seed collection if no specific target requested
+        } else if (!isPathHost) {
+          // Sanctuary home default on bhav.: hydrate Hit Chaurasi seed only on Bhav host (saves ~24 MB/48h on path.)
           const hitPadas = padasByGrantha.get('hit-chaurasi');
           if (!hitPadas || hitPadas.length < 80 || !hitPadas[0]?.chapterId) {
             const currentHitMeta = activeManifest?.granthas?.['hit-chaurasi'];
@@ -1143,11 +1147,34 @@ export const SacredDatabase = {
       return existing;
     }
 
+    // Resolve collectionId either from in-memory record or by hydrating lightweight search catalog index
+    let targetCollectionId = existing?.collectionId;
+    if (!targetCollectionId && typeof window !== 'undefined') {
+      if (searchCatalogItems.length === 0) {
+        try {
+          const manifest = await this.getManifestAsync();
+          const catalogFile = manifest?.catalog?.file || 'catalog.json';
+          const catRes = await fetch(`/data/${catalogFile}`);
+          if (catRes.ok) {
+            const catData = await catRes.json();
+            this.loadSearchCatalog(catData);
+          }
+        } catch {}
+      }
+      const normKey = slug.replace(/\.+$/, '').toLowerCase();
+      const catEntry = searchCatalogItems.find(
+        (it) => it.id === slug || it.id.replace(/\.+$/, '').toLowerCase() === normKey
+      );
+      if (catEntry?.collectionId) {
+        targetCollectionId = catEntry.collectionId;
+      }
+    }
+
     // 1. Fetch grantha chunk from CDN static storage if collectionId is known (0 Supabase egress)
-    if (existing?.collectionId) {
+    if (targetCollectionId) {
       try {
-        await this.fetchGranthaPadas(existing.collectionId);
-        const updated = this.getPadById(slug);
+        await this.fetchGranthaPadas(targetCollectionId);
+        const updated = this.getPadById(slug) || this.getPadById(slug.replace(/\.+$/, ''));
         if (updated && !updated.isStub && updated.verses && updated.verses.length > 0 && (updated.verses[0]?.linesDevanagari?.length || 0) > 0) {
           return updated;
         }
@@ -1190,12 +1217,26 @@ export const SacredDatabase = {
 
   getPadById(identifier: string): SacredPad | undefined {
     if (!identifier) return undefined;
+    const starterAlias: Record<string, string> = {
+      'hit-chaurasi-01': 'joi-joi-pyaro-kare-soi-mohi-bhaave-pada-written-by-shri-hita-harivansh-mahaprabhu',
+      'hit-chaurasi-1': 'joi-joi-pyaro-kare-soi-mohi-bhaave-pada-written-by-shri-hita-harivansh-mahaprabhu',
+      'radha-kripa-kataksha': 'shri-radha-kripa-kataksha-stotram',
+      'kelimal-01': 'jyonhijyonhi-tum-raakhat-ho',
+      'kelimal-1': 'jyonhijyonhi-tum-raakhat-ho',
+    };
+    const strippedId = identifier.replace(/\.+$/, '');
+    const aliasTarget = starterAlias[identifier] || starterAlias[strippedId.toLowerCase()];
+    if (aliasTarget) {
+      const aliased = padasBySlug.get(aliasTarget) || padasById.get(aliasTarget);
+      if (aliased) return aliased;
+    }
+
     // 1. Exact ID match (O(1))
-    const byId = padasById.get(identifier);
+    const byId = padasById.get(identifier) || padasById.get(strippedId);
     if (byId) return byId;
 
     // 2. Exact Slug match (O(1))
-    const bySlug = padasBySlug.get(identifier);
+    const bySlug = padasBySlug.get(identifier) || padasBySlug.get(strippedId);
     if (bySlug) return bySlug;
 
     // 3. Normalized / URL-decoded slug match
@@ -1259,6 +1300,7 @@ export const SacredDatabase = {
       padasById.get('hit-chaurasi-01') ||
       SACRED_PADS[0] || {
         id: 'hit-chaurasi-01',
+        slug: 'joi-joi-pyaro-kare-soi-mohi-bhaave-pada-written-by-shri-hita-harivansh-mahaprabhu',
         collectionId: 'hit-chaurasi',
         index: 1,
         titleDevanagari: 'जोई जोई प्यारो करे सोई मोहि भावै',

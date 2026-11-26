@@ -21,8 +21,104 @@ import themeHubsData from '../src/data/themeHubs.json';
 import brajGlossaryData from '../src/data/brajGlossary.json';
 import ritualMetaData from '../src/data/ritualMeta.json';
 import placeMetaData from '../src/data/placeMeta.json';
+import edgeCacheVersionData from '../src/data/edgeCacheVersion.json';
 
 interface Env {}
+
+const EDGE_CACHE_VERSION: string = (edgeCacheVersionData as any)?.v || 'v1';
+
+function buildCachedRedirect(targetUrl: string, status = 301): Response {
+  return new Response(null, {
+    status,
+    headers: {
+      Location: targetUrl,
+      'Cache-Control': 'public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800',
+      'CDN-Cache-Control': 'public, max-age=86400',
+    },
+  });
+}
+
+function normPadKey(s: string): string {
+  return s
+    .toLowerCase()
+    .replace(/^-+/, '')
+    .replace(/\.+$/, '')
+    .replace(/-[0-9a-f]{4,8}$/i, '')
+    .replace(/shri-/g, 'sri-')
+    .replace(/hita-/g, 'hit-')
+    .replace(/bayal(?:is|ees)/g, 'byl')
+    .replace(/l(?:ee|i)la/g, 'll')
+    .replace(/dhruv[ai]?das/g, 'dhrvds')
+    .replace(/anand[ai]?ghan/g, 'nndgn')
+    .replace(/par[ai]?man[an]+d[a]?/g, 'prmnnd')
+    .replace(/kripalu-?ji(?:-maharaj)?/g, 'krplj')
+    .replace(/v/g, 'b')
+    .replace(/ph/g, 'f')
+    .replace(/[aeiouyw-]+/g, '')
+    .replace(/(.)\1+/g, '$1');
+}
+
+function recoverMissingPadSlug(rawId: string): string | null {
+  const clean = rawId.trim().replace(/^-+/, '').replace(/\.+$/, '');
+  const noHash = clean.replace(/-[0-9a-f]{4,8}$/i, '');
+  const candidates = [clean, noHash, clean.toLowerCase(), noHash.toLowerCase()];
+  for (const c of candidates) {
+    if (!c) continue;
+    const hit = padaAliasesObj[c] || (padaSnippetsObj[c] ? c : null);
+    if (hit && padaSnippetsObj[hit]) return hit;
+  }
+
+  const keys = Object.keys(padaSnippetsObj);
+  if (noHash.length >= 24) {
+    const lowerNoHash = noHash.toLowerCase();
+    const prefixLen = Math.min(48, lowerNoHash.length);
+    const prefix = lowerNoHash.slice(0, prefixLen);
+    const prefMatch = keys.find(
+      (k) => k.startsWith(prefix) || (k.length >= 24 && lowerNoHash.startsWith(k))
+    );
+    if (prefMatch) return prefMatch;
+  }
+
+  const sk = normPadKey(noHash);
+  if (sk.length >= 20) {
+    const skPrefix = sk.slice(0, Math.min(28, sk.length));
+    for (const k of keys) {
+      const kSk = normPadKey(k);
+      if (kSk === sk || (kSk.length >= 20 && (kSk.startsWith(skPrefix) || sk.startsWith(kSk)))) {
+        return k;
+      }
+    }
+  }
+  return null;
+}
+
+const GRANTHA_ALIASES: Record<string, string> = {
+  'shri-hit-chaurasi': 'hit-chaurasi',
+  'hita-chaurasi': 'hit-chaurasi',
+  'sri-hit-chaurasi': 'hit-chaurasi',
+  'shri-kelimal': 'kelimal',
+  'shri-radha-sudha-nidhi': 'stotras',
+  'radha-sudha-nidhi': 'stotras',
+  'radha-govind-git': 'bhakti-shatak',
+  'shyama-shyam-gita': 'bhakti-shatak',
+  'prata-smaran-stotra': 'stotras',
+  'ras-man-ke-pada': 'rasik-vani-sangrah',
+  'bayalis-leela': 'bayalees-leela',
+};
+
+const SAINT_ALIASES: Record<string, { kind: 'sant' | 'pad' | 'grantha' | 'guide'; target: string }> = {
+  'shri-hathi-radha-sudha-shatak': { kind: 'sant', target: 'hathi-ji' },
+  'shri-hathi': { kind: 'sant', target: 'hathi-ji' },
+  'shri-biharin-dev-biharin-dev-siddhant-ki-sakhi': { kind: 'sant', target: 'biharin-dev-ji' },
+  'shri-biharin-dev': { kind: 'sant', target: 'biharin-dev-ji' },
+  'shri-ladaili-lala': { kind: 'sant', target: 'lalit-ladaiti' },
+  'shri-radhacharan-dasa': { kind: 'sant', target: 'krishnachandra-radhacharan-das' },
+  'shri-keli-sakhi': { kind: 'pad', target: 'jagat-mein-jaagai-jaako-bhaag-shri-keli-sakhi-ji' },
+  'krishnayamal-tntra': { kind: 'pad', target: 'radhapriyamayurasya-yatra-radhekshanaprabham-krishnayamal-tantra-167' },
+  'braj-dham-lila': { kind: 'grantha', target: 'braj-dham-mahatmya' },
+  'shri-kashthajihv-svami': { kind: 'guide', target: 'rasik-saints-of-vrindavan' },
+  'shri-chndr-lal-gosvami-ji': { kind: 'guide', target: 'rasik-saints-of-vrindavan' },
+};
 
 // Cloudflare Workers / Pages runtime ambient type definitions
 interface CFElement {
@@ -522,6 +618,72 @@ class ElementHtmlModifier {
 }
 
 export const onRequest: PagesFunction<Env> = async (context) => {
+  const { request } = context;
+  const reqUrl = new URL(request.url);
+  const hostLower = reqUrl.hostname.toLowerCase();
+  const isStagingHost = hostLower.endsWith('.pages.dev') || hostLower.includes('vercel.app');
+  const isCacheableMethod = request.method === 'GET' || request.method === 'HEAD';
+
+  let edgeCache: any = null;
+  let cacheKey: Request | null = null;
+  if (isCacheableMethod && !isStagingHost && typeof caches !== 'undefined' && (caches as any).default) {
+    try {
+      edgeCache = (caches as any).default;
+      const cacheUrl = new URL(reqUrl.toString());
+      for (const key of Array.from(cacheUrl.searchParams.keys())) {
+        if (/^(?:utm_|fbclid$|gclid$|_gl$|mc_)/i.test(key)) {
+          cacheUrl.searchParams.delete(key);
+        }
+      }
+      cacheUrl.searchParams.set('_ecv', EDGE_CACHE_VERSION);
+      cacheKey = new Request(cacheUrl.toString(), { method: 'GET' });
+      const cachedHit: Response | undefined = await edgeCache.match(cacheKey);
+      if (cachedHit) {
+        const hitHeaders = new Headers(cachedHit.headers);
+        hitHeaders.set('X-Vrind-Edge-Cache', 'HIT');
+        return new Response(request.method === 'HEAD' ? null : cachedHit.body, {
+          status: cachedHit.status,
+          statusText: cachedHit.statusText,
+          headers: hitHeaders,
+        });
+      }
+    } catch {}
+  }
+
+  const response = await handleEdgeRequest(context);
+
+  if (
+    edgeCache &&
+    cacheKey &&
+    (response.status === 200 || response.status === 301) &&
+    !response.headers.get('Cache-Control')?.includes('no-store')
+  ) {
+    try {
+      const outHeaders = new Headers(response.headers);
+      if (response.status === 301 && !outHeaders.get('Cache-Control')) {
+        outHeaders.set('Cache-Control', 'public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800');
+      }
+      outHeaders.set('X-Vrind-Edge-Cache', 'MISS');
+      const finalResponse = new Response(response.body, {
+        status: response.status,
+        statusText: response.statusText,
+        headers: outHeaders,
+      });
+      if (typeof context.waitUntil === 'function') {
+        context.waitUntil(edgeCache.put(cacheKey, finalResponse.clone()));
+      } else {
+        await edgeCache.put(cacheKey, finalResponse.clone());
+      }
+      return request.method === 'HEAD'
+        ? new Response(null, { status: finalResponse.status, statusText: finalResponse.statusText, headers: outHeaders })
+        : finalResponse;
+    } catch {}
+  }
+
+  return response;
+};
+
+const handleEdgeRequest: PagesFunction<Env> = async (context) => {
   const { request, next } = context;
   const url = new URL(request.url);
 
@@ -721,10 +883,16 @@ export const onRequest: PagesFunction<Env> = async (context) => {
         301
       );
     } else {
-      const isCleanOnBhav = !isPathDomain && (pathname === `/pad/${encodeURIComponent(rawPad)}` || pathname === `/pad/${rawPad}`);
+      const canonicalSingleHop =
+        (padaSnippetsObj[rawPad] ? rawPad : null) ||
+        padaAliasesObj[rawPad] ||
+        padaAliasesObj[rawPad.toLowerCase()] ||
+        recoverMissingPadSlug(rawPad) ||
+        rawPad;
+      const isCleanOnBhav = !isPathDomain && canonicalSingleHop === rawPad && (pathname === `/pad/${encodeURIComponent(rawPad)}` || pathname === `/pad/${rawPad}`);
       if (!isCleanOnBhav) {
-        return Response.redirect(
-          `https://bhav.vrindopnishad.in/pad/${encodeURIComponent(rawPad)}`,
+        return buildCachedRedirect(
+          `https://bhav.vrindopnishad.in/pad/${encodeURIComponent(canonicalSingleHop)}`,
           301
         );
       }
@@ -886,18 +1054,24 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   // 3b. Legacy Slug 301 Permanent Redirects (converts non-ASCII/encoded slugs to clean Hinglish ASCII)
   const rawPadTarget = qPad || pathPad;
   if (rawPadTarget && !isStaging) {
-    const decodedPadTarget = (() => {
-      try {
-        return decodeURIComponent(rawPadTarget).trim().toLowerCase();
-      } catch {
-        return rawPadTarget.trim().toLowerCase();
-      }
-    })();
-    const redirectedPad =
+    const decodedPadTarget = safeDecodeURIComponent(rawPadTarget).trim().toLowerCase();
+    const candidateRedirect =
       (legacySlugRedirectsData as Record<string, string>)[rawPadTarget] ||
       (legacySlugRedirectsData as Record<string, string>)[decodedPadTarget];
-    if (redirectedPad && redirectedPad !== rawPadTarget) {
-      return Response.redirect(`https://bhav.vrindopnishad.in/pad/${encodeURIComponent(redirectedPad)}`, 301);
+    if (candidateRedirect && candidateRedirect !== rawPadTarget) {
+      const resolvedRedirect =
+        padaAliasesObj[candidateRedirect] ||
+        padaAliasesObj[rawPadTarget] ||
+        padaAliasesObj[decodedPadTarget] ||
+        candidateRedirect;
+      const isResolvableTarget = Boolean(
+        padaSnippetsObj[resolvedRedirect] ||
+        KNOWN_PADAS_META[resolvedRedirect] ||
+        mapPadToEpicChapter(resolvedRedirect)
+      );
+      if (isResolvableTarget) {
+        return Response.redirect(`https://bhav.vrindopnishad.in/pad/${encodeURIComponent(resolvedRedirect)}`, 301);
+      }
     }
   }
 
@@ -974,6 +1148,9 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     if (pathname === '/granthas') {
       return Response.redirect('https://path.vrindopnishad.in/', 301);
     }
+    if (pathname === '/grantha/all') {
+      return Response.redirect('https://bhav.vrindopnishad.in/rasik-vani-granthas-list', 301);
+    }
     if (qGrantha && EPICS_META[qGrantha]) {
       const cleanCh = qChapter ? normalizeEpicChapterSlug(qGrantha, qChapter) : '';
       const targetChapter = cleanCh ? `/${encodeURIComponent(cleanCh)}` : '';
@@ -1041,14 +1218,43 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   const padId = qPad || pathPad;
 
   if (padId) {
-    const cleanPadId = decodeURIComponent(padId).trim();
-    const effectiveSlug = padaAliasesObj[cleanPadId] || padaAliasesObj[padId] || cleanPadId;
-    const snippet = padaSnippetsObj[effectiveSlug] || padaSnippetsObj[cleanPadId] || padaSnippetsObj[padId];
-    const known = KNOWN_PADAS_META[cleanPadId] || KNOWN_PADAS_META[padId] || KNOWN_PADAS_META[effectiveSlug];
+    const cleanPadId = safeDecodeURIComponent(padId).trim();
+    const strippedPadId = cleanPadId.replace(/\.+$/, '');
+    const lowerPadId = strippedPadId.toLowerCase();
+    const effectiveSlug =
+      padaAliasesObj[cleanPadId] ||
+      padaAliasesObj[padId] ||
+      padaAliasesObj[strippedPadId] ||
+      padaAliasesObj[lowerPadId] ||
+      cleanPadId;
+    const strippedEffective = effectiveSlug.replace(/\.+$/, '');
+    const snippet =
+      padaSnippetsObj[effectiveSlug] ||
+      padaSnippetsObj[strippedEffective] ||
+      padaSnippetsObj[cleanPadId] ||
+      padaSnippetsObj[strippedPadId] ||
+      padaSnippetsObj[lowerPadId] ||
+      padaSnippetsObj[padId];
+    const known =
+      KNOWN_PADAS_META[cleanPadId] ||
+      KNOWN_PADAS_META[strippedPadId] ||
+      KNOWN_PADAS_META[padId] ||
+      KNOWN_PADAS_META[effectiveSlug];
 
     if (!snippet && !known) {
+      const recoveredSlug = recoverMissingPadSlug(cleanPadId);
+      if (recoveredSlug && padaSnippetsObj[recoveredSlug]) {
+        return buildCachedRedirect(
+          `https://bhav.vrindopnishad.in/pad/${encodeURIComponent(recoveredSlug)}`,
+          301
+        );
+      }
       return notFoundResponse('यह पावन पद उपलब्ध नहीं है (Pad Not Found)');
     }
+
+    const canonicalPadSlug = snippet && strippedEffective && padaSnippetsObj[strippedEffective]
+      ? strippedEffective
+      : cleanPadId;
 
     const padTitle = known?.title || snippet?.[0] || formatSlug(cleanPadId);
     const padAuthor = known?.author || snippet?.[1] || 'रसिक संत';
@@ -1064,7 +1270,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     const nextEffective = (nextSlug && padaAliasesObj[nextSlug]) || nextSlug;
     const prevTitle = prevSlug && padaSnippetsObj[prevEffective] ? padaSnippetsObj[prevEffective][0] : '';
     const nextTitle = nextSlug && padaSnippetsObj[nextEffective] ? padaSnippetsObj[nextEffective][0] : '';
-    const romanTitle = formatSlug(cleanPadId);
+    const romanTitle = formatSlug(canonicalPadSlug);
 
     ensureCrawlIndex();
     const granthaPadasForRelated = (granthaId && granthaCrawlMap[granthaId]) ? granthaCrawlMap[granthaId] : [];
@@ -1076,7 +1282,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     description = openingVerse
       ? `«${firstLinePreview.slice(0, 90)}» पढ़िए ${titleClean} का प्रामाणिक मूल पाठ, भावार्थ व अर्थ सहित। रचयिता: ${padAuthor} (${granthaLabel})। नित्य निकुंज रस व दिव्य स्वाध्याय।`
       : `पढ़िए ${titleClean} (${granthaLabel}) का प्रामाणिक मूल पाठ, भावार्थ व नित्य अनुशीलन। रचयिता: ${padAuthor}। वृन्दोपनिषद् 2.0`;
-    canonicalUrl = `https://bhav.vrindopnishad.in/pad/${encodeURIComponent(cleanPadId)}`;
+    canonicalUrl = `https://bhav.vrindopnishad.in/pad/${encodeURIComponent(canonicalPadSlug)}`;
 
     customKeywords = [
       padTitle,
@@ -1401,6 +1607,28 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     }
 
     if (!saint && saintPadas.length === 0) {
+      const lowerSaint = safeDecodeURIComponent(qAuthor).trim().toLowerCase();
+      const strippedSaint = lowerSaint.replace(/-\d+$/, '');
+      const aliasHit = SAINT_ALIASES[lowerSaint] || SAINT_ALIASES[strippedSaint];
+      if (aliasHit) {
+        const dest =
+          aliasHit.kind === 'sant'
+            ? `/sant/${encodeURIComponent(aliasHit.target)}`
+            : aliasHit.kind === 'pad'
+              ? `/pad/${encodeURIComponent(aliasHit.target)}`
+              : aliasHit.kind === 'grantha'
+                ? `/grantha/${encodeURIComponent(aliasHit.target)}`
+                : `/${aliasHit.target}`;
+        return buildCachedRedirect(`https://bhav.vrindopnishad.in${dest}`, 301);
+      }
+      const noHonorific = strippedSaint.replace(/^(?:shri|sri|sant|goswami|swami)-/, '');
+      const matchedSaint = SAINTS_MAP.get(noHonorific) || SAINTS_MAP.get(`${noHonorific}-ji`);
+      if (matchedSaint) {
+        return buildCachedRedirect(
+          `https://bhav.vrindopnishad.in/sant/${encodeURIComponent(matchedSaint.slug || noHonorific)}`,
+          301
+        );
+      }
       return notFoundResponse('यह रसिक संत पृष्ठ उपलब्ध नहीं है (Saint Not Found)');
     }
 
@@ -1840,6 +2068,25 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     const formatted = formatSlug(qGrantha);
     const granthaPadas: [string, string][] = granthaCrawlMap[qGrantha] || [];
     if (granthaPadas.length === 0) {
+      const lowerGrantha = safeDecodeURIComponent(qGrantha).trim().toLowerCase();
+      const padSuffixMatch = Object.keys(padaSnippetsObj).find((k) => k.endsWith(`-${lowerGrantha}`));
+      if (padSuffixMatch) {
+        return buildCachedRedirect(
+          `https://bhav.vrindopnishad.in/pad/${encodeURIComponent(padSuffixMatch)}`,
+          301
+        );
+      }
+      const baseGrantha = lowerGrantha.replace(/-\d+$/, '');
+      const targetGrantha =
+        GRANTHA_ALIASES[lowerGrantha] ||
+        GRANTHA_ALIASES[baseGrantha] ||
+        (GRANTHAS_MAP.has(baseGrantha) ? baseGrantha : null);
+      if (targetGrantha) {
+        return buildCachedRedirect(
+          `https://bhav.vrindopnishad.in/grantha/${encodeURIComponent(targetGrantha)}`,
+          301
+        );
+      }
       return notFoundResponse('यह पावन ग्रंथ उपलब्ध नहीं है (Grantha Not Found)');
     }
     title = `${formatted} • संपूर्ण ग्रंथ संग्रह | वृन्दोपनिषद् 2.0 (Vrindopnishad)`;

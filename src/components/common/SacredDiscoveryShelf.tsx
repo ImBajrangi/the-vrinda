@@ -125,11 +125,18 @@ export const SacredDiscoveryShelf: React.FC<SacredDiscoveryShelfProps> = ({
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
         {discoveries.map((item) => {
           const isPadLink = item.type === 'pad';
+          const resolvedHref =
+            typeof window !== 'undefined' &&
+            window.location.hostname.startsWith('path.') &&
+            item.url.startsWith('/') &&
+            !item.url.startsWith('/grantha/')
+              ? `https://bhav.vrindopnishad.in${item.url}`
+              : item.url;
 
           return (
             <a
               key={item.id}
-              href={item.url}
+              href={resolvedHref}
               onClick={(e) => {
                 if (isPadLink && onSelectPad && !e.metaKey && !e.ctrlKey) {
                   // If clicking another pad inside pad reader, handle in-place

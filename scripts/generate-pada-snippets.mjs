@@ -71,6 +71,33 @@ function devanagariToAsciiSlug(input) {
   return out.replace(/-+/g, '-').replace(/^-|-$/g, '');
 }
 
+const devNasalSkeleton = (str) =>
+  (str || '')
+    .split(' - ')[0]
+    .replace(/[^\u0915-\u0939]/g, '')
+    .replace(/[\u0919\u091E\u0923\u0928\u092E]/g, '')
+    .replace(/व/g, 'ब')
+    .replace(/श|ष/g, 'स');
+
+const romanConsonantSkeleton = (str) =>
+  (str || '')
+    .toLowerCase()
+    .replace(/-(shri-(?:hita?-)?harivansh.*|harivansh-mahaprabhu.*|from-hita?-chat?urasi.*|pada-written.*|hit-chaurasi.*)$/, '')
+    .replace(/ph/g, 'f')
+    .replace(/bh/g, 'b')
+    .replace(/jh/g, 'j')
+    .replace(/chh/g, 'c')
+    .replace(/ch/g, 'c')
+    .replace(/sh/g, 's')
+    .replace(/th/g, 't')
+    .replace(/dh/g, 'd')
+    .replace(/kh/g, 'k')
+    .replace(/gh/g, 'g')
+    .replace(/v|w/g, 'b')
+    .replace(/[aeiouyhnm]+/g, '')
+    .replace(/(.)\1+/g, '$1')
+    .replace(/[^a-z0-9]/g, '');
+
 const THEME_DEFINITIONS = [
   {
     slug: 'holi-fag',
@@ -220,12 +247,41 @@ export function generatePadaSnippets() {
           }
         }
 
-        // Index for title matching
+        // Index for title matching (exact Devanagari + vowel-less & nasal-stripped skeletons + Roman slug skeleton)
         const cleanT = title.replace(/[^\u0900-\u097F]/g, '');
+        const cleanDevNoMatra = title.replace(/[^\u0915-\u0939]/g, '');
+        const cleanNsk = devNasalSkeleton(title);
+        const cleanRsk = romanConsonantSkeleton(slug);
         if (cleanT.length >= 4) {
           titleToSlug.set(cleanT, slug);
           titleToSlug.set(cleanT.slice(0, 12), slug);
           titleToSlug.set(cleanT.slice(0, 8), slug);
+        }
+        if (cleanDevNoMatra.length >= 5) {
+          if (!titleToSlug.has(`nm:${cleanDevNoMatra}`)) titleToSlug.set(`nm:${cleanDevNoMatra}`, slug);
+          if (!titleToSlug.has(`nm:${cleanDevNoMatra.slice(0, 12)}`)) titleToSlug.set(`nm:${cleanDevNoMatra.slice(0, 12)}`, slug);
+          if (!titleToSlug.has(`nm:${cleanDevNoMatra.slice(0, 8)}`)) titleToSlug.set(`nm:${cleanDevNoMatra.slice(0, 8)}`, slug);
+        }
+        if (cleanNsk.length >= 6) {
+          const scope = granthaId === 'hit-chaurasi' ? 'hc_nsk:' : 'nsk:';
+          if (!titleToSlug.has(`${scope}${cleanNsk}`)) titleToSlug.set(`${scope}${cleanNsk}`, slug);
+          if (cleanNsk.length >= 10 && !titleToSlug.has(`${scope}${cleanNsk.slice(0, 10)}`)) {
+            titleToSlug.set(`${scope}${cleanNsk.slice(0, 10)}`, slug);
+          }
+        }
+        if (cleanRsk.length >= 6) {
+          const scope = granthaId === 'hit-chaurasi' ? 'hc_rsk:' : 'rsk:';
+          if (!titleToSlug.has(`${scope}${cleanRsk}`)) titleToSlug.set(`${scope}${cleanRsk}`, slug);
+          if (cleanRsk.length >= 10 && !titleToSlug.has(`${scope}${cleanRsk.slice(0, 10)}`)) {
+            titleToSlug.set(`${scope}${cleanRsk.slice(0, 10)}`, slug);
+          }
+        }
+        // Track exact raw/ID variants if different from canonical slug
+        if (rawSlug !== slug) {
+          titleToSlug.set(`__raw__:${rawSlug}`, slug);
+        }
+        if (p.id && p.id.trim() && p.id.trim() !== slug) {
+          titleToSlug.set(`__raw__:${p.id.trim()}`, slug);
         }
       }
     } catch (err) {
@@ -237,15 +293,98 @@ export function generatePadaSnippets() {
   // (Prevents duplicating the full verse arrays in the Worker bundle)
   const aliasMap = {};
   let aliasCount = 0;
+
+  // Map raw/trailing-dot/id variants captured above + canonical starter pad IDs
+  for (const [k, target] of titleToSlug.entries()) {
+    if (k.startsWith('__raw__:')) {
+      const orig = k.slice(8);
+      if (!snippets[orig] && snippets[target] && !aliasMap[orig]) {
+        aliasMap[orig] = target;
+        aliasCount++;
+      }
+    }
+  }
+
+  const starterAliases = {
+    'hit-chaurasi-01': 'joi-joi-pyaro-kare-soi-mohi-bhaave-pada-written-by-shri-hita-harivansh-mahaprabhu',
+    'hit-chaurasi-1': 'joi-joi-pyaro-kare-soi-mohi-bhaave-pada-written-by-shri-hita-harivansh-mahaprabhu',
+    'radha-kripa-kataksha': 'shri-radha-kripa-kataksha-stotram',
+    'kelimal-01': 'jyonhijyonhi-tum-raakhat-ho',
+    'kelimal-1': 'jyonhijyonhi-tum-raakhat-ho',
+  };
+  for (const [aliasKey, targetSlug] of Object.entries(starterAliases)) {
+    if (snippets[targetSlug] && !snippets[aliasKey] && !aliasMap[aliasKey]) {
+      aliasMap[aliasKey] = targetSlug;
+      aliasCount++;
+    }
+  }
+
+  // Register any canonicalPadas items whose trailing-dot or id differs from snippets keys
+  const canonicalPadasFile = path.resolve(projectRoot, 'src/data/canonicalPadas.json');
+  if (fs.existsSync(canonicalPadasFile)) {
+    try {
+      const cpItems = JSON.parse(fs.readFileSync(canonicalPadasFile, 'utf-8'));
+      for (const cp of cpItems) {
+        const origKey = (cp.slug || cp.id || '').trim();
+        const stripped = origKey.replace(/\.+$/, '');
+        if (origKey && !snippets[origKey] && snippets[stripped] && !aliasMap[origKey]) {
+          aliasMap[origKey] = stripped;
+          aliasCount++;
+        }
+      }
+    } catch {}
+  }
+
   const legacyPath = path.resolve(projectRoot, 'src/data/legacySlugRedirects.json');
   if (fs.existsSync(legacyPath)) {
     try {
       const legacyRedirects = JSON.parse(fs.readFileSync(legacyPath, 'utf-8'));
       for (const [legacyKey, targetSlug] of Object.entries(legacyRedirects)) {
         const cleanTarget = targetSlug.replace(/\.+$/, '');
-        if (snippets[cleanTarget] && !snippets[legacyKey] && !aliasMap[legacyKey]) {
-          aliasMap[legacyKey] = cleanTarget;
-          aliasCount++;
+        if (snippets[cleanTarget]) {
+          if (!snippets[legacyKey] && !aliasMap[legacyKey]) {
+            aliasMap[legacyKey] = cleanTarget;
+            aliasCount++;
+          }
+        } else {
+          // Fuzzy-recover historical Hit Chaurasi / Devanagari slugs so 301s never resolve to 404
+          const cleanDev = legacyKey.replace(/[^\u0900-\u097F]/g, '');
+          const cleanNm = legacyKey.replace(/[^\u0915-\u0939]/g, '');
+          const cleanNsk = devNasalSkeleton(legacyKey);
+          const cleanRsk = romanConsonantSkeleton(cleanTarget);
+          const isHitChaurasiTarget = cleanTarget.endsWith('-hit-chaurasi');
+          const recovered =
+            (cleanDev.length >= 4 &&
+              (titleToSlug.get(cleanDev) ||
+                titleToSlug.get(cleanDev.slice(0, 12)) ||
+                titleToSlug.get(cleanDev.slice(0, 8)))) ||
+            (cleanNm.length >= 5 &&
+              (titleToSlug.get(`nm:${cleanNm}`) ||
+                titleToSlug.get(`nm:${cleanNm.slice(0, 12)}`) ||
+                titleToSlug.get(`nm:${cleanNm.slice(0, 8)}`))) ||
+            (cleanNsk.length >= 6 &&
+              ((isHitChaurasiTarget &&
+                (titleToSlug.get(`hc_nsk:${cleanNsk}`) ||
+                  (cleanNsk.length >= 10 && titleToSlug.get(`hc_nsk:${cleanNsk.slice(0, 10)}`)))) ||
+                titleToSlug.get(`nsk:${cleanNsk}`) ||
+                (cleanNsk.length >= 10 && titleToSlug.get(`nsk:${cleanNsk.slice(0, 10)}`)))) ||
+            (cleanRsk.length >= 6 &&
+              ((isHitChaurasiTarget &&
+                (titleToSlug.get(`hc_rsk:${cleanRsk}`) ||
+                  (cleanRsk.length >= 10 && titleToSlug.get(`hc_rsk:${cleanRsk.slice(0, 10)}`)))) ||
+                titleToSlug.get(`rsk:${cleanRsk}`) ||
+                (cleanRsk.length >= 10 && titleToSlug.get(`rsk:${cleanRsk.slice(0, 10)}`)))) ||
+            null;
+          if (recovered && snippets[recovered]) {
+            if (!snippets[legacyKey] && !aliasMap[legacyKey]) {
+              aliasMap[legacyKey] = recovered;
+              aliasCount++;
+            }
+            if (!snippets[cleanTarget] && !aliasMap[cleanTarget]) {
+              aliasMap[cleanTarget] = recovered;
+              aliasCount++;
+            }
+          }
         }
       }
     } catch {}
@@ -361,6 +500,11 @@ export function generatePadaSnippets() {
 
   const publicAliasDest = path.resolve(projectRoot, 'public/data/pada-aliases.json');
   fs.writeFileSync(publicAliasDest, aliasStr, 'utf-8');
+
+  // Write ultra-tiny cache-busting build version token for Cloudflare Worker caches.default
+  const cacheVerPath = path.resolve(projectRoot, 'src/data/edgeCacheVersion.json');
+  const buildVer = Date.now().toString(36);
+  fs.writeFileSync(cacheVerPath, JSON.stringify({ v: buildVer }), 'utf-8');
 
   console.log(`  ✓ Successfully indexed ${padaCount} authentic Rasik padas (${Math.round(jsonStr.length / 1024)} KB) + ${aliasCount} compact aliases (${Math.round(aliasStr.length / 1024)} KB)`);
   console.log(`  ✓ Wired ${audioMappedCount} Hit Chaurasi MP3s, ${Object.keys(ragaIndex).length} Raga Hubs (${Math.round(ragaStr.length / 1024)} KB), ${Object.keys(themeHubs).length} Theme Hubs (${Math.round(themeStr.length / 1024)} KB)`);
