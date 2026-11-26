@@ -24,6 +24,31 @@
   CDN-Cache-Control: public, max-age=31536000
   Cloudflare-CDN-Cache-Control: public, max-age=31536000
 
+/data/rituals/*
+  Cache-Control: public, max-age=86400, s-maxage=604800, stale-while-revalidate=604800
+  CDN-Cache-Control: public, max-age=604800, stale-while-revalidate=604800
+  Cloudflare-CDN-Cache-Control: public, max-age=604800, stale-while-revalidate=604800
+
+/data/places/*
+  Cache-Control: public, max-age=86400, s-maxage=604800, stale-while-revalidate=604800
+  CDN-Cache-Control: public, max-age=604800, stale-while-revalidate=604800
+  Cloudflare-CDN-Cache-Control: public, max-age=604800, stale-while-revalidate=604800
+
+/data/stories/*
+  Cache-Control: public, max-age=86400, s-maxage=604800, stale-while-revalidate=604800
+  CDN-Cache-Control: public, max-age=604800, stale-while-revalidate=604800
+  Cloudflare-CDN-Cache-Control: public, max-age=604800, stale-while-revalidate=604800
+
+/data/biographies/*
+  Cache-Control: public, max-age=86400, s-maxage=604800, stale-while-revalidate=604800
+  CDN-Cache-Control: public, max-age=604800, stale-while-revalidate=604800
+  Cloudflare-CDN-Cache-Control: public, max-age=604800, stale-while-revalidate=604800
+
+/data/canonical/*
+  Cache-Control: public, max-age=86400, s-maxage=604800, stale-while-revalidate=604800
+  CDN-Cache-Control: public, max-age=604800, stale-while-revalidate=604800
+  Cloudflare-CDN-Cache-Control: public, max-age=604800, stale-while-revalidate=604800
+
 # 4. Manifest, Catalog & Scripture Hierarchy (Edge + Browser SWR caching; eliminates 6.6MB re-fetches)
 /data/manifest.json
   Cache-Control: public, max-age=300, s-maxage=3600, stale-while-revalidate=86400
@@ -39,11 +64,6 @@
   Cache-Control: public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800
   CDN-Cache-Control: public, s-maxage=86400, stale-while-revalidate=604800
   Cloudflare-CDN-Cache-Control: public, max-age=86400, stale-while-revalidate=604800
-
-/data/*
-  Cache-Control: public, max-age=86400, s-maxage=604800, stale-while-revalidate=604800
-  CDN-Cache-Control: public, max-age=604800, stale-while-revalidate=604800
-  Cloudflare-CDN-Cache-Control: public, max-age=604800, stale-while-revalidate=604800
 
 # 5. XML Sitemaps & RSS Feeds (24-hour Edge Cache, 7-day stale-while-revalidate)
 /*.xml

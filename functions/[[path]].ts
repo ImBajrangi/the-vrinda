@@ -655,6 +655,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   if (
     edgeCache &&
     cacheKey &&
+    request.method === 'GET' &&
     (response.status === 200 || response.status === 301) &&
     !response.headers.get('Cache-Control')?.includes('no-store')
   ) {
@@ -674,9 +675,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
       } else {
         await edgeCache.put(cacheKey, finalResponse.clone());
       }
-      return request.method === 'HEAD'
-        ? new Response(null, { status: finalResponse.status, statusText: finalResponse.statusText, headers: outHeaders })
-        : finalResponse;
+      return finalResponse;
     } catch {}
   }
 

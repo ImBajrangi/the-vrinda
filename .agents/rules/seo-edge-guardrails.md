@@ -33,3 +33,7 @@ description: Enforce technical SEO invariants for Vite SPA + Cloudflare Pages Fu
 
 7. **Responsive Playwright Verification Scope**:
    - When desktop views keep separate mobile headers (`lg:hidden`) earlier in DOM order, scope Playwright visibility assertions using `:visible` (or explicit landmark/role locators) so desktop tests never assert against hidden mobile elements.
+
+8. **Worker `caches.default` Safety & `_routes.json`**:
+   - Always keep `public/_routes.json` excluding static assets (`/assets/*`, `/data/*`, `/audio/*`, icons, manifests) so they bypass `functions/[[path]].ts` and serve from Cloudflare Pages CDN Cache cleanly (`0` Worker subrequests).
+   - When caching HTML/redirect responses in `caches.default` inside `functions/[[path]].ts`, **only write (`edgeCache.put`) on `request.method === 'GET'`** (`HEAD` responses from `await next()` carry empty `null` bodies and would poison the `GET` cache entry with `0` bytes!). Include a build-version parameter in the synthetic `cacheKey` so every deploy invalidates stale HTML automatically.
