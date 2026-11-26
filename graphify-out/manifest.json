@@ -2210,8 +2210,8 @@
     "semantic_hash": ""
   },
   "src/App.tsx": {
-    "mtime": 1795706413.0941823,
-    "ast_hash": "2f10ae67c0c1fe2c1259989a1a648bf0",
+    "mtime": 1795707375.6139758,
+    "ast_hash": "79d065c36bc8cd107a2495b4c2891a79",
     "semantic_hash": ""
   },
   "src/components/common/ArtworkGraphicSlot.tsx": {
@@ -2230,8 +2230,8 @@
     "semantic_hash": ""
   },
   "src/components/common/DynamicNotchNavbar.tsx": {
-    "mtime": 1795706004.0923307,
-    "ast_hash": "ff97cd36a83a249aa54a87836962834b",
+    "mtime": 1795707374.1049058,
+    "ast_hash": "ea24c60b6872787774ad47788d0bb4cf",
     "semantic_hash": ""
   },
   "src/components/common/FloatingNavbar.tsx": {
@@ -2270,8 +2270,8 @@
     "semantic_hash": ""
   },
   "src/components/common/TopAnnouncementMarquee.tsx": {
-    "mtime": 1795705798.4654672,
-    "ast_hash": "f36117f9ce64bc751fe92e3393053238",
+    "mtime": 1795707371.0930493,
+    "ast_hash": "abbd070dfdb694d06ed8d8af194ce3a3",
     "semantic_hash": ""
   },
   "src/components/feed/EmojiTray.tsx": {
@@ -2300,8 +2300,8 @@
     "semantic_hash": ""
   },
   "src/components/reader/DevotionalVersePresenter.tsx": {
-    "mtime": 1795700276.253462,
-    "ast_hash": "d2ad65edc87cda0a60012a3694edbfcd",
+    "mtime": 1795707156.646926,
+    "ast_hash": "fb56247f4a91fb86ada5a94ef832da0d",
     "semantic_hash": ""
   },
   "src/components/reader/InlinePurportCard.tsx": {
@@ -2310,8 +2310,8 @@
     "semantic_hash": ""
   },
   "src/components/reader/MahagranthReader.tsx": {
-    "mtime": 1795706389.772258,
-    "ast_hash": "88e83240d20c38f8b2f14668a2883474",
+    "mtime": 1795707155.12548,
+    "ast_hash": "10d16d579360a6f3995cd7cdc93a5eed",
     "semantic_hash": ""
   },
   "src/components/reader/MobileReaderHeader.tsx": {
@@ -2375,8 +2375,8 @@
     "semantic_hash": ""
   },
   "src/components/smaran/SadhanaRingProgress.tsx": {
-    "mtime": 1795706551.9916313,
-    "ast_hash": "d3db0f8d44057aaedb3f614725fe9f9a",
+    "mtime": 1795707589.493161,
+    "ast_hash": "d3f97ab871b703a32c7b31d40a845f3e",
     "semantic_hash": ""
   },
   "src/data/ashtayamaPeriods.json": {

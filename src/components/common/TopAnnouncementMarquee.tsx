@@ -108,11 +108,11 @@ export const TopAnnouncementMarquee: React.FC<TopAnnouncementMarqueeProps> = ({
   return (
     <aside
       aria-label="Vrindavan Live Announcements Ticker"
-      className={`relative z-40 w-full h-8 sm:h-9 bg-[#FFFDF5] text-stone-800 select-none overflow-hidden border-b border-amber-200/80 pointer-events-none cursor-default ${
+      className={`relative z-40 w-full h-7 sm:h-8 bg-[#F6EFE2] text-stone-800 select-none overflow-hidden pointer-events-none cursor-default ${
         isVisibleOnMobile ? 'block' : 'hidden md:block'
       }`}
     >
-      <div className="w-full h-8 sm:h-9 flex items-center top-marquee-mask pointer-events-none">
+      <div className="w-full h-7 sm:h-8 flex items-center top-marquee-mask pointer-events-none">
         {/* Infinite Track with 2 identical sets for seamless -50% loop */}
         <div className="top-marquee-track pointer-events-none">
           {renderItemSet('set-a', false)}

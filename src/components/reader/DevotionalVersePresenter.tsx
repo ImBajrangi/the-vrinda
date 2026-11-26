@@ -361,7 +361,7 @@ export const DevotionalVersePresenter: React.FC<DevotionalVersePresenterProps> =
 
       {/* Attribution Footnote Citation */}
       {parsed.attribution && (
-        <div className="mt-5 pt-3 border-t border-amber-900/10 flex items-center justify-end text-xs font-serif text-amber-900/85 italic gap-1.5">
+        <div className="mt-5 pt-3 border-t border-amber-900/10 flex items-center justify-end text-xs font-serif text-amber-900/90 italic gap-1.5">
           <ScrollText className="w-3.5 h-3.5 text-amber-700 opacity-80 shrink-0" />
           <span>— {parsed.attribution}</span>
         </div>

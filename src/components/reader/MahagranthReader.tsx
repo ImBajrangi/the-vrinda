@@ -1300,7 +1300,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                     decoding="async"
                   />
                 </div>
-                <div className="px-1 pt-2 text-[11px] font-serif font-semibold text-amber-950/85 truncate">
+                <div className="px-1 pt-2 text-[11px] font-serif font-semibold text-amber-950/90 truncate">
                   {visual.caption}
                 </div>
               </div>

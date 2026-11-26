@@ -287,15 +287,15 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
         />
       )}
       <header
-        className={`sticky top-2.5 sm:top-4 z-50 w-full px-3 sm:px-6 pointer-events-none select-none ${
+        className={`sticky top-0 z-50 w-full bg-white shadow-[0_2px_18px_rgba(24,24,27,0.045)] select-none ${
           !isVisibleOnMobile ? 'hidden md:block' : 'block'
         }`}
       >
-      <div className="w-full max-w-6xl xl:max-w-7xl 2xl:max-w-[1536px] mx-auto flex flex-col items-center">
+      <div className="w-full max-w-full md:max-w-6xl xl:max-w-[1440px] 2xl:max-w-[1680px] mx-auto px-3 sm:px-6 lg:px-8 2xl:px-12 flex flex-col">
         
-        {/* Main Floating Glass & Paper Header Bar */}
-        <div className="pointer-events-auto rounded-full w-full max-w-[96vw] md:max-w-6xl xl:max-w-7xl 2xl:max-w-[1536px] bg-white/95 backdrop-blur-md border border-neutral-900/[0.07] shadow-[0_4px_16px_-2px_rgba(24,24,27,0.05)] px-3.5 sm:px-5 py-1.5 transition-colors">
-          <div className="flex items-center justify-between gap-2 h-10 sm:h-11">
+        {/* Clean Borderless Solid Header Row — FarmDirect Sticky Flow + Apple Spatial Rhythm */}
+        <div className="w-full py-2 sm:py-2.5">
+          <div className="flex items-center justify-between gap-3 h-10 sm:h-11">
             
             {/* 1. Left: Brand Identity & Sacred Logo */}
             <div
@@ -303,30 +303,30 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
               tabIndex={0}
               onClick={() => handleSelectNav('smaran')}
               onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && handleSelectNav('smaran')}
-              className="flex items-center gap-1.5 sm:gap-2 cursor-pointer select-none shrink-0 py-0.5"
+              className="flex items-center gap-2.5 cursor-pointer select-none shrink-0 py-0.5"
               title="श्री वृन्दोपनिषद् 2.0 • Daily Sadhana Sanctuary"
             >
-              <SacredLogo size={30} className="shrink-0" />
-              <div className="flex items-center gap-1.5 leading-none">
-                <span className="font-devanagari font-bold text-sm sm:text-base text-amber-950 tracking-tight">
+              <SacredLogo size={32} className="shrink-0" />
+              <div className="flex items-baseline gap-1.5 leading-none">
+                <span className="font-devanagari font-bold text-[16px] sm:text-[18px] text-[#1C140D] tracking-tight">
                   वृन्दोपनिषद्
                 </span>
-                <span className="font-mono font-bold text-[10px] text-amber-800 bg-amber-100/80 px-1.5 py-0.5 rounded-full uppercase shrink-0">
+                <span className="font-mono font-bold text-[10px] text-amber-800/80 uppercase shrink-0">
                   2.0
                 </span>
               </div>
             </div>
 
-            {/* 2. Center: Segmented Navigation Menu Bar (Desktop & Tablet >= md) */}
+            {/* 2. Center: Open Borderless Navigation Rail (Desktop & Tablet >= md) */}
             <nav
               aria-label="Main Navigation Menu"
-              className="relative hidden md:flex items-center gap-1 bg-[#FAF6EE] p-1 rounded-full"
+              className="relative hidden md:flex items-center gap-0.5 xl:gap-1"
             >
               {/* Dynamic Elastic Sliding Indicator Bar */}
               {indicatorStyle.ready && (
                 <span
                   aria-hidden="true"
-                  className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[340ms] ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[transform,width]"
+                  className="absolute top-0 bottom-0 rounded-full bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[260ms] ease-[cubic-bezier(0.2,0,0,1)] will-change-[transform,width]"
                   style={{
                     transform: `translate3d(${indicatorStyle.left}px, 0, 0)`,
                     width: `${indicatorStyle.width}px`,
@@ -346,15 +346,15 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
                     }}
                     type="button"
                     onClick={() => handleSelectNav(item.id)}
-                    className={`relative z-10 flex items-center gap-1.5 px-3 lg:px-4 py-1.5 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer ${
+                    className={`relative z-10 flex items-center gap-1.5 px-3 lg:px-3.5 xl:px-4 py-2 rounded-full text-xs font-semibold transition-colors duration-150 cursor-pointer whitespace-nowrap ${
                       isActive
-                        ? 'text-[#18181B] font-bold'
-                        : 'text-[#71717A] hover:text-[#18181B]'
+                        ? 'text-[#1C140D] font-bold'
+                        : 'text-[#6E675F] hover:text-[#1C140D] hover:bg-[#FAF6EE]'
                     }`}
                   >
-                    <Icon className={`w-3.5 h-3.5 shrink-0 stroke-[2.2] transition-colors duration-200 ${isActive ? 'text-[#B45309]' : 'text-[#71717A]'}`} />
-                    <span aria-hidden="true" className="inline lg:hidden">{item.shortLabel}</span>
-                    <span className="hidden lg:inline">{item.label}</span>
+                    <Icon className={`w-3.5 h-3.5 shrink-0 stroke-[2.1] transition-colors duration-150 ${isActive ? 'text-[#B45309]' : 'text-[#78716C]'}`} />
+                    <span aria-hidden="true" className="inline xl:hidden">{item.shortLabel}</span>
+                    <span className="hidden xl:inline">{item.label}</span>
                   </button>
                 );
               })}
@@ -428,30 +428,30 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
               </div>
             </nav>
 
-            {/* 3. Right: Contemplation Actions & Tools Deck */}
-            <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+            {/* 3. Right: Borderless Tonal Actions Deck */}
+            <div className="flex items-center gap-2 shrink-0">
               
-              {/* Spotlight Search Pill */}
+              {/* Spotlight Search Trigger */}
               {onOpenSearch && (
                 <button
                   type="button"
                   onClick={onOpenSearch}
                   aria-label="Search (Cmd+K)"
                   title="Search: Verses, Saints, Scriptures (Cmd+K)"
-                  className="w-8 h-8 sm:w-auto flex items-center justify-center gap-1.5 sm:px-2.5 sm:h-8 rounded-full bg-[#FFFDF9] text-amber-950 hover:bg-amber-50 text-xs font-semibold transition-colors cursor-pointer shrink-0"
+                  className="w-9 h-9 sm:w-auto flex items-center justify-center gap-2 sm:px-3.5 sm:h-9 rounded-full bg-[#F5F1E8] hover:bg-[#EDE6D6] text-[#1C140D] text-xs font-semibold transition-colors cursor-pointer shrink-0"
                 >
                   <Search className="w-3.5 h-3.5 text-amber-900 stroke-[2.2]" />
                   <span className="hidden sm:inline text-xs">Search</span>
-                  <kbd className="hidden lg:inline text-[9px] font-mono text-amber-800/70 bg-amber-100/60 px-1 py-0.2 rounded">⌘K</kbd>
+                  <kbd className="hidden lg:inline text-[9.5px] font-mono text-amber-900/70">⌘K</kbd>
                 </button>
               )}
 
               {/* Audio Shravan Pill */}
               <div
-                className={`flex items-center justify-center gap-1.5 h-8 rounded-full transition-colors shrink-0 ${
+                className={`flex items-center justify-center gap-1.5 h-9 rounded-full transition-colors shrink-0 ${
                   isPlayingAudio
-                    ? 'bg-[#FEF08A] text-[#78350F] px-1.5 sm:px-2.5 font-bold'
-                    : 'bg-[#FFFDF9] text-amber-950 w-8 sm:w-auto sm:px-2.5 font-semibold'
+                    ? 'bg-[#FEF08A] text-[#78350F] px-2 sm:px-3.5 font-bold'
+                    : 'bg-[#1C140D] hover:bg-[#2F2217] text-[#FEF08A] w-9 sm:w-auto sm:px-3.5 font-semibold'
                 }`}
               >
                 <button
@@ -459,7 +459,11 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
                   onClick={onToggleAudio}
                   aria-label={isPlayingAudio ? 'Pause Sacred Audio' : 'Play Sacred Audio'}
                   title={isPlayingAudio ? 'Pause Sacred Audio' : 'Play Sacred Audio'}
-                  className="w-5 h-5 rounded-full flex items-center justify-center transition-colors cursor-pointer bg-[#FACC15] hover:bg-[#FDE047] text-[#18181B] font-bold"
+                  className={`w-5 h-5 rounded-full flex items-center justify-center transition-colors cursor-pointer font-bold ${
+                    isPlayingAudio
+                      ? 'bg-[#B45309] text-white'
+                      : 'bg-[#FEF08A] text-[#1C140D]'
+                  }`}
                 >
                   {isPlayingAudio ? (
                     <Pause className="w-2.5 h-2.5 fill-current" />
@@ -478,13 +482,13 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
                 </button>
               </div>
 
-              {/* Mobile Menu Hamburger Button (< md only): Styled in matching porcelain white with generous padding */}
+              {/* Mobile Menu Hamburger Button (< md only) */}
               <button
                 ref={mobileToggleRef}
                 type="button"
                 onClick={handleToggleMenu}
                 aria-label={isMobileMenuOpen ? 'Close Menu' : 'Open Menu'}
-                className="md:hidden w-8 h-8 rounded-full bg-[#FFFDF9] hover:bg-amber-50 flex items-center justify-center text-amber-950 transition-colors cursor-pointer shrink-0"
+                className="md:hidden w-9 h-9 rounded-full bg-[#F5F1E8] hover:bg-[#EDE6D6] flex items-center justify-center text-[#1C140D] transition-colors cursor-pointer shrink-0"
               >
                 {isMobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
               </button>

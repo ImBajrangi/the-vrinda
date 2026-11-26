@@ -42,7 +42,7 @@ const NITYA_DARSHAN_PLATES = [
     label: 'युगल दर्शन',
     caption: 'श्री राधारमण देव जू • नित्य शृंगार सिंहासन',
     mandir: 'श्री राधारमण मंदिर, वृन्दावन',
-    pos: 'object-[center_22%]',
+    pos: 'object-[center_52%]',
     src: '/assets/darshan/radharaman-yugal.webp',
   },
   {
@@ -226,14 +226,138 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
 
   return (
     <div className="w-full space-y-6">
-      {/* 1. Editorial Sanctuary Cover Spread (58/42 Museum Split with Apple iOS Plate HUD) */}
+      {/* 1. Open Borderless Editorial Sanctuary & Asymmetric 3-Plate Braj Visual Showcase */}
       <section
         aria-label="श्री वृन्दावन नित्य संदर्शन"
-        className="w-full bg-[#FFFDF9] rounded-[28px] sm:rounded-[32px] squircle-card overflow-hidden border border-[#E7DEC9] shadow-[0_12px_40px_rgba(120,53,15,0.06)]"
+        className="w-full space-y-5 sm:space-y-6 pt-1"
       >
-        <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
-          {/* Left (7 cols): Expansive Museum-Grade Braj Nitya Darshan Stage */}
-          <div className="lg:col-span-7 relative h-[320px] sm:h-[400px] lg:h-[530px] bg-[#160D06] overflow-hidden select-none">
+        {/* Top Open Editorial Masthead & Direct-on-Canvas Amrit Vani */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 items-end px-0.5">
+          {/* Left: Real-Time Masthead, Headline & Borderless Action Bar */}
+          <div className="lg:col-span-7 space-y-3.5">
+            <div className="flex items-center gap-2 flex-wrap text-xs font-laila text-amber-900/90 font-semibold">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-600 shrink-0" />
+              <span>{livePrahar.nameDevanagari} प्रहर ({livePrahar.timeRange})</span>
+              <span className="text-neutral-300">·</span>
+              <span className="text-neutral-700 font-medium">
+                {livePanchang.masaDevanagari} {livePanchang.pakshaDevanagari} {livePanchang.tithiNameDevanagari}
+              </span>
+              <span className="text-neutral-300 hidden sm:inline">·</span>
+              <span className="hidden sm:inline text-neutral-500 font-medium">
+                {formatDevanagariNumerals(currentStreakDays)}-दिवस · समरसता {formatDevanagariNumerals(harmonyPct)}%
+              </span>
+            </div>
+
+            <h1 className="font-rozha text-[26px] sm:text-4xl lg:text-[38px] text-[#1A120B] leading-[1.14] tracking-tight">
+              श्री वृन्दावन नित्य संदर्शन एवं युगल स्मरण
+            </h1>
+
+            <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap pt-0.5">
+              <button
+                type="button"
+                onClick={handleTapBead}
+                className="h-9 sm:h-10 flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 rounded-full bg-[#1C140D] hover:bg-[#2F2217] text-[#FEF08A] text-[11.5px] sm:text-xs font-laila font-bold transition-colors cursor-pointer"
+                title="सीधे यहीं से +१ राधे नाम जप करें"
+              >
+                <Disc3 className="w-3.5 h-3.5 text-[#FEF08A]" />
+                <span>+१ राधे जप</span>
+                <span className="font-mono text-[10px] sm:text-[10.5px] text-amber-200/90 bg-white/10 px-1.5 py-0.5 rounded-full">
+                  {formatDevanagariNumerals(beadInCurrentMala)}/१०८
+                </span>
+              </button>
+
+              <button
+                type="button"
+                onClick={onOpenFocus}
+                className="h-9 sm:h-10 flex items-center gap-1.5 px-3 sm:px-3.5 rounded-full bg-[#F1EAE0] hover:bg-[#E7DEC9] text-[#1C140D] text-[11.5px] sm:text-xs font-laila font-semibold transition-colors cursor-pointer"
+                title="Open Dhyāna Sanctuary (ध्यान कक्ष)"
+              >
+                <Wind className="w-3.5 h-3.5 text-amber-800" />
+                <span>ध्यान कक्ष</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={toggleDiya}
+                className={`h-9 sm:h-10 flex items-center gap-1.5 px-3 sm:px-3.5 rounded-full text-[11.5px] sm:text-xs font-laila font-semibold transition-colors cursor-pointer ${
+                  diyaLit
+                    ? 'bg-[#FEF08A] text-amber-950 font-bold'
+                    : 'bg-[#F1EAE0] hover:bg-[#E7DEC9] text-[#1C140D]'
+                }`}
+                title="श्रीजी के चरणों में आज का भाव-दीप प्रज्वलित करें"
+              >
+                <Flame className={`w-3.5 h-3.5 ${diyaLit ? 'text-amber-700 fill-amber-500' : 'text-amber-700'}`} />
+                <span className="sm:hidden">{diyaLit ? 'दीपित' : 'दीप'}</span>
+                <span className="hidden sm:inline">{diyaLit ? 'दीप प्रज्वलित' : 'दीप अर्पण'}</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={onOpenGuide}
+                aria-label="साधना विधि मार्गदर्शिका"
+                title="Sadhana Guide: Essential daily devotional practices"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#F1EAE0] hover:bg-[#E7DEC9] text-neutral-700 flex items-center justify-center transition-colors cursor-pointer shrink-0"
+              >
+                <HelpCircle className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+
+          {/* Right: Unboxed Amrit Vani Couplet directly on Warm Canvas */}
+          <div className="lg:col-span-5 border-l-2 border-[#B45309]/70 pl-4 space-y-2.5">
+            <blockquote className="font-laila text-[15px] sm:text-[16.5px] font-medium text-[#1C140D] whitespace-pre-line leading-relaxed">
+              “{activeVani.verse}”
+            </blockquote>
+
+            <div className="flex items-center justify-between gap-2 pt-0.5">
+              <div className="flex items-center gap-2 min-w-0">
+                <img
+                  src={getSaintPortrait({ name: activeVani.saint })}
+                  alt={activeVani.saint}
+                  className="w-7 h-7 rounded-full object-cover object-top shrink-0"
+                  loading="eager"
+                  decoding="async"
+                />
+                <div className="min-w-0 font-laila leading-tight">
+                  <span className="text-xs font-bold text-amber-950 truncate block">{activeVani.saint}</span>
+                  <span className="text-[10.5px] text-neutral-500 truncate block">{activeVani.grantha}</span>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3 text-xs font-laila font-semibold shrink-0">
+                <button
+                  type="button"
+                  onClick={() => setVaniIndex((i) => (i + 1) % DAILY_AMRIT_VANI.length)}
+                  className="text-neutral-600 hover:text-amber-900 transition-colors cursor-pointer"
+                  title="अगली रसिक वाणी देखें"
+                >
+                  अगला पद ↻
+                </button>
+                <button
+                  type="button"
+                  onClick={handleEnterReader}
+                  disabled={isOpeningReader}
+                  aria-busy={isOpeningReader}
+                  className="text-amber-800 hover:text-amber-950 transition-colors cursor-pointer inline-flex items-center gap-1 disabled:opacity-65"
+                >
+                  {isOpeningReader ? (
+                    <>
+                      <IOSSpinner size="xs" theme="current" />
+                      <span>खुल रहा है</span>
+                    </>
+                  ) : (
+                    <span>मूल पाठ →</span>
+                  )}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Asymmetric 3-Plate Braj Nitya Darshan Visual Gallery (Zero Card Outlines) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-3.5 sm:gap-4">
+          {/* Primary Darshan Stage (8 cols) */}
+          <div className="lg:col-span-8 relative h-[280px] sm:h-[380px] lg:h-[430px] rounded-[24px] sm:rounded-[28px] squircle-card overflow-hidden bg-[#140B05] shadow-[0_14px_40px_rgba(24,24,27,0.09)] select-none">
             <img
               src={activePlate.src}
               alt={activePlate.caption}
@@ -246,14 +370,14 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
               decoding="async"
             />
 
-            {/* Top-Left Subtle Frosted Museum Counter Badge (iOS Material) */}
-            <div className="absolute top-3.5 left-3.5 sm:top-4 sm:left-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#120A04]/55 backdrop-blur-md border border-white/15 text-white text-[11px] font-laila font-medium shadow-sm">
+            {/* Top-Left Subtle Frosted Plate Counter (no border outline) */}
+            <div className="absolute top-3.5 left-3.5 sm:top-4 sm:left-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#120A04]/55 backdrop-blur-md text-white text-[11px] font-laila font-medium">
               <span className="w-1.5 h-1.5 rounded-full bg-[#FDE047] shrink-0" />
               <span className="font-mono text-[10.5px] text-amber-200 font-bold">
                 {formatDevanagariNumerals(plateIndex + 1).padStart(2, '०')} / {formatDevanagariNumerals(NITYA_DARSHAN_PLATES.length).padStart(2, '०')}
               </span>
               <span className="text-white/40">•</span>
-              <span className="truncate max-w-[185px] sm:max-w-none">{activePlate.mandir}</span>
+              <span className="truncate max-w-[180px] sm:max-w-none">{activePlate.mandir}</span>
             </div>
 
             {/* Top-Right Apple iOS 18 Plate Switch Loader */}
@@ -261,236 +385,127 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
               <div
                 role="status"
                 aria-busy="true"
-                className="absolute top-3.5 right-3.5 sm:top-4 sm:right-4 px-2.5 py-1.5 rounded-full bg-[#120A04]/65 backdrop-blur-md border border-white/15 inline-flex items-center gap-1.5 text-[10.5px] text-amber-100 font-laila"
+                className="absolute top-3.5 right-3.5 sm:top-4 sm:right-4 px-2.5 py-1.5 rounded-full bg-[#120A04]/70 backdrop-blur-md inline-flex items-center gap-1.5 text-[10.5px] text-amber-100 font-laila"
               >
                 <IOSSpinner size="xs" theme="white" />
                 <span>दर्शन...</span>
               </div>
             )}
 
-            {/* Bottom Museum Gradient Scrim (upper 75% untouched) */}
-            <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#100803]/95 via-[#100803]/55 to-transparent pointer-events-none" />
+            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#0E0703]/95 via-[#0E0703]/50 to-transparent pointer-events-none" />
 
-            {/* Clean Museum Plaque Bar + Segmented Dots (Mobile Safe Layout) */}
-            <div className="absolute inset-x-0 bottom-0 p-4 sm:p-6 space-y-2.5">
-              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2.5">
-                <div className="min-w-0">
-                  <div className="font-rozha text-[17px] sm:text-xl lg:text-[22px] text-white tracking-wide leading-snug line-clamp-1">
-                    {activePlate.caption}
-                  </div>
+            <div className="absolute inset-x-0 bottom-0 p-4 sm:p-6 flex flex-col sm:flex-row sm:items-end justify-between gap-2.5">
+              <div className="font-rozha text-[17px] sm:text-xl lg:text-[22px] text-white tracking-wide leading-snug line-clamp-1 min-w-0">
+                {activePlate.caption}
+              </div>
+
+              <div className="flex items-center justify-between sm:justify-end gap-2 shrink-0">
+                <div className="flex items-center gap-1 sm:hidden" aria-hidden="true">
+                  {NITYA_DARSHAN_PLATES.map((p, i) => (
+                    <span
+                      key={p.id}
+                      className={`h-1 rounded-full transition-all duration-200 ${
+                        i === plateIndex ? 'w-4 bg-[#FEF08A]' : 'w-1.5 bg-white/40'
+                      }`}
+                    />
+                  ))}
                 </div>
 
-                <div className="flex items-center justify-between sm:justify-end gap-2 shrink-0">
-                  {/* Segmented Plate Progress Dots */}
-                  <div className="flex items-center gap-1 sm:hidden" aria-hidden="true">
-                    {NITYA_DARSHAN_PLATES.map((p, i) => (
-                      <span
-                        key={p.id}
-                        className={`h-1 rounded-full transition-all duration-200 ${
-                          i === plateIndex ? 'w-4 bg-[#FEF08A]' : 'w-1.5 bg-white/35'
-                        }`}
-                      />
-                    ))}
-                  </div>
-
-                  <div className="flex items-center gap-1.5">
-                    <button
-                      type="button"
-                      onClick={() => selectPlate(plateIndex - 1)}
-                      aria-label="पिछला दर्शन"
-                      className="w-8 h-8 rounded-full bg-white/15 hover:bg-white/25 text-white backdrop-blur-sm border border-white/10 flex items-center justify-center transition-colors cursor-pointer"
-                    >
-                      <ChevronLeft className="w-4 h-4" />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => selectPlate(plateIndex + 1)}
-                      aria-label="अगला दर्शन"
-                      className="w-8 h-8 rounded-full bg-white/15 hover:bg-white/25 text-white backdrop-blur-sm border border-white/10 flex items-center justify-center transition-colors cursor-pointer"
-                    >
-                      <ChevronRight className="w-4 h-4" />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setLightboxImage({ src: activePlate.src, caption: activePlate.caption })}
-                      aria-label={`पूर्ण दर्शन देखें: ${activePlate.caption}`}
-                      className="h-8 px-3 rounded-full bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] text-[11px] font-laila font-bold inline-flex items-center gap-1 transition-colors cursor-pointer whitespace-nowrap shadow-xs"
-                    >
-                      <Maximize2 className="w-3 h-3" />
-                      <span>पूर्ण दर्शन</span>
-                    </button>
-                  </div>
+                <div className="flex items-center gap-1.5">
+                  <button
+                    type="button"
+                    onClick={() => selectPlate(plateIndex - 1)}
+                    aria-label="पिछला दर्शन"
+                    className="w-8 h-8 rounded-full bg-[#120A04]/50 hover:bg-[#120A04]/75 text-white backdrop-blur-md flex items-center justify-center transition-colors cursor-pointer"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => selectPlate(plateIndex + 1)}
+                    aria-label="अगला दर्शन"
+                    className="w-8 h-8 rounded-full bg-[#120A04]/50 hover:bg-[#120A04]/75 text-white backdrop-blur-md flex items-center justify-center transition-colors cursor-pointer"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setLightboxImage({ src: activePlate.src, caption: activePlate.caption })}
+                    aria-label={`पूर्ण दर्शन देखें: ${activePlate.caption}`}
+                    className="h-8 px-3.5 rounded-full bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] text-[11px] font-laila font-bold inline-flex items-center gap-1 transition-colors cursor-pointer whitespace-nowrap"
+                  >
+                    <Maximize2 className="w-3 h-3" />
+                    <span>पूर्ण दर्शन</span>
+                  </button>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Right (5 cols): Editorial Parchment Folio & Curated Controls */}
-          <div className="lg:col-span-5 p-5 sm:p-6 lg:p-8 flex flex-col justify-between gap-4 sm:gap-5 bg-gradient-to-br from-[#FFFDF9] via-[#FCF8EE] to-[#F6EEDF]">
-            {/* Band 1: Real-Time Masthead Eyebrow + Display Title */}
-            <div className="space-y-2.5">
-              <div className="flex items-center justify-between gap-2 flex-wrap">
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-100/75 border border-amber-200/80 text-[11px] font-laila font-bold text-amber-950">
-                  <span className="w-1.5 h-1.5 rounded-full bg-amber-600" />
-                  <span>{livePrahar.nameDevanagari} ({livePrahar.timeRange})</span>
-                </span>
-                <span className="text-[11px] font-laila font-semibold text-neutral-600">
-                  {livePanchang.masaDevanagari} {livePanchang.pakshaDevanagari} {livePanchang.tithiNameDevanagari} • {formatDevanagariNumerals(currentStreakDays)}-दिवस • समरसता {formatDevanagariNumerals(harmonyPct)}%
-                </span>
-              </div>
-
-              <h1 className="font-rozha text-[26px] sm:text-3xl lg:text-[34px] text-[#1A120B] leading-[1.16] tracking-tight">
-                नित्य निकुञ्ज संदर्शन एवं युगल स्मरण
-              </h1>
-
-              <p className="text-xs sm:text-[13px] font-laila text-[#5C4E3E] leading-relaxed">
-                {livePrahar.descriptionDevanagari} — श्री धाम वृन्दावन के ठाकुर मन्दिरों के प्रामाणिक दर्शन व रसिक वाणी स्वाध्याय का पावन संगम।
-              </p>
-            </div>
-
-            {/* Band 2: Elevated Museum Vani Quotation Plaque (R_card = 20px) */}
-            <div className="rounded-[20px] p-4 bg-white/85 border border-[#E6DAC4] shadow-[0_2px_14px_rgba(120,53,15,0.035)] space-y-3">
-              <div className="flex items-center justify-between gap-2 text-[10.5px] font-laila font-semibold text-amber-800/90">
-                <span>॥ आज की अमृतमयी रसिक वाणी ॥</span>
-                <span className="text-neutral-500 font-normal truncate max-w-[140px]">{activeVani.grantha}</span>
-              </div>
-
-              <blockquote className="font-laila text-[14.5px] sm:text-[16px] font-medium text-[#1C140D] whitespace-pre-line leading-relaxed border-l-2 border-[#B45309]/65 pl-3">
-                “{activeVani.verse}”
-              </blockquote>
-
-              <div className="flex items-center justify-between gap-2 pt-2 border-t border-[#F0E6D3]">
-                <div className="flex items-center gap-2 min-w-0">
+          {/* Right Companion Stacked Darshan Plates (4 cols, 2 visual frames) */}
+          <div className="lg:col-span-4 grid grid-cols-2 lg:grid-cols-1 lg:grid-rows-2 gap-3.5 sm:gap-4 h-[145px] sm:h-[185px] lg:h-[430px]">
+            {[1, 2].map((offset) => {
+              const idx = (plateIndex + offset) % NITYA_DARSHAN_PLATES.length;
+              const tile = NITYA_DARSHAN_PLATES[idx];
+              return (
+                <button
+                  key={tile.id}
+                  type="button"
+                  onClick={() => selectPlate(idx)}
+                  className="group relative w-full h-full rounded-[22px] sm:rounded-[24px] squircle-card overflow-hidden bg-[#140B05] text-left cursor-pointer shadow-[0_8px_24px_rgba(24,24,27,0.06)] select-none"
+                  title={tile.caption}
+                >
                   <img
-                    src={getSaintPortrait({ name: activeVani.saint })}
-                    alt={activeVani.saint}
-                    className="w-8 h-8 rounded-full object-cover object-top border border-amber-400/70 shrink-0"
+                    src={tile.src}
+                    alt={tile.caption}
+                    className={`w-full h-full object-cover ${tile.pos}`}
                     loading="eager"
                     decoding="async"
                   />
-                  <span className="text-xs font-laila font-bold text-amber-950 truncate">
-                    {activeVani.saint}
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-3 text-xs font-laila font-semibold shrink-0">
-                  <button
-                    type="button"
-                    onClick={() => setVaniIndex((i) => (i + 1) % DAILY_AMRIT_VANI.length)}
-                    className="text-neutral-600 hover:text-amber-900 transition-colors cursor-pointer"
-                    title="अगली रसिक वाणी देखें"
-                  >
-                    अगला पद ↻
-                  </button>
-                  <button
-                    type="button"
-                    onClick={handleEnterReader}
-                    disabled={isOpeningReader}
-                    aria-busy={isOpeningReader}
-                    className="text-amber-800 hover:text-amber-950 transition-colors cursor-pointer inline-flex items-center gap-1 disabled:opacity-65"
-                  >
-                    {isOpeningReader ? (
-                      <>
-                        <IOSSpinner size="xs" theme="current" />
-                        <span>खुल रहा है</span>
-                      </>
-                    ) : (
-                      <span>मूल पाठ →</span>
-                    )}
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Band 3: High-Contrast Primary CTA Row + Concentric 6-Plate Selector */}
-            <div className="space-y-3.5">
-              <div className="flex items-center gap-2 flex-wrap">
-                <button
-                  type="button"
-                  onClick={handleTapBead}
-                  className="flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-[#1C140D] hover:bg-[#2F2217] text-[#FEF08A] text-xs font-laila font-bold transition-colors cursor-pointer shadow-xs"
-                  title="सीधे यहीं से +१ राधे नाम जप करें"
-                >
-                  <Disc3 className="w-3.5 h-3.5 text-[#FEF08A]" />
-                  <span>+१ राधे जप</span>
-                  <span className="font-mono text-[10.5px] text-amber-200/90 bg-white/10 px-1.5 py-0.5 rounded-full">
-                    {formatDevanagariNumerals(beadInCurrentMala)}/१०८
-                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0E0703]/90 via-[#0E0703]/20 to-transparent pointer-events-none" />
+                  <div className="absolute inset-x-0 bottom-0 p-3 sm:p-4 flex items-end justify-between gap-2">
+                    <div className="min-w-0">
+                      <div className="text-[10px] font-laila text-amber-200/90 truncate">
+                        {tile.mandir}
+                      </div>
+                      <div className="font-rozha text-sm sm:text-base text-white truncate leading-tight">
+                        {tile.label}
+                      </div>
+                    </div>
+                    <span className="hidden sm:inline-flex text-[11px] font-laila font-semibold text-[#FEF08A] shrink-0">
+                      देखें →
+                    </span>
+                  </div>
                 </button>
-
-                <button
-                  type="button"
-                  onClick={onOpenFocus}
-                  className="flex items-center gap-1.5 px-3.5 py-2.5 rounded-full bg-white border border-[#E2D6BF] hover:bg-amber-50 text-[#18181B] text-xs font-laila font-semibold transition-colors cursor-pointer"
-                  title="Open Dhyāna Sanctuary (ध्यान कक्ष)"
-                >
-                  <Wind className="w-3.5 h-3.5 text-amber-800" />
-                  <span>ध्यान कक्ष</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={toggleDiya}
-                  className={`flex items-center gap-1.5 px-3 py-2.5 rounded-full border text-xs font-laila font-semibold transition-colors cursor-pointer ${
-                    diyaLit
-                      ? 'bg-[#FEF08A]/75 border-amber-400 text-amber-950'
-                      : 'bg-white border-[#E2D6BF] hover:bg-amber-50 text-neutral-700'
-                  }`}
-                  title="श्रीजी के चरणों में आज का भाव-दीप प्रज्वलित करें"
-                >
-                  <Flame className={`w-3.5 h-3.5 ${diyaLit ? 'text-amber-600 fill-amber-500' : 'text-amber-700'}`} />
-                  <span>{diyaLit ? 'दीप प्रज्वलित' : 'दीप'}</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={onOpenGuide}
-                  aria-label="साधना विधि मार्गदर्शिका"
-                  title="Sadhana Guide: Essential daily devotional practices"
-                  className="w-9 h-9 rounded-full bg-white border border-[#E2D6BF] hover:bg-amber-50 text-neutral-600 flex items-center justify-center transition-colors cursor-pointer shrink-0"
-                >
-                  <HelpCircle className="w-4 h-4" />
-                </button>
-              </div>
-
-              {/* Curated Plate Strip (R_outer = 14px, p = 4px -> R_inner = 10px strict concentric geometry) */}
-              <div className="pt-2.5 border-t border-[#E6DAC4]/75">
-                <div className="flex lg:grid lg:grid-cols-6 gap-2 lg:gap-1.5 overflow-x-auto no-scrollbar pb-0.5">
-                  {NITYA_DARSHAN_PLATES.map((plate, idx) => {
-                    const isSelected = idx === plateIndex;
-                    return (
-                      <button
-                        key={plate.id}
-                        type="button"
-                        onClick={() => selectPlate(idx)}
-                        className={`shrink-0 w-[78px] lg:w-auto rounded-[14px] p-1 border transition-colors cursor-pointer text-center ${
-                          isSelected
-                            ? 'bg-[#FEF08A] border-amber-500 shadow-2xs'
-                            : 'bg-white/80 border-[#EAE0CC]/70 hover:border-amber-900/30'
-                        }`}
-                        title={plate.caption}
-                      >
-                        <div className="aspect-[4/3] w-full rounded-[10px] overflow-hidden bg-[#1A120B]">
-                          <img
-                            src={plate.src}
-                            alt={plate.label}
-                            className={`w-full h-full object-cover ${plate.pos}`}
-                            loading="eager"
-                            decoding="async"
-                          />
-                        </div>
-                        <span className={`block pt-1 pb-0.5 text-[10px] font-laila truncate ${
-                          isSelected ? 'font-bold text-amber-950' : 'font-medium text-neutral-600'
-                        }`}>
-                          {plate.label}
-                        </span>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
+              );
+            })}
           </div>
+        </div>
+
+        {/* Clean Borderless Darshan Plate Pills Strip */}
+        <div className="flex items-center justify-between gap-3 pt-0.5">
+          <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-0.5">
+            {NITYA_DARSHAN_PLATES.map((plate, idx) => {
+              const isSelected = idx === plateIndex;
+              return (
+                <button
+                  key={plate.id}
+                  type="button"
+                  onClick={() => selectPlate(idx)}
+                  className={`px-3 py-1.5 rounded-full text-[11.5px] font-laila transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
+                    isSelected
+                      ? 'bg-[#FEF08A] text-[#1A120B] font-bold'
+                      : 'bg-[#F1EAE0] hover:bg-[#E7DEC9] text-[#5C4E3E] font-medium'
+                  }`}
+                >
+                  {plate.label}
+                </button>
+              );
+            })}
+          </div>
+          <span className="hidden md:inline text-[11px] font-laila text-neutral-500 shrink-0">
+            स्पर्श कर नित्य झांकी बदलें
+          </span>
         </div>
       </section>
 
@@ -564,9 +579,9 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
           document.body
         )}
 
-      {/* 2. Artisanal Tulsi Japamala Sanctuary & Three Daily Offerings (Clean Unified Card) */}
-      <div className="w-full bg-white rounded-[32px] squircle-card p-4 sm:p-6 space-y-6 border border-[#EAE1D3] shadow-[0_4px_24px_rgba(120,53,15,0.03)]">
-        <div className="p-5 sm:p-6 rounded-[16px] sm:rounded-[12px] bg-[#FAF8F3] border border-amber-200/80 shadow-[inset_0_1px_3px_rgba(255,255,255,0.9),0_12px_36px_rgba(217,119,6,0.04)]">
+      {/* 2. Artisanal Tulsi Japamala Sanctuary & Three Daily Offerings (Borderless Tonal Sanctuary) */}
+      <div className="w-full bg-white rounded-[32px] squircle-card p-4 sm:p-6 space-y-6 shadow-[0_4px_24px_rgba(24,24,27,0.035)]">
+        <div className="p-5 sm:p-6 rounded-[16px] sm:rounded-[8px] bg-[#FAF8F3]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           {/* Left / Center: The Circular Chanting Rosary Ring */}

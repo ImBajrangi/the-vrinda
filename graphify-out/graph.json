@@ -32639,7 +32639,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L1821",
+      "source_location": "L1815",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -32771,7 +32771,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L2114",
+      "source_location": "L2108",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -33265,7 +33265,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/common/DynamicNotchNavbar.tsx",
-      "source_location": "L668",
+      "source_location": "L672",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_common_dynamicnotchnavbar_dynamicnotchnavbar",
@@ -39398,7 +39398,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/smaran/SadhanaRingProgress.tsx",
-      "source_location": "L253",
+      "source_location": "L247",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_smaran_sadhanaringprogress_sadhanaringprogress",
@@ -39410,7 +39410,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/smaran/SadhanaRingProgress.tsx",
-      "source_location": "L365",
+      "source_location": "L315",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_smaran_sadhanaringprogress_sadhanaringprogress",
@@ -58325,5 +58325,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "3837687dc0b417b1eb9e969b961bd63d6dae4bbb"
+  "built_at_commit": "aebdb59d2971a63c4efc247fe4caa1428a5b356d"
 }

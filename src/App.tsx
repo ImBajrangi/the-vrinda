@@ -1058,13 +1058,7 @@ export function App({
         isVisibleOnMobile={!isReaderTab}
       />
 
-      {/* Breathing spacer between natural-flow announcement bar and sticky navbar at scrollY = 0 */}
-      <div
-        aria-hidden="true"
-        className={`w-full shrink-0 ${isReaderTab ? 'hidden md:block h-2.5 sm:h-3.5' : 'h-2.5 sm:h-3.5'}`}
-      />
-
-      {/* Sticky Apple Dynamic Notch / Dynamic Island Navbar (glides seamlessly to top-2.5/top-4 as announcement scrolls away) */}
+      {/* Sticky Solid Porcelain Header — glides smoothly flush to top:0 as announcement scrolls away (zero transparency bleed) */}
       <DynamicNotchNavbar
         activeTab={activeTab}
         onSelectTab={handleTabSwitch}
