@@ -24,6 +24,7 @@ import { SacredSectionService } from '../../services/sacredSectionService';
 import { formatDevanagariNumerals } from '../../services/cacheService';
 import { chimeService } from '../../services/chimeService';
 import { seo } from '../../services/seoService';
+import { getRitualArtwork } from '../../services/devotionalVisuals';
 import { SacredDiscoveryShelf } from '../common/SacredDiscoveryShelf';
 
 interface NityaUpasanaReaderProps {
@@ -226,7 +227,7 @@ export const NityaUpasanaReader: React.FC<NityaUpasanaReaderProps> = ({
       >
         {/* Sticky Control Header */}
         {/* Outer: rounded-[28px] p-3.5 sm:p-4 -> Inner: rounded-[12px] (28 - 16 = 12) */}
-        <div className="sticky top-4 z-40 rounded-[28px] bg-white/95 backdrop-blur-md border border-neutral-200/90 p-3.5 sm:p-4 shadow-2xs mb-6">
+        <div className="sticky top-4 z-40 rounded-[28px] bg-white/[0.98] border border-neutral-200/90 p-3.5 sm:p-4 shadow-2xs mb-6">
           <div className="flex flex-wrap items-center justify-between gap-2.5">
             <button
               type="button"
@@ -453,33 +454,47 @@ export const NityaUpasanaReader: React.FC<NityaUpasanaReaderProps> = ({
           </div>
         )}
 
-        {/* Ritual Title Card */}
-        {/* Outer: rounded-[28px] p-6 sm:p-7 -> Inner: rounded-[4px] (28 - 24 = 4) */}
-        <div className="rounded-[28px] bg-white border border-neutral-200/80 p-6 sm:p-7 shadow-2xs text-center mb-6">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-[6px] bg-[#FEF08A] text-[#78350F] text-xs font-serif font-bold uppercase tracking-wider mb-2">
-            <Flame className="w-3.5 h-3.5" />
-            <span>{selectedRitual.categoryHindi}</span>
-          </div>
+        {/* Ritual Title Card with Deity / Aarti Darshan Plate */}
+        {/* Outer: rounded-[28px] p-5 sm:p-6 -> Inner: rounded-[10px] */}
+        <div className="rounded-[28px] bg-white border border-neutral-200/80 p-5 sm:p-6 shadow-2xs mb-6">
+          <div className="flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
+            <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-[10px] overflow-hidden bg-[#1A120B] border border-amber-900/15 shrink-0">
+              <img
+                src={getRitualArtwork(selectedRitual)}
+                alt={selectedRitual.deityDevanagari}
+                className="w-full h-full object-cover object-[center_20%]"
+                loading="eager"
+                decoding="async"
+              />
+            </div>
 
-          <h1 className="font-rozha text-2xl sm:text-4xl font-bold text-[#18181B] leading-snug">
-            {selectedRitual.titleDevanagari}
-          </h1>
+            <div className="flex-1 min-w-0">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-[6px] bg-[#FEF08A] text-[#78350F] text-xs font-serif font-bold uppercase tracking-wider mb-2">
+                <Flame className="w-3.5 h-3.5" />
+                <span>{selectedRitual.categoryHindi}</span>
+              </div>
 
-          <div className="text-xs sm:text-sm font-serif text-neutral-500 mt-1.5">
-            आराध्य: <span className="font-bold text-neutral-800">{selectedRitual.deityDevanagari}</span> {selectedRitual.author ? `• रचयिता: ${selectedRitual.author}` : ''}
-          </div>
+              <h1 className="font-rozha text-2xl sm:text-4xl font-bold text-[#18181B] leading-snug">
+                {selectedRitual.titleDevanagari}
+              </h1>
 
-          <div className="mt-3 flex items-center justify-center gap-4 text-xs font-serif text-neutral-500">
+              <div className="text-xs sm:text-sm font-serif text-neutral-500 mt-1.5">
+                आराध्य: <span className="font-bold text-neutral-800">{selectedRitual.deityDevanagari}</span> {selectedRitual.author ? `• रचयिता: ${selectedRitual.author}` : ''}
+              </div>
+
+              <div className="mt-3 flex items-center justify-center sm:justify-start gap-4 text-xs font-serif text-neutral-500">
             <span className="inline-flex items-center gap-1">
               <Clock className="w-3.5 h-3.5 text-amber-700" />
               <span>लगभग {formatDevanagariNumerals(selectedRitual.durationMinutes)} मिनट</span>
             </span>
-            <span className="inline-flex items-center gap-1">
-              <Scroll className="w-3.5 h-3.5 text-amber-700" />
-              <span>{formatDevanagariNumerals(selectedRitual.totalVerses)} पद / छंद</span>
-            </span>
+              <span className="inline-flex items-center gap-1">
+                <Scroll className="w-3.5 h-3.5 text-amber-700" />
+                <span>{formatDevanagariNumerals(selectedRitual.totalVerses)} पद / छंद</span>
+              </span>
+            </div>
           </div>
         </div>
+      </div>
 
         {/* Stanzas Chanting List */}
         <div className="space-y-4 sm:space-y-5">
@@ -643,14 +658,26 @@ export const NityaUpasanaReader: React.FC<NityaUpasanaReaderProps> = ({
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {filteredRituals.map((ritual) => (
-            /* Outer: rounded-[28px] p-5 -> Inner: rounded-[8px] (28 - 20 = 8) */
+            /* Outer: rounded-[28px] p-4 -> Inner: rounded-[12px] (28 - 16 = 12) */
             <article
               key={ritual.id}
-              className="rounded-[28px] bg-white border border-neutral-200/80 p-5 shadow-2xs flex flex-col justify-between hover:border-amber-300 transition-colors"
+              onClick={() => handleSelect(ritual.slug || ritual.id)}
+              className="rounded-[28px] bg-white border border-neutral-200/80 p-4 shadow-2xs flex flex-col justify-between hover:border-amber-300 transition-colors cursor-pointer"
             >
               <div>
-                <div className="flex items-center justify-between gap-2 mb-3">
-                  <span className="px-2.5 py-0.5 text-[10.5px] font-serif font-bold rounded-[6px] bg-[#FEF08A] text-[#78350F]">
+                {/* Clean Ritual / Deity Darshan Plate */}
+                <div className="aspect-[16/10] w-full rounded-[12px] overflow-hidden bg-[#1A120B] mb-3.5 border border-amber-900/10">
+                  <img
+                    src={getRitualArtwork(ritual)}
+                    alt={ritual.titleDevanagari}
+                    className="w-full h-full object-cover object-[center_20%]"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+
+                <div className="flex items-center justify-between gap-2 mb-2">
+                  <span className="px-2.5 py-0.5 text-[10.5px] font-serif font-bold rounded-[6px] bg-[#FAF6EE] text-[#78350F] border border-amber-200/70">
                     {ritual.categoryHindi}
                   </span>
                   <span className="text-[11px] text-neutral-500 font-serif font-medium">
@@ -658,10 +685,7 @@ export const NityaUpasanaReader: React.FC<NityaUpasanaReaderProps> = ({
                   </span>
                 </div>
 
-                <h2
-                  onClick={() => handleSelect(ritual.slug || ritual.id)}
-                  className="font-rozha text-base sm:text-lg font-bold text-[#18181B] hover:text-[#B45309] cursor-pointer transition-colors leading-snug"
-                >
+                <h2 className="font-rozha text-base sm:text-lg font-bold text-[#18181B] hover:text-[#B45309] transition-colors leading-snug">
                   {ritual.titleDevanagari}
                 </h2>
 
@@ -678,7 +702,10 @@ export const NityaUpasanaReader: React.FC<NityaUpasanaReaderProps> = ({
 
                 <button
                   type="button"
-                  onClick={() => handleSelect(ritual.slug || ritual.id)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleSelect(ritual.slug || ritual.id);
+                  }}
                   className="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-serif font-bold rounded-[8px] bg-[#FEF08A] hover:bg-amber-300 text-[#78350F] transition-colors shadow-2xs cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 shrink-0"
                 >
                   <span>पाठ करें</span>

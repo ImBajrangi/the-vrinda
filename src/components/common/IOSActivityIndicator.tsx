@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 // ============================================================================
-// 1. Apple Safari / iOS Navigation Progress Controller
+// 1. Apple Safari / iOS 18 Navigation Progress Controller
 // Lightweight event emitter providing 0ms tactile feedback across all clicks
 // ============================================================================
 
@@ -18,38 +18,38 @@ export const navigationProgress = {
 };
 
 /**
- * Razor-thin Apple Safari / iOS Top Loading Bar (2.5px)
- * Appears instantly (0ms) upon any click, advances rapidly,
- * and seamlessly completes when content is ready.
+ * Razor-thin Apple Safari / iOS 18 Top Loading Bar (2px)
+ * Appears instantly (0ms) upon navigation/fetch, advances smoothly,
+ * and seamlessly settles when content is ready.
  */
 export const IOSTopProgressBar: React.FC = () => {
   const [visible, setVisible] = useState(false);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    let trickleTimer: any = null;
-    let finishTimer: any = null;
+    let trickleTimer: ReturnType<typeof setTimeout> | null = null;
+    let finishTimer: ReturnType<typeof setTimeout> | null = null;
 
     const handler: ProgressListener = (isLoading) => {
       if (isLoading) {
         if (finishTimer) clearTimeout(finishTimer);
+        if (trickleTimer) clearTimeout(trickleTimer);
         setVisible(true);
-        setProgress(25);
+        setProgress(28);
 
-        // Natural Apple Safari progressive trickle
         trickleTimer = setTimeout(() => {
-          setProgress(70);
+          setProgress(72);
           trickleTimer = setTimeout(() => {
-            setProgress(88);
-          }, 240);
-        }, 120);
+            setProgress(90);
+          }, 220);
+        }, 110);
       } else {
         if (trickleTimer) clearTimeout(trickleTimer);
         setProgress(100);
         finishTimer = setTimeout(() => {
           setVisible(false);
           setProgress(0);
-        }, 220);
+        }, 200);
       }
     };
 
@@ -65,21 +65,21 @@ export const IOSTopProgressBar: React.FC = () => {
 
   return (
     <div
-      className="fixed top-0 left-0 right-0 h-[2.5px] z-[9999] pointer-events-none overflow-hidden"
+      className="fixed top-0 left-0 right-0 h-[2px] z-[9999] pointer-events-none overflow-hidden"
       style={{
         opacity: progress === 100 ? 0 : 1,
-        transition: 'opacity 220ms ease-out',
+        transition: 'opacity 200ms ease-out',
       }}
       aria-hidden="true"
     >
       <div
-        className="h-full bg-gradient-to-r from-[#D97706] via-[#F59E0B] to-[#FBBF24] shadow-[0_0_10px_rgba(245,158,11,0.7)]"
+        className="h-full bg-gradient-to-r from-[#B45309] via-[#D97706] to-[#FBBF24] shadow-[0_0_8px_rgba(217,119,6,0.55)]"
         style={{
           width: `${progress}%`,
           transition:
             progress === 100
-              ? 'width 140ms ease-out'
-              : 'width 280ms cubic-bezier(0.1, 0.9, 0.2, 1)',
+              ? 'width 130ms ease-out'
+              : 'width 260ms cubic-bezier(0.22, 1, 0.36, 1)',
         }}
       />
     </div>
@@ -87,13 +87,13 @@ export const IOSTopProgressBar: React.FC = () => {
 };
 
 // ============================================================================
-// 2. Iconic Apple iOS 12-Spoke Radial Activity Indicator
-// High-precision SVG implementation replicating UIKit UIActivityIndicatorView
+// 2. Latest Apple iOS 18 UIActivityIndicatorView (12-Blade Tapered Spinner)
+// Precision SVG + steps(12, end) discrete rotation with authentic opacity falloff
 // ============================================================================
 
 export interface IOSSpinnerProps {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  theme?: 'amber' | 'neutral' | 'white';
+  theme?: 'amber' | 'neutral' | 'white' | 'dark' | 'current';
   label?: string;
   className?: string;
 }
@@ -107,24 +107,26 @@ const SIZE_MAP = {
 };
 
 const SPOKE_COLORS = {
-  amber: 'fill-[#B45309]', // Warm Pitambari Gold
-  neutral: 'fill-[#52525B]', // Apple Slate Zinc
+  amber: 'fill-[#B45309]',
+  neutral: 'fill-[#71717A]',
   white: 'fill-white',
+  dark: 'fill-[#1C140D]',
+  current: 'fill-current',
 };
 
-// 12 spokes rotated by 30° each with authentic iOS alpha fade
+// 12 iOS UIKit blades rotated every 30 deg with continuous trail falloff
 const SPOKES = [
-  { rotate: 0, opacity: 0.15 },
-  { rotate: 30, opacity: 0.22 },
-  { rotate: 60, opacity: 0.3 },
-  { rotate: 90, opacity: 0.38 },
-  { rotate: 120, opacity: 0.46 },
-  { rotate: 150, opacity: 0.54 },
-  { rotate: 180, opacity: 0.62 },
-  { rotate: 210, opacity: 0.7 },
-  { rotate: 240, opacity: 0.78 },
-  { rotate: 270, opacity: 0.86 },
-  { rotate: 300, opacity: 0.93 },
+  { rotate: 0, opacity: 0.12 },
+  { rotate: 30, opacity: 0.16 },
+  { rotate: 60, opacity: 0.21 },
+  { rotate: 90, opacity: 0.27 },
+  { rotate: 120, opacity: 0.35 },
+  { rotate: 150, opacity: 0.44 },
+  { rotate: 180, opacity: 0.54 },
+  { rotate: 210, opacity: 0.65 },
+  { rotate: 240, opacity: 0.76 },
+  { rotate: 270, opacity: 0.87 },
+  { rotate: 300, opacity: 0.94 },
   { rotate: 330, opacity: 1.0 },
 ];
 
@@ -135,7 +137,11 @@ export const IOSSpinner: React.FC<IOSSpinnerProps> = ({
   className = '',
 }) => {
   return (
-    <div className={`inline-flex flex-col items-center justify-center gap-2 ${className}`}>
+    <span
+      role={label ? 'status' : undefined}
+      aria-live={label ? 'polite' : undefined}
+      className={`inline-flex ${label ? 'flex-col' : ''} items-center justify-center gap-2 ${className}`}
+    >
       <svg
         className={`${SIZE_MAP[size]} animate-ios-spin shrink-0`}
         viewBox="0 0 24 24"
@@ -146,11 +152,11 @@ export const IOSSpinner: React.FC<IOSSpinnerProps> = ({
         {SPOKES.map((s, idx) => (
           <rect
             key={idx}
-            x="11"
-            y="1.5"
-            width="2"
-            height="5"
-            rx="1"
+            x="10.95"
+            y="1.6"
+            width="2.1"
+            height="5.4"
+            rx="1.05"
             className={SPOKE_COLORS[theme]}
             opacity={s.opacity}
             transform={`rotate(${s.rotate} 12 12)`}
@@ -158,11 +164,38 @@ export const IOSSpinner: React.FC<IOSSpinnerProps> = ({
         ))}
       </svg>
       {label && (
-        <span className="text-xs font-serif font-medium text-neutral-600 animate-pulse tracking-wide select-none">
+        <span className="text-xs font-laila font-medium text-neutral-600 tracking-wide select-none">
           {label}
         </span>
       )}
-    </div>
+    </span>
   );
 };
 
+// ============================================================================
+// 3. Apple iOS 18 Frosted Capsule Loader HUD (Inline & Section States)
+// ============================================================================
+
+export interface IOSPillLoaderProps {
+  label?: string;
+  size?: 'xs' | 'sm' | 'md';
+  theme?: 'amber' | 'neutral' | 'white' | 'dark' | 'current';
+  className?: string;
+}
+
+export const IOSPillLoader: React.FC<IOSPillLoaderProps> = ({
+  label = 'संकलित हो रहा है...',
+  size = 'sm',
+  theme = 'amber',
+  className = '',
+}) => (
+  <div
+    role="status"
+    aria-busy="true"
+    aria-live="polite"
+    className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-amber-200/70 shadow-[0_4px_18px_rgba(24,24,27,0.06)] text-xs font-laila font-semibold text-[#1C140D] select-none ${className}`}
+  >
+    <IOSSpinner size={size} theme={theme} />
+    <span>{label}</span>
+  </div>
+);

@@ -4,14 +4,40 @@ import { computeAshtayamaPhase } from '../../services/cacheService';
 import { SacredDatabase, AshtayamaPeriod } from '../../services/sacredDatabase';
 import { ArtworkGraphicSlot } from '../common/ArtworkGraphicSlot';
 
-export const AshtayamaTimelineDeck: React.FC = () => {
+const ASHTAYAMA_ARTWORKS: Record<string, string> = {
+  mangala: '/assets/temples/aarti-lamp.webp',
+  shringar: '/assets/darshan/radharaman-yugal.webp',
+  gwal: '/assets/temples/keshi-ghat.webp',
+  rajbhog: '/assets/temples/radha-vallabh.webp',
+  utthapan: '/assets/temples/banke-bihari-gate.webp',
+  bhoga: '/assets/temples/banke-bihari.webp',
+  sandhya: '/assets/temples/diya-pujan.webp',
+  shayana: '/assets/temples/barsana-radharani.webp',
+};
+
+interface AshtayamaTimelineDeckProps {
+  onExplorePrahar?: () => void;
+}
+
+export const AshtayamaTimelineDeck: React.FC<AshtayamaTimelineDeckProps> = ({ onExplorePrahar }) => {
   const periods = SacredDatabase.getAshtayamaPeriods();
-  const currentActive = computeAshtayamaPhase();
+  const [currentActive, setCurrentActive] = useState(() =>
+    computeAshtayamaPhase(new Date('2026-01-01T19:00:00+05:30'))
+  );
   const defaultPeriod =
     periods.find((p) => p.nameDevanagari.includes(currentActive.nameDevanagari) || currentActive.nameDevanagari.includes(p.nameDevanagari)) ||
     periods[3];
 
   const [selectedPeriod, setSelectedPeriod] = useState<AshtayamaPeriod>(defaultPeriod);
+
+  useEffect(() => {
+    const live = computeAshtayamaPhase();
+    setCurrentActive(live);
+    const liveMatch = periods.find(
+      (p) => p.nameDevanagari.includes(live.nameDevanagari) || live.nameDevanagari.includes(p.nameDevanagari)
+    );
+    if (liveMatch) setSelectedPeriod(liveMatch);
+  }, []);
 
   const periodRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
   const [pillStyle, setPillStyle] = useState<{ left: number; width: number; ready: boolean }>({
@@ -101,16 +127,21 @@ export const AshtayamaTimelineDeck: React.FC = () => {
       </div>
 
       {/* Selected Watch Formatted as a Graphics-Friendly Editorial Card */}
-      <div className="w-full bg-[#FAF9F5] rounded-[24px] p-4 sm:p-5 space-y-4">
-        {/* Dedicated Ashtayama Leela Graphic Slot - Empty by default, ready for painting */}
+      <div className="w-full bg-[#FAF9F5] rounded-[24px] p-4 sm:p-5 space-y-4 border border-amber-900/10">
+        {/* Dedicated Ashtayama Leela Temple Artwork */}
         <ArtworkGraphicSlot
-          src={null}
+          src={
+            ASHTAYAMA_ARTWORKS[selectedPeriod.id] ||
+            ASHTAYAMA_ARTWORKS[selectedPeriod.nameEnglish.toLowerCase()] ||
+            '/assets/temples/keshi-ghat.webp'
+          }
+          alt={`${selectedPeriod.nameDevanagari} प्रहर लीला दर्शन — ${selectedPeriod.bhava}`}
           aspectRatio="card"
           theme="amber"
           placeholderLabel={`${selectedPeriod.nameEnglish} Leela Artwork`}
           placeholderCategory="dham"
           badge={`${selectedPeriod.bhava} • ${selectedPeriod.timeRange}`}
-          roundedClassName="rounded-[18px]"
+          roundedClassName="rounded-[10px]"
         />
 
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1">
@@ -133,14 +164,25 @@ export const AshtayamaTimelineDeck: React.FC = () => {
             </p>
           </div>
 
-          <div className="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center gap-1.5 shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-neutral-100">
-            <span className="text-[10px] text-[#71717A] uppercase font-mono font-medium">
-              Classical Raga
-            </span>
-            <div className="flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-amber-800 font-mono">
-              <Music className="w-3.5 h-3.5 text-amber-700" />
-              <span>{selectedPeriod.raga}</span>
+          <div className="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center gap-2 shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-neutral-100">
+            <div className="sm:text-right">
+              <span className="text-[10px] text-[#71717A] uppercase font-mono font-medium block">
+                Classical Raga
+              </span>
+              <div className="flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-amber-800 font-mono">
+                <Music className="w-3.5 h-3.5 text-amber-700" />
+                <span>{selectedPeriod.raga}</span>
+              </div>
             </div>
+            {onExplorePrahar && (
+              <button
+                type="button"
+                onClick={onExplorePrahar}
+                className="px-3 py-1 rounded-full bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] text-[11px] font-laila font-bold transition-colors cursor-pointer whitespace-nowrap"
+              >
+                प्रहर की वाणी पढ़ें →
+              </button>
+            )}
           </div>
         </div>
       </div>

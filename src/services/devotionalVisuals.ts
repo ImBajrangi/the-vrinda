@@ -144,3 +144,121 @@ export const getBookCoverConfig = (id: string, name: string): BookCoverConfig =>
   };
 };
 
+function hashIndex(seed: string, length: number): number {
+  let h = 0;
+  for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) >>> 0;
+  return h % Math.max(1, length);
+}
+
+/** Authentic Braj Dham / Temple / Tirtha photography resolver */
+export const getDhamArtwork = (place: {
+  id?: string;
+  slug?: string;
+  region?: string;
+  nameDevanagari?: string;
+}): string => {
+  const key = `${place.id || ''} ${place.slug || ''} ${place.nameDevanagari || ''}`.toLowerCase();
+  if (key.includes('raman') || key.includes('रमण')) return '/assets/darshan/radharaman-yugal.webp';
+  if (key.includes('vallabh') || key.includes('वल्लभ') || key.includes('hit')) return '/assets/darshan/radhavallabh-peacock.webp';
+  if (key.includes('bihari') || key.includes('बिहारी')) return '/assets/temples/banke-bihari-v2.webp';
+  if (key.includes('barsana') || key.includes('बरसाना') || key.includes('radharani') || key.includes('राधारानी') || key.includes('लाड़िली'))
+    return '/assets/temples/barsana-radharani.webp';
+  if (key.includes('yamuna') || key.includes('यमुना') || key.includes('keshi') || key.includes('केशी') || key.includes('ghat') || key.includes('घाट'))
+    return '/assets/temples/keshi-ghat.webp';
+  if (key.includes('nidhivan') || key.includes('निधिवन') || key.includes('seva') || key.includes('सेवा'))
+    return '/assets/darshan/radhavallabh-phool.webp';
+
+  const pool = [
+    '/assets/darshan/mandapa-aarti-seva.webp',
+    '/assets/darshan/radharaman-yugal.webp',
+    '/assets/temples/banke-bihari-gate.webp',
+    '/assets/temples/keshi-ghat.webp',
+    '/assets/darshan/radhavallabh-phool.webp',
+    '/assets/darshan/radharaman-simhasan.webp',
+    '/assets/darshan/radhavallabh-peacock.webp',
+    '/assets/temples/radha-vallabh.webp',
+  ];
+  return pool[hashIndex(place.slug || place.id || place.region || 'braj', pool.length)];
+};
+
+/** Authentic Nitya Upasana (Aarti, Chalisa, Stotra, Pooja) artwork resolver */
+export const getRitualArtwork = (ritual: {
+  id?: string;
+  category?: string;
+  deityDevanagari?: string;
+  titleDevanagari?: string;
+}): string => {
+  const key = `${ritual.id || ''} ${ritual.deityDevanagari || ''} ${ritual.titleDevanagari || ''}`.toLowerCase();
+  if (key.includes('radharaman') || key.includes('राधारमण') || key.includes('राधा रमण'))
+    return '/assets/darshan/radharaman-mukharavind.webp';
+  if (key.includes('radhavallabh') || key.includes('राधावल्लभ') || key.includes('हित'))
+    return '/assets/darshan/radhavallabh-peacock.webp';
+  if (key.includes('bihari') || key.includes('बिहारी')) return '/assets/temples/banke-bihari-v2.webp';
+  if (key.includes('radha') || key.includes('राधा') || key.includes('kishori'))
+    return '/assets/darshan/radharaman-yugal.webp';
+  if (key.includes('krishna') || key.includes('कृष्ण') || key.includes('govind') || key.includes('kunj'))
+    return '/assets/darshan/radharaman-pitambar.webp';
+  if (key.includes('durga') || key.includes('devi') || key.includes('देवी') || key.includes('लक्ष्मी'))
+    return '/assets/temples/diya-pujan.webp';
+  if (key.includes('yamuna') || key.includes('गंगा') || key.includes('यमुना'))
+    return '/assets/temples/keshi-ghat.webp';
+
+  const cat = (ritual.category || '').toLowerCase();
+  const aartiPool = [
+    '/assets/temples/aarti-lamp.webp',
+    '/assets/temples/diya-pujan.webp',
+    '/assets/darshan/mandapa-aarti-seva.webp',
+    '/assets/darshan/radharaman-yugal.webp',
+    '/assets/darshan/radhavallabh-peacock.webp',
+  ];
+  if (cat === 'aarti') return aartiPool[hashIndex(ritual.id || ritual.titleDevanagari || 'aarti', aartiPool.length)];
+  const pool = [
+    '/assets/darshan/radharaman-neel.webp',
+    '/assets/darshan/radharaman-venu.webp',
+    '/assets/temples/diya-pujan.webp',
+    '/assets/darshan/mandapa-aarti-seva.webp',
+    '/assets/temples/aarti-lamp.webp',
+    '/assets/darshan/radharaman-pitambar.webp',
+  ];
+  return pool[hashIndex(ritual.id || ritual.titleDevanagari || 'seva', pool.length)];
+};
+
+/** Authentic Katha / Leela illustration plate resolver */
+export const getKathaArtwork = (story: {
+  id?: string;
+  category?: string;
+  titleDevanagari?: string;
+}): string => {
+  const key = `${story.id || ''} ${story.titleDevanagari || ''}`.toLowerCase();
+  if (key.includes('yamuna') || key.includes('kalindi') || key.includes('यमुना')) return '/assets/temples/keshi-ghat.webp';
+  if (key.includes('radha') || key.includes('nikunj') || key.includes('राधा') || key.includes('रास'))
+    return '/assets/darshan/radharaman-phoolbangla.webp';
+  if (key.includes('krishna') || key.includes('govardhan') || key.includes('कृष्ण') || key.includes('गोवर्धन'))
+    return '/assets/darshan/radharaman-pitambar.webp';
+
+  const pool = [
+    '/assets/darshan/mandapa-aarti-seva.webp',
+    '/assets/darshan/radharaman-yugal.webp',
+    '/assets/darshan/radhavallabh-phool.webp',
+    '/assets/temples/banke-bihari-gate.webp',
+    '/assets/temples/keshi-ghat.webp',
+    '/assets/darshan/radharaman-neel.webp',
+  ];
+  return pool[hashIndex(story.id || story.category || 'katha', pool.length)];
+};
+
+/** Reader Sanctuary contemplative plate for Mahagranth sidebar */
+export const getEpicDarshanVisual = (granthaId: string): { src: string; caption: string } => {
+  if (granthaId.includes('bhagavatam') || granthaId.includes('gita')) {
+    return { src: '/assets/darshan/radharaman-mukharavind.webp', caption: 'श्री राधारमण लाल • नित्य संदर्शन' };
+  }
+  if (granthaId.includes('ramayana') || granthaId.includes('ramcharitmanas')) {
+    return { src: '/assets/darshan/mandapa-aarti-seva.webp', caption: 'पावन मन्दिर आरती व पारायण सेवा' };
+  }
+  if (granthaId.includes('durga')) {
+    return { src: '/assets/temples/diya-pujan.webp', caption: 'पावन दीपदान व शक्ति आराधना' };
+  }
+  return { src: '/assets/darshan/radharaman-yugal.webp', caption: 'श्री वृन्दावन युगल दर्शन' };
+};
+
+

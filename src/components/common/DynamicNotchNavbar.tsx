@@ -54,7 +54,6 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
   onOpenFocus,
   sadhana,
   onQuickJapa,
-  isMarqueeVisible = true,
   isVisibleOnMobile = true,
 }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -95,7 +94,17 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
     setIsMobileMenuOpen((prev) => !prev);
   };
 
-  const ashtayama = computeAshtayamaPhase();
+  const [ashtayama, setAshtayama] = useState(() =>
+    computeAshtayamaPhase(new Date('2026-01-01T19:00:00+05:30'))
+  );
+
+  useEffect(() => {
+    setAshtayama(computeAshtayamaPhase());
+    const timer = setInterval(() => {
+      setAshtayama(computeAshtayamaPhase());
+    }, 60000);
+    return () => clearInterval(timer);
+  }, []);
 
   const [indicatorStyle, setIndicatorStyle] = useState<{ left: number; width: number; ready: boolean }>({
     left: 0,
@@ -278,18 +287,14 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
         />
       )}
       <header
-        className={`fixed top-2.5 sm:top-4 ${
-          isMarqueeVisible ? 'translate-y-[1.875rem] sm:translate-y-[2rem]' : 'translate-y-0'
-        } left-0 right-0 z-50 w-full px-3 sm:px-6 pointer-events-none select-none header-banner-transition transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${
-          !isVisibleOnMobile
-            ? '-translate-y-[150%] md:translate-y-0 opacity-0 md:opacity-100 pointer-events-none md:pointer-events-auto'
-            : ''
+        className={`sticky top-2.5 sm:top-4 z-50 w-full px-3 sm:px-6 pointer-events-none select-none ${
+          !isVisibleOnMobile ? 'hidden md:block' : 'block'
         }`}
       >
       <div className="w-full max-w-6xl xl:max-w-7xl 2xl:max-w-[1536px] mx-auto flex flex-col items-center">
         
         {/* Main Floating Glass & Paper Header Bar */}
-        <div className="pointer-events-auto rounded-full w-full max-w-[96vw] md:max-w-6xl xl:max-w-7xl 2xl:max-w-[1536px] bg-white/95 backdrop-blur-md border border-neutral-900/[0.07] shadow-[0_4px_16px_-2px_rgba(24,24,27,0.05)] px-3.5 sm:px-5 py-1.5 transition-all transform-gpu will-change-transform">
+        <div className="pointer-events-auto rounded-full w-full max-w-[96vw] md:max-w-6xl xl:max-w-7xl 2xl:max-w-[1536px] bg-white/95 backdrop-blur-md border border-neutral-900/[0.07] shadow-[0_4px_16px_-2px_rgba(24,24,27,0.05)] px-3.5 sm:px-5 py-1.5 transition-colors">
           <div className="flex items-center justify-between gap-2 h-10 sm:h-11">
             
             {/* 1. Left: Brand Identity & Sacred Logo */}

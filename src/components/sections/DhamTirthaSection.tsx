@@ -14,6 +14,7 @@ import {
   Share2,
   Check
 } from 'lucide-react';
+import { getDhamArtwork } from '../../services/devotionalVisuals';
 import {
   SacredPlace,
   SacredPlacePreview,
@@ -182,33 +183,49 @@ export const DhamTirthaSection: React.FC<DhamTirthaSectionProps> = ({
           </div>
         </div>
 
-        {/* Hero Card */}
-        {/* Outer: rounded-[28px] p-6 sm:p-8 -> Inner: rounded-[4px] (28 - 24 = 4) */}
-        <div className="rounded-[28px] bg-white border border-neutral-200/80 p-6 sm:p-8 shadow-2xs mb-8">
-          <div className="flex flex-wrap items-center gap-2 mb-3">
-            <span className="px-2.5 py-0.5 text-xs font-serif font-bold rounded-[6px] bg-[#FEF08A] text-[#78350F] border border-amber-300/40">
-              {selectedPlace.regionNameHindi}
-            </span>
-            {selectedPlace.parikramaKm && (
-              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 text-xs font-serif font-semibold rounded-[6px] bg-stone-100 text-stone-700">
-                <Footprints className="w-3.5 h-3.5 text-amber-700" />
-                <span>{formatDevanagariNumerals(selectedPlace.parikramaKm)} किमी परिक्रमा</span>
-              </span>
-            )}
-          </div>
+        {/* Hero Card with Split Visual Darshan Frame */}
+        {/* Outer: rounded-[28px] p-5 sm:p-6 -> Inner: rounded-[10px] */}
+        <div className="rounded-[28px] bg-white border border-neutral-200/80 p-5 sm:p-6 shadow-2xs mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+            <div className="md:col-span-5">
+              <div className="aspect-[4/3] w-full rounded-[10px] overflow-hidden bg-[#1A120B] border border-amber-900/15">
+                <img
+                  src={getDhamArtwork(selectedPlace)}
+                  alt={selectedPlace.nameDevanagari}
+                  className="w-full h-full object-cover object-[center_20%]"
+                  loading="eager"
+                  decoding="async"
+                />
+              </div>
+            </div>
 
-          <h1 className="font-rozha text-2xl sm:text-4xl font-bold text-[#18181B] leading-tight">
-            {selectedPlace.nameDevanagari}
-          </h1>
+            <div className="md:col-span-7">
+              <div className="flex flex-wrap items-center gap-2 mb-3">
+                <span className="px-2.5 py-0.5 text-xs font-serif font-bold rounded-[6px] bg-[#FEF08A] text-[#78350F] border border-amber-300/40">
+                  {selectedPlace.regionNameHindi}
+                </span>
+                {selectedPlace.parikramaKm && (
+                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 text-xs font-serif font-semibold rounded-[6px] bg-stone-100 text-stone-700">
+                    <Footprints className="w-3.5 h-3.5 text-amber-700" />
+                    <span>{formatDevanagariNumerals(selectedPlace.parikramaKm)} किमी परिक्रमा</span>
+                  </span>
+                )}
+              </div>
 
-          <div className="text-xs sm:text-sm font-sans text-neutral-500 mt-1">
-            {selectedPlace.name} • मुख्य विग्रह: <span className="font-serif font-bold text-neutral-800">{selectedPlace.deityDevanagari || selectedPlace.deity}</span>
-          </div>
+              <h1 className="font-rozha text-2xl sm:text-4xl font-bold text-[#18181B] leading-tight">
+                {selectedPlace.nameDevanagari}
+              </h1>
 
-          <div className="mt-4 p-4 rounded-[12px] bg-[#FAF6EE] border-l-4 border-amber-500">
-            <p className="text-xs sm:text-sm text-neutral-800 font-serif leading-relaxed">
-              {selectedPlace.briefSignificance}
-            </p>
+              <div className="text-xs sm:text-sm font-sans text-neutral-500 mt-1">
+                {selectedPlace.name} • मुख्य विग्रह: <span className="font-serif font-bold text-neutral-800">{selectedPlace.deityDevanagari || selectedPlace.deity}</span>
+              </div>
+
+              <div className="mt-4 p-4 rounded-[10px] bg-[#FAF6EE] border-l-4 border-amber-500">
+                <p className="text-xs sm:text-sm text-neutral-800 font-serif leading-relaxed">
+                  {selectedPlace.briefSignificance}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -451,14 +468,26 @@ export const DhamTirthaSection: React.FC<DhamTirthaSectionProps> = ({
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
           {filteredPlaces.map((place) => (
-            /* Outer: rounded-[28px] p-5 -> Inner: rounded-[8px] (28 - 20 = 8) */
+            /* Outer: rounded-[28px] p-4 -> Inner: rounded-[12px] (28 - 16 = 12) */
             <article
               key={place.id}
-              className="rounded-[28px] bg-white border border-neutral-200/80 p-5 shadow-2xs flex flex-col justify-between hover:border-amber-300 transition-colors"
+              onClick={() => handleSelect(place.slug || place.id)}
+              className="rounded-[28px] bg-white border border-neutral-200/80 p-4 shadow-2xs flex flex-col justify-between hover:border-amber-300 transition-colors cursor-pointer"
             >
               <div>
-                <div className="flex items-center justify-between gap-2 mb-2.5">
-                  <span className="px-2.5 py-0.5 text-[10.5px] font-serif font-bold rounded-[6px] bg-[#FEF08A] text-[#78350F]">
+                {/* Clean Tirtha / Mandir Darshan Plate */}
+                <div className="aspect-[16/10] w-full rounded-[12px] overflow-hidden bg-[#1A120B] mb-3.5 border border-amber-900/10">
+                  <img
+                    src={getDhamArtwork(place)}
+                    alt={place.nameDevanagari}
+                    className="w-full h-full object-cover object-[center_20%]"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+
+                <div className="flex items-center justify-between gap-2 mb-2">
+                  <span className="px-2.5 py-0.5 text-[10.5px] font-serif font-bold rounded-[6px] bg-[#FAF6EE] text-[#78350F] border border-amber-200/70">
                     {place.regionNameHindi}
                   </span>
                   {place.parikramaKm && (
@@ -469,10 +498,7 @@ export const DhamTirthaSection: React.FC<DhamTirthaSectionProps> = ({
                   )}
                 </div>
 
-                <h2
-                  onClick={() => handleSelect(place.slug || place.id)}
-                  className="font-rozha text-lg sm:text-xl font-bold text-[#18181B] hover:text-[#B45309] cursor-pointer transition-colors leading-snug"
-                >
+                <h2 className="font-rozha text-lg sm:text-xl font-bold text-[#18181B] hover:text-[#B45309] transition-colors leading-snug">
                   {place.nameDevanagari}
                 </h2>
 
@@ -480,7 +506,7 @@ export const DhamTirthaSection: React.FC<DhamTirthaSectionProps> = ({
                   विग्रह: <span className="font-semibold text-neutral-700">{place.deityDevanagari || place.deity}</span>
                 </div>
 
-                <p className="text-xs text-neutral-600 font-serif mt-2 line-clamp-3 leading-relaxed">
+                <p className="text-xs text-neutral-600 font-serif mt-2 line-clamp-2 leading-relaxed">
                   {place.briefSignificance}
                 </p>
               </div>
@@ -493,7 +519,10 @@ export const DhamTirthaSection: React.FC<DhamTirthaSectionProps> = ({
 
                 <button
                   type="button"
-                  onClick={() => handleSelect(place.slug || place.id)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleSelect(place.slug || place.id);
+                  }}
                   className="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-serif font-bold rounded-[8px] bg-[#FEF08A] hover:bg-amber-300 text-[#78350F] transition-colors shadow-2xs cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 shrink-0"
                 >
                   <span>दर्शन विवरण</span>

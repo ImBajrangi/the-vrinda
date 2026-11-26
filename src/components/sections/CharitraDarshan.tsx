@@ -13,6 +13,7 @@ import {
   Check,
   BookOpen
 } from 'lucide-react';
+import { getSaintPortrait } from '../../services/devotionalVisuals';
 import {
   SacredBiography,
   SacredBiographyPreview,
@@ -185,15 +186,18 @@ export const CharitraDarshan: React.FC<CharitraDarshanProps> = ({
         </div>
 
         {/* Hero Card */}
-        {/* Outer: rounded-[28px] p-6 sm:p-8 -> Inner: rounded-[4px] (28 - 24 = 4) */}
-        <div className="rounded-[28px] bg-white border border-neutral-200/80 p-6 sm:p-8 shadow-2xs mb-8">
+        {/* Outer: rounded-[28px] p-6 sm:p-8 -> Inner: rounded-[8px] */}
+        <div className="rounded-[28px] bg-white border border-neutral-200/80 p-5 sm:p-7 shadow-2xs mb-8">
           <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 text-center sm:text-left">
-            {/* Saint Icon / Glyph Avatar Frame */}
-            {/* Outer: rounded-[24px] p-3 -> Inner: rounded-[12px] (24 - 12 = 12) */}
-            <div className="w-24 h-24 rounded-[24px] bg-[#FEF08A] p-3 shadow-2xs shrink-0 flex items-center justify-center border border-amber-300">
-              <div className="w-full h-full rounded-[12px] bg-amber-200/60 flex items-center justify-center text-[#78350F] font-rozha font-bold text-3xl select-none">
-                {selectedBio.nameDevanagari.charAt(0)}
-              </div>
+            {/* Authentic Saint Portrait Frame */}
+            <div className="w-28 h-32 sm:w-32 sm:h-36 rounded-[12px] bg-[#FAF7F0] p-1.5 shadow-2xs shrink-0 border border-amber-300/60">
+              <img
+                src={getSaintPortrait({ slug: selectedBio.slug, name: selectedBio.nameDevanagari, tradition: selectedBio.tradition })}
+                alt={selectedBio.nameDevanagari}
+                className="w-full h-full object-cover object-top rounded-[8px]"
+                loading="eager"
+                decoding="async"
+              />
             </div>
 
             <div className="flex-1 min-w-0">
@@ -519,64 +523,73 @@ export const CharitraDarshan: React.FC<CharitraDarshanProps> = ({
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-          {filteredBios.map((saint) => (
-            /* Outer: rounded-[28px] p-5 -> Inner: rounded-[8px] (28 - 20 = 8) */
-            <article
-              key={saint.id}
-              className="rounded-[28px] bg-white border border-neutral-200/80 p-5 shadow-2xs flex flex-col justify-between hover:border-amber-300 transition-colors"
-            >
-              <div>
-                <div className="flex items-center justify-between gap-2 mb-3">
-                  <span className="px-2.5 py-0.5 text-[10.5px] font-serif font-bold rounded-[6px] bg-[#FEF08A] text-[#78350F]">
-                    {saint.tradition}
-                  </span>
-                  <span className="text-[11px] text-neutral-500 font-sans font-medium">
-                    {saint.period}
-                  </span>
-                </div>
+          {filteredBios.map((saint) => {
+            const portrait = getSaintPortrait({
+              slug: saint.slug,
+              name: saint.nameDevanagari,
+              tradition: saint.tradition,
+            });
+            return (
+              /* Outer: rounded-[28px] p-4 -> Inner: rounded-[12px] (28 - 16 = 12) */
+              <article
+                key={saint.id}
+                onClick={() => handleSelect(saint.slug || saint.id)}
+                className="rounded-[28px] bg-white border border-neutral-200/80 p-4 shadow-2xs flex flex-col justify-between hover:border-amber-300 transition-colors cursor-pointer"
+              >
+                <div>
+                  {/* Clean Visual Portrait Plate */}
+                  <div className="w-full aspect-[4/3] rounded-[12px] overflow-hidden bg-[#FAF7F0] mb-3.5 border border-amber-900/10">
+                    <img
+                      src={portrait}
+                      alt={saint.nameDevanagari}
+                      className="w-full h-full object-cover object-top"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
 
-                <div className="flex items-start gap-3 mb-3">
-                  {/* Outer: rounded-[28px] p-5 -> Inner: rounded-[8px] (28 - 20 = 8) */}
-                  <div className="w-12 h-12 rounded-[8px] bg-[#FEF08A] shrink-0 flex items-center justify-center border border-amber-300/40">
-                    <span className="font-rozha font-bold text-[#78350F] text-lg select-none">
-                      {saint.nameDevanagari.charAt(0)}
+                  <div className="flex items-center justify-between gap-2 mb-1.5">
+                    <span className="px-2 py-0.5 text-[10.5px] font-serif font-bold rounded-[6px] bg-[#FAF6EE] text-[#78350F] border border-amber-200/70">
+                      {saint.tradition}
+                    </span>
+                    <span className="text-[11px] text-neutral-500 font-sans font-medium truncate">
+                      {saint.period}
                     </span>
                   </div>
-                  <div className="min-w-0">
-                    <h2
-                      onClick={() => handleSelect(saint.slug || saint.id)}
-                      className="font-rozha text-base sm:text-lg font-bold text-[#18181B] hover:text-[#B45309] cursor-pointer transition-colors leading-snug truncate"
-                    >
-                      {saint.nameDevanagari}
-                    </h2>
-                    <div className="text-[11px] text-neutral-400 font-sans truncate">
-                      {saint.name}
-                    </div>
+
+                  <h2 className="font-rozha text-base sm:text-lg font-bold text-[#18181B] hover:text-[#B45309] transition-colors leading-snug truncate">
+                    {saint.nameDevanagari}
+                  </h2>
+                  <div className="text-[11px] text-neutral-400 font-sans truncate mb-2">
+                    {saint.name}
                   </div>
+
+                  <p className="text-xs text-neutral-600 font-serif line-clamp-3 leading-relaxed mb-4">
+                    {saint.lifeSummary}
+                  </p>
                 </div>
 
-                <p className="text-xs text-neutral-600 font-serif line-clamp-3 leading-relaxed mb-4">
-                  {saint.lifeSummary}
-                </p>
-              </div>
+                <div className="pt-3 border-t border-neutral-100 flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-1.5 text-[11px] text-neutral-500 font-serif min-w-0">
+                    <MapPin className="w-3.5 h-3.5 text-amber-700 shrink-0" />
+                    <span className="truncate">{saint.samadhiPlace}</span>
+                  </div>
 
-              <div className="pt-3 border-t border-neutral-100 flex items-center justify-between gap-2">
-                <div className="flex items-center gap-1.5 text-[11px] text-neutral-500 font-serif min-w-0">
-                  <MapPin className="w-3.5 h-3.5 text-amber-700 shrink-0" />
-                  <span className="truncate">{saint.samadhiPlace}</span>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleSelect(saint.slug || saint.id);
+                    }}
+                    className="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-serif font-bold rounded-[8px] bg-[#FEF08A] hover:bg-amber-300 text-[#78350F] transition-colors shadow-2xs shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+                  >
+                    <span>दर्शन</span>
+                    <ChevronRight className="w-3.5 h-3.5" />
+                  </button>
                 </div>
-
-                <button
-                  type="button"
-                  onClick={() => handleSelect(saint.slug || saint.id)}
-                  className="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-serif font-bold rounded-[8px] bg-[#FEF08A] hover:bg-amber-300 text-[#78350F] transition-colors shadow-2xs shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
-                >
-                  <span>दर्शन</span>
-                  <ChevronRight className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            </article>
-          ))}
+              </article>
+            );
+          })}
         </div>
       )}
     </main>

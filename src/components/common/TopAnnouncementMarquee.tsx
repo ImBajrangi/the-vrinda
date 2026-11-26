@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { computeAshtayamaPhase } from '../../services/cacheService';
+import { computeAshtayamaPhase, formatDevanagariNumerals } from '../../services/cacheService';
+import { computePanchangForDate } from '../../services/panchangService';
 import { NavTab } from './FloatingNavbar';
 
 interface TopAnnouncementMarqueeProps {
-  isScrolled: boolean;
+  isScrolled?: boolean;
   onSelectTab?: (tab: NavTab) => void;
   onOpenSaintsDirectory?: () => void;
   streakDays?: number;
@@ -16,18 +17,24 @@ interface MarqueeItemData {
   text: string;
 }
 
+const SSR_BASELINE_DATE = new Date('2026-01-01T19:00:00+05:30');
+
 export const TopAnnouncementMarquee: React.FC<TopAnnouncementMarqueeProps> = ({
-  isScrolled,
   streakDays = 1,
   isVisibleOnMobile = true,
 }) => {
-  // Real-time Ashtayama calculation that refreshes every minute
-  const [ashtayama, setAshtayama] = useState(() => computeAshtayamaPhase());
+  // Deterministic SSR initial values, hydrated smoothly to live clock on mount
+  const [ashtayama, setAshtayama] = useState(() => computeAshtayamaPhase(SSR_BASELINE_DATE));
+  const [panchang, setPanchang] = useState(() => computePanchangForDate(SSR_BASELINE_DATE));
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setAshtayama(computeAshtayamaPhase());
-    }, 60000);
+    const syncClock = () => {
+      const now = new Date();
+      setAshtayama(computeAshtayamaPhase(now));
+      setPanchang(computePanchangForDate(now));
+    };
+    syncClock();
+    const timer = setInterval(syncClock, 60000);
     return () => clearInterval(timer);
   }, []);
 
@@ -40,7 +47,7 @@ export const TopAnnouncementMarquee: React.FC<TopAnnouncementMarqueeProps> = ({
     {
       id: 'panchang',
       lead: 'नित्य पंचांग',
-      text: 'पावन अष्टयाम समय-चक्र एवं उत्सव धारा',
+      text: `${panchang.masaDevanagari} ${panchang.pakshaDevanagari} ${panchang.tithiNameDevanagari} • ${panchang.nakshatraDevanagari} नक्षत्र${panchang.specialOccasionDevanagari ? ` • ${panchang.specialOccasionDevanagari}` : ''}`,
     },
     {
       id: 'live-darshan',
@@ -60,7 +67,7 @@ export const TopAnnouncementMarquee: React.FC<TopAnnouncementMarqueeProps> = ({
     {
       id: 'sadhana',
       lead: 'नित्य साधना',
-      text: `युगल नाम जप व चिंतन • ${streakDays}-दिवसीय अखंड निष्ठा`,
+      text: `युगल नाम जप व चिंतन • ${formatDevanagariNumerals(streakDays)}-दिवसीय अखंड निष्ठा`,
     },
   ];
 
@@ -101,11 +108,9 @@ export const TopAnnouncementMarquee: React.FC<TopAnnouncementMarqueeProps> = ({
   return (
     <aside
       aria-label="Vrindavan Live Announcements Ticker"
-      className={`fixed top-0 left-0 right-0 z-[60] w-full h-8 sm:h-9 bg-[#FFFDF5]/95 backdrop-blur-md text-stone-800 select-none overflow-hidden border-b border-amber-200/90 shadow-[0_1px_3px_rgba(217,119,6,0.03)] announcement-banner-transition pointer-events-none cursor-default transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${
-        isScrolled
-          ? 'opacity-0 -translate-y-full border-b-0 pointer-events-none'
-          : 'opacity-100 translate-y-0'
-      } ${!isVisibleOnMobile ? '-translate-y-full md:translate-y-0 opacity-0 md:opacity-100' : ''}`}
+      className={`relative z-40 w-full h-8 sm:h-9 bg-[#FFFDF5] text-stone-800 select-none overflow-hidden border-b border-amber-200/80 pointer-events-none cursor-default ${
+        isVisibleOnMobile ? 'block' : 'hidden md:block'
+      }`}
     >
       <div className="w-full h-8 sm:h-9 flex items-center top-marquee-mask pointer-events-none">
         {/* Infinite Track with 2 identical sets for seamless -50% loop */}

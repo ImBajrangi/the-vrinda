@@ -1,8 +1,91 @@
-import React from 'react';
-import { Flame, Music2, BookOpen, Wind, HelpCircle, Disc3 } from 'lucide-react';
+import React, { useState, useMemo, useEffect } from 'react';
+import { createPortal } from 'react-dom';
+import { Flame, Music2, BookOpen, Wind, HelpCircle, Disc3, Maximize2, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { SadhanaState, SacredPad } from '../../types/devotional';
 import { ArtworkGraphicSlot } from '../common/ArtworkGraphicSlot';
-import { formatDevanagariNumerals } from '../../services/cacheService';
+import { computeAshtayamaPhase, formatDevanagariNumerals } from '../../services/cacheService';
+import { computePanchangForDate } from '../../services/panchangService';
+import { getSaintPortrait } from '../../services/devotionalVisuals';
+import { IOSSpinner, navigationProgress } from '../common/IOSActivityIndicator';
+
+const DAILY_AMRIT_VANI = [
+  {
+    verse: 'जोई जोई प्यारो करै सोई मोहि भावै,\nभावै मोहि जोई सोई सोई करै प्यारे।',
+    saint: 'श्री हित हरिवंश महाप्रभु',
+    grantha: 'श्री हित चौरासी • पद १',
+  },
+  {
+    verse: 'माई री सहज जोरी प्रगट भई, जु रंग की गौर स्याम घन दामिनि जैसैं।',
+    saint: 'स्वामी श्री हरिदास जी',
+    grantha: 'केलिमाल • निज निकुंज भाव',
+  },
+  {
+    verse: 'श्री राधा वल्लभ लाल को नाम सुमिरि सुख पाऊँ,\nनिसि दिन नैननि निरखि कै बलि-बलि बलि-बलि जाऊँ।',
+    saint: 'श्री हरिराय जी',
+    grantha: 'रसिक अनन्य वाणी',
+  },
+  {
+    verse: 'मेरे तो गिरधर गोपाल, दूसरो न कोई।\nजाके सिर मोर मुकुट, मेरो पति सोई॥',
+    saint: 'मीरा बाई जी',
+    grantha: 'भक्ति पदावली',
+  },
+  {
+    verse: 'मानुष हौं तो वही रसखानि, बसौं ब्रज गोकुल गाँव के ग्वारन।',
+    saint: 'श्री रसखान जी',
+    grantha: 'सुजान रसखान • सवैया',
+  },
+];
+
+const NITYA_DARSHAN_PLATES = [
+  {
+    id: 'yugal',
+    label: 'युगल दर्शन',
+    caption: 'श्री राधारमण देव जू • नित्य शृंगार सिंहासन',
+    mandir: 'श्री राधारमण मंदिर, वृन्दावन',
+    pos: 'object-[center_22%]',
+    src: '/assets/darshan/radharaman-yugal.webp',
+  },
+  {
+    id: 'radhavallabh',
+    label: 'राधावल्लभ',
+    caption: 'श्री राधावल्लभ लाल • मोरपंख पीठिका दर्शन',
+    mandir: 'श्री राधावल्लभ मंदिर, वृन्दावन',
+    pos: 'object-[center_22%]',
+    src: '/assets/darshan/radhavallabh-peacock.webp',
+  },
+  {
+    id: 'phoolbangla',
+    label: 'फूल बंगला',
+    caption: 'दिव्य पुष्प सज्जा • नित्य फूल बंगला झांकी',
+    mandir: 'निकुञ्ज महोत्सव दर्शन',
+    pos: 'object-[center_72%]',
+    src: '/assets/darshan/radharaman-phoolbangla.webp',
+  },
+  {
+    id: 'mukharavind',
+    label: 'मुखारविंद',
+    caption: 'श्री राधारमण लाल • मोर मुकुट छवि',
+    mandir: 'नित्य शृंगार दर्शन',
+    pos: 'object-[center_18%]',
+    src: '/assets/darshan/radharaman-mukharavind.webp',
+  },
+  {
+    id: 'bihari',
+    label: 'बाँके बिहारी',
+    caption: 'श्री बाँके बिहारी लाल जी • मंगला व संध्या झांकी',
+    mandir: 'श्री बाँके बिहारी मंदिर, वृन्दावन',
+    pos: 'object-[center_25%]',
+    src: '/assets/temples/banke-bihari-v2.webp',
+  },
+  {
+    id: 'mandapa',
+    label: 'मण्डप सेवा',
+    caption: 'गोस्वामी सेवक मण्डप • नित्य चंवर व पुष्प अर्पण',
+    mandir: 'श्री वृन्दावन धाम सेवा',
+    pos: 'object-[center_20%]',
+    src: '/assets/darshan/mandapa-aarti-seva.webp',
+  },
+];
 
 interface SadhanaRingProgressProps {
   sadhana: SadhanaState;
@@ -40,11 +123,90 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
   currentPad: _currentPad,
   onOpenPillar,
   onToggleAudio: _onToggleAudio,
-  onOpenReader: _onOpenReader,
+  onOpenReader,
   onOpenGuide,
   onOpenFocus,
   currentStreakDays = 1,
 }) => {
+  const [vaniIndex, setVaniIndex] = useState(0);
+  const [plateIndex, setPlateIndex] = useState(0);
+  const [isPlateLoading, setIsPlateLoading] = useState(false);
+  const [isOpeningReader, setIsOpeningReader] = useState(false);
+  const [diyaLit, setDiyaLit] = useState(false);
+  const [lightboxImage, setLightboxImage] = useState<{ src: string; caption: string } | null>(null);
+
+  const ssrBaseline = useMemo(() => new Date('2026-01-01T19:00:00+05:30'), []);
+  const [todayKey, setTodayKey] = useState('2026-01-01');
+
+  const [livePrahar, setLivePrahar] = useState(() => computeAshtayamaPhase(ssrBaseline));
+  const [livePanchang, setLivePanchang] = useState(() => computePanchangForDate(ssrBaseline));
+
+  useEffect(() => {
+    const syncHeroClock = () => {
+      const now = new Date();
+      setLivePrahar(computeAshtayamaPhase(now));
+      setLivePanchang(computePanchangForDate(now));
+      const key = now.toISOString().slice(0, 10);
+      setTodayKey(key);
+      try {
+        if (localStorage.getItem(`vrindopnisad_diya_${key}`) === 'lit') {
+          setDiyaLit(true);
+        }
+      } catch {}
+    };
+    syncHeroClock();
+    const timer = setInterval(syncHeroClock, 60000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const selectPlate = (nextIndex: number) => {
+    const normalized = (nextIndex + NITYA_DARSHAN_PLATES.length) % NITYA_DARSHAN_PLATES.length;
+    if (normalized === plateIndex) return;
+    setIsPlateLoading(true);
+    setPlateIndex(normalized);
+  };
+
+  const handleEnterReader = () => {
+    if (isOpeningReader) return;
+    setIsOpeningReader(true);
+    navigationProgress.start();
+    requestAnimationFrame(() => {
+      try {
+        onOpenReader();
+      } finally {
+        setIsOpeningReader(false);
+      }
+    });
+  };
+
+  useEffect(() => {
+    if (!lightboxImage) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setLightboxImage(null);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [lightboxImage]);
+
+  const toggleDiya = () => {
+    const next = !diyaLit;
+    setDiyaLit(next);
+    try {
+      localStorage.setItem(`vrindopnisad_diya_${todayKey}`, next ? 'lit' : 'off');
+    } catch {}
+  };
+
+  const activePlate = NITYA_DARSHAN_PLATES[plateIndex % NITYA_DARSHAN_PLATES.length];
+  const activeVani = DAILY_AMRIT_VANI[vaniIndex % DAILY_AMRIT_VANI.length];
+
+  // Overall 3-pillar devotional harmony ratio
+  const harmonyPct = useMemo(() => {
+    const j = Math.min(1, sadhana.japaCompleted / Math.max(1, sadhana.japaTarget));
+    const s = Math.min(1, sadhana.shravanMinutes / Math.max(1, sadhana.shravanTarget));
+    const v = Math.min(1, sadhana.svadhyayaPadas / Math.max(1, sadhana.svadhyayaTarget));
+    return Math.round(((j + s + v) / 3) * 100);
+  }, [sadhana]);
+
   // 27 visual segments representing the 108-bead Tulsi mala (each bead marker = 4 mantras)
   const totalMalaMarkers = 27;
   const activeMarkerIndex = Math.floor((beadInCurrentMala / 108) * totalMalaMarkers);
@@ -63,51 +225,348 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
   }, [totalMalaMarkers]);
 
   return (
-    <div className="w-full bg-white rounded-[32px] p-4 sm:p-6 space-y-6">
-      {/* 1. Serene Sanctuary Header in Classical Editorial Typography */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-neutral-100">
-        <div className="space-y-1">
-          <div className="text-xs font-laila font-semibold text-amber-800 tracking-wide flex items-center gap-2 flex-wrap">
-            <span>दैनिक स्मरण व नित्य सेवा</span>
-            <span className="text-neutral-300 font-normal">•</span>
-            <span className="text-amber-900 font-medium">
-              {currentStreakDays}-दिवसीय अखंड स्मरण
-            </span>
+    <div className="w-full space-y-6">
+      {/* 1. Editorial Sanctuary Cover Spread (58/42 Museum Split with Apple iOS Plate HUD) */}
+      <section
+        aria-label="श्री वृन्दावन नित्य संदर्शन"
+        className="w-full bg-[#FFFDF9] rounded-[28px] sm:rounded-[32px] squircle-card overflow-hidden border border-[#E7DEC9] shadow-[0_12px_40px_rgba(120,53,15,0.06)]"
+      >
+        <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
+          {/* Left (7 cols): Expansive Museum-Grade Braj Nitya Darshan Stage */}
+          <div className="lg:col-span-7 relative h-[320px] sm:h-[400px] lg:h-[530px] bg-[#160D06] overflow-hidden select-none">
+            <img
+              src={activePlate.src}
+              alt={activePlate.caption}
+              onLoad={() => setIsPlateLoading(false)}
+              onError={() => setIsPlateLoading(false)}
+              className={`w-full h-full object-cover ${activePlate.pos} transition-opacity duration-200 ${
+                isPlateLoading ? 'opacity-80' : 'opacity-100'
+              }`}
+              loading="eager"
+              decoding="async"
+            />
+
+            {/* Top-Left Subtle Frosted Museum Counter Badge (iOS Material) */}
+            <div className="absolute top-3.5 left-3.5 sm:top-4 sm:left-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#120A04]/55 backdrop-blur-md border border-white/15 text-white text-[11px] font-laila font-medium shadow-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FDE047] shrink-0" />
+              <span className="font-mono text-[10.5px] text-amber-200 font-bold">
+                {formatDevanagariNumerals(plateIndex + 1).padStart(2, '०')} / {formatDevanagariNumerals(NITYA_DARSHAN_PLATES.length).padStart(2, '०')}
+              </span>
+              <span className="text-white/40">•</span>
+              <span className="truncate max-w-[185px] sm:max-w-none">{activePlate.mandir}</span>
+            </div>
+
+            {/* Top-Right Apple iOS 18 Plate Switch Loader */}
+            {isPlateLoading && (
+              <div
+                role="status"
+                aria-busy="true"
+                className="absolute top-3.5 right-3.5 sm:top-4 sm:right-4 px-2.5 py-1.5 rounded-full bg-[#120A04]/65 backdrop-blur-md border border-white/15 inline-flex items-center gap-1.5 text-[10.5px] text-amber-100 font-laila"
+              >
+                <IOSSpinner size="xs" theme="white" />
+                <span>दर्शन...</span>
+              </div>
+            )}
+
+            {/* Bottom Museum Gradient Scrim (upper 75% untouched) */}
+            <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#100803]/95 via-[#100803]/55 to-transparent pointer-events-none" />
+
+            {/* Clean Museum Plaque Bar + Segmented Dots (Mobile Safe Layout) */}
+            <div className="absolute inset-x-0 bottom-0 p-4 sm:p-6 space-y-2.5">
+              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2.5">
+                <div className="min-w-0">
+                  <div className="font-rozha text-[17px] sm:text-xl lg:text-[22px] text-white tracking-wide leading-snug line-clamp-1">
+                    {activePlate.caption}
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between sm:justify-end gap-2 shrink-0">
+                  {/* Segmented Plate Progress Dots */}
+                  <div className="flex items-center gap-1 sm:hidden" aria-hidden="true">
+                    {NITYA_DARSHAN_PLATES.map((p, i) => (
+                      <span
+                        key={p.id}
+                        className={`h-1 rounded-full transition-all duration-200 ${
+                          i === plateIndex ? 'w-4 bg-[#FEF08A]' : 'w-1.5 bg-white/35'
+                        }`}
+                      />
+                    ))}
+                  </div>
+
+                  <div className="flex items-center gap-1.5">
+                    <button
+                      type="button"
+                      onClick={() => selectPlate(plateIndex - 1)}
+                      aria-label="पिछला दर्शन"
+                      className="w-8 h-8 rounded-full bg-white/15 hover:bg-white/25 text-white backdrop-blur-sm border border-white/10 flex items-center justify-center transition-colors cursor-pointer"
+                    >
+                      <ChevronLeft className="w-4 h-4" />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => selectPlate(plateIndex + 1)}
+                      aria-label="अगला दर्शन"
+                      className="w-8 h-8 rounded-full bg-white/15 hover:bg-white/25 text-white backdrop-blur-sm border border-white/10 flex items-center justify-center transition-colors cursor-pointer"
+                    >
+                      <ChevronRight className="w-4 h-4" />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setLightboxImage({ src: activePlate.src, caption: activePlate.caption })}
+                      aria-label={`पूर्ण दर्शन देखें: ${activePlate.caption}`}
+                      className="h-8 px-3 rounded-full bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] text-[11px] font-laila font-bold inline-flex items-center gap-1 transition-colors cursor-pointer whitespace-nowrap shadow-xs"
+                    >
+                      <Maximize2 className="w-3 h-3" />
+                      <span>पूर्ण दर्शन</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <h2 className="font-serif font-bold text-2xl sm:text-[26px] text-[#18181B] leading-tight">
-            दैनिक युगल स्मरण एवं जप साधना
-          </h2>
-          <p className="text-xs sm:text-[13px] text-[#71717A] font-normal">
-            "जोई जोई प्यारो करे सोई मोहि भावै" • नाम जप, वाणी श्रवण एवं नित्य ग्रंथ चिंतन का पावन संगम।
-          </p>
+
+          {/* Right (5 cols): Editorial Parchment Folio & Curated Controls */}
+          <div className="lg:col-span-5 p-5 sm:p-6 lg:p-8 flex flex-col justify-between gap-4 sm:gap-5 bg-gradient-to-br from-[#FFFDF9] via-[#FCF8EE] to-[#F6EEDF]">
+            {/* Band 1: Real-Time Masthead Eyebrow + Display Title */}
+            <div className="space-y-2.5">
+              <div className="flex items-center justify-between gap-2 flex-wrap">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-100/75 border border-amber-200/80 text-[11px] font-laila font-bold text-amber-950">
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-600" />
+                  <span>{livePrahar.nameDevanagari} ({livePrahar.timeRange})</span>
+                </span>
+                <span className="text-[11px] font-laila font-semibold text-neutral-600">
+                  {livePanchang.masaDevanagari} {livePanchang.pakshaDevanagari} {livePanchang.tithiNameDevanagari} • {formatDevanagariNumerals(currentStreakDays)}-दिवस • समरसता {formatDevanagariNumerals(harmonyPct)}%
+                </span>
+              </div>
+
+              <h1 className="font-rozha text-[26px] sm:text-3xl lg:text-[34px] text-[#1A120B] leading-[1.16] tracking-tight">
+                नित्य निकुञ्ज संदर्शन एवं युगल स्मरण
+              </h1>
+
+              <p className="text-xs sm:text-[13px] font-laila text-[#5C4E3E] leading-relaxed">
+                {livePrahar.descriptionDevanagari} — श्री धाम वृन्दावन के ठाकुर मन्दिरों के प्रामाणिक दर्शन व रसिक वाणी स्वाध्याय का पावन संगम।
+              </p>
+            </div>
+
+            {/* Band 2: Elevated Museum Vani Quotation Plaque (R_card = 20px) */}
+            <div className="rounded-[20px] p-4 bg-white/85 border border-[#E6DAC4] shadow-[0_2px_14px_rgba(120,53,15,0.035)] space-y-3">
+              <div className="flex items-center justify-between gap-2 text-[10.5px] font-laila font-semibold text-amber-800/90">
+                <span>॥ आज की अमृतमयी रसिक वाणी ॥</span>
+                <span className="text-neutral-500 font-normal truncate max-w-[140px]">{activeVani.grantha}</span>
+              </div>
+
+              <blockquote className="font-laila text-[14.5px] sm:text-[16px] font-medium text-[#1C140D] whitespace-pre-line leading-relaxed border-l-2 border-[#B45309]/65 pl-3">
+                “{activeVani.verse}”
+              </blockquote>
+
+              <div className="flex items-center justify-between gap-2 pt-2 border-t border-[#F0E6D3]">
+                <div className="flex items-center gap-2 min-w-0">
+                  <img
+                    src={getSaintPortrait({ name: activeVani.saint })}
+                    alt={activeVani.saint}
+                    className="w-8 h-8 rounded-full object-cover object-top border border-amber-400/70 shrink-0"
+                    loading="eager"
+                    decoding="async"
+                  />
+                  <span className="text-xs font-laila font-bold text-amber-950 truncate">
+                    {activeVani.saint}
+                  </span>
+                </div>
+
+                <div className="flex items-center gap-3 text-xs font-laila font-semibold shrink-0">
+                  <button
+                    type="button"
+                    onClick={() => setVaniIndex((i) => (i + 1) % DAILY_AMRIT_VANI.length)}
+                    className="text-neutral-600 hover:text-amber-900 transition-colors cursor-pointer"
+                    title="अगली रसिक वाणी देखें"
+                  >
+                    अगला पद ↻
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleEnterReader}
+                    disabled={isOpeningReader}
+                    aria-busy={isOpeningReader}
+                    className="text-amber-800 hover:text-amber-950 transition-colors cursor-pointer inline-flex items-center gap-1 disabled:opacity-65"
+                  >
+                    {isOpeningReader ? (
+                      <>
+                        <IOSSpinner size="xs" theme="current" />
+                        <span>खुल रहा है</span>
+                      </>
+                    ) : (
+                      <span>मूल पाठ →</span>
+                    )}
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Band 3: High-Contrast Primary CTA Row + Concentric 6-Plate Selector */}
+            <div className="space-y-3.5">
+              <div className="flex items-center gap-2 flex-wrap">
+                <button
+                  type="button"
+                  onClick={handleTapBead}
+                  className="flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-[#1C140D] hover:bg-[#2F2217] text-[#FEF08A] text-xs font-laila font-bold transition-colors cursor-pointer shadow-xs"
+                  title="सीधे यहीं से +१ राधे नाम जप करें"
+                >
+                  <Disc3 className="w-3.5 h-3.5 text-[#FEF08A]" />
+                  <span>+१ राधे जप</span>
+                  <span className="font-mono text-[10.5px] text-amber-200/90 bg-white/10 px-1.5 py-0.5 rounded-full">
+                    {formatDevanagariNumerals(beadInCurrentMala)}/१०८
+                  </span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={onOpenFocus}
+                  className="flex items-center gap-1.5 px-3.5 py-2.5 rounded-full bg-white border border-[#E2D6BF] hover:bg-amber-50 text-[#18181B] text-xs font-laila font-semibold transition-colors cursor-pointer"
+                  title="Open Dhyāna Sanctuary (ध्यान कक्ष)"
+                >
+                  <Wind className="w-3.5 h-3.5 text-amber-800" />
+                  <span>ध्यान कक्ष</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={toggleDiya}
+                  className={`flex items-center gap-1.5 px-3 py-2.5 rounded-full border text-xs font-laila font-semibold transition-colors cursor-pointer ${
+                    diyaLit
+                      ? 'bg-[#FEF08A]/75 border-amber-400 text-amber-950'
+                      : 'bg-white border-[#E2D6BF] hover:bg-amber-50 text-neutral-700'
+                  }`}
+                  title="श्रीजी के चरणों में आज का भाव-दीप प्रज्वलित करें"
+                >
+                  <Flame className={`w-3.5 h-3.5 ${diyaLit ? 'text-amber-600 fill-amber-500' : 'text-amber-700'}`} />
+                  <span>{diyaLit ? 'दीप प्रज्वलित' : 'दीप'}</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={onOpenGuide}
+                  aria-label="साधना विधि मार्गदर्शिका"
+                  title="Sadhana Guide: Essential daily devotional practices"
+                  className="w-9 h-9 rounded-full bg-white border border-[#E2D6BF] hover:bg-amber-50 text-neutral-600 flex items-center justify-center transition-colors cursor-pointer shrink-0"
+                >
+                  <HelpCircle className="w-4 h-4" />
+                </button>
+              </div>
+
+              {/* Curated Plate Strip (R_outer = 14px, p = 4px -> R_inner = 10px strict concentric geometry) */}
+              <div className="pt-2.5 border-t border-[#E6DAC4]/75">
+                <div className="flex lg:grid lg:grid-cols-6 gap-2 lg:gap-1.5 overflow-x-auto no-scrollbar pb-0.5">
+                  {NITYA_DARSHAN_PLATES.map((plate, idx) => {
+                    const isSelected = idx === plateIndex;
+                    return (
+                      <button
+                        key={plate.id}
+                        type="button"
+                        onClick={() => selectPlate(idx)}
+                        className={`shrink-0 w-[78px] lg:w-auto rounded-[14px] p-1 border transition-colors cursor-pointer text-center ${
+                          isSelected
+                            ? 'bg-[#FEF08A] border-amber-500 shadow-2xs'
+                            : 'bg-white/80 border-[#EAE0CC]/70 hover:border-amber-900/30'
+                        }`}
+                        title={plate.caption}
+                      >
+                        <div className="aspect-[4/3] w-full rounded-[10px] overflow-hidden bg-[#1A120B]">
+                          <img
+                            src={plate.src}
+                            alt={plate.label}
+                            className={`w-full h-full object-cover ${plate.pos}`}
+                            loading="eager"
+                            decoding="async"
+                          />
+                        </div>
+                        <span className={`block pt-1 pb-0.5 text-[10px] font-laila truncate ${
+                          isSelected ? 'font-bold text-amber-950' : 'font-medium text-neutral-600'
+                        }`}>
+                          {plate.label}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
 
-        {/* Quiet Editorial Action Gateways */}
-        <div className="flex items-center gap-2 self-start sm:self-auto shrink-0 pt-1 sm:pt-0">
-          <button
-            type="button"
-            onClick={onOpenGuide}
-            className="flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-[#FAF6EE] hover:bg-[#FEFCE8] text-xs font-semibold text-[#18181B] transition-colors cursor-pointer"
-            title="Sadhana Guide: Essential daily devotional practices"
+      {/* Fullscreen Sacred Nitya Darshan Lightbox Portal */}
+      {lightboxImage &&
+        typeof document !== 'undefined' &&
+        createPortal(
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label={lightboxImage.caption}
+            onClick={() => setLightboxImage(null)}
+            className="fixed inset-0 z-[100] bg-[#0D0805]/95 flex flex-col items-center justify-center p-4 sm:p-8"
           >
-            <HelpCircle className="w-3.5 h-3.5 text-neutral-500" />
-            <span>विधि संग्रह</span>
-          </button>
+            <button
+              type="button"
+              onClick={() => setLightboxImage(null)}
+              aria-label="दर्शन बंद करें"
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer"
+            >
+              <X className="w-5 h-5" />
+            </button>
 
-          <button
-            type="button"
-            onClick={onOpenFocus}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] text-xs font-bold transition-colors cursor-pointer"
-            title="Open Dhyāna Sanctuary (ध्यान कक्ष)"
-          >
-            <Wind className="w-3.5 h-3.5 text-amber-700" />
-            <span>ध्यान कक्ष</span>
-          </button>
-        </div>
-      </div>
+            <div
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-w-2xl w-full flex flex-col items-center gap-3"
+            >
+              <div className="relative w-full max-h-[78vh] rounded-[16px] overflow-hidden bg-black border border-amber-200/20 shadow-2xl flex items-center justify-center">
+                <img
+                  src={lightboxImage.src}
+                  alt={lightboxImage.caption}
+                  className="max-h-[78vh] w-auto object-contain"
+                />
+              </div>
 
-      {/* 2. Artisanal Tulsi Japamala Sanctuary (Concept A: Circular Rosary Ring) */}
-      <div className="p-5 sm:p-6 rounded-[16px] sm:rounded-[8px] bg-[#FAF8F3] border border-amber-200/80 shadow-[inset_0_1px_3px_rgba(255,255,255,0.9),0_12px_36px_rgba(217,119,6,0.04)]">
+              <div className="flex items-center justify-between w-full px-2 text-amber-100 font-laila text-xs sm:text-sm gap-3">
+                <button
+                  type="button"
+                  onClick={() => {
+                    const prev = (plateIndex - 1 + NITYA_DARSHAN_PLATES.length) % NITYA_DARSHAN_PLATES.length;
+                    setPlateIndex(prev);
+                    setLightboxImage({
+                      src: NITYA_DARSHAN_PLATES[prev].src,
+                      caption: NITYA_DARSHAN_PLATES[prev].caption,
+                    });
+                  }}
+                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white cursor-pointer"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                  <span>पिछला</span>
+                </button>
+                <span className="text-center font-semibold truncate">{lightboxImage.caption}</span>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const next = (plateIndex + 1) % NITYA_DARSHAN_PLATES.length;
+                    setPlateIndex(next);
+                    setLightboxImage({
+                      src: NITYA_DARSHAN_PLATES[next].src,
+                      caption: NITYA_DARSHAN_PLATES[next].caption,
+                    });
+                  }}
+                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white cursor-pointer"
+                >
+                  <span>अगला</span>
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+          </div>,
+          document.body
+        )}
+
+      {/* 2. Artisanal Tulsi Japamala Sanctuary & Three Daily Offerings (Clean Unified Card) */}
+      <div className="w-full bg-white rounded-[32px] squircle-card p-4 sm:p-6 space-y-6 border border-[#EAE1D3] shadow-[0_4px_24px_rgba(120,53,15,0.03)]">
+        <div className="p-5 sm:p-6 rounded-[16px] sm:rounded-[12px] bg-[#FAF8F3] border border-amber-200/80 shadow-[inset_0_1px_3px_rgba(255,255,255,0.9),0_12px_36px_rgba(217,119,6,0.04)]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           {/* Left / Center: The Circular Chanting Rosary Ring */}
@@ -284,12 +743,13 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
         >
           {/* Dedicated Visual Slot for Japa Meditation Art */}
           <ArtworkGraphicSlot
-            src={null}
+            src="/assets/darshan/radharaman-charan.webp"
+            alt="श्री राधारमण लाल चरण-कमल व नाम जप"
             aspectRatio="card"
             theme="amber"
-            placeholderLabel="नाम जप ध्यान चित्र"
-            placeholderCategory="general"
+            imgPositionClass="object-[center_30%]"
             roundedClassName="rounded-[8px]"
+            eager={true}
           />
 
           <div>
@@ -326,12 +786,13 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
         >
           {/* Dedicated Visual Slot for Pad Shravan & Raga Art */}
           <ArtworkGraphicSlot
-            src={null}
+            src="/assets/darshan/radharaman-venu.webp"
+            alt="श्री राधारमण वेणु-माधुरी व रसिक वाणी श्रवण"
             aspectRatio="card"
             theme="amber"
-            placeholderLabel="वाणी श्रवण कला"
-            placeholderCategory="music"
+            imgPositionClass="object-[center_20%]"
             roundedClassName="rounded-[8px]"
+            eager={true}
           />
 
           <div>
@@ -368,12 +829,13 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
         >
           {/* Dedicated Visual Slot for Grantha Scripture Manuscript Art */}
           <ArtworkGraphicSlot
-            src={null}
+            src="/assets/darshan/radharaman-shriji.webp"
+            alt="श्री राधारमण लाल एवं श्रीजी गद्दी ग्रंथ स्वाध्याय"
             aspectRatio="card"
             theme="orange"
-            placeholderLabel="ग्रंथ स्वाध्याय आवरण"
-            placeholderCategory="book"
+            imgPositionClass="object-[center_35%]"
             roundedClassName="rounded-[8px]"
+            eager={true}
           />
 
           <div>
@@ -401,6 +863,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
         </div>
 
       </div>
+    </div>
     </div>
   );
 };

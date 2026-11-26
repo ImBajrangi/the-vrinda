@@ -19,6 +19,8 @@ interface ArtworkGraphicSlotProps {
   className?: string;
   onClick?: () => void;
   roundedClassName?: string;
+  eager?: boolean;
+  imgPositionClass?: string;
 }
 
 export const ArtworkGraphicSlot: React.FC<ArtworkGraphicSlotProps> = ({
@@ -35,9 +37,10 @@ export const ArtworkGraphicSlot: React.FC<ArtworkGraphicSlotProps> = ({
   className = '',
   onClick,
   roundedClassName = 'rounded-[20px]',
+  eager = false,
+  imgPositionClass = 'object-center',
 }) => {
   const [hasError, setHasError] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
 
   // Responsive Aspect Ratios
   const aspectClasses: Record<GraphicAspectRatio, string> = {
@@ -121,11 +124,9 @@ export const ArtworkGraphicSlot: React.FC<ArtworkGraphicSlotProps> = ({
             src={src!}
             alt={alt}
             onError={() => setHasError(true)}
-            onLoad={() => setIsLoaded(true)}
-            className={`w-full h-full object-cover transition-opacity duration-500 ${
-              isLoaded ? 'opacity-100' : 'opacity-0'
-            }`}
-            loading="lazy"
+            className={`w-full h-full object-cover ${imgPositionClass}`}
+            loading={eager ? 'eager' : 'lazy'}
+            decoding="async"
           />
 
           {/* Soft scrim gradient when overlay content is present so text pops effortlessly */}

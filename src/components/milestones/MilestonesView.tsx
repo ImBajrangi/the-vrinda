@@ -329,17 +329,28 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
         </div>
       </div>
 
-      {/* Hero Header & Headline */}
-      <div className="mb-6 flex flex-col md:flex-row md:items-end justify-between gap-4 bg-white p-5 sm:p-6 rounded-[28px] sm:rounded-[32px] border border-black/5 shadow-xs">
-        <div>
-          <h1 className="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-[#111111] leading-tight flex flex-wrap items-center gap-x-2">
-            <span className="inline-block whitespace-nowrap">Unbroken Devotion</span>
-            <span className="text-neutral-400 font-normal select-none">•</span>
-            <span className="inline-block whitespace-nowrap">अखंड निष्ठा</span>
-          </h1>
-          <p className="text-xs sm:text-sm text-[#555555] mt-2 font-medium">
-            Grace at every step • Eternal Nikunj Remembrance
-          </p>
+      {/* Hero Header & Headline with Authentic Darshan Plate */}
+      <div className="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-5 sm:p-6 rounded-[28px] sm:rounded-[32px] border border-black/5 shadow-xs">
+        <div className="flex items-center gap-4">
+          <div className="hidden sm:block w-20 h-24 rounded-[12px] overflow-hidden border border-amber-200/80 shrink-0 bg-[#1A120B]">
+            <img
+              src="/assets/darshan/radharaman-pitambar.webp"
+              alt="श्री राधारमण लाल जू दर्शन"
+              className="w-full h-full object-cover object-top"
+              loading="eager"
+              decoding="async"
+            />
+          </div>
+          <div>
+            <h1 className="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-[#111111] leading-tight flex flex-wrap items-center gap-x-2">
+              <span className="inline-block whitespace-nowrap">Unbroken Devotion</span>
+              <span className="text-neutral-400 font-normal select-none">•</span>
+              <span className="inline-block whitespace-nowrap">अखंड निष्ठा</span>
+            </h1>
+            <p className="text-xs sm:text-sm text-[#555555] mt-2 font-medium">
+              Grace at every step • Eternal Nikunj Remembrance
+            </p>
+          </div>
         </div>
 
         {/* Bento Stats Summary Pills - 100% Real Live Metrics */}

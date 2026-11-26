@@ -24,6 +24,7 @@ import {
 import { SacredSectionService } from '../../services/sacredSectionService';
 import { formatDevanagariNumerals } from '../../services/cacheService';
 import { seo } from '../../services/seoService';
+import { getKathaArtwork } from '../../services/devotionalVisuals';
 import { chimeService } from '../../services/chimeService';
 import { SacredDiscoveryShelf } from '../common/SacredDiscoveryShelf';
 
@@ -355,8 +356,17 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
           </aside>
         )}
 
-        {/* Story Title & Meta Card - Concentric: R_outer = 32px, P = 24px => R_inner = 8px */}
+        {/* Story Title & Meta Card with Framed Darshan Visual Plate */}
         <header className="rounded-[32px] bg-white border border-neutral-200/80 p-5 sm:p-7 shadow-2xs mb-6">
+          <div className="aspect-[21/9] w-full rounded-[12px] overflow-hidden bg-[#1A120B] mb-5 border border-amber-900/10">
+            <img
+              src={getKathaArtwork(selectedStory)}
+              alt={selectedStory.titleDevanagari}
+              className="w-full h-full object-cover object-[center_22%]"
+              loading="eager"
+              decoding="async"
+            />
+          </div>
           <div className="flex flex-wrap items-center gap-2 mb-3">
             <span className="px-2.5 py-0.5 text-xs font-serif font-bold uppercase rounded-[6px] bg-[#FEF08A] text-[#78350F]">
               {selectedStory.categoryHindi}
@@ -695,10 +705,20 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
                     handleSelectStory(story.slug || story.id);
                   }
                 }}
-                className="rounded-[24px] bg-white border border-neutral-200/80 p-4 sm:p-5 shadow-2xs flex flex-col justify-between hover:border-amber-300 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+                className="rounded-[24px] bg-white border border-neutral-200/80 p-4 shadow-2xs flex flex-col justify-between hover:border-amber-300 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
                 aria-label={story.titleDevanagari}
               >
                 <div>
+                  {/* Story Illustration Plate */}
+                  <div className="aspect-[16/10] w-full rounded-[8px] overflow-hidden bg-[#1A120B] mb-3 border border-amber-900/10">
+                    <img
+                      src={getKathaArtwork(story)}
+                      alt={story.titleDevanagari}
+                      className="w-full h-full object-cover object-[center_22%]"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
                   <div className="flex items-center justify-between gap-2 mb-2">
                     <span className="px-2 py-0.5 text-[10.5px] font-serif font-bold rounded-[6px] bg-[#FEF08A] text-[#78350F]">
                       {story.categoryHindi}

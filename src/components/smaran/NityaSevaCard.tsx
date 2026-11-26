@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Clock, ChevronRight } from 'lucide-react';
+import { IOSSpinner, navigationProgress } from '../common/IOSActivityIndicator';
 
 export interface NityaSevaCardProps {
   templeName: string;
   sevaTitle: string;
+  sevaTitleDevanagari?: string;
+  praharLabel?: string;
   time: string;
   sevaDetails?: string[];
   statusLabel?: string;
@@ -29,7 +32,10 @@ export interface NityaSevaCardProps {
 export const NityaSevaCard: React.FC<NityaSevaCardProps> = ({
   templeName,
   sevaTitle,
+  sevaTitleDevanagari,
+  praharLabel: propPraharLabel,
   time,
+  statusType = 'upcoming',
   countdownLabel,
   imageUrl,
   onOpen,
@@ -42,41 +48,55 @@ export const NityaSevaCard: React.FC<NityaSevaCardProps> = ({
   const isRaman = templeName.toLowerCase().includes('raman') || templeName.includes('रमण');
   const isBarsana = templeName.toLowerCase().includes('barsana') || templeName.includes('बरसाना');
 
-  // Devanagari temple branding & timings
+  // Devanagari temple branding & live timings
   let devanagariTemple = 'श्री वृन्दावन धाम मंदिर';
-  let devanagariSeva = sevaTitle;
-  let praharLabel = 'नित्य अष्टयाम';
+  let devanagariSeva = sevaTitleDevanagari || sevaTitle;
+  let praharLabel = propPraharLabel || 'नित्य अष्टयाम';
   let defaultImage = '/assets/temples/banke-bihari-v2.webp';
   let defaultNum = '01';
 
   if (isBihari) {
     devanagariTemple = 'श्री बाँके बिहारी मंदिर';
-    devanagariSeva = 'मंगला दर्शन आरती';
-    praharLabel = 'प्रातः अष्टयाम';
+    devanagariSeva = sevaTitleDevanagari || 'शयन एवं संध्या दर्शन';
+    praharLabel = propPraharLabel || 'नित्य अष्टयाम';
     defaultImage = '/assets/temples/banke-bihari-v2.webp';
     defaultNum = '01';
   } else if (isVallabh) {
     devanagariTemple = 'श्री राधा वल्लभ लाल';
-    devanagariSeva = 'राजभोग दर्शन एवं महाप्रसाद';
-    praharLabel = 'मध्याह्न अष्टयाम';
+    devanagariSeva = sevaTitleDevanagari || 'राजभोग दर्शन एवं महाप्रसाद';
+    praharLabel = propPraharLabel || 'मध्याह्न अष्टयाम';
     defaultImage = '/assets/temples/radha-vallabh.webp';
     defaultNum = '02';
   } else if (isRaman) {
     devanagariTemple = 'श्री राधा रमण जू';
-    devanagariSeva = 'संध्या आरती व दिव्य शृंगार';
-    praharLabel = 'सायं संध्या';
-    defaultImage = '/assets/temples/radha-raman.webp';
+    devanagariSeva = sevaTitleDevanagari || 'संध्या आरती व दिव्य शृंगार';
+    praharLabel = propPraharLabel || 'सायं संध्या';
+    defaultImage = '/assets/darshan/radharaman-simhasan.webp';
     defaultNum = '03';
   } else if (isBarsana) {
     devanagariTemple = 'बरसाना श्री लाड़िली लाल जी';
-    devanagariSeva = 'शयन दर्शन व चंवर सेवा';
-    praharLabel = 'शयन अष्टयाम';
+    devanagariSeva = sevaTitleDevanagari || 'शयन दर्शन व चंवर सेवा';
+    praharLabel = propPraharLabel || 'शयन अष्टयाम';
     defaultImage = '/assets/temples/barsana-radharani.webp';
     defaultNum = '04';
   }
 
   const activeImage = imageUrl || defaultImage;
   const displayNum = indexNumber || defaultNum;
+  const [isEntering, setIsEntering] = useState(false);
+
+  const handleEnter = () => {
+    if (isEntering || !onOpen) return;
+    setIsEntering(true);
+    navigationProgress.start();
+    requestAnimationFrame(() => {
+      try {
+        onOpen();
+      } finally {
+        setIsEntering(false);
+      }
+    });
+  };
 
   // 1. FEATURED SHOWCASE HERO (Company showcase-featured)
   if (isHero) {
@@ -84,8 +104,9 @@ export const NityaSevaCard: React.FC<NityaSevaCardProps> = ({
       <div
         role="button"
         tabIndex={0}
-        onClick={onOpen}
-        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onOpen && onOpen()}
+        aria-busy={isEntering}
+        onClick={handleEnter}
+        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && handleEnter()}
         className={`group relative w-full overflow-hidden cursor-pointer select-none transition-colors duration-200 min-h-[320px] sm:min-h-[360px] flex flex-col justify-end p-6 sm:p-8 bg-neutral-950 ${
           seamless
             ? ''
@@ -120,21 +141,37 @@ export const NityaSevaCard: React.FC<NityaSevaCardProps> = ({
             </span>
           </h3>
 
-          {/* Gateway Action Bar (No border-t outline, no green dot, no badge outline) */}
-          <div className="flex items-center justify-between pt-3 mt-3 gap-3">
-            <div className="flex items-center gap-2 text-white font-mono text-xs sm:text-sm font-bold">
+          {/* Gateway Action Bar (Live Status Aware, No border-t outline) */}
+          <div className="flex items-center justify-between pt-3 mt-3 gap-3 flex-wrap">
+            <div className="flex items-center gap-2 text-white font-mono text-xs sm:text-sm font-bold flex-wrap">
               <Clock className="w-4 h-4 text-amber-400 shrink-0" />
               <span>{time}</span>
               {countdownLabel && (
-                <span className="text-xs font-normal text-emerald-300 font-mono ml-2 hidden sm:inline">
+                <span className={`inline-flex items-center gap-1.5 text-[11px] font-laila font-semibold px-2.5 py-0.5 rounded-full ml-1 ${
+                  statusType === 'active'
+                    ? 'bg-emerald-500/20 text-emerald-200 border border-emerald-400/35'
+                    : 'bg-white/10 text-amber-200 border border-white/15'
+                }`}>
+                  {statusType === 'active' && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  )}
                   {countdownLabel}
                 </span>
               )}
             </div>
 
             <div className="px-5 py-2 rounded-full bg-[#FEF08A] hover:bg-[#FACC15] text-[#78350F] text-xs sm:text-sm font-laila font-bold transition-colors flex items-center gap-1.5 shadow-sm shrink-0">
-              <span>दर्शन प्रवेश</span>
-              <ChevronRight className="w-3.5 h-3.5 text-[#78350F]" />
+              {isEntering ? (
+                <>
+                  <IOSSpinner size="xs" theme="current" />
+                  <span>प्रवेश हो रहा है...</span>
+                </>
+              ) : (
+                <>
+                  <span>दर्शन प्रवेश</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#78350F]" />
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -147,8 +184,9 @@ export const NityaSevaCard: React.FC<NityaSevaCardProps> = ({
     <div
       role="button"
       tabIndex={0}
-      onClick={onOpen}
-      onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onOpen && onOpen()}
+      aria-busy={isEntering}
+      onClick={handleEnter}
+      onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && handleEnter()}
       className={`group relative w-full overflow-hidden cursor-pointer select-none transition-colors duration-200 min-h-[220px] sm:min-h-[240px] flex flex-col justify-end p-5 sm:p-6 bg-neutral-950 ${
         seamless
           ? ''
@@ -159,13 +197,18 @@ export const NityaSevaCard: React.FC<NityaSevaCardProps> = ({
       <img
         src={activeImage}
         alt={templeName}
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover object-[center_22%]"
         loading="lazy"
       />
       {/* Scrim Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent pointer-events-none" />
 
-      {/* Ghost Number in Top-Right */}
+      {/* Live Status Pill (Top-Left) & Ghost Number (Top-Right) */}
+      {statusType === 'active' && (
+        <span className="absolute top-4 left-5 z-10 inline-flex items-center px-2.5 py-0.5 rounded-full bg-emerald-950/75 border border-emerald-400/35 text-[10px] font-laila font-semibold text-emerald-100">
+          दर्शन खुले हैं
+        </span>
+      )}
       <span className="absolute top-4 right-5 text-5xl font-mono font-black text-white/20 select-none pointer-events-none leading-none">
         {displayNum}
       </span>
@@ -183,12 +226,21 @@ export const NityaSevaCard: React.FC<NityaSevaCardProps> = ({
         {/* Bottom Bar: Timing & Clean CTA with NO outline */}
         <div className="flex items-center justify-between pt-2.5 sm:pt-3 mt-2.5 sm:mt-3 gap-2">
           <span className="text-[11px] sm:text-xs font-mono font-bold text-white/90 whitespace-nowrap">
-            {time}
+            {countdownLabel || time}
           </span>
 
-          <div className="company-link group-company-link text-amber-300 group-hover:text-white transition-colors text-xs sm:text-sm font-laila font-bold shrink-0">
-            <span>दर्शन</span>
-            <span className="text-base leading-none">→</span>
+          <div className="company-link group-company-link text-amber-300 group-hover:text-white transition-colors text-xs sm:text-sm font-laila font-bold shrink-0 flex items-center gap-1.5">
+            {isEntering ? (
+              <>
+                <IOSSpinner size="xs" theme="current" />
+                <span>प्रवेश...</span>
+              </>
+            ) : (
+              <>
+                <span>दर्शन</span>
+                <span className="text-base leading-none">→</span>
+              </>
+            )}
           </div>
         </div>
       </div>

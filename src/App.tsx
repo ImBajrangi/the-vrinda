@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, lazy, Suspense } from 'react';
+import { useState, useEffect, useRef, useMemo, lazy, Suspense } from 'react';
 import { Radio, Sun, Heart, Check, Sparkles, ExternalLink } from 'lucide-react';
 import { FloatingNavbar, NavTab } from './components/common/FloatingNavbar';
 import { DynamicNotchNavbar } from './components/common/DynamicNotchNavbar';
@@ -7,20 +7,55 @@ import { DateStrip, DayItem } from './components/smaran/DateStrip';
 import { CategoriesRow } from './components/smaran/CategoriesRow';
 import { NityaSevaCard } from './components/smaran/NityaSevaCard';
 import { ArtworkGraphicSlot } from './components/common/ArtworkGraphicSlot';
-import { FeedCard } from './components/feed/FeedCard';
 import type { PillarType } from './components/smaran/SadhanaPillarModal';
 import { SadhanaRingProgress } from './components/smaran/SadhanaRingProgress';
 import { AshtayamaTimelineDeck } from './components/smaran/AshtayamaTimelineDeck';
-import { IOSTopProgressBar, navigationProgress } from './components/common/IOSActivityIndicator';
+import { IOSTopProgressBar, IOSSpinner, navigationProgress } from './components/common/IOSActivityIndicator';
 import { SACRED_FEED_POSTS } from './data/feed';
 import { SacredPad, SadhanaState, DhyanaImpactState, DhyanaSessionRecord } from './types/devotional';
 import { SacredDatabase, CanonicalSaint, CanonicalGrantha, mapPadToEpicChapter } from './services/sacredDatabase';
 import { normalizeEpicChapterSlug } from './utils/epicSlugs';
 import { seo } from './services/seoService';
 import { useScrollDirection } from './hooks/useScrollDirection';
+import {
+  computePanchangForDate,
+  getNextUpcomingFestival,
+  getWeekPanchangDays,
+  computeLiveMandirSchedule,
+  getIstParts,
+  TempleId,
+  LiveMandirSchedule,
+} from './services/panchangService';
+
+const SSR_BASELINE_DATE = new Date('2026-01-01T19:00:00+05:30');
 
 // Feature-level Code Splitting with Immediate Parallel Pre-warming
 // This eliminates cold chunk import latency on first tab click (0ms cache hit)
+const BRAJ_SANKALPA_GEMS = [
+  {
+    source: 'Sri Hit Harivansh Amrit Vachan',
+    quote: '“श्री राधा नाम ही मेरो सर्वस्व, वृन्दावन ही मेरो धाम”',
+  },
+  {
+    source: 'Swami Shri Haridas • Kelimal',
+    quote: '“कुञ्ज बिहारी लाड़िली, नित्य बसो मम नैनन माहिं”',
+  },
+  {
+    source: 'Rasik Ananya Vani • Vrindavan',
+    quote: '“तन मन धन सब श्री चरणन पर वारूँ, एक रति न बिसारूँ”',
+  },
+  {
+    source: 'Shri Chaitanya Shikshashtakam',
+    quote: '“तृणादपि सुनीचेन, सदा कीर्तनीयः हरिरनाम निर्मलम्”',
+  },
+];
+
+function getBrajAtmosphereLabel(istMins: number): string {
+  if (istMins >= 240 && istMins < 540) return 'प्रातः शीतल यमुना पवन • मंगल वेला';
+  if (istMins >= 540 && istMins < 960) return 'दिव्य निकुञ्ज छाँह • मध्याह्न दर्शन';
+  if (istMins >= 960 && istMins < 1200) return 'गोधूलि संध्या वेला • यमुना दीपदान';
+  return 'शरद शयन चंद्रिका • निभृत कुञ्ज रस';
+}
 const padavaliModulePromise = typeof window !== 'undefined' ? import('./components/reader/PadavaliReader') : null;
 const mahagranthModulePromise = typeof window !== 'undefined' ? import('./components/reader/MahagranthReader') : null;
 
@@ -67,6 +102,9 @@ const LazyNityaUpasanaReader = lazy(() =>
 const LazySacredSectionsBanner = lazy(() =>
   import('./components/smaran/SacredSectionsBanner').then((m) => ({ default: m.SacredSectionsBanner }))
 );
+const LazyFeedCard = lazy(() =>
+  import('./components/feed/FeedCard').then((m) => ({ default: m.FeedCard }))
+);
 const LazyTopicalGuideView = lazy(() =>
   import('./components/sections/TopicalGuideView').then((m) => ({ default: m.TopicalGuideView }))
 );
@@ -97,12 +135,12 @@ function ReaderLoadingSkeleton() {
       {/* Sacred Scripture Canvas Card Skeleton */}
       <div className="w-full rounded-2xl sm:rounded-3xl bg-[#FFFDF9] border border-amber-200/60 p-5 sm:p-9 shadow-2xs space-y-6">
         {/* Header Skeleton */}
-        <div className="flex items-center justify-between pb-4 border-b border-amber-100">
+        <div role="status" aria-busy="true" aria-live="polite" className="flex items-center justify-between pb-4 border-b border-amber-100">
           <div className="space-y-2">
             <div className="w-32 h-3 rounded-full bg-amber-200/60 animate-pulse" />
             <div className="w-56 h-6 rounded-lg bg-amber-300/40 animate-pulse" />
           </div>
-          <div className="w-7 h-7 rounded-full border-2 border-amber-500/20 border-t-amber-600 animate-spin" />
+          <IOSSpinner size="lg" theme="amber" />
         </div>
 
         {/* Shimmering Stanzas Placeholder */}
@@ -134,30 +172,6 @@ import {
 } from './services/cacheService';
 
 export type FeedTabType = 'विशेष दर्शन' | 'उत्सव धारा' | 'सेवक मंडल' | 'उर धरे' | 'धाम वार्ता';
-
-function getDynamicWeekDays(): DayItem[] {
-  const days: DayItem[] = [];
-  const now = new Date();
-  const dayOfWeek = now.getDay(); // 0: Sun, 1: Mon, ...
-  const mondayOffset = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
-  const monday = new Date(now);
-  monday.setDate(now.getDate() + mondayOffset);
-
-  const dayNames = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-  const tithis = ['नवमी', 'दशमी', 'एकादशी', 'द्वादशी', 'त्रयोदशी', 'चतुर्दशी', 'पूर्णिमा'];
-
-  for (let i = 0; i < 7; i++) {
-    const d = new Date(monday);
-    d.setDate(monday.getDate() + i);
-    days.push({
-      dayName: dayNames[i],
-      dateNum: d.getDate(),
-      isToday: d.toDateString() === now.toDateString(),
-      tithiLabel: tithis[i],
-    });
-  }
-  return days;
-}
 
 export interface AppComponents {
   PadavaliReader?: React.ComponentType<any>;
@@ -404,7 +418,8 @@ export function App({
     }
     return initialRoute.tab;
   });
-  const [selectedDate, setSelectedDate] = useState<number>(() => new Date().getDate());
+  const [liveNow, setLiveNow] = useState<Date>(() => SSR_BASELINE_DATE);
+  const [manualSelectedDate, setManualSelectedDate] = useState<number | null>(null);
 
   // Pre-warm lazy reader JS chunks during browser idle time without mounting hidden DOM subtrees
   useEffect(() => {
@@ -451,6 +466,13 @@ export function App({
   const [activePillarModal, setActivePillarModal] = useState<PillarType | null>(null);
   const [isGuideModalOpen, setIsGuideModalOpen] = useState(false);
   const [isAffirmedSankalpa, setIsAffirmedSankalpa] = useState(false);
+  const [sankalpaIdx, setSankalpaIdx] = useState(0);
+  useEffect(() => {
+    const updateClock = () => setLiveNow(new Date());
+    updateClock();
+    const timer = setInterval(updateClock, 30000);
+    return () => clearInterval(timer);
+  }, []);
   const [selectedEpicGranthaId, setSelectedEpicGranthaId] = useState<string>(() => {
     if (initialRoute.grantha && SacredDatabase.isEpicGrantha(initialRoute.grantha)) {
       return initialRoute.grantha;
@@ -489,24 +511,25 @@ export function App({
   const [activeSanctuaryStream, setActiveSanctuaryStream] = useState<'ashtayama' | 'audio' | 'dhyana'>('ashtayama');
   const [templeFilter, setTempleFilter] = useState<'all' | 'open' | 'rajbhog' | 'evening'>('all');
 
-  const [weekDays] = useState<DayItem[]>(() => getDynamicWeekDays());
+  const istParts = useMemo(() => getIstParts(liveNow), [liveNow]);
+  const istMins = istParts.minutesOfDay;
+  const weekDays = useMemo<DayItem[]>(() => getWeekPanchangDays(liveNow), [istParts.year, istParts.month, istParts.day]);
+  const selectedDate = manualSelectedDate ?? istParts.day;
+  const selectedDayItem = useMemo(
+    () => weekDays.find((d) => d.dateNum === selectedDate) || weekDays.find((d) => d.isToday) || weekDays[0],
+    [weekDays, selectedDate]
+  );
+  const isViewingToday = selectedDayItem?.isToday ?? true;
+  const todayPanchang = useMemo(
+    () => computePanchangForDate(liveNow),
+    [istParts.year, istParts.month, istParts.day]
+  );
+  const selectedPanchang = selectedDayItem?.panchang ?? todayPanchang;
+  const nextFestival = useMemo(
+    () => getNextUpcomingFestival(liveNow),
+    [istParts.year, istParts.month, istParts.day]
+  );
   const [dbVersion, setDbVersion] = useState(0);
-
-  // Chitravrinda Gallery-style Announcement Scroll Slide-Up Behavior (Hysteresis: > 80px to slide up, < 30px to slide down)
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      if (currentScrollY > 80) {
-        setIsScrolled(true);
-      } else if (currentScrollY < 30) {
-        setIsScrolled(false);
-      }
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   // Initiate background client hydration (IndexedDB -> CDN database & cloud bookmarks)
   useEffect(() => {
@@ -993,6 +1016,24 @@ export function App({
     }
   });
 
+  const brajAtmosphere = getBrajAtmosphereLabel(istMins);
+  const currentSankalpa = BRAJ_SANKALPA_GEMS[sankalpaIdx % BRAJ_SANKALPA_GEMS.length];
+
+  const mandirStatus: Record<TempleId, LiveMandirSchedule> = {
+    bihari: computeLiveMandirSchedule('bihari', istMins, istParts.month, isViewingToday, selectedPanchang),
+    vallabh: computeLiveMandirSchedule('vallabh', istMins, istParts.month, isViewingToday, selectedPanchang),
+    raman: computeLiveMandirSchedule('raman', istMins, istParts.month, isViewingToday, selectedPanchang),
+    barsana: computeLiveMandirSchedule('barsana', istMins, istParts.month, isViewingToday, selectedPanchang),
+  };
+  const allMandirsList: LiveMandirSchedule[] = [
+    mandirStatus.bihari,
+    mandirStatus.vallabh,
+    mandirStatus.raman,
+    mandirStatus.barsana,
+  ];
+  const openMandirsList = allMandirsList.filter((m) => m.isOpen);
+  const openMandirCount = openMandirsList.length;
+
   const isReaderTab =
     activeTab === 'padavali' ||
     activeTab === 'granthas' ||
@@ -1009,42 +1050,42 @@ export function App({
       {/* Authentic Apple Safari / iOS Top Loading Bar (0ms tactile feedback) */}
       <IOSTopProgressBar />
 
-      {/* Outer Adaptive Wrapper:
-          - Mobile & Small Windows (< 768px): Fluid w-full with unified rock-solid padding (ZERO layout flicker/jump across tabs)
-          - Tablet (768px - 1024px): max-w-4xl with balanced gutters
-          - Desktop (1024px+): max-w-6xl xl:max-w-[1440px] 2xl:max-w-[1680px] for serene widescreen desktop balance
-      */}
-      <div className={`w-full max-w-full overflow-x-clip md:max-w-6xl xl:max-w-[1440px] 2xl:max-w-[1680px] min-h-screen relative px-3 sm:px-6 lg:px-8 2xl:px-12 ${isReaderTab ? 'pt-2 sm:pt-28 lg:pt-32 pb-6 md:pb-16' : 'pt-20 sm:pt-28 lg:pt-32 pb-36 md:pb-24'} box-border`}>
-        {/* Dynamic Top Announcement Marquee Ticker (Smoothly slides away on mobile reader tabs) */}
-        <TopAnnouncementMarquee
-          isScrolled={isScrolled}
-          onSelectTab={handleTabSwitch}
-          onOpenSaintsDirectory={() => setIsSaintsModalOpen(true)}
-          streakDays={sadhana?.currentStreakDays ?? 1}
-          isVisibleOnMobile={!isReaderTab}
-        />
+      {/* Full-Bleed FarmDirect-Style Top Announcement Marquee: sits naturally at top of document and scrolls smoothly out of flow */}
+      <TopAnnouncementMarquee
+        onSelectTab={handleTabSwitch}
+        onOpenSaintsDirectory={() => setIsSaintsModalOpen(true)}
+        streakDays={sadhana?.currentStreakDays ?? 1}
+        isVisibleOnMobile={!isReaderTab}
+      />
 
-        {/* Apple Dynamic Notch / Dynamic Island Navbar (Smoothly slides away on mobile reader tabs) */}
-        <DynamicNotchNavbar
-          activeTab={activeTab}
-          onSelectTab={handleTabSwitch}
-          streakDays={sadhana?.currentStreakDays ?? 1}
-          isPlayingAudio={isPlayingAudio}
-          currentTrackTitle={currentPad?.titleDevanagari}
-          onToggleAudio={handleTogglePlay}
-          onOpenPlayer={handleFabClick}
-          isLowSpec={isLowSpecMode}
-          onToggleLowSpec={() => setIsLowSpecMode(!isLowSpecMode)}
-          onOpenSearch={() => setIsSpotlightOpen(true)}
-          onOpenFocus={() => setIsFocusModalOpen(true)}
-          sadhana={sadhana}
-          onQuickJapa={incrementJapa}
-          isMarqueeVisible={!isScrolled}
-          isVisibleOnMobile={!isReaderTab}
-        />
+      {/* Breathing spacer between natural-flow announcement bar and sticky navbar at scrollY = 0 */}
+      <div
+        aria-hidden="true"
+        className={`w-full shrink-0 ${isReaderTab ? 'hidden md:block h-2.5 sm:h-3.5' : 'h-2.5 sm:h-3.5'}`}
+      />
 
-        {/* Main Tab Content with Instant Keep-Alive Architecture */}
-        <main className="w-full max-w-full overflow-x-clip">
+      {/* Sticky Apple Dynamic Notch / Dynamic Island Navbar (glides seamlessly to top-2.5/top-4 as announcement scrolls away) */}
+      <DynamicNotchNavbar
+        activeTab={activeTab}
+        onSelectTab={handleTabSwitch}
+        streakDays={sadhana?.currentStreakDays ?? 1}
+        isPlayingAudio={isPlayingAudio}
+        currentTrackTitle={currentPad?.titleDevanagari}
+        onToggleAudio={handleTogglePlay}
+        onOpenPlayer={handleFabClick}
+        isLowSpec={isLowSpecMode}
+        onToggleLowSpec={() => setIsLowSpecMode(!isLowSpecMode)}
+        onOpenSearch={() => setIsSpotlightOpen(true)}
+        onOpenFocus={() => setIsFocusModalOpen(true)}
+        sadhana={sadhana}
+        onQuickJapa={incrementJapa}
+        isVisibleOnMobile={!isReaderTab}
+      />
+
+      {/* Outer Adaptive Wrapper (overflow-x-clip keeps position:sticky smooth on Safari/WebKit) */}
+      <div className={`w-full max-w-full overflow-x-clip md:max-w-6xl xl:max-w-[1440px] 2xl:max-w-[1680px] flex-1 relative px-3 sm:px-6 lg:px-8 2xl:px-12 ${isReaderTab ? 'pt-2 sm:pt-4 pb-6 md:pb-16' : 'pt-3 sm:pt-4 pb-36 md:pb-24'} box-border`}>
+        {/* Main Tab Content */}
+        <main className="w-full max-w-full">
           {activeGuideSlug ? (
             <div className="w-full pb-44 md:pb-28">
               <Suspense fallback={<ReaderLoadingSkeleton />}>
@@ -1100,71 +1141,115 @@ export function App({
                 />
               </div>
 
-              {/* Sanctuary Hero Panoramic Art Frame */}
+              {/* Sanctuary Hero Panoramic Art Frame (Clean Photographic Showcase) */}
               <div className="w-full mb-6">
                 <ArtworkGraphicSlot
                   src="/assets/temples/keshi-ghat.webp"
                   alt="श्री वृन्दावन धाम केशी घाट व यमुना दर्शन"
                   aspectRatio="banner"
                   theme="amber"
-                  placeholderLabel="श्री वृन्दावन धाम पावन लीला"
-                  placeholderCategory="dham"
-                  badge="वृन्दावन धाम दर्शन"
                   roundedClassName="rounded-[28px]"
+                  eager={true}
+                  overlayContent={
+                    <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+                      <div>
+                        <p className="font-laila text-xs sm:text-sm text-amber-200 font-medium">
+                          केशी घाट • कालिन्दी तट एवं कुञ्ज निकुञ्ज लीला स्थली
+                        </p>
+                        <h3 className="font-rozha text-xl sm:text-2xl text-white leading-tight mt-0.5">
+                          श्री धाम वृन्दावन
+                        </h3>
+                      </div>
+                      <div className="flex items-center gap-4 text-xs font-laila font-semibold text-amber-100">
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleTabSwitch('places');
+                          }}
+                          className="hover:text-white transition-colors cursor-pointer"
+                        >
+                          पावन तीर्थ →
+                        </button>
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleTabSwitch('rituals');
+                          }}
+                          className="hover:text-white transition-colors cursor-pointer"
+                        >
+                          नित्य आरती →
+                        </button>
+                      </div>
+                    </div>
+                  }
                 />
               </div>
 
-              {/* Daily Contemplation & Dham Atmosphere Bar (Crisp Pure White & Off-White) */}
-              <div className="w-full bg-white rounded-[24px] p-3.5 sm:p-4 border border-neutral-200/80 shadow-[0_2px_8px_rgba(0,0,0,0.02)] mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              {/* Daily Contemplation & Dham Atmosphere Bar (Restrained Editorial Strip) */}
+              <div className="w-full bg-white rounded-[24px] squircle-card p-3.5 sm:p-4 border border-[#EAE1D3] shadow-[0_2px_8px_rgba(0,0,0,0.02)] mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div className="flex items-center gap-3 min-w-0 flex-1">
-                  <div className="w-10 h-10 rounded-2xl bg-amber-50 flex items-center justify-center shrink-0 shadow-2xs">
-                    <Heart className={`w-5 h-5 text-amber-600 ${isAffirmedSankalpa ? 'fill-amber-600' : 'fill-amber-600/20'} transition-all`} />
+                  <div className="w-10 h-10 rounded-2xl bg-[#FAF6EE] flex items-center justify-center shrink-0">
+                    <Heart className={`w-5 h-5 text-amber-700 ${isAffirmedSankalpa ? 'fill-amber-700' : 'fill-amber-700/15'} transition-colors`} />
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <span className="text-[11px] font-bold text-amber-700 uppercase tracking-wider font-mono">
-                        Daily Resolve (नित्य संकल्प)
+                      <span className="text-[11px] font-laila font-bold text-amber-800">
+                        नित्य संकल्प
                       </span>
                       <span className="text-xs text-[#71717A]">
-                        • Sri Hit Harivansh Amrit Vachan
+                        • {currentSankalpa.source}
                       </span>
                     </div>
                     <p className="font-serif font-bold text-sm sm:text-base text-[#18181B] truncate mt-0.5">
-                      "श्री राधा नाम ही मेरो सर्वस्व, वृन्दावन ही मेरो धाम"
+                      {currentSankalpa.quote}
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2.5 shrink-0 self-end sm:self-auto">
+                <div className="flex items-center gap-3 shrink-0 self-end sm:self-auto flex-wrap">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSankalpaIdx((idx) => (idx + 1) % BRAJ_SANKALPA_GEMS.length);
+                      setIsAffirmedSankalpa(false);
+                    }}
+                    className="text-xs font-laila font-semibold text-neutral-600 hover:text-amber-900 transition-colors cursor-pointer"
+                    title="अन्य रसिक संकल्प वचन देखें"
+                  >
+                    अन्य वचन ↻
+                  </button>
+
                   <button
                     type="button"
                     onClick={() => setIsAffirmedSankalpa(!isAffirmedSankalpa)}
-                    className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-colors flex items-center gap-1 cursor-pointer ${
+                    className={`px-3.5 py-1.5 rounded-full text-xs font-laila font-bold transition-colors flex items-center gap-1 cursor-pointer ${
                       isAffirmedSankalpa
-                        ? 'bg-amber-600 text-white'
+                        ? 'bg-amber-700 text-white'
                         : 'bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F]'
                     }`}
                   >
                     {isAffirmedSankalpa ? (
                       <>
                         <Check className="w-3.5 h-3.5" />
-                        <span>Affirmed ✓</span>
+                        <span>संकल्प पूर्ण ✓</span>
                       </>
                     ) : (
-                      <span>Affirm Resolve</span>
+                      <span>संकल्प धारण</span>
                     )}
                   </button>
 
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-[#FAF6EE] text-[#18181B] font-mono">
-                    <Sun className="w-3.5 h-3.5 text-amber-500" />
-                    <span>Vrindavan 26°C • Pleasant</span>
+                  <span className="inline-flex items-center gap-1.5 text-xs text-neutral-600 font-laila pl-1 border-l border-neutral-200">
+                    <Sun className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+                    <span>{brajAtmosphere}</span>
                   </span>
                 </div>
               </div>
 
               {/* Section 1: Daily Temple Seva & Darshan Schedule (Concentric Geometry: 40/44px -> 24px Cards) */}
               <div id="daily-temple-seva-section" className="w-full bg-white rounded-[40px] sm:rounded-[44px] p-4 sm:p-5 space-y-4 mb-6 border border-neutral-200/60 shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
-                {/* Header with Today's Tithi */}
+                {/* Header with Real-Time Panchang Tithi */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-neutral-100">
                   <div>
                     <div className="flex items-center gap-2 flex-wrap">
@@ -1172,11 +1257,18 @@ export function App({
                         Daily Temple Seva & Darshan Schedule
                       </h3>
                       <span className="text-xs font-semibold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full font-mono">
-                        Margashirsha Dvadashi
+                        {selectedPanchang.masaEnglish} {selectedPanchang.pakshaEnglish} {selectedPanchang.tithiNameEnglish}
                       </span>
+                      {selectedPanchang.specialOccasionDevanagari && (
+                        <span className="text-[11px] font-semibold text-emerald-900 bg-emerald-50 border border-emerald-200/70 px-2.5 py-0.5 rounded-full font-laila">
+                          ✦ {selectedPanchang.specialOccasionDevanagari}
+                        </span>
+                      )}
                     </div>
                     <p className="text-xs sm:text-sm text-[#71717A] font-normal mt-1">
-                      Live timings and sacred seva rituals across holy mandirs of Vrindavan & Barsana.
+                      {isViewingToday
+                        ? `Live IST timings across holy mandirs of Vrindavan & Barsana • ${selectedPanchang.masaDevanagari} ${selectedPanchang.pakshaDevanagari} ${selectedPanchang.tithiNameDevanagari} (${selectedPanchang.nakshatraDevanagari} नक्षत्र)`
+                        : `Schedule preview for ${selectedPanchang.weekdayShort}, ${selectedPanchang.gregorianLabel} • ${selectedPanchang.masaDevanagari} ${selectedPanchang.pakshaDevanagari} ${selectedPanchang.tithiNameDevanagari}`}
                     </p>
                   </div>
 
@@ -1194,7 +1286,7 @@ export function App({
                 <DateStrip
                   days={weekDays}
                   selectedDate={selectedDate}
-                  onSelectDate={setSelectedDate}
+                  onSelectDate={setManualSelectedDate}
                 />
 
                 {/* Interactive Temple Seva Filter Tabs with Elastic Sliding Pill */}
@@ -1238,7 +1330,7 @@ export function App({
                         : 'text-[#71717A] hover:text-[#18181B] bg-[#FAF6EE]'
                     }`}
                   >
-                    Doors Open Now (1)
+                    Doors Open Now ({openMandirCount})
                   </button>
                   <button
                     ref={(el) => {
@@ -1252,7 +1344,7 @@ export function App({
                         : 'text-[#71717A] hover:text-[#18181B] bg-[#FAF6EE]'
                     }`}
                   >
-                    Rajbhog Darshan (1)
+                    Rajbhog Darshan (2)
                   </button>
                   <button
                     ref={(el) => {
@@ -1270,120 +1362,121 @@ export function App({
                   </button>
                 </div>
 
-                {/* Seva Timeline Cards (Company Architecture: 0 Gap Unified Mosaic, Soft Outer Corners, No Dots/Outlines) */}
+                {/* Seva Timeline Cards (0 Gap Unified Mosaic driven by Live IST & Vrindavan Season) */}
                 <div className="pt-1">
                   {templeFilter === 'all' && (
                     <div className="rounded-[24px] sm:rounded-[28px] overflow-hidden shadow-md bg-neutral-950">
-                      {/* 01 FEATURED SHOWCASE HERO: Shri Banke Bihari Lal */}
                       <NityaSevaCard
-                        templeName="Shri Banke Bihari Temple (श्री बाँके बिहारी)"
-                        sevaTitle="Mangala Darshan Aarti"
-                        time="07:15 AM - 12:00 PM"
-                        statusType="active"
-                        countdownLabel="Open for 2h 45m"
-                        imageUrl="/assets/temples/banke-bihari-v2.webp"
+                        templeName={mandirStatus.bihari.templeName}
+                        sevaTitle={mandirStatus.bihari.sevaTitleEnglish}
+                        sevaTitleDevanagari={mandirStatus.bihari.sevaTitleDevanagari}
+                        praharLabel={mandirStatus.bihari.praharLabel}
+                        time={mandirStatus.bihari.timeRangeLabel}
+                        statusType={mandirStatus.bihari.statusType}
+                        countdownLabel={mandirStatus.bihari.countdownLabel}
+                        imageUrl={mandirStatus.bihari.imageUrl}
                         isHero={true}
-                        indexNumber="01"
+                        indexNumber={mandirStatus.bihari.indexNumber}
                         seamless={true}
                         onOpen={() => handleTabSwitch('feed')}
                       />
 
-                      {/* 3 COMPANION SHOWCASE CARDS (0 Gap, Seamless Mosaic) */}
                       <div className="grid grid-cols-1 md:grid-cols-3">
-                        <NityaSevaCard
-                          templeName="Shri Radha Vallabh Lal (श्री राधा वल्लभ)"
-                          sevaTitle="Rajbhog Darshan & Feast"
-                          time="12:30 PM - 03:00 PM"
-                          statusType="upcoming"
-                          countdownLabel="Midday Seva"
-                          imageUrl="/assets/temples/radha-vallabh.webp"
-                          indexNumber="02"
-                          seamless={true}
-                          onOpen={() => handleTabSwitch('padavali')}
-                        />
-                        <NityaSevaCard
-                          templeName="Shri Radha Raman Ji (श्री राधा रमण)"
-                          sevaTitle="Sandhya Aarti & Shringar Darshan"
-                          time="06:45 PM - 08:30 PM"
-                          statusType="upcoming"
-                          countdownLabel="Twilight Darshan"
-                          imageUrl="/assets/temples/radha-raman.webp"
-                          indexNumber="03"
-                          seamless={true}
-                          onOpen={() => handleTabSwitch('feed')}
-                        />
-                        <NityaSevaCard
-                          templeName="Barsana Ladili Lal Ji (बरसाना श्रीजी)"
-                          sevaTitle="Shayana Darshan & Chamara Seva"
-                          time="09:15 PM"
-                          statusType="upcoming"
-                          countdownLabel="Night Rest"
-                          imageUrl="/assets/temples/barsana-radharani.webp"
-                          indexNumber="04"
-                          seamless={true}
-                          onOpen={() => handleTabSwitch('feed')}
-                        />
+                        {([mandirStatus.vallabh, mandirStatus.raman, mandirStatus.barsana] as LiveMandirSchedule[]).map((m) => (
+                          <NityaSevaCard
+                            key={m.templeId}
+                            templeName={m.templeName}
+                            sevaTitle={m.sevaTitleEnglish}
+                            sevaTitleDevanagari={m.sevaTitleDevanagari}
+                            praharLabel={m.praharLabel}
+                            time={m.timeRangeLabel}
+                            statusType={m.statusType}
+                            countdownLabel={m.countdownLabel}
+                            imageUrl={m.imageUrl}
+                            indexNumber={m.indexNumber}
+                            seamless={true}
+                            onOpen={() => handleTabSwitch(m.templeId === 'vallabh' ? 'padavali' : 'feed')}
+                          />
+                        ))}
                       </div>
                     </div>
                   )}
 
                   {templeFilter === 'open' && (
-                    <div className="rounded-[24px] sm:rounded-[28px] overflow-hidden shadow-md bg-neutral-950">
-                      <NityaSevaCard
-                        templeName="Shri Banke Bihari Temple (श्री बाँके बिहारी)"
-                        sevaTitle="Mangala Darshan Aarti"
-                        time="07:15 AM - 12:00 PM"
-                        statusType="active"
-                        countdownLabel="Open for 2h 45m"
-                        imageUrl="/assets/temples/banke-bihari-v2.webp"
-                        isHero={true}
-                        indexNumber="01"
-                        seamless={true}
-                        onOpen={() => handleTabSwitch('feed')}
-                      />
+                    <div className="rounded-[24px] sm:rounded-[28px] overflow-hidden shadow-md bg-neutral-950 grid grid-cols-1 md:grid-cols-2">
+                      {openMandirsList.map((m) => (
+                        <NityaSevaCard
+                          key={m.templeId}
+                          templeName={m.templeName}
+                          sevaTitle={m.sevaTitleEnglish}
+                          sevaTitleDevanagari={m.sevaTitleDevanagari}
+                          praharLabel={m.praharLabel}
+                          time={m.timeRangeLabel}
+                          statusType={m.statusType}
+                          countdownLabel={m.countdownLabel}
+                          imageUrl={m.imageUrl}
+                          isHero={openMandirCount === 1}
+                          indexNumber={m.indexNumber}
+                          seamless={true}
+                          onOpen={() => handleTabSwitch(m.templeId === 'vallabh' ? 'padavali' : 'feed')}
+                        />
+                      ))}
+                      {openMandirCount === 0 && (
+                        <div className="col-span-full p-8 text-center bg-[#FAF8F3] text-amber-950 font-laila space-y-2">
+                          <div className="font-bold text-base">
+                            {isViewingToday
+                              ? 'अभी श्री धाम मंदिरों में विश्राम / शयन सेवा समय है'
+                              : `${selectedPanchang.gregorianLabel} • नित्य दर्शन विश्राम सारणी`}
+                          </div>
+                          <div className="text-xs text-neutral-600">
+                            {isViewingToday
+                              ? 'प्रातः मंगला आरती से पुनः दर्शन खुलते हैं — तब तक आप रसिक वाणी व अष्टयाम स्मरण कर सकते हैं।'
+                              : 'ऊपर All Sacred Mandirs चुनकर इस तिथि के सभी मंदिरों की दर्शन समय-सारणी देखें।'}
+                          </div>
+                        </div>
+                      )}
                     </div>
                   )}
 
                   {templeFilter === 'rajbhog' && (
-                    <div className="max-w-xl mx-auto rounded-[24px] sm:rounded-[28px] overflow-hidden shadow-md bg-neutral-950">
-                      <NityaSevaCard
-                        templeName="Shri Radha Vallabh Lal (श्री राधा वल्लभ)"
-                        sevaTitle="Rajbhog Darshan & Feast"
-                        time="12:30 PM - 03:00 PM"
-                        statusType="upcoming"
-                        countdownLabel="Midday Seva"
-                        imageUrl="/assets/temples/radha-vallabh.webp"
-                        indexNumber="02"
-                        seamless={true}
-                        onOpen={() => handleTabSwitch('padavali')}
-                      />
+                    <div className="rounded-[24px] sm:rounded-[28px] overflow-hidden shadow-md bg-neutral-950 grid grid-cols-1 md:grid-cols-2">
+                      {([mandirStatus.vallabh, mandirStatus.bihari] as LiveMandirSchedule[]).map((m) => (
+                        <NityaSevaCard
+                          key={m.templeId}
+                          templeName={m.templeName}
+                          sevaTitle={m.sevaTitleEnglish}
+                          sevaTitleDevanagari={m.sevaTitleDevanagari}
+                          praharLabel={m.praharLabel}
+                          time={m.timeRangeLabel}
+                          statusType={m.statusType}
+                          countdownLabel={m.countdownLabel}
+                          imageUrl={m.imageUrl}
+                          indexNumber={m.indexNumber}
+                          seamless={true}
+                          onOpen={() => handleTabSwitch(m.templeId === 'vallabh' ? 'padavali' : 'feed')}
+                        />
+                      ))}
                     </div>
                   )}
 
                   {templeFilter === 'evening' && (
                     <div className="rounded-[24px] sm:rounded-[28px] overflow-hidden shadow-md bg-neutral-950 grid grid-cols-1 md:grid-cols-2">
-                      <NityaSevaCard
-                        templeName="Shri Radha Raman Ji (श्री राधा रमण)"
-                        sevaTitle="Sandhya Aarti & Shringar Darshan"
-                        time="06:45 PM - 08:30 PM"
-                        statusType="upcoming"
-                        countdownLabel="Twilight Darshan"
-                        imageUrl="/assets/temples/radha-raman.webp"
-                        indexNumber="03"
-                        seamless={true}
-                        onOpen={() => handleTabSwitch('feed')}
-                      />
-                      <NityaSevaCard
-                        templeName="Barsana Ladili Lal Ji (बरसाना श्रीजी)"
-                        sevaTitle="Shayana Darshan & Chamara Seva"
-                        time="09:15 PM"
-                        statusType="upcoming"
-                        countdownLabel="Night Rest"
-                        imageUrl="/assets/temples/barsana-radharani.webp"
-                        indexNumber="04"
-                        seamless={true}
-                        onOpen={() => handleTabSwitch('feed')}
-                      />
+                      {([mandirStatus.raman, mandirStatus.barsana] as LiveMandirSchedule[]).map((m) => (
+                        <NityaSevaCard
+                          key={m.templeId}
+                          templeName={m.templeName}
+                          sevaTitle={m.sevaTitleEnglish}
+                          sevaTitleDevanagari={m.sevaTitleDevanagari}
+                          praharLabel={m.praharLabel}
+                          time={m.timeRangeLabel}
+                          statusType={m.statusType}
+                          countdownLabel={m.countdownLabel}
+                          imageUrl={m.imageUrl}
+                          indexNumber={m.indexNumber}
+                          seamless={true}
+                          onOpen={() => handleTabSwitch('feed')}
+                        />
+                      ))}
                     </div>
                   )}
                 </div>
@@ -1399,7 +1492,10 @@ export function App({
 
               {/* Section 2.5: Sacred Sanatan Portals (Rituals, Stories, Biographies, Tirthas) */}
               <Suspense fallback={null}>
-                <SacredSectionsBannerComp onSelectTab={handleTabSwitch} />
+                <SacredSectionsBannerComp
+                  onSelectTab={handleTabSwitch}
+                  onSelectAuthor={handleSelectAuthor}
+                />
               </Suspense>
 
               {/* Section 3: Sacred Contemplation & Sanctuary Streams Deck (Pure White & Off-White) */}
@@ -1413,7 +1509,7 @@ export function App({
                         Sacred Contemplation & Sanctuary Streams
                       </h3>
                       <span className="text-xs font-semibold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full font-mono">
-                        Margashirsha Bhav
+                        {todayPanchang.masaDevanagari} भाव • {todayPanchang.masaEnglish}
                       </span>
                     </div>
                     <p className="text-xs text-[#71717A] font-normal mt-1">
@@ -1488,7 +1584,7 @@ export function App({
 
                 {/* Stream Content 1: Ashtayama Timeline */}
                 {activeSanctuaryStream === 'ashtayama' && (
-                  <AshtayamaTimelineDeck />
+                  <AshtayamaTimelineDeck onExplorePrahar={() => handleTabSwitch('padavali')} />
                 )}
 
                 {/* Stream Content 2: Featured Audio Deck */}
@@ -1711,20 +1807,38 @@ export function App({
               <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
                 {/* Main Feed Column (8 cols) */}
                 <div className="md:col-span-8 space-y-4">
-                  {/* Header Banner */}
-                  <div className="relative rounded-[24px] overflow-hidden mb-3 aspect-[21/9] bg-amber-950">
-                    <img
-                      src="/assets/temples/banke-bihari-v2.webp"
-                      alt="Divine Vrindavan"
-                      className="w-full h-full object-cover opacity-75"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent flex flex-col justify-end p-5">
-                      <span className="text-[10px] uppercase font-bold text-amber-300 tracking-wider font-mono">
-                        ETERNAL NIKUNJ RAS • नित्य निकुंज रस
-                      </span>
-                      <h2 className="text-white font-serif text-lg sm:text-2xl font-bold">
-                        Divine Darshan & Daily Satsang Feed
+                  {/* Nitya Darshan Photo Strip (6 Authentic Braj Darshan Plates) */}
+                  <div className="bg-white rounded-[24px] p-3 border border-[#EAE1D3] shadow-2xs mb-3 space-y-2.5">
+                    <div className="flex items-center justify-between px-1">
+                      <h2 className="font-rozha text-lg sm:text-xl text-[#1C1611]">
+                        श्री वृन्दावन नित्य संदर्शन गैलरी
                       </h2>
+                      <span className="text-[11px] font-laila text-amber-800 font-semibold">
+                        {SACRED_FEED_POSTS.length} पावन दर्शन
+                      </span>
+                    </div>
+                    <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
+                      {SACRED_FEED_POSTS.slice(0, 6).map((p) => (
+                        <a
+                          key={`thumb-${p.id}`}
+                          href={`#feed-${p.id}`}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setActiveFeedTab('विशेष दर्शन');
+                            const el = document.getElementById(`feed-post-${p.id}`);
+                            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                          }}
+                          className="group block rounded-[10px] overflow-hidden aspect-square bg-[#1A120B] border border-amber-900/10"
+                        >
+                          <img
+                            src={p.imageUrl}
+                            alt={p.imageAlt}
+                            className="w-full h-full object-cover object-[center_20%]"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </a>
+                      ))}
                     </div>
                   </div>
 
@@ -1768,9 +1882,13 @@ export function App({
                   {/* Filtered Devotional Feed Cards */}
                   <div className="space-y-4">
                     {filteredFeedPosts.length > 0 ? (
-                      filteredFeedPosts.map((post) => (
-                        <FeedCard key={post.id} post={post} />
-                      ))
+                      <Suspense fallback={<ReaderLoadingSkeleton />}>
+                        {filteredFeedPosts.map((post) => (
+                          <div key={post.id} id={`feed-post-${post.id}`}>
+                            <LazyFeedCard post={post} />
+                          </div>
+                        ))}
+                      </Suspense>
                     ) : (
                       <div className="bg-white rounded-[24px] p-8 text-center">
                         <div className="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center mx-auto mb-3">
@@ -1808,21 +1926,27 @@ export function App({
                     <h3 className="font-serif font-bold text-sm text-[#18181B] mb-2 flex items-center justify-between">
                       <span>Vrindavan Dham Calendar (पंचांग)</span>
                       <span className="text-[10px] bg-amber-50 text-amber-700 px-2 py-0.5 rounded-full font-bold font-mono">
-                        Today
+                        {todayPanchang.gregorianLabel}
                       </span>
                     </h3>
                     <div className="text-xs text-[#52525B] space-y-2.5">
-                      <div className="flex justify-between py-1 border-b border-neutral-100">
-                        <span className="text-[#71717A]">Tithi:</span>
-                        <span className="font-semibold text-[#18181B]">Shukla Dvadashi (शुक्ल द्वादशी)</span>
+                      <div className="flex justify-between gap-2 py-1 border-b border-neutral-100">
+                        <span className="text-[#71717A] shrink-0">Tithi:</span>
+                        <span className="font-semibold text-[#18181B] text-right">
+                          {todayPanchang.masaEnglish} {todayPanchang.pakshaEnglish} {todayPanchang.tithiNameEnglish} ({todayPanchang.masaDevanagari} {todayPanchang.pakshaDevanagari} {todayPanchang.tithiNameDevanagari})
+                        </span>
                       </div>
-                      <div className="flex justify-between py-1 border-b border-neutral-100">
-                        <span className="text-[#71717A]">Nakshatra:</span>
-                        <span className="font-semibold text-[#18181B]">Rohini (रोहिणी)</span>
+                      <div className="flex justify-between gap-2 py-1 border-b border-neutral-100">
+                        <span className="text-[#71717A] shrink-0">Nakshatra:</span>
+                        <span className="font-semibold text-[#18181B] text-right">
+                          {todayPanchang.nakshatraEnglish} ({todayPanchang.nakshatraDevanagari})
+                        </span>
                       </div>
-                      <div className="flex justify-between py-1">
-                        <span className="text-[#71717A]">Upcoming Festival:</span>
-                        <span className="font-semibold text-amber-800">Sharad Purnima</span>
+                      <div className="flex justify-between gap-2 py-1">
+                        <span className="text-[#71717A] shrink-0">Upcoming Festival:</span>
+                        <span className="font-semibold text-amber-800 text-right">
+                          {nextFestival.nameDevanagari} • {nextFestival.dateLabel}
+                        </span>
                       </div>
                     </div>
                   </div>

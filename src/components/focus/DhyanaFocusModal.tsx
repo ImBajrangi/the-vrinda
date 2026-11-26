@@ -14,6 +14,7 @@ import {
   DevotionalSummaryRequest,
 } from '../../services/devotionalSummaryService';
 import { SacredDatabase } from '../../services/sacredDatabase';
+import { IOSSpinner } from '../common/IOSActivityIndicator';
 
 interface DhyanaFocusModalProps {
   isOpen: boolean;
@@ -753,11 +754,17 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
                   <button
                     type="button"
                     onClick={handleToggleQuoteSummary}
+                    disabled={isQuoteSummaryLoading}
+                    aria-busy={isQuoteSummaryLoading}
                     title="Divine Essence Summary"
-                    className="h-8 px-3 rounded-full bg-[#FFF9EE] border border-[#E9D8B4] text-[#B84A28] flex items-center gap-1.5 shadow-xs pressable font-semibold text-xs"
+                    className="h-8 px-3 rounded-full bg-[#FFF9EE] border border-[#E9D8B4] text-[#B84A28] flex items-center gap-1.5 shadow-xs pressable font-semibold text-xs disabled:opacity-65 cursor-pointer"
                   >
-                    <Sparkles className="w-3.5 h-3.5 text-[#D4A359]" />
-                    <span>Divine Essence</span>
+                    {isQuoteSummaryLoading ? (
+                      <IOSSpinner size="xs" theme="current" />
+                    ) : (
+                      <Sparkles className="w-3.5 h-3.5 text-[#D4A359]" />
+                    )}
+                    <span>{isQuoteSummaryLoading ? 'Loading Essence...' : 'Divine Essence'}</span>
                   </button>
                   {isQuoteSummaryOpen && (
                     <span className="text-[11px] text-[#92400E] font-medium">
@@ -783,8 +790,8 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
                       </button>
                     </div>
                     {isQuoteSummaryLoading && !quoteSummaryMap[activeAphorismIdx] ? (
-                      <div className="flex items-center gap-2 py-2 text-xs text-[#D97706] font-medium min-h-[48px]">
-                        <Sparkles className="w-3.5 h-3.5 text-[#D4A359] animate-spin" />
+                      <div role="status" aria-busy="true" className="flex items-center gap-2 py-2 text-xs text-[#D97706] font-medium min-h-[48px]">
+                        <IOSSpinner size="xs" theme="amber" />
                         <span>Revealing divine essence and spiritual theme...</span>
                       </div>
                     ) : (

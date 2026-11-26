@@ -32,6 +32,7 @@ import { SacredPad, AuthorHierarchyInfo } from '../../types/devotional';
 import { InlinePurportCard } from './InlinePurportCard';
 import { DevotionalVersePresenter } from './DevotionalVersePresenter';
 import { seo } from '../../services/seoService';
+import { getSaintPortrait } from '../../services/devotionalVisuals';
 import {
   getReaderStateSync,
   saveReaderState,
@@ -3468,6 +3469,30 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
         {/* ========================================================================= */}
         {!isFocusReadingMode && (
           <aside className="hidden xl:block xl:col-span-3 space-y-4 sticky top-24 self-start max-h-[calc(100vh-7.5rem)] overflow-y-auto custom-scroll">
+            {/* Rasik Author & Temple Darshan Plate */}
+            <div className={`${currentTheme.commentaryBg} rounded-3xl p-3.5 border ${currentTheme.borderColor} shadow-xs flex items-center gap-3`}>
+              <div className="w-14 h-16 rounded-[10px] overflow-hidden border border-amber-900/15 shrink-0 bg-[#1A120B]">
+                <img
+                  src={getSaintPortrait({ name: selectedPad.author || selectedPad.collectionId })}
+                  alt={selectedPad.author || 'रसिक आचार्य'}
+                  className="w-full h-full object-cover object-top"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div className="min-w-0">
+                <span className={`text-[10px] uppercase tracking-wider font-mono font-semibold ${currentTheme.metaColor} block`}>
+                  रसिक आचार्य व प्रसंग
+                </span>
+                <h4 className={`${fontClass} font-bold text-sm ${currentTheme.titleColor} truncate`}>
+                  {selectedPad.author || 'वृन्दावन रसिक वाणी'}
+                </h4>
+                <div className={`text-[11px] ${currentTheme.metaColor} truncate`}>
+                  {selectedPad.chapterName || selectedPad.rag || selectedPad.titleDevanagari}
+                </div>
+              </div>
+            </div>
+
             <div className={`${currentTheme.commentaryBg} rounded-3xl p-5 border ${currentTheme.borderColor} shadow-xs transition-colors duration-300`}>
               <div className={`flex items-center gap-2 pb-3 mb-3 border-b ${currentTheme.borderColor}`}>
                 <div className="w-7 h-7 rounded-lg bg-[#FAF7F0] flex items-center justify-center text-[#CA8A04]">
@@ -3490,8 +3515,8 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   <span>दिव्य भाव संक्षेप एवं रस-गूढ़ार्थ</span>
                 </div>
                 {isSummaryLoading && !summaryText ? (
-                  <div className={`flex items-center gap-2 py-2 text-xs ${currentTheme.translitColor} font-medium`}>
-                    <Sparkles className="w-3.5 h-3.5 text-[#CA8A04] animate-spin" />
+                  <div role="status" aria-busy="true" className={`flex items-center gap-2 py-2 text-xs ${currentTheme.translitColor} font-medium`}>
+                    <IOSSpinner size="xs" theme="amber" />
                     <span>प्रस्तुत किया जा रहा है...</span>
                   </div>
                 ) : (
@@ -3594,8 +3619,8 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 <span>दिव्य भाव संक्षेप एवं रस-गूढ़ार्थ</span>
               </div>
               {isSummaryLoading && !summaryText ? (
-                <div className={`flex items-center gap-2 py-2 text-xs ${currentTheme.translitColor} font-medium min-h-[48px]`}>
-                  <Sparkles className="w-4 h-4 text-[#CA8A04] animate-spin" />
+                <div role="status" aria-busy="true" className={`flex items-center gap-2 py-2 text-xs ${currentTheme.translitColor} font-medium min-h-[48px]`}>
+                  <IOSSpinner size="xs" theme="amber" />
                   <span>प्रस्तुत किया जा रहा है...</span>
                 </div>
               ) : (

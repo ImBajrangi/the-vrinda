@@ -1,10 +1,14 @@
 import React, { useRef, useState, useEffect } from 'react';
 
+import type { PanchangInfo } from '../../services/panchangService';
+
 export interface DayItem {
   dayName: string;
   dateNum: number;
   isToday?: boolean;
   tithiLabel?: string;
+  isoDate?: string;
+  panchang?: PanchangInfo;
 }
 
 interface DateStripProps {

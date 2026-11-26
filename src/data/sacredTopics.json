@@ -8,7 +8,7 @@
     "tradition": "Eternal Nikunj Cycle • 8 Prahar",
     "essence": "Contemplative 24-hour cycle of Priya-Priyatam’s intimate seva and pastimes",
     "tagColor": "text-[#0284C7]",
-    "imageUrl": ""
+    "imageUrl": "/assets/darshan/radharaman-phoolbangla.webp"
   },
   {
     "id": "parikrama",
@@ -19,7 +19,7 @@
     "tradition": "Holy Abodes Circuit • 84 Kos",
     "essence": "Circumambulation of the holy forest groves and bathing kundas of Braj Mandal",
     "tagColor": "text-[#C2410C]",
-    "imageUrl": ""
+    "imageUrl": "/assets/darshan/mandapa-aarti-seva.webp"
   },
   {
     "id": "yamuna",
@@ -30,7 +30,7 @@
     "tradition": "Kalindi Bhav • Pushti & Ras",
     "essence": "The divine flowing waters that purify the heart and bestow devotion to Shriji",
     "tagColor": "text-[#0284C7]",
-    "imageUrl": ""
+    "imageUrl": "/assets/temples/keshi-ghat.webp"
   },
   {
     "id": "ragas",
@@ -41,7 +41,7 @@
     "tradition": "Dhrupad & Haveli Sangeet",
     "essence": "Sacred classical melodies aligned with daily Ashtayama devotional hours",
     "tagColor": "text-[#E11D48]",
-    "imageUrl": ""
+    "imageUrl": "/assets/darshan/radharaman-venu.webp"
   }
 ]
 

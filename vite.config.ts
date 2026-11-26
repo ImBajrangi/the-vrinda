@@ -94,6 +94,12 @@ export default defineConfig(({ isSsrBuild }) => ({
               if (id.includes('src/services/seoService.ts')) {
                 return 'service-seo';
               }
+              if (id.includes('src/services/panchangService.ts')) {
+                return 'service-panchang';
+              }
+              if (id.includes('src/services/cacheService.ts')) {
+                return 'service-cache';
+              }
               if (id.includes('src/data/legacySlugRedirects.json')) {
                 return 'legacy-slugs';
               }

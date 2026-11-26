@@ -48,7 +48,7 @@ export const MobileReaderHeader: React.FC<MobileReaderHeaderProps> = ({
 }) => {
   return (
     <div
-      className={`md:hidden sticky top-0 z-30 w-full mb-3 select-none bg-white border-b border-stone-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.03)] pt-[max(0.35rem,env(safe-area-inset-top,0.35rem))] transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] will-change-transform ${
+      className={`md:hidden sticky top-0 z-30 w-full mb-3 select-none bg-white border-b border-stone-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.03)] pt-[max(0.35rem,env(safe-area-inset-top,0.35rem))] transition-[transform,opacity] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${
         isVisible ? 'translate-y-0 opacity-100 pointer-events-auto' : '-translate-y-full opacity-0 pointer-events-none'
       }`}
     >

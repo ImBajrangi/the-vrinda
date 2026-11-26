@@ -11,6 +11,7 @@ import {
   Feather
 } from 'lucide-react';
 import { SacredDatabase } from '../../services/sacredDatabase';
+import { getEpicDarshanVisual } from '../../services/devotionalVisuals';
 import { SacredPad, EpicIndexData } from '../../types/devotional';
 import { DevotionalVersePresenter } from './DevotionalVersePresenter';
 import { InlinePurportCard } from './InlinePurportCard';
@@ -817,7 +818,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                   >
                     <div className="absolute left-1 top-0 bottom-0 w-0.5 bg-amber-400/40" />
                     {isLoadingThis ? (
-                      <div className="z-10 animate-spin w-2.5 h-2.5 border-2 border-amber-200 border-t-transparent rounded-full" />
+                      <IOSSpinner size="xs" theme="white" className="z-10" />
                     ) : (
                       <div className="w-1.5 h-1.5 rounded-full bg-amber-300 shadow-2xs z-10" />
                     )}
@@ -1032,7 +1033,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
           className="min-w-0 w-full md:col-span-8 xl:col-span-6 bg-transparent sm:bg-white rounded-none sm:rounded-3xl p-0 sm:p-8 xl:p-9 2xl:p-10 min-h-[calc(100vh-8rem)] border-0 sm:border sm:border-neutral-200/70 shadow-none sm:shadow-2xs"
         >
           {/* Chapter Header Bar (Desktop Only - on mobile, MobileReaderHeader provides the top chrome) */}
-          <div className="hidden sm:flex pb-4 mb-6 border-b border-neutral-100 flex-col sm:flex-row sm:items-center justify-between gap-3 sticky top-24 z-20 bg-white/95 backdrop-blur-md -mx-4 sm:-mx-8 xl:-mx-9 2xl:-mx-10 px-4 sm:px-8 xl:px-9 2xl:px-10 pt-3 rounded-t-3xl shadow-[0_4px_12px_-4px_rgba(0,0,0,0.03)]">
+          <div className="hidden sm:flex pb-4 mb-6 border-b border-neutral-100 flex-col sm:flex-row sm:items-center justify-between gap-3 sticky top-24 z-20 bg-white/[0.98] -mx-4 sm:-mx-8 xl:-mx-9 2xl:-mx-10 px-4 sm:px-8 xl:px-9 2xl:px-10 pt-3 rounded-t-3xl shadow-[0_4px_12px_-4px_rgba(0,0,0,0.03)]">
             <div>
               <div className="flex items-center gap-2 text-xs font-serif font-bold text-amber-800 tracking-wider">
                 <BookOpen className="w-3.5 h-3.5" />
@@ -1161,12 +1162,12 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                         <button
                           type="button"
                           onClick={() => setActivePurportId(isPurportOpen ? null : pad.id)}
-                          className={`px-2.5 py-1 rounded-full text-xs font-semibold flex items-center gap-1 cursor-pointer transition-colors shadow-2xs ${
+                          className={`px-2.5 py-1 rounded-full text-xs font-semibold flex items-center gap-1 whitespace-nowrap shrink-0 cursor-pointer transition-colors shadow-2xs ${
                             isPurportOpen ? 'bg-amber-200 text-amber-950 font-bold' : 'bg-white hover:bg-amber-100/70 text-amber-900 border border-amber-200/60'
                           }`}
                         >
-                          <Sparkles className="w-3 h-3 text-amber-700" />
-                          <span>भावार्थ ▾</span>
+                          <Sparkles className="w-3 h-3 text-amber-700 shrink-0" />
+                          <span className="whitespace-nowrap">भावार्थ ▾</span>
                         </button>
                       </div>
                     </div>
@@ -1285,6 +1286,26 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
         {/* Right Column: Dedicated Epic Commentary Desk (Desktop: hidden xl:block)   */}
         {/* ========================================================================= */}
         <aside className="hidden xl:block xl:col-span-3 space-y-4 sticky top-24 self-start max-h-[calc(100vh-7.5rem)] overflow-y-auto custom-scroll">
+          {/* Sacred Contemplative Darshan Plate */}
+          {(() => {
+            const visual = getEpicDarshanVisual(selectedGranthaId);
+            return (
+              <div className="rounded-3xl border border-amber-900/10 bg-[#FAF8F5] p-3 shadow-xs">
+                <div className="aspect-[4/3] w-full rounded-[12px] overflow-hidden bg-[#1A120B]">
+                  <img
+                    src={visual.src}
+                    alt={visual.caption}
+                    className="w-full h-full object-cover object-[center_20%]"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div className="px-1 pt-2 text-[11px] font-serif font-semibold text-amber-950/85 truncate">
+                  {visual.caption}
+                </div>
+              </div>
+            );
+          })()}
           <div className="rounded-3xl border border-amber-900/10 bg-[#FAF8F5] p-5 shadow-xs transition-colors duration-300">
             {/* Header */}
             <div className="flex items-center justify-between pb-3 mb-3 border-b border-amber-900/10">
