@@ -162,7 +162,7 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
     setIsInputFocused(false);
 
     if (sheetRef.current) {
-      sheetRef.current.style.transition = 'transform 160ms cubic-bezier(0.5, 0, 0.9, 0.3)';
+      sheetRef.current.style.transition = 'transform 160ms cubic-bezier(0.16, 1, 0.3, 1)';
       sheetRef.current.style.transform = 'translate3d(0, 100%, 0)';
     }
     if (backdropRef.current) {
@@ -373,7 +373,7 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
       triggerHaptic(12);
       handleDismiss();
     } else {
-      sheetRef.current.style.transition = 'transform 220ms cubic-bezier(0.5, 0, 0.9, 0.3)';
+      sheetRef.current.style.transition = 'transform 220ms cubic-bezier(0.16, 1, 0.3, 1)';
       sheetRef.current.style.transform = 'translate3d(0, 0, 0)';
 
       if (backdropRef.current) {
@@ -438,7 +438,7 @@ export const MobileScriptureDrawer: React.FC<MobileScriptureDrawerProps> = ({
       */}
       <div
         ref={sheetRef}
-        className={`relative z-10 w-full bg-white rounded-t-[32px] shadow-[0_-12px_48px_rgba(0,0,0,0.18)] border-t border-stone-200/50 flex flex-col overflow-hidden will-change-transform animate-[nativeSheetUp_240ms_cubic-bezier(0.5,0,0.9,0.3)] ${
+        className={`relative z-10 w-full bg-white rounded-t-[32px] shadow-[0_-12px_48px_rgba(0,0,0,0.18)] border-t border-stone-200/50 flex flex-col overflow-hidden will-change-transform animate-[nativeSheetUp_240ms_cubic-bezier(0.16,1,0.3,1)] ${
           viewportMetrics.isKeyboardOpen
             ? 'h-full max-h-full'
             : 'h-[82dvh] max-h-[82dvh] sm:h-[80dvh] sm:max-h-[80dvh]'

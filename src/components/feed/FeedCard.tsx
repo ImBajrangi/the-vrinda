@@ -284,7 +284,7 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
           }
         }
         .animate-pushparpan {
-          animation: pushparpanFloat 0.88s cubic-bezier(0.5, 0, 0.9, 0.3) forwards;
+          animation: pushparpanFloat 0.88s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
       `}</style>
 

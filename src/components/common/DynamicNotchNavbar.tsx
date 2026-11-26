@@ -326,7 +326,7 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
               {indicatorStyle.ready && (
                 <span
                   aria-hidden="true"
-                  className="absolute top-0 bottom-0 rounded-full bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[260ms] ease-[cubic-bezier(0.5,0,0.9,0.3)] will-change-[transform,width]"
+                  className="absolute top-0 bottom-0 rounded-full bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[260ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[transform,width]"
                   style={{
                     transform: `translate3d(${indicatorStyle.left}px, 0, 0)`,
                     width: `${indicatorStyle.width}px`,

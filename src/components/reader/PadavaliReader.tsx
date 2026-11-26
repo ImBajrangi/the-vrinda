@@ -1919,7 +1919,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       {/* Expert Measured Height Architecture (100% Flicker-Free & Subpixel Smooth) */}
       {/* ========================================================================= */}
       <div
-        className="w-full overflow-hidden transition-[height,opacity] duration-[340ms] ease-[cubic-bezier(0.5,0,0.9,0.3)] will-change-[height,opacity]"
+        className="w-full overflow-hidden transition-[height,opacity] duration-[340ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[height,opacity]"
         style={{
           height: isSettingsOpen ? `${drawerHeight}px` : '0px',
           opacity: isSettingsOpen ? 1 : 0,
@@ -2040,7 +2040,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 <div className="relative flex items-center p-1 bg-neutral-100/90 rounded-full w-full">
                   <span
                     aria-hidden="true"
-                    className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.5,0,0.9,0.3)] will-change-transform"
+                    className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform"
                     style={{
                       width: 'calc((100% - 8px) / 4)',
                       left: '4px',
@@ -2075,7 +2075,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 <div className="relative flex items-center p-1 bg-neutral-100/90 rounded-full w-full">
                   <span
                     aria-hidden="true"
-                    className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.5,0,0.9,0.3)] will-change-transform"
+                    className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform"
                     style={{
                       width: 'calc((100% - 8px) / 3)',
                       left: '4px',
@@ -2131,7 +2131,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 <div className="relative flex items-center p-1 bg-neutral-100/90 rounded-full w-full">
                   <span
                     aria-hidden="true"
-                    className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.5,0,0.9,0.3)] will-change-transform"
+                    className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform"
                     style={{
                       width: 'calc((100% - 8px) / 3)',
                       left: '4px',
@@ -2169,7 +2169,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 <div className="relative flex items-center p-1 bg-neutral-100/90 rounded-full w-full">
                   <span
                     aria-hidden="true"
-                    className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.5,0,0.9,0.3)] will-change-transform"
+                    className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform"
                     style={{
                       width: 'calc((100% - 8px) / 3)',
                       left: '4px',
@@ -2205,7 +2205,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             {categoryPillStyle.ready && (
               <span
                 aria-hidden="true"
-                className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[340ms] ease-[cubic-bezier(0.5,0,0.9,0.3)] will-change-[transform,width] z-0 shadow-2xs"
+                className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[340ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[transform,width] z-0 shadow-2xs"
                 style={{
                   transform: `translate3d(${categoryPillStyle.left}px, 0, 0)`,
                   width: `${categoryPillStyle.width}px`,
@@ -2264,7 +2264,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             {granthaPillStyle.ready && (
               <span
                 aria-hidden="true"
-                className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[340ms] ease-[cubic-bezier(0.5,0,0.9,0.3)] will-change-[transform,width] z-0 shadow-2xs"
+                className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[340ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[transform,width] z-0 shadow-2xs"
                 style={{
                   transform: `translate3d(${granthaPillStyle.left}px, 0, 0)`,
                   width: `${granthaPillStyle.width}px`,
@@ -2371,7 +2371,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
           {/* Raga Sub-Filter Strip: Fluid Relative Sliding Transition */}
           <div
-            className={`grid transition-[grid-template-rows,opacity,margin] duration-300 ease-[cubic-bezier(0.5,0,0.9,0.3)] overflow-hidden ${hasRagas
+            className={`grid transition-[grid-template-rows,opacity,margin] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] overflow-hidden ${hasRagas
                 ? 'grid-rows-[1fr] opacity-100 mt-1'
                 : 'grid-rows-[0fr] opacity-0 mt-0 pointer-events-none'
               }`}
@@ -2388,7 +2388,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 {ragaPillStyle.ready && (
                   <span
                     aria-hidden="true"
-                    className="absolute top-0.5 bottom-0.5 rounded-full bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[340ms] ease-[cubic-bezier(0.5,0,0.9,0.3)] will-change-[transform,width] z-0 shadow-2xs"
+                    className="absolute top-0.5 bottom-0.5 rounded-full bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[340ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[transform,width] z-0 shadow-2xs"
                     style={{
                       transform: `translate3d(${ragaPillStyle.left}px, 0, 0)`,
                       width: `${ragaPillStyle.width}px`,
@@ -2456,7 +2456,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
           {mobilePillStyle.ready && (
             <span
               aria-hidden="true"
-              className="absolute top-0 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[340ms] ease-[cubic-bezier(0.5,0,0.9,0.3)] will-change-[transform,width] z-0"
+              className="absolute top-0 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[340ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[transform,width] z-0"
               style={{
                 transform: `translate3d(${mobilePillStyle.left}px, 0, 0)`,
                 width: `${mobilePillStyle.width}px`,
@@ -2560,7 +2560,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   {sidebarPillStyle.ready && (
                     <span
                       aria-hidden="true"
-                      className="absolute left-2 right-2 rounded-2xl bg-[#FEF08A] pointer-events-none transition-[transform,height] duration-[340ms] ease-[cubic-bezier(0.5,0,0.9,0.3)] will-change-[transform,height] z-0"
+                      className="absolute left-2 right-2 rounded-2xl bg-[#FEF08A] pointer-events-none transition-[transform,height] duration-[340ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[transform,height] z-0"
                       style={{
                         transform: `translate3d(0, ${sidebarPillStyle.top}px, 0)`,
                         height: `${sidebarPillStyle.height}px`,
@@ -2779,7 +2779,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               {modePillStyle.ready && (
                 <span
                   aria-hidden="true"
-                  className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[340ms] ease-[cubic-bezier(0.5,0,0.9,0.3)] will-change-[transform,width] z-0 shadow-2xs"
+                  className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[340ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[transform,width] z-0 shadow-2xs"
                   style={{
                     transform: `translate3d(${modePillStyle.left}px, 0, 0)`,
                     width: `${modePillStyle.width}px`,
@@ -3233,7 +3233,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
               {/* Collapsible Summary Card with Expert Measured Height Architecture */}
               <div
-                className="w-full overflow-hidden transition-[height,opacity] duration-[340ms] ease-[cubic-bezier(0.5,0,0.9,0.3)] will-change-[height,opacity]"
+                className="w-full overflow-hidden transition-[height,opacity] duration-[340ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[height,opacity]"
                 style={{
                   height: isSummaryOpen ? `${summaryHeight}px` : '0px',
                   opacity: isSummaryOpen ? 1 : 0,

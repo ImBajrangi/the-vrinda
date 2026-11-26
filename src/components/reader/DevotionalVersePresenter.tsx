@@ -109,7 +109,7 @@ export const DevotionalVersePresenter: React.FC<DevotionalVersePresenterProps> =
               {alignPillStyle.ready && (
                 <span
                   aria-hidden="true"
-                  className="absolute top-0.5 bottom-0.5 rounded-full bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[340ms] ease-[cubic-bezier(0.5,0,0.9,0.3)] will-change-[transform,width] z-0 shadow-2xs"
+                  className="absolute top-0.5 bottom-0.5 rounded-full bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[340ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[transform,width] z-0 shadow-2xs"
                   style={{
                     transform: `translate3d(${alignPillStyle.left}px, 0, 0)`,
                     width: `${alignPillStyle.width}px`,

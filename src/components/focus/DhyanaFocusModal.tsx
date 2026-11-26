@@ -449,7 +449,7 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
             {/* Dynamic Elastic Sliding Indicator Bar */}
             <span
               aria-hidden="true"
-              className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.5,0,0.9,0.3)] will-change-transform"
+              className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform"
               style={{
                 width: 'calc((100% - 8px) / 2)',
                 left: '4px',
@@ -829,7 +829,7 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
                     {sentimentPillStyle.ready && (
                       <span
                         aria-hidden="true"
-                        className="absolute rounded-xl bg-[#FEF08A] pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.5,0,0.9,0.3)] will-change-transform"
+                        className="absolute rounded-xl bg-[#FEF08A] pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform"
                         style={{
                           transform: `translate(${sentimentPillStyle.left}px, ${sentimentPillStyle.top}px)`,
                           width: `${sentimentPillStyle.width}px`,

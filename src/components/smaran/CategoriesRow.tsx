@@ -271,7 +271,7 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
           {/* Dynamic Sliding Indicator Bar */}
           <span
             aria-hidden="true"
-            className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-transform duration-[340ms] ease-[cubic-bezier(0.5,0,0.9,0.3)] will-change-transform shadow-xs"
+            className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-transform duration-[340ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform shadow-xs"
             style={{
               width: 'calc((100% - 8px) / 4)',
               left: '4px',

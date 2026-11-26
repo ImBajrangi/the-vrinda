@@ -210,12 +210,12 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
     // Commit inverted state in one synchronous reflow
     void movingEls[0].offsetWidth;
 
-    // 2. Play smooth exponential deceleration to final grid coordinates
+    // 2. Play Anime.js inOutExpo morph to swapped coordinates + outExpo opacity settle
     requestAnimationFrame(() => {
       if (morphAnimGenRef.current !== animGen) return;
       movingEls.forEach((el) => {
         el.style.transition =
-          'transform 540ms cubic-bezier(0.5, 0, 0.9, 0.3), opacity 360ms cubic-bezier(0.5, 0, 0.9, 0.3)';
+          'transform 560ms cubic-bezier(0.87, 0, 0.13, 1), opacity 380ms cubic-bezier(0.16, 1, 0.3, 1)';
         el.style.transform = 'translate3d(0, 0, 0) scale(1, 1)';
         el.style.opacity = '1';
       });
@@ -231,7 +231,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
         el.style.zIndex = '';
         el.style.opacity = '';
       });
-    }, 560);
+    }, 580);
 
     return () => window.clearTimeout(cleanupTimer);
   }, [plateOrder]);

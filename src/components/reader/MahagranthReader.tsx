@@ -777,7 +777,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
             {epicPillStyle.ready && (
               <span
                 aria-hidden="true"
-                className="absolute rounded-[14px] bg-[#FEF08A] pointer-events-none transition-[transform,width,height] duration-[340ms] ease-[cubic-bezier(0.5,0,0.9,0.3)] will-change-[transform,width,height] z-0 shadow-2xs"
+                className="absolute rounded-[14px] bg-[#FEF08A] pointer-events-none transition-[transform,width,height] duration-[340ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[transform,width,height] z-0 shadow-2xs"
                 style={{
                   transform: `translate3d(${epicPillStyle.left}px, ${epicPillStyle.top}px, 0)`,
                   width: `${epicPillStyle.width}px`,
@@ -918,7 +918,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                     {sectionPillStyle.ready && (
                       <span
                         aria-hidden="true"
-                        className="absolute top-0.5 bottom-0 rounded-[6px] bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[340ms] ease-[cubic-bezier(0.5,0,0.9,0.3)] will-change-[transform,width] z-0 shadow-2xs"
+                        className="absolute top-0.5 bottom-0 rounded-[6px] bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[340ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[transform,width] z-0 shadow-2xs"
                         style={{
                           transform: `translate3d(${sectionPillStyle.left}px, 0, 0)`,
                           width: `${sectionPillStyle.width}px`,
@@ -971,7 +971,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                 {chapterPillStyle.ready && (
                   <span
                     aria-hidden="true"
-                    className="absolute left-2 right-2 rounded-[8px] bg-[#FEF08A] pointer-events-none transition-[transform,height] duration-[340ms] ease-[cubic-bezier(0.5,0,0.9,0.3)] will-change-[transform,height] z-0 shadow-2xs"
+                    className="absolute left-2 right-2 rounded-[8px] bg-[#FEF08A] pointer-events-none transition-[transform,height] duration-[340ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[transform,height] z-0 shadow-2xs"
                     style={{
                       transform: `translate3d(0, ${chapterPillStyle.top}px, 0)`,
                       height: `${chapterPillStyle.height}px`,
@@ -1364,7 +1364,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                 {shlokaPillStyle.ready && (
                   <span
                     aria-hidden="true"
-                    className="absolute rounded-[6px] bg-[#FEF08A] pointer-events-none transition-[transform,width,height] duration-[340ms] ease-[cubic-bezier(0.5,0,0.9,0.3)] will-change-[transform,width,height] z-0 shadow-2xs"
+                    className="absolute rounded-[6px] bg-[#FEF08A] pointer-events-none transition-[transform,width,height] duration-[340ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[transform,width,height] z-0 shadow-2xs"
                     style={{
                       transform: `translate3d(${shlokaPillStyle.left}px, ${shlokaPillStyle.top}px, 0)`,
                       width: `${shlokaPillStyle.width}px`,
