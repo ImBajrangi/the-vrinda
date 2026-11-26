@@ -87,7 +87,7 @@ export const AshtayamaTimelineDeck: React.FC<AshtayamaTimelineDeckProps> = ({ on
         {pillStyle.ready && (
           <span
             aria-hidden="true"
-            className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+            className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.5,0,0.9,0.3)] will-change-transform"
             style={{
               transform: `translateX(${pillStyle.left}px)`,
               width: `${pillStyle.width}px`,

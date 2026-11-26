@@ -170,7 +170,7 @@ export const SaintsDirectoryModal: React.FC<SaintsDirectoryModalProps> = ({
             {traditionPillStyle.ready && (
               <span
                 aria-hidden="true"
-                className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[340ms] ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[transform,width]"
+                className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[340ms] ease-[cubic-bezier(0.5,0,0.9,0.3)] will-change-[transform,width]"
                 style={{
                   transform: `translate3d(${traditionPillStyle.left}px, 0, 0)`,
                   width: `${traditionPillStyle.width}px`,

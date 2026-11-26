@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useLayoutEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { Flame, Music2, BookOpen, Wind, HelpCircle, Disc3, Maximize2, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { SadhanaState, SacredPad } from '../../types/devotional';
@@ -129,11 +129,17 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
   currentStreakDays = 1,
 }) => {
   const [vaniIndex, setVaniIndex] = useState(0);
-  const [plateIndex, setPlateIndex] = useState(0);
+  const [plateOrder, setPlateOrder] = useState<number[]>([0, 1, 2, 3, 4, 5]);
+  const plateIndex = plateOrder[0];
   const [isPlateLoading, setIsPlateLoading] = useState(false);
   const [isOpeningReader, setIsOpeningReader] = useState(false);
   const [diyaLit, setDiyaLit] = useState(false);
   const [lightboxImage, setLightboxImage] = useState<{ src: string; caption: string } | null>(null);
+
+  // Refs for GPU-only FLIP spatial morphing across the 3 visible darshan gallery blocks
+  const blockRefs = useRef<Map<string, HTMLElement>>(new Map());
+  const pendingFlipRectsRef = useRef<Map<string, DOMRect>>(new Map());
+  const morphAnimGenRef = useRef<number>(0);
 
   const ssrBaseline = useMemo(() => new Date('2026-01-01T19:00:00+05:30'), []);
   const [todayKey, setTodayKey] = useState('2026-01-01');
@@ -161,10 +167,113 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
 
   const selectPlate = (nextIndex: number) => {
     const normalized = (nextIndex + NITYA_DARSHAN_PLATES.length) % NITYA_DARSHAN_PLATES.length;
-    if (normalized === plateIndex) return;
-    setIsPlateLoading(true);
-    setPlateIndex(normalized);
+    if (normalized === plateOrder[0]) return;
+
+    // Capture FIRST bounding rects of all currently mounted darshan blocks before React updates
+    const rects = new Map<string, DOMRect>();
+    plateOrder.slice(0, 3).forEach((pIdx) => {
+      const id = NITYA_DARSHAN_PLATES[pIdx].id;
+      const el = blockRefs.current.get(id);
+      if (el) rects.set(id, el.getBoundingClientRect());
+    });
+    pendingFlipRectsRef.current = rects;
+
+    // Show plate spinner only when bringing an unvisited plate into focus; instant morph on visible swap
+    const clickedPos = plateOrder.indexOf(normalized);
+    if (clickedPos > 2) {
+      setIsPlateLoading(true);
+    }
+
+    setPlateOrder((prev) => {
+      const pos = prev.indexOf(normalized);
+      if (pos === 1 || pos === 2) {
+        // Direct symmetric swap: clicked companion flies smoothly into Main & Main glides to clicked slot
+        const swapped = [...prev];
+        swapped[0] = normalized;
+        swapped[pos] = prev[0];
+        return swapped;
+      }
+      // Off-stage plate selected: promote to Main, glide previous Main & Companion 1 down cleanly
+      return [normalized, ...prev.filter((i) => i !== normalized)];
+    });
   };
+
+  // INVERT & PLAY: Hardware-accelerated FLIP spatial morph after React commits the swapped grid positions
+  useLayoutEffect(() => {
+    const prevRects = pendingFlipRectsRef.current;
+    if (prevRects.size === 0) return;
+    pendingFlipRectsRef.current = new Map();
+
+    const prefersReduced =
+      typeof window !== 'undefined' &&
+      window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) return;
+
+    const animGen = ++morphAnimGenRef.current;
+    const primaryId = NITYA_DARSHAN_PLATES[plateOrder[0]].id;
+    const movingEls: HTMLElement[] = [];
+
+    // 1. Apply inverted transforms synchronously before paint
+    plateOrder.slice(0, 3).forEach((pIdx) => {
+      const id = NITYA_DARSHAN_PLATES[pIdx].id;
+      const el = blockRefs.current.get(id);
+      if (!el) return;
+
+      const lastRect = el.getBoundingClientRect();
+      const firstRect = prevRects.get(id);
+
+      el.style.transition = 'none';
+      el.style.willChange = 'transform, opacity';
+
+      if (firstRect && firstRect.width > 0 && lastRect.width > 0) {
+        const dx = firstRect.left - lastRect.left;
+        const dy = firstRect.top - lastRect.top;
+        const sx = firstRect.width / lastRect.width;
+        const sy = firstRect.height / lastRect.height;
+
+        el.style.transformOrigin = 'top left';
+        el.style.transform = `translate3d(${dx}px, ${dy}px, 0) scale(${sx}, ${sy})`;
+        el.style.zIndex = id === primaryId ? '30' : '20';
+      } else {
+        // Newly entering off-stage block glides gently in place
+        el.style.transformOrigin = 'center center';
+        el.style.transform = 'scale(0.95)';
+        el.style.opacity = '0';
+        el.style.zIndex = id === primaryId ? '30' : '10';
+      }
+      movingEls.push(el);
+    });
+
+    if (movingEls.length === 0) return;
+    // Commit inverted state in one synchronous reflow
+    void movingEls[0].offsetWidth;
+
+    // 2. Play smooth exponential deceleration to final grid coordinates
+    requestAnimationFrame(() => {
+      if (morphAnimGenRef.current !== animGen) return;
+      movingEls.forEach((el) => {
+        el.style.transition =
+          'transform 540ms cubic-bezier(0.5, 0, 0.9, 0.3), opacity 360ms cubic-bezier(0.5, 0, 0.9, 0.3)';
+        el.style.transform = 'translate3d(0, 0, 0) scale(1, 1)';
+        el.style.opacity = '1';
+      });
+    });
+
+    const cleanupTimer = window.setTimeout(() => {
+      if (morphAnimGenRef.current !== animGen) return;
+      movingEls.forEach((el) => {
+        el.style.transition = '';
+        el.style.transform = '';
+        el.style.transformOrigin = '';
+        el.style.willChange = '';
+        el.style.zIndex = '';
+        el.style.opacity = '';
+      });
+    }, 560);
+
+    return () => window.clearTimeout(cleanupTimer);
+  }, [plateOrder]);
 
   const handleEnterReader = () => {
     if (isOpeningReader) return;
@@ -196,7 +305,6 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
     } catch {}
   };
 
-  const activePlate = NITYA_DARSHAN_PLATES[plateIndex % NITYA_DARSHAN_PLATES.length];
   const activeVani = DAILY_AMRIT_VANI[vaniIndex % DAILY_AMRIT_VANI.length];
 
   // Overall 3-pillar devotional harmony ratio
@@ -354,132 +462,146 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
           </div>
         </div>
 
-        {/* Asymmetric 3-Plate Braj Nitya Darshan Visual Gallery (Zero Card Outlines) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-3.5 sm:gap-4">
-          {/* Primary Darshan Stage (8 cols) */}
-          <div className="lg:col-span-8 relative h-[280px] sm:h-[380px] lg:h-[430px] rounded-[24px] sm:rounded-[28px] squircle-card overflow-hidden bg-[#140B05] shadow-[0_14px_40px_rgba(24,24,27,0.09)] select-none">
-            <img
-              src={activePlate.src}
-              alt={activePlate.caption}
-              onLoad={() => setIsPlateLoading(false)}
-              onError={() => setIsPlateLoading(false)}
-              className={`w-full h-full object-cover ${activePlate.pos} transition-opacity duration-200 ${
-                isPlateLoading ? 'opacity-80' : 'opacity-100'
-              }`}
-              loading="eager"
-              decoding="async"
-            />
+        {/* Unified Asymmetric 3-Plate CSS Grid with FLIP Spatial Position Morphing (Zero Outlines) */}
+        <div className="relative grid grid-cols-2 lg:grid-cols-12 lg:grid-rows-2 gap-3.5 sm:gap-4">
+          {plateOrder.slice(0, 3).map((pIdx, slotPos) => {
+            const tile = NITYA_DARSHAN_PLATES[pIdx];
+            const isPrimary = slotPos === 0;
 
-            {/* Top-Left Subtle Frosted Plate Counter (no border outline) */}
-            <div className="absolute top-3.5 left-3.5 sm:top-4 sm:left-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#120A04]/55 backdrop-blur-md text-white text-[11px] font-laila font-medium">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#FDE047] shrink-0" />
-              <span className="font-mono text-[10.5px] text-amber-200 font-bold">
-                {formatDevanagariNumerals(plateIndex + 1).padStart(2, '०')} / {formatDevanagariNumerals(NITYA_DARSHAN_PLATES.length).padStart(2, '०')}
-              </span>
-              <span className="text-white/40">•</span>
-              <span className="truncate max-w-[180px] sm:max-w-none">{activePlate.mandir}</span>
-            </div>
-
-            {/* Top-Right Apple iOS 18 Plate Switch Loader */}
-            {isPlateLoading && (
+            return (
               <div
-                role="status"
-                aria-busy="true"
-                className="absolute top-3.5 right-3.5 sm:top-4 sm:right-4 px-2.5 py-1.5 rounded-full bg-[#120A04]/70 backdrop-blur-md inline-flex items-center gap-1.5 text-[10.5px] text-amber-100 font-laila"
+                key={tile.id}
+                ref={(el) => {
+                  if (el) {
+                    blockRefs.current.set(tile.id, el);
+                  } else {
+                    blockRefs.current.delete(tile.id);
+                  }
+                }}
+                role={!isPrimary ? 'button' : undefined}
+                tabIndex={!isPrimary ? 0 : undefined}
+                onClick={!isPrimary ? () => selectPlate(pIdx) : undefined}
+                onKeyDown={
+                  !isPrimary
+                    ? (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          selectPlate(pIdx);
+                        }
+                      }
+                    : undefined
+                }
+                aria-label={!isPrimary ? `मुख्य दर्शन में देखें: ${tile.label}` : undefined}
+                className={`relative overflow-hidden bg-[#140B05] select-none ${
+                  isPrimary
+                    ? 'col-span-2 lg:col-span-8 lg:row-span-2 h-[280px] sm:h-[380px] lg:h-[430px] rounded-[24px] sm:rounded-[28px] squircle-card shadow-[0_14px_40px_rgba(24,24,27,0.09)]'
+                    : 'group col-span-1 lg:col-span-4 lg:row-span-1 h-[145px] sm:h-[185px] lg:h-[207px] rounded-[22px] sm:rounded-[24px] squircle-card cursor-pointer shadow-[0_8px_24px_rgba(24,24,27,0.06)]'
+                }`}
               >
-                <IOSSpinner size="xs" theme="white" />
-                <span>दर्शन...</span>
-              </div>
-            )}
+                <img
+                  src={tile.src}
+                  alt={tile.caption}
+                  onLoad={isPrimary ? () => setIsPlateLoading(false) : undefined}
+                  onError={isPrimary ? () => setIsPlateLoading(false) : undefined}
+                  className={`w-full h-full object-cover ${tile.pos}`}
+                  loading="eager"
+                  decoding="async"
+                />
 
-            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#0E0703]/95 via-[#0E0703]/50 to-transparent pointer-events-none" />
+                {isPrimary ? (
+                  <>
+                    {/* Top-Left Subtle Frosted Plate Counter */}
+                    <div className="absolute top-3.5 left-3.5 sm:top-4 sm:left-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#120A04]/55 backdrop-blur-md text-white text-[11px] font-laila font-medium">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#FDE047] shrink-0" />
+                      <span className="font-mono text-[10.5px] text-amber-200 font-bold">
+                        {formatDevanagariNumerals(pIdx + 1).padStart(2, '०')} / {formatDevanagariNumerals(NITYA_DARSHAN_PLATES.length).padStart(2, '०')}
+                      </span>
+                      <span className="text-white/40">•</span>
+                      <span className="truncate max-w-[180px] sm:max-w-none">{tile.mandir}</span>
+                    </div>
 
-            <div className="absolute inset-x-0 bottom-0 p-4 sm:p-6 flex flex-col sm:flex-row sm:items-end justify-between gap-2.5">
-              <div className="font-rozha text-[17px] sm:text-xl lg:text-[22px] text-white tracking-wide leading-snug line-clamp-1 min-w-0">
-                {activePlate.caption}
-              </div>
-
-              <div className="flex items-center justify-between sm:justify-end gap-2 shrink-0">
-                <div className="flex items-center gap-1 sm:hidden" aria-hidden="true">
-                  {NITYA_DARSHAN_PLATES.map((p, i) => (
-                    <span
-                      key={p.id}
-                      className={`h-1 rounded-full transition-all duration-200 ${
-                        i === plateIndex ? 'w-4 bg-[#FEF08A]' : 'w-1.5 bg-white/40'
-                      }`}
-                    />
-                  ))}
-                </div>
-
-                <div className="flex items-center gap-1.5">
-                  <button
-                    type="button"
-                    onClick={() => selectPlate(plateIndex - 1)}
-                    aria-label="पिछला दर्शन"
-                    className="w-8 h-8 rounded-full bg-[#120A04]/50 hover:bg-[#120A04]/75 text-white backdrop-blur-md flex items-center justify-center transition-colors cursor-pointer"
-                  >
-                    <ChevronLeft className="w-4 h-4" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => selectPlate(plateIndex + 1)}
-                    aria-label="अगला दर्शन"
-                    className="w-8 h-8 rounded-full bg-[#120A04]/50 hover:bg-[#120A04]/75 text-white backdrop-blur-md flex items-center justify-center transition-colors cursor-pointer"
-                  >
-                    <ChevronRight className="w-4 h-4" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setLightboxImage({ src: activePlate.src, caption: activePlate.caption })}
-                    aria-label={`पूर्ण दर्शन देखें: ${activePlate.caption}`}
-                    className="h-8 px-3.5 rounded-full bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] text-[11px] font-laila font-bold inline-flex items-center gap-1 transition-colors cursor-pointer whitespace-nowrap"
-                  >
-                    <Maximize2 className="w-3 h-3" />
-                    <span>पूर्ण दर्शन</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Companion Stacked Darshan Plates (4 cols, 2 visual frames) */}
-          <div className="lg:col-span-4 grid grid-cols-2 lg:grid-cols-1 lg:grid-rows-2 gap-3.5 sm:gap-4 h-[145px] sm:h-[185px] lg:h-[430px]">
-            {[1, 2].map((offset) => {
-              const idx = (plateIndex + offset) % NITYA_DARSHAN_PLATES.length;
-              const tile = NITYA_DARSHAN_PLATES[idx];
-              return (
-                <button
-                  key={tile.id}
-                  type="button"
-                  onClick={() => selectPlate(idx)}
-                  className="group relative w-full h-full rounded-[22px] sm:rounded-[24px] squircle-card overflow-hidden bg-[#140B05] text-left cursor-pointer shadow-[0_8px_24px_rgba(24,24,27,0.06)] select-none"
-                  title={tile.caption}
-                >
-                  <img
-                    src={tile.src}
-                    alt={tile.caption}
-                    className={`w-full h-full object-cover ${tile.pos}`}
-                    loading="eager"
-                    decoding="async"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0E0703]/90 via-[#0E0703]/20 to-transparent pointer-events-none" />
-                  <div className="absolute inset-x-0 bottom-0 p-3 sm:p-4 flex items-end justify-between gap-2">
-                    <div className="min-w-0">
-                      <div className="text-[10px] font-laila text-amber-200/90 truncate">
-                        {tile.mandir}
+                    {/* Top-Right Apple iOS 18 Plate Switch Loader */}
+                    {isPlateLoading && (
+                      <div
+                        role="status"
+                        aria-busy="true"
+                        className="absolute top-3.5 right-3.5 sm:top-4 sm:right-4 px-2.5 py-1.5 rounded-full bg-[#120A04]/70 backdrop-blur-md inline-flex items-center gap-1.5 text-[10.5px] text-amber-100 font-laila"
+                      >
+                        <IOSSpinner size="xs" theme="white" />
+                        <span>दर्शन...</span>
                       </div>
-                      <div className="font-rozha text-sm sm:text-base text-white truncate leading-tight">
-                        {tile.label}
+                    )}
+
+                    <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#0E0703]/95 via-[#0E0703]/50 to-transparent pointer-events-none" />
+
+                    <div className="absolute inset-x-0 bottom-0 p-4 sm:p-6 flex flex-col sm:flex-row sm:items-end justify-between gap-2.5">
+                      <div className="font-rozha text-[17px] sm:text-xl lg:text-[22px] text-white tracking-wide leading-snug line-clamp-1 min-w-0">
+                        {tile.caption}
+                      </div>
+
+                      <div className="flex items-center justify-between sm:justify-end gap-2 shrink-0">
+                        <div className="flex items-center gap-1 sm:hidden" aria-hidden="true">
+                          {NITYA_DARSHAN_PLATES.map((p, i) => (
+                            <span
+                              key={p.id}
+                              className={`h-1 rounded-full transition-all duration-200 ${
+                                i === pIdx ? 'w-4 bg-[#FEF08A]' : 'w-1.5 bg-white/40'
+                              }`}
+                            />
+                          ))}
+                        </div>
+
+                        <div className="flex items-center gap-1.5">
+                          <button
+                            type="button"
+                            onClick={() => selectPlate(pIdx - 1)}
+                            aria-label="पिछला दर्शन"
+                            className="w-8 h-8 rounded-full bg-[#120A04]/50 hover:bg-[#120A04]/75 text-white backdrop-blur-md flex items-center justify-center transition-colors cursor-pointer"
+                          >
+                            <ChevronLeft className="w-4 h-4" />
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => selectPlate(pIdx + 1)}
+                            aria-label="अगला दर्शन"
+                            className="w-8 h-8 rounded-full bg-[#120A04]/50 hover:bg-[#120A04]/75 text-white backdrop-blur-md flex items-center justify-center transition-colors cursor-pointer"
+                          >
+                            <ChevronRight className="w-4 h-4" />
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setLightboxImage({ src: tile.src, caption: tile.caption })}
+                            aria-label={`पूर्ण दर्शन देखें: ${tile.caption}`}
+                            className="h-8 px-3.5 rounded-full bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] text-[11px] font-laila font-bold inline-flex items-center gap-1 transition-colors cursor-pointer whitespace-nowrap"
+                          >
+                            <Maximize2 className="w-3 h-3" />
+                            <span>पूर्ण दर्शन</span>
+                          </button>
+                        </div>
                       </div>
                     </div>
-                    <span className="hidden sm:inline-flex text-[11px] font-laila font-semibold text-[#FEF08A] shrink-0">
-                      देखें →
-                    </span>
-                  </div>
-                </button>
-              );
-            })}
-          </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0E0703]/90 via-[#0E0703]/20 to-transparent pointer-events-none" />
+                    <div className="absolute inset-x-0 bottom-0 p-3 sm:p-4 flex items-end justify-between gap-2">
+                      <div className="min-w-0">
+                        <div className="text-[10px] font-laila text-amber-200/90 truncate">
+                          {tile.mandir}
+                        </div>
+                        <div className="font-rozha text-sm sm:text-base text-white truncate leading-tight">
+                          {tile.label}
+                        </div>
+                      </div>
+                      <span className="hidden sm:inline-flex text-[11px] font-laila font-semibold text-[#FEF08A] shrink-0">
+                        देखें →
+                      </span>
+                    </div>
+                  </>
+                )}
+              </div>
+            );
+          })}
         </div>
 
         {/* Clean Borderless Darshan Plate Pills Strip */}
@@ -546,7 +668,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
                   type="button"
                   onClick={() => {
                     const prev = (plateIndex - 1 + NITYA_DARSHAN_PLATES.length) % NITYA_DARSHAN_PLATES.length;
-                    setPlateIndex(prev);
+                    selectPlate(prev);
                     setLightboxImage({
                       src: NITYA_DARSHAN_PLATES[prev].src,
                       caption: NITYA_DARSHAN_PLATES[prev].caption,
@@ -562,7 +684,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
                   type="button"
                   onClick={() => {
                     const next = (plateIndex + 1) % NITYA_DARSHAN_PLATES.length;
-                    setPlateIndex(next);
+                    selectPlate(next);
                     setLightboxImage({
                       src: NITYA_DARSHAN_PLATES[next].src,
                       caption: NITYA_DARSHAN_PLATES[next].caption,

@@ -526,7 +526,7 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
             {/* Smooth Elastic Pill */}
             <span
               aria-hidden="true"
-              className="absolute top-1.5 bottom-1.5 rounded-[10px] bg-white dark:bg-stone-900 shadow-[0_1.5px_4px_rgba(0,0,0,0.08)] border border-stone-200/50 dark:border-stone-700/60 pointer-events-none transition-transform duration-[240ms] ease-[cubic-bezier(0.32,0.72,0,1)] will-change-transform"
+              className="absolute top-1.5 bottom-1.5 rounded-[10px] bg-white dark:bg-stone-900 shadow-[0_1.5px_4px_rgba(0,0,0,0.08)] border border-stone-200/50 dark:border-stone-700/60 pointer-events-none transition-transform duration-[240ms] ease-[cubic-bezier(0.5,0,0.9,0.3)] will-change-transform"
               style={{
                 width: 'calc((100% - 12px) / 4)',
                 left: '6px',

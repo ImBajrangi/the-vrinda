@@ -117,7 +117,7 @@ export const FloatingNavbar: React.FC<FloatingNavbarProps> = ({
 
   return (
     // Only displayed on mobile (< md). On tablet & desktop, top header navigation takes over.
-    <div className={`md:hidden fixed bottom-3.5 min-[380px]:bottom-5 left-0 right-0 z-40 flex items-center justify-center gap-2 px-2 max-w-md w-full mx-auto pointer-events-none box-border transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+    <div className={`md:hidden fixed bottom-3.5 min-[380px]:bottom-5 left-0 right-0 z-40 flex items-center justify-center gap-2 px-2 max-w-md w-full mx-auto pointer-events-none box-border transition-transform duration-300 ease-[cubic-bezier(0.5,0,0.9,0.3)] ${
       isVisible ? 'translate-y-0' : 'translate-y-24'
     }`}>
       {/* Fluid responsive floating nav pill */}

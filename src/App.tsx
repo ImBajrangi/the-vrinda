@@ -1289,7 +1289,7 @@ export function App({
                   {templePillStyle.ready && (
                     <span
                       aria-hidden="true"
-                      className="absolute top-1 bottom-0 rounded-full bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[340ms] ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[transform,width]"
+                      className="absolute top-1 bottom-0 rounded-full bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[340ms] ease-[cubic-bezier(0.5,0,0.9,0.3)] will-change-[transform,width]"
                       style={{
                         transform: `translate3d(${templePillStyle.left}px, 0, 0)`,
                         width: `${templePillStyle.width}px`,
@@ -1527,7 +1527,7 @@ export function App({
                     {/* Dynamic Elastic Sliding Indicator Bar */}
                     <span
                       aria-hidden="true"
-                      className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+                      className="absolute top-1 bottom-1 rounded-full bg-[#FEF08A] pointer-events-none transition-transform duration-[380ms] ease-[cubic-bezier(0.5,0,0.9,0.3)] will-change-transform"
                       style={{
                         width: 'calc((100% - 8px) / 3)',
                         left: '4px',
@@ -1842,7 +1842,7 @@ export function App({
                     {feedPillStyle.ready && (
                       <span
                         aria-hidden="true"
-                        className="absolute top-1.5 bottom-1.5 rounded-full bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[340ms] ease-[cubic-bezier(0.32,0.72,0,1)] will-change-[transform,width]"
+                        className="absolute top-1.5 bottom-1.5 rounded-full bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[340ms] ease-[cubic-bezier(0.5,0,0.9,0.3)] will-change-[transform,width]"
                         style={{
                           transform: `translate3d(${feedPillStyle.left}px, 0, 0)`,
                           width: `${feedPillStyle.width}px`,

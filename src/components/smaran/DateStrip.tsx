@@ -46,7 +46,7 @@ export const DateStrip: React.FC<DateStripProps> = ({
       {pillStyle.ready && (
         <span
           aria-hidden="true"
-          className="absolute top-1.5 bottom-1.5 rounded-[16px] bg-white shadow-[0_2px_10px_rgba(0,0,0,0.08)] border border-neutral-200/80 pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.34,1.24,0.64,1)] will-change-transform"
+          className="absolute top-1.5 bottom-1.5 rounded-[16px] bg-white shadow-[0_2px_10px_rgba(0,0,0,0.08)] border border-neutral-200/80 pointer-events-none transition-all duration-[380ms] ease-[cubic-bezier(0.5,0,0.9,0.3)] will-change-transform"
           style={{
             transform: `translateX(${pillStyle.left}px)`,
             width: `${pillStyle.width}px`,

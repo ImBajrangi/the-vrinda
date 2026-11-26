@@ -79,7 +79,7 @@ export const IOSTopProgressBar: React.FC = () => {
           transition:
             progress === 100
               ? 'width 130ms ease-out'
-              : 'width 260ms cubic-bezier(0.22, 1, 0.36, 1)',
+              : 'width 260ms cubic-bezier(0.5, 0, 0.9, 0.3)',
         }}
       />
     </div>
