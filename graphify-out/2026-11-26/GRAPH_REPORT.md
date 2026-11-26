@@ -1,7 +1,7 @@
 # Graph Report - vrindopnisad  (2026-11-26)
 
 ## Corpus Check
-- 1231 files · ~9,226,749 words
+- 1231 files · ~9,227,238 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `aebdb59d`
+- Built from commit: `f4f07453`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -243,7 +243,7 @@
 - seo-edge-guardrails.md
 - recoverMissingPadSlug
 - formatDevanagariNumerals
-- CategoriesRow.tsx
+- TopAnnouncementMarquee.tsx
 - safeLocalStorageSet
 - epicSlugs.ts
 
@@ -333,8 +333,8 @@ Cohesion: 0.11
 Nodes (17): 1.1 Targeted Identifiers in `src/components/reader/PadavaliReader.tsx`, 1.2 Dead Ends Log & TSConfig Direct Evidence, 1.3 Tool Command Execution Results, 1. `BRAJ_GLOSSARY`, 1. Observation, 2. `isGlossaryOpen` and `setIsGlossaryOpen`, 2. Logic Chain, 3. Caveats (+9 more)
 
 ### Community 15 - "SadhanaRingProgress.tsx"
-Cohesion: 0.15
-Nodes (15): DynamicNotchNavbar(), DynamicNotchNavbarProps, SacredLogo(), SacredLogoProps, ASHTAYAMA_ARTWORKS, AshtayamaTimelineDeck(), AshtayamaTimelineDeckProps, SadhanaPillarModalProps (+7 more)
+Cohesion: 0.18
+Nodes (12): ArtworkGraphicSlot(), ArtworkGraphicSlotProps, GraphicAspectRatio, GraphicSlotTheme, ASHTAYAMA_ARTWORKS, AshtayamaTimelineDeck(), AshtayamaTimelineDeckProps, DAILY_AMRIT_VANI (+4 more)
 
 ### Community 16 - "CharitraDarshan.tsx"
 Cohesion: 0.27
@@ -921,16 +921,16 @@ Cohesion: 0.12
 Nodes (25): AppProps, AppRouteState, FloatingNavbar(), FloatingNavbarProps, NavTab, CharitraDarshan(), DhamTirthaSection(), KathaSanctuary() (+17 more)
 
 ### Community 232 - "IOSActivityIndicator.tsx"
-Cohesion: 0.13
-Nodes (14): IOSPillLoaderProps, IOSSpinner(), IOSSpinnerProps, IOSTopProgressBar(), navigationProgress, ProgressListener, progressListeners, SIZE_MAP (+6 more)
+Cohesion: 0.11
+Nodes (17): IOSPillLoaderProps, IOSSpinner(), IOSSpinnerProps, IOSTopProgressBar(), navigationProgress, ProgressListener, progressListeners, SIZE_MAP (+9 more)
 
 ### Community 236 - "formatDevanagariNumerals"
-Cohesion: 0.22
-Nodes (11): MarqueeItemData, SSR_BASELINE_DATE, TopAnnouncementMarquee(), TopAnnouncementMarqueeProps, PillarType, SadhanaPillarModal(), computeMantraCount(), computeProgressPercent() (+3 more)
+Cohesion: 0.18
+Nodes (14): DynamicNotchNavbar(), DynamicNotchNavbarProps, SacredLogo(), SacredLogoProps, PillarType, SadhanaPillarModal(), SadhanaPillarModalProps, SadhanaRingProgressProps (+6 more)
 
-### Community 237 - "CategoriesRow.tsx"
-Cohesion: 0.25
-Nodes (7): ArtworkGraphicSlot(), ArtworkGraphicSlotProps, GraphicAspectRatio, GraphicSlotTheme, CategoriesRow(), CategoriesRowProps, ContentBarTab
+### Community 237 - "TopAnnouncementMarquee.tsx"
+Cohesion: 0.40
+Nodes (4): MarqueeItemData, SSR_BASELINE_DATE, TopAnnouncementMarquee(), TopAnnouncementMarqueeProps
 
 ### Community 238 - "safeLocalStorageSet"
 Cohesion: 0.42

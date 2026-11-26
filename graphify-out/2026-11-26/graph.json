@@ -6992,8 +6992,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_common_artworkgraphicslot",
-      "community": 237,
-      "community_name": "CategoriesRow.tsx",
+      "community": 15,
+      "community_name": "SadhanaRingProgress.tsx",
       "norm_label": "artworkgraphicslot.tsx"
     },
     {
@@ -7005,8 +7005,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_artworkgraphicslot_graphicaspectratio",
-      "community": 237,
-      "community_name": "CategoriesRow.tsx",
+      "community": 15,
+      "community_name": "SadhanaRingProgress.tsx",
       "norm_label": "graphicaspectratio"
     },
     {
@@ -7018,8 +7018,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_artworkgraphicslot_graphicslottheme",
-      "community": 237,
-      "community_name": "CategoriesRow.tsx",
+      "community": 15,
+      "community_name": "SadhanaRingProgress.tsx",
       "norm_label": "graphicslottheme"
     },
     {
@@ -7031,8 +7031,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_artworkgraphicslot_artworkgraphicslotprops",
-      "community": 237,
-      "community_name": "CategoriesRow.tsx",
+      "community": 15,
+      "community_name": "SadhanaRingProgress.tsx",
       "norm_label": "artworkgraphicslotprops"
     },
     {
@@ -7043,8 +7043,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_common_artworkgraphicslot_artworkgraphicslot",
-      "community": 237,
-      "community_name": "CategoriesRow.tsx",
+      "community": 15,
+      "community_name": "SadhanaRingProgress.tsx",
       "norm_label": "artworkgraphicslot()"
     },
     {
@@ -7126,8 +7126,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_common_dynamicnotchnavbar",
-      "community": 15,
-      "community_name": "SadhanaRingProgress.tsx",
+      "community": 236,
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "dynamicnotchnavbar.tsx"
     },
     {
@@ -7139,8 +7139,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_dynamicnotchnavbar_dynamicnotchnavbarprops",
-      "community": 15,
-      "community_name": "SadhanaRingProgress.tsx",
+      "community": 236,
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "dynamicnotchnavbarprops"
     },
     {
@@ -7151,8 +7151,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_common_dynamicnotchnavbar_dynamicnotchnavbar",
-      "community": 15,
-      "community_name": "SadhanaRingProgress.tsx",
+      "community": 236,
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "dynamicnotchnavbar()"
     },
     {
@@ -7436,8 +7436,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_common_sacredlogo",
-      "community": 15,
-      "community_name": "SadhanaRingProgress.tsx",
+      "community": 236,
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "sacredlogo.tsx"
     },
     {
@@ -7449,8 +7449,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_sacredlogo_sacredlogoprops",
-      "community": 15,
-      "community_name": "SadhanaRingProgress.tsx",
+      "community": 236,
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "sacredlogoprops"
     },
     {
@@ -7461,8 +7461,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_common_sacredlogo_sacredlogo",
-      "community": 15,
-      "community_name": "SadhanaRingProgress.tsx",
+      "community": 236,
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "sacredlogo()"
     },
     {
@@ -7664,8 +7664,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_common_topannouncementmarquee",
-      "community": 236,
-      "community_name": "formatDevanagariNumerals",
+      "community": 237,
+      "community_name": "TopAnnouncementMarquee.tsx",
       "norm_label": "topannouncementmarquee.tsx"
     },
     {
@@ -7677,8 +7677,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_topannouncementmarquee_topannouncementmarqueeprops",
-      "community": 236,
-      "community_name": "formatDevanagariNumerals",
+      "community": 237,
+      "community_name": "TopAnnouncementMarquee.tsx",
       "norm_label": "topannouncementmarqueeprops"
     },
     {
@@ -7690,8 +7690,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_topannouncementmarquee_marqueeitemdata",
-      "community": 236,
-      "community_name": "formatDevanagariNumerals",
+      "community": 237,
+      "community_name": "TopAnnouncementMarquee.tsx",
       "norm_label": "marqueeitemdata"
     },
     {
@@ -7701,8 +7701,8 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "src_components_common_topannouncementmarquee_ssr_baseline_date",
-      "community": 236,
-      "community_name": "formatDevanagariNumerals",
+      "community": 237,
+      "community_name": "TopAnnouncementMarquee.tsx",
       "norm_label": "ssr_baseline_date"
     },
     {
@@ -7713,8 +7713,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_common_topannouncementmarquee_topannouncementmarquee",
-      "community": 236,
-      "community_name": "formatDevanagariNumerals",
+      "community": 237,
+      "community_name": "TopAnnouncementMarquee.tsx",
       "norm_label": "topannouncementmarquee()"
     },
     {
@@ -8614,8 +8614,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_smaran_categoriesrow",
-      "community": 237,
-      "community_name": "CategoriesRow.tsx",
+      "community": 232,
+      "community_name": "IOSActivityIndicator.tsx",
       "norm_label": "categoriesrow.tsx"
     },
     {
@@ -8627,8 +8627,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_smaran_categoriesrow_contentbartab",
-      "community": 237,
-      "community_name": "CategoriesRow.tsx",
+      "community": 232,
+      "community_name": "IOSActivityIndicator.tsx",
       "norm_label": "contentbartab"
     },
     {
@@ -8640,8 +8640,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_smaran_categoriesrow_categoriesrowprops",
-      "community": 237,
-      "community_name": "CategoriesRow.tsx",
+      "community": 232,
+      "community_name": "IOSActivityIndicator.tsx",
       "norm_label": "categoriesrowprops"
     },
     {
@@ -8652,8 +8652,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_smaran_categoriesrow_categoriesrow",
-      "community": 237,
-      "community_name": "CategoriesRow.tsx",
+      "community": 232,
+      "community_name": "IOSActivityIndicator.tsx",
       "norm_label": "categoriesrow()"
     },
     {
@@ -8955,8 +8955,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_smaran_sadhanapillarmodal_sadhanapillarmodalprops",
-      "community": 15,
-      "community_name": "SadhanaRingProgress.tsx",
+      "community": 236,
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "sadhanapillarmodalprops"
     },
     {
@@ -9013,8 +9013,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_smaran_sadhanaringprogress_sadhanaringprogressprops",
-      "community": 15,
-      "community_name": "SadhanaRingProgress.tsx",
+      "community": 236,
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "sadhanaringprogressprops"
     },
     {
@@ -12912,8 +12912,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_types_devotional_sadhanastate",
-      "community": 15,
-      "community_name": "SadhanaRingProgress.tsx",
+      "community": 236,
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "sadhanastate"
     },
     {
@@ -25596,7 +25596,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/smaran/SadhanaRingProgress.tsx",
-      "source_location": "L216",
+      "source_location": "L324",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_smaran_sadhanaringprogress_sadhanaringprogress",
@@ -39386,7 +39386,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/smaran/SadhanaRingProgress.tsx",
-      "source_location": "L141",
+      "source_location": "L147",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_smaran_sadhanaringprogress_sadhanaringprogress",
@@ -39398,7 +39398,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/smaran/SadhanaRingProgress.tsx",
-      "source_location": "L247",
+      "source_location": "L355",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_smaran_sadhanaringprogress_sadhanaringprogress",
@@ -39410,7 +39410,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/smaran/SadhanaRingProgress.tsx",
-      "source_location": "L315",
+      "source_location": "L423",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_smaran_sadhanaringprogress_sadhanaringprogress",
@@ -39422,7 +39422,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/smaran/SadhanaRingProgress.tsx",
-      "source_location": "L142",
+      "source_location": "L148",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_smaran_sadhanaringprogress_sadhanaringprogress",
@@ -58325,5 +58325,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "aebdb59d2971a63c4efc247fe4caa1428a5b356d"
+  "built_at_commit": "f4f074539b425f12d63874592c6590a6601ab166"
 }
