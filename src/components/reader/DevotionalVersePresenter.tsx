@@ -241,7 +241,7 @@ export const DevotionalVersePresenter: React.FC<DevotionalVersePresenterProps> =
                 title="टैप करके इस चरण पर एकाग्रता पाठ करें"
               >
                 {/* Floating Stanza Numeral Badge */}
-                {unit.stanzaNumber && (parsed.units.filter((u) => u.type === 'stanza').length > 1 || !hideToolbar) && (
+                {unit.stanzaNumber && !hideToolbar && (parsed.units.filter((u) => u.type === 'stanza').length > 1 || !hideToolbar) && (
                   <span
                     className={`inline-block mb-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold transition-colors select-none ${isFocused
                         ? 'bg-[#FEF08A] text-[#78350F]'

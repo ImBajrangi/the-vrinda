@@ -221,7 +221,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   const [selectedChapter, setSelectedChapter] = useState<string>('all');
   const [isChapterDropdownOpen, setIsChapterDropdownOpen] = useState<boolean>(false);
   const [activeScrollerVerseId, setActiveScrollerVerseId] = useState<string>('');
-  const [streamLimit, setStreamLimit] = useState<number>(100);
+  const [streamLimit, setStreamLimit] = useState<number>(20);
   const scrubberBtnRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
   const isProgrammaticScrollRef = useRef<boolean>(false);
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -2856,7 +2856,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               </div>
 
               {/* Sticky Quick-Jump Verse Scrubber (Desktop Only) */}
-              <div className="hidden md:flex sticky top-2 z-20 p-2 rounded-2xl bg-white border border-amber-900/10 shadow-xs items-center gap-2">
+              <div className="hidden md:flex sticky top-24 z-20 p-2 rounded-2xl bg-white border border-amber-900/10 shadow-xs items-center gap-2">
                 <span className="text-[10px] font-mono font-bold text-amber-800 shrink-0 uppercase tracking-wider pl-1.5">
                   पद क्रम:
                 </span>
@@ -2938,7 +2938,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                       <div
                         key={pad.id}
                         id={`verse-stream-${pad.id}`}
-                        className={`scroll-mt-24 sm:scroll-mt-28 p-3.5 sm:p-7 rounded-[18px] sm:rounded-2xl border-0 sm:border transition-colors duration-200 ${
+                        className={`pad-stream-card scroll-mt-24 sm:scroll-mt-28 p-3.5 sm:p-7 rounded-[18px] sm:rounded-2xl border-0 sm:border transition-colors duration-200 ${
                           selectedPad.id === pad.id
                             ? 'bg-[#FFFDF9] sm:border-amber-300/70 shadow-[0_2px_12px_rgba(251,191,36,0.07)]'
                             : `${currentTheme.cardHoverBg} sm:${currentTheme.borderColor}`
@@ -3015,7 +3015,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                                 }`}
                             >
                               <Sparkles className="w-3 h-3 text-amber-700" />
-                              <span>भावार्थ ▾</span>
+                              <span className="whitespace-nowrap">भावार्थ ▾</span>
                             </button>
                           </div>
                         </div>

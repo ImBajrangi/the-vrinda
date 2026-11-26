@@ -1117,7 +1117,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                     key={pad.id}
                     id={`shloka-${pad.id}`}
                     onClick={() => setActiveVerseId(pad.id)}
-                    className={`scroll-mt-28 p-3.5 sm:p-6 rounded-[18px] sm:rounded-[20px] border-0 sm:border transition-colors duration-200 space-y-4 cursor-pointer select-text ${
+                    className={`pad-stream-card scroll-mt-28 p-3.5 sm:p-6 rounded-[18px] sm:rounded-[20px] border-0 sm:border transition-colors duration-200 space-y-4 cursor-pointer select-text ${
                       isActive
                         ? 'bg-[#FFFDF9] sm:border-amber-300/70 shadow-[0_2px_12px_rgba(251,191,36,0.07)]'
                         : 'bg-white sm:bg-[#FAF8F5]/60 hover:bg-[#FAF8F5] sm:border-amber-900/10 shadow-2xs sm:shadow-none'

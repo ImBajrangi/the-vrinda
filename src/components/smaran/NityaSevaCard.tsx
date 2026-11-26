@@ -97,7 +97,7 @@ export const NityaSevaCard: React.FC<NityaSevaCardProps> = ({
           src={activeImage}
           alt={templeName}
           className="absolute inset-0 w-full h-full object-cover object-[center_35%]"
-          loading="lazy"
+          loading="eager"
         />
         {/* Cinematic Gradient Scrim */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent pointer-events-none" />

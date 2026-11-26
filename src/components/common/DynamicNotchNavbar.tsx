@@ -278,12 +278,12 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
         />
       )}
       <header
-        className={`fixed ${
-          isMarqueeVisible ? 'top-10 sm:top-12' : 'top-2.5 sm:top-4'
+        className={`fixed top-2.5 sm:top-4 ${
+          isMarqueeVisible ? 'translate-y-[1.875rem] sm:translate-y-[2rem]' : 'translate-y-0'
         } left-0 right-0 z-50 w-full px-3 sm:px-6 pointer-events-none select-none header-banner-transition transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${
           !isVisibleOnMobile
             ? '-translate-y-[150%] md:translate-y-0 opacity-0 md:opacity-100 pointer-events-none md:pointer-events-auto'
-            : 'translate-y-0 opacity-100'
+            : ''
         }`}
       >
       <div className="w-full max-w-6xl xl:max-w-7xl 2xl:max-w-[1536px] mx-auto flex flex-col items-center">

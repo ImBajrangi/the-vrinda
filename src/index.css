@@ -29,7 +29,7 @@ body {
   font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   min-height: 100vh;
   background: radial-gradient(circle at 50% 0%, #FFFFFF 0%, #FDFBF7 40%, #F7F3E9 100%);
-  background-attachment: fixed;
+  background-attachment: scroll;
   color: #18181B;
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: transparent;
@@ -100,7 +100,6 @@ body {
 .pressable {
   transition: transform 0.22s var(--ease-ios-spring), opacity 0.15s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
   transition-timing-function: var(--ease-ios-spring) !important;
-  will-change: transform, opacity;
   -webkit-user-select: none;
   user-select: none;
 }
@@ -120,7 +119,6 @@ button:focus-visible {
 .pressable-sm {
   transition: transform 0.18s var(--ease-ios-spring), opacity 0.12s ease, background-color 0.2s ease, border-color 0.2s ease !important;
   transition-timing-function: var(--ease-ios-spring) !important;
-  will-change: transform, opacity;
   -webkit-user-select: none;
   user-select: none;
 }
@@ -344,11 +342,11 @@ button:focus-visible {
 }
 
 .announcement-banner-transition {
-  transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease, border-bottom-width 0.35s ease !important;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease !important;
 }
 
 .header-banner-transition {
-  transition: top 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 .main-wrapper-padding-transition {
@@ -430,8 +428,6 @@ button:focus-visible {
 .native-drawer-surface {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
   -webkit-font-smoothing: antialiased;
   contain: paint;
 }
@@ -446,7 +442,7 @@ button:focus-visible {
   transition: grid-template-rows 0.36s cubic-bezier(0.16, 1, 0.3, 1),
     margin-bottom 0.36s cubic-bezier(0.16, 1, 0.3, 1),
     opacity 0.28s ease;
-  will-change: grid-template-rows, margin-bottom, opacity;
+  will-change: grid-template-rows, opacity;
 }
 
 .accordion-slide-container.is-open {
@@ -927,4 +923,10 @@ button:focus-visible {
 .meru-bead {
   background: radial-gradient(circle at 35% 35%, #FEF08A 0%, #D97706 70%, #78350F 100%);
   box-shadow: 0 0 6px rgba(217, 119, 6, 0.4);
+}
+
+/* Safari scroll performance: skip rendering for off-screen pad/verse cards */
+.pad-stream-card {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 320px;
 }

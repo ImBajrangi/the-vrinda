@@ -405,7 +405,6 @@ export function App({
     return initialRoute.tab;
   });
   const [selectedDate, setSelectedDate] = useState<number>(() => new Date().getDate());
-  const [visitedTabs, setVisitedTabs] = useState<Set<NavTab>>(() => new Set([activeTab]));
 
   // Pre-warm lazy reader JS chunks during browser idle time without mounting hidden DOM subtrees
   useEffect(() => {
@@ -684,37 +683,10 @@ export function App({
     };
   }, []);
 
-  // Proactive Background Tab Pre-warming for Instantaneous 0ms Tab Switching
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const scheduleIdle = 'requestIdleCallback' in window
-      ? (cb: () => void) => (window as any).requestIdleCallback(cb, { timeout: 2500 })
-      : (cb: () => void) => setTimeout(cb, 1000);
-
-    const timer = scheduleIdle(() => {
-      // Warm both reader tabs into visitedTabs so their components are pre-hydrated in memory
-      setVisitedTabs((prev) => {
-        const next = new Set(prev);
-        next.add('granthas');
-        next.add('padavali');
-        return next;
-      });
-    });
-
-    return () => {
-      if (typeof window !== 'undefined' && 'cancelIdleCallback' in window) {
-        (window as any).cancelIdleCallback(timer);
-      } else {
-        clearTimeout(timer);
-      }
-    };
-  }, []);
-
   // Listen to browser back/forward buttons (popstate) for seamless navigation
   useEffect(() => {
     const handlePopState = () => {
       const nextRoute = resolveCurrentRoute();
-      setVisitedTabs((prev) => (prev.has(nextRoute.tab) ? prev : new Set(prev).add(nextRoute.tab)));
       setActiveTab(nextRoute.tab);
       if (nextRoute.grantha && nextRoute.grantha !== 'all') {
         if (SacredDatabase.isEpicGrantha(nextRoute.grantha)) {
@@ -737,8 +709,6 @@ export function App({
       setActiveGuideSlug(null);
     }
     if (tab === activeTab && !activeGuideSlug) return;
-    // Synchronously ensure target tab is in visitedTabs so it renders in Frame 1
-    setVisitedTabs((prev) => (prev.has(tab) ? prev : new Set(prev).add(tab)));
     setActiveTab(tab);
     if (typeof window !== 'undefined') {
       try {
@@ -1100,7 +1070,7 @@ export function App({
           ) : null}
 
           {/* Tab 1: Smaran (Dashboard) - Adaptive 3-Column on Desktop (xl:), 2-Column on Tablet, 1-Column on Mobile */}
-          {!activeGuideSlug && visitedTabs.has('smaran') && (
+          {!activeGuideSlug && activeTab === 'smaran' && (
             <div
               className={`w-full pb-44 md:pb-28 ${activeTab === 'smaran' ? 'block' : 'hidden'}`}
               style={{ display: activeTab === 'smaran' ? 'block' : 'none' }}
@@ -1130,10 +1100,11 @@ export function App({
                 />
               </div>
 
-              {/* Sanctuary Hero Panoramic Art Frame (Empty & ready for user's Vrindavan Dham artwork) */}
+              {/* Sanctuary Hero Panoramic Art Frame */}
               <div className="w-full mb-6">
                 <ArtworkGraphicSlot
-                  src={null}
+                  src="/assets/temples/keshi-ghat.webp"
+                  alt="श्री वृन्दावन धाम केशी घाट व यमुना दर्शन"
                   aspectRatio="banner"
                   theme="amber"
                   placeholderLabel="श्री वृन्दावन धाम पावन लीला"
@@ -1531,10 +1502,11 @@ export function App({
                       className="w-full bg-[#FAF9F5] hover:bg-[#FEFCE8] rounded-[22px] p-3.5 sm:p-4 flex items-center justify-between gap-3 sm:gap-4 transition-colors cursor-pointer select-none"
                     >
                       <div className="flex items-center gap-3.5 sm:gap-4 flex-1 min-w-0">
-                        {/* Featured Pad Artwork Slot: Empty & ready for cover art */}
+                        {/* Featured Pad Artwork Slot */}
                         <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0">
                           <ArtworkGraphicSlot
-                            src={null}
+                            src="/assets/temples/radha-vallabh.webp"
+                            alt="श्री राधावल्लभ लाल पद श्रवण"
                             aspectRatio="square"
                             theme="amber"
                             placeholderLabel="पद आवरण"
@@ -1613,10 +1585,11 @@ export function App({
                       className="w-full bg-[#FAF9F5] hover:bg-[#FEFCE8] rounded-[22px] p-3.5 sm:p-4 flex items-center justify-between gap-3 sm:gap-4 transition-colors cursor-pointer select-none"
                     >
                       <div className="flex items-center gap-3.5 sm:gap-4 flex-1 min-w-0">
-                        {/* Dhyana Atmosphere Graphic Slot: Empty & ready for artwork */}
+                        {/* Dhyana Atmosphere Graphic Slot */}
                         <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0">
                           <ArtworkGraphicSlot
-                            src={null}
+                            src="/assets/temples/aarti-lamp.webp"
+                            alt="गहन ध्यान व शांत तानपूरा नाद"
                             aspectRatio="square"
                             theme="sky"
                             placeholderLabel="ध्यान वातावरण"
@@ -1669,12 +1642,8 @@ export function App({
           )}
 
           {/* Tab 2: Sanatan Mahagranth Parayana (Piece-by-Piece Streaming Reader for Epics) */}
-          {visitedTabs.has('granthas') && (
-            <div
-              className={`w-full ${activeTab === 'granthas' ? 'block' : 'hidden'}`}
-              style={{ display: activeTab === 'granthas' ? 'block' : 'none' }}
-              aria-hidden={activeTab !== 'granthas'}
-            >
+          {!activeGuideSlug && activeTab === 'granthas' && (
+            <div className="w-full">
               <Suspense fallback={<ReaderLoadingSkeleton />}>
                 <MahagranthReaderComp
                   isActiveTab={activeTab === 'granthas'}
@@ -1700,12 +1669,8 @@ export function App({
           )}
 
           {/* Tab 3: Sacred Padavali & Chhand Sanctuary */}
-          {visitedTabs.has('padavali') && (
-            <div
-              className={`w-full ${activeTab === 'padavali' ? 'block' : 'hidden'}`}
-              style={{ display: activeTab === 'padavali' ? 'block' : 'none' }}
-              aria-hidden={activeTab !== 'padavali'}
-            >
+          {!activeGuideSlug && activeTab === 'padavali' && (
+            <div className="w-full">
               <Suspense fallback={<ReaderLoadingSkeleton />}>
                 <PadavaliReaderComp
                   isActiveTab={activeTab === 'padavali'}
@@ -1741,19 +1706,15 @@ export function App({
           )}
 
           {/* Tab 4: Devotional Darshan Feed */}
-          {visitedTabs.has('feed') && (
-            <div
-              className={`w-full pt-1 pb-48 md:pb-28 ${activeTab === 'feed' ? 'block' : 'hidden'}`}
-              style={{ display: activeTab === 'feed' ? 'block' : 'none' }}
-              aria-hidden={activeTab !== 'feed'}
-            >
+          {!activeGuideSlug && activeTab === 'feed' && (
+            <div className="w-full pt-1 pb-48 md:pb-28">
               <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
                 {/* Main Feed Column (8 cols) */}
                 <div className="md:col-span-8 space-y-4">
                   {/* Header Banner */}
                   <div className="relative rounded-[24px] overflow-hidden mb-3 aspect-[21/9] bg-amber-950">
                     <img
-                      src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80"
+                      src="/assets/temples/banke-bihari-v2.webp"
                       alt="Divine Vrindavan"
                       className="w-full h-full object-cover opacity-75"
                     />
@@ -1880,12 +1841,8 @@ export function App({
           )}
 
           {/* Tab 5: Milestones & Streaks */}
-          {visitedTabs.has('milestones') && (
-            <div
-              className={`w-full pb-48 md:pb-28 ${activeTab === 'milestones' ? 'block' : 'hidden'}`}
-              style={{ display: activeTab === 'milestones' ? 'block' : 'none' }}
-              aria-hidden={activeTab !== 'milestones'}
-            >
+          {!activeGuideSlug && activeTab === 'milestones' && (
+            <div className="w-full pb-48 md:pb-28">
               <Suspense fallback={<ReaderLoadingSkeleton />}>
                 <MilestonesViewComp onBack={() => handleTabSwitch('smaran')} />
               </Suspense>
@@ -1893,12 +1850,8 @@ export function App({
           )}
 
           {/* Tab 6: Nitya Upasana (Ritual Aartis, Chalisas, Stotras) */}
-          {visitedTabs.has('rituals') && (
-            <div
-              className={`w-full pb-48 md:pb-28 ${activeTab === 'rituals' ? 'block' : 'hidden'}`}
-              style={{ display: activeTab === 'rituals' ? 'block' : 'none' }}
-              aria-hidden={activeTab !== 'rituals'}
-            >
+          {!activeGuideSlug && activeTab === 'rituals' && (
+            <div className="w-full pb-48 md:pb-28">
               <Suspense fallback={<ReaderLoadingSkeleton />}>
                 <NityaUpasanaReaderComp
                   initialRitualSlug={initialRitualSlug || initialRoute.ritualSlug}
@@ -1909,12 +1862,8 @@ export function App({
           )}
 
           {/* Tab 7: Katha Sanctuary (Sacred Stories & Leelas) */}
-          {visitedTabs.has('stories') && (
-            <div
-              className={`w-full pb-48 md:pb-28 ${activeTab === 'stories' ? 'block' : 'hidden'}`}
-              style={{ display: activeTab === 'stories' ? 'block' : 'none' }}
-              aria-hidden={activeTab !== 'stories'}
-            >
+          {!activeGuideSlug && activeTab === 'stories' && (
+            <div className="w-full pb-48 md:pb-28">
               <Suspense fallback={<ReaderLoadingSkeleton />}>
                 <KathaSanctuaryComp
                   initialStorySlug={initialStorySlug || initialRoute.storySlug}
@@ -1926,12 +1875,8 @@ export function App({
           )}
 
           {/* Tab 8: Charitra Darshan (Saint & Rishi Biographies) */}
-          {visitedTabs.has('biographies') && (
-            <div
-              className={`w-full pb-48 md:pb-28 ${activeTab === 'biographies' ? 'block' : 'hidden'}`}
-              style={{ display: activeTab === 'biographies' ? 'block' : 'none' }}
-              aria-hidden={activeTab !== 'biographies'}
-            >
+          {!activeGuideSlug && activeTab === 'biographies' && (
+            <div className="w-full pb-48 md:pb-28">
               <Suspense fallback={<ReaderLoadingSkeleton />}>
                 <CharitraDarshanComp
                   initialSaintSlug={initialSaintSlug || initialRoute.bioSlug}
@@ -1949,12 +1894,8 @@ export function App({
           )}
 
           {/* Tab 9: Dham & Tirtha Section (Sacred Places) */}
-          {visitedTabs.has('places') && (
-            <div
-              className={`w-full pb-48 md:pb-28 ${activeTab === 'places' ? 'block' : 'hidden'}`}
-              style={{ display: activeTab === 'places' ? 'block' : 'none' }}
-              aria-hidden={activeTab !== 'places'}
-            >
+          {!activeGuideSlug && activeTab === 'places' && (
+            <div className="w-full pb-48 md:pb-28">
               <Suspense fallback={<ReaderLoadingSkeleton />}>
                 <DhamTirthaSectionComp
                   initialPlaceSlug={initialPlaceSlug || initialRoute.placeSlug}

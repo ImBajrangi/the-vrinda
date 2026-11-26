@@ -341,9 +341,7 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
               aria-expanded={isMenuOpen}
               className="w-[34px] h-[34px] rounded-full flex items-center justify-center text-[#111111] pressable shrink-0 hover:bg-[#FAF6EE] transition-colors"
               style={{
-                background: 'rgba(255, 255, 255, 0.65)',
-                backdropFilter: 'blur(16px)',
-                WebkitBackdropFilter: 'blur(16px)',
+                background: 'rgba(255, 255, 255, 0.92)',
               }}
             >
               <MoreVertical className="w-3.5 h-3.5" />
