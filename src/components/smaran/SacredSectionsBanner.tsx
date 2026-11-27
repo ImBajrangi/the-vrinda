@@ -142,12 +142,12 @@ export const SacredSectionsBanner: React.FC<SacredSectionsBannerProps> = ({ onSe
             >
               <div className="space-y-2.5">
                 {/* Clean Unobscured WebP Photograph */}
-                <div className="w-full aspect-[4/3] rounded-[8px] overflow-hidden bg-amber-950/10">
+                <div className="w-full aspect-[4/3] rounded-[8px] overflow-hidden bg-[#EFE7D8]">
                   <img
                     src={card.imageUrl}
                     alt={card.title}
                     className="w-full h-full object-cover object-[center_20%]"
-                    loading="lazy"
+                    loading="eager"
                     decoding="async"
                   />
                 </div>
@@ -220,7 +220,7 @@ export const SacredSectionsBanner: React.FC<SacredSectionsBannerProps> = ({ onSe
                   src={saint.img}
                   alt={saint.name}
                   className="w-9 h-9 rounded-full object-cover object-top border border-amber-300/80 shrink-0"
-                  loading="lazy"
+                  loading="eager"
                   decoding="async"
                 />
                 <div className="min-w-0">

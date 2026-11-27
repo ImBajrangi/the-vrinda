@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useMemo, lazy, Suspense } from 'react';
-import { Radio, Sun, Heart, Check, Sparkles, ExternalLink } from 'lucide-react';
+import { Radio, Sun, Heart, Check, Sparkles, ExternalLink, PanelRightClose, PanelRightOpen } from 'lucide-react';
 import { FloatingNavbar, NavTab } from './components/common/FloatingNavbar';
+import { useSidebarState } from './hooks/useSidebarState';
 import { DynamicNotchNavbar } from './components/common/DynamicNotchNavbar';
 import { TopAnnouncementMarquee } from './components/common/TopAnnouncementMarquee';
 import { DateStrip, DayItem } from './components/smaran/DateStrip';
@@ -510,6 +511,7 @@ export function App({
   });
   const [activeSanctuaryStream, setActiveSanctuaryStream] = useState<'ashtayama' | 'audio' | 'dhyana'>('ashtayama');
   const [templeFilter, setTempleFilter] = useState<'all' | 'open' | 'rajbhog' | 'evening'>('all');
+  const { rightCollapsed: isFeedSidebarCollapsed, toggleRight: toggleFeedSidebar } = useSidebarState('feed');
 
   const istParts = useMemo(() => getIstParts(liveNow), [liveNow]);
   const istMins = istParts.minutesOfDay;
@@ -1135,81 +1137,31 @@ export function App({
                 />
               </div>
 
-              {/* Sanctuary Hero Panoramic Art Frame (Clean Photographic Showcase) */}
-              <div className="w-full mb-6">
-                <ArtworkGraphicSlot
-                  src="/assets/temples/keshi-ghat.webp"
-                  alt="श्री वृन्दावन धाम केशी घाट व यमुना दर्शन"
-                  aspectRatio="banner"
-                  theme="amber"
-                  roundedClassName="rounded-[28px]"
-                  eager={true}
-                  overlayContent={
-                    <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
-                      <div>
-                        <p className="font-laila text-xs sm:text-sm text-amber-200 font-medium">
-                          केशी घाट • कालिन्दी तट एवं कुञ्ज निकुञ्ज लीला स्थली
-                        </p>
-                        <h3 className="font-rozha text-xl sm:text-2xl text-white leading-tight mt-0.5">
-                          श्री धाम वृन्दावन
-                        </h3>
-                      </div>
-                      <div className="flex items-center gap-4 text-xs font-laila font-semibold text-amber-100">
-                        <button
-                          type="button"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleTabSwitch('places');
-                          }}
-                          className="hover:text-white transition-colors cursor-pointer"
-                        >
-                          पावन तीर्थ →
-                        </button>
-                        <button
-                          type="button"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleTabSwitch('rituals');
-                          }}
-                          className="hover:text-white transition-colors cursor-pointer"
-                        >
-                          नित्य आरती →
-                        </button>
-                      </div>
-                    </div>
-                  }
-                />
-              </div>
-
-              {/* Daily Contemplation & Dham Atmosphere Bar (Restrained Editorial Strip) */}
-              <div className="w-full bg-white rounded-[24px] squircle-card p-3.5 sm:p-4 border border-[#EAE1D3] shadow-[0_2px_8px_rgba(0,0,0,0.02)] mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <div className="flex items-center gap-3 min-w-0 flex-1">
-                  <div className="w-10 h-10 rounded-2xl bg-[#FAF6EE] flex items-center justify-center shrink-0">
-                    <Heart className={`w-5 h-5 text-amber-700 ${isAffirmedSankalpa ? 'fill-amber-700' : 'fill-amber-700/15'} transition-colors`} />
+              {/* Daily Contemplation & Dham Atmosphere Whisper Strip */}
+              <div className="w-full bg-white rounded-[20px] squircle-card px-4 py-2.5 border border-[#EAE1D3] shadow-[0_2px_8px_rgba(0,0,0,0.02)] mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+                <div className="flex items-center gap-2.5 min-w-0 flex-1">
+                  <div className="w-8 h-8 rounded-[10px] bg-[#FAF6EE] flex items-center justify-center shrink-0">
+                    <Heart className={`w-4 h-4 text-amber-700 ${isAffirmedSankalpa ? 'fill-amber-700' : 'fill-amber-700/15'} transition-colors`} />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <span className="text-[11px] font-laila font-bold text-amber-800">
-                        नित्य संकल्प
-                      </span>
-                      <span className="text-xs text-[#71717A]">
-                        • {currentSankalpa.source}
-                      </span>
+                    <div className="flex items-center gap-2 flex-wrap text-[11px]">
+                      <span className="font-laila font-bold text-amber-800">नित्य संकल्प</span>
+                      <span className="text-[#71717A] truncate">• {currentSankalpa.source}</span>
                     </div>
-                    <p className="font-serif font-bold text-sm sm:text-base text-[#18181B] truncate mt-0.5">
+                    <p className="font-serif font-bold text-xs sm:text-sm text-[#18181B] truncate">
                       {currentSankalpa.quote}
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3 shrink-0 self-end sm:self-auto flex-wrap">
+                <div className="flex items-center gap-2.5 shrink-0 self-end sm:self-auto flex-wrap">
                   <button
                     type="button"
                     onClick={() => {
                       setSankalpaIdx((idx) => (idx + 1) % BRAJ_SANKALPA_GEMS.length);
                       setIsAffirmedSankalpa(false);
                     }}
-                    className="text-xs font-laila font-semibold text-neutral-600 hover:text-amber-900 transition-colors cursor-pointer"
+                    className="text-[11px] font-laila font-semibold text-neutral-600 hover:text-amber-900 transition-colors cursor-pointer"
                     title="अन्य रसिक संकल्प वचन देखें"
                   >
                     अन्य वचन ↻
@@ -1218,7 +1170,7 @@ export function App({
                   <button
                     type="button"
                     onClick={() => setIsAffirmedSankalpa(!isAffirmedSankalpa)}
-                    className={`px-3.5 py-1.5 rounded-full text-xs font-laila font-bold transition-colors flex items-center gap-1 cursor-pointer ${
+                    className={`px-3 py-1 rounded-full text-[11px] font-laila font-bold transition-colors flex items-center gap-1 cursor-pointer ${
                       isAffirmedSankalpa
                         ? 'bg-amber-700 text-white'
                         : 'bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F]'
@@ -1226,15 +1178,15 @@ export function App({
                   >
                     {isAffirmedSankalpa ? (
                       <>
-                        <Check className="w-3.5 h-3.5" />
-                        <span>संकल्प पूर्ण ✓</span>
+                        <Check className="w-3 h-3" />
+                        <span>संकल्प पूर्ण</span>
                       </>
                     ) : (
                       <span>संकल्प धारण</span>
                     )}
                   </button>
 
-                  <span className="inline-flex items-center gap-1.5 text-xs text-neutral-600 font-laila pl-1 border-l border-neutral-200">
+                  <span className="hidden md:inline-flex items-center gap-1.5 text-[11px] text-neutral-600 font-laila pl-2 border-l border-neutral-200">
                     <Sun className="w-3.5 h-3.5 text-amber-600 shrink-0" />
                     <span>{brajAtmosphere}</span>
                   </span>
@@ -1356,10 +1308,10 @@ export function App({
                   </button>
                 </div>
 
-                {/* Seva Timeline Cards (0 Gap Unified Mosaic driven by Live IST & Vrindavan Season) */}
+                {/* Seva Timeline Cards (Museum Ivory Daylight Showcase driven by Live IST & Vrindavan Season) */}
                 <div className="pt-1">
                   {templeFilter === 'all' && (
-                    <div className="rounded-[24px] sm:rounded-[28px] overflow-hidden shadow-md bg-neutral-950">
+                    <div className="space-y-3.5">
                       <NityaSevaCard
                         templeName={mandirStatus.bihari.templeName}
                         sevaTitle={mandirStatus.bihari.sevaTitleEnglish}
@@ -1371,11 +1323,11 @@ export function App({
                         imageUrl={mandirStatus.bihari.imageUrl}
                         isHero={true}
                         indexNumber={mandirStatus.bihari.indexNumber}
-                        seamless={true}
+                        seamless={false}
                         onOpen={() => handleTabSwitch('feed')}
                       />
 
-                      <div className="grid grid-cols-1 md:grid-cols-3">
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5">
                         {([mandirStatus.vallabh, mandirStatus.raman, mandirStatus.barsana] as LiveMandirSchedule[]).map((m) => (
                           <NityaSevaCard
                             key={m.templeId}
@@ -1388,7 +1340,7 @@ export function App({
                             countdownLabel={m.countdownLabel}
                             imageUrl={m.imageUrl}
                             indexNumber={m.indexNumber}
-                            seamless={true}
+                            seamless={false}
                             onOpen={() => handleTabSwitch(m.templeId === 'vallabh' ? 'padavali' : 'feed')}
                           />
                         ))}
@@ -1397,7 +1349,7 @@ export function App({
                   )}
 
                   {templeFilter === 'open' && (
-                    <div className="rounded-[24px] sm:rounded-[28px] overflow-hidden shadow-md bg-neutral-950 grid grid-cols-1 md:grid-cols-2">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
                       {openMandirsList.map((m) => (
                         <NityaSevaCard
                           key={m.templeId}
@@ -1411,12 +1363,12 @@ export function App({
                           imageUrl={m.imageUrl}
                           isHero={openMandirCount === 1}
                           indexNumber={m.indexNumber}
-                          seamless={true}
+                          seamless={false}
                           onOpen={() => handleTabSwitch(m.templeId === 'vallabh' ? 'padavali' : 'feed')}
                         />
                       ))}
                       {openMandirCount === 0 && (
-                        <div className="col-span-full p-8 text-center bg-[#FAF8F3] text-amber-950 font-laila space-y-2">
+                        <div className="col-span-full p-8 text-center rounded-[20px] border border-amber-900/10 bg-[#FAF8F3] text-amber-950 font-laila space-y-2">
                           <div className="font-bold text-base">
                             {isViewingToday
                               ? 'अभी श्री धाम मंदिरों में विश्राम / शयन सेवा समय है'
@@ -1433,7 +1385,7 @@ export function App({
                   )}
 
                   {templeFilter === 'rajbhog' && (
-                    <div className="rounded-[24px] sm:rounded-[28px] overflow-hidden shadow-md bg-neutral-950 grid grid-cols-1 md:grid-cols-2">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
                       {([mandirStatus.vallabh, mandirStatus.bihari] as LiveMandirSchedule[]).map((m) => (
                         <NityaSevaCard
                           key={m.templeId}
@@ -1446,7 +1398,7 @@ export function App({
                           countdownLabel={m.countdownLabel}
                           imageUrl={m.imageUrl}
                           indexNumber={m.indexNumber}
-                          seamless={true}
+                          seamless={false}
                           onOpen={() => handleTabSwitch(m.templeId === 'vallabh' ? 'padavali' : 'feed')}
                         />
                       ))}
@@ -1454,7 +1406,7 @@ export function App({
                   )}
 
                   {templeFilter === 'evening' && (
-                    <div className="rounded-[24px] sm:rounded-[28px] overflow-hidden shadow-md bg-neutral-950 grid grid-cols-1 md:grid-cols-2">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
                       {([mandirStatus.raman, mandirStatus.barsana] as LiveMandirSchedule[]).map((m) => (
                         <NityaSevaCard
                           key={m.templeId}
@@ -1467,7 +1419,7 @@ export function App({
                           countdownLabel={m.countdownLabel}
                           imageUrl={m.imageUrl}
                           indexNumber={m.indexNumber}
-                          seamless={true}
+                          seamless={false}
                           onOpen={() => handleTabSwitch('feed')}
                         />
                       ))}
@@ -1798,9 +1750,9 @@ export function App({
           {/* Tab 4: Devotional Darshan Feed */}
           {!activeGuideSlug && activeTab === 'feed' && (
             <div className="w-full pt-1 pb-48 md:pb-28">
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
-                {/* Main Feed Column (8 cols) */}
-                <div className="md:col-span-8 space-y-4">
+              <div className="w-full md:flex md:items-start gap-6">
+                {/* Main Feed Column (Fluid flex-1 adapts dynamically as right Panchang sidebar expands/shrinks) */}
+                <div className={`min-w-0 w-full md:flex-1 space-y-4 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${isFeedSidebarCollapsed ? 'max-w-3xl mx-auto' : ''}`}>
                   {/* Nitya Darshan Photo Strip (6 Authentic Braj Darshan Plates) */}
                   <div className="bg-white rounded-[24px] p-3 border border-[#EAE1D3] shadow-2xs mb-3 space-y-2.5">
                     <div className="flex items-center justify-between px-1">
@@ -1914,46 +1866,91 @@ export function App({
                   </div>
                 </div>
 
-                {/* Right Sidebar on Tablet & Desktop (4 cols) */}
-                <div className="hidden md:block md:col-span-4 space-y-4 sticky top-24">
-                  <div className="bg-white rounded-[24px] p-5 border border-neutral-200/80 shadow-[0_4px_24px_rgba(0,0,0,0.03)]">
-                    <h3 className="font-serif font-bold text-sm text-[#18181B] mb-2 flex items-center justify-between">
-                      <span>Vrindavan Dham Calendar (पंचांग)</span>
-                      <span className="text-[10px] bg-amber-50 text-amber-700 px-2 py-0.5 rounded-full font-bold font-mono">
-                        {todayPanchang.gregorianLabel}
+                {/* Right Sidebar on Tablet & Desktop (Expandable / Shrinkable Relative Panel) */}
+                <aside
+                  aria-label="Vrindavan Dham Calendar Sidebar"
+                  className={`hidden md:block shrink-0 sticky top-20 sm:top-24 self-start transition-[width] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                    isFeedSidebarCollapsed ? 'w-12' : 'w-[clamp(260px,30%,350px)]'
+                  }`}
+                >
+                  {isFeedSidebarCollapsed ? (
+                    <div className="bg-white rounded-[24px] py-3 border border-neutral-200/80 shadow-[0_4px_24px_rgba(0,0,0,0.03)] flex flex-col items-center gap-3">
+                      <button
+                        type="button"
+                        onClick={toggleFeedSidebar}
+                        aria-expanded="false"
+                        aria-label="पंचांग पैनल खोलें (Expand Calendar Sidebar)"
+                        title="पंचांग पैनल खोलें"
+                        className="w-8 h-8 rounded-full bg-[#FEF08A] hover:bg-[#FDE047] text-[#1C140D] flex items-center justify-center transition-colors cursor-pointer"
+                      >
+                        <PanelRightOpen className="w-4 h-4" />
+                      </button>
+                      <span className="text-[11px] font-mono font-bold text-amber-800 bg-amber-50 px-2 py-0.5 rounded-full">
+                        {todayPanchang.istDay}
                       </span>
-                    </h3>
-                    <div className="text-xs text-[#52525B] space-y-2.5">
-                      <div className="flex justify-between gap-2 py-1 border-b border-neutral-100">
-                        <span className="text-[#71717A] shrink-0">Tithi:</span>
-                        <span className="font-semibold text-[#18181B] text-right">
-                          {todayPanchang.masaEnglish} {todayPanchang.pakshaEnglish} {todayPanchang.tithiNameEnglish} ({todayPanchang.masaDevanagari} {todayPanchang.pakshaDevanagari} {todayPanchang.tithiNameDevanagari})
-                        </span>
+                      <span
+                        className="text-[11px] font-laila font-semibold text-neutral-500 select-none tracking-wider py-1"
+                        style={{ writingMode: 'vertical-rl' }}
+                      >
+                        {todayPanchang.masaDevanagari} पंचांग
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="space-y-4">
+                      <div className="bg-white rounded-[24px] p-5 border border-neutral-200/80 shadow-[0_4px_24px_rgba(0,0,0,0.03)]">
+                        <div className="flex items-center justify-between gap-2 mb-2.5">
+                          <h3 className="font-serif font-bold text-sm text-[#18181B] flex items-center gap-2 min-w-0">
+                            <span className="truncate">Vrindavan Dham Calendar (पंचांग)</span>
+                          </h3>
+                          <div className="flex items-center gap-1.5 shrink-0">
+                            <span className="text-[10px] bg-amber-50 text-amber-700 px-2 py-0.5 rounded-full font-bold font-mono">
+                              {todayPanchang.gregorianLabel}
+                            </span>
+                            <button
+                              type="button"
+                              onClick={toggleFeedSidebar}
+                              aria-expanded="true"
+                              aria-label="पंचांग पैनल संक्षिप्त करें (Shrink Calendar Sidebar)"
+                              title="संक्षिप्त करें (Shrink)"
+                              className="w-7 h-7 rounded-full hover:bg-neutral-100 text-neutral-500 hover:text-[#18181B] flex items-center justify-center transition-colors cursor-pointer"
+                            >
+                              <PanelRightClose className="w-3.5 h-3.5" />
+                            </button>
+                          </div>
+                        </div>
+                        <div className="text-xs text-[#52525B] space-y-2.5">
+                          <div className="flex justify-between gap-2 py-1 border-b border-neutral-100">
+                            <span className="text-[#71717A] shrink-0">Tithi:</span>
+                            <span className="font-semibold text-[#18181B] text-right">
+                              {todayPanchang.masaEnglish} {todayPanchang.pakshaEnglish} {todayPanchang.tithiNameEnglish} ({todayPanchang.masaDevanagari} {todayPanchang.pakshaDevanagari} {todayPanchang.tithiNameDevanagari})
+                            </span>
+                          </div>
+                          <div className="flex justify-between gap-2 py-1 border-b border-neutral-100">
+                            <span className="text-[#71717A] shrink-0">Nakshatra:</span>
+                            <span className="font-semibold text-[#18181B] text-right">
+                              {todayPanchang.nakshatraEnglish} ({todayPanchang.nakshatraDevanagari})
+                            </span>
+                          </div>
+                          <div className="flex justify-between gap-2 py-1">
+                            <span className="text-[#71717A] shrink-0">Upcoming Festival:</span>
+                            <span className="font-semibold text-amber-800 text-right">
+                              {nextFestival.nameDevanagari} • {nextFestival.dateLabel}
+                            </span>
+                          </div>
+                        </div>
                       </div>
-                      <div className="flex justify-between gap-2 py-1 border-b border-neutral-100">
-                        <span className="text-[#71717A] shrink-0">Nakshatra:</span>
-                        <span className="font-semibold text-[#18181B] text-right">
-                          {todayPanchang.nakshatraEnglish} ({todayPanchang.nakshatraDevanagari})
+
+                      <div className="bg-[#FFFBEB]/80 text-[#18181B] rounded-[24px] p-5 shadow-xs border border-amber-200/60">
+                        <span className="text-[10.5px] text-amber-800 font-bold uppercase tracking-wider block mb-1 font-mono">
+                          Daily Darshan Niyam
                         </span>
-                      </div>
-                      <div className="flex justify-between gap-2 py-1">
-                        <span className="text-[#71717A] shrink-0">Upcoming Festival:</span>
-                        <span className="font-semibold text-amber-800 text-right">
-                          {nextFestival.nameDevanagari} • {nextFestival.dateLabel}
-                        </span>
+                        <p className="text-xs leading-relaxed text-[#52525B]">
+                          Reciting or listening to at least one sacred pad after morning and afternoon darshan deepens inner stillness and joy.
+                        </p>
                       </div>
                     </div>
-                  </div>
-
-                  <div className="bg-[#FFFBEB]/80 text-[#18181B] rounded-[24px] p-5 shadow-xs border border-amber-200/60">
-                    <span className="text-[10.5px] text-amber-800 font-bold uppercase tracking-wider block mb-1 font-mono">
-                      Daily Darshan Niyam
-                    </span>
-                    <p className="text-xs leading-relaxed text-[#52525B]">
-                      Reciting or listening to at least one sacred pad after morning and afternoon darshan deepens inner stillness and joy.
-                    </p>
-                  </div>
-                </div>
+                  )}
+                </aside>
               </div>
             </div>
           )}

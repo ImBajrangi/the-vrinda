@@ -8,9 +8,14 @@ import {
   Copy,
   Check,
   Search,
-  Feather
+  Feather,
+  PanelLeftClose,
+  PanelLeftOpen,
+  PanelRightClose,
+  PanelRightOpen,
 } from 'lucide-react';
 import { SacredDatabase } from '../../services/sacredDatabase';
+import { useSidebarState } from '../../hooks/useSidebarState';
 import { getEpicDarshanVisual } from '../../services/devotionalVisuals';
 import { SacredPad, EpicIndexData } from '../../types/devotional';
 import { DevotionalVersePresenter } from './DevotionalVersePresenter';
@@ -146,6 +151,14 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
   const [activePurportId, setActivePurportId] = useState<string | null>(null);
   const [bookmarkedIds, setBookmarkedIds] = useState<string[]>([]);
   const [fontSize, setFontSize] = useState<'sm' | 'md' | 'lg' | 'xl'>('md');
+  const {
+    leftCollapsed: isLeftCollapsed,
+    rightCollapsed: isRightCollapsed,
+    toggleLeft: toggleLeftSidebar,
+    toggleRight: toggleRightSidebar,
+    setLeftCollapsed,
+  } = useSidebarState('epics');
+  const chapterSearchInputRef = useRef<HTMLInputElement | null>(null);
 
   // Synchronize initialGranthaId prop changes from parent
   useEffect(() => {
@@ -869,37 +882,90 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
       {/* 3-Column Desk Architecture (Identical to Padavali & Chhand Sanctuary)      */}
       {/* Left Column: Sarga/Chapter Rail | Center: Main Canvas | Right: Commentary */}
       {/* ========================================================================= */}
-      <div className="w-full grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6 lg:gap-6 2xl:gap-8 items-start">
+      <div className="w-full md:flex md:items-start gap-5 sm:gap-6 lg:gap-6 2xl:gap-8">
 
         {/* ========================================================================= */}
-        {/* Left Column: Sarga/Chapter Catalog Desk (Desktop: hidden md:block)         */}
+        {/* Left Column: Expandable/Shrinkable Sarga/Chapter Catalog Desk             */}
         {/* ========================================================================= */}
-        <aside className="hidden md:block md:col-span-4 xl:col-span-3 sticky top-24 self-start">
-          <div className="rounded-3xl border border-amber-900/10 bg-[#FAF8F5] shadow-xs overflow-hidden flex flex-col max-h-[calc(100vh-7.5rem)]">
-            {/* Header with Active Scripture Name & Counter */}
-            <div className="p-4 border-b border-amber-900/10 space-y-2.5">
-              <div className="flex items-center justify-between text-xs">
-                <div className="flex items-center gap-1.5 min-w-0">
-                  <BookOpen className="w-3.5 h-3.5 text-amber-700 shrink-0" />
-                  <span className="font-serif font-bold text-neutral-900 truncate">
-                    {currentEpicConfig.name}
-                  </span>
+        <aside
+          aria-label="अध्याय अनुक्रमणिका"
+          className={`hidden md:block shrink-0 sticky top-20 sm:top-24 self-start transition-[width] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+            isLeftCollapsed ? 'w-12' : 'w-[clamp(245px,24%,320px)]'
+          }`}
+        >
+          {isLeftCollapsed ? (
+            <div className="rounded-3xl border border-amber-900/10 bg-[#FAF8F5] shadow-xs py-3 flex flex-col items-center gap-3">
+              <button
+                type="button"
+                onClick={toggleLeftSidebar}
+                aria-expanded="false"
+                aria-label="सूची पैनल खोलें (Expand Chapters Sidebar)"
+                title="सूची पैनल खोलें (Expand)"
+                className="w-8 h-8 rounded-full bg-[#FEF08A] hover:bg-[#FDE047] text-[#1C140D] flex items-center justify-center transition-colors cursor-pointer"
+              >
+                <PanelLeftOpen className="w-4 h-4" />
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setLeftCollapsed(false);
+                  setTimeout(() => chapterSearchInputRef.current?.focus(), 60);
+                }}
+                aria-label={`${currentEpicConfig.chapterTerm} खोजें`}
+                title={`${currentEpicConfig.chapterTerm} खोजें`}
+                className="w-8 h-8 rounded-full bg-white hover:bg-amber-50 text-neutral-600 hover:text-amber-900 border border-amber-900/10 flex items-center justify-center transition-colors cursor-pointer"
+              >
+                <Search className="w-3.5 h-3.5" />
+              </button>
+              <span className="text-[10px] font-mono font-bold text-[#CA8A04] bg-white border border-amber-900/10 px-1.5 py-0.5 rounded-full">
+                {epicIndex?.totalChapters || 0}
+              </span>
+              <span
+                className="text-[11px] font-serif font-semibold text-neutral-500 select-none tracking-wider py-1"
+                style={{ writingMode: 'vertical-rl' }}
+              >
+                {currentEpicConfig.kandaLabel}
+              </span>
+            </div>
+          ) : (
+            <div className="rounded-3xl border border-amber-900/10 bg-[#FAF8F5] shadow-xs overflow-hidden flex flex-col max-h-[calc(100vh-7.5rem)]">
+              {/* Header with Active Scripture Name, Counter & Shrink Control */}
+              <div className="p-4 border-b border-amber-900/10 space-y-2.5">
+                <div className="flex items-center justify-between gap-1.5 text-xs">
+                  <div className="flex items-center gap-1.5 min-w-0">
+                    <BookOpen className="w-3.5 h-3.5 text-amber-700 shrink-0" />
+                    <span className="font-serif font-bold text-neutral-900 truncate">
+                      {currentEpicConfig.name}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1 shrink-0">
+                    <span className="text-[11px] font-mono font-semibold px-2 py-0.5 rounded-full bg-white text-[#CA8A04] border border-amber-900/10">
+                      {epicIndex?.totalChapters || 0} {currentEpicConfig.chapterTerm}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={toggleLeftSidebar}
+                      aria-expanded="true"
+                      aria-label="सूची पैनल संक्षिप्त करें (Shrink Chapters Sidebar)"
+                      title="संक्षिप्त करें (Shrink)"
+                      className="w-6 h-6 rounded-full hover:bg-amber-900/10 text-neutral-500 hover:text-neutral-900 flex items-center justify-center transition-colors cursor-pointer"
+                    >
+                      <PanelLeftClose className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
                 </div>
-                <span className="text-[11px] font-mono font-semibold px-2 py-0.5 rounded-full bg-white text-[#CA8A04] border border-amber-900/10 shrink-0">
-                  {epicIndex?.totalChapters || 0} {currentEpicConfig.chapterTerm}
-                </span>
-              </div>
 
-                {/* Instant Sarga / Chapter Search Input */}
-                <div className="relative">
-                  <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400" />
-                  <input
-                    type="text"
-                    value={chapterSearchQuery}
-                    onChange={(e) => setChapterSearchQuery(e.target.value)}
-                    placeholder={`${currentEpicConfig.chapterTerm} खोजें...`}
-                    className="w-full pl-8 pr-3 py-1.5 text-[16px] sm:text-xs rounded-[8px] bg-white border border-neutral-200/80 focus:border-amber-400 focus:outline-none text-neutral-800 placeholder-neutral-400"
-                  />
+                  {/* Instant Sarga / Chapter Search Input */}
+                  <div className="relative">
+                    <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400" />
+                    <input
+                      ref={chapterSearchInputRef}
+                      type="text"
+                      value={chapterSearchQuery}
+                      onChange={(e) => setChapterSearchQuery(e.target.value)}
+                      placeholder={`${currentEpicConfig.chapterTerm} खोजें...`}
+                      className="w-full pl-8 pr-3 py-1.5 text-[16px] sm:text-xs rounded-[8px] bg-white border border-neutral-200/80 focus:border-amber-400 focus:outline-none text-neutral-800 placeholder-neutral-400"
+                    />
                   {chapterSearchQuery && (
                     <button
                       type="button"
@@ -1023,6 +1089,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                 )}
               </div>
             </div>
+          )}
           </aside>
 
         {/* ========================================================================= */}
@@ -1030,7 +1097,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
         {/* ========================================================================= */}
         <article
           id="epic-canvas-top"
-          className="min-w-0 w-full md:col-span-8 xl:col-span-6 bg-transparent sm:bg-white rounded-none sm:rounded-3xl p-0 sm:p-8 xl:p-9 2xl:p-10 min-h-[calc(100vh-8rem)] border-0 sm:border sm:border-neutral-200/70 shadow-none sm:shadow-2xs"
+          className={`min-w-0 w-full md:flex-1 ${isLeftCollapsed && isRightCollapsed ? 'max-w-4xl mx-auto' : ''} bg-transparent sm:bg-white rounded-none sm:rounded-3xl p-0 sm:p-8 xl:p-9 2xl:p-10 min-h-[calc(100vh-8rem)] border-0 sm:border sm:border-neutral-200/70 shadow-none sm:shadow-2xs transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]`}
         >
           {/* Chapter Header Bar (Desktop Only - on mobile, MobileReaderHeader provides the top chrome) */}
           <div className="hidden sm:flex pb-4 mb-6 border-b border-neutral-100 flex-col sm:flex-row sm:items-center justify-between gap-3 sticky top-24 z-20 bg-white/[0.98] -mx-4 sm:-mx-8 xl:-mx-9 2xl:-mx-10 px-4 sm:px-8 xl:px-9 2xl:px-10 pt-3 rounded-t-3xl shadow-[0_4px_12px_-4px_rgba(0,0,0,0.03)]">
@@ -1283,131 +1350,196 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
         </article>
 
         {/* ========================================================================= */}
-        {/* Right Column: Dedicated Epic Commentary Desk (Desktop: hidden xl:block)   */}
+        {/* Right Column: Dedicated Epic Commentary Desk (Expand / Shrink)            */}
         {/* ========================================================================= */}
-        <aside className="hidden xl:block xl:col-span-3 space-y-4 sticky top-24 self-start max-h-[calc(100vh-7.5rem)] overflow-y-auto custom-scroll">
-          {/* Sacred Contemplative Darshan Plate */}
-          {(() => {
-            const visual = getEpicDarshanVisual(selectedGranthaId);
-            return (
-              <div className="rounded-3xl border border-amber-900/10 bg-[#FAF8F5] p-3 shadow-xs">
-                <div className="aspect-[4/3] w-full rounded-[12px] overflow-hidden bg-[#1A120B]">
-                  <img
-                    src={visual.src}
-                    alt={visual.caption}
-                    className="w-full h-full object-cover object-[center_20%]"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-                <div className="px-1 pt-2 text-[11px] font-serif font-semibold text-amber-950/90 truncate">
-                  {visual.caption}
-                </div>
-              </div>
-            );
-          })()}
-          <div className="rounded-3xl border border-amber-900/10 bg-[#FAF8F5] p-5 shadow-xs transition-colors duration-300">
-            {/* Header */}
-            <div className="flex items-center justify-between pb-3 mb-3 border-b border-amber-900/10">
-              <div className="flex items-center gap-2">
-                <div className="w-7 h-7 rounded-lg bg-[#FEF08A] flex items-center justify-center text-[#78350F]">
-                  <Feather className="w-3.5 h-3.5" />
-                </div>
-                <div>
-                  <h3 className="font-serif font-bold text-sm text-neutral-900">
-                    महाग्रंथ भावार्थ व टीका
-                  </h3>
-                  <span className="text-[10px] text-amber-800 font-mono font-semibold">
-                    Sanatan Purport & Guidance
-                  </span>
-                </div>
+        <aside
+          aria-label="महाग्रंथ भावार्थ साइडबार"
+          className={`hidden xl:block shrink-0 sticky top-20 sm:top-24 self-start transition-[width] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+            isRightCollapsed ? 'w-12' : 'w-[clamp(255px,24%,325px)]'
+          }`}
+        >
+          {isRightCollapsed ? (
+            <div className="bg-[#FAF8F5] rounded-2xl border border-amber-900/15 shadow-xs p-1.5 flex flex-col items-center gap-2">
+              <button
+                type="button"
+                onClick={toggleRightSidebar}
+                aria-label="भावार्थ साइडबार विस्तारित करें (Expand Commentary Sidebar)"
+                aria-expanded="false"
+                title="भावार्थ व टीका विस्तारित करें"
+                className="w-9 h-9 rounded-[10px] bg-amber-50 hover:bg-[#FEF08A] text-[#78350F] flex items-center justify-center transition-colors cursor-pointer shrink-0 border border-amber-900/10"
+              >
+                <PanelRightOpen className="w-4 h-4" />
+              </button>
+              <button
+                type="button"
+                onClick={toggleRightSidebar}
+                aria-label="दर्शन व टीका खोलें"
+                title={currentEpicConfig.name}
+                className="w-9 h-9 rounded-[10px] overflow-hidden border border-amber-900/15 bg-[#1A120B] cursor-pointer shrink-0"
+              >
+                <img
+                  src={getEpicDarshanVisual(selectedGranthaId).src}
+                  alt={getEpicDarshanVisual(selectedGranthaId).caption}
+                  className="w-full h-full object-cover object-[center_20%]"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </button>
+              <div className="w-6 h-px bg-amber-900/10" />
+              <div className="flex flex-col items-center gap-1.5 py-1.5 select-none">
+                <span className="text-[10px] font-mono font-bold text-[#78350F] bg-[#FEF08A] px-1.5 py-0.5 rounded-md">
+                  {formatDevanagariNumerals(activePad?.verseNumber || (activeVerseIndex >= 0 ? activeVerseIndex + 1 : 1))}
+                </span>
+                <span className="text-[10px] font-serif font-semibold text-amber-900/75 [writing-mode:vertical-rl] tracking-wider py-1">
+                  भावार्थ व टीका
+                </span>
               </div>
             </div>
-
-            {/* Active Shloka Indicator Pill */}
-            {activePad && (
-              <div className="bg-white rounded-2xl p-3 border border-amber-900/10 shadow-2xs space-y-1.5 mb-3">
-                <div className="flex items-center justify-between text-[11px]">
-                  <span className="font-mono font-bold text-[#78350F] bg-[#FEF08A] px-2 py-0.5 rounded-md">
-                    {currentEpicConfig.verseTerm} {formatDevanagariNumerals(activePad?.verseNumber || (activeVerseIndex >= 0 ? activeVerseIndex + 1 : 1))}
-                  </span>
-                  <span className="font-serif text-neutral-500 truncate max-w-[150px]">
-                    {currentChapter?.name}
-                  </span>
-                </div>
-                <h4 className="font-serif font-bold text-xs text-neutral-900 line-clamp-2">
-                  {activePad.titleDevanagari}
-                </h4>
-              </div>
-            )}
-
-            {/* Divine Summary / Purport Card */}
-            <div className="bg-[#FEF9C3]/75 border border-amber-200/80 rounded-2xl p-3.5 text-xs text-[#451A03] leading-relaxed shadow-2xs space-y-2 mb-3">
-              <div className="flex items-center gap-1.5 text-neutral-900 font-serif font-bold text-xs">
-                <Sparkles className="w-3.5 h-3.5 text-[#CA8A04]" />
-                <span>दिव्य भाव संक्षेप एवं शास्त्रीय मर्म</span>
-              </div>
-              <p className="text-xs leading-relaxed text-[#451A03] font-serif font-normal">
-                {activePad?.verses?.[0]?.linesEnglish?.join(' ') ||
-                  activePad?.verses?.[0]?.linesTransliteration?.join(' ') ||
-                  `${currentEpicConfig.name} का यह पावन श्लोक प्रभु के दिव्य स्वरूप, धर्म एवं आत्म-कल्याण का पवित्र सोपान है।`}
-              </p>
-            </div>
-
-            {/* Quick Jump Grid for Current Chapter Shlokas */}
-            <div className="space-y-1.5 pt-2 border-t border-amber-900/10">
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-800 block">
-                वर्तमान {currentEpicConfig.chapterTerm} के {currentEpicConfig.verseTerm} ({chapterPadas.length})
-              </span>
-              <div className="relative grid grid-cols-5 gap-1.5 max-h-[30vh] overflow-y-auto no-scrollbar pt-1 p-0.5">
-                {/* Dynamic 2D Elastic Sliding Indicator Bar */}
-                {shlokaPillStyle.ready && (
-                  <span
-                    aria-hidden="true"
-                    className="absolute rounded-[6px] bg-[#FEF08A] pointer-events-none transition-[transform,width,height] duration-[340ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[transform,width,height] z-0 shadow-2xs"
-                    style={{
-                      transform: `translate3d(${shlokaPillStyle.left}px, ${shlokaPillStyle.top}px, 0)`,
-                      width: `${shlokaPillStyle.width}px`,
-                      height: `${shlokaPillStyle.height}px`,
-                      top: 0,
-                      left: 0,
-                    }}
-                  />
-                )}
-                {chapterPadas.map((pad, idx) => {
-                  const isSelected = activeVerseId === pad.id;
-                  return (
+          ) : (
+            <div className="space-y-4 max-h-[calc(100vh-7.5rem)] overflow-y-auto custom-scroll pr-0.5">
+              {/* Sacred Contemplative Darshan Plate */}
+              {(() => {
+                const visual = getEpicDarshanVisual(selectedGranthaId);
+                return (
+                  <div className="rounded-3xl border border-amber-900/10 bg-[#FAF8F5] p-3 shadow-xs relative">
                     <button
-                      key={pad.id}
-                      ref={(el) => {
-                        shlokaGridRefs.current[pad.id] = el;
-                      }}
                       type="button"
-                      onClick={() => {
-                        isProgrammaticEpicScrollRef.current = true;
-                        if (epicScrollTimeoutRef.current) clearTimeout(epicScrollTimeoutRef.current);
-                        epicScrollTimeoutRef.current = setTimeout(() => {
-                          isProgrammaticEpicScrollRef.current = false;
-                        }, 900);
-                        setActiveVerseId(pad.id);
-                        const el = document.getElementById(`shloka-${pad.id}`);
-                        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                      }}
-                      className={`relative z-10 h-7 rounded-[6px] text-[11px] font-mono font-semibold transition-colors duration-150 cursor-pointer flex items-center justify-center select-none ${
-                        isSelected
-                          ? shlokaPillStyle.ready
-                            ? 'text-[#78350F] font-bold border border-transparent'
-                            : 'bg-[#FEF08A] text-[#78350F] font-bold shadow-2xs'
-                          : 'bg-white/80 hover:bg-white text-neutral-600 border border-neutral-200/60'
-                      }`}
+                      onClick={toggleRightSidebar}
+                      aria-label="भावार्थ साइडबार संक्षिप्त करें (Shrink Commentary Sidebar)"
+                      aria-expanded="true"
+                      title="साइडबार संक्षिप्त करें (Shrink)"
+                      className="absolute top-4 right-4 z-10 w-7 h-7 rounded-lg bg-[#FAF8F5]/95 hover:bg-[#FEF08A] text-[#78350F] flex items-center justify-center border border-amber-900/15 shadow-xs transition-colors cursor-pointer"
                     >
-                      {pad.verseNumber || idx + 1}
+                      <PanelRightClose className="w-3.5 h-3.5" />
                     </button>
-                  );
-                })}
+                    <div className="aspect-[4/3] w-full rounded-[12px] overflow-hidden bg-[#1A120B]">
+                      <img
+                        src={visual.src}
+                        alt={visual.caption}
+                        className="w-full h-full object-cover object-[center_20%]"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                    <div className="px-1 pt-2 text-[11px] font-serif font-semibold text-amber-950/90 truncate">
+                      {visual.caption}
+                    </div>
+                  </div>
+                );
+              })()}
+              <div className="rounded-3xl border border-amber-900/10 bg-[#FAF8F5] p-5 shadow-xs transition-colors duration-300">
+                {/* Header */}
+                <div className="flex items-center justify-between gap-2 pb-3 mb-3 border-b border-amber-900/10">
+                  <div className="flex items-center gap-2 min-w-0">
+                    <div className="w-7 h-7 rounded-lg bg-[#FEF08A] flex items-center justify-center text-[#78350F] shrink-0">
+                      <Feather className="w-3.5 h-3.5" />
+                    </div>
+                    <div className="min-w-0">
+                      <h3 className="font-serif font-bold text-sm text-neutral-900 truncate">
+                        महाग्रंथ भावार्थ व टीका
+                      </h3>
+                      <span className="text-[10px] text-amber-800 font-mono font-semibold block truncate">
+                        Sanatan Purport & Guidance
+                      </span>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={toggleRightSidebar}
+                    aria-label="भावार्थ साइडबार संक्षिप्त करें"
+                    title="संक्षिप्त करें (Shrink)"
+                    className="w-7 h-7 rounded-lg text-neutral-500 hover:text-[#78350F] hover:bg-amber-100/70 flex items-center justify-center transition-colors cursor-pointer shrink-0"
+                  >
+                    <PanelRightClose className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+
+                {/* Active Shloka Indicator Pill */}
+                {activePad && (
+                  <div className="bg-white rounded-2xl p-3 border border-amber-900/10 shadow-2xs space-y-1.5 mb-3">
+                    <div className="flex items-center justify-between text-[11px]">
+                      <span className="font-mono font-bold text-[#78350F] bg-[#FEF08A] px-2 py-0.5 rounded-md">
+                        {currentEpicConfig.verseTerm} {formatDevanagariNumerals(activePad?.verseNumber || (activeVerseIndex >= 0 ? activeVerseIndex + 1 : 1))}
+                      </span>
+                      <span className="font-serif text-neutral-500 truncate max-w-[150px]">
+                        {currentChapter?.name}
+                      </span>
+                    </div>
+                    <h4 className="font-serif font-bold text-xs text-neutral-900 line-clamp-2">
+                      {activePad.titleDevanagari}
+                    </h4>
+                  </div>
+                )}
+
+                {/* Divine Summary / Purport Card */}
+                <div className="bg-[#FEF9C3]/75 border border-amber-200/80 rounded-2xl p-3.5 text-xs text-[#451A03] leading-relaxed shadow-2xs space-y-2 mb-3">
+                  <div className="flex items-center gap-1.5 text-neutral-900 font-serif font-bold text-xs">
+                    <Sparkles className="w-3.5 h-3.5 text-[#CA8A04]" />
+                    <span>दिव्य भाव संक्षेप एवं शास्त्रीय मर्म</span>
+                  </div>
+                  <p className="text-xs leading-relaxed text-[#451A03] font-serif font-normal">
+                    {activePad?.verses?.[0]?.linesEnglish?.join(' ') ||
+                      activePad?.verses?.[0]?.linesTransliteration?.join(' ') ||
+                      `${currentEpicConfig.name} का यह पावन श्लोक प्रभु के दिव्य स्वरूप, धर्म एवं आत्म-कल्याण का पवित्र सोपान है।`}
+                  </p>
+                </div>
+
+                {/* Quick Jump Grid for Current Chapter Shlokas */}
+                <div className="space-y-1.5 pt-2 border-t border-amber-900/10">
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-800 block">
+                    वर्तमान {currentEpicConfig.chapterTerm} के {currentEpicConfig.verseTerm} ({chapterPadas.length})
+                  </span>
+                  <div className="relative grid grid-cols-5 gap-1.5 max-h-[30vh] overflow-y-auto no-scrollbar pt-1 p-0.5">
+                    {/* Dynamic 2D Elastic Sliding Indicator Bar */}
+                    {shlokaPillStyle.ready && (
+                      <span
+                        aria-hidden="true"
+                        className="absolute rounded-[6px] bg-[#FEF08A] pointer-events-none transition-[transform,width,height] duration-[340ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[transform,width,height] z-0 shadow-2xs"
+                        style={{
+                          transform: `translate3d(${shlokaPillStyle.left}px, ${shlokaPillStyle.top}px, 0)`,
+                          width: `${shlokaPillStyle.width}px`,
+                          height: `${shlokaPillStyle.height}px`,
+                          top: 0,
+                          left: 0,
+                        }}
+                      />
+                    )}
+                    {chapterPadas.map((pad, idx) => {
+                      const isSelected = activeVerseId === pad.id;
+                      return (
+                        <button
+                          key={pad.id}
+                          ref={(el) => {
+                            shlokaGridRefs.current[pad.id] = el;
+                          }}
+                          type="button"
+                          onClick={() => {
+                            isProgrammaticEpicScrollRef.current = true;
+                            if (epicScrollTimeoutRef.current) clearTimeout(epicScrollTimeoutRef.current);
+                            epicScrollTimeoutRef.current = setTimeout(() => {
+                              isProgrammaticEpicScrollRef.current = false;
+                            }, 900);
+                            setActiveVerseId(pad.id);
+                            const el = document.getElementById(`shloka-${pad.id}`);
+                            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                          }}
+                          className={`relative z-10 h-7 rounded-[6px] text-[11px] font-mono font-semibold transition-colors duration-150 cursor-pointer flex items-center justify-center select-none ${
+                            isSelected
+                              ? shlokaPillStyle.ready
+                                ? 'text-[#78350F] font-bold border border-transparent'
+                                : 'bg-[#FEF08A] text-[#78350F] font-bold shadow-2xs'
+                              : 'bg-white/80 hover:bg-white text-neutral-600 border border-neutral-200/60'
+                          }`}
+                        >
+                          {pad.verseNumber || idx + 1}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </aside>
 
       </div>

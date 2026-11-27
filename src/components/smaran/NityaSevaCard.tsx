@@ -98,7 +98,7 @@ export const NityaSevaCard: React.FC<NityaSevaCardProps> = ({
     });
   };
 
-  // 1. FEATURED SHOWCASE HERO (Company showcase-featured)
+  // 1. FEATURED SHOWCASE HERO (Museum Split Ivory Editorial Card — Zero Dark Scrim on Deity)
   if (isHero) {
     return (
       <div
@@ -107,64 +107,65 @@ export const NityaSevaCard: React.FC<NityaSevaCardProps> = ({
         aria-busy={isEntering}
         onClick={handleEnter}
         onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && handleEnter()}
-        className={`group relative w-full overflow-hidden cursor-pointer select-none transition-colors duration-200 min-h-[320px] sm:min-h-[360px] flex flex-col justify-end p-6 sm:p-8 bg-neutral-950 ${
-          seamless
-            ? ''
-            : 'rounded-[24px] shadow-md'
+        className={`group w-full cursor-pointer select-none transition-colors duration-200 bg-[#FAF8F4] hover:bg-[#FFFDF8] border border-amber-900/12 p-2.5 sm:p-3 grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 items-center ${
+          seamless ? 'rounded-[20px]' : 'rounded-[22px] shadow-2xs'
         }`}
       >
-        {/* Full-bleed Authentic Background Photo */}
-        <img
-          src={activeImage}
-          alt={templeName}
-          className="absolute inset-0 w-full h-full object-cover object-[center_35%]"
-          loading="eager"
-        />
-        {/* Cinematic Gradient Scrim */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent pointer-events-none" />
+        {/* Clean Unobscured Temple Photograph */}
+        <div className="md:col-span-5 aspect-[16/10] md:aspect-[4/3] w-full rounded-[12px] overflow-hidden bg-[#EFE7D8]">
+          <img
+            src={activeImage}
+            alt={templeName}
+            className="w-full h-full object-cover object-[center_28%]"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
 
-        {/* Ghost Number in Top-Right */}
-        <span className="absolute top-5 right-7 text-6xl sm:text-7xl font-mono font-black text-white/20 select-none pointer-events-none leading-none">
-          {displayNum}
-        </span>
+        {/* Crisp Devotional Schedule Panel */}
+        <div className="md:col-span-7 px-2 pb-2 md:py-2 md:pr-3 space-y-3 min-w-0">
+          <div className="flex items-center justify-between gap-2 flex-wrap">
+            <div className="flex items-center gap-2 text-xs font-laila font-semibold text-amber-800">
+              <span className="font-mono font-bold text-amber-900/50">{displayNum}</span>
+              <span>•</span>
+              <span>{praharLabel}</span>
+              <span>•</span>
+              <span className="text-neutral-800">{devanagariTemple}</span>
+            </div>
 
-        {/* Bottom Content Area (No dots, no outlines, Laila & Rozha Hindi Typography) */}
-        <div className="relative z-10 max-w-2xl">
-          <div className="text-xs sm:text-sm font-laila font-semibold text-amber-300 tracking-wider mb-1 truncate">
-            {praharLabel} &nbsp; {devanagariTemple}
+            {statusType === 'active' && (
+              <span className="inline-flex items-center gap-1.5 text-[11px] font-laila font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200/80">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                <span>दर्शन खुले हैं</span>
+              </span>
+            )}
           </div>
 
-          <h3 className="text-2xl sm:text-3xl font-rozha text-white tracking-wide leading-tight">
-            {devanagariSeva}
-            <span className="text-sm sm:text-base font-normal text-white/70 ml-2 font-sans">
-              ({sevaTitle})
-            </span>
-          </h3>
+          <div>
+            <h3 className="text-xl sm:text-2xl lg:text-[26px] font-rozha text-[#18181B] leading-snug">
+              {devanagariSeva}
+            </h3>
+            <p className="text-xs sm:text-[13px] font-sans text-neutral-500 mt-0.5">
+              {sevaTitle}
+            </p>
+          </div>
 
-          {/* Gateway Action Bar (Live Status Aware, No border-t outline) */}
-          <div className="flex items-center justify-between pt-3 mt-3 gap-3 flex-wrap">
-            <div className="flex items-center gap-2 text-white font-mono text-xs sm:text-sm font-bold flex-wrap">
-              <Clock className="w-4 h-4 text-amber-400 shrink-0" />
+          <div className="flex items-center justify-between pt-2 border-t border-amber-900/10 gap-3 flex-wrap">
+            <div className="flex items-center gap-2 text-[#18181B] font-mono text-xs sm:text-[13px] font-bold flex-wrap">
+              <Clock className="w-3.5 h-3.5 text-amber-700 shrink-0" />
               <span>{time}</span>
               {countdownLabel && (
-                <span className={`inline-flex items-center gap-1.5 text-[11px] font-laila font-semibold px-2.5 py-0.5 rounded-full ml-1 ${
-                  statusType === 'active'
-                    ? 'bg-emerald-500/20 text-emerald-200 border border-emerald-400/35'
-                    : 'bg-white/10 text-amber-200 border border-white/15'
-                }`}>
-                  {statusType === 'active' && (
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  )}
+                <span className="text-[11px] font-laila font-semibold text-amber-800 bg-amber-100/70 px-2.5 py-0.5 rounded-full">
                   {countdownLabel}
                 </span>
               )}
             </div>
 
-            <div className="px-5 py-2 rounded-full bg-[#FEF08A] hover:bg-[#FACC15] text-[#78350F] text-xs sm:text-sm font-laila font-bold transition-colors flex items-center gap-1.5 shadow-sm shrink-0">
+            <div className="px-4 py-2 rounded-full bg-[#FEF08A] group-hover:bg-[#FDE047] text-[#78350F] text-xs sm:text-[13px] font-laila font-bold transition-colors flex items-center gap-1.5 shrink-0">
               {isEntering ? (
                 <>
                   <IOSSpinner size="xs" theme="current" />
-                  <span>प्रवेश हो रहा है...</span>
+                  <span>प्रवेश...</span>
                 </>
               ) : (
                 <>
@@ -179,7 +180,7 @@ export const NityaSevaCard: React.FC<NityaSevaCardProps> = ({
     );
   }
 
-  // 2. COMPACT SHOWCASE CARD (Company showcase-card)
+  // 2. COMPACT EDITORIAL SHOWCASE CARD (Clean Unobscured Plate Above + Ivory Body Below)
   return (
     <div
       role="button"
@@ -187,49 +188,48 @@ export const NityaSevaCard: React.FC<NityaSevaCardProps> = ({
       aria-busy={isEntering}
       onClick={handleEnter}
       onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && handleEnter()}
-      className={`group relative w-full overflow-hidden cursor-pointer select-none transition-colors duration-200 min-h-[220px] sm:min-h-[240px] flex flex-col justify-end p-5 sm:p-6 bg-neutral-950 ${
-        seamless
-          ? ''
-          : 'rounded-[22px] shadow-sm'
-      }`}
+      className="group w-full cursor-pointer select-none transition-colors duration-150 rounded-[20px] bg-[#FAF8F4] hover:bg-[#FFFDF8] border border-amber-900/12 p-2.5 flex flex-col justify-between gap-3"
     >
-      {/* Background Photo */}
-      <img
-        src={activeImage}
-        alt={templeName}
-        className="absolute inset-0 w-full h-full object-cover object-[center_22%]"
-        loading="lazy"
-      />
-      {/* Scrim Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent pointer-events-none" />
+      {/* Clean Unobscured WebP Photo Plate */}
+      <div className="aspect-[16/10] w-full rounded-[10px] overflow-hidden bg-[#EFE7D8]">
+        <img
+          src={activeImage}
+          alt={templeName}
+          className="w-full h-full object-cover object-[center_20%]"
+          loading="eager"
+          decoding="async"
+        />
+      </div>
 
-      {/* Live Status Pill (Top-Left) & Ghost Number (Top-Right) */}
-      {statusType === 'active' && (
-        <span className="absolute top-4 left-5 z-10 inline-flex items-center px-2.5 py-0.5 rounded-full bg-emerald-950/75 border border-emerald-400/35 text-[10px] font-laila font-semibold text-emerald-100">
-          दर्शन खुले हैं
-        </span>
-      )}
-      <span className="absolute top-4 right-5 text-5xl font-mono font-black text-white/20 select-none pointer-events-none leading-none">
-        {displayNum}
-      </span>
+      {/* Ivory Typographic Body */}
+      <div className="px-1.5 pb-1 space-y-2 flex-1 flex flex-col justify-between">
+        <div>
+          <div className="flex items-center justify-between gap-2 mb-1">
+            <span className="text-[11px] font-laila font-semibold text-amber-800 truncate">
+              {displayNum} • {devanagariTemple}
+            </span>
+            {statusType === 'active' && (
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-[10px] font-laila font-semibold text-emerald-800 shrink-0">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                <span>खुले</span>
+              </span>
+            )}
+          </div>
 
-      {/* Bottom Content (No dots, no outlines, Laila & Rozha Hindi Typography) */}
-      <div className="relative z-10">
-        <div className="text-[11px] sm:text-xs font-laila font-semibold text-amber-300 tracking-wider mb-0.5 truncate">
-          {praharLabel} &nbsp; {devanagariTemple}
+          <h4 className="text-base sm:text-[17px] font-rozha text-[#18181B] leading-snug line-clamp-1">
+            {devanagariSeva}
+          </h4>
+          <p className="text-[11px] font-laila text-neutral-500 truncate mt-0.5">
+            {praharLabel}
+          </p>
         </div>
 
-        <h4 className="text-lg sm:text-xl font-rozha text-white tracking-wide leading-snug line-clamp-1">
-          {devanagariSeva}
-        </h4>
-
-        {/* Bottom Bar: Timing & Clean CTA with NO outline */}
-        <div className="flex items-center justify-between pt-2.5 sm:pt-3 mt-2.5 sm:mt-3 gap-2">
-          <span className="text-[11px] sm:text-xs font-mono font-bold text-white/90 whitespace-nowrap">
+        <div className="flex items-center justify-between pt-2 border-t border-amber-900/10 gap-2">
+          <span className="text-[11px] font-mono font-semibold text-neutral-700 truncate">
             {countdownLabel || time}
           </span>
 
-          <div className="company-link group-company-link text-amber-300 group-hover:text-white transition-colors text-xs sm:text-sm font-laila font-bold shrink-0 flex items-center gap-1.5">
+          <div className="text-amber-800 group-hover:text-amber-950 transition-colors text-xs font-laila font-bold shrink-0 flex items-center gap-1">
             {isEntering ? (
               <>
                 <IOSSpinner size="xs" theme="current" />
@@ -238,7 +238,7 @@ export const NityaSevaCard: React.FC<NityaSevaCardProps> = ({
             ) : (
               <>
                 <span>दर्शन</span>
-                <span className="text-base leading-none">→</span>
+                <ChevronRight className="w-3.5 h-3.5" />
               </>
             )}
           </div>

@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Music } from 'lucide-react';
 import { computeAshtayamaPhase } from '../../services/cacheService';
 import { SacredDatabase, AshtayamaPeriod } from '../../services/sacredDatabase';
-import { ArtworkGraphicSlot } from '../common/ArtworkGraphicSlot';
 
 const ASHTAYAMA_ARTWORKS: Record<string, string> = {
   mangala: '/assets/temples/aarti-lamp.webp',
@@ -126,46 +125,45 @@ export const AshtayamaTimelineDeck: React.FC<AshtayamaTimelineDeckProps> = ({ on
         })}
       </div>
 
-      {/* Selected Watch Formatted as a Graphics-Friendly Editorial Card */}
-      <div className="w-full bg-[#FAF9F5] rounded-[24px] p-4 sm:p-5 space-y-4 border border-amber-900/10">
-        {/* Dedicated Ashtayama Leela Temple Artwork */}
-        <ArtworkGraphicSlot
-          src={
-            ASHTAYAMA_ARTWORKS[selectedPeriod.id] ||
-            ASHTAYAMA_ARTWORKS[selectedPeriod.nameEnglish.toLowerCase()] ||
-            '/assets/temples/keshi-ghat.webp'
-          }
-          alt={`${selectedPeriod.nameDevanagari} प्रहर लीला दर्शन — ${selectedPeriod.bhava}`}
-          aspectRatio="card"
-          theme="amber"
-          placeholderLabel={`${selectedPeriod.nameEnglish} Leela Artwork`}
-          placeholderCategory="dham"
-          badge={`${selectedPeriod.bhava} • ${selectedPeriod.timeRange}`}
-          roundedClassName="rounded-[10px]"
-        />
+      {/* Selected Watch Formatted as a Compact Horizontal Editorial Showcase */}
+      <div className="w-full bg-[#FAF9F5] rounded-[22px] p-3 sm:p-4 border border-amber-900/10 grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 items-center">
+        {/* Clean Unobscured Temple Artwork Plate */}
+        <div className="md:col-span-5 aspect-[4/3] w-full rounded-[10px] overflow-hidden bg-[#EFE7D8]">
+          <img
+            src={
+              ASHTAYAMA_ARTWORKS[selectedPeriod.id] ||
+              ASHTAYAMA_ARTWORKS[selectedPeriod.nameEnglish.toLowerCase()] ||
+              '/assets/temples/keshi-ghat.webp'
+            }
+            alt={`${selectedPeriod.nameDevanagari} प्रहर लीला दर्शन — ${selectedPeriod.bhava}`}
+            className="w-full h-full object-cover object-[center_22%]"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
 
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1">
-          <div className="space-y-1 min-w-0 flex-1">
-            <div className="flex items-center gap-2">
-              <span className="text-[11px] font-bold text-amber-800 uppercase tracking-wider font-mono">
-                {selectedPeriod.bhava} • {selectedPeriod.timeRange}{' '}
-              </span>
-              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold text-amber-800 bg-amber-50">
-                Nikunja Bhava
-              </span>
-            </div>
+        {/* Rich Leela Watch Information & Raga Details */}
+        <div className="md:col-span-7 space-y-3 px-1 sm:pr-2 min-w-0">
+          <div className="flex items-center justify-between gap-2 flex-wrap">
+            <span className="text-[11px] font-bold text-amber-800 uppercase tracking-wider font-mono">
+              {selectedPeriod.bhava} • {selectedPeriod.timeRange}
+            </span>
+            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold text-amber-900 bg-amber-100/70">
+              Nikunja Bhava
+            </span>
+          </div>
 
-            <h4 className="font-serif font-bold text-lg sm:text-xl text-[#18181B] leading-tight">
+          <div>
+            <h4 className="font-serif font-bold text-lg sm:text-xl text-[#18181B] leading-snug">
               {selectedPeriod.nameEnglish} Watch ({selectedPeriod.nameDevanagari})
             </h4>
-
-            <p className="text-xs sm:text-[13px] text-[#71717A] leading-relaxed font-normal">
+            <p className="text-xs sm:text-[13px] text-[#71717A] leading-relaxed font-normal mt-1">
               {selectedPeriod.description}
             </p>
           </div>
 
-          <div className="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center gap-2 shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-neutral-100">
-            <div className="sm:text-right">
+          <div className="flex items-center justify-between gap-3 pt-2.5 border-t border-amber-900/10 flex-wrap">
+            <div>
               <span className="text-[10px] text-[#71717A] uppercase font-mono font-medium block">
                 Classical Raga
               </span>
@@ -178,7 +176,7 @@ export const AshtayamaTimelineDeck: React.FC<AshtayamaTimelineDeckProps> = ({ on
               <button
                 type="button"
                 onClick={onExplorePrahar}
-                className="px-3 py-1 rounded-full bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] text-[11px] font-laila font-bold transition-colors cursor-pointer whitespace-nowrap"
+                className="px-4 py-1.5 rounded-full bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] text-xs font-laila font-bold transition-colors cursor-pointer whitespace-nowrap"
               >
                 प्रहर की वाणी पढ़ें →
               </button>
