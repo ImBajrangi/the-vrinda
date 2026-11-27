@@ -268,9 +268,38 @@ export const TopicalGuideView: React.FC<TopicalGuideViewProps> = ({
           </div>
         </div>
 
-        <p className="text-sm sm:text-base text-neutral-600 font-serif mb-6 leading-relaxed rounded-[14px] bg-[#FAF8F4] p-4">
+        <p className="text-sm sm:text-base text-neutral-600 font-serif mb-5 leading-relaxed rounded-[14px] bg-[#FAF8F4] p-4">
           {content.description}
         </p>
+
+        {/* Mobile Interactive Quick-Jump Section Chips (< lg) */}
+        {!isZenMode && headings.length > 0 && (
+          <div className="lg:hidden mb-6 space-y-2">
+            <div className="flex items-center gap-1.5 text-[11px] font-serif font-bold text-amber-800 uppercase tracking-wide">
+              <List className="w-3.5 h-3.5" />
+              <span>{lang === 'hi' ? 'इस लेख के विषय (सीधे पढ़ें)' : 'Quick Jump Sections'}</span>
+            </div>
+            <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
+              {headings.map((h) => {
+                const isActive = activeHeadingId === h.id;
+                return (
+                  <button
+                    key={h.id}
+                    type="button"
+                    onClick={() => document.getElementById(h.id)?.scrollIntoView({ behavior: 'smooth' })}
+                    className={`px-3 py-1.5 rounded-full text-xs font-serif font-bold shrink-0 cursor-pointer transition-colors ${
+                      isActive
+                        ? 'bg-[#FEF08A] text-[#78350F]'
+                        : 'bg-[#FAF8F4] text-neutral-700 hover:bg-[#EFE7D8]'
+                    }`}
+                  >
+                    {h.text}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        )}
 
         <div
           id="topical-guide-body"
@@ -422,8 +451,8 @@ export const TopicalGuideView: React.FC<TopicalGuideViewProps> = ({
       </div>
 
       {/* Top Breadcrumb Bar & Language Toggle */}
-      <div className="rounded-[20px] bg-white px-4 py-3 shadow-[0_2px_12px_rgba(24,24,27,0.025)] flex flex-wrap items-center justify-between gap-3">
-        <div className="flex flex-wrap items-center gap-2 text-xs font-serif">
+      <div className="rounded-[20px] bg-white px-3.5 sm:px-4 py-2.5 sm:py-3 shadow-[0_2px_12px_rgba(24,24,27,0.025)] flex items-center justify-between gap-2">
+        <div className="flex items-center gap-1.5 sm:gap-2 text-xs font-serif min-w-0 overflow-x-auto no-scrollbar">
           <a
             href="/"
             onClick={(e) => {
@@ -432,10 +461,10 @@ export const TopicalGuideView: React.FC<TopicalGuideViewProps> = ({
                 onNavigateHome();
               }
             }}
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] font-bold transition-colors no-underline"
+            className="inline-flex items-center gap-1 px-2.5 sm:px-3.5 py-1.5 rounded-full bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] font-bold transition-colors no-underline shrink-0"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
-            <span>{lang === 'hi' ? 'होम सैंक्चुअरी' : 'Home'}</span>
+            <span>{lang === 'hi' ? 'होम' : 'Home'}</span>
           </a>
 
           {onOpenKnowledgeBase && (
@@ -447,7 +476,7 @@ export const TopicalGuideView: React.FC<TopicalGuideViewProps> = ({
                   onOpenKnowledgeBase();
                 }
               }}
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#FAF8F4] hover:bg-[#F5EFE3] text-neutral-800 font-bold transition-colors no-underline"
+              className="inline-flex items-center gap-1 px-2.5 sm:px-3.5 py-1.5 rounded-full bg-[#FAF8F4] hover:bg-[#F5EFE3] text-neutral-800 font-bold transition-colors no-underline shrink-0"
             >
               <span>{lang === 'hi' ? 'ज्ञानकोश विकी' : 'Knowledge Base'}</span>
             </a>
@@ -463,10 +492,11 @@ export const TopicalGuideView: React.FC<TopicalGuideViewProps> = ({
         <button
           type="button"
           onClick={() => setLang((l) => (l === 'hi' ? 'en' : 'hi'))}
-          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#1C140D] text-[#FEF08A] text-xs font-serif font-bold transition-colors cursor-pointer"
+          className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-full bg-[#1C140D] text-[#FEF08A] text-xs font-serif font-bold transition-colors cursor-pointer shrink-0"
         >
           <Globe className="w-3.5 h-3.5" />
-          <span>{lang === 'hi' ? 'Read in English' : 'हिन्दी में पढ़ें'}</span>
+          <span className="sm:hidden">{lang === 'hi' ? 'English' : 'हिन्दी'}</span>
+          <span className="hidden sm:inline">{lang === 'hi' ? 'Read in English' : 'हिन्दी में पढ़ें'}</span>
         </button>
       </div>
 

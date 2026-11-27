@@ -10733,8 +10733,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_cmsprovider_icmsprovider_getgranthas",
-      "community": 5,
-      "community_name": "ICMSProvider",
+      "community": 19,
+      "community_name": "StaticFileCMSProvider.ts",
       "norm_label": ".getgranthas()"
     },
     {
@@ -10757,8 +10757,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_cmsprovider_icmsprovider_getashtayamaschedule",
-      "community": 19,
-      "community_name": "StaticFileCMSProvider.ts",
+      "community": 5,
+      "community_name": "ICMSProvider",
       "norm_label": ".getashtayamaschedule()"
     },
     {
@@ -11045,8 +11045,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_staticfilecmsprovider_staticfilecmsprovider_getgranthas",
-      "community": 241,
-      "community_name": "SacredDatabase",
+      "community": 19,
+      "community_name": "StaticFileCMSProvider.ts",
       "norm_label": ".getgranthas()"
     },
     {
@@ -11069,8 +11069,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_staticfilecmsprovider_staticfilecmsprovider_getashtayamaschedule",
-      "community": 19,
-      "community_name": "StaticFileCMSProvider.ts",
+      "community": 241,
+      "community_name": "SacredDatabase",
       "norm_label": ".getashtayamaschedule()"
     },
     {
@@ -11201,8 +11201,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_index_cmsservice_getgranthas",
-      "community": 5,
-      "community_name": "ICMSProvider",
+      "community": 19,
+      "community_name": "StaticFileCMSProvider.ts",
       "norm_label": ".getgranthas()"
     },
     {
@@ -11225,8 +11225,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_index_cmsservice_getashtayamaschedule",
-      "community": 19,
-      "community_name": "StaticFileCMSProvider.ts",
+      "community": 5,
+      "community_name": "ICMSProvider",
       "norm_label": ".getashtayamaschedule()"
     },
     {
@@ -37722,7 +37722,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/reader/MahagranthReader.tsx",
-      "source_location": "L1455",
+      "source_location": "L1232",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_reader_mahagranthreader_mahagranthreader",
@@ -37758,7 +37758,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/reader/MahagranthReader.tsx",
-      "source_location": "L1325",
+      "source_location": "L1391",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_reader_mahagranthreader_mahagranthreader",
@@ -38438,7 +38438,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/reader/PadavaliReader.tsx",
-      "source_location": "L2831",
+      "source_location": "L2832",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_reader_padavalireader_padavalireader",
@@ -38450,7 +38450,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/reader/PadavaliReader.tsx",
-      "source_location": "L1120",
+      "source_location": "L1121",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_reader_padavalireader_padavalireader",
@@ -38474,7 +38474,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/reader/PadavaliReader.tsx",
-      "source_location": "L1126",
+      "source_location": "L1127",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_reader_padavalireader_padavalireader",
@@ -38486,7 +38486,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/reader/PadavaliReader.tsx",
-      "source_location": "L1162",
+      "source_location": "L1163",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_reader_padavalireader_padavalireader",
@@ -38498,7 +38498,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/reader/PadavaliReader.tsx",
-      "source_location": "L1163",
+      "source_location": "L1164",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_reader_padavalireader_padavalireader",
@@ -38510,7 +38510,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/reader/PadavaliReader.tsx",
-      "source_location": "L1058",
+      "source_location": "L1059",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_reader_padavalireader_padavalireader",
@@ -38522,7 +38522,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/reader/PadavaliReader.tsx",
-      "source_location": "L1066",
+      "source_location": "L1067",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_reader_padavalireader_padavalireader",
@@ -38534,7 +38534,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/reader/PadavaliReader.tsx",
-      "source_location": "L3722",
+      "source_location": "L2952",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_reader_padavalireader_padavalireader",
@@ -38558,7 +38558,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/reader/PadavaliReader.tsx",
-      "source_location": "L3204",
+      "source_location": "L3287",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_reader_padavalireader_padavalireader",
@@ -60851,5 +60851,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "9a89a8c505bf98e643560c8f43e07460ec9da0a2"
+  "built_at_commit": "5d4169b797fe9fa2016e409f0897621912077b4a"
 }

@@ -1,7 +1,7 @@
 # Graph Report - vrindopnisad  (2026-11-27)
 
 ## Corpus Check
-- 1244 files · ~9,525,426 words
+- 1244 files · ~9,525,484 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -958,7 +958,7 @@ Cohesion: 0.50
 Nodes (3): buildUrlset(), escapeXml(), SitemapService
 
 ### Community 241 - "SacredDatabase"
-Cohesion: 0.21
+Cohesion: 0.23
 Nodes (6): ASHTAYAMA_ARTWORKS, AshtayamaTimelineDeck(), AshtayamaTimelineDeckProps, StaticFileCMSProvider, AshtayamaPeriod, SacredDatabase
 
 ### Community 243 - "KathaSanctuary.tsx"

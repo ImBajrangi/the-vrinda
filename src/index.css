@@ -1048,6 +1048,7 @@ button:focus-visible {
 
 .vrind-guide-prose .verse-card {
   background-color: #FAF8F4;
+  border-left: 3px solid #D97706;
   border-radius: 16px;
   padding: 1.25rem 1.4rem;
   margin: 1.5rem 0;

@@ -10733,8 +10733,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_cmsprovider_icmsprovider_getgranthas",
-      "community": 19,
-      "community_name": "StaticFileCMSProvider.ts",
+      "community": 5,
+      "community_name": "ICMSProvider",
       "norm_label": ".getgranthas()"
     },
     {
@@ -10757,8 +10757,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_cmsprovider_icmsprovider_getashtayamaschedule",
-      "community": 5,
-      "community_name": "ICMSProvider",
+      "community": 19,
+      "community_name": "StaticFileCMSProvider.ts",
       "norm_label": ".getashtayamaschedule()"
     },
     {
@@ -11045,8 +11045,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_staticfilecmsprovider_staticfilecmsprovider_getgranthas",
-      "community": 19,
-      "community_name": "StaticFileCMSProvider.ts",
+      "community": 241,
+      "community_name": "SacredDatabase",
       "norm_label": ".getgranthas()"
     },
     {
@@ -11069,8 +11069,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_staticfilecmsprovider_staticfilecmsprovider_getashtayamaschedule",
-      "community": 241,
-      "community_name": "SacredDatabase",
+      "community": 19,
+      "community_name": "StaticFileCMSProvider.ts",
       "norm_label": ".getashtayamaschedule()"
     },
     {
@@ -11201,8 +11201,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_index_cmsservice_getgranthas",
-      "community": 19,
-      "community_name": "StaticFileCMSProvider.ts",
+      "community": 5,
+      "community_name": "ICMSProvider",
       "norm_label": ".getgranthas()"
     },
     {
@@ -11225,8 +11225,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cms_index_cmsservice_getashtayamaschedule",
-      "community": 5,
-      "community_name": "ICMSProvider",
+      "community": 19,
+      "community_name": "StaticFileCMSProvider.ts",
       "norm_label": ".getashtayamaschedule()"
     },
     {
@@ -38534,7 +38534,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/reader/PadavaliReader.tsx",
-      "source_location": "L3716",
+      "source_location": "L3722",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_reader_padavalireader_padavalireader",
@@ -38558,7 +38558,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/reader/PadavaliReader.tsx",
-      "source_location": "L3202",
+      "source_location": "L3204",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_reader_padavalireader_padavalireader",

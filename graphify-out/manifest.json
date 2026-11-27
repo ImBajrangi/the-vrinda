@@ -2310,8 +2310,8 @@
     "semantic_hash": ""
   },
   "src/components/reader/MahagranthReader.tsx": {
-    "mtime": 1795792883.353809,
-    "ast_hash": "e416b083cb6f5941a7b1febf46e48f81",
+    "mtime": 1795795251.9469411,
+    "ast_hash": "0b28e881712c1c6550f4c47dbf3b2785",
     "semantic_hash": ""
   },
   "src/components/reader/MobileReaderHeader.tsx": {
@@ -2325,8 +2325,8 @@
     "semantic_hash": ""
   },
   "src/components/reader/PadavaliReader.tsx": {
-    "mtime": 1795795028.6917593,
-    "ast_hash": "aeb2f6a7b5b01d23d6773d9fddc86c68",
+    "mtime": 1795795250.2800055,
+    "ast_hash": "f873cdda913c8d894e984443b93e18a6",
     "semantic_hash": ""
   },
   "src/components/smaran/AshtayamaTimelineDeck.tsx": {
@@ -6945,8 +6945,8 @@
     "semantic_hash": ""
   },
   "src/components/sections/TopicalGuideView.tsx": {
-    "mtime": 1795794706.6629887,
-    "ast_hash": "a6f7bd0411c25b5b89e9b6c2595adacd",
+    "mtime": 1795795294.4280496,
+    "ast_hash": "2c47a7ad8f37c140bbf60579091a9fb7",
     "semantic_hash": ""
   },
   "src/data/topicalGuides.json": {

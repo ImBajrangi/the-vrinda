@@ -1224,6 +1224,72 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
             </div>
           </div>
 
+          {/* Mobile Epics Sanctuary Header & Quick Reading Controls (< sm) */}
+          <div className="sm:hidden rounded-[20px] bg-[#FAF8F4] p-3 mb-4 space-y-2.5">
+            <div className="flex items-center gap-3">
+              <div className="w-11 h-11 rounded-[10px] overflow-hidden bg-[#EFE7D8] shrink-0">
+                <img
+                  src={getEpicDarshanVisual(selectedGranthaId).src}
+                  alt={currentEpicConfig.name}
+                  className="w-full h-full object-cover object-top"
+                  loading="eager"
+                />
+              </div>
+              <div className="min-w-0 flex-1">
+                <div className="text-[10.5px] font-serif font-bold text-amber-800 truncate">
+                  {currentEpicConfig.name} • {!loadingGranthaId && currentChapter?.section ? currentChapter.section : 'पारायण'}
+                </div>
+                <h2 className="font-rozha text-base font-bold text-neutral-900 truncate leading-tight">
+                  {!loadingGranthaId && currentChapter ? currentChapter.name : 'पावन पाठ'}
+                </h2>
+                <div className="text-[11px] font-serif text-neutral-500">
+                  {loadingGranthaId || loadingChapter
+                    ? 'संकलित हो रहा है...'
+                    : `${formatDevanagariNumerals(chapterPadas.length)} ${currentEpicConfig.verseTerm}`}
+                </div>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between gap-2 overflow-x-auto no-scrollbar pt-0.5">
+              <div className="flex items-center gap-1.5 shrink-0">
+                <button
+                  type="button"
+                  onClick={() => setShowRoman((v) => !v)}
+                  className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-serif font-bold transition-colors cursor-pointer ${
+                    showRoman ? 'bg-[#FEF08A] text-[#78350F]' : 'bg-white text-neutral-700'
+                  }`}
+                >
+                  <Languages className="w-3 h-3" />
+                  <span>Roman</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setPaperTone((t) => (t === 'porcelain' ? 'chandan' : 'porcelain'))}
+                  className={`px-2.5 py-1 rounded-full text-[11px] font-serif font-bold transition-colors cursor-pointer ${
+                    paperTone === 'chandan' ? 'bg-[#FEF08A] text-[#78350F]' : 'bg-white text-neutral-700'
+                  }`}
+                >
+                  {paperTone === 'porcelain' ? 'चन्दन' : 'श्वेत'}
+                </button>
+              </div>
+
+              <div className="flex items-center bg-white p-0.5 rounded-full text-[11px] font-sans shrink-0">
+                {(['sm', 'md', 'lg'] as const).map((sz) => (
+                  <button
+                    key={sz}
+                    type="button"
+                    onClick={() => setFontSize(sz)}
+                    className={`px-2 py-0.5 rounded-full cursor-pointer transition-colors ${
+                      fontSize === sz ? 'bg-[#FEF08A] text-[#78350F] font-bold' : 'text-neutral-500'
+                    }`}
+                  >
+                    {sz === 'sm' ? 'अ' : sz === 'md' ? 'आ' : 'बड़ा'}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
           {/* Reading Stream */}
           {loadingGranthaId || loadingChapter || chapterPadas.length === 0 ? (
             <div className="py-24 px-6 flex flex-col items-center justify-center text-center space-y-3 select-none">

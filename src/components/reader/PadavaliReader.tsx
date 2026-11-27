@@ -737,8 +737,9 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
           const el = wordStudyAnchorRef.current;
           if (!el) return;
           const rect = el.getBoundingClientRect();
-          // Ensure panel header clears both global navbar and sticky Pad-Kram scrubber
-          if (rect.top < 176 || rect.top > window.innerHeight - 120) {
+          const minTopOffset = window.innerWidth < 768 ? 72 : 176;
+          // Ensure panel header clears sticky reader bars on both mobile and desktop
+          if (rect.top < minTopOffset || rect.top > window.innerHeight - 120) {
             el.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }
         });
@@ -2941,7 +2942,89 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
           {/* MODE A: Continuous Reading Stream (अखंड पाठ)                               */}
           {/* ========================================================================= */}
           {readingMode === 'continuous' ? (
-            <div className="space-y-6">
+            <div className="space-y-5 sm:space-y-6">
+              {/* Mobile Story Context & Interactive Study Bar (< md) */}
+              <div className="md:hidden space-y-2.5">
+                <div className="rounded-[20px] bg-[#FAF8F4] p-3 flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className="w-11 h-11 rounded-[10px] overflow-hidden bg-[#EFE7D8] shrink-0">
+                      <img
+                        src={getSaintPortrait({ name: authorName })}
+                        alt={authorName}
+                        className="w-full h-full object-cover object-top"
+                        loading="eager"
+                      />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-[10.5px] font-serif font-bold text-amber-800 truncate">
+                        {granthaDisplayName}
+                      </div>
+                      <h2 className="font-rozha text-base font-bold text-neutral-900 truncate leading-tight">
+                        {currentChapter ? currentChapter.name.replace(/\s*\([^)]*पद[^)]*\)/g, '').trim() : cleanTitle}
+                      </h2>
+                      <div className="text-[11px] font-serif text-neutral-500 truncate">
+                        {authorName} • {formatDevanagariNumerals(filteredPads.length)} पद
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => handleSetReadingMode('single')}
+                    className="px-3 py-1.5 rounded-full bg-white text-[#78350F] text-[11px] font-serif font-bold shrink-0 shadow-2xs cursor-pointer"
+                    title="एकल कार्ड ध्यान पठन"
+                  >
+                    एकल कार्ड
+                  </button>
+                </div>
+
+                {/* Mobile Word-Study, Guided Flow & Quick Verse Scrubber */}
+                <div className="flex items-center gap-1.5 rounded-[16px] bg-white p-1.5 shadow-[0_2px_10px_rgba(24,24,27,0.03)]">
+                  <button
+                    type="button"
+                    onClick={handleToggleWordStudy}
+                    className={`h-7 px-2.5 rounded-full text-[11px] font-serif font-bold inline-flex items-center gap-1 shrink-0 transition-colors cursor-pointer ${
+                      isWordStudyOpen
+                        ? 'bg-[#1C140D] text-[#FEF08A]'
+                        : 'bg-[#FAF8F4] text-[#78350F]'
+                    }`}
+                  >
+                    <BookOpen className="w-3 h-3" />
+                    <span>शब्दार्थ</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setIsAutoScrolling(!isAutoScrolling)}
+                    className={`h-7 px-2.5 rounded-full text-[11px] font-serif font-bold inline-flex items-center gap-1 shrink-0 transition-colors cursor-pointer ${
+                      isAutoScrolling
+                        ? 'bg-amber-600 text-white'
+                        : 'bg-[#FEF08A] text-[#78350F]'
+                    }`}
+                  >
+                    {isAutoScrolling ? <Pause className="w-3 h-3 fill-current" /> : <Play className="w-3 h-3 fill-current" />}
+                    <span>{isAutoScrolling ? 'विराम' : 'स्वाध्याय'}</span>
+                  </button>
+                  <div className="flex items-center gap-1 overflow-x-auto no-scrollbar flex-1 min-w-0 pl-0.5">
+                    {filteredPads.slice(0, streamLimit).map((pad, idx) => {
+                      const isActive = (activeScrollerVerseId || selectedPad.id) === pad.id;
+                      return (
+                        <button
+                          key={pad.id}
+                          type="button"
+                          onClick={() => handleSelectPad(pad)}
+                          className={`min-w-7 h-7 px-2 rounded-full text-[11px] font-mono font-bold flex items-center justify-center shrink-0 cursor-pointer transition-colors ${
+                            isActive
+                              ? 'bg-[#FEF08A] text-[#78350F]'
+                              : 'bg-[#FAF8F4] text-neutral-600'
+                          }`}
+                        >
+                          {idx + 1}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+
               {/* Header Title for Chapter Stream (Desktop Only - MobileReaderHeader provides top chrome on mobile) */}
               <div className={`hidden sm:flex pb-3 sm:pb-5 border-b ${currentTheme.borderColor} items-center justify-between gap-3 flex-wrap`}>
                 <div>
