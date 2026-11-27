@@ -2210,8 +2210,8 @@
     "semantic_hash": ""
   },
   "src/App.tsx": {
-    "mtime": 1795708469.979933,
-    "ast_hash": "d4ce4f4b8c5581cece95040f74bcaa64",
+    "mtime": 1795789102.3427343,
+    "ast_hash": "80fd534f0fb6d487f82ed0e8a856cfe9",
     "semantic_hash": ""
   },
   "src/components/common/ArtworkGraphicSlot.tsx": {
@@ -2310,8 +2310,8 @@
     "semantic_hash": ""
   },
   "src/components/reader/MahagranthReader.tsx": {
-    "mtime": 1795708469.9814363,
-    "ast_hash": "012fe5ede05237acc7be23e9db42e767",
+    "mtime": 1795789290.39229,
+    "ast_hash": "05a46d30f32c8c3373d6843d353c2b1b",
     "semantic_hash": ""
   },
   "src/components/reader/MobileReaderHeader.tsx": {
@@ -2325,8 +2325,8 @@
     "semantic_hash": ""
   },
   "src/components/reader/PadavaliReader.tsx": {
-    "mtime": 1795708469.9860852,
-    "ast_hash": "bc883968ac2d74ba7647def7041fda8b",
+    "mtime": 1795789291.8082664,
+    "ast_hash": "87eb4c8a47c48737a4b3753418f37692",
     "semantic_hash": ""
   },
   "src/components/smaran/AshtayamaTimelineDeck.tsx": {
@@ -7057,6 +7057,11 @@
   "src/services/panchangService.ts": {
     "mtime": 1795705730.5860791,
     "ast_hash": "a0745011cc145c89d0a072b89718230b",
+    "semantic_hash": ""
+  },
+  "src/hooks/useSidebarState.ts": {
+    "mtime": 1795788947.8932126,
+    "ast_hash": "b8607be1d9d3e1f0e5d58afea54ba70c",
     "semantic_hash": ""
   }
 }

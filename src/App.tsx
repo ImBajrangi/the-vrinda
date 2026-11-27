@@ -1138,7 +1138,7 @@ export function App({
               </div>
 
               {/* Daily Contemplation & Dham Atmosphere Whisper Strip */}
-              <div className="w-full bg-white rounded-[20px] squircle-card px-4 py-2.5 border border-[#EAE1D3] shadow-[0_2px_8px_rgba(0,0,0,0.02)] mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+              <div className="w-full bg-white rounded-[20px] squircle-card px-4 py-2.5 shadow-[0_2px_12px_rgba(24,24,27,0.025)] mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
                 <div className="flex items-center gap-2.5 min-w-0 flex-1">
                   <div className="w-8 h-8 rounded-[10px] bg-[#FAF6EE] flex items-center justify-center shrink-0">
                     <Heart className={`w-4 h-4 text-amber-700 ${isAffirmedSankalpa ? 'fill-amber-700' : 'fill-amber-700/15'} transition-colors`} />
@@ -1193,10 +1193,10 @@ export function App({
                 </div>
               </div>
 
-              {/* Section 1: Daily Temple Seva & Darshan Schedule (Concentric Geometry: 40/44px -> 24px Cards) */}
-              <div id="daily-temple-seva-section" className="w-full bg-white rounded-[40px] sm:rounded-[44px] p-4 sm:p-5 space-y-4 mb-6 border border-neutral-200/60 shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
+              {/* Section 1: Daily Temple Seva & Darshan Schedule (Concentric Geometry: 40/44px -> 20px Cards) */}
+              <div id="daily-temple-seva-section" className="w-full bg-white rounded-[40px] sm:rounded-[44px] p-4 sm:p-5 space-y-4 mb-6 shadow-[0_2px_16px_rgba(24,24,27,0.025)]">
                 {/* Header with Real-Time Panchang Tithi */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-neutral-100">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2">
                   <div>
                     <div className="flex items-center gap-2 flex-wrap">
                       <h3 className="font-serif font-bold text-xl sm:text-[22px] text-[#18181B] leading-tight">

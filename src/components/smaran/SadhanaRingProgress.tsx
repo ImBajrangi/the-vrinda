@@ -177,7 +177,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
       {/* 1. Light, Airy Unified Sanctuary Hero (Fits Comfortably Above the Fold on All Screens) */}
       <section
         aria-label="श्री वृन्दावन नित्य संदर्शन"
-        className="w-full bg-white rounded-[28px] sm:rounded-[32px] squircle-card border border-[#EAE1D3] p-4 sm:p-5 lg:p-6 shadow-[0_4px_24px_rgba(24,24,27,0.03)]"
+        className="w-full bg-white rounded-[28px] sm:rounded-[32px] squircle-card p-4 sm:p-5 lg:p-6 shadow-[0_2px_16px_rgba(24,24,27,0.025)]"
       >
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-7 items-stretch">
           {/* Left Column (7 cols): Serene Typography + Compact Tulsi Japamala Station */}
@@ -198,7 +198,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
                   <button
                     type="button"
                     onClick={onOpenFocus}
-                    className="h-8 inline-flex items-center gap-1.5 px-3 rounded-full bg-[#FAF6EE] hover:bg-[#EFE7D8] text-[#1C140D] text-[11.5px] font-laila font-semibold border border-amber-900/10 transition-colors cursor-pointer"
+                    className="h-8 inline-flex items-center gap-1.5 px-3 rounded-full bg-[#FAF6EE] hover:bg-[#EFE7D8] text-[#1C140D] text-[11.5px] font-laila font-semibold transition-colors cursor-pointer"
                     title="Open Dhyāna Sanctuary (ध्यान कक्ष)"
                   >
                     <Wind className="w-3.5 h-3.5 text-amber-800" />
@@ -231,8 +231,8 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
               </p>
             </div>
 
-            {/* Compact Interactive Tulsi Mala & Counter Module (R_outer=18px, p=16px -> balanced inner corners) */}
-            <div className="flex-1 rounded-[18px] bg-[#FAF8F3] border border-[#EAE1D3]/80 p-3.5 sm:p-4 flex flex-col sm:flex-row items-center gap-4 sm:gap-5">
+            {/* Compact Interactive Tulsi Mala & Counter Module (Borderless Tonal Container) */}
+            <div className="flex-1 rounded-[18px] bg-[#FAF8F3] p-3.5 sm:p-4 flex flex-col sm:flex-row items-center gap-4 sm:gap-5">
               {/* Compact Tactile Rosary Ring */}
               <div className="relative w-40 h-40 sm:w-44 sm:h-44 flex items-center justify-center select-none shrink-0">
                 <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100">
@@ -325,13 +325,13 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
                     </div>
                   </div>
 
-                  <span className="text-[11px] font-laila font-semibold text-amber-900 bg-white border border-amber-200/80 px-2.5 py-1 rounded-full">
+                  <span className="text-[11px] font-laila font-semibold text-amber-900 bg-white px-2.5 py-1 rounded-full shadow-2xs">
                     {malasDevanagari} / {malasTargetDevanagari} माला
                   </span>
                 </div>
 
                 {/* Progress Strip */}
-                <div className="bg-white rounded-[10px] px-3 py-2 border border-amber-200/60 space-y-1.5">
+                <div className="bg-white rounded-[10px] px-3 py-2 space-y-1.5 shadow-2xs">
                   <div className="flex items-center justify-between text-[11px] font-laila">
                     <span className="text-neutral-600">
                       वर्तमान चक्र: मनका{' '}
@@ -359,7 +359,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
                   <button
                     type="button"
                     onClick={handleTapBead}
-                    className="py-2.5 px-3 rounded-full bg-white hover:bg-[#FEFCE8] text-[#18181B] border border-amber-300/80 flex items-center justify-center gap-1.5 text-xs font-bold cursor-pointer active:scale-95 transition-colors"
+                    className="py-2.5 px-3 rounded-full bg-white hover:bg-[#FEFCE8] text-[#18181B] shadow-2xs flex items-center justify-center gap-1.5 text-xs font-bold cursor-pointer active:scale-95 transition-colors"
                   >
                     <Disc3 className="w-3.5 h-3.5 text-amber-700" />
                     <span>+१ मनका जप</span>
@@ -368,7 +368,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
                   <button
                     type="button"
                     onClick={incrementJapa}
-                    className="py-2.5 px-3 rounded-full bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] border border-amber-300/90 flex items-center justify-center gap-1.5 text-xs font-bold cursor-pointer active:scale-95 transition-colors"
+                    className="py-2.5 px-3 rounded-full bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] flex items-center justify-center gap-1.5 text-xs font-bold cursor-pointer active:scale-95 transition-colors"
                   >
                     <span>+१ माला</span>
                     <span className="font-mono text-[10.5px] bg-white/75 px-1.5 py-0.5 rounded-full">
@@ -382,7 +382,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
 
           {/* Right Column (5 cols): Unobscured Fine-Art Darshan Frame + Clean Swatches */}
           <div className="lg:col-span-5 min-w-0">
-            <div className="rounded-[20px] bg-[#FAF8F3] border border-[#EAE1D3] p-2.5 space-y-2.5">
+            <div className="rounded-[20px] bg-[#FAF8F3] p-2.5 space-y-2.5">
               {/* Unobscured Sacred Photograph — Zero Text Stamped Over ठाकुर जी */}
               <div
                 role="button"
@@ -422,7 +422,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
                     type="button"
                     onClick={() => selectPlate(plateIndex - 1)}
                     aria-label="पिछला दर्शन"
-                    className="w-7 h-7 rounded-full bg-white hover:bg-amber-50 border border-amber-900/15 text-neutral-700 flex items-center justify-center transition-colors cursor-pointer"
+                    className="w-7 h-7 rounded-full bg-white hover:bg-amber-50 shadow-2xs text-neutral-700 flex items-center justify-center transition-colors cursor-pointer"
                   >
                     <ChevronLeft className="w-3.5 h-3.5" />
                   </button>
@@ -430,7 +430,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
                     type="button"
                     onClick={() => selectPlate(plateIndex + 1)}
                     aria-label="अगला दर्शन"
-                    className="w-7 h-7 rounded-full bg-white hover:bg-amber-50 border border-amber-900/15 text-neutral-700 flex items-center justify-center transition-colors cursor-pointer"
+                    className="w-7 h-7 rounded-full bg-white hover:bg-amber-50 shadow-2xs text-neutral-700 flex items-center justify-center transition-colors cursor-pointer"
                   >
                     <ChevronRight className="w-3.5 h-3.5" />
                   </button>
@@ -590,7 +590,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
             key={item.type}
             type="button"
             onClick={() => onOpenPillar(item.type)}
-            className="group text-left p-2.5 rounded-[20px] bg-white hover:bg-[#FAF8F3] border border-[#EAE1D3] transition-colors cursor-pointer flex items-center gap-3.5 min-w-0"
+            className="group text-left p-2.5 rounded-[20px] bg-white hover:bg-[#FAF8F3] shadow-[0_2px_12px_rgba(24,24,27,0.025)] transition-colors cursor-pointer flex items-center gap-3.5 min-w-0"
           >
             <div className="w-16 h-16 rounded-[10px] overflow-hidden bg-[#EFE7D8] shrink-0">
               <img

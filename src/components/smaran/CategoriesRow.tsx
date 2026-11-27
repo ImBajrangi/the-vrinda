@@ -216,7 +216,7 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
     }
 
     return (
-      <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-[12px] bg-[#FAF8F5] border border-neutral-200/80 flex flex-col items-center justify-center p-1.5 shadow-2xs shrink-0 group-hover:border-amber-300 transition-colors">
+      <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-[12px] bg-[#FAF8F5] flex flex-col items-center justify-center p-1.5 shrink-0 transition-colors">
         <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-amber-100/60 flex items-center justify-center text-amber-800 shrink-0">
           <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-800" />
         </div>
@@ -228,9 +228,9 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
   };
 
   return (
-    <section className="w-full bg-white rounded-[40px] sm:rounded-[44px] p-4 sm:p-5 mb-6 space-y-4 sm:space-y-5 border border-neutral-200/60 shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
+    <section className="w-full bg-white rounded-[40px] sm:rounded-[44px] p-4 sm:p-5 mb-6 space-y-4 sm:space-y-5 shadow-[0_2px_16px_rgba(24,24,27,0.025)]">
       {/* 1. Header with Obsidian Typography */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-1 border-b border-neutral-100">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-1">
         <div>
           <div className="flex items-center gap-2 flex-wrap">
             <h3 className="font-serif font-bold text-lg sm:text-xl text-[#18181B] leading-tight">
@@ -266,7 +266,7 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
         <div
           role="tablist"
           aria-label="स्मरण ग्रंथ व वाणी श्रेणियाँ"
-          className="relative w-full max-w-2xl grid grid-cols-4 p-1 bg-[#FAF6EE] rounded-full border border-amber-200/50"
+          className="relative w-full max-w-2xl grid grid-cols-4 p-1 bg-[#FAF6EE] rounded-full"
         >
           {/* Dynamic Sliding Indicator Bar */}
           <span
@@ -318,7 +318,7 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
 
       {/* 3. SECTION A: Canonical Mahagranths & Books (Merged Rows, Soft Outer Area) */}
       {(activeTab === 'mahagranth' || activeTab === 'books') && (
-        <div className="rounded-[24px] overflow-hidden border border-neutral-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.02)] bg-white divide-y divide-neutral-100">
+        <div className="rounded-[24px] overflow-hidden bg-[#FAF8F4]/70 divide-y divide-neutral-100/70">
           {(activeTab === 'mahagranth' ? mahagranths : rasikBooks).map((book) => {
             const coverConfig = getBookCoverConfig(book.id, book.devanagari);
             const bookTitle = book.devanagari
@@ -458,7 +458,7 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
 
       {/* 4. SECTION B: Master Authors & Rasik Saints (Merged Rows, Soft Outer Area) */}
       {activeTab === 'authors' && (
-        <div className="rounded-[24px] sm:rounded-[28px] overflow-hidden border border-neutral-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.02)] bg-white divide-y divide-neutral-100">
+        <div className="rounded-[24px] sm:rounded-[28px] overflow-hidden bg-[#FAF8F4]/70 divide-y divide-neutral-100/70">
           {authors.map((author) => (
             <div
               key={author.id}
@@ -478,7 +478,7 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
                     placeholderCategory="saint"
                     roundedClassName="rounded-full"
                     customFallback={
-                      <div className="w-full h-full rounded-full bg-amber-50 border border-amber-200/70 flex items-center justify-center relative overflow-hidden shadow-2xs group-hover:border-amber-400 transition-colors">
+                      <div className="w-full h-full rounded-full bg-amber-50 flex items-center justify-center relative overflow-hidden transition-colors">
                         <Feather className="w-5 h-5 text-amber-800" />
                       </div>
                     }
@@ -521,7 +521,7 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
 
       {/* 5. SECTION C: Sacred Leelas & Dham Relations (Merged Rows, Soft Outer Area) */}
       {activeTab === 'relations' && (
-        <div className="rounded-[24px] sm:rounded-[28px] overflow-hidden border border-neutral-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.02)] bg-white divide-y divide-neutral-100">
+        <div className="rounded-[24px] sm:rounded-[28px] overflow-hidden bg-[#FAF8F4]/70 divide-y divide-neutral-100/70">
           {relations.map((rel) => {
             const isAshtayama = rel.id === 'ashtayama';
             const isParikrama = rel.id === 'parikrama';

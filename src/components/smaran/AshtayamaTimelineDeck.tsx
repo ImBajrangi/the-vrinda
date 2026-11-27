@@ -126,7 +126,7 @@ export const AshtayamaTimelineDeck: React.FC<AshtayamaTimelineDeckProps> = ({ on
       </div>
 
       {/* Selected Watch Formatted as a Compact Horizontal Editorial Showcase */}
-      <div className="w-full bg-[#FAF9F5] rounded-[22px] p-3 sm:p-4 border border-amber-900/10 grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 items-center">
+      <div className="w-full bg-[#FAF9F5] rounded-[22px] p-3 sm:p-4 grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 items-center">
         {/* Clean Unobscured Temple Artwork Plate */}
         <div className="md:col-span-5 aspect-[4/3] w-full rounded-[10px] overflow-hidden bg-[#EFE7D8]">
           <img
@@ -162,7 +162,7 @@ export const AshtayamaTimelineDeck: React.FC<AshtayamaTimelineDeckProps> = ({ on
             </p>
           </div>
 
-          <div className="flex items-center justify-between gap-3 pt-2.5 border-t border-amber-900/10 flex-wrap">
+          <div className="flex items-center justify-between gap-3 pt-2.5 flex-wrap">
             <div>
               <span className="text-[10px] text-[#71717A] uppercase font-mono font-medium block">
                 Classical Raga

@@ -98,7 +98,7 @@ export const NityaSevaCard: React.FC<NityaSevaCardProps> = ({
     });
   };
 
-  // 1. FEATURED SHOWCASE HERO (Museum Split Ivory Editorial Card — Zero Dark Scrim on Deity)
+  // 1. FEATURED SHOWCASE HERO (Museum Split Ivory Editorial Card — Borderless Tonal Separation)
   if (isHero) {
     return (
       <div
@@ -107,8 +107,8 @@ export const NityaSevaCard: React.FC<NityaSevaCardProps> = ({
         aria-busy={isEntering}
         onClick={handleEnter}
         onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && handleEnter()}
-        className={`group w-full cursor-pointer select-none transition-colors duration-200 bg-[#FAF8F4] hover:bg-[#FFFDF8] border border-amber-900/12 p-2.5 sm:p-3 grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 items-center ${
-          seamless ? 'rounded-[20px]' : 'rounded-[22px] shadow-2xs'
+        className={`group w-full cursor-pointer select-none transition-colors duration-200 bg-[#FAF8F4] hover:bg-[#F5EFE3] p-2.5 sm:p-3 grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 items-center ${
+          seamless ? 'rounded-[20px]' : 'rounded-[22px]'
         }`}
       >
         {/* Clean Unobscured Temple Photograph */}
@@ -134,7 +134,7 @@ export const NityaSevaCard: React.FC<NityaSevaCardProps> = ({
             </div>
 
             {statusType === 'active' && (
-              <span className="inline-flex items-center gap-1.5 text-[11px] font-laila font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200/80">
+              <span className="inline-flex items-center gap-1.5 text-[11px] font-laila font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                 <span>दर्शन खुले हैं</span>
               </span>
@@ -150,7 +150,7 @@ export const NityaSevaCard: React.FC<NityaSevaCardProps> = ({
             </p>
           </div>
 
-          <div className="flex items-center justify-between pt-2 border-t border-amber-900/10 gap-3 flex-wrap">
+          <div className="flex items-center justify-between pt-2 gap-3 flex-wrap">
             <div className="flex items-center gap-2 text-[#18181B] font-mono text-xs sm:text-[13px] font-bold flex-wrap">
               <Clock className="w-3.5 h-3.5 text-amber-700 shrink-0" />
               <span>{time}</span>
@@ -180,7 +180,7 @@ export const NityaSevaCard: React.FC<NityaSevaCardProps> = ({
     );
   }
 
-  // 2. COMPACT EDITORIAL SHOWCASE CARD (Clean Unobscured Plate Above + Ivory Body Below)
+  // 2. COMPACT EDITORIAL SHOWCASE CARD (Clean Unobscured Plate Above + Borderless Ivory Body Below)
   return (
     <div
       role="button"
@@ -188,7 +188,7 @@ export const NityaSevaCard: React.FC<NityaSevaCardProps> = ({
       aria-busy={isEntering}
       onClick={handleEnter}
       onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && handleEnter()}
-      className="group w-full cursor-pointer select-none transition-colors duration-150 rounded-[20px] bg-[#FAF8F4] hover:bg-[#FFFDF8] border border-amber-900/12 p-2.5 flex flex-col justify-between gap-3"
+      className="group w-full cursor-pointer select-none transition-colors duration-150 rounded-[20px] bg-[#FAF8F4] hover:bg-[#F5EFE3] p-2.5 flex flex-col justify-between gap-3"
     >
       {/* Clean Unobscured WebP Photo Plate */}
       <div className="aspect-[16/10] w-full rounded-[10px] overflow-hidden bg-[#EFE7D8]">
@@ -209,7 +209,7 @@ export const NityaSevaCard: React.FC<NityaSevaCardProps> = ({
               {displayNum} • {devanagariTemple}
             </span>
             {statusType === 'active' && (
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-[10px] font-laila font-semibold text-emerald-800 shrink-0">
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-[10px] font-laila font-semibold text-emerald-800 shrink-0">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                 <span>खुले</span>
               </span>
@@ -224,7 +224,7 @@ export const NityaSevaCard: React.FC<NityaSevaCardProps> = ({
           </p>
         </div>
 
-        <div className="flex items-center justify-between pt-2 border-t border-amber-900/10 gap-2">
+        <div className="flex items-center justify-between pt-2 gap-2">
           <span className="text-[11px] font-mono font-semibold text-neutral-700 truncate">
             {countdownLabel || time}
           </span>

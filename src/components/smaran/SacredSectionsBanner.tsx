@@ -111,7 +111,7 @@ export const SacredSectionsBanner: React.FC<SacredSectionsBannerProps> = ({ onSe
   return (
     <section
       aria-label="पावन संकलन एवं उपासना संग्रह"
-      className="w-full bg-white rounded-[32px] squircle-card p-5 sm:p-7 border border-neutral-200/80 shadow-xs mb-6 space-y-5"
+      className="w-full bg-white rounded-[32px] squircle-card p-5 sm:p-7 shadow-[0_2px_16px_rgba(24,24,27,0.025)] mb-6 space-y-5"
     >
       {/* Header Deck */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-1">
@@ -127,7 +127,7 @@ export const SacredSectionsBanner: React.FC<SacredSectionsBannerProps> = ({ onSe
         </div>
       </div>
 
-      {/* 4 Clean Editorial Cards Grid - Unobscured Photography (R_outer = 32px, p = 20px -> R_inner = 12px) */}
+      {/* 4 Clean Borderless Editorial Cards Grid - Pure Tonal Depth (R_outer = 32px, p = 20px -> R_inner = 12px) */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
         {cards.map((card) => {
           const isLoading = loadingTarget === card.id;
@@ -138,7 +138,7 @@ export const SacredSectionsBanner: React.FC<SacredSectionsBannerProps> = ({ onSe
               disabled={loadingTarget !== null}
               aria-busy={isLoading}
               onClick={() => triggerNavigation(card.id, () => onSelectTab(card.id))}
-              className="group text-left p-2.5 rounded-[12px] bg-[#FAF8F4] border border-[#EAE1D3] hover:border-amber-400/70 hover:bg-[#FFFDF8] transition-colors duration-150 flex flex-col justify-between cursor-pointer focus:outline-none focus:ring-2 focus:ring-amber-400 disabled:opacity-75"
+              className="group text-left p-2.5 rounded-[12px] bg-[#FAF8F4] hover:bg-[#F5EFE3] transition-colors duration-150 flex flex-col justify-between cursor-pointer focus:outline-none focus:ring-2 focus:ring-amber-400 disabled:opacity-75"
             >
               <div className="space-y-2.5">
                 {/* Clean Unobscured WebP Photograph */}
@@ -168,7 +168,7 @@ export const SacredSectionsBanner: React.FC<SacredSectionsBannerProps> = ({ onSe
               </div>
 
               {/* Bottom Feature Caption */}
-              <div className="mt-2.5 pt-2 px-1 border-t border-amber-900/10 flex items-center justify-between gap-1 text-[10px] font-laila text-neutral-500">
+              <div className="mt-2.5 pt-2 px-1 flex items-center justify-between gap-1 text-[10px] font-laila text-neutral-500">
                 <span className="truncate">{isLoading ? 'संकलित हो रहा है...' : card.features}</span>
                 {isLoading ? (
                   <IOSSpinner size="xs" theme="amber" />
@@ -182,7 +182,7 @@ export const SacredSectionsBanner: React.FC<SacredSectionsBannerProps> = ({ onSe
       </div>
 
       {/* Interactive Rasik Saints Portrait Strip */}
-      <div className="pt-2 border-t border-neutral-100 space-y-2.5">
+      <div className="pt-2 space-y-2.5">
         <div className="flex items-center justify-between gap-2">
           <span className="text-xs font-laila font-bold text-amber-900">
             प्रमुख रसिक संत दर्शन • <span className="font-normal text-neutral-500">स्पर्श कर सीधे वाणी पढ़ें</span>
@@ -214,12 +214,12 @@ export const SacredSectionsBanner: React.FC<SacredSectionsBannerProps> = ({ onSe
                     }
                   })
                 }
-                className="group shrink-0 flex items-center gap-2.5 pr-3.5 pl-1.5 py-1.5 rounded-full bg-[#FAF8F3] hover:bg-[#FEF08A]/55 border border-amber-200/70 transition-colors cursor-pointer text-left disabled:opacity-75"
+                className="group shrink-0 flex items-center gap-2.5 pr-3.5 pl-1.5 py-1.5 rounded-full bg-[#FAF8F3] hover:bg-[#FEF08A]/55 transition-colors cursor-pointer text-left disabled:opacity-75"
               >
                 <img
                   src={saint.img}
                   alt={saint.name}
-                  className="w-9 h-9 rounded-full object-cover object-top border border-amber-300/80 shrink-0"
+                  className="w-9 h-9 rounded-full object-cover object-top shrink-0"
                   loading="eager"
                   decoding="async"
                 />
