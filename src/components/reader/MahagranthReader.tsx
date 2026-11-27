@@ -776,8 +776,8 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
         }}
       />
 
-      {/* Master Workstation Header: Unified Sacred Parayan Gateway & Compact 5-Epic Shelf */}
-      <div className="mb-4 md:mb-6 p-3.5 sm:p-5 rounded-[22px] sm:rounded-[28px] bg-white border border-neutral-200/80 shadow-2xs space-y-3 sm:space-y-4">
+      {/* Master Workstation Header: Hidden on < sm so mobile jumps right into sleek Epic Switcher + Verse 1 */}
+      <div className="hidden sm:block mb-4 md:mb-6 p-3.5 sm:p-5 rounded-[22px] sm:rounded-[28px] bg-white border border-neutral-200/80 shadow-2xs space-y-3 sm:space-y-4">
         {/* Top Title & Quick Routing Row */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 sm:gap-3 pb-2.5 sm:pb-3 border-b border-neutral-100">
           <div>
@@ -1226,6 +1226,27 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
 
           {/* Mobile Epics Sanctuary Header & Quick Reading Controls (< sm) */}
           <div className="sm:hidden rounded-[20px] bg-[#FAF8F4] p-3 mb-4 space-y-2.5">
+            {/* Compact 5-Epic Selector Pill Strip */}
+            <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-0.5">
+              {EPICS.map((epic) => {
+                const isSelected = selectedGranthaId === epic.id;
+                return (
+                  <button
+                    key={epic.id}
+                    type="button"
+                    onClick={() => handleSelectGrantha(epic.id)}
+                    className={`px-2.5 py-1 rounded-full text-[11px] font-serif font-bold shrink-0 cursor-pointer transition-colors ${
+                      isSelected
+                        ? 'bg-[#FEF08A] text-[#78350F]'
+                        : 'bg-white text-neutral-600'
+                    }`}
+                  >
+                    {epic.shortName || epic.name}
+                  </button>
+                );
+              })}
+            </div>
+
             <div className="flex items-center gap-3">
               <div className="w-11 h-11 rounded-[10px] overflow-hidden bg-[#EFE7D8] shrink-0">
                 <img

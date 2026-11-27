@@ -433,8 +433,10 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   useEffect(() => {
     const activeKey = granthaCategory === 'authors' ? (selectedAuthor || 'all') : selectedGrantha;
     const el = granthaRefs.current[activeKey];
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+    const parent = el?.parentElement;
+    if (el && parent && parent.scrollWidth > parent.clientWidth) {
+      const targetLeft = el.offsetLeft - parent.clientWidth / 2 + el.clientWidth / 2;
+      parent.scrollTo({ left: Math.max(0, targetLeft), behavior: 'smooth' });
     }
   }, [selectedGrantha, selectedAuthor, granthaCategory]);
 
@@ -647,14 +649,25 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
   useEffect(() => {
     const targetId = selectedPadId || initialPadId;
-    if (!targetId) return;
+    if (!targetId) {
+      initialAppliedRef.current = true;
+      return;
+    }
 
-    // Only apply if initial load has not resolved target pad yet, OR if parent explicitly changed selectedPadId
-    if (!initialAppliedRef.current || (selectedPadId && selectedPadId !== lastExplicitPadIdRef.current)) {
+    const isInitialMount = !initialAppliedRef.current;
+    const isExternalChange = Boolean(selectedPadId && selectedPadId !== lastExplicitPadIdRef.current);
+
+    if (isInitialMount || isExternalChange) {
       const p = SacredDatabase.getPadById(targetId);
       if (p) {
-        setSelectedPad(p);
-        setActiveScrollerVerseId(p.id);
+        initialAppliedRef.current = true;
+        lastExplicitPadIdRef.current = selectedPadId;
+
+        const alreadyActive = selectedPad?.id === p.id;
+        if (!alreadyActive) {
+          setSelectedPad(p);
+          setActiveScrollerVerseId(p.id);
+        }
         if (p.collectionId && p.collectionId !== selectedGrantha) {
           setSelectedGrantha(p.collectionId);
           setSelectedChapter(p.chapterId || 'all');
@@ -663,14 +676,18 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
             setGranthaCategory(g.category as GranthaCategory);
           }
         }
-        initialAppliedRef.current = true;
-        lastExplicitPadIdRef.current = selectedPadId;
-        setTimeout(() => {
-          scrollToPadView(p.id);
-        }, 300);
+        // Only auto-scroll if deep-linked via an explicit URL pad slug or externally changed to another pad
+        const shouldScroll =
+          (isInitialMount && Boolean(initialPadId)) ||
+          (isExternalChange && !alreadyActive);
+        if (shouldScroll) {
+          setTimeout(() => {
+            scrollToPadView(p.id);
+          }, 300);
+        }
       }
     }
-  }, [selectedPadId, initialPadId, allPadas]);
+  }, [selectedPadId, initialPadId, allPadas, selectedPad?.id]);
 
   useEffect(() => {
     if (selectedSearchQuery !== undefined) {
@@ -3207,12 +3224,12 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                                 {allGranthas.find((g) => g.id === pad.collectionId)?.name || pad.collectionId}
                               </span>
                             )}
-                            <span className={`text-xs font-serif font-bold ${currentTheme.titleColor} truncate`}>
+                            <span className={`text-xs font-serif font-bold ${currentTheme.titleColor} hidden sm:inline truncate`}>
                               {pad.author}
                             </span>
                             {pad.rag && (
-                              <span className="text-[11px] text-[#B45309] font-mono hidden sm:inline shrink-0">
-                                • राग {pad.rag}
+                              <span className="text-[11px] text-[#B45309] font-serif sm:font-mono truncate">
+                                <span className="hidden sm:inline">• राग </span>{pad.rag}
                               </span>
                             )}
                           </div>

@@ -77,6 +77,24 @@ export interface SEOConfig {
     description: string;
     faqs?: { q: string; a: string }[];
   };
+  collection?: {
+    name: string;
+    description: string;
+    url?: string;
+  };
+  festival?: {
+    slug: string;
+    name: string;
+    description: string;
+    plateImage?: string;
+    faqs?: { q: string; a: string }[];
+  };
+  glossaryTerm?: {
+    id: string;
+    term: string;
+    transliteration: string;
+    meaning: string;
+  };
   audioUrl?: string;
 }
 
@@ -136,9 +154,9 @@ export function generateSEOMetadata(config: SEOConfig = {}): SEOMetadataResult {
     const pad = config.pad;
     const titleClean = pad.titleDevanagari.split(' - ')[0].trim();
     const granthaLabel = (config.grantha?.name) || pad.collectionId || 'रसिक वाणी संग्रह';
-    title = `${titleClean} - ${pad.author || 'रसिक संत'} | लिरिक्स व भावार्थ सहित • ${granthaLabel} - ${DEFAULT_SEO.siteName}`;
+    title = `${titleClean} - ${pad.author || 'रसिक संत'} | ${granthaLabel} • ${DEFAULT_SEO.siteName}`;
   } else if (title) {
-    title = `${title} | ${DEFAULT_SEO.siteName}`;
+    title = /वृन्दोपनिषद्|vrindopnishad/i.test(title) ? title : `${title} | ${DEFAULT_SEO.siteName}`;
   } else {
     title = DEFAULT_SEO.title;
   }
@@ -698,6 +716,94 @@ export function generateSEOMetadata(config: SEOConfig = {}): SEOMetadataResult {
           name: g.title,
           item: canonicalUrl,
         },
+      ],
+    });
+  } else if (config.festival) {
+    const f = config.festival;
+    const fImg = f.plateImage
+      ? (f.plateImage.startsWith('http') ? f.plateImage : `${DEFAULT_SEO.baseUrl}${f.plateImage}`)
+      : ogImage;
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      '@id': `${canonicalUrl}#article`,
+      headline: f.name,
+      description: f.description,
+      inLanguage: ['hi', 'en'],
+      author: {
+        '@type': 'Organization',
+        name: 'वृन्दोपनिषद् 2.0 Sansthan',
+        url: DEFAULT_SEO.baseUrl,
+      },
+      publisher: { '@id': `${DEFAULT_SEO.baseUrl}/#organization` },
+      datePublished: '2026-01-15T00:00:00+05:30',
+      dateModified: '2026-11-27T00:00:00+05:30',
+      image: fImg,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl },
+      url: canonicalUrl,
+    });
+    if (f.faqs && f.faqs.length > 0) {
+      schemas.push({
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        '@id': `${canonicalUrl}#faq`,
+        mainEntity: f.faqs.map((item) => ({
+          '@type': 'Question',
+          name: item.q,
+          acceptedAnswer: { '@type': 'Answer', text: item.a },
+        })),
+      });
+    }
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home Sanctuary', item: DEFAULT_SEO.baseUrl },
+        { '@type': 'ListItem', position: 2, name: 'ब्रज महोत्सव', item: `${DEFAULT_SEO.baseUrl}/festivals` },
+        { '@type': 'ListItem', position: 3, name: f.name, item: canonicalUrl },
+      ],
+    });
+  } else if (config.glossaryTerm) {
+    const gt = config.glossaryTerm;
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'DefinedTerm',
+      '@id': `${canonicalUrl}#term`,
+      name: gt.term,
+      alternateName: gt.transliteration,
+      description: gt.meaning,
+      inDefinedTermSet: {
+        '@type': 'DefinedTermSet',
+        name: 'ब्रज रस एवं निकुंज उपासना शब्दकोश',
+        url: `${DEFAULT_SEO.baseUrl}/glossary`,
+      },
+      url: canonicalUrl,
+    });
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home Sanctuary', item: DEFAULT_SEO.baseUrl },
+        { '@type': 'ListItem', position: 2, name: 'ब्रज शब्दकोश', item: `${DEFAULT_SEO.baseUrl}/glossary` },
+        { '@type': 'ListItem', position: 3, name: gt.term, item: canonicalUrl },
+      ],
+    });
+  } else if (config.collection) {
+    const c = config.collection;
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      '@id': `${canonicalUrl}#collection`,
+      name: c.name,
+      description: c.description,
+      url: c.url || canonicalUrl,
+    });
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home Sanctuary', item: DEFAULT_SEO.baseUrl },
+        { '@type': 'ListItem', position: 2, name: c.name, item: canonicalUrl },
       ],
     });
   }

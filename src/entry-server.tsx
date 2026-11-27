@@ -467,9 +467,14 @@ export function render(url: string = '/'): RenderResult {
     seoConfig = {
       tab: 'smaran',
       ogType: 'website',
-      title: 'सनातन ज्ञानकोश एवं रसिक विकी (Vrindopnishad Knowledge Base) • ३५+ प्रामाणिक मार्गदर्शिकाएँ',
+      title: 'सनातन ज्ञानकोश एवं रसिक विकी (Vrindopnishad Knowledge Base) • ३५+ मार्गदर्शिकाएँ',
       description: 'वृन्दावन भक्ति दर्शन, नित्य विहार, अचिन्त्य भेदाभेद, राधावल्लभ व गौड़ीय सम्प्रदाय इतिहास, परिक्रमा मार्ग, उत्सव एवं आध्यात्मिक शब्दावली का सम्पूर्ण विकी।',
       canonicalUrl: 'https://bhav.vrindopnishad.in/knowledge-base',
+      collection: {
+        name: 'वृन्दोपनिषद् सनातन ज्ञानकोश (Knowledge Base)',
+        description: 'वृन्दावन भक्ति दर्शन, सम्प्रदाय, परिक्रमा, उत्सव और शब्दावली का अध्ययन केंद्र।',
+        url: 'https://bhav.vrindopnishad.in/knowledge-base',
+      },
     };
   } else if (specialView?.type === 'festivals') {
     const f = specialView.slug ? FESTIVALS_BY_SLUG[specialView.slug] : undefined;
@@ -477,9 +482,17 @@ export function render(url: string = '/'): RenderResult {
       seoConfig = {
         tab: 'smaran',
         ogType: 'article',
+        ogImage: `https://bhav.vrindopnishad.in${f.plateImage}`,
         title: `${f.hindiName} • इतिहास, विधि व राग | वृन्दोपनिषद् 2.0`,
         description: f.descriptionHi,
         canonicalUrl: `https://bhav.vrindopnishad.in/festivals/${encodeURIComponent(f.slug)}`,
+        festival: {
+          slug: f.slug,
+          name: f.hindiName,
+          description: f.descriptionHi,
+          plateImage: f.plateImage,
+          faqs: (f.faqs || []).map((q) => ({ q: q.questionHi, a: q.answerHi })),
+        },
       };
     } else {
       seoConfig = {
@@ -488,6 +501,11 @@ export function render(url: string = '/'): RenderResult {
         title: 'श्री वृन्दावन एवं ब्रज महोत्सव धरोहर (झूलन, राधाष्टमी, शरद रास, होरी) | वृन्दोपनिषद् 2.0',
         description: 'सावन झूलन यात्रा, श्री राधाष्टमी, शरद पूर्णिमा महारास, ब्रज होरी व जन्माष्टमी उत्सव का इतिहास, राग एवं दर्शन विधि।',
         canonicalUrl: 'https://bhav.vrindopnishad.in/festivals',
+        collection: {
+          name: 'श्री वृन्दावन एवं ब्रज महोत्सव धरोहर',
+          description: 'ब्रजमण्डल के ६ प्रमुख उत्सव, राग एवं मंदिर सेवा विधि।',
+          url: 'https://bhav.vrindopnishad.in/festivals',
+        },
       };
     }
   } else if (specialView?.type === 'glossary') {
@@ -500,6 +518,12 @@ export function render(url: string = '/'): RenderResult {
         title: `${g.term} (${g.transliteration}) — अर्थ एवं ब्रज रस सन्दर्भ | वृन्दोपनिषद् 2.0`,
         description: g.meaningDevanagari,
         canonicalUrl: `https://bhav.vrindopnishad.in/glossary/${encodeURIComponent(g.id)}`,
+        glossaryTerm: {
+          id: g.id,
+          term: g.term,
+          transliteration: g.transliteration,
+          meaning: g.meaningDevanagari,
+        },
       };
     } else {
       seoConfig = {
@@ -508,6 +532,11 @@ export function render(url: string = '/'): RenderResult {
         title: `ब्रजभाषा आध्यात्मिक शब्दकोश (${terms.length} सिद्धांत व ७०+ पद शब्द) • Braj Glossary | वृन्दोपनिषद् 2.0`,
         description: 'नित्य विहार, निकुंज, मंजरी भाव, सखी भाव, राधा दास्य व ब्रज रसिक वाणी शब्दार्थ का सम्पूर्ण पारिभाषिक शब्दकोश।',
         canonicalUrl: 'https://bhav.vrindopnishad.in/glossary',
+        collection: {
+          name: 'ब्रज रस एवं निकुंज उपासना शब्दकोश',
+          description: 'ब्रज रसिक भक्ति के पारिभाषिक सिद्धांत एवं पद शब्दावली।',
+          url: 'https://bhav.vrindopnishad.in/glossary',
+        },
       };
     }
   } else if (guideSlug && TOPICAL_GUIDES_META[guideSlug]) {
@@ -528,8 +557,8 @@ export function render(url: string = '/'): RenderResult {
   } else {
     switch (tab) {
       case 'smaran':
-        seoConfig.title = 'Home Sanctuary • दैनिक स्मरण व नित्य सेवा';
-        seoConfig.description = 'दैनिक अष्टयाम लीला, नाम जप, वाणी श्रवण और स्वाध्याय का पावन साधना स्थल।';
+        seoConfig.title = 'वृन्दोपनिषद् 2.0 • Sacred Vrindavan Ras Sanctuary & ४४,०००+ Padas';
+        seoConfig.description = 'श्री धाम वृन्दावन रसिक वाणी (हित चौरासी, केलिमाल, राधा सुधा निधि), ४४,०००+ पद, वाल्मीकि रामायण, गीता व नित्य अष्टयाम सेवा का प्रामाणिक डिजिटल सैंक्चुअरी।';
         seoConfig.canonicalUrl = 'https://bhav.vrindopnishad.in/';
         break;
       case 'granthas':

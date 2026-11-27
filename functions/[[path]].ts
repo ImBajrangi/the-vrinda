@@ -1226,6 +1226,7 @@ const handleEdgeRequest: PagesFunction<Env> = async (context) => {
   let entitySchema: Record<string, unknown> | null = null;
   const extraSchemas: Record<string, unknown>[] = [];
   let customKeywords: string | null = null;
+  let customOgImage: string | null = null;
   let dynamicRootHtml: string | null = null;
   let hasPrerenderedStaticRoot = false;
   let prevLinkUrl: string | null = null;
@@ -2630,12 +2631,29 @@ const handleEdgeRequest: PagesFunction<Env> = async (context) => {
     title = `${f.hindiName} • इतिहास, दर्शन व राग | वृन्दोपनिषद् 2.0`;
     description = f.descriptionHi;
     canonicalUrl = `https://bhav.vrindopnishad.in/festivals/${encodeURIComponent(f.slug)}`;
+    customOgImage = f.plateImage
+      ? (f.plateImage.startsWith('http') ? f.plateImage : `https://bhav.vrindopnishad.in${f.plateImage}`)
+      : null;
     entitySchema = {
       '@type': 'Article',
       '@id': `${canonicalUrl}#article`,
       'headline': f.hindiName,
       'description': f.descriptionHi,
       'inLanguage': ['hi', 'en'],
+      'author': {
+        '@type': 'Organization',
+        'name': 'वृन्दोपनिषद् 2.0',
+        'url': 'https://bhav.vrindopnishad.in/',
+      },
+      'publisher': {
+        '@type': 'ReligiousOrganization',
+        'name': 'वृन्दोपनिषद् 2.0',
+        'url': 'https://bhav.vrindopnishad.in/',
+      },
+      'datePublished': '2026-01-15T00:00:00+05:30',
+      'dateModified': '2026-11-27T00:00:00+05:30',
+      'image': customOgImage || 'https://bhav.vrindopnishad.in/assets/temples/banke-bihari-v2.webp',
+      'mainEntityOfPage': { '@type': 'WebPage', '@id': canonicalUrl },
       'url': canonicalUrl,
     };
     extraSchemas.push({
@@ -2746,6 +2764,19 @@ const handleEdgeRequest: PagesFunction<Env> = async (context) => {
       'headline': gMeta.title,
       'description': gMeta.description,
       'inLanguage': ['hi', 'en'],
+      'author': {
+        '@type': 'Organization',
+        'name': 'वृन्दोपनिषद् 2.0',
+        'url': 'https://bhav.vrindopnishad.in/',
+      },
+      'publisher': {
+        '@type': 'ReligiousOrganization',
+        'name': 'वृन्दोपनिषद् 2.0',
+        'url': 'https://bhav.vrindopnishad.in/',
+      },
+      'datePublished': '2026-01-15T00:00:00+05:30',
+      'dateModified': '2026-11-27T00:00:00+05:30',
+      'image': 'https://bhav.vrindopnishad.in/assets/temples/banke-bihari-v2.webp',
       'mainEntityOfPage': {
         '@type': 'WebPage',
         '@id': canonicalUrl,
@@ -2808,8 +2839,8 @@ const handleEdgeRequest: PagesFunction<Env> = async (context) => {
         canonicalUrl = 'https://bhav.vrindopnishad.in/milestones';
         break;
       default:
-        title = 'Home Sanctuary • दैनिक स्मरण व नित्य सेवा | वृन्दोपनिषद् 2.0 (Vrindopnishad)';
-        description = 'दैनिक अष्टयाम लीला, नाम जप, वाणी श्रवण और स्वाध्याय का पावन साधना स्थल।';
+        title = 'वृन्दोपनिषद् 2.0 • Sacred Vrindavan Ras Sanctuary & Canonical Pada Literature';
+        description = 'श्री धाम वृन्दावन रसिक वाणी (हित चौरासी, केलिमाल, राधा सुधा निधि), ४४,०००+ पद, वाल्मीकि रामायण, गीता व नित्य अष्टयाम सेवा का प्रामाणिक डिजिटल सैंक्चुअरी।';
         canonicalUrl = 'https://bhav.vrindopnishad.in/';
         break;
     }
@@ -2866,6 +2897,11 @@ const handleEdgeRequest: PagesFunction<Env> = async (context) => {
 
   if (customKeywords) {
     rewriter = rewriter.on('meta[name="keywords"]', new ElementAttributeModifier('content', customKeywords));
+  }
+  if (customOgImage) {
+    rewriter = rewriter
+      .on('meta[property="og:image"]', new ElementAttributeModifier('content', customOgImage))
+      .on('meta[name="twitter:image"]', new ElementAttributeModifier('content', customOgImage));
   }
 
   // If this deep-link did not hit a pre-rendered static HTML file, inject semantic article into #seo-prerender & #root.

@@ -247,11 +247,13 @@ export const CharitraDarshan: React.FC<CharitraDarshanProps> = ({
                 {selectedBio.name}
               </div>
 
-              <div className="mt-4 p-4 rounded-[14px] bg-[#FAF8F4]">
-                <p className="text-xs sm:text-sm text-neutral-800 font-serif italic leading-relaxed">
-                  "{selectedBio.lifeSummary}"
-                </p>
-              </div>
+              {Boolean(selectedBio.lifeSummary?.trim()) && (
+                <div className="mt-4 p-4 rounded-[14px] bg-[#FAF8F4]">
+                  <p className="text-xs sm:text-sm text-neutral-800 font-serif italic leading-relaxed">
+                    "{selectedBio.lifeSummary}"
+                  </p>
+                </div>
+              )}
 
               {onNavigateToPadavali && (
                 <div className="mt-4 flex flex-wrap justify-center sm:justify-start gap-2">
@@ -278,19 +280,23 @@ export const CharitraDarshan: React.FC<CharitraDarshanProps> = ({
             </div>
 
             <div className="space-y-2.5 text-xs sm:text-sm font-serif">
-              <div className="flex items-start justify-between py-1.5 rounded-[10px] px-2.5 bg-[#FAF8F4]">
-                <span className="text-neutral-500">सम्प्रदाय</span>
-                <span className="font-bold text-[#18181B] text-right">
-                  {selectedBio.lineage.sampradaya}
-                </span>
-              </div>
+              {Boolean(selectedBio.lineage?.sampradaya?.trim()) && (
+                <div className="flex items-start justify-between py-1.5 rounded-[10px] px-2.5 bg-[#FAF8F4]">
+                  <span className="text-neutral-500">सम्प्रदाय</span>
+                  <span className="font-bold text-[#18181B] text-right">
+                    {selectedBio.lineage.sampradaya}
+                  </span>
+                </div>
+              )}
 
-              <div className="flex items-start justify-between py-1.5 rounded-[10px] px-2.5 bg-[#FAF8F4]">
-                <span className="text-neutral-500">दीक्षा गुरु</span>
-                <span className="font-bold text-[#78350F] text-right">
-                  {selectedBio.lineage.guru}
-                </span>
-              </div>
+              {Boolean(selectedBio.lineage?.guru?.trim()) && (
+                <div className="flex items-start justify-between py-1.5 rounded-[10px] px-2.5 bg-[#FAF8F4]">
+                  <span className="text-neutral-500">दीक्षा गुरु</span>
+                  <span className="font-bold text-[#78350F] text-right">
+                    {selectedBio.lineage.guru}
+                  </span>
+                </div>
+              )}
 
               {selectedBio.birthPlace && (
                 <div className="flex items-start justify-between py-1.5 rounded-[10px] px-2.5 bg-[#FAF8F4]">

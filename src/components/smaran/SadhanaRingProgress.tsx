@@ -234,10 +234,10 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
         aria-label="श्री वृन्दावन नित्य संदर्शन"
         className="w-full bg-white rounded-[28px] sm:rounded-[32px] squircle-card p-4 sm:p-5 lg:p-6 shadow-[0_2px_16px_rgba(24,24,27,0.025)]"
       >
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-7 items-stretch">
-          {/* Left Column (7 cols): Serene Typography + Compact Tulsi Japamala Station */}
-          <div className="lg:col-span-7 flex flex-col justify-between gap-4 min-w-0">
-            <div className="space-y-1.5">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-7 items-stretch">
+          {/* Left Column (7 cols): Placed BELOW visual Darshan on < lg so mobile opens with Thakur Ji imagery + compact inline Japa */}
+          <div className="order-2 lg:order-1 lg:col-span-7 flex flex-col justify-between gap-4 min-w-0">
+            <div className="space-y-1.5 hidden lg:block">
               <div className="flex items-center justify-between gap-2 flex-wrap">
                 <div className="inline-flex items-center gap-2 text-xs font-laila text-neutral-600">
                   <span className="w-1.5 h-1.5 rounded-full bg-amber-600 shrink-0" />
@@ -286,10 +286,10 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
               </p>
             </div>
 
-            {/* Compact Interactive Tulsi Mala & Counter Module (Borderless Tonal Container) */}
-            <div className="flex-1 rounded-[18px] bg-[#FAF8F3] p-3.5 sm:p-4 flex flex-col sm:flex-row items-center gap-4 sm:gap-5">
+            {/* Compact Interactive Tulsi Mala & Counter Module (Side-by-side even on phones!) */}
+            <div className="flex-1 rounded-[18px] bg-[#FAF8F3] p-3 sm:p-4 flex flex-row items-center gap-3 sm:gap-5">
               {/* Compact Tactile Rosary Ring */}
-              <div className="relative w-40 h-40 sm:w-44 sm:h-44 flex items-center justify-center select-none shrink-0">
+              <div className="relative w-[112px] h-[112px] sm:w-44 sm:h-44 flex items-center justify-center select-none shrink-0">
                 <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100">
                   <circle
                     cx="50"
@@ -340,21 +340,21 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
                   type="button"
                   onClick={handleTapBead}
                   aria-label="Count 1 bead on Tulsi Mala"
-                  className="relative w-24 h-24 sm:w-[104px] sm:h-[104px] rounded-full bg-gradient-to-b from-white via-[#FCFAF5] to-[#F5EEDB] border border-amber-300/90 shadow-[0_8px_20px_rgba(217,119,6,0.12),inset_0_1px_3px_rgba(255,255,255,1)] flex flex-col items-center justify-center cursor-pointer active:scale-95 transition-transform z-20"
+                  className="relative w-[72px] h-[72px] sm:w-[104px] sm:h-[104px] rounded-full bg-gradient-to-b from-white via-[#FCFAF5] to-[#F5EEDB] border border-amber-300/90 shadow-[0_8px_20px_rgba(217,119,6,0.12),inset_0_1px_3px_rgba(255,255,255,1)] flex flex-col items-center justify-center cursor-pointer active:scale-95 transition-transform z-20"
                 >
-                  <div className="absolute inset-1.5 rounded-full border border-amber-200/60 pointer-events-none" />
-                  <span className="text-[9px] font-laila font-semibold text-amber-800/80 leading-none mb-0.5">
+                  <div className="hidden sm:block absolute inset-1.5 rounded-full border border-amber-200/60 pointer-events-none" />
+                  <span className="text-[8px] sm:text-[9px] font-laila font-semibold text-amber-800/80 leading-none mb-0.5">
                     नित्य जप
                   </span>
                   <span
-                    className={`font-rozha text-2xl sm:text-[26px] text-amber-900 leading-none transition-transform duration-150 ${
+                    className={`font-rozha text-lg sm:text-[26px] text-amber-900 leading-none transition-transform duration-150 ${
                       counterTick ? 'scale-110' : ''
                     }`}
                   >
                     राधे
                   </span>
-                  <span className="mt-1 font-laila text-[10px] font-bold text-amber-900 bg-amber-50 border border-amber-200/70 px-2 py-0.5 rounded-full">
-                    +१ मनका
+                  <span className="mt-0.5 sm:mt-1 font-laila text-[8.5px] sm:text-[10px] font-bold text-amber-900 bg-amber-50 border border-amber-200/70 px-1.5 sm:px-2 py-0.5 rounded-full">
+                    +१
                   </span>
                 </button>
               </div>
@@ -410,23 +410,23 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
                 </div>
 
                 {/* Compact Paired Japa Buttons */}
-                <div className="grid grid-cols-2 gap-2.5 font-laila">
+                <div className="grid grid-cols-2 gap-2 font-laila">
                   <button
                     type="button"
                     onClick={handleTapBead}
-                    className="py-2.5 px-3 rounded-full bg-white hover:bg-[#FEFCE8] text-[#18181B] shadow-2xs flex items-center justify-center gap-1.5 text-xs font-bold cursor-pointer active:scale-95 transition-colors"
+                    className="py-2.5 px-2 sm:px-3 rounded-full bg-white hover:bg-[#FEFCE8] text-[#18181B] shadow-2xs flex items-center justify-center gap-1 sm:gap-1.5 text-[11px] sm:text-xs font-bold whitespace-nowrap cursor-pointer active:scale-95 transition-colors"
                   >
-                    <Disc3 className="w-3.5 h-3.5 text-amber-700" />
+                    <Disc3 className="w-3.5 h-3.5 text-amber-700 shrink-0" />
                     <span>+१ मनका जप</span>
                   </button>
 
                   <button
                     type="button"
                     onClick={incrementJapa}
-                    className="py-2.5 px-3 rounded-full bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] flex items-center justify-center gap-1.5 text-xs font-bold cursor-pointer active:scale-95 transition-colors"
+                    className="py-2.5 px-2 sm:px-3 rounded-full bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] flex items-center justify-center gap-1 sm:gap-1.5 text-[11px] sm:text-xs font-bold whitespace-nowrap cursor-pointer active:scale-95 transition-colors"
                   >
                     <span>+१ माला</span>
-                    <span className="font-mono text-[10.5px] bg-white/75 px-1.5 py-0.5 rounded-full">
+                    <span className="font-mono text-[10px] sm:text-[10.5px] bg-white/75 px-1.5 py-0.5 rounded-full">
                       १०८
                     </span>
                   </button>
@@ -435,8 +435,42 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
             </div>
           </div>
 
-          {/* Right Column (5 cols): Unobscured Fine-Art Darshan Frame + Clean Swatches */}
-          <div className="lg:col-span-5 min-w-0">
+          {/* Mobile Editorial Masthead + Actions (< lg, renders above visual Darshan Plate) */}
+          <div className="lg:hidden space-y-2 order-0">
+            <div className="flex items-center justify-between gap-2">
+              <div className="inline-flex items-center gap-1.5 text-[11px] font-laila text-neutral-600 min-w-0 truncate">
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-600 shrink-0" />
+                <span className="font-semibold text-amber-950 shrink-0">{livePrahar.nameDevanagari}</span>
+                <span className="text-neutral-300">·</span>
+                <span className="truncate">{livePanchang.tithiNameDevanagari}</span>
+              </div>
+              <div className="flex items-center gap-1.5 shrink-0">
+                <button
+                  type="button"
+                  onClick={onOpenFocus}
+                  className="h-7 inline-flex items-center gap-1 px-2.5 rounded-full bg-[#FAF6EE] text-[#1C140D] text-[11px] font-laila font-semibold cursor-pointer"
+                >
+                  <Wind className="w-3 h-3 text-amber-800" />
+                  <span>ध्यान</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={handleEnterReader}
+                  disabled={isOpeningReader}
+                  aria-busy={isOpeningReader}
+                  className="h-7 inline-flex items-center gap-1 px-2.5 rounded-full bg-[#FEF08A] text-[#78350F] text-[11px] font-laila font-bold cursor-pointer disabled:opacity-65"
+                >
+                  <span>{isOpeningReader ? 'खुल रहा...' : 'रसिक वाणी →'}</span>
+                </button>
+              </div>
+            </div>
+            <h1 className="font-rozha text-[24px] text-[#1A120B] leading-tight">
+              नित्य निकुञ्ज संदर्शन
+            </h1>
+          </div>
+
+          {/* Right Column (5 cols): Ordered FIRST on mobile (< lg) below compact headline */}
+          <div className="order-1 lg:order-2 lg:col-span-5 min-w-0">
             <div className="rounded-[20px] bg-[#FAF8F3] p-2.5 space-y-2.5">
               {/* Unobscured Sacred Photograph — Zero Text Stamped Over ठाकुर जी */}
               <div

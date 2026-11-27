@@ -116,72 +116,74 @@ export const FloatingNavbar: React.FC<FloatingNavbarProps> = ({
   const activeIndex = Math.max(0, tabs.findIndex((tab) => tab.id === activeTab));
 
   return (
-    // Only displayed on mobile (< md). On tablet & desktop, top header navigation takes over.
-    <div className={`md:hidden fixed bottom-3.5 min-[380px]:bottom-5 left-0 right-0 z-40 flex items-center justify-center gap-2 px-2 max-w-md w-full mx-auto pointer-events-none box-border transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+    // Single unified compact bottom pill on mobile (< md) with inline flush Shravan button
+    <div className={`md:hidden fixed bottom-2.5 min-[380px]:bottom-3.5 left-0 right-0 z-40 flex items-center justify-center px-3 max-w-md w-full mx-auto pointer-events-none box-border transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
       isVisible ? 'translate-y-0' : 'translate-y-24'
     }`}>
-      {/* Fluid responsive floating nav pill */}
+      {/* Fluid responsive unified nav + audio capsule (26px outer / 4px pad => 22px concentric pills) */}
       <nav
         aria-label="Mobile Navigation"
-        className="relative pointer-events-auto flex-1 min-w-0 max-w-[340px] h-[54px] rounded-[28px] bg-white border border-neutral-900/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.12),0_2px_8px_rgba(0,0,0,0.04)] flex items-center justify-between p-1 box-border transform-gpu will-change-transform touch-manipulation select-none"
+        className="relative pointer-events-auto w-full max-w-[376px] h-[52px] rounded-[26px] bg-white border border-neutral-900/[0.06] shadow-[0_8px_28px_rgba(24,24,27,0.10),0_2px_6px_rgba(0,0,0,0.03)] flex items-center p-1 gap-1 box-border transform-gpu touch-manipulation select-none"
       >
-        {/* Dynamic Elastic Sliding Indicator Bar (Instant 0ms Shift) */}
-        <span
-          aria-hidden="true"
-          className="absolute top-1 bottom-1 rounded-[22px] bg-[#FEF08A] shadow-2xs pointer-events-none transition-transform duration-[180ms] ease-out will-change-transform"
-          style={{
-            width: 'calc((100% - 8px) / 5)',
-            left: '4px',
-            transform: `translateX(${activeIndex * 100}%)`,
-          }}
-        />
+        <div className="relative flex-1 min-w-0 h-full flex items-center">
+          {/* Sliding Indicator Bar across the 5 route tabs */}
+          <span
+            aria-hidden="true"
+            className="absolute top-0 bottom-0 rounded-[22px] bg-[#FEF08A] shadow-2xs pointer-events-none transition-transform duration-[220ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform"
+            style={{
+              width: '20%',
+              left: 0,
+              transform: `translateX(${activeIndex * 100}%)`,
+            }}
+          />
 
-        {tabs.map((tab) => {
-          const Icon = tab.icon;
-          const isActive = activeTab === tab.id;
+          {tabs.map((tab) => {
+            const Icon = tab.icon;
+            const isActive = activeTab === tab.id;
 
-          return (
-            <button
-              key={tab.id}
-              type="button"
-              onPointerDown={() => {
-                // Pre-warm / instant switch on touch contact (150ms before click)
-                if (activeTab !== tab.id) {
-                  onSelectTab(tab.id);
-                }
-              }}
-              onClick={(e) => {
-                e.stopPropagation();
-                if (activeTab !== tab.id) {
-                  onSelectTab(tab.id);
-                }
-              }}
-              className={`relative z-10 border-0 text-[10px] font-sans flex-1 min-w-0 h-[44px] flex flex-col items-center justify-center gap-0.5 py-1 px-0.5 rounded-[22px] transition-colors duration-100 cursor-pointer touch-manipulation select-none active:scale-95 active:opacity-75 ${
-                isActive
-                  ? 'text-[#18181B] font-bold'
-                  : 'text-[#52525B] hover:text-[#18181B] font-semibold'
-              }`}
-            >
-              <Icon className={`w-4 h-4 stroke-[2.2] shrink-0 transition-colors duration-100 ${isActive ? 'text-[#B45309]' : 'text-[#71717A]'}`} />
-              <span className="leading-none truncate w-full text-center">{tab.label}</span>
-            </button>
-          );
-        })}
+            return (
+              <button
+                key={tab.id}
+                type="button"
+                onPointerDown={() => {
+                  if (activeTab !== tab.id) {
+                    onSelectTab(tab.id);
+                  }
+                }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (activeTab !== tab.id) {
+                    onSelectTab(tab.id);
+                  }
+                }}
+                className={`relative z-10 border-0 text-[9.5px] font-sans flex-1 min-w-0 h-[44px] flex flex-col items-center justify-center gap-0.5 py-1 px-0.5 rounded-[22px] transition-colors duration-100 cursor-pointer touch-manipulation select-none active:scale-95 active:opacity-75 ${
+                  isActive
+                    ? 'text-[#18181B] font-bold'
+                    : 'text-[#52525B] hover:text-[#18181B] font-semibold'
+                }`}
+              >
+                <Icon className={`w-4 h-4 stroke-[2.2] shrink-0 transition-colors duration-100 ${isActive ? 'text-[#B45309]' : 'text-[#71717A]'}`} />
+                <span className="leading-none truncate w-full text-center">{tab.label}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Flush Inline Sacred Shravan / Audio Trigger */}
+        <button
+          type="button"
+          onClick={onOpenFab}
+          aria-label="Open Sacred Audio Player"
+          title="Open Sacred Audio Player"
+          className={`relative w-[42px] h-[42px] rounded-[21px] shrink-0 flex items-center justify-center text-[#78350F] transition-colors active:scale-95 cursor-pointer ${
+            isPlayingAudio
+              ? 'bg-[#1C140D] text-[#FEF08A]'
+              : 'bg-[#FAF6EE] hover:bg-[#FEF08A]'
+          }`}
+        >
+          <SacredFluteIcon className="w-4.5 h-4.5 shrink-0" />
+        </button>
       </nav>
-
-      {/* Devotional Audio FAB with Golden Flute */}
-      <button
-        type="button"
-        onClick={onOpenFab}
-        aria-label="Open Sacred Audio Player"
-        title="Open Sacred Audio Player"
-        className="pointer-events-auto relative w-[48px] h-[48px] rounded-full shrink-0 flex items-center justify-center text-[#18181B] bg-[#FACC15] hover:bg-[#FDE047] border border-amber-300/60 shadow-[0_8px_20px_-2px_rgba(245,158,11,0.28),0_2px_6px_rgba(0,0,0,0.04)] overflow-hidden transition-transform active:scale-95 cursor-pointer transform-gpu will-change-transform"
-      >
-        {isPlayingAudio && (
-          <span className="absolute inset-0 rounded-full animate-pulse bg-amber-400/30 pointer-events-none" />
-        )}
-        <SacredFluteIcon className="w-5 h-5 shrink-0" />
-      </button>
     </div>
   );
 };

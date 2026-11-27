@@ -253,4 +253,40 @@
       <image:geo_location>Vrindavan, Mathura, Uttar Pradesh, India</image:geo_location>
     </image:image>
   </url>
+  <url>
+    <loc>https://bhav.vrindopnishad.in/festivals/jhulan-yatra</loc>
+    <image:image>
+      <image:loc>https://bhav.vrindopnishad.in/assets/darshan/barsana-radhavallabh-jhanki.webp</image:loc>
+      <image:title>श्री वृन्दावन सावन झूलन यात्रा दर्शन</image:title>
+      <image:caption>पावस ऋतु में मेघ मल्हार मध्य श्री राधावल्लभ लाल जी का स्वर्ण-रजत हिंडोला दर्शन।</image:caption>
+      <image:geo_location>Vrindavan, Mathura, Uttar Pradesh, India</image:geo_location>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bhav.vrindopnishad.in/festivals/radhashtami</loc>
+    <image:image>
+      <image:loc>https://bhav.vrindopnishad.in/assets/temples/barsana-radharani.webp</image:loc>
+      <image:title>श्री राधाष्टमी महामहोत्सव — बरसाना लाड़िली जी महल</image:title>
+      <image:caption>निकुंजेश्वरी करुणामयी श्री राधारानी का पावन प्राकट्य महोत्सव, बरसाना धाम।</image:caption>
+      <image:geo_location>Barsana, Mathura, Uttar Pradesh, India</image:geo_location>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bhav.vrindopnishad.in/festivals/latthmar-holi</loc>
+    <image:image>
+      <image:loc>https://bhav.vrindopnishad.in/assets/darshan/radharaman-gulabi-pag.webp</image:loc>
+      <image:title>श्री राधारमण लाल जी गुलाल व वसंत-फाग शृंगार</image:title>
+      <image:caption>फाल्गुन रंगोत्सव व लठमार होरी में श्री राधारमण देव जू का गुलाबी पाग दर्शन।</image:caption>
+      <image:geo_location>Vrindavan, Mathura, Uttar Pradesh, India</image:geo_location>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bhav.vrindopnishad.in/festivals/sharad-purnima</loc>
+    <image:image>
+      <image:loc>https://bhav.vrindopnishad.in/assets/darshan/radhavallabh-peacock.webp</image:loc>
+      <image:title>शरद पूर्णिमा महारास दर्शन — मोरपंख पीठिका</image:title>
+      <image:caption>शरद चन्द्र की धवल चाँदनी में नित्य महारास व वंशीवट रस उत्सव।</image:caption>
+      <image:geo_location>Vrindavan, Mathura, Uttar Pradesh, India</image:geo_location>
+    </image:image>
+  </url>
 </urlset>

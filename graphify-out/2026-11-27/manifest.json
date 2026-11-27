@@ -1,7 +1,7 @@
 {
   "functions/[[path]].ts": {
-    "mtime": 1795792971.679332,
-    "ast_hash": "d5dd88d05a8a698ab7ce76e987caa2f9",
+    "mtime": 1795795860.1719823,
+    "ast_hash": "81358fb73dd0f421d36299659ec06955",
     "semantic_hash": ""
   },
   "package.json": {
@@ -2140,8 +2140,8 @@
     "semantic_hash": ""
   },
   "scripts/generate-sitemap.js": {
-    "mtime": 1795792926.5950816,
-    "ast_hash": "fa495e6974f1988bc4a3f3e3a48b3815",
+    "mtime": 1795795865.8327813,
+    "ast_hash": "93fbd1b96d88a16bf9593004b4d2dcad",
     "semantic_hash": ""
   },
   "scripts/generate-static-granthas.js": {
@@ -2235,8 +2235,8 @@
     "semantic_hash": ""
   },
   "src/components/common/FloatingNavbar.tsx": {
-    "mtime": 1795708469.9883492,
-    "ast_hash": "50f187e6f0b31e0d18854e17cb3a7986",
+    "mtime": 1795795918.1912942,
+    "ast_hash": "fada5ccb0929e6ea3f159507601f5069",
     "semantic_hash": ""
   },
   "src/components/common/GlassIconButton.tsx": {
@@ -2310,8 +2310,8 @@
     "semantic_hash": ""
   },
   "src/components/reader/MahagranthReader.tsx": {
-    "mtime": 1795792883.353809,
-    "ast_hash": "e416b083cb6f5941a7b1febf46e48f81",
+    "mtime": 1795795927.5594041,
+    "ast_hash": "48ef6a617c08844c34112417f0ed163c",
     "semantic_hash": ""
   },
   "src/components/reader/MobileReaderHeader.tsx": {
@@ -2325,8 +2325,8 @@
     "semantic_hash": ""
   },
   "src/components/reader/PadavaliReader.tsx": {
-    "mtime": 1795795028.6917593,
-    "ast_hash": "aeb2f6a7b5b01d23d6773d9fddc86c68",
+    "mtime": 1795796217.766357,
+    "ast_hash": "91d0e2712c00943e77b8d69c0f56d279",
     "semantic_hash": ""
   },
   "src/components/smaran/AshtayamaTimelineDeck.tsx": {
@@ -2375,8 +2375,8 @@
     "semantic_hash": ""
   },
   "src/components/smaran/SadhanaRingProgress.tsx": {
-    "mtime": 1795794277.3123584,
-    "ast_hash": "76b5ec25970b16dbd4c09ce489e16b4a",
+    "mtime": 1795796216.2959764,
+    "ast_hash": "6769839a9f93ad0cd71dfdcff6fba623",
     "semantic_hash": ""
   },
   "src/data/ashtayamaPeriods.json": {
@@ -2465,8 +2465,8 @@
     "semantic_hash": ""
   },
   "src/entry-server.tsx": {
-    "mtime": 1795792963.4493372,
-    "ast_hash": "4e747b03a219384e7e37f95d3922d82f",
+    "mtime": 1795795851.671973,
+    "ast_hash": "7e21c378cef1ffe82ff6fa27e1a9d418",
     "semantic_hash": ""
   },
   "src/hooks/useScrollDirection.ts": {
@@ -2520,8 +2520,8 @@
     "semantic_hash": ""
   },
   "src/services/seoService.ts": {
-    "mtime": 1795615025.5377138,
-    "ast_hash": "2442f5fb89a689a158ad8d1064bc3ce9",
+    "mtime": 1795795848.1230261,
+    "ast_hash": "d94f4be6e28fdf3f59b84d69939c574f",
     "semantic_hash": ""
   },
   "src/services/sitemapService.ts": {
@@ -3235,8 +3235,8 @@
     "semantic_hash": ""
   },
   "index.html": {
-    "mtime": 1795615292.596069,
-    "ast_hash": "1a17170a6b658d384839c5c694dd5742",
+    "mtime": 1795795861.7875931,
+    "ast_hash": "9031c43e96b9f35288359118a20aebe6",
     "semantic_hash": ""
   },
   "public/e3d4891bca7f4a0889c2510b14798e94.txt": {
@@ -3245,13 +3245,13 @@
     "semantic_hash": ""
   },
   "public/llms-full.txt": {
-    "mtime": 1794399634.722767,
-    "ast_hash": "dcea3a9cda4720c3f04da16f18279aee",
+    "mtime": 1795796018.9186866,
+    "ast_hash": "1d264b4509712835575ef83e44569fd5",
     "semantic_hash": ""
   },
   "public/llms.txt": {
-    "mtime": 1794399634.8690093,
-    "ast_hash": "71125ecc0337812c0402038a318f36bd",
+    "mtime": 1795795864.298568,
+    "ast_hash": "394d3dd97a64042a7a4be0f7afd0137e",
     "semantic_hash": ""
   },
   "public/robots.txt": {
@@ -6545,8 +6545,8 @@
     "semantic_hash": ""
   },
   "src/components/sections/CharitraDarshan.tsx": {
-    "mtime": 1795794675.6242483,
-    "ast_hash": "cafe9ba55c7cb51ea600629139133477",
+    "mtime": 1795796214.8353236,
+    "ast_hash": "894264094bf60ca9bbbe41e72a45c64e",
     "semantic_hash": ""
   },
   "src/components/sections/DhamTirthaSection.tsx": {
@@ -6945,8 +6945,8 @@
     "semantic_hash": ""
   },
   "src/components/sections/TopicalGuideView.tsx": {
-    "mtime": 1795794706.6629887,
-    "ast_hash": "a6f7bd0411c25b5b89e9b6c2595adacd",
+    "mtime": 1795795294.4280496,
+    "ast_hash": "2c47a7ad8f37c140bbf60579091a9fb7",
     "semantic_hash": ""
   },
   "src/data/topicalGuides.json": {

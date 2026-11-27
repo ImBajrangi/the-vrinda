@@ -254,6 +254,34 @@ function buildImageSitemap(baseUrl) {
       caption: 'श्री मलूकपीठ वृन्दावन के वर्तमान पीठाधीश्वर परम पूज्य श्री राजेन्द्रदास जी महाराज।',
       geo: 'Vrindavan, Mathura, Uttar Pradesh, India',
     },
+    {
+      page: `${baseUrl}/festivals/jhulan-yatra`,
+      loc: `${baseUrl}/assets/darshan/barsana-radhavallabh-jhanki.webp`,
+      title: 'श्री वृन्दावन सावन झूलन यात्रा दर्शन',
+      caption: 'पावस ऋतु में मेघ मल्हार मध्य श्री राधावल्लभ लाल जी का स्वर्ण-रजत हिंडोला दर्शन।',
+      geo: 'Vrindavan, Mathura, Uttar Pradesh, India',
+    },
+    {
+      page: `${baseUrl}/festivals/radhashtami`,
+      loc: `${baseUrl}/assets/temples/barsana-radharani.webp`,
+      title: 'श्री राधाष्टमी महामहोत्सव — बरसाना लाड़िली जी महल',
+      caption: 'निकुंजेश्वरी करुणामयी श्री राधारानी का पावन प्राकट्य महोत्सव, बरसाना धाम।',
+      geo: 'Barsana, Mathura, Uttar Pradesh, India',
+    },
+    {
+      page: `${baseUrl}/festivals/latthmar-holi`,
+      loc: `${baseUrl}/assets/darshan/radharaman-gulabi-pag.webp`,
+      title: 'श्री राधारमण लाल जी गुलाल व वसंत-फाग शृंगार',
+      caption: 'फाल्गुन रंगोत्सव व लठमार होरी में श्री राधारमण देव जू का गुलाबी पाग दर्शन।',
+      geo: 'Vrindavan, Mathura, Uttar Pradesh, India',
+    },
+    {
+      page: `${baseUrl}/festivals/sharad-purnima`,
+      loc: `${baseUrl}/assets/darshan/radhavallabh-peacock.webp`,
+      title: 'शरद पूर्णिमा महारास दर्शन — मोरपंख पीठिका',
+      caption: 'शरद चन्द्र की धवल चाँदनी में नित्य महारास व वंशीवट रस उत्सव।',
+      geo: 'Vrindavan, Mathura, Uttar Pradesh, India',
+    },
   ];
 
   const lines = [
