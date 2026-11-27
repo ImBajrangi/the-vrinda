@@ -117,7 +117,7 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
       setSelectedBadge(null);
       setIsBadgeClosing(false);
       badgeTimerRef.current = null;
-    }, 240);
+    }, 280);
   };
 
   const handleCloseRules = () => {
@@ -128,7 +128,7 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
       setIsRulesModalOpen(false);
       setIsRulesClosing(false);
       rulesTimerRef.current = null;
-    }, 240);
+    }, 280);
   };
 
   useEffect(() => {
@@ -621,7 +621,7 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
             <div className="shrink-0 p-3.5 sm:p-5 pt-2 border-t border-black/[0.04] bg-white">
               <button
                 type="button"
-                onClick={() => setSelectedBadge(null)}
+                onClick={handleCloseBadge}
                 className="w-full py-2.5 sm:py-3 rounded-full bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
               >
                 Close

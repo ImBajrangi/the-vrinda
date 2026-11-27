@@ -17,6 +17,7 @@ import { SACRED_FEED_POSTS } from './data/feed';
 import { SacredPad, SadhanaState, DhyanaImpactState, DhyanaSessionRecord } from './types/devotional';
 import { SacredDatabase, CanonicalSaint, CanonicalGrantha, mapPadToEpicChapter } from './services/sacredDatabase';
 import { normalizeEpicChapterSlug } from './utils/epicSlugs';
+import { resetScrollToTop } from './utils/scrollTop';
 import { seo } from './services/seoService';
 import { useScrollDirection } from './hooks/useScrollDirection';
 import {
@@ -504,6 +505,33 @@ export function App({
   const [isFocusModalOpen, setIsFocusModalOpen] = useState(false);
   const [activePillarModal, setActivePillarModal] = useState<PillarType | null>(null);
   const [isGuideModalOpen, setIsGuideModalOpen] = useState(false);
+  const [mountedModals, setMountedModals] = useState({
+    pillar: false,
+    spotlight: false,
+    saints: false,
+    focus: false,
+    guide: false,
+  });
+
+  useEffect(() => {
+    setMountedModals((prev) => {
+      const pillar = prev.pillar || activePillarModal !== null;
+      const spotlight = prev.spotlight || isSpotlightOpen;
+      const saints = prev.saints || isSaintsModalOpen;
+      const focus = prev.focus || isFocusModalOpen;
+      const guide = prev.guide || isGuideModalOpen;
+      if (
+        pillar === prev.pillar &&
+        spotlight === prev.spotlight &&
+        saints === prev.saints &&
+        focus === prev.focus &&
+        guide === prev.guide
+      ) {
+        return prev;
+      }
+      return { pillar, spotlight, saints, focus, guide };
+    });
+  }, [activePillarModal, isSpotlightOpen, isSaintsModalOpen, isFocusModalOpen, isGuideModalOpen]);
   const [isAffirmedSankalpa, setIsAffirmedSankalpa] = useState(false);
   const [sankalpaIdx, setSankalpaIdx] = useState(0);
   useEffect(() => {
@@ -769,6 +797,15 @@ export function App({
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
+  const isFirstViewEffectRef = useRef(true);
+  useEffect(() => {
+    if (isFirstViewEffectRef.current) {
+      isFirstViewEffectRef.current = false;
+      return;
+    }
+    resetScrollToTop();
+  }, [activeTab, activeGuideSlug, specialView]);
+
   const handleNavigatePath = (targetPath: string) => {
     if (typeof window !== 'undefined') {
       try {
@@ -779,9 +816,7 @@ export function App({
     setActiveGuideSlug(nextRoute.guideSlug || null);
     setSpecialView(nextRoute.specialView || null);
     setActiveTab(nextRoute.tab);
-    if (typeof window !== 'undefined') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    resetScrollToTop();
   };
 
   const handleTabSwitch = (tab: NavTab) => {
@@ -791,8 +826,12 @@ export function App({
     if (specialView) {
       setSpecialView(null);
     }
-    if (tab === activeTab && !activeGuideSlug && !specialView) return;
+    if (tab === activeTab && !activeGuideSlug && !specialView) {
+      resetScrollToTop();
+      return;
+    }
     setActiveTab(tab);
+    resetScrollToTop();
     if (typeof window !== 'undefined') {
       try {
         const url = new URL(window.location.href);
@@ -834,6 +873,7 @@ export function App({
       setActiveTab('padavali');
     }
     setIsSpotlightOpen(false);
+    resetScrollToTop();
     requestAnimationFrame(() => {
       navigationProgress.done();
     });
@@ -843,6 +883,7 @@ export function App({
     navigationProgress.start();
     setSelectedAuthor(null);
     setReaderSearchQuery('');
+    resetScrollToTop();
 
     if (SacredDatabase.isEpicGrantha(granthaId)) {
       setSelectedEpicGranthaId(granthaId);
@@ -892,6 +933,7 @@ export function App({
     setSelectedAuthor(authorName);
     setReaderSearchQuery('');
     setActiveTab('padavali');
+    resetScrollToTop();
 
     if (typeof window !== 'undefined') {
       try {
@@ -2155,7 +2197,7 @@ export function App({
         />
 
         {/* Sacred Devotional Pillar Control Modal */}
-        {activePillarModal !== null && (
+        {mountedModals.pillar && (
           <Suspense fallback={null}>
             <LazySadhanaPillarModal
               isOpen={activePillarModal !== null}
@@ -2174,7 +2216,7 @@ export function App({
         )}
 
         {/* Global Apple Spotlight Search Modal (Cmd+K) */}
-        {isSpotlightOpen && (
+        {mountedModals.spotlight && (
           <Suspense fallback={null}>
             <LazySpotlightSearchModal
               isOpen={isSpotlightOpen}
@@ -2187,7 +2229,7 @@ export function App({
         )}
 
         {/* Rasik Saints Directory Modal (131 Saints) */}
-        {isSaintsModalOpen && (
+        {mountedModals.saints && (
           <Suspense fallback={null}>
             <LazySaintsDirectoryModal
               isOpen={isSaintsModalOpen}
@@ -2198,7 +2240,7 @@ export function App({
         )}
 
         {/* Dhyana Mental Focus Sanctuary Modal & Cognitive Impact */}
-        {isFocusModalOpen && (
+        {mountedModals.focus && (
           <Suspense fallback={null}>
             <LazyDhyanaFocusModal
               isOpen={isFocusModalOpen}
@@ -2223,7 +2265,7 @@ export function App({
         )}
 
         {/* Beginner Sacred Sadhana Quick Guide Modal */}
-        {isGuideModalOpen && (
+        {mountedModals.guide && (
           <Suspense fallback={null}>
             <LazyBeginnerGuideModal
               isOpen={isGuideModalOpen}

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
   BookOpen,
   ArrowLeft,
@@ -19,6 +19,7 @@ import topicalGuidesData from '../../data/topicalGuides.json';
 import { BILINGUAL_FAQS } from '../../data/faqData';
 import { KNOWLEDGE_CATALOG } from '../../data/knowledgeCatalog';
 import { formatDevanagariNumerals } from '../../services/cacheService';
+import { resetScrollToTop } from '../../utils/scrollTop';
 
 interface GuideLangContent {
   title: string;
@@ -63,6 +64,14 @@ export const TopicalGuideView: React.FC<TopicalGuideViewProps> = ({
   const [activeHeadingId, setActiveHeadingId] = useState<string>('');
   const [scrollProgress, setScrollProgress] = useState(0);
   const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(0);
+  const isFirstGuideRender = useRef(true);
+  useEffect(() => {
+    if (isFirstGuideRender.current) {
+      isFirstGuideRender.current = false;
+      return;
+    }
+    resetScrollToTop();
+  }, [slug]);
 
   const guide = GUIDES_MAP[slug] || GUIDES_MAP['what-is-vrindopnishad'];
   const content = guide[lang] || guide.hi;
@@ -292,11 +301,17 @@ export const TopicalGuideView: React.FC<TopicalGuideViewProps> = ({
                       }`}
                     />
                   </button>
-                  {isOpen && (
-                    <div className="px-4 pb-4 text-xs sm:text-sm font-serif text-neutral-700 leading-relaxed">
-                      {lang === 'hi' ? item.answerHi : item.answerEn}
+                  <div
+                    className={`accordion-slide-container ${isOpen ? 'is-open' : 'is-closed'}`}
+                    aria-hidden={!isOpen}
+                    inert={!isOpen ? true : undefined}
+                  >
+                    <div className="accordion-slide-content">
+                      <div className="accordion-slide-card px-4 pb-4 text-xs sm:text-sm font-serif text-neutral-700 leading-relaxed">
+                        {lang === 'hi' ? item.answerHi : item.answerEn}
+                      </div>
                     </div>
-                  )}
+                  </div>
                 </div>
               );
             })}
@@ -367,8 +382,8 @@ export const TopicalGuideView: React.FC<TopicalGuideViewProps> = ({
   // Distraction-Free Zen Mode Overlay
   if (isZenMode) {
     return (
-      <div className="fixed inset-0 z-[100] bg-[#FAF8F4] overflow-y-auto px-4 sm:px-8 py-6">
-        <div className="max-w-3xl mx-auto space-y-5">
+      <div className="fixed inset-0 z-[100] bg-[#FAF8F4] overflow-y-auto px-4 sm:px-8 py-6 modal-backdrop-enter">
+        <div className="max-w-3xl mx-auto space-y-5 apple-view-enter">
           <div className="flex items-center justify-between gap-3 rounded-full bg-white px-4 py-2 shadow-[0_2px_12px_rgba(24,24,27,0.04)] sticky top-4 z-20">
             <button
               type="button"

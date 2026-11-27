@@ -23,6 +23,7 @@ import { NavTab } from './FloatingNavbar';
 import { SacredLogo } from './SacredLogo';
 import { computeAshtayamaPhase, formatDevanagariNumerals } from '../../services/cacheService';
 import { SadhanaState } from '../../types/devotional';
+import { useSoftPresence } from '../../hooks/useSoftPresence';
 
 interface DynamicNotchNavbarProps {
   activeTab: NavTab;
@@ -83,7 +84,7 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
         setIsMenuRendered(false);
         setIsMenuClosing(false);
         menuTimerRef.current = null;
-      }, 240);
+      }, 260);
     }
   }, [isMobileMenuOpen]);
 
@@ -120,6 +121,7 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const mobileToggleRef = useRef<HTMLButtonElement>(null);
   const [isSangrahaOpen, setIsSangrahaOpen] = useState(false);
+  const { isRendered: isSangrahaRendered, isClosing: isSangrahaClosing } = useSoftPresence(isSangrahaOpen, 220);
   const sangrahaRef = useRef<HTMLDivElement>(null);
 
   const isSangrahaActive =
@@ -385,9 +387,11 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
                   <ChevronDown className={`w-3 h-3 text-neutral-500 transition-transform duration-200 ${isSangrahaOpen ? 'rotate-180' : ''}`} />
                 </button>
 
-                {isSangrahaOpen && (
+                {isSangrahaRendered && (
                   <div
-                    className="absolute top-full right-0 mt-2 w-64 bg-white rounded-[20px] p-2 shadow-[0_12px_36px_rgba(24,24,27,0.12)] space-y-1 transform-gpu z-50 text-[#18181B]"
+                    className={`absolute top-full right-0 mt-2 w-64 bg-white rounded-[20px] p-2 shadow-[0_12px_36px_rgba(24,24,27,0.12)] space-y-1 origin-top-right z-50 text-[#18181B] ${
+                      isSangrahaClosing ? 'popover-exit' : 'popover-enter'
+                    }`}
                     onClick={(e) => e.stopPropagation()}
                   >
                     <div className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-neutral-400 font-mono">
@@ -531,7 +535,7 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
           <div
             ref={mobileMenuRef}
             onClick={(e) => e.stopPropagation()}
-            className={`pointer-events-auto w-full max-w-[96vw] mt-2 p-3 sm:p-4 rounded-3xl bg-white md:hidden border border-neutral-200/90 shadow-[0_12px_36px_-8px_rgba(24,24,27,0.12),inset_0_1px_0_rgba(255,255,255,1)] space-y-2.5 max-h-[85vh] overflow-y-auto no-scrollbar text-[#18181B] transform-gpu will-change-transform ${
+            className={`pointer-events-auto w-full max-w-[96vw] mt-2 p-3 sm:p-4 rounded-3xl bg-white md:hidden border border-neutral-200/90 shadow-[0_12px_36px_-8px_rgba(24,24,27,0.12),inset_0_1px_0_rgba(255,255,255,1)] space-y-2.5 max-h-[85vh] overflow-y-auto no-scrollbar text-[#18181B] origin-top ${
               isMenuClosing ? 'apple-view-exit' : 'apple-view-enter'
             }`}
           >

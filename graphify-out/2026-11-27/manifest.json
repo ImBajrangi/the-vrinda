@@ -2210,8 +2210,8 @@
     "semantic_hash": ""
   },
   "src/App.tsx": {
-    "mtime": 1795793310.298263,
-    "ast_hash": "dbecefec401f840e404830f9af9a442f",
+    "mtime": 1795794668.870369,
+    "ast_hash": "f834713e67f773315f0b79c802b494dd",
     "semantic_hash": ""
   },
   "src/components/common/ArtworkGraphicSlot.tsx": {
@@ -2220,8 +2220,8 @@
     "semantic_hash": ""
   },
   "src/components/common/CMSEditorialBadge.tsx": {
-    "mtime": 1794056303.3717096,
-    "ast_hash": "cd9adc51ad663e9242be0b6eb804674b",
+    "mtime": 1795794266.403397,
+    "ast_hash": "8758655c2c7c959a3e8c19a7c9ba7fa4",
     "semantic_hash": ""
   },
   "src/components/common/DotMatrixNumber.tsx": {
@@ -2230,8 +2230,8 @@
     "semantic_hash": ""
   },
   "src/components/common/DynamicNotchNavbar.tsx": {
-    "mtime": 1795793308.7533207,
-    "ast_hash": "6bf145d30315b8311300f577311232ca",
+    "mtime": 1795794340.0248928,
+    "ast_hash": "91ab1b189085cc70dd3cc1b5ad0030bd",
     "semantic_hash": ""
   },
   "src/components/common/FloatingNavbar.tsx": {
@@ -2255,8 +2255,8 @@
     "semantic_hash": ""
   },
   "src/components/common/SaintsDirectoryModal.tsx": {
-    "mtime": 1795708469.9879787,
-    "ast_hash": "64e4f84b6005fb1c55756759c2f32802",
+    "mtime": 1795794255.5571296,
+    "ast_hash": "082760d09ce37f41a7551ed2ef477316",
     "semantic_hash": ""
   },
   "src/components/common/ScallopedBadge.tsx": {
@@ -2265,8 +2265,8 @@
     "semantic_hash": ""
   },
   "src/components/common/SpotlightSearchModal.tsx": {
-    "mtime": 1795708469.9889688,
-    "ast_hash": "a8af80aa5e0ced46ca5000fd1a7d4806",
+    "mtime": 1795794254.07627,
+    "ast_hash": "0bb3b80bdf8409ca759f78079e4b7cd0",
     "semantic_hash": ""
   },
   "src/components/common/TopAnnouncementMarquee.tsx": {
@@ -2280,23 +2280,23 @@
     "semantic_hash": ""
   },
   "src/components/feed/FeedCard.tsx": {
-    "mtime": 1795708469.9846566,
-    "ast_hash": "27c2a08c24b2ce4a6aab2eafbd732c75",
+    "mtime": 1795794360.0855129,
+    "ast_hash": "11f5d87b0e2879a5aac0d0bf9142ecd4",
     "semantic_hash": ""
   },
   "src/components/focus/DhyanaFocusModal.tsx": {
-    "mtime": 1795708469.9804213,
-    "ast_hash": "6c67568ea07e3935dbecf187af320720",
+    "mtime": 1795794257.2881036,
+    "ast_hash": "8f04ecd33857615b8094efc215f62d56",
     "semantic_hash": ""
   },
   "src/components/milestones/MilestonesView.tsx": {
-    "mtime": 1795703881.2248855,
-    "ast_hash": "16516d228d2e4a123119c08210bd20fb",
+    "mtime": 1795794270.2320523,
+    "ast_hash": "232382497984eca213e68ef4bd2279aa",
     "semantic_hash": ""
   },
   "src/components/player/FloatingAudioPlayer.tsx": {
-    "mtime": 1795615068.423362,
-    "ast_hash": "fd44f05871c430c96795d96d082e1dbd",
+    "mtime": 1795794271.8178732,
+    "ast_hash": "12f04f948b4c61ee53903183ca1e54f8",
     "semantic_hash": ""
   },
   "src/components/reader/DevotionalVersePresenter.tsx": {
@@ -2305,8 +2305,8 @@
     "semantic_hash": ""
   },
   "src/components/reader/InlinePurportCard.tsx": {
-    "mtime": 1794195708.647949,
-    "ast_hash": "9bf33f2bfe4c407c9982fac9c8fdb38b",
+    "mtime": 1795794364.2517447,
+    "ast_hash": "5c25b5bafc6ffbd399b50dfdd20e20c2",
     "semantic_hash": ""
   },
   "src/components/reader/MahagranthReader.tsx": {
@@ -2325,8 +2325,8 @@
     "semantic_hash": ""
   },
   "src/components/reader/PadavaliReader.tsx": {
-    "mtime": 1795793301.7137842,
-    "ast_hash": "b5f01a563332ce4e0d8539400bf8112b",
+    "mtime": 1795794354.3709354,
+    "ast_hash": "cbe2eabf144070f44f0fc9eb1824b008",
     "semantic_hash": ""
   },
   "src/components/smaran/AshtayamaTimelineDeck.tsx": {
@@ -2335,8 +2335,8 @@
     "semantic_hash": ""
   },
   "src/components/smaran/BeginnerGuideModal.tsx": {
-    "mtime": 1794056319.9399595,
-    "ast_hash": "db2aa4b4f5be55d0f0727afc756842a4",
+    "mtime": 1795794260.64928,
+    "ast_hash": "18968883987800f5aa4de937de8ce56b",
     "semantic_hash": ""
   },
   "src/components/smaran/CategoriesRow.tsx": {
@@ -2370,13 +2370,13 @@
     "semantic_hash": ""
   },
   "src/components/smaran/SadhanaPillarModal.tsx": {
-    "mtime": 1794131314.5324783,
-    "ast_hash": "cb8a472b399314dfa52937bb5603a85c",
+    "mtime": 1795794263.625095,
+    "ast_hash": "bddc5747a6114e349e43825c104b5dcb",
     "semantic_hash": ""
   },
   "src/components/smaran/SadhanaRingProgress.tsx": {
-    "mtime": 1795790857.4924746,
-    "ast_hash": "aa1ab55f6187943056efbcd10676da63",
+    "mtime": 1795794277.3123584,
+    "ast_hash": "76b5ec25970b16dbd4c09ce489e16b4a",
     "semantic_hash": ""
   },
   "src/data/ashtayamaPeriods.json": {
@@ -6545,23 +6545,23 @@
     "semantic_hash": ""
   },
   "src/components/sections/CharitraDarshan.tsx": {
-    "mtime": 1795791897.3485434,
-    "ast_hash": "08e2e84501fcd02fea43ced39d9e209a",
+    "mtime": 1795794675.6242483,
+    "ast_hash": "cafe9ba55c7cb51ea600629139133477",
     "semantic_hash": ""
   },
   "src/components/sections/DhamTirthaSection.tsx": {
-    "mtime": 1795791900.2575445,
-    "ast_hash": "0b6c91ea21d6f6ebb8cc53bf76c54fae",
+    "mtime": 1795794682.085208,
+    "ast_hash": "2f1d28b9752195bac5602f7e0f6446db",
     "semantic_hash": ""
   },
   "src/components/sections/KathaSanctuary.tsx": {
-    "mtime": 1795791914.55775,
-    "ast_hash": "3448872d066c6fb70c7281defe70411c",
+    "mtime": 1795794693.2456148,
+    "ast_hash": "b851f661e261deaf327c26ef6d4dce81",
     "semantic_hash": ""
   },
   "src/components/sections/NityaUpasanaReader.tsx": {
-    "mtime": 1795791905.8472395,
-    "ast_hash": "efcd6c2df6af80aab2d1cbdbf263d610",
+    "mtime": 1795794686.859782,
+    "ast_hash": "d32acd4fb360b94a3e9718ff9c8b5201",
     "semantic_hash": ""
   },
   "src/components/sections/index.ts": {
@@ -6945,8 +6945,8 @@
     "semantic_hash": ""
   },
   "src/components/sections/TopicalGuideView.tsx": {
-    "mtime": 1795793245.9284024,
-    "ast_hash": "ed48db4a28976eeaad17f0baeea9f3d3",
+    "mtime": 1795794706.6629887,
+    "ast_hash": "a6f7bd0411c25b5b89e9b6c2595adacd",
     "semantic_hash": ""
   },
   "src/data/topicalGuides.json": {
@@ -7240,23 +7240,23 @@
     "semantic_hash": ""
   },
   "src/components/common/SacredFooter.tsx": {
-    "mtime": 1795792813.248622,
-    "ast_hash": "f3bc3cc41bae3d6d202b6d2a91784e9b",
+    "mtime": 1795794709.500527,
+    "ast_hash": "e6bb62acd4a351469aae98fe939eafe9",
     "semantic_hash": ""
   },
   "src/components/reader/BrajWordStudyPanel.tsx": {
-    "mtime": 1795792631.8007061,
-    "ast_hash": "7819df0effedf8ee0fbe9cec202c9258",
+    "mtime": 1795793617.0681465,
+    "ast_hash": "15e8cc07265070f7cbe7ab344118493b",
     "semantic_hash": ""
   },
   "src/components/sections/FestivalGuideView.tsx": {
-    "mtime": 1795792580.4757547,
-    "ast_hash": "141bb53295d6e4288c224f1f58cbe00d",
+    "mtime": 1795794702.502475,
+    "ast_hash": "029b9792784f8c789cd647069a8bdfff",
     "semantic_hash": ""
   },
   "src/components/sections/GlossaryView.tsx": {
-    "mtime": 1795792578.3470635,
-    "ast_hash": "1eaf5bf18440ece9f869762bc4fbe270",
+    "mtime": 1795794698.2853765,
+    "ast_hash": "d4d163758a2fe36f6b123ce0d1c684cf",
     "semantic_hash": ""
   },
   "src/components/sections/KnowledgeBaseHubView.tsx": {
@@ -7287,6 +7287,16 @@
   "src/utils/transliterate.ts": {
     "mtime": 1795792465.8723927,
     "ast_hash": "15d190bc435456f63161ae97a90b6606",
+    "semantic_hash": ""
+  },
+  "src/hooks/useSoftPresence.ts": {
+    "mtime": 1795794209.7302423,
+    "ast_hash": "8ff1491bfa25dc23993bd74674271305",
+    "semantic_hash": ""
+  },
+  "src/utils/scrollTop.ts": {
+    "mtime": 1795794660.5272229,
+    "ast_hash": "95bf8d92b3334cc3386984abebb56463",
     "semantic_hash": ""
   }
 }

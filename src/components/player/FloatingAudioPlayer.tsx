@@ -55,7 +55,7 @@ export const FloatingAudioPlayer: React.FC<FloatingAudioPlayerProps> = ({
     setIsClosing(true);
     setTimeout(() => {
       onClose();
-    }, 240);
+    }, 260);
   };
 
   if (!currentPad) return null;

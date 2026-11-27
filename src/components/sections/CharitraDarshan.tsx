@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import {
   Users,
   Search,
@@ -22,6 +22,7 @@ import { SacredSectionService } from '../../services/sacredSectionService';
 import { formatDevanagariNumerals } from '../../services/cacheService';
 import { seo } from '../../services/seoService';
 import { SacredDiscoveryShelf } from '../common/SacredDiscoveryShelf';
+import { resetScrollToTop } from '../../utils/scrollTop';
 
 interface CharitraDarshanProps {
   initialSaintSlug?: string;
@@ -61,9 +62,18 @@ export const CharitraDarshan: React.FC<CharitraDarshanProps> = ({
     const bio = await SacredSectionService.getBiographyById(slugOrId);
     if (bio) {
       setSelectedBio(bio);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      resetScrollToTop();
     }
   }, []);
+
+  const isFirstBioRender = useRef(true);
+  useEffect(() => {
+    if (isFirstBioRender.current) {
+      isFirstBioRender.current = false;
+      return;
+    }
+    resetScrollToTop();
+  }, [selectedBio?.id]);
 
   // Handle deep link
   useEffect(() => {
@@ -108,7 +118,7 @@ export const CharitraDarshan: React.FC<CharitraDarshanProps> = ({
         window.history.pushState({}, '', '/biographies');
       } catch {}
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    resetScrollToTop();
   };
 
   const handleShare = () => {

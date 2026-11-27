@@ -1,6 +1,7 @@
 import React from 'react';
 import { BookOpen, Sparkles, Compass, ShieldCheck } from 'lucide-react';
 import { NavTab } from './FloatingNavbar';
+import { resetScrollToTop } from '../../utils/scrollTop';
 
 interface SacredFooterProps {
   onSelectTab?: (tab: NavTab) => void;
@@ -20,12 +21,13 @@ export const SacredFooter: React.FC<SacredFooterProps> = ({
     if (tab && onSelectTab) {
       e.preventDefault();
       onSelectTab(tab);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      resetScrollToTop();
       return;
     }
     if (onNavigatePath) {
       e.preventDefault();
       onNavigatePath(href);
+      resetScrollToTop();
     }
   };
 

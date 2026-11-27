@@ -23,6 +23,7 @@ import {
 import { SacredSectionService } from '../../services/sacredSectionService';
 import { formatDevanagariNumerals } from '../../services/cacheService';
 import { chimeService } from '../../services/chimeService';
+import { resetScrollToTop } from '../../utils/scrollTop';
 import { seo } from '../../services/seoService';
 import { getRitualArtwork, getArtworkObjectPosition } from '../../services/devotionalVisuals';
 import { SacredDiscoveryShelf } from '../common/SacredDiscoveryShelf';
@@ -82,9 +83,18 @@ export const NityaUpasanaReader: React.FC<NityaUpasanaReaderProps> = ({
     const ritual = await SacredSectionService.getRitualById(slugOrId);
     if (ritual) {
       setSelectedRitual(ritual);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      resetScrollToTop();
     }
   }, []);
+
+  const isFirstRitualRender = useRef(true);
+  useEffect(() => {
+    if (isFirstRitualRender.current) {
+      isFirstRitualRender.current = false;
+      return;
+    }
+    resetScrollToTop();
+  }, [selectedRitual?.id]);
 
   // Handle deep link
   useEffect(() => {
@@ -131,7 +141,7 @@ export const NityaUpasanaReader: React.FC<NityaUpasanaReaderProps> = ({
         window.history.pushState({}, '', '/rituals');
       } catch {}
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    resetScrollToTop();
   };
 
   const handleShare = () => {

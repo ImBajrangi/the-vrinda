@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import {
   BookOpen,
   ChevronLeft,
@@ -23,6 +23,7 @@ import {
 } from '../../types/sacredSections';
 import { SacredSectionService } from '../../services/sacredSectionService';
 import { formatDevanagariNumerals } from '../../services/cacheService';
+import { resetScrollToTop } from '../../utils/scrollTop';
 import { seo } from '../../services/seoService';
 import { getKathaArtwork, getArtworkObjectPosition } from '../../services/devotionalVisuals';
 import { chimeService } from '../../services/chimeService';
@@ -85,9 +86,18 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
     if (story) {
       setSelectedStory(story);
       setCurrentChapterIndex(0);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      resetScrollToTop();
     }
   }, []);
+
+  const isFirstStoryRender = useRef(true);
+  useEffect(() => {
+    if (isFirstStoryRender.current) {
+      isFirstStoryRender.current = false;
+      return;
+    }
+    resetScrollToTop();
+  }, [selectedStory?.id]);
 
   // Handle deep link or prop story change
   useEffect(() => {
@@ -133,7 +143,7 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
         window.history.pushState({}, '', '/stories');
       } catch {}
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    resetScrollToTop();
   };
 
   const toggleBookmark = (storyId: string) => {

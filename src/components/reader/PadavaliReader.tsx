@@ -57,6 +57,7 @@ import { MobileScriptureDrawer } from './MobileScriptureDrawer';
 import { useScrollDirection } from '../../hooks/useScrollDirection';
 import { SacredDiscoveryShelf } from '../common/SacredDiscoveryShelf';
 import { transliterateDevanagari } from '../../utils/transliterate';
+import { useSoftPresence } from '../../hooks/useSoftPresence';
 
 const LazyBrajWordStudyPanel = lazy(() =>
   import('./BrajWordStudyPanel').then((m) => ({ default: m.BrajWordStudyPanel }))
@@ -231,6 +232,26 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   );
   const [selectedChapter, setSelectedChapter] = useState<string>('all');
   const [isChapterDropdownOpen, setIsChapterDropdownOpen] = useState<boolean>(false);
+  const { isRendered: isChapterDropdownRendered, isClosing: isChapterDropdownClosing } = useSoftPresence(isChapterDropdownOpen, 220);
+  const chapterDropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!isChapterDropdownOpen) return;
+    const handleClickOutside = (e: MouseEvent) => {
+      if (chapterDropdownRef.current && !chapterDropdownRef.current.contains(e.target as Node)) {
+        setIsChapterDropdownOpen(false);
+      }
+    };
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsChapterDropdownOpen(false);
+    };
+    document.addEventListener('pointerdown', handleClickOutside);
+    window.addEventListener('keydown', handleEsc);
+    return () => {
+      document.removeEventListener('pointerdown', handleClickOutside);
+      window.removeEventListener('keydown', handleEsc);
+    };
+  }, [isChapterDropdownOpen]);
   const [activeScrollerVerseId, setActiveScrollerVerseId] = useState<string>('');
   const [streamLimit, setStreamLimit] = useState<number>(20);
   const scrubberBtnRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
@@ -704,12 +725,14 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   const [activeStanzaIndex, setActiveStanzaIndex] = useState(0);
   const [isFocusReadingMode, setIsFocusReadingMode] = useState<boolean>(false);
   const [isWordStudyOpen, setIsWordStudyOpen] = useState<boolean>(false);
+  const [hasLoadedWordStudy, setHasLoadedWordStudy] = useState<boolean>(false);
   const wordStudyAnchorRef = useRef<HTMLDivElement>(null);
 
   const handleToggleWordStudy = () => {
     setIsWordStudyOpen((prev) => {
       const next = !prev;
       if (next) {
+        setHasLoadedWordStudy(true);
         requestAnimationFrame(() => {
           const el = wordStudyAnchorRef.current;
           if (!el) return;
@@ -902,7 +925,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       setIsCommentaryOpen(false);
       setIsCommentaryClosing(false);
       commentaryTimerRef.current = null;
-    }, 240);
+    }, 280);
   };
 
   const handleCloseGlossary = () => {
@@ -913,7 +936,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
       setIsGlossaryOpen(false);
       setIsGlossaryClosing(false);
       glossaryTimerRef.current = null;
-    }, 240);
+    }, 280);
   };
 
   useEffect(() => {
@@ -2797,7 +2820,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               </div>
 
               {availableChapters.length > 1 ? (
-                <div className="relative">
+                <div ref={chapterDropdownRef} className="relative">
                   <button
                     type="button"
                     onClick={() => setIsChapterDropdownOpen(!isChapterDropdownOpen)}
@@ -2810,8 +2833,12 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                     <ChevronDown className={`w-3.5 h-3.5 text-amber-800 transition-transform duration-200 ${isChapterDropdownOpen ? 'rotate-180' : ''}`} />
                   </button>
 
-                  {isChapterDropdownOpen && (
-                    <div className="absolute left-0 top-full mt-1.5 z-40 w-72 sm:w-80 max-h-80 overflow-y-auto bg-white rounded-2xl border border-neutral-200 shadow-xl p-1.5 space-y-1">
+                  {isChapterDropdownRendered && (
+                    <div
+                      className={`absolute left-0 top-full mt-1.5 z-40 w-72 sm:w-80 max-h-80 overflow-y-auto bg-white rounded-2xl border border-neutral-200 shadow-xl p-1.5 space-y-1 origin-top-left ${
+                        isChapterDropdownClosing ? 'popover-exit' : 'popover-enter'
+                      }`}
+                    >
                       <button
                         type="button"
                         onClick={() => {
@@ -2949,11 +2976,11 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               </div>
 
               {/* Sticky Quick-Jump Verse Scrubber (Desktop Only) */}
-              <div className="hidden md:flex sticky top-24 z-20 p-2 rounded-2xl bg-white border border-amber-900/10 shadow-xs items-center gap-2">
+              <div className="pad-action-bar hidden md:flex sticky top-24 z-20 p-2 rounded-2xl bg-white border border-amber-900/10 shadow-xs items-center gap-2">
                 <span className="text-[10px] font-mono font-bold text-amber-800 shrink-0 uppercase tracking-wider pl-1.5">
                   पद क्रम:
                 </span>
-                <div className="flex items-center gap-1 overflow-x-auto no-scrollbar py-0.5 flex-1 min-w-0">
+                <div className="flex items-center gap-1 overflow-x-auto no-scrollbar py-0.5 pr-1 flex-1 min-w-0">
                   {filteredPads.slice(0, streamLimit).map((pad, idx) => {
                     const isActive = (activeScrollerVerseId || selectedPad.id) === pad.id;
                     const displayNumber = idx + 1;
@@ -2984,46 +3011,58 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   <button
                     type="button"
                     onClick={handleToggleWordStudy}
-                    className={`h-7 px-3 rounded-full text-xs font-semibold flex items-center gap-1.5 shrink-0 transition-colors cursor-pointer select-none ${
+                    className={`pad-action-btn h-7 px-3 rounded-full text-xs font-semibold flex items-center gap-1.5 shrink-0 transition-colors cursor-pointer select-none ${
                       isWordStudyOpen
                         ? 'bg-[#1C140D] text-[#FEF08A]'
                         : 'bg-[#FAF8F4] hover:bg-[#F5EFE3] text-[#78350F]'
                     }`}
-                    title="ब्रज शब्दकोश अध्ययन (Word Study)"
+                    aria-label="ब्रज शब्दकोश अध्ययन (शब्दार्थ)"
+                    title="ब्रज शब्दकोश अध्ययन (शब्दार्थ)"
                   >
-                    <BookOpen className="w-3 h-3" />
-                    <span>शब्दार्थ</span>
+                    <BookOpen className="w-3.5 h-3.5 shrink-0" />
+                    <span className="pad-action-label">शब्दार्थ</span>
                   </button>
 
                   <button
                     type="button"
                     onClick={() => setIsAutoScrolling(!isAutoScrolling)}
-                    className={`h-7 px-3 rounded-full text-xs font-semibold flex items-center gap-1.5 shrink-0 transition-colors cursor-pointer select-none ${isAutoScrolling
+                    className={`pad-action-btn h-7 px-3 rounded-full text-xs font-semibold flex items-center gap-1.5 shrink-0 transition-colors cursor-pointer select-none ${isAutoScrolling
                         ? 'bg-amber-600 text-white font-bold animate-pulse'
                         : 'bg-amber-100 hover:bg-amber-200 text-amber-900'
                       }`}
-                    title="Continuous Contemplative Recitation Auto-Scroll"
+                    aria-label={isAutoScrolling ? 'स्वाध्याय प्रवाह रोकें' : 'स्वाध्याय प्रवाह शुरू करें'}
+                    title={isAutoScrolling ? 'स्वाध्याय प्रवाह रोकें (विराम)' : 'स्वाध्याय प्रवाह (स्वचालित पाठ)'}
                   >
-                    {isAutoScrolling ? <Pause className="w-3 h-3 fill-current" /> : <Play className="w-3 h-3 fill-current ml-0.5" />}
-                    <span className="hidden sm:inline">{isAutoScrolling ? 'विराम' : 'स्वाध्याय प्रवाह'}</span>
+                    {isAutoScrolling ? <Pause className="w-3.5 h-3.5 fill-current shrink-0" /> : <Play className="w-3.5 h-3.5 fill-current ml-0.5 shrink-0" />}
+                    <span className="pad-action-label">{isAutoScrolling ? 'विराम' : 'स्वाध्याय प्रवाह'}</span>
                   </button>
                 </div>
               </div>
 
               {/* Interactive Braj Word Study Tray (Continuous Mode) */}
               <div ref={wordStudyAnchorRef} className={isWordStudyOpen ? 'mb-6 scroll-mt-44' : 'scroll-mt-44 -mt-6'}>
-                {isWordStudyOpen && (
-                  <Suspense fallback={null}>
-                    <LazyBrajWordStudyPanel
-                      verseText={
-                        (selectedPad?.verses?.length
-                          ? selectedPad.verses.flatMap((v) => v.linesDevanagari || [])
-                          : filteredPads.slice(0, 6).flatMap((p) => p.verses?.flatMap((v) => v.linesDevanagari || []) || [])
-                        ).join(' ')
-                      }
-                      onClose={() => setIsWordStudyOpen(false)}
-                    />
-                  </Suspense>
+                {hasLoadedWordStudy && (
+                  <div
+                    className={`accordion-slide-container ${isWordStudyOpen ? 'is-open' : 'is-closed'}`}
+                    aria-hidden={!isWordStudyOpen}
+                    inert={!isWordStudyOpen ? true : undefined}
+                  >
+                    <div className="accordion-slide-content">
+                      <div className="accordion-slide-card">
+                        <Suspense fallback={null}>
+                          <LazyBrajWordStudyPanel
+                            verseText={
+                              (selectedPad?.verses?.length
+                                ? selectedPad.verses.flatMap((v) => v.linesDevanagari || [])
+                                : filteredPads.slice(0, 6).flatMap((p) => p.verses?.flatMap((v) => v.linesDevanagari || []) || [])
+                              ).join(' ')
+                            }
+                            onClose={() => setIsWordStudyOpen(false)}
+                          />
+                        </Suspense>
+                      </div>
+                    </div>
+                  </div>
                 )}
               </div>
 
@@ -3299,7 +3338,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                 </div>
 
                 {/* Sleek Minimal Audio Player Pill (Warm Golden-Cream Sanctuary Bar) */}
-                <div className="p-3.5 sm:px-4 sm:py-3.5 rounded-2xl bg-[#FEF9C3] text-[#0F172A] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div className="pad-action-bar p-3.5 sm:px-4 sm:py-3.5 rounded-2xl bg-[#FEF9C3] text-[#0F172A] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <div className="flex items-center gap-3 min-w-0">
                     <button
                       type="button"
@@ -3339,34 +3378,44 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                     <button
                       type="button"
                       onClick={handleWhatsAppShare}
-                      className="h-8 px-3 rounded-full bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+                      className="pad-action-btn h-8 px-3 rounded-full bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+                      aria-label="व्हाट्सएप पर साझा करें"
                       title="व्हाट्सएप पर साझा करें"
                     >
-                      <Share2 className="w-3.5 h-3.5 text-emerald-600" />
-                      <span className="hidden sm:inline">साझा करें</span>
+                      <Share2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                      <span className="pad-action-label">साझा करें</span>
                     </button>
 
                     <button
                       type="button"
-                      onClick={() => setIsWordStudyOpen((v) => !v)}
-                      className={`px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer ${
+                      onClick={() => {
+                        setIsWordStudyOpen((v) => {
+                          const next = !v;
+                          if (next) setHasLoadedWordStudy(true);
+                          return next;
+                        });
+                      }}
+                      className={`pad-action-btn px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer ${
                         isWordStudyOpen
                           ? 'bg-[#1C140D] text-[#FEF08A]'
                           : 'bg-white hover:bg-white/80 text-[#78350F]'
                       }`}
-                      title="ब्रज शब्दकोश अध्ययन (Word Study)"
+                      aria-label="ब्रज शब्दकोश अध्ययन (शब्दार्थ)"
+                      title="ब्रज शब्दकोश अध्ययन (शब्दार्थ)"
                     >
-                      <BookOpen className="w-3.5 h-3.5" />
-                      <span>शब्दार्थ</span>
+                      <BookOpen className="w-3.5 h-3.5 shrink-0" />
+                      <span className="pad-action-label">शब्दार्थ</span>
                     </button>
 
                     <button
                       type="button"
                       onClick={handleToggleSummary}
-                      className="px-3 py-1.5 rounded-full bg-white hover:bg-white/80 text-[#78350F] text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+                      className="pad-action-btn px-3 py-1.5 rounded-full bg-white hover:bg-white/80 text-[#78350F] text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+                      aria-label={isSummaryOpen ? 'भाव संक्षेप छुपाएं' : 'भाव संक्षेप'}
+                      title={isSummaryOpen ? 'भाव संक्षेप छुपाएं' : 'भाव संक्षेप'}
                     >
-                      <Sparkles className="w-3.5 h-3.5 text-[#CA8A04]" />
-                      <span>{isSummaryOpen ? 'भाव संक्षेप छुपाएं' : 'भाव संक्षेप'}</span>
+                      <Sparkles className="w-3.5 h-3.5 text-[#CA8A04] shrink-0" />
+                      <span className="pad-action-label">{isSummaryOpen ? 'भाव संक्षेप छुपाएं' : 'भाव संक्षेप'}</span>
                     </button>
 
                     <button
@@ -3424,16 +3473,24 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               </div>
 
               {/* Interactive Braj Word Study Tray */}
-              {isWordStudyOpen && selectedPad?.verses && (
-                <div className="mb-6">
-                  <Suspense fallback={null}>
-                    <LazyBrajWordStudyPanel
-                      verseText={selectedPad.verses
-                        .flatMap((v) => v.linesDevanagari || [])
-                        .join(' ')}
-                      onClose={() => setIsWordStudyOpen(false)}
-                    />
-                  </Suspense>
+              {hasLoadedWordStudy && selectedPad?.verses && (
+                <div
+                  className={`accordion-slide-container ${isWordStudyOpen ? 'is-open mb-6' : 'is-closed'}`}
+                  aria-hidden={!isWordStudyOpen}
+                  inert={!isWordStudyOpen ? true : undefined}
+                >
+                  <div className="accordion-slide-content">
+                    <div className="accordion-slide-card">
+                      <Suspense fallback={null}>
+                        <LazyBrajWordStudyPanel
+                          verseText={selectedPad.verses
+                            .flatMap((v) => v.linesDevanagari || [])
+                            .join(' ')}
+                          onClose={() => setIsWordStudyOpen(false)}
+                        />
+                      </Suspense>
+                    </div>
+                  </div>
                 </div>
               )}
 

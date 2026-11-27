@@ -249,7 +249,7 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
         setIsRendered(false);
         setIsClosing(false);
         closeTimerRef.current = null;
-      }, 220);
+      }, 280);
     }
   }, [isOpen]);
 

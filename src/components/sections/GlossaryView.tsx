@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
   ArrowLeft,
   BookOpen,
@@ -14,6 +14,7 @@ import {
 import brajGlossaryRaw from '../../data/brajGlossary.json';
 import { BRAJ_DICTIONARY } from '../../data/brajDictionary';
 import { formatDevanagariNumerals } from '../../services/cacheService';
+import { resetScrollToTop } from '../../utils/scrollTop';
 
 export interface GlossaryEntry {
   id: string;
@@ -103,12 +104,21 @@ export const GlossaryView: React.FC<GlossaryViewProps> = ({
     });
   }, [searchQuery]);
 
+  const isFirstGlossaryRender = useRef(true);
+  useEffect(() => {
+    if (isFirstGlossaryRender.current) {
+      isFirstGlossaryRender.current = false;
+      return;
+    }
+    resetScrollToTop();
+  }, [activeSlug]);
+
   const handleOpenTerm = (e: React.MouseEvent<HTMLAnchorElement>, slug: string) => {
     if (e.metaKey || e.ctrlKey || e.shiftKey) return;
     e.preventDefault();
     setActiveSlug(slug);
     onSelectTerm?.(slug);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    resetScrollToTop();
   };
 
   const handleBackToIndex = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -116,7 +126,7 @@ export const GlossaryView: React.FC<GlossaryViewProps> = ({
     e.preventDefault();
     setActiveSlug(null);
     onSelectTerm?.(null);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    resetScrollToTop();
   };
 
   // ---------------------------------------------------------------------------

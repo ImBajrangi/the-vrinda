@@ -97,7 +97,7 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
         setIsMenuRendered(false);
         setIsMenuClosing(false);
         menuTimerRef.current = null;
-      }, 240);
+      }, 220);
     }
   }, [isMenuOpen]);
 
@@ -350,8 +350,8 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
 
             {/* Contextual Popover */}
             {isMenuRendered && (
-              <div className={`absolute right-0 top-10 z-40 w-56 bg-white rounded-2xl p-1.5 text-left border border-black/10 shadow-xl transform-gpu will-change-transform ${
-                isMenuClosing ? 'apple-dialog-exit' : 'apple-dialog-enter'
+              <div className={`absolute right-0 top-10 z-40 w-56 bg-white rounded-2xl p-1.5 text-left border border-black/10 shadow-xl origin-top-right ${
+                isMenuClosing ? 'popover-exit' : 'popover-enter'
               }`}>
                 <div className="py-0.5 space-y-0.5">
                   <button
@@ -439,41 +439,55 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
         </div>
 
         {/* Sleek Bilingual English Drawer */}
-        {showEnglish && post.contentEnglish && (
-          <div className="mt-1.5 p-2.5 rounded-xl bg-[#FAF9F5] text-xs sm:text-[13px] leading-relaxed text-[#52525B] font-serif italic">
-            <p>{post.contentEnglish}</p>
+        {post.contentEnglish && (
+          <div
+            className={`accordion-slide-container ${showEnglish ? 'is-open mt-1.5' : 'is-closed'}`}
+            aria-hidden={!showEnglish}
+            inert={!showEnglish ? true : undefined}
+          >
+            <div className="accordion-slide-content">
+              <div className="accordion-slide-card p-2.5 rounded-xl bg-[#FAF9F5] text-xs sm:text-[13px] leading-relaxed text-[#52525B] font-serif italic">
+                <p>{post.contentEnglish}</p>
+              </div>
+            </div>
           </div>
         )}
 
         {/* Devotional AI Summary Drawer */}
-        {isSummaryOpen && (
-          <div className="mt-2 bg-[#FEFCE8] rounded-2xl p-3 sm:p-3.5 apple-view-enter text-left">
-            <div className="flex items-center justify-between mb-1.5">
-              <span className="text-[10px] font-bold text-amber-800 uppercase tracking-wider flex items-center gap-1.5 font-mono">
-                <Sparkles className="w-3.5 h-3.5 text-amber-600" />
-                Divine Essence Summary
-              </span>
-              <button
-                type="button"
-                onClick={() => setIsSummaryOpen(false)}
-                aria-label="Close summary"
-                className="w-5 h-5 rounded-full bg-black/5 flex items-center justify-center text-[#555555] pressable"
-              >
-                <X className="w-3 h-3" />
-              </button>
-            </div>
-            {isSummaryLoading ? (
-              <div role="status" aria-busy="true" className="flex items-center gap-2 text-xs text-amber-700 font-medium py-1">
-                <IOSSpinner size="xs" theme="amber" />
-                <span>Revealing divine essence and spiritual theme...</span>
+        <div
+          className={`accordion-slide-container ${isSummaryOpen ? 'is-open mt-2' : 'is-closed'}`}
+          aria-hidden={!isSummaryOpen}
+          inert={!isSummaryOpen ? true : undefined}
+        >
+          <div className="accordion-slide-content">
+            <div className="accordion-slide-card bg-[#FEFCE8] rounded-2xl p-3 sm:p-3.5 text-left">
+              <div className="flex items-center justify-between mb-1.5">
+                <span className="text-[10px] font-bold text-amber-800 uppercase tracking-wider flex items-center gap-1.5 font-mono">
+                  <Sparkles className="w-3.5 h-3.5 text-amber-600" />
+                  Divine Essence Summary
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setIsSummaryOpen(false)}
+                  aria-label="Close summary"
+                  className="w-5 h-5 rounded-full bg-black/5 flex items-center justify-center text-[#555555] pressable"
+                >
+                  <X className="w-3 h-3" />
+                </button>
               </div>
-            ) : (
-              <p className="text-xs text-[#444444] leading-relaxed font-medium">
-                {summary}
-              </p>
-            )}
+              {isSummaryLoading ? (
+                <div role="status" aria-busy="true" className="flex items-center gap-2 text-xs text-amber-700 font-medium py-1">
+                  <IOSSpinner size="xs" theme="amber" />
+                  <span>Revealing divine essence and spiritual theme...</span>
+                </div>
+              ) : (
+                <p className="text-xs text-[#444444] leading-relaxed font-medium">
+                  {summary}
+                </p>
+              )}
+            </div>
           </div>
-        )}
+        </div>
       </div>
 
       {/* Devotional Hashtags */}

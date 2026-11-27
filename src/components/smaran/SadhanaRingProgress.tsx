@@ -5,6 +5,7 @@ import { SadhanaState, SacredPad } from '../../types/devotional';
 import { computeAshtayamaPhase, formatDevanagariNumerals } from '../../services/cacheService';
 import { computePanchangForDate } from '../../services/panchangService';
 import { IOSSpinner, navigationProgress } from '../common/IOSActivityIndicator';
+import { useSoftPresence } from '../../hooks/useSoftPresence';
 
 const NITYA_DARSHAN_PLATES = [
   {
@@ -149,6 +150,12 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
   const [plateIndex, setPlateIndex] = useState(0);
   const [isOpeningReader, setIsOpeningReader] = useState(false);
   const [lightboxImage, setLightboxImage] = useState<{ src: string; caption: string } | null>(null);
+  const [cachedLightbox, setCachedLightbox] = useState<{ src: string; caption: string } | null>(null);
+  useEffect(() => {
+    if (lightboxImage) setCachedLightbox(lightboxImage);
+  }, [lightboxImage]);
+  const { isRendered: isLightboxRendered, isClosing: isLightboxClosing } = useSoftPresence(Boolean(lightboxImage), 280);
+  const activeLightbox = lightboxImage || cachedLightbox;
 
   const ssrBaseline = useMemo(() => new Date('2026-01-01T19:00:00+05:30'), []);
   const [livePrahar, setLivePrahar] = useState(() => computeAshtayamaPhase(ssrBaseline));
@@ -530,15 +537,18 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
       </section>
 
       {/* Fullscreen Sacred Nitya Darshan Lightbox Portal */}
-      {lightboxImage &&
+      {isLightboxRendered &&
+        activeLightbox &&
         typeof document !== 'undefined' &&
         createPortal(
           <div
             role="dialog"
             aria-modal="true"
-            aria-label={lightboxImage.caption}
+            aria-label={activeLightbox.caption}
             onClick={() => setLightboxImage(null)}
-            className="fixed inset-0 z-[100] bg-[#0D0805]/95 flex flex-col items-center justify-center p-4 sm:p-8"
+            className={`fixed inset-0 z-[100] bg-[#0D0805]/95 flex flex-col items-center justify-center p-4 sm:p-8 ${
+              isLightboxClosing ? 'modal-backdrop-exit' : 'modal-backdrop-enter'
+            }`}
           >
             <button
               type="button"
@@ -551,12 +561,14 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
 
             <div
               onClick={(e) => e.stopPropagation()}
-              className="relative max-w-2xl w-full flex flex-col items-center gap-3"
+              className={`relative max-w-2xl w-full flex flex-col items-center gap-3 ${
+                isLightboxClosing ? 'modal-dialog-exit' : 'modal-dialog-enter'
+              }`}
             >
               <div className="relative w-full max-h-[78vh] rounded-[16px] overflow-hidden bg-black border border-amber-200/20 shadow-2xl flex items-center justify-center">
                 <img
-                  src={lightboxImage.src}
-                  alt={lightboxImage.caption}
+                  src={activeLightbox.src}
+                  alt={activeLightbox.caption}
                   className="max-h-[78vh] w-auto object-contain"
                 />
               </div>
@@ -578,7 +590,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
                   <ChevronLeft className="w-4 h-4" />
                   <span>पिछला</span>
                 </button>
-                <span className="text-center font-semibold truncate">{lightboxImage.caption}</span>
+                <span className="text-center font-semibold truncate">{activeLightbox.caption}</span>
                 <button
                   type="button"
                   onClick={() => {

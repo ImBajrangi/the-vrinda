@@ -40,7 +40,7 @@ export const SaintsDirectoryModal: React.FC<SaintsDirectoryModalProps> = ({
         setIsRendered(false);
         setIsClosing(false);
         closeTimerRef.current = null;
-      }, 240);
+      }, 280);
     }
   }, [isOpen]);
 

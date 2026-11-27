@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
   ArrowLeft,
   CalendarHeart,
@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { FESTIVALS_BY_SLUG, FESTIVALS_LIST, FestivalGuideEntry } from '../../data/festivalsData';
 import { formatDevanagariNumerals } from '../../services/cacheService';
+import { resetScrollToTop } from '../../utils/scrollTop';
 
 export interface FestivalGuideViewProps {
   initialFestivalSlug?: string;
@@ -39,12 +40,21 @@ export const FestivalGuideView: React.FC<FestivalGuideViewProps> = ({
     [activeSlug]
   );
 
+  const isFirstFestivalRender = useRef(true);
+  useEffect(() => {
+    if (isFirstFestivalRender.current) {
+      isFirstFestivalRender.current = false;
+      return;
+    }
+    resetScrollToTop();
+  }, [activeSlug]);
+
   const handleOpen = (e: React.MouseEvent<HTMLAnchorElement>, slug: string) => {
     if (e.metaKey || e.ctrlKey || e.shiftKey) return;
     e.preventDefault();
     setActiveSlug(slug);
     onSelectFestival?.(slug);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    resetScrollToTop();
   };
 
   const handleBack = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -52,7 +62,7 @@ export const FestivalGuideView: React.FC<FestivalGuideViewProps> = ({
     e.preventDefault();
     setActiveSlug(null);
     onSelectFestival?.(null);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    resetScrollToTop();
   };
 
   if (activeFestival) {
@@ -185,11 +195,17 @@ export const FestivalGuideView: React.FC<FestivalGuideViewProps> = ({
                         }`}
                       />
                     </button>
-                    {isOpen && (
-                      <div className="px-4 pb-4 text-xs sm:text-sm font-serif text-neutral-700 leading-relaxed">
-                        {lang === 'hi' ? faq.answerHi : faq.answerEn}
+                    <div
+                      className={`accordion-slide-container ${isOpen ? 'is-open' : 'is-closed'}`}
+                      aria-hidden={!isOpen}
+                      inert={!isOpen ? true : undefined}
+                    >
+                      <div className="accordion-slide-content">
+                        <div className="accordion-slide-card px-4 pb-4 text-xs sm:text-sm font-serif text-neutral-700 leading-relaxed">
+                          {lang === 'hi' ? faq.answerHi : faq.answerEn}
+                        </div>
                       </div>
-                    )}
+                    </div>
                   </div>
                 );
               })}

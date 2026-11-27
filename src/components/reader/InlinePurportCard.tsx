@@ -15,8 +15,13 @@ interface InlinePurportCardProps {
 }
 
 export const InlinePurportCard: React.FC<InlinePurportCardProps> = ({ pad, isOpen }) => {
+  const [hasOpenedOnce, setHasOpenedOnce] = useState(isOpen);
   const [summary, setSummary] = useState<string>('');
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) setHasOpenedOnce(true);
+  }, [isOpen]);
 
   const req: DevotionalSummaryRequest = {
     id: pad.id,
@@ -48,24 +53,32 @@ export const InlinePurportCard: React.FC<InlinePurportCardProps> = ({ pad, isOpe
     }
   }, [isOpen, pad.id]);
 
-  if (!isOpen) return null;
+  if (!hasOpenedOnce && !isOpen) return null;
 
   return (
-    <div className="mt-3 p-4 rounded-xl bg-amber-50/70 border border-amber-200/80 text-neutral-800 transition-all duration-300">
-      <div className="flex items-center gap-1.5 text-xs font-bold text-amber-900 uppercase font-mono tracking-wider mb-2">
-        <Sparkles className="w-3.5 h-3.5 text-amber-700" />
-        <span>भावार्थ एवं चिंतन (Purport)</span>
-      </div>
-      {loading ? (
-        <div className="py-3 flex items-center justify-center gap-2 text-xs text-amber-800">
-          <IOSSpinner size="xs" theme="amber" />
-          <span>भावार्थ संकलित हो रहा है...</span>
+    <div
+      className={`accordion-slide-container ${isOpen ? 'is-open mt-3' : 'is-closed'}`}
+      aria-hidden={!isOpen}
+      inert={!isOpen ? true : undefined}
+    >
+      <div className="accordion-slide-content">
+        <div className="accordion-slide-card p-4 rounded-xl bg-amber-50/70 border border-amber-200/80 text-neutral-800">
+          <div className="flex items-center gap-1.5 text-xs font-bold text-amber-900 uppercase font-mono tracking-wider mb-2">
+            <Sparkles className="w-3.5 h-3.5 text-amber-700" />
+            <span>भावार्थ एवं चिंतन (Purport)</span>
+          </div>
+          {loading ? (
+            <div className="py-3 flex items-center justify-center gap-2 text-xs text-amber-800">
+              <IOSSpinner size="xs" theme="amber" />
+              <span>भावार्थ संकलित हो रहा है...</span>
+            </div>
+          ) : (
+            <p className="text-sm sm:text-base leading-relaxed text-neutral-800 font-devanagari">
+              {sanitizeSacredText(summary || req.fallbackText || '')}
+            </p>
+          )}
         </div>
-      ) : (
-        <p className="text-sm sm:text-base leading-relaxed text-neutral-800 font-devanagari">
-          {sanitizeSacredText(summary || req.fallbackText || '')}
-        </p>
-      )}
+      </div>
     </div>
   );
 };

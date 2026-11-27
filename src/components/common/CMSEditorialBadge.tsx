@@ -32,7 +32,7 @@ export const CMSEditorialBadge: React.FC<CMSEditorialBadgeProps> = ({ currentPad
         setIsRendered(false);
         setIsClosing(false);
         closeTimerRef.current = null;
-      }, 240);
+      }, 280);
     }
   }, [isOpen]);
 
@@ -104,7 +104,7 @@ export const CMSEditorialBadge: React.FC<CMSEditorialBadgeProps> = ({ currentPad
         >
           <div
             className={`w-full max-w-lg bg-white rounded-[28px] p-6 space-y-5 text-[#18181B] relative ${
-              isClosing ? 'apple-sheet-exit' : 'apple-sheet-enter'
+              isClosing ? 'modal-dialog-exit' : 'modal-dialog-enter'
             }`}
             onClick={(e) => e.stopPropagation()}
           >

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import {
   MapPin,
   Clock,
@@ -23,6 +23,7 @@ import { SacredSectionService } from '../../services/sacredSectionService';
 import { formatDevanagariNumerals } from '../../services/cacheService';
 import { seo } from '../../services/seoService';
 import { SacredDiscoveryShelf } from '../common/SacredDiscoveryShelf';
+import { resetScrollToTop } from '../../utils/scrollTop';
 
 interface DhamTirthaSectionProps {
   initialPlaceSlug?: string;
@@ -60,9 +61,18 @@ export const DhamTirthaSection: React.FC<DhamTirthaSectionProps> = ({
     const place = await SacredSectionService.getPlaceById(slugOrId);
     if (place) {
       setSelectedPlace(place);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      resetScrollToTop();
     }
   }, []);
+
+  const isFirstPlaceRender = useRef(true);
+  useEffect(() => {
+    if (isFirstPlaceRender.current) {
+      isFirstPlaceRender.current = false;
+      return;
+    }
+    resetScrollToTop();
+  }, [selectedPlace?.id]);
 
   // Handle deep link
   useEffect(() => {
@@ -107,7 +117,7 @@ export const DhamTirthaSection: React.FC<DhamTirthaSectionProps> = ({
         window.history.pushState({}, '', '/places');
       } catch {}
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    resetScrollToTop();
   };
 
   const handleShare = () => {

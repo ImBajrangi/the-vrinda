@@ -18,6 +18,7 @@
   --ease-ios-spring: cubic-bezier(0.22, 1, 0.36, 1); /* Anime.js outQuint */
   --ease-apple-smooth: cubic-bezier(0.16, 1, 0.3, 1); /* Anime.js outExpo */
   --ease-apple-subtle: cubic-bezier(0.25, 1, 0.5, 1); /* Anime.js outQuart */
+  --ease-exit-soft: cubic-bezier(0.32, 0.72, 0, 1); /* Soft deceleration exit */
 }
 
 html, body, #root, button, a, [role="button"], input, select, textarea {
@@ -360,11 +361,11 @@ button:focus-visible {
 
 /* Apple Screen & View Transition */
 .apple-view-enter {
-  animation: appleViewIn 0.32s cubic-bezier(0.25, 1, 0.5, 1) both;
+  animation: appleViewIn 0.36s var(--ease-apple-smooth) both;
 }
 
 .apple-view-exit {
-  animation: appleViewOut 0.2s cubic-bezier(0.5, 0, 0.9, 0.3) both !important;
+  animation: appleViewOut 0.26s var(--ease-exit-soft) both !important;
   pointer-events: none !important;
   will-change: transform, opacity;
 }
@@ -372,28 +373,64 @@ button:focus-visible {
 @keyframes appleViewIn {
   0% {
     opacity: 0;
-    transform: translateY(4px) translateZ(0);
+    transform: translateY(8px) scale(0.985) translateZ(0);
   }
 
   100% {
     opacity: 1;
-    transform: translateY(0) translateZ(0);
+    transform: translateY(0) scale(1) translateZ(0);
   }
 }
 
 @keyframes appleViewOut {
   0% {
     opacity: 1;
-    transform: translateY(0) translateZ(0);
+    transform: translateY(0) scale(1) translateZ(0);
   }
 
   100% {
     opacity: 0;
-    transform: translateY(-4px) translateZ(0);
+    transform: translateY(-6px) scale(0.985) translateZ(0);
   }
 }
 
-/* Apple Fluid Sheet Physics (Slide-up 100% -> 0% with mass: 1.0, stiffness: 280, damping: 28, settle ~360ms) */
+/* Relative Trigger-Anchored Popovers & Menus (Use with Tailwind origin-top-right / origin-top-left) */
+@keyframes popoverIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.94) translateY(-6px) translateZ(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0) translateZ(0);
+  }
+}
+
+@keyframes popoverOut {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateY(0) translateZ(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0.95) translateY(-5px) translateZ(0);
+  }
+}
+
+.popover-enter {
+  animation: popoverIn 0.28s var(--ease-apple-smooth) both;
+  will-change: transform, opacity;
+}
+
+.popover-exit {
+  animation: popoverOut 0.22s var(--ease-exit-soft) both !important;
+  pointer-events: none !important;
+  will-change: transform, opacity;
+}
+
+/* Apple Fluid Sheet Physics (Slide-up 100% -> 0% with smooth spring deceleration) */
 @keyframes appleSheetIn {
   0% {
     opacity: 0;
@@ -419,12 +456,12 @@ button:focus-visible {
 }
 
 .apple-sheet-enter {
-  animation: appleSheetIn 0.34s var(--ease-ios-spring) both;
+  animation: appleSheetIn 0.38s var(--ease-ios-spring) both;
   will-change: transform, opacity;
 }
 
 .apple-sheet-exit {
-  animation: appleSheetOut 0.24s cubic-bezier(0.5, 0, 0.9, 0.3) both !important;
+  animation: appleSheetOut 0.28s var(--ease-exit-soft) both !important;
   pointer-events: none !important;
   will-change: transform, opacity;
 }
@@ -487,11 +524,11 @@ button:focus-visible {
   transform: none !important;
 }
 
-/* Apple Dialog Entrance (Scale 0.97 -> 1.0 with fade) & Exit */
+/* Apple Dialog Entrance (Soft Scale 0.95 -> 1.0 with float & fade) & Exit */
 @keyframes appleDialogIn {
   0% {
     opacity: 0;
-    transform: scale(0.97) translateY(6px) translateZ(0);
+    transform: scale(0.95) translateY(10px) translateZ(0);
   }
 
   100% {
@@ -508,22 +545,22 @@ button:focus-visible {
 
   100% {
     opacity: 0;
-    transform: scale(0.97) translateY(6px) translateZ(0);
+    transform: scale(0.96) translateY(8px) translateZ(0);
   }
 }
 
 .apple-dialog-enter {
-  animation: appleDialogIn 0.28s var(--ease-ios-spring) both;
+  animation: appleDialogIn 0.34s var(--ease-apple-smooth) both;
   will-change: transform, opacity;
 }
 
 .apple-dialog-exit {
-  animation: appleDialogOut 0.22s cubic-bezier(0.5, 0, 0.9, 0.3) both !important;
+  animation: appleDialogOut 0.26s var(--ease-exit-soft) both !important;
   pointer-events: none !important;
   will-change: transform, opacity;
 }
 
-/* Modal Backdrop Smooth Fade In & Out */
+/* Modal Backdrop Soft Fade In & Out */
 @keyframes modalBackdropIn {
   0% {
     opacity: 0;
@@ -545,20 +582,20 @@ button:focus-visible {
 }
 
 .modal-backdrop-enter {
-  animation: modalBackdropIn 0.24s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: modalBackdropIn 0.32s var(--ease-ios-spring) both;
 }
 
 .modal-backdrop-exit {
-  animation: modalBackdropOut 0.24s cubic-bezier(0.5, 0, 0.9, 0.3) both !important;
+  animation: modalBackdropOut 0.26s var(--ease-exit-soft) both !important;
   pointer-events: none !important;
   will-change: opacity;
 }
 
-/* Modal Dialog Scale/Slide Pop In & Pop Down Out */
+/* Modal Dialog Soft Airy Float In & Drift Out */
 @keyframes modalDialogPopIn {
   0% {
     opacity: 0;
-    transform: scale(0.97) translateY(8px) translateZ(0);
+    transform: scale(0.94) translateY(14px) translateZ(0);
   }
 
   100% {
@@ -575,17 +612,17 @@ button:focus-visible {
 
   100% {
     opacity: 0;
-    transform: scale(0.97) translateY(8px) translateZ(0);
+    transform: scale(0.96) translateY(10px) translateZ(0);
   }
 }
 
 .modal-dialog-enter {
-  animation: modalDialogPopIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: modalDialogPopIn 0.38s var(--ease-apple-smooth) both;
   will-change: transform, opacity;
 }
 
 .modal-dialog-exit {
-  animation: modalDialogPopDown 0.24s cubic-bezier(0.5, 0, 0.9, 0.3) both !important;
+  animation: modalDialogPopDown 0.28s var(--ease-exit-soft) both !important;
   pointer-events: none !important;
   will-change: transform, opacity;
 }
@@ -593,6 +630,8 @@ button:focus-visible {
 /* Universal GPU Layer Stability & Font Anti-Flicker Containment */
 .apple-view-enter,
 .apple-view-exit,
+.popover-enter,
+.popover-exit,
 .apple-sheet-enter,
 .apple-sheet-exit,
 .apple-dialog-enter,
@@ -605,29 +644,28 @@ button:focus-visible {
   backface-visibility: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transform: translateZ(0);
 }
 
 /* Bottom Sheet Slide Up & Slide Down Exit */
 @keyframes sheetSlideDown {
   0% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) translateZ(0);
   }
 
   100% {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(36px) translateZ(0);
   }
 }
 
 .sheet-enter {
-  animation: appleSheetIn 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: appleSheetIn 0.38s var(--ease-ios-spring) both;
   will-change: transform, opacity;
 }
 
 .sheet-exit {
-  animation: sheetSlideDown 0.24s cubic-bezier(0.5, 0, 0.9, 0.3) both !important;
+  animation: sheetSlideDown 0.28s var(--ease-exit-soft) both !important;
   pointer-events: none !important;
   will-change: transform, opacity;
 }
@@ -829,6 +867,8 @@ button:focus-visible {
 .low-spec .animate-bounce,
 .low-spec .apple-view-enter,
 .low-spec .apple-view-exit,
+.low-spec .popover-enter,
+.low-spec .popover-exit,
 .low-spec .apple-sheet-enter,
 .low-spec .apple-sheet-exit,
 .low-spec .apple-dialog-enter,
@@ -1028,4 +1068,24 @@ button:focus-visible {
   color: #52525B;
   margin-top: 0.65rem;
   margin-bottom: 0;
+}
+
+/* Space-aware reader toolbar labels (collapse text to clean icon pills when center rail < 720px) */
+.pad-action-bar {
+  container-type: inline-size;
+  container-name: padbar;
+}
+
+@container padbar (max-width: 720px) {
+  .pad-action-btn {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+    gap: 0 !important;
+    min-width: 1.75rem;
+    justify-content: center;
+  }
+
+  .pad-action-label {
+    display: none !important;
+  }
 }

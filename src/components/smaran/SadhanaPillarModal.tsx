@@ -63,7 +63,7 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
         setIsRendered(false);
         setIsClosing(false);
         closeTimerRef.current = null;
-      }, 240);
+      }, 280);
     }
   }, [isOpen, pillarType]);
 
@@ -563,7 +563,7 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
     >
       <div
         className={`w-full max-w-lg bg-white rounded-[28px] p-5 sm:p-6 max-h-[90vh] overflow-y-auto no-scrollbar text-[#18181B] ${
-          isClosing ? 'apple-sheet-exit' : 'apple-sheet-enter'
+          isClosing ? 'modal-dialog-exit' : 'modal-dialog-enter'
         }`}
         onClick={(e) => e.stopPropagation()}
       >

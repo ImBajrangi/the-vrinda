@@ -38,7 +38,7 @@ export const BeginnerGuideModal: React.FC<BeginnerGuideModalProps> = ({
         setIsRendered(false);
         setIsClosing(false);
         closeTimerRef.current = null;
-      }, 240);
+      }, 280);
     }
   }, [isOpen]);
 
@@ -99,7 +99,7 @@ export const BeginnerGuideModal: React.FC<BeginnerGuideModalProps> = ({
     >
       <div
         className={`w-full max-w-2xl bg-white rounded-[32px] p-6 sm:p-8 max-h-[90vh] overflow-y-auto no-scrollbar text-[#18181B] ${
-          isClosing ? 'apple-sheet-exit' : 'apple-sheet-enter'
+          isClosing ? 'modal-dialog-exit' : 'modal-dialog-enter'
         }`}
         role="dialog"
         aria-modal="true"
