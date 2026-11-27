@@ -24,7 +24,7 @@ import {
 import { SacredSectionService } from '../../services/sacredSectionService';
 import { formatDevanagariNumerals } from '../../services/cacheService';
 import { seo } from '../../services/seoService';
-import { getKathaArtwork } from '../../services/devotionalVisuals';
+import { getKathaArtwork, getArtworkObjectPosition } from '../../services/devotionalVisuals';
 import { chimeService } from '../../services/chimeService';
 import { SacredDiscoveryShelf } from '../common/SacredDiscoveryShelf';
 
@@ -58,6 +58,13 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
   const [showCharactersDrawer, setShowCharactersDrawer] = useState<boolean>(false);
   const [copiedLink, setCopiedLink] = useState<boolean>(false);
 
+  // Stop any explicitly played chime when leaving Katha sanctuary
+  useEffect(() => {
+    return () => {
+      chimeService.stop();
+    };
+  }, []);
+
   // Load story index on mount
   useEffect(() => {
     let isMounted = true;
@@ -79,8 +86,6 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
       setSelectedStory(story);
       setCurrentChapterIndex(0);
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      // Play soft sacred bell chime on story entrance
-      chimeService.playChime('temple-bell');
     }
   }, []);
 
@@ -121,6 +126,7 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
   };
 
   const handleBackToStories = () => {
+    chimeService.stop();
     setSelectedStory(null);
     if (typeof window !== 'undefined') {
       try {
@@ -155,24 +161,26 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
   };
 
   const filteredStories = useMemo(() => {
+    const q = searchQuery.trim().toLowerCase();
+    const catTokens = selectedCategory.split(',');
     return stories.filter((s) => {
-      const matchesCategory = selectedCategory === 'all' || s.category === selectedCategory;
-      const q = searchQuery.trim().toLowerCase();
+      const matchesCategory =
+        selectedCategory === 'all' || catTokens.includes(s.category);
       const matchesSearch =
         q === '' ||
-        s.title.toLowerCase().includes(q) ||
-        s.titleDevanagari.includes(q) ||
-        s.summary.toLowerCase().includes(q) ||
-        s.tags.some((t) => t.toLowerCase().includes(q));
+        (s.title || '').toLowerCase().includes(q) ||
+        (s.titleDevanagari || '').includes(searchQuery) ||
+        (s.summary || '').toLowerCase().includes(q) ||
+        (s.tags || []).some((t) => t.toLowerCase().includes(q));
       return matchesCategory && matchesSearch;
     });
   }, [stories, selectedCategory, searchQuery]);
 
   const categories = [
-    { id: 'all', label: 'सभी कथाएं (All Kathas)' },
+    { id: 'all', label: 'सभी कथाएं' },
     { id: 'shrimad-bhagavatam', label: 'श्रीमद्भागवत' },
-    { id: 'ramayana', label: 'श्री रामायण' },
-    { id: 'leela', label: 'ब्रज नित्यलीला' },
+    { id: 'ramayana,ramcharitmanas', label: 'श्री रामायण' },
+    { id: 'sant-charitra,rasik-charitra,bhaktamal', label: 'संत व रसिक चरित्र' },
     { id: 'purana', label: 'पुराण आख्यान' },
   ];
 
@@ -196,6 +204,7 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
     const totalChapters = selectedStory.chapters.length;
     const progressPercent = Math.round(((currentChapterIndex + 1) / totalChapters) * 100);
     const isBookmarked = bookmarkedStories.has(selectedStory.id);
+    const storyArtwork = getKathaArtwork(selectedStory);
 
     return (
       <main
@@ -203,22 +212,21 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
         aria-label={selectedStory.titleDevanagari}
         className="w-full max-w-4xl mx-auto px-3 sm:px-6 py-4 sm:py-8 pb-28 text-[#18181B]"
       >
-        {/* Top Control Bar - Strictly Concentric: R_outer = 24px, P = 16px => R_inner = 8px */}
-        <div className="rounded-[24px] bg-white border border-neutral-200/80 p-3 sm:p-4 shadow-2xs mb-6">
+        {/* Top Control Bar */}
+        <div className="rounded-[24px] bg-white p-3 sm:p-4 shadow-[0_2px_14px_rgba(24,24,27,0.03)] mb-5">
           <div className="flex items-center justify-between gap-2 flex-wrap">
             <button
               type="button"
               onClick={handleBackToStories}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm font-serif font-bold text-amber-900 bg-amber-50/80 hover:bg-amber-100/90 rounded-[8px] transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs sm:text-sm font-serif font-bold text-[#78350F] bg-[#FEF08A] hover:bg-[#FDE047] rounded-full transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
               aria-label="कथा सूची पर वापस जाएँ"
             >
-              <ArrowLeft className="w-4 h-4 text-amber-800" />
+              <ArrowLeft className="w-4 h-4 text-[#78350F]" />
               <span>कथा सूची</span>
             </button>
 
             <div className="flex items-center gap-2">
-              {/* Sizing Control Pill */}
-              <div className="flex items-center bg-neutral-100 p-1 rounded-full border border-neutral-200/80 text-xs">
+              <div className="flex items-center bg-[#FAF6EE] p-1 rounded-full text-xs">
                 <button
                   type="button"
                   onClick={() => setFontSizeLevel('normal')}
@@ -260,15 +268,14 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
                 </button>
               </div>
 
-              {/* Character List Drawer Toggle */}
               {selectedStory.characters.length > 0 && (
                 <button
                   type="button"
                   onClick={() => setShowCharactersDrawer((v) => !v)}
-                  className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-serif font-bold rounded-[8px] border transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 ${
+                  className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-serif font-bold rounded-full transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 ${
                     showCharactersDrawer
-                      ? 'bg-[#FEF08A] text-[#78350F] border-amber-300 shadow-2xs'
-                      : 'bg-white text-neutral-700 border-neutral-200 hover:bg-neutral-50'
+                      ? 'bg-[#FEF08A] text-[#78350F]'
+                      : 'bg-[#FAF6EE] text-neutral-700 hover:bg-[#EFE7D8]'
                   }`}
                   aria-expanded={showCharactersDrawer}
                   aria-label={`कथा पात्र सूची (${selectedStory.characters.length} पात्र)`}
@@ -278,25 +285,23 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
                 </button>
               )}
 
-              {/* Share Link */}
               <button
                 type="button"
                 onClick={() => handleCopyShareLink(selectedStory)}
-                className="p-2 rounded-[8px] border border-neutral-200 text-neutral-600 hover:text-amber-900 hover:bg-amber-50 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+                className="p-2 rounded-full bg-[#FAF6EE] text-neutral-600 hover:text-amber-900 hover:bg-[#EFE7D8] transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
                 title="कथा लिंक कॉपी करें"
                 aria-label="कथा लिंक कॉपी करें"
               >
                 {copiedLink ? <Check className="w-4 h-4 text-emerald-600" /> : <Share2 className="w-4 h-4" />}
               </button>
 
-              {/* Bookmark */}
               <button
                 type="button"
                 onClick={() => toggleBookmark(selectedStory.id)}
-                className={`p-2 rounded-[8px] border transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 ${
+                className={`p-2 rounded-full transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 ${
                   isBookmarked
-                    ? 'text-[#78350F] bg-[#FEF08A] border-amber-300 shadow-2xs'
-                    : 'text-neutral-500 hover:text-amber-900 border-neutral-200 hover:bg-amber-50'
+                    ? 'text-[#78350F] bg-[#FEF08A]'
+                    : 'text-neutral-500 bg-[#FAF6EE] hover:text-amber-900 hover:bg-[#EFE7D8]'
                 }`}
                 title={isBookmarked ? 'संग्रह से हटाएं' : 'कथा संग्रह करें'}
                 aria-label={isBookmarked ? 'संग्रह से हटाएं' : 'कथा संग्रह करें'}
@@ -307,13 +312,13 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
           </div>
         </div>
 
-        {/* Characters Drawer - Concentric: R_outer = 24px, P = 16px => R_inner = 8px */}
+        {/* Characters Drawer */}
         {showCharactersDrawer && selectedStory.characters.length > 0 && (
           <aside
             aria-label="कथा पात्र परिचय"
-            className="rounded-[24px] bg-[#FFFDF9] border border-amber-200/80 p-4 sm:p-5 shadow-2xs mb-6"
+            className="rounded-[24px] bg-white p-4 sm:p-5 shadow-[0_2px_14px_rgba(24,24,27,0.03)] mb-5"
           >
-            <div className="flex items-center justify-between mb-3 pb-2 border-b border-amber-900/10">
+            <div className="flex items-center justify-between mb-3">
               <h3 className="font-serif font-bold text-sm sm:text-base text-amber-950 flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-amber-600" />
                 <span>कथा पात्र परिचय</span>
@@ -332,9 +337,9 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
               {selectedStory.characters.map((char, idx) => (
                 <div
                   key={idx}
-                  className="rounded-[8px] bg-white border border-amber-100 p-3 shadow-2xs flex items-start gap-2.5"
+                  className="rounded-[12px] bg-[#FAF8F4] p-3 flex items-start gap-2.5"
                 >
-                  <div className="w-8 h-8 rounded-full bg-[#FEF08A] text-[#78350F] flex items-center justify-center font-serif font-bold text-xs shrink-0 shadow-2xs">
+                  <div className="w-8 h-8 rounded-full bg-[#FEF08A] text-[#78350F] flex items-center justify-center font-serif font-bold text-xs shrink-0">
                     {char.nameDevanagari ? char.nameDevanagari.charAt(0) : char.name.charAt(0)}
                   </div>
                   <div className="min-w-0">
@@ -356,40 +361,45 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
           </aside>
         )}
 
-        {/* Story Title & Meta Card with Framed Darshan Visual Plate */}
-        <header className="rounded-[32px] bg-white border border-neutral-200/80 p-5 sm:p-7 shadow-2xs mb-6">
-          <div className="aspect-[21/9] w-full rounded-[12px] overflow-hidden bg-[#1A120B] mb-5 border border-amber-900/10">
-            <img
-              src={getKathaArtwork(selectedStory)}
-              alt={selectedStory.titleDevanagari}
-              className="w-full h-full object-cover object-[center_22%]"
-              loading="eager"
-              decoding="async"
-            />
-          </div>
-          <div className="flex flex-wrap items-center gap-2 mb-3">
-            <span className="px-2.5 py-0.5 text-xs font-serif font-bold uppercase rounded-[6px] bg-[#FEF08A] text-[#78350F]">
-              {selectedStory.categoryHindi}
-            </span>
-            <span className="px-2.5 py-0.5 text-xs font-serif font-medium rounded-[6px] bg-neutral-100 text-neutral-700">
-              {selectedStory.tradition}
-            </span>
-            <span className="inline-flex items-center gap-1 text-xs text-neutral-500 font-mono ml-auto">
-              <Clock className="w-3.5 h-3.5 text-amber-600" />
-              <span>{formatDevanagariNumerals(selectedStory.readingTimeMinutes)} मिनट पठन</span>
-            </span>
-          </div>
+        {/* Story Title & Meta Card with Split Darshan Visual Plate */}
+        <header className="rounded-[28px] bg-white p-5 sm:p-6 shadow-[0_2px_16px_rgba(24,24,27,0.03)] mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-5 items-center mb-5">
+            <div className="md:col-span-5 aspect-[4/3] w-full rounded-[14px] overflow-hidden bg-[#EFE7D8]">
+              <img
+                src={storyArtwork}
+                alt={selectedStory.titleDevanagari}
+                className={`w-full h-full object-cover ${getArtworkObjectPosition(storyArtwork)}`}
+                loading="eager"
+                decoding="async"
+              />
+            </div>
 
-          <h1 className="font-rozha text-2xl sm:text-3xl md:text-4xl font-bold text-neutral-900 leading-snug tracking-tight mb-3">
-            {selectedStory.titleDevanagari}
-          </h1>
+            <div className="md:col-span-7 min-w-0">
+              <div className="flex flex-wrap items-center gap-2 mb-2.5">
+                <span className="px-2.5 py-0.5 text-xs font-serif font-bold rounded-full bg-[#FEF08A] text-[#78350F]">
+                  {selectedStory.categoryHindi}
+                </span>
+                <span className="px-2.5 py-0.5 text-xs font-serif font-medium rounded-full bg-[#FAF6EE] text-neutral-700">
+                  {selectedStory.tradition}
+                </span>
+                <span className="inline-flex items-center gap-1 text-xs text-neutral-500 font-mono ml-auto">
+                  <Clock className="w-3.5 h-3.5 text-amber-600" />
+                  <span>{formatDevanagariNumerals(selectedStory.readingTimeMinutes)} मिनट</span>
+                </span>
+              </div>
 
-          <p className="text-xs sm:text-sm text-neutral-600 font-serif leading-relaxed border-l-2 border-amber-500 pl-3 italic mb-5">
-            {selectedStory.summary}
-          </p>
+              <h1 className="font-rozha text-2xl sm:text-3xl font-bold text-neutral-900 leading-snug tracking-tight mb-2.5">
+                {selectedStory.titleDevanagari}
+              </h1>
+
+              <p className="text-xs sm:text-sm text-neutral-600 font-serif leading-relaxed rounded-[12px] bg-[#FAF8F4] p-3">
+                {selectedStory.summary}
+              </p>
+            </div>
+          </div>
 
           {/* Chapter Progression Tracker */}
-          <div className="pt-3 border-t border-neutral-100">
+          <div className="pt-2">
             <div className="flex items-center justify-between text-xs font-serif text-neutral-500 mb-1.5">
               <span>
                 अध्याय {formatDevanagariNumerals(currentChapterIndex + 1)} / {formatDevanagariNumerals(totalChapters)}
@@ -404,8 +414,7 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
               />
             </div>
 
-            {/* Chapter Stepper Buttons */}
-            <div className="flex items-center gap-1.5 overflow-x-auto py-2.5 mt-2">
+            <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pt-3">
               {selectedStory.chapters.map((chap, idx) => (
                 <button
                   key={chap.id}
@@ -414,12 +423,12 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
                     setCurrentChapterIndex(idx);
                     window.scrollTo({ top: 140, behavior: 'smooth' });
                   }}
-                  className={`px-3 py-1 text-xs font-serif font-bold whitespace-nowrap rounded-[8px] transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 ${
+                  className={`px-3 py-1 text-xs font-serif font-bold whitespace-nowrap rounded-full transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 ${
                     currentChapterIndex === idx
-                      ? 'bg-[#FEF08A] text-[#78350F] shadow-2xs'
+                      ? 'bg-[#FEF08A] text-[#78350F]'
                       : idx < currentChapterIndex
                       ? 'bg-amber-50 text-amber-900 hover:bg-amber-100'
-                      : 'bg-neutral-50 text-neutral-600 border border-neutral-200/80 hover:bg-neutral-100'
+                      : 'bg-[#FAF6EE] text-neutral-600 hover:bg-[#EFE7D8]'
                   }`}
                   aria-current={currentChapterIndex === idx ? 'page' : undefined}
                 >
@@ -430,11 +439,11 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
           </div>
         </header>
 
-        {/* Current Chapter Narrative - Concentric: R_outer = 32px, P = 24px => R_inner = 8px */}
+        {/* Current Chapter Narrative */}
         {currentChapter && (
           <div className="space-y-6">
-            <article className="rounded-[32px] bg-white border border-neutral-200/80 p-5 sm:p-8 shadow-2xs">
-              <div className="mb-6 pb-4 border-b border-neutral-100 flex items-center justify-between">
+            <article className="rounded-[28px] bg-white p-5 sm:p-8 shadow-[0_2px_16px_rgba(24,24,27,0.03)]">
+              <div className="mb-5 flex items-center justify-between">
                 <div>
                   <span className="text-[11px] font-serif font-bold text-amber-800 tracking-wider uppercase">
                     अध्याय {formatDevanagariNumerals(currentChapter.chapterNumber)}
@@ -446,7 +455,7 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
                 <button
                   type="button"
                   onClick={() => chimeService.playChime('temple-bell')}
-                  className="p-2 rounded-full bg-amber-50 text-amber-800 hover:bg-amber-100 transition-colors cursor-pointer"
+                  className="p-2 rounded-full bg-[#FAF6EE] text-amber-800 hover:bg-[#EFE7D8] transition-colors cursor-pointer"
                   title="पावन घण्टा नाद"
                   aria-label="पावन घण्टा नाद बजाएं"
                 >
@@ -454,24 +463,23 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
                 </button>
               </div>
 
-              {/* Shlokas Callout */}
               {currentChapter.shlokas && currentChapter.shlokas.length > 0 && (
                 <div className="space-y-3 mb-6">
                   {currentChapter.shlokas.map((shloka, sIdx) => (
                     <div
                       key={sIdx}
-                      className="rounded-[8px] bg-[#FFFDF9] border-l-4 border-amber-600 p-4 text-center border border-amber-200/60 shadow-2xs"
+                      className="rounded-[14px] bg-[#FAF8F4] p-4 text-center space-y-2"
                     >
                       <p className="font-serif font-bold text-base sm:text-lg text-neutral-900 tracking-wide leading-relaxed">
                         {shloka.devanagari}
                       </p>
                       {shloka.meaning && (
-                        <p className="text-xs sm:text-sm text-neutral-700 font-serif mt-2 pt-2 border-t border-amber-200/60">
+                        <p className="text-xs sm:text-sm text-neutral-700 font-serif">
                           भावार्थ: {shloka.meaning}
                         </p>
                       )}
                       {shloka.reference && (
-                        <div className="text-[11px] font-medium text-amber-800 font-serif mt-1">
+                        <div className="text-[11px] font-medium text-amber-800 font-serif">
                           — {shloka.reference}
                         </div>
                       )}
@@ -480,10 +488,7 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
                 </div>
               )}
 
-              {/* Prose Narrative */}
-              <div
-                className={`font-serif text-neutral-800 space-y-4 ${contentFontSizeClass}`}
-              >
+              <div className={`font-serif text-neutral-800 space-y-4 ${contentFontSizeClass}`}>
                 {currentChapter.content.split('\n\n').map((paragraph, pIdx) => (
                   <p key={pIdx} className="leading-relaxed">
                     {paragraph.trim()}
@@ -491,9 +496,8 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
                 ))}
               </div>
 
-              {/* Chapter Purport (शिक्षा / तत्व) */}
               {currentChapter.purport && (
-                <div className="mt-8 rounded-[8px] bg-amber-50/70 border border-amber-200 p-4 text-neutral-900">
+                <div className="mt-8 rounded-[14px] bg-[#FEF9C3]/65 p-4 text-neutral-900">
                   <div className="flex items-center gap-2 text-amber-900 font-serif font-bold text-xs sm:text-sm mb-1">
                     <Sparkles className="w-4 h-4 text-amber-600" />
                     <span>अध्याय सार एवं साधना सूत्र</span>
@@ -505,9 +509,8 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
               )}
             </article>
 
-            {/* Overall Moral on Last Chapter */}
             {currentChapterIndex === totalChapters - 1 && selectedStory.purport && (
-              <div className="rounded-[24px] bg-[#FFFDF9] border-2 border-amber-400 p-5 shadow-2xs">
+              <div className="rounded-[24px] bg-[#FAF8F4] p-5 shadow-[0_2px_12px_rgba(24,24,27,0.025)]">
                 <div className="flex items-center gap-2 text-amber-900 font-rozha text-base sm:text-lg mb-2">
                   <Sparkles className="w-4 h-4 text-amber-600" />
                   <span>कथा का परम तत्व एवं भक्ति सिद्धान्त</span>
@@ -515,7 +518,7 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
                 <p className="text-xs sm:text-sm text-neutral-800 font-serif leading-relaxed">
                   {selectedStory.purport}
                 </p>
-                <div className="mt-3 flex items-center gap-2 pt-2 border-t border-amber-200">
+                <div className="mt-3 flex items-center gap-2 pt-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                   <span className="text-xs font-serif font-bold text-emerald-800">
                     कथा पारायण पूर्ण हुआ। श्री राधेश्याम की कृपा आप पर बनी रहे।
@@ -524,8 +527,7 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
               </div>
             )}
 
-            {/* Chapter Navigation Controls - Concentric: R_outer = 20px, P = 12px => R_inner = 8px */}
-            <div className="rounded-[20px] bg-white border border-neutral-200/80 p-3 sm:p-4 shadow-2xs flex items-center justify-between gap-3">
+            <div className="rounded-[20px] bg-white p-3 sm:p-4 shadow-[0_2px_12px_rgba(24,24,27,0.025)] flex items-center justify-between gap-3">
               <button
                 type="button"
                 disabled={currentChapterIndex === 0}
@@ -535,10 +537,10 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
                     window.scrollTo({ top: 140, behavior: 'smooth' });
                   }
                 }}
-                className={`inline-flex items-center gap-1.5 px-3.5 py-2 text-xs sm:text-sm font-serif font-bold rounded-[8px] border transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 ${
+                className={`inline-flex items-center gap-1.5 px-3.5 py-2 text-xs sm:text-sm font-serif font-bold rounded-full transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 ${
                   currentChapterIndex === 0
-                    ? 'opacity-40 cursor-not-allowed bg-neutral-50 text-neutral-400 border-neutral-200'
-                    : 'bg-white text-neutral-700 border-neutral-200 hover:bg-neutral-50'
+                    ? 'opacity-40 cursor-not-allowed bg-[#FAF6EE] text-neutral-400'
+                    : 'bg-[#FAF6EE] text-neutral-700 hover:bg-[#EFE7D8]'
                 }`}
                 aria-label="पिछला अध्याय"
               >
@@ -556,9 +558,8 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
                   onClick={() => {
                     setCurrentChapterIndex((prev) => prev + 1);
                     window.scrollTo({ top: 140, behavior: 'smooth' });
-                    chimeService.playChime('temple-bell');
                   }}
-                  className="inline-flex items-center gap-1.5 px-4 py-2 text-xs sm:text-sm font-serif font-bold rounded-[8px] bg-[#FEF08A] text-[#78350F] hover:bg-amber-300 transition-colors shadow-2xs cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 text-xs sm:text-sm font-serif font-bold rounded-full bg-[#FEF08A] text-[#78350F] hover:bg-[#FDE047] transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
                   aria-label="अगला अध्याय"
                 >
                   <span>अगला अध्याय</span>
@@ -569,9 +570,8 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
                   type="button"
                   onClick={() => {
                     handleBackToStories();
-                    chimeService.playChime('temple-bell');
                   }}
-                  className="inline-flex items-center gap-1.5 px-4 py-2 text-xs sm:text-sm font-serif font-bold rounded-[8px] bg-emerald-600 text-white hover:bg-emerald-700 transition-colors shadow-2xs cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 text-xs sm:text-sm font-serif font-bold rounded-full bg-emerald-600 text-white hover:bg-emerald-700 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
                   aria-label="समाप्त / कथा सूची"
                 >
                   <CheckCircle2 className="w-4 h-4" />
@@ -580,11 +580,10 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
               )}
             </div>
 
-            {/* Sacred Correlated Discovery Nexus */}
             <SacredDiscoveryShelf
               entityType="story"
               entitySlug={selectedStory.slug}
-              title={`${selectedStory.titleDevanagari} • सम्बन्धित पावन नेक्सस`}
+              title={`${selectedStory.titleDevanagari} • जुड़े तीर्थ, संत व पद`}
             />
           </div>
         )}
@@ -599,82 +598,75 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
     <main
       role="main"
       aria-label="दिव्य कथा व लीला अमृत सूची"
-      className="w-full max-w-6xl mx-auto px-3 sm:px-6 py-4 sm:py-8 pb-28 text-[#18181B]"
+      className="w-full max-w-6xl mx-auto px-4 py-4 sm:py-6 pb-28 text-[#18181B]"
     >
-      {/* Header Banner - Concentric: R_outer = 32px, P = 24px => R_inner = 8px */}
-      <section className="rounded-[32px] bg-white border border-neutral-200/80 p-5 sm:p-8 shadow-2xs mb-6 space-y-4">
-        <div className="max-w-2xl">
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-[6px] bg-[#FEF08A] text-[#78350F] text-xs font-serif font-bold uppercase tracking-wider mb-2">
-            <BookOpen className="w-3.5 h-3.5" />
-            <span>कथा अभयारण्य</span>
-          </div>
-          <h1 className="font-rozha text-2xl sm:text-3xl md:text-4xl font-bold text-neutral-900 leading-tight">
-            पवित्र पुराण एवं लीला आख्यान
-          </h1>
-          <p className="text-xs sm:text-sm text-neutral-600 font-serif mt-1.5 leading-relaxed">
-            श्रीमद्भागवत, श्री रामायण और ब्रजधाम के सनातन आख्यानों का सस्वर पाठ। शुद्ध देवनागरी लिपि, चरित्र परिचय और भक्तिरस से परिपूर्ण अमृत कथाएं।
-          </p>
-        </div>
-
-        {/* Search & Filter Bar - Concentric: R_outer = 20px, P = 12px => R_inner = 8px */}
-        <div className="rounded-[20px] bg-[#FFFDF9] border border-amber-200/80 p-3 shadow-2xs">
-          <div className="flex items-center gap-2">
-            <div className="relative w-full flex items-center">
-              <Search className="w-4 h-4 text-neutral-400 absolute left-3 pointer-events-none" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="कथा, प्रसंग, पात्र या विषय खोजें..."
-                className="w-full pl-9 pr-9 py-2 text-[16px] sm:text-sm bg-white border border-neutral-200 rounded-[8px] focus:outline-none focus:ring-2 focus:ring-amber-500 text-neutral-900 placeholder-neutral-400"
-                aria-label="कथा खोजें"
-              />
-              {searchQuery && (
-                <button
-                  type="button"
-                  onClick={() => setSearchQuery('')}
-                  className="absolute right-2.5 p-1 text-neutral-400 hover:text-neutral-700 cursor-pointer"
-                  aria-label="खोज साफ़ करें"
-                >
-                  <X className="w-3.5 h-3.5" />
-                </button>
-              )}
+      {/* Compact Borderless Header + Search + Category Chips */}
+      <section className="rounded-[28px] bg-white p-5 sm:p-6 shadow-[0_2px_16px_rgba(24,24,27,0.025)] mb-6 space-y-4">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-3">
+          <div className="space-y-1 max-w-2xl">
+            <div className="inline-flex items-center gap-1.5 text-[11px] font-laila font-bold text-amber-800">
+              <BookOpen className="w-3.5 h-3.5" />
+              <span>कथा अभयारण्य</span>
+              <span className="text-neutral-300">·</span>
+              <span>{formatDevanagariNumerals(filteredStories.length)} कथाएं</span>
             </div>
+            <h1 className="font-rozha text-2xl sm:text-3xl text-[#18181B] leading-tight">
+              पवित्र पुराण एवं लीला आख्यान
+            </h1>
+            <p className="text-xs sm:text-[13px] text-neutral-600 font-laila leading-relaxed">
+              श्रीमद्भागवत, श्री रामायण और ब्रजधाम के सनातन आख्यानों का सस्वर पाठ व भक्तिरस से परिपूर्ण कथाएं।
+            </p>
+          </div>
+
+          <div role="search" aria-label="कथा खोजें" className="relative w-full md:w-80 shrink-0">
+            <Search className="w-4 h-4 text-neutral-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="कथा, प्रसंग या पात्र खोजें..."
+              className="w-full pl-10 pr-9 py-2.5 text-[16px] sm:text-xs bg-[#FAF8F4] rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 text-neutral-900 placeholder-neutral-400 font-laila"
+              aria-label="कथा खोजें"
+            />
             {searchQuery && (
-              <span className="text-[10px] font-mono text-amber-900 bg-amber-100 px-2 py-1 rounded-[6px] shrink-0">
-                {formatDevanagariNumerals(filteredStories.length)} परिणाम
-              </span>
+              <button
+                type="button"
+                onClick={() => setSearchQuery('')}
+                className="absolute right-3 top-1/2 -translate-y-1/2 p-0.5 text-neutral-400 hover:text-neutral-700 rounded-full cursor-pointer"
+                aria-label="खोज साफ़ करें"
+              >
+                <X className="w-4 h-4" />
+              </button>
             )}
           </div>
+        </div>
 
-          {/* Category Chips */}
-          <div className="flex items-center gap-1.5 overflow-x-auto pt-2.5 mt-2 border-t border-amber-900/10">
-            {categories.map((cat) => (
-              <button
-                key={cat.id}
-                type="button"
-                onClick={() => setSelectedCategory(cat.id)}
-                className={`px-3 py-1 text-xs font-serif font-bold whitespace-nowrap rounded-[8px] transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 ${
-                  selectedCategory === cat.id
-                    ? 'bg-[#FEF08A] text-[#78350F] shadow-2xs'
-                    : 'bg-white text-neutral-700 border border-neutral-200/80 hover:bg-neutral-50'
-                }`}
-              >
-                {cat.label}
-              </button>
-            ))}
-          </div>
+        <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pt-1">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              type="button"
+              onClick={() => setSelectedCategory(cat.id)}
+              className={`px-3.5 py-1.5 text-xs font-laila whitespace-nowrap rounded-full transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 ${
+                selectedCategory === cat.id
+                  ? 'bg-[#FEF08A] text-[#78350F] font-bold'
+                  : 'bg-[#FAF8F4] text-neutral-600 hover:bg-[#F3ECE0] font-medium'
+              }`}
+            >
+              {cat.label}
+            </button>
+          ))}
         </div>
       </section>
 
       {/* Stories Grid */}
       {filteredStories.length === 0 ? (
-        <div className="rounded-[24px] bg-white border border-neutral-200/80 p-8 text-center shadow-2xs">
+        <div className="rounded-[28px] bg-white p-10 text-center shadow-[0_2px_14px_rgba(24,24,27,0.025)]">
           <BookOpen className="w-9 h-9 mx-auto text-neutral-300 mb-2" />
-          <h3 className="font-serif text-base font-bold text-neutral-800">
+          <h3 className="font-rozha text-lg font-bold text-neutral-800">
             कोई कथा नहीं मिली
           </h3>
-          <p className="text-xs text-neutral-500 mt-1">
+          <p className="text-xs text-neutral-500 mt-1 font-laila">
             कृपया कोई भिन्न शब्द खोजें अथवा फ़िल्टर बदलें।
           </p>
           <button
@@ -683,17 +675,18 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
               setSearchQuery('');
               setSelectedCategory('all');
             }}
-            className="mt-3 px-3.5 py-1.5 text-xs font-serif font-bold text-amber-900 bg-amber-50 hover:bg-amber-100 rounded-[8px] transition-colors cursor-pointer"
+            className="mt-3 px-4 py-1.5 text-xs font-laila font-bold text-amber-900 bg-[#FEF08A] hover:bg-[#FDE047] rounded-full transition-colors cursor-pointer"
           >
             सभी कथाएं देखें
           </button>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {filteredStories.map((story) => {
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+          {filteredStories.map((story, idx) => {
             const isBookmarked = bookmarkedStories.has(story.id);
+            const art = getKathaArtwork(story);
+            const chapterCount = (story as unknown as { totalChapters?: number }).totalChapters ?? story.chapterCount ?? 1;
             return (
-              /* Concentric: R_outer = 24px, P = 16px => R_inner = 8px */
               <article
                 key={story.id}
                 tabIndex={0}
@@ -705,63 +698,66 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
                     handleSelectStory(story.slug || story.id);
                   }
                 }}
-                className="rounded-[24px] bg-white border border-neutral-200/80 p-4 shadow-2xs flex flex-col justify-between hover:border-amber-300 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+                className="group rounded-[24px] bg-white hover:bg-[#FFFDF9] p-3.5 shadow-[0_2px_14px_rgba(24,24,27,0.03)] flex flex-col justify-between transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
                 aria-label={story.titleDevanagari}
               >
                 <div>
-                  {/* Story Illustration Plate */}
-                  <div className="aspect-[16/10] w-full rounded-[8px] overflow-hidden bg-[#1A120B] mb-3 border border-amber-900/10">
+                  {/* Story Illustration Plate (24 - 14 = 10px concentric) */}
+                  <div className="aspect-[16/10] w-full rounded-[10px] overflow-hidden bg-[#EFE7D8] mb-3.5">
                     <img
-                      src={getKathaArtwork(story)}
+                      src={art}
                       alt={story.titleDevanagari}
-                      className="w-full h-full object-cover object-[center_22%]"
-                      loading="lazy"
+                      className={`w-full h-full object-cover ${getArtworkObjectPosition(art)}`}
+                      loading={idx < 6 ? 'eager' : 'lazy'}
                       decoding="async"
                     />
                   </div>
-                  <div className="flex items-center justify-between gap-2 mb-2">
-                    <span className="px-2 py-0.5 text-[10.5px] font-serif font-bold rounded-[6px] bg-[#FEF08A] text-[#78350F]">
-                      {story.categoryHindi}
-                    </span>
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        toggleBookmark(story.id);
-                      }}
-                      className={`p-1.5 rounded-[6px] transition-colors cursor-pointer ${
-                        isBookmarked
-                          ? 'text-[#78350F] bg-amber-100'
-                          : 'text-neutral-400 hover:text-amber-800'
-                      }`}
-                      aria-label={isBookmarked ? 'संग्रह से हटाएं' : 'संग्रह करें'}
-                    >
-                      {isBookmarked ? <BookmarkCheck className="w-4 h-4 text-amber-700" /> : <Bookmark className="w-4 h-4" />}
-                    </button>
+
+                  <div className="px-1">
+                    <div className="flex items-center justify-between gap-2 mb-1.5">
+                      <span className="px-2.5 py-0.5 text-[10.5px] font-laila font-bold rounded-full bg-[#FAF6EE] text-[#78350F] truncate">
+                        {story.categoryHindi}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          toggleBookmark(story.id);
+                        }}
+                        className={`p-1 rounded-full transition-colors cursor-pointer shrink-0 ${
+                          isBookmarked
+                            ? 'text-[#78350F] bg-[#FEF08A]'
+                            : 'text-neutral-400 hover:text-amber-800'
+                        }`}
+                        aria-label={isBookmarked ? 'संग्रह से हटाएं' : 'संग्रह करें'}
+                      >
+                        {isBookmarked ? <BookmarkCheck className="w-3.5 h-3.5" /> : <Bookmark className="w-3.5 h-3.5" />}
+                      </button>
+                    </div>
+
+                    <h2 className="font-rozha text-lg text-[#18181B] group-hover:text-[#B45309] transition-colors leading-snug line-clamp-2">
+                      {story.titleDevanagari}
+                    </h2>
+
+                    <p className="text-xs text-neutral-600 font-laila mt-1.5 line-clamp-2 leading-relaxed">
+                      {story.summary}
+                    </p>
                   </div>
-
-                  <h2 className="font-rozha text-lg sm:text-xl font-bold text-neutral-900 leading-snug line-clamp-2">
-                    {story.titleDevanagari}
-                  </h2>
-
-                  <p className="text-xs text-neutral-600 font-serif mt-1.5 line-clamp-3 leading-relaxed">
-                    {story.summary}
-                  </p>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-neutral-100 flex items-center justify-between">
-                  <div className="flex items-center gap-3 text-xs text-neutral-500 font-serif">
-                    <span className="inline-flex items-center gap-1 font-mono">
-                      <Clock className="w-3 h-3 text-amber-600" />
+                <div className="mt-4 pt-2 px-1 flex items-center justify-between">
+                  <div className="flex items-center gap-3 text-[11px] text-neutral-500 font-laila">
+                    <span className="inline-flex items-center gap-1">
+                      <Clock className="w-3 h-3 text-amber-700" />
                       <span>{formatDevanagariNumerals(story.readingTimeMinutes)} मि.</span>
                     </span>
                     <span className="inline-flex items-center gap-1">
-                      <BookOpen className="w-3 h-3 text-amber-600" />
-                      <span>{formatDevanagariNumerals(story.chapterCount)} अध्याय</span>
+                      <BookOpen className="w-3 h-3 text-amber-700" />
+                      <span>{formatDevanagariNumerals(chapterCount)} अध्याय</span>
                     </span>
                   </div>
 
-                  <span className="inline-flex items-center gap-1 px-3 py-1 text-xs font-serif font-bold rounded-[8px] bg-[#FEF08A] text-[#78350F] shadow-2xs">
+                  <span className="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-laila font-bold rounded-full bg-[#FEF08A] group-hover:bg-[#FDE047] text-[#78350F] transition-colors">
                     <span>कथा पढ़ें</span>
                     <ChevronRight className="w-3.5 h-3.5 text-[#78350F]" />
                   </span>

@@ -1,7 +1,7 @@
 {
   "functions/[[path]].ts": {
-    "mtime": 1795698521.6569932,
-    "ast_hash": "00b2320b76808365704da4431dd59889",
+    "mtime": 1795792971.679332,
+    "ast_hash": "d5dd88d05a8a698ab7ce76e987caa2f9",
     "semantic_hash": ""
   },
   "package.json": {
@@ -2140,8 +2140,8 @@
     "semantic_hash": ""
   },
   "scripts/generate-sitemap.js": {
-    "mtime": 1795615441.364936,
-    "ast_hash": "82be871feb7bb0b6f81f7a2f0b741177",
+    "mtime": 1795792926.5950816,
+    "ast_hash": "fa495e6974f1988bc4a3f3e3a48b3815",
     "semantic_hash": ""
   },
   "scripts/generate-static-granthas.js": {
@@ -2175,8 +2175,8 @@
     "semantic_hash": ""
   },
   "scripts/prerender.js": {
-    "mtime": 1795617381.4042,
-    "ast_hash": "73a64930a96a8a21887d78622b27228b",
+    "mtime": 1795792955.2576256,
+    "ast_hash": "20dc0f3b8cacc5ae092466e4e1fdfcf9",
     "semantic_hash": ""
   },
   "scripts/split-epic-chunks.mjs": {
@@ -2210,8 +2210,8 @@
     "semantic_hash": ""
   },
   "src/App.tsx": {
-    "mtime": 1795789102.3427343,
-    "ast_hash": "80fd534f0fb6d487f82ed0e8a856cfe9",
+    "mtime": 1795793310.298263,
+    "ast_hash": "dbecefec401f840e404830f9af9a442f",
     "semantic_hash": ""
   },
   "src/components/common/ArtworkGraphicSlot.tsx": {
@@ -2230,8 +2230,8 @@
     "semantic_hash": ""
   },
   "src/components/common/DynamicNotchNavbar.tsx": {
-    "mtime": 1795708469.9873443,
-    "ast_hash": "8b43689f802e1aeb0350d6463349bc02",
+    "mtime": 1795793308.7533207,
+    "ast_hash": "6bf145d30315b8311300f577311232ca",
     "semantic_hash": ""
   },
   "src/components/common/FloatingNavbar.tsx": {
@@ -2310,8 +2310,8 @@
     "semantic_hash": ""
   },
   "src/components/reader/MahagranthReader.tsx": {
-    "mtime": 1795789290.39229,
-    "ast_hash": "05a46d30f32c8c3373d6843d353c2b1b",
+    "mtime": 1795792883.353809,
+    "ast_hash": "e416b083cb6f5941a7b1febf46e48f81",
     "semantic_hash": ""
   },
   "src/components/reader/MobileReaderHeader.tsx": {
@@ -2325,13 +2325,13 @@
     "semantic_hash": ""
   },
   "src/components/reader/PadavaliReader.tsx": {
-    "mtime": 1795789291.8082664,
-    "ast_hash": "87eb4c8a47c48737a4b3753418f37692",
+    "mtime": 1795793301.7137842,
+    "ast_hash": "b5f01a563332ce4e0d8539400bf8112b",
     "semantic_hash": ""
   },
   "src/components/smaran/AshtayamaTimelineDeck.tsx": {
-    "mtime": 1795708469.9834557,
-    "ast_hash": "ff939425dd2a49c9bd2275df0549463d",
+    "mtime": 1795790854.3252063,
+    "ast_hash": "80af986b78582be3c564457f050e7c80",
     "semantic_hash": ""
   },
   "src/components/smaran/BeginnerGuideModal.tsx": {
@@ -2340,8 +2340,8 @@
     "semantic_hash": ""
   },
   "src/components/smaran/CategoriesRow.tsx": {
-    "mtime": 1795708469.9829512,
-    "ast_hash": "4290d3ccc689d5dfd8e5936e5f551a50",
+    "mtime": 1795790117.3881204,
+    "ast_hash": "4c0619e5298de1bd60b968e6b6e2d93c",
     "semantic_hash": ""
   },
   "src/components/smaran/CategoryCircle.tsx": {
@@ -2365,8 +2365,8 @@
     "semantic_hash": ""
   },
   "src/components/smaran/NityaSevaCard.tsx": {
-    "mtime": 1795706537.2574546,
-    "ast_hash": "158096de766888b19be55ca80f96df4a",
+    "mtime": 1795790066.497408,
+    "ast_hash": "8b89e0c357c94cf72391840fc3ef868d",
     "semantic_hash": ""
   },
   "src/components/smaran/SadhanaPillarModal.tsx": {
@@ -2375,8 +2375,8 @@
     "semantic_hash": ""
   },
   "src/components/smaran/SadhanaRingProgress.tsx": {
-    "mtime": 1795708467.9709804,
-    "ast_hash": "d52895555c38ff9f8ce80b5b0df3c9fc",
+    "mtime": 1795790857.4924746,
+    "ast_hash": "aa1ab55f6187943056efbcd10676da63",
     "semantic_hash": ""
   },
   "src/data/ashtayamaPeriods.json": {
@@ -2385,8 +2385,8 @@
     "semantic_hash": ""
   },
   "src/data/brajGlossary.json": {
-    "mtime": 1793990726.952538,
-    "ast_hash": "ed917bd565a4d984b4e22dd4a8d2feda",
+    "mtime": 1795792473.1219473,
+    "ast_hash": "3a691f9c9c4707a5cd3e6e22734fe162",
     "semantic_hash": ""
   },
   "src/data/canonicalGranthas.json": {
@@ -2410,8 +2410,8 @@
     "semantic_hash": ""
   },
   "src/data/feed.ts": {
-    "mtime": 1795703839.3565238,
-    "ast_hash": "ffb7d4ebdaba4def1e7b54f37d6721dc",
+    "mtime": 1795790910.1638014,
+    "ast_hash": "b2daa41984bf93c69541f8b1ba4d0726",
     "semantic_hash": ""
   },
   "src/data/feedTabs.json": {
@@ -2465,8 +2465,8 @@
     "semantic_hash": ""
   },
   "src/entry-server.tsx": {
-    "mtime": 1795616768.7304404,
-    "ast_hash": "bcfa55cea9571ffc3f1facf258488e90",
+    "mtime": 1795792963.4493372,
+    "ast_hash": "4e747b03a219384e7e37f95d3922d82f",
     "semantic_hash": ""
   },
   "src/hooks/useScrollDirection.ts": {
@@ -2510,8 +2510,8 @@
     "semantic_hash": ""
   },
   "src/services/devotionalVisuals.ts": {
-    "mtime": 1795704188.8611815,
-    "ast_hash": "5cf57ae21973b3c05de8f52a9d766878",
+    "mtime": 1795791347.9573514,
+    "ast_hash": "8c8501ceadc7ec8d66722686d9def21d",
     "semantic_hash": ""
   },
   "src/services/sacredDatabase.ts": {
@@ -6235,8 +6235,8 @@
     "semantic_hash": ""
   },
   "src/services/chimeService.ts": {
-    "mtime": 1794738380.4579003,
-    "ast_hash": "575db871978762a407537af57b75cdc0",
+    "mtime": 1795791917.508142,
+    "ast_hash": "0c8ef5186e0fc0669399c8f642a0689c",
     "semantic_hash": ""
   },
   "public/assets/saints/malookdas.webp": {
@@ -6545,23 +6545,23 @@
     "semantic_hash": ""
   },
   "src/components/sections/CharitraDarshan.tsx": {
-    "mtime": 1795703847.0059133,
-    "ast_hash": "b17083330198fb96cbecc5c906635ca9",
+    "mtime": 1795791897.3485434,
+    "ast_hash": "08e2e84501fcd02fea43ced39d9e209a",
     "semantic_hash": ""
   },
   "src/components/sections/DhamTirthaSection.tsx": {
-    "mtime": 1795703851.927857,
-    "ast_hash": "d3fa2be4c9223111402ab1801e22098d",
+    "mtime": 1795791900.2575445,
+    "ast_hash": "0b6c91ea21d6f6ebb8cc53bf76c54fae",
     "semantic_hash": ""
   },
   "src/components/sections/KathaSanctuary.tsx": {
-    "mtime": 1795703912.3188317,
-    "ast_hash": "90ee1693ce044ad34dc4e2c8470b89a8",
+    "mtime": 1795791914.55775,
+    "ast_hash": "3448872d066c6fb70c7281defe70411c",
     "semantic_hash": ""
   },
   "src/components/sections/NityaUpasanaReader.tsx": {
-    "mtime": 1795703999.0560274,
-    "ast_hash": "4dee7c0539a8b6ffd6bc5f5a943f9a97",
+    "mtime": 1795791905.8472395,
+    "ast_hash": "efcd6c2df6af80aab2d1cbdbf263d610",
     "semantic_hash": ""
   },
   "src/components/sections/index.ts": {
@@ -6580,8 +6580,8 @@
     "semantic_hash": ""
   },
   "src/components/smaran/SacredSectionsBanner.tsx": {
-    "mtime": 1795706468.903252,
-    "ast_hash": "e68fb8fe35ddf5333afc0bf172c77580",
+    "mtime": 1795790064.966897,
+    "ast_hash": "4d632cad1693bb8991b3fd5c690d9725",
     "semantic_hash": ""
   },
   "scripts/export_sacred_corpus_to_obsidian.py": {
@@ -6915,13 +6915,13 @@
     "semantic_hash": ""
   },
   "src/components/common/SacredDiscoveryShelf.tsx": {
-    "mtime": 1795696362.706488,
-    "ast_hash": "62e6a8821c1d054e563353f2ce318390",
+    "mtime": 1795790503.8791273,
+    "ast_hash": "65a18151d45cf0717d02da0f5ad42069",
     "semantic_hash": ""
   },
   "src/services/correlationService.ts": {
-    "mtime": 1795696360.4927819,
-    "ast_hash": "1b1805b2eaf30ef2b9c715cfadf21c5a",
+    "mtime": 1795790525.4968784,
+    "ast_hash": "6e7f8e71495b66dce18b684605f12e51",
     "semantic_hash": ""
   },
   "scripts/reconcile-catalog.mjs": {
@@ -6945,8 +6945,8 @@
     "semantic_hash": ""
   },
   "src/components/sections/TopicalGuideView.tsx": {
-    "mtime": 1795613576.6548522,
-    "ast_hash": "55ad748fe8605c3b41fa50efcc73c4e5",
+    "mtime": 1795793245.9284024,
+    "ast_hash": "ed48db4a28976eeaad17f0baeea9f3d3",
     "semantic_hash": ""
   },
   "src/data/topicalGuides.json": {
@@ -7062,6 +7062,231 @@
   "src/hooks/useSidebarState.ts": {
     "mtime": 1795788947.8932126,
     "ast_hash": "b8607be1d9d3e1f0e5d58afea54ba70c",
+    "semantic_hash": ""
+  },
+  "public/assets/darshan/barsana-kishori-ju.webp": {
+    "mtime": 1795790770.6746223,
+    "ast_hash": "7da41f66856ac39e8baf96f8c7d9b2a3",
+    "semantic_hash": ""
+  },
+  "public/assets/darshan/barsana-ladili-lal.webp": {
+    "mtime": 1795790768.3489354,
+    "ast_hash": "e7333b9a153805c8a399202e5f0afd52",
+    "semantic_hash": ""
+  },
+  "public/assets/darshan/barsana-mahal-mandap.webp": {
+    "mtime": 1795790770.8285306,
+    "ast_hash": "513b72fa241b99cf593516ac2fa4d010",
+    "semantic_hash": ""
+  },
+  "public/assets/darshan/barsana-mandap-sewa.webp": {
+    "mtime": 1795790770.9839535,
+    "ast_hash": "fbbd9ef0e932f673f2ff7887bc90344c",
+    "semantic_hash": ""
+  },
+  "public/assets/darshan/barsana-nikunj-lata.webp": {
+    "mtime": 1795790771.9429214,
+    "ast_hash": "16540977e0931ee6f01045d5ea22b748",
+    "semantic_hash": ""
+  },
+  "public/assets/darshan/barsana-radhavallabh-jhanki.webp": {
+    "mtime": 1795790771.4031453,
+    "ast_hash": "03559cd0de7e6f4b2e009213722f7856",
+    "semantic_hash": ""
+  },
+  "public/assets/darshan/barsana-yugal-jhanki.webp": {
+    "mtime": 1795790771.6374009,
+    "ast_hash": "d869d10af4ee0c0abaac2689c7328a8a",
+    "semantic_hash": ""
+  },
+  "public/assets/darshan/barsana-yugal-lal.webp": {
+    "mtime": 1795790771.7666192,
+    "ast_hash": "410c85cfcf9547378c8cbe04b54c0323",
+    "semantic_hash": ""
+  },
+  "public/assets/darshan/darshan-hasta-kamal.webp": {
+    "mtime": 1795790767.2572258,
+    "ast_hash": "fac9e1628ee64c76e78020632e1c1279",
+    "semantic_hash": ""
+  },
+  "public/assets/darshan/katha-janaki-ju.webp": {
+    "mtime": 1795790769.3502362,
+    "ast_hash": "064b416318938fee10f95f8e8a481043",
+    "semantic_hash": ""
+  },
+  "public/assets/darshan/katha-mahotsav-dwar.webp": {
+    "mtime": 1795790769.042892,
+    "ast_hash": "adb06527905b47109e2d02af75fc0aa8",
+    "semantic_hash": ""
+  },
+  "public/assets/darshan/katha-raghunath-ji.webp": {
+    "mtime": 1795790769.2044268,
+    "ast_hash": "d626f53e06504da61aa45b892ce728b6",
+    "semantic_hash": ""
+  },
+  "public/assets/darshan/katha-ram-darbar.webp": {
+    "mtime": 1795790768.5290513,
+    "ast_hash": "9827f194da87d2074e75c058d160e344",
+    "semantic_hash": ""
+  },
+  "public/assets/darshan/radharaman-aarti-jyoti.webp": {
+    "mtime": 1795790768.2018294,
+    "ast_hash": "ce812b614447a152c0b01e9f944faa80",
+    "semantic_hash": ""
+  },
+  "public/assets/darshan/radharaman-gulabi-pag.webp": {
+    "mtime": 1795790767.7298236,
+    "ast_hash": "f7cb0e9ec66af6d1a5e0182dc34f943a",
+    "semantic_hash": ""
+  },
+  "public/assets/darshan/radharaman-jamuni-shringar.webp": {
+    "mtime": 1795790771.530261,
+    "ast_hash": "ba5f401acc739f993ad4504431ff6372",
+    "semantic_hash": ""
+  },
+  "public/assets/darshan/radharaman-kesar-shringar.webp": {
+    "mtime": 1795790767.39882,
+    "ast_hash": "b1b1a1399661987bbe54be97764a9a52",
+    "semantic_hash": ""
+  },
+  "public/assets/darshan/radharaman-kesariya-venu.webp": {
+    "mtime": 1795790769.9923396,
+    "ast_hash": "ff7aaf55e4bf223821e6189ebc80b5a0",
+    "semantic_hash": ""
+  },
+  "public/assets/darshan/radharaman-mayur-mukut.webp": {
+    "mtime": 1795790769.4861374,
+    "ast_hash": "5e4fe3a6860046a0cf7027ebd79623ac",
+    "semantic_hash": ""
+  },
+  "public/assets/darshan/radharaman-neel-kamal.webp": {
+    "mtime": 1795790769.6069396,
+    "ast_hash": "a234a295791966342290c78664da53e7",
+    "semantic_hash": ""
+  },
+  "public/assets/darshan/radharaman-neel-mandap.webp": {
+    "mtime": 1795790767.9625728,
+    "ast_hash": "2190df6dbd40546da41d4ad5bd3e86e2",
+    "semantic_hash": ""
+  },
+  "public/assets/darshan/radharaman-neel-shringar.webp": {
+    "mtime": 1795790769.889699,
+    "ast_hash": "1b09faf57ee3fdab007486475c82a09a",
+    "semantic_hash": ""
+  },
+  "public/assets/darshan/radharaman-neelamber-throne.webp": {
+    "mtime": 1795790769.73883,
+    "ast_hash": "06f32bff60a3a9c6f3c5015ed5f0816b",
+    "semantic_hash": ""
+  },
+  "public/assets/darshan/radharaman-nupur-charan.webp": {
+    "mtime": 1795790767.5950918,
+    "ast_hash": "d9c117603cc158a02954c258f5344853",
+    "semantic_hash": ""
+  },
+  "public/assets/darshan/radharaman-panch-aarti.webp": {
+    "mtime": 1795790768.0685694,
+    "ast_hash": "09d792a90488a97bc0cfdcd7c12207c8",
+    "semantic_hash": ""
+  },
+  "public/assets/darshan/radharaman-prachin-mandap.webp": {
+    "mtime": 1795790770.5197482,
+    "ast_hash": "683cd29b93b6dc3bb0e9273ccc1f8cbf",
+    "semantic_hash": ""
+  },
+  "public/assets/darshan/radharaman-rajat-singhasan.webp": {
+    "mtime": 1795790767.851682,
+    "ast_hash": "060bbcd8de1f9575717fccfb242f65be",
+    "semantic_hash": ""
+  },
+  "public/assets/darshan/radharaman-ratna-mukut.webp": {
+    "mtime": 1795790767.4687827,
+    "ast_hash": "c0a34bc488a1ce513408ffb30472373f",
+    "semantic_hash": ""
+  },
+  "public/assets/darshan/radharaman-sheet-shringar.webp": {
+    "mtime": 1795790771.1116927,
+    "ast_hash": "b274d6c8062ccfc2da0c45c4f1546b7c",
+    "semantic_hash": ""
+  },
+  "public/assets/darshan/radharaman-swarna-murali.webp": {
+    "mtime": 1795790770.0655868,
+    "ast_hash": "d2ed763ecc3b6ba516dd249dfe56f00a",
+    "semantic_hash": ""
+  },
+  "public/assets/darshan/radharaman-tribhangi.webp": {
+    "mtime": 1795790771.2724535,
+    "ast_hash": "1cb262a55ddc4d206c5e09150b48c008",
+    "semantic_hash": ""
+  },
+  "public/assets/darshan/radharaman-vaishnav-mala.webp": {
+    "mtime": 1795790770.3491197,
+    "ast_hash": "856222d92958fb0978911afe950ed553",
+    "semantic_hash": ""
+  },
+  "public/assets/darshan/radharaman-yugal-mandap.webp": {
+    "mtime": 1795790770.1826158,
+    "ast_hash": "b571c5bd78e2f514a6fdcd3cbe6c0858",
+    "semantic_hash": ""
+  },
+  "public/assets/darshan/sant-satsang-samvad.webp": {
+    "mtime": 1795790768.8735905,
+    "ast_hash": "7f67c783caadd7674196dc9d4a4c1f4e",
+    "semantic_hash": ""
+  },
+  "public/assets/darshan/sant-sewa-darbar.webp": {
+    "mtime": 1795790768.7070186,
+    "ast_hash": "c9677c3952e94a80cc0dc1d0a873bc3c",
+    "semantic_hash": ""
+  },
+  "src/components/common/SacredFooter.tsx": {
+    "mtime": 1795792813.248622,
+    "ast_hash": "f3bc3cc41bae3d6d202b6d2a91784e9b",
+    "semantic_hash": ""
+  },
+  "src/components/reader/BrajWordStudyPanel.tsx": {
+    "mtime": 1795792631.8007061,
+    "ast_hash": "7819df0effedf8ee0fbe9cec202c9258",
+    "semantic_hash": ""
+  },
+  "src/components/sections/FestivalGuideView.tsx": {
+    "mtime": 1795792580.4757547,
+    "ast_hash": "141bb53295d6e4288c224f1f58cbe00d",
+    "semantic_hash": ""
+  },
+  "src/components/sections/GlossaryView.tsx": {
+    "mtime": 1795792578.3470635,
+    "ast_hash": "1eaf5bf18440ece9f869762bc4fbe270",
+    "semantic_hash": ""
+  },
+  "src/components/sections/KnowledgeBaseHubView.tsx": {
+    "mtime": 1795792576.6172414,
+    "ast_hash": "dbdfae68908d74196814971123584e5a",
+    "semantic_hash": ""
+  },
+  "src/data/brajDictionary.ts": {
+    "mtime": 1795792467.1492422,
+    "ast_hash": "df12e7d233cd7ef811685ce43bddef7d",
+    "semantic_hash": ""
+  },
+  "src/data/faqData.ts": {
+    "mtime": 1795792469.9105358,
+    "ast_hash": "076f7d210a9fa07b7bc5c56471a59b5a",
+    "semantic_hash": ""
+  },
+  "src/data/festivalsData.ts": {
+    "mtime": 1795793241.1617439,
+    "ast_hash": "48c3abca39c31e10e6bc7aeb9e819d43",
+    "semantic_hash": ""
+  },
+  "src/data/knowledgeCatalog.ts": {
+    "mtime": 1795792471.2736125,
+    "ast_hash": "d757f7bd00edbb5d7f93d93316589369",
+    "semantic_hash": ""
+  },
+  "src/utils/transliterate.ts": {
+    "mtime": 1795792465.8723927,
+    "ast_hash": "15d190bc435456f63161ae97a90b6606",
     "semantic_hash": ""
   }
 }

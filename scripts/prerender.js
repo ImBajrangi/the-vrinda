@@ -69,6 +69,16 @@ async function prerender() {
     { url: '/places', file: 'places.html' },
     { url: '/stories', file: 'stories.html' },
     { url: '/biographies', file: 'biographies.html' },
+    { url: '/knowledge-base', file: 'knowledge-base.html' },
+    { url: '/guides', file: 'guides.html' },
+    { url: '/festivals', file: 'festivals.html' },
+    { url: '/festivals/jhulan-yatra', file: 'festivals/jhulan-yatra.html' },
+    { url: '/festivals/radhashtami', file: 'festivals/radhashtami.html' },
+    { url: '/festivals/sharad-purnima', file: 'festivals/sharad-purnima.html' },
+    { url: '/festivals/latthmar-holi', file: 'festivals/latthmar-holi.html' },
+    { url: '/festivals/krishna-janmashtami', file: 'festivals/krishna-janmashtami.html' },
+    { url: '/festivals/gopashtami', file: 'festivals/gopashtami.html' },
+    { url: '/glossary', file: 'glossary.html' },
   ];
 
   // 2. Pre-render ALL 29 Scripture Collections (5 Epics + 24 Rasik Granthas)
@@ -162,7 +172,24 @@ async function prerender() {
     try {
       const guidesMeta = JSON.parse(fs.readFileSync(guidesMetaPath, 'utf-8'));
       for (const slug of Object.keys(guidesMeta)) {
+        if (slug === 'glossary') continue;
         routes.push({ url: `/${slug}`, file: `${slug}.html` });
+      }
+    } catch {}
+  }
+
+  // 10. Pre-render All Braj Glossary Term Pages
+  const glossaryPath = path.resolve(projectRoot, 'src/data/brajGlossary.json');
+  if (fs.existsSync(glossaryPath)) {
+    try {
+      const glossary = JSON.parse(fs.readFileSync(glossaryPath, 'utf-8'));
+      for (const term of glossary) {
+        if (term.id) {
+          routes.push({
+            url: `/glossary/${encodeURIComponent(term.id)}`,
+            file: `glossary/${term.id}.html`,
+          });
+        }
       }
     } catch {}
   }

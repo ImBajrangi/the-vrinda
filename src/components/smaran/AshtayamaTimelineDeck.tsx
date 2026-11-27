@@ -4,14 +4,14 @@ import { computeAshtayamaPhase } from '../../services/cacheService';
 import { SacredDatabase, AshtayamaPeriod } from '../../services/sacredDatabase';
 
 const ASHTAYAMA_ARTWORKS: Record<string, string> = {
-  mangala: '/assets/temples/aarti-lamp.webp',
-  shringar: '/assets/darshan/radharaman-yugal.webp',
-  gwal: '/assets/temples/keshi-ghat.webp',
-  rajbhog: '/assets/temples/radha-vallabh.webp',
-  utthapan: '/assets/temples/banke-bihari-gate.webp',
-  bhoga: '/assets/temples/banke-bihari.webp',
-  sandhya: '/assets/temples/diya-pujan.webp',
-  shayana: '/assets/temples/barsana-radharani.webp',
+  mangala: '/assets/darshan/radharaman-panch-aarti.webp',
+  shringar: '/assets/darshan/radharaman-kesar-shringar.webp',
+  gwal: '/assets/darshan/radharaman-swarna-murali.webp',
+  rajbhog: '/assets/darshan/radharaman-rajat-singhasan.webp',
+  utthapan: '/assets/darshan/barsana-ladili-lal.webp',
+  bhoga: '/assets/darshan/radharaman-neel-kamal.webp',
+  sandhya: '/assets/darshan/radharaman-aarti-jyoti.webp',
+  shayana: '/assets/darshan/barsana-nikunj-lata.webp',
 };
 
 interface AshtayamaTimelineDeckProps {

@@ -22,6 +22,8 @@ import brajGlossaryData from '../src/data/brajGlossary.json';
 import ritualMetaData from '../src/data/ritualMeta.json';
 import placeMetaData from '../src/data/placeMeta.json';
 import edgeCacheVersionData from '../src/data/edgeCacheVersion.json';
+import { FESTIVALS_BY_SLUG, FESTIVALS_LIST } from '../src/data/festivalsData';
+import { KNOWLEDGE_CATALOG } from '../src/data/knowledgeCatalog';
 
 interface Env {}
 
@@ -871,6 +873,17 @@ const handleEdgeRequest: PagesFunction<Env> = async (context) => {
     return Response.redirect(`https://bhav.vrindopnishad.in/glossary${sub}`, 301);
   }
 
+  const langFestivalsMatch = pathname.match(/^\/(?:hi|en)\/festivals?(\/[^/?#]+)?/i);
+  if (langFestivalsMatch) {
+    const sub = langFestivalsMatch[1] || '';
+    return Response.redirect(`https://bhav.vrindopnishad.in/festivals${sub}`, 301);
+  }
+
+  const langKbMatch = pathname.match(/^\/(?:hi|en)\/(?:knowledge-base|guides)/i);
+  if (langKbMatch) {
+    return Response.redirect('https://bhav.vrindopnishad.in/knowledge-base', 301);
+  }
+
   // 3.1 Legacy & indexed verse URL 301 redirects (/lyrics/:id, /hi/lyrics/:id, /content/:id, /verse/:id, /pada/:id, /pad/:id)
   const legacyMatch = pathname.match(/^(?:\/(?:hi|en))?\/(?:lyrics|content|verse|pada|pad)\/([^/?#]+)/i);
   if (legacyMatch) {
@@ -1099,6 +1112,10 @@ const handleEdgeRequest: PagesFunction<Env> = async (context) => {
       pathname.startsWith('/theme/') ||
       pathname === '/glossary' ||
       pathname.startsWith('/glossary/') ||
+      pathname === '/knowledge-base' ||
+      pathname === '/guides' ||
+      pathname === '/festivals' ||
+      pathname.startsWith('/festivals/') ||
       Boolean(TOPICAL_GUIDES_META[guideSlugOnPath])
     ) {
       return Response.redirect(`https://bhav.vrindopnishad.in${pathname}${url.search}`, 301);
@@ -2565,6 +2582,85 @@ const handleEdgeRequest: PagesFunction<Env> = async (context) => {
         </div>
       </article>
     `;
+  } else if (pathname === '/knowledge-base' || pathname === '/guides') {
+    hasPrerenderedStaticRoot = true;
+    title = `सनातन ज्ञानकोश एवं रसिक विकी (${KNOWLEDGE_CATALOG.length} मार्गदर्शिकाएँ) • Vrindopnishad Knowledge Base`;
+    description = 'वृन्दावन भक्ति दर्शन, अचिन्त्य भेदाभेद, नित्य विहार, रसिक सन्त इतिहास, परिक्रमा मार्ग, उत्सव एवं आध्यात्मिक शब्दावली का सम्पूर्ण अध्ययन केन्द्र।';
+    canonicalUrl = 'https://bhav.vrindopnishad.in/knowledge-base';
+    entitySchema = {
+      '@type': 'CollectionPage',
+      '@id': `${canonicalUrl}#collection`,
+      'name': 'वृन्दोपनिषद् सनातन ज्ञानकोश (Knowledge Base)',
+      'description': description,
+      'url': canonicalUrl,
+    };
+    extraSchemas.push({
+      '@type': 'BreadcrumbList',
+      '@id': `${canonicalUrl}#breadcrumb`,
+      'itemListElement': [
+        { '@type': 'ListItem', 'position': 1, 'name': 'वृन्दोपनिषद् 2.0', 'item': 'https://bhav.vrindopnishad.in/' },
+        { '@type': 'ListItem', 'position': 2, 'name': 'ज्ञानकोश विकी', 'item': canonicalUrl },
+      ],
+    });
+  } else if (pathname === '/festivals') {
+    hasPrerenderedStaticRoot = true;
+    title = `श्री वृन्दावन एवं ब्रज महोत्सव धरोहर (${FESTIVALS_LIST.length} प्रमुख उत्सव) | वृन्दोपनिषद् 2.0`;
+    description = 'झूलन यात्रा, श्री राधाष्टमी, शरद पूर्णिमा महारास, ब्रज होरी, श्री कृष्ण जन्माष्टमी एवं गोपाष्टमी का इतिहास, राग व दर्शन विधि।';
+    canonicalUrl = 'https://bhav.vrindopnishad.in/festivals';
+    entitySchema = {
+      '@type': 'CollectionPage',
+      '@id': `${canonicalUrl}#collection`,
+      'name': 'श्री वृन्दावन एवं ब्रज महोत्सव धरोहर',
+      'description': description,
+      'url': canonicalUrl,
+    };
+    extraSchemas.push({
+      '@type': 'BreadcrumbList',
+      '@id': `${canonicalUrl}#breadcrumb`,
+      'itemListElement': [
+        { '@type': 'ListItem', 'position': 1, 'name': 'वृन्दोपनिषद् 2.0', 'item': 'https://bhav.vrindopnishad.in/' },
+        { '@type': 'ListItem', 'position': 2, 'name': 'ब्रज महोत्सव', 'item': canonicalUrl },
+      ],
+    });
+  } else if (pathname.startsWith('/festivals/')) {
+    const fSlug = decodeURIComponent(pathname.slice('/festivals/'.length)).trim();
+    const f = FESTIVALS_BY_SLUG[fSlug];
+    if (!f) return notFoundResponse('यह ब्रज महोत्सव पृष्ठ उपलब्ध नहीं है (Festival Not Found)');
+    hasPrerenderedStaticRoot = true;
+    title = `${f.hindiName} • इतिहास, दर्शन व राग | वृन्दोपनिषद् 2.0`;
+    description = f.descriptionHi;
+    canonicalUrl = `https://bhav.vrindopnishad.in/festivals/${encodeURIComponent(f.slug)}`;
+    entitySchema = {
+      '@type': 'Article',
+      '@id': `${canonicalUrl}#article`,
+      'headline': f.hindiName,
+      'description': f.descriptionHi,
+      'inLanguage': ['hi', 'en'],
+      'url': canonicalUrl,
+    };
+    extraSchemas.push({
+      '@type': 'BreadcrumbList',
+      '@id': `${canonicalUrl}#breadcrumb`,
+      'itemListElement': [
+        { '@type': 'ListItem', 'position': 1, 'name': 'वृन्दोपनिषद् 2.0', 'item': 'https://bhav.vrindopnishad.in/' },
+        { '@type': 'ListItem', 'position': 2, 'name': 'ब्रज महोत्सव', 'item': 'https://bhav.vrindopnishad.in/festivals' },
+        { '@type': 'ListItem', 'position': 3, 'name': f.hindiName, 'item': canonicalUrl },
+      ],
+    });
+    if (f.faqs && f.faqs.length > 0) {
+      extraSchemas.push({
+        '@type': 'FAQPage',
+        '@id': `${canonicalUrl}#faq`,
+        'mainEntity': f.faqs.map((item) => ({
+          '@type': 'Question',
+          'name': item.questionHi,
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': item.answerHi,
+          },
+        })),
+      });
+    }
   } else if (pathname === '/glossary') {
     title = `ब्रज रस शब्दकोश (${brajGlossaryList.length} पारिभाषिक शब्द) • Braj Glossary | वृन्दोपनिषद् 2.0`;
     description = 'नित्य निकुंज, केलि विलास, सहज जोरी, अनन्य धर्म, सखी भाव, रस उपासना सहित ब्रज भक्ति साहित्य के प्रामाणिक पारिभाषिक शब्दों का अर्थ व संदर्भ।';

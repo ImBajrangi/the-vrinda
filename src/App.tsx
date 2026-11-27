@@ -4,6 +4,7 @@ import { FloatingNavbar, NavTab } from './components/common/FloatingNavbar';
 import { useSidebarState } from './hooks/useSidebarState';
 import { DynamicNotchNavbar } from './components/common/DynamicNotchNavbar';
 import { TopAnnouncementMarquee } from './components/common/TopAnnouncementMarquee';
+import { SacredFooter } from './components/common/SacredFooter';
 import { DateStrip, DayItem } from './components/smaran/DateStrip';
 import { CategoriesRow } from './components/smaran/CategoriesRow';
 import { NityaSevaCard } from './components/smaran/NityaSevaCard';
@@ -109,6 +110,15 @@ const LazyFeedCard = lazy(() =>
 const LazyTopicalGuideView = lazy(() =>
   import('./components/sections/TopicalGuideView').then((m) => ({ default: m.TopicalGuideView }))
 );
+const LazyKnowledgeBaseHubView = lazy(() =>
+  import('./components/sections/KnowledgeBaseHubView').then((m) => ({ default: m.KnowledgeBaseHubView }))
+);
+const LazyGlossaryView = lazy(() =>
+  import('./components/sections/GlossaryView').then((m) => ({ default: m.GlossaryView }))
+);
+const LazyFestivalGuideView = lazy(() =>
+  import('./components/sections/FestivalGuideView').then((m) => ({ default: m.FestivalGuideView }))
+);
 
 const TOPICAL_GUIDE_SLUGS = new Set([
   'what-is-vrindopnishad', 'meaning', 'origin', 'philosophy', 'teachings',
@@ -183,13 +193,23 @@ export interface AppComponents {
   CharitraDarshan?: React.ComponentType<any>;
   DhamTirthaSection?: React.ComponentType<any>;
   TopicalGuideView?: React.ComponentType<any>;
+  KnowledgeBaseHubView?: React.ComponentType<any>;
+  GlossaryView?: React.ComponentType<any>;
+  FestivalGuideView?: React.ComponentType<any>;
   SacredSectionsBanner?: React.ComponentType<any>;
 }
+
+export type SpecialViewState =
+  | { type: 'knowledge-base' }
+  | { type: 'glossary'; slug?: string }
+  | { type: 'festivals'; slug?: string }
+  | null;
 
 export interface AppProps {
   initialTab?: NavTab;
   initialPadId?: string;
   initialGuideSlug?: string;
+  initialSpecialView?: SpecialViewState;
   initialRitualSlug?: string;
   initialPlaceSlug?: string;
   initialStorySlug?: string;
@@ -208,6 +228,7 @@ interface AppRouteState {
   verse?: string;
   pad?: string;
   guideSlug?: string;
+  specialView?: SpecialViewState;
   ritualSlug?: string;
   placeSlug?: string;
   storySlug?: string;
@@ -310,11 +331,20 @@ function resolveCurrentRoute(): AppRouteState {
 
     let determinedTab: NavTab = 'smaran';
     const cleanSlug = rawPath.replace(/^\/+/, '');
-    const guideSlug = TOPICAL_GUIDE_SLUGS.has(cleanSlug)
-      ? cleanSlug
-      : rawPath.startsWith('/glossary')
-        ? 'glossary'
-        : undefined;
+    let specialView: SpecialViewState = null;
+    let guideSlug: string | undefined = undefined;
+
+    if (rawPath === '/knowledge-base' || rawPath === '/guides') {
+      specialView = { type: 'knowledge-base' };
+    } else if (rawPath === '/glossary' || rawPath.startsWith('/glossary/')) {
+      const term = rawPath.replace(/^\/glossary\/?/, '').trim();
+      specialView = { type: 'glossary', slug: term ? decodeURIComponent(term) : undefined };
+    } else if (rawPath === '/festivals' || rawPath.startsWith('/festivals/') || rawPath === '/festival' || rawPath.startsWith('/festival/')) {
+      const fSlug = rawPath.replace(/^\/(?:festivals|festival)\/?/, '').trim();
+      specialView = { type: 'festivals', slug: fSlug ? decodeURIComponent(fSlug) : undefined };
+    } else if (TOPICAL_GUIDE_SLUGS.has(cleanSlug)) {
+      guideSlug = cleanSlug;
+    }
 
     let ritualSlug: string | undefined = params.get('ritual') || undefined;
     let placeSlug: string | undefined = params.get('place') || undefined;
@@ -356,6 +386,7 @@ function resolveCurrentRoute(): AppRouteState {
       verse: resolvedVerse,
       pad: targetPad || undefined,
       guideSlug,
+      specialView,
       ritualSlug,
       placeSlug,
       storySlug,
@@ -370,6 +401,7 @@ export function App({
   initialTab,
   initialPadId,
   initialGuideSlug,
+  initialSpecialView,
   initialRitualSlug,
   initialPlaceSlug,
   initialStorySlug,
@@ -388,10 +420,16 @@ export function App({
   const CharitraDarshanComp = components?.CharitraDarshan || LazyCharitraDarshan;
   const DhamTirthaSectionComp = components?.DhamTirthaSection || LazyDhamTirthaSection;
   const TopicalGuideViewComp = components?.TopicalGuideView || LazyTopicalGuideView;
+  const KnowledgeBaseHubViewComp = components?.KnowledgeBaseHubView || LazyKnowledgeBaseHubView;
+  const GlossaryViewComp = components?.GlossaryView || LazyGlossaryView;
+  const FestivalGuideViewComp = components?.FestivalGuideView || LazyFestivalGuideView;
   const SacredSectionsBannerComp = components?.SacredSectionsBanner || LazySacredSectionsBanner;
   const [initialRoute] = useState<AppRouteState>(() => resolveCurrentRoute());
   const [activeGuideSlug, setActiveGuideSlug] = useState<string | null>(
     () => initialGuideSlug || initialRoute.guideSlug || null
+  );
+  const [specialView, setSpecialView] = useState<SpecialViewState>(
+    () => initialSpecialView !== undefined ? initialSpecialView : (initialRoute.specialView || null)
   );
   const [activeTab, setActiveTab] = useState<NavTab>(() => {
     if (
@@ -712,6 +750,8 @@ export function App({
   useEffect(() => {
     const handlePopState = () => {
       const nextRoute = resolveCurrentRoute();
+      setActiveGuideSlug(nextRoute.guideSlug || null);
+      setSpecialView(nextRoute.specialView || null);
       setActiveTab(nextRoute.tab);
       if (nextRoute.grantha && nextRoute.grantha !== 'all') {
         if (SacredDatabase.isEpicGrantha(nextRoute.grantha)) {
@@ -729,11 +769,29 @@ export function App({
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
+  const handleNavigatePath = (targetPath: string) => {
+    if (typeof window !== 'undefined') {
+      try {
+        window.history.pushState({}, '', targetPath);
+      } catch {}
+    }
+    const nextRoute = resolveCurrentRoute();
+    setActiveGuideSlug(nextRoute.guideSlug || null);
+    setSpecialView(nextRoute.specialView || null);
+    setActiveTab(nextRoute.tab);
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   const handleTabSwitch = (tab: NavTab) => {
     if (activeGuideSlug) {
       setActiveGuideSlug(null);
     }
-    if (tab === activeTab && !activeGuideSlug) return;
+    if (specialView) {
+      setSpecialView(null);
+    }
+    if (tab === activeTab && !activeGuideSlug && !specialView) return;
     setActiveTab(tab);
     if (typeof window !== 'undefined') {
       try {
@@ -1064,6 +1122,8 @@ export function App({
       <DynamicNotchNavbar
         activeTab={activeTab}
         onSelectTab={handleTabSwitch}
+        onNavigatePath={handleNavigatePath}
+        isKnowledgeActive={Boolean(activeGuideSlug || specialView)}
         streakDays={sadhana?.currentStreakDays ?? 1}
         isPlayingAudio={isPlayingAudio}
         currentTrackTitle={currentPad?.titleDevanagari}
@@ -1082,34 +1142,68 @@ export function App({
       <div className={`w-full max-w-full overflow-x-clip md:max-w-6xl xl:max-w-[1440px] 2xl:max-w-[1680px] flex-1 relative px-3 sm:px-6 lg:px-8 2xl:px-12 ${isReaderTab ? 'pt-2 sm:pt-4 pb-6 md:pb-16' : 'pt-3 sm:pt-4 pb-36 md:pb-24'} box-border`}>
         {/* Main Tab Content */}
         <main className="w-full max-w-full">
-          {activeGuideSlug ? (
-            <div className="w-full pb-44 md:pb-28">
+          {specialView?.type === 'knowledge-base' ? (
+            <div className="w-full pb-28 md:pb-16">
+              <Suspense fallback={<ReaderLoadingSkeleton />}>
+                <KnowledgeBaseHubViewComp
+                  onNavigateHome={() => handleNavigatePath('/')}
+                  onSelectGuide={(nextSlug: string) => handleNavigatePath(`/${nextSlug}`)}
+                  onOpenGlossary={() => handleNavigatePath('/glossary')}
+                  onOpenFestivals={() => handleNavigatePath('/festivals')}
+                />
+              </Suspense>
+            </div>
+          ) : specialView?.type === 'glossary' ? (
+            <div className="w-full pb-28 md:pb-16">
+              <Suspense fallback={<ReaderLoadingSkeleton />}>
+                <GlossaryViewComp
+                  initialTermSlug={specialView.slug}
+                  onSelectTerm={(nextSlug: string | null) =>
+                    handleNavigatePath(nextSlug ? `/glossary/${encodeURIComponent(nextSlug)}` : '/glossary')
+                  }
+                  onNavigateHome={() => handleNavigatePath('/')}
+                  onOpenKnowledgeBase={() => handleNavigatePath('/knowledge-base')}
+                  onNavigateSaint={(saintSlug: string) => {
+                    setSpecialView(null);
+                    handleSelectAuthor(saintSlug);
+                  }}
+                  onNavigateGrantha={(gSlug: string) => {
+                    setSpecialView(null);
+                    handleSelectBook(gSlug);
+                  }}
+                />
+              </Suspense>
+            </div>
+          ) : specialView?.type === 'festivals' ? (
+            <div className="w-full pb-28 md:pb-16">
+              <Suspense fallback={<ReaderLoadingSkeleton />}>
+                <FestivalGuideViewComp
+                  initialFestivalSlug={specialView.slug}
+                  onSelectFestival={(nextSlug: string | null) =>
+                    handleNavigatePath(nextSlug ? `/festivals/${encodeURIComponent(nextSlug)}` : '/festivals')
+                  }
+                  onNavigateHome={() => handleNavigatePath('/')}
+                  onOpenKnowledgeBase={() => handleNavigatePath('/knowledge-base')}
+                />
+              </Suspense>
+            </div>
+          ) : activeGuideSlug ? (
+            <div className="w-full pb-28 md:pb-16">
               <Suspense fallback={<ReaderLoadingSkeleton />}>
                 <TopicalGuideViewComp
                   slug={activeGuideSlug}
-                  onNavigateHome={() => {
-                    setActiveGuideSlug(null);
-                    setActiveTab('smaran');
-                    if (typeof window !== 'undefined') {
-                      window.history.pushState({}, '', '/');
-                    }
-                  }}
-                  onSelectGuide={(nextSlug: string) => {
-                    setActiveGuideSlug(nextSlug);
-                    if (typeof window !== 'undefined') {
-                      window.history.pushState({}, '', `/${nextSlug}`);
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }
-                  }}
+                  onNavigateHome={() => handleNavigatePath('/')}
+                  onSelectGuide={(nextSlug: string) => handleNavigatePath(`/${nextSlug}`)}
+                  onOpenKnowledgeBase={() => handleNavigatePath('/knowledge-base')}
                 />
               </Suspense>
             </div>
           ) : null}
 
           {/* Tab 1: Smaran (Dashboard) - Adaptive 3-Column on Desktop (xl:), 2-Column on Tablet, 1-Column on Mobile */}
-          {!activeGuideSlug && activeTab === 'smaran' && (
+          {!activeGuideSlug && !specialView && activeTab === 'smaran' && (
             <div
-              className={`w-full pb-44 md:pb-28 ${activeTab === 'smaran' ? 'block' : 'hidden'}`}
+              className={`w-full pb-4 ${activeTab === 'smaran' ? 'block' : 'hidden'}`}
               style={{ display: activeTab === 'smaran' ? 'block' : 'none' }}
               aria-hidden={activeTab !== 'smaran'}
             >
@@ -1684,7 +1778,7 @@ export function App({
           )}
 
           {/* Tab 2: Sanatan Mahagranth Parayana (Piece-by-Piece Streaming Reader for Epics) */}
-          {!activeGuideSlug && activeTab === 'granthas' && (
+          {!activeGuideSlug && !specialView && activeTab === 'granthas' && (
             <div className="w-full">
               <Suspense fallback={<ReaderLoadingSkeleton />}>
                 <MahagranthReaderComp
@@ -1711,7 +1805,7 @@ export function App({
           )}
 
           {/* Tab 3: Sacred Padavali & Chhand Sanctuary */}
-          {!activeGuideSlug && activeTab === 'padavali' && (
+          {!activeGuideSlug && !specialView && activeTab === 'padavali' && (
             <div className="w-full">
               <Suspense fallback={<ReaderLoadingSkeleton />}>
                 <PadavaliReaderComp
@@ -1748,13 +1842,13 @@ export function App({
           )}
 
           {/* Tab 4: Devotional Darshan Feed */}
-          {!activeGuideSlug && activeTab === 'feed' && (
+          {!activeGuideSlug && !specialView && activeTab === 'feed' && (
             <div className="w-full pt-1 pb-48 md:pb-28">
               <div className="w-full md:flex md:items-start gap-6">
                 {/* Main Feed Column (Fluid flex-1 adapts dynamically as right Panchang sidebar expands/shrinks) */}
                 <div className={`min-w-0 w-full md:flex-1 space-y-4 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${isFeedSidebarCollapsed ? 'max-w-3xl mx-auto' : ''}`}>
-                  {/* Nitya Darshan Photo Strip (6 Authentic Braj Darshan Plates) */}
-                  <div className="bg-white rounded-[24px] p-3 border border-[#EAE1D3] shadow-2xs mb-3 space-y-2.5">
+                  {/* Nitya Darshan Photo Strip (12 Authentic Braj Darshan Plates) */}
+                  <div className="bg-white rounded-[24px] p-3 shadow-[0_2px_12px_rgba(24,24,27,0.025)] mb-3 space-y-2.5">
                     <div className="flex items-center justify-between px-1">
                       <h2 className="font-rozha text-lg sm:text-xl text-[#1C1611]">
                         श्री वृन्दावन नित्य संदर्शन गैलरी
@@ -1763,8 +1857,8 @@ export function App({
                         {SACRED_FEED_POSTS.length} पावन दर्शन
                       </span>
                     </div>
-                    <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
-                      {SACRED_FEED_POSTS.slice(0, 6).map((p) => (
+                    <div className="grid grid-cols-4 sm:grid-cols-6 gap-2">
+                      {SACRED_FEED_POSTS.slice(0, 12).map((p) => (
                         <a
                           key={`thumb-${p.id}`}
                           href={`#feed-${p.id}`}
@@ -1774,13 +1868,13 @@ export function App({
                             const el = document.getElementById(`feed-post-${p.id}`);
                             if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
                           }}
-                          className="group block rounded-[10px] overflow-hidden aspect-square bg-[#1A120B] border border-amber-900/10"
+                          className="group block rounded-[10px] overflow-hidden aspect-square bg-[#EFE7D8]"
                         >
                           <img
                             src={p.imageUrl}
                             alt={p.imageAlt}
                             className="w-full h-full object-cover object-[center_20%]"
-                            loading="lazy"
+                            loading="eager"
                             decoding="async"
                           />
                         </a>
@@ -1956,7 +2050,7 @@ export function App({
           )}
 
           {/* Tab 5: Milestones & Streaks */}
-          {!activeGuideSlug && activeTab === 'milestones' && (
+          {!activeGuideSlug && !specialView && activeTab === 'milestones' && (
             <div className="w-full pb-48 md:pb-28">
               <Suspense fallback={<ReaderLoadingSkeleton />}>
                 <MilestonesViewComp onBack={() => handleTabSwitch('smaran')} />
@@ -1965,8 +2059,8 @@ export function App({
           )}
 
           {/* Tab 6: Nitya Upasana (Ritual Aartis, Chalisas, Stotras) */}
-          {!activeGuideSlug && activeTab === 'rituals' && (
-            <div className="w-full pb-48 md:pb-28">
+          {!activeGuideSlug && !specialView && activeTab === 'rituals' && (
+            <div className="w-full pb-4">
               <Suspense fallback={<ReaderLoadingSkeleton />}>
                 <NityaUpasanaReaderComp
                   initialRitualSlug={initialRitualSlug || initialRoute.ritualSlug}
@@ -1977,8 +2071,8 @@ export function App({
           )}
 
           {/* Tab 7: Katha Sanctuary (Sacred Stories & Leelas) */}
-          {!activeGuideSlug && activeTab === 'stories' && (
-            <div className="w-full pb-48 md:pb-28">
+          {!activeGuideSlug && !specialView && activeTab === 'stories' && (
+            <div className="w-full pb-4">
               <Suspense fallback={<ReaderLoadingSkeleton />}>
                 <KathaSanctuaryComp
                   initialStorySlug={initialStorySlug || initialRoute.storySlug}
@@ -1990,8 +2084,8 @@ export function App({
           )}
 
           {/* Tab 8: Charitra Darshan (Saint & Rishi Biographies) */}
-          {!activeGuideSlug && activeTab === 'biographies' && (
-            <div className="w-full pb-48 md:pb-28">
+          {!activeGuideSlug && !specialView && activeTab === 'biographies' && (
+            <div className="w-full pb-4">
               <Suspense fallback={<ReaderLoadingSkeleton />}>
                 <CharitraDarshanComp
                   initialSaintSlug={initialSaintSlug || initialRoute.bioSlug}
@@ -2009,14 +2103,23 @@ export function App({
           )}
 
           {/* Tab 9: Dham & Tirtha Section (Sacred Places) */}
-          {!activeGuideSlug && activeTab === 'places' && (
-            <div className="w-full pb-48 md:pb-28">
+          {!activeGuideSlug && !specialView && activeTab === 'places' && (
+            <div className="w-full pb-4">
               <Suspense fallback={<ReaderLoadingSkeleton />}>
                 <DhamTirthaSectionComp
                   initialPlaceSlug={initialPlaceSlug || initialRoute.placeSlug}
                   initialPlace={initialPlaceData}
                 />
               </Suspense>
+            </div>
+          )}
+
+          {(!isReaderTab || Boolean(activeGuideSlug) || Boolean(specialView)) && (activeGuideSlug || specialView || activeTab !== 'feed') && (
+            <div className="pb-20 md:pb-8">
+              <SacredFooter
+                onSelectTab={handleTabSwitch}
+                onNavigatePath={handleNavigatePath}
+              />
             </div>
           )}
         </main>

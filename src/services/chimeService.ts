@@ -17,6 +17,8 @@ const STORAGE_KEY = 'vrindopnisad_chimes_muted';
 class SacredChimeEngine {
   private ctx: AudioContext | null = null;
   private audioBuffers: Map<ChimeType, AudioBuffer> = new Map();
+  private activeSource: AudioBufferSourceNode | null = null;
+  private activeAudioEl: HTMLAudioElement | null = null;
   private isLoading = false;
   private isMuted: boolean = false;
   private listeners: Set<(muted: boolean) => void> = new Set();
@@ -30,22 +32,6 @@ class SacredChimeEngine {
       } catch {
         this.isMuted = false;
       }
-
-      // Automatically register user gesture unlock
-      const unlockAudio = () => {
-        this.ensureContext();
-        if (this.ctx && this.ctx.state === 'suspended') {
-          this.ctx.resume().catch(() => {});
-        }
-        if (!this.hasPreloaded) {
-          this.preload();
-        }
-        window.removeEventListener('pointerdown', unlockAudio);
-        window.removeEventListener('keydown', unlockAudio);
-      };
-
-      window.addEventListener('pointerdown', unlockAudio, { passive: true });
-      window.addEventListener('keydown', unlockAudio, { passive: true });
     }
   }
 
@@ -124,11 +110,37 @@ class SacredChimeEngine {
   }
 
   /**
+   * Immediately halts any active bell/chime playback so chimes do not overlap or linger.
+   */
+  public stop(): void {
+    if (this.activeSource) {
+      try {
+        this.activeSource.stop();
+        this.activeSource.disconnect();
+      } catch {
+        // Ignore already-stopped source nodes
+      }
+      this.activeSource = null;
+    }
+    if (this.activeAudioEl) {
+      try {
+        this.activeAudioEl.pause();
+        this.activeAudioEl.currentTime = 0;
+      } catch {
+        // Ignore media reset errors
+      }
+      this.activeAudioEl = null;
+    }
+  }
+
+  /**
    * Plays a pre-buffered audio file with exact microsecond timing,
    * with automatic Web Audio synthesizer fallback if audio file was not decoded.
    */
   public async play(type: ChimeType, volume = 0.5): Promise<void> {
     if (this.isMuted || typeof window === 'undefined') return;
+
+    this.stop();
 
     const ctx = this.ensureContext();
     if (!ctx) return;
@@ -152,7 +164,13 @@ class SacredChimeEngine {
 
         source.connect(gainNode);
         gainNode.connect(ctx.destination);
+        source.onended = () => {
+          if (this.activeSource === source) {
+            this.activeSource = null;
+          }
+        };
 
+        this.activeSource = source;
         source.start(0);
         return;
       } catch (e) {
@@ -164,9 +182,18 @@ class SacredChimeEngine {
     try {
       const audioEl = new Audio(CHIME_PATHS[type]);
       audioEl.volume = Math.max(0.01, Math.min(1, volume));
+      audioEl.onended = () => {
+        if (this.activeAudioEl === audioEl) {
+          this.activeAudioEl = null;
+        }
+      };
+      this.activeAudioEl = audioEl;
       const playPromise = audioEl.play();
       if (playPromise) {
         playPromise.catch(() => {
+          if (this.activeAudioEl === audioEl) {
+            this.activeAudioEl = null;
+          }
           // If browser blocked HTML5 audio, play synthesized fallback
           this.playSynthesizedFallback(type, volume);
         });

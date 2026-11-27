@@ -24,6 +24,22 @@ const NITYA_DARSHAN_PLATES = [
     src: '/assets/darshan/radhavallabh-peacock.webp',
   },
   {
+    id: 'barsana',
+    label: 'श्री लाड़िली लाल',
+    caption: 'श्री लाड़िली लाल • पावन बरसाना महल झांकी',
+    mandir: 'श्रीजी मंदिर, बरसाना धाम',
+    pos: 'object-[center_25%]',
+    src: '/assets/darshan/barsana-ladili-lal.webp',
+  },
+  {
+    id: 'panch-aarti',
+    label: 'संध्या आरती',
+    caption: 'पावन पंच-आरती ज्योति • नित्य संध्या आराधना',
+    mandir: 'श्री राधारमण मंदिर, वृन्दावन',
+    pos: 'object-[center_35%]',
+    src: '/assets/darshan/radharaman-panch-aarti.webp',
+  },
+  {
     id: 'phoolbangla',
     label: 'फूल बंगला',
     caption: 'दिव्य पुष्प सज्जा • नित्य फूल बंगला झांकी',
@@ -32,9 +48,41 @@ const NITYA_DARSHAN_PLATES = [
     src: '/assets/darshan/radharaman-phoolbangla.webp',
   },
   {
+    id: 'rajat-singhasan',
+    label: 'रजत सिंहासन',
+    caption: 'श्री राधारमण देव जू • श्वेत-सुवर्ण रजत सिंहासन',
+    mandir: 'श्री राधारमण मंदिर, वृन्दावन',
+    pos: 'object-[center_30%]',
+    src: '/assets/darshan/radharaman-rajat-singhasan.webp',
+  },
+  {
+    id: 'mayur-mukut',
+    label: 'मोर मुकुट',
+    caption: 'नील पाग व मोर मुकुट • रसभरी मुस्कान छवि',
+    mandir: 'नित्य शृंगार दर्शन',
+    pos: 'object-[center_18%]',
+    src: '/assets/darshan/radharaman-mayur-mukut.webp',
+  },
+  {
+    id: 'swarna-murali',
+    label: 'वेणु माधुरी',
+    caption: 'रत्नजड़ित स्वर्ण मुरली व कुण्डल शृंगार',
+    mandir: 'श्री राधारमण लाल',
+    pos: 'object-[center_35%]',
+    src: '/assets/darshan/radharaman-swarna-murali.webp',
+  },
+  {
+    id: 'nikunj-lata',
+    label: 'निकुञ्ज लता',
+    caption: 'हरित लता मण्डप • प्रिया-प्रियतम विहार छवि',
+    mandir: 'श्री वृन्दावन निकुञ्ज',
+    pos: 'object-[center_25%]',
+    src: '/assets/darshan/barsana-nikunj-lata.webp',
+  },
+  {
     id: 'mukharavind',
     label: 'मुखारविंद',
-    caption: 'श्री राधारमण लाल • मोर मुकुट छवि',
+    caption: 'श्री राधारमण लाल • निकट मुखारविंद दर्शन',
     mandir: 'नित्य शृंगार दर्शन',
     pos: 'object-[center_18%]',
     src: '/assets/darshan/radharaman-mukharavind.webp',
@@ -448,7 +496,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
                 </div>
               </div>
 
-              {/* Clean 6-Thumbnail Visual Selector Strip */}
+              {/* Clean 12-Thumbnail Visual Selector Strip (2x6 Crisp Grid) */}
               <div className="grid grid-cols-6 gap-1.5 pt-0.5">
                 {NITYA_DARSHAN_PLATES.map((plate, idx) => {
                   const isSelected = idx === plateIndex;
@@ -459,7 +507,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
                       onClick={() => selectPlate(idx)}
                       aria-label={plate.label}
                       title={plate.label}
-                      className={`h-10 sm:h-11 rounded-[6px] overflow-hidden bg-[#EFE7D8] cursor-pointer transition-opacity ${
+                      className={`h-9 rounded-[6px] overflow-hidden bg-[#EFE7D8] cursor-pointer transition-opacity ${
                         isSelected
                           ? 'ring-2 ring-amber-500 ring-offset-1 ring-offset-[#FAF8F3] opacity-100'
                           : 'opacity-65 hover:opacity-100'

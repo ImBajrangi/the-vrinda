@@ -38,6 +38,8 @@ interface DynamicNotchNavbarProps {
   onOpenFocus?: () => void;
   sadhana?: SadhanaState;
   onQuickJapa?: () => void;
+  onNavigatePath?: (path: string) => void;
+  isKnowledgeActive?: boolean;
   isMarqueeVisible?: boolean;
   isVisibleOnMobile?: boolean;
 }
@@ -54,6 +56,8 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
   onOpenFocus,
   sadhana,
   onQuickJapa,
+  onNavigatePath,
+  isKnowledgeActive = false,
   isVisibleOnMobile = true,
 }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -111,6 +115,7 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
     width: 0,
     ready: false,
   });
+  const navRef = useRef<HTMLElement>(null);
   const tabRefs = useRef<{ [key in NavTab]?: HTMLButtonElement | null }>({});
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const mobileToggleRef = useRef<HTMLButtonElement>(null);
@@ -118,6 +123,7 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
   const sangrahaRef = useRef<HTMLDivElement>(null);
 
   const isSangrahaActive =
+    isKnowledgeActive ||
     activeTab === 'rituals' ||
     activeTab === 'stories' ||
     activeTab === 'biographies' ||
@@ -241,30 +247,25 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
   ];
 
   useEffect(() => {
-    const el = tabRefs.current[activeTab];
-    if (el) {
-      setIndicatorStyle({
-        left: el.offsetLeft,
-        width: el.offsetWidth,
-        ready: true,
-      });
-    }
-  }, [activeTab]);
-
-  useEffect(() => {
-    const handleResize = () => {
-      const el = tabRefs.current[activeTab];
-      if (el) {
+    const updateIndicator = () => {
+      const targetTabKey = isKnowledgeActive ? 'rituals' : activeTab;
+      const el = tabRefs.current[targetTabKey];
+      const navEl = navRef.current;
+      if (el && navEl) {
+        const navRect = navEl.getBoundingClientRect();
+        const elRect = el.getBoundingClientRect();
+        const left = el.offsetParent === navEl ? el.offsetLeft : elRect.left - navRect.left;
         setIndicatorStyle({
-          left: el.offsetLeft,
+          left,
           width: el.offsetWidth,
           ready: true,
         });
       }
     };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [activeTab]);
+    updateIndicator();
+    window.addEventListener('resize', updateIndicator);
+    return () => window.removeEventListener('resize', updateIndicator);
+  }, [activeTab, isKnowledgeActive]);
 
   const handleSelectNav = (tabId: NavTab) => {
     onSelectTab(tabId);
@@ -319,6 +320,7 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
 
             {/* 2. Center: Open Borderless Navigation Rail (Desktop & Tablet >= md) */}
             <nav
+              ref={navRef}
               aria-label="Main Navigation Menu"
               className="relative hidden md:flex items-center gap-0.5 xl:gap-1"
             >
@@ -337,7 +339,7 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
 
               {navItems.map((item) => {
                 const Icon = item.icon;
-                const isActive = activeTab === item.id;
+                const isActive = !isKnowledgeActive && activeTab === item.id;
                 return (
                   <button
                     key={item.id}
@@ -385,7 +387,7 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
 
                 {isSangrahaOpen && (
                   <div
-                    className="absolute top-full right-0 mt-2 w-64 bg-white rounded-[20px] p-2 border border-neutral-200/90 shadow-xl space-y-1 transform-gpu z-50 text-[#18181B]"
+                    className="absolute top-full right-0 mt-2 w-64 bg-white rounded-[20px] p-2 shadow-[0_12px_36px_rgba(24,24,27,0.12)] space-y-1 transform-gpu z-50 text-[#18181B]"
                     onClick={(e) => e.stopPropagation()}
                   >
                     <div className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-neutral-400 font-mono">
@@ -423,6 +425,34 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
                         </button>
                       );
                     })}
+                    <div className="pt-1.5 mt-1 px-2.5 text-[10px] font-bold uppercase tracking-wider text-neutral-400 font-mono">
+                      ज्ञानकोश एवं उत्सव
+                    </div>
+                    {[
+                      { path: '/knowledge-base', label: 'सनातन ज्ञानकोश विकी', sub: '३५+ मार्गदर्शिकाएँ' },
+                      { path: '/glossary', label: 'ब्रजभाषा शब्दकोश', sub: 'सिद्धान्त व शब्दार्थ' },
+                      { path: '/festivals', label: 'ब्रज महोत्सव धरोहर', sub: 'झूलन, राधाष्टमी, होरी' },
+                      { path: '/faq', label: 'साधक प्रश्नोत्तरी', sub: 'शंका समाधान (FAQ)' },
+                    ].map((linkItem) => (
+                      <a
+                        key={linkItem.path}
+                        href={linkItem.path}
+                        onClick={(e) => {
+                          if (onNavigatePath && !e.metaKey && !e.ctrlKey && !e.shiftKey) {
+                            e.preventDefault();
+                            onNavigatePath(linkItem.path);
+                            setIsSangrahaOpen(false);
+                          }
+                        }}
+                        className="w-full text-left flex items-center justify-between gap-2 px-2.5 py-2 rounded-[12px] hover:bg-[#FAF8F4] text-neutral-800 transition-colors no-underline"
+                      >
+                        <div className="min-w-0">
+                          <div className="text-xs font-serif font-medium truncate">{linkItem.label}</div>
+                          <div className="text-[10px] text-neutral-500 truncate">{linkItem.sub}</div>
+                        </div>
+                        <ChevronRight className="w-3.5 h-3.5 text-neutral-400 shrink-0" />
+                      </a>
+                    ))}
                   </div>
                 )}
               </div>
@@ -575,6 +605,31 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
                   </button>
                 );
               })}
+            </div>
+
+            {/* 2B. Knowledge Base, Glossary & Festivals Quick Pills */}
+            <div className="flex flex-wrap gap-1.5 pt-0.5">
+              {[
+                { path: '/knowledge-base', label: 'ज्ञानकोश विकी' },
+                { path: '/glossary', label: 'ब्रज शब्दकोश' },
+                { path: '/festivals', label: 'ब्रज महोत्सव' },
+                { path: '/faq', label: 'प्रश्नोत्तरी (FAQ)' },
+              ].map((linkItem) => (
+                <a
+                  key={linkItem.path}
+                  href={linkItem.path}
+                  onClick={(e) => {
+                    if (onNavigatePath && !e.metaKey && !e.ctrlKey && !e.shiftKey) {
+                      e.preventDefault();
+                      onNavigatePath(linkItem.path);
+                      setIsMobileMenuOpen(false);
+                    }
+                  }}
+                  className="px-3 py-1.5 rounded-full bg-[#FAF8F4] hover:bg-[#F5EFE3] text-xs font-serif font-bold text-amber-950 no-underline transition-colors"
+                >
+                  {linkItem.label}
+                </a>
+              ))}
             </div>
 
             {/* 3. Live Presence Strip: Ashtayama Period + Audio Player (Radiant White Card with Gold Trim) */}

@@ -34,7 +34,13 @@ import { KathaSanctuary } from './components/sections/KathaSanctuary';
 import { CharitraDarshan } from './components/sections/CharitraDarshan';
 import { DhamTirthaSection } from './components/sections/DhamTirthaSection';
 import { TopicalGuideView } from './components/sections/TopicalGuideView';
+import { KnowledgeBaseHubView } from './components/sections/KnowledgeBaseHubView';
+import { GlossaryView } from './components/sections/GlossaryView';
+import { FestivalGuideView } from './components/sections/FestivalGuideView';
+import { FESTIVALS_BY_SLUG } from './data/festivalsData';
+import brajGlossaryData from './data/brajGlossary.json';
 import { SacredSectionsBanner } from './components/smaran/SacredSectionsBanner';
+import type { SpecialViewState } from './App';
 import topicalGuidesMetaData from './data/topicalGuidesMeta.json';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -73,6 +79,7 @@ export function render(url: string = '/'): RenderResult {
   let storyQuery: string | undefined;
   let bioQuery: string | undefined;
   let guideSlug: string | undefined;
+  let specialView: SpecialViewState = null;
   let parsedPathname = '';
   let ritualData: any;
   let placeData: any;
@@ -175,6 +182,14 @@ export function render(url: string = '/'): RenderResult {
       tab = 'milestones';
     } else if (pathname === '/smaran') {
       tab = 'smaran';
+    } else if (pathname === '/knowledge-base' || pathname === '/guides') {
+      specialView = { type: 'knowledge-base' };
+    } else if (pathname === '/glossary' || pathname.startsWith('/glossary/')) {
+      const sub = pathname.replace(/^\/glossary\/?/, '').trim();
+      specialView = { type: 'glossary', slug: sub ? decodeURIComponent(sub) : undefined };
+    } else if (pathname === '/festivals' || pathname.startsWith('/festivals/')) {
+      const sub = pathname.replace(/^\/festivals\/?/, '').trim();
+      specialView = { type: 'festivals', slug: sub ? decodeURIComponent(sub) : undefined };
     } else {
       const cleanSlug = pathname.replace(/^\/+/, '');
       if (TOPICAL_GUIDES_META[cleanSlug]) {
@@ -448,6 +463,53 @@ export function render(url: string = '/'): RenderResult {
         };
       }
     } catch {}
+  } else if (specialView?.type === 'knowledge-base') {
+    seoConfig = {
+      tab: 'smaran',
+      ogType: 'website',
+      title: 'सनातन ज्ञानकोश एवं रसिक विकी (Vrindopnishad Knowledge Base) • ३५+ प्रामाणिक मार्गदर्शिकाएँ',
+      description: 'वृन्दावन भक्ति दर्शन, नित्य विहार, अचिन्त्य भेदाभेद, राधावल्लभ व गौड़ीय सम्प्रदाय इतिहास, परिक्रमा मार्ग, उत्सव एवं आध्यात्मिक शब्दावली का सम्पूर्ण विकी।',
+      canonicalUrl: 'https://bhav.vrindopnishad.in/knowledge-base',
+    };
+  } else if (specialView?.type === 'festivals') {
+    const f = specialView.slug ? FESTIVALS_BY_SLUG[specialView.slug] : undefined;
+    if (f) {
+      seoConfig = {
+        tab: 'smaran',
+        ogType: 'article',
+        title: `${f.hindiName} • इतिहास, विधि व राग | वृन्दोपनिषद् 2.0`,
+        description: f.descriptionHi,
+        canonicalUrl: `https://bhav.vrindopnishad.in/festivals/${encodeURIComponent(f.slug)}`,
+      };
+    } else {
+      seoConfig = {
+        tab: 'smaran',
+        ogType: 'website',
+        title: 'श्री वृन्दावन एवं ब्रज महोत्सव धरोहर (झूलन, राधाष्टमी, शरद रास, होरी) | वृन्दोपनिषद् 2.0',
+        description: 'सावन झूलन यात्रा, श्री राधाष्टमी, शरद पूर्णिमा महारास, ब्रज होरी व जन्माष्टमी उत्सव का इतिहास, राग एवं दर्शन विधि।',
+        canonicalUrl: 'https://bhav.vrindopnishad.in/festivals',
+      };
+    }
+  } else if (specialView?.type === 'glossary') {
+    const terms = (Array.isArray(brajGlossaryData) ? brajGlossaryData : (brajGlossaryData as any)?.default || []) as any[];
+    const g = specialView.slug ? terms.find((t) => t.id === specialView.slug) : undefined;
+    if (g) {
+      seoConfig = {
+        tab: 'smaran',
+        ogType: 'article',
+        title: `${g.term} (${g.transliteration}) — अर्थ एवं ब्रज रस सन्दर्भ | वृन्दोपनिषद् 2.0`,
+        description: g.meaningDevanagari,
+        canonicalUrl: `https://bhav.vrindopnishad.in/glossary/${encodeURIComponent(g.id)}`,
+      };
+    } else {
+      seoConfig = {
+        tab: 'smaran',
+        ogType: 'website',
+        title: `ब्रजभाषा आध्यात्मिक शब्दकोश (${terms.length} सिद्धांत व ७०+ पद शब्द) • Braj Glossary | वृन्दोपनिषद् 2.0`,
+        description: 'नित्य विहार, निकुंज, मंजरी भाव, सखी भाव, राधा दास्य व ब्रज रसिक वाणी शब्दार्थ का सम्पूर्ण पारिभाषिक शब्दकोश।',
+        canonicalUrl: 'https://bhav.vrindopnishad.in/glossary',
+      };
+    }
   } else if (guideSlug && TOPICAL_GUIDES_META[guideSlug]) {
     const gMeta = TOPICAL_GUIDES_META[guideSlug];
     seoConfig = {
@@ -521,6 +583,7 @@ export function render(url: string = '/'): RenderResult {
         initialTab={tab}
         initialPadId={padId}
         initialGuideSlug={guideSlug}
+        initialSpecialView={specialView}
         initialRitualSlug={ritualQuery}
         initialPlaceSlug={placeQuery}
         initialStorySlug={storyQuery}
@@ -538,6 +601,9 @@ export function render(url: string = '/'): RenderResult {
           CharitraDarshan,
           DhamTirthaSection,
           TopicalGuideView,
+          KnowledgeBaseHubView,
+          GlossaryView,
+          FestivalGuideView,
           SacredSectionsBanner,
         }}
       />

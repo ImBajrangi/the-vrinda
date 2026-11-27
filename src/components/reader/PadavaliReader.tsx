@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useMemo, useRef, useCallback, lazy, Suspense } from 'react';
 import { createPortal } from 'react-dom';
 import {
   Play,
@@ -56,6 +56,11 @@ import { MobileReaderHeader } from './MobileReaderHeader';
 import { MobileScriptureDrawer } from './MobileScriptureDrawer';
 import { useScrollDirection } from '../../hooks/useScrollDirection';
 import { SacredDiscoveryShelf } from '../common/SacredDiscoveryShelf';
+import { transliterateDevanagari } from '../../utils/transliterate';
+
+const LazyBrajWordStudyPanel = lazy(() =>
+  import('./BrajWordStudyPanel').then((m) => ({ default: m.BrajWordStudyPanel }))
+);
 
 interface PadavaliReaderProps {
   isActiveTab?: boolean;
@@ -698,6 +703,26 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   const [isCommentaryClosing, setIsCommentaryClosing] = useState(false);
   const [activeStanzaIndex, setActiveStanzaIndex] = useState(0);
   const [isFocusReadingMode, setIsFocusReadingMode] = useState<boolean>(false);
+  const [isWordStudyOpen, setIsWordStudyOpen] = useState<boolean>(false);
+  const wordStudyAnchorRef = useRef<HTMLDivElement>(null);
+
+  const handleToggleWordStudy = () => {
+    setIsWordStudyOpen((prev) => {
+      const next = !prev;
+      if (next) {
+        requestAnimationFrame(() => {
+          const el = wordStudyAnchorRef.current;
+          if (!el) return;
+          const rect = el.getBoundingClientRect();
+          // Ensure panel header clears both global navbar and sticky Pad-Kram scrubber
+          if (rect.top < 176 || rect.top > window.innerHeight - 120) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      }
+      return next;
+    });
+  };
   const [visibleCount, setVisibleCount] = useState(30);
 
   // Reader Customizer States with Persistent LocalStorage
@@ -2954,19 +2979,52 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   })}
                 </div>
 
-                {/* Swadhyay Auto-Scroll Button */}
-                <button
-                  type="button"
-                  onClick={() => setIsAutoScrolling(!isAutoScrolling)}
-                  className={`h-7 px-3 rounded-full text-xs font-semibold flex items-center gap-1.5 shrink-0 transition-colors cursor-pointer select-none ${isAutoScrolling
-                      ? 'bg-amber-600 text-white font-bold animate-pulse'
-                      : 'bg-amber-100 hover:bg-amber-200 text-amber-900'
+                {/* Swadhyay & Word Study Controls */}
+                <div className="flex items-center gap-1.5 shrink-0">
+                  <button
+                    type="button"
+                    onClick={handleToggleWordStudy}
+                    className={`h-7 px-3 rounded-full text-xs font-semibold flex items-center gap-1.5 shrink-0 transition-colors cursor-pointer select-none ${
+                      isWordStudyOpen
+                        ? 'bg-[#1C140D] text-[#FEF08A]'
+                        : 'bg-[#FAF8F4] hover:bg-[#F5EFE3] text-[#78350F]'
                     }`}
-                  title="Continuous Contemplative Recitation Auto-Scroll"
-                >
-                  {isAutoScrolling ? <Pause className="w-3 h-3 fill-current" /> : <Play className="w-3 h-3 fill-current ml-0.5" />}
-                  <span className="hidden sm:inline">{isAutoScrolling ? 'विराम' : 'स्वाध्याय प्रवाह'}</span>
-                </button>
+                    title="ब्रज शब्दकोश अध्ययन (Word Study)"
+                  >
+                    <BookOpen className="w-3 h-3" />
+                    <span>शब्दार्थ</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setIsAutoScrolling(!isAutoScrolling)}
+                    className={`h-7 px-3 rounded-full text-xs font-semibold flex items-center gap-1.5 shrink-0 transition-colors cursor-pointer select-none ${isAutoScrolling
+                        ? 'bg-amber-600 text-white font-bold animate-pulse'
+                        : 'bg-amber-100 hover:bg-amber-200 text-amber-900'
+                      }`}
+                    title="Continuous Contemplative Recitation Auto-Scroll"
+                  >
+                    {isAutoScrolling ? <Pause className="w-3 h-3 fill-current" /> : <Play className="w-3 h-3 fill-current ml-0.5" />}
+                    <span className="hidden sm:inline">{isAutoScrolling ? 'विराम' : 'स्वाध्याय प्रवाह'}</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Interactive Braj Word Study Tray (Continuous Mode) */}
+              <div ref={wordStudyAnchorRef} className={isWordStudyOpen ? 'mb-6 scroll-mt-44' : 'scroll-mt-44 -mt-6'}>
+                {isWordStudyOpen && (
+                  <Suspense fallback={null}>
+                    <LazyBrajWordStudyPanel
+                      verseText={
+                        (selectedPad?.verses?.length
+                          ? selectedPad.verses.flatMap((v) => v.linesDevanagari || [])
+                          : filteredPads.slice(0, 6).flatMap((p) => p.verses?.flatMap((v) => v.linesDevanagari || []) || [])
+                        ).join(' ')
+                      }
+                      onClose={() => setIsWordStudyOpen(false)}
+                    />
+                  </Suspense>
+                )}
               </div>
 
               {/* Continuous Stream of Verses */}
@@ -3100,6 +3158,18 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                                 currentTheme={currentTheme}
                                 hideToolbar={true}
                               />
+                              {showTransliteration && (v.linesDevanagari?.length ?? 0) > 0 && (
+                                <div className={`space-y-1 pt-2 mt-2 ${textAlignClass}`}>
+                                  {((v.linesTransliteration?.length ?? 0) > 0
+                                    ? v.linesTransliteration!
+                                    : v.linesDevanagari.map((l) => transliterateDevanagari(l))
+                                  ).map((tl, tlIdx) => (
+                                    <p key={tlIdx} className={`${fontClass} italic text-xs sm:text-sm ${currentTheme.translitColor} leading-relaxed`}>
+                                      {sanitizeSacredText(tl)}
+                                    </p>
+                                  ))}
+                                </div>
+                              )}
                               {pad.verses.length > 1 && (
                                 <div className="flex items-center justify-center my-3 select-none">
                                   <span className={`${fontClass} font-bold text-xs tracking-widest ${currentTheme.metaColor}`}>
@@ -3278,6 +3348,20 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
 
                     <button
                       type="button"
+                      onClick={() => setIsWordStudyOpen((v) => !v)}
+                      className={`px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer ${
+                        isWordStudyOpen
+                          ? 'bg-[#1C140D] text-[#FEF08A]'
+                          : 'bg-white hover:bg-white/80 text-[#78350F]'
+                      }`}
+                      title="ब्रज शब्दकोश अध्ययन (Word Study)"
+                    >
+                      <BookOpen className="w-3.5 h-3.5" />
+                      <span>शब्दार्थ</span>
+                    </button>
+
+                    <button
+                      type="button"
                       onClick={handleToggleSummary}
                       className="px-3 py-1.5 rounded-full bg-white hover:bg-white/80 text-[#78350F] text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
                     >
@@ -3338,6 +3422,20 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   </div>
                 </div>
               </div>
+
+              {/* Interactive Braj Word Study Tray */}
+              {isWordStudyOpen && selectedPad?.verses && (
+                <div className="mb-6">
+                  <Suspense fallback={null}>
+                    <LazyBrajWordStudyPanel
+                      verseText={selectedPad.verses
+                        .flatMap((v) => v.linesDevanagari || [])
+                        .join(' ')}
+                      onClose={() => setIsWordStudyOpen(false)}
+                    />
+                  </Suspense>
+                </div>
+              )}
 
               {/* Verses Stanza Block */}
               <div className="space-y-6 sm:space-y-8">
@@ -3416,10 +3514,13 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                           </span>
                         </div>
 
-                        {/* Transliteration */}
-                        {showTransliteration && (verse.linesTransliteration?.length ?? 0) > 0 && (
+                        {/* Transliteration (Uses IAST lines or algorithmic Devanagari -> Roman fallback) */}
+                        {showTransliteration && ((verse.linesTransliteration?.length ?? 0) > 0 || (verse.linesDevanagari?.length ?? 0) > 0) && (
                           <div className={`space-y-1 pt-2 border-t ${currentTheme.borderColor} mt-2.5 ${textAlignClass}`}>
-                            {verse.linesTransliteration?.map((line, lIdx) => (
+                            {((verse.linesTransliteration?.length ?? 0) > 0
+                              ? verse.linesTransliteration!
+                              : (verse.linesDevanagari || []).map((l) => transliterateDevanagari(l))
+                            ).map((line, lIdx) => (
                               <p key={lIdx} className={`${fontClass} italic ${currentTheme.translitColor} ${textAlignClass} ${fontSize === 'sm'
                                   ? 'text-[11px] sm:text-xs leading-relaxed'
                                   : fontSize === 'md'

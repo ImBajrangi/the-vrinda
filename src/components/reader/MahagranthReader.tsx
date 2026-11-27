@@ -13,7 +13,11 @@ import {
   PanelLeftOpen,
   PanelRightClose,
   PanelRightOpen,
+  Maximize2,
+  Minimize2,
+  Languages,
 } from 'lucide-react';
+import { transliterateDevanagari } from '../../utils/transliterate';
 import { SacredDatabase } from '../../services/sacredDatabase';
 import { useSidebarState } from '../../hooks/useSidebarState';
 import { getEpicDarshanVisual } from '../../services/devotionalVisuals';
@@ -151,6 +155,9 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
   const [activePurportId, setActivePurportId] = useState<string | null>(null);
   const [bookmarkedIds, setBookmarkedIds] = useState<string[]>([]);
   const [fontSize, setFontSize] = useState<'sm' | 'md' | 'lg' | 'xl'>('md');
+  const [showRoman, setShowRoman] = useState<boolean>(false);
+  const [paperTone, setPaperTone] = useState<'porcelain' | 'chandan'>('porcelain');
+  const [isZenMode, setIsZenMode] = useState<boolean>(false);
   const {
     leftCollapsed: isLeftCollapsed,
     rightCollapsed: isRightCollapsed,
@@ -158,6 +165,15 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
     toggleRight: toggleRightSidebar,
     setLeftCollapsed,
   } = useSidebarState('epics');
+
+  useEffect(() => {
+    if (!isZenMode) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsZenMode(false);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [isZenMode]);
   const chapterSearchInputRef = useRef<HTMLInputElement | null>(null);
 
   // Synchronize initialGranthaId prop changes from parent
@@ -887,6 +903,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
         {/* ========================================================================= */}
         {/* Left Column: Expandable/Shrinkable Sarga/Chapter Catalog Desk             */}
         {/* ========================================================================= */}
+        {!isZenMode && (
         <aside
           aria-label="अध्याय अनुक्रमणिका"
           className={`hidden md:block shrink-0 sticky top-20 sm:top-24 self-start transition-[width] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
@@ -1091,16 +1108,25 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
             </div>
           )}
           </aside>
+        )}
 
         {/* ========================================================================= */}
         {/* Center Column: Continuous Sacred Shloka Reading Stream                    */}
         {/* ========================================================================= */}
         <article
           id="epic-canvas-top"
-          className={`min-w-0 w-full md:flex-1 ${isLeftCollapsed && isRightCollapsed ? 'max-w-4xl mx-auto' : ''} bg-transparent sm:bg-white rounded-none sm:rounded-3xl p-0 sm:p-8 xl:p-9 2xl:p-10 min-h-[calc(100vh-8rem)] border-0 sm:border sm:border-neutral-200/70 shadow-none sm:shadow-2xs transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]`}
+          className={`min-w-0 w-full md:flex-1 ${
+            isZenMode || (isLeftCollapsed && isRightCollapsed) ? 'max-w-4xl mx-auto' : ''
+          } ${
+            paperTone === 'chandan' ? 'bg-transparent sm:bg-[#FAF6EE]' : 'bg-transparent sm:bg-white'
+          } rounded-none sm:rounded-[28px] p-0 sm:p-8 xl:p-9 2xl:p-10 min-h-[calc(100vh-8rem)] shadow-none sm:shadow-[0_2px_16px_rgba(24,24,27,0.025)] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]`}
         >
           {/* Chapter Header Bar (Desktop Only - on mobile, MobileReaderHeader provides the top chrome) */}
-          <div className="hidden sm:flex pb-4 mb-6 border-b border-neutral-100 flex-col sm:flex-row sm:items-center justify-between gap-3 sticky top-24 z-20 bg-white/[0.98] -mx-4 sm:-mx-8 xl:-mx-9 2xl:-mx-10 px-4 sm:px-8 xl:px-9 2xl:px-10 pt-3 rounded-t-3xl shadow-[0_4px_12px_-4px_rgba(0,0,0,0.03)]">
+          <div
+            className={`hidden sm:flex pb-4 mb-6 flex-col sm:flex-row sm:items-center justify-between gap-3 sticky top-24 z-20 ${
+              paperTone === 'chandan' ? 'bg-[#FAF6EE]' : 'bg-white'
+            } -mx-4 sm:-mx-8 xl:-mx-9 2xl:-mx-10 px-4 sm:px-8 xl:px-9 2xl:px-10 pt-3 rounded-t-[28px] shadow-[0_4px_14px_-6px_rgba(0,0,0,0.04)]`}
+          >
             <div>
               <div className="flex items-center gap-2 text-xs font-serif font-bold text-amber-800 tracking-wider">
                 <BookOpen className="w-3.5 h-3.5" />
@@ -1118,9 +1144,46 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
               </p>
             </div>
 
-            {/* Quick Sizing Control Pill */}
-            <div className="flex items-center gap-2 self-start sm:self-auto">
-              <div className="flex items-center bg-neutral-100/90 p-1 rounded-full border border-neutral-200/80 text-xs font-sans font-medium">
+            {/* Quick Reading Comfort Controls */}
+            <div className="flex items-center gap-2 self-start sm:self-auto flex-wrap">
+              <button
+                type="button"
+                onClick={() => setShowRoman((v) => !v)}
+                className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-serif font-bold transition-colors cursor-pointer ${
+                  showRoman ? 'bg-[#FEF08A] text-[#78350F]' : 'bg-[#FAF8F4] text-neutral-600 hover:bg-[#F5EFE3]'
+                }`}
+                title="रोमन लिप्यन्तरण (Roman / Hinglish)"
+              >
+                <Languages className="w-3.5 h-3.5" />
+                <span>Roman</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setPaperTone((t) => (t === 'porcelain' ? 'chandan' : 'porcelain'))}
+                className={`px-2.5 py-1 rounded-full text-xs font-serif font-bold transition-colors cursor-pointer ${
+                  paperTone === 'chandan'
+                    ? 'bg-[#FEF08A] text-[#78350F]'
+                    : 'bg-[#FAF8F4] text-neutral-600 hover:bg-[#F5EFE3]'
+                }`}
+                title="पत्र रंग (Paper Atmosphere)"
+              >
+                {paperTone === 'porcelain' ? 'चन्दन' : 'श्वेत'}
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setIsZenMode((z) => !z)}
+                className={`p-1.5 rounded-full transition-colors cursor-pointer ${
+                  isZenMode ? 'bg-[#1C140D] text-[#FEF08A]' : 'bg-[#FAF8F4] text-neutral-600 hover:bg-[#F5EFE3]'
+                }`}
+                title={isZenMode ? 'साइडबार दिखाएं (Esc)' : 'एकाग्र पठन (Focus Mode)'}
+                aria-label="Toggle Epic Focus Mode"
+              >
+                {isZenMode ? <Minimize2 className="w-3.5 h-3.5" /> : <Maximize2 className="w-3.5 h-3.5" />}
+              </button>
+
+              <div className="flex items-center bg-[#FAF8F4] p-1 rounded-full text-xs font-sans font-medium">
                 <button
                   type="button"
                   onClick={() => setFontSize('sm')}
@@ -1255,6 +1318,16 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
                             }}
                             hideToolbar={true}
                           />
+                          {showRoman && (v.linesDevanagari?.length ?? 0) > 0 && (
+                            <div className="mt-2.5 pt-2 text-center space-y-1 text-xs sm:text-sm font-serif italic text-neutral-600">
+                              {((v.linesTransliteration?.length ?? 0) > 0
+                                ? v.linesTransliteration!
+                                : v.linesDevanagari.map((l) => transliterateDevanagari(l))
+                              ).map((rl, rIdx) => (
+                                <p key={rIdx}>{rl}</p>
+                              ))}
+                            </div>
+                          )}
                           {pad.verses.length > 1 && (
                             <div className="flex items-center justify-center my-3 select-none">
                               <span className="font-serif font-bold text-xs tracking-widest text-[#92400E]">
@@ -1324,7 +1397,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
           <SacredDiscoveryShelf
             entityType="story"
             entitySlug={currentEpicConfig.id}
-            title={`${currentEpicConfig.name} • सम्बन्धित पावन नेक्सस`}
+            title={`${currentEpicConfig.name} • आगे की साधना यात्रा`}
           />
 
           {/* Sacred Colophon / Chapter Dedication */}
@@ -1352,6 +1425,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
         {/* ========================================================================= */}
         {/* Right Column: Dedicated Epic Commentary Desk (Expand / Shrink)            */}
         {/* ========================================================================= */}
+        {!isZenMode && (
         <aside
           aria-label="महाग्रंथ भावार्थ साइडबार"
           className={`hidden xl:block shrink-0 sticky top-20 sm:top-24 self-start transition-[width] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
@@ -1541,6 +1615,7 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
             </div>
           )}
         </aside>
+        )}
 
       </div>
     </div>

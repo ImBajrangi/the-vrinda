@@ -67,7 +67,368 @@
     "term": "सखी भाव",
     "transliteration": "Sakhī Bhāva",
     "meaningDevanagari": "अपने सुख की कोई कामना न रखकर केवल प्रिया-प्रियतम के सुख में ही परम सुख की अनुभूति।",
-    "context": "श्री हित हरिवंश महाप्रभु का परम दिव्य दृष्टिकोण।"
+    "context": "श्री हित हरिवंश महाप्रभु का परम दिव्य दृष्टिकोण।",
+    "termEn": "Sakhi Bhava",
+    "category": "Sadhana",
+    "definitionEn": "The devotional sentiment of serving Shri Radha and Krishna as an intimate eternal friend and companion (Sahachari).",
+    "etymology": "From \"Sakhi\" (companion/confidante) + \"Bhava\" (spiritual mood).",
+    "theologicalContextHi": "सखी भाव में साधक श्री राधा और कृष्ण की प्राण-सहचरी बनकर सेवा करता है। यहाँ भगवान के प्रति भय या संकोच नहीं बल्कि प्रेम का सहज सख्य व लाड़ होता है। अपने सुख की कामना त्यागकर केवल प्रिया-प्रीतम के सुख में प्रसन्न रहना ही सखी भाव है।",
+    "theologicalContextEn": "In Sakhi Bhava (elevated to Sahachari Bhava in Haridasi and Radhavallabhi traditions), the devotee lovingly arranges bowers, garlands, and musical seva with selfless intimacy.",
+    "relatedSaints": [
+      {
+        "name": "Swami Haridas",
+        "slug": "haridas"
+      },
+      {
+        "name": "Shri Hit Harivansh",
+        "slug": "hit-harivansh"
+      }
+    ],
+    "relatedGranthas": [
+      {
+        "name": "Hit Chaurasi",
+        "slug": "hit-chaurasi"
+      },
+      {
+        "name": "Kelimal",
+        "slug": "kelimal"
+      }
+    ]
+  },
+  {
+    "id": "braj-ras",
+    "term": "वृन्दावन भक्ति (ब्रज रस)",
+    "termEn": "Vrindavan Devotion (Braj Ras)",
+    "transliteration": "Braj Rasa / Vṛndāvana Bhakti",
+    "category": "Theology",
+    "meaningDevanagari": "वृन्दावन के निकुंजों में अनुभव किया जाने वाला अहैतुक एवं निष्काम दिव्य प्रेम-रस, जो मुक्ति की कामना से भी परे सर्वोत्कृष्ट पुरुषार्थ है।",
+    "definitionEn": "The sweet, transcendental essence of selfless divine love experienced in the sacred groves of Vrindavan — the highest aspiration of the Rasik saints.",
+    "etymology": "From \"Braj\" (pastoral land of Krishna) + \"Rasa\" (taste, nectar, emotional essence).",
+    "context": "हित चौरासी, पद १; केलिमाल, सिद्धान्त पद १८",
+    "theologicalContextHi": "वृन्दावन भक्ति दर्शन की सर्वोच्च अवस्था है जहाँ साधक समस्त ऐश्वर्य भाव से मुक्त होकर केवल श्री राधा कृष्ण के निकुंज के केलि रस में लीन हो जाता है। यह रस मुक्ति की चाह से भी परे है। स्वामी हरिदास और हित हरिवंश महाप्रभु जैसे रसिक संतों ने इसे जीवन का एकमात्र परम पुरुषार्थ माना है।",
+    "theologicalContextEn": "Vrindavan Devotion represents the zenith of aesthetic devotion elaborated by the post-15th century Rasik saints. Centering entirely on Madhurya — the sweet, intimate love play of Shri Radha and Krishna — it can only be tasted through humility and companion service (Sahachari Bhava).",
+    "relatedSaints": [
+      {
+        "name": "Swami Haridas",
+        "slug": "haridas"
+      },
+      {
+        "name": "Shri Hit Harivansh",
+        "slug": "hit-harivansh"
+      }
+    ],
+    "relatedGranthas": [
+      {
+        "name": "Hit Chaurasi",
+        "slug": "hit-chaurasi"
+      },
+      {
+        "name": "Kelimal",
+        "slug": "kelimal"
+      }
+    ]
+  },
+  {
+    "id": "nitya-vihar",
+    "term": "नित्य विहार",
+    "termEn": "Nitya Vihar",
+    "transliteration": "Nitya Vihāra",
+    "category": "Lila",
+    "meaningDevanagari": "वृन्दावन के एकान्त निकुंजों में श्री राधा-कृष्ण का अखंड, सतत एवं विरह-रहित नित्य क्रीड़ा-विलास।",
+    "definitionEn": "The eternal, unbroken love-play of Shri Radha and Shri Krishna in Vrindavan’s secluded bowers with zero beginning, end, or separation.",
+    "etymology": "From \"Nitya\" (eternal) + \"Vihar\" (play, roaming, pastimes).",
+    "context": "केलिमाल, पद ३४; बयालीस लीला",
+    "theologicalContextHi": "नित्य विहार का अर्थ है श्री राधा कृष्ण का अखंड, सतत चलने वाला क्रीड़ा-विलास। इसमें जन्म-मरण, सृष्टि-प्रलय या किसी भी प्रकार के वियोग (विरह) का सर्वथा अभाव है। स्वामी हरिदास जी ने सिद्ध किया कि वृंदावन के निकुंजों में यह दिव्य दंपत्ति प्रतिपल नवीन अनुराग के साथ क्रीड़ारत रहता है।",
+    "theologicalContextEn": "In Haridasi and Radhavallabhi theology, Nitya Vihar transcends cosmic creation and dissolution and focuses purely on unbroken spiritual union (samyoga), witnessed intimately by eternal companions.",
+    "relatedSaints": [
+      {
+        "name": "Swami Haridas",
+        "slug": "haridas"
+      },
+      {
+        "name": "Shri Dhruvdas",
+        "slug": "dhruvdas"
+      }
+    ],
+    "relatedGranthas": [
+      {
+        "name": "Kelimal",
+        "slug": "kelimal"
+      },
+      {
+        "name": "Bayalees Leela",
+        "slug": "bayalees-leela"
+      }
+    ]
+  },
+  {
+    "id": "nikunj",
+    "term": "निकुंज",
+    "termEn": "Nikunj",
+    "transliteration": "Nikuñja",
+    "category": "Landscape",
+    "meaningDevanagari": "वृन्दावन के लता-पुष्पों से आच्छादित चिन्मय एवं एकांत कुंज, जो युगल सरकार की नित्य अन्तरंग क्रीड़ा-स्थली हैं।",
+    "definitionEn": "Conscious, secluded emerald forest bowers of Vrindavan reserved exclusively for the confidential pastimes of the Divine Couple.",
+    "etymology": "Sanskrit term for an arbor, bower, or grove of climbing creepers.",
+    "context": "राधा सुधा निधि, श्लोक १०५; व्यास वाणी पूर्वार्ध",
+    "theologicalContextHi": "निकुंज वृंदावन के उन सघन, लता-पुष्पों से आच्छादित कुंजों को कहते हैं जो युगल सरकार की क्रीड़ा स्थली हैं। रसिक उपासना में निकुंज को चिन्मय माना गया है जो युगल की इच्छा के अनुसार रूप बदलता है और जहाँ ललिता आदि सखियों के अतिरिक्त अन्य किसी को प्रवेश का अधिकार नहीं है।",
+    "theologicalContextEn": "The Nikunj is a living spiritual grove composed of desire-creepers (kalpa-lata) that reflect the emotional moods of Radha and Krishna, accessible only to Sahacharis.",
+    "relatedSaints": [
+      {
+        "name": "Shri Hit Harivansh",
+        "slug": "hit-harivansh"
+      },
+      {
+        "name": "Shri Hariram Vyas",
+        "slug": "hariram-vyas"
+      }
+    ],
+    "relatedGranthas": [
+      {
+        "name": "Radha Sudha Nidhi",
+        "slug": "radha-sudha-nidhi"
+      }
+    ]
+  },
+  {
+    "id": "manjari-bhava",
+    "term": "मंजरी भाव",
+    "termEn": "Manjari Bhava",
+    "transliteration": "Mañjarī Bhāva",
+    "category": "Sadhana",
+    "meaningDevanagari": "गौड़ीय वैष्णव साधना की वह परम गोपनीय अवस्था जहाँ साधक स्वयं को श्रीराधा की अन्तरंग सेविका मंजरी रूप में भावित करता है।",
+    "definitionEn": "The highest confidential mood of service where the devotee identifies solely as a young maidservant (Manjari) of Srimati Radharani.",
+    "etymology": "From \"Manjari\" (blossom bud / maidservant) + \"Bhava\" (devotional sentiment).",
+    "context": "भक्ति रसामृत सिन्धु; बयालीस लीला",
+    "theologicalContextHi": "मंजरी भाव सखी भाव की चरम परिपक्व अवस्था है। इसमें साधक स्वयं को श्री राधा जी की नन्ही दासी (मंजरी) मानकर ध्यान करता है जिसका एकमात्र सुख श्री राधा रानी के अंगों की सेवा करना और युगल मिलन देखकर हर्षित होना है।",
+    "theologicalContextEn": "In Manjari Bhava, the practitioner desires no direct attraction toward Krishna independently; her complete bliss rests in serving Srimati Radharani and assisting the Divine Couple’s union.",
+    "relatedSaints": [
+      {
+        "name": "Shri Dhruvdas",
+        "slug": "dhruvdas"
+      }
+    ],
+    "relatedGranthas": [
+      {
+        "name": "Bayalees Leela",
+        "slug": "bayalees-leela"
+      }
+    ]
+  },
+  {
+    "id": "rasa",
+    "term": "रस (माधुर्य रस)",
+    "termEn": "Rasa",
+    "transliteration": "Rasa / Mādhurya",
+    "category": "Philosophy",
+    "meaningDevanagari": "परमात्मा के साथ आत्मा के प्रेम-सम्बन्ध का अद्भुत आस्वादन; पाँच भक्ती रसों में माधुर्य रस सर्वश्रेष्ठ है।",
+    "definitionEn": "The transcendent aesthetic essence of the soul’s loving relationship with the Supreme Lord, culminating in Madhurya (sweet conjugal devotion).",
+    "etymology": "Sanskrit root meaning nectar, essence, taste, or aesthetic flavor.",
+    "context": "भक्ति रसामृत सिन्धु; व्यास वाणी",
+    "theologicalContextHi": "भक्ति शास्त्र में शान्त, दास्य, सख्य, वात्सल्य और माधुर्य — ये पाँच मुख्य रस माने गए हैं। इनमें माधुर्य रस सर्वश्रेष्ठ है, जहाँ ऐश्वर्य और संकोच का स्थान केवल सहज अनुराग ले लेता है।",
+    "theologicalContextEn": "Vaishnava acharyas elevated aesthetic theory into devotional theology. Madhurya Rasa places affectionate sweetness above cosmic majesty.",
+    "relatedSaints": [
+      {
+        "name": "Shri Hariram Vyas",
+        "slug": "hariram-vyas"
+      }
+    ],
+    "relatedGranthas": [
+      {
+        "name": "Vyas Vani",
+        "slug": "vyas-vani"
+      }
+    ]
+  },
+  {
+    "id": "rasik",
+    "term": "रसिक",
+    "termEn": "Rasik",
+    "transliteration": "Rasika",
+    "category": "Tradition",
+    "meaningDevanagari": "शुष्क ज्ञान व कर्मकाण्ड से परे केवल श्री युगल सरकार के नाम, रूप, लीला व धाम के मधुर रस में डूबे सिद्ध सन्त।",
+    "definitionEn": "A spiritual connoisseur whose consciousness abides continuously in the intimate, sweet pastimes and musical praise of Radha Krishna.",
+    "etymology": "One who possesses and relishes \"Rasa\" (divine spiritual flavor).",
+    "context": "व्यास वाणी उत्तरार्ध (रसिक महिमा)",
+    "theologicalContextHi": "रसिक वह सन्त हैं जिनका जीवन केवल युगल सरकार के नाम, रूप, लीला और धाम के चिन्तन में बीतता है। ब्रज की हरित्रयी (स्वामी हरिदास, हित हरिवंश, हरिराम व्यास) ने शास्त्रीय रागों और पदों द्वारा इसी रस की प्रतिष्ठा की।",
+    "theologicalContextEn": "A Rasik is a master of spiritual emotion rather than dry ritualism, expressing direct inner realizations through ragas and sacred poetry.",
+    "relatedSaints": [
+      {
+        "name": "Swami Haridas",
+        "slug": "haridas"
+      },
+      {
+        "name": "Shri Hit Harivansh",
+        "slug": "hit-harivansh"
+      },
+      {
+        "name": "Shri Hariram Vyas",
+        "slug": "hariram-vyas"
+      }
+    ],
+    "relatedGranthas": [
+      {
+        "name": "Vyas Vani",
+        "slug": "vyas-vani"
+      }
+    ]
+  },
+  {
+    "id": "keli-lila",
+    "term": "केलि लीला",
+    "termEn": "Keli Lila",
+    "transliteration": "Keli Līlā",
+    "category": "Lila",
+    "meaningDevanagari": "निकुंज वन के भीतर श्री प्रिया-प्रियतम की अत्यन्त गोपनीय, निष्काम एवं आनन्दमयी नित्य क्रीड़ाएँ।",
+    "definitionEn": "The confidential loving pastimes within the inner bowers of Vrindavan, meditated upon daily through Rasik vanis.",
+    "etymology": "From \"Keli\" (play/amorous sport) + \"Lila\" (divine pastime).",
+    "context": "केलिमाल; हित चौरासी, पद ५५",
+    "theologicalContextHi": "केलि लीला से तात्पर्य श्री राधा कृष्ण की निकुंज के भीतर होने वाली अन्तरंग क्रीड़ाओं से है — जैसे वेणी गूँथना, यमुना जल-विहार, हिंडोला झूलना व वंशी वादन। इन क्रीड़ाओं में लौकिक काम का लेश भी नहीं अपितु विशुद्ध चिन्मय आनन्द है।",
+    "theologicalContextEn": "Unlike outer heroic pastimes in Mathura, Keli Lila unfolds solely inside Vrindavan’s groves — adorning hair with flowers, Yamuna water sports, and monsoon swings.",
+    "relatedSaints": [
+      {
+        "name": "Swami Haridas",
+        "slug": "haridas"
+      },
+      {
+        "name": "Shri Hit Harivansh",
+        "slug": "hit-harivansh"
+      }
+    ],
+    "relatedGranthas": [
+      {
+        "name": "Kelimal",
+        "slug": "kelimal"
+      },
+      {
+        "name": "Hit Chaurasi",
+        "slug": "hit-chaurasi"
+      }
+    ]
+  },
+  {
+    "id": "asta-kaliya-lila",
+    "term": "अष्टकालीन लीला",
+    "termEn": "Asta-kaliya-lila",
+    "transliteration": "Aṣṭakālīya Līlā",
+    "category": "Lila",
+    "meaningDevanagari": "२४ घण्टे के आठ पहरों (निशान्त, प्रातः, संगव, मध्याह्न, अपराह्न, सायं, प्रदोष, निशा) में विभक्त युगल सरकार की नित्य दिनचर्या।",
+    "definitionEn": "The eight-fold daily cycle of Radha and Krishna’s eternal pastimes anchoring round-the-clock devotional remembrance (Smarana).",
+    "etymology": "From \"Asta\" (eight) + \"Kala\" (time segments) + \"Lila\" (pastimes).",
+    "context": "गोविन्द लीलामृत; बयालीस लीला",
+    "theologicalContextHi": "भोर में जागने (निशान्त लीला) से लेकर रात्रि के शयन विलास तक युगल किशोर प्रत्येक पहर में किस निकुंज क्रीड़ा में संलग्न रहते हैं, इसका सूक्ष्म वर्णन अष्टकालीन लीला में होता है। वृन्दोपनिषद् का अष्टयाम पंचांग इसी नित्य चक्र से जुड़ा है।",
+    "theologicalContextEn": "Ashtayama / Astakaliya devotion aligns every period of the devotee’s day and night with the corresponding eternal pastime of Radha and Krishna in Goloka Vrindavan.",
+    "relatedSaints": [
+      {
+        "name": "Shri Dhruvdas",
+        "slug": "dhruvdas"
+      }
+    ],
+    "relatedGranthas": [
+      {
+        "name": "Bayalees Leela",
+        "slug": "bayalees-leela"
+      }
+    ]
+  },
+  {
+    "id": "yugal-sarkar",
+    "term": "युगल सरकार",
+    "termEn": "Yugal Sarkar",
+    "transliteration": "Yugala Sarkār",
+    "category": "Theology",
+    "meaningDevanagari": "एक ही परम तत्व के दो अविभाज्य प्रेम-स्वरूप — श्री राधारानी एवं श्री कृष्ण की सम्मिलित दिव्य जोड़ी।",
+    "definitionEn": "The undivided Divine Couple, Srimati Radharani and Shri Krishna, worshiped inseparably as the sovereign heart of Braj devotion.",
+    "etymology": "From \"Yugal\" (divine pair) + \"Sarkar\" (sovereign majesty).",
+    "context": "हित चौरासी, पद २",
+    "theologicalContextHi": "ब्रज रसिक भक्ति में श्रीकृष्ण को श्री राधा के बिना और श्री राधा को श्रीकृष्ण के बिना कभी अलग नहीं देखा जाता। वे दोनों प्रेम रस के आस्वादन हेतु ही दो स्वरूपों में विराजते हैं तथा भक्तों के हृदय-साम्राज्य के एकमात्र स्वामी (सरकार) हैं।",
+    "theologicalContextEn": "In Rasik Vaishnavism, Radha and Krishna are one undivided absolute manifested as two for the exchange of divine love; \"Sarkar\" honors their supreme sovereignty over seekers’ hearts.",
+    "relatedSaints": [
+      {
+        "name": "Shri Hit Harivansh",
+        "slug": "hit-harivansh"
+      }
+    ],
+    "relatedGranthas": [
+      {
+        "name": "Hit Chaurasi",
+        "slug": "hit-chaurasi"
+      }
+    ]
+  },
+  {
+    "id": "radha-dasya",
+    "term": "राधा दास्य",
+    "termEn": "Radha Dasya",
+    "transliteration": "Rādhā Dāsya",
+    "category": "Philosophy",
+    "meaningDevanagari": "श्री राधारानी के चरण कमलों की अनन्य सेवा व शरणागति, जिसके अधीन स्वयं नन्दनन्दन श्रीकृष्ण भी रहते हैं।",
+    "definitionEn": "Single-pointed surrender and servitude to Srimati Radharani, recognized as higher even than direct worship of Krishna because Krishna is bound by Her love.",
+    "etymology": "From \"Radha\" + \"Dasya\" (humble devotion/service).",
+    "context": "राधा सुधा निधि, श्लोक ८८; हित चौरासी",
+    "theologicalContextHi": "राधा दास्य श्री राधावल्लभ व अनेक रसिक सम्प्रदायों का प्राण है। श्रीकृष्ण स्वयं श्रीजी के प्रेम के वश में रहते हैं, अतः श्री राधा रानी की चरण-सेवा व कृपा-कटाक्ष प्राप्त होते ही श्यामसुन्दर स्वतः वशीभूत हो जाते हैं।",
+    "theologicalContextEn": "Srimati Radharani embodies Mahabhava — supreme divine love. Serving Her with pure humility is the swiftest pathway to delighting Krishna Himself.",
+    "relatedSaints": [
+      {
+        "name": "Shri Hit Harivansh",
+        "slug": "hit-harivansh"
+      }
+    ],
+    "relatedGranthas": [
+      {
+        "name": "Radha Sudha Nidhi",
+        "slug": "radha-sudha-nidhi"
+      }
+    ]
+  },
+  {
+    "id": "seva",
+    "term": "सेवा (रसिक सेवा पद्धति)",
+    "termEn": "Seva",
+    "transliteration": "Sevā",
+    "category": "Sadhana",
+    "meaningDevanagari": "श्री ठाकुर जी को जीवन्त प्रियतम मानकर ऋतु, भोग, वस्त्र, संगीत व मानसी ध्यान द्वारा की जाने वाली निस्वार्थ सेवा।",
+    "definitionEn": "Selfless loving service to Guru, Vaishnavas, and the Divine Couple through seasonal temple worship (Raga, Bhoga, Shringar) and inner meditation.",
+    "etymology": "Sanskrit root meaning to serve, attend, or cherish lovingly.",
+    "context": "हित चौरासी, पद १२; उपदेशामृत",
+    "theologicalContextHi": "रसिक परंपरा में सेवा केवल कर्मकाण्डी पूजा नहीं, बल्कि सजीव लाड़-प्यार की अभिव्यक्ति है। बाहर मंदिर सेवा और भीतर मन से निकुंज में मानसी सेवा — दोनों का उद्देश्य केवल युगल सरकार के सुख में सुखी रहना होता है।",
+    "theologicalContextEn": "In temples like Radhavallabh Mandir, Seva means caring for the living Beloved through seasonal delicacies, garments, and ragas, mirrored inwardly by Manasi Seva.",
+    "relatedSaints": [
+      {
+        "name": "Shri Hit Harivansh",
+        "slug": "hit-harivansh"
+      }
+    ],
+    "relatedGranthas": [
+      {
+        "name": "Hit Chaurasi",
+        "slug": "hit-chaurasi"
+      }
+    ]
+  },
+  {
+    "id": "raganuga-bhakti",
+    "term": "रागानुगा भक्ति",
+    "termEn": "Raganuga Bhakti",
+    "transliteration": "Rāgānugā Bhakti",
+    "category": "Philosophy",
+    "meaningDevanagari": "शास्त्रीय भय या औपचारिक विधि से ऊपर उठकर ब्रज के नित्य निवासियों के सहज अनुराग का अनुकरण करने वाली प्रेम-भक्ति।",
+    "definitionEn": "Spontaneous loving devotion following the passionate, unforced attraction of Vrindavan’s eternal residents rather than fear-bound scriptural rules.",
+    "etymology": "From \"Raga\" (spontaneous love) + \"Anuga\" (following) + \"Bhakti\".",
+    "context": "भक्ति रसामृत सिन्धु, साधन भक्ति लहरी; बयालीस लीला",
+    "theologicalContextHi": "जहाँ वैधी भक्ति नियमों के अनुशासन से चलती है, वहीं रागानुगा भक्ति हृदय में उत्पन्न उस दिव्य लोभ (उत्कट प्रेम लालसा) से जन्म लेती है जिसमें साधक ब्रज के सखियों अथवा ग्वालों के भाव से युगल की सेवा करता है।",
+    "theologicalContextEn": "Born from intense spiritual longing (lobha) rather than external duty, Raganuga Bhakti tunes the seeker’s inner consciousness to serve within eternal Vrindavan.",
+    "relatedSaints": [
+      {
+        "name": "Shri Dhruvdas",
+        "slug": "dhruvdas"
+      }
+    ],
+    "relatedGranthas": [
+      {
+        "name": "Bayalees Leela",
+        "slug": "bayalees-leela"
+      }
+    ]
   }
 ]
-

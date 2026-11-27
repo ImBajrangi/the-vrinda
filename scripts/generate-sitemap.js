@@ -478,8 +478,16 @@ function createSitemapSuite(baseUrl, prefix = '') {
     } catch {}
   }
 
-  // Ingest Programmatic SEO Hubs: Ragas, Themes & Braj Glossary
+  // Ingest Programmatic SEO Hubs: Knowledge Base, Festivals, Ragas, Themes & Braj Glossary
   mainUrls.push(
+    { loc: `${baseUrl}/knowledge-base`, lastmod: today, changefreq: 'weekly', priority: 0.9 },
+    { loc: `${baseUrl}/festivals`, lastmod: today, changefreq: 'weekly', priority: 0.9 },
+    { loc: `${baseUrl}/festivals/jhulan-yatra`, lastmod: today, changefreq: 'monthly', priority: 0.85 },
+    { loc: `${baseUrl}/festivals/radhashtami`, lastmod: today, changefreq: 'monthly', priority: 0.85 },
+    { loc: `${baseUrl}/festivals/sharad-purnima`, lastmod: today, changefreq: 'monthly', priority: 0.85 },
+    { loc: `${baseUrl}/festivals/latthmar-holi`, lastmod: today, changefreq: 'monthly', priority: 0.85 },
+    { loc: `${baseUrl}/festivals/krishna-janmashtami`, lastmod: today, changefreq: 'monthly', priority: 0.85 },
+    { loc: `${baseUrl}/festivals/gopashtami`, lastmod: today, changefreq: 'monthly', priority: 0.85 },
     { loc: `${baseUrl}/ragas`, lastmod: today, changefreq: 'weekly', priority: 0.9 },
     { loc: `${baseUrl}/themes`, lastmod: today, changefreq: 'weekly', priority: 0.9 },
     { loc: `${baseUrl}/glossary`, lastmod: today, changefreq: 'weekly', priority: 0.9 }

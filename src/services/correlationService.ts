@@ -26,6 +26,12 @@ import {
   SEED_PLACES,
   SEED_RITUALS,
 } from './sacredSectionService';
+import {
+  getSaintPortrait,
+  getDhamArtwork,
+  getRitualArtwork,
+  getKathaArtwork,
+} from './devotionalVisuals';
 
 export interface CorrelatedDiscovery {
   id: string;
@@ -34,6 +40,10 @@ export interface CorrelatedDiscovery {
   subtitleDevanagari?: string;
   snippet?: string;
   url: string;
+  imageUrl?: string;
+  isPrimaryNext?: boolean;
+  actionLabel?: string;
+  padRef?: SacredPad;
   badge: string;
   badgeColor: 'amber' | 'emerald' | 'rose' | 'indigo' | 'purple' | 'cyan';
   reason: string;
@@ -134,10 +144,10 @@ const NEXUS_CLUSTERS: Record<string, NexusCluster> = {
 
 export const CorrelationService = {
   /**
-   * 1. Calculate Current Ashtayama Prahar dynamically based on local device time
+   * 1. Calculate Current Ashtayama Prahar dynamically for a given timestamp (SSR-safe when passed deterministic baseline)
    */
-  getCurrentPrahar(): CurrentPraharInfo {
-    const now = new Date();
+  getCurrentPrahar(nowDate?: Date): CurrentPraharInfo {
+    const now = nowDate || new Date();
     const currentMinutes = now.getHours() * 60 + now.getMinutes();
 
     const periods = SacredDatabase.getAshtayamaPeriods();
@@ -278,7 +288,78 @@ export const CorrelationService = {
     const seenUrls = new Set<string>();
 
     // -------------------------------------------------------------
-    // Slot 1: Cross-Section - Sacred Place / Dham (तीर्थ दर्शन)
+    // Slot 1: Next Sequential / Harmonic Pad (पठन आगे बढ़ाएं)
+    // -------------------------------------------------------------
+    const granthaPadas = SacredDatabase.getPadasByGrantha(targetPad.collectionId);
+    const currentIdx = granthaPadas.findIndex((p) => p.id === targetPad.id || p.slug === targetPad.slug);
+
+    const nextPad =
+      currentIdx >= 0
+        ? granthaPadas.find(
+            (p, idx) =>
+              idx > currentIdx &&
+              p.id !== targetPad.id &&
+              (p.verses?.[0]?.linesDevanagari?.[0] || p.titleDevanagari) !==
+                (targetPad.verses?.[0]?.linesDevanagari?.[0] || targetPad.titleDevanagari)
+          )
+        : undefined;
+
+    if (nextPad) {
+      const url = `/pad/${encodeURIComponent(nextPad.slug || nextPad.id)}`;
+      if (!seenUrls.has(url)) {
+        seenUrls.add(url);
+        results.push({
+          id: `pad_${nextPad.id}`,
+          type: 'pad',
+          titleDevanagari: nextPad.verses?.[0]?.linesDevanagari?.[0] || nextPad.titleDevanagari,
+          subtitleDevanagari: `${nextPad.author}${nextPad.rag ? ` • राग ${nextPad.rag}` : ''}`,
+          url,
+          imageUrl: getSaintPortrait({ name: nextPad.author, slug: nextPad.collectionId }),
+          isPrimaryNext: true,
+          actionLabel: 'अगला पद पढ़ें',
+          padRef: nextPad,
+          badge: 'आगे पढ़ें • अगला पद',
+          badgeColor: 'amber',
+          reason: targetPad.chapterName ? `${targetPad.chapterName} का अगला पद जारी रखें` : 'अखंड वाणी पाठ आगे जारी रखें',
+          score: 98,
+          iconType: 'pad',
+        });
+      }
+    } else {
+      const matchingRagaPadas = SacredDatabase.getPadasByRaga(prahar.activeRagas[0] || targetPad.rag || 'बिलावल');
+      const harmonicCandidate =
+        matchingRagaPadas.find(
+          (p) =>
+            p.id !== targetPad.id &&
+            (p.verses?.[0]?.linesDevanagari?.[0] || p.titleDevanagari) !==
+              (targetPad.verses?.[0]?.linesDevanagari?.[0] || targetPad.titleDevanagari)
+        ) || granthaPadas.find((p) => p.id !== targetPad.id);
+      if (harmonicCandidate) {
+        const url = `/pad/${encodeURIComponent(harmonicCandidate.slug || harmonicCandidate.id)}`;
+        if (!seenUrls.has(url)) {
+          seenUrls.add(url);
+          results.push({
+            id: `pad_${harmonicCandidate.id}`,
+            type: 'pad',
+            titleDevanagari: harmonicCandidate.verses?.[0]?.linesDevanagari?.[0] || harmonicCandidate.titleDevanagari,
+            subtitleDevanagari: `${harmonicCandidate.author} • राग ${harmonicCandidate.rag || prahar.activeRagas[0]}`,
+            url,
+            imageUrl: getSaintPortrait({ name: harmonicCandidate.author, slug: harmonicCandidate.collectionId }),
+            isPrimaryNext: true,
+            actionLabel: 'यह पद पढ़ें',
+            padRef: harmonicCandidate,
+            badge: `${prahar.nameHindi} का पद`,
+            badgeColor: 'amber',
+            reason: `${prahar.timeRange} में गाने योग्य राग-संगत पद`,
+            score: 96,
+            iconType: 'flute',
+          });
+        }
+      }
+    }
+
+    // -------------------------------------------------------------
+    // Slot 2: Cross-Section - Sacred Place / Dham (लीला स्थल दर्शन)
     // -------------------------------------------------------------
     const targetPlaceSlug = cluster.places[0] || 'vrindavan-dham';
     const place = SEED_PLACES.find((p) => p.slug === targetPlaceSlug || p.id === targetPlaceSlug) || SEED_PLACES[0];
@@ -290,19 +371,21 @@ export const CorrelationService = {
           id: `place_${place.slug}`,
           type: 'place',
           titleDevanagari: place.nameDevanagari,
-          subtitleDevanagari: place.briefSignificance || 'पावन लीला धाम',
+          subtitleDevanagari: place.briefSignificance || 'पावन ब्रज लीला धाम',
           url,
-          badge: 'सम्बन्धित तीर्थ',
+          imageUrl: getDhamArtwork({ id: place.id, slug: place.slug, nameDevanagari: place.nameDevanagari }),
+          actionLabel: 'तीर्थ दर्शन व समय',
+          badge: 'जुड़ा लीला स्थल',
           badgeColor: 'emerald',
-          reason: `${cluster.traditionHindi} का प्रधान लीला स्थल`,
-          score: 95,
+          reason: 'यहाँ की सेवा-परम्परा व दर्शन समय जानें',
+          score: 94,
           iconType: 'temple',
         });
       }
     }
 
     // -------------------------------------------------------------
-    // Slot 2: Cross-Section - Saint Biography (संत चरित्र दर्शन)
+    // Slot 3: Cross-Section - Saint Biography (रचयिता संत परिचय)
     // -------------------------------------------------------------
     let targetBioSlug = cluster.saints[0];
     if (targetPad.author && targetPad.author.includes('हरिवंश')) targetBioSlug = 'sri-hit-harivansh-mahaprabhu';
@@ -323,9 +406,11 @@ export const CorrelationService = {
           titleDevanagari: bio.nameDevanagari,
           subtitleDevanagari: bio.tradition || cluster.traditionHindi,
           url,
-          badge: 'संत चरित्र',
+          imageUrl: getSaintPortrait({ slug: bio.slug, name: bio.nameDevanagari, tradition: bio.tradition }),
+          actionLabel: 'जीवन चरित्र पढ़ें',
+          badge: 'रचयिता आचार्य परिचय',
           badgeColor: 'indigo',
-          reason: `${bio.nameDevanagari} का दिव्य प्राकट्य एवं वाणी महात्म्य`,
+          reason: 'इनके जीवन प्रसंग, गुरु-परम्परा और समाधि स्थल पढ़े',
           score: 92,
           iconType: 'saint',
         });
@@ -333,96 +418,54 @@ export const CorrelationService = {
     }
 
     // -------------------------------------------------------------
-    // Slot 3: Cross-Section - Sacred Story or Ritual (कथा या नित्य उपासना)
+    // Slot 4: Sacred Story OR Nitya Ritual (कथा या नित्य आरती — Always populated!)
     // -------------------------------------------------------------
     const targetStorySlug = cluster.stories[0];
     const story = SEED_STORIES.find((s) => s.slug === targetStorySlug || s.id === targetStorySlug);
-    if (story) {
+    if (story && !seenUrls.has(`/story/${story.slug}`)) {
       const url = `/story/${story.slug}`;
-      if (!seenUrls.has(url)) {
-        seenUrls.add(url);
-        results.push({
-          id: `story_${story.slug}`,
-          type: 'story',
-          titleDevanagari: story.titleDevanagari,
-          subtitleDevanagari: story.summary?.slice(0, 60) + '...',
-          url,
-          badge: 'दिव्य कथा',
-          badgeColor: 'rose',
-          reason: `इस पद के भाव से जुड़ी पावन कथा`,
-          score: 88,
-          iconType: 'book',
-        });
-      }
+      seenUrls.add(url);
+      results.push({
+        id: `story_${story.slug}`,
+        type: 'story',
+        titleDevanagari: story.titleDevanagari,
+        subtitleDevanagari: story.categoryHindi || 'पावन लीला प्रसंग',
+        url,
+        imageUrl: getKathaArtwork({ id: story.id, category: story.category, titleDevanagari: story.titleDevanagari }),
+        actionLabel: 'कथा व भाव पढ़ें',
+        badge: 'भाव से जुड़ी लीला कथा',
+        badgeColor: 'rose',
+        reason: 'इस पद के प्रसंग को समझने के लिए पावन कथा',
+        score: 88,
+        iconType: 'book',
+      });
     } else {
       const targetRitualSlug = cluster.rituals[0] || 'aarti-kunj-bihari-ki';
-      const ritual = SEED_RITUALS.find((r) => r.slug === targetRitualSlug || r.id === targetRitualSlug);
-      if (ritual) {
+      const ritual =
+        SEED_RITUALS.find((r) => r.slug === targetRitualSlug || r.id === targetRitualSlug) ||
+        SEED_RITUALS[0];
+      if (ritual && !seenUrls.has(`/ritual/${ritual.slug}`)) {
         const url = `/ritual/${ritual.slug}`;
-        if (!seenUrls.has(url)) {
-          seenUrls.add(url);
-          results.push({
-            id: `ritual_${ritual.slug}`,
-            type: 'ritual',
-            titleDevanagari: ritual.titleDevanagari,
-            subtitleDevanagari: ritual.categoryHindi || 'नित्य उपासना',
-            url,
-            badge: 'नित्य उपासना',
-            badgeColor: 'purple',
-            reason: `${ritual.deityDevanagari} की पावन आरती व स्तुति`,
-            score: 87,
-            iconType: 'sparkle',
-          });
-        }
-      }
-    }
-
-    // -------------------------------------------------------------
-    // Slot 4: Temporal Prahar & Raga Harmonic Pad (वर्तमान प्रहर का पद)
-    // -------------------------------------------------------------
-    const granthaPadas = SacredDatabase.getPadasByGrantha(targetPad.collectionId);
-    const currentIdx = granthaPadas.findIndex((p) => p.id === targetPad.id || p.slug === targetPad.slug);
-
-    // Look for next sequential verse in grantha first
-    if (currentIdx >= 0 && currentIdx + 1 < granthaPadas.length) {
-      const nextPad = granthaPadas[currentIdx + 1];
-      const url = `/pad/${encodeURIComponent(nextPad.slug || nextPad.id)}`;
-      if (!seenUrls.has(url)) {
         seenUrls.add(url);
         results.push({
-          id: `pad_${nextPad.id}`,
-          type: 'pad',
-          titleDevanagari: nextPad.verses?.[0]?.linesDevanagari?.[0] || nextPad.titleDevanagari,
-          subtitleDevanagari: `${nextPad.author} • ${nextPad.rag ? `राग ${nextPad.rag}` : 'रसिक वाणी'}`,
+          id: `ritual_${ritual.slug}`,
+          type: 'ritual',
+          titleDevanagari: ritual.titleDevanagari,
+          subtitleDevanagari: `${ritual.deityDevanagari || 'नित्य उपासना'} • दैनिक स्तुति`,
           url,
-          badge: 'अगला पद',
-          badgeColor: 'amber',
-          reason: targetPad.chapterName ? `${targetPad.chapterName} की अगली पावन कड़ी` : 'अगला क्रमबद्ध पद',
-          score: 98,
-          iconType: 'pad',
+          imageUrl: getRitualArtwork({
+            id: ritual.id,
+            category: ritual.category,
+            deityDevanagari: ritual.deityDevanagari,
+            titleDevanagari: ritual.titleDevanagari,
+          }),
+          actionLabel: 'आरती / पाठ खोलें',
+          badge: 'दैनिक नित्य उपासना',
+          badgeColor: 'purple',
+          reason: 'पाठ के साथ नित्य आरती और स्तुति विधि पढ़े',
+          score: 87,
+          iconType: 'sparkle',
         });
-      }
-    } else {
-      // Harmonic Raga match or Prahar match
-      const matchingRagaPadas = SacredDatabase.getPadasByRaga(prahar.activeRagas[0] || targetPad.rag || 'बिलावल');
-      const harmonicCandidate = matchingRagaPadas.find((p) => p.id !== targetPad.id);
-      if (harmonicCandidate) {
-        const url = `/pad/${encodeURIComponent(harmonicCandidate.slug || harmonicCandidate.id)}`;
-        if (!seenUrls.has(url)) {
-          seenUrls.add(url);
-          results.push({
-            id: `pad_${harmonicCandidate.id}`,
-            type: 'pad',
-            titleDevanagari: harmonicCandidate.verses?.[0]?.linesDevanagari?.[0] || harmonicCandidate.titleDevanagari,
-            subtitleDevanagari: `${harmonicCandidate.author} • राग ${harmonicCandidate.rag || prahar.activeRagas[0]}`,
-            url,
-            badge: `${prahar.nameHindi}`,
-            badgeColor: 'amber',
-            reason: `वर्तमान प्रहर (${prahar.timeRange}) का राग-संगत पद`,
-            score: 90,
-            iconType: 'flute',
-          });
-        }
       }
     }
 
@@ -487,9 +530,13 @@ export const CorrelationService = {
           titleDevanagari: pad.verses?.[0]?.linesDevanagari?.[0] || pad.titleDevanagari,
           subtitleDevanagari: `${pad.author} • ${detectedCluster.traditionHindi}`,
           url,
-          badge: 'पावन पद',
+          imageUrl: getSaintPortrait({ name: pad.author, slug: pad.collectionId }),
+          isPrimaryNext: true,
+          actionLabel: 'रसिक वाणी पढ़ें',
+          padRef: pad,
+          badge: 'संबंधित रस वाणी',
           badgeColor: 'amber',
-          reason: `${detectedCluster.traditionHindi} का मुख्य पद`,
+          reason: 'इस प्रसंग से जुड़ी मूल पद-रचना का रसास्वादन करें',
           score: 95,
           iconType: 'pad',
         });
@@ -499,7 +546,7 @@ export const CorrelationService = {
     // 2. Correlate a Saint Biography
     if (entityType !== 'bio') {
       const bioSlug = detectedCluster.saints[0] || 'sri-hit-harivansh-mahaprabhu';
-      const bio = SEED_BIOGRAPHIES.find((b) => b.slug === bioSlug || b.id === bioSlug);
+      const bio = SEED_BIOGRAPHIES.find((b) => b.slug === bioSlug || b.id === bioSlug) || SEED_BIOGRAPHIES[0];
       if (bio) {
         const url = `/bio/${bio.slug}`;
         if (!seenUrls.has(url)) {
@@ -510,9 +557,11 @@ export const CorrelationService = {
             titleDevanagari: bio.nameDevanagari,
             subtitleDevanagari: bio.tradition || detectedCluster.traditionHindi,
             url,
-            badge: 'संत चरित्र',
+            imageUrl: getSaintPortrait({ slug: bio.slug, name: bio.nameDevanagari, tradition: bio.tradition }),
+            actionLabel: 'जीवन चरित्र पढ़ें',
+            badge: 'आचार्य एवं संत चरित्र',
             badgeColor: 'indigo',
-            reason: `${bio.nameDevanagari} का जीवन चरित्र`,
+            reason: 'परम्परा के प्रमुख संत का जीवन व उपदेश',
             score: 90,
             iconType: 'saint',
           });
@@ -523,7 +572,7 @@ export const CorrelationService = {
     // 3. Correlate a Sacred Place
     if (entityType !== 'place') {
       const placeSlug = detectedCluster.places[0] || 'vrindavan-dham';
-      const place = SEED_PLACES.find((p) => p.slug === placeSlug || p.id === placeSlug);
+      const place = SEED_PLACES.find((p) => p.slug === placeSlug || p.id === placeSlug) || SEED_PLACES[0];
       if (place) {
         const url = `/place/${place.slug}`;
         if (!seenUrls.has(url)) {
@@ -534,9 +583,11 @@ export const CorrelationService = {
             titleDevanagari: place.nameDevanagari,
             subtitleDevanagari: place.briefSignificance || 'पावन लीला धाम',
             url,
-            badge: 'पावन धाम',
+            imageUrl: getDhamArtwork({ id: place.id, slug: place.slug, nameDevanagari: place.nameDevanagari }),
+            actionLabel: 'तीर्थ दर्शन व समय',
+            badge: 'पावन लीला तीर्थ',
             badgeColor: 'emerald',
-            reason: `${place.nameDevanagari} का दर्शन व महात्म्य`,
+            reason: 'धाम महात्म्य, परिक्रमा और दर्शन जानकारी',
             score: 88,
             iconType: 'temple',
           });
@@ -544,10 +595,10 @@ export const CorrelationService = {
       }
     }
 
-    // 4. Correlate a Ritual or Story
+    // 4. Correlate a Ritual
     if (entityType !== 'ritual') {
       const ritualSlug = detectedCluster.rituals[0] || 'aarti-kunj-bihari-ki';
-      const ritual = SEED_RITUALS.find((r) => r.slug === ritualSlug || r.id === ritualSlug);
+      const ritual = SEED_RITUALS.find((r) => r.slug === ritualSlug || r.id === ritualSlug) || SEED_RITUALS[0];
       if (ritual) {
         const url = `/ritual/${ritual.slug}`;
         if (!seenUrls.has(url)) {
@@ -556,15 +607,48 @@ export const CorrelationService = {
             id: `ritual_${ritual.slug}`,
             type: 'ritual',
             titleDevanagari: ritual.titleDevanagari,
-            subtitleDevanagari: ritual.categoryHindi || 'नित्य उपासना',
+            subtitleDevanagari: `${ritual.deityDevanagari || 'नित्य उपासना'} • आरती / स्तुति`,
             url,
-            badge: 'नित्य उपासना',
+            imageUrl: getRitualArtwork({
+              id: ritual.id,
+              category: ritual.category,
+              deityDevanagari: ritual.deityDevanagari,
+              titleDevanagari: ritual.titleDevanagari,
+            }),
+            actionLabel: 'आरती / पाठ खोलें',
+            badge: 'नित्य उपासना विधि',
             badgeColor: 'purple',
-            reason: `${ritual.deityDevanagari} की दैनिक स्तुति`,
+            reason: 'दैनिक पाठ एवं श्रद्धा-पूजन विधि',
             score: 85,
             iconType: 'sparkle',
           });
         }
+      }
+    }
+
+    // Guarantee 4 rich cards when viewing a non-pad page by adding a related Story
+    if (results.length < limit) {
+      const storySlug = detectedCluster.stories[0];
+      const story =
+        SEED_STORIES.find((s) => (s.slug === storySlug || s.id === storySlug) && (entityType !== 'story' || s.slug !== slug)) ||
+        SEED_STORIES.find((s) => !seenUrls.has(`/story/${s.slug}`));
+      if (story) {
+        const url = `/story/${story.slug}`;
+        seenUrls.add(url);
+        results.push({
+          id: `story_${story.slug}`,
+          type: 'story',
+          titleDevanagari: story.titleDevanagari,
+          subtitleDevanagari: story.categoryHindi || 'दिव्य कथा प्रसंग',
+          url,
+          imageUrl: getKathaArtwork({ id: story.id, category: story.category, titleDevanagari: story.titleDevanagari }),
+          actionLabel: 'कथा व भाव पढ़ें',
+          badge: 'सम्बन्धित लीला कथा',
+          badgeColor: 'rose',
+          reason: 'भक्ति भाव से जुड़ा प्रेरक आख्यान',
+          score: 82,
+          iconType: 'book',
+        });
       }
     }
 
