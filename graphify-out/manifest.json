@@ -2210,8 +2210,8 @@
     "semantic_hash": ""
   },
   "src/App.tsx": {
-    "mtime": 1795872517.2526617,
-    "ast_hash": "497da83a003a623966bdb2c608aa537b",
+    "mtime": 1795873559.2005634,
+    "ast_hash": "0135a8dd9e7d276a7e1b023d161fda90",
     "semantic_hash": ""
   },
   "src/components/common/ArtworkGraphicSlot.tsx": {
@@ -2265,8 +2265,8 @@
     "semantic_hash": ""
   },
   "src/components/common/SpotlightSearchModal.tsx": {
-    "mtime": 1795872650.3940423,
-    "ast_hash": "1a8918616da46cc5d50896c657873cab",
+    "mtime": 1795874806.4195125,
+    "ast_hash": "0f62bf1ff37fd92e34a8a773f5eebc0f",
     "semantic_hash": ""
   },
   "src/components/common/TopAnnouncementMarquee.tsx": {
@@ -2350,8 +2350,8 @@
     "semantic_hash": ""
   },
   "src/components/smaran/DateStrip.tsx": {
-    "mtime": 1795708469.9818013,
-    "ast_hash": "cdb4a0da25460f24883d6740bbe25fab",
+    "mtime": 1795873823.6355197,
+    "ast_hash": "7b5f8ac757b4b9c5c48c61b7b1a29df7",
     "semantic_hash": ""
   },
   "src/components/smaran/DotGridChart.tsx": {
@@ -7300,13 +7300,13 @@
     "semantic_hash": ""
   },
   "src/components/common/BotAvatarRoster.tsx": {
-    "mtime": 1795872625.3108716,
-    "ast_hash": "d63716ad44f11615e9957759d08d2750",
+    "mtime": 1795874267.73057,
+    "ast_hash": "15c93ba3e520461232fc8ba44971f11a",
     "semantic_hash": ""
   },
   "src/components/common/LiquidBotSpeedDial.tsx": {
-    "mtime": 1795872647.1965415,
-    "ast_hash": "50b01e06feb8e9663dab821029b1fe09",
+    "mtime": 1795875140.3138103,
+    "ast_hash": "1f1e14d7920b0d586448149f9980a4c8",
     "semantic_hash": ""
   },
   "src/data/botRoster.ts": {
@@ -7315,8 +7315,8 @@
     "semantic_hash": ""
   },
   "src/features/agents/AgentHub.tsx": {
-    "mtime": 1795872637.6232815,
-    "ast_hash": "d7a3cbcef0976a96ac2d86f9ad40f7ae",
+    "mtime": 1795875136.7834878,
+    "ast_hash": "4c04e3be9620f057be398af97089eaa3",
     "semantic_hash": ""
   },
   "src/features/agents/AgentHubModal.tsx": {
@@ -7365,18 +7365,18 @@
     "semantic_hash": ""
   },
   "src/services/botGroqEngine.ts": {
-    "mtime": 1795872193.4326115,
-    "ast_hash": "cd97c5555a78b564ffa864befdf2047e",
+    "mtime": 1795875123.8746285,
+    "ast_hash": "d76557bfc9a31d591d711688e78ce138",
     "semantic_hash": ""
   },
   "src/components/common/SanctuaryBotAvatar.tsx": {
-    "mtime": 1795873016.790628,
-    "ast_hash": "6baafca807756e9772ae29f2d242029c",
+    "mtime": 1795874804.9698927,
+    "ast_hash": "81dce6e9e2317b370630c98bf0181e57",
     "semantic_hash": ""
   },
   "src/components/common/SectionBotCompanion.tsx": {
-    "mtime": 1795872622.202177,
-    "ast_hash": "7c1e5abca3eef1b4ac904a20f309bb78",
+    "mtime": 1795873473.4675438,
+    "ast_hash": "03bc243191ca94e7834667cc65e4fd9a",
     "semantic_hash": ""
   }
 }

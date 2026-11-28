@@ -1557,13 +1557,13 @@ export function App({
                   onSelectDate={setManualSelectedDate}
                 />
 
-                {/* Interactive Temple Seva Filter Tabs with Elastic Sliding Pill */}
-                <div className="relative flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar pt-1">
-                  {/* Dynamic Elastic Sliding Indicator Bar */}
+                {/* Interactive Temple Seva Filter Tabs inside Unified Concentric Pill Track */}
+                <div className="relative flex items-center gap-1 p-1 rounded-full bg-[#F5EFE6]/85 w-full sm:w-fit overflow-x-auto no-scrollbar pr-4 sm:pr-1 [mask-image:linear-gradient(to_right,black_calc(100%-18px),transparent)] sm:[mask-image:none]">
+                  {/* Dynamic Elastic Sliding Indicator Pill */}
                   {templePillStyle.ready && (
                     <span
                       aria-hidden="true"
-                      className="absolute top-1 bottom-0 rounded-full bg-[#FEF08A] pointer-events-none transition-[transform,width] duration-[340ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[transform,width]"
+                      className="absolute top-1 bottom-1 rounded-full bg-[#1C140D] shadow-[0_2px_8px_rgba(28,20,13,0.16)] pointer-events-none transition-[transform,width] duration-[280ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[transform,width]"
                       style={{
                         transform: `translate3d(${templePillStyle.left}px, 0, 0)`,
                         width: `${templePillStyle.width}px`,
@@ -1578,13 +1578,14 @@ export function App({
                     }}
                     type="button"
                     onClick={() => setTempleFilter('all')}
-                    className={`relative z-10 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer select-none ${
+                    className={`relative z-10 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer select-none active:scale-95 ${
                       templeFilter === 'all'
-                        ? 'text-[#18181B] font-bold'
-                        : 'text-[#71717A] hover:text-[#18181B] bg-[#FAF6EE]'
+                        ? 'text-[#FFFDF9] font-bold'
+                        : 'text-[#5C4B3B] hover:text-[#1C140D]'
                     }`}
                   >
-                    All Sacred Mandirs (4)
+                    <span className="sm:hidden">All (4)</span>
+                    <span className="hidden sm:inline">All Mandirs (4)</span>
                   </button>
                   <button
                     ref={(el) => {
@@ -1592,13 +1593,14 @@ export function App({
                     }}
                     type="button"
                     onClick={() => setTempleFilter('open')}
-                    className={`relative z-10 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer select-none flex items-center gap-1.5 ${
+                    className={`relative z-10 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer select-none active:scale-95 ${
                       templeFilter === 'open'
-                        ? 'text-[#18181B] font-bold'
-                        : 'text-[#71717A] hover:text-[#18181B] bg-[#FAF6EE]'
+                        ? 'text-[#FFFDF9] font-bold'
+                        : 'text-[#5C4B3B] hover:text-[#1C140D]'
                     }`}
                   >
-                    Doors Open Now ({openMandirCount})
+                    <span className="sm:hidden">Open ({openMandirCount})</span>
+                    <span className="hidden sm:inline">Doors Open ({openMandirCount})</span>
                   </button>
                   <button
                     ref={(el) => {
@@ -1606,13 +1608,14 @@ export function App({
                     }}
                     type="button"
                     onClick={() => setTempleFilter('rajbhog')}
-                    className={`relative z-10 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer select-none ${
+                    className={`relative z-10 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer select-none active:scale-95 ${
                       templeFilter === 'rajbhog'
-                        ? 'text-[#18181B] font-bold'
-                        : 'text-[#71717A] hover:text-[#18181B] bg-[#FAF6EE]'
+                        ? 'text-[#FFFDF9] font-bold'
+                        : 'text-[#5C4B3B] hover:text-[#1C140D]'
                     }`}
                   >
-                    Rajbhog Darshan (2)
+                    <span className="sm:hidden">Rajbhog</span>
+                    <span className="hidden sm:inline">Rajbhog Darshan (2)</span>
                   </button>
                   <button
                     ref={(el) => {
@@ -1620,13 +1623,14 @@ export function App({
                     }}
                     type="button"
                     onClick={() => setTempleFilter('evening')}
-                    className={`relative z-10 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer select-none ${
+                    className={`relative z-10 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors duration-200 cursor-pointer select-none active:scale-95 ${
                       templeFilter === 'evening'
-                        ? 'text-[#18181B] font-bold'
-                        : 'text-[#71717A] hover:text-[#18181B] bg-[#FAF6EE]'
+                        ? 'text-[#FFFDF9] font-bold'
+                        : 'text-[#5C4B3B] hover:text-[#1C140D]'
                     }`}
                   >
-                    Sandhya & Shayana (2)
+                    <span className="sm:hidden">Sandhya</span>
+                    <span className="hidden sm:inline">Sandhya &amp; Shayana (2)</span>
                   </button>
                 </div>
 

@@ -42,7 +42,7 @@ export const BotAvatarRoster: React.FC<BotAvatarRosterProps> = ({
 
   const containerClass =
     layout === 'carousel'
-      ? 'flex md:grid md:grid-cols-4 lg:grid-cols-7 gap-2.5 overflow-x-auto no-scrollbar snap-x scroll-pl-1 pr-6 md:pr-0 [mask-image:linear-gradient(to_right,black_calc(100%-18px),transparent)] md:[mask-image:none]'
+      ? 'flex md:grid md:grid-cols-4 lg:grid-cols-7 gap-2.5 overflow-x-auto no-scrollbar snap-x scroll-pl-1 pr-6 md:pr-0 [mask-image:linear-gradient(to_right,black_calc(100%-20px),transparent)] md:[mask-image:none]'
       : 'grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-2.5';
 
   return (
@@ -68,43 +68,28 @@ export const BotAvatarRoster: React.FC<BotAvatarRosterProps> = ({
             onMouseEnter={() => setHoveredId(agent.id)}
             onMouseLeave={() => setHoveredId(null)}
             style={{ cornerShape: 'squircle' } as React.CSSProperties}
-            className={`group relative flex flex-col items-center text-center p-3 rounded-[14px] transition-colors duration-150 cursor-pointer select-none ${
-              layout === 'carousel' ? 'min-w-[144px] sm:min-w-[152px] md:min-w-0 snap-start shrink-0' : ''
+            className={`group relative flex flex-col items-center text-center px-3 py-3.5 rounded-[14px] transition-all duration-150 active:scale-[0.97] cursor-pointer select-none ${
+              layout === 'carousel' ? 'min-w-[146px] sm:min-w-[152px] md:min-w-0 snap-start shrink-0' : ''
             } ${
               isSelected
-                ? 'bg-[#FEF9C3]/80 shadow-[inset_0_0_0_1px_rgba(217,119,6,0.22)]'
+                ? 'bg-[#FEF9C3]/85 shadow-[inset_0_0_0_1px_rgba(217,119,6,0.22)]'
                 : 'bg-[#FAF7F2] hover:bg-[#F3EDE2]'
             }`}
           >
-            {/* Single micro-label pill + calm status dot */}
-            <div className="w-full flex items-center justify-between gap-1 mb-2 px-0.5">
-              <span
-                className="inline-block w-1.5 h-1.5 rounded-full shrink-0"
-                style={{ backgroundColor: `hsl(${agent.hue} 60% 46%)` }}
-                aria-hidden="true"
+            <div className="mb-2 flex items-center justify-center">
+              <SanctuaryBotAvatar
+                agent={agent}
+                size={size}
+                animated={isSelected || isHovered}
+                working={isHovered}
               />
-              <span
-                className="text-[9.5px] font-bold tracking-tight px-1.5 py-0.5 rounded-[6px] truncate"
-                style={{
-                  backgroundColor: isSelected
-                    ? 'rgba(255, 255, 255, 0.85)'
-                    : `hsla(${agent.hue}, 55%, 93%, 0.9)`,
-                  color: '#5C2D0C',
-                }}
-              >
-                {agent.tag}
-              </span>
             </div>
 
-            <div className="my-0.5 flex items-center justify-center">
-              <SanctuaryBotAvatar agent={agent} size={size} active={isHovered} />
-            </div>
-
-            <div className="w-full mt-2 flex flex-col items-center gap-0.5">
-              <span className="text-[13px] font-bold text-[#1C140D] leading-tight">
+            <div className="w-full flex flex-col items-center gap-0.5">
+              <span className="text-[13.5px] font-bold text-[#1C140D] leading-tight">
                 {agent.name}
               </span>
-              <span className="text-[10.5px] text-[#6B5B4D] font-medium leading-[1.3] line-clamp-2 w-full px-0.5">
+              <span className="text-[11px] text-[#6B5B4D] font-medium leading-[1.35] line-clamp-2 w-full px-0.5">
                 {agent.role}
               </span>
               <a
@@ -114,7 +99,7 @@ export const BotAvatarRoster: React.FC<BotAvatarRosterProps> = ({
                   e.stopPropagation();
                   navigateSpaRoute(homeSection.href);
                 }}
-                className="mt-1 text-[10px] font-semibold text-amber-800 hover:underline no-underline"
+                className="mt-1.5 text-[10.5px] font-semibold text-amber-800 hover:underline no-underline"
               >
                 {homeSection.label} →
               </a>
@@ -153,15 +138,9 @@ export const BotFleetSection: React.FC = () => {
     >
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div className="min-w-0 space-y-1">
-          <div className="flex items-center gap-2 flex-wrap">
-            <h3 className="font-rozha text-xl sm:text-2xl text-[#1C140D] leading-tight">
-              AI Sakha &amp; Sahayak Fleet ({SANCTUARY_BOTS.length})
-            </h3>
-            <span className="inline-flex items-center gap-1.5 text-[10.5px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" aria-hidden="true" />
-              Ready
-            </span>
-          </div>
+          <h3 className="font-rozha text-xl sm:text-2xl text-[#1C140D] leading-tight">
+            AI Sakha &amp; Sahayak Fleet ({SANCTUARY_BOTS.length})
+          </h3>
           <p className="text-xs sm:text-[13px] text-[#6B5B4D]">
             Tap any Sahayak for live Darshan timings, Panchang, Rasik Padavali, or jump directly to their section.
           </p>
@@ -170,16 +149,16 @@ export const BotFleetSection: React.FC = () => {
         <button
           type="button"
           onClick={() => handleOpenHub(selectedId)}
-          className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-full bg-[#1C140D] hover:bg-[#312419] text-[#FFFDF9] text-xs font-semibold transition-colors cursor-pointer shrink-0 self-start sm:self-center"
+          className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-full bg-[#1C140D] hover:bg-[#312419] text-[#FFFDF9] text-xs font-semibold transition-all active:scale-95 cursor-pointer shrink-0 self-start sm:self-center"
         >
           <span>Open Bots Hub</span>
           <ChevronRight className="w-3.5 h-3.5" />
         </button>
       </div>
 
-      {/* Category Filter Strip */}
+      {/* Concentric Category Filter Strip */}
       <div
-        className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-0.5 pr-4 sm:pr-0 [mask-image:linear-gradient(to_right,black_calc(100%-16px),transparent)] sm:[mask-image:none]"
+        className="flex items-center gap-1 p-1 rounded-full bg-[#FAF7F2] w-full sm:w-fit overflow-x-auto no-scrollbar pr-4 sm:pr-1 [mask-image:linear-gradient(to_right,black_calc(100%-16px),transparent)] sm:[mask-image:none]"
         role="tablist"
         aria-label="Filter bots by specialty"
       >
@@ -192,10 +171,10 @@ export const BotFleetSection: React.FC = () => {
               role="tab"
               aria-selected={isCurrent}
               onClick={() => setActiveCategory(cat.id)}
-              className={`px-3 py-1.5 rounded-full text-[11.5px] font-semibold whitespace-nowrap transition-colors cursor-pointer shrink-0 ${
+              className={`px-3.5 py-1.5 rounded-full text-[11.5px] font-semibold whitespace-nowrap transition-all active:scale-95 cursor-pointer shrink-0 ${
                 isCurrent
-                  ? 'bg-[#1C140D] text-[#FFFDF9]'
-                  : 'bg-[#FAF7F2] hover:bg-[#F1EAE0] text-[#5C4B3B]'
+                  ? 'bg-[#1C140D] text-[#FFFDF9] shadow-2xs'
+                  : 'text-[#5C4B3B] hover:text-[#1C140D]'
               }`}
             >
               {cat.label}

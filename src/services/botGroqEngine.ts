@@ -616,15 +616,37 @@ export type RichReplySegment =
 const INTERNAL_ROUTE_RE =
   /(\/(?:padavali|pad|sanatan-epics|biographies|bio|festivals|rituals|ritual|places|place|stories|story|themes|theme|glossary|ragas|raga|guide)(?:\/[a-zA-Z0-9_-]+)*)/g;
 
+/**
+ * Converts multi-line `**...**` and `*...*` blocks into single-line pairs so
+ * line-by-line renderers style Sanskrit verses cleanly without dangling asterisks.
+ */
+export function normalizeReplyLines(text: string): string[] {
+  const expanded = text
+    .replace(/\*\*([\s\S]*?)\*\*/g, (_, inner: string) =>
+      inner
+        .split('\n')
+        .map((l) => (l.trim() ? `**${l.trim()}**` : ''))
+        .join('\n')
+    )
+    .replace(/(^|[^*])\*([^*\n]*\n[^*]*?)\*(?!\*)/g, (_, pre: string, inner: string) =>
+      `${pre}${inner
+        .split('\n')
+        .map((l) => (l.trim() ? `*${l.trim()}*` : ''))
+        .join('\n')}`
+    );
+  return expanded.split('\n');
+}
+
 export function parseRichInlineSegments(line: string): RichReplySegment[] {
+  const cleanLine = line.replace(/(^|\s)\*{1,2}(?=\s|$)/g, '$1');
   const segments: RichReplySegment[] = [];
   const tokenRe = /(\*\*[^*]+\*\*|\*[^*\n]+\*|\/(?:padavali|pad|sanatan-epics|biographies|bio|festivals|rituals|ritual|places|place|stories|story|themes|theme|glossary|ragas|raga|guide)(?:\/[a-zA-Z0-9_-]+)*)/g;
   let lastIndex = 0;
   let match: RegExpExecArray | null;
 
-  while ((match = tokenRe.exec(line)) !== null) {
+  while ((match = tokenRe.exec(cleanLine)) !== null) {
     if (match.index > lastIndex) {
-      segments.push({ type: 'text', value: line.slice(lastIndex, match.index) });
+      segments.push({ type: 'text', value: cleanLine.slice(lastIndex, match.index) });
     }
     const token = match[0];
     if (token.startsWith('**') && token.endsWith('**')) {
@@ -637,8 +659,8 @@ export function parseRichInlineSegments(line: string): RichReplySegment[] {
     lastIndex = match.index + token.length;
   }
 
-  if (lastIndex < line.length) {
-    segments.push({ type: 'text', value: line.slice(lastIndex) });
+  if (lastIndex < cleanLine.length) {
+    segments.push({ type: 'text', value: cleanLine.slice(lastIndex) });
   }
   return segments;
 }

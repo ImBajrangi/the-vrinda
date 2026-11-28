@@ -47,7 +47,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "functions_path_normpadkey",
-      "community": 244,
+      "community": 245,
       "community_name": "recoverMissingPadSlug",
       "norm_label": "normpadkey()"
     },
@@ -59,7 +59,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "functions_path_recovermissingpadslug",
-      "community": 244,
+      "community": 245,
       "community_name": "recoverMissingPadSlug",
       "norm_label": "recovermissingpadslug()"
     },
@@ -1302,7 +1302,7 @@
       "_origin": "ast",
       "id": "package_dependencies_react",
       "community": 230,
-      "community_name": "entry-server.tsx",
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "react"
     },
     {
@@ -1313,7 +1313,7 @@
       "_origin": "ast",
       "id": "react",
       "community": 230,
-      "community_name": "entry-server.tsx",
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "react"
     },
     {
@@ -6850,8 +6850,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_app_getbrajatmospherelabel",
-      "community": 5,
-      "community_name": "App",
+      "community": 7,
+      "community_name": "App.tsx",
       "norm_label": "getbrajatmospherelabel()"
     },
     {
@@ -7211,7 +7211,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_app_appprops",
-      "community": 237,
+      "community": 223,
       "community_name": "NavTab",
       "norm_label": "appprops"
     },
@@ -7224,7 +7224,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_app_approutestate",
-      "community": 237,
+      "community": 223,
       "community_name": "NavTab",
       "norm_label": "approutestate"
     },
@@ -7236,8 +7236,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_app_resolvecurrentroute",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 15,
+      "community_name": "entry-server.tsx",
       "norm_label": "resolvecurrentroute()"
     },
     {
@@ -7248,8 +7248,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_app_app",
-      "community": 5,
-      "community_name": "App",
+      "community": 15,
+      "community_name": "entry-server.tsx",
       "norm_label": "app()"
     },
     {
@@ -7321,8 +7321,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_common_botavatarroster",
-      "community": 18,
-      "community_name": "AgentHub.tsx",
+      "community": 237,
+      "community_name": "BotAvatarRoster.tsx",
       "norm_label": "botavatarroster.tsx"
     },
     {
@@ -7334,8 +7334,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_botavatarroster_botavatarrosterprops",
-      "community": 18,
-      "community_name": "AgentHub.tsx",
+      "community": 237,
+      "community_name": "BotAvatarRoster.tsx",
       "norm_label": "botavatarrosterprops"
     },
     {
@@ -7347,19 +7347,19 @@
       "_origin": "ast",
       "id": "src_components_common_botavatarroster_botavatarroster",
       "community": 18,
-      "community_name": "AgentHub.tsx",
+      "community_name": "LiquidBotSpeedDial.tsx",
       "norm_label": "botavatarroster()"
     },
     {
       "label": "BotFleetSection()",
       "file_type": "code",
       "source_file": "src/components/common/BotAvatarRoster.tsx",
-      "source_location": "L132",
+      "source_location": "L117",
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_common_botavatarroster_botfleetsection",
-      "community": 18,
-      "community_name": "AgentHub.tsx",
+      "community": 237,
+      "community_name": "BotAvatarRoster.tsx",
       "norm_label": "botfleetsection()"
     },
     {
@@ -7466,8 +7466,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_common_dynamicnotchnavbar_dynamicnotchnavbar",
-      "community": 16,
-      "community_name": "DynamicNotchNavbar.tsx",
+      "community": 230,
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "dynamicnotchnavbar()"
     },
     {
@@ -7477,7 +7477,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_common_floatingnavbar",
-      "community": 237,
+      "community": 223,
       "community_name": "NavTab",
       "norm_label": "floatingnavbar.tsx"
     },
@@ -7490,7 +7490,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_floatingnavbar_navtab",
-      "community": 237,
+      "community": 223,
       "community_name": "NavTab",
       "norm_label": "navtab"
     },
@@ -7503,7 +7503,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_floatingnavbar_floatingnavbarprops",
-      "community": 237,
+      "community": 223,
       "community_name": "NavTab",
       "norm_label": "floatingnavbarprops"
     },
@@ -7515,7 +7515,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_common_floatingnavbar_sacredfluteicon",
-      "community": 237,
+      "community": 223,
       "community_name": "NavTab",
       "norm_label": "sacredfluteicon()"
     },
@@ -7527,7 +7527,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_common_floatingnavbar_floatingnavbar",
-      "community": 237,
+      "community": 223,
       "community_name": "NavTab",
       "norm_label": "floatingnavbar()"
     },
@@ -7575,7 +7575,7 @@
       "_origin": "ast",
       "id": "src_components_common_iosactivityindicator",
       "community": 232,
-      "community_name": "SpotlightSearchModal.tsx",
+      "community_name": "IOSActivityIndicator.tsx",
       "norm_label": "iosactivityindicator.tsx"
     },
     {
@@ -7588,7 +7588,7 @@
       "_origin": "ast",
       "id": "src_components_common_iosactivityindicator_progresslistener",
       "community": 232,
-      "community_name": "SpotlightSearchModal.tsx",
+      "community_name": "IOSActivityIndicator.tsx",
       "norm_label": "progresslistener"
     },
     {
@@ -7599,7 +7599,7 @@
       "_origin": "ast",
       "id": "src_components_common_iosactivityindicator_progresslisteners",
       "community": 232,
-      "community_name": "SpotlightSearchModal.tsx",
+      "community_name": "IOSActivityIndicator.tsx",
       "norm_label": "progresslisteners"
     },
     {
@@ -7610,7 +7610,7 @@
       "_origin": "ast",
       "id": "src_components_common_iosactivityindicator_navigationprogress",
       "community": 232,
-      "community_name": "SpotlightSearchModal.tsx",
+      "community_name": "IOSActivityIndicator.tsx",
       "norm_label": "navigationprogress"
     },
     {
@@ -7622,7 +7622,7 @@
       "_origin": "ast",
       "id": "src_components_common_iosactivityindicator_iostopprogressbar",
       "community": 232,
-      "community_name": "SpotlightSearchModal.tsx",
+      "community_name": "IOSActivityIndicator.tsx",
       "norm_label": "iostopprogressbar()"
     },
     {
@@ -7635,7 +7635,7 @@
       "_origin": "ast",
       "id": "src_components_common_iosactivityindicator_iosspinnerprops",
       "community": 232,
-      "community_name": "SpotlightSearchModal.tsx",
+      "community_name": "IOSActivityIndicator.tsx",
       "norm_label": "iosspinnerprops"
     },
     {
@@ -7646,7 +7646,7 @@
       "_origin": "ast",
       "id": "src_components_common_iosactivityindicator_size_map",
       "community": 232,
-      "community_name": "SpotlightSearchModal.tsx",
+      "community_name": "IOSActivityIndicator.tsx",
       "norm_label": "size_map"
     },
     {
@@ -7657,7 +7657,7 @@
       "_origin": "ast",
       "id": "src_components_common_iosactivityindicator_spoke_colors",
       "community": 232,
-      "community_name": "SpotlightSearchModal.tsx",
+      "community_name": "IOSActivityIndicator.tsx",
       "norm_label": "spoke_colors"
     },
     {
@@ -7668,7 +7668,7 @@
       "_origin": "ast",
       "id": "src_components_common_iosactivityindicator_spokes",
       "community": 232,
-      "community_name": "SpotlightSearchModal.tsx",
+      "community_name": "IOSActivityIndicator.tsx",
       "norm_label": "spokes"
     },
     {
@@ -7679,8 +7679,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_common_iosactivityindicator_iosspinner",
-      "community": 232,
-      "community_name": "SpotlightSearchModal.tsx",
+      "community": 238,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "iosspinner()"
     },
     {
@@ -7693,7 +7693,7 @@
       "_origin": "ast",
       "id": "src_components_common_iosactivityindicator_iospillloaderprops",
       "community": 232,
-      "community_name": "SpotlightSearchModal.tsx",
+      "community_name": "IOSActivityIndicator.tsx",
       "norm_label": "iospillloaderprops"
     },
     {
@@ -7705,7 +7705,7 @@
       "_origin": "ast",
       "id": "src_components_common_iosactivityindicator_iospillloader",
       "community": 232,
-      "community_name": "SpotlightSearchModal.tsx",
+      "community_name": "IOSActivityIndicator.tsx",
       "norm_label": "iospillloader()"
     },
     {
@@ -7716,56 +7716,56 @@
       "_origin": "ast",
       "id": "src_components_common_liquidbotspeeddial",
       "community": 18,
-      "community_name": "AgentHub.tsx",
+      "community_name": "LiquidBotSpeedDial.tsx",
       "norm_label": "liquidbotspeeddial.tsx"
     },
     {
       "label": "ChatMessage",
       "file_type": "code",
       "source_file": "src/components/common/LiquidBotSpeedDial.tsx",
-      "source_location": "L28",
+      "source_location": "L31",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_liquidbotspeeddial_chatmessage",
       "community": 18,
-      "community_name": "AgentHub.tsx",
+      "community_name": "LiquidBotSpeedDial.tsx",
       "norm_label": "chatmessage"
     },
     {
       "label": "LiquidBotSpeedDialProps",
       "file_type": "code",
       "source_file": "src/components/common/LiquidBotSpeedDial.tsx",
-      "source_location": "L37",
+      "source_location": "L41",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_liquidbotspeeddial_liquidbotspeeddialprops",
       "community": 18,
-      "community_name": "AgentHub.tsx",
+      "community_name": "LiquidBotSpeedDial.tsx",
       "norm_label": "liquidbotspeeddialprops"
     },
     {
       "label": "SOURCE_SHORT_MAP",
       "file_type": "code",
       "source_file": "src/components/common/LiquidBotSpeedDial.tsx",
-      "source_location": "L43",
+      "source_location": "L47",
       "_origin": "ast",
       "id": "src_components_common_liquidbotspeeddial_source_short_map",
       "community": 18,
-      "community_name": "AgentHub.tsx",
+      "community_name": "LiquidBotSpeedDial.tsx",
       "norm_label": "source_short_map"
     },
     {
       "label": "LiquidBotSpeedDial()",
       "file_type": "code",
       "source_file": "src/components/common/LiquidBotSpeedDial.tsx",
-      "source_location": "L50",
+      "source_location": "L54",
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_common_liquidbotspeeddial_liquidbotspeeddial",
       "community": 18,
-      "community_name": "AgentHub.tsx",
+      "community_name": "LiquidBotSpeedDial.tsx",
       "norm_label": "liquidbotspeeddial()"
     },
     {
@@ -7775,8 +7775,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_common_sacreddiscoveryshelf",
-      "community": 227,
-      "community_name": "DedicatedPadReadingView.tsx",
+      "community": 235,
+      "community_name": "NityaUpasanaReader.tsx",
       "norm_label": "sacreddiscoveryshelf.tsx"
     },
     {
@@ -7799,8 +7799,8 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "src_components_common_sacreddiscoveryshelf_ssr_prahar_date",
-      "community": 227,
-      "community_name": "DedicatedPadReadingView.tsx",
+      "community": 235,
+      "community_name": "NityaUpasanaReader.tsx",
       "norm_label": "ssr_prahar_date"
     },
     {
@@ -7811,8 +7811,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_common_sacreddiscoveryshelf_sacreddiscoveryshelf",
-      "community": 227,
-      "community_name": "DedicatedPadReadingView.tsx",
+      "community": 235,
+      "community_name": "NityaUpasanaReader.tsx",
       "norm_label": "sacreddiscoveryshelf()"
     },
     {
@@ -7822,7 +7822,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_common_sacredfooter",
-      "community": 237,
+      "community": 223,
       "community_name": "NavTab",
       "norm_label": "sacredfooter.tsx"
     },
@@ -7835,7 +7835,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_sacredfooter_sacredfooterprops",
-      "community": 237,
+      "community": 223,
       "community_name": "NavTab",
       "norm_label": "sacredfooterprops"
     },
@@ -7847,7 +7847,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_common_sacredfooter_sacredfooter",
-      "community": 237,
+      "community": 223,
       "community_name": "NavTab",
       "norm_label": "sacredfooter()"
     },
@@ -7895,7 +7895,7 @@
       "_origin": "ast",
       "id": "src_components_common_saintsdirectorymodal",
       "community": 232,
-      "community_name": "SpotlightSearchModal.tsx",
+      "community_name": "IOSActivityIndicator.tsx",
       "norm_label": "saintsdirectorymodal.tsx"
     },
     {
@@ -7908,7 +7908,7 @@
       "_origin": "ast",
       "id": "src_components_common_saintsdirectorymodal_saintsdirectorymodalprops",
       "community": 232,
-      "community_name": "SpotlightSearchModal.tsx",
+      "community_name": "IOSActivityIndicator.tsx",
       "norm_label": "saintsdirectorymodalprops"
     },
     {
@@ -7920,7 +7920,7 @@
       "_origin": "ast",
       "id": "src_components_common_saintsdirectorymodal_saintsdirectorymodal",
       "community": 232,
-      "community_name": "SpotlightSearchModal.tsx",
+      "community_name": "IOSActivityIndicator.tsx",
       "norm_label": "saintsdirectorymodal()"
     },
     {
@@ -7930,8 +7930,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_common_sanctuarybotavatar",
-      "community": 18,
-      "community_name": "AgentHub.tsx",
+      "community": 237,
+      "community_name": "BotAvatarRoster.tsx",
       "norm_label": "sanctuarybotavatar.tsx"
     },
     {
@@ -7943,20 +7943,20 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_sanctuarybotavatar_sanctuarybotavatarprops",
-      "community": 18,
-      "community_name": "AgentHub.tsx",
+      "community": 237,
+      "community_name": "BotAvatarRoster.tsx",
       "norm_label": "sanctuarybotavatarprops"
     },
     {
       "label": "SanctuaryBotAvatar()",
       "file_type": "code",
       "source_file": "src/components/common/SanctuaryBotAvatar.tsx",
-      "source_location": "L20",
+      "source_location": "L24",
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_common_sanctuarybotavatar_sanctuarybotavatar",
-      "community": 18,
-      "community_name": "AgentHub.tsx",
+      "community": 237,
+      "community_name": "BotAvatarRoster.tsx",
       "norm_label": "sanctuarybotavatar()"
     },
     {
@@ -7967,7 +7967,7 @@
       "_origin": "ast",
       "id": "src_components_common_scallopedbadge",
       "community": 5,
-      "community_name": "App",
+      "community_name": "MilestonesView.tsx",
       "norm_label": "scallopedbadge.tsx"
     },
     {
@@ -7980,7 +7980,7 @@
       "_origin": "ast",
       "id": "src_components_common_scallopedbadge_scallopedbadgeprops",
       "community": 5,
-      "community_name": "App",
+      "community_name": "MilestonesView.tsx",
       "norm_label": "scallopedbadgeprops"
     },
     {
@@ -7992,7 +7992,7 @@
       "_origin": "ast",
       "id": "src_components_common_scallopedbadge_scallopedbadge",
       "community": 5,
-      "community_name": "App",
+      "community_name": "MilestonesView.tsx",
       "norm_label": "scallopedbadge()"
     },
     {
@@ -8002,8 +8002,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_common_sectionbotcompanion",
-      "community": 227,
-      "community_name": "DedicatedPadReadingView.tsx",
+      "community": 230,
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "sectionbotcompanion.tsx"
     },
     {
@@ -8015,20 +8015,20 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_sectionbotcompanion_sectionbotcompanionprops",
-      "community": 227,
-      "community_name": "DedicatedPadReadingView.tsx",
+      "community": 230,
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "sectionbotcompanionprops"
     },
     {
       "label": "SectionBotCompanion()",
       "file_type": "code",
       "source_file": "src/components/common/SectionBotCompanion.tsx",
-      "source_location": "L21",
+      "source_location": "L20",
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_common_sectionbotcompanion_sectionbotcompanion",
-      "community": 227,
-      "community_name": "DedicatedPadReadingView.tsx",
+      "community": 230,
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "sectionbotcompanion()"
     },
     {
@@ -8038,8 +8038,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_common_spotlightsearchmodal",
-      "community": 232,
-      "community_name": "SpotlightSearchModal.tsx",
+      "community": 238,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "spotlightsearchmodal.tsx"
     },
     {
@@ -8051,8 +8051,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_spotlightsearchmodal_searchfiltertype",
-      "community": 232,
-      "community_name": "SpotlightSearchModal.tsx",
+      "community": 238,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "searchfiltertype"
     },
     {
@@ -8062,8 +8062,8 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "src_components_common_spotlightsearchmodal_phonetic_dev_map",
-      "community": 232,
-      "community_name": "SpotlightSearchModal.tsx",
+      "community": 238,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "phonetic_dev_map"
     },
     {
@@ -8074,8 +8074,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_common_spotlightsearchmodal_tophoneticlatin",
-      "community": 232,
-      "community_name": "SpotlightSearchModal.tsx",
+      "community": 238,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "tophoneticlatin()"
     },
     {
@@ -8086,8 +8086,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_common_spotlightsearchmodal_matchesbilingual",
-      "community": 232,
-      "community_name": "SpotlightSearchModal.tsx",
+      "community": 238,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "matchesbilingual()"
     },
     {
@@ -8099,8 +8099,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_spotlightsearchmodal_combineditem",
-      "community": 232,
-      "community_name": "SpotlightSearchModal.tsx",
+      "community": 238,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "combineditem"
     },
     {
@@ -8123,8 +8123,8 @@
       "source_location": "L123",
       "_origin": "ast",
       "id": "src_components_common_spotlightsearchmodal_trending_search_prompts",
-      "community": 232,
-      "community_name": "SpotlightSearchModal.tsx",
+      "community": 238,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "trending_search_prompts"
     },
     {
@@ -8135,8 +8135,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_common_spotlightsearchmodal_spotlightsearchmodal",
-      "community": 230,
-      "community_name": "entry-server.tsx",
+      "community": 238,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "spotlightsearchmodal()"
     },
     {
@@ -8146,8 +8146,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_common_topannouncementmarquee",
-      "community": 237,
-      "community_name": "NavTab",
+      "community": 4,
+      "community_name": "panchangService.ts",
       "norm_label": "topannouncementmarquee.tsx"
     },
     {
@@ -8159,8 +8159,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_topannouncementmarquee_topannouncementmarqueeprops",
-      "community": 237,
-      "community_name": "NavTab",
+      "community": 4,
+      "community_name": "panchangService.ts",
       "norm_label": "topannouncementmarqueeprops"
     },
     {
@@ -8172,8 +8172,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_common_topannouncementmarquee_marqueeitemdata",
-      "community": 237,
-      "community_name": "NavTab",
+      "community": 4,
+      "community_name": "panchangService.ts",
       "norm_label": "marqueeitemdata"
     },
     {
@@ -8183,8 +8183,8 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "src_components_common_topannouncementmarquee_ssr_baseline_date",
-      "community": 237,
-      "community_name": "NavTab",
+      "community": 4,
+      "community_name": "panchangService.ts",
       "norm_label": "ssr_baseline_date"
     },
     {
@@ -8195,8 +8195,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_common_topannouncementmarquee_topannouncementmarquee",
-      "community": 237,
-      "community_name": "NavTab",
+      "community": 4,
+      "community_name": "panchangService.ts",
       "norm_label": "topannouncementmarquee()"
     },
     {
@@ -8206,8 +8206,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_feed_emojitray",
-      "community": 2,
-      "community_name": "devotionalSummaryService.ts",
+      "community": 222,
+      "community_name": "FeedCard.tsx",
       "norm_label": "emojitray.tsx"
     },
     {
@@ -8219,8 +8219,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_feed_emojitray_emojitrayprops",
-      "community": 2,
-      "community_name": "devotionalSummaryService.ts",
+      "community": 222,
+      "community_name": "FeedCard.tsx",
       "norm_label": "emojitrayprops"
     },
     {
@@ -8231,8 +8231,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_feed_emojitray_emojitray",
-      "community": 2,
-      "community_name": "devotionalSummaryService.ts",
+      "community": 222,
+      "community_name": "FeedCard.tsx",
       "norm_label": "emojitray()"
     },
     {
@@ -8242,8 +8242,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_feed_feedcard",
-      "community": 2,
-      "community_name": "devotionalSummaryService.ts",
+      "community": 222,
+      "community_name": "FeedCard.tsx",
       "norm_label": "feedcard.tsx"
     },
     {
@@ -8267,8 +8267,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_feed_feedcard_feedcard",
-      "community": 2,
-      "community_name": "devotionalSummaryService.ts",
+      "community": 222,
+      "community_name": "FeedCard.tsx",
       "norm_label": "feedcard()"
     },
     {
@@ -8328,7 +8328,7 @@
       "_origin": "ast",
       "id": "src_components_milestones_milestonesview",
       "community": 5,
-      "community_name": "App",
+      "community_name": "MilestonesView.tsx",
       "norm_label": "milestonesview.tsx"
     },
     {
@@ -8341,7 +8341,7 @@
       "_origin": "ast",
       "id": "src_components_milestones_milestonesview_milestonesviewprops",
       "community": 5,
-      "community_name": "App",
+      "community_name": "MilestonesView.tsx",
       "norm_label": "milestonesviewprops"
     },
     {
@@ -8354,7 +8354,7 @@
       "_origin": "ast",
       "id": "src_components_milestones_milestonesview_badgeitem",
       "community": 5,
-      "community_name": "App",
+      "community_name": "MilestonesView.tsx",
       "norm_label": "badgeitem"
     },
     {
@@ -8366,7 +8366,7 @@
       "_origin": "ast",
       "id": "src_components_milestones_milestonesview_getdevotionalstage",
       "community": 5,
-      "community_name": "App",
+      "community_name": "MilestonesView.tsx",
       "norm_label": "getdevotionalstage()"
     },
     {
@@ -8378,7 +8378,7 @@
       "_origin": "ast",
       "id": "src_components_milestones_milestonesview_milestonesview",
       "community": 5,
-      "community_name": "App",
+      "community_name": "MilestonesView.tsx",
       "norm_label": "milestonesview()"
     },
     {
@@ -8388,8 +8388,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_player_floatingaudioplayer",
-      "community": 19,
-      "community_name": "SacredPad",
+      "community": 238,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "floatingaudioplayer.tsx"
     },
     {
@@ -8401,8 +8401,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_player_floatingaudioplayer_floatingaudioplayerprops",
-      "community": 19,
-      "community_name": "SacredPad",
+      "community": 238,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "floatingaudioplayerprops"
     },
     {
@@ -8413,8 +8413,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_player_floatingaudioplayer_resolvepadaudiosrc",
-      "community": 19,
-      "community_name": "SacredPad",
+      "community": 238,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "resolvepadaudiosrc()"
     },
     {
@@ -8425,8 +8425,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_player_floatingaudioplayer_floatingaudioplayer",
-      "community": 19,
-      "community_name": "SacredPad",
+      "community": 238,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "floatingaudioplayer()"
     },
     {
@@ -8437,7 +8437,7 @@
       "_origin": "ast",
       "id": "src_components_reader_brajwordstudypanel",
       "community": 30,
-      "community_name": "GlossaryView.tsx",
+      "community_name": "DedicatedPadReadingView.tsx",
       "norm_label": "brajwordstudypanel.tsx"
     },
     {
@@ -8450,7 +8450,7 @@
       "_origin": "ast",
       "id": "src_components_reader_brajwordstudypanel_brajwordstudypanelprops",
       "community": 30,
-      "community_name": "GlossaryView.tsx",
+      "community_name": "DedicatedPadReadingView.tsx",
       "norm_label": "brajwordstudypanelprops"
     },
     {
@@ -8462,7 +8462,7 @@
       "_origin": "ast",
       "id": "src_components_reader_brajwordstudypanel_brajwordstudypanel",
       "community": 30,
-      "community_name": "GlossaryView.tsx",
+      "community_name": "DedicatedPadReadingView.tsx",
       "norm_label": "brajwordstudypanel()"
     },
     {
@@ -8472,7 +8472,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_reader_dedicatedpadreadingview",
-      "community": 227,
+      "community": 30,
       "community_name": "DedicatedPadReadingView.tsx",
       "norm_label": "dedicatedpadreadingview.tsx"
     },
@@ -8483,7 +8483,7 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "src_components_reader_dedicatedpadreadingview_raw_raga_index",
-      "community": 227,
+      "community": 30,
       "community_name": "DedicatedPadReadingView.tsx",
       "norm_label": "raw_raga_index"
     },
@@ -8495,7 +8495,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_reader_dedicatedpadreadingview_resolveragaslug",
-      "community": 227,
+      "community": 30,
       "community_name": "DedicatedPadReadingView.tsx",
       "norm_label": "resolveragaslug()"
     },
@@ -8520,8 +8520,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_reader_dedicatedpadreadingview_dedicatedpadreadingview",
-      "community": 230,
-      "community_name": "entry-server.tsx",
+      "community": 30,
+      "community_name": "DedicatedPadReadingView.tsx",
       "norm_label": "dedicatedpadreadingview()"
     },
     {
@@ -8531,8 +8531,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_reader_devotionalversepresenter",
-      "community": 15,
-      "community_name": "PadavaliReader.tsx",
+      "community": 230,
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "devotionalversepresenter.tsx"
     },
     {
@@ -8544,8 +8544,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_reader_devotionalversepresenter_devotionalversepresenterprops",
-      "community": 15,
-      "community_name": "PadavaliReader.tsx",
+      "community": 230,
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "devotionalversepresenterprops"
     },
     {
@@ -8556,8 +8556,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_reader_devotionalversepresenter_devotionalversepresenter",
-      "community": 15,
-      "community_name": "PadavaliReader.tsx",
+      "community": 230,
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "devotionalversepresenter()"
     },
     {
@@ -8567,8 +8567,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_reader_entityoverviewbanner",
-      "community": 230,
-      "community_name": "entry-server.tsx",
+      "community": 238,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "entityoverviewbanner.tsx"
     },
     {
@@ -8592,8 +8592,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_reader_entityoverviewbanner_entityoverviewbanner",
-      "community": 230,
-      "community_name": "entry-server.tsx",
+      "community": 238,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "entityoverviewbanner()"
     },
     {
@@ -8616,8 +8616,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_reader_inlinepurportcard_inlinepurportcardprops",
-      "community": 2,
-      "community_name": "devotionalSummaryService.ts",
+      "community": 19,
+      "community_name": "SacredPad",
       "norm_label": "inlinepurportcardprops"
     },
     {
@@ -8640,7 +8640,7 @@
       "_origin": "ast",
       "id": "src_components_reader_mahagranthreader",
       "community": 15,
-      "community_name": "PadavaliReader.tsx",
+      "community_name": "entry-server.tsx",
       "norm_label": "mahagranthreader.tsx"
     },
     {
@@ -8653,7 +8653,7 @@
       "_origin": "ast",
       "id": "src_components_reader_mahagranthreader_mahagranthreaderprops",
       "community": 15,
-      "community_name": "PadavaliReader.tsx",
+      "community_name": "entry-server.tsx",
       "norm_label": "mahagranthreaderprops"
     },
     {
@@ -8664,7 +8664,7 @@
       "_origin": "ast",
       "id": "src_components_reader_mahagranthreader_epics",
       "community": 15,
-      "community_name": "PadavaliReader.tsx",
+      "community_name": "entry-server.tsx",
       "norm_label": "epics"
     },
     {
@@ -8676,7 +8676,7 @@
       "_origin": "ast",
       "id": "src_components_reader_mahagranthreader_mahagranthreader",
       "community": 15,
-      "community_name": "PadavaliReader.tsx",
+      "community_name": "entry-server.tsx",
       "norm_label": "mahagranthreader()"
     },
     {
@@ -8686,7 +8686,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_reader_mobilereaderheader",
-      "community": 15,
+      "community": 238,
       "community_name": "PadavaliReader.tsx",
       "norm_label": "mobilereaderheader.tsx"
     },
@@ -8699,7 +8699,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_reader_mobilereaderheader_mobilereaderheaderprops",
-      "community": 15,
+      "community": 238,
       "community_name": "PadavaliReader.tsx",
       "norm_label": "mobilereaderheaderprops"
     },
@@ -8711,7 +8711,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_reader_mobilereaderheader_mobilereaderheader",
-      "community": 15,
+      "community": 238,
       "community_name": "PadavaliReader.tsx",
       "norm_label": "mobilereaderheader()"
     },
@@ -8722,8 +8722,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_reader_mobilescripturedrawer",
-      "community": 15,
-      "community_name": "PadavaliReader.tsx",
+      "community": 240,
+      "community_name": "MobileScriptureDrawer.tsx",
       "norm_label": "mobilescripturedrawer.tsx"
     },
     {
@@ -8735,8 +8735,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_reader_mobilescripturedrawer_scriptureitem",
-      "community": 15,
-      "community_name": "PadavaliReader.tsx",
+      "community": 240,
+      "community_name": "MobileScriptureDrawer.tsx",
       "norm_label": "scriptureitem"
     },
     {
@@ -8748,8 +8748,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_reader_mobilescripturedrawer_mobilescripturedrawerprops",
-      "community": 15,
-      "community_name": "PadavaliReader.tsx",
+      "community": 240,
+      "community_name": "MobileScriptureDrawer.tsx",
       "norm_label": "mobilescripturedrawerprops"
     },
     {
@@ -8760,8 +8760,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_reader_mobilescripturedrawer_triggerhaptic",
-      "community": 15,
-      "community_name": "PadavaliReader.tsx",
+      "community": 240,
+      "community_name": "MobileScriptureDrawer.tsx",
       "norm_label": "triggerhaptic()"
     },
     {
@@ -8772,8 +8772,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_reader_mobilescripturedrawer_mobilescripturedrawer",
-      "community": 15,
-      "community_name": "PadavaliReader.tsx",
+      "community": 240,
+      "community_name": "MobileScriptureDrawer.tsx",
       "norm_label": "mobilescripturedrawer()"
     },
     {
@@ -8783,7 +8783,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_reader_padavalireader",
-      "community": 15,
+      "community": 238,
       "community_name": "PadavaliReader.tsx",
       "norm_label": "padavalireader.tsx"
     },
@@ -8794,7 +8794,7 @@
       "source_location": "L63",
       "_origin": "ast",
       "id": "src_components_reader_padavalireader_lazybrajwordstudypanel",
-      "community": 15,
+      "community": 238,
       "community_name": "PadavaliReader.tsx",
       "norm_label": "lazybrajwordstudypanel"
     },
@@ -8820,7 +8820,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_reader_padavalireader_readertheme",
-      "community": 15,
+      "community": 238,
       "community_name": "PadavaliReader.tsx",
       "norm_label": "readertheme"
     },
@@ -8833,7 +8833,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_reader_padavalireader_readerfontsize",
-      "community": 15,
+      "community": 238,
       "community_name": "PadavaliReader.tsx",
       "norm_label": "readerfontsize"
     },
@@ -8846,7 +8846,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_reader_padavalireader_readerfontfamily",
-      "community": 15,
+      "community": 238,
       "community_name": "PadavaliReader.tsx",
       "norm_label": "readerfontfamily"
     },
@@ -8859,7 +8859,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_reader_padavalireader_readertextalign",
-      "community": 15,
+      "community": 238,
       "community_name": "PadavaliReader.tsx",
       "norm_label": "readertextalign"
     },
@@ -8870,7 +8870,7 @@
       "source_location": "L92",
       "_origin": "ast",
       "id": "src_components_reader_padavalireader_entity_regex_map",
-      "community": 15,
+      "community": 238,
       "community_name": "PadavaliReader.tsx",
       "norm_label": "entity_regex_map"
     },
@@ -8882,7 +8882,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_reader_padavalireader_sanitizesacredtext",
-      "community": 15,
+      "community": 238,
       "community_name": "PadavaliReader.tsx",
       "norm_label": "sanitizesacredtext()"
     },
@@ -8893,7 +8893,7 @@
       "source_location": "L126",
       "_origin": "ast",
       "id": "src_components_reader_padavalireader_themestyles",
-      "community": 15,
+      "community": 238,
       "community_name": "PadavaliReader.tsx",
       "norm_label": "themestyles"
     },
@@ -8905,7 +8905,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_reader_padavalireader_padavalireader",
-      "community": 230,
+      "community": 15,
       "community_name": "entry-server.tsx",
       "norm_label": "padavalireader()"
     },
@@ -8916,8 +8916,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_sections_charitradarshan",
-      "community": 227,
-      "community_name": "DedicatedPadReadingView.tsx",
+      "community": 221,
+      "community_name": "sacredSections.ts",
       "norm_label": "charitradarshan.tsx"
     },
     {
@@ -8941,8 +8941,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_sections_charitradarshan_charitradarshan",
-      "community": 230,
-      "community_name": "entry-server.tsx",
+      "community": 221,
+      "community_name": "sacredSections.ts",
       "norm_label": "charitradarshan()"
     },
     {
@@ -8952,8 +8952,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_sections_dhamtirthasection",
-      "community": 227,
-      "community_name": "DedicatedPadReadingView.tsx",
+      "community": 221,
+      "community_name": "sacredSections.ts",
       "norm_label": "dhamtirthasection.tsx"
     },
     {
@@ -8977,8 +8977,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_sections_dhamtirthasection_dhamtirthasection",
-      "community": 230,
-      "community_name": "entry-server.tsx",
+      "community": 221,
+      "community_name": "sacredSections.ts",
       "norm_label": "dhamtirthasection()"
     },
     {
@@ -8988,8 +8988,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_sections_festivalguideview",
-      "community": 222,
-      "community_name": "FestivalGuideView.tsx",
+      "community": 230,
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "festivalguideview.tsx"
     },
     {
@@ -9001,8 +9001,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_sections_festivalguideview_festivalguideviewprops",
-      "community": 222,
-      "community_name": "FestivalGuideView.tsx",
+      "community": 230,
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "festivalguideviewprops"
     },
     {
@@ -9014,7 +9014,7 @@
       "_origin": "ast",
       "id": "src_components_sections_festivalguideview_festivalguideview",
       "community": 230,
-      "community_name": "entry-server.tsx",
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "festivalguideview()"
     },
     {
@@ -9024,8 +9024,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_sections_glossaryview",
-      "community": 30,
-      "community_name": "GlossaryView.tsx",
+      "community": 230,
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "glossaryview.tsx"
     },
     {
@@ -9037,8 +9037,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_sections_glossaryview_glossaryentry",
-      "community": 30,
-      "community_name": "GlossaryView.tsx",
+      "community": 230,
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "glossaryentry"
     },
     {
@@ -9048,8 +9048,8 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "src_components_sections_glossaryview_glossary_list",
-      "community": 30,
-      "community_name": "GlossaryView.tsx",
+      "community": 230,
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "glossary_list"
     },
     {
@@ -9061,8 +9061,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_sections_glossaryview_glossaryviewprops",
-      "community": 30,
-      "community_name": "GlossaryView.tsx",
+      "community": 230,
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "glossaryviewprops"
     },
     {
@@ -9074,7 +9074,7 @@
       "_origin": "ast",
       "id": "src_components_sections_glossaryview_glossaryview",
       "community": 230,
-      "community_name": "entry-server.tsx",
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "glossaryview()"
     },
     {
@@ -9084,8 +9084,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_sections_kathasanctuary",
-      "community": 227,
-      "community_name": "DedicatedPadReadingView.tsx",
+      "community": 221,
+      "community_name": "sacredSections.ts",
       "norm_label": "kathasanctuary.tsx"
     },
     {
@@ -9109,8 +9109,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_sections_kathasanctuary_kathasanctuary",
-      "community": 230,
-      "community_name": "entry-server.tsx",
+      "community": 221,
+      "community_name": "sacredSections.ts",
       "norm_label": "kathasanctuary()"
     },
     {
@@ -9156,8 +9156,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_sections_nityaupasanareader",
-      "community": 227,
-      "community_name": "DedicatedPadReadingView.tsx",
+      "community": 235,
+      "community_name": "NityaUpasanaReader.tsx",
       "norm_label": "nityaupasanareader.tsx"
     },
     {
@@ -9169,8 +9169,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_sections_nityaupasanareader_nityaupasanareaderprops",
-      "community": 221,
-      "community_name": "sacredSections.ts",
+      "community": 235,
+      "community_name": "NityaUpasanaReader.tsx",
       "norm_label": "nityaupasanareaderprops"
     },
     {
@@ -9181,8 +9181,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_sections_nityaupasanareader_nityaupasanareader",
-      "community": 230,
-      "community_name": "entry-server.tsx",
+      "community": 235,
+      "community_name": "NityaUpasanaReader.tsx",
       "norm_label": "nityaupasanareader()"
     },
     {
@@ -9193,7 +9193,7 @@
       "_origin": "ast",
       "id": "src_components_sections_ragadirectoryview",
       "community": 230,
-      "community_name": "entry-server.tsx",
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "ragadirectoryview.tsx"
     },
     {
@@ -9206,7 +9206,7 @@
       "_origin": "ast",
       "id": "src_components_sections_ragadirectoryview_ragaentry",
       "community": 230,
-      "community_name": "entry-server.tsx",
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "ragaentry"
     },
     {
@@ -9230,7 +9230,7 @@
       "_origin": "ast",
       "id": "src_components_sections_ragadirectoryview_raw_raga_index",
       "community": 230,
-      "community_name": "entry-server.tsx",
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "raw_raga_index"
     },
     {
@@ -9242,7 +9242,7 @@
       "_origin": "ast",
       "id": "src_components_sections_ragadirectoryview_humanizeslug",
       "community": 230,
-      "community_name": "entry-server.tsx",
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "humanizeslug()"
     },
     {
@@ -9254,7 +9254,7 @@
       "_origin": "ast",
       "id": "src_components_sections_ragadirectoryview_ragadirectoryview",
       "community": 230,
-      "community_name": "entry-server.tsx",
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "ragadirectoryview()"
     },
     {
@@ -9265,7 +9265,7 @@
       "_origin": "ast",
       "id": "src_components_sections_themehubview",
       "community": 230,
-      "community_name": "entry-server.tsx",
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "themehubview.tsx"
     },
     {
@@ -9278,7 +9278,7 @@
       "_origin": "ast",
       "id": "src_components_sections_themehubview_themehubentry",
       "community": 230,
-      "community_name": "entry-server.tsx",
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "themehubentry"
     },
     {
@@ -9302,7 +9302,7 @@
       "_origin": "ast",
       "id": "src_components_sections_themehubview_raw_theme_hubs",
       "community": 230,
-      "community_name": "entry-server.tsx",
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "raw_theme_hubs"
     },
     {
@@ -9314,7 +9314,7 @@
       "_origin": "ast",
       "id": "src_components_sections_themehubview_humanizeslug",
       "community": 230,
-      "community_name": "entry-server.tsx",
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "humanizeslug()"
     },
     {
@@ -9326,7 +9326,7 @@
       "_origin": "ast",
       "id": "src_components_sections_themehubview_themehubview",
       "community": 230,
-      "community_name": "entry-server.tsx",
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "themehubview()"
     },
     {
@@ -9422,8 +9422,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_sections_topicalguideview_topicalguideview",
-      "community": 230,
-      "community_name": "entry-server.tsx",
+      "community": 143,
+      "community_name": "TopicalGuideView.tsx",
       "norm_label": "topicalguideview()"
     },
     {
@@ -9433,8 +9433,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_sections_index",
-      "community": 227,
-      "community_name": "DedicatedPadReadingView.tsx",
+      "community": 221,
+      "community_name": "sacredSections.ts",
       "norm_label": "sections/index.ts"
     },
     {
@@ -9444,8 +9444,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_smaran_ashtayamatimelinedeck",
-      "community": 16,
-      "community_name": "DynamicNotchNavbar.tsx",
+      "community": 244,
+      "community_name": "AshtayamaTimelineDeck.tsx",
       "norm_label": "ashtayamatimelinedeck.tsx"
     },
     {
@@ -9455,8 +9455,8 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "src_components_smaran_ashtayamatimelinedeck_ashtayama_artworks",
-      "community": 16,
-      "community_name": "DynamicNotchNavbar.tsx",
+      "community": 244,
+      "community_name": "AshtayamaTimelineDeck.tsx",
       "norm_label": "ashtayama_artworks"
     },
     {
@@ -9468,8 +9468,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_smaran_ashtayamatimelinedeck_ashtayamatimelinedeckprops",
-      "community": 16,
-      "community_name": "DynamicNotchNavbar.tsx",
+      "community": 244,
+      "community_name": "AshtayamaTimelineDeck.tsx",
       "norm_label": "ashtayamatimelinedeckprops"
     },
     {
@@ -9480,8 +9480,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_smaran_ashtayamatimelinedeck_ashtayamatimelinedeck",
-      "community": 16,
-      "community_name": "DynamicNotchNavbar.tsx",
+      "community": 244,
+      "community_name": "AshtayamaTimelineDeck.tsx",
       "norm_label": "ashtayamatimelinedeck()"
     },
     {
@@ -9656,10 +9656,34 @@
       "norm_label": "datestripprops"
     },
     {
+      "label": "countBaseAksharas()",
+      "file_type": "code",
+      "source_file": "src/components/smaran/DateStrip.tsx",
+      "source_location": "L21",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_components_smaran_datestrip_countbaseaksharas",
+      "community": 241,
+      "community_name": "DateStrip.tsx",
+      "norm_label": "countbaseaksharas()"
+    },
+    {
+      "label": "formatCompactTithiLabel()",
+      "file_type": "code",
+      "source_file": "src/components/smaran/DateStrip.tsx",
+      "source_location": "L29",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_components_smaran_datestrip_formatcompacttithilabel",
+      "community": 241,
+      "community_name": "DateStrip.tsx",
+      "norm_label": "formatcompacttithilabel()"
+    },
+    {
       "label": "DateStrip()",
       "file_type": "code",
       "source_file": "src/components/smaran/DateStrip.tsx",
-      "source_location": "L20",
+      "source_location": "L52",
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_smaran_datestrip_datestrip",
@@ -9747,7 +9771,7 @@
       "_origin": "ast",
       "id": "src_components_smaran_nityasevacard",
       "community": 232,
-      "community_name": "SpotlightSearchModal.tsx",
+      "community_name": "IOSActivityIndicator.tsx",
       "norm_label": "nityasevacard.tsx"
     },
     {
@@ -9760,7 +9784,7 @@
       "_origin": "ast",
       "id": "src_components_smaran_nityasevacard_nityasevacardprops",
       "community": 232,
-      "community_name": "SpotlightSearchModal.tsx",
+      "community_name": "IOSActivityIndicator.tsx",
       "norm_label": "nityasevacardprops"
     },
     {
@@ -9772,7 +9796,7 @@
       "_origin": "ast",
       "id": "src_components_smaran_nityasevacard_nityasevacard",
       "community": 232,
-      "community_name": "SpotlightSearchModal.tsx",
+      "community_name": "IOSActivityIndicator.tsx",
       "norm_label": "nityasevacard()"
     },
     {
@@ -9782,7 +9806,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_smaran_sacredsectionsbanner",
-      "community": 237,
+      "community": 223,
       "community_name": "NavTab",
       "norm_label": "sacredsectionsbanner.tsx"
     },
@@ -9795,7 +9819,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_smaran_sacredsectionsbanner_sacredsectionsbannerprops",
-      "community": 237,
+      "community": 223,
       "community_name": "NavTab",
       "norm_label": "sacredsectionsbannerprops"
     },
@@ -9808,7 +9832,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_smaran_sacredsectionsbanner_sectioncarditem",
-      "community": 237,
+      "community": 223,
       "community_name": "NavTab",
       "norm_label": "sectioncarditem"
     },
@@ -9819,7 +9843,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "src_components_smaran_sacredsectionsbanner_featured_saints_gallery",
-      "community": 237,
+      "community": 223,
       "community_name": "NavTab",
       "norm_label": "featured_saints_gallery"
     },
@@ -9831,7 +9855,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_smaran_sacredsectionsbanner_sacredsectionsbanner",
-      "community": 230,
+      "community": 15,
       "community_name": "entry-server.tsx",
       "norm_label": "sacredsectionsbanner()"
     },
@@ -9842,8 +9866,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_smaran_sadhanapillarmodal",
-      "community": 1,
-      "community_name": "cacheService.ts",
+      "community": 16,
+      "community_name": "DynamicNotchNavbar.tsx",
       "norm_label": "sadhanapillarmodal.tsx"
     },
     {
@@ -9855,8 +9879,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_components_smaran_sadhanapillarmodal_pillartype",
-      "community": 1,
-      "community_name": "cacheService.ts",
+      "community": 16,
+      "community_name": "DynamicNotchNavbar.tsx",
       "norm_label": "pillartype"
     },
     {
@@ -9880,8 +9904,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_smaran_sadhanapillarmodal_sadhanapillarmodal",
-      "community": 1,
-      "community_name": "cacheService.ts",
+      "community": 16,
+      "community_name": "DynamicNotchNavbar.tsx",
       "norm_label": "sadhanapillarmodal()"
     },
     {
@@ -9938,8 +9962,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_data_botroster",
-      "community": 18,
-      "community_name": "AgentHub.tsx",
+      "community": 237,
+      "community_name": "BotAvatarRoster.tsx",
       "norm_label": "botroster.ts"
     },
     {
@@ -9951,8 +9975,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_data_botroster_sanctuarybotagent",
-      "community": 18,
-      "community_name": "AgentHub.tsx",
+      "community": 237,
+      "community_name": "BotAvatarRoster.tsx",
       "norm_label": "sanctuarybotagent"
     },
     {
@@ -9963,7 +9987,7 @@
       "_origin": "ast",
       "id": "src_data_botroster_sanctuary_bots",
       "community": 18,
-      "community_name": "AgentHub.tsx",
+      "community_name": "LiquidBotSpeedDial.tsx",
       "norm_label": "sanctuary_bots"
     },
     {
@@ -9974,7 +9998,7 @@
       "_origin": "ast",
       "id": "src_data_brajdictionary",
       "community": 30,
-      "community_name": "GlossaryView.tsx",
+      "community_name": "DedicatedPadReadingView.tsx",
       "norm_label": "brajdictionary.ts"
     },
     {
@@ -9987,7 +10011,7 @@
       "_origin": "ast",
       "id": "src_data_brajdictionary_worddefinition",
       "community": 30,
-      "community_name": "GlossaryView.tsx",
+      "community_name": "DedicatedPadReadingView.tsx",
       "norm_label": "worddefinition"
     },
     {
@@ -9998,7 +10022,7 @@
       "_origin": "ast",
       "id": "src_data_brajdictionary_braj_dictionary",
       "community": 30,
-      "community_name": "GlossaryView.tsx",
+      "community_name": "DedicatedPadReadingView.tsx",
       "norm_label": "braj_dictionary"
     },
     {
@@ -10010,7 +10034,7 @@
       "_origin": "ast",
       "id": "src_data_brajdictionary_lookupbrajword",
       "community": 30,
-      "community_name": "GlossaryView.tsx",
+      "community_name": "DedicatedPadReadingView.tsx",
       "norm_label": "lookupbrajword()"
     },
     {
@@ -10022,7 +10046,7 @@
       "_origin": "ast",
       "id": "src_data_brajdictionary_extractversedictionarywords",
       "community": 30,
-      "community_name": "GlossaryView.tsx",
+      "community_name": "DedicatedPadReadingView.tsx",
       "norm_label": "extractversedictionarywords()"
     },
     {
@@ -10089,8 +10113,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_data_festivalsdata",
-      "community": 222,
-      "community_name": "FestivalGuideView.tsx",
+      "community": 4,
+      "community_name": "panchangService.ts",
       "norm_label": "festivalsdata.ts"
     },
     {
@@ -10102,8 +10126,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_data_festivalsdata_festivalfaq",
-      "community": 222,
-      "community_name": "FestivalGuideView.tsx",
+      "community": 4,
+      "community_name": "panchangService.ts",
       "norm_label": "festivalfaq"
     },
     {
@@ -10115,8 +10139,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_data_festivalsdata_festivalguideentry",
-      "community": 222,
-      "community_name": "FestivalGuideView.tsx",
+      "community": 4,
+      "community_name": "panchangService.ts",
       "norm_label": "festivalguideentry"
     },
     {
@@ -10137,8 +10161,8 @@
       "source_location": "L218",
       "_origin": "ast",
       "id": "src_data_festivalsdata_festivals_by_slug",
-      "community": 222,
-      "community_name": "FestivalGuideView.tsx",
+      "community": 230,
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "festivals_by_slug"
     },
     {
@@ -10220,8 +10244,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_data_padas",
-      "community": 3,
-      "community_name": "sacredDatabase.ts",
+      "community": 247,
+      "community_name": "padas.ts",
       "norm_label": "padas.ts"
     },
     {
@@ -10231,8 +10255,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_data_padas_sacred_pads",
-      "community": 3,
-      "community_name": "sacredDatabase.ts",
+      "community": 247,
+      "community_name": "padas.ts",
       "norm_label": "sacred_pads"
     },
     {
@@ -10242,7 +10266,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_entry_server",
-      "community": 230,
+      "community": 15,
       "community_name": "entry-server.tsx",
       "norm_label": "entry-server.tsx"
     },
@@ -10253,7 +10277,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "src_entry_server_catalog_padas_map",
-      "community": 230,
+      "community": 15,
       "community_name": "entry-server.tsx",
       "norm_label": "catalog_padas_map"
     },
@@ -10264,7 +10288,7 @@
       "source_location": "L53",
       "_origin": "ast",
       "id": "src_entry_server_topical_guides_meta",
-      "community": 230,
+      "community": 15,
       "community_name": "entry-server.tsx",
       "norm_label": "topical_guides_meta"
     },
@@ -10276,7 +10300,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_entry_server_ensuredatabaseprewarmed",
-      "community": 230,
+      "community": 15,
       "community_name": "entry-server.tsx",
       "norm_label": "ensuredatabaseprewarmed()"
     },
@@ -10289,7 +10313,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_entry_server_renderresult",
-      "community": 230,
+      "community": 15,
       "community_name": "entry-server.tsx",
       "norm_label": "renderresult"
     },
@@ -10301,7 +10325,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_entry_server_render",
-      "community": 230,
+      "community": 15,
       "community_name": "entry-server.tsx",
       "norm_label": "render()"
     },
@@ -10313,7 +10337,7 @@
       "_origin": "ast",
       "id": "src_features_agents_agenthub",
       "community": 18,
-      "community_name": "AgentHub.tsx",
+      "community_name": "LiquidBotSpeedDial.tsx",
       "norm_label": "agenthub.tsx"
     },
     {
@@ -10326,7 +10350,7 @@
       "_origin": "ast",
       "id": "src_features_agents_agenthub_chatmessage",
       "community": 18,
-      "community_name": "AgentHub.tsx",
+      "community_name": "LiquidBotSpeedDial.tsx",
       "norm_label": "chatmessage"
     },
     {
@@ -10339,7 +10363,7 @@
       "_origin": "ast",
       "id": "src_features_agents_agenthub_agenthubprops",
       "community": 18,
-      "community_name": "AgentHub.tsx",
+      "community_name": "LiquidBotSpeedDial.tsx",
       "norm_label": "agenthubprops"
     },
     {
@@ -10351,30 +10375,31 @@
       "_origin": "ast",
       "id": "src_features_agents_agenthub_richbotmessagebody",
       "community": 18,
-      "community_name": "AgentHub.tsx",
+      "community_name": "LiquidBotSpeedDial.tsx",
       "norm_label": "richbotmessagebody()"
     },
     {
-      "label": "SOURCE_LABEL_MAP",
+      "label": "spawnRipple()",
       "file_type": "code",
       "source_file": "src/features/agents/AgentHub.tsx",
-      "source_location": "L104",
+      "source_location": "L103",
+      "_callable": true,
       "_origin": "ast",
-      "id": "src_features_agents_agenthub_source_label_map",
+      "id": "src_features_agents_agenthub_spawnripple",
       "community": 18,
-      "community_name": "AgentHub.tsx",
-      "norm_label": "source_label_map"
+      "community_name": "LiquidBotSpeedDial.tsx",
+      "norm_label": "spawnripple()"
     },
     {
       "label": "AgentHub()",
       "file_type": "code",
       "source_file": "src/features/agents/AgentHub.tsx",
-      "source_location": "L111",
+      "source_location": "L118",
       "_callable": true,
       "_origin": "ast",
       "id": "src_features_agents_agenthub_agenthub",
       "community": 18,
-      "community_name": "AgentHub.tsx",
+      "community_name": "LiquidBotSpeedDial.tsx",
       "norm_label": "agenthub()"
     },
     {
@@ -10384,7 +10409,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_features_agents_agenthubmodal",
-      "community": 240,
+      "community": 236,
       "community_name": "agentQueue.ts",
       "norm_label": "agenthubmodal.tsx"
     },
@@ -10395,7 +10420,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "src_features_agents_agenthubmodal_lazyagenthub",
-      "community": 240,
+      "community": 236,
       "community_name": "agentQueue.ts",
       "norm_label": "lazyagenthub"
     },
@@ -10407,7 +10432,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_features_agents_agenthubmodal_agenthubmodal",
-      "community": 240,
+      "community": 236,
       "community_name": "agentQueue.ts",
       "norm_label": "agenthubmodal()"
     },
@@ -10419,7 +10444,7 @@
       "_origin": "ast",
       "id": "src_hooks_usescrolldirection",
       "community": 15,
-      "community_name": "PadavaliReader.tsx",
+      "community_name": "entry-server.tsx",
       "norm_label": "usescrolldirection.ts"
     },
     {
@@ -10432,7 +10457,7 @@
       "_origin": "ast",
       "id": "src_hooks_usescrolldirection_scrolldirection",
       "community": 15,
-      "community_name": "PadavaliReader.tsx",
+      "community_name": "entry-server.tsx",
       "norm_label": "scrolldirection"
     },
     {
@@ -10445,7 +10470,7 @@
       "_origin": "ast",
       "id": "src_hooks_usescrolldirection_usescrolldirectionoptions",
       "community": 15,
-      "community_name": "PadavaliReader.tsx",
+      "community_name": "entry-server.tsx",
       "norm_label": "usescrolldirectionoptions"
     },
     {
@@ -10458,7 +10483,7 @@
       "_origin": "ast",
       "id": "src_hooks_usescrolldirection_scrolldirectionstate",
       "community": 15,
-      "community_name": "PadavaliReader.tsx",
+      "community_name": "entry-server.tsx",
       "norm_label": "scrolldirectionstate"
     },
     {
@@ -10470,7 +10495,7 @@
       "_origin": "ast",
       "id": "src_hooks_usescrolldirection_usescrolldirection",
       "community": 15,
-      "community_name": "PadavaliReader.tsx",
+      "community_name": "entry-server.tsx",
       "norm_label": "usescrolldirection()"
     },
     {
@@ -10482,7 +10507,7 @@
       "_origin": "ast",
       "id": "src_hooks_usescrolldirection_usetaptotoggle",
       "community": 15,
-      "community_name": "PadavaliReader.tsx",
+      "community_name": "entry-server.tsx",
       "norm_label": "usetaptotoggle()"
     },
     {
@@ -10493,7 +10518,7 @@
       "_origin": "ast",
       "id": "src_hooks_usesidebarstate",
       "community": 15,
-      "community_name": "PadavaliReader.tsx",
+      "community_name": "entry-server.tsx",
       "norm_label": "usesidebarstate.ts"
     },
     {
@@ -10506,7 +10531,7 @@
       "_origin": "ast",
       "id": "src_hooks_usesidebarstate_sidebarstate",
       "community": 15,
-      "community_name": "PadavaliReader.tsx",
+      "community_name": "entry-server.tsx",
       "norm_label": "sidebarstate"
     },
     {
@@ -10518,7 +10543,7 @@
       "_origin": "ast",
       "id": "src_hooks_usesidebarstate_usesidebarstate",
       "community": 15,
-      "community_name": "PadavaliReader.tsx",
+      "community_name": "entry-server.tsx",
       "norm_label": "usesidebarstate()"
     },
     {
@@ -10584,8 +10609,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_services_assistantcache",
-      "community": 236,
-      "community_name": "AssistantCacheService",
+      "community": 93,
+      "community_name": "botGroqEngine.ts",
       "norm_label": "assistantcache.ts"
     },
     {
@@ -10597,8 +10622,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_services_assistantcache_cacheentry",
-      "community": 236,
-      "community_name": "AssistantCacheService",
+      "community": 93,
+      "community_name": "botGroqEngine.ts",
       "norm_label": "cacheentry"
     },
     {
@@ -10610,7 +10635,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_services_assistantcache_assistantcacheservice",
-      "community": 236,
+      "community": 226,
       "community_name": "AssistantCacheService",
       "norm_label": "assistantcacheservice"
     },
@@ -10622,7 +10647,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_assistantcache_assistantcacheservice_constructor",
-      "community": 236,
+      "community": 226,
       "community_name": "AssistantCacheService",
       "norm_label": ".constructor()"
     },
@@ -10634,7 +10659,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_assistantcache_assistantcacheservice_getkey",
-      "community": 236,
+      "community": 226,
       "community_name": "AssistantCacheService",
       "norm_label": ".getkey()"
     },
@@ -10646,7 +10671,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_assistantcache_assistantcacheservice_hydratefromstorage",
-      "community": 236,
+      "community": 226,
       "community_name": "AssistantCacheService",
       "norm_label": ".hydratefromstorage()"
     },
@@ -10658,7 +10683,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_assistantcache_assistantcacheservice_get",
-      "community": 236,
+      "community": 226,
       "community_name": "AssistantCacheService",
       "norm_label": ".get()"
     },
@@ -10670,7 +10695,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_assistantcache_assistantcacheservice_set",
-      "community": 236,
+      "community": 226,
       "community_name": "AssistantCacheService",
       "norm_label": ".set()"
     },
@@ -10682,7 +10707,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_assistantcache_assistantcacheservice_clear",
-      "community": 236,
+      "community": 226,
       "community_name": "AssistantCacheService",
       "norm_label": ".clear()"
     },
@@ -10693,8 +10718,8 @@
       "source_location": "L104",
       "_origin": "ast",
       "id": "src_services_assistantcache_assistantcache",
-      "community": 236,
-      "community_name": "AssistantCacheService",
+      "community": 93,
+      "community_name": "botGroqEngine.ts",
       "norm_label": "assistantcache"
     },
     {
@@ -10717,7 +10742,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_services_botbrain_botreplyresult",
-      "community": 226,
+      "community": 93,
       "community_name": "botGroqEngine.ts",
       "norm_label": "botreplyresult"
     },
@@ -10740,7 +10765,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_services_botgroqengine",
-      "community": 226,
+      "community": 93,
       "community_name": "botGroqEngine.ts",
       "norm_label": "botgroqengine.ts"
     },
@@ -10753,8 +10778,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_services_botgroqengine_botcategoryid",
-      "community": 18,
-      "community_name": "AgentHub.tsx",
+      "community": 237,
+      "community_name": "BotAvatarRoster.tsx",
       "norm_label": "botcategoryid"
     },
     {
@@ -10764,8 +10789,8 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "src_services_botgroqengine_bot_categories",
-      "community": 18,
-      "community_name": "AgentHub.tsx",
+      "community": 237,
+      "community_name": "BotAvatarRoster.tsx",
       "norm_label": "bot_categories"
     },
     {
@@ -10775,7 +10800,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "src_services_botgroqengine_bot_category_by_id",
-      "community": 226,
+      "community": 93,
       "community_name": "botGroqEngine.ts",
       "norm_label": "bot_category_by_id"
     },
@@ -10786,7 +10811,7 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "src_services_botgroqengine_bot_system_directives",
-      "community": 226,
+      "community": 93,
       "community_name": "botGroqEngine.ts",
       "norm_label": "bot_system_directives"
     },
@@ -10798,8 +10823,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_botgroqengine_getbotcategory",
-      "community": 18,
-      "community_name": "AgentHub.tsx",
+      "community": 237,
+      "community_name": "BotAvatarRoster.tsx",
       "norm_label": "getbotcategory()"
     },
     {
@@ -10811,7 +10836,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_services_botgroqengine_botsectionhome",
-      "community": 226,
+      "community": 93,
       "community_name": "botGroqEngine.ts",
       "norm_label": "botsectionhome"
     },
@@ -10822,7 +10847,7 @@
       "source_location": "L68",
       "_origin": "ast",
       "id": "src_services_botgroqengine_bot_home_section_by_id",
-      "community": 226,
+      "community": 93,
       "community_name": "botGroqEngine.ts",
       "norm_label": "bot_home_section_by_id"
     },
@@ -10835,7 +10860,7 @@
       "_origin": "ast",
       "id": "src_services_botgroqengine_getbothomesection",
       "community": 18,
-      "community_name": "AgentHub.tsx",
+      "community_name": "LiquidBotSpeedDial.tsx",
       "norm_label": "getbothomesection()"
     },
     {
@@ -10848,7 +10873,7 @@
       "_origin": "ast",
       "id": "src_services_botgroqengine_botsuggestedlink",
       "community": 18,
-      "community_name": "AgentHub.tsx",
+      "community_name": "LiquidBotSpeedDial.tsx",
       "norm_label": "botsuggestedlink"
     },
     {
@@ -10861,7 +10886,7 @@
       "_origin": "ast",
       "id": "src_services_botgroqengine_botresponsesource",
       "community": 18,
-      "community_name": "AgentHub.tsx",
+      "community_name": "LiquidBotSpeedDial.tsx",
       "norm_label": "botresponsesource"
     },
     {
@@ -10873,7 +10898,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_services_botgroqengine_botstreamreplyresult",
-      "community": 226,
+      "community": 93,
       "community_name": "botGroqEngine.ts",
       "norm_label": "botstreamreplyresult"
     },
@@ -10886,7 +10911,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_services_botgroqengine_chatturnforprompt",
-      "community": 226,
+      "community": 93,
       "community_name": "botGroqEngine.ts",
       "norm_label": "chatturnforprompt"
     },
@@ -10897,7 +10922,7 @@
       "source_location": "L107",
       "_origin": "ast",
       "id": "src_services_botgroqengine_groq_endpoint",
-      "community": 226,
+      "community": 93,
       "community_name": "botGroqEngine.ts",
       "norm_label": "groq_endpoint"
     },
@@ -10908,7 +10933,7 @@
       "source_location": "L108",
       "_origin": "ast",
       "id": "src_services_botgroqengine_groq_primary_model",
-      "community": 226,
+      "community": 93,
       "community_name": "botGroqEngine.ts",
       "norm_label": "groq_primary_model"
     },
@@ -10919,7 +10944,7 @@
       "source_location": "L109",
       "_origin": "ast",
       "id": "src_services_botgroqengine_groq_model_cascade",
-      "community": 226,
+      "community": 93,
       "community_name": "botGroqEngine.ts",
       "norm_label": "groq_model_cascade"
     },
@@ -10931,7 +10956,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_botgroqengine_resolveclientgroqkey",
-      "community": 226,
+      "community": 93,
       "community_name": "botGroqEngine.ts",
       "norm_label": "resolveclientgroqkey()"
     },
@@ -10943,7 +10968,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_botgroqengine_isgroqconfigured",
-      "community": 226,
+      "community": 93,
       "community_name": "botGroqEngine.ts",
       "norm_label": "isgroqconfigured()"
     },
@@ -10955,7 +10980,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_botgroqengine_stripthinkingtags",
-      "community": 226,
+      "community": 93,
       "community_name": "botGroqEngine.ts",
       "norm_label": "stripthinkingtags()"
     },
@@ -10966,7 +10991,7 @@
       "source_location": "L135",
       "_origin": "ast",
       "id": "src_services_botgroqengine_scripture_stopwords",
-      "community": 226,
+      "community": 93,
       "community_name": "botGroqEngine.ts",
       "norm_label": "scripture_stopwords"
     },
@@ -10978,7 +11003,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_botgroqengine_searchcorpusforquery",
-      "community": 226,
+      "community": 93,
       "community_name": "botGroqEngine.ts",
       "norm_label": "searchcorpusforquery()"
     },
@@ -11002,7 +11027,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_botgroqengine_buildsystemprompt",
-      "community": 226,
+      "community": 93,
       "community_name": "botGroqEngine.ts",
       "norm_label": "buildsystemprompt()"
     },
@@ -11014,7 +11039,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_botgroqengine_fetchgroqstreamfromurl",
-      "community": 226,
+      "community": 93,
       "community_name": "botGroqEngine.ts",
       "norm_label": "fetchgroqstreamfromurl()"
     },
@@ -11026,7 +11051,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_botgroqengine_readssecontentstream",
-      "community": 226,
+      "community": 93,
       "community_name": "botGroqEngine.ts",
       "norm_label": "readssecontentstream()"
     },
@@ -11038,7 +11063,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_botgroqengine_makecachekey",
-      "community": 226,
+      "community": 93,
       "community_name": "botGroqEngine.ts",
       "norm_label": "makecachekey()"
     },
@@ -11050,7 +11075,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_botgroqengine_streambotreply",
-      "community": 226,
+      "community": 93,
       "community_name": "botGroqEngine.ts",
       "norm_label": "streambotreply()"
     },
@@ -11063,7 +11088,7 @@
       "_origin": "ast",
       "id": "src_services_botgroqengine_clearbotconversationcache",
       "community": 18,
-      "community_name": "AgentHub.tsx",
+      "community_name": "LiquidBotSpeedDial.tsx",
       "norm_label": "clearbotconversationcache()"
     },
     {
@@ -11075,31 +11100,43 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_services_botgroqengine_richreplysegment",
-      "community": 226,
+      "community": 93,
       "community_name": "botGroqEngine.ts",
       "norm_label": "richreplysegment"
+    },
+    {
+      "label": "normalizeReplyLines()",
+      "file_type": "code",
+      "source_file": "src/services/botGroqEngine.ts",
+      "source_location": "L623",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_services_botgroqengine_normalizereplylines",
+      "community": 18,
+      "community_name": "LiquidBotSpeedDial.tsx",
+      "norm_label": "normalizereplylines()"
     },
     {
       "label": "parseRichInlineSegments()",
       "file_type": "code",
       "source_file": "src/services/botGroqEngine.ts",
-      "source_location": "L619",
+      "source_location": "L640",
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_botgroqengine_parserichinlinesegments",
       "community": 18,
-      "community_name": "AgentHub.tsx",
+      "community_name": "LiquidBotSpeedDial.tsx",
       "norm_label": "parserichinlinesegments()"
     },
     {
       "label": "extractRoutePathsFromText()",
       "file_type": "code",
       "source_file": "src/services/botGroqEngine.ts",
-      "source_location": "L646",
+      "source_location": "L668",
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_botgroqengine_extractroutepathsfromtext",
-      "community": 226,
+      "community": 93,
       "community_name": "botGroqEngine.ts",
       "norm_label": "extractroutepathsfromtext()"
     },
@@ -11107,12 +11144,12 @@
       "label": "navigateSpaRoute()",
       "file_type": "code",
       "source_file": "src/services/botGroqEngine.ts",
-      "source_location": "L651",
+      "source_location": "L673",
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_botgroqengine_navigatesparoute",
       "community": 18,
-      "community_name": "AgentHub.tsx",
+      "community_name": "LiquidBotSpeedDial.tsx",
       "norm_label": "navigatesparoute()"
     },
     {
@@ -11267,7 +11304,7 @@
       "_origin": "ast",
       "id": "src_services_cacheservice_reconcilesadhana",
       "community": 5,
-      "community_name": "App",
+      "community_name": "MilestonesView.tsx",
       "norm_label": "reconcilesadhana()"
     },
     {
@@ -11279,7 +11316,7 @@
       "_origin": "ast",
       "id": "src_services_cacheservice_reconciledhyanaimpact",
       "community": 5,
-      "community_name": "App",
+      "community_name": "MilestonesView.tsx",
       "norm_label": "reconciledhyanaimpact()"
     },
     {
@@ -11290,8 +11327,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_reconcilereaderstate",
-      "community": 223,
-      "community_name": "safeLocalStorageSet",
+      "community": 1,
+      "community_name": "cacheService.ts",
       "norm_label": "reconcilereaderstate()"
     },
     {
@@ -11302,8 +11339,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_reconcileuserpreferences",
-      "community": 223,
-      "community_name": "safeLocalStorageSet",
+      "community": 1,
+      "community_name": "cacheService.ts",
       "norm_label": "reconcileuserpreferences()"
     },
     {
@@ -11314,8 +11351,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_safelocalstorageget",
-      "community": 223,
-      "community_name": "safeLocalStorageSet",
+      "community": 1,
+      "community_name": "cacheService.ts",
       "norm_label": "safelocalstorageget()"
     },
     {
@@ -11326,8 +11363,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_safelocalstorageset",
-      "community": 223,
-      "community_name": "safeLocalStorageSet",
+      "community": 1,
+      "community_name": "cacheService.ts",
       "norm_label": "safelocalstorageset()"
     },
     {
@@ -11338,8 +11375,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_broadcastsync",
-      "community": 223,
-      "community_name": "safeLocalStorageSet",
+      "community": 1,
+      "community_name": "cacheService.ts",
       "norm_label": "broadcastsync()"
     },
     {
@@ -11351,7 +11388,7 @@
       "_origin": "ast",
       "id": "src_services_cacheservice_loadcachedsadhanasync",
       "community": 5,
-      "community_name": "App",
+      "community_name": "MilestonesView.tsx",
       "norm_label": "loadcachedsadhanasync()"
     },
     {
@@ -11363,7 +11400,7 @@
       "_origin": "ast",
       "id": "src_services_cacheservice_loadcachedsadhana",
       "community": 5,
-      "community_name": "App",
+      "community_name": "MilestonesView.tsx",
       "norm_label": "loadcachedsadhana()"
     },
     {
@@ -11374,8 +11411,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_persistsadhana",
-      "community": 223,
-      "community_name": "safeLocalStorageSet",
+      "community": 1,
+      "community_name": "cacheService.ts",
       "norm_label": "persistsadhana()"
     },
     {
@@ -11386,8 +11423,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_getfeedinteractionssync",
-      "community": 223,
-      "community_name": "safeLocalStorageSet",
+      "community": 222,
+      "community_name": "FeedCard.tsx",
       "norm_label": "getfeedinteractionssync()"
     },
     {
@@ -11398,8 +11435,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_getfeedinteractions",
-      "community": 223,
-      "community_name": "safeLocalStorageSet",
+      "community": 222,
+      "community_name": "FeedCard.tsx",
       "norm_label": "getfeedinteractions()"
     },
     {
@@ -11410,8 +11447,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_savefeedinteraction",
-      "community": 223,
-      "community_name": "safeLocalStorageSet",
+      "community": 222,
+      "community_name": "FeedCard.tsx",
       "norm_label": "savefeedinteraction()"
     },
     {
@@ -11422,8 +11459,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_getreaderstatesync",
-      "community": 223,
-      "community_name": "safeLocalStorageSet",
+      "community": 1,
+      "community_name": "cacheService.ts",
       "norm_label": "getreaderstatesync()"
     },
     {
@@ -11434,8 +11471,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_getreaderstate",
-      "community": 223,
-      "community_name": "safeLocalStorageSet",
+      "community": 1,
+      "community_name": "cacheService.ts",
       "norm_label": "getreaderstate()"
     },
     {
@@ -11446,8 +11483,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_savereaderstate",
-      "community": 223,
-      "community_name": "safeLocalStorageSet",
+      "community": 1,
+      "community_name": "cacheService.ts",
       "norm_label": "savereaderstate()"
     },
     {
@@ -11458,8 +11495,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_getuserpreferencessync",
-      "community": 223,
-      "community_name": "safeLocalStorageSet",
+      "community": 1,
+      "community_name": "cacheService.ts",
       "norm_label": "getuserpreferencessync()"
     },
     {
@@ -11470,8 +11507,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_getuserpreferences",
-      "community": 223,
-      "community_name": "safeLocalStorageSet",
+      "community": 1,
+      "community_name": "cacheService.ts",
       "norm_label": "getuserpreferences()"
     },
     {
@@ -11482,8 +11519,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_saveuserpreferences",
-      "community": 223,
-      "community_name": "safeLocalStorageSet",
+      "community": 1,
+      "community_name": "cacheService.ts",
       "norm_label": "saveuserpreferences()"
     },
     {
@@ -11495,7 +11532,7 @@
       "_origin": "ast",
       "id": "src_services_cacheservice_getcachedbookmarks",
       "community": 15,
-      "community_name": "PadavaliReader.tsx",
+      "community_name": "entry-server.tsx",
       "norm_label": "getcachedbookmarks()"
     },
     {
@@ -11506,8 +11543,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_savecachedbookmarks",
-      "community": 223,
-      "community_name": "safeLocalStorageSet",
+      "community": 1,
+      "community_name": "cacheService.ts",
       "norm_label": "savecachedbookmarks()"
     },
     {
@@ -11519,7 +11556,7 @@
       "_origin": "ast",
       "id": "src_services_cacheservice_initmultitabsync",
       "community": 5,
-      "community_name": "App",
+      "community_name": "MilestonesView.tsx",
       "norm_label": "initmultitabsync()"
     },
     {
@@ -11542,7 +11579,7 @@
       "_origin": "ast",
       "id": "src_services_cacheservice_formatdevanagarinumerals",
       "community": 230,
-      "community_name": "entry-server.tsx",
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "formatdevanagarinumerals()"
     },
     {
@@ -11553,8 +11590,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_computemantracount",
-      "community": 1,
-      "community_name": "cacheService.ts",
+      "community": 16,
+      "community_name": "DynamicNotchNavbar.tsx",
       "norm_label": "computemantracount()"
     },
     {
@@ -11614,8 +11651,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_computeashtayamaphase",
-      "community": 16,
-      "community_name": "DynamicNotchNavbar.tsx",
+      "community": 4,
+      "community_name": "panchangService.ts",
       "norm_label": "computeashtayamaphase()"
     },
     {
@@ -11627,7 +11664,7 @@
       "_origin": "ast",
       "id": "src_services_cacheservice_loaddhyanaimpactsync",
       "community": 5,
-      "community_name": "App",
+      "community_name": "MilestonesView.tsx",
       "norm_label": "loaddhyanaimpactsync()"
     },
     {
@@ -11650,7 +11687,7 @@
       "_origin": "ast",
       "id": "src_services_cacheservice_loaddhyanaimpact",
       "community": 5,
-      "community_name": "App",
+      "community_name": "MilestonesView.tsx",
       "norm_label": "loaddhyanaimpact()"
     },
     {
@@ -11742,8 +11779,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_cacheservice_savesacredreflection",
-      "community": 223,
-      "community_name": "safeLocalStorageSet",
+      "community": 1,
+      "community_name": "cacheService.ts",
       "norm_label": "savesacredreflection()"
     },
     {
@@ -11764,8 +11801,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_services_chimeservice",
-      "community": 227,
-      "community_name": "DedicatedPadReadingView.tsx",
+      "community": 235,
+      "community_name": "NityaUpasanaReader.tsx",
       "norm_label": "chimeservice.ts"
     },
     {
@@ -11777,8 +11814,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_services_chimeservice_chimetype",
-      "community": 227,
-      "community_name": "DedicatedPadReadingView.tsx",
+      "community": 235,
+      "community_name": "NityaUpasanaReader.tsx",
       "norm_label": "chimetype"
     },
     {
@@ -11788,8 +11825,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "src_services_chimeservice_chime_paths",
-      "community": 227,
-      "community_name": "DedicatedPadReadingView.tsx",
+      "community": 235,
+      "community_name": "NityaUpasanaReader.tsx",
       "norm_label": "chime_paths"
     },
     {
@@ -11968,8 +12005,8 @@
       "source_location": "L306",
       "_origin": "ast",
       "id": "src_services_chimeservice_chimeservice",
-      "community": 227,
-      "community_name": "DedicatedPadReadingView.tsx",
+      "community": 235,
+      "community_name": "NityaUpasanaReader.tsx",
       "norm_label": "chimeservice"
     },
     {
@@ -12591,7 +12628,7 @@
       "_origin": "ast",
       "id": "src_services_correlationservice",
       "community": 235,
-      "community_name": "correlationService.ts",
+      "community_name": "NityaUpasanaReader.tsx",
       "norm_label": "correlationservice.ts"
     },
     {
@@ -12604,7 +12641,7 @@
       "_origin": "ast",
       "id": "src_services_correlationservice_correlateddiscovery",
       "community": 235,
-      "community_name": "correlationService.ts",
+      "community_name": "NityaUpasanaReader.tsx",
       "norm_label": "correlateddiscovery"
     },
     {
@@ -12617,7 +12654,7 @@
       "_origin": "ast",
       "id": "src_services_correlationservice_currentpraharinfo",
       "community": 235,
-      "community_name": "correlationService.ts",
+      "community_name": "NityaUpasanaReader.tsx",
       "norm_label": "currentpraharinfo"
     },
     {
@@ -12628,7 +12665,7 @@
       "_origin": "ast",
       "id": "src_services_correlationservice_correlationcache",
       "community": 235,
-      "community_name": "correlationService.ts",
+      "community_name": "NityaUpasanaReader.tsx",
       "norm_label": "correlationcache"
     },
     {
@@ -12641,7 +12678,7 @@
       "_origin": "ast",
       "id": "src_services_correlationservice_nexuscluster",
       "community": 235,
-      "community_name": "correlationService.ts",
+      "community_name": "NityaUpasanaReader.tsx",
       "norm_label": "nexuscluster"
     },
     {
@@ -12652,7 +12689,7 @@
       "_origin": "ast",
       "id": "src_services_correlationservice_nexus_clusters",
       "community": 235,
-      "community_name": "correlationService.ts",
+      "community_name": "NityaUpasanaReader.tsx",
       "norm_label": "nexus_clusters"
     },
     {
@@ -12662,8 +12699,8 @@
       "source_location": "L145",
       "_origin": "ast",
       "id": "src_services_correlationservice_correlationservice",
-      "community": 227,
-      "community_name": "DedicatedPadReadingView.tsx",
+      "community": 235,
+      "community_name": "NityaUpasanaReader.tsx",
       "norm_label": "correlationservice"
     },
     {
@@ -13082,7 +13119,7 @@
       "_origin": "ast",
       "id": "src_services_devotionalvisuals",
       "community": 235,
-      "community_name": "correlationService.ts",
+      "community_name": "NityaUpasanaReader.tsx",
       "norm_label": "devotionalvisuals.ts"
     },
     {
@@ -13095,7 +13132,7 @@
       "_origin": "ast",
       "id": "src_services_devotionalvisuals_bookcoverconfig",
       "community": 235,
-      "community_name": "correlationService.ts",
+      "community_name": "NityaUpasanaReader.tsx",
       "norm_label": "bookcoverconfig"
     },
     {
@@ -13106,8 +13143,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_devotionalvisuals_getsaintportrait",
-      "community": 230,
-      "community_name": "entry-server.tsx",
+      "community": 238,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "getsaintportrait()"
     },
     {
@@ -13118,8 +13155,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_devotionalvisuals_getbookcoverconfig",
-      "community": 235,
-      "community_name": "correlationService.ts",
+      "community": 238,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "getbookcoverconfig()"
     },
     {
@@ -13131,7 +13168,7 @@
       "_origin": "ast",
       "id": "src_services_devotionalvisuals_hashindex",
       "community": 235,
-      "community_name": "correlationService.ts",
+      "community_name": "NityaUpasanaReader.tsx",
       "norm_label": "hashindex()"
     },
     {
@@ -13143,7 +13180,7 @@
       "_origin": "ast",
       "id": "src_services_devotionalvisuals_getdhamartwork",
       "community": 235,
-      "community_name": "correlationService.ts",
+      "community_name": "NityaUpasanaReader.tsx",
       "norm_label": "getdhamartwork()"
     },
     {
@@ -13155,7 +13192,7 @@
       "_origin": "ast",
       "id": "src_services_devotionalvisuals_getritualartwork",
       "community": 235,
-      "community_name": "correlationService.ts",
+      "community_name": "NityaUpasanaReader.tsx",
       "norm_label": "getritualartwork()"
     },
     {
@@ -13167,7 +13204,7 @@
       "_origin": "ast",
       "id": "src_services_devotionalvisuals_getkathaartwork",
       "community": 235,
-      "community_name": "correlationService.ts",
+      "community_name": "NityaUpasanaReader.tsx",
       "norm_label": "getkathaartwork()"
     },
     {
@@ -13178,8 +13215,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_devotionalvisuals_getartworkobjectposition",
-      "community": 227,
-      "community_name": "DedicatedPadReadingView.tsx",
+      "community": 221,
+      "community_name": "sacredSections.ts",
       "norm_label": "getartworkobjectposition()"
     },
     {
@@ -13191,7 +13228,7 @@
       "_origin": "ast",
       "id": "src_services_devotionalvisuals_getepicdarshanvisual",
       "community": 15,
-      "community_name": "PadavaliReader.tsx",
+      "community_name": "entry-server.tsx",
       "norm_label": "getepicdarshanvisual()"
     },
     {
@@ -13635,8 +13672,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_services_sacreddatabase_ashtayamaperiod",
-      "community": 16,
-      "community_name": "DynamicNotchNavbar.tsx",
+      "community": 244,
+      "community_name": "AshtayamaTimelineDeck.tsx",
       "norm_label": "ashtayamaperiod"
     },
     {
@@ -13725,7 +13762,7 @@
       "_origin": "ast",
       "id": "src_services_sacreddatabase_non_ragas",
       "community": 250,
-      "community_name": "cleanSacredString",
+      "community_name": "normalizeCanonicalPad",
       "norm_label": "non_ragas"
     },
     {
@@ -13735,7 +13772,7 @@
       "source_location": "L166",
       "_origin": "ast",
       "id": "src_services_sacreddatabase_sanitizesacredtext",
-      "community": 93,
+      "community": 227,
       "community_name": "devotionalContentParser.ts",
       "norm_label": "sanitizesacredtext"
     },
@@ -13748,7 +13785,7 @@
       "_origin": "ast",
       "id": "src_services_sacreddatabase_normalizecanonicalpad",
       "community": 250,
-      "community_name": "cleanSacredString",
+      "community_name": "normalizeCanonicalPad",
       "norm_label": "normalizecanonicalpad()"
     },
     {
@@ -14027,7 +14064,7 @@
       "source_location": "L428",
       "_origin": "ast",
       "id": "src_services_sacreddatabase_sacreddatabase",
-      "community": 230,
+      "community": 15,
       "community_name": "entry-server.tsx",
       "norm_label": "sacreddatabase"
     },
@@ -14039,8 +14076,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_sacreddatabase_mappadtoepicchapter",
-      "community": 7,
-      "community_name": "App.tsx",
+      "community": 15,
+      "community_name": "entry-server.tsx",
       "norm_label": "mappadtoepicchapter()"
     },
     {
@@ -14138,8 +14175,8 @@
       "source_location": "L464",
       "_origin": "ast",
       "id": "src_services_sacredsectionservice_seed_rituals",
-      "community": 221,
-      "community_name": "sacredSections.ts",
+      "community": 235,
+      "community_name": "NityaUpasanaReader.tsx",
       "norm_label": "seed_rituals"
     },
     {
@@ -14295,8 +14332,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_sacredsectionservice_sacredsectionservice_getritualbyid",
-      "community": 221,
-      "community_name": "sacredSections.ts",
+      "community": 235,
+      "community_name": "NityaUpasanaReader.tsx",
       "norm_label": ".getritualbyid()"
     },
     {
@@ -14306,8 +14343,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_services_seoservice",
-      "community": 227,
-      "community_name": "DedicatedPadReadingView.tsx",
+      "community": 15,
+      "community_name": "entry-server.tsx",
       "norm_label": "seoservice.ts"
     },
     {
@@ -14319,8 +14356,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_services_seoservice_seoconfig",
-      "community": 227,
-      "community_name": "DedicatedPadReadingView.tsx",
+      "community": 15,
+      "community_name": "entry-server.tsx",
       "norm_label": "seoconfig"
     },
     {
@@ -14332,7 +14369,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_services_seoservice_seometadataresult",
-      "community": 230,
+      "community": 15,
       "community_name": "entry-server.tsx",
       "norm_label": "seometadataresult"
     },
@@ -14343,8 +14380,8 @@
       "source_location": "L112",
       "_origin": "ast",
       "id": "src_services_seoservice_default_seo",
-      "community": 227,
-      "community_name": "DedicatedPadReadingView.tsx",
+      "community": 15,
+      "community_name": "entry-server.tsx",
       "norm_label": "default_seo"
     },
     {
@@ -14355,8 +14392,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_seoservice_escapehtml",
-      "community": 227,
-      "community_name": "DedicatedPadReadingView.tsx",
+      "community": 15,
+      "community_name": "entry-server.tsx",
       "norm_label": "escapehtml()"
     },
     {
@@ -14367,8 +14404,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_services_seoservice_generateseometadata",
-      "community": 227,
-      "community_name": "DedicatedPadReadingView.tsx",
+      "community": 15,
+      "community_name": "entry-server.tsx",
       "norm_label": "generateseometadata()"
     },
     {
@@ -14451,8 +14488,8 @@
       "source_location": "L929",
       "_origin": "ast",
       "id": "src_services_seoservice_seo",
-      "community": 227,
-      "community_name": "DedicatedPadReadingView.tsx",
+      "community": 15,
+      "community_name": "entry-server.tsx",
       "norm_label": "seo"
     },
     {
@@ -14944,7 +14981,7 @@
       "_origin": "ast",
       "id": "src_types_devotional_dhyanaimpactstate",
       "community": 5,
-      "community_name": "App",
+      "community_name": "MilestonesView.tsx",
       "norm_label": "dhyanaimpactstate"
     },
     {
@@ -15266,8 +15303,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_types_sacredsections_sacredritual",
-      "community": 221,
-      "community_name": "sacredSections.ts",
+      "community": 235,
+      "community_name": "NityaUpasanaReader.tsx",
       "norm_label": "sacredritual"
     },
     {
@@ -15303,7 +15340,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_utils_agentqueue",
-      "community": 240,
+      "community": 236,
       "community_name": "agentQueue.ts",
       "norm_label": "agentqueue.ts"
     },
@@ -15316,7 +15353,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_utils_agentqueue_queuedagentevent",
-      "community": 240,
+      "community": 236,
       "community_name": "agentQueue.ts",
       "norm_label": "queuedagentevent"
     },
@@ -15329,7 +15366,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_utils_agentqueue_window",
-      "community": 240,
+      "community": 236,
       "community_name": "agentQueue.ts",
       "norm_label": "window"
     },
@@ -15342,7 +15379,7 @@
       "_origin": "ast",
       "id": "src_utils_agentqueue_queueagentevent",
       "community": 18,
-      "community_name": "AgentHub.tsx",
+      "community_name": "LiquidBotSpeedDial.tsx",
       "norm_label": "queueagentevent()"
     },
     {
@@ -15353,7 +15390,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_utils_agentqueue_popagentevent",
-      "community": 240,
+      "community": 236,
       "community_name": "agentQueue.ts",
       "norm_label": "popagentevent()"
     },
@@ -15365,7 +15402,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_utils_agentqueue_popanyagentevent",
-      "community": 240,
+      "community": 236,
       "community_name": "agentQueue.ts",
       "norm_label": "popanyagentevent()"
     },
@@ -15377,7 +15414,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_utils_agentqueue_clearagentevents",
-      "community": 240,
+      "community": 236,
       "community_name": "agentQueue.ts",
       "norm_label": "clearagentevents()"
     },
@@ -15388,7 +15425,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_utils_devotionalcontentparser",
-      "community": 93,
+      "community": 227,
       "community_name": "devotionalContentParser.ts",
       "norm_label": "devotionalcontentparser.ts"
     },
@@ -15401,7 +15438,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_utils_devotionalcontentparser_versemeaningunit",
-      "community": 93,
+      "community": 227,
       "community_name": "devotionalContentParser.ts",
       "norm_label": "versemeaningunit"
     },
@@ -15414,7 +15451,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_utils_devotionalcontentparser_stanzaunit",
-      "community": 93,
+      "community": 227,
       "community_name": "devotionalContentParser.ts",
       "norm_label": "stanzaunit"
     },
@@ -15427,7 +15464,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_utils_devotionalcontentparser_sectionheaderunit",
-      "community": 93,
+      "community": 227,
       "community_name": "devotionalContentParser.ts",
       "norm_label": "sectionheaderunit"
     },
@@ -15440,7 +15477,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_utils_devotionalcontentparser_floralgarlandunit",
-      "community": 93,
+      "community": 227,
       "community_name": "devotionalContentParser.ts",
       "norm_label": "floralgarlandunit"
     },
@@ -15453,7 +15490,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_utils_devotionalcontentparser_poemtitleunit",
-      "community": 93,
+      "community": 227,
       "community_name": "devotionalContentParser.ts",
       "norm_label": "poemtitleunit"
     },
@@ -15466,7 +15503,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_utils_devotionalcontentparser_proseunit",
-      "community": 93,
+      "community": 227,
       "community_name": "devotionalContentParser.ts",
       "norm_label": "proseunit"
     },
@@ -15479,7 +15516,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_utils_devotionalcontentparser_meterbadgeunit",
-      "community": 93,
+      "community": 227,
       "community_name": "devotionalContentParser.ts",
       "norm_label": "meterbadgeunit"
     },
@@ -15492,7 +15529,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_utils_devotionalcontentparser_devotionalunit",
-      "community": 93,
+      "community": 227,
       "community_name": "devotionalContentParser.ts",
       "norm_label": "devotionalunit"
     },
@@ -15505,7 +15542,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "src_utils_devotionalcontentparser_parsedsacredpadacontent",
-      "community": 93,
+      "community": 227,
       "community_name": "devotionalContentParser.ts",
       "norm_label": "parsedsacredpadacontent"
     },
@@ -15517,7 +15554,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_utils_devotionalcontentparser_isstanzaterminal",
-      "community": 93,
+      "community": 227,
       "community_name": "devotionalContentParser.ts",
       "norm_label": "isstanzaterminal()"
     },
@@ -15529,7 +15566,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_utils_devotionalcontentparser_parsedevotionalcontent",
-      "community": 93,
+      "community": 227,
       "community_name": "devotionalContentParser.ts",
       "norm_label": "parsedevotionalcontent()"
     },
@@ -15541,7 +15578,7 @@
       "_origin": "ast",
       "id": "src_utils_epicslugs",
       "community": 15,
-      "community_name": "PadavaliReader.tsx",
+      "community_name": "entry-server.tsx",
       "norm_label": "epicslugs.ts"
     },
     {
@@ -15552,7 +15589,7 @@
       "_origin": "ast",
       "id": "src_utils_epicslugs_dev_digits_map",
       "community": 15,
-      "community_name": "PadavaliReader.tsx",
+      "community_name": "entry-server.tsx",
       "norm_label": "dev_digits_map"
     },
     {
@@ -15564,7 +15601,7 @@
       "_origin": "ast",
       "id": "src_utils_epicslugs_toasciidigits",
       "community": 15,
-      "community_name": "PadavaliReader.tsx",
+      "community_name": "entry-server.tsx",
       "norm_label": "toasciidigits()"
     },
     {
@@ -15575,7 +15612,7 @@
       "_origin": "ast",
       "id": "src_utils_epicslugs_kand_slug_map",
       "community": 15,
-      "community_name": "PadavaliReader.tsx",
+      "community_name": "entry-server.tsx",
       "norm_label": "kand_slug_map"
     },
     {
@@ -15586,7 +15623,7 @@
       "_origin": "ast",
       "id": "src_utils_epicslugs_reverse_kand_map",
       "community": 15,
-      "community_name": "PadavaliReader.tsx",
+      "community_name": "entry-server.tsx",
       "norm_label": "reverse_kand_map"
     },
     {
@@ -15598,7 +15635,7 @@
       "_origin": "ast",
       "id": "src_utils_epicslugs_normalizeepicchapterslug",
       "community": 15,
-      "community_name": "PadavaliReader.tsx",
+      "community_name": "entry-server.tsx",
       "norm_label": "normalizeepicchapterslug()"
     },
     {
@@ -15609,7 +15646,7 @@
       "_origin": "ast",
       "id": "src_utils_padatitle",
       "community": 238,
-      "community_name": "padaTitle.ts",
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "padatitle.ts"
     },
     {
@@ -15620,7 +15657,7 @@
       "_origin": "ast",
       "id": "src_utils_padatitle_epic_collection_ids",
       "community": 238,
-      "community_name": "padaTitle.ts",
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "epic_collection_ids"
     },
     {
@@ -15631,8 +15668,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_utils_padatitle_cleansacredstring",
-      "community": 250,
-      "community_name": "cleanSacredString",
+      "community": 238,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "cleansacredstring()"
     },
     {
@@ -15643,7 +15680,7 @@
       "_origin": "ast",
       "id": "src_utils_padatitle_known_granthas",
       "community": 238,
-      "community_name": "padaTitle.ts",
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "known_granthas"
     },
     {
@@ -15654,8 +15691,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_utils_padatitle_extractpurepadatitle",
-      "community": 230,
-      "community_name": "entry-server.tsx",
+      "community": 238,
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "extractpurepadatitle()"
     },
     {
@@ -15667,7 +15704,7 @@
       "_origin": "ast",
       "id": "src_utils_padatitle_canonicalpadatextkey",
       "community": 238,
-      "community_name": "padaTitle.ts",
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "canonicalpadatextkey()"
     },
     {
@@ -15679,7 +15716,7 @@
       "_origin": "ast",
       "id": "src_utils_padatitle_scorepadarichness",
       "community": 238,
-      "community_name": "padaTitle.ts",
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "scorepadarichness()"
     },
     {
@@ -15691,7 +15728,7 @@
       "_origin": "ast",
       "id": "src_utils_padatitle_deduplicatepadas",
       "community": 238,
-      "community_name": "padaTitle.ts",
+      "community_name": "PadavaliReader.tsx",
       "norm_label": "deduplicatepadas()"
     },
     {
@@ -15701,8 +15738,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_utils_scrolltop",
-      "community": 227,
-      "community_name": "DedicatedPadReadingView.tsx",
+      "community": 230,
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "scrolltop.ts"
     },
     {
@@ -15714,7 +15751,7 @@
       "_origin": "ast",
       "id": "src_utils_scrolltop_resetscrolltotop",
       "community": 230,
-      "community_name": "entry-server.tsx",
+      "community_name": "formatDevanagariNumerals",
       "norm_label": "resetscrolltotop()"
     },
     {
@@ -15724,8 +15761,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_utils_transliterate",
-      "community": 15,
-      "community_name": "PadavaliReader.tsx",
+      "community": 30,
+      "community_name": "DedicatedPadReadingView.tsx",
       "norm_label": "transliterate.ts"
     },
     {
@@ -15735,8 +15772,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "src_utils_transliterate_devanagari_to_hinglish",
-      "community": 15,
-      "community_name": "PadavaliReader.tsx",
+      "community": 30,
+      "community_name": "DedicatedPadReadingView.tsx",
       "norm_label": "devanagari_to_hinglish"
     },
     {
@@ -15746,8 +15783,8 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "src_utils_transliterate_consonants",
-      "community": 15,
-      "community_name": "PadavaliReader.tsx",
+      "community": 30,
+      "community_name": "DedicatedPadReadingView.tsx",
       "norm_label": "consonants"
     },
     {
@@ -15757,8 +15794,8 @@
       "source_location": "L33",
       "_origin": "ast",
       "id": "src_utils_transliterate_matras",
-      "community": 15,
-      "community_name": "PadavaliReader.tsx",
+      "community": 30,
+      "community_name": "DedicatedPadReadingView.tsx",
       "norm_label": "matras"
     },
     {
@@ -15769,8 +15806,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "src_utils_transliterate_transliteratedevanagari",
-      "community": 15,
-      "community_name": "PadavaliReader.tsx",
+      "community": 30,
+      "community_name": "DedicatedPadReadingView.tsx",
       "norm_label": "transliteratedevanagari()"
     },
     {
@@ -35256,7 +35293,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L2139",
+      "source_location": "L2143",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -35400,7 +35437,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L2503",
+      "source_location": "L2507",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -35608,7 +35645,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/common/BotAvatarRoster.tsx",
-      "source_location": "L132",
+      "source_location": "L117",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_common_botavatarroster",
@@ -35801,7 +35838,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/common/BotAvatarRoster.tsx",
-      "source_location": "L115",
+      "source_location": "L100",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_common_botavatarroster_botavatarroster",
@@ -35825,7 +35862,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/common/BotAvatarRoster.tsx",
-      "source_location": "L138",
+      "source_location": "L123",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_common_botavatarroster_botfleetsection",
@@ -35837,7 +35874,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/common/BotAvatarRoster.tsx",
-      "source_location": "L143",
+      "source_location": "L128",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_common_botavatarroster_botfleetsection",
@@ -36617,7 +36654,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/common/LiquidBotSpeedDial.tsx",
-      "source_location": "L16",
+      "source_location": "L17",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_common_liquidbotspeeddial",
@@ -36797,7 +36834,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/features/agents/AgentHub.tsx",
-      "source_location": "L18",
+      "source_location": "L19",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_features_agents_agenthub",
@@ -36905,7 +36942,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/common/LiquidBotSpeedDial.tsx",
-      "source_location": "L16",
+      "source_location": "L17",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_common_liquidbotspeeddial",
@@ -37073,7 +37110,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/features/agents/AgentHub.tsx",
-      "source_location": "L18",
+      "source_location": "L19",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_features_agents_agenthub",
@@ -37084,7 +37121,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/common/LiquidBotSpeedDial.tsx",
-      "source_location": "L28",
+      "source_location": "L31",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_common_liquidbotspeeddial",
@@ -37095,7 +37132,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/common/LiquidBotSpeedDial.tsx",
-      "source_location": "L50",
+      "source_location": "L54",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_common_liquidbotspeeddial",
@@ -37106,7 +37143,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/common/LiquidBotSpeedDial.tsx",
-      "source_location": "L37",
+      "source_location": "L41",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_common_liquidbotspeeddial",
@@ -37117,7 +37154,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/common/LiquidBotSpeedDial.tsx",
-      "source_location": "L43",
+      "source_location": "L47",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_common_liquidbotspeeddial",
@@ -37129,7 +37166,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/common/LiquidBotSpeedDial.tsx",
-      "source_location": "L15",
+      "source_location": "L16",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_common_liquidbotspeeddial",
@@ -37141,7 +37178,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/common/LiquidBotSpeedDial.tsx",
-      "source_location": "L15",
+      "source_location": "L16",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_common_liquidbotspeeddial",
@@ -37153,7 +37190,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/common/LiquidBotSpeedDial.tsx",
-      "source_location": "L14",
+      "source_location": "L15",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_common_liquidbotspeeddial",
@@ -37165,7 +37202,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/common/LiquidBotSpeedDial.tsx",
-      "source_location": "L14",
+      "source_location": "L15",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_common_liquidbotspeeddial",
@@ -37177,7 +37214,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/common/LiquidBotSpeedDial.tsx",
-      "source_location": "L14",
+      "source_location": "L15",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_common_liquidbotspeeddial",
@@ -37189,7 +37226,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/common/LiquidBotSpeedDial.tsx",
-      "source_location": "L17",
+      "source_location": "L19",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_common_liquidbotspeeddial",
@@ -37201,7 +37238,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/common/LiquidBotSpeedDial.tsx",
-      "source_location": "L17",
+      "source_location": "L19",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_common_liquidbotspeeddial",
@@ -37213,7 +37250,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/common/LiquidBotSpeedDial.tsx",
-      "source_location": "L17",
+      "source_location": "L19",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_common_liquidbotspeeddial",
@@ -37225,7 +37262,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/common/LiquidBotSpeedDial.tsx",
-      "source_location": "L17",
+      "source_location": "L19",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_common_liquidbotspeeddial",
@@ -37237,7 +37274,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/common/LiquidBotSpeedDial.tsx",
-      "source_location": "L17",
+      "source_location": "L19",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_common_liquidbotspeeddial",
@@ -37249,7 +37286,19 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/common/LiquidBotSpeedDial.tsx",
-      "source_location": "L17",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_common_liquidbotspeeddial",
+      "target": "src_services_botgroqengine_normalizereplylines",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/common/LiquidBotSpeedDial.tsx",
+      "source_location": "L19",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_common_liquidbotspeeddial",
@@ -37261,7 +37310,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/common/LiquidBotSpeedDial.tsx",
-      "source_location": "L17",
+      "source_location": "L19",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_common_liquidbotspeeddial",
@@ -37273,7 +37322,31 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/common/LiquidBotSpeedDial.tsx",
-      "source_location": "L25",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_common_liquidbotspeeddial",
+      "target": "src_services_panchangservice",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/common/LiquidBotSpeedDial.tsx",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_common_liquidbotspeeddial",
+      "target": "src_services_panchangservice_getistparts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/common/LiquidBotSpeedDial.tsx",
+      "source_location": "L28",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_common_liquidbotspeeddial",
@@ -37285,7 +37358,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/common/LiquidBotSpeedDial.tsx",
-      "source_location": "L25",
+      "source_location": "L28",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_common_liquidbotspeeddial",
@@ -37297,7 +37370,7 @@
       "context": "field",
       "confidence": "EXTRACTED",
       "source_file": "src/components/common/LiquidBotSpeedDial.tsx",
-      "source_location": "L33",
+      "source_location": "L36",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_common_liquidbotspeeddial_chatmessage",
@@ -37309,7 +37382,7 @@
       "context": "field",
       "confidence": "EXTRACTED",
       "source_file": "src/components/common/LiquidBotSpeedDial.tsx",
-      "source_location": "L34",
+      "source_location": "L37",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_common_liquidbotspeeddial_chatmessage",
@@ -37322,7 +37395,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/common/LiquidBotSpeedDial.tsx",
-      "source_location": "L62",
+      "source_location": "L66",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_common_liquidbotspeeddial_liquidbotspeeddial",
@@ -37334,7 +37407,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/common/LiquidBotSpeedDial.tsx",
-      "source_location": "L223",
+      "source_location": "L259",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_common_liquidbotspeeddial_liquidbotspeeddial",
@@ -37346,7 +37419,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/common/LiquidBotSpeedDial.tsx",
-      "source_location": "L261",
+      "source_location": "L304",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_common_liquidbotspeeddial_liquidbotspeeddial",
@@ -37358,7 +37431,19 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/common/LiquidBotSpeedDial.tsx",
-      "source_location": "L247",
+      "source_location": "L287",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_common_liquidbotspeeddial_liquidbotspeeddial",
+      "target": "src_services_botgroqengine_normalizereplylines"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/common/LiquidBotSpeedDial.tsx",
+      "source_location": "L290",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_common_liquidbotspeeddial_liquidbotspeeddial",
@@ -37370,7 +37455,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/common/LiquidBotSpeedDial.tsx",
-      "source_location": "L174",
+      "source_location": "L208",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_common_liquidbotspeeddial_liquidbotspeeddial",
@@ -37382,7 +37467,19 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/common/LiquidBotSpeedDial.tsx",
-      "source_location": "L387",
+      "source_location": "L104",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_common_liquidbotspeeddial_liquidbotspeeddial",
+      "target": "src_services_panchangservice_getistparts"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/common/LiquidBotSpeedDial.tsx",
+      "source_location": "L434",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_common_liquidbotspeeddial_liquidbotspeeddial",
@@ -37839,7 +37936,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/common/SanctuaryBotAvatar.tsx",
-      "source_location": "L20",
+      "source_location": "L24",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_common_sanctuarybotavatar",
@@ -37898,7 +37995,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/features/agents/AgentHub.tsx",
-      "source_location": "L17",
+      "source_location": "L18",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_features_agents_agenthub",
@@ -37934,7 +38031,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/features/agents/AgentHub.tsx",
-      "source_location": "L17",
+      "source_location": "L18",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_features_agents_agenthub",
@@ -37991,7 +38088,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/common/SectionBotCompanion.tsx",
-      "source_location": "L21",
+      "source_location": "L20",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_common_sectionbotcompanion",
@@ -38195,7 +38292,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/common/SectionBotCompanion.tsx",
-      "source_location": "L28",
+      "source_location": "L27",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_common_sectionbotcompanion_sectionbotcompanion",
@@ -38207,7 +38304,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/common/SectionBotCompanion.tsx",
-      "source_location": "L32",
+      "source_location": "L33",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_common_sectionbotcompanion_sectionbotcompanion",
@@ -45400,7 +45497,18 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/smaran/DateStrip.tsx",
-      "source_location": "L20",
+      "source_location": "L21",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_smaran_datestrip",
+      "target": "src_components_smaran_datestrip_countbaseaksharas",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/smaran/DateStrip.tsx",
+      "source_location": "L52",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_smaran_datestrip",
@@ -45427,6 +45535,17 @@
       "_origin": "ast",
       "source": "src_components_smaran_datestrip",
       "target": "src_components_smaran_datestrip_dayitem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/smaran/DateStrip.tsx",
+      "source_location": "L29",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_smaran_datestrip",
+      "target": "src_components_smaran_datestrip_formatcompacttithilabel",
       "confidence_score": 1.0
     },
     {
@@ -45475,6 +45594,30 @@
       "_origin": "ast",
       "source": "src_services_panchangservice",
       "target": "src_components_smaran_datestrip_dayitem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/smaran/DateStrip.tsx",
+      "source_location": "L35",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_smaran_datestrip_formatcompacttithilabel",
+      "target": "src_components_smaran_datestrip_countbaseaksharas",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/smaran/DateStrip.tsx",
+      "source_location": "L190",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_smaran_datestrip_datestrip",
+      "target": "src_components_smaran_datestrip_formatcompacttithilabel",
       "confidence_score": 1.0
     },
     {
@@ -46064,7 +46207,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/features/agents/AgentHub.tsx",
-      "source_location": "L16",
+      "source_location": "L17",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_features_agents_agenthub",
@@ -46136,7 +46279,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/features/agents/AgentHub.tsx",
-      "source_location": "L16",
+      "source_location": "L17",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_features_agents_agenthub",
@@ -46149,7 +46292,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/features/agents/AgentHub.tsx",
-      "source_location": "L118",
+      "source_location": "L125",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_features_agents_agenthub_agenthub",
@@ -46881,7 +47024,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/features/agents/AgentHub.tsx",
-      "source_location": "L111",
+      "source_location": "L118",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_features_agents_agenthub",
@@ -46925,11 +47068,11 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/features/agents/AgentHub.tsx",
-      "source_location": "L104",
+      "source_location": "L103",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_features_agents_agenthub",
-      "target": "src_features_agents_agenthub_source_label_map",
+      "target": "src_features_agents_agenthub_spawnripple",
       "confidence_score": 1.0
     },
     {
@@ -46937,7 +47080,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/features/agents/AgentHub.tsx",
-      "source_location": "L19",
+      "source_location": "L21",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_features_agents_agenthub",
@@ -46949,31 +47092,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/features/agents/AgentHub.tsx",
-      "source_location": "L19",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_features_agents_agenthub",
-      "target": "src_services_botgroqengine_bot_categories",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/agents/AgentHub.tsx",
-      "source_location": "L19",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_features_agents_agenthub",
-      "target": "src_services_botgroqengine_botcategoryid",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/agents/AgentHub.tsx",
-      "source_location": "L19",
+      "source_location": "L21",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_features_agents_agenthub",
@@ -46985,7 +47104,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/features/agents/AgentHub.tsx",
-      "source_location": "L19",
+      "source_location": "L21",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_features_agents_agenthub",
@@ -46997,7 +47116,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/features/agents/AgentHub.tsx",
-      "source_location": "L19",
+      "source_location": "L21",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_features_agents_agenthub",
@@ -47009,19 +47128,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/features/agents/AgentHub.tsx",
-      "source_location": "L19",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_features_agents_agenthub",
-      "target": "src_services_botgroqengine_getbotcategory",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/agents/AgentHub.tsx",
-      "source_location": "L19",
+      "source_location": "L21",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_features_agents_agenthub",
@@ -47033,7 +47140,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/features/agents/AgentHub.tsx",
-      "source_location": "L19",
+      "source_location": "L21",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_features_agents_agenthub",
@@ -47045,7 +47152,19 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/features/agents/AgentHub.tsx",
-      "source_location": "L19",
+      "source_location": "L21",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_features_agents_agenthub",
+      "target": "src_services_botgroqengine_normalizereplylines",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/agents/AgentHub.tsx",
+      "source_location": "L21",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_features_agents_agenthub",
@@ -47057,7 +47176,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/features/agents/AgentHub.tsx",
-      "source_location": "L19",
+      "source_location": "L21",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_features_agents_agenthub",
@@ -47065,11 +47184,35 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/agents/AgentHub.tsx",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_features_agents_agenthub",
+      "target": "src_services_panchangservice",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/agents/AgentHub.tsx",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_features_agents_agenthub",
+      "target": "src_services_panchangservice_getistparts",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "references",
       "context": "field",
       "confidence": "EXTRACTED",
       "source_file": "src/features/agents/AgentHub.tsx",
-      "source_location": "L39",
+      "source_location": "L38",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_features_agents_agenthub_chatmessage",
@@ -47081,7 +47224,7 @@
       "context": "field",
       "confidence": "EXTRACTED",
       "source_file": "src/features/agents/AgentHub.tsx",
-      "source_location": "L41",
+      "source_location": "L39",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_features_agents_agenthub_chatmessage",
@@ -47105,6 +47248,18 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/features/agents/AgentHub.tsx",
+      "source_location": "L55",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_features_agents_agenthub_richbotmessagebody",
+      "target": "src_services_botgroqengine_normalizereplylines",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/agents/AgentHub.tsx",
       "source_location": "L65",
       "weight": 1.0,
       "_origin": "ast",
@@ -47113,24 +47268,12 @@
       "confidence_score": 1.0
     },
     {
-      "relation": "references",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/features/agents/AgentHub.tsx",
-      "source_location": "L338",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_features_agents_agenthub_agenthub",
-      "target": "src_services_botgroqengine_bot_categories"
-    },
-    {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/features/agents/AgentHub.tsx",
-      "source_location": "L302",
+      "source_location": "L434",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_features_agents_agenthub_agenthub",
@@ -47142,19 +47285,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/features/agents/AgentHub.tsx",
-      "source_location": "L325",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_features_agents_agenthub_agenthub",
-      "target": "src_services_botgroqengine_getbotcategory"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/features/agents/AgentHub.tsx",
-      "source_location": "L163",
+      "source_location": "L210",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_features_agents_agenthub_agenthub",
@@ -47166,7 +47297,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/features/agents/AgentHub.tsx",
-      "source_location": "L575",
+      "source_location": "L711",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_features_agents_agenthub_agenthub",
@@ -47178,11 +47309,23 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/features/agents/AgentHub.tsx",
-      "source_location": "L229",
+      "source_location": "L373",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_features_agents_agenthub_agenthub",
       "target": "src_services_botgroqengine_streambotreply"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/features/agents/AgentHub.tsx",
+      "source_location": "L153",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_features_agents_agenthub_agenthub",
+      "target": "src_services_panchangservice_getistparts"
     },
     {
       "relation": "contains",
@@ -47920,7 +48063,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/services/botGroqEngine.ts",
-      "source_location": "L646",
+      "source_location": "L668",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_services_botgroqengine",
@@ -48019,7 +48162,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/services/botGroqEngine.ts",
-      "source_location": "L651",
+      "source_location": "L673",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_services_botgroqengine",
@@ -48030,7 +48173,18 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/services/botGroqEngine.ts",
-      "source_location": "L619",
+      "source_location": "L623",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_services_botgroqengine",
+      "target": "src_services_botgroqengine_normalizereplylines",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/services/botGroqEngine.ts",
+      "source_location": "L640",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_services_botgroqengine",
@@ -67329,5 +67483,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "8d17e112b2863c45133ec4f5a091521139690860"
+  "built_at_commit": "e94008a09d6c33f31d8589cbe39523437443cc65"
 }

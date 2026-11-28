@@ -11,12 +11,15 @@ import {
   Copy,
   Check,
 } from 'lucide-react';
+import { type BotAvatarState } from 'bot-avatars';
 import { SANCTUARY_BOTS, type SanctuaryBotAgent } from '../../data/botRoster';
 import { SanctuaryBotAvatar } from './SanctuaryBotAvatar';
 import { IOSSpinner } from './IOSActivityIndicator';
+import { getIstParts } from '../../services/panchangService';
 import {
   streamBotReply,
   clearBotConversationCache,
+  normalizeReplyLines,
   parseRichInlineSegments,
   navigateSpaRoute,
   type BotResponseSource,
@@ -32,6 +35,7 @@ interface ChatMessage {
   timestamp: string;
   source?: BotResponseSource;
   suggestedLinks?: BotSuggestedLink[];
+  aborted?: boolean;
 }
 
 interface LiquidBotSpeedDialProps {
@@ -76,12 +80,41 @@ export const LiquidBotSpeedDial: React.FC<LiquidBotSpeedDialProps> = ({
   const [isTyping, setIsTyping] = useState(false);
   const [streamingText, setStreamingText] = useState('');
   const [typingSteps, setTypingSteps] = useState<string[]>([]);
+  const [isIdleSleep, setIsIdleSleep] = useState(false);
+  const [isNightRest, setIsNightRest] = useState(false);
+  const [isTabHidden, setIsTabHidden] = useState(false);
 
   const dialRef = useRef<HTMLDivElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const abortRef = useRef<AbortController | null>(null);
+  const idleTimerRef = useRef<number | null>(null);
 
   const messages = messagesByAgent[currentAgent.id] || [];
+
+  const wakeFromIdle = useCallback(() => {
+    setIsIdleSleep(false);
+    if (idleTimerRef.current) window.clearTimeout(idleTimerRef.current);
+    idleTimerRef.current = window.setTimeout(() => {
+      setIsIdleSleep(true);
+    }, 26000);
+  }, []);
+
+  useEffect(() => {
+    const syncConditions = () => {
+      const { minutesOfDay } = getIstParts(new Date());
+      setIsNightRest(minutesOfDay >= 1320 || minutesOfDay < 210);
+      setIsTabHidden(document.visibilityState === 'hidden');
+    };
+    syncConditions();
+    wakeFromIdle();
+    const tick = window.setInterval(syncConditions, 60000);
+    document.addEventListener('visibilitychange', syncConditions);
+    return () => {
+      window.clearInterval(tick);
+      document.removeEventListener('visibilitychange', syncConditions);
+      if (idleTimerRef.current) window.clearTimeout(idleTimerRef.current);
+    };
+  }, [wakeFromIdle]);
 
   useEffect(() => {
     if (!open) return;
@@ -139,6 +172,7 @@ export const LiquidBotSpeedDial: React.FC<LiquidBotSpeedDialProps> = ({
   const handleSend = async (textToSend?: string) => {
     const q = (textToSend ?? inputQuery).trim();
     if (!q || isTyping) return;
+    wakeFromIdle();
 
     const agentId = currentAgent.id;
     const prevMsgs = messagesByAgent[agentId] || [];
@@ -195,7 +229,8 @@ export const LiquidBotSpeedDial: React.FC<LiquidBotSpeedDialProps> = ({
         ],
       }));
     } catch (err) {
-      if ((err as Error)?.name === 'AbortError' && streamingText.trim()) {
+      if ((err as Error)?.name === 'AbortError') {
+        const stoppedText = streamingText.trim();
         setMessagesByAgent((prev) => ({
           ...prev,
           [agentId]: [
@@ -203,9 +238,10 @@ export const LiquidBotSpeedDial: React.FC<LiquidBotSpeedDialProps> = ({
             {
               id: `agent-${Date.now()}`,
               sender: 'agent',
-              text: `${streamingText.trim()}\n\n*(Stopped)*`,
-              source: 'groq',
+              text: stoppedText || 'Stopped for now — tap a prompt or message again anytime.',
+              source: stoppedText ? 'groq' : undefined,
               timestamp: 'Stopped',
+              aborted: true,
             },
           ],
         }));
@@ -240,8 +276,15 @@ export const LiquidBotSpeedDial: React.FC<LiquidBotSpeedDialProps> = ({
     window.setTimeout(() => setCopiedId((prev) => (prev === id ? null : prev)), 1400);
   };
 
+  const latestAgentMessage = [...messages].reverse().find((m) => m.sender === 'agent');
+  const activeBotState: BotAvatarState = isTyping
+    ? 'working'
+    : isTabHidden || isIdleSleep || isNightRest || Boolean(latestAgentMessage?.aborted)
+      ? 'sleeping'
+      : 'default';
+
   const renderInlineBody = (text: string) => {
-    return text.split('\n').map((line, i) => {
+    return normalizeReplyLines(text).map((line, i) => {
       const trimmed = line.trim();
       if (!trimmed) return <div key={i} className="bot-rich-gap" aria-hidden="true" />;
       const segs = parseRichInlineSegments(trimmed);
@@ -327,7 +370,13 @@ export const LiquidBotSpeedDial: React.FC<LiquidBotSpeedDialProps> = ({
             {open ? (
               <X className="w-5 h-5 text-[#FEF08A]" />
             ) : (
-              <SanctuaryBotAvatar agent={currentAgent} size={34} />
+              <SanctuaryBotAvatar
+                agent={currentAgent}
+                size={34}
+                animated={true}
+                working={isTyping}
+                state={activeBotState}
+              />
             )}
           </button>
         </div>
@@ -342,28 +391,26 @@ export const LiquidBotSpeedDial: React.FC<LiquidBotSpeedDialProps> = ({
           aria-modal="true"
           aria-labelledby="bot-assistant-title"
         >
-          <div className="bot-assistant-card" onClick={(e) => e.stopPropagation()}>
+          <div
+            className="bot-assistant-card"
+            onClick={(e) => e.stopPropagation()}
+            onPointerMove={wakeFromIdle}
+            onKeyDown={wakeFromIdle}
+          >
             <div className="bot-assistant-header">
               <div className="bot-assistant-brand">
                 <div className="bot-assistant-av-wrap">
-                  <SanctuaryBotAvatar agent={currentAgent} size={36} active={isTyping} />
+                  <SanctuaryBotAvatar
+                    agent={currentAgent}
+                    size={36}
+                    animated={true}
+                    working={isTyping}
+                    state={activeBotState}
+                  />
                 </div>
                 <div className="bot-assistant-title-col">
                   <div className="bot-assistant-title-row">
                     <h4 id="bot-assistant-title">{currentAgent.name}</h4>
-                    <span className={`bot-live-badge${isTyping ? ' is-busy' : ''}`}>
-                      {isTyping ? (
-                        <>
-                          <IOSSpinner size="xs" theme="amber" />
-                          <span>Replying</span>
-                        </>
-                      ) : (
-                        <>
-                          <span className="bot-live-dot" aria-hidden="true" />
-                          <span>Online</span>
-                        </>
-                      )}
-                    </span>
                   </div>
                   <p>{currentAgent.role}</p>
                 </div>
@@ -423,11 +470,22 @@ export const LiquidBotSpeedDial: React.FC<LiquidBotSpeedDialProps> = ({
               {messages.map((msg) => {
                 const isUser = msg.sender === 'user';
                 const isWelcome = msg.id.startsWith('welcome-');
+                const isLatestAgentMsg = !isUser && latestAgentMessage?.id === msg.id;
+                const msgState: BotAvatarState = msg.aborted
+                  ? 'sleeping'
+                  : isLatestAgentMsg && !isTyping
+                    ? activeBotState
+                    : 'default';
                 return (
                   <div key={msg.id} className={`bot-msg ${isUser ? 'user' : 'agent'}`}>
                     {!isUser && (
-                      <div className="bot-msg-av">
-                        <SanctuaryBotAvatar agent={currentAgent} size={24} />
+                      <div className="bot-msg-av" data-bot-state={msgState}>
+                        <SanctuaryBotAvatar
+                          agent={currentAgent}
+                          size={24}
+                          animated={isLatestAgentMsg && !isTyping}
+                          state={msgState}
+                        />
                       </div>
                     )}
 
@@ -479,7 +537,12 @@ export const LiquidBotSpeedDial: React.FC<LiquidBotSpeedDialProps> = ({
               {isTyping && (
                 <div className="bot-msg agent">
                   <div className="bot-msg-av">
-                    <SanctuaryBotAvatar agent={currentAgent} size={24} active={true} />
+                    <SanctuaryBotAvatar
+                      agent={currentAgent}
+                      size={24}
+                      animated={true}
+                      working={true}
+                    />
                   </div>
                   <div className="bot-msg-col">
                     <div className="bot-streaming-box">

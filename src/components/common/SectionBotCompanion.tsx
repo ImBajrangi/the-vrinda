@@ -13,10 +13,9 @@ export interface SectionBotCompanionProps {
 }
 
 /**
- * Lightweight, zero-canvas contextual bot companion distributed across every major
+ * Lightweight, zero-canvas-loop contextual bot companion distributed across every major
  * Vrindopnisad section & reading view.
- * Marked with `data-nosnippet` so Googlebot / Bing keep search snippets strictly focused
- * on primary devotional text rather than assistant chrome.
+ * Marked `data-nosnippet` so Googlebot keeps search snippets focused purely on scriptures.
  */
 export const SectionBotCompanion: React.FC<SectionBotCompanionProps> = ({
   agentId,
@@ -27,6 +26,8 @@ export const SectionBotCompanion: React.FC<SectionBotCompanionProps> = ({
 }) => {
   const agent = SANCTUARY_BOTS.find((b) => b.id === agentId) || SANCTUARY_BOTS[0];
   const prompts = (quickPrompts && quickPrompts.length > 0 ? quickPrompts : agent.prompts).slice(0, 2);
+
+  const cleanHeading = (heading || agent.name).split('•')[0].trim();
 
   const openAgent = (prompt?: string) => {
     queueAgentEvent('open-agent-hub', { agentId: agent.id, prompt });
@@ -46,28 +47,22 @@ export const SectionBotCompanion: React.FC<SectionBotCompanionProps> = ({
         <div className="flex items-center gap-3 min-w-0">
           <SanctuaryBotAvatar agent={agent} size={42} />
           <div className="min-w-0">
-            <div className="flex items-center gap-2 flex-wrap">
-              <span className="text-[13.5px] font-bold text-[#1C140D] leading-tight">
-                {heading || `${agent.name} • ${agent.tag}`}
-              </span>
-              <span
-                className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-600 shrink-0"
-                aria-hidden="true"
-              />
-            </div>
+            <span className="text-[14px] font-bold text-[#1C140D] leading-tight block">
+              {cleanHeading}
+            </span>
             <p className="text-[12px] text-[#6B5B4D] leading-snug line-clamp-1 mt-0.5">
               {subtitle || agent.role}
             </p>
           </div>
         </div>
 
-        <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-0.5 sm:pb-0 shrink-0">
+        <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-0.5 sm:pb-0 pr-3 sm:pr-0 [mask-image:linear-gradient(to_right,black_calc(100%-14px),transparent)] sm:[mask-image:none] shrink-0">
           {prompts.map((promptText, idx) => (
             <button
               key={idx}
               type="button"
               onClick={() => openAgent(promptText)}
-              className="px-3 py-1.5 rounded-[12px] bg-[#FAF7F2] hover:bg-[#FEF08A] text-[#443528] hover:text-[#5C2D0C] text-[11.5px] font-semibold whitespace-nowrap transition-colors cursor-pointer shrink-0"
+              className="px-3 py-1.5 rounded-full bg-[#FAF7F2] hover:bg-[#FEF08A] text-[#443528] hover:text-[#5C2D0C] text-[11.5px] font-semibold whitespace-nowrap transition-all active:scale-95 cursor-pointer shrink-0"
             >
               {promptText}
             </button>
@@ -76,7 +71,7 @@ export const SectionBotCompanion: React.FC<SectionBotCompanionProps> = ({
           <button
             type="button"
             onClick={() => openAgent()}
-            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-[12px] bg-[#1C140D] hover:bg-[#312419] text-[#FFFDF9] text-[11.5px] font-semibold whitespace-nowrap transition-colors cursor-pointer shrink-0"
+            className="inline-flex items-center gap-1 px-3.5 py-1.5 rounded-full bg-[#1C140D] hover:bg-[#312419] text-[#FFFDF9] text-[11.5px] font-semibold whitespace-nowrap transition-all active:scale-95 cursor-pointer shrink-0"
           >
             <MessageCircle className="w-3.5 h-3.5" />
             <span>Ask {agent.name}</span>
