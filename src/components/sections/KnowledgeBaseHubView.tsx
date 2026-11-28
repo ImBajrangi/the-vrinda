@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react';
+import { SectionBotCompanion } from '../common/SectionBotCompanion';
 import {
   BookOpen,
   Search,
@@ -258,6 +259,13 @@ export const KnowledgeBaseHubView: React.FC<KnowledgeBaseHubViewProps> = ({
           ))}
         </div>
       )}
+
+      <SectionBotCompanion
+        agentId="heera"
+        heading="Heera • Panchang & Knowledge Navigator"
+        subtitle="Ask Heera for today's Braj Tithi, Ekadashi calendar, or guidance across Vrindopnisad epics"
+        quickPrompts={['Today Panchang Tithi & Nakshatra', 'Guide me through Braj Rasik Sampradayas']}
+      />
     </div>
   );
 };

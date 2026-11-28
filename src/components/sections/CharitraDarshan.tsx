@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
+import { SectionBotCompanion } from '../common/SectionBotCompanion';
 import {
   Users,
   Search,
@@ -605,6 +606,14 @@ export const CharitraDarshan: React.FC<CharitraDarshanProps> = ({
           })}
         </div>
       )}
+
+      <SectionBotCompanion
+        agentId="shetty"
+        className="mt-6"
+        heading="Shetty • Sampradaya & Acharya Lineage Guide"
+        subtitle="Explore Radhavallabh, Haridasi, Gaudiya, Vallabh, and Nimbarka lineages across 131 Saints"
+        quickPrompts={['Explain Radhavallabh vs Haridasi', 'Tell me about Swami Haridas Ji']}
+      />
     </main>
   );
 };

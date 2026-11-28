@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { SectionBotCompanion } from '../common/SectionBotCompanion';
 import { ArrowLeft, CalendarHeart, ChevronRight, Play, Sparkles } from 'lucide-react';
 import themeHubsData from '../../data/themeHubs.json';
 import { SacredDatabase } from '../../services/sacredDatabase';
@@ -369,6 +370,13 @@ export const ThemeHubView: React.FC<ThemeHubViewProps> = ({
           </a>
         ))}
       </div>
+
+      <SectionBotCompanion
+        agentId="sita"
+        heading="Sita • Rasa & Theme Curator"
+        subtitle="Ask Sita about Seva, Nikunj Vihar, Ashtayama, or Virah Bhakti themes"
+        quickPrompts={['Explain Nikunj Vihar theme', 'Explore Braj Glossary terms']}
+      />
     </div>
   );
 };

@@ -138,6 +138,9 @@ const LazyLiquidBotSpeedDial = lazy(() =>
 const LazyAgentHubModal = lazy(() =>
   import('./features/agents/AgentHubModal').then((m) => ({ default: m.AgentHubModal }))
 );
+const LazySectionBotCompanion = lazy(() =>
+  import('./components/common/SectionBotCompanion').then((m) => ({ default: m.SectionBotCompanion }))
+);
 
 const TOPICAL_GUIDE_SLUGS = new Set([
   'what-is-vrindopnishad', 'meaning', 'origin', 'philosophy', 'teachings',
@@ -2056,6 +2059,13 @@ export function App({
                   onSwitchToPadavali={() => handleTabSwitch('padavali')}
                   onOpenSearch={() => setIsSpotlightOpen(true)}
                 />
+                <LazySectionBotCompanion
+                  agentId="bheem"
+                  className="mt-5"
+                  heading="Bheem • Mahagranth Study Guide"
+                  subtitle="Explore chapter structure and verse meanings across Ramcharitmanas, Bhagavatam & Gita"
+                  quickPrompts={['Summarize Sundarkand key message', 'Open Bhagavad Gita chapters']}
+                />
               </Suspense>
             </div>
           )}
@@ -2097,6 +2107,13 @@ export function App({
                   }
                   onSwitchToMahagranth={() => handleTabSwitch('granthas')}
                   onOpenSearch={() => setIsSpotlightOpen(true)}
+                />
+                <LazySectionBotCompanion
+                  agentId="tara"
+                  className="mt-5"
+                  heading="Tara • Rasik Padavali & Verse Scout"
+                  subtitle="Search across 11,832 Rasik padas, Raga raginis, or Braj vocabulary"
+                  quickPrompts={['Show Hit Chaurasi Pad 1', 'Which Raga is sung in Sandhya Aarti?']}
                 />
               </Suspense>
             </div>
@@ -2307,6 +2324,16 @@ export function App({
                   )}
                 </aside>
               </div>
+              <div className="mt-5">
+                <Suspense fallback={null}>
+                  <LazySectionBotCompanion
+                    agentId="boond"
+                    heading="Boond • Yamuna & Sacred Vrindavan Stream Guide"
+                    subtitle="Ask about Shri Yamunashtakam, sacred Ghat darshan, or seasonal Vrindavan seva"
+                    quickPrompts={['Share Yamunashtakam insight', 'Which temples are open right now?']}
+                  />
+                </Suspense>
+              </div>
             </div>
           )}
 
@@ -2315,6 +2342,13 @@ export function App({
             <div className="w-full pb-48 md:pb-28">
               <Suspense fallback={<ReaderLoadingSkeleton />}>
                 <MilestonesViewComp onBack={() => handleTabSwitch('smaran')} />
+                <LazySectionBotCompanion
+                  agentId="raju"
+                  className="mt-5"
+                  heading="Raju • Ashtayama Watch & Daily Seva Companion"
+                  subtitle="Track 8-watch daily contemplation windows, Japa consistency & sadhana progress"
+                  quickPrompts={['Current Ashtayama prahar now', 'Best evening devotion routine?']}
+                />
               </Suspense>
             </div>
           )}

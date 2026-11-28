@@ -1,53 +1,40 @@
-import React, { useState } from 'react';
-import {
-  BotAvatar,
-  type BotAvatarState,
-  type BotAvatarShading,
-} from 'bot-avatars';
-import { Check, Sparkles, ChevronRight } from 'lucide-react';
+import React, { useMemo, useState } from 'react';
+import { ChevronRight } from 'lucide-react';
 import { SANCTUARY_BOTS, type SanctuaryBotAgent } from '../../data/botRoster';
+import {
+  BOT_CATEGORIES,
+  getBotCategory,
+  getBotHomeSection,
+  navigateSpaRoute,
+  type BotCategoryId,
+} from '../../services/botGroqEngine';
+import { SanctuaryBotAvatar } from './SanctuaryBotAvatar';
 import { queueAgentEvent } from '../../utils/agentQueue';
 
 export { SANCTUARY_BOTS, type SanctuaryBotAgent };
 
 interface BotAvatarRosterProps {
+  bots?: SanctuaryBotAgent[];
   selectedAgentId?: string;
   onSelectAgent?: (agent: SanctuaryBotAgent) => void;
   size?: number;
-  shading?: BotAvatarShading;
   layout?: 'grid' | 'carousel';
 }
 
 export const BotAvatarRoster: React.FC<BotAvatarRosterProps> = ({
+  bots = SANCTUARY_BOTS,
   selectedAgentId,
   onSelectAgent,
-  size = 56,
-  shading,
+  size = 52,
   layout = 'grid',
 }) => {
-  const [activeId, setActiveId] = useState<string>(selectedAgentId || SANCTUARY_BOTS[0].id);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
-  const [agentShadings, setAgentShadings] = useState<Record<string, BotAvatarShading>>(() => {
-    const map: Record<string, BotAvatarShading> = {};
-    SANCTUARY_BOTS.forEach((a) => {
-      map[a.id] = a.shading;
-    });
-    return map;
-  });
+  const activeId = selectedAgentId ?? bots[0]?.id;
 
-  const toggleShading = (agentId: string, e: React.MouseEvent) => {
-    e.stopPropagation();
-    setAgentShadings((prev) => ({
-      ...prev,
-      [agentId]: prev[agentId] === 'fabric' ? 'plastic' : 'fabric',
-    }));
-  };
-
-  const handleSelect = (agent: SanctuaryBotAgent) => {
-    setActiveId(agent.id);
+  const handleCardClick = (agent: SanctuaryBotAgent) => {
     if (onSelectAgent) {
-      onSelectAgent({ ...agent, shading: agentShadings[agent.id] || agent.shading });
-    } else if (typeof window !== 'undefined') {
+      onSelectAgent(agent);
+    } else {
       queueAgentEvent('open-agent-hub', { agentId: agent.id });
       window.dispatchEvent(new CustomEvent('open-agent-hub', { detail: { agentId: agent.id } }));
     }
@@ -55,94 +42,82 @@ export const BotAvatarRoster: React.FC<BotAvatarRosterProps> = ({
 
   const containerClass =
     layout === 'carousel'
-      ? 'flex md:grid md:grid-cols-4 lg:grid-cols-7 gap-2.5 overflow-x-auto no-scrollbar pb-1 snap-x'
+      ? 'flex md:grid md:grid-cols-4 lg:grid-cols-7 gap-2.5 overflow-x-auto no-scrollbar snap-x scroll-pl-1 pr-6 md:pr-0 [mask-image:linear-gradient(to_right,black_calc(100%-18px),transparent)] md:[mask-image:none]'
       : 'grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-2.5';
 
   return (
     <div className={containerClass}>
-      {SANCTUARY_BOTS.map((agent) => {
+      {bots.map((agent) => {
         const isSelected = activeId === agent.id;
         const isHovered = hoveredId === agent.id;
-        const currentState: BotAvatarState = isHovered ? 'working' : 'default';
-        const effectiveShading = shading || agentShadings[agent.id] || agent.shading;
+        const homeSection = getBotHomeSection(agent.id);
 
         return (
           <div
             key={agent.id}
             role="button"
             tabIndex={0}
-            onClick={() => handleSelect(agent)}
-            onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && handleSelect(agent)}
+            aria-label={`Open ${agent.name} — ${agent.role}`}
+            onClick={() => handleCardClick(agent)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                handleCardClick(agent);
+              }
+            }}
             onMouseEnter={() => setHoveredId(agent.id)}
             onMouseLeave={() => setHoveredId(null)}
-            className={`relative text-center p-2.5 rounded-[18px] transition-colors duration-150 cursor-pointer select-none flex flex-col items-center justify-between ${
-              layout === 'carousel' ? 'w-[126px] md:w-auto shrink-0 snap-start' : ''
+            style={{ cornerShape: 'squircle' } as React.CSSProperties}
+            className={`group relative flex flex-col items-center text-center p-3 rounded-[14px] transition-colors duration-150 cursor-pointer select-none ${
+              layout === 'carousel' ? 'min-w-[144px] sm:min-w-[152px] md:min-w-0 snap-start shrink-0' : ''
             } ${
               isSelected
-                ? 'bg-[#FEFCE8] ring-2 ring-amber-400/80 shadow-xs'
-                : 'bg-[#FAF8F4] hover:bg-[#F5EFE3]'
+                ? 'bg-[#FEF9C3]/80 shadow-[inset_0_0_0_1px_rgba(217,119,6,0.22)]'
+                : 'bg-[#FAF7F2] hover:bg-[#F3EDE2]'
             }`}
           >
-            {isSelected && (
+            {/* Single micro-label pill + calm status dot */}
+            <div className="w-full flex items-center justify-between gap-1 mb-2 px-0.5">
               <span
+                className="inline-block w-1.5 h-1.5 rounded-full shrink-0"
+                style={{ backgroundColor: `hsl(${agent.hue} 60% 46%)` }}
                 aria-hidden="true"
-                className="absolute top-2 right-2 w-4 h-4 rounded-full bg-amber-500 text-white flex items-center justify-center"
-              >
-                <Check className="w-2.5 h-2.5 stroke-[3]" />
-              </span>
-            )}
-
-            <div className="my-1">
-              <BotAvatar
-                type={agent.type}
-                face={agent.face}
-                state={currentState}
-                hat={agent.hat}
-                glasses={agent.glasses}
-                headphones={agent.headphones}
-                bowTie={agent.bowTie}
-                shading={effectiveShading}
-                size={size}
-                depth={0.5}
-                turn={0.75}
-                jumpSquashEase="soft"
-                jumpRiseEase="soft"
               />
+              <span
+                className="text-[9.5px] font-bold tracking-tight px-1.5 py-0.5 rounded-[6px] truncate"
+                style={{
+                  backgroundColor: isSelected
+                    ? 'rgba(255, 255, 255, 0.85)'
+                    : `hsla(${agent.hue}, 55%, 93%, 0.9)`,
+                  color: '#5C2D0C',
+                }}
+              >
+                {agent.tag}
+              </span>
             </div>
 
-            <div className="w-full min-w-0 space-y-1">
-              <div className="font-serif font-bold text-xs text-[#18181B] truncate">
+            <div className="my-0.5 flex items-center justify-center">
+              <SanctuaryBotAvatar agent={agent} size={size} active={isHovered} />
+            </div>
+
+            <div className="w-full mt-2 flex flex-col items-center gap-0.5">
+              <span className="text-[13px] font-bold text-[#1C140D] leading-tight">
                 {agent.name}
-              </div>
-
-              <div className="flex items-center justify-center gap-1 flex-wrap">
-                <span
-                  className={`text-[9.5px] font-semibold px-1.5 py-0.5 rounded-full truncate max-w-[92px] ${
-                    isSelected
-                      ? 'bg-[#FEF08A] text-[#78350F]'
-                      : 'bg-white text-neutral-600'
-                  }`}
-                >
-                  {agent.tag}
-                </span>
-
-                <button
-                  type="button"
-                  onClick={(e) => toggleShading(agent.id, e)}
-                  title="Toggle Plastic / Fabric bot shading"
-                  className={`text-[9px] font-mono font-semibold px-1.5 py-0.5 rounded-[5px] cursor-pointer transition-colors ${
-                    effectiveShading === 'fabric'
-                      ? 'bg-amber-100 text-amber-900'
-                      : 'bg-sky-50 text-sky-800'
-                  }`}
-                >
-                  {effectiveShading === 'fabric' ? 'Fabric' : 'Plastic'}
-                </button>
-              </div>
-
-              <div className="text-[10px] text-neutral-500 line-clamp-1">
+              </span>
+              <span className="text-[10.5px] text-[#6B5B4D] font-medium leading-[1.3] line-clamp-2 w-full px-0.5">
                 {agent.role}
-              </div>
+              </span>
+              <a
+                href={homeSection.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  navigateSpaRoute(homeSection.href);
+                }}
+                className="mt-1 text-[10px] font-semibold text-amber-800 hover:underline no-underline"
+              >
+                {homeSection.label} →
+              </a>
             </div>
           </div>
         );
@@ -151,50 +126,93 @@ export const BotAvatarRoster: React.FC<BotAvatarRosterProps> = ({
   );
 };
 
+/**
+ * Full-width Home Sanctuary showcase for the 14-Bot Interactive Fleet.
+ */
 export const BotFleetSection: React.FC = () => {
-  const openHub = (agentId?: string) => {
-    if (typeof window === 'undefined') return;
-    queueAgentEvent('open-agent-hub', { agentId: agentId || SANCTUARY_BOTS[0].id });
-    window.dispatchEvent(
-      new CustomEvent('open-agent-hub', { detail: { agentId: agentId || SANCTUARY_BOTS[0].id } })
-    );
+  const [selectedId, setSelectedId] = useState<string>(SANCTUARY_BOTS[0].id);
+  const [activeCategory, setActiveCategory] = useState<BotCategoryId>('all');
+
+  const visibleBots = useMemo(() => {
+    if (activeCategory === 'all') return SANCTUARY_BOTS;
+    return SANCTUARY_BOTS.filter((b) => getBotCategory(b.id) === activeCategory);
+  }, [activeCategory]);
+
+  const handleOpenHub = (agentId?: string) => {
+    const targetId = agentId || selectedId || SANCTUARY_BOTS[0].id;
+    queueAgentEvent('open-agent-hub', { agentId: targetId });
+    window.dispatchEvent(new CustomEvent('open-agent-hub', { detail: { agentId: targetId } }));
   };
 
   return (
     <section
-      aria-label="Autonomous Sanctuary & FarmDirect Bots Fleet"
-      className="w-full bg-white rounded-[28px] sm:rounded-[32px] p-4 sm:p-6 shadow-[0_2px_16px_rgba(24,24,27,0.025)] mb-6 space-y-4"
+      data-nosnippet
+      aria-label="Sanctuary 14-Bot Interactive Sahayak Fleet"
+      style={{ cornerShape: 'squircle' } as React.CSSProperties}
+      className="w-full bg-white rounded-[30px] sm:rounded-[34px] p-4 sm:p-5 shadow-[0_2px_18px_rgba(28,20,13,0.035)] mb-6 space-y-4"
     >
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-        <div className="min-w-0">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div className="min-w-0 space-y-1">
           <div className="flex items-center gap-2 flex-wrap">
-            <h3 className="font-rozha text-xl sm:text-2xl text-[#18181B] leading-tight">
-              AI Sakha & Bot Fleet ({SANCTUARY_BOTS.length})
+            <h3 className="font-rozha text-xl sm:text-2xl text-[#1C140D] leading-tight">
+              AI Sakha &amp; Sahayak Fleet ({SANCTUARY_BOTS.length})
             </h3>
-            <span className="inline-flex items-center gap-1 text-[10.5px] font-bold px-2.5 py-0.5 rounded-full bg-[#FEF08A] text-[#78350F]">
-              <Sparkles className="w-3 h-3" />
-              <span>Interactive 2D Bots</span>
+            <span className="inline-flex items-center gap-1.5 text-[10.5px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" aria-hidden="true" />
+              Ready
             </span>
           </div>
-          <p className="text-xs text-[#71717A] font-laila mt-0.5">
-            स्पर्श करें • Tap any bot for live Ashtayama timings, Panchang, scriptures, or FarmDirect assistant tools.
+          <p className="text-xs sm:text-[13px] text-[#6B5B4D]">
+            Tap any Sahayak for live Darshan timings, Panchang, Rasik Padavali, or jump directly to their section.
           </p>
         </div>
 
         <button
           type="button"
-          onClick={() => openHub()}
-          className="self-start sm:self-auto px-3.5 py-1.5 rounded-full bg-[#1C140D] hover:bg-[#2F2217] text-[#FEF08A] text-xs font-semibold inline-flex items-center gap-1.5 cursor-pointer transition-colors shrink-0"
+          onClick={() => handleOpenHub(selectedId)}
+          className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-full bg-[#1C140D] hover:bg-[#312419] text-[#FFFDF9] text-xs font-semibold transition-colors cursor-pointer shrink-0 self-start sm:self-center"
         >
           <span>Open Bots Hub</span>
           <ChevronRight className="w-3.5 h-3.5" />
         </button>
       </div>
 
+      {/* Category Filter Strip */}
+      <div
+        className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-0.5 pr-4 sm:pr-0 [mask-image:linear-gradient(to_right,black_calc(100%-16px),transparent)] sm:[mask-image:none]"
+        role="tablist"
+        aria-label="Filter bots by specialty"
+      >
+        {BOT_CATEGORIES.map((cat) => {
+          const isCurrent = activeCategory === cat.id;
+          return (
+            <button
+              key={cat.id}
+              type="button"
+              role="tab"
+              aria-selected={isCurrent}
+              onClick={() => setActiveCategory(cat.id)}
+              className={`px-3 py-1.5 rounded-full text-[11.5px] font-semibold whitespace-nowrap transition-colors cursor-pointer shrink-0 ${
+                isCurrent
+                  ? 'bg-[#1C140D] text-[#FFFDF9]'
+                  : 'bg-[#FAF7F2] hover:bg-[#F1EAE0] text-[#5C4B3B]'
+              }`}
+            >
+              {cat.label}
+            </button>
+          );
+        })}
+      </div>
+
       <BotAvatarRoster
-        size={52}
+        bots={visibleBots}
+        selectedAgentId={selectedId}
+        onSelectAgent={(bot) => {
+          setSelectedId(bot.id);
+          handleOpenHub(bot.id);
+        }}
+        size={48}
         layout="carousel"
-        onSelectAgent={(agent) => openHub(agent.id)}
       />
     </section>
   );

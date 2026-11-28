@@ -1,7 +1,7 @@
 {
   "functions/[[path]].ts": {
-    "mtime": 1795863689.0718546,
-    "ast_hash": "7748ea445ad93cbbd322f9fbaa5720c9",
+    "mtime": 1795870943.7697742,
+    "ast_hash": "ba5fb04c8cddfa3b41ec711458099bba",
     "semantic_hash": ""
   },
   "package.json": {
@@ -2465,8 +2465,8 @@
     "semantic_hash": ""
   },
   "src/entry-server.tsx": {
-    "mtime": 1795863793.9869184,
-    "ast_hash": "f03afef88f2ba928a3b8baa050c092d2",
+    "mtime": 1795864471.5835578,
+    "ast_hash": "ec43e3e3d945e655e91b1908b166114a",
     "semantic_hash": ""
   },
   "src/hooks/useScrollDirection.ts": {
@@ -2515,8 +2515,8 @@
     "semantic_hash": ""
   },
   "src/services/sacredDatabase.ts": {
-    "mtime": 1795864131.5466602,
-    "ast_hash": "edc1ac1338f8168a8798dd13b47cd6ca",
+    "mtime": 1795864532.127179,
+    "ast_hash": "362357acdf526d39af3618545e4937f0",
     "semantic_hash": ""
   },
   "src/services/seoService.ts": {
@@ -7300,13 +7300,13 @@
     "semantic_hash": ""
   },
   "src/components/common/BotAvatarRoster.tsx": {
-    "mtime": 1795860896.7403693,
-    "ast_hash": "c779bf43c9fba94befdab663f5dff898",
+    "mtime": 1795871546.912669,
+    "ast_hash": "2d89698f3616082ecf20a7fe954b798b",
     "semantic_hash": ""
   },
   "src/components/common/LiquidBotSpeedDial.tsx": {
-    "mtime": 1795861136.9613326,
-    "ast_hash": "40a10946dffd30c42caf06450bb9860c",
+    "mtime": 1795871736.6660154,
+    "ast_hash": "f4ec378a511375466ed243f00fb4a356",
     "semantic_hash": ""
   },
   "src/data/botRoster.ts": {
@@ -7315,13 +7315,13 @@
     "semantic_hash": ""
   },
   "src/features/agents/AgentHub.tsx": {
-    "mtime": 1795860904.3420272,
-    "ast_hash": "9b1d25b40abc4acf270d9e68fb3da813",
+    "mtime": 1795871734.4904337,
+    "ast_hash": "b72a6f7e3c20b80b055c979f31c96b54",
     "semantic_hash": ""
   },
   "src/features/agents/AgentHubModal.tsx": {
-    "mtime": 1795860905.9662235,
-    "ast_hash": "354890c87923a556ff1346ed7298c5d2",
+    "mtime": 1795871192.5580342,
+    "ast_hash": "3928072428f1711cbd3a5e7fe484d2e0",
     "semantic_hash": ""
   },
   "src/services/assistantCache.ts": {
@@ -7355,13 +7355,18 @@
     "semantic_hash": ""
   },
   "src/components/sections/RagaDirectoryView.tsx": {
-    "mtime": 1795863162.2365649,
-    "ast_hash": "a2c4ac022078ba17fb1a6d7f58f2cfe8",
+    "mtime": 1795864582.7979891,
+    "ast_hash": "8ecaef955dc3807bffe2c8ec26a7dbf4",
     "semantic_hash": ""
   },
   "src/components/sections/ThemeHubView.tsx": {
-    "mtime": 1795863163.7898712,
-    "ast_hash": "897c69d79eac109bed8c51fb932b9dc3",
+    "mtime": 1795864584.2231686,
+    "ast_hash": "1fd23ebcd56da9cd3711b5684b972cb9",
+    "semantic_hash": ""
+  },
+  "src/services/botGroqEngine.ts": {
+    "mtime": 1795871732.1258035,
+    "ast_hash": "b811b0d766ac59603e4d2055f5867b21",
     "semantic_hash": ""
   }
 }

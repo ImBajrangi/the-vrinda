@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { SectionBotCompanion } from '../common/SectionBotCompanion';
 import {
   ArrowLeft,
   CalendarHeart,
@@ -323,6 +324,13 @@ export const FestivalGuideView: React.FC<FestivalGuideViewProps> = ({
           </a>
         ))}
       </div>
+
+      <SectionBotCompanion
+        agentId="chintu"
+        heading="Chintu • Festival & Rajbhog Guide"
+        subtitle="Ask Chintu about Ekadashi, Radhashtami, Sharad Purnima, Holi Utsav, and Rajbhog traditions"
+        quickPrompts={['When is the next major Vrindavan festival?', 'Tell me about Radhashtami in Barsana']}
+      />
     </div>
   );
 };

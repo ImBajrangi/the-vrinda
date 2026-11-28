@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { ArrowLeft, ChevronRight, Music, Play, Search, Sparkles } from 'lucide-react';
+import { ArrowLeft, ChevronRight, Music, Play, Search, Sparkles, X } from 'lucide-react';
+import { SectionBotCompanion } from '../common/SectionBotCompanion';
 import ragaIndexData from '../../data/ragaIndex.json';
 import { SacredDatabase } from '../../services/sacredDatabase';
 import { extractPurePadaTitle } from '../../utils/padaTitle';
@@ -387,13 +388,23 @@ export const RagaDirectoryView: React.FC<RagaDirectoryViewProps> = ({
         <label className="relative block max-w-md">
           <Search className="w-4 h-4 text-neutral-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
           <input
-            type="search"
+            type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="राग खोजें (जैसे: विभास, मल्हार, बिलावल, vibhas)..."
             aria-label="राग खोजें"
-            className="w-full h-10 pl-10 pr-4 rounded-full bg-[#FAF8F4] text-sm text-[#18181B] placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#FACC15]"
+            className="w-full h-10 pl-10 pr-9 rounded-full bg-[#FAF8F4] text-[16px] sm:text-sm text-[#18181B] placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#FACC15]"
           />
+          {searchQuery && (
+            <button
+              type="button"
+              onClick={() => setSearchQuery('')}
+              aria-label="राग खोज साफ़ करें"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-neutral-700 p-0.5 rounded-full cursor-pointer"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          )}
         </label>
       </div>
 
@@ -431,6 +442,21 @@ export const RagaDirectoryView: React.FC<RagaDirectoryViewProps> = ({
           </p>
         )}
       </div>
+
+      <SectionBotCompanion
+        agentId="tara"
+        heading="Tara • Raga & Pad Sahayak"
+        subtitle={
+          activeSlug
+            ? `Ask Tara for Ashtayama time, mood & verses in Raga ${humanizeSlug(activeSlug)}`
+            : 'Ask Tara which Raga fits the current Ashtayama watch or explore any Rasik pad'
+        }
+        quickPrompts={
+          activeSlug
+            ? [`Explain Raga ${humanizeSlug(activeSlug)} mood`, 'Which Ashtayama phase is active now?']
+            : ['Which Raga fits morning Vibhas seva?', 'Show Hit Chaurasi Pad 1']
+        }
+      />
     </div>
   );
 };

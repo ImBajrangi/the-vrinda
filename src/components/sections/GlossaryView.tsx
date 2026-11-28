@@ -10,7 +10,9 @@ import {
   Globe,
   ChevronRight,
   BookMarked,
+  X,
 } from 'lucide-react';
+import { SectionBotCompanion } from '../common/SectionBotCompanion';
 import brajGlossaryRaw from '../../data/brajGlossary.json';
 import { BRAJ_DICTIONARY } from '../../data/brajDictionary';
 import { formatDevanagariNumerals } from '../../services/cacheService';
@@ -404,8 +406,18 @@ export const GlossaryView: React.FC<GlossaryViewProps> = ({
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={lang === 'hi' ? 'शब्द या अर्थ खोजें...' : 'Search term, Devanagari or meaning...'}
-              className="w-full pl-10 pr-4 py-2.5 rounded-full bg-[#FAF8F4] text-sm font-serif text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#F5B432]/60"
+              className="w-full pl-10 pr-9 py-2.5 rounded-full bg-[#FAF8F4] text-[16px] sm:text-sm font-serif text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#F5B432]/60"
             />
+            {searchQuery && (
+              <button
+                type="button"
+                onClick={() => setSearchQuery('')}
+                aria-label="Clear search"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-neutral-700 p-0.5 rounded-full cursor-pointer"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            )}
           </div>
         </div>
 
@@ -516,6 +528,13 @@ export const GlossaryView: React.FC<GlossaryViewProps> = ({
           ))}
         </div>
       )}
+
+      <SectionBotCompanion
+        agentId="sita"
+        heading="Sita • Braj Vocabulary & Siddhanta"
+        subtitle="Ask Sita to explain Nikunj, Keli Vilas, Rasopasana, or any archaic Braj word"
+        quickPrompts={['Explain Nitya Nikunj & Keli Vilas', 'What does Sahachari Bhava mean?']}
+      />
     </div>
   );
 };

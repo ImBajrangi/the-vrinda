@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
+import { SectionBotCompanion } from '../common/SectionBotCompanion';
 import {
   Flame,
   Bell,
@@ -656,6 +657,14 @@ export const NityaUpasanaReader: React.FC<NityaUpasanaReaderProps> = ({
           })}
         </div>
       )}
+
+      <SectionBotCompanion
+        agentId="trishul"
+        className="mt-6"
+        heading="Trishul • Stotra & Daily Puja Guide"
+        subtitle="Ask Trishul about Rudrashtakam, Yamunashtakam, recitation times, or puja vidhi"
+        quickPrompts={['Explain Yamunashtakam significance', 'Best time to recite Stotras?']}
+      />
     </main>
   );
 };

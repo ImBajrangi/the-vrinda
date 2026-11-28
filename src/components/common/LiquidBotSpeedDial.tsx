@@ -1,20 +1,37 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Liquid } from 'liquid-gooey';
-import { BotAvatar } from 'bot-avatars';
-import { BorderBeam } from 'border-beam';
-import { ThinkingOrb } from 'thinking-orbs';
-import { BookOpen, Sparkles, X, Send, Zap, Users } from 'lucide-react';
-import { assistantCache } from '../../services/assistantCache';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
+import {
+  BookOpen,
+  Sparkles,
+  X,
+  Send,
+  Square,
+  Users,
+  Trash2,
+  ArrowUpRight,
+  Copy,
+  Check,
+} from 'lucide-react';
 import { SANCTUARY_BOTS, type SanctuaryBotAgent } from '../../data/botRoster';
-import { resolveBotReply } from '../../services/botBrain';
+import { SanctuaryBotAvatar } from './SanctuaryBotAvatar';
+import { IOSSpinner } from './IOSActivityIndicator';
+import {
+  streamBotReply,
+  clearBotConversationCache,
+  parseRichInlineSegments,
+  navigateSpaRoute,
+  type BotResponseSource,
+  type BotSuggestedLink,
+} from '../../services/botGroqEngine';
 import { queueAgentEvent } from '../../utils/agentQueue';
 import './LiquidBotSpeedDial.css';
 
 interface ChatMessage {
   id: string;
-  sender: 'user' | 'assistant';
+  sender: 'user' | 'agent';
   text: string;
   timestamp: string;
+  source?: BotResponseSource;
+  suggestedLinks?: BotSuggestedLink[];
 }
 
 interface LiquidBotSpeedDialProps {
@@ -23,6 +40,13 @@ interface LiquidBotSpeedDialProps {
   hasFloatingAudio?: boolean;
 }
 
+const SOURCE_SHORT_MAP: Record<BotResponseSource, string> = {
+  groq: 'Verified',
+  'edge-groq': 'Verified',
+  cache: 'Cached · Instant',
+  local: 'Offline Grounded',
+};
+
 export const LiquidBotSpeedDial: React.FC<LiquidBotSpeedDialProps> = ({
   onOpenSearch,
   onNavigatePadavali,
@@ -30,84 +54,81 @@ export const LiquidBotSpeedDial: React.FC<LiquidBotSpeedDialProps> = ({
 }) => {
   const [open, setOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
-  const [botState, setBotState] = useState<'default' | 'working' | 'sleeping'>('default');
   const [currentAgent, setCurrentAgent] = useState<SanctuaryBotAgent>(SANCTUARY_BOTS[0]);
-  const [assistantShading, setAssistantShading] = useState<'plastic' | 'fabric'>(
-    SANCTUARY_BOTS[0].shading === 'fabric' ? 'fabric' : 'plastic'
-  );
+  const [copiedId, setCopiedId] = useState<string | null>(null);
 
-  const toggleAssistantShading = () => {
-    setAssistantShading((prev) => (prev === 'plastic' ? 'fabric' : 'plastic'));
-  };
-
-  useEffect(() => {
-    setAssistantShading(currentAgent.shading === 'fabric' ? 'fabric' : 'plastic');
-  }, [currentAgent]);
+  const [messagesByAgent, setMessagesByAgent] = useState<Record<string, ChatMessage[]>>(() => {
+    const map: Record<string, ChatMessage[]> = {};
+    SANCTUARY_BOTS.forEach((b) => {
+      map[b.id] = [
+        {
+          id: `welcome-${b.id}`,
+          sender: 'agent',
+          text: b.greeting,
+          timestamp: 'Ready',
+        },
+      ];
+    });
+    return map;
+  });
 
   const [inputQuery, setInputQuery] = useState('');
-  const [messages, setMessages] = useState<ChatMessage[]>([
-    {
-      id: 'welcome',
-      sender: 'assistant',
-      text: SANCTUARY_BOTS[0].greeting,
-      timestamp: 'Just now',
-    },
-  ]);
   const [isTyping, setIsTyping] = useState(false);
   const [streamingText, setStreamingText] = useState('');
+  const [typingSteps, setTypingSteps] = useState<string[]>([]);
 
-  const chatBottomRef = useRef<HTMLDivElement>(null);
-  const streamingTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const dialRef = useRef<HTMLDivElement>(null);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const abortRef = useRef<AbortController | null>(null);
 
-  useEffect(() => {
-    if (modalOpen) {
-      chatBottomRef.current?.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [messages, modalOpen, streamingText]);
+  const messages = messagesByAgent[currentAgent.id] || [];
 
   useEffect(() => {
-    return () => {
-      if (streamingTimerRef.current) clearInterval(streamingTimerRef.current);
+    if (!open) return;
+    const handlePointerDown = (e: PointerEvent) => {
+      if (dialRef.current && !dialRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
     };
-  }, []);
+    window.addEventListener('pointerdown', handlePointerDown);
+    return () => window.removeEventListener('pointerdown', handlePointerDown);
+  }, [open]);
 
   useEffect(() => {
     const handleOpen = (e: Event) => {
-      const customEvent = e as CustomEvent<{ agentId?: string }>;
-      setModalOpen(true);
-      if (customEvent.detail?.agentId) {
-        const found = SANCTUARY_BOTS.find((a) => a.id === customEvent.detail?.agentId);
-        if (found) {
-          setCurrentAgent(found);
-          setBotState('default');
-        }
+      const detail = (e as CustomEvent<{ agentId?: string }>)?.detail;
+      if (detail?.agentId) {
+        const matched = SANCTUARY_BOTS.find((b) => b.id === detail.agentId);
+        if (matched) setCurrentAgent(matched);
       }
+      setModalOpen(true);
+      setOpen(false);
     };
     window.addEventListener('open-sanctuary-assistant', handleOpen);
     return () => window.removeEventListener('open-sanctuary-assistant', handleOpen);
   }, []);
 
-  const switchAgent = (agent: SanctuaryBotAgent) => {
-    setCurrentAgent(agent);
-    setMessages((prev) => [
-      ...prev,
-      {
-        id: `agent-switch-${Date.now()}`,
-        sender: 'assistant',
-        text: `Switched to ${agent.name} (${agent.role}): "${agent.greeting}"`,
-        timestamp: 'Just now',
-      },
-    ]);
-  };
+  useEffect(() => {
+    if (modalOpen) {
+      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
+  }, [modalOpen, messages.length, streamingText, isTyping]);
 
-  const handleAction = (type: 'chat' | 'search' | 'fleet' | 'padavali') => {
+  useEffect(() => {
+    return () => {
+      abortRef.current?.abort();
+    };
+  }, []);
+
+  const stopGeneration = useCallback(() => {
+    abortRef.current?.abort();
+    abortRef.current = null;
+  }, []);
+
+  const handleAction = (type: 'assistant' | 'search' | 'padavali') => {
     setOpen(false);
-    if (type === 'chat') {
+    if (type === 'assistant') {
       setModalOpen(true);
-      setBotState('default');
-    } else if (type === 'fleet') {
-      queueAgentEvent('open-agent-hub', { agentId: currentAgent.id });
-      window.dispatchEvent(new CustomEvent('open-agent-hub', { detail: { agentId: currentAgent.id } }));
     } else if (type === 'search') {
       onOpenSearch?.();
     } else if (type === 'padavali') {
@@ -115,360 +136,426 @@ export const LiquidBotSpeedDial: React.FC<LiquidBotSpeedDialProps> = ({
     }
   };
 
-  const handleSend = (textToSend?: string) => {
-    const q = (textToSend || inputQuery).trim();
+  const handleSend = async (textToSend?: string) => {
+    const q = (textToSend ?? inputQuery).trim();
     if (!q || isTyping) return;
 
-    setMessages((prev) => [
+    const agentId = currentAgent.id;
+    const prevMsgs = messagesByAgent[agentId] || [];
+    const historyForPrompt = prevMsgs
+      .filter((m) => !m.id.startsWith('welcome-'))
+      .map((m) => ({
+        role: m.sender === 'agent' ? ('agent' as const) : ('user' as const),
+        text: m.text,
+      }));
+
+    setMessagesByAgent((prev) => ({
       ...prev,
-      { id: `user-${Date.now()}`, sender: 'user', text: q, timestamp: 'Now' },
-    ]);
-    setInputQuery('');
+      [agentId]: [
+        ...(prev[agentId] || []),
+        {
+          id: `user-${Date.now()}`,
+          sender: 'user',
+          text: q,
+          timestamp: 'Now',
+        },
+      ],
+    }));
+
+    if (!textToSend) setInputQuery('');
     setIsTyping(true);
-    setBotState('working');
     setStreamingText('');
+    setTypingSteps(['Checking Panchang & Corpus...']);
 
-    const cacheKey = `dial_${currentAgent.id}_${q}`;
-    const cachedResponse = assistantCache.get<string>(cacheKey);
-    const fullResponse = cachedResponse || resolveBotReply(currentAgent, q).text;
-    const isFromCache = Boolean(cachedResponse);
-    if (!cachedResponse) {
-      assistantCache.set(cacheKey, fullResponse);
-    }
+    const ctrl = new AbortController();
+    abortRef.current = ctrl;
 
-    const words = fullResponse.split(' ');
-    let currentIdx = 0;
-    const intervalTime = isFromCache ? 18 : 28;
+    try {
+      const reply = await streamBotReply(currentAgent, q, historyForPrompt, {
+        signal: ctrl.signal,
+        onSteps: setTypingSteps,
+        onToken: setStreamingText,
+      });
 
-    if (streamingTimerRef.current) clearInterval(streamingTimerRef.current);
-
-    streamingTimerRef.current = setInterval(() => {
-      currentIdx++;
-      if (currentIdx <= words.length) {
-        setStreamingText(words.slice(0, currentIdx).join(' '));
-      } else {
-        if (streamingTimerRef.current) clearInterval(streamingTimerRef.current);
-        setMessages((prev) => [
-          ...prev,
+      setMessagesByAgent((prev) => ({
+        ...prev,
+        [agentId]: [
+          ...(prev[agentId] || []),
           {
-            id: `bot-${Date.now()}`,
-            sender: 'assistant',
-            text: fullResponse,
-            timestamp: isFromCache ? 'Cached L1' : 'Just now',
+            id: `agent-${Date.now()}`,
+            sender: 'agent',
+            text: reply.text,
+            source: reply.source,
+            suggestedLinks: reply.suggestedLinks,
+            timestamp: new Date().toLocaleTimeString([], {
+              hour: '2-digit',
+              minute: '2-digit',
+            }),
           },
-        ]);
-        setIsTyping(false);
-        setStreamingText('');
-        setBotState('default');
+        ],
+      }));
+    } catch (err) {
+      if ((err as Error)?.name === 'AbortError' && streamingText.trim()) {
+        setMessagesByAgent((prev) => ({
+          ...prev,
+          [agentId]: [
+            ...(prev[agentId] || []),
+            {
+              id: `agent-${Date.now()}`,
+              sender: 'agent',
+              text: `${streamingText.trim()}\n\n*(Stopped)*`,
+              source: 'groq',
+              timestamp: 'Stopped',
+            },
+          ],
+        }));
       }
-    }, intervalTime);
+    } finally {
+      abortRef.current = null;
+      setIsTyping(false);
+      setStreamingText('');
+      setTypingSteps([]);
+    }
+  };
+
+  const handleClear = () => {
+    stopGeneration();
+    clearBotConversationCache(currentAgent.id);
+    setMessagesByAgent((prev) => ({
+      ...prev,
+      [currentAgent.id]: [
+        {
+          id: `welcome-${currentAgent.id}-${Date.now()}`,
+          sender: 'agent',
+          text: currentAgent.greeting,
+          timestamp: 'Reset',
+        },
+      ],
+    }));
+  };
+
+  const handleCopy = (id: string, text: string) => {
+    navigator.clipboard?.writeText(text).catch(() => {});
+    setCopiedId(id);
+    window.setTimeout(() => setCopiedId((prev) => (prev === id ? null : prev)), 1400);
+  };
+
+  const renderInlineBody = (text: string) => {
+    return text.split('\n').map((line, i) => {
+      const trimmed = line.trim();
+      if (!trimmed) return <div key={i} className="bot-rich-gap" aria-hidden="true" />;
+      const segs = parseRichInlineSegments(trimmed);
+      return (
+        <div key={i} className="bot-rich-line">
+          {segs.map((seg, j) => {
+            if (seg.type === 'bold') return <strong key={j}>{seg.value}</strong>;
+            if (seg.type === 'italic') return <em key={j}>{seg.value}</em>;
+            if (seg.type === 'link') {
+              return (
+                <a
+                  key={j}
+                  href={seg.href}
+                  className="bot-inline-link"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateSpaRoute(seg.href, () => setModalOpen(false));
+                  }}
+                >
+                  {seg.value}
+                </a>
+              );
+            }
+            return <React.Fragment key={j}>{seg.value}</React.Fragment>;
+          })}
+        </div>
+      );
+    });
   };
 
   return (
     <>
       <div
+        data-nosnippet
+        ref={dialRef}
         className={`liquid-speed-dial-anchor ${hasFloatingAudio ? 'has-audio-bar' : ''}`}
-        role="region"
-        aria-label="Interactive AI Bots Launcher"
       >
-        <Liquid
-          fill="#1C140D"
-          style={{ width: 140, height: 140, position: 'relative', pointerEvents: 'none' }}
-        >
-          <Liquid.Item
-            style={{ position: 'absolute', right: 12, bottom: 12, pointerEvents: open ? 'auto' : 'none' }}
-            x={open ? -64 : 0}
-            y={0}
-            transition={{ duration: open ? 290 : 210, ease: 'cubic-bezier(0.34, 1.56, 0.64, 1)' }}
+        <div className={`fast-dial-stack ${open ? 'is-open' : ''}`}>
+          <button
+            type="button"
+            className="round-btn fast-dial-item"
+            style={{ '--dx': '-64px', '--dy': '0px' } as React.CSSProperties}
+            onClick={() => handleAction('padavali')}
+            title="Open Padavali"
+            aria-label="Open Padavali Scriptures"
+            tabIndex={open ? 0 : -1}
           >
-            <button
-              type="button"
-              className="round-btn"
-              onClick={() => handleAction('fleet')}
-              aria-label="Open All 14 Bots Hub"
-              data-label="All 14 Bots Hub"
-              tabIndex={open ? 0 : -1}
-              style={{ opacity: open ? 1 : 0, transition: 'opacity 0.15s ease' }}
-            >
-              <Users size={19} color="#FEF08A" />
-            </button>
-          </Liquid.Item>
+            <BookOpen className="w-4 h-4 text-[#FEF08A]" />
+          </button>
 
-          <Liquid.Item
-            style={{ position: 'absolute', right: 12, bottom: 12, pointerEvents: open ? 'auto' : 'none' }}
-            x={open ? -48 : 0}
-            y={open ? -48 : 0}
-            transition={{ duration: open ? 290 : 210, ease: 'cubic-bezier(0.34, 1.56, 0.64, 1)' }}
-            delay={open ? 18 : 10}
+          <button
+            type="button"
+            className="round-btn fast-dial-item"
+            style={{ '--dx': '-48px', '--dy': '-48px' } as React.CSSProperties}
+            onClick={() => handleAction('search')}
+            title="Spotlight Search"
+            aria-label="Search Sacred Corpus"
+            tabIndex={open ? 0 : -1}
           >
-            <button
-              type="button"
-              className="round-btn"
-              onClick={() => handleAction('padavali')}
-              aria-label="Open Padavali"
-              data-label="Padavali"
-              tabIndex={open ? 0 : -1}
-              style={{ opacity: open ? 1 : 0, transition: 'opacity 0.15s ease' }}
-            >
-              <BookOpen size={19} color="#6EE7B7" />
-            </button>
-          </Liquid.Item>
+            <Sparkles className="w-4 h-4 text-[#FEF08A]" />
+          </button>
 
-          <Liquid.Item
-            style={{ position: 'absolute', right: 12, bottom: 12, pointerEvents: open ? 'auto' : 'none' }}
-            x={0}
-            y={open ? -64 : 0}
-            transition={{ duration: open ? 290 : 210, ease: 'cubic-bezier(0.34, 1.56, 0.64, 1)' }}
-            delay={open ? 36 : 0}
+          <button
+            type="button"
+            className="round-btn fast-dial-item"
+            style={{ '--dx': '0px', '--dy': '-64px' } as React.CSSProperties}
+            onClick={() => handleAction('assistant')}
+            title={`Quick Chat (${currentAgent.name})`}
+            aria-label="Open Quick Bot Chat"
+            tabIndex={open ? 0 : -1}
           >
-            <button
-              type="button"
-              className="round-btn"
-              onClick={() => handleAction('chat')}
-              aria-label="Quick Bot Chat"
-              data-label="Quick Bot Chat"
-              tabIndex={open ? 0 : -1}
-              style={{ opacity: open ? 1 : 0, transition: 'opacity 0.15s ease' }}
-            >
-              <Sparkles size={19} color="#FBBF24" />
-            </button>
-          </Liquid.Item>
+            <Users className="w-4 h-4 text-[#FEF08A]" />
+          </button>
 
-          <Liquid.Item style={{ position: 'absolute', right: 12, bottom: 12, pointerEvents: 'auto' }}>
-            <button
-              type="button"
-              className="round-btn round-btn-main"
-              onClick={() => setOpen((o) => !o)}
-              aria-expanded={open}
-              aria-label={open ? 'Close bot launcher' : 'Open interactive bots'}
-            >
-              {open ? (
-                <span style={{ fontSize: 22, lineHeight: 1, color: '#FEF08A' }}>×</span>
-              ) : (
-                <BotAvatar
-                  type={currentAgent.type}
-                  face={currentAgent.face}
-                  hat={currentAgent.hat}
-                  glasses={currentAgent.glasses}
-                  headphones={currentAgent.headphones}
-                  bowTie={currentAgent.bowTie}
-                  shading={assistantShading}
-                  size={36}
-                  state="default"
-                />
-              )}
-            </button>
-          </Liquid.Item>
-        </Liquid>
+          <button
+            type="button"
+            className="round-btn round-btn-main"
+            onClick={() => setOpen((o) => !o)}
+            aria-expanded={open}
+            aria-label={open ? 'Close bot launcher' : 'Open interactive bots'}
+            title="14 Sanctuary Sahayak Bots"
+          >
+            {open ? (
+              <X className="w-5 h-5 text-[#FEF08A]" />
+            ) : (
+              <SanctuaryBotAvatar agent={currentAgent} size={34} />
+            )}
+          </button>
+        </div>
       </div>
 
       {modalOpen && (
-        <div className="bot-assistant-overlay" onClick={() => setModalOpen(false)}>
-          <BorderBeam size="md" colorVariant="sunset" strength={0.65} theme="light" borderRadius={24}>
-            <div
-              className="bot-assistant-card"
-              onClick={(e) => e.stopPropagation()}
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby="bot-assistant-title"
-            >
-              <div className="bot-assistant-header">
-                <div className="bot-avatar-hero-container">
-                  <BotAvatar
-                    type={currentAgent.type}
-                    face={currentAgent.face}
-                    hat={currentAgent.hat}
-                    glasses={currentAgent.glasses}
-                    headphones={currentAgent.headphones}
-                    bowTie={currentAgent.bowTie}
-                    shading={assistantShading}
-                    size={42}
-                    state={botState}
-                  />
+        <div
+          data-nosnippet
+          className="bot-assistant-backdrop"
+          onClick={() => setModalOpen(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="bot-assistant-title"
+        >
+          <div className="bot-assistant-card" onClick={(e) => e.stopPropagation()}>
+            <div className="bot-assistant-header">
+              <div className="bot-assistant-brand">
+                <div className="bot-assistant-av-wrap">
+                  <SanctuaryBotAvatar agent={currentAgent} size={36} active={isTyping} />
                 </div>
-
-                <div className="bot-header-meta">
-                  <div className="bot-header-title-row">
-                    <h3 id="bot-assistant-title" className="bot-header-title">
-                      {currentAgent.name}
-                    </h3>
-                    <span className={`bot-state-indicator-badge ${botState}`}>
-                      {currentAgent.tag}
+                <div className="bot-assistant-title-col">
+                  <div className="bot-assistant-title-row">
+                    <h4 id="bot-assistant-title">{currentAgent.name}</h4>
+                    <span className={`bot-live-badge${isTyping ? ' is-busy' : ''}`}>
+                      {isTyping ? (
+                        <>
+                          <IOSSpinner size="xs" theme="amber" />
+                          <span>Replying</span>
+                        </>
+                      ) : (
+                        <>
+                          <span className="bot-live-dot" aria-hidden="true" />
+                          <span>Online</span>
+                        </>
+                      )}
                     </span>
-                    <button
-                      type="button"
-                      onClick={toggleAssistantShading}
-                      className="bot-shading-toggle-btn"
-                    >
-                      {assistantShading === 'fabric' ? 'Fabric' : 'Plastic'}
-                    </button>
                   </div>
-                  <p className="bot-header-subtitle">{currentAgent.role}</p>
+                  <p>{currentAgent.role}</p>
                 </div>
+              </div>
 
+              <div className="bot-header-actions">
                 <button
                   type="button"
-                  className="bot-close-btn"
-                  onClick={() => setModalOpen(false)}
-                  aria-label="Close Assistant"
+                  className="bot-hdr-icon-btn"
+                  onClick={handleClear}
+                  title="Clear conversation"
+                  aria-label="Clear quick chat"
                 >
-                  <X size={16} />
+                  <Trash2 className="w-3.5 h-3.5" />
                 </button>
-              </div>
-
-              <div className="bot-state-bar">
-                <div className="bot-state-tabs">
-                  {SANCTUARY_BOTS.map((ag) => (
-                    <button
-                      key={ag.id}
-                      type="button"
-                      className={`bot-state-tab-btn ${currentAgent.id === ag.id ? 'active' : ''}`}
-                      onClick={() => switchAgent(ag)}
-                    >
-                      {ag.name}
-                    </button>
-                  ))}
-                </div>
-
-                <div className="bot-cache-indicator">
-                  <Zap size={10} />
-                  <span>L1</span>
-                </div>
-              </div>
-
-              <div className="bot-chat-feed">
-                {messages.map((msg) => (
-                  <div key={msg.id} className={`bot-message-row ${msg.sender}`}>
-                    {msg.sender === 'assistant' && (
-                      <BotAvatar
-                        type={currentAgent.type}
-                        face={currentAgent.face}
-                        hat={currentAgent.hat}
-                        glasses={currentAgent.glasses}
-                        headphones={currentAgent.headphones}
-                        bowTie={currentAgent.bowTie}
-                        shading={currentAgent.shading}
-                        size={28}
-                        state="default"
-                      />
-                    )}
-                    <div className={`bot-message-bubble ${msg.sender}`}>{msg.text}</div>
-                  </div>
-                ))}
-
-                {isTyping && (
-                  <div className="bot-message-row assistant">
-                    <BotAvatar
-                      type={currentAgent.type}
-                      face={currentAgent.face}
-                      hat={currentAgent.hat}
-                      glasses={currentAgent.glasses}
-                      headphones={currentAgent.headphones}
-                      bowTie={currentAgent.bowTie}
-                      shading={assistantShading}
-                      size={28}
-                      state="working"
-                    />
-                    <div style={{ flex: 1, maxWidth: '82%' }}>
-                      <BorderBeam
-                        size="md"
-                        colorVariant="colorful"
-                        strength={0.75}
-                        borderRadius={18}
-                        theme="light"
-                        active={true}
-                      >
-                        <div className="bot-message-bubble assistant bot-streaming-bubble">
-                          <div className="bot-streaming-header">
-                            <ThinkingOrb
-                              state={streamingText ? 'composing' : 'searching'}
-                              size={20}
-                              color="#B45309"
-                            />
-                            <span className="bot-streaming-agent-name">{currentAgent.name}</span>
-                            <span className="bot-streaming-pill">
-                              {streamingText ? 'Composing...' : 'Thinking...'}
-                            </span>
-                          </div>
-                          <div className="bot-streaming-content">
-                            {streamingText ? (
-                              <>
-                                {streamingText}
-                                <span className="bot-streaming-cursor" />
-                              </>
-                            ) : (
-                              <div className="bot-streaming-skeleton">
-                                <div className="bot-skeleton-line short" />
-                                <div className="bot-skeleton-line long" />
-                                <div className="bot-skeleton-line medium" />
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                      </BorderBeam>
-                    </div>
-                  </div>
-                )}
-                <div ref={chatBottomRef} />
-              </div>
-
-              <div className="bot-suggestions-scroll">
-                {currentAgent.prompts.map((chip) => (
-                  <button
-                    key={chip}
-                    type="button"
-                    className="bot-suggestion-chip"
-                    onClick={() => handleSend(chip)}
-                  >
-                    {chip}
-                  </button>
-                ))}
                 <button
                   type="button"
-                  className="bot-suggestion-chip"
+                  className="bot-hdr-icon-btn"
                   onClick={() => {
                     setModalOpen(false);
                     queueAgentEvent('open-agent-hub', { agentId: currentAgent.id });
-                    window.dispatchEvent(new CustomEvent('open-agent-hub', { detail: { agentId: currentAgent.id } }));
+                    window.dispatchEvent(
+                      new CustomEvent('open-agent-hub', { detail: { agentId: currentAgent.id } })
+                    );
                   }}
+                  title="Open Full 14-Bot Hub"
+                  aria-label="Expand to Full 14-Bot Hub"
                 >
-                  Open Full 14-Bot Hub ↗
+                  <ArrowUpRight className="w-4 h-4" />
+                </button>
+                <button
+                  type="button"
+                  className="bot-hdr-icon-btn bot-hdr-close"
+                  onClick={() => setModalOpen(false)}
+                  aria-label="Close bot assistant"
+                >
+                  <X className="w-4 h-4" />
                 </button>
               </div>
+            </div>
 
-              <div className="bot-chat-input-wrapper">
-                <BorderBeam
-                  size="md"
-                  colorVariant="colorful"
-                  strength={inputQuery.trim().length > 0 || isTyping ? 0.8 : 0.25}
-                  active={inputQuery.trim().length > 0 || isTyping}
-                  borderRadius={16}
-                  theme="light"
+            {/* Clean 14-bot quick switcher rail with faded scroll edge */}
+            <div className="bot-assistant-switcher">
+              {SANCTUARY_BOTS.map((bot) => (
+                <button
+                  key={bot.id}
+                  type="button"
+                  className={`bot-switch-pill ${currentAgent.id === bot.id ? 'active' : ''}`}
+                  onClick={() => setCurrentAgent(bot)}
                 >
-                  <div className={`bot-chat-input-bar ${isTyping ? 'is-generating' : ''}`}>
-                    <input
-                      type="text"
-                      className="bot-input-field"
-                      placeholder={`Ask ${currentAgent.name} about verses, darshan, panchang, or bots...`}
-                      value={inputQuery}
-                      onChange={(e) => setInputQuery(e.target.value)}
-                      onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-                      disabled={isTyping}
-                    />
-                    <button
-                      type="button"
-                      className="bot-send-btn"
-                      onClick={() => handleSend()}
-                      disabled={!inputQuery.trim() || isTyping}
-                      aria-label="Send query"
-                    >
-                      <Send size={15} />
-                    </button>
+                  {bot.name}
+                </button>
+              ))}
+            </div>
+
+            <div className="bot-assistant-messages">
+              {messages.map((msg) => {
+                const isUser = msg.sender === 'user';
+                const isWelcome = msg.id.startsWith('welcome-');
+                return (
+                  <div key={msg.id} className={`bot-msg ${isUser ? 'user' : 'agent'}`}>
+                    {!isUser && (
+                      <div className="bot-msg-av">
+                        <SanctuaryBotAvatar agent={currentAgent} size={24} />
+                      </div>
+                    )}
+
+                    <div className="bot-msg-col">
+                      <div className="bot-msg-bubble">
+                        {isUser ? msg.text : renderInlineBody(msg.text)}
+                      </div>
+
+                      {!isUser && msg.suggestedLinks && msg.suggestedLinks.length > 0 && (
+                        <div className="bot-msg-links">
+                          {msg.suggestedLinks.map((lnk) => (
+                            <a
+                              key={lnk.href}
+                              href={lnk.href}
+                              className="bot-route-pill"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                navigateSpaRoute(lnk.href, () => setModalOpen(false));
+                              }}
+                            >
+                              {lnk.label} ↗
+                            </a>
+                          ))}
+                        </div>
+                      )}
+
+                      {!isUser && !isWelcome && (
+                        <div className="bot-msg-meta">
+                          {msg.source && (
+                            <span className="bot-msg-src" data-source={msg.source}>
+                              {SOURCE_SHORT_MAP[msg.source]}
+                            </span>
+                          )}
+                          <button
+                            type="button"
+                            className="bot-copy-btn"
+                            onClick={() => handleCopy(msg.id, msg.text)}
+                          >
+                            {copiedId === msg.id ? <Check size={11} /> : <Copy size={11} />}
+                            <span>{copiedId === msg.id ? 'Copied' : 'Copy'}</span>
+                          </button>
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </BorderBeam>
+                );
+              })}
+
+              {isTyping && (
+                <div className="bot-msg agent">
+                  <div className="bot-msg-av">
+                    <SanctuaryBotAvatar agent={currentAgent} size={24} active={true} />
+                  </div>
+                  <div className="bot-msg-col">
+                    <div className="bot-streaming-box">
+                      <div className="bot-streaming-orb-row">
+                        <IOSSpinner size="xs" theme="amber" />
+                        <span className="bot-streaming-pill">
+                          {streamingText
+                            ? `${currentAgent.name} is replying...`
+                            : typingSteps[typingSteps.length - 1] || 'Synthesizing...'}
+                        </span>
+                      </div>
+                      {streamingText && (
+                        <div className="bot-streaming-preview">
+                          {renderInlineBody(streamingText)}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              <div ref={messagesEndRef} />
+            </div>
+
+            <div className="bot-assistant-footer">
+              <div className="bot-prompts-row">
+                {currentAgent.prompts.map((prompt, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    className="bot-prompt-chip"
+                    disabled={isTyping}
+                    onClick={() => void handleSend(prompt)}
+                  >
+                    {prompt}
+                  </button>
+                ))}
+              </div>
+
+              <div className="bot-chat-input-shell">
+                <input
+                  type="text"
+                  placeholder={`Ask ${currentAgent.name}...`}
+                  value={inputQuery}
+                  onChange={(e) => setInputQuery(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      e.preventDefault();
+                      void handleSend();
+                    }
+                  }}
+                />
+                {isTyping ? (
+                  <button
+                    type="button"
+                    className="bot-send-btn is-stop"
+                    onClick={stopGeneration}
+                    aria-label="Stop response"
+                  >
+                    <Square className="w-3.5 h-3.5 fill-current" />
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="bot-send-btn"
+                    disabled={!inputQuery.trim() || isTyping}
+                    aria-busy={isTyping ? 'true' : 'false'}
+                    onClick={() => void handleSend()}
+                    aria-label="Send message"
+                  >
+                    <Send className="w-4 h-4" />
+                  </button>
+                )}
               </div>
             </div>
-          </BorderBeam>
+          </div>
         </div>
       )}
     </>

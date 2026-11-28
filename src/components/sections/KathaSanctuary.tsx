@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
+import { SectionBotCompanion } from '../common/SectionBotCompanion';
 import {
   BookOpen,
   ChevronLeft,
@@ -777,6 +778,14 @@ export const KathaSanctuary: React.FC<KathaSanctuaryProps> = ({
           })}
         </div>
       )}
+
+      <SectionBotCompanion
+        agentId="shetty"
+        className="mt-6"
+        heading="Shetty • Braj Leela & Story Context"
+        subtitle="Ask for scriptural citations or Rasik lessons behind any Braj Katha"
+        quickPrompts={['Govardhan Leela spiritual meaning', 'Find Katha from Shrimad Bhagavatam']}
+      />
     </main>
   );
 };

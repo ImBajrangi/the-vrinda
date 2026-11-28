@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
+import { SectionBotCompanion } from '../common/SectionBotCompanion';
 import {
   MapPin,
   Clock,
@@ -528,6 +529,14 @@ export const DhamTirthaSection: React.FC<DhamTirthaSectionProps> = ({
           })}
         </div>
       )}
+
+      <SectionBotCompanion
+        agentId="moti"
+        className="mt-6"
+        heading="Moti • Braj Parikrama & Dham Guide"
+        subtitle="Ask Moti for 84 Kos Parikrama halts, Seva Kunj guidelines, or temple darshan windows"
+        quickPrompts={['Plan Vrindavan 1-day Parikrama', 'Banke Bihari Darshan open now?']}
+      />
     </main>
   );
 };

@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { SectionBotCompanion } from '../common/SectionBotCompanion';
 import {
   BookOpen,
   ArrowLeft,
@@ -563,6 +564,14 @@ export const TopicalGuideView: React.FC<TopicalGuideViewProps> = ({
           </section>
         </aside>
       </div>
+
+      <SectionBotCompanion
+        agentId="chintu"
+        className="mt-6"
+        heading="Chintu • Tradition & Guide Companion"
+        subtitle={`Ask questions on ${guide.en.title} or explore Braj festivals & sampradayas`}
+        quickPrompts={[`Summarize ${guide.en.title}`, 'Show upcoming Vrindavan festivals']}
+      />
     </article>
   );
 };

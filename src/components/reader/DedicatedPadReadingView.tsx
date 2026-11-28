@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import { SectionBotCompanion } from '../common/SectionBotCompanion';
 import {
   ArrowLeft,
   ArrowRight,
@@ -789,6 +790,19 @@ export const DedicatedPadReadingView: React.FC<DedicatedPadReadingViewProps> = (
           })}
         </section>
       </article>
+
+      {!isZenMode && (
+        <SectionBotCompanion
+          agentId="tara"
+          className="mt-5"
+          heading="Tara • Padavali & Raga Companion"
+          subtitle={`Ask about "${pad.titleDevanagari}", its Rasik bhava, or Raga ${pad.rag || 'Tradition'}`}
+          quickPrompts={[
+            `Explain meaning of ${pad.titleDevanagari}`,
+            `Which Raga fits this Pad?`,
+          ]}
+        />
+      )}
 
       {/* 8. Related Discovery Bento Shelf */}
       {!isZenMode && (

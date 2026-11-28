@@ -1,7 +1,7 @@
 {
   "functions/[[path]].ts": {
-    "mtime": 1795863689.0718546,
-    "ast_hash": "7748ea445ad93cbbd322f9fbaa5720c9",
+    "mtime": 1795870943.7697742,
+    "ast_hash": "ba5fb04c8cddfa3b41ec711458099bba",
     "semantic_hash": ""
   },
   "package.json": {
@@ -2210,8 +2210,8 @@
     "semantic_hash": ""
   },
   "src/App.tsx": {
-    "mtime": 1795863763.8709202,
-    "ast_hash": "e46da39f8128385bf590374572777519",
+    "mtime": 1795872517.2526617,
+    "ast_hash": "497da83a003a623966bdb2c608aa537b",
     "semantic_hash": ""
   },
   "src/components/common/ArtworkGraphicSlot.tsx": {
@@ -2265,8 +2265,8 @@
     "semantic_hash": ""
   },
   "src/components/common/SpotlightSearchModal.tsx": {
-    "mtime": 1795861534.1504436,
-    "ast_hash": "2117ad01129aba8f658f8b9993aa3961",
+    "mtime": 1795872650.3940423,
+    "ast_hash": "1a8918616da46cc5d50896c657873cab",
     "semantic_hash": ""
   },
   "src/components/common/TopAnnouncementMarquee.tsx": {
@@ -2760,8 +2760,8 @@
     "semantic_hash": ""
   },
   "vite.config.ts": {
-    "mtime": 1795863379.631841,
-    "ast_hash": "3860524be2cda7ee0d8aafafcd50da3b",
+    "mtime": 1795872648.94241,
+    "ast_hash": "0438eb6353188b46aa15389d0f837835",
     "semantic_hash": ""
   },
   ".agents/teamwork/ORIGINAL_REQUEST.md": {
@@ -6545,23 +6545,23 @@
     "semantic_hash": ""
   },
   "src/components/sections/CharitraDarshan.tsx": {
-    "mtime": 1795796214.8353236,
-    "ast_hash": "894264094bf60ca9bbbe41e72a45c64e",
+    "mtime": 1795872479.32676,
+    "ast_hash": "99464f29fdd54c9abc1d2078daa8818b",
     "semantic_hash": ""
   },
   "src/components/sections/DhamTirthaSection.tsx": {
-    "mtime": 1795794682.085208,
-    "ast_hash": "2f1d28b9752195bac5602f7e0f6446db",
+    "mtime": 1795872472.6583757,
+    "ast_hash": "43de31af0290a7a013658b593006baf2",
     "semantic_hash": ""
   },
   "src/components/sections/KathaSanctuary.tsx": {
-    "mtime": 1795794693.2456148,
-    "ast_hash": "b851f661e261deaf327c26ef6d4dce81",
+    "mtime": 1795872482.2306936,
+    "ast_hash": "c30dc10e9375e843595973d4c7747e42",
     "semantic_hash": ""
   },
   "src/components/sections/NityaUpasanaReader.tsx": {
-    "mtime": 1795794686.859782,
-    "ast_hash": "d32acd4fb360b94a3e9718ff9c8b5201",
+    "mtime": 1795872476.2969065,
+    "ast_hash": "cef934b40d40396f33a659be51c9189e",
     "semantic_hash": ""
   },
   "src/components/sections/index.ts": {
@@ -6945,8 +6945,8 @@
     "semantic_hash": ""
   },
   "src/components/sections/TopicalGuideView.tsx": {
-    "mtime": 1795795294.4280496,
-    "ast_hash": "2c47a7ad8f37c140bbf60579091a9fb7",
+    "mtime": 1795872656.6203308,
+    "ast_hash": "ffcb4d3045dad8e89ed44c69dc475285",
     "semantic_hash": ""
   },
   "src/data/topicalGuides.json": {
@@ -7250,18 +7250,18 @@
     "semantic_hash": ""
   },
   "src/components/sections/FestivalGuideView.tsx": {
-    "mtime": 1795794702.502475,
-    "ast_hash": "029b9792784f8c789cd647069a8bdfff",
+    "mtime": 1795872403.2336242,
+    "ast_hash": "8609f1609e0c12fb11767efb2eecbe73",
     "semantic_hash": ""
   },
   "src/components/sections/GlossaryView.tsx": {
-    "mtime": 1795794698.2853765,
-    "ast_hash": "d4d163758a2fe36f6b123ce0d1c684cf",
+    "mtime": 1795872397.0690951,
+    "ast_hash": "18d21812e9bdc53cafa166d154949775",
     "semantic_hash": ""
   },
   "src/components/sections/KnowledgeBaseHubView.tsx": {
-    "mtime": 1795792576.6172414,
-    "ast_hash": "dbdfae68908d74196814971123584e5a",
+    "mtime": 1795872406.3961442,
+    "ast_hash": "0767642ee5239e00c8d7aa546910ec4e",
     "semantic_hash": ""
   },
   "src/data/brajDictionary.ts": {
@@ -7300,13 +7300,13 @@
     "semantic_hash": ""
   },
   "src/components/common/BotAvatarRoster.tsx": {
-    "mtime": 1795860896.7403693,
-    "ast_hash": "c779bf43c9fba94befdab663f5dff898",
+    "mtime": 1795872625.3108716,
+    "ast_hash": "d63716ad44f11615e9957759d08d2750",
     "semantic_hash": ""
   },
   "src/components/common/LiquidBotSpeedDial.tsx": {
-    "mtime": 1795861136.9613326,
-    "ast_hash": "40a10946dffd30c42caf06450bb9860c",
+    "mtime": 1795872647.1965415,
+    "ast_hash": "50b01e06feb8e9663dab821029b1fe09",
     "semantic_hash": ""
   },
   "src/data/botRoster.ts": {
@@ -7315,13 +7315,13 @@
     "semantic_hash": ""
   },
   "src/features/agents/AgentHub.tsx": {
-    "mtime": 1795860904.3420272,
-    "ast_hash": "9b1d25b40abc4acf270d9e68fb3da813",
+    "mtime": 1795872637.6232815,
+    "ast_hash": "d7a3cbcef0976a96ac2d86f9ad40f7ae",
     "semantic_hash": ""
   },
   "src/features/agents/AgentHubModal.tsx": {
-    "mtime": 1795860905.9662235,
-    "ast_hash": "354890c87923a556ff1346ed7298c5d2",
+    "mtime": 1795871192.5580342,
+    "ast_hash": "3928072428f1711cbd3a5e7fe484d2e0",
     "semantic_hash": ""
   },
   "src/services/assistantCache.ts": {
@@ -7345,8 +7345,8 @@
     "semantic_hash": ""
   },
   "src/components/reader/DedicatedPadReadingView.tsx": {
-    "mtime": 1795863420.0668566,
-    "ast_hash": "9ef84052fd40a3cd59caecf30084057b",
+    "mtime": 1795872652.054077,
+    "ast_hash": "0bf0144b2230584eebce55b6cfa0f7f7",
     "semantic_hash": ""
   },
   "src/components/reader/EntityOverviewBanner.tsx": {
@@ -7355,13 +7355,28 @@
     "semantic_hash": ""
   },
   "src/components/sections/RagaDirectoryView.tsx": {
-    "mtime": 1795864582.7979891,
-    "ast_hash": "8ecaef955dc3807bffe2c8ec26a7dbf4",
+    "mtime": 1795872736.0741038,
+    "ast_hash": "b9f17b4136edf4550b414f5262a33596",
     "semantic_hash": ""
   },
   "src/components/sections/ThemeHubView.tsx": {
-    "mtime": 1795864584.2231686,
-    "ast_hash": "1fd23ebcd56da9cd3711b5684b972cb9",
+    "mtime": 1795872737.565845,
+    "ast_hash": "7cc300c5f8bcb20ffa0e5774972dcf96",
+    "semantic_hash": ""
+  },
+  "src/services/botGroqEngine.ts": {
+    "mtime": 1795872193.4326115,
+    "ast_hash": "cd97c5555a78b564ffa864befdf2047e",
+    "semantic_hash": ""
+  },
+  "src/components/common/SanctuaryBotAvatar.tsx": {
+    "mtime": 1795873016.790628,
+    "ast_hash": "6baafca807756e9772ae29f2d242029c",
+    "semantic_hash": ""
+  },
+  "src/components/common/SectionBotCompanion.tsx": {
+    "mtime": 1795872622.202177,
+    "ast_hash": "7c1e5abca3eef1b4ac904a20f309bb78",
     "semantic_hash": ""
   }
 }

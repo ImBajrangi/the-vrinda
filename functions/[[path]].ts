@@ -25,7 +25,10 @@ import edgeCacheVersionData from '../src/data/edgeCacheVersion.json';
 import { FESTIVALS_BY_SLUG, FESTIVALS_LIST } from '../src/data/festivalsData';
 import { KNOWLEDGE_CATALOG } from '../src/data/knowledgeCatalog';
 
-interface Env {}
+interface Env {
+  GROQ_API_KEY?: string;
+  VITE_GROQ_API_KEY?: string;
+}
 
 const EDGE_CACHE_VERSION: string = (edgeCacheVersionData as any)?.v || 'v1';
 
@@ -696,6 +699,113 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   return response;
 };
 
+const ALLOWED_GROQ_MODELS = new Set([
+  'qwen/qwen3.8-27b',
+  'openai/gpt-oss-20b',
+  'openai/gpt-oss-120b',
+  'allam-2-7b',
+]);
+
+async function handleBotChatApi(request: Request, env: Env): Promise<Response> {
+  const corsHeaders = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    'Cache-Control': 'no-store',
+    'X-Robots-Tag': 'noindex, nofollow',
+  };
+
+  if (request.method === 'OPTIONS') {
+    return new Response(null, { status: 204, headers: corsHeaders });
+  }
+
+  if (request.method !== 'POST') {
+    return Response.json({ error: 'Method not allowed' }, { status: 405, headers: corsHeaders });
+  }
+
+  const groqKey = (env.GROQ_API_KEY || env.VITE_GROQ_API_KEY || '').trim();
+  if (!groqKey) {
+    return Response.json({ error: 'missing_key' }, { status: 503, headers: corsHeaders });
+  }
+
+  let payload: {
+    model?: string;
+    messages?: Array<{ role: 'system' | 'user' | 'assistant'; content: string }>;
+    temperature?: number;
+    max_tokens?: number;
+    stream?: boolean;
+  };
+  try {
+    payload = await request.json();
+  } catch {
+    return Response.json({ error: 'Invalid JSON body' }, { status: 400, headers: corsHeaders });
+  }
+
+  const rawMessages = Array.isArray(payload?.messages) ? payload.messages : [];
+  if (rawMessages.length === 0) {
+    return Response.json({ error: 'Messages required' }, { status: 400, headers: corsHeaders });
+  }
+
+  const sanitizedMessages = rawMessages
+    .slice(-14)
+    .filter((m) => m && typeof m.content === 'string' && m.content.trim().length > 0)
+    .map((m) => ({
+      role: m.role === 'system' || m.role === 'assistant' ? m.role : 'user',
+      content: m.content.slice(0, 6000),
+    }));
+
+  const requestedModel = typeof payload.model === 'string' ? payload.model.trim() : '';
+  const model = ALLOWED_GROQ_MODELS.has(requestedModel) ? requestedModel : 'qwen/qwen3.8-27b';
+  const maxTokens = Math.min(Math.max(Number(payload.max_tokens) || 650, 64), 1200);
+  const temperature = Math.min(Math.max(Number(payload.temperature) ?? 0.45, 0), 1.2);
+  const stream = Boolean(payload.stream);
+
+  const upstream = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${groqKey}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model,
+      messages: sanitizedMessages,
+      temperature,
+      max_tokens: maxTokens,
+      stream,
+    }),
+  });
+
+  if (!upstream.ok) {
+    const errText = await upstream.text().catch(() => '');
+    return new Response(errText || JSON.stringify({ error: `Groq upstream HTTP ${upstream.status}` }), {
+      status: upstream.status,
+      headers: {
+        ...corsHeaders,
+        'Content-Type': 'application/json',
+      },
+    });
+  }
+
+  if (stream && upstream.body) {
+    return new Response(upstream.body, {
+      status: 200,
+      headers: {
+        ...corsHeaders,
+        'Content-Type': 'text/event-stream; charset=utf-8',
+      },
+    });
+  }
+
+  const jsonBody = await upstream.text();
+  return new Response(jsonBody, {
+    status: 200,
+    headers: {
+      ...corsHeaders,
+      'Content-Type': 'application/json; charset=utf-8',
+    },
+  });
+}
+
 const handleEdgeRequest: PagesFunction<Env> = async (context) => {
   const { request, next } = context;
   const url = new URL(request.url);
@@ -705,6 +815,11 @@ const handleEdgeRequest: PagesFunction<Env> = async (context) => {
   const isPathDomain = host === 'path.vrindopnishad.in' || host.startsWith('path.');
   const isApexOrWww = host === 'vrindopnishad.in' || host === 'www.vrindopnishad.in';
   const pathname = url.pathname.replace(/\/+$/, '') || '/';
+
+  // Edge API route for live Groq multi-bot streaming (bypass 301 apex redirects & static caching)
+  if (pathname === '/api/bot-chat') {
+    return handleBotChatApi(request, context.env);
+  }
 
   // 0. Apex & WWW Canonical 301 Redirection to Primary bhav.vrindopnishad.in
   if (isApexOrWww) {

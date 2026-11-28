@@ -91,12 +91,7 @@ export default defineConfig(({ isSsrBuild }) => ({
               if (id.includes('node_modules/idb-keyval')) {
                 return 'vendor-idb';
               }
-              if (
-                id.includes('node_modules/bot-avatars') ||
-                id.includes('node_modules/liquid-gooey') ||
-                id.includes('node_modules/border-beam') ||
-                id.includes('node_modules/thinking-orbs')
-              ) {
+              if (id.includes('node_modules/bot-avatars')) {
                 return 'vendor-bots';
               }
               if (id.includes('src/services/seoService.ts')) {
