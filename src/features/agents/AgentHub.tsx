@@ -554,7 +554,7 @@ export const AgentHub: React.FC<AgentHubProps> = ({
                   <span className="ag-av">
                     <SanctuaryBotAvatar
                       agent={agent}
-                      size={38}
+                      size={40}
                       animated={isSelected}
                       working={isBusy}
                       state={isSelected ? activeBotState : 'default'}
@@ -877,7 +877,7 @@ export const AgentHub: React.FC<AgentHubProps> = ({
           >
             <SanctuaryBotAvatar
               agent={activeAgent}
-              size={74}
+              size={68}
               animated={true}
               working={isCurrentStreaming}
               state={activeBotState}

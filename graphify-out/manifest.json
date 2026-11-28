@@ -7315,8 +7315,8 @@
     "semantic_hash": ""
   },
   "src/features/agents/AgentHub.tsx": {
-    "mtime": 1795875136.7834878,
-    "ast_hash": "4c04e3be9620f057be398af97089eaa3",
+    "mtime": 1795875646.4937487,
+    "ast_hash": "a3ddf71fe05cf03c8a049ae6d48fed17",
     "semantic_hash": ""
   },
   "src/features/agents/AgentHubModal.tsx": {

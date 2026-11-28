@@ -128,8 +128,9 @@
   flex: none;
   width: var(--s);
   height: var(--s);
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .ag-app[data-avatar='free'] .ag-av {
@@ -732,7 +733,7 @@
 }
 
 .ag-hero .ag-av {
-  --s: 74px;
+  --s: 68px;
 }
 
 .ag-hero h2 {
@@ -883,12 +884,12 @@
   }
 
   .ag-profile {
-    padding: 14px 14px 12px;
-    gap: 9px;
+    padding: 13px 14px 12px;
+    gap: 8px;
   }
 
   .ag-hero .ag-av {
-    --s: 60px;
+    --s: 68px;
   }
 
   .ag-hero h2 {
