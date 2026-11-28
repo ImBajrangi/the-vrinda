@@ -490,22 +490,10 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
         </div>
       </div>
 
-      {/* Devotional Hashtags */}
-      <div className="flex flex-wrap gap-1.5 mb-3">
-        {post.hashtags.map((tag) => (
-          <span
-            key={tag}
-            className="text-[11px] sm:text-xs font-medium text-amber-800 bg-amber-50/80 px-2 py-0.5 rounded-full hover:bg-amber-100 transition-colors cursor-pointer select-none"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
-
       {/* Deity Darshan Photo with Double-Tap Pushparpan and Emoji Tray */}
       <div
         onClick={handlePhotoDoubleTap}
-        className="relative rounded-[24px] overflow-hidden mb-3 aspect-[4/5] sm:aspect-[4/4] bg-[#1A120B] cursor-pointer select-none group"
+        className="relative rounded-[20px] sm:rounded-[24px] overflow-hidden mb-3 aspect-[4/4] bg-[#1A120B] cursor-pointer select-none group"
       >
         <img
           src={post.imageUrl}
@@ -532,6 +520,20 @@ export const FeedCard: React.FC<FeedCardProps> = ({ post }) => {
           <EmojiTray />
         </div>
       </div>
+
+      {/* Subtle Single-Line Devotional Hashtags Below Media (Rule #10 Tag Restraint) */}
+      {post.hashtags.length > 0 && (
+        <div className="flex items-center gap-2 overflow-x-auto no-scrollbar mb-2.5">
+          {post.hashtags.slice(0, 3).map((tag) => (
+            <span
+              key={tag}
+              className="text-[11px] font-medium text-amber-800/80 bg-[#FAF6EE] px-2.5 py-0.5 rounded-full shrink-0 select-none"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
 
       {/* Interaction Metrics: Sunlit Capsule Pills */}
       <div className="flex items-center justify-between text-xs pt-1.5 gap-2">

@@ -1152,12 +1152,12 @@ export function App({
       {/* Authentic Apple Safari / iOS Top Loading Bar (0ms tactile feedback) */}
       <IOSTopProgressBar />
 
-      {/* Full-Bleed FarmDirect-Style Top Announcement Marquee: sits naturally at top of document and scrolls smoothly out of flow */}
+      {/* Full-Bleed FarmDirect-Style Top Announcement Marquee: visible on desktop/tablet; mobile shows clean live Prahar inside Hero */}
       <TopAnnouncementMarquee
         onSelectTab={handleTabSwitch}
         onOpenSaintsDirectory={() => setIsSaintsModalOpen(true)}
         streakDays={sadhana?.currentStreakDays ?? 1}
-        isVisibleOnMobile={!isReaderTab}
+        isVisibleOnMobile={false}
       />
 
       {/* Sticky Solid Porcelain Header — glides smoothly flush to top:0 as announcement scrolls away (zero transparency bleed) */}
@@ -1329,16 +1329,16 @@ export function App({
                 </div>
               </div>
 
-              {/* Section 1: Daily Temple Seva & Darshan Schedule (Concentric Geometry: 40/44px -> 20px Cards) */}
-              <div id="daily-temple-seva-section" className="w-full bg-white rounded-[40px] sm:rounded-[44px] p-4 sm:p-5 space-y-4 mb-6 shadow-[0_2px_16px_rgba(24,24,27,0.025)]">
+              {/* Section 1: Daily Temple Seva & Darshan Schedule (Concentric Geometry: 32/44px -> 20px Cards) */}
+              <div id="daily-temple-seva-section" className="w-full bg-white rounded-[32px] sm:rounded-[44px] p-4 sm:p-5 space-y-3 sm:space-y-4 mb-6 shadow-[0_2px_16px_rgba(24,24,27,0.025)]">
                 {/* Header with Real-Time Panchang Tithi */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-1 sm:pb-2">
                   <div>
                     <div className="flex items-center gap-2 flex-wrap">
-                      <h3 className="font-serif font-bold text-xl sm:text-[22px] text-[#18181B] leading-tight">
-                        Daily Temple Seva & Darshan Schedule
+                      <h3 className="font-serif font-bold text-lg sm:text-[22px] text-[#18181B] leading-tight">
+                        Daily Temple Seva & Darshan
                       </h3>
-                      <span className="text-xs font-semibold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full font-mono">
+                      <span className="text-[11px] sm:text-xs font-semibold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full font-mono">
                         {selectedPanchang.masaEnglish} {selectedPanchang.pakshaEnglish} {selectedPanchang.tithiNameEnglish}
                       </span>
                       {selectedPanchang.specialOccasionDevanagari && (
@@ -1444,44 +1444,68 @@ export function App({
                   </button>
                 </div>
 
-                {/* Seva Timeline Cards (Museum Ivory Daylight Showcase driven by Live IST & Vrindavan Season) */}
+                {/* Seva Timeline Cards: Swipeable Horizontal Carousel on Mobile (< md), Split Hero + 3-col Grid on Desktop */}
                 <div className="pt-1">
                   {templeFilter === 'all' && (
-                    <div className="space-y-3.5">
-                      <NityaSevaCard
-                        templeName={mandirStatus.bihari.templeName}
-                        sevaTitle={mandirStatus.bihari.sevaTitleEnglish}
-                        sevaTitleDevanagari={mandirStatus.bihari.sevaTitleDevanagari}
-                        praharLabel={mandirStatus.bihari.praharLabel}
-                        time={mandirStatus.bihari.timeRangeLabel}
-                        statusType={mandirStatus.bihari.statusType}
-                        countdownLabel={mandirStatus.bihari.countdownLabel}
-                        imageUrl={mandirStatus.bihari.imageUrl}
-                        isHero={true}
-                        indexNumber={mandirStatus.bihari.indexNumber}
-                        seamless={false}
-                        onOpen={() => handleTabSwitch('feed')}
-                      />
-
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5">
-                        {([mandirStatus.vallabh, mandirStatus.raman, mandirStatus.barsana] as LiveMandirSchedule[]).map((m) => (
-                          <NityaSevaCard
-                            key={m.templeId}
-                            templeName={m.templeName}
-                            sevaTitle={m.sevaTitleEnglish}
-                            sevaTitleDevanagari={m.sevaTitleDevanagari}
-                            praharLabel={m.praharLabel}
-                            time={m.timeRangeLabel}
-                            statusType={m.statusType}
-                            countdownLabel={m.countdownLabel}
-                            imageUrl={m.imageUrl}
-                            indexNumber={m.indexNumber}
-                            seamless={false}
-                            onOpen={() => handleTabSwitch(m.templeId === 'vallabh' ? 'padavali' : 'feed')}
-                          />
+                    <>
+                      {/* Mobile Horizontal Snap Carousel with Peek Next Card */}
+                      <div className="flex md:hidden items-stretch gap-3 overflow-x-auto snap-x snap-mandatory no-scrollbar -mx-2 px-2 pb-1">
+                        {([mandirStatus.bihari, mandirStatus.vallabh, mandirStatus.raman, mandirStatus.barsana] as LiveMandirSchedule[]).map((m) => (
+                          <div key={`mob-${m.templeId}`} className="w-[78vw] max-w-[300px] shrink-0 snap-start flex">
+                            <NityaSevaCard
+                              templeName={m.templeName}
+                              sevaTitle={m.sevaTitleEnglish}
+                              sevaTitleDevanagari={m.sevaTitleDevanagari}
+                              praharLabel={m.praharLabel}
+                              time={m.timeRangeLabel}
+                              statusType={m.statusType}
+                              countdownLabel={m.countdownLabel}
+                              imageUrl={m.imageUrl}
+                              indexNumber={m.indexNumber}
+                              seamless={false}
+                              onOpen={() => handleTabSwitch(m.templeId === 'vallabh' ? 'padavali' : 'feed')}
+                            />
+                          </div>
                         ))}
                       </div>
-                    </div>
+
+                      {/* Desktop Split Showcase */}
+                      <div className="hidden md:block space-y-3.5">
+                        <NityaSevaCard
+                          templeName={mandirStatus.bihari.templeName}
+                          sevaTitle={mandirStatus.bihari.sevaTitleEnglish}
+                          sevaTitleDevanagari={mandirStatus.bihari.sevaTitleDevanagari}
+                          praharLabel={mandirStatus.bihari.praharLabel}
+                          time={mandirStatus.bihari.timeRangeLabel}
+                          statusType={mandirStatus.bihari.statusType}
+                          countdownLabel={mandirStatus.bihari.countdownLabel}
+                          imageUrl={mandirStatus.bihari.imageUrl}
+                          isHero={true}
+                          indexNumber={mandirStatus.bihari.indexNumber}
+                          seamless={false}
+                          onOpen={() => handleTabSwitch('feed')}
+                        />
+
+                        <div className="grid grid-cols-3 gap-3.5">
+                          {([mandirStatus.vallabh, mandirStatus.raman, mandirStatus.barsana] as LiveMandirSchedule[]).map((m) => (
+                            <NityaSevaCard
+                              key={m.templeId}
+                              templeName={m.templeName}
+                              sevaTitle={m.sevaTitleEnglish}
+                              sevaTitleDevanagari={m.sevaTitleDevanagari}
+                              praharLabel={m.praharLabel}
+                              time={m.timeRangeLabel}
+                              statusType={m.statusType}
+                              countdownLabel={m.countdownLabel}
+                              imageUrl={m.imageUrl}
+                              indexNumber={m.indexNumber}
+                              seamless={false}
+                              onOpen={() => handleTabSwitch(m.templeId === 'vallabh' ? 'padavali' : 'feed')}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    </>
                   )}
 
                   {templeFilter === 'open' && (
@@ -1683,7 +1707,7 @@ export function App({
                         {/* Featured Pad Artwork Slot */}
                         <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0">
                           <ArtworkGraphicSlot
-                            src="/assets/temples/radha-vallabh.webp"
+                            src="/assets/darshan/barsana-radhavallabh-jhanki.webp"
                             alt="श्री राधावल्लभ लाल पद श्रवण"
                             aspectRatio="square"
                             theme="amber"
@@ -1889,17 +1913,17 @@ export function App({
               <div className="w-full md:flex md:items-start gap-6">
                 {/* Main Feed Column (Fluid flex-1 adapts dynamically as right Panchang sidebar expands/shrinks) */}
                 <div className={`min-w-0 w-full md:flex-1 space-y-4 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${isFeedSidebarCollapsed ? 'max-w-3xl mx-auto' : ''}`}>
-                  {/* Nitya Darshan Photo Strip (12 Authentic Braj Darshan Plates) */}
-                  <div className="bg-white rounded-[24px] p-3 shadow-[0_2px_12px_rgba(24,24,27,0.025)] mb-3 space-y-2.5">
+                  {/* Nitya Darshan Photo Strip: 1-row story strip on mobile (< sm), 6x2 gallery grid on sm+ */}
+                  <div className="bg-white rounded-[20px] sm:rounded-[24px] p-2.5 sm:p-3 shadow-[0_2px_12px_rgba(24,24,27,0.025)] mb-2 sm:mb-3 space-y-2">
                     <div className="flex items-center justify-between px-1">
-                      <h2 className="font-rozha text-lg sm:text-xl text-[#1C1611]">
+                      <h2 className="font-rozha text-base sm:text-xl text-[#1C1611]">
                         श्री वृन्दावन नित्य संदर्शन गैलरी
                       </h2>
                       <span className="text-[11px] font-laila text-amber-800 font-semibold">
                         {SACRED_FEED_POSTS.length} पावन दर्शन
                       </span>
                     </div>
-                    <div className="grid grid-cols-4 sm:grid-cols-6 gap-2">
+                    <div className="flex sm:grid sm:grid-cols-6 gap-2 overflow-x-auto no-scrollbar pb-0.5 sm:pb-0 snap-x">
                       {SACRED_FEED_POSTS.slice(0, 12).map((p) => (
                         <a
                           key={`thumb-${p.id}`}
@@ -1910,7 +1934,7 @@ export function App({
                             const el = document.getElementById(`feed-post-${p.id}`);
                             if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
                           }}
-                          className="group block rounded-[10px] overflow-hidden aspect-square bg-[#EFE7D8]"
+                          className="group shrink-0 w-16 h-16 sm:w-auto sm:h-auto block rounded-[12px] sm:rounded-[10px] overflow-hidden aspect-square bg-[#EFE7D8] snap-start"
                         >
                           <img
                             src={p.imageUrl}

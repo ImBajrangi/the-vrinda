@@ -127,8 +127,8 @@ export const SacredSectionsBanner: React.FC<SacredSectionsBannerProps> = ({ onSe
         </div>
       </div>
 
-      {/* 4 Clean Borderless Editorial Cards Grid - Pure Tonal Depth (R_outer = 32px, p = 20px -> R_inner = 12px) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+      {/* 4 Clean Borderless Editorial Cards Grid - Compact 2x2 on mobile, 4-col on desktop */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
         {cards.map((card) => {
           const isLoading = loadingTarget === card.id;
           return (
@@ -138,9 +138,9 @@ export const SacredSectionsBanner: React.FC<SacredSectionsBannerProps> = ({ onSe
               disabled={loadingTarget !== null}
               aria-busy={isLoading}
               onClick={() => triggerNavigation(card.id, () => onSelectTab(card.id))}
-              className="group text-left p-2.5 rounded-[12px] bg-[#FAF8F4] hover:bg-[#F5EFE3] transition-colors duration-150 flex flex-col justify-between cursor-pointer focus:outline-none focus:ring-2 focus:ring-amber-400 disabled:opacity-75"
+              className="group text-left p-2 sm:p-2.5 rounded-[14px] sm:rounded-[12px] bg-[#FAF8F4] hover:bg-[#F5EFE3] transition-colors duration-150 flex flex-col justify-between cursor-pointer focus:outline-none focus:ring-2 focus:ring-amber-400 disabled:opacity-75"
             >
-              <div className="space-y-2.5">
+              <div className="space-y-2 sm:space-y-2.5">
                 {/* Clean Unobscured WebP Photograph */}
                 <div className="w-full aspect-[4/3] rounded-[8px] overflow-hidden bg-[#EFE7D8]">
                   <img
@@ -153,23 +153,24 @@ export const SacredSectionsBanner: React.FC<SacredSectionsBannerProps> = ({ onSe
                 </div>
 
                 {/* Title & Subtitle on Natural Ivory */}
-                <div className="px-1">
-                  <div className="flex items-center justify-between gap-2 text-[10.5px] font-laila text-amber-800 font-semibold mb-0.5">
-                    <span>{card.badge}</span>
-                    <span className="font-mono text-neutral-500 font-normal">{card.count}</span>
+                <div className="px-0.5 sm:px-1">
+                  <div className="flex items-center justify-between gap-1 text-[10px] sm:text-[10.5px] font-laila text-amber-800 font-semibold mb-0.5">
+                    <span className="truncate">{card.badge}</span>
+                    <span className="font-mono text-neutral-500 font-normal hidden sm:inline">{card.count}</span>
                   </div>
-                  <h4 className="font-serif font-bold text-sm sm:text-base text-neutral-900 group-hover:text-amber-950 transition-colors leading-snug">
+                  <h4 className="font-serif font-bold text-[13px] sm:text-base text-neutral-900 group-hover:text-amber-950 transition-colors leading-snug line-clamp-1">
                     {card.title}
                   </h4>
-                  <p className="text-[11px] font-laila text-neutral-600 line-clamp-2 mt-0.5 leading-relaxed">
+                  <p className="hidden sm:line-clamp-2 text-[11px] font-laila text-neutral-600 mt-0.5 leading-relaxed">
                     {card.subtitle}
                   </p>
                 </div>
               </div>
 
               {/* Bottom Feature Caption */}
-              <div className="mt-2.5 pt-2 px-1 flex items-center justify-between gap-1 text-[10px] font-laila text-neutral-500">
-                <span className="truncate">{isLoading ? 'संकलित हो रहा है...' : card.features}</span>
+              <div className="mt-1.5 sm:mt-2.5 pt-1 sm:pt-2 px-0.5 sm:px-1 flex items-center justify-between gap-1 text-[10px] font-laila text-neutral-500">
+                <span className="truncate sm:hidden">{card.count}</span>
+                <span className="truncate hidden sm:inline">{isLoading ? 'संकलित हो रहा है...' : card.features}</span>
                 {isLoading ? (
                   <IOSSpinner size="xs" theme="amber" />
                 ) : (

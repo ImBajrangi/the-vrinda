@@ -445,7 +445,7 @@ const TEMPLE_CONFIGS: Record<TempleId, TempleConfig> = {
   vallabh: {
     id: 'vallabh',
     templeName: 'Shri Radha Vallabh Lal (श्री राधा वल्लभ)',
-    imageUrl: '/assets/temples/radha-vallabh.webp',
+    imageUrl: '/assets/darshan/barsana-radhavallabh-jhanki.webp',
     indexNumber: '02',
     winterTimeRange: '05:30 AM - 12:00 PM • 05:00 PM - 08:45 PM',
     summerTimeRange: '05:00 AM - 12:00 PM • 05:30 PM - 09:00 PM',
@@ -481,7 +481,7 @@ const TEMPLE_CONFIGS: Record<TempleId, TempleConfig> = {
   barsana: {
     id: 'barsana',
     templeName: 'Barsana Ladili Lal Ji (बरसाना श्रीजी)',
-    imageUrl: '/assets/temples/barsana-radharani.webp',
+    imageUrl: '/assets/darshan/barsana-ladili-lal.webp',
     indexNumber: '04',
     winterTimeRange: '05:30 AM - 02:00 PM • 04:30 PM - 08:45 PM',
     summerTimeRange: '05:00 AM - 02:00 PM • 05:00 PM - 09:15 PM',

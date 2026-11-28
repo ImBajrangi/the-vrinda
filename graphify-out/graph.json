@@ -33500,7 +33500,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L1903",
+      "source_location": "L1927",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -33644,7 +33644,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L2250",
+      "source_location": "L2274",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_app_app",
@@ -60851,5 +60851,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "d2c80b0c54b06851834d0366daaeb0b78807ee0a"
+  "built_at_commit": "71dcbe81f7293249f03cbdbfbb24f625c6d9516b"
 }

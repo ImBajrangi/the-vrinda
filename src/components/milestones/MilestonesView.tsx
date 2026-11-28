@@ -330,9 +330,9 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
       </div>
 
       {/* Hero Header & Headline with Authentic Darshan Plate */}
-      <div className="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-5 sm:p-6 rounded-[28px] sm:rounded-[32px] border border-black/5 shadow-xs">
-        <div className="flex items-center gap-4">
-          <div className="hidden sm:block w-20 h-24 rounded-[12px] overflow-hidden border border-amber-200/80 shrink-0 bg-[#1A120B]">
+      <div className="mb-5 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-4 sm:p-6 rounded-[24px] sm:rounded-[32px] shadow-[0_2px_16px_rgba(24,24,27,0.025)]">
+        <div className="flex items-center gap-3.5 sm:gap-4">
+          <div className="w-14 h-16 sm:w-20 sm:h-24 rounded-[12px] overflow-hidden shrink-0 bg-[#EFE7D8]">
             <img
               src="/assets/darshan/radharaman-pitambar.webp"
               alt="श्री राधारमण लाल जू दर्शन"
@@ -341,14 +341,12 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
               decoding="async"
             />
           </div>
-          <div>
-            <h1 className="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-[#111111] leading-tight flex flex-wrap items-center gap-x-2">
-              <span className="inline-block whitespace-nowrap">Unbroken Devotion</span>
-              <span className="text-neutral-400 font-normal select-none">•</span>
-              <span className="inline-block whitespace-nowrap">अखंड निष्ठा</span>
+          <div className="min-w-0">
+            <h1 className="font-rozha text-2xl sm:text-3xl lg:text-4xl text-[#18181B] leading-tight">
+              अखंड भक्ति निष्ठा
             </h1>
-            <p className="text-xs sm:text-sm text-[#555555] mt-2 font-medium">
-              Grace at every step • Eternal Nikunj Remembrance
+            <p className="text-xs sm:text-sm text-[#71717A] mt-1 font-laila">
+              नित्य नाम जप, श्रवण व स्वाध्याय सोपान<span className="hidden sm:inline"> • Unbroken Devotion</span>
             </p>
           </div>
         </div>
@@ -356,57 +354,60 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
         {/* Bento Stats Summary Pills - 100% Real Live Metrics */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 w-full md:w-auto">
           {/* 1. Streak with grammatical pluralization */}
-          <div className="bg-[#FAF9F5] p-3 rounded-[8px] flex flex-col justify-between">
-            <span className="text-[10px] text-[#6B6F6B] font-semibold flex items-center gap-1 uppercase">
+          <div className="bg-[#FAF8F4] p-3 rounded-[14px] flex flex-col justify-between">
+            <span className="text-[11px] font-laila text-[#B45309] font-semibold flex items-center gap-1">
               <Flame className="w-3 h-3 text-[#EF4444]" />
-              Streak
+              अखंड निष्ठा
             </span>
-            <span className="font-doto font-bold text-lg text-[#111111] mt-0.5">
-              {sadhana.currentStreakDays} {sadhana.currentStreakDays === 1 ? 'Day' : 'Days'}
+            <span className="font-rozha text-xl text-[#18181B] mt-0.5">
+              {sadhana.currentStreakDays} दिवस
             </span>
-            <span className="text-[10px] text-[#6B6F6B] font-medium font-devanagari mt-0.5">
-              {sadhana.currentStreakDays > 0 ? 'अखंड निष्ठा' : 'साधना प्रारंभ'}
+            <span className="text-[10px] text-[#71717A] font-medium mt-0.5">
+              {sadhana.currentStreakDays > 0 ? 'नियमित क्रम जारी' : 'साधना प्रारंभ'}
             </span>
           </div>
 
-          {/* 2. Real Live Naam Japa Malas (Replacing fake Ekadashi Vrats 10 / 12) */}
-          <div className="bg-[#FAF9F5] p-3 rounded-[8px] flex flex-col justify-between">
-            <span className="text-[10px] text-[#6B6F6B] font-semibold flex items-center gap-1 uppercase">
+          {/* 2. Real Live Naam Japa Malas */}
+          <div className="bg-[#FAF8F4] p-3 rounded-[14px] flex flex-col justify-between">
+            <span className="text-[11px] font-laila text-[#B45309] font-semibold flex items-center gap-1">
               <Sparkles className="w-3 h-3 text-amber-600" />
-              Naam Japa
+              नाम जप
             </span>
-            <span className="font-doto font-bold text-lg text-[#111111] mt-0.5">
+            <span className="font-rozha text-xl text-[#18181B] mt-0.5">
               {sadhana.japaCompleted} / {sadhana.japaTarget || 16}
             </span>
-            <span className="text-[10px] text-[#6B6F6B] font-medium font-devanagari mt-0.5">
-              {sadhana.japaCompleted === 1 ? '१ माला पूर्ण' : `${sadhana.japaCompleted} मालाएं पूर्ण`}
-            </span>
+            <div className="w-full h-1 bg-white rounded-full overflow-hidden mt-1.5">
+              <div
+                className="h-full bg-amber-500 rounded-full"
+                style={{ width: `${Math.min(100, Math.round((sadhana.japaCompleted / (sadhana.japaTarget || 16)) * 100))}%` }}
+              />
+            </div>
           </div>
 
-          {/* 3. Real Svadhyaya Padas with grammatical pluralization */}
-          <div className="bg-[#FAF9F5] p-3 rounded-[8px] flex flex-col justify-between">
-            <span className="text-[10px] text-[#6B6F6B] font-semibold flex items-center gap-1 uppercase">
+          {/* 3. Real Svadhyaya Padas */}
+          <div className="bg-[#FAF8F4] p-3 rounded-[14px] flex flex-col justify-between">
+            <span className="text-[11px] font-laila text-[#B45309] font-semibold flex items-center gap-1">
               <BookOpen className="w-3 h-3 text-amber-700" />
-              Svadhyaya
+              स्वाध्याय
             </span>
-            <span className="font-doto font-bold text-lg text-[#111111] mt-0.5">
-              {sadhana.svadhyayaPadas || 0} {(sadhana.svadhyayaPadas || 0) === 1 ? 'Pada' : 'Padas'}
+            <span className="font-rozha text-xl text-[#18181B] mt-0.5">
+              {sadhana.svadhyayaPadas || 0} पद
             </span>
-            <span className="text-[10px] text-[#6B6F6B] font-medium font-devanagari mt-0.5">
-              स्वाध्याय अनुशीलन
+            <span className="text-[10px] text-[#71717A] font-laila mt-0.5">
+              रसिक वाणी पाठ
             </span>
           </div>
 
-          {/* 4. Real Dynamic Devotional Stage (Replacing hardcoded static Rasik Sharana) */}
-          <div className="bg-[#FAF9F5] p-3 rounded-[8px] flex flex-col justify-between">
-            <span className="text-[10px] text-[#6B6F6B] font-semibold flex items-center gap-1 uppercase">
+          {/* 4. Real Dynamic Devotional Stage */}
+          <div className="bg-[#FAF8F4] p-3 rounded-[14px] flex flex-col justify-between">
+            <span className="text-[11px] font-laila text-[#B45309] font-semibold flex items-center gap-1">
               <Crown className="w-3 h-3 text-[#D4A359]" />
-              Sadhana Stage
+              साधना स्तर
             </span>
-            <span className="font-semibold text-sm text-[#111111] mt-1 truncate font-devanagari">
+            <span className="font-serif font-bold text-sm text-[#18181B] mt-1 truncate">
               {devotionalStage.title}
             </span>
-            <span className="text-[10px] text-[#6B6F6B] font-medium truncate mt-0.5">
+            <span className="text-[10px] text-[#71717A] font-medium truncate mt-0.5">
               {devotionalStage.subtitle}
             </span>
           </div>
@@ -414,25 +415,25 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
       </div>
 
       {/* Two Balanced Columns: Milestones on Left, Streaks on Right on Tablet & Desktop */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 items-start">
         {/* Card 1: Milestones */}
-        <div className="bg-[#FAF9F5] rounded-[28px] p-3.5 sm:p-6 border border-black/5 shadow-xs">
-          <div className="flex items-center justify-between mb-4 pb-3 border-b border-black/5">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-[#EF4444]/10 flex items-center justify-center">
+        <div className="bg-white rounded-[24px] sm:rounded-[28px] p-4 sm:p-6 shadow-[0_2px_16px_rgba(24,24,27,0.025)]">
+          <div className="flex items-center justify-between gap-2 mb-4 pb-3 border-b border-black/5">
+            <div className="flex items-center gap-2 min-w-0">
+              <div className="w-8 h-8 rounded-full bg-[#EF4444]/10 flex items-center justify-center shrink-0">
                 <Award className="w-4 h-4 text-[#EF4444]" />
               </div>
-              <div>
-                <h2 className="text-sm sm:text-base font-semibold text-[#111111]">
-                  Sadhana Milestones
+              <div className="min-w-0">
+                <h2 className="text-sm sm:text-base font-bold text-[#18181B] truncate">
+                  साधना सिद्धि सोपान
                 </h2>
-                <span className="text-[11px] text-[#6B6F6B]">
-                  Ekadashi, Pradosh & sacred Japa completions
+                <span className="text-[11px] text-[#71717A] block truncate">
+                  एकादशी, प्रदोष एवं नाम जप सिद्धि
                 </span>
               </div>
             </div>
-            <span className="text-xs font-semibold text-[#78350F] bg-[#FEF08A] px-2.5 py-1 rounded-full font-bold">
-              Achieved: {completedMilestonesCount} / {milestones.length}
+            <span className="text-[11px] sm:text-xs font-bold text-[#78350F] bg-[#FEF08A] px-2.5 py-1 rounded-full whitespace-nowrap shrink-0">
+              {completedMilestonesCount} / {milestones.length} पूर्ण
             </span>
           </div>
 
@@ -452,23 +453,23 @@ export const MilestonesView: React.FC<MilestonesViewProps> = ({ onBack }) => {
         </div>
 
         {/* Card 2: Consecutive Streaks */}
-        <div className="bg-[#FAF9F5] rounded-[28px] p-3.5 sm:p-6 border border-black/5 shadow-xs">
-          <div className="flex items-center justify-between mb-4 pb-3 border-b border-black/5">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center">
+        <div className="bg-white rounded-[24px] sm:rounded-[28px] p-4 sm:p-6 shadow-[0_2px_16px_rgba(24,24,27,0.025)]">
+          <div className="flex items-center justify-between gap-2 mb-4 pb-3 border-b border-black/5">
+            <div className="flex items-center gap-2 min-w-0">
+              <div className="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center shrink-0">
                 <Flame className="w-4 h-4 text-amber-600" />
               </div>
-              <div>
-                <h2 className="text-sm sm:text-base font-semibold text-[#111111]">
-                  Consecutive Day Streaks
+              <div className="min-w-0">
+                <h2 className="text-sm sm:text-base font-bold text-[#18181B] truncate">
+                  अखंड दैनिक निष्ठा
                 </h2>
-                <span className="text-[11px] text-[#6B6F6B]">
-                  Unbroken daily remembrance and japa flow
+                <span className="text-[11px] text-[#71717A] block truncate">
+                  निरंतर दैनिक नाम स्मरण क्रम
                 </span>
               </div>
             </div>
-            <span className="text-xs font-semibold text-[#78350F] bg-[#FEF08A] px-2.5 py-1 rounded-full font-bold">
-              Active: {activeStreaksCount} / {streaks.length}
+            <span className="text-[11px] sm:text-xs font-bold text-[#78350F] bg-[#FEF08A] px-2.5 py-1 rounded-full whitespace-nowrap shrink-0">
+              {activeStreaksCount} / {streaks.length} सक्रिय
             </span>
           </div>
 

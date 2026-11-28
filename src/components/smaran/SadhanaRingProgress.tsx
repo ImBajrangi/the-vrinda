@@ -537,8 +537,8 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
                 </div>
               </div>
 
-              {/* Clean 12-Thumbnail Visual Selector Strip (2x6 Crisp Grid) */}
-              <div className="grid grid-cols-6 gap-1.5 pt-0.5">
+              {/* Clean 12-Thumbnail Visual Selector: 1-row filmstrip on mobile, 2x6 crisp grid on md+ */}
+              <div className="flex md:grid md:grid-cols-6 gap-1.5 overflow-x-auto no-scrollbar pt-0.5 snap-x">
                 {NITYA_DARSHAN_PLATES.map((plate, idx) => {
                   const isSelected = idx === plateIndex;
                   return (
@@ -548,7 +548,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
                       onClick={() => selectPlate(idx)}
                       aria-label={plate.label}
                       title={plate.label}
-                      className={`h-9 rounded-[6px] overflow-hidden bg-[#EFE7D8] cursor-pointer transition-opacity ${
+                      className={`shrink-0 w-12 h-11 md:w-auto md:h-9 rounded-[7px] overflow-hidden bg-[#EFE7D8] cursor-pointer transition-opacity snap-start ${
                         isSelected
                           ? 'ring-2 ring-amber-500 ring-offset-1 ring-offset-[#FAF8F3] opacity-100'
                           : 'opacity-65 hover:opacity-100'
@@ -646,13 +646,15 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
           document.body
         )}
 
-      {/* 2. Lightweight 3-Pillar Interactive Row (R_outer=20px, p=10px -> inner img R_inner=10px) */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+      {/* 2. Lightweight 3-Pillar Interactive Row (Compact 3-col tiles on < md, horizontal row on md+) */}
+      <div className="grid grid-cols-3 gap-2 md:gap-3">
         {[
           {
             type: 'japa' as const,
             title: '१. युगल नाम जप',
+            shortTitle: 'नाम जप',
             value: `${formatDevanagariNumerals(sadhana.japaCompleted)} / ${formatDevanagariNumerals(sadhana.japaTarget)} माला`,
+            shortValue: `${formatDevanagariNumerals(sadhana.japaCompleted)}/${formatDevanagariNumerals(sadhana.japaTarget)}`,
             sub: '१०८ मनका पावन जप',
             pct: japaProgressPct,
             img: '/assets/darshan/radharaman-charan.webp',
@@ -662,7 +664,9 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
           {
             type: 'shravan' as const,
             title: '२. रसिक वाणी श्रवण',
+            shortTitle: 'श्रवण',
             value: `${formatDevanagariNumerals(sadhana.shravanMinutes)} / ${formatDevanagariNumerals(sadhana.shravanTarget)} मिनट`,
+            shortValue: `${formatDevanagariNumerals(sadhana.shravanMinutes)}/${formatDevanagariNumerals(sadhana.shravanTarget)}मि.`,
             sub: 'शास्त्रीय राग कीर्तन',
             pct: shravanProgressPct,
             img: '/assets/darshan/radharaman-venu.webp',
@@ -672,7 +676,9 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
           {
             type: 'svadhyaya' as const,
             title: '३. ग्रंथ स्वाध्याय',
+            shortTitle: 'स्वाध्याय',
             value: `${formatDevanagariNumerals(sadhana.svadhyayaPadas)} / ${formatDevanagariNumerals(sadhana.svadhyayaTarget)} पद`,
+            shortValue: `${formatDevanagariNumerals(sadhana.svadhyayaPadas)}/${formatDevanagariNumerals(sadhana.svadhyayaTarget)} पद`,
             sub: 'श्री हित चौरासी व रसिक वाणी',
             pct: svadhyayaProgressPct,
             img: '/assets/darshan/radharaman-shriji.webp',
@@ -684,9 +690,9 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
             key={item.type}
             type="button"
             onClick={() => onOpenPillar(item.type)}
-            className="group text-left p-2.5 rounded-[20px] bg-white hover:bg-[#FAF8F3] shadow-[0_2px_12px_rgba(24,24,27,0.025)] transition-colors cursor-pointer flex items-center gap-3.5 min-w-0"
+            className="group text-left p-2 md:p-2.5 rounded-[16px] md:rounded-[20px] bg-white hover:bg-[#FAF8F3] shadow-[0_2px_12px_rgba(24,24,27,0.025)] transition-colors cursor-pointer flex flex-col md:flex-row md:items-center gap-2 md:gap-3.5 min-w-0"
           >
-            <div className="w-16 h-16 rounded-[10px] overflow-hidden bg-[#EFE7D8] shrink-0">
+            <div className="w-full h-14 md:w-16 md:h-16 rounded-[10px] overflow-hidden bg-[#EFE7D8] shrink-0">
               <img
                 src={item.img}
                 alt={item.title}
@@ -696,17 +702,19 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
               />
             </div>
 
-            <div className="flex-1 min-w-0 space-y-1">
-              <div className="flex items-center justify-between gap-2">
-                <span className="text-[11px] font-laila font-semibold text-amber-800 inline-flex items-center gap-1 truncate">
+            <div className="flex-1 min-w-0 w-full space-y-1">
+              <div className="flex items-center justify-between gap-1 md:gap-2">
+                <span className="text-[10.5px] md:text-[11px] font-laila font-semibold text-amber-800 inline-flex items-center gap-1 truncate">
                   {item.icon}
-                  <span className="truncate">{item.title}</span>
+                  <span className="md:hidden truncate">{item.shortTitle}</span>
+                  <span className="hidden md:inline truncate">{item.title}</span>
                 </span>
-                <ChevronRight className="w-3.5 h-3.5 text-neutral-400 group-hover:text-amber-800 shrink-0" />
+                <ChevronRight className="w-3.5 h-3.5 text-neutral-400 group-hover:text-amber-800 shrink-0 hidden md:block" />
               </div>
 
-              <div className="font-serif font-bold text-sm sm:text-[15px] text-[#18181B] leading-tight truncate">
-                {item.value}
+              <div className="font-serif font-bold text-xs md:text-[15px] text-[#18181B] leading-tight truncate">
+                <span className="md:hidden">{item.shortValue}</span>
+                <span className="hidden md:inline">{item.value}</span>
               </div>
 
               <div className="flex items-center gap-2 pt-0.5">
@@ -716,7 +724,7 @@ export const SadhanaRingProgress: React.FC<SadhanaRingProgressProps> = ({
                     style={{ width: `${item.pct}%` }}
                   />
                 </div>
-                <span className="text-[10px] font-laila text-neutral-500 truncate">{item.sub}</span>
+                <span className="hidden md:inline text-[10px] font-laila text-neutral-500 truncate">{item.sub}</span>
               </div>
             </div>
           </button>

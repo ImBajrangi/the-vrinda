@@ -65,7 +65,7 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
     icon: React.ComponentType<{ className?: string }>;
     iconColor: string;
   }[] = [
-      { id: 'mahagranth', label: 'सनातन महाग्रंथ', mobileLabel: 'महाग्रंथ', count: mahagranths.length, icon: BookOpen, iconColor: 'text-amber-700' },
+      { id: 'mahagranth', label: 'सनातन महाग्रंथ', mobileLabel: 'ग्रंथ', count: mahagranths.length, icon: BookOpen, iconColor: 'text-amber-700' },
       { id: 'books', label: 'रसिक वाणी', mobileLabel: 'वाणी', count: rasikBooks.length, icon: BookOpen, iconColor: 'text-amber-600' },
       { id: 'authors', label: 'रसिक आचार्य', mobileLabel: 'संत', count: authors.length, icon: Feather, iconColor: 'text-amber-700' },
       { id: 'relations', label: 'लीला एवं धाम', mobileLabel: 'लीला', count: relations.length, icon: Landmark, iconColor: 'text-[#0284C7]' },
@@ -344,13 +344,13 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
                 tabIndex={0}
                 onClick={() => handleBookClick(book.id)}
                 onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && handleBookClick(book.id)}
-                className="group w-full p-4 sm:p-5 flex items-center justify-between gap-4 sm:gap-6 hover:bg-[#FAF8F5]/80 transition-colors duration-150 cursor-pointer select-none"
+                className="group w-full p-3 sm:p-5 flex items-center justify-between gap-3 sm:gap-6 hover:bg-[#FAF8F5]/80 transition-colors duration-150 cursor-pointer select-none"
               >
-                <div className="flex items-center gap-4 sm:gap-5 flex-1 min-w-0">
+                <div className="flex items-center gap-3 sm:gap-5 flex-1 min-w-0">
                   {/* Authentic 3D Sacred Pothi Book Cover */}
                   <div className="shrink-0 select-none">
                     <div
-                      className="sacred-book-pothi w-[68px] h-[98px] sm:w-[72px] sm:h-[104px] text-white"
+                      className="sacred-book-pothi w-[58px] h-[84px] sm:w-[72px] sm:h-[104px] text-white"
                       style={{ background: coverConfig.bg }}
                     >
                       {/* Spine Groove Crease */}
@@ -427,11 +427,11 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
                       {book.tradition} &nbsp;•&nbsp; {book.author}
                     </div>
 
-                    <h4 className="font-rozha text-xl sm:text-2xl text-[#18181B] group-hover:text-amber-950 transition-colors leading-tight truncate">
+                    <h4 className="font-rozha text-lg sm:text-2xl text-[#18181B] group-hover:text-amber-950 transition-colors leading-tight truncate">
                       {book.devanagari}
                     </h4>
 
-                    <p className="text-xs sm:text-[13px] font-laila text-neutral-500 line-clamp-1 mt-1 leading-relaxed">
+                    <p className="text-xs sm:text-[13px] font-laila text-neutral-500 line-clamp-1 mt-0.5 sm:mt-1 leading-relaxed">
                       {book.essence}
                     </p>
 
@@ -441,13 +441,15 @@ export const CategoriesRow: React.FC<CategoriesRowProps> = ({
                   </div>
                 </div>
 
-                {/* Right Action Affordance (Company Underline Animation) */}
-                <div className="company-link group-company-link text-xs sm:text-sm font-laila font-semibold text-neutral-600 group-hover:text-amber-900 transition-colors shrink-0 pl-2 flex items-center gap-1.5">
-                  <span>{book.category === 'mahagranth' ? 'मूल श्लोक पाठ' : 'वाणी पाठ'}</span>
+                {/* Right Action Affordance */}
+                <div className="company-link group-company-link text-xs sm:text-sm font-laila font-semibold text-neutral-600 group-hover:text-amber-900 transition-colors shrink-0 sm:pl-2 flex items-center gap-1.5">
+                  <span className="hidden sm:inline">{book.category === 'mahagranth' ? 'मूल श्लोक पाठ' : 'वाणी पाठ'}</span>
                   {loadingItemId === book.id ? (
                     <IOSSpinner size="xs" theme="amber" />
                   ) : (
-                    <span className="text-amber-700 text-base leading-none">→</span>
+                    <span className="w-7 h-7 sm:w-auto sm:h-auto rounded-full bg-white sm:bg-transparent shadow-2xs sm:shadow-none flex items-center justify-center text-amber-700 text-sm sm:text-base leading-none">
+                      →
+                    </span>
                   )}
                 </div>
               </div>
