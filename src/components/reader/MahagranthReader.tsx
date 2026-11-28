@@ -1128,11 +1128,13 @@ export const MahagranthReader: React.FC<MahagranthReaderProps> = ({
             } -mx-4 sm:-mx-8 xl:-mx-9 2xl:-mx-10 px-4 sm:px-8 xl:px-9 2xl:px-10 pt-3 rounded-t-[28px] shadow-[0_4px_14px_-6px_rgba(0,0,0,0.04)]`}
           >
             <div>
-              <div className="flex items-center gap-2 text-xs font-serif font-bold text-amber-800 tracking-wider">
+              <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs font-serif font-bold text-amber-800 tracking-wider">
                 <BookOpen className="w-3.5 h-3.5" />
                 <span>{currentEpicConfig.name}</span>
-                <span>•</span>
-                <span>{!loadingGranthaId && currentChapter?.section ? currentChapter.section : 'पारायण पाठ'}</span>
+                <span className="inline-flex items-center gap-1.5 whitespace-nowrap shrink-0">
+                  <span aria-hidden="true">•</span>
+                  <span>{!loadingGranthaId && currentChapter?.section ? currentChapter.section : 'पारायण पाठ'}</span>
+                </span>
               </div>
               <h1 className="font-rozha font-bold text-2xl sm:text-3xl text-neutral-900 mt-1">
                 {!loadingGranthaId && currentChapter ? currentChapter.name : 'पावन पाठ'}

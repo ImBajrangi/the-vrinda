@@ -33,12 +33,16 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.119.0",
+    "border-beam": "^1.4.1",
+    "bot-avatars": "^0.2.2",
     "clsx": "^2.1.1",
     "idb-keyval": "^6.2.1",
+    "liquid-gooey": "^0.2.2",
     "lucide-react": "^1.16.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "tailwind-merge": "^3.0.2"
+    "tailwind-merge": "^3.0.2",
+    "thinking-orbs": "^0.3.2"
   },
   "devDependencies": {
     "@playwright/test": "^1.65.0",

@@ -37,6 +37,8 @@
 ## Knowledge Hubs, Glossary & Braj Festivals
 
 - [Sanatan Knowledge Base (ज्ञानकोश विकी)](https://bhav.vrindopnishad.in/knowledge-base): 37 curated guides on Vrindavan philosophy, lineages, parikrama, and sadhana.
+- [Classical Raga Index (शास्त्रीय राग कोष)](https://bhav.vrindopnishad.in/ragas): 294 Braj classical ragas (Vibhas, Sarang, Malhar, Kedar, Kalyan, Bilaval) with curated pada indexes.
+- [Braj Lila & Festival Themes (ब्रज लीला प्रसंग)](https://bhav.vrindopnishad.in/themes): Curated seasonal & devotional padas for Holi-Phag, Radhashtami, Jhulan, Sharad Purnima, and Ashtayama.
 - [Braj Spiritual Glossary (ब्रजभाषा शब्दकोश)](https://bhav.vrindopnishad.in/glossary): 22 deep theological concepts and 70+ Braj Bhasha study words.
 - [Vrindavan & Braj Festivals (ब्रज महोत्सव)](https://bhav.vrindopnishad.in/festivals): Seasonal ragas, histories, and seva schedules for Jhulan, Radhashtami, Sharad Purnima, and Hori.
 - [Seeker FAQ (साधक प्रश्नोत्तरी)](https://bhav.vrindopnishad.in/faq): Bilingual Q&A for daily chanting and Vrindopnishad preservation.

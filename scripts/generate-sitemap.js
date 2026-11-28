@@ -506,7 +506,7 @@ function createSitemapSuite(baseUrl, prefix = '') {
     } catch {}
   }
 
-  // Ingest Programmatic SEO Hubs: Knowledge Base, Festivals, Ragas, Themes & Braj Glossary
+  // Ingest Programmatic SEO Hubs: Knowledge Base, Festivals & Braj Glossary
   mainUrls.push(
     { loc: `${baseUrl}/knowledge-base`, lastmod: today, changefreq: 'weekly', priority: 0.9 },
     { loc: `${baseUrl}/festivals`, lastmod: today, changefreq: 'weekly', priority: 0.9 },
@@ -516,17 +516,19 @@ function createSitemapSuite(baseUrl, prefix = '') {
     { loc: `${baseUrl}/festivals/latthmar-holi`, lastmod: today, changefreq: 'monthly', priority: 0.85 },
     { loc: `${baseUrl}/festivals/krishna-janmashtami`, lastmod: today, changefreq: 'monthly', priority: 0.85 },
     { loc: `${baseUrl}/festivals/gopashtami`, lastmod: today, changefreq: 'monthly', priority: 0.85 },
-    { loc: `${baseUrl}/ragas`, lastmod: today, changefreq: 'weekly', priority: 0.9 },
-    { loc: `${baseUrl}/themes`, lastmod: today, changefreq: 'weekly', priority: 0.9 },
     { loc: `${baseUrl}/glossary`, lastmod: today, changefreq: 'weekly', priority: 0.9 }
   );
 
+  // Dedicated Ragas Sitemap (/ragas + 294 /raga/:slug)
+  const ragasUrls = [
+    { loc: `${baseUrl}/ragas`, lastmod: today, changefreq: 'weekly', priority: 0.9 },
+  ];
   const ragaIndexPath = path.resolve(projectRoot, 'src/data/ragaIndex.json');
   if (fs.existsSync(ragaIndexPath)) {
     try {
       const ragaIndex = JSON.parse(fs.readFileSync(ragaIndexPath, 'utf-8'));
       for (const rSlug of Object.keys(ragaIndex)) {
-        mainUrls.push({
+        ragasUrls.push({
           loc: `${baseUrl}/raga/${encodeURIComponent(rSlug)}`,
           lastmod: today,
           changefreq: 'monthly',
@@ -535,13 +537,18 @@ function createSitemapSuite(baseUrl, prefix = '') {
       }
     } catch {}
   }
+  const ragasXml = buildUrlset(ragasUrls);
 
+  // Dedicated Themes Sitemap (/themes + 6 /theme/:slug)
+  const themesUrls = [
+    { loc: `${baseUrl}/themes`, lastmod: today, changefreq: 'weekly', priority: 0.9 },
+  ];
   const themeHubsPath = path.resolve(projectRoot, 'src/data/themeHubs.json');
   if (fs.existsSync(themeHubsPath)) {
     try {
       const themeHubs = JSON.parse(fs.readFileSync(themeHubsPath, 'utf-8'));
       for (const tSlug of Object.keys(themeHubs)) {
-        mainUrls.push({
+        themesUrls.push({
           loc: `${baseUrl}/theme/${encodeURIComponent(tSlug)}`,
           lastmod: today,
           changefreq: 'weekly',
@@ -550,6 +557,7 @@ function createSitemapSuite(baseUrl, prefix = '') {
       }
     } catch {}
   }
+  const themesXml = buildUrlset(themesUrls);
 
   const glossaryPath = path.resolve(projectRoot, 'src/data/brajGlossary.json');
   if (fs.existsSync(glossaryPath)) {
@@ -677,6 +685,8 @@ function createSitemapSuite(baseUrl, prefix = '') {
     `  <sitemap><loc>${baseUrl}/${filePrefix}-main.xml</loc><lastmod>${today}</lastmod></sitemap>`,
     `  <sitemap><loc>${baseUrl}/${filePrefix}-granthas.xml</loc><lastmod>${today}</lastmod></sitemap>`,
     `  <sitemap><loc>${baseUrl}/${filePrefix}-saints.xml</loc><lastmod>${today}</lastmod></sitemap>`,
+    `  <sitemap><loc>${baseUrl}/${filePrefix}-ragas.xml</loc><lastmod>${today}</lastmod></sitemap>`,
+    `  <sitemap><loc>${baseUrl}/${filePrefix}-themes.xml</loc><lastmod>${today}</lastmod></sitemap>`,
     `  <sitemap><loc>${baseUrl}/${filePrefix}-images.xml</loc><lastmod>${today}</lastmod></sitemap>`,
     `  <sitemap><loc>${baseUrl}/${filePrefix}-padas-1.xml</loc><lastmod>${today}</lastmod></sitemap>`,
     `  <sitemap><loc>${baseUrl}/${filePrefix}-padas-2.xml</loc><lastmod>${today}</lastmod></sitemap>`,
@@ -689,6 +699,8 @@ function createSitemapSuite(baseUrl, prefix = '') {
     [`${filePrefix}-main.xml`]: { content: mainXml, isBinary: false },
     [`${filePrefix}-granthas.xml`]: { content: granthasXml, isBinary: false },
     [`${filePrefix}-saints.xml`]: { content: saintsXml, isBinary: false },
+    [`${filePrefix}-ragas.xml`]: { content: ragasXml, isBinary: false },
+    [`${filePrefix}-themes.xml`]: { content: themesXml, isBinary: false },
     [`${filePrefix}-images.xml`]: { content: imagesXml, isBinary: false },
     [`${filePrefix}-padas.xml`]: { content: padasXml, isBinary: false },
     [`${filePrefix}-padas-1.xml`]: { content: padas1Xml, isBinary: false },

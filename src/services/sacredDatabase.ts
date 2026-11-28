@@ -19,6 +19,14 @@ import sadhanaBadgesData from '../data/sadhanaBadges.json';
 import feedTabsData from '../data/feedTabs.json';
 import { SacredPad, ScriptureHierarchyData, ChapterInfo, AuthorHierarchyInfo, EpicIndexData } from '../types/devotional';
 import { normalizeEpicChapterSlug, REVERSE_KAND_MAP } from '../utils/epicSlugs';
+import {
+  cleanSacredString,
+  extractPurePadaTitle,
+  deduplicatePadas,
+  EPIC_COLLECTION_IDS as BASE_EPIC_IDS,
+} from '../utils/padaTitle';
+
+export { cleanSacredString, extractPurePadaTitle, deduplicatePadas };
 
 let legacySlugRedirectsCache: Record<string, string> | null = null;
 async function resolveLegacySlug(slugOrId: string): Promise<string> {
@@ -155,35 +163,6 @@ const NON_RAGAS = new Set([
   'सामान्य',
 ]);
 
-/**
- * Comprehensive HTML entity sanitizer to permanently eliminate raw artifacts like &zwnj;, &zwj;, etc.
- */
-export function cleanSacredString(str: string): string {
-  if (!str) return '';
-  let res = String(str);
-  // Iteratively unescape double-encoded HTML entities
-  res = res.replace(/&amp;/gi, '&');
-  // Strip named and numerical zero-width joiners/spaces
-  res = res.replace(/&(?:zwnj|zwj|#x200c|#x200C|#8204|#x200d|#x200D|#8205);?/gi, '');
-  // Strip raw unicode zero-width characters
-  res = res.replace(/[\u200B-\u200D\uFEFF]/g, '');
-  // Convert standard typographic entities to authentic characters
-  res = res
-    .replace(/&(?:ndash|#8211);/gi, '–')
-    .replace(/&(?:mdash|#8212);/gi, '—')
-    .replace(/&(?:lsquo|#8216);/gi, '‘')
-    .replace(/&(?:rsquo|#8217);/gi, '’')
-    .replace(/&(?:ldquo|#8220);/gi, '“')
-    .replace(/&(?:rdquo|#8221);/gi, '”')
-    .replace(/&(?:bull|#8226);/gi, '•')
-    .replace(/&(?:nbsp|#160);/gi, ' ')
-    .replace(/&(?:quot|#34);/gi, '"')
-    .replace(/&(?:apos|#39);/gi, "'")
-    .replace(/&#(\d+);/g, (_, dec) => String.fromCharCode(Number(dec)));
-  // Secondary safety pass for residual zero-width artifacts and unwanted scraper wilted emojis
-  return res.replace(/&(?:zwnj|zwj|#x200c|#x200C|#8204|#x200d|#x200D|#8205);?/gi, '').replace(/🥀/g, '');
-}
-
 export const sanitizeSacredText = cleanSacredString;
 
 /**
@@ -192,7 +171,9 @@ export const sanitizeSacredText = cleanSacredString;
  */
 function normalizeCanonicalPad(raw: any): SacredPad {
   const author = cleanSacredString(raw.author || raw.composer || 'श्री रसिक परंपरा').trim();
-  const title = cleanSacredString(raw.titleDevanagari || raw.title || 'श्री पद').trim();
+  const rawTitle = cleanSacredString(raw.titleDevanagari || raw.title || 'श्री पद').trim();
+  const parsedTitle = extractPurePadaTitle(rawTitle);
+  const title = parsedTitle.title || rawTitle;
   const titleEnglish = cleanSacredString(raw.titleEnglish || raw.titleEng || '');
 
   // 1. Resolve canonical collection / grantha ID matching real textual lineage
@@ -293,7 +274,7 @@ function normalizeCanonicalPad(raw: any): SacredPad {
   const slug = raw.slug || raw.id || '';
   const chapterId = raw.chapterId || raw.chapter_id || 'general';
   const chapterName = cleanSacredString(raw.chapterName || raw.chapter_name || 'सामान्य पद');
-  const verseNumber = raw.verseNumber || raw.verse_number || raw.index || 1;
+  const verseNumber = raw.verseNumber || raw.verse_number || parsedTitle.padNumber || raw.index || 1;
 
   return {
     ...raw,
@@ -328,6 +309,8 @@ export interface CatalogIndexItem {
 }
 
 let searchCatalogItems: CatalogIndexItem[] = [];
+const catalogByIdMap = new Map<string, CatalogIndexItem>();
+let inFlightCatalogPromise: Promise<boolean> | null = null;
 
 let cachedHierarchy: ScriptureHierarchyData | null = null;
 let hierarchyPromise: Promise<ScriptureHierarchyData | null> | null = null;
@@ -456,7 +439,7 @@ export const SacredDatabase = {
 
   loadPadas(rawPadas: any[]): void {
     if (!rawPadas || !rawPadas.length) return;
-    const normalized = rawPadas.map(normalizeCanonicalPad);
+    const normalized = deduplicatePadas(rawPadas.map(normalizeCanonicalPad));
     allPadas = normalized;
     padasById.clear();
     padasBySlug.clear();
@@ -478,91 +461,63 @@ export const SacredDatabase = {
   appendPadas(rawPadas: any[]): void {
     if (!rawPadas || !rawPadas.length) return;
     const normalized = rawPadas.map(normalizeCanonicalPad);
-
-    const incomingByGrantha = new Map<string, SacredPad[]>();
-    const incomingByRaga = new Map<string, SacredPad[]>();
+    const affectedGranthas = new Set<string>();
+    const affectedRagas = new Set<string>();
 
     normalized.forEach((pad) => {
-      const existing = padasById.get(pad.id);
+      const slugLookup = pad.slug ? padasBySlug.get(pad.slug.toLowerCase()) : undefined;
+      const existing = padasById.get(pad.id) || (!BASE_EPIC_IDS.has(pad.collectionId) ? slugLookup : undefined);
+
       if (!existing) {
         allPadas.push(pad);
         padasById.set(pad.id, pad);
       } else {
+        const previousId = existing.id;
         const existingHasFullVerses = Boolean(existing.verses && existing.verses.length > 0 && !existing.isStub);
         const incomingHasFullVerses = Boolean(pad.verses && pad.verses.length > 0 && !pad.isStub);
 
         if (existingHasFullVerses && !incomingHasFullVerses) {
-          // Do not overwrite real verses with a stub
-          const { verses, ...meta } = pad;
+          const { verses: _ignoredVerses, ...meta } = pad;
           Object.assign(existing, meta);
         } else {
           Object.assign(existing, pad);
         }
+        // Keep starter aliases ('hit-chaurasi-01', 'kelimal-01', etc.) and real IDs pointing to the single canonical object
+        if (previousId) padasById.set(previousId, existing);
+        padasById.set(existing.id, existing);
       }
 
-      if (pad.slug) {
-        padasBySlug.set(pad.slug, pad);
-        padasBySlug.set(pad.slug.toLowerCase(), pad);
+      const canonicalRef = padasById.get(pad.id) || pad;
+      if (canonicalRef.slug) {
+        padasBySlug.set(canonicalRef.slug, canonicalRef);
+        padasBySlug.set(canonicalRef.slug.toLowerCase(), canonicalRef);
       }
 
-      const gList = incomingByGrantha.get(pad.collectionId);
-      if (gList) gList.push(pad);
-      else incomingByGrantha.set(pad.collectionId, [pad]);
+      affectedGranthas.add(canonicalRef.collectionId);
+      const gList = padasByGrantha.get(canonicalRef.collectionId) || [];
+      gList.push(canonicalRef);
+      padasByGrantha.set(canonicalRef.collectionId, gList);
 
-      if (pad.rag) {
-        const rList = incomingByRaga.get(pad.rag);
-        if (rList) rList.push(pad);
-        else incomingByRaga.set(pad.rag, [pad]);
+      if (canonicalRef.rag) {
+        affectedRagas.add(canonicalRef.rag);
+        const rList = padasByRaga.get(canonicalRef.rag) || [];
+        rList.push(canonicalRef);
+        padasByRaga.set(canonicalRef.rag, rList);
       }
     });
 
-    // High-speed O(N) batch merge into padasByGrantha
-    for (const [colId, incomingPads] of incomingByGrantha.entries()) {
-      const existingList = padasByGrantha.get(colId);
-      if (!existingList || existingList.length === 0) {
-        padasByGrantha.set(colId, incomingPads);
-      } else {
-        const idMap = new Map<string, number>();
-        existingList.forEach((p, i) => idMap.set(p.id, i));
-        for (const p of incomingPads) {
-          const idx = idMap.get(p.id);
-          if (idx !== undefined) {
-            const existingItem = existingList[idx];
-            const existingHasFullVerses = Boolean(existingItem.verses && existingItem.verses.length > 0 && !existingItem.isStub);
-            const incomingHasFullVerses = Boolean(p.verses && p.verses.length > 0 && !p.isStub);
-            if (existingHasFullVerses && !incomingHasFullVerses) {
-              const { verses, ...meta } = p;
-              Object.assign(existingItem, meta);
-            } else {
-              Object.assign(existingItem, p);
-            }
-          } else {
-            existingList.push(p);
-            idMap.set(p.id, existingList.length - 1);
-          }
-        }
-        padasByGrantha.set(colId, existingList);
+    // Deduplicate allPadas and affected collections/ragas cleanly in O(N)
+    allPadas = deduplicatePadas(allPadas);
+    for (const colId of affectedGranthas) {
+      const list = padasByGrantha.get(colId);
+      if (list && list.length > 1 && !BASE_EPIC_IDS.has(colId)) {
+        padasByGrantha.set(colId, deduplicatePadas(list));
       }
     }
-
-    // High-speed O(N) batch merge into padasByRaga
-    for (const [ragaName, incomingPads] of incomingByRaga.entries()) {
-      const existingList = padasByRaga.get(ragaName);
-      if (!existingList || existingList.length === 0) {
-        padasByRaga.set(ragaName, incomingPads);
-      } else {
-        const idMap = new Map<string, number>();
-        existingList.forEach((p, i) => idMap.set(p.id, i));
-        for (const p of incomingPads) {
-          const idx = idMap.get(p.id);
-          if (idx !== undefined) {
-            Object.assign(existingList[idx], p);
-          } else {
-            existingList.push(p);
-            idMap.set(p.id, existingList.length - 1);
-          }
-        }
-        padasByRaga.set(ragaName, existingList);
+    for (const ragaName of affectedRagas) {
+      const list = padasByRaga.get(ragaName);
+      if (list && list.length > 1) {
+        padasByRaga.set(ragaName, deduplicatePadas(list));
       }
     }
 
@@ -1269,10 +1224,15 @@ export const SacredDatabase = {
     );
     if (foundInAll) return foundInAll;
 
-    // 5. Search catalog items index fallback
-    const catItem = searchCatalogItems.find(
-      (it) => it.id === identifier || it.id.toLowerCase() === needle
-    );
+    // 5. Search catalog items O(1) index fallback
+    const cleanId = identifier.replace(/\.+$/, '');
+    const catItem =
+      catalogByIdMap.get(identifier) ||
+      catalogByIdMap.get(cleanId) ||
+      catalogByIdMap.get(cleanId.toLowerCase()) ||
+      searchCatalogItems.find(
+        (it) => it.id === identifier || it.id.toLowerCase() === needle
+      );
     if (catItem) {
       const stub = normalizeCanonicalPad({
         id: catItem.id,
@@ -1328,7 +1288,9 @@ export const SacredDatabase = {
 
   getPadasByGrantha(granthaId: string): SacredPad[] {
     if (granthaId === 'all') return allPadas;
-    return padasByGrantha.get(granthaId) || [];
+    const list = padasByGrantha.get(granthaId) || [];
+    if (BASE_EPIC_IDS.has(granthaId) || list.length <= 1) return list;
+    return deduplicatePadas(list);
   },
 
   async loadCanonicalAsset<T>(assetName: string): Promise<T | null> {
@@ -1390,13 +1352,26 @@ export const SacredDatabase = {
   getSaintBySlugOrName(identifier: string): CanonicalSaint | undefined {
     if (!identifier) return undefined;
     const clean = identifier.trim().toLowerCase();
-    return allSaints.find(
+    const direct = allSaints.find(
       (s) =>
         s.slug.toLowerCase() === clean ||
         s.name.toLowerCase() === clean ||
         s.id.toLowerCase() === clean ||
         (s.nameEng && s.nameEng.toLowerCase() === clean)
     );
+    if (direct) return direct;
+    const stripped = clean
+      .replace(/^(?:shri|sri|sant|goswami|swami|mahakavi|bhakt|mahaprabhu)-+/g, '')
+      .replace(/-+(?:ji|mahaprabhu)$/g, '');
+    if (stripped && stripped !== clean) {
+      return allSaints.find(
+        (s) =>
+          s.slug.toLowerCase() === stripped ||
+          s.slug.toLowerCase() === `${stripped}-ji` ||
+          (s.nameEng && s.nameEng.toLowerCase() === stripped)
+      );
+    }
+    return undefined;
   },
 
   getTraditions(): { id: string; label: string }[] {
@@ -1672,7 +1647,7 @@ export const SacredDatabase = {
     const catGranthaIds = new Set(
       allGranthas.filter((g) => g.category === category).map((g) => g.id)
     );
-    const result = allPadas.filter((p) => catGranthaIds.has(p.collectionId));
+    const result = deduplicatePadas(allPadas.filter((p) => catGranthaIds.has(p.collectionId)));
     categoryCache.set(category, result);
     return result;
   },
@@ -1694,7 +1669,7 @@ export const SacredDatabase = {
       .replace(/\s+जी$/, '')
       .trim();
 
-    const result = allPadas.filter((p) => {
+    const result = deduplicatePadas(allPadas.filter((p) => {
       const pAuthor = (p.author || '').toLowerCase();
       if (pAuthor.includes(rawClean)) return true;
       if (coreName && pAuthor.includes(coreName)) return true;
@@ -1705,7 +1680,7 @@ export const SacredDatabase = {
         .trim();
       if (pCore === coreName || (coreName && pCore.includes(coreName)) || (pCore && coreName.includes(pCore))) return true;
       return false;
-    });
+    }));
 
     if (result.length > 0) {
       authorCache.set(rawClean, result);
@@ -1899,6 +1874,7 @@ export const SacredDatabase = {
     const results: SacredPad[] = [];
     const seenIds = new Set<string>();
 
+    const queryResultCap = Math.max(limit * 3, 60);
     // 1. Search fully loaded authentic padas in memory
     for (const pad of allPadas) {
       const targetText = `${pad.titleDevanagari} ${pad.titleEnglish} ${pad.author} ${pad.rag} ${
@@ -1909,12 +1885,12 @@ export const SacredDatabase = {
       if (matches) {
         results.push(pad);
         seenIds.add(pad.id);
-        if (results.length >= limit) return results;
+        if (results.length >= queryResultCap) break;
       }
     }
 
-    // 2. Search catalog index if limit not yet reached
-    if (searchCatalogItems.length > 0) {
+    // 2. Search catalog index if cap not yet reached
+    if (results.length < queryResultCap && searchCatalogItems.length > 0) {
       for (const item of searchCatalogItems) {
         if (seenIds.has(item.id)) continue;
         const targetText = `${item.titleDevanagari} ${item.author} ${item.rag || ''}`.toLowerCase();
@@ -1932,16 +1908,16 @@ export const SacredDatabase = {
           });
           results.push(stubPad);
           seenIds.add(item.id);
-          if (results.length >= limit) break;
+          if (results.length >= queryResultCap) break;
         }
       }
     }
 
-    return results;
+    return deduplicatePadas(results).slice(0, limit);
   },
 
   /**
-   * Load search catalog items for lightweight instant Spotlight search across 43,000+ scriptures
+   * Load search catalog items for lightweight instant Spotlight & Raga/Theme lookups across 43,000+ scriptures
    */
   loadSearchCatalog(data: any): void {
     if (!data) return;
@@ -1965,6 +1941,52 @@ export const SacredDatabase = {
         rag: item.rag || '',
         index: item.index || idx + 1,
       }));
+    }
+    catalogByIdMap.clear();
+    for (const item of searchCatalogItems) {
+      if (!item.id) continue;
+      catalogByIdMap.set(item.id, item);
+      const lower = item.id.replace(/\.+$/, '').toLowerCase();
+      if (!catalogByIdMap.has(lower)) catalogByIdMap.set(lower, item);
+    }
+  },
+
+  /**
+   * Hydrate lightweight catalog.json (IndexedDB -> CDN fallback) on-demand for Raga, Theme & Pad lookups
+   */
+  async ensureSearchCatalogLoaded(): Promise<boolean> {
+    if (searchCatalogItems.length > 0) return true;
+    if (typeof window === 'undefined') return false;
+    if (inFlightCatalogPromise) return inFlightCatalogPromise;
+
+    inFlightCatalogPromise = (async () => {
+      try {
+        const cached = await get<any>('vrind_search_catalog_v1');
+        if (cached && ((cached.items && cached.items.length > 0) || (Array.isArray(cached) && cached.length > 0))) {
+          this.loadSearchCatalog(cached);
+          dbListeners.forEach((l) => l());
+          return true;
+        }
+      } catch {}
+      try {
+        const manifest = await this.getManifestAsync();
+        const catalogFile = manifest?.catalog?.file || 'catalog.json';
+        const res = await fetch(`/data/${catalogFile}`);
+        if (res.ok) {
+          const catData = await res.json();
+          this.loadSearchCatalog(catData);
+          set('vrind_search_catalog_v1', catData).catch(() => {});
+          dbListeners.forEach((l) => l());
+          return searchCatalogItems.length > 0;
+        }
+      } catch {}
+      return false;
+    })();
+
+    try {
+      return await inFlightCatalogPromise;
+    } finally {
+      inFlightCatalogPromise = null;
     }
   },
 

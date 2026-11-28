@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import { X, Flame, Music2, BookOpen, Plus, Minus, ChevronRight, Wind, Play, Pause } from 'lucide-react';
 import type { SadhanaState, SacredPad } from '../../types/devotional';
 import { computeMantraCount, formatDevanagariNumerals } from '../../services/cacheService';
+import { extractPurePadaTitle } from '../../utils/padaTitle';
 
 export type PillarType = 'japa' | 'shravan' | 'svadhyaya';
 
@@ -328,7 +329,7 @@ export const SadhanaPillarModal: React.FC<SadhanaPillarModalProps> = ({
                   Featured Pad Today
                 </span>
                 <p className="font-devanagari font-bold text-xs sm:text-sm truncate text-[#0F172A]">
-                  {currentPad?.titleDevanagari || 'जोई जोई प्यारो करे सोई मोहि भावै'}
+                  {extractPurePadaTitle(currentPad?.titleDevanagari || '').title || 'जोई जोई प्यारो करे सोई मोहि भावै'}
                 </p>
                 <span className="text-[10px] text-neutral-600">
                   Raga {currentPad?.rag || 'Vibhas'}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Play, Pause, X, SkipForward, SkipBack, Heart } from 'lucide-react';
 import { SacredPad } from '../../types/devotional';
+import { extractPurePadaTitle } from '../../utils/padaTitle';
 
 interface FloatingAudioPlayerProps {
   currentPad: SacredPad | null;
@@ -17,11 +18,9 @@ function resolvePadAudioSrc(pad: SacredPad | null): string | undefined {
   if (pad.audioUrl) return pad.audioUrl;
   if (pad.collectionId === 'hit-chaurasi') {
     const match = (pad.titleDevanagari || '').match(/पद\s*(\d+)/);
-    if (match) {
-      const num = parseInt(match[1], 10);
-      if (num >= 1 && num <= 84) {
-        return `/audio/hit-chaurasi/SHCJ${num}.mp3`;
-      }
+    const num = pad.verseNumber || (match ? parseInt(match[1], 10) : pad.index);
+    if (num && num >= 1 && num <= 84) {
+      return `/audio/hit-chaurasi/SHCJ${num}.mp3`;
     }
   }
   return undefined;
@@ -117,7 +116,7 @@ export const FloatingAudioPlayer: React.FC<FloatingAudioPlayerProps> = ({
             </span>
           </div>
           <span className="font-serif font-bold text-xs sm:text-sm truncate text-[#18181B] mt-0.5">
-            {currentPad.titleDevanagari}
+            {extractPurePadaTitle(currentPad.titleDevanagari).title}
           </span>
         </div>
 

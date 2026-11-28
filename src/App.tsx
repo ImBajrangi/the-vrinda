@@ -120,6 +120,24 @@ const LazyGlossaryView = lazy(() =>
 const LazyFestivalGuideView = lazy(() =>
   import('./components/sections/FestivalGuideView').then((m) => ({ default: m.FestivalGuideView }))
 );
+const LazyRagaDirectoryView = lazy(() =>
+  import('./components/sections/RagaDirectoryView').then((m) => ({ default: m.RagaDirectoryView }))
+);
+const LazyThemeHubView = lazy(() =>
+  import('./components/sections/ThemeHubView').then((m) => ({ default: m.ThemeHubView }))
+);
+const LazyDedicatedPadReadingView = lazy(() =>
+  import('./components/reader/DedicatedPadReadingView').then((m) => ({ default: m.DedicatedPadReadingView }))
+);
+const LazyBotFleetSection = lazy(() =>
+  import('./components/common/BotAvatarRoster').then((m) => ({ default: m.BotFleetSection }))
+);
+const LazyLiquidBotSpeedDial = lazy(() =>
+  import('./components/common/LiquidBotSpeedDial').then((m) => ({ default: m.LiquidBotSpeedDial }))
+);
+const LazyAgentHubModal = lazy(() =>
+  import('./features/agents/AgentHubModal').then((m) => ({ default: m.AgentHubModal }))
+);
 
 const TOPICAL_GUIDE_SLUGS = new Set([
   'what-is-vrindopnishad', 'meaning', 'origin', 'philosophy', 'teachings',
@@ -197,6 +215,9 @@ export interface AppComponents {
   KnowledgeBaseHubView?: React.ComponentType<any>;
   GlossaryView?: React.ComponentType<any>;
   FestivalGuideView?: React.ComponentType<any>;
+  RagaDirectoryView?: React.ComponentType<any>;
+  ThemeHubView?: React.ComponentType<any>;
+  DedicatedPadReadingView?: React.ComponentType<any>;
   SacredSectionsBanner?: React.ComponentType<any>;
 }
 
@@ -204,13 +225,19 @@ export type SpecialViewState =
   | { type: 'knowledge-base' }
   | { type: 'glossary'; slug?: string }
   | { type: 'festivals'; slug?: string }
+  | { type: 'ragas'; slug?: string }
+  | { type: 'themes'; slug?: string }
+  | { type: 'pad-page'; slug: string }
   | null;
 
 export interface AppProps {
   initialTab?: NavTab;
   initialPadId?: string;
+  initialAuthor?: string;
+  initialGranthaId?: string;
   initialGuideSlug?: string;
   initialSpecialView?: SpecialViewState;
+  initialEntityLanding?: 'saint' | 'grantha';
   initialRitualSlug?: string;
   initialPlaceSlug?: string;
   initialStorySlug?: string;
@@ -225,11 +252,13 @@ export interface AppProps {
 interface AppRouteState {
   tab: NavTab;
   grantha: string;
+  author?: string;
   chapter?: string;
   verse?: string;
   pad?: string;
   guideSlug?: string;
   specialView?: SpecialViewState;
+  entityLanding?: 'saint' | 'grantha';
   ritualSlug?: string;
   placeSlug?: string;
   storySlug?: string;
@@ -343,6 +372,18 @@ function resolveCurrentRoute(): AppRouteState {
     } else if (rawPath === '/festivals' || rawPath.startsWith('/festivals/') || rawPath === '/festival' || rawPath.startsWith('/festival/')) {
       const fSlug = rawPath.replace(/^\/(?:festivals|festival)\/?/, '').trim();
       specialView = { type: 'festivals', slug: fSlug ? decodeURIComponent(fSlug) : undefined };
+    } else if (rawPath === '/ragas' || rawPath.startsWith('/raga/')) {
+      const rSlug = rawPath.startsWith('/raga/')
+        ? rawPath.slice(6).split('/').filter(Boolean)[0] || ''
+        : '';
+      specialView = { type: 'ragas', slug: rSlug ? decodeURIComponent(rSlug) : undefined };
+    } else if (rawPath === '/themes' || rawPath.startsWith('/theme/')) {
+      const tSlug = rawPath.startsWith('/theme/')
+        ? rawPath.slice(7).split('/').filter(Boolean)[0] || ''
+        : '';
+      specialView = { type: 'themes', slug: tSlug ? decodeURIComponent(tSlug) : undefined };
+    } else if (pathPad && !qTab && !mappedEpic) {
+      specialView = { type: 'pad-page', slug: pathPad };
     } else if (TOPICAL_GUIDE_SLUGS.has(cleanSlug)) {
       guideSlug = cleanSlug;
     }
@@ -380,14 +421,23 @@ function resolveCurrentRoute(): AppRouteState {
       determinedTab = 'granthas';
     }
 
+    const canonicalSaint = resolvedAuthor ? SacredDatabase.getSaintBySlugOrName(resolvedAuthor) : undefined;
+    const entityLanding: 'saint' | 'grantha' | undefined = pathAuthor
+      ? 'saint'
+      : pathGrantha && !SacredDatabase.isEpicGrantha(pathGrantha) && !resolvedChapter
+        ? 'grantha'
+        : undefined;
+
     return {
       tab: determinedTab,
       grantha: resolvedGrantha,
+      author: canonicalSaint ? canonicalSaint.name : (resolvedAuthor || undefined),
       chapter: resolvedChapter,
       verse: resolvedVerse,
       pad: targetPad || undefined,
       guideSlug,
       specialView,
+      entityLanding,
       ritualSlug,
       placeSlug,
       storySlug,
@@ -401,8 +451,11 @@ function resolveCurrentRoute(): AppRouteState {
 export function App({
   initialTab,
   initialPadId,
+  initialAuthor,
+  initialGranthaId,
   initialGuideSlug,
   initialSpecialView,
+  initialEntityLanding,
   initialRitualSlug,
   initialPlaceSlug,
   initialStorySlug,
@@ -412,7 +465,7 @@ export function App({
   initialStoryData,
   initialSaintData,
   components,
-}: AppProps = {}) {
+}: AppProps & { initialEntityLanding?: 'saint' | 'grantha' } = {}) {
   const PadavaliReaderComp = components?.PadavaliReader || LazyPadavaliReader;
   const MahagranthReaderComp = components?.MahagranthReader || LazyMahagranthReader;
   const MilestonesViewComp = components?.MilestonesView || LazyMilestonesView;
@@ -424,6 +477,9 @@ export function App({
   const KnowledgeBaseHubViewComp = components?.KnowledgeBaseHubView || LazyKnowledgeBaseHubView;
   const GlossaryViewComp = components?.GlossaryView || LazyGlossaryView;
   const FestivalGuideViewComp = components?.FestivalGuideView || LazyFestivalGuideView;
+  const RagaDirectoryViewComp = components?.RagaDirectoryView || LazyRagaDirectoryView;
+  const ThemeHubViewComp = components?.ThemeHubView || LazyThemeHubView;
+  const DedicatedPadReadingViewComp = components?.DedicatedPadReadingView || LazyDedicatedPadReadingView;
   const SacredSectionsBannerComp = components?.SacredSectionsBanner || LazySacredSectionsBanner;
   const [initialRoute] = useState<AppRouteState>(() => resolveCurrentRoute());
   const [activeGuideSlug, setActiveGuideSlug] = useState<string | null>(
@@ -431,6 +487,9 @@ export function App({
   );
   const [specialView, setSpecialView] = useState<SpecialViewState>(
     () => initialSpecialView !== undefined ? initialSpecialView : (initialRoute.specialView || null)
+  );
+  const [entityLanding, setEntityLanding] = useState<'saint' | 'grantha' | undefined>(
+    () => initialEntityLanding ?? initialRoute.entityLanding
   );
   const [activeTab, setActiveTab] = useState<NavTab>(() => {
     if (
@@ -460,10 +519,12 @@ export function App({
   });
   const [liveNow, setLiveNow] = useState<Date>(() => SSR_BASELINE_DATE);
   const [manualSelectedDate, setManualSelectedDate] = useState<number | null>(null);
+  const [isClientMounted, setIsClientMounted] = useState(false);
 
   // Pre-warm lazy reader JS chunks during browser idle time without mounting hidden DOM subtrees
   useEffect(() => {
     if (typeof window === 'undefined') return;
+    setIsClientMounted(true);
     const preload = () => {
       import('./components/reader/PadavaliReader');
       import('./components/reader/MahagranthReader');
@@ -547,12 +608,22 @@ export function App({
     return 'valmiki-ramayana';
   });
   const [selectedPadavaliGranthaId, setSelectedPadavaliGranthaId] = useState<string>(() => {
+    if (initialGranthaId && !SacredDatabase.isEpicGrantha(initialGranthaId)) {
+      return initialGranthaId;
+    }
     if (initialRoute.grantha && !SacredDatabase.isEpicGrantha(initialRoute.grantha)) {
       return initialRoute.grantha;
     }
     return 'all';
   });
   const [selectedAuthor, setSelectedAuthor] = useState<string | null>(() => {
+    if (initialAuthor) {
+      const saint = SacredDatabase.getSaintBySlugOrName(initialAuthor);
+      return saint ? saint.name : initialAuthor;
+    }
+    if (initialRoute.author) {
+      return initialRoute.author;
+    }
     if (typeof window !== 'undefined') {
       try {
         const params = new URLSearchParams(window.location.search);
@@ -780,13 +851,17 @@ export function App({
       const nextRoute = resolveCurrentRoute();
       setActiveGuideSlug(nextRoute.guideSlug || null);
       setSpecialView(nextRoute.specialView || null);
+      setEntityLanding(nextRoute.entityLanding);
       setActiveTab(nextRoute.tab);
+      setSelectedAuthor(nextRoute.author || null);
       if (nextRoute.grantha && nextRoute.grantha !== 'all') {
         if (SacredDatabase.isEpicGrantha(nextRoute.grantha)) {
           setSelectedEpicGranthaId(nextRoute.grantha);
         } else {
           setSelectedPadavaliGranthaId(nextRoute.grantha);
         }
+      } else if (!nextRoute.author && nextRoute.tab === 'padavali') {
+        setSelectedPadavaliGranthaId('all');
       }
       if (nextRoute.pad) {
         const p = SacredDatabase.getPadById(nextRoute.pad);
@@ -815,18 +890,37 @@ export function App({
     const nextRoute = resolveCurrentRoute();
     setActiveGuideSlug(nextRoute.guideSlug || null);
     setSpecialView(nextRoute.specialView || null);
+    setEntityLanding(nextRoute.entityLanding);
     setActiveTab(nextRoute.tab);
+    if (nextRoute.author) {
+      setSelectedAuthor(nextRoute.author);
+    } else if (nextRoute.specialView || nextRoute.guideSlug || nextRoute.tab !== 'padavali') {
+      setSelectedAuthor(null);
+    }
+    if (nextRoute.grantha && nextRoute.grantha !== 'all') {
+      if (SacredDatabase.isEpicGrantha(nextRoute.grantha)) {
+        setSelectedEpicGranthaId(nextRoute.grantha);
+      } else {
+        setSelectedPadavaliGranthaId(nextRoute.grantha);
+      }
+    }
+    if (nextRoute.pad) {
+      const p = SacredDatabase.getPadById(nextRoute.pad);
+      if (p) setCurrentPad(p);
+    }
     resetScrollToTop();
   };
 
   const handleTabSwitch = (tab: NavTab) => {
+    const hadOverlay = Boolean(activeGuideSlug || specialView);
     if (activeGuideSlug) {
       setActiveGuideSlug(null);
     }
     if (specialView) {
       setSpecialView(null);
     }
-    if (tab === activeTab && !activeGuideSlug && !specialView) {
+    setEntityLanding(undefined);
+    if (tab === activeTab && !hadOverlay) {
       resetScrollToTop();
       return;
     }
@@ -835,6 +929,9 @@ export function App({
     if (typeof window !== 'undefined') {
       try {
         const url = new URL(window.location.href);
+        if (hadOverlay || url.pathname.startsWith('/pad/') || url.pathname.startsWith('/rag') || url.pathname.startsWith('/them')) {
+          url.pathname = '/';
+        }
         const host = window.location.hostname;
         const isPath = host === 'path.vrindopnishad.in' || host.startsWith('path.');
         if ((isPath && tab === 'granthas') || (!isPath && tab === 'smaran')) {
@@ -1229,6 +1326,92 @@ export function App({
                 />
               </Suspense>
             </div>
+          ) : specialView?.type === 'ragas' ? (
+            <div className="w-full pb-28 md:pb-16">
+              <Suspense fallback={<ReaderLoadingSkeleton />}>
+                <RagaDirectoryViewComp
+                  initialRagaSlug={specialView.slug}
+                  onSelectRaga={(nextSlug: string | null) =>
+                    handleNavigatePath(nextSlug ? `/raga/${encodeURIComponent(nextSlug)}` : '/ragas')
+                  }
+                  onSelectPad={(slug: string, p?: SacredPad) => {
+                    if (p) setCurrentPad(p);
+                    handleNavigatePath(`/pad/${encodeURIComponent(slug)}`);
+                  }}
+                  onPlayPad={handlePlayPad}
+                  onNavigateHome={() => handleNavigatePath('/')}
+                  onOpenPadavali={() => handleTabSwitch('padavali')}
+                />
+              </Suspense>
+            </div>
+          ) : specialView?.type === 'themes' ? (
+            <div className="w-full pb-28 md:pb-16">
+              <Suspense fallback={<ReaderLoadingSkeleton />}>
+                <ThemeHubViewComp
+                  initialThemeSlug={specialView.slug}
+                  onSelectTheme={(nextSlug: string | null) =>
+                    handleNavigatePath(nextSlug ? `/theme/${encodeURIComponent(nextSlug)}` : '/themes')
+                  }
+                  onSelectPad={(slug: string, p?: SacredPad) => {
+                    if (p) setCurrentPad(p);
+                    handleNavigatePath(`/pad/${encodeURIComponent(slug)}`);
+                  }}
+                  onPlayPad={handlePlayPad}
+                  onNavigateHome={() => handleNavigatePath('/')}
+                  onOpenFestivals={() => handleNavigatePath('/festivals')}
+                />
+              </Suspense>
+            </div>
+          ) : specialView?.type === 'pad-page' ? (
+            <div className="w-full pb-28 md:pb-16">
+              <Suspense fallback={<ReaderLoadingSkeleton />}>
+                <DedicatedPadReadingViewComp
+                  padSlug={specialView.slug}
+                  initialPad={
+                    currentPad && (currentPad.slug === specialView.slug || currentPad.id === specialView.slug)
+                      ? currentPad
+                      : undefined
+                  }
+                  activePlayingPadId={currentPad?.id}
+                  isPlayingAudio={isPlayingAudio}
+                  onSelectPad={(slug: string, p?: SacredPad) => {
+                    if (p) setCurrentPad(p);
+                    handleNavigatePath(`/pad/${encodeURIComponent(slug)}`);
+                  }}
+                  onPlayPad={handlePlayPad}
+                  onOpenInReader={(p: SacredPad) => {
+                    setCurrentPad(p);
+                    setSpecialView(null);
+                    setEntityLanding(undefined);
+                    if (!SacredDatabase.isEpicGrantha(p.collectionId)) {
+                      setSelectedPadavaliGranthaId(p.collectionId || 'all');
+                    }
+                    setActiveTab('padavali');
+                    if (typeof window !== 'undefined') {
+                      try {
+                        const u = new URL(window.location.href);
+                        u.pathname = '/';
+                        u.searchParams.set('tab', 'padavali');
+                        u.searchParams.set('pad', p.id);
+                        window.history.pushState({}, '', u.toString());
+                      } catch {}
+                    }
+                  }}
+                  onNavigateGrantha={(gId: string) => {
+                    setSpecialView(null);
+                    handleSelectBook(gId);
+                  }}
+                  onNavigateSaint={(saintSlugOrName: string) => {
+                    setSpecialView(null);
+                    handleSelectAuthor(saintSlugOrName);
+                  }}
+                  onNavigateRaga={(rSlug: string) =>
+                    handleNavigatePath(rSlug ? `/raga/${encodeURIComponent(rSlug)}` : '/ragas')
+                  }
+                  onNavigateHome={() => handleNavigatePath('/')}
+                />
+              </Suspense>
+            </div>
           ) : activeGuideSlug ? (
             <div className="w-full pb-28 md:pb-16">
               <Suspense fallback={<ReaderLoadingSkeleton />}>
@@ -1604,6 +1787,13 @@ export function App({
                 />
               </Suspense>
 
+              {/* Section 2.7: FarmDirect 14-Bot Interactive Avatar Fleet */}
+              {isClientMounted && (
+                <Suspense fallback={null}>
+                  <LazyBotFleetSection />
+                </Suspense>
+              )}
+
               {/* Section 3: Sacred Contemplation & Sanctuary Streams Deck (Pure White & Off-White) */}
               <div id="sanctuary-streams-section" className="w-full bg-white rounded-[32px] p-6 sm:p-7 space-y-4 mb-6">
                 {/* Header */}
@@ -1893,6 +2083,11 @@ export function App({
                   selectedAuthor={selectedAuthor}
                   onSelectAuthor={(author) => setSelectedAuthor(author)}
                   selectedPadId={currentPad?.id}
+                  entityLanding={entityLanding}
+                  onOpenPadPage={(slug: string, p?: SacredPad) => {
+                    if (p) setCurrentPad(p);
+                    handleNavigatePath(`/pad/${encodeURIComponent(slug)}`);
+                  }}
                   initialPadId={
                     initialPadId ||
                     initialRoute.pad ||
@@ -2308,6 +2503,18 @@ export function App({
                 handleTabSwitch('padavali');
               }}
             />
+          </Suspense>
+        )}
+
+        {/* FarmDirect Interactive 14-Bot Speed Dial & 3-Pane AI Workbench Modal (Client-Only Lazy) */}
+        {isClientMounted && (
+          <Suspense fallback={null}>
+            <LazyLiquidBotSpeedDial
+              onOpenSearch={() => setIsSpotlightOpen(true)}
+              onNavigatePadavali={() => handleTabSwitch('padavali')}
+              hasFloatingAudio={showPlayer}
+            />
+            <LazyAgentHubModal />
           </Suspense>
         )}
       </div>

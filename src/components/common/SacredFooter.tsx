@@ -151,6 +151,15 @@ export const SacredFooter: React.FC<SacredFooterProps> = ({
             </li>
             <li>
               <a
+                href="/themes"
+                onClick={(e) => handleInternalLink(e, '/themes')}
+                className="hover:text-amber-800 no-underline transition-colors"
+              >
+                ब्रज लीला प्रसंग व पद संग्रह
+              </a>
+            </li>
+            <li>
+              <a
                 href="/glossary"
                 onClick={(e) => handleInternalLink(e, '/glossary')}
                 className="hover:text-amber-800 no-underline transition-colors"
@@ -301,13 +310,13 @@ export const SacredFooter: React.FC<SacredFooterProps> = ({
           >
             सम्पर्क एवं सुझाव
           </a>
-          <span>•</span>
           <a
             href="/terms"
             onClick={(e) => handleInternalLink(e, '/terms')}
-            className="hover:text-neutral-800 no-underline"
+            className="hover:text-neutral-800 no-underline inline-flex items-center gap-2 whitespace-nowrap shrink-0"
           >
-            Terms of Use
+            <span aria-hidden="true">•</span>
+            <span>Terms of Use</span>
           </a>
         </div>
       </div>

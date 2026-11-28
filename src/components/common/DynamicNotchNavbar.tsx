@@ -18,12 +18,15 @@ import {
   BookMarked,
   Users,
   MapPin,
+  Bot,
 } from 'lucide-react';
 import { NavTab } from './FloatingNavbar';
 import { SacredLogo } from './SacredLogo';
 import { computeAshtayamaPhase, formatDevanagariNumerals } from '../../services/cacheService';
 import { SadhanaState } from '../../types/devotional';
 import { useSoftPresence } from '../../hooks/useSoftPresence';
+import { extractPurePadaTitle } from '../../utils/padaTitle';
+import { queueAgentEvent } from '../../utils/agentQueue';
 
 interface DynamicNotchNavbarProps {
   activeTab: NavTab;
@@ -433,6 +436,8 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
                       ज्ञानकोश एवं उत्सव
                     </div>
                     {[
+                      { path: '/ragas', label: 'शास्त्रीय राग कोष', sub: '२९४ राग व पद' },
+                      { path: '/themes', label: 'ब्रज लीला प्रसंग', sub: 'होली, राधाष्टमी, झूलन' },
                       { path: '/knowledge-base', label: 'सनातन ज्ञानकोश विकी', sub: '३५+ मार्गदर्शिकाएँ' },
                       { path: '/glossary', label: 'ब्रजभाषा शब्दकोश', sub: 'सिद्धान्त व शब्दार्थ' },
                       { path: '/festivals', label: 'ब्रज महोत्सव धरोहर', sub: 'झूलन, राधाष्टमी, होरी' },
@@ -464,7 +469,22 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
 
             {/* 3. Right: Borderless Tonal Actions Deck */}
             <div className="flex items-center gap-2 shrink-0">
-              
+
+              {/* FarmDirect 14-Bot Interactive Hub Trigger */}
+              <button
+                type="button"
+                onClick={() => {
+                  queueAgentEvent('open-agent-hub', {});
+                  window.dispatchEvent(new CustomEvent('open-agent-hub', { detail: {} }));
+                }}
+                aria-label="Open 14 Interactive Bots Hub"
+                title="AI Sakha • 14 Interactive Bots"
+                className="flex items-center justify-center gap-1.5 w-9 h-9 sm:w-auto sm:px-3 sm:h-9 rounded-full bg-[#FEF08A] hover:bg-[#FDE047] text-[#78350F] text-xs font-bold transition-colors cursor-pointer shrink-0"
+              >
+                <Bot className="w-3.5 h-3.5 stroke-[2.3]" />
+                <span className="hidden lg:inline text-xs">14 Bots</span>
+              </button>
+
               {/* Spotlight Search Trigger */}
               {onOpenSearch && (
                 <button
@@ -509,7 +529,7 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
                 <button
                   type="button"
                   onClick={onOpenPlayer}
-                  title={`Track: ${currentTrackTitle}`}
+                  title={`Track: ${currentTrackTitle ? extractPurePadaTitle(currentTrackTitle).title : ''}`}
                   className="hidden sm:inline text-xs font-semibold truncate max-w-[80px] lg:max-w-[110px] cursor-pointer"
                 >
                   {isPlayingAudio ? 'Playing' : 'Audio'}
@@ -634,6 +654,18 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
                   {linkItem.label}
                 </a>
               ))}
+              <button
+                type="button"
+                onClick={() => {
+                  queueAgentEvent('open-agent-hub', {});
+                  window.dispatchEvent(new CustomEvent('open-agent-hub', { detail: {} }));
+                  setIsMobileMenuOpen(false);
+                }}
+                className="px-3 py-1.5 rounded-full bg-[#FEF08A] hover:bg-[#FDE047] text-xs font-serif font-bold text-[#78350F] inline-flex items-center gap-1 cursor-pointer transition-colors"
+              >
+                <Bot className="w-3 h-3" />
+                <span>AI Sakha • 14 Bots</span>
+              </button>
             </div>
 
             {/* 3. Live Presence Strip: Ashtayama Period + Audio Player (Radiant White Card with Gold Trim) */}
@@ -695,7 +727,7 @@ export const DynamicNotchNavbar: React.FC<DynamicNotchNavbarProps> = ({
                     </button>
                     <div className="min-w-0">
                       <div className="text-xs font-semibold text-neutral-900 truncate">
-                        {currentTrackTitle}
+                        {currentTrackTitle ? extractPurePadaTitle(currentTrackTitle).title : ''}
                       </div>
                       <div className="text-[10px] text-amber-800/80 font-mono">
                         {isPlayingAudio ? '● Recitation Active' : 'Paused • Sacred Audio'}

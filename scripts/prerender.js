@@ -79,6 +79,8 @@ async function prerender() {
     { url: '/festivals/krishna-janmashtami', file: 'festivals/krishna-janmashtami.html' },
     { url: '/festivals/gopashtami', file: 'festivals/gopashtami.html' },
     { url: '/glossary', file: 'glossary.html' },
+    { url: '/ragas', file: 'ragas.html' },
+    { url: '/themes', file: 'themes.html' },
   ];
 
   // 2. Pre-render ALL 29 Scripture Collections (5 Epics + 24 Rasik Granthas)
@@ -95,18 +97,55 @@ async function prerender() {
     }
   }
 
-  // 3. Pre-render Top Canonical Saints Profiles
+  // 3. Pre-render ALL 131 Canonical Saints Profiles
   const saintsPath = path.resolve(projectRoot, 'src/data/canonicalSaints.json');
   if (fs.existsSync(saintsPath)) {
     const saintsData = JSON.parse(fs.readFileSync(saintsPath, 'utf-8'));
-    for (const s of saintsData.slice(0, 10)) {
+    for (const s of saintsData) {
       const slug = s.slug || s.id;
+      if (!slug) continue;
       const routeUrl = `/sant/${encodeURIComponent(slug)}`;
       routes.push({ url: routeUrl, file: `sant/${slug}.html` });
     }
   }
 
-  // 4. Pre-render Authentic Epic Chapter & Celebrated Pad Samples
+  // 3b. Pre-render ALL 6 Braj Theme Hubs + Top 40 Classical Raga Hubs
+  const themeHubsPath = path.resolve(projectRoot, 'src/data/themeHubs.json');
+  if (fs.existsSync(themeHubsPath)) {
+    try {
+      const themeHubs = JSON.parse(fs.readFileSync(themeHubsPath, 'utf-8'));
+      for (const tSlug of Object.keys(themeHubs)) {
+        routes.push({ url: `/theme/${encodeURIComponent(tSlug)}`, file: `theme/${tSlug}.html` });
+      }
+    } catch {}
+  }
+
+  const ragaIndexPath = path.resolve(projectRoot, 'src/data/ragaIndex.json');
+  if (fs.existsSync(ragaIndexPath)) {
+    try {
+      const ragaIndex = JSON.parse(fs.readFileSync(ragaIndexPath, 'utf-8'));
+      const topRagas = Object.entries(ragaIndex)
+        .sort((a, b) => (b[1]?.padas?.length || 0) - (a[1]?.padas?.length || 0))
+        .slice(0, 40);
+      for (const [rSlug] of topRagas) {
+        routes.push({ url: `/raga/${encodeURIComponent(rSlug)}`, file: `raga/${rSlug}.html` });
+      }
+    } catch {}
+  }
+
+  // 4. Pre-render Authentic Epic Chapter & Celebrated Pad Samples + Top 100 Hit Chaurasi & Kelimal Pads
+  const padSampleFiles = [
+    { url: '/pad/radheju-merau-janam-sudharau', file: 'pad-radheju-merau-janam-sudharau.html' },
+    { url: '/pad/shri-radha-kripa-kataksha-stotram', file: 'pad-shri-radha-kripa-kataksha-stotram.html' },
+    { url: '/pad/bainu-maai-baajai-bansivat-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-64', file: 'pad-bainu-mai-baje-bansivat.html' },
+    { url: '/pad/main-to-govardhan-ko-jaun-meri-veer-shri-chandrasakhi-ji', file: 'pad-main-to-govardhan-ko-jaun-meri-veer-shri-chandrasakhi-ji.html' },
+    { url: '/pad/radhika-ravan-ki-murlika-shravan-suni-shri-chaturbhujdas-ji', file: 'pad-radhika-ravan-ki-murlika-shravan-suni-shri-chaturbhujdas-ji.html' },
+    { url: '/pad/radheju-merau-janam-sudharau', file: 'pad/radheju-merau-janam-sudharau.html' },
+    { url: '/pad/shri-radha-kripa-kataksha-stotram', file: 'pad/shri-radha-kripa-kataksha-stotram.html' },
+    { url: '/pad/bainu-maai-baajai-bansivat-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-64', file: 'pad/bainu-maai-baajai-bansivat-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-64.html' },
+    { url: '/pad/main-to-govardhan-ko-jaun-meri-veer-shri-chandrasakhi-ji', file: 'pad/main-to-govardhan-ko-jaun-meri-veer-shri-chandrasakhi-ji.html' },
+    { url: '/pad/radhika-ravan-ki-murlika-shravan-suni-shri-chaturbhujdas-ji', file: 'pad/radhika-ravan-ki-murlika-shravan-suni-shri-chaturbhujdas-ji.html' },
+  ];
   routes.push(
     { url: '/grantha/bhagavad-gita/adhyay-1', file: 'grantha-bhagavad-gita-adhyay-1.html' },
     { url: '/grantha/bhagavad-gita/adhyay-2', file: 'grantha-bhagavad-gita-adhyay-2.html' },
@@ -115,12 +154,24 @@ async function prerender() {
     { url: '/grantha/valmiki-ramayana/bal-kand-sarga-1', file: 'grantha-valmiki-ramayana-bal-kand-sarga-1.html' },
     { url: '/grantha/valmiki-ramayana/sundar-kand-sarga-1', file: 'grantha-valmiki-ramayana-sundar-kand-sarga-1.html' },
     { url: '/grantha/durga-saptashati/adhyay-1', file: 'grantha-durga-saptashati-adhyay-1.html' },
-    { url: '/pad/radheju-merau-janam-sudharau', file: 'pad-radheju-merau-janam-sudharau.html' },
-    { url: '/pad/shri-radha-kripa-kataksha-stotram', file: 'pad-shri-radha-kripa-kataksha-stotram.html' },
-    { url: '/pad/bainu-maai-baajai-bansivat-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-64', file: 'pad-bainu-mai-baje-bansivat.html' },
-    { url: '/pad/main-to-govardhan-ko-jaun-meri-veer-shri-chandrasakhi-ji', file: 'pad-main-to-govardhan-ko-jaun-meri-veer-shri-chandrasakhi-ji.html' },
-    { url: '/pad/radhika-ravan-ki-murlika-shravan-suni-shri-chaturbhujdas-ji', file: 'pad-radhika-ravan-ki-murlika-shravan-suni-shri-chaturbhujdas-ji.html' }
+    ...padSampleFiles
   );
+
+  const snippetsPath = path.resolve(projectRoot, 'src/data/padaSnippets.json');
+  if (fs.existsSync(snippetsPath)) {
+    try {
+      const snippets = JSON.parse(fs.readFileSync(snippetsPath, 'utf-8'));
+      const celebrated = Object.entries(snippets)
+        .filter(([, tuple]) => tuple[2] === 'hit-chaurasi' || tuple[2] === 'kelimal')
+        .slice(0, 100);
+      for (const [pSlug] of celebrated) {
+        const cleanFile = `pad/${pSlug}.html`;
+        if (!routes.some((r) => r.file === cleanFile)) {
+          routes.push({ url: `/pad/${encodeURIComponent(pSlug)}`, file: cleanFile });
+        }
+      }
+    } catch {}
+  }
 
   // 5. Pre-render All Sacred Rituals (Aartis, Chalisas, Stotras)
   const ritualsIndexPath = path.resolve(projectRoot, 'public/data/rituals/index.json');

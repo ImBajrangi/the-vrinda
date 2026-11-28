@@ -2,7 +2,7 @@ import { StrictMode } from 'react';
 import { renderToString } from 'react-dom/server';
 import { App } from './App';
 import { NavTab } from './components/common/FloatingNavbar';
-import { SacredDatabase } from './services/sacredDatabase';
+import { SacredDatabase, mapPadToEpicChapter } from './services/sacredDatabase';
 import { generateSEOMetadata, SEOMetadataResult, SEOConfig } from './services/seoService';
 import canonicalPadasData from './data/canonicalPadas.json';
 import chapterSnippetsData from './data/chapterSnippets.json';
@@ -37,8 +37,13 @@ import { TopicalGuideView } from './components/sections/TopicalGuideView';
 import { KnowledgeBaseHubView } from './components/sections/KnowledgeBaseHubView';
 import { GlossaryView } from './components/sections/GlossaryView';
 import { FestivalGuideView } from './components/sections/FestivalGuideView';
+import { RagaDirectoryView } from './components/sections/RagaDirectoryView';
+import { ThemeHubView } from './components/sections/ThemeHubView';
+import { DedicatedPadReadingView } from './components/reader/DedicatedPadReadingView';
 import { FESTIVALS_BY_SLUG } from './data/festivalsData';
 import brajGlossaryData from './data/brajGlossary.json';
+import ragaIndexData from './data/ragaIndex.json';
+import themeHubsData from './data/themeHubs.json';
 import { SacredSectionsBanner } from './components/smaran/SacredSectionsBanner';
 import type { SpecialViewState } from './App';
 import topicalGuidesMetaData from './data/topicalGuidesMeta.json';
@@ -50,11 +55,12 @@ const TOPICAL_GUIDES_META = topicalGuidesMetaData as Record<
   { title: string; description: string; faqs?: { q: string; a: string }[] }
 >;
 
-// Ensure SSR server pre-warms with full 4,204 canonical padas for instant bot rendering and SEO extraction
+// Ensure SSR server pre-warms with full 4,204 canonical padas + 43,520 catalog index for instant bot rendering and SEO extraction
 function ensureDatabasePrewarmed(): void {
   if (!SacredDatabase.isLoaded()) {
     SacredDatabase.loadPadas(canonicalPadasData as any[]);
   }
+  SacredDatabase.loadSearchCatalog(catObj);
 }
 
 export interface RenderResult {
@@ -80,6 +86,7 @@ export function render(url: string = '/'): RenderResult {
   let bioQuery: string | undefined;
   let guideSlug: string | undefined;
   let specialView: SpecialViewState = null;
+  let entityLanding: 'saint' | 'grantha' | undefined;
   let parsedPathname = '';
   let ritualData: any;
   let placeData: any;
@@ -131,12 +138,31 @@ export function render(url: string = '/'): RenderResult {
     if (pathname.startsWith('/pad/')) {
       padId = decodeURIComponent(pathname.replace('/pad/', '')).trim();
       tab = 'padavali';
+      if (!qTab && !mapPadToEpicChapter(padId)) {
+        specialView = { type: 'pad-page', slug: padId };
+      }
+    } else if (/^\/(?:hi|en)\/(?:lyrics|content|verse|pada|pad)\/|\/(?:lyrics|content|verse|pada)\//.test(pathname)) {
+      const m = pathname.match(/^(?:\/(?:hi|en))?\/(?:lyrics|content|verse|pada|pad)\/([^/?#]+)/i);
+      if (m) {
+        padId = decodeURIComponent(m[1]).trim();
+        tab = 'padavali';
+        if (!qTab && !mapPadToEpicChapter(padId)) {
+          specialView = { type: 'pad-page', slug: padId };
+        }
+      }
     } else if (pathname.startsWith('/sant/') || pathname.startsWith('/author/')) {
-      authorQuery = decodeURIComponent(pathname.replace(/^\/(?:sant|author)\//, '')).trim();
+      const sub = pathname.replace(/^\/(?:sant|author)\//, '');
+      const parts = sub.split('/').map((p) => decodeURIComponent(p).trim()).filter(Boolean);
+      authorQuery = parts.length === 3 && parts[1] === 'page' ? parts[0] : decodeURIComponent(sub).trim();
       tab = 'padavali';
+      if (pathname.startsWith('/sant/')) entityLanding = 'saint';
     } else if (pathname.startsWith('/grantha/')) {
       const parts = pathname.slice(9).split('/').map((p) => decodeURIComponent(p).trim()).filter(Boolean);
-      if (parts.length >= 2) {
+      if (parts.length === 3 && parts[1] === 'page' && /^\d+$/.test(parts[2])) {
+        granthaQuery = parts[0];
+        tab = 'padavali';
+        entityLanding = 'grantha';
+      } else if (parts.length >= 2) {
         granthaQuery = parts[0];
         chapterQuery = parts.slice(1).join('/');
         tab = 'granthas';
@@ -146,6 +172,7 @@ export function render(url: string = '/'): RenderResult {
           tab = 'granthas';
         } else {
           tab = 'padavali';
+          entityLanding = 'grantha';
         }
       }
     } else if (pathname === '/rituals' || pathname.startsWith('/rituals/') || pathname.startsWith('/ritual/') || pathname.startsWith('/aarti/') || pathname.startsWith('/chalisa/') || pathname.startsWith('/stotra/')) {
@@ -190,6 +217,18 @@ export function render(url: string = '/'): RenderResult {
     } else if (pathname === '/festivals' || pathname.startsWith('/festivals/')) {
       const sub = pathname.replace(/^\/festivals\/?/, '').trim();
       specialView = { type: 'festivals', slug: sub ? decodeURIComponent(sub) : undefined };
+    } else if (pathname === '/ragas' || pathname.startsWith('/raga/')) {
+      const rSlug = pathname.startsWith('/raga/')
+        ? pathname.slice(6).split('/').filter(Boolean)[0] || ''
+        : '';
+      specialView = { type: 'ragas', slug: rSlug ? decodeURIComponent(rSlug) : undefined };
+      tab = 'padavali';
+    } else if (pathname === '/themes' || pathname.startsWith('/theme/')) {
+      const tSlug = pathname.startsWith('/theme/')
+        ? pathname.slice(7).split('/').filter(Boolean)[0] || ''
+        : '';
+      specialView = { type: 'themes', slug: tSlug ? decodeURIComponent(tSlug) : undefined };
+      tab = 'padavali';
     } else {
       const cleanSlug = pathname.replace(/^\/+/, '');
       if (TOPICAL_GUIDES_META[cleanSlug]) {
@@ -539,6 +578,73 @@ export function render(url: string = '/'): RenderResult {
         },
       };
     }
+  } else if (specialView?.type === 'ragas') {
+    const rMap = ((ragaIndexData as any)?.default || ragaIndexData || {}) as Record<
+      string,
+      { name: string; padas: string[] }
+    >;
+    const rInfo = specialView.slug ? rMap[specialView.slug] : undefined;
+    if (rInfo && specialView.slug) {
+      seoConfig = {
+        tab: 'padavali',
+        ogType: 'website',
+        title: `राग ${rInfo.name} के पावन पद (${rInfo.padas.length} पद) • ब्रज रसिक संगीत | वृन्दोपनिषद् 2.0`,
+        description: `शास्त्रीय राग ${rInfo.name} में निबद्ध ${rInfo.padas.length} प्रामाणिक ब्रज रसिक पदों का मूल पाठ, रचयिता एवं भावार्थ संग्रह।`,
+        canonicalUrl: `https://bhav.vrindopnishad.in/raga/${encodeURIComponent(specialView.slug)}`,
+        collection: {
+          name: `राग ${rInfo.name} पद संग्रह`,
+          description: `शास्त्रीय राग ${rInfo.name} में निबद्ध ब्रज रसिक पद।`,
+          url: `https://bhav.vrindopnishad.in/raga/${encodeURIComponent(specialView.slug)}`,
+        },
+      };
+    } else {
+      const rCount = Object.keys(rMap).length;
+      seoConfig = {
+        tab: 'padavali',
+        ogType: 'website',
+        title: `शास्त्रीय राग कोष (${rCount} राग) • ब्रज रस पदावली | वृन्दोपनिषद् 2.0`,
+        description: `श्री वृन्दावन रसिक वाणी में निबद्ध ${rCount} शास्त्रीय एवं ब्रज लोक रागों (विभास, कल्याण, केदार, बिलावल, सारंग, मलार) के समस्त पावन पदों का संग्रह।`,
+        canonicalUrl: 'https://bhav.vrindopnishad.in/ragas',
+        collection: {
+          name: 'श्री वृन्दावन शास्त्रीय राग कोष',
+          description: `${rCount} शास्त्रीय रागों के पावन पद संग्रह।`,
+          url: 'https://bhav.vrindopnishad.in/ragas',
+        },
+      };
+    }
+  } else if (specialView?.type === 'themes') {
+    const tMap = ((themeHubsData as any)?.default || themeHubsData || {}) as Record<
+      string,
+      { slug: string; nameDevanagari: string; nameEnglish: string; description: string; padas: string[] }
+    >;
+    const tInfo = specialView.slug ? tMap[specialView.slug] : undefined;
+    if (tInfo) {
+      seoConfig = {
+        tab: 'padavali',
+        ogType: 'website',
+        title: `${tInfo.nameDevanagari} (${tInfo.padas.length} पावन पद) • ${tInfo.nameEnglish} | वृन्दोपनिषद् 2.0`,
+        description: tInfo.description,
+        canonicalUrl: `https://bhav.vrindopnishad.in/theme/${encodeURIComponent(tInfo.slug)}`,
+        collection: {
+          name: tInfo.nameDevanagari,
+          description: tInfo.description,
+          url: `https://bhav.vrindopnishad.in/theme/${encodeURIComponent(tInfo.slug)}`,
+        },
+      };
+    } else {
+      seoConfig = {
+        tab: 'padavali',
+        ogType: 'website',
+        title: 'ब्रज उत्सव एवं लीला प्रसंग संग्रह (Themes & Festivals) | वृन्दोपनिषद् 2.0',
+        description: 'होली-फाग, श्री राधाष्टमी, झूलन महोत्सव, शरद पूर्णिमा महारास, अष्टयाम सेवा एवं एकादशी व्रत के पावन पदों का विषयवार संग्रह।',
+        canonicalUrl: 'https://bhav.vrindopnishad.in/themes',
+        collection: {
+          name: 'ब्रज उत्सव व लीला प्रसंग संग्रह',
+          description: 'ब्रज लीला व उत्सव प्रसंगों के पावन पद।',
+          url: 'https://bhav.vrindopnishad.in/themes',
+        },
+      };
+    }
   } else if (guideSlug && TOPICAL_GUIDES_META[guideSlug]) {
     const gMeta = TOPICAL_GUIDES_META[guideSlug];
     seoConfig = {
@@ -611,8 +717,11 @@ export function render(url: string = '/'): RenderResult {
       <App
         initialTab={tab}
         initialPadId={padId}
+        initialAuthor={authorQuery}
+        initialGranthaId={granthaQuery}
         initialGuideSlug={guideSlug}
         initialSpecialView={specialView}
+        initialEntityLanding={entityLanding}
         initialRitualSlug={ritualQuery}
         initialPlaceSlug={placeQuery}
         initialStorySlug={storyQuery}
@@ -633,6 +742,9 @@ export function render(url: string = '/'): RenderResult {
           KnowledgeBaseHubView,
           GlossaryView,
           FestivalGuideView,
+          RagaDirectoryView,
+          ThemeHubView,
+          DedicatedPadReadingView,
           SacredSectionsBanner,
         }}
       />

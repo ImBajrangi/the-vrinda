@@ -32,6 +32,7 @@ import {
   PanelRightOpen,
 } from 'lucide-react';
 import { SacredDatabase } from '../../services/sacredDatabase';
+import { extractPurePadaTitle } from '../../utils/padaTitle';
 import { useSidebarState } from '../../hooks/useSidebarState';
 import { SacredPad, AuthorHierarchyInfo } from '../../types/devotional';
 import { InlinePurportCard } from './InlinePurportCard';
@@ -62,6 +63,7 @@ import { useSoftPresence } from '../../hooks/useSoftPresence';
 const LazyBrajWordStudyPanel = lazy(() =>
   import('./BrajWordStudyPanel').then((m) => ({ default: m.BrajWordStudyPanel }))
 );
+import { EntityOverviewBanner } from './EntityOverviewBanner';
 
 interface PadavaliReaderProps {
   isActiveTab?: boolean;
@@ -72,6 +74,8 @@ interface PadavaliReaderProps {
   selectedSearchQuery?: string;
   selectedAuthor?: string | null;
   selectedPadId?: string;
+  entityLanding?: 'saint' | 'grantha';
+  onOpenPadPage?: (slug: string, pad?: SacredPad) => void;
   initialPadId?: string;
   onSelectGranthaId?: (granthaId: string) => void;
   onSelectAuthor?: (author: string | null) => void;
@@ -193,6 +197,8 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   selectedSearchQuery,
   selectedAuthor: selectedAuthorProp,
   selectedPadId,
+  entityLanding,
+  onOpenPadPage,
   initialPadId,
   onSelectGranthaId,
   onSelectAuthor: onSelectAuthorProp,
@@ -215,7 +221,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   const [loadingAuthor, setLoadingAuthor] = useState<boolean>(false);
   const [loadingPadId, setLoadingPadId] = useState<string | null>(null);
   const [selectedGrantha, setSelectedGrantha] = useState<string>(
-    selectedGranthaId || getReaderStateSync().selectedTradition || 'all'
+    selectedAuthorProp ? 'all' : (selectedGranthaId || getReaderStateSync().selectedTradition || 'all')
   );
   type GranthaCategory = 'all' | 'rasik-vani' | 'kavya' | 'dham-leela' | 'authors';
   const [granthaCategory, setGranthaCategory] = useState<GranthaCategory>(() => {
@@ -575,6 +581,11 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
     if (selectedGranthaId && selectedGranthaId !== lastExplicitGranthaIdRef.current) {
       lastExplicitGranthaIdRef.current = selectedGranthaId;
 
+      // Preserve saint-filtered reader state on /sant/:slug landing when selectedGranthaId is 'all'
+      if (selectedGranthaId === 'all' && (selectedAuthorProp || entityLanding === 'saint')) {
+        return;
+      }
+
       // Strict boundary guard: Never allow Sanatan Epics to contaminate the Rasik Padavali Sanctuary
       if (SacredDatabase.isEpicGrantha(selectedGranthaId)) {
         setSelectedGrantha('all');
@@ -612,7 +623,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
         });
       }
     }
-  }, [selectedGranthaId, onSelectAuthorProp, onExternalSelectPad, selectedPadId, initialPadId]);
+  }, [selectedGranthaId, selectedAuthorProp, entityLanding, onSelectAuthorProp, onExternalSelectPad, selectedPadId, initialPadId]);
 
   useEffect(() => {
     if (selectedAuthorProp !== undefined) {
@@ -648,6 +659,10 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
   }, [selectedPadId, initialPadId]);
 
   useEffect(() => {
+    if ((selectedAuthorProp || entityLanding === 'saint') && !initialPadId) {
+      initialAppliedRef.current = true;
+      return;
+    }
     const targetId = selectedPadId || initialPadId;
     if (!targetId) {
       initialAppliedRef.current = true;
@@ -2573,7 +2588,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                   </span>
                 )}
                 <span className="font-serif truncate max-w-[130px]">
-                  {pad.titleDevanagari}
+                  {extractPurePadaTitle(pad.titleDevanagari).title}
                 </span>
               </a>
             );
@@ -2764,17 +2779,17 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                           {/* Verse Title & Meta */}
                           <div className="min-w-0 flex-1">
                             <div className={`font-serif text-[13.5px] leading-snug break-words ${isSelected ? 'font-semibold text-[#18181B]' : 'font-medium text-neutral-800'}`}>
-                              {pad.titleDevanagari}
+                              {extractPurePadaTitle(pad.titleDevanagari).title}
                             </div>
-                            <div className="flex items-center gap-1.5 text-xs mt-0.5 flex-wrap text-[#64748B] font-normal">
+                            <div className="flex items-center gap-x-1.5 gap-y-0.5 text-xs mt-0.5 flex-wrap text-[#64748B] font-normal">
                               <span className="truncate font-normal">{pad.author}</span>
                               {pad.rag && (
-                                <>
+                                <span className="inline-flex items-center gap-1 whitespace-nowrap shrink-0">
                                   <span className={isSelected ? 'text-[#CA8A04]' : 'text-[#CBD5E1]'}>•</span>
                                   <span className={`font-mono text-[11px] font-normal ${isSelected ? 'text-[#CA8A04]' : 'text-[#94A3B8]'}`}>
                                     {pad.rag}
                                   </span>
-                                </>
+                                </span>
                               )}
                             </div>
                           </div>
@@ -2956,6 +2971,26 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
           </div>
 
           {/* ========================================================================= */}
+          {/* Saint / Grantha Editorial Overview Header (clean /sant & /grantha)      */}
+          {/* ========================================================================= */}
+          {entityLanding === 'saint' && selectedAuthor && (
+            <EntityOverviewBanner
+              mode="saint"
+              saintName={selectedAuthor}
+              samplePadas={filteredPads}
+              onSelectPadSlug={onOpenPadPage}
+            />
+          )}
+          {entityLanding === 'grantha' && selectedGrantha && selectedGrantha !== 'all' && !selectedAuthor && (
+            <EntityOverviewBanner
+              mode="grantha"
+              granthaId={selectedGrantha}
+              samplePadas={filteredPads}
+              onSelectPadSlug={onOpenPadPage}
+            />
+          )}
+
+          {/* ========================================================================= */}
           {/* MODE A: Continuous Reading Stream (अखंड पाठ)                               */}
           {/* ========================================================================= */}
           {readingMode === 'continuous' ? (
@@ -3045,18 +3080,24 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               {/* Header Title for Chapter Stream (Desktop Only - MobileReaderHeader provides top chrome on mobile) */}
               <div className={`hidden sm:flex pb-3 sm:pb-5 border-b ${currentTheme.borderColor} items-center justify-between gap-3 flex-wrap`}>
                 <div>
-                  <div className={`flex items-center gap-2 ${currentTheme.metaColor} font-mono text-[10px] sm:text-[11px] font-bold tracking-wider uppercase`}>
+                  <div className={`flex flex-wrap items-center gap-x-2 gap-y-0.5 ${currentTheme.metaColor} font-mono text-[10px] sm:text-[11px] font-bold tracking-wider uppercase`}>
                     <span>{granthaDisplayName}</span>
                     {currentChapter && (
-                      <>
-                        <span className="text-[#FACC15]">•</span>
+                      <span className="inline-flex items-center gap-1.5 whitespace-nowrap shrink-0">
+                        <span className="text-[#FACC15]" aria-hidden="true">•</span>
                         <span>{currentChapter.name}</span>
-                      </>
+                      </span>
                     )}
                   </div>
-                  <h1 className={`${fontFamily === 'native' ? 'font-native' : 'font-rozha'} font-bold text-2xl sm:text-3xl lg:text-[34px] text-neutral-900 mt-1 tracking-wide leading-snug`}>
-                    {currentChapter ? currentChapter.name : cleanTitle}
-                  </h1>
+                  {entityLanding === 'saint' || (entityLanding === 'grantha' && selectedGrantha !== 'all' && !selectedAuthor) ? (
+                    <h2 className={`${fontFamily === 'native' ? 'font-native' : 'font-rozha'} font-bold text-2xl sm:text-3xl lg:text-[34px] text-neutral-900 mt-1 tracking-wide leading-snug`}>
+                      {currentChapter ? currentChapter.name : cleanTitle}
+                    </h2>
+                  ) : (
+                    <h1 className={`${fontFamily === 'native' ? 'font-native' : 'font-rozha'} font-bold text-2xl sm:text-3xl lg:text-[34px] text-neutral-900 mt-1 tracking-wide leading-snug`}>
+                      {currentChapter ? currentChapter.name : cleanTitle}
+                    </h1>
+                  )}
                   <p className="text-[11px] sm:text-xs text-neutral-500 font-serif mt-0.5 sm:mt-1">
                     अखंड स्वाध्याय धारा • {filteredPads.length} पावन पद उपलब्ध
                   </p>
@@ -3386,13 +3427,13 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
               <div className={`pb-6 mb-7 border-b ${currentTheme.borderColor} space-y-4`}>
                 {/* Top Meta Line & Bookmark */}
                 <div className="flex items-center justify-between text-xs gap-2 flex-wrap">
-                  <div className={`flex items-center gap-2 ${currentTheme.metaColor} font-mono text-[11px] font-bold tracking-wider uppercase`}>
+                  <div className={`flex items-center gap-x-2 gap-y-1 flex-wrap ${currentTheme.metaColor} font-mono text-[11px] font-bold tracking-wider uppercase`}>
                     <span>{granthaDisplayName}</span>
                     {selectedPad.rag && (
-                      <>
+                      <span className="inline-flex items-center gap-1.5 whitespace-nowrap shrink-0">
                         <span className="text-[#FACC15]">•</span>
                         <span>राग {selectedPad.rag}</span>
-                      </>
+                      </span>
                     )}
                   </div>
 
@@ -3425,14 +3466,14 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                     }`}>
                     {cleanTitle}
                   </h1>
-                  <div className={`flex items-center gap-2 text-sm ${currentTheme.metaColor} ${fontClass} font-normal mt-2 flex-wrap ${textAlign === 'center' ? 'justify-center' : 'justify-start'
+                  <div className={`flex items-center gap-x-2 gap-y-1 text-sm ${currentTheme.metaColor} ${fontClass} font-normal mt-2 flex-wrap ${textAlign === 'center' ? 'justify-center' : 'justify-start'
                     }`}>
                     <span className={`${currentTheme.titleColor} font-semibold`}>{authorName}</span>
                     {granthaRef && (
-                      <>
+                      <span className="inline-flex items-center gap-1.5 whitespace-nowrap shrink-0">
                         <span className="text-[#CA8A04]">•</span>
                         <span>{granthaRef}</span>
-                      </>
+                      </span>
                     )}
                   </div>
                 </div>
@@ -3511,11 +3552,14 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                       type="button"
                       onClick={handleToggleSummary}
                       className="pad-action-btn px-3 py-1.5 rounded-full bg-white hover:bg-white/80 text-[#78350F] text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
-                      aria-label={isSummaryOpen ? 'भाव संक्षेप छुपाएं' : 'भाव संक्षेप'}
-                      title={isSummaryOpen ? 'भाव संक्षेप छुपाएं' : 'भाव संक्षेप'}
+                      aria-label={isSummaryOpen ? 'भाव संक्षेप छुपाएं' : 'भाव संक्षेप देखें'}
+                      title={isSummaryOpen ? 'भाव संक्षेप छुपाएं' : 'भाव संक्षेप देखें'}
                     >
                       <Sparkles className="w-3.5 h-3.5 text-[#CA8A04] shrink-0" />
-                      <span className="pad-action-label">{isSummaryOpen ? 'भाव संक्षेप छुपाएं' : 'भाव संक्षेप'}</span>
+                      <span className="pad-action-label">
+                        <span className="sm:hidden">{isSummaryOpen ? 'छुपाएं' : 'दिव्य सार'}</span>
+                        <span className="hidden sm:inline">{isSummaryOpen ? 'भाव संक्षेप छुपाएं' : 'भाव संक्षेप देखें'}</span>
+                      </span>
                     </button>
 
                     <button
@@ -3547,7 +3591,7 @@ export const PadavaliReader: React.FC<PadavaliReaderProps> = ({
                     <div className={`flex items-center justify-between pb-2 mb-2 border-b ${currentTheme.borderColor}`}>
                       <div className={`flex items-center gap-1.5 text-xs font-bold ${currentTheme.titleColor} font-serif`}>
                         <Sparkles className="w-3.5 h-3.5 text-[#CA8A04]" />
-                        <span>भाव संक्षेप एवं रस-गूढ़ार्थ</span>
+                        <span>॥ दिव्य भाव संक्षेप एवं रस-गूढ़ार्थ ॥</span>
                       </div>
                       <button
                         type="button"

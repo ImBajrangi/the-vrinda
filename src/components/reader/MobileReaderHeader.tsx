@@ -79,12 +79,12 @@ export const MobileReaderHeader: React.FC<MobileReaderHeaderProps> = ({
             {scriptureTitle}
           </span>
           {chapterTitle && (
-            <>
-              <span className="text-[10px] text-amber-700/60 font-serif shrink-0">•</span>
+            <span className="inline-flex items-center gap-1.5 min-w-0 whitespace-nowrap shrink-0">
+              <span className="text-[10px] text-amber-700/60 font-serif shrink-0" aria-hidden="true">•</span>
               <span className="font-serif text-xs text-amber-900 font-semibold truncate min-w-0">
                 {chapterTitle}
               </span>
-            </>
+            </span>
           )}
           <ChevronDown className="w-3.5 h-3.5 text-amber-800 shrink-0 opacity-70 ml-auto min-[360px]:ml-0" />
         </button>

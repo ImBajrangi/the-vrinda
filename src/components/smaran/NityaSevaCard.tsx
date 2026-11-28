@@ -125,12 +125,16 @@ export const NityaSevaCard: React.FC<NityaSevaCardProps> = ({
         {/* Crisp Devotional Schedule Panel */}
         <div className="md:col-span-7 px-2 pb-2 md:py-2 md:pr-3 space-y-3 min-w-0">
           <div className="flex items-center justify-between gap-2 flex-wrap">
-            <div className="flex items-center gap-2 text-xs font-laila font-semibold text-amber-800">
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs font-laila font-semibold text-amber-800">
               <span className="font-mono font-bold text-amber-900/50">{displayNum}</span>
-              <span>•</span>
-              <span>{praharLabel}</span>
-              <span>•</span>
-              <span className="text-neutral-800">{devanagariTemple}</span>
+              <span className="inline-flex items-center gap-1.5 whitespace-nowrap shrink-0">
+                <span aria-hidden="true">•</span>
+                <span>{praharLabel}</span>
+              </span>
+              <span className="inline-flex items-center gap-1.5 whitespace-nowrap shrink-0">
+                <span aria-hidden="true">•</span>
+                <span className="text-neutral-800">{devanagariTemple}</span>
+              </span>
             </div>
 
             {statusType === 'active' && (

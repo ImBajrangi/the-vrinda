@@ -244,13 +244,25 @@ const placeMetaObj: Record<string, { darshanTimings?: { morning?: { open: string
   (placeMetaData as any)?.default || placeMetaData || {};
 
 const PRERENDERED_GRANTHA_IDS = new Set(granthasList.map((g: any) => g.id).filter(Boolean));
-const PRERENDERED_SAINT_SLUGS = new Set(saintsList.slice(0, 10).map((s: any) => s.slug || s.id).filter(Boolean));
+const PRERENDERED_SAINT_SLUGS = new Set(saintsList.map((s: any) => s.slug || s.id).filter(Boolean));
+const PRERENDERED_RAGA_SLUGS = new Set(
+  Object.entries(ragaIndexObj)
+    .sort((a, b) => (b[1].padas?.length || 0) - (a[1].padas?.length || 0))
+    .slice(0, 40)
+    .map(([slug]) => slug)
+);
+const PRERENDERED_THEME_SLUGS = new Set(Object.keys(themeHubsObj));
+const CELEBRATED_PAD_SLUGS = Object.entries(padaSnippetsObj)
+  .filter(([, tuple]) => tuple[2] === 'hit-chaurasi' || tuple[2] === 'kelimal')
+  .slice(0, 100)
+  .map(([slug]) => slug);
 const PRERENDERED_PAD_SLUGS = new Set([
   'radheju-merau-janam-sudharau',
   'shri-radha-kripa-kataksha-stotram',
   'bainu-maai-baajai-bansivat-shri-hita-harivansh-mahaprabhu-shri-hit-chaurasi-64',
   'main-to-govardhan-ko-jaun-meri-veer-shri-chandrasakhi-ji',
   'radhika-ravan-ki-murlika-shravan-suni-shri-chaturbhujdas-ji',
+  ...CELEBRATED_PAD_SLUGS,
 ]);
 
 const TOPICAL_GUIDES_META = (
@@ -2446,6 +2458,7 @@ const handleEdgeRequest: PagesFunction<Env> = async (context) => {
       ],
     });
   } else if (pathname === '/ragas') {
+    hasPrerenderedStaticRoot = true;
     const ragaEntries = Object.entries(ragaIndexObj);
     title = `शास्त्रीय राग कोष (${ragaEntries.length} राग) • ब्रज रस पदावली | वृन्दोपनिषद् 2.0`;
     description = `श्री वृन्दावन रसिक वाणी में निबद्ध ${ragaEntries.length} शास्त्रीय एवं ब्रज लोक रागों (विभास, कल्याण, केदार, बिलावल, सारंग, मलार) के समस्त पावन पदों का संग्रह।`;
@@ -2473,7 +2486,22 @@ const handleEdgeRequest: PagesFunction<Env> = async (context) => {
   } else if (pathname.startsWith('/raga/')) {
     const rSlug = decodeURIComponent(pathname.slice('/raga/'.length)).trim();
     const rInfo = ragaIndexObj[rSlug];
-    if (!rInfo) return notFoundResponse('यह राग पृष्ठ उपलब्ध नहीं है (Raga Not Found)');
+    if (!rInfo) {
+      const normReq = rSlug.replace(/[·•,\-–—/|\s]+/g, '');
+      const matched = Object.entries(ragaIndexObj).find(
+        ([, val]) => val.name === rSlug || val.name.replace(/[·•,\-–—/|\s]+/g, '') === normReq
+      );
+      if (matched) {
+        return buildCachedRedirect(
+          `https://bhav.vrindopnishad.in/raga/${encodeURIComponent(matched[0])}`,
+          301
+        );
+      }
+      return notFoundResponse('यह राग पृष्ठ उपलब्ध नहीं है (Raga Not Found)');
+    }
+    if (PRERENDERED_RAGA_SLUGS.has(rSlug)) {
+      hasPrerenderedStaticRoot = true;
+    }
     title = `राग ${rInfo.name} के पावन पद (${rInfo.padas.length} पद) • ब्रज रसिक संगीत | वृन्दोपनिषद् 2.0`;
     description = `शास्त्रीय राग ${rInfo.name} में निबद्ध ${rInfo.padas.length} प्रामाणिक ब्रज रसिक पदों का मूल पाठ, रचयिता एवं भावार्थ संग्रह।`;
     canonicalUrl = `https://bhav.vrindopnishad.in/raga/${encodeURIComponent(rSlug)}`;
@@ -2518,6 +2546,7 @@ const handleEdgeRequest: PagesFunction<Env> = async (context) => {
       </article>
     `;
   } else if (pathname === '/themes') {
+    hasPrerenderedStaticRoot = true;
     const themes = Object.values(themeHubsObj);
     title = 'ब्रज उत्सव एवं लीला प्रसंग संग्रह (Themes & Festivals) | वृन्दोपनिषद् 2.0';
     description = 'होली-फाग, श्री राधाष्टमी, झूलन महोत्सव, शरद पूर्णिमा महारास, अष्टयाम सेवा एवं एकादशी व्रत के पावन पदों का विषयवार संग्रह।';
@@ -2547,6 +2576,9 @@ const handleEdgeRequest: PagesFunction<Env> = async (context) => {
     const tSlug = decodeURIComponent(pathname.slice('/theme/'.length)).trim();
     const tInfo = themeHubsObj[tSlug];
     if (!tInfo) return notFoundResponse('यह उत्सव/विषय पृष्ठ उपलब्ध नहीं है (Theme Not Found)');
+    if (PRERENDERED_THEME_SLUGS.has(tSlug)) {
+      hasPrerenderedStaticRoot = true;
+    }
     title = `${tInfo.nameDevanagari} (${tInfo.padas.length} पावन पद) • ${tInfo.nameEnglish} | वृन्दोपनिषद् 2.0`;
     description = tInfo.description;
     canonicalUrl = `https://bhav.vrindopnishad.in/theme/${encodeURIComponent(tInfo.slug)}`;

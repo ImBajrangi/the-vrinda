@@ -756,7 +756,7 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
                     onClick={handleToggleQuoteSummary}
                     disabled={isQuoteSummaryLoading}
                     aria-busy={isQuoteSummaryLoading}
-                    title="Divine Essence Summary"
+                    title="भाव संक्षेप देखें • Divine Essence Summary"
                     className="h-8 px-3 rounded-full bg-[#FFF9EE] border border-[#E9D8B4] text-[#B84A28] flex items-center gap-1.5 shadow-xs pressable font-semibold text-xs disabled:opacity-65 cursor-pointer"
                   >
                     {isQuoteSummaryLoading ? (
@@ -764,11 +764,11 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
                     ) : (
                       <Sparkles className="w-3.5 h-3.5 text-[#D4A359]" />
                     )}
-                    <span>{isQuoteSummaryLoading ? 'Loading Essence...' : 'Divine Essence'}</span>
+                    <span>{isQuoteSummaryLoading ? 'Loading Essence...' : 'दिव्य सार • Essence'}</span>
                   </button>
                   {isQuoteSummaryOpen && (
                     <span className="text-[11px] text-[#92400E] font-medium">
-                      ॥ Divine Purport (दिव्य मर्म) ॥
+                      ॥ दिव्य मर्म (Divine Purport) ॥
                     </span>
                   )}
                 </div>
@@ -779,7 +779,7 @@ export const DhyanaFocusModal: React.FC<DhyanaFocusModalProps> = ({
                     <div className="flex items-center justify-between pb-1 mb-1 border-b border-amber-200/60">
                       <span className="text-[11px] font-bold text-amber-900 flex items-center gap-1">
                         <Sparkles className="w-3 h-3 text-amber-600" />
-                        <span>॥ Divine Essence (दिव्य सार) ॥</span>
+                        <span>॥ दिव्य सार (Divine Essence) ॥</span>
                       </span>
                       <button
                         type="button"

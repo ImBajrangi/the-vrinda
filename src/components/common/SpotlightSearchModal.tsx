@@ -18,6 +18,7 @@ import {
   CanonicalGrantha,
   cleanSacredString,
 } from '../../services/sacredDatabase';
+import { extractPurePadaTitle } from '../../utils/padaTitle';
 import { SacredPad } from '../../types/devotional';
 import { getSaintPortrait, getBookCoverConfig } from '../../services/devotionalVisuals';
 import { IOSSpinner, navigationProgress } from './IOSActivityIndicator';
@@ -116,52 +117,7 @@ interface SpotlightSearchModalProps {
   onSelectGrantha?: (grantha: CanonicalGrantha) => void;
 }
 
-/**
- * Intelligent devotional title sanitizer:
- * Strips redundant metadata (e.g. "- श्री हित हरिवंश महाप्रभु, श्री हित चौरासी (पद 1) (विभास)")
- * and separates pure sacred mukhda from pad number and grantha hints.
- */
-function extractPurePadaTitle(rawTitle: string): {
-  title: string;
-  padHint?: string;
-  granthaHint?: string;
-} {
-  if (!rawTitle) return { title: '' };
-  const cleaned = cleanSacredString(rawTitle);
-
-  // Split only on dashes surrounded by spaces or starting after a space
-  const parts = cleaned.split(/\s+[-–—]\s+|\s*[-–—]\s+/);
-  let pureTitle = parts[0].trim();
-  const trailingMeta = parts.length > 1 ? parts.slice(1).join(' - ').trim() : '';
-
-  // Extract pad number if present
-  let padHint: string | undefined;
-  const padMatch = (trailingMeta + ' ' + cleaned).match(/पद\s*(\d+|[०-९]+)/);
-  if (padMatch) {
-    padHint = `पद ${padMatch[1]}`;
-  }
-
-  // Remove trailing parenthetical metadata (e.g. '(पद 1)' or '(विभास)') from pureTitle
-  pureTitle = pureTitle.replace(/\s*\((?:पद\s*[\d०-९]+|राग\s*[^)]+|[^)]+)\)\s*$/g, '').trim();
-
-  // Extract canonical grantha name if recognized
-  let granthaHint: string | undefined;
-  const combined = trailingMeta + ' ' + cleaned;
-  if (combined.includes('हित चौरासी')) granthaHint = 'श्री हित चौरासी';
-  else if (combined.includes('राधा सुधा निधि')) granthaHint = 'श्री राधा सुधा निधि';
-  else if (combined.includes('केलिमाल')) granthaHint = 'श्री केलिमाल';
-  else if (combined.includes('व्यास वाणी')) granthaHint = 'श्री व्यास वाणी';
-  else if (combined.includes('स्फुट वाणी')) granthaHint = 'श्री स्फुट वाणी';
-  else if (combined.includes('बयालीस लीला')) granthaHint = 'बयालीस लीला';
-  else if (combined.includes('सूरसागर')) granthaHint = 'सूरसागर';
-  else if (combined.includes('विनय पत्रिका')) granthaHint = 'विनय पत्रिका';
-
-  return {
-    title: pureTitle || cleaned,
-    padHint,
-    granthaHint,
-  };
-}
+// Pure Mukhda title sanitization is shared across the platform via src/utils/padaTitle.ts
 
 // Curated Trending Devotional Search Pills for instant emotional connection
 const TRENDING_SEARCH_PROMPTS = [
@@ -592,10 +548,12 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
                     <Compass className="w-5 h-5 sm:w-6 sm:h-6" />
                   </div>
                   <div>
-                    <div className="flex items-center gap-2 text-[11px] sm:text-xs font-mono font-medium uppercase tracking-wider text-amber-900/90 dark:text-amber-300">
+                    <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[11px] sm:text-xs font-mono font-medium uppercase tracking-wider text-amber-900/90 dark:text-amber-300">
                       <span>वृन्दावन अष्टयाम सेवा चक्र</span>
-                      <span className="opacity-40">•</span>
-                      <span>प्रहर {prahar.praharIndex}/८</span>
+                      <span className="inline-flex items-center gap-1.5 whitespace-nowrap shrink-0">
+                        <span className="opacity-40" aria-hidden="true">•</span>
+                        <span>प्रहर {prahar.praharIndex}/८</span>
+                      </span>
                     </div>
                     <h3 className="text-[15px] sm:text-[17px] font-serif font-bold text-stone-850 dark:text-stone-100 mt-0.5">
                       {prahar.nameHindi} ({prahar.timeRange})
@@ -781,17 +739,17 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
                             <h4 className="font-serif font-medium text-[14.5px] sm:text-[16px] text-stone-850 dark:text-stone-100 truncate leading-snug group-hover:text-amber-900 transition-colors">
                               {cleanTitle}
                             </h4>
-                            <div className="flex items-center gap-2 text-xs sm:text-[12.5px] text-stone-500 font-sans leading-none mt-1 truncate">
-                              <span className="font-medium text-stone-600 dark:text-stone-300">
+                            <div className="flex items-center gap-x-2 text-xs sm:text-[12.5px] text-stone-500 font-sans leading-none mt-1 truncate">
+                              <span className="font-medium text-stone-600 dark:text-stone-300 truncate">
                                 {cleanSacredString(pad.author)}
                               </span>
                               {(granthaHint || padHint) && (
-                                <>
+                                <span className="inline-flex items-center gap-1.5 whitespace-nowrap shrink-0">
                                   <span className="text-stone-300 dark:text-stone-600">•</span>
                                   <span className="text-stone-500 dark:text-stone-400">
                                     {[granthaHint, padHint].filter(Boolean).join(' ')}
                                   </span>
-                                </>
+                                </span>
                               )}
                             </div>
                           </div>
@@ -1100,17 +1058,17 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
                               <h4 className="font-serif font-medium text-[15px] sm:text-[16.5px] text-stone-850 dark:text-stone-100 truncate leading-snug group-hover:text-amber-900 dark:group-hover:text-amber-200 transition-colors">
                                 {cleanTitle}
                               </h4>
-                              <div className="flex items-center gap-2 text-xs sm:text-[13px] text-stone-500 dark:text-stone-400 font-sans leading-none mt-1 truncate">
-                                <span className="font-medium text-stone-600 dark:text-stone-300">
+                              <div className="flex items-center gap-x-2 text-xs sm:text-[13px] text-stone-500 dark:text-stone-400 font-sans leading-none mt-1 truncate">
+                                <span className="font-medium text-stone-600 dark:text-stone-300 truncate">
                                   {cleanSacredString(pad.author)}
                                 </span>
                                 {(granthaHint || padHint) && (
-                                  <>
+                                  <span className="inline-flex items-center gap-1.5 whitespace-nowrap shrink-0">
                                     <span className="text-stone-300 dark:text-stone-600">•</span>
                                     <span className="text-stone-500 dark:text-stone-400 font-serif">
                                       {[granthaHint, padHint].filter(Boolean).join(' ')}
                                     </span>
-                                  </>
+                                  </span>
                                 )}
                               </div>
                             </div>
